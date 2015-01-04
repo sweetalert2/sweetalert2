@@ -11,22 +11,19 @@
 .sweet-alert {
   background-color: white;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  width: 478px;
-  padding: 17px;
   border-radius: 5px;
   text-align: center;
   position: fixed;
   left: 50%;
   top: 50%;
-  margin-left: -256px;
   margin-top: -200px;
   overflow: hidden;
   display: none;
   z-index: 2000; }
   @media all and (max-width: 540px) {
     .sweet-alert {
-      width: auto;
-      margin-left: 0;
+      width: auto !important;
+      margin-left: 0 !important;
       margin-right: 0;
       left: 15px;
       right: 15px; } }

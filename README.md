@@ -1,4 +1,4 @@
-SweetAlert2
+iSweetAlert2
 -----------
 
 An awesome replacement for JavaScript's alert.

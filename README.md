@@ -9,11 +9,13 @@ An awesome replacement for JavaScript's alert.
 
 
 Why fork?
----------------
+---------
 
 This fork provides the same functionality as the original by [t4t5](https://github.com/t4t5/sweetalert) but supports HTML code in modal, configuring modal width, padding and some other options.
 
 The old repository seems to be inactive. There's a bunch of Pull Requests without any replies, last merged pull request was on Nov 9, 2014.
+
+SweetAlert2 is backward compatible with [SweetAlert](https://github.com/t4t5/sweetalert).
 
 I will maintain this repo and I will accept pull requests.
 

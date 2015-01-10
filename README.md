@@ -41,30 +41,34 @@ Examples
 The most basic message:
 
 ```javascript
-sweetAlert("Hello world!");
+swal("Hello world!");
 ```
 
 A message signaling an error:
 
 ```javascript
-sweetAlert("Oops...", "Something went wrong!", "error");
+swal("Oops...", "Something went wrong!", "error");
 ```
 
 A warning message, with a function attached to the "Confirm"-button..
 
 ```javascript
-sweetAlert({
+swal({
   title: "Are you sure?",
   text: "You will not be able to recover this imaginary file!",
   type: "warning",
   showCancelButton: true,
-  confirmButtonColor: "#DD6B55",
+  confirmButtonColor: "#dd6b55",
+  cancelButtonColor: "#d44",
   confirmButtonText: "Yes, delete it!",
+  cancelButtonText: "No, keet it",
   closeOnConfirm: false
 }, function() {
-  swal("Deleted!",
-  "Your imaginary file has been deleted.",
-  "success");
+  swal(
+    "Deleted!",
+    "Your imaginary file has been deleted.",
+    "success"
+  );
 });
 ```
 

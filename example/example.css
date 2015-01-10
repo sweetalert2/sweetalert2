@@ -5,17 +5,17 @@ body {
   font-family: 'Open Sans', sans-serif;
   text-align: center; }
 
-h1 {
+header h1 {
   font-family: 'Courgette', serif;
   font-size: 60px;
   color: #aaa;
   white-space: nowrap;
   margin: 50px auto; }
-  h1 span {
+  header h1 span {
     margin: 0 10px;
     color: #f77; }
 
-h2 {
+header h2 {
   font-size: 20px;
   color: #a9b2bc;
   line-height: 25px;
@@ -23,8 +23,17 @@ h2 {
   font-weight: 300;
   text-align: center;
   display: block; }
-  h2 a {
+  header h2 a {
     color: #3085d6; }
+
+.sweet-alert h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600; }
+.sweet-alert input {
+  margin: 10px;
+  padding: 5px;
+  text-align: center;
+  font-size: 20px; }
 
 h3 {
   font-size: 28px;
@@ -178,6 +187,7 @@ pre {
   .showcase .vs-icon {
     background-image: url("images/vs_icon.png");
     background-image: -webkit-image-set(url("images/vs_icon.png") 1x, url("images/vs_icon@2x.png") 2x);
+    background-repeat: no-repeat;
     width: 69px;
     height: 69px;
     position: absolute;

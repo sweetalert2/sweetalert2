@@ -69,6 +69,10 @@
       outline: none;
     }
 
+    &[disabled] {
+      opacity: .4;
+    }
+
     // Removes selection outline in Firefox
     &::-moz-focus-inner {
       border: 0;

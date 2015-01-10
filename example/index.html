@@ -185,7 +185,7 @@
 &nbsp;&nbsp;title: <span class="str">'Sweet!'</span>,
 &nbsp;&nbsp;text: <span class="str">'Modal with a custom image.'</span>,
 &nbsp;&nbsp;imageUrl: <span class="str">'images/thumbs-up.jpg'</span>,
-&nbsp;&nbsp;animation: <span class="str">false</span>
+&nbsp;&nbsp;animation: <span class="val">false</span>
 });</pre>
   </li>
 
@@ -197,8 +197,8 @@
     <pre>swal({
 &nbsp;&nbsp;title: <span class="str">'Input something'</span>,
 &nbsp;&nbsp;html: <span class="str">'&lt;p&gt;&lt;input id="input-field"&gt;'</span>,
-&nbsp;&nbsp;showCancelButton: <span class="str">true</span>,
-&nbsp;&nbsp;closeOnConfirm: <span class="str">false</span>
+&nbsp;&nbsp;showCancelButton: <span class="val">true</span>,
+&nbsp;&nbsp;closeOnConfirm: <span class="val">false</span>
 },
 <span class="func"><i>function</i></span>() {
 &nbsp;&nbsp;<span class="func">swal</span>({
@@ -207,6 +207,25 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(<span class="str">'#input-field'</span>).val() +
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'&lt;/strong&gt;'</span>
 &nbsp;&nbsp;});
+});</pre>
+  </li>
+
+  <li class="ajax-request">
+    <div class="ui">
+      <p>Ajax request example</p>
+      <button>Try me!</button>
+    </div>
+    <pre>swal({
+&nbsp;&nbsp;title: <span class="str">'Submit to run ajax request'</span>,
+&nbsp;&nbsp;showCancelButton: <span class="val">true</span>,
+&nbsp;&nbsp;confirmButtonText: <span class="str">'Submit'</span>,
+&nbsp;&nbsp;closeOnConfirm: <span class="val">false</span>
+},
+<span class="func"><i>function</i></span>() {
+&nbsp;&nbsp;$(<span class="str">'.confirm'</span>).prop(<span class="str">'disabled'</span>, <span class="val">true</span>);
+&nbsp;&nbsp;<span class="func">setTimeout</span>(<span class="func">function</span>() {
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">swal</span>(<span class="str">'Ajax request finished!'</span>);
+&nbsp;&nbsp;}, 2000);
 });</pre>
   </li>
 </ul>
@@ -234,10 +253,10 @@
   <li>
     <p>Call the sweetAlert2-function after the page has loaded</p>
     <pre>swal({
-&nbsp;&nbsp;title: <span class="str">"Error!"</span>,
-&nbsp;&nbsp;text: <span class="str">"Here's my error message!"</span>,
-&nbsp;&nbsp;type: <span class="str">"error"</span>,
-&nbsp;&nbsp;confirmButtonText: <span class="str">"Cool"</span>
+&nbsp;&nbsp;title: <span class="str">'Error!'</span>,
+&nbsp;&nbsp;text: <span class="str">'Do you want to continue'</span>,
+&nbsp;&nbsp;type: <span class="str">'error'</span>,
+&nbsp;&nbsp;confirmButtonText: <span class="str">'Cool'</span>
 });
 </pre>
   </li>
@@ -409,11 +428,11 @@ $('ul.examples li.title-text button').on('click', function() {
   swal('The Internet?', 'That thing is still around?');
 });
 
-document.querySelector('ul.examples li.success button').onclick = function() {
+$('ul.examples li.success button').on('click', function() {
   swal('Good job!', 'You clicked the button!', 'success');
-};
+});
 
-document.querySelector('ul.examples li.warning.confirm button').onclick = function() {
+$('ul.examples li.warning.confirm button').on('click', function() {
   swal({
     title: 'Are you sure?',
     text: 'You will not be able to recover this imaginary file!',
@@ -427,9 +446,9 @@ document.querySelector('ul.examples li.warning.confirm button').onclick = functi
   function() {
     swal('Deleted!', 'Your file has been deleted!', 'success');
   });
-};
+});
 
-document.querySelector('ul.examples li.warning.cancel button').onclick = function() {
+$('ul.examples li.warning.cancel button').on('click', function() {
   swal({
     title: 'Are you sure?',
     text: 'You will not be able to recover this imaginary file!',
@@ -449,16 +468,16 @@ document.querySelector('ul.examples li.warning.cancel button').onclick = functio
       swal('Cancelled', 'Your imaginary file is safe :)', 'error');
     }
   });
-};
+});
 
-document.querySelector('ul.examples li.custom-icon button').onclick = function() {
+$('ul.examples li.custom-icon button').on('click', function() {
   swal({
     title: 'Sweet!',
     text: 'Modal with a custom image.',
     imageUrl: 'images/thumbs-up.jpg',
     animation: false
   });
-};
+});
 
 $('ul.examples li.input-field button').on('click', function() {
   swal({
@@ -472,6 +491,22 @@ $('ul.examples li.input-field button').on('click', function() {
     swal({
       html: 'You entered: <strong>' + $('#input-field').val() + '</strong>'
     });
+  });
+  $('#input-field').focus();
+});
+
+$('ul.examples li.ajax-request button').on('click', function() {
+  swal({
+    title: 'Submit to run ajax request',
+    showCancelButton: true,
+    confirmButtonText: 'Submit',
+    closeOnConfirm: false
+  },
+  function() {
+    $('.confirm').prop('disabled', true);
+    setTimeout(function() {
+      swal('Ajax request finished!');
+    }, 2000);
   });
   $('#input-field').focus();
 });

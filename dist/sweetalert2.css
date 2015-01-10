@@ -53,6 +53,8 @@
     cursor: pointer; }
     .sweet-alert button:focus {
       outline: none; }
+    .sweet-alert button[disabled] {
+      opacity: 0.4; }
     .sweet-alert button::-moz-focus-inner {
       border: 0; }
   .sweet-alert[data-has-cancel-button=false] button {

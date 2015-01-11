@@ -1,17 +1,4 @@
 {
-    // --------------------------------------------------------------------
-    // JSHint Configuration, Strict Edition
-    // --------------------------------------------------------------------
-    //
-    // This is a options template for [JSHint][1], to be most strict:
-    //
-    // * set all enforcing options to true
-    // * set all relaxing options to false
-    // * set all environment options to false, except the browser value
-    // * set all JSLint legacy options to false
-    //
-    // [1]: http://www.jshint.com/
-
     // == Enforcing Options ===============================================
     //
     // These options tell JSHint to be more strict towards your code. Use
@@ -35,7 +22,6 @@
     "regexp"        : true,     // Prohibit `.` and `[^...]` in regular expressions.
     "undef"         : true,     // Require all non-global variables be declared before they are used.
     "unused"        : true,     // This option warns when you define and never use your variables.
-    "strict"        : true,     // Require `use strict` pragma in every file.
     "trailing"      : true,     // Prohibit trailing whitespaces.
 
     // == Relaxing Options ================================================
@@ -67,6 +53,7 @@
     "scripturl"     : false,    // Tolerate script-targeted URLs.
     "smarttabs"     : false,    // Tolerate mixed tabs and spaces when the latter are used for alignmnent only.
     "shadow"        : false,    // Allows re-define variables later in code e.g. `var x=1; x=2;`.
+    "strict"        : false,    // Tolerate `use strict` pragma.
     "sub"           : false,    // Tolerate all forms of subscript notation besides dot notation e.g. `dict['key']` instead of `dict.key`.
     "supernew"      : false,    // Tolerate `new function () { ... };` and `new Object;`.
     "validthis"     : false,    // Tolerate strict violations when the code is running in strict mode and you use this in a non-constructor function.
@@ -101,5 +88,5 @@
 
     // == Predefine Project Specific Globals ===================================================
 
-    "predef"        : []
+    "predef"        : ["$", "swal"]
 }

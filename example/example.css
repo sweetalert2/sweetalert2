@@ -136,8 +136,7 @@ pre {
   border-radius: 5px;
   white-space: pre-line;
   text-align: left;
-  font-size: 14px;
-  max-width: 600px; }
+  font-size: 14px; }
   pre .str {
     color: #e6db74; }
   pre .func {

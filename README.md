@@ -43,33 +43,33 @@ Examples
 The most basic message:
 
 ```javascript
-swal("Hello world!");
+swal('Hello world!');
 ```
 
 A message signaling an error:
 
 ```javascript
-swal("Oops...", "Something went wrong!", "error");
+swal('Oops...', 'Something went wrong!', 'error');
 ```
 
 A warning message, with a function attached to the "Confirm"-button..
 
 ```javascript
 swal({
-  title: "Are you sure?",
-  text: "You will not be able to recover this imaginary file!",
-  type: "warning",
+  title: 'Are you sure?',
+  text: 'You will not be able to recover this imaginary file!',
+  type: 'warning',
   showCancelButton: true,
-  confirmButtonColor: "#dd6b55",
-  cancelButtonColor: "#d44",
-  confirmButtonText: "Yes, delete it!",
-  cancelButtonText: "No, keet it",
+  confirmButtonColor: '#dd6b55',
+  cancelButtonColor: '#d44',
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, keet it',
   closeOnConfirm: false
 }, function() {
   swal(
-    "Deleted!",
-    "Your imaginary file has been deleted.",
-    "success"
+    'Deleted!',
+    'Your imaginary file has been deleted.',
+    'success'
   );
 });
 ```

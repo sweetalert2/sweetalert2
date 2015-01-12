@@ -189,6 +189,18 @@
 });</pre>
   </li>
 
+  <li class="custom-width-padding">
+    <div class="ui">
+      <p>A message with custom width and padding</p>
+      <button>Try me!</button>
+    </div>
+    <pre>swal({
+&nbsp;&nbsp;text: <span class="str">'Modal with a custom width and padding.'</span>,
+&nbsp;&nbsp;width: <span class="val">300</span>,
+&nbsp;&nbsp;padding: <span class="val">100</span>
+});</pre>
+  </li>
+
   <li class="input-field">
     <div class="ui">
       <p>Modal window with input field</p>
@@ -476,6 +488,15 @@ $('ul.examples li.custom-icon button').on('click', function() {
     text: 'Modal with a custom image.',
     imageUrl: 'images/thumbs-up.jpg',
     animation: false
+  });
+});
+
+$('ul.examples li.custom-width-padding button').on('click', function() {
+  swal({
+    title: 'Sweet!',
+    text: 'Modal with custom width and padding.',
+    width: 300,
+    padding: 100
   });
 });
 

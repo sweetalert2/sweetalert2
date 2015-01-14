@@ -41,6 +41,10 @@
     margin: 0;
     padding: 0;
     line-height: normal; }
+  .sweet-alert hr {
+    height: 10px;
+    color: transparent;
+    border: 0; }
   .sweet-alert button {
     color: #fff;
     border: 0;
@@ -49,12 +53,26 @@
     font-weight: 500;
     border-radius: 5px;
     padding: 10px 32px;
-    margin: 26px 5px 0;
+    margin: 0 5px;
     cursor: pointer; }
     .sweet-alert button:focus {
       outline: none; }
-    .sweet-alert button[disabled] {
+    .sweet-alert button.cancel[disabled] {
       opacity: 0.4; }
+    .sweet-alert button.confirm[disabled] {
+      border: 4px solid transparent;
+      border-color: transparent;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      margin: 0 30px;
+      vertical-align: middle;
+      background-color: transparent !important;
+      color: transparent;
+      cursor: default;
+      border-radius: 100%;
+      -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
+              animation: rotate-loading 1.5s linear 0s infinite normal; }
     .sweet-alert button::-moz-focus-inner {
       border: 0; }
   .sweet-alert[data-has-cancel-button=false] button {
@@ -532,3 +550,21 @@
 .pulse-warning-ins {
   -webkit-animation: pulse-warning-ins 0.75s infinite alternate;
           animation: pulse-warning-ins 0.75s infinite alternate; }
+
+@-webkit-keyframes rotate-loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes rotate-loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }

@@ -76,6 +76,28 @@ swal({
 
 [View more examples](https://limonte.github.io/sweetalert2/)
 
+
+Contributing
+------------
+
+If you would like to contribute enhancements or fixes, please do the following:
+
+1. Fork the plugin repository.
+2. Hack on a separate topic branch created from the latest master.
+3. Commit and push the topic branch.
+4. Make a pull request.
+5. Welcome to the club
+
+Please note that modifications should follow these coding guidelines:
+
+1. Indent is 2 spaces.
+2. Javascript code should pass [jscs](http://jscs.info) and [jshint](http://jshint.com) linters with configurations in project repository.
+3. SCSS code should pass [scss-lint](https://github.com/causes/scss-lint) with configuration in project repository.
+4. Vertical whitespace helps readability, don't be afraid to use it.
+
+Thank you for helping out!
+
+
 Related projects
 ----------------
 

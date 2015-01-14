@@ -134,7 +134,7 @@
 &nbsp;&nbsp;closeOnConfirm: <span class="val">false</span>
 },
 <span class="func"><i>function</i></span>() {
-&nbsp;&nbsp;<span class="func">swal</span>(
+&nbsp;&nbsp;swal(
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Deleted!'</span>,
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Your file has been deleted.'</span>,
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'success'</span>
@@ -161,13 +161,13 @@
 },
 <span class="func"><i>function</i></span>(isConfirm) {
 &nbsp;&nbsp;<span class="tag">if</span> (isConfirm) {
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">swal</span>(
+&nbsp;&nbsp;&nbsp;&nbsp;swal(
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Deleted!'</span>,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Your file has been deleted.'</span>,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'success'</span>
 &nbsp;&nbsp;&nbsp;&nbsp;);
 &nbsp;&nbsp;} <span class="tag">else</span> {
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">swal</span>(
+&nbsp;&nbsp;&nbsp;&nbsp;swal(
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Cancelled'</span>,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Your imaginary file is safe :)'</span>,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'error'</span>
@@ -213,7 +213,7 @@
 &nbsp;&nbsp;closeOnConfirm: <span class="val">false</span>
 },
 <span class="func"><i>function</i></span>() {
-&nbsp;&nbsp;<span class="func">swal</span>({
+&nbsp;&nbsp;swal({
 &nbsp;&nbsp;&nbsp;&nbsp;html:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'You entered: &lt;strong&gt;'</span> +
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(<span class="str">'#input-field'</span>).val() +
@@ -234,9 +234,9 @@
 &nbsp;&nbsp;closeOnConfirm: <span class="val">false</span>
 },
 <span class="func"><i>function</i></span>() {
-&nbsp;&nbsp;$(<span class="str">'.confirm'</span>).prop(<span class="str">'disabled'</span>, <span class="val">true</span>);
+&nbsp;&nbsp;swal.disableButtons();
 &nbsp;&nbsp;<span class="func">setTimeout</span>(<span class="func">function</span>() {
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="func">swal</span>(<span class="str">'Ajax request finished!'</span>);
+&nbsp;&nbsp;&nbsp;&nbsp;swal(<span class="str">'Ajax request finished!'</span>);
 &nbsp;&nbsp;}, 2000);
 });</pre>
   </li>
@@ -524,7 +524,7 @@ $('ul.examples li.ajax-request button').on('click', function() {
     closeOnConfirm: false
   },
   function() {
-    $('.confirm').prop('disabled', true);
+    swal.disableButtons();
     setTimeout(function() {
       swal('Ajax request finished!');
     }, 2000);

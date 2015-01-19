@@ -1,0 +1,29 @@
+{
+  "name": "sweetalert2",
+  "version": "1.0.0",
+  "description": "SweetAlert2 A beautiful replacement for JavaScript's 'alert', t4t5/sweetalert + HTML support",
+  "main": "gulpfile.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/limonte/sweetalert2.git"
+  },
+  "author": "t4t5 & limonte",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/limonte/sweetalert2/issues"
+  },
+  "homepage": "https://github.com/limonte/sweetalert2",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.1.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^1.3.2",
+    "gulp-uglify": "^1.1.0"
+  }
+}

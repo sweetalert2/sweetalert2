@@ -8,18 +8,6 @@ An awesome replacement for JavaScript's alert.
 ![A success modal](https://raw.github.com/limonte/sweetalert2/master/sweetalert.gif)
 
 
-Why fork?
----------
-
-This fork provides the same functionality as the original by [t4t5](https://github.com/t4t5/sweetalert) but supports HTML code in modal, configuring modal width, padding and some other options.
-
-The old repository seems to be inactive. There's a bunch of Pull Requests without any replies, last merged pull request was on Nov 9, 2014.
-
-SweetAlert2 is backward compatible with [SweetAlert](https://github.com/t4t5/sweetalert).
-
-I will maintain this repo and I will accept pull requests.
-
-
 Usage
 -----
 
@@ -83,17 +71,30 @@ Contributing
 If you would like to contribute enhancements or fixes, please do the following:
 
 1. Fork the plugin repository.
-2. Hack on a separate topic branch created from the latest master.
-3. Commit and push the topic branch.
-4. Make a pull request.
-5. Welcome to the club
+
+1. Make sure you have [Node](http://nodejs.org/) and [NPM](https://www.npmjs.com/) installed.
+
+1. When in the SweetAlert directory, run the command ``npm install`` to install npm packages.
+
+1. Start gulp watcher ``gulp watch`` to automatically minify the SCSS and JS-files.
+
+1. Hack on a separate topic branch created from the latest master.
+
+1. Commit and push the topic branch.
+
+1. Make a pull request and wait for approval.
+
+1. Welcome to the club
 
 Please note that modifications should follow these coding guidelines:
 
 1. Indent is 2 spaces.
-2. Javascript code should pass [jscs](http://jscs.info) and [jshint](http://jshint.com) linters with configurations in project repository.
-3. SCSS code should pass [scss-lint](https://github.com/causes/scss-lint) with configuration in project repository.
-4. Vertical whitespace helps readability, don't be afraid to use it.
+
+1. Javascript code should pass [jscs](http://jscs.info) and [jshint](http://jshint.com) linters with configurations in project repository.
+
+1. SCSS code should pass [scss-lint](https://github.com/causes/scss-lint) with configuration in project repository.
+
+1. Vertical whitespace helps readability, don't be afraid to use it.
 
 Thank you for helping out!
 

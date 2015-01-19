@@ -17,3 +17,8 @@ gulp.task('sass', function() {
     .pipe(autoprefix())
     .pipe(gulp.dest('dist'));
 });
+
+gulp.task('watch', function() {
+  gulp.watch('lib/*.js', ['compress']);
+  gulp.watch('lib/*.scss', ['sass']);
+});

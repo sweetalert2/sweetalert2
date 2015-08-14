@@ -18,7 +18,9 @@
   left: 50%;
   top: 50%;
   margin-top: -200px;
-  overflow: hidden;
+  max-height: 90%;
+  overflow-x: hidden;
+  overflow-y: auto;
   display: none;
   z-index: 2000; }
   .sweet-alert h2 {
@@ -58,7 +60,7 @@
     .sweet-alert button:focus {
       outline: none; }
     .sweet-alert button.cancel[disabled] {
-      opacity: 0.4; }
+      opacity: .4; }
     .sweet-alert button.confirm[disabled] {
       border: 4px solid transparent;
       border-color: transparent;
@@ -233,16 +235,16 @@
 
 @-webkit-keyframes showSweetAlert {
   0% {
-    -webkit-transform: scale(0.7);
-            transform: scale(0.7); }
+    -webkit-transform: scale(.7);
+            transform: scale(.7); }
 
   45% {
     -webkit-transform: scale(1.05);
             transform: scale(1.05); }
 
   80% {
-    -webkit-transform: scale(0.95);
-            transform: scale(0.95); }
+    -webkit-transform: scale(.95);
+            transform: scale(.95); }
 
   100% {
     -webkit-transform: scale(1);
@@ -250,16 +252,16 @@
 
 @keyframes showSweetAlert {
   0% {
-    -webkit-transform: scale(0.7);
-            transform: scale(0.7); }
+    -webkit-transform: scale(.7);
+            transform: scale(.7); }
 
   45% {
     -webkit-transform: scale(1.05);
             transform: scale(1.05); }
 
   80% {
-    -webkit-transform: scale(0.95);
-            transform: scale(0.95); }
+    -webkit-transform: scale(.95);
+            transform: scale(.95); }
 
   100% {
     -webkit-transform: scale(1);
@@ -271,8 +273,8 @@
             transform: scale(1); }
 
   100% {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5); } }
+    -webkit-transform: scale(.5);
+            transform: scale(.5); } }
 
 @keyframes hideSweetAlert {
   0% {
@@ -280,8 +282,8 @@
             transform: scale(1); }
 
   100% {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5); } }
+    -webkit-transform: scale(.5);
+            transform: scale(.5); } }
 
 .show-sweet-alert {
   -webkit-animation: showSweetAlert 0.3s;
@@ -465,14 +467,14 @@
 
 @-webkit-keyframes animate-x-mark {
   0% {
-    -webkit-transform: scale(0.4);
-            transform: scale(0.4);
+    -webkit-transform: scale(.4);
+            transform: scale(.4);
     margin-top: 26px;
     opacity: 0; }
 
   50% {
-    -webkit-transform: scale(0.4);
-            transform: scale(0.4);
+    -webkit-transform: scale(.4);
+            transform: scale(.4);
     margin-top: 26px;
     opacity: 0; }
 
@@ -489,14 +491,14 @@
 
 @keyframes animate-x-mark {
   0% {
-    -webkit-transform: scale(0.4);
-            transform: scale(0.4);
+    -webkit-transform: scale(.4);
+            transform: scale(.4);
     margin-top: 26px;
     opacity: 0; }
 
   50% {
-    -webkit-transform: scale(0.4);
-            transform: scale(0.4);
+    -webkit-transform: scale(.4);
+            transform: scale(.4);
     margin-top: 26px;
     opacity: 0; }
 

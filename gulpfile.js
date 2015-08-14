@@ -5,20 +5,20 @@ var rename = require('gulp-rename');
 var autoprefix = require('gulp-autoprefixer');
 
 gulp.task('compress', function() {
-  return gulp.src('lib/sweetalert2.js')
+  return gulp.src('src/sweetalert2.js')
     .pipe(uglify())
     .pipe(rename({extname: '.min.js'}))
     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('sass', function() {
-  return gulp.src('lib/sweetalert2.scss')
+  return gulp.src('src/sweetalert2.scss')
     .pipe(sass())
     .pipe(autoprefix())
     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('watch', function() {
-  gulp.watch('lib/*.js', ['compress']);
+  gulp.watch('src/*.js', ['compress']);
   gulp.watch('**/*.scss', ['sass']);
 });

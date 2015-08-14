@@ -26,7 +26,9 @@
   top: 50%;
   margin-top: -200px;
 
-  overflow: hidden;
+  max-height: 90%;
+  overflow-x: hidden;
+  overflow-y: auto;
   display: none;
   z-index: 2000;
 

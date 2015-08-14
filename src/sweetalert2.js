@@ -633,6 +633,7 @@
     // Confirm button
     if (params.showConfirmButton) {
       $confirmBtn.style.display = 'inline-block';
+      $confirmBtn.addClass('submit');
     } else {
       hide($confirmBtn);
     }

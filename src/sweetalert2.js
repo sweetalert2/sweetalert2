@@ -633,6 +633,7 @@
     // Confirm button
     if (params.showConfirmButton) {
       $confirmBtn.style.display = 'inline-block';
+      $confirmBtn.addClass('submit');
     } else {
       hide($confirmBtn);
     }
@@ -702,7 +703,10 @@
   /*
    * Animations
    */
+  window.swal.active = 0;
+
   function openModal() {
+    window.swal.active++;
     var modal = getModal();
     fadeIn(getOverlay(), 10);
     show(modal);
@@ -713,10 +717,12 @@
 
     setTimeout(function() {
       addClass(modal, 'visible');
+      window.swal.active--;
     }, 500);
   }
 
   function closeModal() {
+    window.swal.active++;
     var modal = getModal();
     fadeOut(getOverlay(), 5);
     fadeOut(modal, 5);
@@ -753,6 +759,7 @@
     var head = document.getElementsByTagName('head')[0];
     var mediaquery = document.getElementById(mediaqueryId);
     head.removeChild(mediaquery);
+    window.swal.active--;
   }
 
   /*

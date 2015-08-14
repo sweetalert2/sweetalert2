@@ -22,8 +22,10 @@
     closeOnCancel: true,
     confirmButtonText: 'OK',
     confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#aaa',
+    confirmButtonClass: null,
     cancelButtonText: 'Cancel',
+    cancelButtonColor: '#aaa',
+    cancelButtonClass: null,
     imageUrl: null,
     imageSize: null,
     timer: null,
@@ -48,7 +50,7 @@
   };
 
   var addClass = function(elem, className) {
-    if (!hasClass(elem, className)) {
+    if (className && !hasClass(elem, className)) {
       elem.className += ' ' + className;
     }
   };
@@ -265,8 +267,10 @@
 
         params.confirmButtonText  = arguments[0].confirmButtonText || defaultParams.confirmButtonText;
         params.confirmButtonColor = arguments[0].confirmButtonColor || defaultParams.confirmButtonColor;
-        params.cancelButtonColor  = arguments[0].cancelButtonColor || defaultParams.cancelButtonColor;
+        params.confirmButtonClass = arguments[0].confirmButtonClass || params.confirmButtonClass;
         params.cancelButtonText   = arguments[0].cancelButtonText || defaultParams.cancelButtonText;
+        params.cancelButtonColor  = arguments[0].cancelButtonColor || defaultParams.cancelButtonColor;
+        params.cancelButtonClass  = arguments[0].cancelButtonClass || params.cancelButtonClass;
         params.imageUrl           = arguments[0].imageUrl || defaultParams.imageUrl;
         params.imageSize          = arguments[0].imageSize || defaultParams.imageSize;
         params.callback           = arguments[1] || null;
@@ -420,12 +424,19 @@
         if (btnIndex === -1) {
           // No button focused. Jump to the confirm button.
           $targetElement = $confirmButton;
-        } else {
+        } else if (!e.shiftKey) {
           // Cycle to the next button
           if (btnIndex === $modalElements.length - 1) {
             $targetElement = $modalElements[0];
           } else {
             $targetElement = $modalElements[btnIndex + 1];
+          }
+        } else {
+          // Cycle to the prev button
+          if (btnIndex === 0) {
+            $targetElement = $modalElements[$modalElements.length - 1];
+          } else {
+            $targetElement = $modalElements[btnIndex - 1];
           }
         }
 
@@ -539,6 +550,7 @@
     var $text = modal.querySelector('p');
     var $cancelBtn = modal.querySelector('button.cancel');
     var $confirmBtn = modal.querySelector('button.confirm');
+    var $btnSpacer = modal.querySelector('hr');
 
     // Title
     $title.innerHTML = escapeHtml(params.title).split('\n').join('<br>');
@@ -612,7 +624,6 @@
     }
 
     // Cancel button
-    modal.setAttribute('data-has-cancel-button', params.showCancelButton);
     if (params.showCancelButton) {
       $cancelBtn.style.display = 'inline-block';
     } else {
@@ -627,6 +638,11 @@
       hide($confirmBtn);
     }
 
+    // Buttons spacer
+    if (!params.showConfirmButton && !params.showCancelButton) {
+      hide($btnSpacer);
+    }
+
     // Edit text on cancel and confirm buttons
     $confirmBtn.innerHTML = escapeHtml(params.confirmButtonText);
     $cancelBtn.innerHTML = escapeHtml(params.cancelButtonText);
@@ -634,6 +650,10 @@
     // Set buttons to selected background colors
     $confirmBtn.style.backgroundColor = params.confirmButtonColor;
     $cancelBtn.style.backgroundColor = params.cancelButtonColor;
+
+    // Add buttons custom classes
+    addClass($confirmBtn, params.confirmButtonClass);
+    addClass($cancelBtn, params.cancelButtonClass);
 
     // CSS animation
     if (params.animation === true) {

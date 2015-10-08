@@ -651,7 +651,9 @@
     $cancelBtn.style.backgroundColor = params.cancelButtonColor;
 
     // Add buttons custom classes
+    $confirmBtn.className = 'confirm';
     addClass($confirmBtn, params.confirmButtonClass);
+    $cancelBtn.className = 'cancel';
     addClass($cancelBtn, params.cancelButtonClass);
 
     // CSS animation

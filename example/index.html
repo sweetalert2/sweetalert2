@@ -123,6 +123,19 @@
       </pre>
     </li>
 
+    <li class="html-jquery">
+      <div class="ui">
+        <p>Custom jquery description</p>
+        <button>Try me!</button>
+      </div>
+      <pre>
+        swal({
+          &nbsp;&nbsp;title: <span class="str">'HTML example'</span>,
+          &nbsp;&nbsp;html:  $(<span class="str">"&lt;div&gt;"</span>).text(<span class="str">"testar"</span>)
+        });
+      </pre>
+    </li>
+
     <li class="warning confirm">
       <div class="ui">
         <p>A warning message, with a function attached to the "Confirm"-button...</p>
@@ -469,6 +482,13 @@
         'You can use <b>bold text</b>, ' +
         '<a href="//github.com">links</a> ' +
         'and other HTML tags'
+    });
+  });
+
+  $('ul.examples li.html-jquery button').on('click', function() {
+    swal({
+      title: 'HTML example',
+      html: $("<div>").text("testar")
     });
   });
 

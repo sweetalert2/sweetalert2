@@ -76,7 +76,7 @@
     elem.style.display = 'block';
   };
 
-  var show = function(elems) { 
+  var show = function(elems) {
     if (elems && !elems.length) {
       return _show(elems);
     }

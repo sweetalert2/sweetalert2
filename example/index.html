@@ -125,13 +125,15 @@
 
     <li class="html-jquery">
       <div class="ui">
-        <p>Custom jquery description</p>
+        <p>jQuery HTML description</p>
         <button>Try me!</button>
       </div>
       <pre>
         swal({
-          &nbsp;&nbsp;title: <span class="str">'HTML example'</span>,
-          &nbsp;&nbsp;html:  $(<span class="str">"&lt;div&gt;"</span>).text(<span class="str">"testar"</span>)
+          &nbsp;&nbsp;title: <span class="str">'jQuery HTML example'</span>,
+          &nbsp;&nbsp;html: $(<span class="str">"&lt;div&gt;"</span>)
+          &nbsp;&nbsp;&nbsp;&nbsp;.addClass(<span class="str">'some-class'</span>)
+          &nbsp;&nbsp;&nbsp;&nbsp;.text(<span class="str">'jQuery is everywhere.'</span>)
         });
       </pre>
     </li>
@@ -487,8 +489,8 @@
 
   $('ul.examples li.html-jquery button').on('click', function() {
     swal({
-      title: 'HTML example',
-      html: $("<div>").text("testar")
+      title: 'jQuery HTML example',
+      html: $('<div>').addClass('some-class').text('jQuery is everywhere.')
     });
   });
 

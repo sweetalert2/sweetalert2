@@ -11,9 +11,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/limonte/sweetalert2.git"
+    "url": "https://github.com/dubbe/sweetalert2"
   },
-  "author": "t4t5 & limonte",
+  "author": "t4t5 & limonte & dubbe",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/limonte/sweetalert2/issues"

@@ -76,7 +76,7 @@
     elem.style.display = 'block';
   };
 
-  var show = function(elems) {
+  var show = function(elems) { 
     if (elems && !elems.length) {
       return _show(elems);
     }
@@ -557,9 +557,13 @@
     $title.innerHTML = escapeHtml(params.title).split('\n').join('<br>');
 
     // Text
-    $text.innerHTML = escapeHtml(params.text.split('\n').join('<br>')) || params.html;
-    if ($text.innerHTML) {
-      show($text);
+    if (window.jQuery) {
+      $text = $($text).html(escapeHtml(params.text.split('\n').join('<br>')) || params.html);
+    } else {
+      $text.innerHTML = escapeHtml(params.text.split('\n').join('<br>')) || params.html;
+      if ($text.innerHTML) {
+        show($text);
+      }
     }
 
     //Custom Class

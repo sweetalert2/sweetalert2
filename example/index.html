@@ -10,11 +10,11 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Courgette">
   <link rel="stylesheet" href="./example.css">
-  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
   <!-- This is what you need -->
-  <script src="./dist/sweetalert2.min.js"></script>
-  <link rel="stylesheet" href="./dist/sweetalert2.css">
+  <script src="../dist/sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="../dist/sweetalert2.css">
   <!--.......................-->
 </head>
 
@@ -119,6 +119,19 @@
           &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'You can use &lt;b&gt;bold text&lt;/b&gt;, '</span> +
           &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'&lt;a href="//github.com"&gt;links&lt;/a&gt; '</span> +
           &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'and other HTML tags'</span>
+        });
+      </pre>
+    </li>
+
+    <li class="html-jquery">
+      <div class="ui">
+        <p>Custom jquery description</p>
+        <button>Try me!</button>
+      </div>
+      <pre>
+        swal({
+          &nbsp;&nbsp;title: <span class="str">'HTML example'</span>,
+          &nbsp;&nbsp;html:  $(<span class="str">"&lt;div&gt;"</span>).text(<span class="str">"testar"</span>)
         });
       </pre>
     </li>
@@ -469,6 +482,13 @@
         'You can use <b>bold text</b>, ' +
         '<a href="//github.com">links</a> ' +
         'and other HTML tags'
+    });
+  });
+
+  $('ul.examples li.html-jquery button').on('click', function() {
+    swal({
+      title: 'HTML example',
+      html: $("<div>").text("testar")
     });
   });
 

@@ -766,7 +766,7 @@
     // Remove dynamically created media query
     var head = document.getElementsByTagName('head')[0];
     var mediaquery = document.getElementById(mediaqueryId);
-    head.removeChild(mediaquery);
+    if (mediaquery) head.removeChild(mediaquery);
   }
 
   /*

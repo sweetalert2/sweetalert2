@@ -208,7 +208,11 @@
   window.sweetAlert = window.swal = function() {
     // Copy arguments to the local args variable
     var args = arguments;
-    if (getModal() !== null) {
+    var modal = getModal();
+    if (modal !== null) {
+        if (hasClass(modal, 'visible')) {
+          resetPrevState();
+        }
         // If getModal returns values then continue
         modalDependant.apply(this, args);
     } else {
@@ -754,14 +758,7 @@
     removeClass($warningIcon.querySelector('.body'), 'pulse-warning-ins');
     removeClass($warningIcon.querySelector('.dot'), 'pulse-warning-ins');
 
-    // Reset the page to its previous state
-    window.onkeydown = previousWindowKeyDown;
-    document.onclick = previousDocumentClick;
-    if (previousActiveElement) {
-      previousActiveElement.focus();
-    }
-    lastFocusedButton = undefined;
-    clearTimeout(modal.timeout);
+    resetPrevState();
 
     // Remove dynamically created media query
     var head = document.getElementsByTagName('head')[0];
@@ -769,6 +766,18 @@
     if (mediaquery) {
       head.removeChild(mediaquery);
     }
+  }
+
+  // Reset the page to its previous state
+  function resetPrevState() {
+    var modal = getModal();
+    window.onkeydown = previousWindowKeyDown;
+    document.onclick = previousDocumentClick;
+    if (previousActiveElement) {
+      previousActiveElement.focus();
+    }
+    lastFocusedButton = undefined;
+    clearTimeout(modal.timeout);
   }
 
   /*

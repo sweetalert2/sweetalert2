@@ -357,10 +357,7 @@
           } else if (params.callback && modalIsVisible) { // Clicked 'cancel'
 
             // Check if callback function expects a parameter (to track cancel actions)
-            var functionAsStr          = String(params.callback).replace(/\s/g, '');
-            var functionHandlesCancel  = functionAsStr.substring(0, 9) === 'function(' && functionAsStr.substring(9, 10) !== ')';
-
-            if (functionHandlesCancel) {
+            if (params.callback.length > 0) {
               params.callback(false);
             }
 

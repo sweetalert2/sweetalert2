@@ -3,7 +3,13 @@ SweetAlert2
 
 An awesome replacement for JavaScript's alert.
 
-[See it in action!](https://limonte.github.io/sweetalert2/)
+What's the difference between SweetAlert and SweetAlert2?
+---------------------------------------------------------
+
+Reason of creating this fork is inactivity of original SweetAlert plugin:
+[http://stackoverflow.com/a/27842854/1331425](http://stackoverflow.com/a/27842854/1331425)
+
+[See SweetAlert2 in action!](https://limonte.github.io/sweetalert2/)
 
 ![A success modal](https://raw.github.com/limonte/sweetalert2/master/sweetalert.gif)
 

@@ -654,7 +654,11 @@
     if (!params.showConfirmButton && !params.showCancelButton) {
       hide($btnSpacer);
     } else {
-      show($btnSpacer);
+      if (params.showConfirmButton || params.showCancelButton) {
+        show($btnSpacer);
+      } else {
+        hide($btnSpacer);
+      }
     }
 
     // Edit text on cancel and confirm buttons

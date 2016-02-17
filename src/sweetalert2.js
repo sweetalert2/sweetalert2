@@ -395,10 +395,36 @@
     // Keyboard interactions
     var $confirmButton = modal.querySelector('button.confirm');
     var $cancelButton = modal.querySelector('button.cancel');
-    var $modalElements = modal.querySelectorAll('button, input:not([type=hidden]), textarea');
+    var $modalElements = modal.querySelectorAll('button, input:not([type=hidden]), textarea, select');
     for (i = 0; i < $modalElements.length; i++) {
       $modalElements[i].addEventListener('focus', onButtonEvent, true);
       $modalElements[i].addEventListener('blur', onButtonEvent, true);
+    }
+
+    // Focus the first element (input or button)
+    setFocus(-1, 1);
+
+
+    function setFocus(index, increment) {
+      // search for visible elements and select the next possible match
+      for (var i = 0; i < $modalElements.length; i++) {
+        index = index + increment;
+
+        if (index === $modalElements.length) {
+          // rollover to first item
+          index = 0;
+        } else if (index === -1) {
+          // go to last item
+          index = $modalElements.length - 1;
+        }
+
+        // determine if element is visible, the following is borrowed from jqeury $(elem).is(':visible') implementation
+        if (!!( $modalElements[index].offsetWidth || $modalElements[index].offsetHeight || $modalElements[index].getClientRects().length )) {
+          $modalElements[index].focus();
+          return;
+        }
+
+      }
     }
 
     function handleKeyDown(event) {
@@ -429,27 +455,15 @@
           return;
         }
 
-        if (btnIndex === -1) {
-          // No button focused. Jump to the confirm button.
-          $targetElement = $confirmButton;
-        } else if (!e.shiftKey) {
+        if (!e.shiftKey) {
           // Cycle to the next button
-          if (btnIndex === $modalElements.length - 1) {
-            $targetElement = $modalElements[0];
-          } else {
-            $targetElement = $modalElements[btnIndex + 1];
-          }
+          setFocus(btnIndex, 1);
         } else {
           // Cycle to the prev button
-          if (btnIndex === 0) {
-            $targetElement = $modalElements[$modalElements.length - 1];
-          } else {
-            $targetElement = $modalElements[btnIndex - 1];
-          }
+          setFocus(btnIndex, -1);
         }
 
         stopEventPropagation(e);
-        setFocus($targetElement);
 
       } else {
         if (keyCode === 13 || keyCode === 32) {
@@ -504,7 +518,7 @@
    * Add modal + overlay to DOM
    */
   window.swal.init = function() {
-    var sweetHTML = '<div class="sweet-overlay" tabIndex="-1"></div><div class="sweet-alert" style="display: none" tabIndex="-1"><div class="icon error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="icon warning"> <span class="body"></span> <span class="dot"></span> </div> <div class="icon info"></div> <div class="icon success"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <div class="icon custom"></div> <h2>Title</h2><p>Text</p><hr><button class="confirm">OK</button><button class="cancel">Cancel</button></div>';
+    var sweetHTML = '<div class="sweet-overlay" tabIndex="-1"></div><div class="sweet-alert" style="display: none" tabIndex="-1"><div class="icon error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="icon warning"> <span class="body"></span> <span class="dot"></span> </div> <div class="icon info"></div> <div class="icon success"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <div class="icon custom"></div> <h2>Title</h2><div class="sweet-content">Text</div><hr><button class="confirm">OK</button><button class="cancel">Cancel</button></div>';
     var sweetWrap = document.createElement('div');
     sweetWrap.className = 'sweet-container';
 
@@ -556,7 +570,7 @@
     head.appendChild(cssNode);
 
     var $title = modal.querySelector('h2');
-    var $text = modal.querySelector('p');
+    var $content = modal.querySelector('div.sweet-content');
     var $cancelBtn = modal.querySelector('button.cancel');
     var $confirmBtn = modal.querySelector('button.confirm');
     var $btnSpacer = modal.querySelector('hr');
@@ -564,13 +578,13 @@
     // Title
     $title.innerHTML = escapeHtml(params.title).split('\n').join('<br>');
 
-    // Text
+    // Content
     if (window.jQuery) {
-      $text = $($text).html(escapeHtml(params.text.split('\n').join('<br>')) || params.html);
+      $content = $($content).html(params.html || ('<p>' + escapeHtml(params.text.split('\n').join('<br>'))) + '</p>');
     } else {
-      $text.innerHTML = escapeHtml(params.text.split('\n').join('<br>')) || params.html;
-      if ($text.innerHTML) {
-        show($text);
+      $content.innerHTML = params.html || ('<p>' + escapeHtml(params.text.split('\n').join('<br>')) + '</p>');
+      if ($content.innerHTML) {
+        show($content);
       }
     }
 
@@ -709,11 +723,6 @@
     }
 
     return a;
-  }
-
-  // set focus (if button, make bgcolor darker)
-  function setFocus($targetElement) {
-    $targetElement.focus();
   }
 
   /*

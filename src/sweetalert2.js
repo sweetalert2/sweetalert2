@@ -317,8 +317,8 @@
     var onButtonEvent = function(event) {
       var e = event || window.event;
       var target = e.target || e.srcElement;
-      var targetedConfirm = hasClass(target, 'confirm');
-      var targetedCancel  = hasClass(target, 'cancel');
+      var targetedConfirm = hasClass(target, 'sweet-confirm');
+      var targetedCancel  = hasClass(target, 'sweet-cancel');
       var modalIsVisible  = hasClass(modal, 'visible');
 
       switch (e.type) {
@@ -393,8 +393,8 @@
     };
 
     // Keyboard interactions
-    var $confirmButton = modal.querySelector('button.confirm');
-    var $cancelButton = modal.querySelector('button.cancel');
+    var $confirmButton = modal.querySelector('button.sweet-confirm');
+    var $cancelButton = modal.querySelector('button.sweet-cancel');
     var $modalElements = modal.querySelectorAll('button, input:not([type=hidden]), textarea, select');
     for (i = 0; i < $modalElements.length; i++) {
       $modalElements[i].addEventListener('focus', onButtonEvent, true);
@@ -404,26 +404,29 @@
     // Focus the first element (input or button)
     setFocus(-1, 1);
 
-
     function setFocus(index, increment) {
       // search for visible elements and select the next possible match
       for (var i = 0; i < $modalElements.length; i++) {
         index = index + increment;
 
+        // rollover to first item
         if (index === $modalElements.length) {
-          // rollover to first item
           index = 0;
+
+        // go to last item
         } else if (index === -1) {
-          // go to last item
           index = $modalElements.length - 1;
         }
 
         // determine if element is visible, the following is borrowed from jqeury $(elem).is(':visible') implementation
-        if (!!( $modalElements[index].offsetWidth || $modalElements[index].offsetHeight || $modalElements[index].getClientRects().length )) {
+        if (
+          $modalElements[index].offsetWidth ||
+          $modalElements[index].offsetHeight ||
+          $modalElements[index].getClientRects().length
+        ) {
           $modalElements[index].focus();
           return;
         }
-
       }
     }
 
@@ -518,7 +521,7 @@
    * Add modal + overlay to DOM
    */
   window.swal.init = function() {
-    var sweetHTML = '<div class="sweet-overlay" tabIndex="-1"></div><div class="sweet-alert" style="display: none" tabIndex="-1"><div class="icon error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="icon warning"> <span class="body"></span> <span class="dot"></span> </div> <div class="icon info"></div> <div class="icon success"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <div class="icon custom"></div> <h2>Title</h2><div class="sweet-content">Text</div><hr><button class="confirm">OK</button><button class="cancel">Cancel</button></div>';
+    var sweetHTML = '<div class="sweet-overlay" tabIndex="-1"></div><div class="sweet-alert" style="display: none" tabIndex="-1"><div class="icon error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="icon warning"> <span class="body"></span> <span class="dot"></span> </div> <div class="icon info"></div> <div class="icon success"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <div class="icon custom"></div> <h2>Title</h2><div class="sweet-content">Text</div><hr class="sweet-spacer"><button class="sweet-confirm">OK</button><button class="sweet-cancel">Cancel</button></div>';
     var sweetWrap = document.createElement('div');
     sweetWrap.className = 'sweet-container';
 
@@ -571,9 +574,9 @@
 
     var $title = modal.querySelector('h2');
     var $content = modal.querySelector('div.sweet-content');
-    var $cancelBtn = modal.querySelector('button.cancel');
-    var $confirmBtn = modal.querySelector('button.confirm');
-    var $btnSpacer = modal.querySelector('hr');
+    var $cancelBtn = modal.querySelector('button.sweet-cancel');
+    var $confirmBtn = modal.querySelector('button.sweet-confirm');
+    var $btnSpacer = modal.querySelector('hr.sweet-spacer');
 
     // Title
     $title.innerHTML = escapeHtml(params.title).split('\n').join('<br>');
@@ -680,9 +683,9 @@
     $cancelBtn.style.backgroundColor = params.cancelButtonColor;
 
     // Add buttons custom classes
-    $confirmBtn.className = 'confirm';
+    $confirmBtn.className = 'sweet-confirm';
     addClass($confirmBtn, params.confirmButtonClass);
-    $cancelBtn.className = 'cancel';
+    $cancelBtn.className = 'sweet-cancel';
     addClass($cancelBtn, params.cancelButtonClass);
 
     // CSS animation

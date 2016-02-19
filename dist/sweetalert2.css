@@ -59,9 +59,9 @@
     cursor: pointer; }
     .sweet-alert button:focus {
       outline: none; }
-    .sweet-alert button.cancel[disabled] {
+    .sweet-alert button.sweet-cancel[disabled] {
       opacity: .4; }
-    .sweet-alert button.confirm[disabled] {
+    .sweet-alert button.sweet-confirm[disabled] {
       border: 4px solid transparent;
       border-color: transparent;
       width: 40px;

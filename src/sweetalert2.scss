@@ -77,11 +77,11 @@
       outline: none;
     }
 
-    &.cancel[disabled] {
+    &.sweet-cancel[disabled] {
       opacity: .4;
     }
 
-    &.confirm[disabled] {
+    &.sweet-confirm[disabled] {
       border: 4px solid transparent;
       border-color: transparent;
       width: 40px;

@@ -389,6 +389,9 @@
 
       if (target === getOverlay() && params.allowOutsideClick) {
         closeModal();
+        if (typeof params.callback === 'function') {
+          params.callback();
+        }
       }
     };
 

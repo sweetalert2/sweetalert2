@@ -146,23 +146,6 @@
     elem.style.display = 'block'; //fallback IE8
   };
 
-  var fadeOut = function(elem, interval) {
-    interval = interval || 16;
-    elem.style.opacity = 1;
-    var last = +new Date();
-    var tick = function() {
-      elem.style.opacity = +elem.style.opacity - (new Date() - last) / 100;
-      last = +new Date();
-
-      if (+elem.style.opacity > 0) {
-        setTimeout(tick, interval);
-      } else {
-        elem.style.display = 'none';
-      }
-    };
-    tick();
-  };
-
   var fireClick = function(node) {
     // Taken from http://www.nonobtrusive.com/2011/11/29/programatically-fire-crossbrowser-click-event-with-javascript/
     // Then fixed for today's Chrome browser.
@@ -750,8 +733,8 @@
 
   function closeModal() {
     var modal = getModal();
-    fadeOut(getOverlay(), 5);
-    fadeOut(modal, 5);
+    _hide(getOverlay());
+    _hide(modal);
     removeClass(modal, 'showSweetAlert');
     addClass(modal, 'hideSweetAlert');
     removeClass(modal, 'visible');

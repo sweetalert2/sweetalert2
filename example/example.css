@@ -29,6 +29,7 @@ header h2 {
 .sweet-alert h2 {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600; }
+
 .sweet-alert input {
   margin: 10px;
   padding: 5px;
@@ -89,7 +90,8 @@ p {
     p a.github {
       color: #323131; }
 
-button, .button {
+button,
+.button {
   background-color: #3085d6;
   color: #fff;
   border: 0;
@@ -100,19 +102,26 @@ button, .button {
   padding: 15px 35px;
   margin: 26px 5px 0;
   cursor: pointer; }
-  button:focus, .button:focus {
+  button:focus,
+  .button:focus {
     outline: none; }
-  button:hover, .button:hover {
+  button:hover,
+  .button:hover {
     background-color: #297dce; }
-  button:active, .button:active {
+  button:active,
+  .button:active {
     background-color: #236bb0; }
-  button.cancel, .button.cancel {
+  button.cancel,
+  .button.cancel {
     background-color: #d0d0d0; }
-    button.cancel:hover, .button.cancel:hover {
+    button.cancel:hover,
+    .button.cancel:hover {
       background-color: #c8c8c8; }
-    button.cancel:active, .button.cancel:active {
-      background-color: #b6b6b6; }
-  button.download, .button.download {
+    button.cancel:active,
+    .button.cancel:active {
+      background-color: #b7b7b7; }
+  button.download,
+  .button.download {
     position: fixed;
     right: 30px;
     top: 0;
@@ -122,7 +131,8 @@ button, .button {
     text-transform: uppercase;
     z-index: 3; }
     @media all and (max-width: 1278px) {
-      button.download, .button.download {
+      button.download,
+      .button.download {
         display: none; } }
 
 .center-container {
@@ -134,7 +144,6 @@ pre {
   color: #f8f8f2;
   padding: 10px;
   border-radius: 5px;
-  white-space: pre-line;
   text-align: left;
   font-size: 14px; }
   pre .str {
@@ -213,11 +222,13 @@ pre {
       width: auto; } }
   .examples li {
     padding-left: 0; }
-  .examples .ui, .examples pre {
+  .examples .ui,
+  .examples pre {
     display: inline-block;
     vertical-align: top; }
     @media all and (max-width: 758px) {
-      .examples .ui, .examples pre {
+      .examples .ui,
+      .examples pre {
         display: block;
         max-width: none;
         margin: 0 auto; } }
@@ -267,7 +278,8 @@ table {
     font-weight: 400;
     text-align: center;
     position: relative; }
-    table th .border-left, table th .border-right {
+    table th .border-left,
+    table th .border-right {
       position: absolute;
       background-color: #fff;
       border-radius: 50%;
@@ -280,8 +292,7 @@ table {
       right: -17px; }
     @media all and (max-width: 750px) {
       table th:nth-child(2) {
-        display: none; }
- }
+        display: none; } }
   table td {
     padding: 10px 20px;
     vertical-align: top; }
@@ -291,8 +302,7 @@ table {
       padding-right: 0; }
     @media all and (max-width: 750px) {
       table td:nth-child(2) {
-        display: none; }
- }
+        display: none; } }
     @media all and (max-width: 360px) {
       table td {
         padding: 10px 4px; }

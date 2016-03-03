@@ -33,9 +33,7 @@
     <button>Show error message</button>
 
     <h5>Code:</h5>
-    <pre><span class="func">alert</span>(<span class="str">'Oops... Something went wrong!'</span>);
-
-    </pre>
+    <pre><span class="func">alert</span>(<span class="str">'Oops... Something went wrong!'</span>)</pre>
 
     <div class="vs-icon"></div>
   </div>
@@ -45,7 +43,12 @@
     <button>Show error message</button>
 
     <h5>Code:</h5>
-    <pre>sweetAlert(<span class="str">'Oops...'</span>, <span class="str">'Something went wrong!'</span>, <span class="str">'error'</span>);</pre>
+    <pre>
+sweetAlert(
+  <span class="str">'Oops...'</span>,
+  <span class="str">'Something went wrong!'</span>,
+  <span class="str">'error'</span>
+)</pre>
   </div>
 
   <p>Pretty cool huh? SweetAlert2 automatically centers itself on the page and looks great no matter if you're using a desktop computer, mobile or tablet. It's even highly customizeable, as you can see below!</p>
@@ -72,11 +75,10 @@
         <button>Try me!</button>
       </div>
       <pre>
-        swal(
-          <span class="str">'The Internet?'</span>,
-          &nbsp;&nbsp;<span class="str">'That thing is still around?'</span>
-        )
-      </pre>
+swal(
+  <span class="str">'The Internet?'</span>,
+  <span class="str">'That thing is still around?'</span>
+)</pre>
     </li>
 
     <li class="success">
@@ -85,12 +87,11 @@
         <button>Try me!</button>
       </div>
       <pre>
-        swal(
-          &nbsp;&nbsp;<span class="str">'Good job!'</span>,
-          &nbsp;&nbsp;<span class="str">'You clicked the button!'</span>,
-          &nbsp;&nbsp;<span class="str">'success'</span>
-        )
-      </pre>
+swal(
+  <span class="str">'Good job!'</span>,
+  <span class="str">'You clicked the button!'</span>,
+  <span class="str">'success'</span>
+)</pre>
     </li>
 
     <li class="timer">
@@ -99,12 +100,11 @@
         <button>Try me!</button>
       </div>
       <pre>
-        swal({
-          &nbsp;&nbsp;title: <span class="str">'Auto close alert!'</span>,
-          &nbsp;&nbsp;text: <span class="str">'I will close in 2 seconds.'</span>,
-          &nbsp;&nbsp;timer: <span class="str">2000</span>
-        });
-      </pre>
+swal({
+  title: <span class="str">'Auto close alert!'</span>,
+  text: <span class="str">'I will close in 2 seconds.'</span>,
+  timer: <span class="str">2000</span>
+})</pre>
     </li>
 
     <li class="html">
@@ -113,29 +113,27 @@
         <button>Try me!</button>
       </div>
       <pre>
-        swal({
-          &nbsp;&nbsp;title: <span class="str">'HTML example'</span>,
-          &nbsp;&nbsp;html:
-          &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'You can use &lt;b&gt;bold text&lt;/b&gt;, '</span> +
-          &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'&lt;a href="//github.com"&gt;links&lt;/a&gt; '</span> +
-          &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'and other HTML tags'</span>
-        });
-      </pre>
+swal({
+  title: <span class="str">'HTML example'</span>,
+  html:
+    <span class="str">'You can use &lt;b&gt;bold text&lt;/b&gt;, '</span> +
+    <span class="str">'&lt;a href="//github.com"&gt;links&lt;/a&gt; '</span> +
+    <span class="str">'and other HTML tags'</span>
+})</pre>
     </li>
 
     <li class="html-jquery">
       <div class="ui">
-        <p>jQuery HTML description</p>
+        <p>jQuery HTML</p>
         <button>Try me!</button>
       </div>
       <pre>
-        swal({
-          &nbsp;&nbsp;title: <span class="str">'jQuery HTML example'</span>,
-          &nbsp;&nbsp;html: $(<span class="str">"&lt;div&gt;"</span>)
-          &nbsp;&nbsp;&nbsp;&nbsp;.addClass(<span class="str">'some-class'</span>)
-          &nbsp;&nbsp;&nbsp;&nbsp;.text(<span class="str">'jQuery is everywhere.'</span>)
-        });
-      </pre>
+swal({
+  title: <span class="str">'jQuery HTML example'</span>,
+  html: $(<span class="str">'&lt;div&gt;'</span>)
+    .addClass(<span class="str">'some-class'</span>)
+    .text(<span class="str">'jQuery is everywhere.'</span>)
+})</pre>
     </li>
 
     <li class="warning confirm">
@@ -144,24 +142,23 @@
         <button>Try me!</button>
       </div>
       <pre>
-        swal({
-          &nbsp;&nbsp;title: <span class="str">'Are you sure?'</span>,
-          &nbsp;&nbsp;text: <span class="str">'You will not be able to recover this imaginary file!'</span>,
-          &nbsp;&nbsp;type: <span class="str">'warning'</span>,
-          &nbsp;&nbsp;showCancelButton: <span class="val">true</span>,
-          &nbsp;&nbsp;confirmButtonColor: <span class="str">'#3085d6'</span>,
-          &nbsp;&nbsp;cancelButtonColor: <span class="str">'#d33'</span>,
-          &nbsp;&nbsp;confirmButtonText: <span class="str">'Yes, delete it!'</span>,
-          &nbsp;&nbsp;closeOnConfirm: <span class="val">false</span>
-        },
-        <span class="func"><i>function</i></span>() {
-          &nbsp;&nbsp;swal(
-          &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Deleted!'</span>,
-          &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Your file has been deleted.'</span>,
-          &nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'success'</span>
-          &nbsp;&nbsp;);
-        });
-      </pre>
+swal({
+  title: <span class="str">'Are you sure?'</span>,
+  text: <span class="str">"You won't be able to revert this!"</span>,
+  type: <span class="str">'warning'</span>,
+  showCancelButton: <span class="val">true</span>,
+  confirmButtonColor: <span class="str">'#3085d6'</span>,
+  cancelButtonColor: <span class="str">'#d33'</span>,
+  confirmButtonText: <span class="str">'Yes, delete it!'</span>,
+  closeOnConfirm: <span class="val">false</span>
+},
+<span class="func"><i>function</i></span>() {
+  swal(
+    <span class="str">'Deleted!'</span>,
+    <span class="str">'Your file has been deleted.'</span>,
+    <span class="str">'success'</span>
+  );
+})</pre>
     </li>
 
     <li class="warning cancel">
@@ -170,36 +167,35 @@
         <button>Try me!</button>
       </div>
       <pre>
-        swal({
-          &nbsp;&nbsp;title: <span class="str">'Are you sure?'</span>,
-          &nbsp;&nbsp;text: <span class="str">'You will not be able to recover this imaginary file!'</span>,
-          &nbsp;&nbsp;type: <span class="str">'warning'</span>,
-          &nbsp;&nbsp;showCancelButton: <span class="val">true</span>,
-          &nbsp;&nbsp;confirmButtonColor: <span class="str">'#3085d6'</span>,
-          &nbsp;&nbsp;cancelButtonColor: <span class="str">'#d33'</span>,
-          &nbsp;&nbsp;confirmButtonText: <span class="str">'Yes, delete it!'</span>,
-          &nbsp;&nbsp;cancelButtonText: <span class="str">'No, cancel plx!'</span>,
-          &nbsp;&nbsp;confirmButtonClass: <span class="str">'confirm-class'</span>,
-          &nbsp;&nbsp;cancelButtonClass: <span class="str">'cancel-class'</span>,
-          &nbsp;&nbsp;closeOnConfirm: <span class="val">false</span>,
-          &nbsp;&nbsp;closeOnCancel: <span class="val">false</span>
-        },
-        <span class="func"><i>function</i></span>(isConfirm) {
-          &nbsp;&nbsp;<span class="tag">if</span> (isConfirm) {
-          &nbsp;&nbsp;&nbsp;&nbsp;swal(
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Deleted!'</span>,
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Your file has been deleted.'</span>,
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'success'</span>
-          &nbsp;&nbsp;&nbsp;&nbsp;);
-          &nbsp;&nbsp;} <span class="tag">else</span> {
-          &nbsp;&nbsp;&nbsp;&nbsp;swal(
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Cancelled'</span>,
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'Your imaginary file is safe :)'</span>,
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'error'</span>
-          &nbsp;&nbsp;&nbsp;&nbsp;);
-          &nbsp;&nbsp;}
-        });
-      </pre>
+swal({
+  title: <span class="str">'Are you sure?'</span>,
+  text: <span class="str">"You won't be able to revert this!"</span>,
+  type: <span class="str">'warning'</span>,
+  showCancelButton: <span class="val">true</span>,
+  confirmButtonColor: <span class="str">'#3085d6'</span>,
+  cancelButtonColor: <span class="str">'#d33'</span>,
+  confirmButtonText: <span class="str">'Yes, delete it!'</span>,
+  cancelButtonText: <span class="str">'No, cancel!'</span>,
+  confirmButtonClass: <span class="str">'confirm-class'</span>,
+  cancelButtonClass: <span class="str">'cancel-class'</span>,
+  closeOnConfirm: <span class="val">false</span>,
+  closeOnCancel: <span class="val">false</span>
+},
+<span class="func"><i>function</i></span>(isConfirm) {
+  <span class="tag">if</span> (isConfirm) {
+    swal(
+      <span class="str">'Deleted!'</span>,
+      <span class="str">'Your file has been deleted.'</span>,
+      <span class="str">'success'</span>
+    );
+  } <span class="tag">else</span> {
+    swal(
+      <span class="str">'Cancelled'</span>,
+      <span class="str">'Your imaginary file is safe :)'</span>,
+      <span class="str">'error'</span>
+    );
+  }
+})</pre>
     </li>
 
     <li class="custom-icon">
@@ -208,13 +204,12 @@
         <button>Try me!</button>
       </div>
       <pre>
-        swal({
-          &nbsp;&nbsp;title: <span class="str">'Sweet!'</span>,
-          &nbsp;&nbsp;text: <span class="str">'Modal with a custom image.'</span>,
-          &nbsp;&nbsp;imageUrl: <span class="str">'images/thumbs-up.jpg'</span>,
-          &nbsp;&nbsp;animation: <span class="val">false</span>
-        });
-      </pre>
+swal({
+  title: <span class="str">'Sweet!'</span>,
+  text: <span class="str">'Modal with a custom image.'</span>,
+  imageUrl: <span class="str">'images/thumbs-up.jpg'</span>,
+  animation: <span class="val">false</span>
+})</pre>
     </li>
 
     <li class="custom-width-padding">
@@ -223,13 +218,12 @@
         <button>Try me!</button>
       </div>
       <pre>
-        swal({
-          &nbsp;&nbsp;text: <span class="str">'Modal with a custom width, padding and background.'</span>,
-          &nbsp;&nbsp;width: <span class="val">300</span>,
-          &nbsp;&nbsp;padding: <span class="val">100</span>,
-          &nbsp;&nbsp;background: <span class="str">'url(http://goo.gl/jVlMUC)'</span>,
-        });
-      </pre>
+swal({
+  text: <span class="str">'Custom width, padding, background.'</span>,
+  width: <span class="val">300</span>,
+  padding: <span class="val">100</span>,
+  background: <span class="str">'url(http://goo.gl/jVlMUC)'</span>,
+})</pre>
     </li>
 
     <li class="input-field">
@@ -238,21 +232,20 @@
         <button>Try me!</button>
       </div>
       <pre>
-        swal({
-          &nbsp;&nbsp;title: <span class="str">'Input something'</span>,
-          &nbsp;&nbsp;html: <span class="str">'&lt;p&gt;&lt;input id="input-field"&gt;'</span>,
-          &nbsp;&nbsp;showCancelButton: <span class="val">true</span>,
-          &nbsp;&nbsp;closeOnConfirm: <span class="val">false</span>
-        },
-        <span class="func"><i>function</i></span>() {
-          &nbsp;&nbsp;swal({
-          &nbsp;&nbsp;&nbsp;&nbsp;html:
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'You entered: &lt;strong&gt;'</span> +
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(<span class="str">'#input-field'</span>).val() +
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">'&lt;/strong&gt;'</span>
-          &nbsp;&nbsp;});
-        });
-      </pre>
+swal({
+  title: <span class="str">'Input something'</span>,
+  html: <span class="str">'&lt;p&gt;&lt;input id="input-field"&gt;'</span>,
+  showCancelButton: <span class="val">true</span>,
+  closeOnConfirm: <span class="val">false</span>
+},
+<span class="func"><i>function</i></span>() {
+  swal({
+    html:
+      <span class="str">'You entered: &lt;strong&gt;'</span> +
+      $(<span class="str">'#input-field'</span>).val() +
+      <span class="str">'&lt;/strong&gt;'</span>
+  });
+})</pre>
     </li>
 
     <li class="ajax-request">
@@ -261,19 +254,18 @@
         <button>Try me!</button>
       </div>
       <pre>
-        swal({
-          &nbsp;&nbsp;title: <span class="str">'Submit to run ajax request'</span>,
-          &nbsp;&nbsp;showCancelButton: <span class="val">true</span>,
-          &nbsp;&nbsp;confirmButtonText: <span class="str">'Submit'</span>,
-          &nbsp;&nbsp;closeOnConfirm: <span class="val">false</span>
-        },
-        <span class="func"><i>function</i></span>() {
-          &nbsp;&nbsp;swal.disableButtons();
-          &nbsp;&nbsp;<span class="func">setTimeout</span>(<span class="func">function</span>() {
-          &nbsp;&nbsp;&nbsp;&nbsp;swal(<span class="str">'Ajax request finished!'</span>);
-          &nbsp;&nbsp;}, 2000);
-        });
-      </pre>
+swal({
+  title: <span class="str">'Submit to run ajax request'</span>,
+  showCancelButton: <span class="val">true</span>,
+  confirmButtonText: <span class="str">'Submit'</span>,
+  closeOnConfirm: <span class="val">false</span>
+},
+<span class="func"><i>function</i></span>() {
+  swal.disableButtons();
+  <span class="func">setTimeout</span>(<span class="func">function</span>() {
+    swal(<span class="str">'Ajax request finished!'</span>);
+  }, 2000);
+})</pre>
     </li>
   </ul>
 
@@ -294,19 +286,18 @@
     <li>
       <p>Initialize the plugin by referencing the necessary files:</p>
       <pre>&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"dist/sweetalert2.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
-  &lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="tag">type</span>=<span class="str">"text/css"</span> <span class="tag">href</span>=<span class="str">"dist/sweetalert2.css"</span>&gt;</pre>
+&lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="tag">type</span>=<span class="str">"text/css"</span> <span class="tag">href</span>=<span class="str">"dist/sweetalert2.css"</span>&gt;</pre>
     </li>
 
     <li>
       <p>Call the sweetAlert2-function after the page has loaded</p>
       <pre>
-        swal({
-          &nbsp;&nbsp;title: <span class="str">'Error!'</span>,
-          &nbsp;&nbsp;text: <span class="str">'Do you want to continue'</span>,
-          &nbsp;&nbsp;type: <span class="str">'error'</span>,
-          &nbsp;&nbsp;confirmButtonText: <span class="str">'Cool'</span>
-        });
-      </pre>
+swal({
+  title: <span class="str">'Error!'</span>,
+  text: <span class="str">'Do you want to continue'</span>,
+  type: <span class="str">'error'</span>,
+  confirmButtonText: <span class="str">'Cool'</span>
+})</pre>
     </li>
   </ol>
 

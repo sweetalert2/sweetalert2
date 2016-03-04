@@ -289,14 +289,10 @@
         }
       }
     }
+  }
 
-    &.custom {
-      background-size: contain;
-      border-radius: 0;
-      border: 0;
-      background-position: center center;
-      background-repeat: no-repeat;
-    }
+  .sweet-image {
+    margin: 20px auto;
   }
 
 }

@@ -216,12 +216,8 @@
           top: 38px;
           -webkit-transform: rotate(-45deg);
                   transform: rotate(-45deg); }
-    .sweet-alert .icon.custom {
-      background-size: contain;
-      border-radius: 0;
-      border: 0;
-      background-position: center center;
-      background-repeat: no-repeat; }
+  .sweet-alert .sweet-image {
+    margin: 20px auto; }
 
 @-webkit-keyframes showSweetAlert {
   0% {

@@ -27,7 +27,9 @@
     cancelButtonColor: '#aaa',
     cancelButtonClass: null,
     imageUrl: null,
-    imageSize: null,
+    imageWidth: null,
+    imageHeight: null,
+    imageClass: null,
     timer: null,
     width: 500,
     padding: 20,
@@ -259,7 +261,9 @@
         params.cancelButtonColor  = arguments[0].cancelButtonColor || defaultParams.cancelButtonColor;
         params.cancelButtonClass  = arguments[0].cancelButtonClass || params.cancelButtonClass;
         params.imageUrl           = arguments[0].imageUrl || defaultParams.imageUrl;
-        params.imageSize          = arguments[0].imageSize || defaultParams.imageSize;
+        params.imageWidth         = arguments[0].imageWidth || defaultParams.imageWidth;
+        params.imageHeight        = arguments[0].imageHeight || defaultParams.imageHeight;
+        params.imageClass         = arguments[0].imageClass || defaultParams.imageClass;
         params.callback           = arguments[1] || null;
 
          /*
@@ -507,7 +511,7 @@
    * Add modal + overlay to DOM
    */
   window.swal.init = function() {
-    var sweetHTML = '<div class="sweet-overlay" tabIndex="-1"></div><div class="sweet-alert" style="display: none" tabIndex="-1"><div class="icon error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="icon warning"> <span class="body"></span> <span class="dot"></span> </div> <div class="icon info"></div> <div class="icon success"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <div class="icon custom"></div> <h2>Title</h2><div class="sweet-content">Text</div><hr class="sweet-spacer"><button class="sweet-confirm">OK</button><button class="sweet-cancel">Cancel</button></div>';
+    var sweetHTML = '<div class="sweet-overlay" tabIndex="-1"></div><div class="sweet-alert" style="display: none" tabIndex="-1"><div class="icon error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="icon warning"> <span class="body"></span> <span class="dot"></span> </div> <div class="icon info"></div> <div class="icon success"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <img class="sweet-image"> <h2>Title</h2><div class="sweet-content">Text</div><hr class="sweet-spacer"><button class="sweet-confirm">OK</button><button class="sweet-cancel">Cancel</button></div>';
     var sweetWrap = document.createElement('div');
     sweetWrap.className = 'sweet-container';
 
@@ -620,23 +624,24 @@
     }
 
     // Custom image
+    var $customImage = modal.querySelector('.sweet-image');
     if (params.imageUrl) {
-      var $customIcon = modal.querySelector('.icon.custom');
+      $customImage.setAttribute('src', params.imageUrl);
+      show($customImage);
 
-      $customIcon.style.backgroundImage = 'url(' + params.imageUrl + ')';
-      show($customIcon);
-
-      if (params.imageSize) {
-        var imageSize = params.imageSize.match(/(\d+)x(\d+)/);
-        if (imageSize) {
-          $customIcon.setAttribute(
-            'style',
-            $customIcon.getAttribute('style') + 'width:' + imageSize[1] + 'px; height:' + imageSize[2] + 'px'
-          );
-        } else {
-          window.console.error('Parameter imageSize expects value with format WIDTHxHEIGHT, got ' + params.imageSize);
-        }
+      if (params.imageWidth) {
+        $customImage.setAttribute('width', params.imageWidth);
       }
+
+      if (params.imageHeight) {
+        $customImage.setAttribute('height', params.imageHeight);
+      }
+
+      if (params.imageClass) {
+        addClass($customImage, params.imageClass);
+      }
+    } else {
+      hide($customImage);
     }
 
     // Cancel button

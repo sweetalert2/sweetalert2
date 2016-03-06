@@ -794,13 +794,6 @@
     removeClass($warningIcon.querySelector('.dot'), 'pulse-warning-ins');
 
     resetPrevState();
-
-    // Remove dynamically created media query
-    var head = document.getElementsByTagName('head')[0];
-    var mediaquery = document.getElementById(mediaqueryId);
-    if (mediaquery) {
-      head.removeChild(mediaquery);
-    }
   }
 
   // Reset the page to its previous state
@@ -813,6 +806,13 @@
     }
     lastFocusedButton = undefined;
     clearTimeout(modal.timeout);
+
+    // Remove dynamically created media query
+    var head = document.getElementsByTagName('head')[0];
+    var mediaquery = document.getElementById(mediaqueryId);
+    if (mediaquery) {
+      head.removeChild(mediaquery);
+    }
   }
 
   /*

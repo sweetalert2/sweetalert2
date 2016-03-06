@@ -27,6 +27,7 @@
     cancelButtonColor: '#aaa',
     cancelButtonClass: null,
     buttonsStyling: true,
+    reverseButtons: false,
     imageUrl: null,
     imageWidth: null,
     imageHeight: null,
@@ -270,6 +271,7 @@
         params.cancelButtonColor  = arguments[0].cancelButtonColor || defaultParams.cancelButtonColor;
         params.cancelButtonClass  = arguments[0].cancelButtonClass || params.cancelButtonClass;
         params.buttonsStyling     = arguments[0].buttonsStyling !== undefined ? arguments[0].buttonsStyling : defaultParams.buttonsStyling;
+        params.reverseButtons     = arguments[0].reverseButtons !== undefined ? arguments[0].reverseButtons : defaultParams.reverseButtons;
         params.imageUrl           = arguments[0].imageUrl || defaultParams.imageUrl;
         params.imageWidth         = arguments[0].imageWidth || defaultParams.imageWidth;
         params.imageHeight        = arguments[0].imageHeight || defaultParams.imageHeight;
@@ -407,6 +409,11 @@
     for (i = 0; i < $modalElements.length; i++) {
       $modalElements[i].onfocus = onButtonEvent;
       $modalElements[i].onblur = onButtonEvent;
+    }
+
+    // Reverse buttons if needed
+    if (params.reverseButtons) {
+      $confirmButton.parentNode.insertBefore($cancelButton, $confirmButton);
     }
 
     // Focus the first element (input or button)

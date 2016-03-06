@@ -47,7 +47,7 @@
     height: 10px;
     color: transparent;
     border: 0; }
-  .sweet-alert button {
+  .sweet-alert button.styled {
     color: #fff;
     border: 0;
     box-shadow: none;
@@ -57,11 +57,11 @@
     padding: 10px 32px;
     margin: 0 5px;
     cursor: pointer; }
-    .sweet-alert button:focus {
+    .sweet-alert button.styled:focus {
       outline: none; }
-    .sweet-alert button.sweet-cancel[disabled] {
+    .sweet-alert button.styled.sweet-cancel[disabled] {
       opacity: .4; }
-    .sweet-alert button.sweet-confirm[disabled] {
+    .sweet-alert button.styled.sweet-confirm[disabled] {
       border: 4px solid transparent;
       border-color: transparent;
       width: 40px;
@@ -75,7 +75,7 @@
       border-radius: 100%;
       -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
               animation: rotate-loading 1.5s linear 0s infinite normal; }
-    .sweet-alert button::-moz-focus-inner {
+    .sweet-alert button.styled::-moz-focus-inner {
       border: 0; }
   .sweet-alert[data-has-cancel-button=false] button {
     box-shadow: none !important; }

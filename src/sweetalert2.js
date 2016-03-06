@@ -26,6 +26,7 @@
     cancelButtonText: 'Cancel',
     cancelButtonColor: '#aaa',
     cancelButtonClass: null,
+    buttonsStyling: true,
     imageUrl: null,
     imageWidth: null,
     imageHeight: null,
@@ -100,6 +101,14 @@
       _hide(elems[i]);
     }
   };
+
+  var removeStyleProperty = function(elem, property) {
+    if (elem.style.removeProperty) {
+      elem.style.removeProperty(property);
+    } else {
+      elem.style.removeAttribute(property);
+    }
+  }
 
   var isDescendant = function(parent, child) {
     var node = child.parentNode;
@@ -260,6 +269,7 @@
         params.cancelButtonText   = arguments[0].cancelButtonText || defaultParams.cancelButtonText;
         params.cancelButtonColor  = arguments[0].cancelButtonColor || defaultParams.cancelButtonColor;
         params.cancelButtonClass  = arguments[0].cancelButtonClass || params.cancelButtonClass;
+        params.buttonsStyling     = arguments[0].buttonsStyling !== undefined ? arguments[0].buttonsStyling : defaultParams.buttonsStyling;
         params.imageUrl           = arguments[0].imageUrl || defaultParams.imageUrl;
         params.imageWidth         = arguments[0].imageWidth || defaultParams.imageWidth;
         params.imageHeight        = arguments[0].imageHeight || defaultParams.imageHeight;
@@ -312,36 +322,44 @@
         case 'mouseover':
         case 'mouseup':
         case 'focus':
-          if (targetedConfirm) {
-            target.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1);
-          } else if (targetedCancel) {
-            target.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.1);
+          if (params.buttonsStyling) {
+            if (targetedConfirm) {
+              target.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1);
+            } else if (targetedCancel) {
+              target.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.1);
+            }
           }
           break;
         case 'mouseout':
         case 'blur':
-          if (targetedConfirm) {
-            target.style.backgroundColor = params.confirmButtonColor;
-          } else if (targetedCancel) {
-            target.style.backgroundColor = params.cancelButtonColor;
+          if (params.buttonsStyling) {
+            if (targetedConfirm) {
+              target.style.backgroundColor = params.confirmButtonColor;
+            } else if (targetedCancel) {
+              target.style.backgroundColor = params.cancelButtonColor;
+            }
           }
           break;
         case 'mousedown':
-          if (targetedConfirm) {
-            target.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.2);
-          } else if (targetedCancel) {
-            target.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.2);
+          if (params.buttonsStyling) {
+            if (targetedConfirm) {
+              target.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.2);
+            } else if (targetedCancel) {
+              target.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.2);
+            }
           }
           break;
         case 'click':
-          if (targetedConfirm && params.callback && modalIsVisible) { // Clicked 'confirm'
-
+          // Clicked 'confirm'
+          if (targetedConfirm && params.callback && modalIsVisible) {
             params.callback(true);
 
             if (params.closeOnConfirm) {
               closeModal();
             }
-          } else if (params.callback && modalIsVisible) { // Clicked 'cancel'
+
+          // Clicked 'cancel'
+          } else if (params.callback && modalIsVisible) {
 
             // Check if callback function expects a parameter (to track cancel actions)
             if (params.callback.length > 0) {
@@ -387,8 +405,8 @@
     var $cancelButton = modal.querySelector('button.sweet-cancel');
     var $modalElements = modal.querySelectorAll('button, input:not([type=hidden]), textarea, select');
     for (i = 0; i < $modalElements.length; i++) {
-      $modalElements[i].addEventListener('focus', onButtonEvent, true);
-      $modalElements[i].addEventListener('blur', onButtonEvent, true);
+      $modalElements[i].onfocus = onButtonEvent;
+      $modalElements[i].onblur = onButtonEvent;
     }
 
     // Focus the first element (input or button)
@@ -474,8 +492,10 @@
     window.onkeydown = handleKeyDown;
 
     // Loading state
-    $confirmButton.style.borderLeftColor = params.confirmButtonColor;
-    $confirmButton.style.borderRightColor = params.confirmButtonColor;
+    if (params.buttonsStyling) {
+      $confirmButton.style.borderLeftColor = params.confirmButtonColor;
+      $confirmButton.style.borderRightColor = params.confirmButtonColor;
+    }
 
     window.swal.toggleLoading = function() {
       $confirmButton.disabled = !$confirmButton.disabled;
@@ -653,7 +673,7 @@
 
     // Confirm button
     if (params.showConfirmButton) {
-      $confirmBtn.style.display = 'inline-block';
+      removeStyleProperty($confirmBtn, 'display');
     } else {
       hide($confirmBtn);
     }
@@ -670,14 +690,27 @@
     $cancelBtn.innerHTML = escapeHtml(params.cancelButtonText);
 
     // Set buttons to selected background colors
-    $confirmBtn.style.backgroundColor = params.confirmButtonColor;
-    $cancelBtn.style.backgroundColor = params.cancelButtonColor;
+    if (params.buttonsStyling) {
+      $confirmBtn.style.backgroundColor = params.confirmButtonColor;
+      $cancelBtn.style.backgroundColor = params.cancelButtonColor;
+    }
 
     // Add buttons custom classes
     $confirmBtn.className = 'sweet-confirm';
     addClass($confirmBtn, params.confirmButtonClass);
     $cancelBtn.className = 'sweet-cancel';
     addClass($cancelBtn, params.cancelButtonClass);
+
+    // Buttons styling
+    if (params.buttonsStyling) {
+      addClass($confirmBtn, 'styled');
+      addClass($cancelBtn, 'styled');
+    } else {
+      removeClass($confirmBtn, 'styled');
+      removeClass($cancelBtn, 'styled');
+      $confirmBtn.removeAttribute('style');
+      $cancelBtn.removeAttribute('style');
+    }
 
     // CSS animation
     if (params.animation === true) {

@@ -715,8 +715,9 @@
     } else {
       removeClass($confirmBtn, 'styled');
       removeClass($cancelBtn, 'styled');
-      $confirmBtn.removeAttribute('style');
-      $cancelBtn.removeAttribute('style');
+
+      $confirmBtn.style.backgroundColor = $confirmBtn.style.borderLeftColor = $confirmBtn.style.borderRightColor = '';
+      $cancelBtn.style.backgroundColor = $cancelBtn.style.borderLeftColor = $cancelBtn.style.borderRightColor = '';
     }
 
     // CSS animation

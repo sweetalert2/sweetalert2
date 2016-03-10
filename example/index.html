@@ -154,12 +154,14 @@ swal({
   confirmButtonText: <span class="str">'Yes, delete it!'</span>,
   closeOnConfirm: <span class="val">false</span>
 },
-<span class="func"><i>function</i></span>() {
-  swal(
-    <span class="str">'Deleted!'</span>,
-    <span class="str">'Your file has been deleted.'</span>,
-    <span class="str">'success'</span>
-  );
+<span class="func"><i>function</i></span>(isConfirm) {
+  <span class="tag">if</span> (isConfirm) {
+    swal(
+      <span class="str">'Deleted!'</span>,
+      <span class="str">'Your file has been deleted.'</span>,
+      <span class="str">'success'</span>
+    );
+  }
 })</pre>
     </li>
 
@@ -239,7 +241,8 @@ swal({
   title: <span class="str">'Input something'</span>,
   html: <span class="str">'&lt;p&gt;&lt;input id="input-field"&gt;'</span>,
   showCancelButton: <span class="val">true</span>,
-  closeOnConfirm: <span class="val">false</span>
+  closeOnConfirm: <span class="val">false</span>,
+  allowOutsideClick: <span class="val">false</span>
 },
 <span class="func"><i>function</i></span>() {
   swal({
@@ -261,7 +264,8 @@ swal({
   title: <span class="str">'Submit to run ajax request'</span>,
   showCancelButton: <span class="val">true</span>,
   confirmButtonText: <span class="str">'Submit'</span>,
-  closeOnConfirm: <span class="val">false</span>
+  closeOnConfirm: <span class="val">false</span>,
+  allowOutsideClick: <span class="val">false</span>
 },
 <span class="func"><i>function</i></span>() {
   swal.disableButtons();
@@ -531,8 +535,10 @@ swal({
       confirmButtonText: 'Yes, delete it!',
       closeOnConfirm: false
     },
-    function() {
-      swal('Deleted!', 'Your file has been deleted!', 'success');
+    function(isConfirm) {
+      if (isConfirm) {
+        swal('Deleted!', 'Your file has been deleted!', 'success');
+      }
     });
   });
 
@@ -586,7 +592,8 @@ swal({
       html: '<input id="input-field">',
       showCancelButton: true,
       confirmButtonText: 'Submit',
-      closeOnConfirm: false
+      closeOnConfirm: false,
+      allowOutsideClick: false
     },
     function() {
       swal({
@@ -601,7 +608,8 @@ swal({
       title: 'Submit to run ajax request',
       showCancelButton: true,
       confirmButtonText: 'Submit',
-      closeOnConfirm: false
+      closeOnConfirm: false,
+      allowOutsideClick: false
     },
     function() {
       swal.disableButtons();

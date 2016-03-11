@@ -519,6 +519,14 @@
       $cancelButton.disabled = true;
     };
 
+    // Show loading message on ajax calls. To be used together with disableButtons().
+    window.swal.loadingMessage = function(message) {
+      var $title = modal.querySelector('h2');
+      var $content = modal.querySelector('div.sweet-content');
+      $title.innerHTML = escapeHtml(message).split('\n').join('<br>');
+      $content.innerHTML = '';
+    };
+
     swal.enableButtons();
 
     window.onfocus = function() {

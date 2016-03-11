@@ -14,8 +14,8 @@
   <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
   <!-- This is what you need -->
-  <script src="./dist/sweetalert2.min.js"></script>
-  <link rel="stylesheet" href="./dist/sweetalert2.css">
+  <script src="../dist/sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="../dist/sweetalert2.css">
   <!--.......................-->
 </head>
 
@@ -269,6 +269,29 @@ swal({
 },
 <span class="func"><i>function</i></span>() {
   swal.disableButtons();
+  <span class="func">setTimeout</span>(<span class="func">function</span>() {
+    swal(<span class="str">'Ajax request finished!'</span>);
+  }, 2000);
+})</pre>
+    </li>
+
+    <li class="ajax-request-loadingmessage">
+      <div class="ui">
+        <p>Ajax request example with loading message option. It will replace the title and text.</p>
+        <button>Try me!</button>
+      </div>
+      <pre>
+swal({
+  title: <span class="str">'Submit to run ajax request'</span>,
+  text: <span class="str">'Add a loading/progress message'</span>
+  showCancelButton: <span class="val">true</span>,
+  confirmButtonText: <span class="str">'Submit'</span>,
+  closeOnConfirm: <span class="val">false</span>,
+  allowOutsideClick: <span class="val">false</span>
+},
+<span class="func"><i>function</i></span>() {
+  swal.disableButtons();
+  swal.loadingMessage('Loading Message...');
   <span class="func">setTimeout</span>(<span class="func">function</span>() {
     swal(<span class="str">'Ajax request finished!'</span>);
   }, 2000);
@@ -619,5 +642,25 @@ swal({
     });
     $('#input-field').focus();
   });
+
+  $('ul.examples li.ajax-request-loadingmessage button').on('click', function() {
+    swal({
+              title: 'Submit to run ajax request',
+              text: 'Add a loading/progress message',
+              showCancelButton: true,
+              confirmButtonText: 'Submit',
+              closeOnConfirm: false,
+              allowOutsideClick: false
+            },
+            function() {
+              swal.disableButtons();
+              swal.loadingMessage('Loading Message...');
+              setTimeout(function() {
+                swal('Ajax request finished!');
+              }, 2000);
+            });
+    $('#input-field').focus();
+  });
+
   </script>
 </body>

@@ -124,16 +124,35 @@ button,
   .button.download {
     position: fixed;
     right: 30px;
-    top: 0;
+    top: 30px;
     background-color: rgba(255, 255, 255, 0.9);
     color: #abcada;
     font-weight: 500;
     text-transform: uppercase;
-    z-index: 3; }
+    z-index: 3;
+    margin: 0; }
     @media all and (max-width: 1278px) {
       button.download,
       .button.download {
         display: none; } }
+
+.cdn {
+  position: fixed;
+  width: 170px;
+  height: 50px;
+  line-height: 50px;
+  right: 30px;
+  top: 90px;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #eb4c36;
+  font-weight: 500;
+  z-index: 3;
+  margin: 0;
+  border-radius: 2px; }
+  @media all and (max-width: 1278px) {
+    .cdn {
+      display: none; } }
 
 .center-container {
   max-width: 700px;

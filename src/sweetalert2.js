@@ -693,8 +693,8 @@
     }
 
     // Edit text on cancel and confirm buttons
-    $confirmBtn.innerHTML = escapeHtml(params.confirmButtonText);
-    $cancelBtn.innerHTML = escapeHtml(params.cancelButtonText);
+    $confirmBtn.innerHTML = params.html ? params.confirmButtonText : escapeHtml(params.confirmButtonText);
+    $cancelBtn.innerHTML = params.html ? params.cancelButtonText : escapeHtml(params.cancelButtonText);
 
     // Set buttons to selected background colors
     if (params.buttonsStyling) {

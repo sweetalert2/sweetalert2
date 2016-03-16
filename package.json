@@ -1,8 +1,8 @@
 {
   "name": "sweetalert2",
-  "version": "1.0.0",
+  "version": "0.4.3",
   "description": "SweetAlert2 A beautiful replacement for JavaScript's 'alert'",
-  "main": "gulpfile.js",
+  "main": "src/sweetalert2.js",
   "directories": {
     "example": "example"
   },

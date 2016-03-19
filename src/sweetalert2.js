@@ -4,8 +4,13 @@
 ;(function(window, document) {
   'use strict';
 
-  var modalClass   = '.sweet-alert';
-  var overlayClass = '.sweet-overlay';
+  window.swalClasses = {
+    modal: 'sweet-alert',
+    overlay: 'sweet-overlay',
+    confirm: 'sweet-confirm',
+    cancel: 'sweet-cancel'
+  };
+
   var mediaqueryId = 'sweet-alert-mediaquery';
   var alertTypes   = ['error', 'warning', 'info', 'success'];
   var defaultParams = {
@@ -42,11 +47,11 @@
    * Manipulate DOM
    */
   var getModal = function() {
-    return document.querySelector(modalClass);
+    return document.querySelector('.' + window.swalClasses.modal);
   };
 
   var getOverlay = function() {
-    return document.querySelector(overlayClass);
+    return document.querySelector('.' + window.swalClasses.overlay);
   };
 
   var hasClass = function(elem, className) {
@@ -221,11 +226,29 @@
     }
   };
 
-   /*
+  /*
    * Global function to close sweetAlert
    */
   window.sweetAlert.closeModal = window.swal.closeModal = function() {
     closeModal();
+  };
+
+  /*
+   * Global function to click 'Confirm' button
+   */
+  window.sweetAlert.clickConfirm = window.swal.clickConfirm = function() {
+    var modal = getModal();
+    var $confirmButton = modal.querySelector('button.' + window.swalClasses.confirm);
+    $confirmButton.click();
+  };
+
+  /*
+   * Global function to click 'Cancel' button
+   */
+  window.sweetAlert.clickCancel = window.swal.clickCancel = function() {
+    var modal = getModal();
+    var $cancelButton = modal.querySelector('button.' + window.swalClasses.cancel);
+    $cancelButton.click();
   };
 
   function modalDependant() {
@@ -316,8 +339,8 @@
     var onButtonEvent = function(event) {
       var e = event || window.event;
       var target = e.target || e.srcElement;
-      var targetedConfirm = hasClass(target, 'sweet-confirm');
-      var targetedCancel  = hasClass(target, 'sweet-cancel');
+      var targetedConfirm = hasClass(target, window.swalClasses.confirm);
+      var targetedCancel  = hasClass(target, window.swalClasses.cancel);
       var modalIsVisible  = hasClass(modal, 'visible');
 
       switch (e.type) {
@@ -403,8 +426,8 @@
     };
 
     // Keyboard interactions
-    var $confirmButton = modal.querySelector('button.sweet-confirm');
-    var $cancelButton = modal.querySelector('button.sweet-cancel');
+    var $confirmButton = modal.querySelector('button.' + window.swalClasses.confirm);
+    var $cancelButton = modal.querySelector('button.' + window.swalClasses.cancel);
     var $modalElements = modal.querySelectorAll('button, input:not([type=hidden]), textarea, select');
     for (i = 0; i < $modalElements.length; i++) {
       $modalElements[i].onfocus = onButtonEvent;
@@ -538,7 +561,7 @@
    * Add modal + overlay to DOM
    */
   window.swal.init = function() {
-    var sweetHTML = '<div class="sweet-overlay" tabIndex="-1"></div><div class="sweet-alert" style="display: none" tabIndex="-1"><div class="icon error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="icon warning"> <span class="body"></span> <span class="dot"></span> </div> <div class="icon info"></div> <div class="icon success"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <img class="sweet-image"> <h2>Title</h2><div class="sweet-content">Text</div><hr class="sweet-spacer"><button class="sweet-confirm">OK</button><button class="sweet-cancel">Cancel</button></div>';
+    var sweetHTML = '<div class="' + window.swalClasses.overlay + '" tabIndex="-1"></div><div class="' + window.swalClasses.modal + '" style="display: none" tabIndex="-1"><div class="icon error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="icon warning"> <span class="body"></span> <span class="dot"></span> </div> <div class="icon info"></div> <div class="icon success"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <img class="sweet-image"> <h2>Title</h2><div class="sweet-content">Text</div><hr class="sweet-spacer"><button class="' + window.swalClasses.confirm + '">OK</button><button class="' + window.swalClasses.cancel + '">Cancel</button></div>';
     var sweetWrap = document.createElement('div');
     sweetWrap.className = 'sweet-container';
 
@@ -581,7 +604,7 @@
     cssNode.id = mediaqueryId;
     cssNode.innerHTML =
       '@media screen and (max-width: ' + params.width + 'px) {' +
-        '.sweet-alert {' +
+        '.' + window.swalClasses.modal + ' {' +
           'max-width: 100%;' +
           'left: 0 !important;' +
           'margin-left: 0 !important;' +
@@ -591,8 +614,8 @@
 
     var $title = modal.querySelector('h2');
     var $content = modal.querySelector('div.sweet-content');
-    var $cancelBtn = modal.querySelector('button.sweet-cancel');
-    var $confirmBtn = modal.querySelector('button.sweet-confirm');
+    var $confirmBtn = modal.querySelector('button.' + window.swalClasses.confirm);
+    var $cancelBtn = modal.querySelector('button.' + window.swalClasses.cancel);
     var $btnSpacer = modal.querySelector('hr.sweet-spacer');
 
     // Title
@@ -703,9 +726,9 @@
     }
 
     // Add buttons custom classes
-    $confirmBtn.className = 'sweet-confirm';
+    $confirmBtn.className = window.swalClasses.confirm;
     addClass($confirmBtn, params.confirmButtonClass);
-    $cancelBtn.className = 'sweet-cancel';
+    $cancelBtn.className = window.swalClasses.cancel;
     addClass($cancelBtn, params.cancelButtonClass);
 
     // Buttons styling

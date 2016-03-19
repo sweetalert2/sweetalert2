@@ -188,18 +188,20 @@ swal({
   closeOnCancel: <span class="val">false</span>
 },
 <span class="func"><i>function</i></span>(isConfirm) {
-  <span class="tag">if</span> (isConfirm) {
+  <span class="tag">if</span> (isConfirm === <span class="val">true</span>) {
     swal(
       <span class="str">'Deleted!'</span>,
       <span class="str">'Your file has been deleted.'</span>,
       <span class="str">'success'</span>
     );
-  } <span class="tag">else</span> {
+  } <span class="tag">else if</span> (isConfirm === <span class="val">false</span>) {
     swal(
       <span class="str">'Cancelled'</span>,
       <span class="str">'Your imaginary file is safe :)'</span>,
       <span class="str">'error'</span>
     );
+  } <span class="tag">else</span> {
+    <span class="comment">// outside click, isConfirm is undefinded</span>
   }
 })</pre>
     </li>
@@ -552,7 +554,7 @@ swal({
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel plx!',
+      cancelButtonText: 'No, cancel!',
       confirmButtonClass: 'btn btn-success',
       cancelButtonClass: 'btn btn-danger',
       buttonsStyling: false,
@@ -560,10 +562,12 @@ swal({
       closeOnCancel: false
     },
     function(isConfirm) {
-      if (isConfirm) {
+      if (isConfirm === true) {
         swal('Deleted!', 'Your file has been deleted!', 'success');
-      } else {
+      } else if (isConfirm === false) {
         swal('Cancelled', 'Your imaginary file is safe :)', 'error');
+      } else {
+        // outside click, isConfirm is undefinded
       }
     });
   });

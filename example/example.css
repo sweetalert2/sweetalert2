@@ -175,6 +175,8 @@ pre {
     color: #e92772; }
   pre .attr {
     color: #a6e22d; }
+  pre .comment {
+    color: #65737e; }
 
 .showcase {
   background-color: #eceef0;

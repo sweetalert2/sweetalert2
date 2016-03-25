@@ -626,7 +626,8 @@
       }
     }
 
-    //Custom Class
+    // Custom Class
+    modal.className = window.swalClasses.modal;
     if (params.customClass) {
       addClass(modal, params.customClass);
     }

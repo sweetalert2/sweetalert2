@@ -132,12 +132,7 @@
     elem.style.display = 'block';
 
     var height = elem.clientHeight;
-    var padding;
-    if (typeof getComputedStyle !== 'undefined') { /* IE 8 */
-      padding = parseInt(getComputedStyle(elem).getPropertyValue('padding'), 10);
-    } else {
-      padding = parseInt(elem.currentStyle.padding);
-    }
+    var padding = parseInt(getComputedStyle(elem).getPropertyValue('padding'), 10);
 
     elem.style.left = '';
     elem.style.display = 'none';

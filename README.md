@@ -57,7 +57,7 @@ swal({
   confirmButtonColor: '#dd6b55',
   cancelButtonColor: '#d44',
   confirmButtonText: 'Yes, delete it!',
-  cancelButtonText: 'No, keet it',
+  cancelButtonText: 'No, keep it',
   closeOnConfirm: false
 }, function() {
   swal(

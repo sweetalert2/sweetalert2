@@ -55,16 +55,18 @@ swal({
   type: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#dd6b55',
-  cancelButtonColor: '#d44',
+  cancelButtonColor: '#999',
   confirmButtonText: 'Yes, delete it!',
   cancelButtonText: 'No, keep it',
   closeOnConfirm: false
-}, function() {
-  swal(
-    'Deleted!',
-    'Your imaginary file has been deleted.',
-    'success'
-  );
+}, function(isConfirm) {
+  if (isConfirm === true) {
+    swal(
+      'Deleted!',
+      'Your imaginary file has been deleted.',
+      'success'
+    );
+  }
 });
 ```
 

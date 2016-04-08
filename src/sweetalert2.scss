@@ -108,7 +108,7 @@
   }
 
 
-  .icon {
+  .sweet-icon {
     $red:    #f27474;
     $orange: #f8bb86;
     $blue:   #c9dae1;
@@ -123,7 +123,7 @@
     position: relative;
     box-sizing: content-box;
 
-    &.error {
+    &.sweet-error {
       border-color: $red;
 
       .x-mark {
@@ -152,7 +152,7 @@
       }
     }
 
-    &.warning {
+    &.sweet-warning {
       border-color: $orange;
 
       .body { // Exclamation mark body
@@ -177,7 +177,7 @@
       }
     }
 
-    &.info {
+    &.sweet-info {
       border-color: $blue;
 
       &::before { // i-letter body
@@ -203,7 +203,7 @@
       }
     }
 
-    &.success {
+    &.sweet-success {
       border-color: $green;
 
       &::before,
@@ -444,7 +444,7 @@
   @include animation('animate-success-long 0.75s');
 }
 
-.icon.success.animate::after {
+.sweet-icon.success.animate::after {
   @include animation('rotatePlaceholder 4.25s ease-in');
 }
 

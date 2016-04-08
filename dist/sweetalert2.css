@@ -79,7 +79,7 @@
       border: 0; }
   .sweet-alert[data-has-cancel-button=false] button {
     box-shadow: none !important; }
-  .sweet-alert .icon {
+  .sweet-alert .sweet-icon {
     width: 80px;
     height: 80px;
     border: 4px solid #808080;
@@ -88,12 +88,12 @@
     padding: 0;
     position: relative;
     box-sizing: content-box; }
-    .sweet-alert .icon.error {
+    .sweet-alert .sweet-icon.sweet-error {
       border-color: #f27474; }
-      .sweet-alert .icon.error .x-mark {
+      .sweet-alert .sweet-icon.sweet-error .x-mark {
         position: relative;
         display: block; }
-      .sweet-alert .icon.error .line {
+      .sweet-alert .sweet-icon.sweet-error .line {
         position: absolute;
         height: 5px;
         width: 47px;
@@ -101,17 +101,17 @@
         display: block;
         top: 37px;
         border-radius: 2px; }
-        .sweet-alert .icon.error .line.left {
+        .sweet-alert .sweet-icon.sweet-error .line.left {
           -webkit-transform: rotate(45deg);
                   transform: rotate(45deg);
           left: 17px; }
-        .sweet-alert .icon.error .line.right {
+        .sweet-alert .sweet-icon.sweet-error .line.right {
           -webkit-transform: rotate(-45deg);
                   transform: rotate(-45deg);
           right: 16px; }
-    .sweet-alert .icon.warning {
+    .sweet-alert .sweet-icon.sweet-warning {
       border-color: #f8bb86; }
-      .sweet-alert .icon.warning .body {
+      .sweet-alert .sweet-icon.sweet-warning .body {
         position: absolute;
         width: 5px;
         height: 47px;
@@ -120,7 +120,7 @@
         border-radius: 2px;
         margin-left: -2px;
         background-color: #f8bb86; }
-      .sweet-alert .icon.warning .dot {
+      .sweet-alert .sweet-icon.sweet-warning .dot {
         position: absolute;
         width: 7px;
         height: 7px;
@@ -129,9 +129,9 @@
         left: 50%;
         bottom: 10px;
         background-color: #f8bb86; }
-    .sweet-alert .icon.info {
+    .sweet-alert .sweet-icon.sweet-info {
       border-color: #c9dae1; }
-      .sweet-alert .icon.info::before {
+      .sweet-alert .sweet-icon.sweet-info::before {
         content: '';
         position: absolute;
         width: 5px;
@@ -141,7 +141,7 @@
         border-radius: 2px;
         margin-left: -2px;
         background-color: #c9dae1; }
-      .sweet-alert .icon.info::after {
+      .sweet-alert .sweet-icon.sweet-info::after {
         content: '';
         position: absolute;
         width: 7px;
@@ -150,9 +150,9 @@
         margin-left: -3px;
         top: 19px;
         background-color: #c9dae1; }
-    .sweet-alert .icon.success {
+    .sweet-alert .sweet-icon.sweet-success {
       border-color: #a5dc86; }
-      .sweet-alert .icon.success::before, .sweet-alert .icon.success::after {
+      .sweet-alert .sweet-icon.sweet-success::before, .sweet-alert .sweet-icon.sweet-success::after {
         content: '';
         border-radius: 50%;
         position: absolute;
@@ -161,7 +161,7 @@
         background: #fff;
         -webkit-transform: rotate(45deg);
                 transform: rotate(45deg); }
-      .sweet-alert .icon.success::before {
+      .sweet-alert .sweet-icon.sweet-success::before {
         border-radius: 120px 0 0 120px;
         top: -7px;
         left: -33px;
@@ -169,7 +169,7 @@
                 transform: rotate(-45deg);
         -webkit-transform-origin: 60px 60px;
                 transform-origin: 60px 60px; }
-      .sweet-alert .icon.success::after {
+      .sweet-alert .sweet-icon.sweet-success::after {
         border-radius: 0 120px 120px 0;
         top: -11px;
         left: 30px;
@@ -177,7 +177,7 @@
                 transform: rotate(-45deg);
         -webkit-transform-origin: 0 60px;
                 transform-origin: 0 60px; }
-      .sweet-alert .icon.success .placeholder {
+      .sweet-alert .sweet-icon.sweet-success .placeholder {
         width: 80px;
         height: 80px;
         border: 4px solid rgba(165, 220, 134, 0.2);
@@ -187,7 +187,7 @@
         left: -4px;
         top: -4px;
         z-index: 2; }
-      .sweet-alert .icon.success .fix {
+      .sweet-alert .sweet-icon.sweet-success .fix {
         width: 5px;
         height: 90px;
         background-color: #fff;
@@ -197,20 +197,20 @@
         z-index: 1;
         -webkit-transform: rotate(-45deg);
                 transform: rotate(-45deg); }
-      .sweet-alert .icon.success .line {
+      .sweet-alert .sweet-icon.sweet-success .line {
         height: 5px;
         background-color: #a5dc86;
         display: block;
         border-radius: 2px;
         position: absolute;
         z-index: 2; }
-        .sweet-alert .icon.success .line.tip {
+        .sweet-alert .sweet-icon.sweet-success .line.tip {
           width: 25px;
           left: 14px;
           top: 46px;
           -webkit-transform: rotate(45deg);
                   transform: rotate(45deg); }
-        .sweet-alert .icon.success .line.long {
+        .sweet-alert .sweet-icon.sweet-success .line.long {
           width: 47px;
           right: 8px;
           top: 38px;
@@ -393,7 +393,7 @@
   -webkit-animation: animate-success-long 0.75s;
           animation: animate-success-long 0.75s; }
 
-.icon.success.animate::after {
+.sweet-icon.success.animate::after {
   -webkit-animation: rotatePlaceholder 4.25s ease-in;
           animation: rotatePlaceholder 4.25s ease-in; }
 

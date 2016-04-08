@@ -8,11 +8,17 @@
     modal: 'sweet-alert',
     overlay: 'sweet-overlay',
     confirm: 'sweet-confirm',
-    cancel: 'sweet-cancel'
+    cancel: 'sweet-cancel',
+    icon: 'sweet-icon',
+    iconTypes: {
+      success: 'sweet-success',
+      warning: 'sweet-warning',
+      info: 'sweet-info',
+      error: 'sweet-error'
+    }
   };
 
   var mediaqueryId = 'sweet-alert-mediaquery';
-  var alertTypes   = ['error', 'warning', 'info', 'success'];
   var defaultParams = {
     title: '',
     text: '',
@@ -542,7 +548,7 @@
    * Add modal + overlay to DOM
    */
   window.swal.init = function() {
-    var sweetHTML = '<div class="' + window.swalClasses.overlay + '" tabIndex="-1"></div><div class="' + window.swalClasses.modal + '" style="display: none" tabIndex="-1"><div class="icon error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="icon warning"> <span class="body"></span> <span class="dot"></span> </div> <div class="icon info"></div> <div class="icon success"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <img class="sweet-image"> <h2>Title</h2><div class="sweet-content">Text</div><hr class="sweet-spacer"><button class="' + window.swalClasses.confirm + '">OK</button><button class="' + window.swalClasses.cancel + '">Cancel</button></div>';
+    var sweetHTML = '<div class="' + window.swalClasses.overlay + '" tabIndex="-1"></div><div class="' + window.swalClasses.modal + '" style="display: none" tabIndex="-1"><div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.error + '"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.warning + '"> <span class="body"></span> <span class="dot"></span> </div> <div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.info + '"></div> <div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.success + '"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <img class="sweet-image"> <h2>Title</h2><div class="sweet-content">Text</div><hr class="sweet-spacer"><button class="' + window.swalClasses.confirm + '">OK</button><button class="' + window.swalClasses.cancel + '">Cancel</button></div>';
     var sweetWrap = document.createElement('div');
     sweetWrap.className = 'sweet-container';
 
@@ -619,11 +625,11 @@
     }
 
     // Icon
-    hide(modal.querySelectorAll('.icon'));
+    hide(modal.querySelectorAll('.' + window.swalClasses.icon));
     if (params.type) {
       var validType = false;
-      for (var i = 0; i < alertTypes.length; i++) {
-        if (params.type === alertTypes[i]) {
+      for (var iconType in window.swalClasses.iconTypes) {
+        if (params.type === iconType) {
           validType = true;
           break;
         }
@@ -632,7 +638,7 @@
         window.console.error('Unknown alert type: ' + params.type);
         return false;
       }
-      var $icon = modal.querySelector('.icon.' + params.type);
+      var $icon = modal.querySelector('.' + window.swalClasses.icon + '.' + window.swalClasses.iconTypes[params.type]);
       show($icon);
 
       // Animate icon
@@ -792,16 +798,16 @@
 
     // Reset icon animations
 
-    var $successIcon = modal.querySelector('.icon.success');
+    var $successIcon = modal.querySelector('.' + window.swalClasses.icon + '.' + window.swalClasses.iconTypes.success);
     removeClass($successIcon, 'animate');
     removeClass($successIcon.querySelector('.tip'), 'animate-success-tip');
     removeClass($successIcon.querySelector('.long'), 'animate-success-long');
 
-    var $errorIcon = modal.querySelector('.icon.error');
+    var $errorIcon = modal.querySelector('.' + window.swalClasses.icon + '.' + window.swalClasses.iconTypes.error);
     removeClass($errorIcon, 'animate-error-icon');
     removeClass($errorIcon.querySelector('.x-mark'), 'animate-x-mark');
 
-    var $warningIcon = modal.querySelector('.icon.warning');
+    var $warningIcon = modal.querySelector('.' + window.swalClasses.icon + '.' + window.swalClasses.iconTypes.warning);
     removeClass($warningIcon, 'pulse-warning');
     removeClass($warningIcon.querySelector('.body'), 'pulse-warning-ins');
     removeClass($warningIcon.querySelector('.dot'), 'pulse-warning-ins');

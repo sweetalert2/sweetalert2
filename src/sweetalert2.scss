@@ -32,6 +32,10 @@
   display: none;
   z-index: 2000;
 
+  &:focus {
+    outline: none;
+  }
+
   h2 {
     color: #575757;
     font-size: 30px;

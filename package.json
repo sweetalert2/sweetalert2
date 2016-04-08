@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "0.4.5",
+  "version": "1.0.0",
   "description": "SweetAlert2 A beautiful replacement for JavaScript's 'alert'",
   "main": "src/sweetalert2.js",
   "directories": {

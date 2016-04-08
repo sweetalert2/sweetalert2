@@ -73,6 +73,54 @@ swal({
 [View more examples](https://limonte.github.io/sweetalert2/)
 
 
+Supported browsers
+------------------
+
+* Chrome (latest version)
+* Firefox (latest version)
+* Safari (latest two versions)
+* Microsoft Edge (latest version)
+* Opera (latest version)
+
+Pay attention: IE is not supported since v1.0.0.
+
+
+Configuration
+-------------
+
+| Argument             | Default value | Description |
+| -------------------- | ------------- | ----- |
+| `title`              | `null`        | The title of the modal. It can either be added to the object under the key "title" or passed as the first parameter of the function. |
+| `text`               | `null`        | A description for the modal. It can either be added to the object under the key "text" or passed as the second parameter of the function. |
+| `html`               | `null`        | A HTML description for the modal. If "text" and "html" parameters are provided in the same time, "text" will be used. |
+| `type `              | `null`        | The type of the modal. SweetAlert2 comes with 5 built-in types which will show a corresponding icon animation: `warning`, `error`, `success`, `info` and `question`. It can either be put in the array under the key `type` or passed as the third parameter of the function. |
+| `customClass`        | `null`        | A custom CSS class for the modal. |
+| `animation`          | `true`        | If set to `false`, modal CSS animation will be disabled. |
+| `allowOutsideClick`  | `true`        | If set to `false`, the user can't dismiss the modal by clicking outside it. |
+| `allowEscapeKey`     | `true`        | If set to `false`, the user can't dismiss the modal by pressing the Escape key. |
+| `showConfirmButton`  | `true`        | If set to `false`, a "Confirm"-button will not be shown. It can be useful when you're using `html` parameter for custom HTML description. |
+| `showCancelButton`   | `false`       | If set to `true`, a "Cancel"-button will be shown, which the user can click on to dismiss the modal. |
+| `confirmButtonText`  | `"OK"`        | Use this to change the text on the "Confirm"-button. |
+| `cancelButtonText`   | `"Cancel"`    | Use this to change the text on the "Cancel"-button. |
+| `confirmButtonColor` | `"#3085d6"`   | Use this to change the background color of the "Confirm"-button (must be a HEX value). |
+| `cancelButtonColor`  | `"#aaa"`      | Use this to change the background color of the "Cancel"-button (must be a HEX value). |
+| `confirmButtonClass` | `null`        | A custom CSS class for the "Confirm"-button. |
+| `cancelButtonClass`  | `null`        | A custom CSS class for the "Cancel"-button. |
+| `buttonsStyling`     | `true`        | Apply default swal2 styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to `false`. |
+| `reverseButtons`     | `false`       | Set this parameter to `true` if you want to invert default buttons positions. |
+| `closeOnConfirm`     | `true`        | Set to `false` if you want the modal to stay open even if the user presses the "Confirm"-button. This is especially useful if the function attached to the "Confirm"-button is another SweetAlert2. |
+| `imageUrl`           | `null`        | Add a customized icon for the modal. Should contain a string with the path or URL to the image. |
+| `imageWidth`         | `null`        | If imageUrl is set, you can specify imageWidth to describes image width in px. |
+| `imageHeight`        | `null`        | Custom image height in px. |
+| `imageClass`         | `null`        | A custom CSS class for the customized icon. |
+| `timer`              | `null`        | Auto close timer of the modal. Set in ms (milliseconds). |
+| `width`              | `500`         | Modal window width, including paddings (`box-sizing: border-box`). |
+| `padding`            | `20`          | Modal window padding. |
+| `background`         | `"#fff"`      | Modal window background (CSS `background` property). |
+
+You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
+
+
 Contributing
 ------------
 
@@ -86,13 +134,7 @@ If you would like to contribute enhancements or fixes, please do the following:
 
 1. Start gulp watcher ``gulp watch`` to automatically minify the SCSS and JS-files.
 
-1. Hack on a separate topic branch created from the latest master.
-
-1. Commit and push the topic branch.
-
 1. Make a pull request and wait for approval.
-
-1. Welcome to the club
 
 Please note that modifications should follow these coding guidelines:
 
@@ -103,24 +145,3 @@ Please note that modifications should follow these coding guidelines:
 1. SCSS code should pass [scss-lint](https://github.com/causes/scss-lint) with configuration in project repository.
 
 1. Vertical whitespace helps readability, don't be afraid to use it.
-
-Thank you for helping out!
-
-Supported browsers
-------------------
-
-* Chrome (latest version)
-* Firefox (latest version)
-* Safari (latest two versions)
-* Microsoft Edge (latest version)
-* Opera (latest version)
-
-Pay attention: IE is not supported since v1.0.0.
-
-Related projects
-----------------
-
-* [SweetAlert](https://github.com/t4t5/sweetalert)
-* [SweetAlert for Android](https://github.com/pedant/sweet-alert-dialog)
-* [SweetAlert for Bootstrap](https://github.com/lipis/bootstrap-sweetalert)
-

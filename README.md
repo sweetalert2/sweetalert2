@@ -59,7 +59,7 @@ swal({
   confirmButtonText: 'Yes, delete it!',
   cancelButtonText: 'No, keep it',
   closeOnConfirm: false
-}, function(isConfirm) {
+}).then(function(isConfirm) {
   if (isConfirm === true) {
     swal(
       'Deleted!',
@@ -106,6 +106,16 @@ Please note that modifications should follow these coding guidelines:
 
 Thank you for helping out!
 
+Supported browsers
+------------------
+
+* Chrome (latest version)
+* Firefox (latest version)
+* Safari (latest two versions)
+* Microsoft Edge (latest version)
+* Opera (latest version)
+
+Pay attention: IE is not supported since v1.0.0.
 
 Related projects
 ----------------

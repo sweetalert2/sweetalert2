@@ -154,8 +154,7 @@ swal({
   cancelButtonColor: <span class="str">'#d33'</span>,
   confirmButtonText: <span class="str">'Yes, delete it!'</span>,
   closeOnConfirm: <span class="val">false</span>
-},
-<span class="func"><i>function</i></span>(isConfirm) {
+}).then(<span class="func"><i>function</i></span>(isConfirm) {
   <span class="tag">if</span> (isConfirm) {
     swal(
       <span class="str">'Deleted!'</span>,
@@ -186,8 +185,7 @@ swal({
   buttonsStyling: <span class="val">false</span>,
   closeOnConfirm: <span class="val">false</span>,
   closeOnCancel: <span class="val">false</span>
-},
-<span class="func"><i>function</i></span>(isConfirm) {
+}).then(<span class="func"><i>function</i></span>(isConfirm) {
   <span class="tag">if</span> (isConfirm === <span class="val">true</span>) {
     swal(
       <span class="str">'Deleted!'</span>,
@@ -537,8 +535,7 @@ swal({
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
       closeOnConfirm: false
-    },
-    function(isConfirm) {
+    }).then(function(isConfirm) {
       if (isConfirm) {
         swal('Deleted!', 'Your file has been deleted!', 'success');
       }
@@ -560,8 +557,7 @@ swal({
       buttonsStyling: false,
       closeOnConfirm: false,
       closeOnCancel: false
-    },
-    function(isConfirm) {
+    }).then(function(isConfirm) {
       if (isConfirm === true) {
         swal('Deleted!', 'Your file has been deleted!', 'success');
       } else if (isConfirm === false) {

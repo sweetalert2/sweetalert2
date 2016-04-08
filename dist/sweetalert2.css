@@ -150,6 +150,11 @@
         margin-left: -3px;
         top: 19px;
         background-color: #c9dae1; }
+    .sweet-alert .sweet-icon.sweet-question {
+      color: #c9dae1;
+      border-color: #c9dae1;
+      font-size: 60px;
+      line-height: 80px; }
     .sweet-alert .sweet-icon.sweet-success {
       border-color: #a5dc86; }
       .sweet-alert .sweet-icon.sweet-success::before, .sweet-alert .sweet-icon.sweet-success::after {

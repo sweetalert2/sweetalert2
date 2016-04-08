@@ -473,6 +473,37 @@ swal({
   </p>
 
 
+  <!-- Modal Types -->
+  <h3>Modal Types</h3>
+  <table class="modal-types">
+    <tr>
+      <td><strong>success</strong></td>
+      <td><div class="sweet-icon sweet-success"> <span class="line tip animate-success-tip"></span> <span class="line long animate-success-long"></span> <div class="placeholder"></div></div></td>
+      <td><button class="type-success">show it!</button></td>
+    </tr>
+    <tr>
+      <td><strong>error</strong></td>
+      <td><div class="sweet-icon sweet-error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div></td>
+      <td><button class="type-error">show it!</button></td>
+    </tr>
+    <tr>
+      <td><strong>warning</strong></td>
+      <td><div class="sweet-icon sweet-warning">!</div></td>
+      <td><button class="type-warning">show it!</button></td>
+    </tr>
+    <tr>
+      <td><strong>info</strong></td>
+      <td><div class="sweet-icon sweet-info">i</div></td>
+      <td><button class="type-info">show it!</button></td>
+    </tr>
+    <tr>
+      <td><strong>question</strong></td>
+      <td><div class="sweet-icon sweet-question">?</div></td>
+      <td><button class="type-question">show it!</button></td>
+    </tr>
+  </table>
+
+
   <!-- Contribute -->
   <h3>Contribute</h3>
   <p class="center">Feel free to fork SweetAlert2 on <a href="https://github.com/limonte/sweetalert2" class="github">GitHub</a> if you have any features that you want to add!</p>
@@ -624,6 +655,11 @@ swal({
       }
     });
     $('#input-field').focus();
+  });
+
+  $('.modal-types button').on('click', function() {
+    var type = $(this).attr('class').slice(5);
+    swal(type + '!', '', type);
   });
   </script>
 

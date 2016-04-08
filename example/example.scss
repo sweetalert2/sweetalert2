@@ -55,6 +55,23 @@ header h2 {
   }
 }
 
+.modal-types {
+  td {
+    vertical-align: middle;
+    text-align: center;
+    width: 33%;
+  }
+  .sweet-icon, button {
+    display: inline-block;
+    margin: 0;
+  }
+  .sweet-success {
+    &::before, &::after {
+      background: transparent !important;
+    }
+  }
+}
+
 h3 {
   font-size: 28px;
   color: #c7ccd1;
@@ -452,4 +469,10 @@ table {
       }
     }
   }
+}
+
+.github-corner {
+  position: fixed;
+  top: 0;
+  right: 0;
 }

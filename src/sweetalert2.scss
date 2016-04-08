@@ -203,6 +203,13 @@
       }
     }
 
+    &.sweet-question {
+      color: $blue;
+      border-color: $blue;
+      font-size: 60px;
+      line-height: 80px;
+    }
+
     &.sweet-success {
       border-color: $green;
 

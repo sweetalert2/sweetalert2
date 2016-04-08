@@ -80,7 +80,8 @@ sweetAlert(
       <pre>
 swal(
   <span class="str">'The Internet?'</span>,
-  <span class="str">'That thing is still around?'</span>
+  <span class="str">'That thing is still around?'</span>,
+  <span class="str">'question'</span>
 )</pre>
     </li>
 
@@ -518,7 +519,7 @@ swal({
   });
 
   $('ul.examples li.title-text button').on('click', function() {
-    swal('The Internet?', 'That thing is still around?');
+    swal('The Internet?', 'That thing is still around?', 'question');
   });
 
   $('ul.examples li.success button').on('click', function() {

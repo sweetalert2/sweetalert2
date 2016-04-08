@@ -1,4 +1,4 @@
-// SweetAlert
+// SweetAlert2
 // github.com/limonte/sweetalert2
 
 .sweet-overlay {
@@ -100,205 +100,9 @@
       animation: rotate-loading 1.5s linear 0s infinite normal;
     }
 
-    // Removes selection outline in Firefox
+    // Remove selection outline in Firefox
     &::-moz-focus-inner {
       border: 0;
-    }
-  }
-
-  // Only show focus-style when there is multiple choice of actions
-  &[data-has-cancel-button=false] button {
-    box-shadow: none !important;
-  }
-
-
-  .sweet-icon {
-    $red:    #f27474;
-    $orange: #f8bb86;
-    $blue:   #c9dae1;
-    $green:  #a5dc86;
-
-    width: 80px;
-    height: 80px;
-    border: 4px solid #808080;
-    border-radius: 50%;
-    margin: 20px auto;
-    padding: 0;
-    position: relative;
-    box-sizing: content-box;
-
-    &.sweet-error {
-      border-color: $red;
-
-      .x-mark {
-        position: relative;
-        display: block;
-      }
-
-      .line {
-        position: absolute;
-        height: 5px;
-        width: 47px;
-        background-color: $red;
-        display: block;
-        top: 37px;
-        border-radius: 2px;
-
-        &.left {
-          transform: rotate(45deg);
-          left: 17px;
-        }
-
-        &.right {
-          transform: rotate(-45deg);
-          right: 16px;
-        }
-      }
-    }
-
-    &.sweet-warning {
-      border-color: $orange;
-
-      .body { // Exclamation mark body
-        position: absolute;
-        width: 5px;
-        height: 47px;
-        left: 50%;
-        top: 10px;
-        border-radius: 2px;
-        margin-left: -2px;
-        background-color: $orange;
-      }
-      .dot { // Exclamation mark dot
-        position: absolute;
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        margin-left: -3px;
-        left: 50%;
-        bottom: 10px;
-        background-color: $orange;
-      }
-    }
-
-    &.sweet-info {
-      border-color: $blue;
-
-      &::before { // i-letter body
-        content: '';
-        position: absolute;
-        width: 5px;
-        height: 29px;
-        left: 50%;
-        bottom: 17px;
-        border-radius: 2px;
-        margin-left: -2px;
-        background-color: $blue;
-      }
-      &::after { // i-letter dot
-        content: '';
-        position: absolute;
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        margin-left: -3px;
-        top: 19px;
-        background-color: $blue;
-      }
-    }
-
-    &.sweet-question {
-      color: $blue;
-      border-color: $blue;
-      font-size: 60px;
-      line-height: 80px;
-    }
-
-    &.sweet-success {
-      border-color: $green;
-
-      &::before,
-      &::after { // Emulate moving circular line
-        content: '';
-        border-radius: 50%;
-        position: absolute;
-        width: 60px;
-        height: 120px;
-        background: #fff;
-        transform: rotate(45deg);
-      }
-
-      &::before {
-        border-radius: 120px 0 0 120px;
-        top: -7px;
-        left: -33px;
-
-        transform: rotate(-45deg);
-        transform-origin: 60px 60px;
-      }
-
-      &::after {
-        border-radius: 0 120px 120px 0;
-        top: -11px;
-        left: 30px;
-
-        transform: rotate(-45deg);
-        transform-origin: 0 60px;
-      }
-
-      .placeholder { // Ring
-        width: 80px;
-        height: 80px;
-        border: 4px solid rgba($green, .2);
-        border-radius: 50%;
-        box-sizing: content-box;
-
-        position: absolute;
-        left: -4px;
-        top: -4px;
-        z-index: 2;
-      }
-
-      .fix {  // Hide corners left from animation
-        width: 5px;
-        height: 90px;
-        background-color: #fff;
-
-        position: absolute;
-        left: 28px;
-        top: 8px;
-        z-index: 1;
-
-        transform: rotate(-45deg);
-      }
-
-      .line {
-        height: 5px;
-        background-color: $green;
-        display: block;
-        border-radius: 2px;
-
-        position: absolute;
-        z-index: 2;
-
-        &.tip {
-          width: 25px;
-
-          left: 14px;
-          top: 46px;
-
-          transform: rotate(45deg);
-        }
-
-        &.long {
-          width: 47px;
-
-          right: 8px;
-          top: 38px;
-
-          transform: rotate(-45deg);
-        }
-      }
     }
   }
 
@@ -306,6 +110,174 @@
     margin: 20px auto;
   }
 
+}
+
+.sweet-icon {
+  $red:    #f27474;
+  $orange: #f8bb86;
+  $blue:   #c9dae1;
+  $green:  #a5dc86;
+
+  width: 80px;
+  height: 80px;
+  border: 4px solid #808080;
+  border-radius: 50%;
+  margin: 20px auto;
+  padding: 0;
+  position: relative;
+  box-sizing: content-box;
+  cursor: default;
+
+  /* http://stackoverflow.com/a/4407335/1331425 */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &.sweet-error {
+    border-color: $red;
+
+    .x-mark {
+      position: relative;
+      display: block;
+    }
+
+    .line {
+      position: absolute;
+      height: 5px;
+      width: 47px;
+      background-color: $red;
+      display: block;
+      top: 37px;
+      border-radius: 2px;
+
+      &.left {
+        transform: rotate(45deg);
+        left: 17px;
+      }
+
+      &.right {
+        transform: rotate(-45deg);
+        right: 16px;
+      }
+    }
+  }
+
+  &.sweet-warning {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: $orange;
+    border-color: $orange;
+    font-size: 60px;
+    line-height: 80px;
+    text-align: center;
+  }
+
+  &.sweet-info {
+    font-family: "Open Sans", sans-serif;
+    color: $blue;
+    border-color: $blue;
+    font-size: 60px;
+    line-height: 80px;
+    text-align: center;
+  }
+
+  &.sweet-question {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: $blue;
+    border-color: $blue;
+    font-size: 60px;
+    line-height: 80px;
+    text-align: center;
+  }
+
+  &.sweet-success {
+    border-color: $green;
+
+    &::before,
+    &::after { // Emulate moving circular line
+      content: '';
+      border-radius: 50%;
+      position: absolute;
+      width: 60px;
+      height: 120px;
+      background: #fff;
+      transform: rotate(45deg);
+    }
+
+    &::before {
+      border-radius: 120px 0 0 120px;
+      top: -7px;
+      left: -33px;
+
+      transform: rotate(-45deg);
+      transform-origin: 60px 60px;
+    }
+
+    &::after {
+      border-radius: 0 120px 120px 0;
+      top: -11px;
+      left: 30px;
+
+      transform: rotate(-45deg);
+      transform-origin: 0 60px;
+    }
+
+    .placeholder { // Ring
+      width: 80px;
+      height: 80px;
+      border: 4px solid rgba($green, .2);
+      border-radius: 50%;
+      box-sizing: content-box;
+
+      position: absolute;
+      left: -4px;
+      top: -4px;
+      z-index: 2;
+    }
+
+    .fix {  // Hide corners left from animation
+      width: 5px;
+      height: 90px;
+      background-color: #fff;
+
+      position: absolute;
+      left: 28px;
+      top: 8px;
+      z-index: 1;
+
+      transform: rotate(-45deg);
+    }
+
+    .line {
+      height: 5px;
+      background-color: $green;
+      display: block;
+      border-radius: 2px;
+
+      position: absolute;
+      z-index: 2;
+
+      &.tip {
+        width: 25px;
+
+        left: 14px;
+        top: 46px;
+
+        transform: rotate(45deg);
+      }
+
+      &.long {
+        width: 47px;
+
+        right: 8px;
+        top: 38px;
+
+        transform: rotate(-45deg);
+      }
+    }
+  }
 }
 
 // Animations
@@ -519,20 +491,6 @@
 
 .pulse-warning {
   @include animation('pulse-warning 0.75s infinite alternate');
-}
-
-@include keyframes(pulse-warning-ins) {
-  0% {
-    background-color: #f8d486;
-  }
-
-  100% {
-    background-color: #f8bb86;
-  }
-}
-
-.pulse-warning-ins {
-  @include animation('pulse-warning-ins 0.75s infinite alternate');
 }
 
 @include keyframes(rotate-loading) {

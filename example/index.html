@@ -245,14 +245,15 @@ swal({
   showCancelButton: <span class="val">true</span>,
   closeOnConfirm: <span class="val">false</span>,
   allowOutsideClick: <span class="val">false</span>
-},
-<span class="func"><i>function</i></span>() {
-  swal({
-    html:
-      <span class="str">'You entered: &lt;strong&gt;'</span> +
-      $(<span class="str">'#input-field'</span>).val() +
-      <span class="str">'&lt;/strong&gt;'</span>
-  });
+}).then(<span class="func"><i>function</i></span>(isConfirm) {
+  <span class="tag">if</span> (isConfirm) {
+    swal({
+      html:
+        <span class="str">'You entered: &lt;strong&gt;'</span> +
+        $(<span class="str">'#input-field'</span>).val() +
+        <span class="str">'&lt;/strong&gt;'</span>
+    });
+  }
 })</pre>
     </li>
 
@@ -268,12 +269,13 @@ swal({
   confirmButtonText: <span class="str">'Submit'</span>,
   closeOnConfirm: <span class="val">false</span>,
   allowOutsideClick: <span class="val">false</span>
-},
-<span class="func"><i>function</i></span>() {
-  swal.disableButtons();
-  <span class="func">setTimeout</span>(<span class="func">function</span>() {
-    swal(<span class="str">'Ajax request finished!'</span>);
-  }, 2000);
+}).then(<span class="func"><i>function</i></span>(isConfirm) {
+  <span class="tag">if</span> (isConfirm) {
+    swal.disableButtons();
+    <span class="func">setTimeout</span>(<span class="func">function</span>() {
+      swal(<span class="str">'Ajax request finished!'</span>);
+    }, 2000);
+  }
 })</pre>
     </li>
   </ul>
@@ -596,11 +598,12 @@ swal({
       confirmButtonText: 'Submit',
       closeOnConfirm: false,
       allowOutsideClick: false
-    },
-    function() {
-      swal({
-        html: 'You entered: <strong>' + $('#input-field').val() + '</strong>'
-      });
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        swal({
+          html: 'You entered: <strong>' + $('#input-field').val() + '</strong>'
+        });
+      }
     });
     $('#input-field').focus();
   });
@@ -612,12 +615,13 @@ swal({
       confirmButtonText: 'Submit',
       closeOnConfirm: false,
       allowOutsideClick: false
-    },
-    function() {
-      swal.disableButtons();
-      setTimeout(function() {
-        swal('Ajax request finished!');
-      }, 2000);
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        swal.disableButtons();
+        setTimeout(function() {
+          swal('Ajax request finished!');
+        }, 2000);
+      }
     });
     $('#input-field').focus();
   });

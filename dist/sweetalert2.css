@@ -179,7 +179,7 @@
       top: -4px;
       z-index: 2; }
     .sweet-icon.sweet-success .fix {
-      width: 5px;
+      width: 7px;
       height: 90px;
       background-color: #fff;
       position: absolute;
@@ -382,7 +382,7 @@
   -webkit-animation: animate-success-long 0.75s;
           animation: animate-success-long 0.75s; }
 
-.sweet-icon.success.animate::after {
+.sweet-icon.sweet-success.animate::after {
   -webkit-animation: rotatePlaceholder 4.25s ease-in;
           animation: rotatePlaceholder 4.25s ease-in; }
 

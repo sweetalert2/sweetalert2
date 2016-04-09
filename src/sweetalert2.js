@@ -28,6 +28,7 @@
     animation: true,
     allowOutsideClick: true,
     allowEscapeKey: true,
+    keySpaceAsEnter: true,
     showConfirmButton: true,
     showCancelButton: false,
     closeOnConfirm: true,
@@ -279,6 +280,7 @@
         params.customClass        = arguments[0].customClass || params.customClass;
         params.allowOutsideClick  = arguments[0].allowOutsideClick !== undefined ? arguments[0].allowOutsideClick : defaultParams.allowOutsideClick;
         params.allowEscapeKey     = arguments[0].allowEscapeKey !== undefined ? arguments[0].allowEscapeKey : defaultParams.allowEscapeKey;
+        params.keySpaceAsEnter    = arguments[0].keySpaceAsEnter !== undefined ? arguments[0].keySpaceAsEnter : defaultParams.keySpaceAsEnter;
         params.showConfirmButton  = arguments[0].showConfirmButton !== undefined ? arguments[0].showConfirmButton : defaultParams.showConfirmButton;
         params.showCancelButton   = arguments[0].showCancelButton !== undefined ? arguments[0].showCancelButton : defaultParams.showCancelButton;
         params.closeOnConfirm     = arguments[0].closeOnConfirm !== undefined ? arguments[0].closeOnConfirm : defaultParams.closeOnConfirm;
@@ -462,6 +464,10 @@
 
         if ([9,13,32,27].indexOf(keyCode) === -1) {
           // Don't do work on keys we don't care about.
+          return;
+        }
+
+        if(!params.keySpaceAsEnter && keyCode == 32) {
           return;
         }
 

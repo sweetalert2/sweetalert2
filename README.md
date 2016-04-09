@@ -11,7 +11,7 @@ Reason of creating this fork is inactivity of original SweetAlert plugin:
 
 [See SweetAlert2 in action!](https://limonte.github.io/sweetalert2/)
 
-![A success modal](https://raw.github.com/limonte/sweetalert2/master/sweetalert.gif)
+![SweetAlert2 example](https://raw.github.com/limonte/sweetalert2/master/sweetalert2.gif)
 
 
 Usage

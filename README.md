@@ -73,16 +73,12 @@ swal({
 [View more examples](https://limonte.github.io/sweetalert2/)
 
 
-Supported browsers
-------------------
+Modal Types
+-----------
 
-* Chrome (latest version)
-* Firefox (latest version)
-* Safari (latest two versions)
-* Microsoft Edge (latest version)
-* Opera (latest version)
-
-Pay attention: IE is not supported since v1.0.0.
+| `success`                                                                       | `error`                                                                       | `warning`                                                                       | `info`                                                                       | `question`                                                                       |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-success.png) | ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-error.png) | ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-warning.png) | ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-info.png) | ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-question.png) |
 
 
 Configuration
@@ -93,7 +89,7 @@ Configuration
 | `title`              | `null`        | The title of the modal. It can either be added to the object under the key "title" or passed as the first parameter of the function. |
 | `text`               | `null`        | A description for the modal. It can either be added to the object under the key "text" or passed as the second parameter of the function. |
 | `html`               | `null`        | A HTML description for the modal. If "text" and "html" parameters are provided in the same time, "text" will be used. |
-| `type `              | `null`        | The type of the modal. SweetAlert2 comes with 5 built-in types which will show a corresponding icon animation: `warning`, `error`, `success`, `info` and `question`. It can either be put in the array under the key `type` or passed as the third parameter of the function. |
+| `type `              | `null`        | The type of the modal. SweetAlert2 comes with [5 built-in types](#modal-types) which will show a corresponding icon animation: `warning`, `error`, `success`, `info` and `question`. It can either be put in the array under the key `type` or passed as the third parameter of the function. |
 | `customClass`        | `null`        | A custom CSS class for the modal. |
 | `animation`          | `true`        | If set to `false`, modal CSS animation will be disabled. |
 | `allowOutsideClick`  | `true`        | If set to `false`, the user can't dismiss the modal by clicking outside it. |
@@ -119,6 +115,18 @@ Configuration
 | `background`         | `"#fff"`      | Modal window background (CSS `background` property). |
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
+
+
+Supported browsers
+------------------
+
+* Chrome (latest version)
+* Firefox (latest version)
+* Safari (latest two versions)
+* Microsoft Edge (latest version)
+* Opera (latest version)
+
+Pay attention: IE is not supported since v1.0.0.
 
 
 Contributing

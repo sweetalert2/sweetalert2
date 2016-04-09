@@ -238,7 +238,7 @@
     }
 
     .fix {  // Hide corners left from animation
-      width: 5px;
+      width: 7px;
       height: 90px;
       background-color: #fff;
 
@@ -427,7 +427,7 @@
   @include animation('animate-success-long 0.75s');
 }
 
-.sweet-icon.success.animate::after {
+.sweet-icon.sweet-success.animate::after {
   @include animation('rotatePlaceholder 4.25s ease-in');
 }
 

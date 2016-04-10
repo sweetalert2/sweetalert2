@@ -185,38 +185,32 @@ button,
       background-color: darken($btn-gray, 10%);
     }
   }
-
-  &.download {
-    position: fixed;
-    right: 80px;
-    top: 30px;
-    background-color: rgba(#fff, .9);
-    color: #abcada;
-    font-weight: 500;
-    text-transform: uppercase;
-    z-index: 3;
-    margin: 0;
-
-    @media all and (max-width: 1278px) {
-      display: none;
-    }
-  }
 }
 
-.cdn {
+.top-right-button {
   position: fixed;
+  right: 80px;
   width: 170px;
   height: 50px;
   line-height: 50px;
-  right: 80px;
-  top: 90px;
   margin: 0;
-  background-color: rgba(#fff, .9);
-  color: #eb4c36;
-  font-weight: 500;
   z-index: 3;
-  margin: 0;
+  text-transform: uppercase;
+  font-weight: 500;
+  background-color: rgba(#fff, .9);
   border-radius: 2px;
+  cursor: pointer;
+
+  &.download {
+    top: 30px;
+    color: #abcada;
+
+  }
+
+  &.cdn {
+    top: 90px;
+    color: #eb4c36;
+  }
 
   @media all and (max-width: 1278px) {
     display: none;

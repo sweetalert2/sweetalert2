@@ -24,8 +24,8 @@
     <h1>Sweet<span>Alert</span>2</h1>
     <h2>A beautiful and customizable replacement for Javascript's "Alert"</h2>
     <h2>Supported fork of t4t5/sweetalert</h2>
-    <button class="download">Download</button>
-    <a href="http://www.jsdelivr.com/projects/sweetalert2" class="cdn">CDN</a>
+    <a class="top-right-button download">Download</a>
+    <a href="http://www.jsdelivr.com/projects/sweetalert2" class="top-right-button cdn">CDN</a>
   </header>
 
   <h3>So... What does it do?</h3>
@@ -512,7 +512,7 @@ swal({
 
 
   <script>
-  $('button.download').on('click', function() {
+  $('.download').on('click', function() {
     $('html, body').animate({scrollTop: $('.download-section').offset().top}, 1000);
   });
 

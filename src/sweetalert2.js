@@ -5,6 +5,7 @@
   'use strict';
 
   window.swalClasses = {
+    container: 'sweet-container',
     modal: 'sweet-alert',
     overlay: 'sweet-overlay',
     confirm: 'sweet-confirm',
@@ -210,21 +211,17 @@
     // Copy arguments to the local args variable
     var args = arguments;
     var modal = getModal();
-    if (modal !== null) {
-        if (hasClass(modal, 'visible')) {
-          resetPrevState();
-        }
-        // If getModal returns values then continue
-        return modalDependant.apply(this, args);
-    } else {
-        // If getModal returns null i.e. no matches, then set up a interval event to check the return value until it is not null
-        var modalCheckInterval = setInterval(function() {
-          if (getModal() !== null) {
-            clearInterval(modalCheckInterval);
-            return modalDependant.apply(this, args);
-          }
-      }, 100);
+
+    if (modal === null) {
+      swal.init();
+      modal = getModal();
     }
+
+    if (hasClass(modal, 'visible')) {
+      resetPrevState();
+    }
+
+    return modalDependant.apply(this, args);
   };
 
   /*
@@ -549,9 +546,13 @@
    * Add modal + overlay to DOM
    */
   window.swal.init = function() {
+    if (document.getElementsByClassName(window.swalClasses.container).length) {
+      return;
+    }
+
     var sweetHTML = '<div class="' + window.swalClasses.overlay + '" tabIndex="-1"></div><div class="' + window.swalClasses.modal + '" style="display: none" tabIndex="-1"><div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.error + '"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.question + '">?</div><div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.warning + '">!</div> <div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.info + '">i</div> <div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.success + '"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <img class="sweet-image"> <h2>Title</h2><div class="sweet-content">Text</div><hr class="sweet-spacer"><button class="' + window.swalClasses.confirm + '">OK</button><button class="' + window.swalClasses.cancel + '">Cancel</button></div>';
     var sweetWrap = document.createElement('div');
-    sweetWrap.className = 'sweet-container';
+    sweetWrap.className = window.swalClasses.container;
 
     sweetWrap.innerHTML = sweetHTML;
 

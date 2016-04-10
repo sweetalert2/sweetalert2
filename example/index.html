@@ -200,7 +200,8 @@ swal({
       <span class="str">'error'</span>
     );
   } <span class="tag">else</span> {
-    <span class="comment">// outside click, isConfirm is undefinded</span>
+    <span class="comment">// Esc key pressed or outside click,</span>
+    <span class="comment">// isConfirm is undefined</span>
   }
 })</pre>
     </li>
@@ -599,7 +600,8 @@ swal({
       } else if (isConfirm === false) {
         swal('Cancelled', 'Your imaginary file is safe :)', 'error');
       } else {
-        // outside click, isConfirm is undefinded
+        // Esc key pressed or outside click,
+        // isConfirm is undefined
       }
     });
   });

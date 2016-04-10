@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
+var cleanCSS = require('gulp-clean-css');
 var sass = require('gulp-sass');
 var rename = require('gulp-rename');
 var autoprefix = require('gulp-autoprefixer');
@@ -12,9 +13,16 @@ gulp.task('compress', function() {
 });
 
 gulp.task('sass', function() {
-  return gulp.src('src/sweetalert2.scss')
+  gulp.src('src/sweetalert2.scss')
     .pipe(sass())
     .pipe(autoprefix())
+    .pipe(gulp.dest('dist'));
+
+  gulp.src('src/sweetalert2.scss')
+    .pipe(sass())
+    .pipe(autoprefix())
+    .pipe(cleanCSS())
+    .pipe(rename({extname: '.min.css'}))
     .pipe(gulp.dest('dist'));
 });
 

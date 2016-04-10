@@ -17,17 +17,29 @@ Reason of creating this fork is inactivity of original SweetAlert plugin:
 Usage
 -----
 
-You can install SweetAlert2 through bower:
+To install:
 
 ```bash
 bower install sweetalert2
 ```
 
-Alternatively, download the package and reference the JavaScript and CSS files manually:
+To use:
 
 ```html
-<script src="dist/sweetalert2.min.js"></script>
-<link rel="stylesheet" type="text/css" href="dist/sweetalert2.min.css">
+<script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
+```
+
+---
+
+By default IE is not supported as it does not have [Promises](http://www.html5rocks.com/en/tutorials/es6/promises/) support. To make it work in IE install [es6-promise-polyfill](https://github.com/lahmatiy/es6-promise-polyfill):
+
+```bash
+bower install es6-promise-polyfill
+```
+
+```html
+<script src="bower_components/es6-promise-polyfill/promise.min.js"></script>
 ```
 
 
@@ -129,18 +141,6 @@ Configuration
 | `background`         | `"#fff"`      | Modal window background (CSS `background` property). |
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
-
-
-Supported browsers
-------------------
-
-* Chrome (latest version)
-* Firefox (latest version)
-* Safari (latest two versions)
-* Microsoft Edge (latest version)
-* Opera (latest version)
-
-Pay attention: IE is not supported since v1.0.0.
 
 
 Contributing

@@ -132,38 +132,28 @@ button,
     button.cancel:active,
     .button.cancel:active {
       background-color: #b7b7b7; }
-  button.download,
-  .button.download {
-    position: fixed;
-    right: 80px;
-    top: 30px;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #abcada;
-    font-weight: 500;
-    text-transform: uppercase;
-    z-index: 3;
-    margin: 0; }
-    @media all and (max-width: 1278px) {
-      button.download,
-      .button.download {
-        display: none; } }
 
-.cdn {
+.top-right-button {
   position: fixed;
+  right: 80px;
   width: 170px;
   height: 50px;
   line-height: 50px;
-  right: 80px;
-  top: 90px;
   margin: 0;
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #eb4c36;
-  font-weight: 500;
   z-index: 3;
-  margin: 0;
-  border-radius: 2px; }
+  text-transform: uppercase;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 2px;
+  cursor: pointer; }
+  .top-right-button.download {
+    top: 30px;
+    color: #abcada; }
+  .top-right-button.cdn {
+    top: 90px;
+    color: #eb4c36; }
   @media all and (max-width: 1278px) {
-    .cdn {
+    .top-right-button {
       display: none; } }
 
 .center-container {

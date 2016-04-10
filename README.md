@@ -27,7 +27,7 @@ Alternatively, download the package and reference the JavaScript and CSS files m
 
 ```html
 <script src="dist/sweetalert2.min.js"></script>
-<link rel="stylesheet" type="text/css" href="dist/sweetalert2.css">
+<link rel="stylesheet" type="text/css" href="dist/sweetalert2.min.css">
 ```
 
 

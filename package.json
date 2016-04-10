@@ -24,6 +24,7 @@
     "gulp-autoprefixer": "^2.1.0",
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^2.1.1",
-    "gulp-uglify": "^1.1.0"
+    "gulp-uglify": "^1.1.0",
+    "gulp-clean-css": "^2.0.5"
   }
 }

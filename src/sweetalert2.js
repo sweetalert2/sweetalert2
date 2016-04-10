@@ -497,7 +497,8 @@
               fireClick($confirmButton, e);
             }
           } else if (keyCode === 27 && params.allowEscapeKey === true) {
-            fireClick($cancelButton, e);
+            closeModal();
+            resolve(undefined);
           }
         }
       }

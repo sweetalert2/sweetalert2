@@ -46,7 +46,7 @@ A message signaling an error:
 swal('Oops...', 'Something went wrong!', 'error');
 ```
 
-A warning message, with a function attached to the "Confirm"-button..
+Handling the result of SweetAlert2 modal:
 
 ```javascript
 swal({
@@ -54,11 +54,8 @@ swal({
   text: 'You will not be able to recover this imaginary file!',
   type: 'warning',
   showCancelButton: true,
-  confirmButtonColor: '#dd6b55',
-  cancelButtonColor: '#999',
   confirmButtonText: 'Yes, delete it!',
   cancelButtonText: 'No, keep it',
-  closeOnConfirm: false
 }).then(function(isConfirm) {
   if (isConfirm === true) {
     swal(
@@ -66,9 +63,26 @@ swal({
       'Your imaginary file has been deleted.',
       'success'
     );
+
+  } else if (isConfirm === false) {
+    swal(
+      'Cancelled',
+      'Your imaginary file is safe :)',
+      'error'
+    );
+
+  } else {
+    // Esc key pressed or outside click,
+    // isConfirm is undefined
   }
 });
 ```
+
+`swal(...)` returns a Promise Object, `isConfirm` parameter in Promise method `then` will be:
+
+- `true` for "Confirm"-button
+- `false` for "Cancel"-button
+- `undefined` for outside click or <kbd>Esc</kbd> press
 
 [View more examples](https://limonte.github.io/sweetalert2/)
 

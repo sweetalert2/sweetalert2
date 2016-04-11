@@ -25,6 +25,8 @@
   z-index: 2000; }
   .sweet-alert:focus {
     outline: none; }
+  .sweet-alert.loading {
+    overflow-y: hidden; }
   .sweet-alert h2 {
     color: #575757;
     font-size: 30px;
@@ -61,16 +63,18 @@
     cursor: pointer; }
     .sweet-alert button.styled:focus {
       outline: none; }
-    .sweet-alert button.styled.sweet-cancel[disabled] {
-      opacity: .4; }
-    .sweet-alert button.styled.sweet-confirm[disabled] {
+    .sweet-alert button.styled[disabled] {
+      opacity: .4;
+      cursor: no-drop; }
+    .sweet-alert button.styled.loading {
+      box-sizing: border-box;
       border: 4px solid transparent;
       border-color: transparent;
       width: 40px;
       height: 40px;
       padding: 0;
-      margin: 0 30px;
-      vertical-align: middle;
+      margin: -2px 30px;
+      vertical-align: top;
       background-color: transparent !important;
       color: transparent;
       cursor: default;

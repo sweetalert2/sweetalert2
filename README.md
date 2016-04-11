@@ -102,7 +102,7 @@ Configuration
 -------------
 
 | Argument             | Default value | Description |
-| -------------------- | ------------- | ----- |
+| -------------------- | ------------- | ----------- |
 | `title`              | `null`        | The title of the modal. It can either be added to the object under the key "title" or passed as the first parameter of the function. |
 | `text`               | `null`        | A description for the modal. It can either be added to the object under the key "text" or passed as the second parameter of the function. |
 | `html`               | `null`        | A HTML description for the modal. If "text" and "html" parameters are provided in the same time, "text" will be used. |
@@ -132,6 +132,21 @@ Configuration
 | `background`         | `"#fff"`      | Modal window background (CSS `background` property). |
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
+
+
+Methods
+-------
+
+| Method             | Description |
+| ------------------ | ----------- |
+| `swal.setDefaults({Object})`          | If you end up using a lot of the same settings when calling SweetAlert2, you can use setDefaults at the start of your program to set them once and for all! |
+| `swal.close()` or `swal.closeModal()` | Close the currently open SweetAlert2 modal programmatically. |
+| `swal.enableButtons()`                | Enable confirm and cancel buttons. |
+| `swal.disableButtons()`               | Disable confirm and cancel buttons. |
+| `swal.enableLoading()`                | Disable buttons and show loader. This is useful with AJAX requests. |
+| `swal.disableLoading()`               | Enable buttons and hide loader. |
+| `swal.clickConfirm()`                 | Click "Confirm"-button programmatically. |
+| `swal.clickCancel()`                  | Click "Cancel"-button programmatically. |
 
 
 Contributing

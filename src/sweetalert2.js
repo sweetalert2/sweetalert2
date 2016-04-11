@@ -227,7 +227,7 @@
   /*
    * Global function to close sweetAlert
    */
-  window.sweetAlert.closeModal = window.swal.closeModal = function() {
+  window.sweetAlert.close = window.swal.close = window.sweetAlert.closeModal = window.swal.closeModal = function() {
     closeModal();
   };
 
@@ -512,9 +512,16 @@
         $confirmButton.style.borderRightColor = params.confirmButtonColor;
       }
 
-      window.swal.toggleLoading = function() {
-        $confirmButton.disabled = !$confirmButton.disabled;
-        $cancelButton.disabled = !$cancelButton.disabled;
+      window.swal.enableLoading = function() {
+        addClass($confirmButton, 'loading');
+        addClass(modal, 'loading');
+        $cancelButton.disabled = true;
+      };
+
+      window.swal.disableLoading = function() {
+        removeClass($confirmButton, 'loading');
+        removeClass(modal, 'loading');
+        $cancelButton.disabled = false;
       };
 
       window.swal.enableButtons = function() {
@@ -528,6 +535,7 @@
       };
 
       swal.enableButtons();
+      swal.disableLoading();
 
       window.onfocus = function() {
         // When the user has focused away and focused back from the whole window.

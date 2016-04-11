@@ -455,7 +455,6 @@
       function handleKeyDown(event) {
         var e = event || window.event;
         var keyCode = e.keyCode || e.which;
-        var modalIsVisible = hasClass(modal, 'visible');
 
         if ([9,13,32,27].indexOf(keyCode) === -1) {
           // Don't do work on keys we don't care about.
@@ -472,14 +471,8 @@
           }
         }
 
+        // TAB
         if (keyCode === 9) {
-          // TAB
-
-          // Should only happen if modal is visible
-          if (!modalIsVisible) {
-            return;
-          }
-
           if (!e.shiftKey) {
             // Cycle to the next button
             setFocus(btnIndex, 1);

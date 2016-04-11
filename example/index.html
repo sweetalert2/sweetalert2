@@ -274,7 +274,7 @@ swal({
   allowOutsideClick: <span class="val">false</span>
 }).then(<span class="func"><i>function</i></span>(isConfirm) {
   <span class="tag">if</span> (isConfirm) {
-    swal.disableButtons();
+    swal.enableLoading();
     <span class="func">setTimeout</span>(<span class="func">function</span>() {
       swal(<span class="str">'Ajax request finished!'</span>);
     }, 2000);
@@ -482,27 +482,75 @@ swal({
     <tr>
       <td><strong>success</strong></td>
       <td><div class="sweet-icon sweet-success"> <span class="line tip animate-success-tip"></span> <span class="line long animate-success-long"></span> <div class="placeholder"></div></div></td>
-      <td><button class="type-success">show it!</button></td>
+      <td><button class="type-success">Try me!</button></td>
     </tr>
     <tr>
       <td><strong>error</strong></td>
       <td><div class="sweet-icon sweet-error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div></td>
-      <td><button class="type-error">show it!</button></td>
+      <td><button class="type-error">Try me!</button></td>
     </tr>
     <tr>
       <td><strong>warning</strong></td>
       <td><div class="sweet-icon sweet-warning">!</div></td>
-      <td><button class="type-warning">show it!</button></td>
+      <td><button class="type-warning">Try me!</button></td>
     </tr>
     <tr>
       <td><strong>info</strong></td>
       <td><div class="sweet-icon sweet-info">i</div></td>
-      <td><button class="type-info">show it!</button></td>
+      <td><button class="type-info">Try me!</button></td>
     </tr>
     <tr>
       <td><strong>question</strong></td>
       <td><div class="sweet-icon sweet-question">?</div></td>
-      <td><button class="type-question">show it!</button></td>
+      <td><button class="type-question">Try me!</button></td>
+    </tr>
+  </table>
+
+
+  <!-- Methods -->
+  <h3>Methods</h3>
+  <table>
+    <tr class="titles">
+      <th>
+        <div class="border-left"></div>
+        Method
+      </th>
+      <th>
+        <div class="border-right"></div>
+        Description
+      </th>
+    </tr>
+    <tr>
+      <td><i>swal.setDefaults({Object})</i></td>
+      <td>If you end up using a lot of the same settings when calling SweetAlert2, you can use setDefaults at the start of your program to set them once and for all!</td>
+    </tr>
+    <tr>
+      <td><i>swal.close()</i> or <i>swal.closeModal()</i></td>
+      <td>Close the currently open SweetAlert2 modal programmatically.</td>
+    </tr>
+    <tr>
+      <td><i>swal.enableButtons()</i></td>
+      <td>Enable confirm and cancel buttons.</td>
+    </tr>
+    <tr>
+      <td><i>swal.disableButtons()</i></td>
+      <td>Disable confirm and cancel buttons.</td>
+    </tr>
+    <tr>
+      <td><i>swal.enableLoading()</i></td>
+      <td>Disable buttons and show loader. This is useful with AJAX requests.</td>
+    </tr>
+    <tr>
+      <td><i>swal.disableLoading()</i></td>
+      <td>Enable buttons and hide loader.</td>
+    </tr>
+    <tr>
+      <td><i>swal.clickConfirm()</i></td>
+      <td>Click "Confirm"-button programmatically.</td>
+    </tr>
+    <tr>
+      <td><i>swal.clickCancel()</i></td>
+      <td>Click "Cancel"-button programmatically.</td>
     </tr>
   </table>
 
@@ -654,7 +702,7 @@ swal({
       allowOutsideClick: false
     }).then(function(isConfirm) {
       if (isConfirm) {
-        swal.disableButtons();
+        swal.enableLoading();
         setTimeout(function() {
           swal('Ajax request finished!');
         }, 2000);

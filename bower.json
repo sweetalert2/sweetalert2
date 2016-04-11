@@ -5,6 +5,14 @@
     "Tristan Edwards <tristan.edwards@me.com> (http://tristanedwards.me)",
     "Limon Monte <limon.monte@gmail.com> (http://limonte.github.io)"
   ],
+  "dependencies": {
+    "es6-promise-polyfill": "*"
+  },
+  "ignore": [
+    "package.json",
+    "example",
+    "images"
+  ],
   "description": "A beautiful replacement for JavaScript's alert.",
   "main": ["dist/sweetalert2.min.js", "dist/sweetalert2.min.css"],
   "keywords": [

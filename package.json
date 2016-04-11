@@ -1,24 +1,12 @@
 {
   "name": "sweetalert2",
-  "version": "1.0.0",
+  "version": "1.0.7",
+  "repository": "git@github.com:limonte/sweetalert2.git",
   "description": "SweetAlert2 A beautiful replacement for JavaScript's 'alert'",
   "main": "src/sweetalert2.js",
-  "directories": {
-    "example": "example"
+  "dependencies": {
+    "es6-promise-polyfill": "*"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/limonte/sweetalert2.git"
-  },
-  "author": "t4t5 & limonte",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/limonte/sweetalert2/issues"
-  },
-  "homepage": "https://github.com/limonte/sweetalert2",
   "devDependencies": {
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^2.1.0",
@@ -26,5 +14,7 @@
     "gulp-sass": "^2.1.1",
     "gulp-uglify": "^1.1.0",
     "gulp-clean-css": "^2.0.5"
-  }
+  },
+  "author": "t4t5 & limonte",
+  "license": "MIT"
 }

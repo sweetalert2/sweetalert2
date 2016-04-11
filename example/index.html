@@ -232,7 +232,7 @@ swal({
   text: <span class="str">'Custom width, padding, background.'</span>,
   width: <span class="val">300</span>,
   padding: <span class="val">100</span>,
-  background: <span class="str">'url(http://goo.gl/jVlMUC)'</span>,
+  background: <span class="str">'#fff url(//goo.gl/enIitC)'</span>
 })</pre>
     </li>
 
@@ -247,6 +247,7 @@ swal({
   html: <span class="str">'&lt;p&gt;&lt;input id="input-field"&gt;'</span>,
   showCancelButton: <span class="val">true</span>,
   closeOnConfirm: <span class="val">false</span>,
+  allowEscapeKey: <span class="val">false</span>,
   allowOutsideClick: <span class="val">false</span>
 }).then(<span class="func"><i>function</i></span>(isConfirm) {
   <span class="tag">if</span> (isConfirm) {
@@ -671,7 +672,7 @@ swal({
       text: 'Modal with custom width, padding and background.',
       width: 300,
       padding: 100,
-      background: 'url(http://goo.gl/jVlMUC)'
+      background: '#fff url(//goo.gl/enIitC)'
     });
   });
 
@@ -682,6 +683,7 @@ swal({
       showCancelButton: true,
       confirmButtonText: 'Submit',
       closeOnConfirm: false,
+      allowEscapeKey: false,
       allowOutsideClick: false
     }).then(function(isConfirm) {
       if (isConfirm) {

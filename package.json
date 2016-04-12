@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "repository": "git@github.com:limonte/sweetalert2.git",
   "description": "SweetAlert2 A beautiful replacement for JavaScript's 'alert'",
   "main": "src/sweetalert2.js",

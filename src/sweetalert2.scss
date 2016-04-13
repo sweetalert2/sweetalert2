@@ -116,6 +116,22 @@
     margin: 20px auto;
   }
 
+  .sweet-close {
+    font-size: 36px;
+    line-height: 36px;
+    font-family: serif;
+    position: absolute;
+    top: 15px;
+    right: 24px;
+    cursor: pointer;
+    color: #cfcfcf;
+    transition: all 0.1s ease;
+
+    &:hover {
+      color: #d55;
+    }
+  }
+
 }
 
 .sweet-icon {

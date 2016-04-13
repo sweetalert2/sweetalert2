@@ -85,6 +85,19 @@
       border: 0; }
   .sweet-alert .sweet-image {
     margin: 20px auto; }
+  .sweet-alert .sweet-close {
+    font-size: 36px;
+    line-height: 36px;
+    font-family: serif;
+    position: absolute;
+    top: 15px;
+    right: 24px;
+    cursor: pointer;
+    color: #cfcfcf;
+    -webkit-transition: all 0.1s ease;
+            transition: all 0.1s ease; }
+    .sweet-alert .sweet-close:hover {
+      color: #d55; }
 
 .sweet-icon {
   width: 80px;

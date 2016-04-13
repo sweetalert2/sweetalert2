@@ -122,7 +122,8 @@ swal({
   html:
     <span class="str">'You can use &lt;b&gt;bold text&lt;/b&gt;, '</span> +
     <span class="str">'&lt;a href="//github.com"&gt;links&lt;/a&gt; '</span> +
-    <span class="str">'and other HTML tags'</span>
+    <span class="str">'and other HTML tags'</span>,
+  showCloseButton: <span class="val">true</span>,
 })</pre>
     </li>
 
@@ -200,7 +201,7 @@ swal({
       <span class="str">'error'</span>
     );
   } <span class="tag">else</span> {
-    <span class="comment">// Esc key pressed or outside click,</span>
+    <span class="comment">// Esc, close button or outside click</span>
     <span class="comment">// isConfirm is undefined</span>
   }
 })</pre>
@@ -426,6 +427,11 @@ swal({
       <td>Set this parameter to <strong>true</strong> if you want to invert default buttons positions.</td>
     </tr>
     <tr>
+      <td><b>showCloseButton</b></td>
+      <td><i>false</i></td>
+      <td>Set this parameter to <strong>true</strong> to show close button in top right corner of the modal.</td>
+    </tr>
+    <tr>
       <td><b>closeOnConfirm</b></td>
       <td><i>true</i></td>
       <td>Set to <strong>false</strong> if you want the modal to stay open even if the user presses the "Confirm"-button. This is especially useful if the function attached to the "Confirm"-button is another SweetAlert2.</td>
@@ -592,7 +598,8 @@ swal({
       html:
         'You can use <b>bold text</b>, ' +
         '<a href="//github.com">links</a> ' +
-        'and other HTML tags'
+        'and other HTML tags',
+      showCloseButton: true
     });
   });
 
@@ -649,7 +656,7 @@ swal({
       } else if (isConfirm === false) {
         swal('Cancelled', 'Your imaginary file is safe :)', 'error');
       } else {
-        // Esc key pressed or outside click,
+        // Esc, close button or outside click
         // isConfirm is undefined
       }
     });

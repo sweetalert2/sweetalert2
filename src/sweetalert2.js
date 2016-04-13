@@ -8,6 +8,9 @@
     container: 'sweet-container',
     modal: 'sweet-alert',
     overlay: 'sweet-overlay',
+    close: 'sweet-close',
+    content: 'sweet-content',
+    spacer: 'sweet-spacer',
     confirm: 'sweet-confirm',
     cancel: 'sweet-cancel',
     icon: 'sweet-icon',
@@ -41,6 +44,7 @@
     cancelButtonClass: null,
     buttonsStyling: true,
     reverseButtons: false,
+    showCloseButton: false,
     imageUrl: null,
     imageWidth: null,
     imageHeight: null,
@@ -293,6 +297,7 @@
         params.cancelButtonClass  = arguments[0].cancelButtonClass || params.cancelButtonClass;
         params.buttonsStyling     = arguments[0].buttonsStyling !== undefined ? arguments[0].buttonsStyling : defaultParams.buttonsStyling;
         params.reverseButtons     = arguments[0].reverseButtons !== undefined ? arguments[0].reverseButtons : defaultParams.reverseButtons;
+        params.showCloseButton    = arguments[0].showCloseButton !== undefined ? arguments[0].showCloseButton : defaultParams.showCloseButton;
         params.imageUrl           = arguments[0].imageUrl || defaultParams.imageUrl;
         params.imageWidth         = arguments[0].imageWidth || defaultParams.imageWidth;
         params.imageHeight        = arguments[0].imageHeight || defaultParams.imageHeight;
@@ -403,7 +408,7 @@
         var e = event || window.event;
         var target = e.target || e.srcElement;
 
-        if (target === getOverlay() && params.allowOutsideClick) {
+        if (hasClass(target, window.swalClasses.close) || (target === getOverlay() && params.allowOutsideClick)) {
           closeModal();
           resolve(undefined);
         }
@@ -552,7 +557,27 @@
       return;
     }
 
-    var sweetHTML = '<div class="' + window.swalClasses.overlay + '" tabIndex="-1"></div><div class="' + window.swalClasses.modal + '" style="display: none" tabIndex="-1"><div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.error + '"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.question + '">?</div><div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.warning + '">!</div> <div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.info + '">i</div> <div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.success + '"> <span class="line tip"></span> <span class="line long"></span> <div class="placeholder"></div> <div class="fix"></div> </div> <img class="sweet-image"> <h2>Title</h2><div class="sweet-content">Text</div><hr class="sweet-spacer"><button class="' + window.swalClasses.confirm + '">OK</button><button class="' + window.swalClasses.cancel + '">Cancel</button></div>';
+    var sweetHTML =
+      '<div class="' + window.swalClasses.overlay + '" tabIndex="-1"></div>' +
+      '<div class="' + window.swalClasses.modal + '" style="display: none" tabIndex="-1">' +
+        '<div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.error + '">' +
+          '<span class="x-mark"><span class="line left"></span><span class="line right"></span></span>' +
+        '</div>' +
+        '<div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.question + '">?</div>' +
+        '<div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.warning + '">!</div>' +
+        '<div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.info + '">i</div>' +
+        '<div class="' + window.swalClasses.icon + ' ' + window.swalClasses.iconTypes.success + '">' +
+          '<span class="line tip"></span> <span class="line long"></span>' +
+          '<div class="placeholder"></div> <div class="fix"></div>' +
+        '</div>' +
+        '<img class="' + window.swalClasses.image + '">' +
+        '<h2>Title</h2>' +
+        '<div class="' + window.swalClasses.content + '">Text</div>' +
+        '<hr class="' + window.swalClasses.spacer + '">' +
+        '<button class="' + window.swalClasses.confirm + '">OK</button>' +
+        '<button class="' + window.swalClasses.cancel + '">Cancel</button>' +
+        '<span class="' + window.swalClasses.close + '">&times;</span>' +
+      '</div>';
     var sweetWrap = document.createElement('div');
     sweetWrap.className = window.swalClasses.container;
 
@@ -604,22 +629,28 @@
     head.appendChild(cssNode);
 
     var $title = modal.querySelector('h2');
-    var $content = modal.querySelector('div.sweet-content');
+    var $content = modal.querySelector('.' + window.swalClasses.content);
     var $confirmBtn = modal.querySelector('button.' + window.swalClasses.confirm);
     var $cancelBtn = modal.querySelector('button.' + window.swalClasses.cancel);
-    var $btnSpacer = modal.querySelector('hr.sweet-spacer');
+    var $spacer = modal.querySelector('.' + window.swalClasses.spacer);
+    var $closeButton = modal.querySelector('.' + window.swalClasses.close);
 
     // Title
     $title.innerHTML = escapeHtml(params.title).split('\n').join('<br>');
 
     // Content
-    if (window.jQuery) {
-      $content = $($content).html(params.html || ('<p>' + escapeHtml(params.text.split('\n').join('<br>'))) + '</p>');
-    } else {
+    if (params.text || params.html) {
       $content.innerHTML = params.html || ('<p>' + escapeHtml(params.text.split('\n').join('<br>')) + '</p>');
-      if ($content.innerHTML) {
-        show($content);
-      }
+      show($content);
+    } else {
+      hide($content);
+    }
+
+    // Close button
+    if (params.showCloseButton) {
+      show($closeButton);
+    } else {
+      hide($closeButton);
     }
 
     // Custom Class
@@ -664,7 +695,7 @@
     }
 
     // Custom image
-    var $customImage = modal.querySelector('.sweet-image');
+    var $customImage = modal.querySelector('.' + window.swalClasses.image);
     if (params.imageUrl) {
       $customImage.setAttribute('src', params.imageUrl);
       show($customImage);
@@ -700,9 +731,9 @@
 
     // Buttons spacer
     if (!params.showConfirmButton && !params.showCancelButton) {
-      hide($btnSpacer);
+      hide($spacer);
     } else {
-      show($btnSpacer);
+      show($spacer);
     }
 
     // Edit text on cancel and confirm buttons

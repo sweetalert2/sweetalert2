@@ -75,7 +75,7 @@ swal({
     );
 
   } else {
-    // Esc key pressed or outside click,
+    // Esc, close button or outside click
     // isConfirm is undefined
   }
 });
@@ -85,7 +85,7 @@ swal({
 
 - `true` for "Confirm"-button
 - `false` for "Cancel"-button
-- `undefined` for outside click or <kbd>Esc</kbd> press
+- `undefined` for <kbd>Esc</kbd> press, close button or outside click
 
 [View more examples](https://limonte.github.io/sweetalert2/)
 
@@ -121,6 +121,7 @@ Configuration
 | `cancelButtonClass`  | `null`        | A custom CSS class for the "Cancel"-button. |
 | `buttonsStyling`     | `true`        | Apply default swal2 styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to `false`. |
 | `reverseButtons`     | `false`       | Set this parameter to `true` if you want to invert default buttons positions. |
+| `showCloseButton`    | `false`       | Set this parameter to `true` to show close button in top right corner of the modal. |
 | `closeOnConfirm`     | `true`        | Set to `false` if you want the modal to stay open even if the user presses the "Confirm"-button. This is especially useful if the function attached to the "Confirm"-button is another SweetAlert2. |
 | `imageUrl`           | `null`        | Add a customized icon for the modal. Should contain a string with the path or URL to the image. |
 | `imageWidth`         | `null`        | If imageUrl is set, you can specify imageWidth to describes image width in px. |

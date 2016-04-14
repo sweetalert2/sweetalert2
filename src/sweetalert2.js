@@ -816,9 +816,7 @@
 
     previousActiveElement = document.activeElement;
 
-    setTimeout(function() {
-      addClass(modal, 'visible');
-    }, 500);
+    addClass(modal, 'visible');
   }
 
   function closeModal() {

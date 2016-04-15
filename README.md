@@ -164,13 +164,3 @@ If you would like to contribute enhancements or fixes, please do the following:
 1. Start gulp watcher ``gulp watch`` to automatically minify the SCSS and JS-files.
 
 1. Make a pull request and wait for approval.
-
-Please note that modifications should follow these coding guidelines:
-
-1. Indent is 2 spaces.
-
-1. Javascript code should pass [jscs](http://jscs.info) and [jshint](http://jshint.com) linters with configurations in project repository.
-
-1. SCSS code should pass [scss-lint](https://github.com/causes/scss-lint) with configuration in project repository.
-
-1. Vertical whitespace helps readability, don't be afraid to use it.

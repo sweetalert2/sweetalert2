@@ -640,7 +640,18 @@
 
     // Content
     if (params.text || params.html) {
-      $content.innerHTML = params.html || ('<p>' + escapeHtml(params.text.split('\n').join('<br>')) + '</p>');
+      if (typeof params.html === 'object') {
+        $content.innerHTML = '';
+        if (0 in params.html) {
+          for (var i = 0; i in params.html; i++) {
+            $content.appendChild(params.html[i]);
+          }
+        } else {
+          $content.appendChild(params.html);
+        }
+      } else {
+        $content.innerHTML = params.html || ('<p>' + escapeHtml(params.text.split('\n').join('<br>')) + '</p>');
+      }
       show($content);
     } else {
       hide($content);

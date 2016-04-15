@@ -532,8 +532,8 @@
         $cancelButton.disabled = true;
       };
 
-      swal.enableButtons();
-      swal.disableLoading();
+      window.swal.enableButtons();
+      window.swal.disableLoading();
 
       window.onfocus = function() {
         // When the user has focused away and focused back from the whole window.
@@ -888,18 +888,18 @@
    */
   (function() {
     if (document.readyState === 'complete' || document.readyState === 'interactive' && document.body) {
-      swal.init();
+      window.swal.init();
     } else {
       if (document.addEventListener) {
         document.addEventListener('DOMContentLoaded', function onDomContentLoaded() {
           document.removeEventListener('DOMContentLoaded', onDomContentLoaded, false);
-          swal.init();
+          window.swal.init();
         }, false);
       } else if (document.attachEvent) {
         document.attachEvent('onreadystatechange', function onReadyStateChange() {
           if (document.readyState === 'complete') {
             document.detachEvent('onreadystatechange', onReadyStateChange);
-            swal.init();
+            window.swal.init();
           }
         });
       }

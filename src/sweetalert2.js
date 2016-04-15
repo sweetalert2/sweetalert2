@@ -14,6 +14,7 @@
     confirm: 'sweet-confirm',
     cancel: 'sweet-cancel',
     icon: 'sweet-icon',
+    image: 'sweet-image',
     iconTypes: {
       success: 'sweet-success',
       warning: 'sweet-warning',
@@ -217,7 +218,7 @@
     var modal = getModal();
 
     if (modal === null) {
-      swal.init();
+      window.swal.init();
       modal = getModal();
     }
 

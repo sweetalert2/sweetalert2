@@ -17,6 +17,10 @@
   <script src="./dist/sweetalert2.min.js"></script>
   <link rel="stylesheet" href="./dist/sweetalert2.min.css">
   <!--.......................-->
+
+  <!-- IE support -->
+  <script src="https://cdn.jsdelivr.net/es6-promise-polyfill/1.1.1/promise.min.js"></script>
+  <!--.......................-->
 </head>
 
 <body>
@@ -290,19 +294,17 @@ swal({
   <h3 class="download-section">Download & install</h3>
 
   <div class="center-container">
-    <p class="center"><b>Method 1:</b> Install through bower:</p>
     <pre class="center">$ bower install sweetalert2</pre>
   </div>
-
-  <p class="center"><b>Method 2:</b> Download the sweetAlert2 <strong>CSS</strong> and <strong>JavaScript</strong> files.</p>
-
-  <a class="button" href="https://github.com/limonte/sweetalert2/archive/master.zip" download>Download files</a>
 
   <ol>
     <li>
       <p>Initialize the plugin by referencing the necessary files:</p>
-      <pre>&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"dist/sweetalert2.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
-&lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="tag">type</span>=<span class="str">"text/css"</span> <span class="tag">href</span>=<span class="str">"dist/sweetalert2.min.css"</span>&gt;</pre>
+      <pre>&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
+&lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="tag">href</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.css"</span>&gt;
+
+<span class="comment">&lt;!-- for IE support --&gt;</span>
+&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/es6-promise-polyfill/promise.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;</pre>
     </li>
 
     <li>

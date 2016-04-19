@@ -157,7 +157,7 @@ button,
       display: none; } }
 
 .center-container {
-  max-width: 700px;
+  max-width: 725px;
   margin: 70px auto; }
 
 pre {
@@ -236,7 +236,7 @@ pre {
 
 .examples {
   list-style-type: none;
-  width: 700px;
+  width: 725px;
   margin: 0 auto;
   text-align: left;
   padding-left: 0; }
@@ -274,7 +274,7 @@ pre {
     margin-top: 93px; }
 
 ol {
-  max-width: 700px;
+  max-width: 725px;
   margin: 70px auto;
   list-style-position: inside;
   padding-left: 0; }
@@ -284,7 +284,7 @@ ol {
       margin-bottom: 10px; }
 
 table {
-  width: 700px;
+  width: 725px;
   font-size: 14px;
   color: #8a8f94;
   margin: 10px auto;

@@ -162,10 +162,6 @@ button,
   margin: 26px 5px 0;
   cursor: pointer;
 
-  &:focus {
-    outline: none;
-  }
-
   &:hover {
     background-color: darken($btn-blue, 3%);
   }

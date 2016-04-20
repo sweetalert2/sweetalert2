@@ -114,9 +114,6 @@ button,
   padding: 15px 35px;
   margin: 26px 5px 0;
   cursor: pointer; }
-  button:focus,
-  .button:focus {
-    outline: none; }
   button:hover,
   .button:hover {
     background-color: #297dce; }

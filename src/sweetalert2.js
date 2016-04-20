@@ -622,7 +622,9 @@
       // Keyboard interactions
       var $confirmButton = modal.querySelector('button.' + window.swalClasses.confirm);
       var $cancelButton = modal.querySelector('button.' + window.swalClasses.cancel);
-      var $modalElements = modal.querySelectorAll('button, input:not([type=hidden]), textarea, select');
+      var $modalElements = [$confirmButton, $cancelButton].concat(
+        modal.querySelectorAll('button:not([class^=sweet-]), input:not([type=hidden]), textarea, select')
+      );
       for (i = 0; i < $modalElements.length; i++) {
         $modalElements[i].onfocus = onButtonEvent;
         $modalElements[i].onblur = onButtonEvent;

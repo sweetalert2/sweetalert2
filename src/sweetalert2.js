@@ -87,12 +87,6 @@
     }
   };
 
-  var escapeHtml = function(str) {
-    var div = document.createElement('div');
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  };
-
   var _show = function(elem) {
     elem.style.opacity = '';
     elem.style.display = 'block';
@@ -284,7 +278,7 @@
     var $closeButton = modal.querySelector('.' + window.swalClasses.close);
 
     // Title
-    $title.innerHTML = escapeHtml(params.title).split('\n').join('<br>');
+    $title.innerHTML = params.title.split('\n').join('<br>');
 
     // Content
     if (params.text || params.html) {
@@ -298,7 +292,7 @@
           $content.appendChild(params.html);
         }
       } else {
-        $content.innerHTML = params.html || ('<p>' + escapeHtml(params.text.split('\n').join('<br>')) + '</p>');
+        $content.innerHTML = params.html || ('<p>' + params.text.split('\n').join('<br>') + '</p>');
       }
       show($content);
     } else {
@@ -398,8 +392,8 @@
     }
 
     // Edit text on cancel and confirm buttons
-    $confirmBtn.innerHTML = escapeHtml(params.confirmButtonText);
-    $cancelBtn.innerHTML = escapeHtml(params.cancelButtonText);
+    $confirmBtn.innerHTML = params.confirmButtonText;
+    $cancelBtn.innerHTML = params.cancelButtonText;
 
     // Set buttons to selected background colors
     if (params.buttonsStyling) {

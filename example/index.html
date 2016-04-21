@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Courgette">
   <link rel="stylesheet" href="./example.css">
   <link rel="stylesheet" href="./buttons.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
   <!-- This is what you need -->
@@ -117,17 +118,22 @@ swal({
 
     <li class="html">
       <div class="ui">
-        <p>Custom HTML description</p>
+        <p>Custom HTML description and buttons</p>
         <button>Try me!</button>
       </div>
       <pre>
 swal({
-  title: <span class="str">'HTML example'</span>,
+  title: <span class="str">'&lt;i&gt;HTML&lt;/i&gt; &lt;u&gt;example&lt;/u&gt;'</span>,
   html:
     <span class="str">'You can use &lt;b&gt;bold text&lt;/b&gt;, '</span> +
     <span class="str">'&lt;a href="//github.com"&gt;links&lt;/a&gt; '</span> +
     <span class="str">'and other HTML tags'</span>,
   showCloseButton: <span class="val">true</span>,
+  showCancelButton: <span class="val">true</span>,
+  confirmButtonText:
+    <span class="str">'&lt;i class="fa fa-thumbs-up"&gt;&lt;/i&gt; Great!'</span>,
+  cancelButtonText:
+    <span class="str">'&lt;i class="fa fa-thumbs-down"&gt;&lt;/i&gt;'</span>
 })</pre>
     </li>
 
@@ -596,12 +602,15 @@ swal({
 
   $('ul.examples li.html button').on('click', function() {
     swal({
-      title: 'HTML example',
+      title: '<i>HTML</i> <u>example</u>',
       html:
         'You can use <b>bold text</b>, ' +
         '<a href="//github.com">links</a> ' +
         'and other HTML tags',
-      showCloseButton: true
+      showCloseButton: true,
+      showCancelButton: true,
+      confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+      cancelButtonText: '<i class="fa fa-thumbs-down"></i>'
     });
   });
 

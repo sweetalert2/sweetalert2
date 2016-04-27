@@ -150,6 +150,19 @@ Methods
 | `swal.clickCancel()`                  | Click "Cancel"-button programmatically. |
 
 
+Browser compatibility
+---------------------
+
+SweetAlert works in most major browsers (yes, even IE). Some details:
+
+- **IE: 10+**, Promise polyfill should be included (see [usage example](#usage)).
+- **Microsoft Edge: 12+**
+- **Safari: 4+**
+- **Firefox: 4+**
+- **Chrome 14+**
+- **Opera: 15+**
+
+
 Contributing
 ------------
 

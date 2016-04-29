@@ -46,13 +46,6 @@ header h2 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
   }
-
-  input {
-    margin: 10px;
-    padding: 5px;
-    text-align: center;
-    font-size: 20px;
-  }
 }
 
 .modal-types {
@@ -321,7 +314,7 @@ pre {
 
 .examples {
   list-style-type: none;
-  width: 725px;
+  width: 750px;
   margin: 0 auto;
   text-align: left;
   padding-left: 0;
@@ -360,7 +353,7 @@ pre {
   }
 
   pre {
-    max-width: 370px;
+    max-width: 420px;
     margin-top: 67px;
 
     @media all and (max-width: 758px) {

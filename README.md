@@ -131,6 +131,11 @@ Configuration
 | `width`              | `500`         | Modal window width, including paddings (`box-sizing: border-box`). |
 | `padding`            | `20`          | Modal window padding. |
 | `background`         | `"#fff"`      | Modal window background (CSS `background` property). |
+| `input`              | `null`        | Input field type, can be `text`, `email`, `password` and `select`. |
+| `inputPlaceholder`   | `""`          | Input field placeholder. |
+| `inputValue`         | `""`          | Input field initial value. |
+| `inputOptions`       | `{}`          | If `input` parameter is set to `select`, you can provide options. Object keys will represent options values, object values will represent options text values. |
+| `inputValidator`     | `null`        | Validator for input field, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#select-box">usage example</a>. |
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
 
@@ -148,6 +153,8 @@ Methods
 | `swal.disableLoading()`               | Enable buttons and hide loader. |
 | `swal.clickConfirm()`                 | Click "Confirm"-button programmatically. |
 | `swal.clickCancel()`                  | Click "Cancel"-button programmatically. |
+| `swal.showValidationError(error)`     | Show validation error message. |
+| `swal.resetValidationError()`         | Hide validation error message. |
 
 
 Browser compatibility

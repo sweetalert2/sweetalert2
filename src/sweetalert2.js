@@ -128,11 +128,11 @@
     elem.style.display = 'block';
 
     var height = elem.clientHeight;
-    var padding = parseInt(getComputedStyle(elem).getPropertyValue('padding'), 10);
+    var paddingTop = parseInt(getComputedStyle(elem).getPropertyValue('padding-top'), 10);
 
     elem.style.left = '';
     elem.style.display = 'none';
-    return ('-' + parseInt(height / 2 + padding, 10) + 'px');
+    return ('-' + parseInt(height / 2 + paddingTop, 10) + 'px');
   };
 
   var fadeIn = function(elem, interval) {

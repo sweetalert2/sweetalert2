@@ -15,6 +15,9 @@
     cancel: 'sweet-cancel',
     icon: 'sweet-icon',
     image: 'sweet-image',
+    input: 'sweet-input',
+    select: 'sweet-select',
+    validationError: 'sweet-validation-error',
     iconTypes: {
       success: 'sweet-success',
       warning: 'sweet-warning',
@@ -53,7 +56,12 @@
     timer: null,
     width: 500,
     padding: 20,
-    background: '#fff'
+    background: '#fff',
+    input: null, // 'text' | 'email' | 'password' | 'select'
+    inputPlaceholder: '',
+    inputValue: '',
+    inputOptions: {},
+    inputValidator: null
   };
 
   /*
@@ -69,6 +77,15 @@
 
   var hasClass = function(elem, className) {
     return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+  };
+
+  var focusInput = function(input) {
+    input.focus();
+
+    // http://stackoverflow.com/a/2345915/1331425
+    var val = input.value;
+    input.value = '';
+    input.value = val;
   };
 
   var addClass = function(elem, className) {
@@ -370,6 +387,47 @@
       hide($customImage);
     }
 
+    // input, select
+    var $input = modal.querySelector('.' + window.swalClasses.input);
+    var $select = modal.querySelector('.' + window.swalClasses.select);
+    _hide($input);
+    _hide($select);
+    switch (params.input) {
+      case 'text':
+      case 'email':
+      case 'password':
+        $input.value = params.inputValue;
+        $input.placeholder = params.inputPlaceholder;
+        $input.type = params.input;
+        _show($input);
+        break;
+      case 'select':
+        $select.innerHTML = '';
+        if (params.inputPlaceholder) {
+          var placeholder = document.createElement('option');
+          placeholder.innerHTML = params.inputPlaceholder;
+          placeholder.disabled = true;
+          placeholder.selected = true;
+          $select.appendChild(placeholder);
+        }
+        for (var optionValue in params.inputOptions) {
+          var option = document.createElement('option');
+          option.value = optionValue;
+          option.innerHTML = params.inputOptions[optionValue];
+          if (params.inputValue === optionValue) {
+            option.selected = true;
+          }
+          $select.appendChild(option);
+        }
+        _show($select);
+        break;
+      case null:
+        break;
+      default:
+        window.console.error('Unexpected type of input! Expected "text" or "email" or "password" or "select", got ' + typeof arguments[0]);
+        break;
+    }
+
     // Cancel button
     if (params.showCancelButton) {
       $cancelBtn.style.display = 'inline-block';
@@ -501,6 +559,12 @@
         params.imageHeight        = arguments[0].imageHeight || defaultParams.imageHeight;
         params.imageClass         = arguments[0].imageClass || defaultParams.imageClass;
 
+        params.input              = arguments[0].input || defaultParams.input;
+        params.inputPlaceholder   = arguments[0].inputPlaceholder || defaultParams.inputPlaceholder;
+        params.inputValue         = arguments[0].inputValue || defaultParams.inputValue;
+        params.inputOptions       = arguments[0].inputOptions || defaultParams.inputOptions;
+        params.inputValidator     = arguments[0].inputValidator || defaultParams.inputValidator;
+
         break;
 
       default:
@@ -523,6 +587,20 @@
           window.swal.closeModal();
           resolve(undefined);
         }, params.timer);
+      }
+
+      // input/select autofocus
+      var getInput = function() {
+        if (params.input === 'select')  {
+          return modal.querySelector('.' + window.swalClasses.select);
+        }
+        return modal.querySelector('.' + window.swalClasses.input);
+      };
+
+      if (params.input) {
+        setTimeout(function() {
+          focusInput(getInput());
+        }, 0);
       }
 
       // Mouse interactions
@@ -569,19 +647,37 @@
             if (targetedConfirm && modalIsVisible) {
 
               if (params.closeOnConfirm) {
-                window.swal.closeModal();
-              }
+                if (params.input) {
+                  var $input = getInput();
+                  if (params.inputValidator) {
+                    params.inputValidator($input.value).then(
+                      function() {
+                        window.swal.closeModal();
+                        resolve($input.value);
+                      },
+                      function(error) {
+                        window.swal.showValidationError(error);
+                      }
+                    );
+                  } else {
+                    window.swal.closeModal();
+                    resolve($input.value);
+                  }
+                } else if (params.input) {
 
-              resolve(true);
+                } else {
+                  window.swal.closeModal();
+                  resolve(true);
+                }
+              }
 
             // Clicked 'cancel'
             } else if (targetedCancel && modalIsVisible) {
 
               if (params.closeOnCancel) {
                 window.swal.closeModal();
+                resolve(false);
               }
-
-              resolve(false);
 
             } else {
               window.swal.closeModal();
@@ -733,8 +829,27 @@
         $cancelButton.disabled = true;
       };
 
+      window.swal.showValidationError = function(error) {
+        var $validationError = modal.querySelector('.' + window.swalClasses.validationError);
+        $validationError.innerHTML = error;
+        show($validationError);
+
+        var input = getInput();
+        focusInput(input);
+        addClass(input, 'error');
+      };
+
+      window.swal.resetValidationError = function() {
+        var $validationError = modal.querySelector('.' + window.swalClasses.validationError);
+        hide($validationError);
+
+        var input = getInput();
+        removeClass(input, 'error');
+      };
+
       window.swal.enableButtons();
       window.swal.disableLoading();
+      window.swal.resetValidationError();
 
       window.onfocus = function() {
         // When the user has focused away and focused back from the whole window.
@@ -840,6 +955,9 @@
         '<img class="' + window.swalClasses.image + '">' +
         '<h2>Title</h2>' +
         '<div class="' + window.swalClasses.content + '">Text</div>' +
+        '<input class="' + window.swalClasses.input + '">' +
+        '<select class="' + window.swalClasses.select + '"></select>' +
+        '<div class="' + window.swalClasses.validationError + '"></div>' +
         '<hr class="' + window.swalClasses.spacer + '">' +
         '<button class="' + window.swalClasses.confirm + '">OK</button>' +
         '<button class="' + window.swalClasses.cancel + '">Cancel</button>' +
@@ -851,6 +969,18 @@
     sweetWrap.innerHTML = sweetHTML;
 
     document.body.appendChild(sweetWrap);
+
+    var modal = getModal();
+    var $input = modal.querySelector('.' + window.swalClasses.input);
+    var $select = modal.querySelector('.' + window.swalClasses.select);
+
+    $input.oninput = function() {
+      window.swal.resetValidationError();
+    };
+
+    $select.onchange = function() {
+      window.swal.resetValidationError();
+    };
   };
 
   /**

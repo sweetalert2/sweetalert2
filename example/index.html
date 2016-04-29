@@ -21,7 +21,7 @@
 
   <!-- IE support -->
   <script src="https://cdn.jsdelivr.net/es6-promise-polyfill/1.1.1/promise.min.js"></script>
-  <!--.......................-->
+  <!--............-->
 </head>
 
 <body>
@@ -255,18 +255,57 @@ swal({
       <pre>
 swal({
   title: <span class="str">'Input something'</span>,
-  html: <span class="str">'&lt;p&gt;&lt;input id="input-field"&gt;'</span>,
+  input: <span class="str">'text'</span>,
   showCancelButton: <span class="val">true</span>,
-  closeOnConfirm: <span class="val">false</span>,
-  allowEscapeKey: <span class="val">false</span>,
-  allowOutsideClick: <span class="val">false</span>
-}).then(<span class="func"><i>function</i></span>(isConfirm) {
-  <span class="tag">if</span> (isConfirm) {
+  inputValidator: <span class="func"><i>function</i></span>(value) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
+      <span class="tag">if</span> (value) {
+        resolve();
+      } <span class="tag">else</span> {
+        reject(<span class="str">'You need to write something!'</span>);
+      }
+    });
+  }
+}).then(<span class="func"><i>function</i></span>(result) {
+  <span class="tag">if</span> (result) {
     swal({
-      html:
-        <span class="str">'You entered: &lt;strong&gt;'</span> +
-        $(<span class="str">'#input-field'</span>).val() +
-        <span class="str">'&lt;/strong&gt;'</span>
+      type: <span class="str">'success'</span>,
+      html: <span class="str">'You entered: '</span> + result
+    });
+  }
+})</pre>
+    </li>
+
+    <li class="select-box" id="select-box">
+      <div class="ui">
+        <p>Modal window with select box</p>
+        <button>Try me!</button>
+      </div>
+      <pre>
+swal({
+  title: <span class="str">'Select Ukraine'</span>,
+  input: <span class="str">'select'</span>,
+  inputOptions: {
+    <span class="str">'SRB'</span>: <span class="str">'Serbia'</span>,
+    <span class="str">'UKR'</span>: <span class="str">'Ukraine'</span>,
+    <span class="str">'HRV'</span>: <span class="str">'Croatia'</span>
+  },
+  inputPlaceholder: <span class="str">'Select country'</span>,
+  showCancelButton: <span class="val">true</span>,
+  inputValidator: <span class="func"><i>function</i></span>(value) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
+      <span class="tag">if</span> (value === <span class="str">'UKR'</span>) {
+        resolve();
+      } <span class="tag">else</span> {
+        reject(<span class="str">'You need to select Ukraine :)'</span>);
+      }
+    });
+  }
+}).then(<span class="func"><i>function</i></span>(result) {
+  <span class="tag">if</span> (result) {
+    swal({
+      type: <span class="str">'success'</span>,
+      html: <span class="str">'You selected: '</span> + result
     });
   }
 })</pre>
@@ -484,6 +523,31 @@ swal({
       <td><i>"#fff"</i></td>
       <td>Modal window background (CSS background property).</td>
     </tr>
+    <tr>
+      <td><b>input</b></td>
+      <td><i>null</i></td>
+      <td>Input field type, can be <strong>text</strong>, <strong>email</strong>, <strong>password</strong> and <strong>select</strong>.</td>
+    </tr>
+    <tr>
+      <td><b>inputPlaceholder</b></td>
+      <td><i>""</i></td>
+      <td>Input field placeholder.</td>
+    </tr>
+    <tr>
+      <td><b>inputValue</b></td>
+      <td><i>""</i></td>
+      <td>Input field initial value.</td>
+    </tr>
+    <tr>
+      <td><b>inputOptions</b></td>
+      <td><i>{}</i></td>
+      <td>If <strong>input</strong> parameter is set to <strong>select</strong>, you can provide options. Object keys will represent options values, object values will represent options text values.</td>
+    </tr>
+    <tr>
+      <td><b>inputValidator</b></td>
+      <td><i>null</i></td>
+      <td>Validator for input field, should return Promise, see <a href="#select-box">usage example</a>.</td>
+    </tr>
   </table>
 
   <p class="center">
@@ -566,6 +630,14 @@ swal({
     <tr>
       <td><i>swal.clickCancel()</i></td>
       <td>Click "Cancel"-button programmatically.</td>
+    </tr>
+    <tr>
+      <td><i>swal.showValidationError(error)</i></td>
+      <td>Show validation error message.</td>
+    </tr>
+    <tr>
+      <td><i>swal.resetValidationError()</i></td>
+      <td>Hide validation error message.</td>
     </tr>
   </table>
 
@@ -697,20 +769,55 @@ swal({
   $('ul.examples li.input-field button').on('click', function() {
     swal({
       title: 'Input something',
-      html: '<input id="input-field">',
+      input: 'text',
       showCancelButton: true,
-      confirmButtonText: 'Submit',
-      closeOnConfirm: false,
-      allowEscapeKey: false,
-      allowOutsideClick: false
-    }).then(function(isConfirm) {
-      if (isConfirm) {
+      inputValidator: function(value) {
+        return new Promise(function(resolve, reject) {
+          if (value) {
+            resolve();
+          } else {
+            reject('You need to write something!');
+          }
+        });
+      }
+    }).then(function(result) {
+      if (result) {
         swal({
-          html: 'You entered: <strong>' + $('#input-field').val() + '</strong>'
+          type: 'success',
+          html: 'You entered: <strong>' + result + '</strong>',
         });
       }
     });
-    $('#input-field').focus();
+  });
+
+  $('ul.examples li.select-box button').on('click', function() {
+    swal({
+      title: 'Select Ukraine',
+      input: 'select',
+      inputOptions: {
+        'SRB': 'Serbia',
+        'UKR': 'Ukraine',
+        'HRV': 'Croatia'
+      },
+      inputPlaceholder: 'Select country',
+      showCancelButton: true,
+      inputValidator: function(value) {
+        return new Promise(function(resolve, reject) {
+          if (value === 'UKR') {
+            resolve();
+          } else {
+            reject('You need to select Ukraine :)');
+          }
+        });
+      }
+    }).then(function(result) {
+      if (result) {
+        swal({
+          type: 'success',
+          html: 'You entered: <strong>' + result + '</strong>',
+        });
+      }
+    });
   });
 
   $('ul.examples li.ajax-request button').on('click', function() {

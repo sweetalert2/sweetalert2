@@ -978,6 +978,12 @@
       window.swal.resetValidationError();
     };
 
+    $input.onkeyup = function() {
+      if (event.keyCode === 13) {
+        window.swal.clickConfirm();
+      }
+    };
+
     $select.onchange = function() {
       window.swal.resetValidationError();
     };

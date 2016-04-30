@@ -194,9 +194,7 @@ swal({
   cancelButtonText: <span class="str">'No, cancel!'</span>,
   confirmButtonClass: <span class="str">'btn btn-success'</span>,
   cancelButtonClass: <span class="str">'btn btn-danger'</span>,
-  buttonsStyling: <span class="val">false</span>,
-  closeOnConfirm: <span class="val">false</span>,
-  closeOnCancel: <span class="val">false</span>
+  buttonsStyling: <span class="val">false</span>
 }).then(<span class="func"><i>function</i></span>(isConfirm) {
   <span class="tag">if</span> (isConfirm === <span class="val">true</span>) {
     swal(
@@ -730,9 +728,7 @@ swal({
       cancelButtonText: 'No, cancel!',
       confirmButtonClass: 'btn btn-success',
       cancelButtonClass: 'btn btn-danger',
-      buttonsStyling: false,
-      closeOnConfirm: false,
-      closeOnCancel: false
+      buttonsStyling: false
     }).then(function(isConfirm) {
       if (isConfirm === true) {
         swal('Deleted!', 'Your file has been deleted!', 'success');

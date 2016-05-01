@@ -145,8 +145,8 @@
     text-align: center; }
   .sweet-icon.sweet-info {
     font-family: "Open Sans", sans-serif;
-    color: #c9dae1;
-    border-color: #c9dae1;
+    color: #a5dc86;
+    border-color: #a5dc86;
     font-size: 60px;
     line-height: 80px;
     text-align: center; }
@@ -224,43 +224,49 @@
         -webkit-transform: rotate(-45deg);
                 transform: rotate(-45deg); }
 
-.sweet-input {
+.sweet-input, .sweet-textarea {
   width: 100%;
   box-sizing: border-box;
   border-radius: 3px;
   border: 1px solid #d7d7d7;
-  height: 43px;
   margin-top: 10px;
   margin-bottom: 17px;
   font-size: 18px;
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.06);
-  padding: 0 12px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
-  .sweet-input.error {
+  .sweet-input.error, .sweet-textarea.error {
     border-color: #f06e57 !important; }
-  .sweet-input:focus {
+  .sweet-input:focus, .sweet-textarea:focus {
     outline: none;
     box-shadow: 0px 0px 3px #c4e6f5;
     border: 1px solid #b4dbed; }
-    .sweet-input:focus::-moz-placeholder {
+    .sweet-input:focus::-moz-placeholder, .sweet-textarea:focus::-moz-placeholder {
       -webkit-transition: opacity 0.3s 0.03s ease;
       transition: opacity 0.3s 0.03s ease;
       opacity: 0.8; }
-    .sweet-input:focus:-ms-input-placeholder {
+    .sweet-input:focus:-ms-input-placeholder, .sweet-textarea:focus:-ms-input-placeholder {
       -webkit-transition: opacity 0.3s 0.03s ease;
       transition: opacity 0.3s 0.03s ease;
       opacity: 0.8; }
-    .sweet-input:focus::-webkit-input-placeholder {
+    .sweet-input:focus::-webkit-input-placeholder, .sweet-textarea:focus::-webkit-input-placeholder {
       -webkit-transition: opacity 0.3s 0.03s ease;
       transition: opacity 0.3s 0.03s ease;
       opacity: 0.8; }
-  .sweet-input::-moz-placeholder {
+  .sweet-input::-moz-placeholder, .sweet-textarea::-moz-placeholder {
     color: #bdbdbd; }
-  .sweet-input:-ms-input-placeholder {
+  .sweet-input:-ms-input-placeholder, .sweet-textarea:-ms-input-placeholder {
     color: #bdbdbd; }
-  .sweet-input::-webkit-input-placeholder {
+  .sweet-input::-webkit-input-placeholder, .sweet-textarea::-webkit-input-placeholder {
     color: #bdbdbd; }
+
+.sweet-input {
+  height: 43px;
+  padding: 0 12px; }
+
+.sweet-textarea {
+  height: 108px;
+  padding: 12px; }
 
 .sweet-select {
   color: #555;

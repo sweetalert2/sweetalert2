@@ -131,7 +131,7 @@ Configuration
 | `width`              | `500`         | Modal window width, including paddings (`box-sizing: border-box`). |
 | `padding`            | `20`          | Modal window padding. |
 | `background`         | `"#fff"`      | Modal window background (CSS `background` property). |
-| `input`              | `null`        | Input field type, can be `text`, `email`, `password`, `select` and `checkbox`. |
+| `input`              | `null`        | Input field type, can be `text`, `email`, `password`, `select`, `checkbox` and `textarea`. |
 | `inputPlaceholder`   | `""`          | Input field placeholder. |
 | `inputValue`         | `""`          | Input field initial value. |
 | `inputOptions`       | `{}`          | If `input` parameter is set to `select`, you can provide options. Object keys will represent options values, object values will represent options text values. |

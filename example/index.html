@@ -308,7 +308,7 @@ swal({
 })</pre>
     </li>
 
-    <li class="ajax-request">
+    <li class="ajax-request" id="ajax-request">
       <div class="ui">
         <p>Ajax request example</p>
         <button>Try me!</button>
@@ -318,14 +318,18 @@ swal({
   title: <span class="str">'Submit to run ajax request'</span>,
   showCancelButton: <span class="val">true</span>,
   confirmButtonText: <span class="str">'Submit'</span>,
-  closeOnConfirm: <span class="val">false</span>,
+  preConfirm: <span class="func"><i>function</i></span>() {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve) {
+      swal.enableLoading();
+      <span class="func">setTimeout</span>(<span class="func">function</span>() {
+        resolve();
+      }, 2000);
+    });
+  },
   allowOutsideClick: <span class="val">false</span>
 }).then(<span class="func"><i>function</i></span>(isConfirm) {
   <span class="tag">if</span> (isConfirm) {
-    swal.enableLoading();
-    <span class="func">setTimeout</span>(<span class="func">function</span>() {
-      swal(<span class="str">'Ajax request finished!'</span>);
-    }, 2000);
+    swal(<span class="str">'Ajax request finished!'</span>);
   }
 })</pre>
     </li>
@@ -476,9 +480,9 @@ swal({
       <td>Set this parameter to <strong>true</strong> to show close button in top right corner of the modal.</td>
     </tr>
     <tr>
-      <td><b>closeOnConfirm</b></td>
-      <td><i>true</i></td>
-      <td>Set to <strong>false</strong> if you want the modal to stay open even if the user presses the "Confirm"-button. This is especially useful if the function attached to the "Confirm"-button is another SweetAlert2.</td>
+      <td><b>preConfirm</b></td>
+      <td><i>null</i></td>
+      <td>Function to execute before confirm, should return Promise, see <a href="#ajax-request">usage example</a>.</td>
     </tr>
     <tr>
       <td><b>imageUrl</b></td>
@@ -819,17 +823,20 @@ swal({
       title: 'Submit to run ajax request',
       showCancelButton: true,
       confirmButtonText: 'Submit',
-      closeOnConfirm: false,
+      preConfirm: function() {
+        return new Promise(function(resolve) {
+          swal.enableLoading();
+          setTimeout(function() {
+            resolve();
+          }, 2000);
+        });
+      },
       allowOutsideClick: false
     }).then(function(isConfirm) {
       if (isConfirm) {
-        swal.enableLoading();
-        setTimeout(function() {
-          swal('Ajax request finished!');
-        }, 2000);
+        swal('Ajax request finished!');
       }
     });
-    $('#input-field').focus();
   });
 
   $('.modal-types button').on('click', function() {

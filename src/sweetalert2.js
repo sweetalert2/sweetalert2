@@ -38,8 +38,7 @@
     allowEscapeKey: true,
     showConfirmButton: true,
     showCancelButton: false,
-    closeOnConfirm: true,
-    closeOnCancel: true,
+    preConfirm: null,
     confirmButtonText: 'OK',
     confirmButtonColor: '#3085d6',
     confirmButtonClass: null,
@@ -538,8 +537,7 @@
         params.allowEscapeKey     = arguments[0].allowEscapeKey !== undefined ? arguments[0].allowEscapeKey : defaultParams.allowEscapeKey;
         params.showConfirmButton  = arguments[0].showConfirmButton !== undefined ? arguments[0].showConfirmButton : defaultParams.showConfirmButton;
         params.showCancelButton   = arguments[0].showCancelButton !== undefined ? arguments[0].showCancelButton : defaultParams.showCancelButton;
-        params.closeOnConfirm     = arguments[0].closeOnConfirm !== undefined ? arguments[0].closeOnConfirm : defaultParams.closeOnConfirm;
-        params.closeOnCancel      = arguments[0].closeOnCancel !== undefined ? arguments[0].closeOnCancel : defaultParams.closeOnCancel;
+        params.preConfirm         = arguments[0].preConfirm || defaultParams.preConfirm;
         params.timer              = parseInt(arguments[0].timer, 10) || defaultParams.timer;
         params.width              = parseInt(arguments[0].width, 10) || defaultParams.width;
         params.padding            = parseInt(arguments[0].padding, 10) || defaultParams.padding;
@@ -603,6 +601,31 @@
         }, 0);
       }
 
+      var confirm = function() {
+        if (params.input) {
+          var $input = getInput();
+          if (params.inputValidator) {
+            params.inputValidator($input.value).then(
+              function() {
+                window.swal.closeModal();
+                resolve($input.value);
+              },
+              function(error) {
+                window.swal.showValidationError(error);
+              }
+            );
+          } else {
+            window.swal.closeModal();
+            resolve($input.value);
+          }
+        } else if (params.input) {
+
+        } else {
+          window.swal.closeModal();
+          resolve(true);
+        }
+      }
+
       // Mouse interactions
       var onButtonEvent = function(event) {
         var e = event || window.event;
@@ -646,38 +669,19 @@
             // Clicked 'confirm'
             if (targetedConfirm && modalIsVisible) {
 
-              if (params.closeOnConfirm) {
-                if (params.input) {
-                  var $input = getInput();
-                  if (params.inputValidator) {
-                    params.inputValidator($input.value).then(
-                      function() {
-                        window.swal.closeModal();
-                        resolve($input.value);
-                      },
-                      function(error) {
-                        window.swal.showValidationError(error);
-                      }
-                    );
-                  } else {
-                    window.swal.closeModal();
-                    resolve($input.value);
-                  }
-                } else if (params.input) {
-
-                } else {
-                  window.swal.closeModal();
-                  resolve(true);
-                }
+              if (params.preConfirm) {
+                params.preConfirm().then(function() {
+                  confirm();
+                });
+              } else {
+                confirm();
               }
 
             // Clicked 'cancel'
             } else if (targetedCancel && modalIsVisible) {
 
-              if (params.closeOnCancel) {
-                window.swal.closeModal();
-                resolve(false);
-              }
+              window.swal.closeModal();
+              resolve(false);
 
             } else {
               window.swal.closeModal();

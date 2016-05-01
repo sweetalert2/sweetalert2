@@ -124,6 +124,7 @@ swal({
       <pre>
 swal({
   title: <span class="str">'&lt;i&gt;HTML&lt;/i&gt; &lt;u&gt;example&lt;/u&gt;'</span>,
+  type: <span class="str">'info'</span>,
   html:
     <span class="str">'You can use &lt;b&gt;bold text&lt;/b&gt;, '</span> +
     <span class="str">'&lt;a href="//github.com"&gt;links&lt;/a&gt; '</span> +
@@ -560,7 +561,7 @@ swal({
     <tr>
       <td><b>input</b></td>
       <td><i>null</i></td>
-      <td>Input field type, can be <strong>text</strong>, <strong>email</strong>, <strong>password</strong>, <strong>select</strong> and <strong>checkbox</strong>.</td>
+      <td>Input field type, can be <strong>text</strong>, <strong>email</strong>, <strong>password</strong>, <strong>select</strong>, <strong>checkbox</strong> and <strong>textarea</strong>.</td>
     </tr>
     <tr>
       <td><b>inputPlaceholder</b></td>
@@ -709,6 +710,7 @@ swal({
   $('.examples .html button').on('click', function() {
     swal({
       title: '<i>HTML</i> <u>example</u>',
+      type: 'info',
       html:
         'You can use <b>bold text</b>, ' +
         '<a href="//github.com">links</a> ' +

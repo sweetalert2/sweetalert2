@@ -137,6 +137,7 @@
 .sweet-icon {
   $red:    #f27474;
   $orange: #f8bb86;
+  $green:  #3fc3ee;
   $blue:   #c9dae1;
   $green:  #a5dc86;
 
@@ -198,8 +199,8 @@
 
   &.sweet-info {
     font-family: "Open Sans", sans-serif;
-    color: $blue;
-    border-color: $blue;
+    color: $green;
+    border-color: $green;
     font-size: 60px;
     line-height: 80px;
     text-align: center;
@@ -302,17 +303,15 @@
   }
 }
 
-.sweet-input {
+.sweet-input, .sweet-textarea {
   width: 100%;
   box-sizing: border-box;
   border-radius: 3px;
   border: 1px solid rgb(215, 215, 215);
-  height: 43px;
   margin-top: 10px;
   margin-bottom: 17px;
   font-size: 18px;
   box-shadow: inset 0px 1px 1px rgba(black, 0.06);
-  padding: 0 12px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   &.error {
@@ -344,6 +343,16 @@
   &::-webkit-input-placeholder {
     color: lighten(#575757, 40);
   }
+}
+
+.sweet-input {
+  height: 43px;
+  padding: 0 12px;
+}
+
+.sweet-textarea {
+  height: 108px;
+  padding: 12px;
 }
 
 .sweet-select {

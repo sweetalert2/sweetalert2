@@ -18,6 +18,7 @@
     input: 'sweet-input',
     select: 'sweet-select',
     checkbox: 'sweet-checkbox',
+    textarea: 'sweet-textarea',
     validationError: 'sweet-validation-error',
     iconTypes: {
       success: 'sweet-success',
@@ -57,7 +58,7 @@
     width: 500,
     padding: 20,
     background: '#fff',
-    input: null, // 'text' | 'email' | 'password' | 'select' | 'checkbox'
+    input: null, // 'text' | 'email' | 'password' | 'select' | 'checkbox' | 'textarea'
     inputPlaceholder: '',
     inputValue: '',
     inputOptions: {},
@@ -392,9 +393,11 @@
     var $select = modal.querySelector('.' + window.swalClasses.select);
     var $checkbox = modal.querySelector('#' + window.swalClasses.checkbox);
     var $checkboxLabel = modal.querySelector('.' + window.swalClasses.checkbox);
+    var $textarea = modal.querySelector('.' + window.swalClasses.textarea);
     _hide($input);
     _hide($select);
     _hide($checkboxLabel);
+    _hide($textarea);
     switch (params.input) {
       case 'text':
       case 'email':
@@ -436,10 +439,15 @@
         $checkboxLabel.appendChild(label);
         _show($checkboxLabel);
         break;
+      case 'textarea':
+        $textarea.value = params.inputValue;
+        $textarea.placeholder = params.inputPlaceholder;
+        _show($textarea);
+        break;
       case null:
         break;
       default:
-        window.console.error('Unexpected type of input! Expected "text" or "email" or "password", "select" or "checkbox", got ' + typeof arguments[0]);
+        window.console.error('Unexpected type of input! Expected "text" or "email" or "password", "select", "checkbox" or "textarea", got ' + typeof arguments[0]);
         break;
     }
 
@@ -605,12 +613,16 @@
 
       // input/select autofocus
       var getInput = function() {
-        if (params.input === 'select')  {
-          return modal.querySelector('.' + window.swalClasses.select);
-        } else if (params.input === 'checkbox') {
-          return modal.querySelector('#' + window.swalClasses.checkbox);
+        switch (params.input) {
+          case 'select':
+            return modal.querySelector('.' + window.swalClasses.select);
+          case 'checkbox':
+            return modal.querySelector('#' + window.swalClasses.checkbox);
+          case 'textarea':
+            return modal.querySelector('.' + window.swalClasses.textarea);
+          default:
+            return modal.querySelector('.' + window.swalClasses.input);
         }
-        return modal.querySelector('.' + window.swalClasses.input);
       };
       var getInputValue = function() {
         var input = getInput();
@@ -989,6 +1001,7 @@
         '<label for="' + window.swalClasses.checkbox + '" class="' + window.swalClasses.checkbox + '">' +
           '<input type="checkbox" id="' + window.swalClasses.checkbox + '">' +
         '</label>' +
+        '<textarea class="' + window.swalClasses.textarea + '"></textarea>' +
         '<div class="' + window.swalClasses.validationError + '"></div>' +
         '<hr class="' + window.swalClasses.spacer + '">' +
         '<button class="' + window.swalClasses.confirm + '">OK</button>' +
@@ -1006,6 +1019,7 @@
     var $input = modal.querySelector('.' + window.swalClasses.input);
     var $select = modal.querySelector('.' + window.swalClasses.select);
     var $checkbox = modal.querySelector('#' + window.swalClasses.checkbox);
+    var $textarea = modal.querySelector('.' + window.swalClasses.textarea);
 
     $input.oninput = function() {
       window.swal.resetValidationError();
@@ -1022,6 +1036,10 @@
     };
 
     $checkbox.onchange = function() {
+      window.swal.resetValidationError();
+    };
+
+    $textarea.onchange = function() {
       window.swal.resetValidationError();
     };
   };

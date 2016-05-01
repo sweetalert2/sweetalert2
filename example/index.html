@@ -308,6 +308,39 @@ swal({
 })</pre>
     </li>
 
+    <li class="checkbox" id="checkbox">
+      <div class="ui">
+        <p>Modal window with checkbox</p>
+        <button>Try me!</button>
+      </div>
+      <pre>
+swal({
+  title: <span class="str">'Terms and conditions'</span>,
+  input: <span class="str">'checkbox'</span>,
+  inputValue: <span class="val">1</span>,
+  inputPlaceholder:
+    <span class="str">'I agree with the terms and conditions'</span>,
+  confirmButtonText:
+    <span class="str">'Continue &lt;i class="fa fa-arrow-right&gt;&lt;/i&gt;'</span>,
+  inputValidator: <span class="func"><i>function</i></span>(result) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
+      <span class="tag">if</span> (result) {
+        resolve();
+      } <span class="tag">else</span> {
+        reject(<span class="str">'You need to agree with T&amp;C'</span>);
+      }
+    });
+  }
+}).then(<span class="func"><i>function</i></span>(result) {
+  <span class="tag">if</span> (result) {
+    swal({
+      type: <span class="str">'success'</span>,
+      text: <span class="str">'You agreed with T&amp;C :)'</span>
+    });
+  }
+})</pre>
+    </li>
+
     <li class="ajax-request" id="ajax-request">
       <div class="ui">
         <p>Ajax request example</p>
@@ -527,7 +560,7 @@ swal({
     <tr>
       <td><b>input</b></td>
       <td><i>null</i></td>
-      <td>Input field type, can be <strong>text</strong>, <strong>email</strong>, <strong>password</strong> and <strong>select</strong>.</td>
+      <td>Input field type, can be <strong>text</strong>, <strong>email</strong>, <strong>password</strong>, <strong>select</strong> and <strong>checkbox</strong>.</td>
     </tr>
     <tr>
       <td><b>inputPlaceholder</b></td>
@@ -661,11 +694,11 @@ swal({
     swal('Oops...', 'Something went wrong!', 'error');
   });
 
-  $('ul.examples li.message button').on('click', function() {
+  $('.examples .message button').on('click', function() {
     swal('Any fool can use a computer');
   });
 
-  $('ul.examples li.timer button').on('click', function() {
+  $('.examples .timer button').on('click', function() {
     swal({
       title: 'Auto close alert!',
       text: 'I will close in 2 seconds.',
@@ -673,7 +706,7 @@ swal({
     });
   });
 
-  $('ul.examples li.html button').on('click', function() {
+  $('.examples .html button').on('click', function() {
     swal({
       title: '<i>HTML</i> <u>example</u>',
       html:
@@ -687,22 +720,22 @@ swal({
     });
   });
 
-  $('ul.examples li.html-jquery button').on('click', function() {
+  $('.examples .html-jquery button').on('click', function() {
     swal({
       title: 'jQuery HTML example',
       html: $('<div>').addClass('some-class').text('jQuery is everywhere.')
     });
   });
 
-  $('ul.examples li.title-text button').on('click', function() {
+  $('.examples .title-text button').on('click', function() {
     swal('The Internet?', 'That thing is still around?', 'question');
   });
 
-  $('ul.examples li.success button').on('click', function() {
+  $('.examples .success button').on('click', function() {
     swal('Good job!', 'You clicked the button!', 'success');
   });
 
-  $('ul.examples li.warning.confirm button').on('click', function() {
+  $('.examples .warning.confirm button').on('click', function() {
     swal({
       title: 'Are you sure?',
       text: 'You will not be able to recover this imaginary file!',
@@ -718,7 +751,7 @@ swal({
     });
   });
 
-  $('ul.examples li.warning.cancel button').on('click', function() {
+  $('.examples .warning.cancel button').on('click', function() {
     swal({
       title: 'Are you sure?',
       text: 'Buttons below are styled with Bootstrap classes',
@@ -743,7 +776,7 @@ swal({
     });
   });
 
-  $('ul.examples li.custom-icon button').on('click', function() {
+  $('.examples .custom-icon button').on('click', function() {
     swal({
       title: 'Sweet!',
       text: 'Modal with a custom image.',
@@ -754,7 +787,7 @@ swal({
     });
   });
 
-  $('ul.examples li.custom-width-padding button').on('click', function() {
+  $('.examples .custom-width-padding button').on('click', function() {
     swal({
       title: 'Sweet!',
       text: 'Modal with custom width, padding and background.',
@@ -764,7 +797,7 @@ swal({
     });
   });
 
-  $('ul.examples li.input-field button').on('click', function() {
+  $('.examples .input-field button').on('click', function() {
     swal({
       title: 'Input something',
       input: 'text',
@@ -788,7 +821,7 @@ swal({
     });
   });
 
-  $('ul.examples li.select-box button').on('click', function() {
+  $('.examples .select-box button').on('click', function() {
     swal({
       title: 'Select Ukraine',
       input: 'select',
@@ -818,7 +851,33 @@ swal({
     });
   });
 
-  $('ul.examples li.ajax-request button').on('click', function() {
+  $('.examples .checkbox button').on('click', function() {
+    swal({
+      title: 'Terms and conditions',
+      input: 'checkbox',
+      inputValue: 1,
+      inputPlaceholder: 'I agree with the terms and conditions',
+      confirmButtonText: 'Continue <i class="fa fa-arrow-right></i>',
+      inputValidator: function(result) {
+        return new Promise(function(resolve, reject) {
+          if (result) {
+            resolve();
+          } else {
+            reject('To continue you need to agree with T&amp;C');
+          }
+        });
+      }
+    }).then(function(result) {
+      if (result) {
+        swal({
+          type: 'success',
+          text: 'You agreed with T&amp;C :)',
+        });
+      }
+    });
+  });
+
+  $('.examples .ajax-request button').on('click', function() {
     swal({
       title: 'Submit to run ajax request',
       showCancelButton: true,

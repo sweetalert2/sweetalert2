@@ -270,6 +270,12 @@
   min-width: 40%;
   max-width: 100%; }
 
+.sweet-checkbox {
+  color: #555;
+  margin: 20px auto; }
+  .sweet-checkbox input, .sweet-checkbox span {
+    vertical-align: middle; }
+
 .sweet-validation-error {
   background-color: #f1f1f1;
   margin: 0 -20px;

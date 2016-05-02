@@ -42,6 +42,9 @@ header h2 {
 .modal-types .sweet-success::before, .modal-types .sweet-success::after {
   background: transparent !important; }
 
+.modal-input-types tr td:first-child {
+  padding-top: 45px; }
+
 h3 {
   font-size: 28px;
   color: #c7ccd1;
@@ -107,7 +110,8 @@ button,
   border-radius: 3px;
   padding: 15px 35px;
   margin: 26px 5px 0;
-  cursor: pointer; }
+  cursor: pointer;
+  white-space: nowrap; }
   button:hover,
   .button:hover {
     background-color: #297dce; }

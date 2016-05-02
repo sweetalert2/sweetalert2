@@ -364,6 +364,23 @@
   max-width: 100%;
 }
 
+.sweet-radio {
+  border: 0;
+  margin: 20px auto;
+
+  label:not(:first-child) {
+    margin-left: 20px;
+  }
+
+  input, span {
+    vertical-align: middle;
+  }
+
+  input {
+    margin: 0 3px 0 0;
+  }
+}
+
 .sweet-checkbox {
   color: #555;
   margin: 20px auto;

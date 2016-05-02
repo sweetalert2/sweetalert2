@@ -245,103 +245,6 @@ swal({
 })</pre>
     </li>
 
-    <li class="input-field" id="input-field">
-      <div class="ui">
-        <p>Modal window with input field</p>
-        <button>Try me!</button>
-      </div>
-      <pre>
-swal({
-  title: <span class="str">'Input something'</span>,
-  input: <span class="str">'text'</span>,
-  showCancelButton: <span class="val">true</span>,
-  inputValidator: <span class="func"><i>function</i></span>(value) {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
-      <span class="tag">if</span> (value) {
-        resolve();
-      } <span class="tag">else</span> {
-        reject(<span class="str">'You need to write something!'</span>);
-      }
-    });
-  }
-}).then(<span class="func"><i>function</i></span>(result) {
-  <span class="tag">if</span> (result) {
-    swal({
-      type: <span class="str">'success'</span>,
-      html: <span class="str">'You entered: '</span> + result
-    });
-  }
-})</pre>
-    </li>
-
-    <li class="select-box" id="select-box">
-      <div class="ui">
-        <p>Modal window with select box</p>
-        <button>Try me!</button>
-      </div>
-      <pre>
-swal({
-  title: <span class="str">'Select Ukraine'</span>,
-  input: <span class="str">'select'</span>,
-  inputOptions: {
-    <span class="str">'SRB'</span>: <span class="str">'Serbia'</span>,
-    <span class="str">'UKR'</span>: <span class="str">'Ukraine'</span>,
-    <span class="str">'HRV'</span>: <span class="str">'Croatia'</span>
-  },
-  inputPlaceholder: <span class="str">'Select country'</span>,
-  showCancelButton: <span class="val">true</span>,
-  inputValidator: <span class="func"><i>function</i></span>(value) {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
-      <span class="tag">if</span> (value === <span class="str">'UKR'</span>) {
-        resolve();
-      } <span class="tag">else</span> {
-        reject(<span class="str">'You need to select Ukraine :)'</span>);
-      }
-    });
-  }
-}).then(<span class="func"><i>function</i></span>(result) {
-  <span class="tag">if</span> (result) {
-    swal({
-      type: <span class="str">'success'</span>,
-      html: <span class="str">'You selected: '</span> + result
-    });
-  }
-})</pre>
-    </li>
-
-    <li class="checkbox" id="checkbox">
-      <div class="ui">
-        <p>Modal window with checkbox</p>
-        <button>Try me!</button>
-      </div>
-      <pre>
-swal({
-  title: <span class="str">'Terms and conditions'</span>,
-  input: <span class="str">'checkbox'</span>,
-  inputValue: <span class="val">1</span>,
-  inputPlaceholder:
-    <span class="str">'I agree with the terms and conditions'</span>,
-  confirmButtonText:
-    <span class="str">'Continue &lt;i class="fa fa-arrow-right&gt;&lt;/i&gt;'</span>,
-  inputValidator: <span class="func"><i>function</i></span>(result) {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
-      <span class="tag">if</span> (result) {
-        resolve();
-      } <span class="tag">else</span> {
-        reject(<span class="str">'You need to agree with T&amp;C'</span>);
-      }
-    });
-  }
-}).then(<span class="func"><i>function</i></span>(result) {
-  <span class="tag">if</span> (result) {
-    swal({
-      type: <span class="str">'success'</span>,
-      text: <span class="str">'You agreed with T&amp;C :)'</span>
-    });
-  }
-})</pre>
-    </li>
-
     <li class="ajax-request" id="ajax-request">
       <div class="ui">
         <p>Ajax request example</p>
@@ -561,7 +464,7 @@ swal({
     <tr>
       <td><b>input</b></td>
       <td><i>null</i></td>
-      <td>Input field type, can be <strong>text</strong>, <strong>email</strong>, <strong>password</strong>, <strong>select</strong>, <strong>checkbox</strong> and <strong>textarea</strong>.</td>
+      <td>Input field type, can be <strong>text</strong>, <strong>email</strong>, <strong>password</strong>, <strong>textarea</strong>, <strong>select</strong>, <strong>radio</strong>, and <strong>checkbox</strong>.</td>
     </tr>
     <tr>
       <td><b>inputPlaceholder</b></td>
@@ -618,6 +521,160 @@ swal({
       <td><div class="sweet-icon sweet-question">?</div></td>
       <td><button class="type-question">Try me!</button></td>
     </tr>
+  </table>
+
+
+  <!-- Input Types -->
+  <h3>Input Types</h3>
+  <table class="modal-input-types">
+    <tr id="input-field">
+      <td><strong>input</strong></td>
+      <td>
+        <pre>
+swal({
+  title: <span class="str">'Input something'</span>,
+  input: <span class="str">'text'</span>,
+  showCancelButton: <span class="val">true</span>,
+  inputValidator: <span class="func"><i>function</i></span>(value) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
+      <span class="tag">if</span> (value) {
+        resolve();
+      } <span class="tag">else</span> {
+        reject(<span class="str">'You need to write something!'</span>);
+      }
+    });
+  }
+}).then(<span class="func"><i>function</i></span>(result) {
+  <span class="tag">if</span> (result) {
+    swal({
+      type: <span class="str">'success'</span>,
+      html: <span class="str">'You entered: '</span> + result
+    });
+  }
+})</pre>
+      </td>
+      <td><button class="input-type-input">Try me!</button></td>
+    </tr>
+
+    <tr>
+      <td><strong>textarea</strong></td>
+      <td>
+        <pre>
+swal({
+  input: <span class="str">'textarea'</span>,
+  showCancelButton: <span class="val">true</span>
+}).then(<span class="func"><i>function</i></span>(result) {
+  <span class="tag">if</span> (result) {
+    swal(result);
+  }
+})</pre>
+      </td>
+      <td><button class="input-type-textarea">Try me!</button></td>
+    </tr>
+
+    <tr id="select-box">
+      <td><strong>select</strong></td>
+      <td>
+        <pre>
+swal({
+  title: <span class="str">'Select Ukraine'</span>,
+  input: <span class="str">'select'</span>,
+  inputOptions: {
+    <span class="str">'SRB'</span>: <span class="str">'Serbia'</span>,
+    <span class="str">'UKR'</span>: <span class="str">'Ukraine'</span>,
+    <span class="str">'HRV'</span>: <span class="str">'Croatia'</span>
+  },
+  inputPlaceholder: <span class="str">'Select country'</span>,
+  showCancelButton: <span class="val">true</span>,
+  inputValidator: <span class="func"><i>function</i></span>(value) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
+      <span class="tag">if</span> (value === <span class="str">'UKR'</span>) {
+        resolve();
+      } <span class="tag">else</span> {
+        reject(<span class="str">'You need to select Ukraine :)'</span>);
+      }
+    });
+  }
+}).then(<span class="func"><i>function</i></span>(result) {
+  <span class="tag">if</span> (result) {
+    swal({
+      type: <span class="str">'success'</span>,
+      html: <span class="str">'You selected: '</span> + result
+    });
+  }
+})</pre>
+
+      </td>
+      <td><button class="input-type-select">Try me!</button></td>
+    </tr>
+
+    <tr>
+      <td><strong>radio</strong></td>
+      <td>
+        <pre>
+swal({
+  title: <span class="str">'Select color'</span>,
+  input: <span class="str">'radio'</span>,
+  inputOptions: {
+    <span class="str">'#ff0000'</span>: <span class="str">'Red'</span>,
+    <span class="str">'#00ff00'</span>: <span class="str">'Green'</span>,
+    <span class="str">'#0000ff'</span>: <span class="str">'Blue'</span>
+  },
+  inputValidator: <span class="func"><i>function</i></span>(result) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
+      <span class="tag">if</span> (result) {
+        resolve();
+      } <span class="tag">else</span> {
+        reject(<span class="str">'You need to select something!'</span>);
+      }
+    });
+  }
+}).then(<span class="func"><i>function</i></span>(result) {
+  <span class="tag">if</span> (result) {
+    swal({
+      type: <span class="str">'success'</span>,
+      html: <span class="str">'You selected: '</span> + result
+    });
+  }
+})</pre>
+      </td>
+      <td><button class="input-type-radio">Try me!</button></td>
+    </tr>
+
+    <tr id="checkbox">
+      <td><strong>checkbox</strong></td>
+      <td>
+        <pre>
+swal({
+  title: <span class="str">'Terms and conditions'</span>,
+  input: <span class="str">'checkbox'</span>,
+  inputValue: <span class="val">1</span>,
+  inputPlaceholder:
+    <span class="str">'I agree with the terms and conditions'</span>,
+  confirmButtonText:
+    <span class="str">'Continue &lt;i class="fa fa-arrow-right&gt;&lt;/i&gt;'</span>,
+  inputValidator: <span class="func"><i>function</i></span>(result) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
+      <span class="tag">if</span> (result) {
+        resolve();
+      } <span class="tag">else</span> {
+        reject(<span class="str">'You need to agree with T&amp;C'</span>);
+      }
+    });
+  }
+}).then(<span class="func"><i>function</i></span>(result) {
+  <span class="tag">if</span> (result) {
+    swal({
+      type: <span class="str">'success'</span>,
+      text: <span class="str">'You agreed with T&amp;C :)'</span>
+    });
+  }
+})</pre>
+
+      </td>
+      <td><button class="input-type-checkbox">Try me!</button></td>
+    </tr>
+
   </table>
 
 
@@ -799,7 +856,7 @@ swal({
     });
   });
 
-  $('.examples .input-field button').on('click', function() {
+  $('.input-type-input').on('click', function() {
     swal({
       title: 'Input something',
       input: 'text',
@@ -823,7 +880,18 @@ swal({
     });
   });
 
-  $('.examples .select-box button').on('click', function() {
+  $('.input-type-textarea').on('click', function() {
+    swal({
+      input: 'textarea',
+      showCancelButton: true
+    }).then(function(result) {
+      if (result) {
+        swal(result);
+      }
+    });
+  });
+
+  $('.input-type-select').on('click', function() {
     swal({
       title: 'Select Ukraine',
       input: 'select',
@@ -853,7 +921,35 @@ swal({
     });
   });
 
-  $('.examples .checkbox button').on('click', function() {
+  $('.input-type-radio').on('click', function() {
+    swal({
+      title: 'Select color',
+      input: 'radio',
+      inputOptions: {
+        '#ff0000': 'Red',
+        '#00ff00': 'Green',
+        '#0000ff': 'Blue'
+      },
+      inputValidator: function(value) {
+        return new Promise(function(resolve, reject) {
+          if (value) {
+            resolve();
+          } else {
+            reject('You need to choose something!');
+          }
+        });
+      }
+    }).then(function(result) {
+      if (result) {
+        swal({
+          type: 'success',
+          html: 'You selected: <strong>' + result + '</strong>',
+        });
+      }
+    });
+  });
+
+  $('.input-type-checkbox').on('click', function() {
     swal({
       title: 'Terms and conditions',
       input: 'checkbox',

@@ -105,7 +105,7 @@ Configuration
 | -------------------- | ------------- | ----------- |
 | `title`              | `null`        | The title of the modal. It can either be added to the object under the key "title" or passed as the first parameter of the function. |
 | `text`               | `null`        | A description for the modal. It can either be added to the object under the key "text" or passed as the second parameter of the function. |
-| `html`               | `null`        | A HTML description for the modal. If "text" and "html" parameters are provided in the same time, "text" will be used. |
+| `html`               | `null`        | A HTML description for the modal. If `text` and `html` parameters are provided in the same time, "text" will be used. |
 | `type `              | `null`        | The type of the modal. SweetAlert2 comes with [5 built-in types](#modal-types) which will show a corresponding icon animation: `warning`, `error`, `success`, `info` and `question`. It can either be put in the array under the key `type` or passed as the third parameter of the function. |
 | `customClass`        | `null`        | A custom CSS class for the modal. |
 | `animation`          | `true`        | If set to `false`, modal CSS animation will be disabled. |
@@ -131,10 +131,10 @@ Configuration
 | `width`              | `500`         | Modal window width, including paddings (`box-sizing: border-box`). |
 | `padding`            | `20`          | Modal window padding. |
 | `background`         | `"#fff"`      | Modal window background (CSS `background` property). |
-| `input`              | `null`        | Input field type, can be `text`, `email`, `password`, `select`, `checkbox` and `textarea`. |
+| `input`              | `null`        | Input field type, can be `"text"`, `"email"`, `"password"`, `"textarea"`, `"select"`, `"radio"` and `"checkbox"`. |
 | `inputPlaceholder`   | `""`          | Input field placeholder. |
 | `inputValue`         | `""`          | Input field initial value. |
-| `inputOptions`       | `{}`          | If `input` parameter is set to `select`, you can provide options. Object keys will represent options values, object values will represent options text values. |
+| `inputOptions`       | `{}`          | If `input` parameter is set to `"select"`, you can provide options. Object keys will represent options values, object values will represent options text values. |
 | `inputValidator`     | `null`        | Validator for input field, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#select-box">usage example</a>. |
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.

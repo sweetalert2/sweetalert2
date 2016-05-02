@@ -65,6 +65,14 @@ header h2 {
   }
 }
 
+.modal-input-types {
+  tr {
+    td:first-child {
+      padding-top: 45px;
+    }
+  }
+}
+
 h3 {
   font-size: 28px;
   color: #c7ccd1;
@@ -154,6 +162,7 @@ button,
   padding: 15px 35px;
   margin: 26px 5px 0;
   cursor: pointer;
+  white-space: nowrap;
 
   &:hover {
     background-color: darken($btn-blue, 3%);

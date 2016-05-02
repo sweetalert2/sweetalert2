@@ -17,6 +17,7 @@
     image: 'sweet-image',
     input: 'sweet-input',
     select: 'sweet-select',
+    radio: 'sweet-radio',
     checkbox: 'sweet-checkbox',
     textarea: 'sweet-textarea',
     validationError: 'sweet-validation-error',
@@ -58,7 +59,7 @@
     width: 500,
     padding: 20,
     background: '#fff',
-    input: null, // 'text' | 'email' | 'password' | 'select' | 'checkbox' | 'textarea'
+    input: null, // 'text' | 'email' | 'password' | 'select' | 'radio' | 'checkbox' | 'textarea'
     inputPlaceholder: '',
     inputValue: '',
     inputOptions: {},
@@ -391,11 +392,13 @@
     // input, select
     var $input = modal.querySelector('.' + window.swalClasses.input);
     var $select = modal.querySelector('.' + window.swalClasses.select);
+    var $radio = modal.querySelector('.' + window.swalClasses.radio);
     var $checkbox = modal.querySelector('#' + window.swalClasses.checkbox);
     var $checkboxLabel = modal.querySelector('.' + window.swalClasses.checkbox);
     var $textarea = modal.querySelector('.' + window.swalClasses.textarea);
     _hide($input);
     _hide($select);
+    _hide($radio);
     _hide($checkboxLabel);
     _hide($textarea);
     switch (params.input) {
@@ -426,6 +429,28 @@
           $select.appendChild(option);
         }
         _show($select);
+        break;
+      case 'radio':
+        $radio.innerHTML = '';
+        for (var radioValue in params.inputOptions) {
+          var id = 1;
+          var radioInput = document.createElement('input');
+          var radioLabel = document.createElement('label');
+          var radioLabelSpan = document.createElement('span');
+          radioInput.type = 'radio';
+          radioInput.name = window.swalClasses.radio;
+          radioInput.value = radioValue;
+          radioInput.id = window.swalClasses.radio + '-' + (id++);
+          if (params.inputValue === radioValue) {
+            radioInput.checked = true;
+          }
+          radioLabelSpan.innerHTML = params.inputOptions[radioValue];
+          radioLabel.appendChild(radioInput);
+          radioLabel.appendChild(radioLabelSpan);
+          radioLabel.for = radioInput.id;
+          $radio.appendChild(radioLabel);
+        }
+        _show($radio);
         break;
       case 'checkbox':
         $checkbox.value = 1;
@@ -616,6 +641,9 @@
         switch (params.input) {
           case 'select':
             return modal.querySelector('.' + window.swalClasses.select);
+          case 'radio':
+            return modal.querySelector('.' + window.swalClasses.radio + ' input:checked') ||
+              modal.querySelector('.' + window.swalClasses.radio + ' input:first-child');
           case 'checkbox':
             return modal.querySelector('#' + window.swalClasses.checkbox);
           case 'textarea':
@@ -626,10 +654,14 @@
       };
       var getInputValue = function() {
         var input = getInput();
-        if (params.input === 'checkbox') {
-          return input.checked ? 1 : 0;
+        switch (params.input) {
+          case 'checkbox':
+            return input.checked ? 1 : 0;
+          case 'radio':
+            return input.checked ? input.value : null;
+          default:
+            return input.value;
         }
-        return input.value;
       };
 
       if (params.input) {
@@ -998,6 +1030,7 @@
         '<div class="' + window.swalClasses.content + '">Text</div>' +
         '<input class="' + window.swalClasses.input + '">' +
         '<select class="' + window.swalClasses.select + '"></select>' +
+        '<fieldset class="' + window.swalClasses.radio + '"></fieldset>' +
         '<label for="' + window.swalClasses.checkbox + '" class="' + window.swalClasses.checkbox + '">' +
           '<input type="checkbox" id="' + window.swalClasses.checkbox + '">' +
         '</label>' +

@@ -276,6 +276,16 @@
   min-width: 40%;
   max-width: 100%; }
 
+.sweet-radio {
+  border: 0;
+  margin: 20px auto; }
+  .sweet-radio label:not(:first-child) {
+    margin-left: 20px; }
+  .sweet-radio input, .sweet-radio span {
+    vertical-align: middle; }
+  .sweet-radio input {
+    margin: 0 3px 0 0; }
+
 .sweet-checkbox {
   color: #555;
   margin: 20px auto; }

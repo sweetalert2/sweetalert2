@@ -1,4 +1,4 @@
-.sweet-overlay {
+.swal2-overlay {
   background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
   left: 0;
@@ -8,7 +8,7 @@
   display: none;
   z-index: 1000; }
 
-.sweet-alert {
+.swal2-modal {
   background-color: #fff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-radius: 5px;
@@ -23,11 +23,11 @@
   overflow-y: auto;
   display: none;
   z-index: 2000; }
-  .sweet-alert:focus {
+  .swal2-modal:focus {
     outline: none; }
-  .sweet-alert.loading {
+  .swal2-modal.loading {
     overflow-y: hidden; }
-  .sweet-alert h2 {
+  .swal2-modal h2 {
     color: #575757;
     font-size: 30px;
     text-align: center;
@@ -38,7 +38,7 @@
     padding: 0;
     line-height: 60px;
     display: block; }
-  .sweet-alert p {
+  .swal2-modal p {
     font-size: 16px;
     text-align: center;
     font-weight: 300;
@@ -47,11 +47,11 @@
     margin: 0;
     padding: 0;
     line-height: normal; }
-  .sweet-alert hr {
+  .swal2-modal hr {
     height: 10px;
     color: transparent;
     border: 0; }
-  .sweet-alert button.styled {
+  .swal2-modal button.styled {
     color: #fff;
     border: 0;
     box-shadow: none;
@@ -61,12 +61,12 @@
     padding: 10px 32px;
     margin: 0 5px;
     cursor: pointer; }
-    .sweet-alert button.styled:focus {
+    .swal2-modal button.styled:focus {
       outline: none; }
-    .sweet-alert button.styled[disabled] {
+    .swal2-modal button.styled[disabled] {
       opacity: .4;
       cursor: no-drop; }
-    .sweet-alert button.styled.loading {
+    .swal2-modal button.styled.loading {
       box-sizing: border-box;
       border: 4px solid transparent;
       border-color: transparent;
@@ -81,11 +81,11 @@
       border-radius: 100%;
       -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
               animation: rotate-loading 1.5s linear 0s infinite normal; }
-    .sweet-alert button.styled::-moz-focus-inner {
+    .swal2-modal button.styled::-moz-focus-inner {
       border: 0; }
-  .sweet-alert .sweet-image {
+  .swal2-modal .swal2-image {
     margin: 20px auto; }
-  .sweet-alert .sweet-close {
+  .swal2-modal .swal2-close {
     font-size: 36px;
     line-height: 36px;
     font-family: serif;
@@ -96,10 +96,10 @@
     color: #cfcfcf;
     -webkit-transition: all 0.1s ease;
     transition: all 0.1s ease; }
-    .sweet-alert .sweet-close:hover {
+    .swal2-modal .swal2-close:hover {
       color: #d55; }
 
-.sweet-icon {
+.swal2-icon {
   width: 80px;
   height: 80px;
   border: 4px solid #808080;
@@ -115,12 +115,12 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  .sweet-icon.sweet-error {
+  .swal2-icon.swal2-error {
     border-color: #f27474; }
-    .sweet-icon.sweet-error .x-mark {
+    .swal2-icon.swal2-error .x-mark {
       position: relative;
       display: block; }
-    .sweet-icon.sweet-error .line {
+    .swal2-icon.swal2-error .line {
       position: absolute;
       height: 5px;
       width: 47px;
@@ -128,38 +128,38 @@
       display: block;
       top: 37px;
       border-radius: 2px; }
-      .sweet-icon.sweet-error .line.left {
+      .swal2-icon.swal2-error .line.left {
         -webkit-transform: rotate(45deg);
                 transform: rotate(45deg);
         left: 17px; }
-      .sweet-icon.sweet-error .line.right {
+      .swal2-icon.swal2-error .line.right {
         -webkit-transform: rotate(-45deg);
                 transform: rotate(-45deg);
         right: 16px; }
-  .sweet-icon.sweet-warning {
+  .swal2-icon.swal2-warning {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #f8bb86;
     border-color: #f8bb86;
     font-size: 60px;
     line-height: 80px;
     text-align: center; }
-  .sweet-icon.sweet-info {
+  .swal2-icon.swal2-info {
     font-family: "Open Sans", sans-serif;
     color: #3fc3ee;
     border-color: #3fc3ee;
     font-size: 60px;
     line-height: 80px;
     text-align: center; }
-  .sweet-icon.sweet-question {
+  .swal2-icon.swal2-question {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #c9dae1;
     border-color: #c9dae1;
     font-size: 60px;
     line-height: 80px;
     text-align: center; }
-  .sweet-icon.sweet-success {
+  .swal2-icon.swal2-success {
     border-color: #a5dc86; }
-    .sweet-icon.sweet-success::before, .sweet-icon.sweet-success::after {
+    .swal2-icon.swal2-success::before, .swal2-icon.swal2-success::after {
       content: '';
       border-radius: 50%;
       position: absolute;
@@ -168,7 +168,7 @@
       background: #fff;
       -webkit-transform: rotate(45deg);
               transform: rotate(45deg); }
-    .sweet-icon.sweet-success::before {
+    .swal2-icon.swal2-success::before {
       border-radius: 120px 0 0 120px;
       top: -7px;
       left: -33px;
@@ -176,7 +176,7 @@
               transform: rotate(-45deg);
       -webkit-transform-origin: 60px 60px;
               transform-origin: 60px 60px; }
-    .sweet-icon.sweet-success::after {
+    .swal2-icon.swal2-success::after {
       border-radius: 0 120px 120px 0;
       top: -11px;
       left: 30px;
@@ -184,7 +184,7 @@
               transform: rotate(-45deg);
       -webkit-transform-origin: 0 60px;
               transform-origin: 0 60px; }
-    .sweet-icon.sweet-success .placeholder {
+    .swal2-icon.swal2-success .placeholder {
       width: 80px;
       height: 80px;
       border: 4px solid rgba(165, 220, 134, 0.2);
@@ -194,7 +194,7 @@
       left: -4px;
       top: -4px;
       z-index: 2; }
-    .sweet-icon.sweet-success .fix {
+    .swal2-icon.swal2-success .fix {
       width: 7px;
       height: 90px;
       background-color: #fff;
@@ -204,27 +204,27 @@
       z-index: 1;
       -webkit-transform: rotate(-45deg);
               transform: rotate(-45deg); }
-    .sweet-icon.sweet-success .line {
+    .swal2-icon.swal2-success .line {
       height: 5px;
       background-color: #a5dc86;
       display: block;
       border-radius: 2px;
       position: absolute;
       z-index: 2; }
-      .sweet-icon.sweet-success .line.tip {
+      .swal2-icon.swal2-success .line.tip {
         width: 25px;
         left: 14px;
         top: 46px;
         -webkit-transform: rotate(45deg);
                 transform: rotate(45deg); }
-      .sweet-icon.sweet-success .line.long {
+      .swal2-icon.swal2-success .line.long {
         width: 47px;
         right: 8px;
         top: 38px;
         -webkit-transform: rotate(-45deg);
                 transform: rotate(-45deg); }
 
-.sweet-input, .sweet-textarea {
+.swal2-input, .swal2-textarea {
   width: 100%;
   box-sizing: border-box;
   border-radius: 3px;
@@ -235,40 +235,40 @@
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.06);
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
-  .sweet-input.error, .sweet-textarea.error {
+  .swal2-input.error, .swal2-textarea.error {
     border-color: #f06e57 !important; }
-  .sweet-input:focus, .sweet-textarea:focus {
+  .swal2-input:focus, .swal2-textarea:focus {
     outline: none;
     box-shadow: 0px 0px 3px #c4e6f5;
     border: 1px solid #b4dbed; }
-    .sweet-input:focus::-moz-placeholder, .sweet-textarea:focus::-moz-placeholder {
+    .swal2-input:focus::-moz-placeholder, .swal2-textarea:focus::-moz-placeholder {
       -webkit-transition: opacity 0.3s 0.03s ease;
       transition: opacity 0.3s 0.03s ease;
       opacity: 0.8; }
-    .sweet-input:focus:-ms-input-placeholder, .sweet-textarea:focus:-ms-input-placeholder {
+    .swal2-input:focus:-ms-input-placeholder, .swal2-textarea:focus:-ms-input-placeholder {
       -webkit-transition: opacity 0.3s 0.03s ease;
       transition: opacity 0.3s 0.03s ease;
       opacity: 0.8; }
-    .sweet-input:focus::-webkit-input-placeholder, .sweet-textarea:focus::-webkit-input-placeholder {
+    .swal2-input:focus::-webkit-input-placeholder, .swal2-textarea:focus::-webkit-input-placeholder {
       -webkit-transition: opacity 0.3s 0.03s ease;
       transition: opacity 0.3s 0.03s ease;
       opacity: 0.8; }
-  .sweet-input::-moz-placeholder, .sweet-textarea::-moz-placeholder {
+  .swal2-input::-moz-placeholder, .swal2-textarea::-moz-placeholder {
     color: #bdbdbd; }
-  .sweet-input:-ms-input-placeholder, .sweet-textarea:-ms-input-placeholder {
+  .swal2-input:-ms-input-placeholder, .swal2-textarea:-ms-input-placeholder {
     color: #bdbdbd; }
-  .sweet-input::-webkit-input-placeholder, .sweet-textarea::-webkit-input-placeholder {
+  .swal2-input::-webkit-input-placeholder, .swal2-textarea::-webkit-input-placeholder {
     color: #bdbdbd; }
 
-.sweet-input {
+.swal2-input {
   height: 43px;
   padding: 0 12px; }
 
-.sweet-textarea {
+.swal2-textarea {
   height: 108px;
   padding: 12px; }
 
-.sweet-select {
+.swal2-select {
   color: #555;
   font-size: inherit;
   margin: 20px auto;
@@ -276,23 +276,23 @@
   min-width: 40%;
   max-width: 100%; }
 
-.sweet-radio {
+.swal2-radio {
   border: 0;
   margin: 20px auto; }
-  .sweet-radio label:not(:first-child) {
+  .swal2-radio label:not(:first-child) {
     margin-left: 20px; }
-  .sweet-radio input, .sweet-radio span {
+  .swal2-radio input, .swal2-radio span {
     vertical-align: middle; }
-  .sweet-radio input {
+  .swal2-radio input {
     margin: 0 3px 0 0; }
 
-.sweet-checkbox {
+.swal2-checkbox {
   color: #555;
   margin: 20px auto; }
-  .sweet-checkbox input, .sweet-checkbox span {
+  .swal2-checkbox input, .swal2-checkbox span {
     vertical-align: middle; }
 
-.sweet-validation-error {
+.swal2-validationerror {
   background-color: #f1f1f1;
   margin: 0 -20px;
   overflow: hidden;
@@ -300,7 +300,7 @@
   color: #797979;
   font-size: 16px;
   font-weight: 300; }
-  .sweet-validation-error::before {
+  .swal2-validationerror::before {
     content: "!";
     display: inline-block;
     width: 24px;
@@ -356,17 +356,17 @@
     -webkit-transform: scale(0.5);
             transform: scale(0.5); } }
 
-.show-sweet-alert {
+.show-swal2 {
   -webkit-animation: showSweetAlert 0.3s;
           animation: showSweetAlert 0.3s; }
-  .show-sweet-alert.no-animation {
+  .show-swal2.no-animation {
     -webkit-animation: none;
             animation: none; }
 
-.hide-sweet-alert {
+.hide-swal2 {
   -webkit-animation: hideSweetAlert 0.2s;
           animation: hideSweetAlert 0.2s; }
-  .hide-sweet-alert.no-animation {
+  .hide-swal2.no-animation {
     -webkit-animation: none;
             animation: none; }
 
@@ -486,7 +486,7 @@
   -webkit-animation: animate-success-long 0.75s;
           animation: animate-success-long 0.75s; }
 
-.sweet-icon.sweet-success.animate::after {
+.swal2-icon.swal2-success.animate::after {
   -webkit-animation: rotatePlaceholder 4.25s ease-in;
           animation: rotatePlaceholder 4.25s ease-in; }
 

@@ -1,7 +1,7 @@
 // SweetAlert2
 // github.com/limonte/sweetalert2
 
-.sweet-overlay {
+.swal2-overlay {
   background-color: rgba(#000, .4);
 
   position: fixed;
@@ -14,7 +14,7 @@
   z-index: 1000;
 }
 
-.sweet-alert {
+.swal2-modal {
   background-color: #fff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-radius: 5px;
@@ -112,11 +112,11 @@
     }
   }
 
-  .sweet-image {
+  .swal2-image {
     margin: 20px auto;
   }
 
-  .sweet-close {
+  .swal2-close {
     font-size: 36px;
     line-height: 36px;
     font-family: serif;
@@ -134,10 +134,10 @@
 
 }
 
-.sweet-icon {
+.swal2-icon {
   $red:    #f27474;
   $orange: #f8bb86;
-  $cyan:  #3fc3ee;
+  $cyan:   #3fc3ee;
   $blue:   #c9dae1;
   $green:  #a5dc86;
 
@@ -159,7 +159,7 @@
   -ms-user-select: none;
   user-select: none;
 
-  &.sweet-error {
+  &.swal2-error {
     border-color: $red;
 
     .x-mark {
@@ -188,7 +188,7 @@
     }
   }
 
-  &.sweet-warning {
+  &.swal2-warning {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: $orange;
     border-color: $orange;
@@ -197,7 +197,7 @@
     text-align: center;
   }
 
-  &.sweet-info {
+  &.swal2-info {
     font-family: "Open Sans", sans-serif;
     color: $cyan;
     border-color: $cyan;
@@ -206,7 +206,7 @@
     text-align: center;
   }
 
-  &.sweet-question {
+  &.swal2-question {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: $blue;
     border-color: $blue;
@@ -215,7 +215,7 @@
     text-align: center;
   }
 
-  &.sweet-success {
+  &.swal2-success {
     border-color: $green;
 
     &::before,
@@ -303,7 +303,7 @@
   }
 }
 
-.sweet-input, .sweet-textarea {
+.swal2-input, .swal2-textarea {
   width: 100%;
   box-sizing: border-box;
   border-radius: 3px;
@@ -345,17 +345,17 @@
   }
 }
 
-.sweet-input {
+.swal2-input {
   height: 43px;
   padding: 0 12px;
 }
 
-.sweet-textarea {
+.swal2-textarea {
   height: 108px;
   padding: 12px;
 }
 
-.sweet-select {
+.swal2-select {
   color: #555;
   font-size: inherit;
   margin: 20px auto;
@@ -364,7 +364,7 @@
   max-width: 100%;
 }
 
-.sweet-radio {
+.swal2-radio {
   border: 0;
   margin: 20px auto;
 
@@ -381,7 +381,7 @@
   }
 }
 
-.sweet-checkbox {
+.swal2-checkbox {
   color: #555;
   margin: 20px auto;
   input, span {
@@ -389,7 +389,7 @@
   }
 }
 
-.sweet-validation-error {
+.swal2-validationerror {
   background-color: #f1f1f1;
   margin: 0 -20px;
   overflow: hidden;
@@ -456,7 +456,7 @@
   }
 }
 
-.show-sweet-alert {
+.show-swal2 {
   @include animation('showSweetAlert 0.3s');
 
   &.no-animation {
@@ -464,7 +464,7 @@
   }
 }
 
-.hide-sweet-alert {
+.hide-swal2 {
   @include animation('hideSweetAlert 0.2s');
 
   &.no-animation {
@@ -560,7 +560,7 @@
   @include animation('animate-success-long 0.75s');
 }
 
-.sweet-icon.sweet-success.animate::after {
+.swal2-icon.swal2-success.animate::after {
   @include animation('rotatePlaceholder 4.25s ease-in');
 }
 

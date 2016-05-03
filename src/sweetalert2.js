@@ -4,33 +4,23 @@
 (function(window, document) {
   'use strict';
 
-  window.swalClasses = {
-    container: 'sweet-container',
-    modal: 'sweet-alert',
-    overlay: 'sweet-overlay',
-    close: 'sweet-close',
-    content: 'sweet-content',
-    spacer: 'sweet-spacer',
-    confirm: 'sweet-confirm',
-    cancel: 'sweet-cancel',
-    icon: 'sweet-icon',
-    image: 'sweet-image',
-    input: 'sweet-input',
-    select: 'sweet-select',
-    radio: 'sweet-radio',
-    checkbox: 'sweet-checkbox',
-    textarea: 'sweet-textarea',
-    validationError: 'sweet-validation-error',
-    iconTypes: {
-      success: 'sweet-success',
-      warning: 'sweet-warning',
-      info: 'sweet-info',
-      question: 'sweet-question',
-      error: 'sweet-error'
+  window.swalPrefix = 'swal2-';
+  var prefix = function(items) {
+    var result = {};
+    for (var i in items) {
+      result[items[i]] = window.swalPrefix + items[i];
     }
+    return result;
   };
 
-  var mediaqueryId = 'sweet-alert-mediaquery';
+  window.swalClasses = prefix([
+    'container', 'modal', 'overlay', 'close', 'content', 'spacer', 'confirm', 'cancel', 'icon', 'image',
+    'input', 'select', 'radio', 'checkbox', 'textarea', 'validationerror'
+  ]);
+
+  window.swalClasses.iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
+
+  var mediaqueryId = window.swalPrefix + 'mediaquery';
   var defaultParams = {
     title: '',
     text: '',
@@ -63,6 +53,7 @@
     inputPlaceholder: '',
     inputValue: '',
     inputOptions: {},
+    inputClass: null,
     inputValidator: null
   };
 
@@ -266,6 +257,7 @@
    * Set type, text and actions on modal
    */
   var setParameters = function(params) {
+    var i;
     var modal = getModal();
 
     // set modal width, padding and margin-left
@@ -304,7 +296,7 @@
       if (typeof params.html === 'object') {
         $content.innerHTML = '';
         if (0 in params.html) {
-          for (var i = 0; i in params.html; i++) {
+          for (i = 0; i in params.html; i++) {
             $content.appendChild(params.html[i]);
           }
         } else {
@@ -390,34 +382,36 @@
     }
 
     // input, select
-    var $input = modal.querySelector('.' + window.swalClasses.input);
-    var $select = modal.querySelector('.' + window.swalClasses.select);
-    var $radio = modal.querySelector('.' + window.swalClasses.radio);
-    var $checkbox = modal.querySelector('#' + window.swalClasses.checkbox);
-    var $checkboxLabel = modal.querySelector('.' + window.swalClasses.checkbox);
-    var $textarea = modal.querySelector('.' + window.swalClasses.textarea);
-    _hide($input);
-    _hide($select);
-    _hide($radio);
-    _hide($checkboxLabel);
-    _hide($textarea);
+    var inputTypes = ['input', 'select', 'radio', 'checkbox', 'textarea'];
+    var input;
+    for (i = 0; i < inputTypes.length; i++) {
+      var inputClass = window.swalClasses[inputTypes[i]];
+      input = modal.querySelector('.' + inputClass);
+      _hide(input);
+      input.className = inputClass;
+      if (params.inputClass) {
+        addClass(input, params.inputClass);
+      }
+    }
     switch (params.input) {
       case 'text':
       case 'email':
       case 'password':
-        $input.value = params.inputValue;
-        $input.placeholder = params.inputPlaceholder;
-        $input.type = params.input;
-        _show($input);
+        input = modal.querySelector('.' + window.swalClasses.input);
+        input.value = params.inputValue;
+        input.placeholder = params.inputPlaceholder;
+        input.type = params.input;
+        _show(input);
         break;
       case 'select':
-        $select.innerHTML = '';
+        var select = modal.querySelector('.' + window.swalClasses.select);
+        select.innerHTML = '';
         if (params.inputPlaceholder) {
           var placeholder = document.createElement('option');
           placeholder.innerHTML = params.inputPlaceholder;
           placeholder.disabled = true;
           placeholder.selected = true;
-          $select.appendChild(placeholder);
+          select.appendChild(placeholder);
         }
         for (var optionValue in params.inputOptions) {
           var option = document.createElement('option');
@@ -426,12 +420,13 @@
           if (params.inputValue === optionValue) {
             option.selected = true;
           }
-          $select.appendChild(option);
+          select.appendChild(option);
         }
-        _show($select);
+        _show(select);
         break;
       case 'radio':
-        $radio.innerHTML = '';
+        var radio = modal.querySelector('.' + window.swalClasses.radio);
+        radio.innerHTML = '';
         for (var radioValue in params.inputOptions) {
           var id = 1;
           var radioInput = document.createElement('input');
@@ -448,26 +443,29 @@
           radioLabel.appendChild(radioInput);
           radioLabel.appendChild(radioLabelSpan);
           radioLabel.for = radioInput.id;
-          $radio.appendChild(radioLabel);
+          radio.appendChild(radioLabel);
         }
-        _show($radio);
+        _show(radio);
         break;
       case 'checkbox':
-        $checkbox.value = 1;
-        $checkbox.checked = Boolean(params.inputValue);
-        var label = $checkboxLabel.getElementsByTagName('span');
+        var checkbox = modal.querySelector('.' + window.swalClasses.checkbox);
+        var checkboxInput = modal.querySelector('#' + window.swalClasses.checkbox);
+        checkboxInput.value = 1;
+        checkboxInput.checked = Boolean(params.inputValue);
+        var label = checkbox.getElementsByTagName('span');
         if (label.length) {
-          $checkboxLabel.removeChild(label[0]);
+          checkbox.removeChild(label[0]);
         }
         label = document.createElement('span');
         label.innerHTML = params.inputPlaceholder;
-        $checkboxLabel.appendChild(label);
-        _show($checkboxLabel);
+        checkbox.appendChild(label);
+        _show(checkbox);
         break;
       case 'textarea':
-        $textarea.value = params.inputValue;
-        $textarea.placeholder = params.inputPlaceholder;
-        _show($textarea);
+        var textarea = modal.querySelector('.' + window.swalClasses.textarea);
+        textarea.value = params.inputValue;
+        textarea.placeholder = params.inputPlaceholder;
+        _show(textarea);
         break;
       case null:
         break;
@@ -540,8 +538,8 @@
     var modal = getModal();
     fadeIn(getOverlay(), 10);
     show(modal);
-    addClass(modal, 'show-sweet-alert');
-    removeClass(modal, 'hide-sweet-alert');
+    addClass(modal, 'show-swal2');
+    removeClass(modal, 'hide-swal2');
 
     previousActiveElement = document.activeElement;
 
@@ -560,7 +558,7 @@
   function modalDependant() {
 
     if (arguments[0] === undefined) {
-      window.console.error('sweetAlert expects at least 1 attribute!');
+      window.console.error('sweetAlert2 expects at least 1 attribute!');
       return false;
     }
 
@@ -610,7 +608,21 @@
         params.inputPlaceholder   = arguments[0].inputPlaceholder || defaultParams.inputPlaceholder;
         params.inputValue         = arguments[0].inputValue || defaultParams.inputValue;
         params.inputOptions       = arguments[0].inputOptions || defaultParams.inputOptions;
+        params.inputClass         = arguments[0].inputClass || defaultParams.inputClass;
         params.inputValidator     = arguments[0].inputValidator || defaultParams.inputValidator;
+
+        if (params.input === 'email' && params.inputValidator === null) {
+          params.inputValidator = function(email) {
+            return new Promise(function(resolve, reject) {
+              var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+              if (emailRegex.test(email)) {
+                resolve();
+              } else {
+                reject('Invalid email address');
+              }
+            });
+          };
+        }
 
         break;
 
@@ -786,7 +798,7 @@
       var $confirmButton = modal.querySelector('button.' + window.swalClasses.confirm);
       var $cancelButton = modal.querySelector('button.' + window.swalClasses.cancel);
       var $modalElements = [$confirmButton, $cancelButton].concat(Array.prototype.slice.call(
-        modal.querySelectorAll('button:not([class^=sweet-]), input:not([type=hidden]), textarea, select')
+        modal.querySelectorAll('button:not([class^=' + window.swalPrefix + ']), input:not([type=hidden]), textarea, select')
       ));
       for (i = 0; i < $modalElements.length; i++) {
         $modalElements[i].onfocus = onButtonEvent;
@@ -903,7 +915,7 @@
       };
 
       window.swal.showValidationError = function(error) {
-        var $validationError = modal.querySelector('.' + window.swalClasses.validationError);
+        var $validationError = modal.querySelector('.' + window.swalClasses.validationerror);
         $validationError.innerHTML = error;
         show($validationError);
 
@@ -913,7 +925,7 @@
       };
 
       window.swal.resetValidationError = function() {
-        var $validationError = modal.querySelector('.' + window.swalClasses.validationError);
+        var $validationError = modal.querySelector('.' + window.swalClasses.validationerror);
         hide($validationError);
 
         var input = getInput();
@@ -965,8 +977,8 @@
     var modal = getModal();
     _hide(getOverlay());
     _hide(modal);
-    removeClass(modal, 'showSweetAlert');
-    addClass(modal, 'hideSweetAlert');
+    removeClass(modal, 'show-swal2');
+    addClass(modal, 'hide-swal2');
     removeClass(modal, 'visible');
 
     // Reset icon animations
@@ -1035,7 +1047,7 @@
           '<input type="checkbox" id="' + window.swalClasses.checkbox + '">' +
         '</label>' +
         '<textarea class="' + window.swalClasses.textarea + '"></textarea>' +
-        '<div class="' + window.swalClasses.validationError + '"></div>' +
+        '<div class="' + window.swalClasses.validationerror + '"></div>' +
         '<hr class="' + window.swalClasses.spacer + '">' +
         '<button class="' + window.swalClasses.confirm + '">OK</button>' +
         '<button class="' + window.swalClasses.cancel + '">Cancel</button>' +

@@ -1070,7 +1070,7 @@
       window.swal.resetValidationError();
     };
 
-    $input.onkeyup = function() {
+    $input.onkeyup = function(event) {
       if (event.keyCode === 13) {
         window.swal.clickConfirm();
       }

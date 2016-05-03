@@ -41,7 +41,7 @@ header h2 {
   }
 }
 
-.sweet-alert {
+.swal2-alert {
   h2 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
@@ -54,11 +54,11 @@ header h2 {
     text-align: center;
     width: 33%;
   }
-  .sweet-icon, button {
+  .swal2-icon, button {
     display: inline-block;
     margin: 0;
   }
-  .sweet-success {
+  .swal2-success {
     &::before, &::after {
       background: transparent !important;
     }

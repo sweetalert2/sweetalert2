@@ -26,7 +26,7 @@ header h2 {
   header h2 a {
     color: #3085d6; }
 
-.sweet-alert h2 {
+.swal2-alert h2 {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600; }
 
@@ -35,11 +35,11 @@ header h2 {
   text-align: center;
   width: 33%; }
 
-.modal-types .sweet-icon, .modal-types button {
+.modal-types .swal2-icon, .modal-types button {
   display: inline-block;
   margin: 0; }
 
-.modal-types .sweet-success::before, .modal-types .sweet-success::after {
+.modal-types .swal2-success::before, .modal-types .swal2-success::after {
   background: transparent !important; }
 
 .modal-input-types tr td:first-child {

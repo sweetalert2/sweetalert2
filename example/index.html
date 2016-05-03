@@ -486,6 +486,11 @@ swal({
       <td><i>null</i></td>
       <td>Validator for input field, should return Promise, see <a href="#select-box">usage example</a>.</td>
     </tr>
+    <tr>
+      <td><b>inputClass</b></td>
+      <td><i>null</i></td>
+      <td>A custom CSS class for the input field.</td>
+    </tr>
   </table>
 
   <p class="center">
@@ -498,27 +503,27 @@ swal({
   <table class="modal-types">
     <tr>
       <td><strong>success</strong></td>
-      <td><div class="sweet-icon sweet-success"> <span class="line tip animate-success-tip"></span> <span class="line long animate-success-long"></span> <div class="placeholder"></div></div></td>
+      <td><div class="swal2-icon swal2-success"> <span class="line tip animate-success-tip"></span> <span class="line long animate-success-long"></span> <div class="placeholder"></div></div></td>
       <td><button class="type-success">Try me!</button></td>
     </tr>
     <tr>
       <td><strong>error</strong></td>
-      <td><div class="sweet-icon sweet-error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div></td>
+      <td><div class="swal2-icon swal2-error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div></td>
       <td><button class="type-error">Try me!</button></td>
     </tr>
     <tr>
       <td><strong>warning</strong></td>
-      <td><div class="sweet-icon sweet-warning">!</div></td>
+      <td><div class="swal2-icon swal2-warning">!</div></td>
       <td><button class="type-warning">Try me!</button></td>
     </tr>
     <tr>
       <td><strong>info</strong></td>
-      <td><div class="sweet-icon sweet-info">i</div></td>
+      <td><div class="swal2-icon swal2-info">i</div></td>
       <td><button class="type-info">Try me!</button></td>
     </tr>
     <tr>
       <td><strong>question</strong></td>
-      <td><div class="sweet-icon sweet-question">?</div></td>
+      <td><div class="swal2-icon swal2-question">?</div></td>
       <td><button class="type-question">Try me!</button></td>
     </tr>
   </table>
@@ -528,7 +533,7 @@ swal({
   <h3>Input Types</h3>
   <table class="modal-input-types">
     <tr id="input-field">
-      <td><strong>input</strong></td>
+      <td><strong>text</strong></td>
       <td>
         <pre>
 swal({
@@ -553,7 +558,26 @@ swal({
   }
 })</pre>
       </td>
-      <td><button class="input-type-input">Try me!</button></td>
+      <td><button class="input-type-text">Try me!</button></td>
+    </tr>
+
+    <tr id="input-field">
+      <td><strong>email</strong></td>
+      <td>
+        <pre>
+swal({
+  title: <span class="str">'Input email address'</span>,
+  input: <span class="str">'email'</span>
+}).then(<span class="func"><i>function</i></span>(result) {
+  <span class="tag">if</span> (email) {
+    swal({
+      type: <span class="str">'success'</span>,
+      html: <span class="str">'Entered email: '</span> + email
+    });
+  }
+})</pre>
+      </td>
+      <td><button class="input-type-email">Try me!</button></td>
     </tr>
 
     <tr>
@@ -852,11 +876,11 @@ swal({
       text: 'Modal with custom width, padding and background.',
       width: 300,
       padding: 100,
-      background: '#fff url(//goo.gl/enIitC)'
+      background: '#fff url(https://goo.gl/enIitC)'
     });
   });
 
-  $('.input-type-input').on('click', function() {
+  $('.input-type-text').on('click', function() {
     swal({
       title: 'Input something',
       input: 'text',
@@ -875,6 +899,20 @@ swal({
         swal({
           type: 'success',
           html: 'You entered: <strong>' + result + '</strong>',
+        });
+      }
+    });
+  });
+
+  $('.input-type-email').on('click', function() {
+    swal({
+      title: 'Input email address',
+      input: 'email'
+    }).then(function(email) {
+      if (email) {
+        swal({
+          type: 'success',
+          html: 'Entered email: <strong>' + email + '</strong>',
         });
       }
     });
@@ -954,6 +992,7 @@ swal({
       title: 'Terms and conditions',
       input: 'checkbox',
       inputValue: 1,
+      inputClass: 'aaa',
       inputPlaceholder: 'I agree with the terms and conditions',
       confirmButtonText: 'Continue <i class="fa fa-arrow-right" style="margin-left: 10px"></i>',
       inputValidator: function(result) {

@@ -136,6 +136,7 @@ Configuration
 | `inputValue`         | `""`          | Input field initial value. |
 | `inputOptions`       | `{}`          | If `input` parameter is set to `"select"`, you can provide options. Object keys will represent options values, object values will represent options text values. |
 | `inputValidator`     | `null`        | Validator for input field, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#select-box">usage example</a>. |
+| `inputClass`         | `null`        | A custom CSS class for the input field. |
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
 

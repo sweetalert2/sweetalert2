@@ -561,7 +561,7 @@ swal({
       <td><button class="input-type-text">Try me!</button></td>
     </tr>
 
-    <tr id="input-field">
+    <tr id="input-email">
       <td><strong>email</strong></td>
       <td>
         <pre>
@@ -578,6 +578,25 @@ swal({
 })</pre>
       </td>
       <td><button class="input-type-email">Try me!</button></td>
+    </tr>
+
+    <tr id="input-password">
+      <td><strong>password</strong></td>
+      <td>
+        <pre>
+swal({
+  title: <span class="str">'Enter your password'</span>,
+  input: <span class="str">'password'</span>
+}).then(<span class="func"><i>function</i></span>(result) {
+  <span class="tag">if</span> (password) {
+    swal({
+      type: <span class="str">'success'</span>,
+      html: <span class="str">'Entered password: '</span> + password
+    });
+  }
+})</pre>
+      </td>
+      <td><button class="input-type-password">Try me!</button></td>
     </tr>
 
     <tr>
@@ -913,6 +932,20 @@ swal({
         swal({
           type: 'success',
           html: 'Entered email: <strong>' + email + '</strong>',
+        });
+      }
+    });
+  });
+
+  $('.input-type-password').on('click', function() {
+    swal({
+      title: 'Enter your password',
+      input: 'password'
+    }).then(function(password) {
+      if (password) {
+        swal({
+          type: 'success',
+          html: 'Entered password: <strong>' + password + '</strong>',
         });
       }
     });

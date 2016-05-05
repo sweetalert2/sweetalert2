@@ -682,28 +682,15 @@
         }, 0);
       }
 
-      var confirm = function() {
-        if (params.input) {
-          var inputValue = getInputValue();
-          if (params.inputValidator) {
-            params.inputValidator(inputValue).then(
-              function() {
-                window.swal.closeModal();
-                resolve(inputValue);
-              },
-              function(error) {
-                window.swal.showValidationError(error);
-              }
-            );
-          } else {
+      var confirm = function(value) {
+        if (params.preConfirm) {
+          params.preConfirm().then(function() {
+            resolve(value);
             window.swal.closeModal();
-            resolve(inputValue);
-          }
-        } else if (params.input) {
-
+          });
         } else {
+          resolve(value);
           window.swal.closeModal();
-          resolve(true);
         }
       };
 
@@ -750,12 +737,23 @@
             // Clicked 'confirm'
             if (targetedConfirm && modalIsVisible) {
 
-              if (params.preConfirm) {
-                params.preConfirm().then(function() {
-                  confirm();
-                });
+              if (params.input) {
+                var inputValue = getInputValue();
+                if (params.inputValidator) {
+                  params.inputValidator(inputValue).then(
+                    function() {
+                      confirm(inputValue);
+                    },
+                    function(error) {
+                      window.swal.showValidationError(error);
+                    }
+                  );
+                } else {
+                  confirm(inputValue);
+                }
+
               } else {
-                confirm();
+                confirm(true);
               }
 
             // Clicked 'cancel'

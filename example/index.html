@@ -252,7 +252,8 @@ swal({
       </div>
       <pre>
 swal({
-  title: <span class="str">'Submit to run ajax request'</span>,
+  title: <span class="str">'Submit email to run ajax request'</span>,
+  input: <span class="str">'email'</span>,
   showCancelButton: <span class="val">true</span>,
   confirmButtonText: <span class="str">'Submit'</span>,
   preConfirm: <span class="func"><i>function</i></span>() {
@@ -1049,9 +1050,11 @@ swal({
 
   $('.examples .ajax-request button').on('click', function() {
     swal({
-      title: 'Submit to run ajax request',
+      title: 'Submit email to run ajax request',
+      input: 'email',
       showCancelButton: true,
       confirmButtonText: 'Submit',
+      width: 600,
       preConfirm: function() {
         return new Promise(function(resolve) {
           swal.enableLoading();

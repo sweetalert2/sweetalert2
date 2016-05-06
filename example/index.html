@@ -587,7 +587,12 @@ swal({
         <pre>
 swal({
   title: <span class="str">'Enter your password'</span>,
-  input: <span class="str">'password'</span>
+  input: <span class="str">'password'</span>,
+  inputAttributes: {
+    <span class="str">'maxlength'</span>: <span class="val">10</span>,
+    <span class="str">'autocapitalize'</span>: <span class="str">'off'</span>,
+    <span class="str">'autocorrect'</span>: <span class="str">'off'</span>
+  }
 }).then(<span class="func"><i>function</i></span>(result) {
   <span class="tag">if</span> (password) {
     swal({
@@ -941,7 +946,12 @@ swal({
   $('.input-type-password').on('click', function() {
     swal({
       title: 'Enter your password',
-      input: 'password'
+      input: 'password',
+      inputAttributes: {
+        'maxlength': 10,
+        'autocapitalize': 'off',
+        'autocorrect': 'off'
+      }
     }).then(function(password) {
       if (password) {
         swal({

@@ -54,6 +54,7 @@
     inputValue: '',
     inputOptions: {},
     inputClass: null,
+    inputAttributes: {},
     inputValidator: null
   };
 
@@ -387,11 +388,22 @@
     for (i = 0; i < inputTypes.length; i++) {
       var inputClass = window.swalClasses[inputTypes[i]];
       input = modal.querySelector('.' + inputClass);
-      _hide(input);
+
+      // set attributes
+      while (input.attributes.length > 0) {
+        input.removeAttribute(input.attributes[0].name);
+      }
+      for (var attr in params.inputAttributes) {
+        input.setAttribute(attr, params.inputAttributes[attr]);
+      }
+
+      // set class
       input.className = inputClass;
       if (params.inputClass) {
         addClass(input, params.inputClass);
       }
+
+      _hide(input);
     }
     switch (params.input) {
       case 'text':
@@ -609,6 +621,7 @@
         params.inputValue         = arguments[0].inputValue || defaultParams.inputValue;
         params.inputOptions       = arguments[0].inputOptions || defaultParams.inputOptions;
         params.inputClass         = arguments[0].inputClass || defaultParams.inputClass;
+        params.inputAttributes    = arguments[0].inputAttributes || defaultParams.inputAttributes;
         params.inputValidator     = arguments[0].inputValidator || defaultParams.inputValidator;
 
         if (params.input === 'email' && params.inputValidator === null) {

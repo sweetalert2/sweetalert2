@@ -38,15 +38,6 @@
     padding: 0;
     line-height: 60px;
     display: block; }
-  .swal2-modal p {
-    font-size: 16px;
-    text-align: center;
-    font-weight: 300;
-    position: relative;
-    float: none;
-    margin: 0;
-    padding: 0;
-    line-height: normal; }
   .swal2-modal hr {
     height: 10px;
     color: transparent;
@@ -98,6 +89,17 @@
     transition: all 0.1s ease; }
     .swal2-modal .swal2-close:hover {
       color: #d55; }
+
+.swal2-content {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 300;
+  position: relative;
+  float: none;
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  color: #555; }
 
 .swal2-icon {
   width: 80px;

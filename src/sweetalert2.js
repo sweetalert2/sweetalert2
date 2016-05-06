@@ -304,7 +304,7 @@
           $content.appendChild(params.html);
         }
       } else {
-        $content.innerHTML = params.html || ('<p>' + params.text.split('\n').join('<br>') + '</p>');
+        $content.innerHTML = params.html || (params.text.split('\n').join('<br>'));
       }
       show($content);
     } else {
@@ -1049,8 +1049,8 @@
           '<div class="placeholder"></div> <div class="fix"></div>' +
         '</div>' +
         '<img class="' + window.swalClasses.image + '">' +
-        '<h2>Title</h2>' +
-        '<div class="' + window.swalClasses.content + '">Text</div>' +
+        '<h2></h2>' +
+        '<div class="' + window.swalClasses.content + '"></div>' +
         '<input class="' + window.swalClasses.input + '">' +
         '<select class="' + window.swalClasses.select + '"></select>' +
         '<fieldset class="' + window.swalClasses.radio + '"></fieldset>' +

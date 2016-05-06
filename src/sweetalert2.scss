@@ -53,17 +53,6 @@
     display: block;
   }
 
-  p {
-    font-size: 16px;
-    text-align: center;
-    font-weight: 300;
-    position: relative;
-    float: none;
-    margin: 0;
-    padding: 0;
-    line-height: normal;
-  }
-
   hr {
     height: 10px;
     color: transparent;
@@ -132,6 +121,18 @@
     }
   }
 
+}
+
+.swal2-content {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 300;
+  position: relative;
+  float: none;
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  color: #555;
 }
 
 .swal2-icon {

@@ -99,6 +99,14 @@
     }
   };
 
+  var getChildByClass = function(elem, className) {
+    for (var i = 0; i < elem.childNodes.length; i++) {
+      if (elem.childNodes[i].classList.contains(className)) {
+        return elem.childNodes[i];
+      }
+    }
+  };
+
   var _show = function(elem) {
     elem.style.opacity = '';
     elem.style.display = 'block';
@@ -388,7 +396,7 @@
     var input;
     for (i = 0; i < inputTypes.length; i++) {
       var inputClass = window.swalClasses[inputTypes[i]];
-      input = modal.querySelector('.' + inputClass);
+      input = getChildByClass(modal, inputClass);
 
       // set attributes
       while (input.attributes.length > 0) {
@@ -410,14 +418,14 @@
       case 'text':
       case 'email':
       case 'password':
-        input = modal.querySelector('.' + window.swalClasses.input);
+        input = getChildByClass(modal, window.swalClasses.input);
         input.value = params.inputValue;
         input.placeholder = params.inputPlaceholder;
         input.type = params.input;
         _show(input);
         break;
       case 'select':
-        var select = modal.querySelector('.' + window.swalClasses.select);
+        var select = getChildByClass(modal, window.swalClasses.select);
         select.innerHTML = '';
         if (params.inputPlaceholder) {
           var placeholder = document.createElement('option');
@@ -438,7 +446,7 @@
         _show(select);
         break;
       case 'radio':
-        var radio = modal.querySelector('.' + window.swalClasses.radio);
+        var radio = getChildByClass(modal, window.swalClasses.radio);
         radio.innerHTML = '';
         for (var radioValue in params.inputOptions) {
           var id = 1;
@@ -461,7 +469,7 @@
         _show(radio);
         break;
       case 'checkbox':
-        var checkbox = modal.querySelector('.' + window.swalClasses.checkbox);
+        var checkbox = getChildByClass(modal, window.swalClasses.checkbox);
         var checkboxInput = modal.querySelector('#' + window.swalClasses.checkbox);
         checkboxInput.value = 1;
         checkboxInput.checked = Boolean(params.inputValue);
@@ -475,7 +483,7 @@
         _show(checkbox);
         break;
       case 'textarea':
-        var textarea = modal.querySelector('.' + window.swalClasses.textarea);
+        var textarea = getChildByClass(modal, window.swalClasses.textarea);
         textarea.value = params.inputValue;
         textarea.placeholder = params.inputPlaceholder;
         _show(textarea);
@@ -667,16 +675,16 @@
       var getInput = function() {
         switch (params.input) {
           case 'select':
-            return modal.querySelector('.' + window.swalClasses.select);
+            return getChildByClass(modal, window.swalClasses.select);
           case 'radio':
             return modal.querySelector('.' + window.swalClasses.radio + ' input:checked') ||
               modal.querySelector('.' + window.swalClasses.radio + ' input:first-child');
           case 'checkbox':
             return modal.querySelector('#' + window.swalClasses.checkbox);
           case 'textarea':
-            return modal.querySelector('.' + window.swalClasses.textarea);
+            return getChildByClass(modal, window.swalClasses.textarea);
           default:
-            return modal.querySelector('.' + window.swalClasses.input);
+            return getChildByClass(modal, window.swalClasses.input);
         }
       };
       var getInputValue = function() {
@@ -1055,7 +1063,7 @@
         '<div class="' + window.swalClasses.content + '"></div>' +
         '<input class="' + window.swalClasses.input + '">' +
         '<select class="' + window.swalClasses.select + '"></select>' +
-        '<fieldset class="' + window.swalClasses.radio + '"></fieldset>' +
+        '<div class="' + window.swalClasses.radio + '"></div>' +
         '<label for="' + window.swalClasses.checkbox + '" class="' + window.swalClasses.checkbox + '">' +
           '<input type="checkbox" id="' + window.swalClasses.checkbox + '">' +
         '</label>' +
@@ -1074,10 +1082,10 @@
     document.body.appendChild(sweetWrap);
 
     var modal = getModal();
-    var $input = modal.querySelector('.' + window.swalClasses.input);
-    var $select = modal.querySelector('.' + window.swalClasses.select);
+    var $input = getChildByClass(modal, window.swalClasses.input);
+    var $select = getChildByClass(modal, window.swalClasses.select);
     var $checkbox = modal.querySelector('#' + window.swalClasses.checkbox);
-    var $textarea = modal.querySelector('.' + window.swalClasses.textarea);
+    var $textarea = getChildByClass(modal, window.swalClasses.textarea);
 
     $input.oninput = function() {
       window.swal.resetValidationError();

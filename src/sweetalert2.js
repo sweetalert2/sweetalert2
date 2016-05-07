@@ -1084,6 +1084,7 @@
     };
 
     $input.onkeyup = function(event) {
+      event.stopPropagation();
       if (event.keyCode === 13) {
         window.swal.clickConfirm();
       }

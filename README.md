@@ -23,6 +23,12 @@ To install:
 bower install sweetalert2
 ```
 
+Or:
+
+```bash
+npm install sweetalert2
+```
+
 To use:
 
 ```html

@@ -53,6 +53,7 @@
     inputPlaceholder: '',
     inputValue: '',
     inputOptions: {},
+    inputAutoTrim: true,
     inputClass: null,
     inputAttributes: {},
     inputValidator: null
@@ -620,6 +621,7 @@
         params.inputPlaceholder   = arguments[0].inputPlaceholder || defaultParams.inputPlaceholder;
         params.inputValue         = arguments[0].inputValue || defaultParams.inputValue;
         params.inputOptions       = arguments[0].inputOptions || defaultParams.inputOptions;
+        params.inputAutoTrim      = arguments[0].inputAutoTrim !== undefined ? arguments[0].inputAutoTrim : defaultParams.inputAutoTrim;
         params.inputClass         = arguments[0].inputClass || defaultParams.inputClass;
         params.inputAttributes    = arguments[0].inputAttributes || defaultParams.inputAttributes;
         params.inputValidator     = arguments[0].inputValidator || defaultParams.inputValidator;
@@ -685,7 +687,7 @@
           case 'radio':
             return input.checked ? input.value : null;
           default:
-            return input.value;
+            return params.inputAutoTrim? input.value.trim() : input.value;
         }
       };
 

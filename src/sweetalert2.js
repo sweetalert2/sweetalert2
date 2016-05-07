@@ -697,8 +697,8 @@
 
       var confirm = function(value) {
         if (params.preConfirm) {
-          params.preConfirm().then(function() {
-            resolve(value);
+          params.preConfirm().then(function(preConfirmValue) {
+            resolve(preConfirmValue || value);
             window.swal.closeModal();
           });
         } else {

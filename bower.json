@@ -13,8 +13,8 @@
     "example",
     "images"
   ],
-  "description": "A beautiful replacement for JavaScript's alert.",
-  "main": ["dist/sweetalert2.min.js", "dist/sweetalert2.min.css"],
+  "description": "A replacement for JavaScript's popup boxes, supported fork of sweetalert",
+  "main": ["src/sweetalert2.js", "src/sweetalert2.scss"],
   "keywords": [
     "alert",
     "modal"

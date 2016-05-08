@@ -1,7 +1,7 @@
 SweetAlert2 [![Build Status](https://travis-ci.org/limonte/sweetalert2.svg?branch=master)](https://travis-ci.org/limonte/sweetalert2)
 -----------
 
-An awesome replacement for JavaScript's alert.
+An awesome replacement for JavaScript's popup boxes.
 
 What's the difference between SweetAlert and SweetAlert2?
 ---------------------------------------------------------

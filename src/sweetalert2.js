@@ -217,7 +217,6 @@
   };
 
   // Remember state in cases where opening and handling a modal will fiddle with it.
-  var previousActiveElement;
   var previousDocumentClick;
   var previousWindowKeyDown;
   var lastFocusedButton;
@@ -227,8 +226,8 @@
     var modal = getModal();
     window.onkeydown = previousWindowKeyDown;
     document.onclick = previousDocumentClick;
-    if (previousActiveElement) {
-      previousActiveElement.focus();
+    if (window.previousActiveElement) {
+      window.previousActiveElement.focus();
     }
     lastFocusedButton = undefined;
     clearTimeout(modal.timeout);
@@ -562,7 +561,7 @@
     addClass(modal, 'show-swal2');
     removeClass(modal, 'hide-swal2');
 
-    previousActiveElement = document.activeElement;
+    window.previousActiveElement = document.activeElement;
 
     addClass(modal, 'visible');
   };

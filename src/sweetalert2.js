@@ -706,7 +706,7 @@
 
       var confirm = function(value) {
         if (params.preConfirm) {
-          params.preConfirm().then(function(preConfirmValue) {
+          params.preConfirm(value).then(function(preConfirmValue) {
             resolve(preConfirmValue || value);
             window.swal.closeModal();
           });

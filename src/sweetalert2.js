@@ -56,7 +56,8 @@
     inputAutoTrim: true,
     inputClass: null,
     inputAttributes: {},
-    inputValidator: null
+    inputValidator: null,
+    focusLastElement: false
   };
 
   /*
@@ -225,9 +226,10 @@
   // Reset the page to its previous state
   var resetPrevState = function() {
     var modal = getModal();
+    var focusLastElement = modal.focuslastelement !== undefined ? modal.focuslastelement : defaultParams.focusLastElement;
     window.onkeydown = previousWindowKeyDown;
     document.onclick = previousDocumentClick;
-    if (previousActiveElement) {
+    if (previousActiveElement && focusLastElement) {
       previousActiveElement.focus();
     }
     lastFocusedButton = undefined;
@@ -275,6 +277,7 @@
     modal.style.padding = params.padding + 'px';
     modal.style.marginLeft = -params.width / 2 + 'px';
     modal.style.background = params.background;
+	modal.focuslastelement = params.focusLastElement;
 
     // add dynamic media query css
     var head = document.getElementsByTagName('head')[0];
@@ -633,7 +636,8 @@
         params.inputClass         = arguments[0].inputClass || defaultParams.inputClass;
         params.inputAttributes    = arguments[0].inputAttributes || defaultParams.inputAttributes;
         params.inputValidator     = arguments[0].inputValidator || defaultParams.inputValidator;
-
+        params.focusLastElement   = arguments[0].focusLastElement !== undefined ? arguments[0].focusLastElement : defaultParams.focusLastElement;
+        
         if (params.input === 'email' && params.inputValidator === null) {
           params.inputValidator = function(email) {
             return new Promise(function(resolve, reject) {

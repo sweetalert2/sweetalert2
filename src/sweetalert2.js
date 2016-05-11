@@ -633,6 +633,8 @@
         params.inputAttributes    = arguments[0].inputAttributes || defaultParams.inputAttributes;
         params.inputValidator     = arguments[0].inputValidator || defaultParams.inputValidator;
 
+        params.extraParams        = arguments[0].extraParams;
+
         if (params.input === 'email' && params.inputValidator === null) {
           params.inputValidator = function(email) {
             return new Promise(function(resolve, reject) {
@@ -706,7 +708,7 @@
 
       var confirm = function(value) {
         if (params.preConfirm) {
-          params.preConfirm(value).then(function(preConfirmValue) {
+          params.preConfirm(value, params.extraParams).then(function(preConfirmValue) {
             resolve(preConfirmValue || value);
             window.swal.closeModal();
           });
@@ -762,7 +764,7 @@
               if (params.input) {
                 var inputValue = getInputValue();
                 if (params.inputValidator) {
-                  params.inputValidator(inputValue).then(
+                  params.inputValidator(inputValue, params.extraParams).then(
                     function() {
                       confirm(inputValue);
                     },

@@ -230,17 +230,17 @@ swal({
 })</pre>
     </li>
 
-    <li class="custom-width-padding">
+    <li class="custom-width-padding-background">
       <div class="ui">
         <p>A message with custom width, padding and background</p>
         <button>Try me!</button>
       </div>
       <pre>
 swal({
-  text: <span class="str">'Custom width, padding, background.'</span>,
-  width: <span class="val">300</span>,
+  title: <span class="str">'Custom width, padding, background.'</span>,
+  width: <span class="val">600</span>,
   padding: <span class="val">100</span>,
-  background: <span class="str">'#fff url(//goo.gl/enIitC)'</span>
+  background: <span class="str">'#fff url(//bit.ly/1Nqn9HU)'</span>
 })</pre>
     </li>
 
@@ -940,13 +940,12 @@ swal({
     });
   });
 
-  $('.examples .custom-width-padding button').on('click', function() {
+  $('.examples .custom-width-padding-background button').on('click', function() {
     swal({
-      title: 'Sweet!',
-      text: 'Modal with custom width, padding and background.',
-      width: 300,
+      title: 'Custom width, padding, background.',
+      width: 600,
       padding: 100,
-      background: '#fff url(https://goo.gl/enIitC)'
+      background: '#fff url(https://bit.ly/1Nqn9HU)'
     });
   });
 

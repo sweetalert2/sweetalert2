@@ -32,6 +32,7 @@
     showConfirmButton: true,
     showCancelButton: false,
     preConfirm: null,
+    afterModalOpen: null,
     confirmButtonText: 'OK',
     confirmButtonColor: '#3085d6',
     confirmButtonClass: null,
@@ -605,6 +606,7 @@
         params.showConfirmButton  = arguments[0].showConfirmButton !== undefined ? arguments[0].showConfirmButton : defaultParams.showConfirmButton;
         params.showCancelButton   = arguments[0].showCancelButton !== undefined ? arguments[0].showCancelButton : defaultParams.showCancelButton;
         params.preConfirm         = arguments[0].preConfirm || defaultParams.preConfirm;
+        params.afterModalOpen     = arguments[0].afterModalOpen || defaultParams.afterModalOpen;
         params.timer              = parseInt(arguments[0].timer, 10) || defaultParams.timer;
         params.width              = parseInt(arguments[0].width, 10) || defaultParams.width;
         params.padding            = parseInt(arguments[0].padding, 10) || defaultParams.padding;
@@ -662,6 +664,11 @@
 
     // Modal interactions
     var modal = getModal();
+    
+    /*
+    * Function that runs after the modal opens
+    */
+    params.afterModalOpen && params.afterModalOpen();
 
     return new Promise(function(resolve) {
       // Close on timer

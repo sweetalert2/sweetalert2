@@ -785,9 +785,6 @@
 
               window.swal.closeModal();
               resolve(false);
-
-            } else {
-              window.swal.closeModal();
             }
 
             break;

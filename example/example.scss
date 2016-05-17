@@ -301,7 +301,7 @@ pre {
   }
 
   .vs-icon {
-    @include retina-background('images/vs_icon');
+    @include retina-background('../images/vs_icon');
     width: 69px;
     height: 69px;
     position: absolute;

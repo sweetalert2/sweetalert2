@@ -211,8 +211,8 @@ pre {
   .showcase button {
     margin-bottom: 10px; }
   .showcase .vs-icon {
-    background-image: url("images/vs_icon.png");
-    background-image: -webkit-image-set(url("images/vs_icon.png") 1x, url("images/vs_icon@2x.png") 2x);
+    background-image: url("../images/vs_icon.png");
+    background-image: -webkit-image-set(url("../images/vs_icon.png") 1x, url("../images/vs_icon@2x.png") 2x);
     background-repeat: no-repeat;
     width: 69px;
     height: 69px;

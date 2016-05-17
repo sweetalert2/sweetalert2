@@ -302,11 +302,14 @@
     var cssNode = document.createElement('style');
     cssNode.type = 'text/css';
     cssNode.id = mediaqueryId;
+    var margin = 5; // %
+    var mediaQueryMaxWidth = params.width + parseInt(params.width * (margin/100) * 2, 10);
     cssNode.innerHTML =
-      '@media screen and (max-width: ' + params.width + 'px) {' +
+      '@media screen and (max-width: ' + mediaQueryMaxWidth + 'px) {' +
         '.' + swalClasses.modal + ' {' +
-          'max-width: 100%;' +
-          'left: 0 !important;' +
+          'width: auto !important;' +
+          'left: ' + margin + '% !important;' +
+          'right: ' + margin + '% !important;' +
           'margin-left: 0 !important;' +
         '}' +
       '}';

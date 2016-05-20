@@ -163,6 +163,8 @@ Methods
 | `swal.clickCancel()`                  | Click "Cancel"-button programmatically. |
 | `swal.showValidationError(error)`     | Show validation error message. |
 | `swal.resetValidationError()`         | Hide validation error message. |
+| `swal.enableInput()`                  | Enable input, this method works with `input` parameter. |
+| `swal.disableInput()`                 | Disable input. |
 
 
 Browser compatibility

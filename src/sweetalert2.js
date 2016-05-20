@@ -456,6 +456,7 @@
         if (params.inputPlaceholder) {
           var placeholder = document.createElement('option');
           placeholder.innerHTML = params.inputPlaceholder;
+          placeholder.value = '';
           placeholder.disabled = true;
           placeholder.selected = true;
           select.appendChild(placeholder);
@@ -787,15 +788,18 @@
           case 'click':
             // Clicked 'confirm'
             if (targetedConfirm && modalIsVisible) {
-
               if (params.input) {
                 var inputValue = getInputValue();
+
                 if (params.inputValidator) {
+                  sweetAlert.disableInput();
                   params.inputValidator(inputValue, params.extraParams).then(
                     function() {
+                      sweetAlert.enableInput();
                       confirm(inputValue);
                     },
                     function(error) {
+                      sweetAlert.enableInput();
                       sweetAlert.showValidationError(error);
                     }
                   );
@@ -958,6 +962,32 @@
       sweetAlert.disableButtons = function() {
         $confirmButton.disabled = true;
         $cancelButton.disabled = true;
+      };
+
+      sweetAlert.enableInput = function() {
+        var input = getInput();
+        if (input.type === 'radio') {
+          var radiosContainer = input.parentNode.parentNode;
+          var radios = radiosContainer.querySelectorAll('input');
+          for (var i = 0; i < radios.length; i++) {
+            radios[i].disabled = false;
+          }
+        } else {
+          input.disabled = false;
+        }
+      };
+
+      sweetAlert.disableInput = function() {
+        var input = getInput();
+        if (input.type === 'radio') {
+          var radiosContainer = input.parentNode.parentNode;
+          var radios = radiosContainer.querySelectorAll('input');
+          for (var i = 0; i < radios.length; i++) {
+            radios[i].disabled = true;
+          }
+        } else {
+          input.disabled = true;
+        }
       };
 
       sweetAlert.showValidationError = function(error) {

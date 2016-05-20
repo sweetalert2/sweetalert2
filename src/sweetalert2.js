@@ -1161,19 +1161,10 @@
     if (document.readyState === 'complete' || document.readyState === 'interactive' && document.body) {
       sweetAlert.init();
     } else {
-      if (document.addEventListener) {
-        document.addEventListener('DOMContentLoaded', function onDomContentLoaded() {
-          document.removeEventListener('DOMContentLoaded', onDomContentLoaded, false);
-          sweetAlert.init();
-        }, false);
-      } else if (document.attachEvent) {
-        document.attachEvent('onreadystatechange', function onReadyStateChange() {
-          if (document.readyState === 'complete') {
-            document.detachEvent('onreadystatechange', onReadyStateChange);
-            sweetAlert.init();
-          }
-        });
-      }
+      document.addEventListener('DOMContentLoaded', function onDomContentLoaded() {
+        document.removeEventListener('DOMContentLoaded', onDomContentLoaded, false);
+        sweetAlert.init();
+      }, false);
     }
   })();
 

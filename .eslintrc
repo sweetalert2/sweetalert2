@@ -8,12 +8,12 @@
       'vars': 'local',
       'args': 'after-used'
     }],
-    'no-use-before-define': 2,       // http://eslint.org/docs/rules/no-use-before-define
+    'no-use-before-define': 0,       // http://eslint.org/docs/rules/no-use-before-define
     /**
      * Possible errors
      */
     'comma-dangle': [2, 'never'],    // http://eslint.org/docs/rules/comma-dangle
-    'no-console': 1,                 // http://eslint.org/docs/rules/no-console
+    'no-console': 0,                 // http://eslint.org/docs/rules/no-console
     'no-debugger': 1,                // http://eslint.org/docs/rules/no-debugger
     'no-constant-condition': 1,      // http://eslint.org/docs/rules/no-constant-condition
     'no-dupe-keys': 2,               // http://eslint.org/docs/rules/no-dupe-keys

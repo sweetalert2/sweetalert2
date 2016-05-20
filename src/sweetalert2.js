@@ -15,12 +15,14 @@
       exports = module.exports = mod;
     }
 
-    exports['default'] = mod;
+    exports.default = mod;
   } else {
     factory(root);
   }
 }(typeof window !== 'undefined' ? window : this, function(window) {
   'use strict';
+
+  var swalPrefix = 'swal2-';
 
   var prefix = function(items) {
     var result = {};
@@ -30,7 +32,6 @@
     return result;
   };
 
-  var swalPrefix = 'swal2-';
   var swalClasses = prefix([
     'container', 'modal', 'overlay', 'close', 'content', 'spacer', 'confirm',
     'cancel', 'icon', 'image', 'input', 'select', 'radio', 'checkbox', 'textarea',
@@ -1011,7 +1012,7 @@
     }
 
     return modalDependant.apply(this, args);
-  };
+  }
 
   /*
    * Global function to close sweetAlert
@@ -1064,10 +1065,9 @@
    */
   sweetAlert.init = function() {
     if (typeof document === 'undefined') {
-      console.log("SweetAlert2 requires document to initialize");
+      console.log('SweetAlert2 requires document to initialize');
       return;
-    }
-    else if (document.getElementsByClassName(swalClasses.container).length) {
+    } else if (document.getElementsByClassName(swalClasses.container).length) {
       return;
     }
 

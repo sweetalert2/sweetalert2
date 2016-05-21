@@ -196,6 +196,25 @@
     }
   };
 
+  var fadeOut = function(elem, interval) {
+    if (+elem.style.opacity > 0) {
+      interval = interval || 16;
+      var opacity = elem.style.opacity;
+      var last = +new Date();
+      var tick = function() {
+        elem.style.opacity = +elem.style.opacity - (new Date() - last) / (opacity * 100);
+        last = +new Date();
+
+        if (+elem.style.opacity > 0) {
+          setTimeout(tick, interval);
+        } else {
+          _hide(elem);
+        }
+      };
+      tick();
+    }
+  };
+
   var extend = function(a, b) {
     for (var key in b) {
       if (b.hasOwnProperty(key)) {
@@ -238,6 +257,24 @@
       window.event.cancelBubble = true;
     }
   };
+
+  var animationEndEvent = (function() {
+    var testEl = document.createElement('div'),
+      transEndEventNames = {
+        'WebkitAnimation': 'webkitAnimationEnd',
+        'MozAnimation': 'animationend',
+        'OAnimation': 'oAnimationEnd oanimationend',
+        'msAnimation': 'MSAnimationEnd',
+        'animation': 'animationend'
+      };
+    for (var i in transEndEventNames) {
+      if (transEndEventNames.hasOwnProperty(i) && testEl.style[i] !== undefined) {
+        return transEndEventNames[i];
+      }
+    }
+
+    return false;
+  })();
 
   // Remember state in cases where opening and handling a modal will fiddle with it.
   var previousDocumentClick;
@@ -1049,14 +1086,11 @@
    */
   sweetAlert.close = sweetAlert.closeModal = function() {
     var modal = getModal();
-    _hide(getOverlay());
-    _hide(modal);
     removeClass(modal, 'show-swal2');
     addClass(modal, 'hide-swal2');
     removeClass(modal, 'visible');
 
     // Reset icon animations
-
     var $successIcon = modal.querySelector('.' + swalClasses.icon + '.' + swalClasses.iconTypes.success);
     removeClass($successIcon, 'animate');
     removeClass($successIcon.querySelector('.tip'), 'animate-success-tip');
@@ -1070,6 +1104,19 @@
     removeClass($warningIcon, 'pulse-warning');
 
     resetPrevState();
+    
+    if (animationEndEvent && !hasClass(modal, 'no-animation')) {
+      modal.addEventListener(animationEndEvent, function swalCloseEventFinished() {
+        modal.removeEventListener(animationEndEvent, swalCloseEventFinished);
+        if (hasClass(modal, 'hide-swal2')) {
+          _hide(modal);
+          fadeOut(getOverlay(), 10);
+        }
+      });
+    } else {
+      _hide(modal);
+      fadeOut(getOverlay(), 10);
+    }
   };
 
   /*

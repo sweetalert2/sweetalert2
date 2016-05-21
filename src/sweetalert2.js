@@ -185,7 +185,8 @@
       elem.style.display = 'block';
       var last = +new Date();
       var tick = function() {
-        elem.style.opacity = +elem.style.opacity + (new Date() - last) / 100;
+        var newOpacity = +elem.style.opacity + (new Date() - last) / 100;
+        elem.style.opacity = (newOpacity > 1) ? 1 : newOpacity;
         last = +new Date();
 
         if (+elem.style.opacity < 1) {
@@ -203,7 +204,8 @@
       var last = +new Date();
       var tick = function() {
         var change = new Date() - last;
-        elem.style.opacity = +elem.style.opacity - change / (opacity * 100);
+        var newOpacity = +elem.style.opacity - change / (opacity * 100);
+        elem.style.opacity = newOpacity;
         last = +new Date();
 
         if (+elem.style.opacity > 0) {
@@ -1112,12 +1114,12 @@
         modal.removeEventListener(animationEndEvent, swalCloseEventFinished);
         if (hasClass(modal, 'hide-swal2')) {
           _hide(modal);
-          fadeOut(getOverlay(), 10);
+          fadeOut(getOverlay(), 0);
         }
       });
     } else {
       _hide(modal);
-      fadeOut(getOverlay(), 10);
+      fadeOut(getOverlay(), 0);
     }
   };
 

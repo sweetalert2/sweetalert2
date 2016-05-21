@@ -202,7 +202,8 @@
       var opacity = elem.style.opacity;
       var last = +new Date();
       var tick = function() {
-        elem.style.opacity = +elem.style.opacity - (new Date() - last) / (opacity * 100);
+        var change = new Date() - last;
+        elem.style.opacity = +elem.style.opacity - change / (opacity * 100);
         last = +new Date();
 
         if (+elem.style.opacity > 0) {
@@ -268,7 +269,8 @@
         'animation': 'animationend'
       };
     for (var i in transEndEventNames) {
-      if (transEndEventNames.hasOwnProperty(i) && testEl.style[i] !== undefined) {
+      if (transEndEventNames.hasOwnProperty(i) && 
+        testEl.style[i] !== undefined) {
         return transEndEventNames[i];
       }
     }

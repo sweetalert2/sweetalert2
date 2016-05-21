@@ -449,10 +449,12 @@
 @include keyframes(hideSweetAlert) {
   0% {
     transform: scale(1);
+    opacity: 1;
   }
 
   100% {
     transform: scale(.5);
+    opacity: 0;
   }
 }
 
@@ -465,7 +467,7 @@
 }
 
 .hide-swal2 {
-  @include animation('hideSweetAlert 0.2s');
+  @include animation('hideSweetAlert 0.15s');
 
   &.no-animation {
     @include animation('none');

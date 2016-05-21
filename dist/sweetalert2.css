@@ -344,18 +344,22 @@
 @-webkit-keyframes hideSweetAlert {
   0% {
     -webkit-transform: scale(1);
-            transform: scale(1); }
+            transform: scale(1);
+    opacity: 1; }
   100% {
     -webkit-transform: scale(0.5);
-            transform: scale(0.5); } }
+            transform: scale(0.5);
+    opacity: 0; } }
 
 @keyframes hideSweetAlert {
   0% {
     -webkit-transform: scale(1);
-            transform: scale(1); }
+            transform: scale(1);
+    opacity: 1; }
   100% {
     -webkit-transform: scale(0.5);
-            transform: scale(0.5); } }
+            transform: scale(0.5);
+    opacity: 0; } }
 
 .show-swal2 {
   -webkit-animation: showSweetAlert 0.3s;
@@ -365,8 +369,8 @@
             animation: none; }
 
 .hide-swal2 {
-  -webkit-animation: hideSweetAlert 0.2s;
-          animation: hideSweetAlert 0.2s; }
+  -webkit-animation: hideSweetAlert 0.15s;
+          animation: hideSweetAlert 0.15s; }
   .hide-swal2.no-animation {
     -webkit-animation: none;
             animation: none; }

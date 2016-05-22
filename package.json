@@ -18,6 +18,10 @@
     "rollup": "^0.26.3",
     "uglify-js": "^2.6.2"
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "author": "t4t5 & limonte",
   "license": "MIT"
 }

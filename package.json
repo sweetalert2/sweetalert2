@@ -15,7 +15,8 @@
     "gulp-rollup": "^1.9.0",
     "gulp-sass": "^2.2.0",
     "gulp-uglify": "^1.5.3",
-    "rollup": "^0.26.3"
+    "rollup": "^0.26.3",
+    "uglify-js": "^2.6.2"
   },
   "author": "t4t5 & limonte",
   "license": "MIT"

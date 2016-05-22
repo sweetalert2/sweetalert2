@@ -1,8 +1,9 @@
 var rollup  = require('rollup').rollup,
-    pack    = require('../package.json'),
-    banner  = require('./banner.js'),
-    fs      = require('fs'),
-    zlib    = require('zlib');
+    pack   = require('../package.json'),
+    banner = require('./banner.js'),
+    fs     = require('fs'),
+    zlib   = require('zlib')
+    uglify = require('uglify-js');
 
 var toUpper = function(_, c) {
   return c ? c.toUpperCase() : ''
@@ -39,11 +40,18 @@ var packageRollup = function(options) {
     entry: 'src/sweetalert2.js',
   })
   .then(function (bundle) {
-    return write(options.dest, bundle.generate({
+    var code = bundle.generate({
       format:     options.format,
       banner:     banner,
       moduleName: classify(pack.name),
-    }).code.replace(/sweetAlert\.version = '(.*)'/, "sweetAlert.version = '" + pack.version + "'"))
+    }).code.replace(/sweetAlert\.version = '(.*)'/, "sweetAlert.version = '" + pack.version + "'");
+
+    if (options.minify) {
+      code = banner + '\n' + uglify.minify(code, {
+        fromString: true
+      }).code;
+    }
+    return write(options.dest, code);
   });
 }
 

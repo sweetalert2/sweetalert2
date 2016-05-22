@@ -1,3 +1,8 @@
+/*!
+ * sweetalert2 v3.0.2
+ * (c) 2016 t4t5 & limonte
+ * Released under the MIT License.
+ */
 'use strict';
 
 var swalPrefix = 'swal2-';
@@ -1211,7 +1216,7 @@ sweetAlert.setDefaults = function(userParams) {
   extend(defaultParams, userParams);
 };
 
-sweetAlert.version = '';
+sweetAlert.version = '3.0.2';
 
 window.sweetAlert = window.swal = sweetAlert;
 
@@ -1229,4 +1234,4 @@ window.sweetAlert = window.swal = sweetAlert;
   }
 })();
 
-export default sweetAlert
+module.exports = sweetAlert;

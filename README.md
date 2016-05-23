@@ -31,6 +31,8 @@ Or:
 npm install sweetalert2
 ```
 
+Or download from CDN: [https://www.jsdelivr.com/projects/sweetalert2](https://www.jsdelivr.com/projects/sweetalert2)
+
 To use:
 
 ```html

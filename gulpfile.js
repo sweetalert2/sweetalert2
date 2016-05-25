@@ -1,30 +1,48 @@
-var gulp = require('gulp');
-var uglify = require('gulp-uglify');
-var cleanCSS = require('gulp-clean-css');
-var sass = require('gulp-sass');
-var rename = require('gulp-rename');
-var autoprefix = require('gulp-autoprefixer');
+var gulp = require('gulp'),
+    uglify     = require('gulp-uglify'),
+    cleanCSS   = require('gulp-clean-css'),
+    sass       = require('gulp-sass'),
+    rename     = require('gulp-rename'),
+    autoprefix = require('gulp-autoprefixer');
 
-gulp.task('compress', function() {
-  return gulp.src('src/sweetalert2.js')
-    .pipe(uglify())
-    .pipe(rename({extname: '.min.js'}))
-    .pipe(gulp.dest('dist'));
+var pack  = require('./package.json');
+var utils = require('./config/utils.js');
+
+gulp.task('compress', ['commonjs', 'dev', 'production']);
+
+gulp.task('commonjs', function() {
+  return utils.packageRollup({
+    dest:   'dist/' + pack.name + '.common.js',
+    format: 'cjs'
+  });
+});
+
+gulp.task('dev', function() {
+  return utils.packageRollup({
+    dest:   'dist/' + pack.name + '.js',
+    format: 'umd'
+  });
+});
+
+gulp.task('production', function() {
+  return utils.packageRollup({
+    dest:   'dist/' + pack.name + '.min.js',
+    format: 'umd',
+    minify: true
+  }).then(utils.zip);
 });
 
 gulp.task('sass', function() {
   gulp.src('src/sweetalert2.scss')
     .pipe(sass())
     .pipe(autoprefix())
-    .pipe(gulp.dest('dist'));
-
-  gulp.src('src/sweetalert2.scss')
-    .pipe(sass())
-    .pipe(autoprefix())
+    .pipe(gulp.dest('dist'))
     .pipe(cleanCSS())
     .pipe(rename({extname: '.min.css'}))
     .pipe(gulp.dest('dist'));
 });
+
+gulp.task('default', ['compress', 'sass']);
 
 gulp.task('watch', function() {
   gulp.watch('src/*.js', ['compress']);

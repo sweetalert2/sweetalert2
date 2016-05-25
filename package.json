@@ -3,18 +3,25 @@
   "version": "3.0.2",
   "repository": "git@github.com:limonte/sweetalert2.git",
   "description": "A replacement for JavaScript's popup boxes, supported fork of sweetalert",
-  "main": "src/sweetalert2.js",
+  "main": "dist/sweetalert2.js",
   "dependencies": {
     "es6-promise-polyfill": "*"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
+    "gulp-clean-css": "^2.0.6",
     "gulp-rename": "^1.2.0",
+    "gulp-rollup": "^1.9.0",
     "gulp-sass": "^2.2.0",
     "gulp-uglify": "^1.5.3",
-    "gulp-clean-css": "^2.0.6"
+    "rollup": "^0.26.3",
+    "uglify-js": "^2.6.2"
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "author": "t4t5 & limonte",
   "license": "MIT"
 }

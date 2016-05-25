@@ -1,6 +1,6 @@
 /*!
- * sweetalert2 v3.0.2
- * (c) 2016 t4t5 & limonte
+ * sweetalert2 v3.1.1
+ * (c) 2016 Tristan Edwards <tristan.edwards@me.com> (http://tristanedwards.me)
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1220,7 +1220,7 @@
     extend(defaultParams, userParams);
   };
 
-  sweetAlert.version = '3.0.2';
+  sweetAlert.version = '3.1.1';
 
   window.sweetAlert = window.swal = sweetAlert;
 

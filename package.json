@@ -1,7 +1,8 @@
 {
   "name": "sweetalert2",
-  "version": "3.1.0",
-  "repository": "git@github.com:limonte/sweetalert2.git",
+  "version": "3.1.1",
+  "repository": "https://github.com/limonte/sweetalert2.git",
+  "homepage": "https://limonte.github.io/sweetalert2/",
   "description": "A replacement for JavaScript's popup boxes, supported fork of sweetalert",
   "main": "dist/sweetalert2.js",
   "dependencies": {
@@ -22,6 +23,17 @@
     "dist",
     "src"
   ],
-  "author": "t4t5 & limonte",
+  "author": "Tristan Edwards <tristan.edwards@me.com> (http://tristanedwards.me)",
+  "contributors": [
+    "Limon Monte <limon.monte@gmail.com> (https://limonte.github.io)",
+    "Sam Turrell <sam@samturrell.co.uk> (http://samturrell.co.uk)"
+  ],
+  "keywords": [
+    "sweetalert",
+    "sweetalert2",
+    "alert",
+    "prompt"
+  ],
+  "bugs": "https://github.com/limonte/sweetalert2/issues",
   "license": "MIT"
 }

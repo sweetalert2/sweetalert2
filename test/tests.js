@@ -1,9 +1,10 @@
-test('modal shows up', function() {
+
+test('modal shows up', function(assert) {
   var $modal = $('.swal2-modal');
 
-  ok($modal.not(':visible'));
+  assert.ok($modal.not(':visible'));
   swal('Hello world!');
-  ok($modal.is(':visible'));
+  assert.ok($modal.is(':visible'));
 });
 
 
@@ -11,20 +12,62 @@ test('confirm button', function(assert) {
   var done = assert.async();
 
   swal('Confirm me').then(function(isConfirm) {
-    equal(isConfirm, true);
+    assert.equal(isConfirm, true);
     done();
   });
 
   swal.clickConfirm();
 });
 
+
 test('cancel button', function(assert) {
   var done = assert.async();
 
   swal('Cancel me').then(function(isConfirm) {
-    equal(isConfirm, false);
+    assert.equal(isConfirm, false);
     done();
   });
 
   swal.clickCancel();
+});
+
+
+test('esc key', function(assert) {
+  var done = assert.async();
+
+  swal('Esc me').then(function(isConfirm) {
+    assert.equal(typeof isConfirm, 'undefined');
+    done();
+  });
+
+  $(document).trigger($.Event('keydown', {
+    keyCode: 27
+  }));
+});
+
+
+test('overlay click', function(assert) {
+  var done = assert.async();
+
+  swal('Close me by overlay click').then(function(isConfirm) {
+    assert.equal(typeof isConfirm, 'undefined');
+    done();
+  });
+
+  $('.swal2-overlay').click();
+});
+
+
+test('timer works', function(assert) {
+  var done = assert.async();
+  var $modal = $('.swal2-modal');
+
+  swal({title: 'Timer test', timer: 10, animation: false}).then(function(isConfirm) {
+    assert.equal(typeof isConfirm, 'undefined');
+  });
+
+  setTimeout(function() {
+    assert.ok($modal.is(':hidden'));
+    done();
+  }, 20);
 });

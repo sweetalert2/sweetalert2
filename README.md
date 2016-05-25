@@ -13,8 +13,6 @@ Reason of creating this fork is inactivity of original SweetAlert plugin:
 
 <img src="https://raw.github.com/limonte/sweetalert2/master/sweetalert2.gif" width="686" height="435">
 
-![SweetAlert2 example]()
-
 
 Usage
 -----

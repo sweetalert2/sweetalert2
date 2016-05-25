@@ -3,7 +3,8 @@
   "homepage": "https://limonte.github.io/sweetalert2/",
   "authors": [
     "Tristan Edwards <tristan.edwards@me.com> (http://tristanedwards.me)",
-    "Limon Monte <limon.monte@gmail.com> (http://limonte.github.io)"
+    "Limon Monte <limon.monte@gmail.com> (https://limonte.github.io)",
+    "Sam Turrell <sam@samturrell.co.uk> (http://samturrell.co.uk)"
   ],
   "dependencies": {
     "es6-promise-polyfill": "*"

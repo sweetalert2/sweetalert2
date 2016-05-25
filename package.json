@@ -1,23 +1,24 @@
 {
   "name": "sweetalert2",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "repository": "https://github.com/limonte/sweetalert2.git",
   "homepage": "https://limonte.github.io/sweetalert2/",
   "description": "A replacement for JavaScript's popup boxes, supported fork of sweetalert",
   "main": "dist/sweetalert2.js",
   "dependencies": {
-    "es6-promise-polyfill": "*"
+    "es6-promise-polyfill": "latest"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-clean-css": "^2.0.6",
-    "gulp-rename": "^1.2.0",
-    "gulp-rollup": "^1.9.0",
-    "gulp-sass": "^2.2.0",
-    "gulp-uglify": "^1.5.3",
-    "rollup": "^0.26.3",
-    "uglify-js": "^2.6.2"
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-clean-css": "latest",
+    "gulp-rename": "latest",
+    "gulp-rollup": "latest",
+    "gulp-sass": "latest",
+    "gulp-uglify": "latest",
+    "rollup": "latest",
+    "uglify-js": "latest",
+    "gulp-qunit": "latest"
   },
   "files": [
     "dist",
@@ -34,6 +35,12 @@
     "alert",
     "prompt"
   ],
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
   "bugs": "https://github.com/limonte/sweetalert2/issues",
   "license": "MIT"
 }

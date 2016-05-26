@@ -1188,11 +1188,19 @@ sweetAlert.init = function() {
   iosfix.id = "iosFix"
   iosfix.innerHTML = "html,body {height: 100%; position: relative; }";
   /*
+  * @summary touch handler; will remove touch ability
+  * @author yeomann
+  */
+  function Touchyhandler(e) {
+    e.preventDefault();
+  }
+  /*
   *   @summary function to add ios fix
   *   @author yeomann
   */
   function addiosFix() {
     document.head.appendChild(iosfix);
+    document.addEventListener('touchmove', Touchyhandler, false);
   }
   /*
   *   @summary function to remova ios fix styles tag from head by findind ID
@@ -1203,6 +1211,7 @@ sweetAlert.init = function() {
     if (iosfix) {
       document.head.removeChild(iosfix);
     }
+    document.removeEventListener('touchmove', Touchyhandler);
   }
   /*
   *   @summary input onfocus listener for ios fix

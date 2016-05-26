@@ -1181,6 +1181,7 @@ sweetAlert.init = function() {
      *  @summary IOS input focus fix
      *  @var {iosfix}, {head} 
      *  @description creating <style> tag with ios on focus fix
+     *  @author yeomann
     */
     var iosfix;
     iosfix = document.createElement('style');
@@ -1189,12 +1190,14 @@ sweetAlert.init = function() {
     iosfix.innerHTML = "html,body {height: 100%; position: relative; }";
     /*
     *   @summary function to add ios fix
+    *   @author yeomann
     */
     function addiosFix() {
         document.head.appendChild(iosfix);
     }
     /*
     *   @summary function to remova ios fix styles tag from head by findind ID
+    *   @author yeomann
     */
     function removeiosFix() {
         var iosfix = document.getElementById('iosFix');
@@ -1205,6 +1208,7 @@ sweetAlert.init = function() {
     /*
     *   @summary input onfocus listener for ios fix
     *   @listener {Focus}
+    *   @author yeomann
     */
     $input.addEventListener('focus', function() {
         addiosFix();
@@ -1212,6 +1216,7 @@ sweetAlert.init = function() {
     /*
     *   @summary input focusout listener for ios fix
     *   @listener {focusout}
+    *   @author yeomann
     */
     $input.addEventListener('focusout', function() {
         removeiosFix();

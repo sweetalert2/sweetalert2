@@ -9,16 +9,17 @@
     "es6-promise-polyfill": "latest"
   },
   "devDependencies": {
-    "gulp": "latest",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "latest",
+    "gulp-qunit": "latest",
     "gulp-rename": "latest",
     "gulp-rollup": "latest",
     "gulp-sass": "latest",
     "gulp-uglify": "latest",
     "rollup": "latest",
     "uglify-js": "latest",
-    "gulp-qunit": "latest"
+    "browser-sync": "^2.12.8"
   },
   "files": [
     "dist",

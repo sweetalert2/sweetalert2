@@ -9,6 +9,24 @@ var gulp = require('gulp'),
 var pack  = require('./package.json');
 var utils = require('./config/utils.js');
 
+var browserSync = require('browser-sync').create();
+var reload      = browserSync.reload;
+
+
+// Browser-sync task
+gulp.task('serve', ['sass', 'compress'], function() {
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        }
+    });
+
+  gulp.watch('src/*.js', ['compress']);
+  gulp.watch('**/*.scss', ['sass']);
+  gulp.watch("index.html").on("change", reload);
+
+});
+
 gulp.task('compress', ['commonjs', 'dev', 'production']);
 
 gulp.task('commonjs', function() {
@@ -45,12 +63,10 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('dist'))
     .pipe(cleanCSS())
     .pipe(rename({extname: '.min.css'}))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist'))
+    .pipe(reload({stream:true}));
 });
 
-gulp.task('default', ['compress', 'sass']);
+gulp.task('default', ['compress', 'sass', 'serve']);
 
-gulp.task('watch', function() {
-  gulp.watch('src/*.js', ['compress']);
-  gulp.watch('**/*.scss', ['sass']);
-});
+gulp.task('watch', ['serve']);

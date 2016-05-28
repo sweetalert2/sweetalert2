@@ -19,14 +19,33 @@
     return result;
   };
 
+
   var swalClasses = prefix([
-    'container', 'modal', 'overlay', 'close', 'content', 'spacer', 'confirm',
-    'cancel', 'icon', 'image', 'input', 'select', 'radio', 'checkbox', 'textarea',
+    'container', 
+    'modal', 
+    'overlay', 
+    'close', 
+    'content', 
+    'spacer', 
+    'confirm',
+    'cancel', 
+    'icon', 
+    'image', 
+    'input', 
+    'select', 
+    'radio', 
+    'checkbox', 
+    'textarea',
     'validationerror'
   ]);
+  var iconTypes = prefix([
+    'success', 
+    'warning', 
+    'info', 
+    'question', 
+    'error'
+  ]);
 
-  swalClasses.iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
-  var mediaqueryId = swalPrefix + 'mediaquery';
   var defaultParams = {
     title: '',
     text: '',
@@ -64,6 +83,74 @@
     inputAttributes: {},
     inputValidator: null
   };
+
+  var sweetHTML = '<div class="' + swalClasses.overlay + '" tabIndex="-1"></div>' +
+    '<div class="' + swalClasses.modal + '" style="display: none" tabIndex="-1">' +
+      '<div class="' + swalClasses.icon + ' ' + iconTypes.error + '">' +
+        '<span class="x-mark"><span class="line left"></span><span class="line right"></span></span>' +
+      '</div>' +
+      '<div class="' + swalClasses.icon + ' ' + iconTypes.question + '">?</div>' +
+      '<div class="' + swalClasses.icon + ' ' + iconTypes.warning + '">!</div>' +
+      '<div class="' + swalClasses.icon + ' ' + iconTypes.info + '">i</div>' +
+      '<div class="' + swalClasses.icon + ' ' + iconTypes.success + '">' +
+        '<span class="line tip"></span> <span class="line long"></span>' +
+        '<div class="placeholder"></div> <div class="fix"></div>' +
+      '</div>' +
+      '<img class="' + swalClasses.image + '">' +
+      '<h2></h2>' +
+      '<div class="' + swalClasses.content + '"></div>' +
+      '<input class="' + swalClasses.input + '">' +
+      '<select class="' + swalClasses.select + '"></select>' +
+      '<div class="' + swalClasses.radio + '"></div>' +
+      '<label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">' +
+        '<input type="checkbox" id="' + swalClasses.checkbox + '">' +
+      '</label>' +
+      '<textarea class="' + swalClasses.textarea + '"></textarea>' +
+      '<div class="' + swalClasses.validationerror + '"></div>' +
+      '<hr class="' + swalClasses.spacer + '">' +
+      '<button class="' + swalClasses.confirm + '">OK</button>' +
+      '<button class="' + swalClasses.cancel + '">Cancel</button>' +
+      '<span class="' + swalClasses.close + '">&times;</span>' +
+    '</div>';
+
+  var extend = function(a, b) {
+    for (var key in b) {
+      if (b.hasOwnProperty(key)) {
+        a[key] = b[key];
+      }
+    }
+
+    return a;
+  };
+
+
+  /*
+   * Set hover, active and focus-states for buttons (source: http://www.sitepoint.com/javascript-generate-lighter-darker-color)
+   */
+  var colorLuminance = function(hex, lum) {
+    // Validate hex string
+    hex = String(hex).replace(/[^0-9a-f]/gi, '');
+    if (hex.length < 6) {
+      hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    }
+    lum = lum || 0;
+
+    // Convert to decimal and change luminosity
+    var rgb = '#';
+    for (var i = 0; i < 3; i++) {
+      var c = parseInt(hex.substr(i * 2, 2), 16);
+      c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+      rgb += ('00' + c).substr(c.length);
+    }
+
+    return rgb;
+  };
+
+  var mediaqueryId = swalPrefix + 'mediaquery';
+  var previousDocumentClick$1;
+  var previousWindowKeyDown$1;
+  var previousActiveElement$1;
+  var lastFocusedButton$1;
 
   /*
    * Manipulate DOM
@@ -205,49 +292,6 @@
     }
   };
 
-  var extend = function(a, b) {
-    for (var key in b) {
-      if (b.hasOwnProperty(key)) {
-        a[key] = b[key];
-      }
-    }
-
-    return a;
-  };
-
-  var fireClick = function(node) {
-    // Taken from http://www.nonobtrusive.com/2011/11/29/programatically-fire-crossbrowser-click-event-with-javascript/
-    // Then fixed for today's Chrome browser.
-    if (typeof MouseEvent === 'function') {
-      // Up-to-date approach
-      var mevt = new MouseEvent('click', {
-        view: window,
-        bubbles: false,
-        cancelable: true
-      });
-      node.dispatchEvent(mevt);
-    } else if (document.createEvent) {
-      // Fallback
-      var evt = document.createEvent('MouseEvents');
-      evt.initEvent('click', false, false);
-      node.dispatchEvent(evt);
-    } else if (document.createEventObject) {
-      node.fireEvent('onclick');
-    } else if (typeof node.onclick === 'function') {
-      node.onclick();
-    }
-  };
-
-  var stopEventPropagation = function(e) {
-    // In particular, make sure the space bar doesn't scroll the main window.
-    if (typeof e.stopPropagation === 'function') {
-      e.stopPropagation();
-      e.preventDefault();
-    } else if (window.event && window.event.hasOwnProperty('cancelBubble')) {
-      window.event.cancelBubble = true;
-    }
-  };
-
   var animationEndEvent = (function() {
     var testEl = document.createElement('div'),
       transEndEventNames = {
@@ -267,21 +311,16 @@
     return false;
   })();
 
-  // Remember state in cases where opening and handling a modal will fiddle with it.
-  var previousDocumentClick;
-  var previousWindowKeyDown;
-  var previousActiveElement;
-  var lastFocusedButton;
 
   // Reset the page to its previous state
   var resetPrevState = function() {
     var modal = getModal();
-    window.onkeydown = previousWindowKeyDown;
-    document.onclick = previousDocumentClick;
-    if (previousActiveElement) {
-      previousActiveElement.focus();
+    window.onkeydown = previousWindowKeyDown$1;
+    document.onclick = previousDocumentClick$1;
+    if (previousActiveElement$1) {
+      previousActiveElement$1.focus();
     }
-    lastFocusedButton = undefined;
+    lastFocusedButton$1 = undefined;
     clearTimeout(modal.timeout);
 
     // Remove dynamically created media query
@@ -292,28 +331,10 @@
     }
   };
 
-  /*
-   * Set hover, active and focus-states for buttons (source: http://www.sitepoint.com/javascript-generate-lighter-darker-color)
-   */
-  var colorLuminance = function(hex, lum) {
-    // Validate hex string
-    hex = String(hex).replace(/[^0-9a-f]/gi, '');
-    if (hex.length < 6) {
-      hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-    }
-    lum = lum || 0;
-
-    // Convert to decimal and change luminosity
-    var rgb = '#';
-    for (var i = 0; i < 3; i++) {
-      var c = parseInt(hex.substr(i * 2, 2), 16);
-      c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
-      rgb += ('00' + c).substr(c.length);
-    }
-
-    return rgb;
-  };
-
+  var previousDocumentClick;
+  var previousWindowKeyDown;
+  var previousActiveElement;
+  var lastFocusedButton;
   /*
    * Set type, text and actions on modal
    */
@@ -391,7 +412,7 @@
     hide(modal.querySelectorAll('.' + swalClasses.icon));
     if (params.type) {
       var validType = false;
-      for (var iconType in swalClasses.iconTypes) {
+      for (var iconType in iconTypes) {
         if (params.type === iconType) {
           validType = true;
           break;
@@ -401,7 +422,7 @@
         console.error('Unknown alert type: ' + params.type);
         return false;
       }
-      var $icon = modal.querySelector('.' + swalClasses.icon + '.' + swalClasses.iconTypes[params.type]);
+      var $icon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes[params.type]);
       show($icon);
 
       // Animate icon
@@ -650,46 +671,8 @@
         break;
 
       case 'object':
-        params.title              = arguments[0].title || defaultParams.title;
-        params.text               = arguments[0].text || defaultParams.text;
-        params.html               = arguments[0].html || defaultParams.html;
-        params.type               = arguments[0].type || defaultParams.type;
-        params.animation          = arguments[0].animation !== undefined ? arguments[0].animation : defaultParams.animation;
-        params.customClass        = arguments[0].customClass || params.customClass;
-        params.allowOutsideClick  = arguments[0].allowOutsideClick !== undefined ? arguments[0].allowOutsideClick : defaultParams.allowOutsideClick;
-        params.allowEscapeKey     = arguments[0].allowEscapeKey !== undefined ? arguments[0].allowEscapeKey : defaultParams.allowEscapeKey;
-        params.showConfirmButton  = arguments[0].showConfirmButton !== undefined ? arguments[0].showConfirmButton : defaultParams.showConfirmButton;
-        params.showCancelButton   = arguments[0].showCancelButton !== undefined ? arguments[0].showCancelButton : defaultParams.showCancelButton;
-        params.preConfirm         = arguments[0].preConfirm || defaultParams.preConfirm;
-        params.timer              = parseInt(arguments[0].timer, 10) || defaultParams.timer;
-        params.width              = parseInt(arguments[0].width, 10) || defaultParams.width;
-        params.padding            = parseInt(arguments[0].padding, 10) || defaultParams.padding;
-        params.background         = arguments[0].background !== undefined ? arguments[0].background : defaultParams.background;
-
-        params.confirmButtonText  = arguments[0].confirmButtonText || defaultParams.confirmButtonText;
-        params.confirmButtonColor = arguments[0].confirmButtonColor || defaultParams.confirmButtonColor;
-        params.confirmButtonClass = arguments[0].confirmButtonClass || params.confirmButtonClass;
-        params.cancelButtonText   = arguments[0].cancelButtonText || defaultParams.cancelButtonText;
-        params.cancelButtonColor  = arguments[0].cancelButtonColor || defaultParams.cancelButtonColor;
-        params.cancelButtonClass  = arguments[0].cancelButtonClass || params.cancelButtonClass;
-        params.buttonsStyling     = arguments[0].buttonsStyling !== undefined ? arguments[0].buttonsStyling : defaultParams.buttonsStyling;
-        params.reverseButtons     = arguments[0].reverseButtons !== undefined ? arguments[0].reverseButtons : defaultParams.reverseButtons;
-        params.showCloseButton    = arguments[0].showCloseButton !== undefined ? arguments[0].showCloseButton : defaultParams.showCloseButton;
-        params.imageUrl           = arguments[0].imageUrl || defaultParams.imageUrl;
-        params.imageWidth         = arguments[0].imageWidth || defaultParams.imageWidth;
-        params.imageHeight        = arguments[0].imageHeight || defaultParams.imageHeight;
-        params.imageClass         = arguments[0].imageClass || defaultParams.imageClass;
-
-        params.input              = arguments[0].input || defaultParams.input;
-        params.inputPlaceholder   = arguments[0].inputPlaceholder || defaultParams.inputPlaceholder;
-        params.inputValue         = arguments[0].inputValue || defaultParams.inputValue;
-        params.inputOptions       = arguments[0].inputOptions || defaultParams.inputOptions;
-        params.inputAutoTrim      = arguments[0].inputAutoTrim !== undefined ? arguments[0].inputAutoTrim : defaultParams.inputAutoTrim;
-        params.inputClass         = arguments[0].inputClass || defaultParams.inputClass;
-        params.inputAttributes    = arguments[0].inputAttributes || defaultParams.inputAttributes;
-        params.inputValidator     = arguments[0].inputValidator || defaultParams.inputValidator;
-
-        params.extraParams        = arguments[0].extraParams;
+        extend(params, arguments[0]);
+        params.extraParams = arguments[0].extraParams;
 
         if (params.input === 'email' && params.inputValidator === null) {
           params.inputValidator = function(email) {
@@ -1082,16 +1065,16 @@
     removeClass(modal, 'visible');
 
     // Reset icon animations
-    var $successIcon = modal.querySelector('.' + swalClasses.icon + '.' + swalClasses.iconTypes.success);
+    var $successIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.success);
     removeClass($successIcon, 'animate');
     removeClass($successIcon.querySelector('.tip'), 'animate-success-tip');
     removeClass($successIcon.querySelector('.long'), 'animate-success-long');
 
-    var $errorIcon = modal.querySelector('.' + swalClasses.icon + '.' + swalClasses.iconTypes.error);
+    var $errorIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.error);
     removeClass($errorIcon, 'animate-error-icon');
     removeClass($errorIcon.querySelector('.x-mark'), 'animate-x-mark');
 
-    var $warningIcon = modal.querySelector('.' + swalClasses.icon + '.' + swalClasses.iconTypes.warning);
+    var $warningIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.warning);
     removeClass($warningIcon, 'pulse-warning');
 
     resetPrevState();
@@ -1138,36 +1121,7 @@
     } else if (document.getElementsByClassName(swalClasses.container).length) {
       return;
     }
-
-    var sweetHTML =
-      '<div class="' + swalClasses.overlay + '" tabIndex="-1"></div>' +
-      '<div class="' + swalClasses.modal + '" style="display: none" tabIndex="-1">' +
-        '<div class="' + swalClasses.icon + ' ' + swalClasses.iconTypes.error + '">' +
-          '<span class="x-mark"><span class="line left"></span><span class="line right"></span></span>' +
-        '</div>' +
-        '<div class="' + swalClasses.icon + ' ' + swalClasses.iconTypes.question + '">?</div>' +
-        '<div class="' + swalClasses.icon + ' ' + swalClasses.iconTypes.warning + '">!</div>' +
-        '<div class="' + swalClasses.icon + ' ' + swalClasses.iconTypes.info + '">i</div>' +
-        '<div class="' + swalClasses.icon + ' ' + swalClasses.iconTypes.success + '">' +
-          '<span class="line tip"></span> <span class="line long"></span>' +
-          '<div class="placeholder"></div> <div class="fix"></div>' +
-        '</div>' +
-        '<img class="' + swalClasses.image + '">' +
-        '<h2></h2>' +
-        '<div class="' + swalClasses.content + '"></div>' +
-        '<input class="' + swalClasses.input + '">' +
-        '<select class="' + swalClasses.select + '"></select>' +
-        '<div class="' + swalClasses.radio + '"></div>' +
-        '<label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">' +
-          '<input type="checkbox" id="' + swalClasses.checkbox + '">' +
-        '</label>' +
-        '<textarea class="' + swalClasses.textarea + '"></textarea>' +
-        '<div class="' + swalClasses.validationerror + '"></div>' +
-        '<hr class="' + swalClasses.spacer + '">' +
-        '<button class="' + swalClasses.confirm + '">OK</button>' +
-        '<button class="' + swalClasses.cancel + '">Cancel</button>' +
-        '<span class="' + swalClasses.close + '">&times;</span>' +
-      '</div>';
+      
     var sweetWrap = document.createElement('div');
     sweetWrap.className = swalClasses.container;
 

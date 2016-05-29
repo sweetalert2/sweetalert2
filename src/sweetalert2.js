@@ -606,7 +606,7 @@ function modalDependant() {
           setFocus(btnIndex, -1);
         }
 
-        stopEventPropagation(e);
+        dom.stopEventPropagation(e);
 
       } else {
         if (keyCode === 13 || keyCode === 32) {
@@ -755,7 +755,7 @@ sweetAlert.close = sweetAlert.closeModal = function() {
   dom.removeClass($warningIcon, 'pulse-warning');
 
   dom.resetPrevState();
-  
+
   if (dom.animationEndEvent && !dom.hasClass(modal, 'no-animation')) {
     modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished() {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished);
@@ -798,7 +798,7 @@ sweetAlert.init = function() {
   } else if (document.getElementsByClassName(swalClasses.container).length) {
     return;
   }
-    
+
   var sweetWrap = document.createElement('div');
   sweetWrap.className = swalClasses.container;
 

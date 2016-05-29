@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v3.2.0
+ * sweetalert2 v3.2.1
  * (c) 2016 Tristan Edwards <tristan.edwards@me.com> (http://tristanedwards.me)
  * Released under the MIT License.
  */
@@ -285,6 +285,16 @@ var fadeOut = function(elem, interval) {
       }
     };
     tick();
+  }
+};
+
+var stopEventPropagation = function(e) {
+  // In particular, make sure the space bar doesn't scroll the main window.
+  if (typeof e.stopPropagation === 'function') {
+    e.stopPropagation();
+    e.preventDefault();
+  } else if (window.event && window.event.hasOwnProperty('cancelBubble')) {
+    window.event.cancelBubble = true;
   }
 };
 
@@ -1074,7 +1084,7 @@ sweetAlert.close = sweetAlert.closeModal = function() {
   removeClass($warningIcon, 'pulse-warning');
 
   resetPrevState();
-  
+
   if (animationEndEvent && !hasClass(modal, 'no-animation')) {
     modal.addEventListener(animationEndEvent, function swalCloseEventFinished() {
       modal.removeEventListener(animationEndEvent, swalCloseEventFinished);
@@ -1117,7 +1127,7 @@ sweetAlert.init = function() {
   } else if (document.getElementsByClassName(swalClasses.container).length) {
     return;
   }
-    
+
   var sweetWrap = document.createElement('div');
   sweetWrap.className = swalClasses.container;
 
@@ -1170,7 +1180,7 @@ sweetAlert.setDefaults = function(userParams) {
   extend(defaultParams, userParams);
 };
 
-sweetAlert.version = '3.2.0';
+sweetAlert.version = '3.2.1';
 
 window.sweetAlert = window.swal = sweetAlert;
 

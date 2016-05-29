@@ -1124,7 +1124,9 @@ swal({
         });
       }
     }).then(function(result) {
-      swal(JSON.stringify(result));
+      if (result) {
+        swal(JSON.stringify(result));
+      }
     });
   });
 

@@ -47,7 +47,7 @@ var packageRollup = function(options) {
     }).code.replace(/sweetAlert\.version = '(.*)'/, "sweetAlert.version = '" + pack.version + "'");
 
     if (options.minify) {
-      code = banner + '\n' + uglify.minify(code, {
+      code = uglify.minify(code, {
         fromString: true
       }).code;
     }

@@ -5,12 +5,6 @@ import { swalPrefix, swalClasses, iconTypes } from './utils/classes.js';
 import { extend, colorLuminance } from './utils/utils.js';
 import * as dom from './utils/dom.js';
 
-// Remember state in cases where opening and handling a modal will fiddle with it.
-var previousDocumentClick,
-  previousWindowKeyDown,
-  previousActiveElement,
-  lastFocusedButton;
-
 /*
  * Set type, text and actions on modal
  */
@@ -314,7 +308,7 @@ var openModal = function() {
   dom.addClass(modal, 'show-swal2');
   dom.removeClass(modal, 'hide-swal2');
 
-  previousActiveElement = document.activeElement;
+  dom.states.previousActiveElement = document.activeElement;
 
   dom.addClass(modal, 'visible');
 };
@@ -520,7 +514,7 @@ function modalDependant() {
     }
 
     // Remember the current document.onclick event.
-    previousDocumentClick = document.onclick;
+    dom.states.previousDocumentClick = document.onclick;
     document.onclick = function(event) {
       var e = event || window.event;
       var target = e.target || e.srcElement;
@@ -620,7 +614,7 @@ function modalDependant() {
       }
     }
 
-    previousWindowKeyDown = window.onkeydown;
+    dom.states.previousWindowKeyDown = window.onkeydown;
     window.onkeydown = handleKeyDown;
 
     // Loading state
@@ -704,9 +698,9 @@ function modalDependant() {
       window.setTimeout(function() {
         // Put in a timeout to jump out of the event sequence. Calling focus() in the event
         // sequence confuses things.
-        if (lastFocusedButton !== undefined) {
-          lastFocusedButton.focus();
-          lastFocusedButton = undefined;
+        if (dom.states.lastFocusedButton !== undefined) {
+          dom.states.lastFocusedButton.focus();
+          dom.states.lastFocusedButton = undefined;
         }
       }, 0);
     };

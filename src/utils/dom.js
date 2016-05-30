@@ -4,10 +4,12 @@ import { swalPrefix, swalClasses } from './classes.js';
 export var mediaqueryId = swalPrefix + 'mediaquery';
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
-export var previousDocumentClick;
-export var previousWindowKeyDown;
-export var previousActiveElement;
-export var lastFocusedButton;
+export var states = {
+    previousDocumentClick: null,
+    previousWindowKeyDown: null,
+    previousActiveElement: null,
+    lastFocusedButton:     null
+};
 
 /*
  * Manipulate DOM
@@ -205,12 +207,12 @@ export var animationEndEvent = (function() {
 // Reset the page to its previous state
 export var resetPrevState = function() {
   var modal = getModal();
-  window.onkeydown = previousWindowKeyDown;
-  document.onclick = previousDocumentClick;
-  if (previousActiveElement) {
-    previousActiveElement.focus();
+  window.onkeydown = states.previousWindowKeyDown;
+  document.onclick = states.previousDocumentClick;
+  if (states.previousActiveElement) {
+    states.previousActiveElement.focus();
   }
-  lastFocusedButton = undefined;
+  states.lastFocusedButton = undefined;
   clearTimeout(modal.timeout);
 
   // Remove dynamically created media query

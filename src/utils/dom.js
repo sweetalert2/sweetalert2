@@ -7,8 +7,7 @@ export var mediaqueryId = swalPrefix + 'mediaquery';
 export var states = {
     previousDocumentClick: null,
     previousWindowKeyDown: null,
-    previousActiveElement: null,
-    lastFocusedButton:     null
+    previousActiveElement: null
 };
 
 /*
@@ -212,7 +211,6 @@ export var resetPrevState = function() {
   if (states.previousActiveElement) {
     states.previousActiveElement.focus();
   }
-  states.lastFocusedButton = undefined;
   clearTimeout(modal.timeout);
 
   // Remove dynamically created media query

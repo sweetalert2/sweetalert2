@@ -696,18 +696,6 @@ function modalDependant() {
     sweetAlert.enableButtons();
     sweetAlert.disableLoading();
     sweetAlert.resetValidationError();
-
-    window.onfocus = function() {
-      // When the user has focused away and focused back from the whole window.
-      window.setTimeout(function() {
-        // Put in a timeout to jump out of the event sequence. Calling focus() in the event
-        // sequence confuses things.
-        if (dom.states.lastFocusedButton !== undefined) {
-          dom.states.lastFocusedButton.focus();
-          dom.states.lastFocusedButton = undefined;
-        }
-      }, 0);
-    };
   });
 }
 

@@ -2,6 +2,8 @@ import { swalPrefix, swalClasses } from './classes.js';
 
 
 export var mediaqueryId = swalPrefix + 'mediaquery';
+
+// Remember state in cases where opening and handling a modal will fiddle with it.
 export var previousDocumentClick;
 export var previousWindowKeyDown;
 export var previousActiveElement;
@@ -190,7 +192,7 @@ export var animationEndEvent = (function() {
       'animation': 'animationend'
     };
   for (var i in transEndEventNames) {
-    if (transEndEventNames.hasOwnProperty(i) && 
+    if (transEndEventNames.hasOwnProperty(i) &&
       testEl.style[i] !== undefined) {
       return transEndEventNames[i];
     }

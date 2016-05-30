@@ -5,7 +5,6 @@ import { swalPrefix, swalClasses, iconTypes } from './utils/classes.js';
 import { extend, colorLuminance } from './utils/utils.js';
 import * as dom from './utils/dom.js';
 
-
 // Remember state in cases where opening and handling a modal will fiddle with it.
 var previousDocumentClick,
   previousWindowKeyDown,
@@ -869,4 +868,4 @@ window.sweetAlert = window.swal = sweetAlert;
   }
 })();
 
-export default sweetAlert
+export default sweetAlert;

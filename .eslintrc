@@ -1,4 +1,18 @@
 {
+  env: {
+    "browser": true,
+    "es6": true
+  },
+  "ecmaFeatures": {
+    "sourceType": "module"
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
   rules: {
     /**
      * Variables

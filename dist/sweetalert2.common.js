@@ -15,30 +15,30 @@ var prefix = function(items) {
   return result;
 };
 
-
 var swalClasses = prefix([
-  'container', 
-  'modal', 
-  'overlay', 
-  'close', 
-  'content', 
-  'spacer', 
+  'container',
+  'modal',
+  'overlay',
+  'close',
+  'content',
+  'spacer',
   'confirm',
-  'cancel', 
-  'icon', 
-  'image', 
-  'input', 
-  'select', 
-  'radio', 
-  'checkbox', 
+  'cancel',
+  'icon',
+  'image',
+  'input',
+  'select',
+  'radio',
+  'checkbox',
   'textarea',
   'validationerror'
 ]);
+
 var iconTypes = prefix([
-  'success', 
-  'warning', 
-  'info', 
-  'question', 
+  'success',
+  'warning',
+  'info',
+  'question',
   'error'
 ]);
 
@@ -143,10 +143,14 @@ var colorLuminance = function(hex, lum) {
 };
 
 var mediaqueryId = swalPrefix + 'mediaquery';
-var previousDocumentClick$1;
-var previousWindowKeyDown$1;
-var previousActiveElement$1;
-var lastFocusedButton$1;
+
+// Remember state in cases where opening and handling a modal will fiddle with it.
+var states = {
+    previousDocumentClick: null,
+    previousWindowKeyDown: null,
+    previousActiveElement: null,
+    lastFocusedButton:     null
+};
 
 /*
  * Manipulate DOM
@@ -308,7 +312,7 @@ var animationEndEvent = (function() {
       'animation': 'animationend'
     };
   for (var i in transEndEventNames) {
-    if (transEndEventNames.hasOwnProperty(i) && 
+    if (transEndEventNames.hasOwnProperty(i) &&
       testEl.style[i] !== undefined) {
       return transEndEventNames[i];
     }
@@ -321,12 +325,12 @@ var animationEndEvent = (function() {
 // Reset the page to its previous state
 var resetPrevState = function() {
   var modal = getModal();
-  window.onkeydown = previousWindowKeyDown$1;
-  document.onclick = previousDocumentClick$1;
-  if (previousActiveElement$1) {
-    previousActiveElement$1.focus();
+  window.onkeydown = states.previousWindowKeyDown;
+  document.onclick = states.previousDocumentClick;
+  if (states.previousActiveElement) {
+    states.previousActiveElement.focus();
   }
-  lastFocusedButton$1 = undefined;
+  states.lastFocusedButton = undefined;
   clearTimeout(modal.timeout);
 
   // Remove dynamically created media query
@@ -337,10 +341,6 @@ var resetPrevState = function() {
   }
 };
 
-var previousDocumentClick;
-var previousWindowKeyDown;
-var previousActiveElement;
-var lastFocusedButton;
 /*
  * Set type, text and actions on modal
  */
@@ -644,7 +644,7 @@ var openModal = function() {
   addClass(modal, 'show-swal2');
   removeClass(modal, 'hide-swal2');
 
-  previousActiveElement = document.activeElement;
+  states.previousActiveElement = document.activeElement;
 
   addClass(modal, 'visible');
 };
@@ -850,7 +850,7 @@ function modalDependant() {
     }
 
     // Remember the current document.onclick event.
-    previousDocumentClick = document.onclick;
+    states.previousDocumentClick = document.onclick;
     document.onclick = function(event) {
       var e = event || window.event;
       var target = e.target || e.srcElement;
@@ -950,7 +950,7 @@ function modalDependant() {
       }
     }
 
-    previousWindowKeyDown = window.onkeydown;
+    states.previousWindowKeyDown = window.onkeydown;
     window.onkeydown = handleKeyDown;
 
     // Loading state
@@ -1034,9 +1034,9 @@ function modalDependant() {
       window.setTimeout(function() {
         // Put in a timeout to jump out of the event sequence. Calling focus() in the event
         // sequence confuses things.
-        if (lastFocusedButton !== undefined) {
-          lastFocusedButton.focus();
-          lastFocusedButton = undefined;
+        if (states.lastFocusedButton !== undefined) {
+          states.lastFocusedButton.focus();
+          states.lastFocusedButton = undefined;
         }
       }, 0);
     };

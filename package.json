@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "gulp": "latest",
+    "eslint": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "latest",
     "gulp-rename": "latest",
@@ -18,6 +19,7 @@
     "gulp-uglify": "latest",
     "rollup": "latest",
     "uglify-js": "latest",
+    "gulp-eslint": "latest",
     "gulp-qunit": "latest"
   },
   "files": [

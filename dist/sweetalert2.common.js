@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v3.2.2
+ * sweetalert2 v3.2.3
  * Released under the MIT License.
  */
 'use strict';
@@ -147,8 +147,7 @@ var mediaqueryId = swalPrefix + 'mediaquery';
 var states = {
     previousDocumentClick: null,
     previousWindowKeyDown: null,
-    previousActiveElement: null,
-    lastFocusedButton:     null
+    previousActiveElement: null
 };
 
 /*
@@ -329,7 +328,6 @@ var resetPrevState = function() {
   if (states.previousActiveElement) {
     states.previousActiveElement.focus();
   }
-  states.lastFocusedButton = undefined;
   clearTimeout(modal.timeout);
 
   // Remove dynamically created media query
@@ -640,12 +638,12 @@ var openModal = function(animation) {
   var modal = getModal();
   if (animation) {
     fadeIn(getOverlay(), 10);
+    addClass(modal, 'show-swal2');
+    removeClass(modal, 'hide-swal2');
   } else {
     show(getOverlay());
   }
   show(modal);
-  addClass(modal, 'show-swal2');
-  removeClass(modal, 'hide-swal2');
 
   states.previousActiveElement = document.activeElement;
 
@@ -1031,18 +1029,6 @@ function modalDependant() {
     sweetAlert.enableButtons();
     sweetAlert.disableLoading();
     sweetAlert.resetValidationError();
-
-    window.onfocus = function() {
-      // When the user has focused away and focused back from the whole window.
-      window.setTimeout(function() {
-        // Put in a timeout to jump out of the event sequence. Calling focus() in the event
-        // sequence confuses things.
-        if (states.lastFocusedButton !== undefined) {
-          states.lastFocusedButton.focus();
-          states.lastFocusedButton = undefined;
-        }
-      }, 0);
-    };
   });
 }
 
@@ -1183,7 +1169,7 @@ sweetAlert.setDefaults = function(userParams) {
   extend(defaultParams, userParams);
 };
 
-sweetAlert.version = '3.2.2';
+sweetAlert.version = '3.2.3';
 
 window.sweetAlert = window.swal = sweetAlert;
 

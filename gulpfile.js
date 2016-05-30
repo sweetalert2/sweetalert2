@@ -1,15 +1,22 @@
 var gulp = require('gulp'),
-    uglify     = require('gulp-uglify'),
     cleanCSS   = require('gulp-clean-css'),
     sass       = require('gulp-sass'),
     rename     = require('gulp-rename'),
     autoprefix = require('gulp-autoprefixer'),
+    eslint     = require('gulp-eslint'),
     qunit      = require('gulp-qunit');
 
 var pack  = require('./package.json');
 var utils = require('./config/utils.js');
 
-gulp.task('compress', ['commonjs', 'dev', 'production']);
+gulp.task('compress', ['lint', 'commonjs', 'dev', 'production']);
+
+gulp.task('lint', function() {
+  return gulp.src(['src/*.js'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
 
 gulp.task('commonjs', function() {
   return utils.packageRollup({

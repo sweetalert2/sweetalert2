@@ -301,9 +301,13 @@ var setParameters = function(params) {
 /*
  * Animations
  */
-var openModal = function() {
+var openModal = function(animation) {
   var modal = dom.getModal();
-  dom.fadeIn(dom.getOverlay(), 10);
+  if (animation) {
+    dom.fadeIn(dom.getOverlay(), 10);
+  } else {
+    dom.show(dom.getOverlay());
+  }
   dom.show(modal);
   dom.addClass(modal, 'show-swal2');
   dom.removeClass(modal, 'hide-swal2');
@@ -367,7 +371,7 @@ function modalDependant() {
 
   setParameters(params);
   fixVerticalPosition();
-  openModal();
+  openModal(params.animation);
 
   // Modal interactions
   var modal = dom.getModal();
@@ -759,7 +763,7 @@ sweetAlert.close = sweetAlert.closeModal = function() {
     });
   } else {
     dom._hide(modal);
-    dom.fadeOut(dom.getOverlay(), 0);
+    dom._hide(dom.getOverlay());
   }
 };
 

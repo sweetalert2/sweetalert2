@@ -305,12 +305,12 @@ var openModal = function(animation) {
   var modal = dom.getModal();
   if (animation) {
     dom.fadeIn(dom.getOverlay(), 10);
+    dom.addClass(modal, 'show-swal2');
+    dom.removeClass(modal, 'hide-swal2');
   } else {
     dom.show(dom.getOverlay());
   }
   dom.show(modal);
-  dom.addClass(modal, 'show-swal2');
-  dom.removeClass(modal, 'hide-swal2');
 
   dom.states.previousActiveElement = document.activeElement;
 

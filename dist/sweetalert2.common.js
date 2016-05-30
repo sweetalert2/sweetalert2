@@ -1,6 +1,5 @@
 /*!
- * sweetalert2 v3.2.1
- * (c) 2016 Tristan Edwards <tristan.edwards@me.com> (http://tristanedwards.me)
+ * sweetalert2 v3.2.2
  * Released under the MIT License.
  */
 'use strict';
@@ -637,9 +636,13 @@ var setParameters = function(params) {
 /*
  * Animations
  */
-var openModal = function() {
+var openModal = function(animation) {
   var modal = getModal();
-  fadeIn(getOverlay(), 10);
+  if (animation) {
+    fadeIn(getOverlay(), 10);
+  } else {
+    show(getOverlay());
+  }
   show(modal);
   addClass(modal, 'show-swal2');
   removeClass(modal, 'hide-swal2');
@@ -703,7 +706,7 @@ function modalDependant() {
 
   setParameters(params);
   fixVerticalPosition();
-  openModal();
+  openModal(params.animation);
 
   // Modal interactions
   var modal = getModal();
@@ -1095,7 +1098,7 @@ sweetAlert.close = sweetAlert.closeModal = function() {
     });
   } else {
     _hide(modal);
-    fadeOut(getOverlay(), 0);
+    _hide(getOverlay());
   }
 };
 
@@ -1180,7 +1183,7 @@ sweetAlert.setDefaults = function(userParams) {
   extend(defaultParams, userParams);
 };
 
-sweetAlert.version = '3.2.1';
+sweetAlert.version = '3.2.2';
 
 window.sweetAlert = window.swal = sweetAlert;
 

@@ -8,29 +8,29 @@ export var prefix = function(items) {
   return result;
 };
 
-
 export var swalClasses = prefix([
-  'container', 
-  'modal', 
-  'overlay', 
-  'close', 
-  'content', 
-  'spacer', 
+  'container',
+  'modal',
+  'overlay',
+  'close',
+  'content',
+  'spacer',
   'confirm',
-  'cancel', 
-  'icon', 
-  'image', 
-  'input', 
-  'select', 
-  'radio', 
-  'checkbox', 
+  'cancel',
+  'icon',
+  'image',
+  'input',
+  'select',
+  'radio',
+  'checkbox',
   'textarea',
   'validationerror'
 ]);
+
 export var iconTypes = prefix([
-  'success', 
-  'warning', 
-  'info', 
-  'question', 
+  'success',
+  'warning',
+  'info',
+  'question',
   'error'
 ]);

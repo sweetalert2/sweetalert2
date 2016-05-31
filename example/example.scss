@@ -8,6 +8,10 @@
   background-repeat: no-repeat;
 }
 
+html, body {
+  margin: 0;
+}
+
 body {
   background-color: #f2f4f6;
   font-family: 'Open Sans', sans-serif;
@@ -24,6 +28,10 @@ header h1 {
   span {
     margin: 0 10px;
     color: #f77;
+  }
+
+  @media all and (max-width: 440px) {
+    font-size: 50px;
   }
 }
 
@@ -70,6 +78,11 @@ header h2 {
     td:first-child {
       padding-top: 45px;
     }
+  }
+  td {
+    vertical-align: middle;
+    text-align: center;
+    width: 33%;
   }
 }
 
@@ -144,6 +157,11 @@ p {
     &.github {
       color: #323131;
     }
+  }
+
+  @media all and (max-width: 750px) {
+    text-align: center;
+    padding: 0 10px;
   }
 }
 
@@ -227,6 +245,7 @@ pre {
   border-radius: 5px;
   text-align: left;
   font-size: 14px;
+  overflow: hidden;
 
   .str {
     color: #e6db74;
@@ -263,7 +282,7 @@ pre {
 
   @media all and (max-width: 865px) {
     margin: 5px auto;
-    padding: 46px 20px;
+    padding: 35px 10px;
   }
   @media all and (max-width: 440px) {
     width: auto;
@@ -402,7 +421,7 @@ table {
   border-collapse: collapse;
   @media all and (max-width: 750px) {
     width: auto;
-    margin: 10px 20px;
+    margin: 10px auto;
   }
 
   th {
@@ -460,6 +479,12 @@ table {
         font-size: 13px;
       }
     }
+  }
+}
+
+.mobile-hidden {
+  @media all and (max-width: 750px) {
+    display: none;
   }
 }
 

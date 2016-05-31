@@ -15,7 +15,7 @@
     "images"
   ],
   "description": "A replacement for JavaScript's popup boxes, supported fork of sweetalert",
-  "main": ["src/sweetalert2.js", "src/sweetalert2.scss", "dist/sweetalert2.css"],
+  "main": ["dist/sweetalert2.js", "src/sweetalert2.scss", "dist/sweetalert2.css"],
   "keywords": [
     "alert",
     "modal"

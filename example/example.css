@@ -1,5 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
+html, body {
+  margin: 0; }
+
 body {
   background-color: #f2f4f6;
   font-family: 'Open Sans', sans-serif;
@@ -14,6 +17,9 @@ header h1 {
   header h1 span {
     margin: 0 10px;
     color: #f77; }
+  @media all and (max-width: 440px) {
+    header h1 {
+      font-size: 50px; } }
 
 header h2 {
   font-size: 20px;
@@ -44,6 +50,11 @@ header h2 {
 
 .modal-input-types tr td:first-child {
   padding-top: 45px; }
+
+.modal-input-types td {
+  vertical-align: middle;
+  text-align: center;
+  width: 33%; }
 
 h3 {
   font-size: 28px;
@@ -98,6 +109,10 @@ p {
       color: #5eaade; }
     p a.github {
       color: #323131; }
+  @media all and (max-width: 750px) {
+    p {
+      text-align: center;
+      padding: 0 10px; } }
 
 button,
 .button {
@@ -161,7 +176,8 @@ pre {
   padding: 10px;
   border-radius: 5px;
   text-align: left;
-  font-size: 14px; }
+  font-size: 14px;
+  overflow: hidden; }
   pre .str {
     color: #e6db74; }
   pre .func {
@@ -185,7 +201,7 @@ pre {
   @media all and (max-width: 865px) {
     .showcase {
       margin: 5px auto;
-      padding: 46px 20px; } }
+      padding: 35px 10px; } }
   @media all and (max-width: 440px) {
     .showcase {
       width: auto; } }
@@ -288,7 +304,7 @@ table {
   @media all and (max-width: 750px) {
     table {
       width: auto;
-      margin: 10px 20px; } }
+      margin: 10px auto; } }
   table th {
     background-color: #fff;
     padding: 9px;
@@ -326,6 +342,10 @@ table {
         padding: 10px 4px; }
         table td b {
           font-size: 13px; } }
+
+@media all and (max-width: 750px) {
+  .mobile-hidden {
+    display: none; } }
 
 .github-corner {
   position: fixed;

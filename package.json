@@ -41,7 +41,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "postinstall": "git update-index --assume-unchanged dist/*"
   },
   "bugs": "https://github.com/limonte/sweetalert2/issues",
   "license": "MIT"

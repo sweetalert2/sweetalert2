@@ -146,6 +146,8 @@ Configuration
 | `inputAutoTrim`      | `true`        | Automatically remove whitespaces from both ends of a result string. Set this parameter to `false` to disable auto-trimming. |
 | `inputValidator`     | `null`        | Validator for input field, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#select-box">usage example</a>. |
 | `inputClass`         | `null`        | A custom CSS class for the input field. |
+| `onInit`             | `null`        | Callback resolved after plugin init. |
+| `onOpen`             | `null`        | Callback resolved when modal will open. |
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
 

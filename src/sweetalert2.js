@@ -296,12 +296,16 @@ var setParameters = function(params) {
   } else {
     dom.addClass(modal, 'no-animation');
   }
+
+  if (typeof params.onInit === 'function') {
+    params.onInit();
+  }
 };
 
 /*
  * Animations
  */
-var openModal = function(animation) {
+var openModal = function(animation, onOpen) {
   var modal = dom.getModal();
   if (animation) {
     dom.fadeIn(dom.getOverlay(), 10);
@@ -315,6 +319,10 @@ var openModal = function(animation) {
   dom.states.previousActiveElement = document.activeElement;
 
   dom.addClass(modal, 'visible');
+
+  if (typeof onOpen === 'function') {
+    onOpen();
+  }
 };
 
 /*
@@ -371,7 +379,7 @@ function modalDependant() {
 
   setParameters(params);
   fixVerticalPosition();
-  openModal(params.animation);
+  openModal(params.animation, params.onOpen);
 
   // Modal interactions
   var modal = dom.getModal();

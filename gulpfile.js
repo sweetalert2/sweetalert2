@@ -58,6 +58,6 @@ gulp.task('sass', function() {
 gulp.task('default', ['compress', 'sass']);
 
 gulp.task('watch', function() {
-  gulp.watch('src/*.js', ['compress']);
+  gulp.watch('src/**/*.js', ['compress']);
   gulp.watch('**/*.scss', ['sass']);
 });

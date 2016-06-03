@@ -1,4 +1,4 @@
-var rollup  = require('rollup').rollup,
+var rollup = require('rollup').rollup,
     pack   = require('../package.json'),
     banner = require('./banner.js'),
     fs     = require('fs'),

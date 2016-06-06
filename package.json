@@ -42,7 +42,7 @@
   },
   "scripts": {
     "test": "gulp test",
-    "postinstall": "git update-index --assume-unchanged dist/*"
+    "postinstall": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --assume-unchanged"
   },
   "bugs": "https://github.com/limonte/sweetalert2/issues",
   "license": "MIT"

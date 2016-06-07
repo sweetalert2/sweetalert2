@@ -432,22 +432,6 @@ table {
     text-align: center;
     position: relative;
 
-    .border-left,
-    .border-right {
-      position: absolute;
-      background-color: #fff;
-      border-radius: 50%;
-      top: 0;
-      left: -17px;
-      width: 37px;
-      height: 37px;
-    }
-
-    .border-right {
-      left: auto;
-      right: -17px;
-    }
-
     @media all and (max-width: 750px) {
       &:nth-child(2) {
         display: none;

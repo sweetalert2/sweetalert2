@@ -85,3 +85,29 @@ test('set and reset defaults', function(assert) {
 
   swal.clickCancel();
 });
+
+
+test('queue', function(assert) {
+  var steps = ['Step 1', 'Step 2'];
+
+  swal.queue(steps).then(function() {
+    swal('All done!');
+  });
+  assert.equal('Step 1', $('.swal2-modal h2').text());
+  swal.clickConfirm();
+  setTimeout(function() {
+    assert.equal('Step 2', $('.swal2-modal h2').text());
+    swal.clickConfirm();
+  });
+  setTimeout(function() {
+    assert.equal('All done!', $('.swal2-modal h2').text());
+    swal.clickConfirm();
+  });
+
+  swal.queue(steps);
+  swal.clickCancel();
+
+  setTimeout(function() {
+    assert.ok($('.swal2-cancel').is(':hidden'));
+  });
+});

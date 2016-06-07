@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v3.3.3
+ * sweetalert2 v3.3.4
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -65,6 +65,7 @@
     buttonsStyling: true,
     reverseButtons: false,
     showCloseButton: false,
+    showLoaderOnConfirm: false,
     imageUrl: null,
     imageWidth: null,
     imageHeight: null,
@@ -662,7 +663,7 @@
   var fixVerticalPosition = function() {
     var modal = getModal();
 
-    modal.style.marginTop = getTopMargin(getModal());
+    modal.style.marginTop = getTopMargin(modal);
   };
 
   function modalDependant() {
@@ -758,11 +759,20 @@
       }
 
       var confirm = function(value) {
+        if (params.showLoaderOnConfirm) {
+          sweetAlert.showLoading();
+        }
+
         if (params.preConfirm) {
-          params.preConfirm(value, params.extraParams).then(function(preConfirmValue) {
-            resolve(preConfirmValue || value);
-            sweetAlert.closeModal();
-          });
+          params.preConfirm(value, params.extraParams).then(
+            function(preConfirmValue) {
+              resolve(preConfirmValue || value);
+              sweetAlert.closeModal();
+            },
+            function() {
+              sweetAlert.hideLoading();
+            }
+          );
         } else {
           resolve(value);
           sweetAlert.closeModal();
@@ -965,13 +975,13 @@
         $confirmButton.style.borderRightColor = params.confirmButtonColor;
       }
 
-      sweetAlert.enableLoading = function() {
+      sweetAlert.showLoading = sweetAlert.enableLoading = function() {
         addClass($confirmButton, 'loading');
         addClass(modal, 'loading');
         $cancelButton.disabled = true;
       };
 
-      sweetAlert.disableLoading = function() {
+      sweetAlert.hideLoading = sweetAlert.disableLoading = function() {
         removeClass($confirmButton, 'loading');
         removeClass(modal, 'loading');
         $cancelButton.disabled = false;
@@ -1032,7 +1042,7 @@
       };
 
       sweetAlert.enableButtons();
-      sweetAlert.disableLoading();
+      sweetAlert.hideLoading();
       sweetAlert.resetValidationError();
     });
   }
@@ -1202,7 +1212,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '3.3.3';
+  sweetAlert.version = '3.3.4';
 
   window.sweetAlert = window.swal = sweetAlert;
 

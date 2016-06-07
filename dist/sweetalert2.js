@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v3.3.0
+ * sweetalert2 v3.3.1
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -342,12 +342,12 @@
     }
   };
 
-  var params = extend({}, defaultParams);
+  var modalParams = extend({}, defaultParams);
 
   /*
    * Set type, text and actions on modal
    */
-  var setParameters = function() {
+  var setParameters = function(params) {
     var i;
     var modal = getModal();
 
@@ -640,9 +640,9 @@
   /*
    * Animations
    */
-  var openModal = function() {
+  var openModal = function(animation) {
     var modal = getModal();
-    if (params.animation) {
+    if (animation) {
       fadeIn(getOverlay(), 10);
       addClass(modal, 'show-swal2');
       removeClass(modal, 'hide-swal2');
@@ -672,9 +672,12 @@
       return false;
     }
 
+    var params;
+
     switch (typeof arguments[0]) {
 
       case 'string':
+        params = modalParams;
         params.title = arguments[0];
         params.text  = arguments[1] || '';
         params.type  = arguments[2] || '';
@@ -682,7 +685,7 @@
         break;
 
       case 'object':
-        extend(params, arguments[0]);
+        params = extend(modalParams, arguments[0]);
         params.extraParams = arguments[0].extraParams;
 
         if (params.input === 'email' && params.inputValidator === null) {
@@ -706,9 +709,9 @@
 
     }
 
-    setParameters();
+    setParameters(params);
     fixVerticalPosition();
-    openModal();
+    openModal(params.animation);
 
     // Modal interactions
     var modal = getModal();
@@ -1055,6 +1058,25 @@
   }
 
   /*
+   * Global function for chaining sweetAlert modals
+   */
+  sweetAlert.queue = function(steps) {
+    return new Promise(function(resolve) {
+      (function step(i, callback) {
+        if (i < steps.length) {
+          sweetAlert(steps[i]).then(function(isConfirm) {
+            if (isConfirm) {
+              step(i+1, callback);
+            }
+          });
+        } else {
+          resolve();
+        }
+      })(0);
+    });
+  };
+
+  /*
    * Global function to close sweetAlert
    */
   sweetAlert.close = sweetAlert.closeModal = function() {
@@ -1170,17 +1192,17 @@
       throw new Error('userParams has to be a object');
     }
 
-    extend(params, userParams);
+    extend(modalParams, userParams);
   };
 
   /**
    * Reset default params for each popup
    */
   sweetAlert.resetDefaults = function() {
-    params = defaultParams;
+    modalParams = defaultParams;
   };
 
-  sweetAlert.version = '3.3.0';
+  sweetAlert.version = '3.3.1';
 
   window.sweetAlert = window.swal = sweetAlert;
 

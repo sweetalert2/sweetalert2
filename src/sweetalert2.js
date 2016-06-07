@@ -424,11 +424,15 @@ function modalDependant() {
       if (params.preConfirm) {
         params.preConfirm(value, params.extraParams).then(function(preConfirmValue) {
           resolve(preConfirmValue || value);
-          sweetAlert.closeModal();
+          if (params.closeOnConfirm) {
+            sweetAlert.closeModal();
+          }
         });
       } else {
         resolve(value);
-        sweetAlert.closeModal();
+        if (params.closeOnConfirm) {
+          sweetAlert.closeModal();
+        }
       }
     };
 

@@ -115,7 +115,7 @@ swal(
 swal({
   title: <span class="str">'Auto close alert!'</span>,
   text: <span class="str">'I will close in 2 seconds.'</span>,
-  timer: <span class="str">2000</span>
+  timer: <span class="val">2000</span>
 })</pre>
     </li>
 
@@ -259,12 +259,12 @@ swal({
   input: <span class="str">'email'</span>,
   showCancelButton: <span class="val">true</span>,
   confirmButtonText: <span class="str">'Submit'</span>,
+  showLoaderOnConfirm: <span class="val">true</span>,
   preConfirm: <span class="func"><i>function</i></span>() {
     <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve) {
-      swal.enableLoading();
       <span class="func">setTimeout</span>(<span class="func">function</span>() {
         resolve();
-      }, 2000);
+      }, <span class="val">2000</span>);
     });
   },
   allowOutsideClick: <span class="val">false</span>
@@ -450,12 +450,17 @@ swal({
       <tr>
         <td><b>reverseButtons</b></td>
         <td><i>false</i></td>
-        <td>Set this parameter to <strong>true</strong> if you want to invert default buttons positions.</td>
+        <td>Set to <strong>true</strong> if you want to invert default buttons positions.</td>
       </tr>
       <tr>
         <td><b>showCloseButton</b></td>
         <td><i>false</i></td>
-        <td>Set this parameter to <strong>true</strong> to show close button in top right corner of the modal.</td>
+        <td>Set to <strong>true</strong> to show close button in top right corner of the modal.</td>
+      </tr>
+      <tr>
+        <td><b>showLoaderOnConfirm</b></td>
+        <td><i>false</i></td>
+        <td>Set to <strong>true</strong> to disable buttons and show that something is loading. Useful for AJAX requests.</td>
       </tr>
       <tr>
         <td><b>preConfirm</b></td>
@@ -845,11 +850,11 @@ swal({
         <td>Disable confirm and cancel buttons.</td>
       </tr>
       <tr>
-        <td><i>swal.enableLoading()</i></td>
+        <td><i>swal.showLoading()</i> or <i>swal.enableLoading()</i></td>
         <td>Disable buttons and show loader. This is useful with AJAX requests.</td>
       </tr>
       <tr>
-        <td><i>swal.disableLoading()</i></td>
+        <td><i>swal.hideLoading()</i> or <i>swal.disableLoading()</i></td>
         <td>Enable buttons and hide loader.</td>
       </tr>
       <tr>
@@ -1180,9 +1185,9 @@ swal({
       showCancelButton: true,
       confirmButtonText: 'Submit',
       width: 600,
+      showLoaderOnConfirm: true,
       preConfirm: function() {
         return new Promise(function(resolve) {
-          swal.enableLoading();
           setTimeout(function() {
             resolve();
           }, 2000);

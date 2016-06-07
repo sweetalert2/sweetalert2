@@ -421,11 +421,20 @@ function modalDependant() {
     }
 
     var confirm = function(value) {
+      if (params.showLoaderOnConfirm) {
+        sweetAlert.showLoading();
+      }
+
       if (params.preConfirm) {
-        params.preConfirm(value, params.extraParams).then(function(preConfirmValue) {
-          resolve(preConfirmValue || value);
-          sweetAlert.closeModal();
-        });
+        params.preConfirm(value, params.extraParams).then(
+          function(preConfirmValue) {
+            resolve(preConfirmValue || value);
+            sweetAlert.closeModal();
+          },
+          function() {
+            sweetAlert.hideLoading();
+          }
+        );
       } else {
         resolve(value);
         sweetAlert.closeModal();
@@ -628,13 +637,13 @@ function modalDependant() {
       $confirmButton.style.borderRightColor = params.confirmButtonColor;
     }
 
-    sweetAlert.enableLoading = function() {
+    sweetAlert.showLoading = sweetAlert.enableLoading = function() {
       dom.addClass($confirmButton, 'loading');
       dom.addClass(modal, 'loading');
       $cancelButton.disabled = true;
     };
 
-    sweetAlert.disableLoading = function() {
+    sweetAlert.hideLoading = sweetAlert.disableLoading = function() {
       dom.removeClass($confirmButton, 'loading');
       dom.removeClass(modal, 'loading');
       $cancelButton.disabled = false;
@@ -695,7 +704,7 @@ function modalDependant() {
     };
 
     sweetAlert.enableButtons();
-    sweetAlert.disableLoading();
+    sweetAlert.hideLoading();
     sweetAlert.resetValidationError();
   });
 }

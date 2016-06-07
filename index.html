@@ -22,6 +22,10 @@
   <!-- IE support -->
   <script src="https://cdn.jsdelivr.net/es6-promise/latest/es6-promise.min.js"></script>
   <!--............-->
+
+  <!-- Promise.finally support -->
+  <script src="https://cdn.jsdelivr.net/promise.prototype.finally/1.0.1/finally.js"></script>
+  <!--............-->
 </head>
 
 <body>
@@ -302,6 +306,8 @@ swal.queue(steps).then(<span class="func"><i>function</i></span>() {
     confirmButtonText: <span class="str">'Lovely!'</span>,
     showCancelButton: <span class="val">false</span>
   });
+}).finally(<span class="func"><i>function</i></span>() {
+  swal.resetDefaults();
 })</pre>
     </li>
   </ul>
@@ -1209,6 +1215,8 @@ swal({
 
     swal.queue(steps).then(function() {
       swal({title: 'All done!', confirmButtonText: 'Lovely!', showCancelButton: false});
+    }).finally(function() {
+      swal.resetDefaults();
     });
   });
 

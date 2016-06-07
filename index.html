@@ -274,6 +274,36 @@ swal({
   }
 })</pre>
     </li>
+
+    <li class="chaining-modals" id="chaining-modals">
+      <div class="ui">
+        <p>Chaining modals example</p>
+        <button>Try me!</button>
+      </div>
+      <pre>
+swal.setDefaults({
+  confirmButtonText: <span class="str">'Next &amp;rarr;'</span>,
+  showCancelButton: <span class="val">true</span>,
+  animation: <span class="val">false</span>
+});
+
+var steps = [
+  {
+    title: <span class="str">'Step 1'</span>,
+    text: <span class="str">'Chaining swal2 modals is easy'</span>
+  },
+  <span class="str">'Step 2'</span>,
+  <span class="str">'Step 3'</span>
+];
+
+swal.queue(steps).then(<span class="func"><i>function</i></span>() {
+  swal({
+    title: <span class="str">'All done!'</span>,
+    confirmButtonText: <span class="str">'Lovely!'</span>,
+    showCancelButton: <span class="val">false</span>
+  });
+})</pre>
+    </li>
   </ul>
 
 
@@ -1161,6 +1191,24 @@ swal({
           html: 'Submitted email: ' + '<strong>' + email + '</strong>'
         });
       }
+    });
+  });
+
+  $('.examples .chaining-modals button').on('click', function() {
+    swal.setDefaults({
+      confirmButtonText: 'Next &rarr;',
+      showCancelButton: true,
+      animation: false
+    });
+
+    var steps = [
+      {title: 'Step 1', text: 'Chaining swal2 modals is easy'},
+      'Step 2',
+      'Step 3'
+    ];
+
+    swal.queue(steps).then(function() {
+      swal({title: 'All done!', confirmButtonText: 'Lovely!', showCancelButton: false});
     });
   });
 

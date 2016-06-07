@@ -312,18 +312,6 @@ table {
     font-weight: 400;
     text-align: center;
     position: relative; }
-    table th .border-left,
-    table th .border-right {
-      position: absolute;
-      background-color: #fff;
-      border-radius: 50%;
-      top: 0;
-      left: -17px;
-      width: 37px;
-      height: 37px; }
-    table th .border-right {
-      left: auto;
-      right: -17px; }
     @media all and (max-width: 750px) {
       table th:nth-child(2) {
         display: none; } }

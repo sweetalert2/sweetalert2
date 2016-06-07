@@ -1,4 +1,3 @@
-
 test('modal shows up', function(assert) {
   var $modal = $('.swal2-modal');
 
@@ -83,4 +82,6 @@ test('set and reset defaults', function(assert) {
   swal('Modal after resetting defaults');
   assert.equal('OK', $('.swal2-confirm').text());
   assert.ok($('.swal2-cancel').is(':hidden'));
+
+  swal.clickCancel();
 });

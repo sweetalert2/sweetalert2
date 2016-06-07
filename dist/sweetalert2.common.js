@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v3.3.1
+ * sweetalert2 v3.3.2
  * Released under the MIT License.
  */
 'use strict';
@@ -668,12 +668,11 @@ function modalDependant() {
     return false;
   }
 
-  var params;
+  var params = extend({}, modalParams);
 
   switch (typeof arguments[0]) {
 
     case 'string':
-      params = modalParams;
       params.title = arguments[0];
       params.text  = arguments[1] || '';
       params.type  = arguments[2] || '';
@@ -681,7 +680,7 @@ function modalDependant() {
       break;
 
     case 'object':
-      params = extend(modalParams, arguments[0]);
+      extend(params, arguments[0]);
       params.extraParams = arguments[0].extraParams;
 
       if (params.input === 'email' && params.inputValidator === null) {
@@ -702,7 +701,6 @@ function modalDependant() {
     default:
       console.error('Unexpected type of argument! Expected "string" or "object", got ' + typeof arguments[0]);
       return false;
-
   }
 
   setParameters(params);
@@ -1198,7 +1196,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = defaultParams;
 };
 
-sweetAlert.version = '3.3.1';
+sweetAlert.version = '3.3.2';
 
 window.sweetAlert = window.swal = sweetAlert;
 

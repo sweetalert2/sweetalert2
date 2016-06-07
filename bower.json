@@ -7,7 +7,7 @@
     "Sam Turrell <sam@samturrell.co.uk> (http://samturrell.co.uk)"
   ],
   "dependencies": {
-    "es6-promise-polyfill": "*"
+    "es6-promise": "*"
   },
   "ignore": [
     "package.json",

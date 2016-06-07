@@ -38,7 +38,7 @@ To use:
 <link rel="stylesheet" type="text/css" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
 
 <!-- for IE support -->
-<script src="bower_components/es6-promise-polyfill/promise.min.js"></script>
+<script src="bower_components/es6-promise/promise.min.js"></script>
 ```
 
 

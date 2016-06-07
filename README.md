@@ -156,6 +156,7 @@ Methods
 | Method             | Description |
 | ------------------ | ----------- |
 | `swal.setDefaults({Object})`          | If you end up using a lot of the same settings when calling SweetAlert2, you can use setDefaults at the start of your program to set them once and for all! |
+| `swal.resetDefaults()`                | Resets settings to their default value. |
 | `swal.close()` or `swal.closeModal()` | Close the currently open SweetAlert2 modal programmatically. |
 | `swal.enableButtons()`                | Enable confirm and cancel buttons. |
 | `swal.disableButtons()`               | Disable confirm and cancel buttons. |

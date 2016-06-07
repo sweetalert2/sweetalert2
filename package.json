@@ -6,7 +6,7 @@
   "description": "A replacement for JavaScript's popup boxes, supported fork of sweetalert",
   "main": "dist/sweetalert2.js",
   "dependencies": {
-    "es6-promise-polyfill": "latest"
+    "es6-promise": "latest"
   },
   "devDependencies": {
     "gulp": "latest",

@@ -300,7 +300,8 @@
   padding: 10px;
   color: #797979;
   font-size: 16px;
-  font-weight: 300; }
+  font-weight: 300;
+  display: none; }
   .swal2-validationerror::before {
     content: "!";
     display: inline-block;

@@ -718,6 +718,25 @@ function sweetAlert() {
 }
 
 /*
+ * Global function for chaining sweetAlert modals
+ */
+sweetAlert.queue = function(steps) {
+  return new Promise(function(resolve) {
+    (function step(i, callback) {
+      if (i < steps.length) {
+        sweetAlert(steps[i]).then(function(isConfirm) {
+          if (isConfirm) {
+            step(i+1, callback);
+          }
+        });
+      } else {
+        resolve();
+      }
+    })(0);
+  });
+};
+
+/*
  * Global function to close sweetAlert
  */
 sweetAlert.close = sweetAlert.closeModal = function() {

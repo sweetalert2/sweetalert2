@@ -20,6 +20,7 @@ export var defaultParams = {
   buttonsStyling: true,
   reverseButtons: false,
   showCloseButton: false,
+  showLoaderOnConfirm: false,
   imageUrl: null,
   imageWidth: null,
   imageHeight: null,

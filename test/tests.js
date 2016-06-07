@@ -71,3 +71,16 @@ test('timer works', function(assert) {
     done();
   }, 20);
 });
+
+
+test('set and reset defaults', function(assert) {
+  swal.setDefaults({confirmButtonText: 'Next >', showCancelButton: true});
+  swal('Modal with changed defaults');
+  assert.equal('Next >', $('.swal2-confirm').text());
+  assert.ok($('.swal2-cancel').is(':visible'));
+
+  swal.resetDefaults();
+  swal('Modal after resetting defaults');
+  assert.equal('OK', $('.swal2-confirm').text());
+  assert.ok($('.swal2-cancel').is(':hidden'));
+});

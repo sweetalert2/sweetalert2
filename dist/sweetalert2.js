@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v3.3.2
+ * sweetalert2 v3.3.3
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1059,12 +1059,14 @@
    * Global function for chaining sweetAlert modals
    */
   sweetAlert.queue = function(steps) {
-    return new Promise(function(resolve) {
+    return new Promise(function(resolve, reject) {
       (function step(i, callback) {
         if (i < steps.length) {
           sweetAlert(steps[i]).then(function(isConfirm) {
             if (isConfirm) {
               step(i+1, callback);
+            } else {
+              reject();
             }
           });
         } else {
@@ -1197,10 +1199,10 @@
    * Reset default params for each popup
    */
   sweetAlert.resetDefaults = function() {
-    modalParams = defaultParams;
+    modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '3.3.2';
+  sweetAlert.version = '3.3.3';
 
   window.sweetAlert = window.swal = sweetAlert;
 

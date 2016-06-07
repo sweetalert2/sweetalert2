@@ -193,6 +193,6 @@ If you would like to contribute enhancements or fixes, please do the following:
 
 1. When in the SweetAlert2 directory, run the command ``npm install`` to install npm packages.
 
-1. Start gulp watcher ``gulp watch`` to automatically minify the SCSS and JS-files.
+1. Start gulp watcher ``gulp watch`` to automatically build and minify the SCSS and JS-files.
 
 1. Make a pull request and wait for approval.

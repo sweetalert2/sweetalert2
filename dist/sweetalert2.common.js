@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v3.2.3
+ * sweetalert2 v3.3.0
  * Released under the MIT License.
  */
 'use strict';
@@ -338,10 +338,12 @@ var resetPrevState = function() {
   }
 };
 
+var params = extend({}, defaultParams);
+
 /*
  * Set type, text and actions on modal
  */
-var setParameters = function(params) {
+var setParameters = function() {
   var i;
   var modal = getModal();
 
@@ -634,9 +636,9 @@ var setParameters = function(params) {
 /*
  * Animations
  */
-var openModal = function(animation) {
+var openModal = function() {
   var modal = getModal();
-  if (animation) {
+  if (params.animation) {
     fadeIn(getOverlay(), 10);
     addClass(modal, 'show-swal2');
     removeClass(modal, 'hide-swal2');
@@ -665,8 +667,6 @@ function modalDependant() {
     console.error('sweetAlert2 expects at least 1 attribute!');
     return false;
   }
-
-  var params = extend({}, defaultParams);
 
   switch (typeof arguments[0]) {
 
@@ -702,9 +702,9 @@ function modalDependant() {
 
   }
 
-  setParameters(params);
+  setParameters();
   fixVerticalPosition();
-  openModal(params.animation);
+  openModal();
 
   // Modal interactions
   var modal = getModal();
@@ -1166,10 +1166,17 @@ sweetAlert.setDefaults = function(userParams) {
     throw new Error('userParams has to be a object');
   }
 
-  extend(defaultParams, userParams);
+  extend(params, userParams);
 };
 
-sweetAlert.version = '3.2.3';
+/**
+ * Reset default params for each popup
+ */
+sweetAlert.resetDefaults = function() {
+  params = defaultParams;
+};
+
+sweetAlert.version = '3.3.0';
 
 window.sweetAlert = window.swal = sweetAlert;
 

@@ -832,6 +832,61 @@ sweetAlert.init = function() {
     sweetAlert.resetValidationError();
   };
 
+  /*
+   *  @summary IOS input focus fix
+   *  @var {iosfix}, {head} 
+   *  @description creating <style> tag with ios on focus fix
+   *  @author yeomann
+  */
+  var iosfix;
+  iosfix = document.createElement('style');
+  iosfix.type = "text/css";
+  iosfix.id = "iosFix"
+  iosfix.innerHTML = "html,body {height: 100%; position: relative; }";
+  /*
+  * @summary touch handler; will remove touch ability
+  * @author yeomann
+  */
+  function Touchyhandler(e) {
+    e.preventDefault();
+  }
+  /*
+  *   @summary function to add ios fix
+  *   @author yeomann
+  */
+  function addiosFix() {
+    document.head.appendChild(iosfix);
+    document.addEventListener('touchmove', Touchyhandler, false);
+  }
+  /*
+  *   @summary function to remova ios fix styles tag from head by findind ID
+  *   @author yeomann
+  */
+  function removeiosFix() {
+    var iosfix = document.getElementById('iosFix');
+    if (iosfix) {
+      document.head.removeChild(iosfix);
+    }
+    document.removeEventListener('touchmove', Touchyhandler);
+  }
+  /*
+  *   @summary input onfocus listener for ios fix
+  *   @listener {Focus}
+  *   @author yeomann
+  */
+  $input.addEventListener('focus', function() {
+    addiosFix();
+  }, false);
+  /*
+  *   @summary input focusout listener for ios fix
+  *   @listener {focusout}
+  *   @author yeomann
+  */
+  $input.addEventListener('focusout', function() {
+    removeiosFix();
+  }, false);
+
+
   $input.onkeyup = function(event) {
     event.stopPropagation();
     if (event.keyCode === 13) {

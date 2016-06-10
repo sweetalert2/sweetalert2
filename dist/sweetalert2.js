@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v3.3.4
+ * sweetalert2 v3.3.6
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -74,7 +74,7 @@
     width: 500,
     padding: 20,
     background: '#fff',
-    input: null, // 'text' | 'email' | 'password' | 'select' | 'radio' | 'checkbox' | 'textarea'
+    input: null, // 'text' | 'email' | 'password' | 'select' | 'radio' | 'checkbox' | 'textarea' | 'file'
     inputPlaceholder: '',
     inputValue: '',
     inputOptions: {},
@@ -503,6 +503,7 @@
       case 'text':
       case 'email':
       case 'password':
+      case 'file':
         input = getChildByClass(modal, swalClasses.input);
         input.value = params.inputValue;
         input.placeholder = params.inputPlaceholder;
@@ -747,6 +748,8 @@
             return input.checked ? 1 : 0;
           case 'radio':
             return input.checked ? input.value : null;
+          case 'file':
+            return input.files.length ? input.files[0] : null;
           default:
             return params.inputAutoTrim? input.value.trim() : input.value;
         }
@@ -1212,7 +1215,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '3.3.4';
+  sweetAlert.version = '3.3.6';
 
   window.sweetAlert = window.swal = sweetAlert;
 

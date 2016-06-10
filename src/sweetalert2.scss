@@ -103,6 +103,7 @@
 
   .swal2-image {
     margin: 20px auto;
+    max-width: 100%;
   }
 
   .swal2-close {
@@ -304,7 +305,7 @@
   }
 }
 
-.swal2-input, .swal2-textarea {
+.swal2-input:not([type="file"]), .swal2-textarea {
   width: 100%;
   box-sizing: border-box;
   border-radius: 3px;
@@ -345,9 +346,15 @@
   }
 }
 
-.swal2-input {
+.swal2-input:not([type="file"]) {
   height: 43px;
   padding: 0 12px;
+}
+
+.swal2-input[type="file"] {
+  font-size: 20px;
+  display: inline-block;
+  margin: 20px auto;
 }
 
 .swal2-textarea {

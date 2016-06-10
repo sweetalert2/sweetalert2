@@ -29,7 +29,7 @@ export var defaultParams = {
   width: 500,
   padding: 20,
   background: '#fff',
-  input: null, // 'text' | 'email' | 'password' | 'select' | 'radio' | 'checkbox' | 'textarea'
+  input: null, // 'text' | 'email' | 'password' | 'select' | 'radio' | 'checkbox' | 'textarea' | 'file'
   inputPlaceholder: '',
   inputValue: '',
   inputOptions: {},

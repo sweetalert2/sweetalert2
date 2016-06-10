@@ -75,7 +75,8 @@
     .swal2-modal button.styled::-moz-focus-inner {
       border: 0; }
   .swal2-modal .swal2-image {
-    margin: 20px auto; }
+    margin: 20px auto;
+    max-width: 100%; }
   .swal2-modal .swal2-close {
     font-size: 36px;
     line-height: 36px;
@@ -226,7 +227,7 @@
         -webkit-transform: rotate(-45deg);
                 transform: rotate(-45deg); }
 
-.swal2-input, .swal2-textarea {
+.swal2-input:not([type="file"]), .swal2-textarea {
   width: 100%;
   box-sizing: border-box;
   border-radius: 3px;
@@ -236,34 +237,39 @@
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.06);
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
-  .swal2-input.error, .swal2-textarea.error {
+  .swal2-input:not([type="file"]).error, .swal2-textarea.error {
     border-color: #f06e57 !important; }
-  .swal2-input:focus, .swal2-textarea:focus {
+  .swal2-input:not([type="file"]):focus, .swal2-textarea:focus {
     outline: none;
     box-shadow: 0px 0px 3px #c4e6f5;
     border: 1px solid #b4dbed; }
-    .swal2-input:focus::-moz-placeholder, .swal2-textarea:focus::-moz-placeholder {
+    .swal2-input:not([type="file"]):focus::-moz-placeholder, .swal2-textarea:focus::-moz-placeholder {
       -webkit-transition: opacity 0.3s 0.03s ease;
       transition: opacity 0.3s 0.03s ease;
       opacity: 0.8; }
-    .swal2-input:focus:-ms-input-placeholder, .swal2-textarea:focus:-ms-input-placeholder {
+    .swal2-input:not([type="file"]):focus:-ms-input-placeholder, .swal2-textarea:focus:-ms-input-placeholder {
       -webkit-transition: opacity 0.3s 0.03s ease;
       transition: opacity 0.3s 0.03s ease;
       opacity: 0.8; }
-    .swal2-input:focus::-webkit-input-placeholder, .swal2-textarea:focus::-webkit-input-placeholder {
+    .swal2-input:not([type="file"]):focus::-webkit-input-placeholder, .swal2-textarea:focus::-webkit-input-placeholder {
       -webkit-transition: opacity 0.3s 0.03s ease;
       transition: opacity 0.3s 0.03s ease;
       opacity: 0.8; }
-  .swal2-input::-moz-placeholder, .swal2-textarea::-moz-placeholder {
+  .swal2-input:not([type="file"])::-moz-placeholder, .swal2-textarea::-moz-placeholder {
     color: #bdbdbd; }
-  .swal2-input:-ms-input-placeholder, .swal2-textarea:-ms-input-placeholder {
+  .swal2-input:not([type="file"]):-ms-input-placeholder, .swal2-textarea:-ms-input-placeholder {
     color: #bdbdbd; }
-  .swal2-input::-webkit-input-placeholder, .swal2-textarea::-webkit-input-placeholder {
+  .swal2-input:not([type="file"])::-webkit-input-placeholder, .swal2-textarea::-webkit-input-placeholder {
     color: #bdbdbd; }
 
-.swal2-input {
+.swal2-input:not([type="file"]) {
   height: 43px;
   padding: 0 12px; }
+
+.swal2-input[type="file"] {
+  font-size: 20px;
+  display: inline-block;
+  margin: 20px auto; }
 
 .swal2-textarea {
   height: 108px;

@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "3.3.4",
+  "version": "3.3.5",
   "repository": "https://github.com/limonte/sweetalert2.git",
   "homepage": "https://limonte.github.io/sweetalert2/",
   "description": "A replacement for JavaScript's popup boxes, supported fork of sweetalert",
@@ -42,7 +42,7 @@
   },
   "scripts": {
     "test": "gulp test",
-    "postinstall": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --assume-unchanged"
+    "postinstall": "if [ -d .git ]; then git ls-files dist | tr '\\n' ' ' | xargs git update-index --assume-unchanged; fi"
   },
   "bugs": "https://github.com/limonte/sweetalert2/issues",
   "license": "MIT"

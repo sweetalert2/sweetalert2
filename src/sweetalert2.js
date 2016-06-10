@@ -165,6 +165,7 @@ var setParameters = function(params) {
     case 'text':
     case 'email':
     case 'password':
+    case 'file':
       input = dom.getChildByClass(modal, swalClasses.input);
       input.value = params.inputValue;
       input.placeholder = params.inputPlaceholder;
@@ -409,6 +410,8 @@ function modalDependant() {
           return input.checked ? 1 : 0;
         case 'radio':
           return input.checked ? input.value : null;
+        case 'file':
+          return input.files.length ? input.files[0] : null;
         default:
           return params.inputAutoTrim? input.value.trim() : input.value;
       }

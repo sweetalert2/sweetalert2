@@ -510,7 +510,7 @@ swal({
       <tr id="input-parameter">
         <td><b>input</b></td>
         <td><i>null</i></td>
-        <td>Input field type, can be <strong>text</strong>, <strong>email</strong>, <strong>password</strong>, <strong>textarea</strong>, <strong>select</strong>, <strong>radio</strong>, and <strong>checkbox</strong>.</td>
+        <td>Input field type, can be <strong>text</strong>, <strong>email</strong>, <strong>password</strong>, <strong>textarea</strong>, <strong>select</strong>, <strong>radio</strong>, <strong>checkbox</strong> and <strong>file</strong>.</td>
       </tr>
       <tr>
         <td><b>inputPlaceholder</b></td>
@@ -773,6 +773,31 @@ swal({
 
       </td>
       <td><button class="input-type-checkbox">Try me!</button></td>
+    </tr>
+
+    <tr id="input-file">
+      <td><strong>file</strong></td>
+      <td>
+        <pre>
+swal({
+  title: <span class="str">'Select image',</span>
+  input: <span class="str">'file',</span>
+  inputAttributes: {
+    accept: <span class="str">'image/*'</span>
+  }
+}).then(<span class="func"><i>function</i></span>(file) {
+  <span class="tag">if</span> (file) {
+    var reader = new FileReader();
+    reader.onload = <span class="func"><i>function</i></span>(e) {
+      swal({
+        imageUrl: e.target.result
+      });
+    };
+    reader.readAsDataURL(file);
+  }
+})</pre>
+      </td>
+      <td><button class="input-type-file">Try me!</button></td>
     </tr>
   </table>
 
@@ -1155,6 +1180,26 @@ swal({
           type: 'success',
           text: 'You agreed with T&amp;C :)'
         });
+      }
+    });
+  });
+
+  $('.input-type-file').on('click', function() {
+    swal({
+      title: 'Select image',
+      input: 'file',
+      inputAttributes: {
+        accept: 'image/*'
+      }
+    }).then(function(file) {
+      if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          swal({
+            imageUrl: e.target.result
+          });
+        };
+        reader.readAsDataURL(file);
       }
     });
   });

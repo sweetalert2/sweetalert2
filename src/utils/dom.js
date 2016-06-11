@@ -25,6 +25,14 @@ export var getOverlay = function() {
   return elementByClass(swalClasses.overlay);
 };
 
+export var getConfirmButton = function() {
+  return elementByClass(swalClasses.confirm);
+};
+
+export var getCancelButton = function() {
+  return elementByClass(swalClasses.cancel);
+};
+
 export var hasClass = function(elem, className) {
   return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
 };

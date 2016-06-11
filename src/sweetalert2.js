@@ -40,8 +40,8 @@ var setParameters = function(params) {
 
   var $title = modal.querySelector('h2');
   var $content = modal.querySelector('.' + swalClasses.content);
-  var $confirmBtn = modal.querySelector('button.' + swalClasses.confirm);
-  var $cancelBtn = modal.querySelector('button.' + swalClasses.cancel);
+  var $confirmBtn = dom.getConfirmButton();
+  var $cancelBtn = dom.getCancelButton();
   var $spacer = modal.querySelector('.' + swalClasses.spacer);
   var $closeButton = modal.querySelector('.' + swalClasses.close);
 
@@ -543,8 +543,8 @@ function modalDependant() {
     };
 
     // Keyboard interactions
-    var $confirmButton = modal.querySelector('button.' + swalClasses.confirm);
-    var $cancelButton = modal.querySelector('button.' + swalClasses.cancel);
+    var $confirmButton = dom.getConfirmButton();
+    var $cancelButton = dom.getCancelButton();
     var $modalElements = [$confirmButton, $cancelButton].concat(Array.prototype.slice.call(
       modal.querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')
     ));
@@ -640,12 +640,18 @@ function modalDependant() {
       $confirmButton.style.borderRightColor = params.confirmButtonColor;
     }
 
+    /**
+     * Show spinner instead of Confirm button and disable Cancel button
+     */
     sweetAlert.showLoading = sweetAlert.enableLoading = function() {
       dom.addClass($confirmButton, 'loading');
       dom.addClass(modal, 'loading');
       $cancelButton.disabled = true;
     };
 
+    /**
+     * Show spinner instead of Confirm button and disable Cancel button
+     */
     sweetAlert.hideLoading = sweetAlert.disableLoading = function() {
       dom.removeClass($confirmButton, 'loading');
       dom.removeClass(modal, 'loading');
@@ -793,18 +799,14 @@ sweetAlert.close = sweetAlert.closeModal = function() {
  * Global function to click 'Confirm' button
  */
 sweetAlert.clickConfirm = function() {
-  var modal = dom.getModal();
-  var $confirmButton = modal.querySelector('button.' + swalClasses.confirm);
-  $confirmButton.click();
+  dom.getConfirmButton().click();
 };
 
 /*
  * Global function to click 'Cancel' button
  */
 sweetAlert.clickCancel = function() {
-  var modal = dom.getModal();
-  var $cancelButton = modal.querySelector('button.' + swalClasses.cancel);
-  $cancelButton.click();
+  dom.getCancelButton().click();
 };
 
 /*

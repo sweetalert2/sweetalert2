@@ -53,11 +53,27 @@ gulp.task('sass', function() {
     .pipe(cleanCSS())
     .pipe(rename({extname: '.min.css'}))
     .pipe(gulp.dest('dist'));
+
+  gulp.src('example/example.scss')
+    .pipe(sass())
+    .pipe(autoprefix())
+    .pipe(gulp.dest('example'));
 });
 
 gulp.task('default', ['compress', 'sass']);
 
 gulp.task('watch', function() {
-  gulp.watch('src/**/*.js', ['compress']);
-  gulp.watch('**/*.scss', ['sass']);
+  gulp.watch([
+    'src/sweetalert2.js',
+    'src/utils/classes.js',
+    'src/utils/default.js',
+    'src/utils/dom.js',
+    'src/utils/utils.js',
+    'src/utils/classes.js'
+  ], ['compress']);
+
+  gulp.watch([
+    'src/sweetalert2.scss',
+    'example/example.scss'
+  ], ['sass']);
 });

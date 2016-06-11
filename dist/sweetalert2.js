@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v3.3.6
+ * sweetalert2 v3.3.7
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -168,6 +168,14 @@
 
   var getOverlay = function() {
     return elementByClass(swalClasses.overlay);
+  };
+
+  var getConfirmButton = function() {
+    return elementByClass(swalClasses.confirm);
+  };
+
+  var getCancelButton = function() {
+    return elementByClass(swalClasses.cancel);
   };
 
   var hasClass = function(elem, className) {
@@ -378,8 +386,8 @@
 
     var $title = modal.querySelector('h2');
     var $content = modal.querySelector('.' + swalClasses.content);
-    var $confirmBtn = modal.querySelector('button.' + swalClasses.confirm);
-    var $cancelBtn = modal.querySelector('button.' + swalClasses.cancel);
+    var $confirmBtn = getConfirmButton();
+    var $cancelBtn = getCancelButton();
     var $spacer = modal.querySelector('.' + swalClasses.spacer);
     var $closeButton = modal.querySelector('.' + swalClasses.close);
 
@@ -474,112 +482,6 @@
       }
     } else {
       hide($customImage);
-    }
-
-    // input, select
-    var inputTypes = ['input', 'select', 'radio', 'checkbox', 'textarea'];
-    var input;
-    for (i = 0; i < inputTypes.length; i++) {
-      var inputClass = swalClasses[inputTypes[i]];
-      input = getChildByClass(modal, inputClass);
-
-      // set attributes
-      while (input.attributes.length > 0) {
-        input.removeAttribute(input.attributes[0].name);
-      }
-      for (var attr in params.inputAttributes) {
-        input.setAttribute(attr, params.inputAttributes[attr]);
-      }
-
-      // set class
-      input.className = inputClass;
-      if (params.inputClass) {
-        addClass(input, params.inputClass);
-      }
-
-      _hide(input);
-    }
-    switch (params.input) {
-      case 'text':
-      case 'email':
-      case 'password':
-      case 'file':
-        input = getChildByClass(modal, swalClasses.input);
-        input.value = params.inputValue;
-        input.placeholder = params.inputPlaceholder;
-        input.type = params.input;
-        _show(input);
-        break;
-      case 'select':
-        var select = getChildByClass(modal, swalClasses.select);
-        select.innerHTML = '';
-        if (params.inputPlaceholder) {
-          var placeholder = document.createElement('option');
-          placeholder.innerHTML = params.inputPlaceholder;
-          placeholder.value = '';
-          placeholder.disabled = true;
-          placeholder.selected = true;
-          select.appendChild(placeholder);
-        }
-        for (var optionValue in params.inputOptions) {
-          var option = document.createElement('option');
-          option.value = optionValue;
-          option.innerHTML = params.inputOptions[optionValue];
-          if (params.inputValue === optionValue) {
-            option.selected = true;
-          }
-          select.appendChild(option);
-        }
-        _show(select);
-        break;
-      case 'radio':
-        var radio = getChildByClass(modal, swalClasses.radio);
-        radio.innerHTML = '';
-        for (var radioValue in params.inputOptions) {
-          var id = 1;
-          var radioInput = document.createElement('input');
-          var radioLabel = document.createElement('label');
-          var radioLabelSpan = document.createElement('span');
-          radioInput.type = 'radio';
-          radioInput.name = swalClasses.radio;
-          radioInput.value = radioValue;
-          radioInput.id = swalClasses.radio + '-' + (id++);
-          if (params.inputValue === radioValue) {
-            radioInput.checked = true;
-          }
-          radioLabelSpan.innerHTML = params.inputOptions[radioValue];
-          radioLabel.appendChild(radioInput);
-          radioLabel.appendChild(radioLabelSpan);
-          radioLabel.for = radioInput.id;
-          radio.appendChild(radioLabel);
-        }
-        _show(radio);
-        break;
-      case 'checkbox':
-        var checkbox = getChildByClass(modal, swalClasses.checkbox);
-        var checkboxInput = modal.querySelector('#' + swalClasses.checkbox);
-        checkboxInput.value = 1;
-        checkboxInput.checked = Boolean(params.inputValue);
-        var label = checkbox.getElementsByTagName('span');
-        if (label.length) {
-          checkbox.removeChild(label[0]);
-        }
-        label = document.createElement('span');
-        label.innerHTML = params.inputPlaceholder;
-        checkbox.appendChild(label);
-        _show(checkbox);
-        break;
-      case 'textarea':
-        var textarea = getChildByClass(modal, swalClasses.textarea);
-        textarea.value = params.inputValue;
-        textarea.placeholder = params.inputPlaceholder;
-        _show(textarea);
-        break;
-      case null:
-        break;
-      default:
-        console.error('Unexpected type of input! Expected "text" or "email" or "password", "select", "checkbox" or "textarea", got ' + typeof arguments[0]);
-        break;
     }
 
     // Cancel button
@@ -757,7 +659,10 @@
 
       if (params.input) {
         setTimeout(function() {
-          focusInput(getInput());
+          var input = getInput();
+          if (input) {
+            focusInput(input);
+          }
         }, 0);
       }
 
@@ -881,8 +786,8 @@
       };
 
       // Keyboard interactions
-      var $confirmButton = modal.querySelector('button.' + swalClasses.confirm);
-      var $cancelButton = modal.querySelector('button.' + swalClasses.cancel);
+      var $confirmButton = getConfirmButton();
+      var $cancelButton = getCancelButton();
       var $modalElements = [$confirmButton, $cancelButton].concat(Array.prototype.slice.call(
         modal.querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')
       ));
@@ -978,12 +883,18 @@
         $confirmButton.style.borderRightColor = params.confirmButtonColor;
       }
 
+      /**
+       * Show spinner instead of Confirm button and disable Cancel button
+       */
       sweetAlert.showLoading = sweetAlert.enableLoading = function() {
         addClass($confirmButton, 'loading');
         addClass(modal, 'loading');
         $cancelButton.disabled = true;
       };
 
+      /**
+       * Show spinner instead of Confirm button and disable Cancel button
+       */
       sweetAlert.hideLoading = sweetAlert.disableLoading = function() {
         removeClass($confirmButton, 'loading');
         removeClass(modal, 'loading');
@@ -1041,12 +952,143 @@
         hide($validationError);
 
         var input = getInput();
-        removeClass(input, 'error');
+        if (input) {
+          removeClass(input, 'error');
+        }
       };
 
       sweetAlert.enableButtons();
       sweetAlert.hideLoading();
       sweetAlert.resetValidationError();
+
+      // input, select
+      var inputTypes = ['input', 'select', 'radio', 'checkbox', 'textarea'];
+      var input;
+      for (i = 0; i < inputTypes.length; i++) {
+        var inputClass = swalClasses[inputTypes[i]];
+        input = getChildByClass(modal, inputClass);
+
+        // set attributes
+        while (input.attributes.length > 0) {
+          input.removeAttribute(input.attributes[0].name);
+        }
+        for (var attr in params.inputAttributes) {
+          input.setAttribute(attr, params.inputAttributes[attr]);
+        }
+
+        // set class
+        input.className = inputClass;
+        if (params.inputClass) {
+          addClass(input, params.inputClass);
+        }
+
+        _hide(input);
+      }
+
+      var populateInputOptions;
+      switch (params.input) {
+        case 'text':
+        case 'email':
+        case 'password':
+        case 'file':
+          input = getChildByClass(modal, swalClasses.input);
+          input.value = params.inputValue;
+          input.placeholder = params.inputPlaceholder;
+          input.type = params.input;
+          _show(input);
+          break;
+        case 'select':
+          var select = getChildByClass(modal, swalClasses.select);
+          select.innerHTML = '';
+          if (params.inputPlaceholder) {
+            var placeholder = document.createElement('option');
+            placeholder.innerHTML = params.inputPlaceholder;
+            placeholder.value = '';
+            placeholder.disabled = true;
+            placeholder.selected = true;
+            select.appendChild(placeholder);
+          }
+          populateInputOptions = function(inputOptions) {
+            for (var optionValue in inputOptions) {
+              var option = document.createElement('option');
+              option.value = optionValue;
+              option.innerHTML = inputOptions[optionValue];
+              if (params.inputValue === optionValue) {
+                option.selected = true;
+              }
+              select.appendChild(option);
+            }
+            _show(select);
+            select.focus();
+          };
+          break;
+        case 'radio':
+          var radio = getChildByClass(modal, swalClasses.radio);
+          radio.innerHTML = '';
+          populateInputOptions = function(inputOptions) {
+            for (var radioValue in inputOptions) {
+              var id = 1;
+              var radioInput = document.createElement('input');
+              var radioLabel = document.createElement('label');
+              var radioLabelSpan = document.createElement('span');
+              radioInput.type = 'radio';
+              radioInput.name = swalClasses.radio;
+              radioInput.value = radioValue;
+              radioInput.id = swalClasses.radio + '-' + (id++);
+              if (params.inputValue === radioValue) {
+                radioInput.checked = true;
+              }
+              radioLabelSpan.innerHTML = inputOptions[radioValue];
+              radioLabel.appendChild(radioInput);
+              radioLabel.appendChild(radioLabelSpan);
+              radioLabel.for = radioInput.id;
+              radio.appendChild(radioLabel);
+            }
+            _show(radio);
+            var radios = radio.querySelectorAll('input');
+            if (radios.length) {
+              radios[0].focus();
+            }
+          };
+          break;
+        case 'checkbox':
+          var checkbox = getChildByClass(modal, swalClasses.checkbox);
+          var checkboxInput = modal.querySelector('#' + swalClasses.checkbox);
+          checkboxInput.value = 1;
+          checkboxInput.checked = Boolean(params.inputValue);
+          var label = checkbox.getElementsByTagName('span');
+          if (label.length) {
+            checkbox.removeChild(label[0]);
+          }
+          label = document.createElement('span');
+          label.innerHTML = params.inputPlaceholder;
+          checkbox.appendChild(label);
+          _show(checkbox);
+          break;
+        case 'textarea':
+          var textarea = getChildByClass(modal, swalClasses.textarea);
+          textarea.value = params.inputValue;
+          textarea.placeholder = params.inputPlaceholder;
+          _show(textarea);
+          break;
+        case null:
+          break;
+        default:
+          console.error('Unexpected type of input! Expected "text" or "email" or "password", "select", "checkbox", "textarea" or "file", got ' + typeof arguments[0]);
+          break;
+      }
+
+      if (params.inputOptions instanceof Promise) {
+        sweetAlert.showLoading();
+        params.inputOptions.then(function(inputOptions) {
+          sweetAlert.hideLoading();
+          populateInputOptions(inputOptions);
+        });
+      } else if (typeof params.inputOptions === 'object') {
+        populateInputOptions(params.inputOptions);
+      } else {
+        console.error('Unexpected type of inputOptions! Expected object or Promise, got ' + params.inputOptions);
+      }
     });
   }
 
@@ -1131,18 +1173,14 @@
    * Global function to click 'Confirm' button
    */
   sweetAlert.clickConfirm = function() {
-    var modal = getModal();
-    var $confirmButton = modal.querySelector('button.' + swalClasses.confirm);
-    $confirmButton.click();
+    getConfirmButton().click();
   };
 
   /*
    * Global function to click 'Cancel' button
    */
   sweetAlert.clickCancel = function() {
-    var modal = getModal();
-    var $cancelButton = modal.querySelector('button.' + swalClasses.cancel);
-    $cancelButton.click();
+    getCancelButton().click();
   };
 
   /*
@@ -1215,7 +1253,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '3.3.6';
+  sweetAlert.version = '3.3.7';
 
   window.sweetAlert = window.swal = sweetAlert;
 

@@ -111,3 +111,19 @@ test('queue', function(assert) {
     assert.ok($('.swal2-cancel').is(':hidden'));
   });
 });
+
+
+test('showLoading and hideLoading', function(assert) {
+  swal({
+    title: 'test loading state',
+    showCancelButton: true
+  });
+
+  swal.showLoading();
+  assert.ok($('.swal2-confirm').hasClass('loading'));
+  assert.ok($('.swal2-cancel').is(':disabled'));
+
+  swal.hideLoading();
+  assert.notOk($('.swal2-confirm').hasClass('loading'));
+  assert.notOk($('.swal2-cancel').is(':disabled'));
+});

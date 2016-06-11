@@ -732,16 +732,18 @@ function modalDependant() {
         break;
     }
 
-    if (params.inputOptions instanceof Promise) {
-      sweetAlert.showLoading();
-      params.inputOptions.then(function(inputOptions) {
-        sweetAlert.hideLoading();
-        populateInputOptions(inputOptions);
-      });
-    } else if (typeof params.inputOptions === 'object') {
-      populateInputOptions(params.inputOptions);
-    } else {
-      console.error('Unexpected type of inputOptions! Expected object or Promise, got ' + params.inputOptions);
+    if (params.input === 'select' || params.input === 'radio') {
+      if (params.inputOptions instanceof Promise) {
+        sweetAlert.showLoading();
+        params.inputOptions.then(function(inputOptions) {
+          sweetAlert.hideLoading();
+          populateInputOptions(inputOptions);
+        });
+      } else if (typeof params.inputOptions === 'object') {
+        populateInputOptions(params.inputOptions);
+      } else {
+        console.error('Unexpected type of inputOptions! Expected object or Promise, got ' + params.inputOptions);
+      }
     }
   });
 }

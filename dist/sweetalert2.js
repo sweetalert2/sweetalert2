@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v3.3.7
+ * sweetalert2 v3.3.8
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1078,16 +1078,18 @@
           break;
       }
 
-      if (params.inputOptions instanceof Promise) {
-        sweetAlert.showLoading();
-        params.inputOptions.then(function(inputOptions) {
-          sweetAlert.hideLoading();
-          populateInputOptions(inputOptions);
-        });
-      } else if (typeof params.inputOptions === 'object') {
-        populateInputOptions(params.inputOptions);
-      } else {
-        console.error('Unexpected type of inputOptions! Expected object or Promise, got ' + params.inputOptions);
+      if (params.input === 'select' || params.input === 'radio') {
+        if (params.inputOptions instanceof Promise) {
+          sweetAlert.showLoading();
+          params.inputOptions.then(function(inputOptions) {
+            sweetAlert.hideLoading();
+            populateInputOptions(inputOptions);
+          });
+        } else if (typeof params.inputOptions === 'object') {
+          populateInputOptions(params.inputOptions);
+        } else {
+          console.error('Unexpected type of inputOptions! Expected object or Promise, got ' + params.inputOptions);
+        }
       }
     });
   }
@@ -1253,7 +1255,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '3.3.7';
+  sweetAlert.version = '3.3.8';
 
   window.sweetAlert = window.swal = sweetAlert;
 

@@ -138,112 +138,6 @@ var setParameters = function(params) {
     dom.hide($customImage);
   }
 
-  // input, select
-  var inputTypes = ['input', 'select', 'radio', 'checkbox', 'textarea'];
-  var input;
-  for (i = 0; i < inputTypes.length; i++) {
-    var inputClass = swalClasses[inputTypes[i]];
-    input = dom.getChildByClass(modal, inputClass);
-
-    // set attributes
-    while (input.attributes.length > 0) {
-      input.removeAttribute(input.attributes[0].name);
-    }
-    for (var attr in params.inputAttributes) {
-      input.setAttribute(attr, params.inputAttributes[attr]);
-    }
-
-    // set class
-    input.className = inputClass;
-    if (params.inputClass) {
-      dom.addClass(input, params.inputClass);
-    }
-
-    dom._hide(input);
-  }
-  switch (params.input) {
-    case 'text':
-    case 'email':
-    case 'password':
-    case 'file':
-      input = dom.getChildByClass(modal, swalClasses.input);
-      input.value = params.inputValue;
-      input.placeholder = params.inputPlaceholder;
-      input.type = params.input;
-      dom._show(input);
-      break;
-    case 'select':
-      var select = dom.getChildByClass(modal, swalClasses.select);
-      select.innerHTML = '';
-      if (params.inputPlaceholder) {
-        var placeholder = document.createElement('option');
-        placeholder.innerHTML = params.inputPlaceholder;
-        placeholder.value = '';
-        placeholder.disabled = true;
-        placeholder.selected = true;
-        select.appendChild(placeholder);
-      }
-      for (var optionValue in params.inputOptions) {
-        var option = document.createElement('option');
-        option.value = optionValue;
-        option.innerHTML = params.inputOptions[optionValue];
-        if (params.inputValue === optionValue) {
-          option.selected = true;
-        }
-        select.appendChild(option);
-      }
-      dom._show(select);
-      break;
-    case 'radio':
-      var radio = dom.getChildByClass(modal, swalClasses.radio);
-      radio.innerHTML = '';
-      for (var radioValue in params.inputOptions) {
-        var id = 1;
-        var radioInput = document.createElement('input');
-        var radioLabel = document.createElement('label');
-        var radioLabelSpan = document.createElement('span');
-        radioInput.type = 'radio';
-        radioInput.name = swalClasses.radio;
-        radioInput.value = radioValue;
-        radioInput.id = swalClasses.radio + '-' + (id++);
-        if (params.inputValue === radioValue) {
-          radioInput.checked = true;
-        }
-        radioLabelSpan.innerHTML = params.inputOptions[radioValue];
-        radioLabel.appendChild(radioInput);
-        radioLabel.appendChild(radioLabelSpan);
-        radioLabel.for = radioInput.id;
-        radio.appendChild(radioLabel);
-      }
-      dom._show(radio);
-      break;
-    case 'checkbox':
-      var checkbox = dom.getChildByClass(modal, swalClasses.checkbox);
-      var checkboxInput = modal.querySelector('#' + swalClasses.checkbox);
-      checkboxInput.value = 1;
-      checkboxInput.checked = Boolean(params.inputValue);
-      var label = checkbox.getElementsByTagName('span');
-      if (label.length) {
-        checkbox.removeChild(label[0]);
-      }
-      label = document.createElement('span');
-      label.innerHTML = params.inputPlaceholder;
-      checkbox.appendChild(label);
-      dom._show(checkbox);
-      break;
-    case 'textarea':
-      var textarea = dom.getChildByClass(modal, swalClasses.textarea);
-      textarea.value = params.inputValue;
-      textarea.placeholder = params.inputPlaceholder;
-      dom._show(textarea);
-      break;
-    case null:
-      break;
-    default:
-      console.error('Unexpected type of input! Expected "text" or "email" or "password", "select", "checkbox" or "textarea", got ' + typeof arguments[0]);
-      break;
-  }
-
   // Cancel button
   if (params.showCancelButton) {
     $cancelBtn.style.display = 'inline-block';
@@ -419,7 +313,10 @@ function modalDependant() {
 
     if (params.input) {
       setTimeout(function() {
-        dom.focusInput(getInput());
+        var input = getInput();
+        if (input) {
+          dom.focusInput(input);
+        }
       }, 0);
     }
 
@@ -709,12 +606,143 @@ function modalDependant() {
       dom.hide($validationError);
 
       var input = getInput();
-      dom.removeClass(input, 'error');
+      if (input) {
+        dom.removeClass(input, 'error');
+      }
     };
 
     sweetAlert.enableButtons();
     sweetAlert.hideLoading();
     sweetAlert.resetValidationError();
+
+    // input, select
+    var inputTypes = ['input', 'select', 'radio', 'checkbox', 'textarea'];
+    var input;
+    for (i = 0; i < inputTypes.length; i++) {
+      var inputClass = swalClasses[inputTypes[i]];
+      input = dom.getChildByClass(modal, inputClass);
+
+      // set attributes
+      while (input.attributes.length > 0) {
+        input.removeAttribute(input.attributes[0].name);
+      }
+      for (var attr in params.inputAttributes) {
+        input.setAttribute(attr, params.inputAttributes[attr]);
+      }
+
+      // set class
+      input.className = inputClass;
+      if (params.inputClass) {
+        dom.addClass(input, params.inputClass);
+      }
+
+      dom._hide(input);
+    }
+
+    var populateInputOptions;
+    switch (params.input) {
+      case 'text':
+      case 'email':
+      case 'password':
+      case 'file':
+        input = dom.getChildByClass(modal, swalClasses.input);
+        input.value = params.inputValue;
+        input.placeholder = params.inputPlaceholder;
+        input.type = params.input;
+        dom._show(input);
+        break;
+      case 'select':
+        var select = dom.getChildByClass(modal, swalClasses.select);
+        select.innerHTML = '';
+        if (params.inputPlaceholder) {
+          var placeholder = document.createElement('option');
+          placeholder.innerHTML = params.inputPlaceholder;
+          placeholder.value = '';
+          placeholder.disabled = true;
+          placeholder.selected = true;
+          select.appendChild(placeholder);
+        }
+        populateInputOptions = function(inputOptions) {
+          for (var optionValue in inputOptions) {
+            var option = document.createElement('option');
+            option.value = optionValue;
+            option.innerHTML = inputOptions[optionValue];
+            if (params.inputValue === optionValue) {
+              option.selected = true;
+            }
+            select.appendChild(option);
+          }
+          dom._show(select);
+          select.focus();
+        };
+        break;
+      case 'radio':
+        var radio = dom.getChildByClass(modal, swalClasses.radio);
+        radio.innerHTML = '';
+        populateInputOptions = function(inputOptions) {
+          for (var radioValue in inputOptions) {
+            var id = 1;
+            var radioInput = document.createElement('input');
+            var radioLabel = document.createElement('label');
+            var radioLabelSpan = document.createElement('span');
+            radioInput.type = 'radio';
+            radioInput.name = swalClasses.radio;
+            radioInput.value = radioValue;
+            radioInput.id = swalClasses.radio + '-' + (id++);
+            if (params.inputValue === radioValue) {
+              radioInput.checked = true;
+            }
+            radioLabelSpan.innerHTML = inputOptions[radioValue];
+            radioLabel.appendChild(radioInput);
+            radioLabel.appendChild(radioLabelSpan);
+            radioLabel.for = radioInput.id;
+            radio.appendChild(radioLabel);
+          }
+          dom._show(radio);
+          var radios = radio.querySelectorAll('input');
+          if (radios.length) {
+            radios[0].focus();
+          }
+        };
+        break;
+      case 'checkbox':
+        var checkbox = dom.getChildByClass(modal, swalClasses.checkbox);
+        var checkboxInput = modal.querySelector('#' + swalClasses.checkbox);
+        checkboxInput.value = 1;
+        checkboxInput.checked = Boolean(params.inputValue);
+        var label = checkbox.getElementsByTagName('span');
+        if (label.length) {
+          checkbox.removeChild(label[0]);
+        }
+        label = document.createElement('span');
+        label.innerHTML = params.inputPlaceholder;
+        checkbox.appendChild(label);
+        dom._show(checkbox);
+        break;
+      case 'textarea':
+        var textarea = dom.getChildByClass(modal, swalClasses.textarea);
+        textarea.value = params.inputValue;
+        textarea.placeholder = params.inputPlaceholder;
+        dom._show(textarea);
+        break;
+      case null:
+        break;
+      default:
+        console.error('Unexpected type of input! Expected "text" or "email" or "password", "select", "checkbox", "textarea" or "file", got ' + typeof arguments[0]);
+        break;
+    }
+
+    if (params.inputOptions instanceof Promise) {
+      sweetAlert.showLoading();
+      params.inputOptions.then(function(inputOptions) {
+        sweetAlert.hideLoading();
+        populateInputOptions(inputOptions);
+      });
+    } else if (typeof params.inputOptions === 'object') {
+      populateInputOptions(params.inputOptions);
+    } else {
+      console.error('Unexpected type of inputOptions! Expected object or Promise, got ' + params.inputOptions);
+    }
   });
 }
 

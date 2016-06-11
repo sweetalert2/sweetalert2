@@ -712,14 +712,21 @@ swal({
       <td><strong>radio</strong></td>
       <td>
         <pre>
+<span class="comment">// inputOptions can be an object or Promise</span>
+<span class="func">var</span> inputOptions = <span class="tag">new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve) {
+  setTimeout(<span class="func"><i>function</i></span>() {
+    resolve({
+      <span class="str">'#ff0000'</span>: <span class="str">'Red'</span>,
+      <span class="str">'#00ff00'</span>: <span class="str">'Green'</span>,
+      <span class="str">'#0000ff'</span>: <span class="str">'Blue'</span>
+    });
+  }, <span class="val">2000</span>);
+});
+
 swal({
   title: <span class="str">'Select color'</span>,
   input: <span class="str">'radio'</span>,
-  inputOptions: {
-    <span class="str">'#ff0000'</span>: <span class="str">'Red'</span>,
-    <span class="str">'#00ff00'</span>: <span class="str">'Green'</span>,
-    <span class="str">'#0000ff'</span>: <span class="str">'Blue'</span>
-  },
+  inputOptions: inputOptions,
   inputValidator: <span class="func"><i>function</i></span>(result) {
     <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
       <span class="tag">if</span> (result) {
@@ -787,7 +794,7 @@ swal({
   }
 }).then(<span class="func"><i>function</i></span>(file) {
   <span class="tag">if</span> (file) {
-    var reader = new FileReader();
+    var reader = <span class="tag">new</span> <span class="func">FileReader</span>;
     reader.onload = <span class="func"><i>function</i></span>(e) {
       swal({
         imageUrl: e.target.result
@@ -1130,14 +1137,20 @@ swal({
   });
 
   $('.input-type-radio').on('click', function() {
+    var inputOptions = new Promise(function(resolve) {
+      setTimeout(function() {
+        resolve({
+          '#FF0000': 'Red',
+          '#00FF00': 'Green',
+          '#0000FF': 'Blue'
+        });
+      }, 2000);
+    });
+
     swal({
       title: 'Select color',
       input: 'radio',
-      inputOptions: {
-        '#FF0000': 'Red',
-        '#00FF00': 'Green',
-        '#0000FF': 'Blue'
-      },
+      inputOptions: inputOptions,
       inputValidator: function(value) {
         return new Promise(function(resolve, reject) {
           if (value) {

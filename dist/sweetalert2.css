@@ -90,6 +90,12 @@
     transition: all 0.1s ease; }
     .swal2-modal .swal2-close:hover {
       color: #d55; }
+  .swal2-modal > .swal2-input,
+  .swal2-modal > .swal2-textarea,
+  .swal2-modal > .swal2-select,
+  .swal2-modal > .swal2-radio,
+  .swal2-modal > .swal2-checkbox {
+    display: none; }
 
 .swal2-content {
   font-size: 18px;
@@ -227,9 +233,12 @@
         -webkit-transform: rotate(-45deg);
                 transform: rotate(-45deg); }
 
-.swal2-input, .swal2-textarea, .swal2-select, .swal2-radio, .swal2-checkbox {
-  margin: 20px auto;
-  display: none; }
+.swal2-input,
+.swal2-textarea,
+.swal2-select,
+.swal2-radio,
+.swal2-checkbox {
+  margin: 20px auto; }
 
 .swal2-input:not([type="file"]), .swal2-textarea {
   width: 100%;

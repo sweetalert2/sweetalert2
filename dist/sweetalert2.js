@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v3.3.8
+ * sweetalert2 v4.0.0
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -618,12 +618,12 @@
     // Modal interactions
     var modal = getModal();
 
-    return new Promise(function(resolve) {
+    return new Promise(function(resolve, reject) {
       // Close on timer
       if (params.timer) {
         modal.timeout = setTimeout(function() {
           sweetAlert.closeModal();
-          resolve(undefined);
+          reject('timer');
         }, params.timer);
       }
 
@@ -756,7 +756,7 @@
             } else if (targetedCancel && modalIsVisible) {
 
               sweetAlert.closeModal();
-              resolve(false);
+              reject('cancel');
             }
 
             break;
@@ -779,9 +779,12 @@
         var e = event || window.event;
         var target = e.target || e.srcElement;
 
-        if (hasClass(target, swalClasses.close) || (target === getOverlay() && params.allowOutsideClick)) {
+        if (hasClass(target, swalClasses.close)) {
           sweetAlert.closeModal();
-          resolve(undefined);
+          reject('close');
+        } else if (target === getOverlay() && params.allowOutsideClick) {
+          sweetAlert.closeModal();
+          reject('overlay');
         }
       };
 
@@ -869,7 +872,7 @@
             }
           } else if (keyCode === 27 && params.allowEscapeKey === true) {
             sweetAlert.closeModal();
-            resolve(undefined);
+            reject('esc');
           }
         }
       }
@@ -1119,12 +1122,10 @@
     return new Promise(function(resolve, reject) {
       (function step(i, callback) {
         if (i < steps.length) {
-          sweetAlert(steps[i]).then(function(isConfirm) {
-            if (isConfirm) {
-              step(i+1, callback);
-            } else {
-              reject();
-            }
+          sweetAlert(steps[i]).then(function() {
+            step(i+1, callback);
+          }, function(dismiss) {
+            reject(dismiss);
           });
         } else {
           resolve();
@@ -1255,7 +1256,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '3.3.8';
+  sweetAlert.version = '4.0.0';
 
   window.sweetAlert = window.swal = sweetAlert;
 

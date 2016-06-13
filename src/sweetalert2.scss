@@ -122,6 +122,13 @@
     }
   }
 
+  > .swal2-input,
+  > .swal2-textarea,
+  > .swal2-select,
+  > .swal2-radio,
+  > .swal2-checkbox {
+    display: none;
+  }
 }
 
 .swal2-content {
@@ -305,9 +312,12 @@
   }
 }
 
-.swal2-input, .swal2-textarea, .swal2-select, .swal2-radio, .swal2-checkbox {
+.swal2-input,
+.swal2-textarea,
+.swal2-select,
+.swal2-radio,
+.swal2-checkbox {
   margin: 20px auto;
-  display: none;
 }
 
 .swal2-input:not([type="file"]), .swal2-textarea {

@@ -70,33 +70,23 @@ swal({
   showCancelButton: true,
   confirmButtonText: 'Yes, delete it!',
   cancelButtonText: 'No, keep it',
-}).then(function(isConfirm) {
-  if (isConfirm === true) {
-    swal(
-      'Deleted!',
-      'Your imaginary file has been deleted.',
-      'success'
-    );
-
-  } else if (isConfirm === false) {
+}).then(function() {
+  swal(
+    'Deleted!',
+    'Your imaginary file has been deleted.',
+    'success'
+  );
+}, function(dismiss) {
+  // dismiss can be 'cancel', 'overlay', 'close', 'timer'
+  if (dismiss === 'cancel') {
     swal(
       'Cancelled',
       'Your imaginary file is safe :)',
       'error'
     );
-
-  } else {
-    // Esc, close button or outside click
-    // isConfirm is undefined
   }
 });
 ```
-
-`swal(...)` returns a Promise Object, `isConfirm` parameter in Promise method `then` will be:
-
-- `true` for "Confirm"-button
-- `false` for "Cancel"-button
-- `undefined` for <kbd>Esc</kbd> press, close button or outside click
 
 [View more examples](https://limonte.github.io/sweetalert2/)
 

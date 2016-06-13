@@ -10,8 +10,8 @@ test('modal shows up', function(assert) {
 test('confirm button', function(assert) {
   var done = assert.async();
 
-  swal('Confirm me').then(function(isConfirm) {
-    assert.equal(isConfirm, true);
+  swal('Confirm me').then(function(result) {
+    assert.equal(result, true);
     done();
   });
 
@@ -22,10 +22,13 @@ test('confirm button', function(assert) {
 test('cancel button', function(assert) {
   var done = assert.async();
 
-  swal('Cancel me').then(function(isConfirm) {
-    assert.equal(isConfirm, false);
-    done();
-  });
+  swal('Cancel me').then(
+    function() {},
+    function(dismiss) {
+      assert.equal(dismiss, 'cancel');
+      done();
+    }
+  );
 
   swal.clickCancel();
 });
@@ -34,10 +37,13 @@ test('cancel button', function(assert) {
 test('esc key', function(assert) {
   var done = assert.async();
 
-  swal('Esc me').then(function(isConfirm) {
-    assert.equal(typeof isConfirm, 'undefined');
-    done();
-  });
+  swal('Esc me').then(
+    function() {},
+    function(dismiss) {
+      assert.equal(dismiss, 'esc');
+      done();
+    }
+  );
 
   $(document).trigger($.Event('keydown', {
     keyCode: 27
@@ -48,10 +54,13 @@ test('esc key', function(assert) {
 test('overlay click', function(assert) {
   var done = assert.async();
 
-  swal('Close me by overlay click').then(function(isConfirm) {
-    assert.equal(typeof isConfirm, 'undefined');
-    done();
-  });
+  swal('Overlay click').then(
+    function() {},
+    function(dismiss) {
+      assert.equal(dismiss, 'overlay');
+      done();
+    }
+  );
 
   $('.swal2-overlay').click();
 });
@@ -59,16 +68,31 @@ test('overlay click', function(assert) {
 
 test('timer works', function(assert) {
   var done = assert.async();
-  var $modal = $('.swal2-modal');
 
-  swal({title: 'Timer test', timer: 10, animation: false}).then(function(isConfirm) {
-    assert.equal(typeof isConfirm, 'undefined');
-  });
+  swal({title: 'Timer test', timer: 10, animation: false}).then(
+    function() {},
+    function(dismiss) {
+      assert.equal(dismiss, 'timer');
+      done();
+    }
+  );
+});
 
-  setTimeout(function() {
-    assert.ok($modal.is(':hidden'));
-    done();
-  }, 20);
+
+test('Close button', function(assert) {
+  var done = assert.async();
+
+  swal({title: 'Close button test', showCloseButton: true}).then(
+    function() {},
+    function(dismiss) {
+      assert.equal(dismiss, 'close');
+      done();
+    }
+  );
+
+  var $closeButton = $('.swal2-close');
+  assert.ok($closeButton.is(':visible'));
+  $closeButton.click();
 });
 
 
@@ -84,6 +108,34 @@ test('set and reset defaults', function(assert) {
   assert.ok($('.swal2-cancel').is(':hidden'));
 
   swal.clickCancel();
+});
+
+
+test('input text', function(assert) {
+  var done = assert.async();
+
+  var string = 'Live for yourself';
+  swal({input: 'text'}).then(function(result) {
+    assert.equal(result, string);
+    done();
+  });
+
+  $('.swal2-input').val(string);
+  swal.clickConfirm();
+});
+
+
+test('input select', function(assert) {
+  var done = assert.async();
+
+  var selected = 'dos';
+  swal({input: 'select', inputOptions: {uno: 1, dos: 2} }).then(function(result) {
+    assert.equal(result, selected);
+    done();
+  });
+
+  $('.swal2-select').val(selected);
+  swal.clickConfirm();
 });
 
 

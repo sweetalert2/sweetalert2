@@ -305,12 +305,16 @@
   }
 }
 
+.swal2-input, .swal2-textarea, .swal2-select, .swal2-radio, .swal2-checkbox {
+  margin: 20px auto;
+  display: none;
+}
+
 .swal2-input:not([type="file"]), .swal2-textarea {
   width: 100%;
   box-sizing: border-box;
   border-radius: 3px;
   border: 1px solid rgb(215, 215, 215);
-  margin: 20px auto;
   font-size: 18px;
   box-shadow: inset 0px 1px 1px rgba(black, 0.06);
   -webkit-transition: all 0.3s;
@@ -353,8 +357,6 @@
 
 .swal2-input[type="file"] {
   font-size: 20px;
-  display: inline-block;
-  margin: 20px auto;
 }
 
 .swal2-textarea {
@@ -365,7 +367,6 @@
 .swal2-select {
   color: #555;
   font-size: inherit;
-  margin: 20px auto;
   padding: 5px 10px;
   min-width: 40%;
   max-width: 100%;
@@ -373,7 +374,6 @@
 
 .swal2-radio {
   border: 0;
-  margin: 20px auto;
 
   label:not(:first-child) {
     margin-left: 20px;
@@ -390,7 +390,6 @@
 
 .swal2-checkbox {
   color: #555;
-  margin: 20px auto;
   input, span {
     vertical-align: middle;
   }

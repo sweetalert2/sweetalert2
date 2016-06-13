@@ -169,14 +169,12 @@ swal({
   confirmButtonColor: <span class="str">'#3085d6'</span>,
   cancelButtonColor: <span class="str">'#d33'</span>,
   confirmButtonText: <span class="str">'Yes, delete it!'</span>
-}).then(<span class="func"><i>function</i></span>(isConfirm) {
-  <span class="tag">if</span> (isConfirm) {
-    swal(
-      <span class="str">'Deleted!'</span>,
-      <span class="str">'Your file has been deleted.'</span>,
-      <span class="str">'success'</span>
-    );
-  }
+}).then(<span class="func"><i>function</i></span>() {
+  swal(
+    <span class="str">'Deleted!'</span>,
+    <span class="str">'Your file has been deleted.'</span>,
+    <span class="str">'success'</span>
+  );
 })</pre>
     </li>
 
@@ -198,22 +196,20 @@ swal({
   confirmButtonClass: <span class="str">'btn btn-success'</span>,
   cancelButtonClass: <span class="str">'btn btn-danger'</span>,
   buttonsStyling: <span class="val">false</span>
-}).then(<span class="func"><i>function</i></span>(isConfirm) {
-  <span class="tag">if</span> (isConfirm === <span class="val">true</span>) {
-    swal(
-      <span class="str">'Deleted!'</span>,
-      <span class="str">'Your file has been deleted.'</span>,
-      <span class="str">'success'</span>
-    );
-  } <span class="tag">else if</span> (isConfirm === <span class="val">false</span>) {
+}).then(<span class="func"><i>function</i></span>() {
+  swal(
+    <span class="str">'Deleted!'</span>,
+    <span class="str">'Your file has been deleted.'</span>,
+    <span class="str">'success'</span>
+  );
+}, <span class="func"><i>function</i></span>(dismiss) {
+  <span class="comment">// dismiss can be 'cancel', 'overlay', 'close', 'timer'</span>
+  <span class="tag">if</span> (dismiss === <span class="str">'cancel'</span>) {
     swal(
       <span class="str">'Cancelled'</span>,
       <span class="str">'Your imaginary file is safe :)'</span>,
       <span class="str">'error'</span>
     );
-  } <span class="tag">else</span> {
-    <span class="comment">// Esc, close button or outside click</span>
-    <span class="comment">// isConfirm is undefined</span>
   }
 })</pre>
     </li>
@@ -269,13 +265,11 @@ swal({
   },
   allowOutsideClick: <span class="val">false</span>
 }).then(<span class="func"><i>function</i></span>(email) {
-  <span class="tag">if</span> (email) {
-    swal({
-      type: <span class="str">'success'</span>,
-      title: <span class="str">'Ajax request finished!'</span>,
-      html: <span class="str">'Submitted email: '</span> + email
-    });
-  }
+  swal({
+    type: <span class="str">'success'</span>,
+    title: <span class="str">'Ajax request finished!'</span>,
+    html: <span class="str">'Submitted email: '</span> + email
+  });
 })</pre>
     </li>
 
@@ -291,7 +285,7 @@ swal.setDefaults({
   animation: <span class="val">false</span>
 });
 
-var steps = [
+<span class="func">var</span> steps = [
   {
     title: <span class="str">'Step 1'</span>,
     text: <span class="str">'Chaining swal2 modals is easy'</span>
@@ -602,12 +596,10 @@ swal({
     });
   }
 }).then(<span class="func"><i>function</i></span>(result) {
-  <span class="tag">if</span> (result) {
-    swal({
-      type: <span class="str">'success'</span>,
-      html: <span class="str">'You entered: '</span> + result
-    });
-  }
+  swal({
+    type: <span class="str">'success'</span>,
+    html: <span class="str">'You entered: '</span> + result
+  });
 })</pre>
       </td>
       <td><button class="input-type-text">Try me!</button></td>
@@ -621,12 +613,10 @@ swal({
   title: <span class="str">'Input email address'</span>,
   input: <span class="str">'email'</span>
 }).then(<span class="func"><i>function</i></span>(email) {
-  <span class="tag">if</span> (email) {
-    swal({
-      type: <span class="str">'success'</span>,
-      html: <span class="str">'Entered email: '</span> + email
-    });
-  }
+  swal({
+    type: <span class="str">'success'</span>,
+    html: <span class="str">'Entered email: '</span> + email
+  });
 })</pre>
       </td>
       <td><button class="input-type-email">Try me!</button></td>
@@ -644,7 +634,7 @@ swal({
     <span class="str">'autocapitalize'</span>: <span class="str">'off'</span>,
     <span class="str">'autocorrect'</span>: <span class="str">'off'</span>
   }
-}).then(<span class="func"><i>function</i></span>(result) {
+}).then(<span class="func"><i>function</i></span>(password) {
   <span class="tag">if</span> (password) {
     swal({
       type: <span class="str">'success'</span>,
@@ -663,9 +653,9 @@ swal({
 swal({
   input: <span class="str">'textarea'</span>,
   showCancelButton: <span class="val">true</span>
-}).then(<span class="func"><i>function</i></span>(result) {
-  <span class="tag">if</span> (result) {
-    swal(result);
+}).then(<span class="func"><i>function</i></span>(text) {
+  <span class="tag">if</span> (text) {
+    swal(text);
   }
 })</pre>
       </td>
@@ -696,12 +686,10 @@ swal({
     });
   }
 }).then(<span class="func"><i>function</i></span>(result) {
-  <span class="tag">if</span> (result) {
-    swal({
-      type: <span class="str">'success'</span>,
-      html: <span class="str">'You selected: '</span> + result
-    });
-  }
+  swal({
+    type: <span class="str">'success'</span>,
+    html: <span class="str">'You selected: '</span> + result
+  });
 })</pre>
 
       </td>
@@ -737,12 +725,10 @@ swal({
     });
   }
 }).then(<span class="func"><i>function</i></span>(result) {
-  <span class="tag">if</span> (result) {
-    swal({
-      type: <span class="str">'success'</span>,
-      html: <span class="str">'You selected: '</span> + result
-    });
-  }
+  swal({
+    type: <span class="str">'success'</span>,
+    html: <span class="str">'You selected: '</span> + result
+  });
 })</pre>
       </td>
       <td><button class="input-type-radio">Try me!</button></td>
@@ -770,12 +756,10 @@ swal({
     });
   }
 }).then(<span class="func"><i>function</i></span>(result) {
-  <span class="tag">if</span> (result) {
-    swal({
-      type: <span class="str">'success'</span>,
-      text: <span class="str">'You agreed with T&amp;C :)'</span>
-    });
-  }
+  swal({
+    type: <span class="str">'success'</span>,
+    text: <span class="str">'You agreed with T&amp;C :)'</span>
+  });
 })</pre>
 
       </td>
@@ -793,15 +777,13 @@ swal({
     accept: <span class="str">'image/*'</span>
   }
 }).then(<span class="func"><i>function</i></span>(file) {
-  <span class="tag">if</span> (file) {
-    var reader = <span class="tag">new</span> <span class="func">FileReader</span>;
-    reader.onload = <span class="func"><i>function</i></span>(e) {
-      swal({
-        imageUrl: e.target.result
-      });
-    };
-    reader.readAsDataURL(file);
-  }
+  <span class="func">var</span> reader = <span class="tag">new</span> <span class="func">FileReader</span>;
+  reader.onload = <span class="func"><i>function</i></span>(e) {
+    swal({
+      imageUrl: e.target.result
+    });
+  };
+  reader.readAsDataURL(file);
 })</pre>
       </td>
       <td><button class="input-type-file">Try me!</button></td>
@@ -834,9 +816,7 @@ swal({
     });
   }
 }).then(<span class="func"><i>function</i></span>(result) {
-  <span class="tag">if</span> (result) {
-    swal(JSON.stringify(result));
-  }
+  swal(JSON.stringify(result));
 })</pre>
 
         </td>
@@ -980,16 +960,14 @@ swal({
   $('.examples .warning.confirm button').on('click', function() {
     swal({
       title: 'Are you sure?',
-      text: 'You will not be able to recover this imaginary file!',
+      text: 'You won\'t be able to revert this!',
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
-    }).then(function(isConfirm) {
-      if (isConfirm) {
-        swal('Deleted!', 'Your file has been deleted!', 'success');
-      }
+    }).then(function() {
+      swal('Deleted!', 'Your file has been deleted!', 'success');
     });
   });
 
@@ -1006,14 +984,12 @@ swal({
       confirmButtonClass: 'btn btn-success',
       cancelButtonClass: 'btn btn-danger',
       buttonsStyling: false
-    }).then(function(isConfirm) {
-      if (isConfirm === true) {
-        swal('Deleted!', 'Your file has been deleted!', 'success');
-      } else if (isConfirm === false) {
+    }).then(function() {
+      swal('Deleted!', 'Your file has been deleted!', 'success');
+    }, function(dismiss) {
+      // dismiss can be 'cancel', 'overlay', 'close', 'timer'
+      if (dismiss === 'cancel') {
         swal('Cancelled', 'Your imaginary file is safe :)', 'error');
-      } else {
-        // Esc, close button or outside click
-        // isConfirm is undefined
       }
     });
   });
@@ -1053,12 +1029,10 @@ swal({
         });
       }
     }).then(function(result) {
-      if (result) {
-        swal({
-          type: 'success',
-          html: 'You entered: <strong>' + result + '</strong>'
-        });
-      }
+      swal({
+        type: 'success',
+        html: 'You entered: <strong>' + result + '</strong>'
+      });
     });
   });
 
@@ -1067,12 +1041,10 @@ swal({
       title: 'Input email address',
       input: 'email'
     }).then(function(email) {
-      if (email) {
-        swal({
-          type: 'success',
-          html: 'Entered email: <strong>' + email + '</strong>'
-        });
-      }
+      swal({
+        type: 'success',
+        html: 'Entered email: <strong>' + email + '</strong>'
+      });
     });
   });
 
@@ -1099,9 +1071,9 @@ swal({
     swal({
       input: 'textarea',
       showCancelButton: true
-    }).then(function(result) {
-      if (result) {
-        swal(result);
+    }).then(function(text) {
+      if (text) {
+        swal(text);
       }
     });
   });
@@ -1127,12 +1099,10 @@ swal({
         });
       }
     }).then(function(result) {
-      if (result) {
-        swal({
-          type: 'success',
-          html: 'You entered: <strong>' + result + '</strong>'
-        });
-      }
+      swal({
+        type: 'success',
+        html: 'You selected: <strong>' + result + '</strong>'
+      });
     });
   });
 
@@ -1161,12 +1131,10 @@ swal({
         });
       }
     }).then(function(result) {
-      if (result) {
-        swal({
-          type: 'success',
-          html: 'You selected: <strong>' + result + '</strong>'
-        });
-      }
+      swal({
+        type: 'success',
+        html: 'You selected: <strong>' + result + '</strong>'
+      });
     });
   });
 
@@ -1187,13 +1155,11 @@ swal({
           }
         });
       }
-    }).then(function(result) {
-      if (result) {
-        swal({
-          type: 'success',
-          text: 'You agreed with T&amp;C :)'
-        });
-      }
+    }).then(function() {
+      swal({
+        type: 'success',
+        text: 'You agreed with T&amp;C :)'
+      });
     });
   });
 
@@ -1205,15 +1171,13 @@ swal({
         accept: 'image/*'
       }
     }).then(function(file) {
-      if (file) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          swal({
-            imageUrl: e.target.result
-          });
-        };
-        reader.readAsDataURL(file);
-      }
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        swal({
+          imageUrl: e.target.result
+        });
+      };
+      reader.readAsDataURL(file);
     });
   });
 
@@ -1230,9 +1194,7 @@ swal({
         });
       }
     }).then(function(result) {
-      if (result) {
-        swal(JSON.stringify(result));
-      }
+      swal(JSON.stringify(result));
     });
   });
 
@@ -1253,13 +1215,11 @@ swal({
       },
       allowOutsideClick: false
     }).then(function(email) {
-      if (email) {
-        swal({
-          type: 'success',
-          title: 'Ajax request finished!',
-          html: 'Submitted email: ' + '<strong>' + email + '</strong>'
-        });
-      }
+      swal({
+        type: 'success',
+        title: 'Ajax request finished!',
+        html: 'Submitted email: ' + '<strong>' + email + '</strong>'
+      });
     });
   });
 

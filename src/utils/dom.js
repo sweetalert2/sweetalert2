@@ -111,11 +111,10 @@ export var getTopMargin = function(elem) {
   elem.style.display = 'block';
 
   var height = elem.clientHeight;
-  var paddingTop = parseInt(getComputedStyle(elem).getPropertyValue('padding-top'), 10);
 
   elem.style.left = '';
   elem.style.display = 'none';
-  return ('-' + parseInt(height / 2 + paddingTop, 10) + 'px');
+  return ('-' + parseInt(height / 2, 10) + 'px');
 };
 
 export var fadeIn = function(elem, interval) {

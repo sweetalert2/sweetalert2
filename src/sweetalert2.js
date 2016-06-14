@@ -266,8 +266,6 @@ function modalDependant() {
   }
 
   setParameters(params);
-  fixVerticalPosition();
-  openModal(params.animation);
 
   // Modal interactions
   var modal = dom.getModal();
@@ -753,6 +751,9 @@ function modalDependant() {
         console.error('Unexpected type of inputOptions! Expected object or Promise, got ' + params.inputOptions);
       }
     }
+
+    fixVerticalPosition();
+    openModal(params.animation);
   });
 }
 

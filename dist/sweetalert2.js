@@ -256,11 +256,10 @@
     elem.style.display = 'block';
 
     var height = elem.clientHeight;
-    var paddingTop = parseInt(getComputedStyle(elem).getPropertyValue('padding-top'), 10);
 
     elem.style.left = '';
     elem.style.display = 'none';
-    return ('-' + parseInt(height / 2 + paddingTop, 10) + 'px');
+    return ('-' + parseInt(height / 2, 10) + 'px');
   };
 
   var fadeIn = function(elem, interval) {
@@ -612,8 +611,6 @@
     }
 
     setParameters(params);
-    fixVerticalPosition();
-    openModal(params.animation);
 
     // Modal interactions
     var modal = getModal();
@@ -1099,6 +1096,9 @@
           console.error('Unexpected type of inputOptions! Expected object or Promise, got ' + params.inputOptions);
         }
       }
+
+      fixVerticalPosition();
+      openModal(params.animation);
     });
   }
 

@@ -256,10 +256,14 @@ swal({
   showCancelButton: <span class="val">true</span>,
   confirmButtonText: <span class="str">'Submit'</span>,
   showLoaderOnConfirm: <span class="val">true</span>,
-  preConfirm: <span class="func"><i>function</i></span>() {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve) {
+  preConfirm: <span class="func"><i>function</i></span>(email) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
       <span class="func">setTimeout</span>(<span class="func">function</span>() {
-        resolve();
+        <span class="tag">if</span> (email === <span class="str">'taken@example.com'</span>) {
+          reject(<span class="str">'This email is already taken.'</span>);
+        } else {
+          resolve();
+        }
       }, <span class="val">2000</span>);
     });
   },
@@ -1206,10 +1210,14 @@ swal({
       confirmButtonText: 'Submit',
       width: 600,
       showLoaderOnConfirm: true,
-      preConfirm: function() {
-        return new Promise(function(resolve) {
+      preConfirm: function(email) {
+        return new Promise(function(resolve, reject) {
           setTimeout(function() {
-            resolve();
+            if (email === 'taken@example.com') {
+              reject('This email is already taken.');
+            } else {
+              resolve();
+            }
           }, 2000);
         });
       },

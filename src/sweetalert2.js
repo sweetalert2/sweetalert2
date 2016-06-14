@@ -331,8 +331,11 @@ function modalDependant() {
             resolve(preConfirmValue || value);
             sweetAlert.closeModal();
           },
-          function() {
+          function(error) {
             sweetAlert.hideLoading();
+            if (error) {
+              sweetAlert.showValidationError(error);
+            }
           }
         );
       } else {
@@ -395,7 +398,9 @@ function modalDependant() {
                   },
                   function(error) {
                     sweetAlert.enableInput();
-                    sweetAlert.showValidationError(error);
+                    if (error) {
+                      sweetAlert.showValidationError(error);
+                    }
                   }
                 );
               } else {

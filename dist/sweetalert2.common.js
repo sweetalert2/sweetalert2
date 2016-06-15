@@ -51,6 +51,7 @@ var defaultParams = {
   allowEscapeKey: true,
   showConfirmButton: true,
   showCancelButton: false,
+  allowSpaceKey: true,
   preConfirm: null,
   confirmButtonText: 'OK',
   confirmButtonColor: '#3085d6',
@@ -864,7 +865,7 @@ function modalDependant() {
 
       } else {
         if (keyCode === 13 || keyCode === 32) {
-          if (btnIndex === -1) {
+          if (btnIndex === -1 && params.allowSpaceKey === true) {
             // ENTER/SPACE clicked outside of a button.
             fireClick($confirmButton, e);
           }

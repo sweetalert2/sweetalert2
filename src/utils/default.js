@@ -10,6 +10,7 @@ export var defaultParams = {
   allowEscapeKey: true,
   showConfirmButton: true,
   showCancelButton: false,
+  allowSpaceKey: true,
   preConfirm: null,
   confirmButtonText: 'OK',
   confirmButtonColor: '#3085d6',

@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.0.0
+ * sweetalert2 v4.0.4
  * Released under the MIT License.
  */
 'use strict';
@@ -295,6 +295,29 @@ var fadeOut = function(elem, interval) {
       }
     };
     tick();
+  }
+};
+
+var fireClick = function(node) {
+  // Taken from http://www.nonobtrusive.com/2011/11/29/programatically-fire-crossbrowser-click-event-with-javascript/
+  // Then fixed for today's Chrome browser.
+  if (typeof MouseEvent === 'function') {
+    // Up-to-date approach
+    var mevt = new MouseEvent('click', {
+      view: window,
+      bubbles: false,
+      cancelable: true
+    });
+    node.dispatchEvent(mevt);
+  } else if (document.createEvent) {
+    // Fallback
+    var evt = document.createEvent('MouseEvents');
+    evt.initEvent('click', false, false);
+    node.dispatchEvent(evt);
+  } else if (document.createEventObject) {
+    node.fireEvent('onclick');
+  } else if (typeof node.onclick === 'function') {
+    node.onclick();
   }
 };
 
@@ -828,9 +851,6 @@ function modalDependant() {
       }
     }
 
-    // Focus the first element (input or button)
-    setFocus(-1, 1);
-
     function handleKeyDown(event) {
       var e = event || window.event;
       var keyCode = e.keyCode || e.which;
@@ -1095,6 +1115,9 @@ function modalDependant() {
 
     fixVerticalPosition();
     openModal(params.animation);
+
+    // Focus the first element (input or button)
+    setFocus(-1, 1);
   });
 }
 
@@ -1257,7 +1280,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '4.0.0';
+sweetAlert.version = '4.0.4';
 
 window.sweetAlert = window.swal = sweetAlert;
 

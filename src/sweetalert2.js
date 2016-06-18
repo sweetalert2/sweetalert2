@@ -487,9 +487,6 @@ function modalDependant() {
       }
     }
 
-    // Focus the first element (input or button)
-    setFocus(-1, 1);
-
     function handleKeyDown(event) {
       var e = event || window.event;
       var keyCode = e.keyCode || e.which;
@@ -525,7 +522,7 @@ function modalDependant() {
         if (keyCode === 13 || keyCode === 32) {
           if (btnIndex === -1) {
             // ENTER/SPACE clicked outside of a button.
-            fireClick($confirmButton, e);
+            dom.fireClick($confirmButton, e);
           }
         } else if (keyCode === 27 && params.allowEscapeKey === true) {
           sweetAlert.closeModal();
@@ -754,6 +751,9 @@ function modalDependant() {
 
     fixVerticalPosition();
     openModal(params.animation);
+
+    // Focus the first element (input or button)
+    setFocus(-1, 1);
   });
 }
 

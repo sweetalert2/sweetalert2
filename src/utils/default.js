@@ -36,7 +36,9 @@ export var defaultParams = {
   inputAutoTrim: true,
   inputClass: null,
   inputAttributes: {},
-  inputValidator: null
+  inputValidator: null,
+  onOpen: null,
+  onClose: null,
 };
 
 export var sweetHTML = '<div class="' + swalClasses.overlay + '" tabIndex="-1"></div>' +

@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.0.4
+ * sweetalert2 v4.0.5
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -81,7 +81,9 @@
     inputAutoTrim: true,
     inputClass: null,
     inputAttributes: {},
-    inputValidator: null
+    inputValidator: null,
+    onOpen: null,
+    onClose: null,
   };
 
   var sweetHTML = '<div class="' + swalClasses.overlay + '" tabIndex="-1"></div>' +
@@ -566,7 +568,7 @@
   /*
    * Animations
    */
-  var openModal = function(animation) {
+  var openModal = function(animation, onComplete) {
     var modal = getModal();
     if (animation) {
       fadeIn(getOverlay(), 10);
@@ -576,10 +578,11 @@
       show(getOverlay());
     }
     show(modal);
-
     states.previousActiveElement = document.activeElement;
-
     addClass(modal, 'visible');
+    if (onComplete !== null && typeof onComplete === 'function') {
+      onComplete.call(this, modal);
+    }
   };
 
   /*
@@ -642,12 +645,11 @@
       // Close on timer
       if (params.timer) {
         modal.timeout = setTimeout(function() {
-          sweetAlert.closeModal();
+          sweetAlert.closeModal(params.onClose);
           reject('timer');
         }, params.timer);
       }
 
-      // input/select autofocus
       var getInput = function() {
         switch (params.input) {
           case 'select':
@@ -694,8 +696,8 @@
         if (params.preConfirm) {
           params.preConfirm(value, params.extraParams).then(
             function(preConfirmValue) {
+              sweetAlert.closeModal(params.onClose);
               resolve(preConfirmValue || value);
-              sweetAlert.closeModal();
             },
             function(error) {
               sweetAlert.hideLoading();
@@ -705,8 +707,8 @@
             }
           );
         } else {
+          sweetAlert.closeModal(params.onClose);
           resolve(value);
-          sweetAlert.closeModal();
         }
       };
 
@@ -779,8 +781,7 @@
 
             // Clicked 'cancel'
             } else if (targetedCancel && modalIsVisible) {
-
-              sweetAlert.closeModal();
+              sweetAlert.closeModal(params.onClose);
               reject('cancel');
             }
 
@@ -805,10 +806,10 @@
         var target = e.target || e.srcElement;
 
         if (hasClass(target, swalClasses.close)) {
-          sweetAlert.closeModal();
+          sweetAlert.closeModal(params.onClose);
           reject('close');
         } else if (target === getOverlay() && params.allowOutsideClick) {
-          sweetAlert.closeModal();
+          sweetAlert.closeModal(params.onClose);
           reject('overlay');
         }
       };
@@ -893,7 +894,7 @@
               fireClick($confirmButton, e);
             }
           } else if (keyCode === 27 && params.allowEscapeKey === true) {
-            sweetAlert.closeModal();
+            sweetAlert.closeModal(params.onClose);
             reject('esc');
           }
         }
@@ -1118,7 +1119,7 @@
       }
 
       fixVerticalPosition();
-      openModal(params.animation);
+      openModal(params.animation, params.onOpen);
 
       // Focus the first element (input or button)
       setFocus(-1, 1);
@@ -1165,7 +1166,7 @@
   /*
    * Global function to close sweetAlert
    */
-  sweetAlert.close = sweetAlert.closeModal = function() {
+  sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
     var modal = getModal();
     removeClass(modal, 'show-swal2');
     addClass(modal, 'hide-swal2');
@@ -1197,6 +1198,9 @@
     } else {
       _hide(modal);
       _hide(getOverlay());
+    }
+    if (onComplete !== null && typeof onComplete === 'function') {
+      onComplete.call(this, modal);
     }
   };
 
@@ -1284,7 +1288,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.0.4';
+  sweetAlert.version = '4.0.5';
 
   window.sweetAlert = window.swal = sweetAlert;
 

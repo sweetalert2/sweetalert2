@@ -280,8 +280,6 @@ function modalDependant() {
       }, params.timer);
     }
 
-
-      // input/select autofocus
     var getInput = function() {
       switch (params.input) {
         case 'select':

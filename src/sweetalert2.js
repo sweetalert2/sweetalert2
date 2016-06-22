@@ -28,14 +28,14 @@ var setParameters = function(params) {
   var margin = 5; // %
   var mediaQueryMaxWidth = params.width + parseInt(params.width * (margin/100) * 2, 10);
   cssNode.innerHTML =
-    '@media screen and (max-width: ' + mediaQueryMaxWidth + 'px) {' +
+      '@media screen and (max-width: ' + mediaQueryMaxWidth + 'px) {' +
       '.' + swalClasses.modal + ' {' +
-        'width: auto !important;' +
-        'left: ' + margin + '% !important;' +
-        'right: ' + margin + '% !important;' +
-        'margin-left: 0 !important;' +
+      'width: auto !important;' +
+      'left: ' + margin + '% !important;' +
+      'right: ' + margin + '% !important;' +
+      'margin-left: 0 !important;' +
       '}' +
-    '}';
+      '}';
   head.appendChild(cssNode);
 
   var $title = modal.querySelector('h2');
@@ -195,6 +195,21 @@ var setParameters = function(params) {
   }
 };
 
+var overflowState = null;
+var disableTouchOverflow = function(e) {
+  if (e) {
+    e.preventDefault();
+  }
+  if (!overflowState) {
+    overflowState = document.body.style.overflow;
+  }
+  document.body.style.overflow = 'hidden';
+};
+
+var restoreTouchOverflow = function() {
+  document.body.style.overflow = overflowState;
+};
+
 /*
  * Animations
  */
@@ -213,6 +228,10 @@ var openModal = function(animation, onComplete) {
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal);
   }
+  disableTouchOverflow();
+  ['scroll', 'touchmove'].forEach(function(e) {
+    window.addEventListener(e, disableTouchOverflow, false);
+  });
 };
 
 /*
@@ -325,16 +344,16 @@ function modalDependant() {
 
       if (params.preConfirm) {
         params.preConfirm(value, params.extraParams).then(
-          function(preConfirmValue) {
-            sweetAlert.closeModal(params.onClose);
-            resolve(preConfirmValue || value);
-          },
-          function(error) {
-            sweetAlert.hideLoading();
-            if (error) {
-              sweetAlert.showValidationError(error);
+            function(preConfirmValue) {
+              sweetAlert.closeModal(params.onClose);
+              resolve(preConfirmValue || value);
+            },
+            function(error) {
+              sweetAlert.hideLoading();
+              if (error) {
+                sweetAlert.showValidationError(error);
+              }
             }
-          }
         );
       } else {
         sweetAlert.closeModal(params.onClose);
@@ -832,6 +851,10 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal);
   }
+  ['scroll', 'touchmove'].forEach(function(e) {
+    window.removeEventListener(e, disableTouchOverflow);
+  });
+  restoreTouchOverflow();
 };
 
 /*

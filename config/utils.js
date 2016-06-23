@@ -43,7 +43,7 @@ var packageRollup = function(options) {
     var code = bundle.generate({
       format: options.format,
       banner: banner,
-      moduleName: classify(pack.name)
+      moduleName: 'sweetAlert',
     }).code.replace(/sweetAlert\.version = '(.*)'/, "sweetAlert.version = '" + pack.version + "'");
 
     if (options.minify) {

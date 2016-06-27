@@ -59,7 +59,7 @@
     'no-else-return': 2,             // http://eslint.org/docs/rules/no-else-return
     'no-eq-null': 2,                 // http://eslint.org/docs/rules/no-eq-null
     'no-eval': 2,                    // http://eslint.org/docs/rules/no-eval
-    'no-extend-native': 2,           // http://eslint.org/docs/rules/no-extend-native
+    'no-extend-native': 0,           // http://eslint.org/docs/rules/no-extend-native
     'no-extra-bind': 2,              // http://eslint.org/docs/rules/no-extra-bind
     'no-fallthrough': 2,             // http://eslint.org/docs/rules/no-fallthrough
     'no-floating-decimal': 2,        // http://eslint.org/docs/rules/no-floating-decimal

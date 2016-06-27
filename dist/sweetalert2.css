@@ -54,7 +54,7 @@
     cursor: pointer; }
     .swal2-modal button.styled:focus {
       outline: none; }
-    .swal2-modal button.styled[disabled] {
+    .swal2-modal button.styled:not(.loading)[disabled] {
       opacity: .4;
       cursor: no-drop; }
     .swal2-modal button.styled.loading {
@@ -74,6 +74,18 @@
               animation: rotate-loading 1.5s linear 0s infinite normal; }
     .swal2-modal button.styled::-moz-focus-inner {
       border: 0; }
+  .swal2-modal button:not(.styled).loading:after {
+    display: inline-block;
+    content: "";
+    margin-left: 5px;
+    vertical-align: -1px;
+    height: 6px;
+    width: 6px;
+    border: 3px solid #999;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
+            animation: rotate-loading 1.5s linear 0s infinite normal; }
   .swal2-modal .swal2-image {
     margin: 20px auto;
     max-width: 100%; }

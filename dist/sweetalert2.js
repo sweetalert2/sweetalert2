@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.0.5
+ * sweetalert2 v4.0.6
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -915,6 +915,7 @@
       sweetAlert.showLoading = sweetAlert.enableLoading = function() {
         addClass($confirmButton, 'loading');
         addClass(modal, 'loading');
+        $confirmButton.disabled = true;
         $cancelButton.disabled = true;
       };
 
@@ -924,6 +925,7 @@
       sweetAlert.hideLoading = sweetAlert.disableLoading = function() {
         removeClass($confirmButton, 'loading');
         removeClass(modal, 'loading');
+        $confirmButton.disabled = false;
         $cancelButton.disabled = false;
       };
 
@@ -1288,7 +1290,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.0.5';
+  sweetAlert.version = '4.0.6';
 
   window.sweetAlert = window.swal = sweetAlert;
 
@@ -1305,6 +1307,13 @@
       }, false);
     }
   })();
+
+  Promise.prototype.done = function() {
+    return this.catch(function() {
+      // Catch promise rejections silently.
+      // https://github.com/limonte/sweetalert2/issues/177
+    });
+  };
 
   return sweetAlert;
 

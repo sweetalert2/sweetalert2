@@ -545,6 +545,7 @@ function modalDependant() {
     sweetAlert.showLoading = sweetAlert.enableLoading = function() {
       dom.addClass($confirmButton, 'loading');
       dom.addClass(modal, 'loading');
+      $confirmButton.disabled = true;
       $cancelButton.disabled = true;
     };
 
@@ -554,6 +555,7 @@ function modalDependant() {
     sweetAlert.hideLoading = sweetAlert.disableLoading = function() {
       dom.removeClass($confirmButton, 'loading');
       dom.removeClass(modal, 'loading');
+      $confirmButton.disabled = false;
       $cancelButton.disabled = false;
     };
 

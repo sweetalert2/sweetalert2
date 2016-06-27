@@ -1308,12 +1308,14 @@
     }
   })();
 
-  Promise.prototype.done = function() {
-    return this.catch(function() {
-      // Catch promise rejections silently.
-      // https://github.com/limonte/sweetalert2/issues/177
-    });
-  };
+  if (typeof Promise === 'function') {
+    Promise.prototype.done = function() {
+      return this.catch(function() {
+        // Catch promise rejections silently.
+        // https://github.com/limonte/sweetalert2/issues/177
+      });
+    };
+  }
 
   return sweetAlert;
 

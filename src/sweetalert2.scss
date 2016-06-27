@@ -74,7 +74,7 @@
       outline: none;
     }
 
-    &[disabled] {
+    &:not(.loading)[disabled] {
       opacity: .4;
       cursor: no-drop;
     }
@@ -98,6 +98,21 @@
     // Remove selection outline in Firefox
     &::-moz-focus-inner {
       border: 0;
+    }
+  }
+
+  button:not(.styled) {
+    &.loading:after {
+      display: inline-block;
+      content: "";
+      margin-left: 5px;
+      vertical-align: -1px;
+      height: 6px;
+      width: 6px;
+      border: 3px solid #999;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: rotate-loading 1.5s linear 0s infinite normal;
     }
   }
 

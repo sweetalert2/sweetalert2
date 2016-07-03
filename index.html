@@ -55,7 +55,7 @@
 
     <h5>Code:</h5>
     <pre>
-sweetAlert(
+sweetAlert()
   <span class="str">'Oops...'</span>,
   <span class="str">'Something went wrong!'</span>,
   <span class="str">'error'</span>
@@ -214,9 +214,9 @@ swal({
 })</pre>
     </li>
 
-    <li class="custom-icon">
+    <li class="custom-image">
       <div class="ui">
-        <p>A message with a custom icon and CSS animation disabled</p>
+        <p>A message with a custom image and CSS animation disabled</p>
         <button>Try me!</button>
       </div>
       <pre>
@@ -926,11 +926,11 @@ swal({
   });
 
   $('.showcase.sweet button').on('click', function() {
-    swal('Oops...', 'Something went wrong!', 'error');
+    swal('Oops...', 'Something went wrong!', 'error').done();
   });
 
   $('.examples .message button').on('click', function() {
-    swal('Any fool can use a computer');
+    swal('Any fool can use a computer').done();
   });
 
   $('.examples .timer button').on('click', function() {
@@ -938,7 +938,7 @@ swal({
       title: 'Auto close alert!',
       text: 'I will close in 2 seconds.',
       timer: 2000
-    });
+    }).done();
   });
 
   $('.examples .html button').on('click', function() {
@@ -953,22 +953,22 @@ swal({
       showCancelButton: true,
       confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
       cancelButtonText: '<i class="fa fa-thumbs-down"></i>'
-    });
+    }).done();
   });
 
   $('.examples .html-jquery button').on('click', function() {
     swal({
       title: 'jQuery HTML example',
       html: $('<div>').addClass('some-class').text('jQuery is everywhere.')
-    });
+    }).done();
   });
 
   $('.examples .title-text button').on('click', function() {
-    swal('The Internet?', 'That thing is still around?', 'question');
+    swal('The Internet?', 'That thing is still around?', 'question').done();
   });
 
   $('.examples .success button').on('click', function() {
-    swal('Good job!', 'You clicked the button!', 'success');
+    swal('Good job!', 'You clicked the button!', 'success').done();
   });
 
   $('.examples .warning.confirm button').on('click', function() {
@@ -982,7 +982,7 @@ swal({
       confirmButtonText: 'Yes, delete it!'
     }).then(function() {
       swal('Deleted!', 'Your file has been deleted!', 'success');
-    });
+    }).done();
   });
 
   $('.examples .warning.cancel button').on('click', function() {
@@ -1008,7 +1008,7 @@ swal({
     });
   });
 
-  $('.examples .custom-icon button').on('click', function() {
+  $('.examples .custom-image button').on('click', function() {
     swal({
       title: 'Sweet!',
       text: 'Modal with a custom image.',
@@ -1016,7 +1016,7 @@ swal({
       imageWidth: 400,
       imageHeight: 200,
       animation: false
-    });
+    }).done();
   });
 
   $('.examples .custom-width-padding-background button').on('click', function() {
@@ -1025,7 +1025,7 @@ swal({
       width: 600,
       padding: 100,
       background: '#fff url(https://bit.ly/1Nqn9HU)'
-    });
+    }).done();
   });
 
   $('.input-type-text').on('click', function() {
@@ -1047,7 +1047,7 @@ swal({
         type: 'success',
         html: 'You entered: <strong>' + result + '</strong>'
       });
-    });
+    }).done();
   });
 
   $('.input-type-email').on('click', function() {
@@ -1059,7 +1059,7 @@ swal({
         type: 'success',
         html: 'Entered email: <strong>' + email + '</strong>'
       });
-    });
+    }).done();
   });
 
   $('.input-type-password').on('click', function() {
@@ -1078,7 +1078,7 @@ swal({
           html: 'Entered password: <strong>' + password + '</strong>'
         });
       }
-    });
+    }).done();
   });
 
   $('.input-type-textarea').on('click', function() {
@@ -1089,7 +1089,7 @@ swal({
       if (text) {
         swal(text);
       }
-    });
+    }).done();
   });
 
   $('.input-type-select').on('click', function() {
@@ -1117,7 +1117,7 @@ swal({
         type: 'success',
         html: 'You selected: <strong>' + result + '</strong>'
       });
-    });
+    }).done();
   });
 
   $('.input-type-radio').on('click', function() {
@@ -1149,7 +1149,7 @@ swal({
         type: 'success',
         html: 'You selected: <strong>' + result + '</strong>'
       });
-    });
+    }).done();
   });
 
   $('.input-type-checkbox').on('click', function() {
@@ -1174,7 +1174,7 @@ swal({
         type: 'success',
         text: 'You agreed with T&amp;C :)'
       });
-    });
+    }).done();
   });
 
   $('.input-type-file').on('click', function() {
@@ -1192,7 +1192,7 @@ swal({
         });
       };
       reader.readAsDataURL(file);
-    });
+    }).done();
   });
 
   $('.input-type-multiple').on('click', function() {
@@ -1209,7 +1209,7 @@ swal({
       }
     }).then(function(result) {
       swal(JSON.stringify(result));
-    });
+    }).done();
   });
 
   $('.examples .ajax-request button').on('click', function() {
@@ -1238,7 +1238,7 @@ swal({
         title: 'Ajax request finished!',
         html: 'Submitted email: ' + '<strong>' + email + '</strong>'
       });
-    });
+    }).done();
   });
 
   $('.examples .chaining-modals button').on('click', function() {
@@ -1258,12 +1258,12 @@ swal({
       swal({title: 'All done!', confirmButtonText: 'Lovely!', showCancelButton: false});
     }).finally(function() {
       swal.resetDefaults();
-    });
+    }).done();
   });
 
   $('.modal-types button').on('click', function() {
     var type = $(this).attr('class').slice(5);
-    swal(type + '!', '', type);
+    swal(type + '!', '', type).done();
   });
 </script>
 

@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.0.6
+ * sweetalert2 v4.0.7
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -716,8 +716,8 @@
       var onButtonEvent = function(event) {
         var e = event || window.event;
         var target = e.target || e.srcElement;
-        var targetedConfirm = hasClass(target, swalClasses.confirm);
-        var targetedCancel  = hasClass(target, swalClasses.cancel);
+        var targetedConfirm = getConfirmButton() === target || getConfirmButton().contains(target);
+        var targetedCancel = getCancelButton() === target || getCancelButton().contains(target);
         var modalIsVisible  = hasClass(modal, 'visible');
 
         switch (e.type) {
@@ -1290,7 +1290,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.0.6';
+  sweetAlert.version = '4.0.7';
 
   window.sweetAlert = window.swal = sweetAlert;
 

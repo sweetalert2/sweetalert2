@@ -346,8 +346,8 @@ function modalDependant() {
     var onButtonEvent = function(event) {
       var e = event || window.event;
       var target = e.target || e.srcElement;
-      var targetedConfirm = dom.hasClass(target, swalClasses.confirm);
-      var targetedCancel  = dom.hasClass(target, swalClasses.cancel);
+      var targetedConfirm = dom.getConfirmButton() === target || dom.getConfirmButton().contains(target);
+      var targetedCancel = dom.getCancelButton() === target || dom.getCancelButton().contains(target);
       var modalIsVisible  = dom.hasClass(modal, 'visible');
 
       switch (e.type) {

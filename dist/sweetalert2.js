@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.0.7
+ * sweetalert2 v4.0.8
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -254,13 +254,14 @@
   };
 
   var getTopMargin = function(elem) {
+    var elemDisplay = elem.style.display;
     elem.style.left = '-9999px';
     elem.style.display = 'block';
 
     var height = elem.clientHeight;
 
     elem.style.left = '';
-    elem.style.display = 'none';
+    elem.style.display = elemDisplay;
     return ('-' + parseInt(height / 2, 10) + 'px');
   };
 
@@ -1266,6 +1267,8 @@
     $textarea.onchange = function() {
       sweetAlert.resetValidationError();
     };
+
+    window.addEventListener('resize', fixVerticalPosition, false);
   };
 
   /**
@@ -1290,7 +1293,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.0.7';
+  sweetAlert.version = '4.0.8';
 
   window.sweetAlert = window.swal = sweetAlert;
 

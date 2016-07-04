@@ -896,6 +896,8 @@ sweetAlert.init = function() {
   $textarea.onchange = function() {
     sweetAlert.resetValidationError();
   };
+
+  window.addEventListener('resize', fixVerticalPosition, false);
 };
 
 /**

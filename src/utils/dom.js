@@ -107,13 +107,14 @@ export var removeStyleProperty = function(elem, property) {
 };
 
 export var getTopMargin = function(elem) {
+  var elemDisplay = elem.style.display;
   elem.style.left = '-9999px';
   elem.style.display = 'block';
 
   var height = elem.clientHeight;
 
   elem.style.left = '';
-  elem.style.display = 'none';
+  elem.style.display = elemDisplay;
   return ('-' + parseInt(height / 2, 10) + 'px');
 };
 

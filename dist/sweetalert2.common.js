@@ -207,7 +207,7 @@ var removeClass = function(elem, className) {
 
 var getChildByClass = function(elem, className) {
   for (var i = 0; i < elem.childNodes.length; i++) {
-    if (elem.childNodes[i].classList.contains(className)) {
+    if (hasClass(elem.childNodes[i], className)) {
       return elem.childNodes[i];
     }
   }

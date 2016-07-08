@@ -34,7 +34,7 @@ export var getCancelButton = function() {
 };
 
 export var hasClass = function(elem, className) {
-  return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+  return elem.classList.contains(className);
 };
 
 export var focusInput = function(input) {

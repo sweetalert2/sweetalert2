@@ -48,7 +48,7 @@ gulp.task('production', function() {
 gulp.task('sass', function() {
   gulp.src('src/sweetalert2.scss')
     .pipe(sass())
-    .pipe(autoprefix())
+    .pipe(autoprefix({browsers:['> 0.1%']}))
     .pipe(gulp.dest('dist'))
     .pipe(cleanCSS())
     .pipe(rename({extname: '.min.css'}))
@@ -56,7 +56,7 @@ gulp.task('sass', function() {
 
   gulp.src('example/example.scss')
     .pipe(sass())
-    .pipe(autoprefix())
+    .pipe(autoprefix({browsers:['> 0.1%']}))
     .pipe(gulp.dest('example'));
 });
 

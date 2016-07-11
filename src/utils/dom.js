@@ -5,7 +5,6 @@ export var mediaqueryId = swalPrefix + 'mediaquery';
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export var states = {
-    previousDocumentClick: null,
     previousWindowKeyDown: null,
     previousActiveElement: null
 };
@@ -31,6 +30,10 @@ export var getConfirmButton = function() {
 
 export var getCancelButton = function() {
   return elementByClass(swalClasses.cancel);
+};
+
+export var getCloseButton = function() {
+  return elementByClass(swalClasses.close);
 };
 
 export var hasClass = function(elem, className) {
@@ -215,7 +218,6 @@ export var animationEndEvent = (function() {
 export var resetPrevState = function() {
   var modal = getModal();
   window.onkeydown = states.previousWindowKeyDown;
-  document.onclick = states.previousDocumentClick;
   if (states.previousActiveElement) {
     states.previousActiveElement.focus();
   }

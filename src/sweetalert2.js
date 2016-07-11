@@ -429,22 +429,21 @@ function modalDependant() {
       $buttons[i].onmousedown = onButtonEvent;
     }
 
-    // Remember the current document.onclick event.
-    dom.states.previousDocumentClick = document.onclick;
-    document.onclick = function(event) {
-      var e = event || window.event;
-      var target = e.target || e.srcElement;
+    // Closing modal by close button
+    dom.getCloseButton().onclick = function() {
+      sweetAlert.closeModal(params.onClose);
+      reject('close');
+    };
 
-      if (dom.hasClass(target, swalClasses.close)) {
-        sweetAlert.closeModal(params.onClose);
-        reject('close');
-      } else if (target === dom.getOverlay() && params.allowOutsideClick) {
+    // Closing modal by overlay click
+    dom.getOverlay().onclick = function() {
+      if (params.allowOutsideClick) {
         sweetAlert.closeModal(params.onClose);
         reject('overlay');
       }
     };
 
-    // Keyboard interactions
+    // Focus and blur events handling
     var $confirmButton = dom.getConfirmButton();
     var $cancelButton = dom.getCancelButton();
     var $modalElements = [$confirmButton, $cancelButton].concat(Array.prototype.slice.call(

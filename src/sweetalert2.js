@@ -892,7 +892,7 @@ sweetAlert.init = function() {
     sweetAlert.resetValidationError();
   };
 
-  $textarea.onchange = function() {
+  $textarea.oninput = function() {
     sweetAlert.resetValidationError();
   };
 

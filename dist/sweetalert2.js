@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.0.8
+ * sweetalert2 v4.0.9
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -152,7 +152,6 @@
 
   // Remember state in cases where opening and handling a modal will fiddle with it.
   var states = {
-      previousDocumentClick: null,
       previousWindowKeyDown: null,
       previousActiveElement: null
   };
@@ -180,8 +179,12 @@
     return elementByClass(swalClasses.cancel);
   };
 
+  var getCloseButton = function() {
+    return elementByClass(swalClasses.close);
+  };
+
   var hasClass = function(elem, className) {
-    return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+    return elem.classList.contains(className);
   };
 
   var focusInput = function(input) {
@@ -211,7 +214,7 @@
 
   var getChildByClass = function(elem, className) {
     for (var i = 0; i < elem.childNodes.length; i++) {
-      if (elem.childNodes[i].classList.contains(className)) {
+      if (hasClass(elem.childNodes[i], className)) {
         return elem.childNodes[i];
       }
     }
@@ -362,7 +365,6 @@
   var resetPrevState = function() {
     var modal = getModal();
     window.onkeydown = states.previousWindowKeyDown;
-    document.onclick = states.previousDocumentClick;
     if (states.previousActiveElement) {
       states.previousActiveElement.focus();
     }
@@ -800,22 +802,21 @@
         $buttons[i].onmousedown = onButtonEvent;
       }
 
-      // Remember the current document.onclick event.
-      states.previousDocumentClick = document.onclick;
-      document.onclick = function(event) {
-        var e = event || window.event;
-        var target = e.target || e.srcElement;
+      // Closing modal by close button
+      getCloseButton().onclick = function() {
+        sweetAlert.closeModal(params.onClose);
+        reject('close');
+      };
 
-        if (hasClass(target, swalClasses.close)) {
-          sweetAlert.closeModal(params.onClose);
-          reject('close');
-        } else if (target === getOverlay() && params.allowOutsideClick) {
+      // Closing modal by overlay click
+      getOverlay().onclick = function() {
+        if (params.allowOutsideClick) {
           sweetAlert.closeModal(params.onClose);
           reject('overlay');
         }
       };
 
-      // Keyboard interactions
+      // Focus and blur events handling
       var $confirmButton = getConfirmButton();
       var $cancelButton = getCancelButton();
       var $modalElements = [$confirmButton, $cancelButton].concat(Array.prototype.slice.call(
@@ -1264,7 +1265,7 @@
       sweetAlert.resetValidationError();
     };
 
-    $textarea.onchange = function() {
+    $textarea.oninput = function() {
       sweetAlert.resetValidationError();
     };
 
@@ -1293,7 +1294,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.0.8';
+  sweetAlert.version = '4.0.9';
 
   window.sweetAlert = window.swal = sweetAlert;
 

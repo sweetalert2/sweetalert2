@@ -50,18 +50,22 @@ export var focusInput = function(input) {
 };
 
 export var addClass = function(elem, className) {
-  if (className && !hasClass(elem, className)) {
-    elem.className += ' ' + className;
+  if (!elem || !className) {
+    return;
+  }
+  var classes = className.split(/\s+/);
+  for (var i in classes) {
+    elem.classList.add(classes[i]);
   }
 };
 
 export var removeClass = function(elem, className) {
-  var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, ' ') + ' ';
-  if (hasClass(elem, className)) {
-    while (newClass.indexOf(' ' + className + ' ') >= 0) {
-      newClass = newClass.replace(' ' + className + ' ', ' ');
-    }
-    elem.className = newClass.replace(/^\s+|\s+$/g, '');
+  if (!elem || !className) {
+    return;
+  }
+  var classes = className.split(/\s+/);
+  for (var i in classes) {
+    elem.classList.remove(classes[i]);
   }
 };
 

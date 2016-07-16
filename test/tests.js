@@ -19,6 +19,25 @@ test('confirm button', function(assert) {
 });
 
 
+test('custom buttons classes', function(assert) {
+  swal({
+    text: 'Modal with custom buttons classes',
+    confirmButtonClass: 'btn btn-success',
+    cancelButtonClass: 'btn btn-warning'
+  });
+  assert.ok($('.swal2-confirm').hasClass('btn'));
+  assert.ok($('.swal2-confirm').hasClass('btn-success'));
+  assert.ok($('.swal2-cancel').hasClass('btn'));
+  assert.ok($('.swal2-cancel').hasClass('btn-warning'));
+
+  swal('Modal with default buttons classes');
+  assert.notOk($('.swal2-confirm').hasClass('btn'));
+  assert.notOk($('.swal2-confirm').hasClass('btn-success'));
+  assert.notOk($('.swal2-cancel').hasClass('btn'));
+  assert.notOk($('.swal2-cancel').hasClass('btn-warning'));
+});
+
+
 test('cancel button', function(assert) {
   var done = assert.async();
 

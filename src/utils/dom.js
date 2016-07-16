@@ -50,8 +50,15 @@ export var focusInput = function(input) {
 };
 
 export var addClass = function(elem, className) {
-  if (className && !hasClass(elem, className)) {
-    elem.className += ' ' + className;
+  // if (className && !hasClass(elem, className)) {
+  //   elem.className += ' ' + className;
+  // }
+  if (!className) return;
+  var classNames = className.split(" ");
+  for (var i = classNames.length - 1; i >= 0; i--) {
+    if (!hasClass(elem, classNames[i])) {
+      elem.className += ' ' + classNames[i];
+    }
   }
 };
 

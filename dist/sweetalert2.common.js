@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.0.9
+ * sweetalert2 v4.0.10
  * Released under the MIT License.
  */
 'use strict';
@@ -193,18 +193,22 @@ var focusInput = function(input) {
 };
 
 var addClass = function(elem, className) {
-  if (className && !hasClass(elem, className)) {
-    elem.className += ' ' + className;
+  if (!elem || !className) {
+    return;
+  }
+  var classes = className.split(/\s+/);
+  for (var i in classes) {
+    elem.classList.add(classes[i]);
   }
 };
 
 var removeClass = function(elem, className) {
-  var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, ' ') + ' ';
-  if (hasClass(elem, className)) {
-    while (newClass.indexOf(' ' + className + ' ') >= 0) {
-      newClass = newClass.replace(' ' + className + ' ', ' ');
-    }
-    elem.className = newClass.replace(/^\s+|\s+$/g, '');
+  if (!elem || !className) {
+    return;
+  }
+  var classes = className.split(/\s+/);
+  for (var i in classes) {
+    elem.classList.remove(classes[i]);
   }
 };
 
@@ -1290,7 +1294,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '4.0.9';
+sweetAlert.version = '4.0.10';
 
 window.sweetAlert = window.swal = sweetAlert;
 

@@ -125,10 +125,14 @@ var setParameters = function(params) {
 
     if (params.imageWidth) {
       $customImage.setAttribute('width', params.imageWidth);
+    } else {
+      $customImage.removeAttribute('width');
     }
 
     if (params.imageHeight) {
       $customImage.setAttribute('height', params.imageHeight);
+    } else {
+      $customImage.removeAttribute('height');
     }
 
     if (params.imageClass) {

@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.0.10
+ * sweetalert2 v4.0.11
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -502,10 +502,14 @@
 
       if (params.imageWidth) {
         $customImage.setAttribute('width', params.imageWidth);
+      } else {
+        $customImage.removeAttribute('width');
       }
 
       if (params.imageHeight) {
         $customImage.setAttribute('height', params.imageHeight);
+      } else {
+        $customImage.removeAttribute('height');
       }
 
       if (params.imageClass) {
@@ -723,8 +727,10 @@
       var onButtonEvent = function(event) {
         var e = event || window.event;
         var target = e.target || e.srcElement;
-        var targetedConfirm = getConfirmButton() === target || getConfirmButton().contains(target);
-        var targetedCancel = getCancelButton() === target || getCancelButton().contains(target);
+        var confirmBtn = getConfirmButton();
+        var cancelBtn = getCancelButton();
+        var targetedConfirm = confirmBtn === target || confirmBtn.contains(target);
+        var targetedCancel = cancelBtn === target || cancelBtn.contains(target);
         var modalIsVisible  = hasClass(modal, 'visible');
 
         switch (e.type) {
@@ -733,9 +739,9 @@
           case 'focus':
             if (params.buttonsStyling) {
               if (targetedConfirm) {
-                target.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1);
+                confirmBtn.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1);
               } else if (targetedCancel) {
-                target.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.1);
+                cancelBtn.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.1);
               }
             }
             break;
@@ -743,18 +749,18 @@
           case 'blur':
             if (params.buttonsStyling) {
               if (targetedConfirm) {
-                target.style.backgroundColor = params.confirmButtonColor;
+                confirmBtn.style.backgroundColor = params.confirmButtonColor;
               } else if (targetedCancel) {
-                target.style.backgroundColor = params.cancelButtonColor;
+                cancelBtn.style.backgroundColor = params.cancelButtonColor;
               }
             }
             break;
           case 'mousedown':
             if (params.buttonsStyling) {
               if (targetedConfirm) {
-                target.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.2);
+                confirmBtn.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.2);
               } else if (targetedCancel) {
-                target.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.2);
+                cancelBtn.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.2);
               }
             }
             break;
@@ -1298,7 +1304,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.0.10';
+  sweetAlert.version = '4.0.11';
 
   window.sweetAlert = window.swal = sweetAlert;
 

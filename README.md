@@ -178,7 +178,7 @@ SweetAlert2 works in most major browsers (yes, even IE). Some details:
 - **Chrome 14+**
 - **Opera: 15+**
 
-Note that SweetAlert2 **does not** and **will not** provide support or functionality of any kind on IE: 10-
+Note that SweetAlert2 **does not** and **will not** provide support or functionality of any kind on IE9 and lower.
 
 
 Contributing

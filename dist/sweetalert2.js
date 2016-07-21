@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.0.11
+ * sweetalert2 v4.0.12
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -736,7 +736,6 @@
         switch (e.type) {
           case 'mouseover':
           case 'mouseup':
-          case 'focus':
             if (params.buttonsStyling) {
               if (targetedConfirm) {
                 confirmBtn.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1);
@@ -746,7 +745,6 @@
             }
             break;
           case 'mouseout':
-          case 'blur':
             if (params.buttonsStyling) {
               if (targetedConfirm) {
                 confirmBtn.style.backgroundColor = params.confirmButtonColor;
@@ -826,22 +824,18 @@
         }
       };
 
-      // Focus and blur events handling
       var $confirmButton = getConfirmButton();
       var $cancelButton = getCancelButton();
       var $modalElements = [$confirmButton, $cancelButton].concat(Array.prototype.slice.call(
         modal.querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')
       ));
-      for (i = 0; i < $modalElements.length; i++) {
-        $modalElements[i].onfocus = onButtonEvent;
-        $modalElements[i].onblur = onButtonEvent;
-      }
 
       // Reverse buttons if neede d
       if (params.reverseButtons) {
         $confirmButton.parentNode.insertBefore($cancelButton, $confirmButton);
       }
 
+      // Focus handling
       function setFocus(index, increment) {
         // search for visible elements and select the next possible match
         for (var i = 0; i < $modalElements.length; i++) {
@@ -1304,7 +1298,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.0.11';
+  sweetAlert.version = '4.0.12';
 
   window.sweetAlert = window.swal = sweetAlert;
 

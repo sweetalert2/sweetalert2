@@ -359,7 +359,6 @@ function modalDependant() {
       switch (e.type) {
         case 'mouseover':
         case 'mouseup':
-        case 'focus':
           if (params.buttonsStyling) {
             if (targetedConfirm) {
               confirmBtn.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1);
@@ -369,7 +368,6 @@ function modalDependant() {
           }
           break;
         case 'mouseout':
-        case 'blur':
           if (params.buttonsStyling) {
             if (targetedConfirm) {
               confirmBtn.style.backgroundColor = params.confirmButtonColor;
@@ -449,22 +447,18 @@ function modalDependant() {
       }
     };
 
-    // Focus and blur events handling
     var $confirmButton = dom.getConfirmButton();
     var $cancelButton = dom.getCancelButton();
     var $modalElements = [$confirmButton, $cancelButton].concat(Array.prototype.slice.call(
       modal.querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')
     ));
-    for (i = 0; i < $modalElements.length; i++) {
-      $modalElements[i].onfocus = onButtonEvent;
-      $modalElements[i].onblur = onButtonEvent;
-    }
 
     // Reverse buttons if neede d
     if (params.reverseButtons) {
       $confirmButton.parentNode.insertBefore($cancelButton, $confirmButton);
     }
 
+    // Focus handling
     function setFocus(index, increment) {
       // search for visible elements and select the next possible match
       for (var i = 0; i < $modalElements.length; i++) {

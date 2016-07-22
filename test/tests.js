@@ -198,3 +198,22 @@ test('showLoading and hideLoading', function(assert) {
   assert.notOk($('.swal2-confirm').hasClass('loading'));
   assert.notOk($('.swal2-cancel').is(':disabled'));
 });
+
+
+test('disable/enable buttons', function(assert) {
+  swal('test disable/enable buttons');
+
+  swal.disableButtons();
+  assert.ok($('.swal2-confirm').is(':disabled'));
+  assert.ok($('.swal2-cancel').is(':disabled'));
+
+  swal.enableButtons();
+  assert.notOk($('.swal2-confirm').is(':disabled'));
+  assert.notOk($('.swal2-cancel').is(':disabled'));
+
+  swal.disableConfirmButton();
+  assert.ok($('.swal2-confirm').is(':disabled'));
+
+  swal.enableConfirmButton();
+  assert.notOk($('.swal2-confirm').is(':disabled'));
+});

@@ -154,12 +154,14 @@ Methods
 | `swal.resetDefaults()`                          | Resets settings to their default value. |
 | `swal.queue([Array])`                           | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals). |
 | `swal.close()` or `swal.closeModal()`           | Close the currently open SweetAlert2 modal programmatically. |
-| `swal.enableButtons()`                          | Enable confirm and cancel buttons. |
-| `swal.disableButtons()`                         | Disable confirm and cancel buttons. |
+| `swal.enableButtons()`                          | Enable "Confirm" and "Cancel" buttons. |
+| `swal.disableButtons()`                         | Disable "Confirm" and "Cancel" buttons. |
+| `swal.enableConfirmButton()`                    | Enable the "Confirm"-button only. |
+| `swal.disableConfirmButton()`                   | Disable the "Confirm"-button only. |
 | `swal.enableLoading()` or `swal.showLoading()`  | Disable buttons and show loader. This is useful with AJAX requests. |
 | `swal.disableLoading()` or `swal.hideLoading()` | Enable buttons and hide loader. |
-| `swal.clickConfirm()`                           | Click "Confirm"-button programmatically. |
-| `swal.clickCancel()`                            | Click "Cancel"-button programmatically. |
+| `swal.clickConfirm()`                           | Click the "Confirm"-button programmatically. |
+| `swal.clickCancel()`                            | Click the "Cancel"-button programmatically. |
 | `swal.showValidationError(error)`               | Show validation error message. |
 | `swal.resetValidationError()`                   | Hide validation error message. |
 | `swal.enableInput()`                            | Enable input, this method works with `input` parameter. |

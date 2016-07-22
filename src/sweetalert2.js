@@ -568,6 +568,14 @@ function modalDependant() {
       $cancelButton.disabled = true;
     };
 
+    sweetAlert.enableConfirmButton = function() {
+      $confirmButton.disabled = false;
+    };
+
+    sweetAlert.disableConfirmButton = function() {
+      $confirmButton.disabled = true;
+    };
+
     sweetAlert.enableInput = function() {
       var input = getInput();
       if (input.type === 'radio') {

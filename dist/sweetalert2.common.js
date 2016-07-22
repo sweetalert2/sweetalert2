@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.0.12
+ * sweetalert2 v4.0.13
  * Released under the MIT License.
  */
 'use strict';
@@ -197,9 +197,9 @@ var addClass = function(elem, className) {
     return;
   }
   var classes = className.split(/\s+/);
-  for (var i in classes) {
-    elem.classList.add(classes[i]);
-  }
+  classes.forEach(function (className) {
+    elem.classList.add(className)
+  });
 };
 
 var removeClass = function(elem, className) {
@@ -207,9 +207,9 @@ var removeClass = function(elem, className) {
     return;
   }
   var classes = className.split(/\s+/);
-  for (var i in classes) {
-    elem.classList.remove(classes[i]);
-  }
+  classes.forEach(function (className) {
+    elem.classList.remove(className);
+  });
 };
 
 var getChildByClass = function(elem, className) {
@@ -1294,7 +1294,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '4.0.12';
+sweetAlert.version = '4.0.13';
 
 window.sweetAlert = window.swal = sweetAlert;
 

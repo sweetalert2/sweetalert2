@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.0.13
+ * sweetalert2 v4.0.14
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -945,6 +945,14 @@
         $cancelButton.disabled = true;
       };
 
+      sweetAlert.enableConfirmButton = function() {
+        $confirmButton.disabled = false;
+      };
+
+      sweetAlert.disableConfirmButton = function() {
+        $confirmButton.disabled = true;
+      };
+
       sweetAlert.enableInput = function() {
         var input = getInput();
         if (input.type === 'radio') {
@@ -1298,7 +1306,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.0.13';
+  sweetAlert.version = '4.0.14';
 
   window.sweetAlert = window.swal = sweetAlert;
 

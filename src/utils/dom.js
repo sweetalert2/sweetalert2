@@ -54,9 +54,9 @@ export var addClass = function(elem, className) {
     return;
   }
   var classes = className.split(/\s+/);
-  for (var i in classes) {
-    elem.classList.add(classes[i]);
-  }
+  classes.forEach(function (className) {
+    elem.classList.add(className)
+  });
 };
 
 export var removeClass = function(elem, className) {
@@ -64,9 +64,9 @@ export var removeClass = function(elem, className) {
     return;
   }
   var classes = className.split(/\s+/);
-  for (var i in classes) {
-    elem.classList.remove(classes[i]);
-  }
+  classes.forEach(function (className) {
+    elem.classList.remove(className);
+  });
 };
 
 export var getChildByClass = function(elem, className) {

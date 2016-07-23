@@ -275,3 +275,23 @@ test('disable/enable input', function(assert) {
     assert.notOk(radio.is(':disabled'));
   });
 });
+
+
+test('default focus', function(assert) {
+  swal('Modal with the Confirm button only');
+  assert.ok(document.activeElement === $('.swal2-confirm')[0]);
+
+  swal({
+    text: 'Modal with two buttons',
+    showCancelButton: true
+  });
+  assert.ok(document.activeElement === $('.swal2-confirm')[0]);
+
+  swal({
+    text: 'Modal with an input',
+    input: 'text'
+  });
+  setTimeout(function() {
+    assert.ok(document.activeElement === $('.swal2-input')[0]);
+  }, 0);
+});

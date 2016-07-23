@@ -47,7 +47,7 @@ test('cancel button', function(assert) {
       assert.equal(dismiss, 'cancel');
       done();
     }
-  );
+  ).done();
 
   swal.clickCancel();
 });
@@ -98,7 +98,7 @@ test('timer works', function(assert) {
 });
 
 
-test('Close button', function(assert) {
+test('close button', function(assert) {
   var done = assert.async();
 
   swal({title: 'Close button test', showCloseButton: true}).then(
@@ -115,11 +115,11 @@ test('Close button', function(assert) {
 });
 
 
-test('jquery/js element as html param', function(assert) {
+test('jQuery/js element as html param', function(assert) {
   swal({
-    html: $('<p>jquery element</p>')
+    html: $('<p>jQuery element</p>')
   });
-  assert.equal($('.swal2-content').html(), '<p>jquery element</p>');
+  assert.equal($('.swal2-content').html(), '<p>jQuery element</p>');
 
   var p = document.createElement('p');
   p.textContent = 'js element';
@@ -137,7 +137,7 @@ test('set and reset defaults', function(assert) {
   assert.ok($('.swal2-cancel').is(':visible'));
 
   swal.resetDefaults();
-  swal('Modal after resetting defaults');
+  swal('Modal after resetting defaults').done();
   assert.equal('OK', $('.swal2-confirm').text());
   assert.ok($('.swal2-cancel').is(':hidden'));
 
@@ -190,7 +190,7 @@ test('queue', function(assert) {
     swal.clickConfirm();
   });
 
-  swal.queue(steps);
+  swal.queue(steps).done();
   swal.clickCancel();
 
   setTimeout(function() {

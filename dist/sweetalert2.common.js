@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.0.14
+ * sweetalert2 v4.0.15
  * Released under the MIT License.
  */
 'use strict';
@@ -384,8 +384,13 @@ var modalParams = extend({}, defaultParams);
  * Set type, text and actions on modal
  */
 var setParameters = function(params) {
-  var i;
   var modal = getModal();
+
+  for (var param in params) {
+    if (!defaultParams.hasOwnProperty(param) && param !== 'extraParams') {
+      console.warn('SweetAlert2: Unknown parameter "' + param + '"');
+    }
+  }
 
   // set modal width, padding and margin-left
   modal.style.width = params.width + 'px';
@@ -426,7 +431,7 @@ var setParameters = function(params) {
     if (typeof params.html === 'object') {
       $content.innerHTML = '';
       if (0 in params.html) {
-        for (i = 0; i in params.html; i++) {
+        for (var i = 0; i in params.html; i++) {
           $content.appendChild(params.html[i]);
         }
       } else {
@@ -464,7 +469,7 @@ var setParameters = function(params) {
       }
     }
     if (!validType) {
-      console.error('Unknown alert type: ' + params.type);
+      console.error('SweetAlert2: Unknown alert type: ' + params.type);
       return false;
     }
     var $icon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes[params.type]);
@@ -604,7 +609,7 @@ var fixVerticalPosition = function() {
 function modalDependant() {
 
   if (arguments[0] === undefined) {
-    console.error('sweetAlert2 expects at least 1 attribute!');
+    console.error('SweetAlert2 expects at least 1 attribute!');
     return false;
   }
 
@@ -639,7 +644,7 @@ function modalDependant() {
       break;
 
     default:
-      console.error('Unexpected type of argument! Expected "string" or "object", got ' + typeof arguments[0]);
+      console.error('SweetAlert2: Unexpected type of argument! Expected "string" or "object", got ' + typeof arguments[0]);
       return false;
   }
 
@@ -1112,7 +1117,7 @@ function modalDependant() {
       case null:
         break;
       default:
-        console.error('Unexpected type of input! Expected "text" or "email" or "password", "select", "checkbox", "textarea" or "file", got ' + typeof arguments[0]);
+        console.error('SweetAlert2: Unexpected type of input! Expected "text" or "email" or "password", "select", "checkbox", "textarea" or "file", got "' + params.input + '"');
         break;
     }
 
@@ -1126,7 +1131,7 @@ function modalDependant() {
       } else if (typeof params.inputOptions === 'object') {
         populateInputOptions(params.inputOptions);
       } else {
-        console.error('Unexpected type of inputOptions! Expected object or Promise, got ' + params.inputOptions);
+        console.error('SweetAlert2: Unexpected type of inputOptions! Expected object or Promise, got ' + typeof params.inputOptions);
       }
     }
 
@@ -1302,7 +1307,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '4.0.14';
+sweetAlert.version = '4.0.15';
 
 window.sweetAlert = window.swal = sweetAlert;
 

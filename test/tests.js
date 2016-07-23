@@ -232,3 +232,17 @@ test('disable/enable buttons', function(assert) {
   swal.enableConfirmButton();
   assert.notOk($('.swal2-confirm').is(':disabled'));
 });
+
+
+test('input radio', function(assert) {
+  swal({
+    input: 'radio',
+    inputOptions: {
+      'one': 'one',
+      'two': 'two'
+    }
+  });
+
+  assert.equal($('.swal2-radio label').length, 2);
+  assert.equal($('.swal2-radio input[type="radio"]').length, 2);
+});

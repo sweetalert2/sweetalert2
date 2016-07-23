@@ -115,6 +115,21 @@ test('Close button', function(assert) {
 });
 
 
+test('jquery/js element as html param', function(assert) {
+  swal({
+    html: $('<p>jquery element</p>')
+  });
+  assert.equal($('.swal2-content').html(), '<p>jquery element</p>');
+
+  var p = document.createElement('p');
+  p.textContent = 'js element';
+  swal({
+    html: p
+  });
+  assert.equal($('.swal2-content').html(), '<p>js element</p>');
+});
+
+
 test('set and reset defaults', function(assert) {
   swal.setDefaults({confirmButtonText: 'Next >', showCancelButton: true});
   swal('Modal with changed defaults');

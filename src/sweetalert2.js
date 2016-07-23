@@ -11,7 +11,6 @@ var modalParams = extend({}, defaultParams);
  * Set type, text and actions on modal
  */
 var setParameters = function(params) {
-  var i;
   var modal = dom.getModal();
 
   for (var param in params) {
@@ -59,7 +58,7 @@ var setParameters = function(params) {
     if (typeof params.html === 'object') {
       $content.innerHTML = '';
       if (0 in params.html) {
-        for (i = 0; i in params.html; i++) {
+        for (var i = 0; i in params.html; i++) {
           $content.appendChild(params.html[i]);
         }
       } else {

@@ -140,8 +140,8 @@ Configuration
 | `inputAutoTrim`       | `true`               | Automatically remove whitespaces from both ends of a result string. Set this parameter to `false` to disable auto-trimming. |
 | `inputValidator`      | `null`               | Validator for input field, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#select-box">usage example</a>. |
 | `inputClass`          | `null`               | A custom CSS class for the input field. |
-| `onOpen`              | `null`               | Function to run when modal opens, provides modal DOM element as first param. |
-| `onClose`             | `null`               | Function to run when modal closes, provides modal DOM element as first param. |
+| `onOpen`              | `null`               | Function to run when modal opens, provides modal DOM element as the first argument. |
+| `onClose`             | `null`               | Function to run when modal closes, provides modal DOM element as the first argument. |
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
 
 
@@ -196,4 +196,4 @@ If you would like to contribute enhancements or fixes, please do the following:
 
 1. Start gulp watcher ``gulp watch`` to automatically build and minify the SCSS and JS-files.
 
-1. Make sure `dist/*` files aren't committed and create a pull request.
+1. Make sure that `dist/*` files aren't committed and create a pull request.

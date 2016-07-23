@@ -246,3 +246,32 @@ test('input radio', function(assert) {
   assert.equal($('.swal2-radio label').length, 2);
   assert.equal($('.swal2-radio input[type="radio"]').length, 2);
 });
+
+
+test('disable/enable input', function(assert) {
+  swal({
+    input: 'text'
+  });
+
+  swal.disableInput();
+  assert.ok($('.swal2-input').is(':disabled'));
+  swal.enableInput();
+  assert.notOk($('.swal2-input').is(':disabled'));
+
+  swal({
+    input: 'radio',
+    inputOptions: {
+      'one': 'one',
+      'two': 'two'
+    }
+  });
+
+  swal.disableInput();
+  $('.swal2-radio radio').each(function(radio) {
+    assert.ok(radio.is(':disabled'));
+  });
+  swal.enableInput();
+  $('.swal2-radio radio').each(function(radio) {
+    assert.notOk(radio.is(':disabled'));
+  });
+});

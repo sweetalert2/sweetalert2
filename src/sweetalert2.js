@@ -1,7 +1,7 @@
 'use strict';
 
 import { defaultParams, sweetHTML } from './utils/default.js';
-import { swalPrefix, swalClasses, iconTypes } from './utils/classes.js';
+import { swalClasses, iconTypes } from './utils/classes.js';
 import { extend, colorLuminance } from './utils/utils.js';
 import * as dom from './utils/dom.js';
 
@@ -454,9 +454,6 @@ function modalDependant() {
 
     var $confirmButton = dom.getConfirmButton();
     var $cancelButton = dom.getCancelButton();
-    var $modalElements = [$confirmButton, $cancelButton].concat(Array.prototype.slice.call(
-      modal.querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')
-    ));
 
     // Reverse buttons if neede d
     if (params.reverseButtons) {
@@ -465,26 +462,24 @@ function modalDependant() {
 
     // Focus handling
     function setFocus(index, increment) {
+      var focusableElements = dom.getFocusableElements();
       // search for visible elements and select the next possible match
-      for (var i = 0; i < $modalElements.length; i++) {
+      for (var i = 0; i < focusableElements.length; i++) {
         index = index + increment;
 
         // rollover to first item
-        if (index === $modalElements.length) {
+        if (index === focusableElements.length) {
           index = 0;
 
         // go to last item
         } else if (index === -1) {
-          index = $modalElements.length - 1;
+          index = focusableElements.length - 1;
         }
 
         // determine if element is visible, the following is borrowed from jqeury $(elem).is(':visible') implementation
-        if (
-          $modalElements[index].offsetWidth ||
-          $modalElements[index].offsetHeight ||
-          $modalElements[index].getClientRects().length
-        ) {
-          $modalElements[index].focus();
+        var el = focusableElements[index];
+        if (el.offsetWidth || el.offsetHeight || el.getClientRects().length) {
+          focusableElements[index].focus();
           return;
         }
       }
@@ -501,9 +496,10 @@ function modalDependant() {
 
       var $targetElement = e.target || e.srcElement;
 
+      var focusableElements = dom.getFocusableElements();
       var btnIndex = -1; // Find the button - note, this is a nodelist, not an array.
-      for (var i = 0; i < $modalElements.length; i++) {
-        if ($targetElement === $modalElements[i]) {
+      for (var i = 0; i < focusableElements.length; i++) {
+        if ($targetElement === focusableElements[i]) {
           btnIndex = i;
           break;
         }

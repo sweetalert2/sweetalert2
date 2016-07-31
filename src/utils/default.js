@@ -8,6 +8,7 @@ export var defaultParams = {
   animation: true,
   allowOutsideClick: true,
   allowEscapeKey: true,
+  allowSpaceSubmit: true,
   showConfirmButton: true,
   showCancelButton: false,
   preConfirm: null,

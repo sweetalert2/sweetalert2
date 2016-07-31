@@ -222,7 +222,7 @@ export var animationEndEvent = (function() {
 export var resetPrevState = function() {
   var modal = getModal();
   window.onkeydown = states.previousWindowKeyDown;
-  if (states.previousActiveElement) {
+  if (states.previousActiveElement && states.previousActiveElement.focus) {
     states.previousActiveElement.focus();
   }
   clearTimeout(modal.timeout);

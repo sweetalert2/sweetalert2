@@ -490,6 +490,15 @@ function modalDependant() {
       }
     }
 
+    /**
+     * If input is provided or if the manual override param is specified,
+     * we should not be submitting the modal upon spacebar press.
+     * @return {Boolean} True if the spacebar should submit the modal, false otherwise
+     */
+    function shouldSpaceSubmit() {
+      return params.allowSpaceSubmit === true && !params.input;
+    }
+
     function handleKeyDown(event) {
       var e = event || window.event;
       var keyCode = e.keyCode || e.which;
@@ -522,7 +531,7 @@ function modalDependant() {
         dom.stopEventPropagation(e);
 
       } else {
-        if (keyCode === 13 || keyCode === 32) {
+        if (keyCode === 13 || (keyCode === 32 && shouldSpaceSubmit())) {
           if (btnIndex === -1) {
             // ENTER/SPACE clicked outside of a button.
             dom.fireClick($confirmButton, e);

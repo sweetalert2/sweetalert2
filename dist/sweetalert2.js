@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.0.15
+ * sweetalert2 v4.0.16
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -181,6 +181,12 @@
 
   var getCloseButton = function() {
     return elementByClass(swalClasses.close);
+  };
+
+  var getFocusableElements = function() {
+    return [getConfirmButton(), getCancelButton()].concat(Array.prototype.slice.call(
+      getModal().querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')
+    ));
   };
 
   var hasClass = function(elem, className) {
@@ -831,9 +837,6 @@
 
       var $confirmButton = getConfirmButton();
       var $cancelButton = getCancelButton();
-      var $modalElements = [$confirmButton, $cancelButton].concat(Array.prototype.slice.call(
-        modal.querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')
-      ));
 
       // Reverse buttons if neede d
       if (params.reverseButtons) {
@@ -842,26 +845,24 @@
 
       // Focus handling
       function setFocus(index, increment) {
+        var focusableElements = getFocusableElements();
         // search for visible elements and select the next possible match
-        for (var i = 0; i < $modalElements.length; i++) {
+        for (var i = 0; i < focusableElements.length; i++) {
           index = index + increment;
 
           // rollover to first item
-          if (index === $modalElements.length) {
+          if (index === focusableElements.length) {
             index = 0;
 
           // go to last item
           } else if (index === -1) {
-            index = $modalElements.length - 1;
+            index = focusableElements.length - 1;
           }
 
           // determine if element is visible, the following is borrowed from jqeury $(elem).is(':visible') implementation
-          if (
-            $modalElements[index].offsetWidth ||
-            $modalElements[index].offsetHeight ||
-            $modalElements[index].getClientRects().length
-          ) {
-            $modalElements[index].focus();
+          var el = focusableElements[index];
+          if (el.offsetWidth || el.offsetHeight || el.getClientRects().length) {
+            focusableElements[index].focus();
             return;
           }
         }
@@ -878,9 +879,10 @@
 
         var $targetElement = e.target || e.srcElement;
 
+        var focusableElements = getFocusableElements();
         var btnIndex = -1; // Find the button - note, this is a nodelist, not an array.
-        for (var i = 0; i < $modalElements.length; i++) {
-          if ($targetElement === $modalElements[i]) {
+        for (var i = 0; i < focusableElements.length; i++) {
+          if ($targetElement === focusableElements[i]) {
             btnIndex = i;
             break;
           }
@@ -1311,7 +1313,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.0.15';
+  sweetAlert.version = '4.0.16';
 
   window.sweetAlert = window.swal = sweetAlert;
 

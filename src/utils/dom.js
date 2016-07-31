@@ -36,6 +36,12 @@ export var getCloseButton = function() {
   return elementByClass(swalClasses.close);
 };
 
+export var getFocusableElements = function() {
+  return [getConfirmButton(), getCancelButton()].concat(Array.prototype.slice.call(
+    getModal().querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')
+  ));
+};
+
 export var hasClass = function(elem, className) {
   return elem.classList.contains(className);
 };

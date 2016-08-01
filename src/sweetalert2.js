@@ -2,7 +2,7 @@
 
 import { defaultParams, sweetHTML } from './utils/default.js';
 import { swalClasses, iconTypes } from './utils/classes.js';
-import { extend, colorLuminance } from './utils/utils.js';
+import { extend, colorLuminance, isFunction } from './utils/utils.js';
 import * as dom from './utils/dom.js';
 
 var modalParams = extend({}, defaultParams);
@@ -790,15 +790,21 @@ function sweetAlert() {
 sweetAlert.queue = function(steps) {
   return new Promise(function(resolve, reject) {
     (function step(i, callback) {
-      if (i < steps.length) {
-        sweetAlert(steps[i]).then(function() {
-          step(i+1, callback);
-        }, function(dismiss) {
-          reject(dismiss);
-        });
-      } else {
-        resolve();
-      }
+        var nextStep = null;
+        if (isFunction(steps)) {
+            nextStep = steps(i);
+        } else if (i < steps.length) {
+            nextStep = steps[i];
+        }
+        if (nextStep) {
+            sweetAlert(nextStep).then(function() {
+                step(i+1, callback);
+            }, function(dismiss) {
+                reject(dismiss);
+            });
+        } else {
+            resolve();
+        }
     })(0);
   });
 };

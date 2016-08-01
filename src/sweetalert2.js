@@ -795,8 +795,6 @@ sweetAlert.queue = function(steps) {
             nextStep = steps(i);
         } else if (i < steps.length) {
             nextStep = steps[i];
-        } else {
-            resolve();
         }
         if (nextStep) {
             sweetAlert(nextStep).then(function() {

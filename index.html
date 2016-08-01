@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 
 <head>
   <meta charset="utf-8">
@@ -307,6 +307,39 @@ swal.queue(steps).then(<span class="func"><i>function</i></span>() {
 }).finally(<span class="func"><i>function</i></span>() {
   swal.resetDefaults();
 })</pre>
+    </li>
+
+    <li class="dynamic-queue" id="dynamic-queue">
+<div class="ui">
+<p>Dynamic Queue</p>
+<button>Try me!</button>
+</div>
+<pre>
+<span class="func">var</span> secondTitle;
+<span class="func">var</span> stepGen = <span class="func">function</span>(i){
+  <span class="func">switch</span> (i){
+  <span class="func">case</span> 0:
+  <span class="tag">return</span> {
+     title: <span class="str">'Type Something'</span>,
+     input: <span class="str">'text'</span>,
+     inputValidator: <span class="func">function</span> (value) {
+     secondTitle = <span class="str">'You just typed '</span> + value;
+     <span class="tag">return<span>
+         </span> new </span><span class="func">Promise</span>(function (resolve, reject) {
+          resolve();
+        });
+     }
+  };
+  <span class="func">break</span>;
+  <span class="func">case</span> 1:
+    <span class="func">return</span> {
+      title: secondTitle
+    }
+   <span class="func">break</span>;
+  }
+}
+swal.queue(stepGen);
+        </pre>
     </li>
   </ul>
 
@@ -1267,6 +1300,32 @@ swal({
     }).finally(function() {
       swal.resetDefaults();
     }).done();
+  });
+
+  $('.dynamic-queue').on('click', function () {
+      var secondTitle;
+      var stepGen = function (i) {
+          switch (i) {
+              case 0:
+                  return {
+                      title: 'Type Something',
+                      input: 'text',
+                      inputValidator: function (value) {
+                          secondTitle = 'you typed ' + value;
+                          return new Promise(function (resolve, reject) {
+                              resolve();
+                          });
+                      }
+                  };
+                  break;
+              case 1:
+                  return {
+                      title: secondTitle
+                  }
+                  break;
+          }
+      }
+      swal.queue(stepGen);
   });
 
   $('.modal-types button').on('click', function() {

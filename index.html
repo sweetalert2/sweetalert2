@@ -319,23 +319,22 @@ swal.queue(steps).then(<span class="func"><i>function</i></span>() {
 <span class="func">var</span> stepGen = <span class="func">function</span>(i){
   <span class="func">switch</span> (i){
   <span class="func">case</span> 0:
-  <span class="tag">return</span> {
-     title: <span class="str">'Type Something'</span>,
-     input: <span class="str">'text'</span>,
-     inputValidator: <span class="func">function</span> (value) {
-     secondTitle = <span class="str">'You just typed '</span> + value;
-     <span class="tag">return<span>
-         </span> new </span><span class="func">Promise</span>(function (resolve, reject) {
+    <span class="tag">return</span> {
+      title: <span class="str">'Type Something'</span>,
+      input: <span class="str">'text'</span>,
+      inputValidator: <span class="func">function</span> (value) {
+      secondTitle = <span class="str">'You just typed '</span> + value;
+      <span class="tag">return new </span><span class="func">Promise</span>(<span class="func">function</span> (resolve, reject) {
           resolve();
-        });
-     }
+      });
+    }
   };
   <span class="func">break</span>;
   <span class="func">case</span> 1:
     <span class="func">return</span> {
       title: secondTitle
     }
-   <span class="func">break</span>;
+    <span class="func">break</span>;
   }
 }
 swal.queue(stepGen);
@@ -1303,29 +1302,29 @@ swal({
   });
 
   $('.dynamic-queue').on('click', function () {
-      var secondTitle;
-      var stepGen = function (i) {
-          switch (i) {
-              case 0:
-                  return {
-                      title: 'Type Something',
-                      input: 'text',
-                      inputValidator: function (value) {
-                          secondTitle = 'you typed ' + value;
-                          return new Promise(function (resolve, reject) {
-                              resolve();
-                          });
-                      }
-                  };
-                  break;
-              case 1:
-                  return {
-                      title: secondTitle
-                  }
-                  break;
-          }
+    var secondTitle;
+    var stepGen = function (i) {
+      switch (i) {
+        case 0:
+          return {
+            title: 'Type Something',
+            input: 'text',
+            inputValidator: function (value) {
+              secondTitle = 'you typed ' + value;
+              return new Promise(function (resolve, reject) {
+                resolve();
+              });
+            }
+          };
+          break;
+            case 1:
+              return {
+                title: secondTitle
+              }
+            break;
       }
-      swal.queue(stepGen);
+    }
+    swal.queue(stepGen);
   });
 
   $('.modal-types button').on('click', function() {

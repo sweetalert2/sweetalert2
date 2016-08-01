@@ -479,8 +479,7 @@ function modalDependant() {
         // determine if element is visible, the following is borrowed from jqeury $(elem).is(':visible') implementation
         var el = focusableElements[index];
         if (el.offsetWidth || el.offsetHeight || el.getClientRects().length) {
-          focusableElements[index].focus();
-          return;
+          return el.focus();
         }
       }
     }
@@ -790,21 +789,21 @@ function sweetAlert() {
 sweetAlert.queue = function(steps) {
   return new Promise(function(resolve, reject) {
     (function step(i, callback) {
-        var nextStep = null;
-        if (isFunction(steps)) {
-            nextStep = steps(i);
-        } else if (i < steps.length) {
-            nextStep = steps[i];
-        }
-        if (nextStep) {
-            sweetAlert(nextStep).then(function() {
-                step(i+1, callback);
-            }, function(dismiss) {
-                reject(dismiss);
-            });
-        } else {
-            resolve();
-        }
+      var nextStep = null;
+      if (isFunction(steps)) {
+        nextStep = steps(i);
+      } else if (i < steps.length) {
+        nextStep = steps[i];
+      }
+      if (nextStep) {
+        sweetAlert(nextStep).then(function() {
+          step(i+1, callback);
+        }, function(dismiss) {
+          reject(dismiss);
+        });
+      } else {
+        resolve();
+      }
     })(0);
   });
 };

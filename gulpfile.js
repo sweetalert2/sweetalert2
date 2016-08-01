@@ -12,7 +12,7 @@ var utils = require('./config/utils.js');
 gulp.task('compress', ['lint', 'commonjs', 'dev', 'production']);
 
 gulp.task('lint', function() {
-  return gulp.src(['src/*.js'])
+  return gulp.src(['src/*.js', 'test/*.js'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());

@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.1.0
+ * sweetalert2 v4.1.1
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -50,6 +50,7 @@
     text: '',
     html: '',
     type: null,
+    customClass: '',
     animation: true,
     allowOutsideClick: true,
     allowEscapeKey: true,
@@ -1325,7 +1326,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.1.0';
+  sweetAlert.version = '4.1.1';
 
   window.sweetAlert = window.swal = sweetAlert;
 
@@ -1350,6 +1351,8 @@
         // https://github.com/limonte/sweetalert2/issues/177
       });
     };
+  } else {
+    console.warning('SweetAlert2: Please inlude Promise polyfill BEFORE including sweetalert2.js if IE10+ support needed.');
   }
 
   return sweetAlert;

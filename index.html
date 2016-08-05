@@ -15,13 +15,10 @@
   <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
 
   <!-- This is what you need -->
+  <script src="https://cdn.jsdelivr.net/es6-promise/latest/es6-promise.min.js"></script> <!-- IE support -->
   <script src="./dist/sweetalert2.min.js"></script>
   <link rel="stylesheet" href="./dist/sweetalert2.min.css">
   <!--.......................-->
-
-  <!-- IE support -->
-  <script src="https://cdn.jsdelivr.net/es6-promise/latest/es6-promise.min.js"></script>
-  <!--............-->
 
   <!-- Promise.finally support -->
   <script src="https://cdn.jsdelivr.net/promise.prototype.finally/1.0.1/finally.js"></script>
@@ -355,11 +352,11 @@ swal.queue(stepGen)</pre>
   <ol>
     <li>
       <p>Initialize the plugin by referencing the necessary files:</p>
-      <pre>&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
-&lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="tag">href</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.css"</span>&gt;
+<pre><span class="comment">&lt;!-- for IE support --&gt;</span>
+&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/es6-promise/promise.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
 
-<span class="comment">&lt;!-- for IE support --&gt;</span>
-&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/es6-promise/promise.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;</pre>
+&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
+&lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="tag">href</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.css"</span>&gt;</pre>
     </li>
 
     <li>

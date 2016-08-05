@@ -36,12 +36,12 @@ Or download from CDN: [https://www.jsdelivr.com/projects/sweetalert2](https://ww
 
 To use:
 
+
 ```html
+<script src="bower_components/es6-promise/promise.min.js"></script> <!-- for IE support -->
+
 <script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
-
-<!-- for IE support -->
-<script src="bower_components/es6-promise/promise.min.js"></script>
 ```
 
 

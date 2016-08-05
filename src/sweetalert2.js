@@ -960,6 +960,8 @@ if (typeof Promise === 'function') {
       // https://github.com/limonte/sweetalert2/issues/177
     });
   };
+} else {
+  console.warning('SweetAlert2: Please inlude Promise polyfill BEFORE including sweetalert2.js if IE10+ support needed.');
 }
 
 export default sweetAlert;

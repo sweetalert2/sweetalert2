@@ -5,6 +5,7 @@ export var defaultParams = {
   text: '',
   html: '',
   type: null,
+  customClass: '',
   animation: true,
   allowOutsideClick: true,
   allowEscapeKey: true,

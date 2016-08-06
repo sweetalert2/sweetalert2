@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.1.1
+ * sweetalert2 v4.1.2
  * Released under the MIT License.
  */
 'use strict';
@@ -1322,7 +1322,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '4.1.1';
+sweetAlert.version = '4.1.2';
 
 window.sweetAlert = window.swal = sweetAlert;
 
@@ -1348,7 +1348,7 @@ if (typeof Promise === 'function') {
     });
   };
 } else {
-  console.warning('SweetAlert2: Please inlude Promise polyfill BEFORE including sweetalert2.js if IE10+ support needed.');
+  console.warn('SweetAlert2: Please inlude Promise polyfill BEFORE including sweetalert2.js if IE10+ support needed.');
 }
 
 module.exports = sweetAlert;

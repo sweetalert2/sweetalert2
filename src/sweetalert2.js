@@ -961,7 +961,7 @@ if (typeof Promise === 'function') {
     });
   };
 } else {
-  console.warning('SweetAlert2: Please inlude Promise polyfill BEFORE including sweetalert2.js if IE10+ support needed.');
+  console.warn('SweetAlert2: Please inlude Promise polyfill BEFORE including sweetalert2.js if IE10+ support needed.');
 }
 
 export default sweetAlert;

@@ -91,6 +91,24 @@ swal({
 [View more examples](https://limonte.github.io/sweetalert2/)
 
 
+Handling Dismissals
+-------------------
+
+When an alert is dismissed by the user, the Promise returned by `swal()` will reject with a string documenting the reason it was dismissed:
+
+| String      | Description                                           | Related configuration |
+| ----------- | ----------------------------------------------------- | --------------------- |
+| `"overlay"` | The user clicked the overlay.                         | `allowOutsideClick`   |
+| `"cancel"`  | The user clicked the cancel button.                   | `showCancelButton`    |
+| `"close"`   | The user clicked the close button.                    | `showCloseButton`     |
+| `"esc"`     | The user pressed the <kbd>Esc</kbd> key.                | `allowEscapeKey`      |
+| `"timer"`   | The timer ran out, and the alert closed automatically. | `timer`               |
+
+If this rejection is not handled by your code, it will be logged as an error. To avoid this happening, you need to add a rejection handler to the promise. Alternatively, SweetAlert2 provides the `.done()` method as a quick way to simply supress the errors:
+
+    swal('...')
+      .done();
+
 Modal Types
 -----------
 

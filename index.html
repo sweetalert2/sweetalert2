@@ -15,13 +15,10 @@
   <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
 
   <!-- This is what you need -->
+  <script src="https://cdn.jsdelivr.net/es6-promise/latest/es6-promise.min.js"></script> <!-- IE support -->
   <script src="./dist/sweetalert2.min.js"></script>
   <link rel="stylesheet" href="./dist/sweetalert2.min.css">
   <!--.......................-->
-
-  <!-- IE support -->
-  <script src="https://cdn.jsdelivr.net/es6-promise/latest/es6-promise.min.js"></script>
-  <!--............-->
 
   <!-- Promise.finally support -->
   <script src="https://cdn.jsdelivr.net/promise.prototype.finally/1.0.1/finally.js"></script>
@@ -308,6 +305,37 @@ swal.queue(steps).then(<span class="func"><i>function</i></span>() {
   swal.resetDefaults();
 })</pre>
     </li>
+
+    <li class="dynamic-queue" id="dynamic-queue">
+      <div class="ui">
+        <p>Dynamic Queue</p>
+        <button>Try me!</button>
+      </div>
+      <pre>
+<span class="func">var</span> secondTitle;
+<span class="func">var</span> stepGen = <span class="func">function</span>(i) {
+  <span class="func">switch</span>(i) {
+    <span class="func">case</span> 0:
+      <span class="tag">return</span> {
+        title: <span class="str">'Type Something'</span>,
+        input: <span class="str">'text'</span>,
+        inputValidator: <span class="func">function</span>(value) {
+          secondTitle = <span class="str">'You typed '</span> + value;
+          <span class="tag">return new </span><span class="func">Promise</span>(<span class="func">function</span>(resolve) {
+            resolve();
+          });
+        };
+      };
+
+    <span class="func">case</span> 1:
+      <span class="func">return</span> {
+        title: secondTitle
+      }
+  }
+};
+
+swal.queue(stepGen)</pre>
+    </li>
   </ul>
 
 
@@ -324,11 +352,11 @@ swal.queue(steps).then(<span class="func"><i>function</i></span>() {
   <ol>
     <li>
       <p>Initialize the plugin by referencing the necessary files:</p>
-      <pre>&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
-&lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="tag">href</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.css"</span>&gt;
+<pre><span class="comment">&lt;!-- for IE support --&gt;</span>
+&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/es6-promise/promise.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
 
-<span class="comment">&lt;!-- for IE support --&gt;</span>
-&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/es6-promise/promise.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;</pre>
+&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
+&lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="tag">href</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.css"</span>&gt;</pre>
     </li>
 
     <li>
@@ -1267,6 +1295,33 @@ swal({
     }).finally(function() {
       swal.resetDefaults();
     }).done();
+  });
+
+  $('.examples .dynamic-queue button').on('click', function() {
+    var secondTitle;
+    var stepGen = function(i) {
+      switch (i) {
+        case 0:
+          return {
+            title: 'Type Something',
+            input: 'text',
+            inputValidator: function(value) {
+              secondTitle = 'You typed ' + value;
+              return new Promise(function(resolve) {
+                resolve();
+              });
+            }
+          };
+        case 1:
+          return {
+            title: secondTitle
+          };
+
+        default:
+          break;
+      }
+    };
+    swal.queue(stepGen);
   });
 
   $('.modal-types button').on('click', function() {

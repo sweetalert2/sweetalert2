@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.0.16
+ * sweetalert2 v4.1.2
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -50,6 +50,7 @@
     text: '',
     html: '',
     type: null,
+    customClass: '',
     animation: true,
     allowOutsideClick: true,
     allowEscapeKey: true,
@@ -146,6 +147,13 @@
     }
 
     return rgb;
+  };
+
+  /*
+   * check if variable is function type. http://stackoverflow.com/questions/5999998/how-can-i-check-if-a-javascript-variable-is-function-type
+   */
+  var isFunction = function(functionToCheck) {
+      return typeof functionToCheck === "function";
   };
 
   var mediaqueryId = swalPrefix + 'mediaquery';
@@ -375,7 +383,7 @@
   var resetPrevState = function() {
     var modal = getModal();
     window.onkeydown = states.previousWindowKeyDown;
-    if (states.previousActiveElement) {
+    if (states.previousActiveElement && states.previousActiveElement.focus) {
       states.previousActiveElement.focus();
     }
     clearTimeout(modal.timeout);
@@ -862,8 +870,7 @@
           // determine if element is visible, the following is borrowed from jqeury $(elem).is(':visible') implementation
           var el = focusableElements[index];
           if (el.offsetWidth || el.offsetHeight || el.getClientRects().length) {
-            focusableElements[index].focus();
-            return;
+            return el.focus();
           }
         }
       }
@@ -1173,8 +1180,14 @@
   sweetAlert.queue = function(steps) {
     return new Promise(function(resolve, reject) {
       (function step(i, callback) {
-        if (i < steps.length) {
-          sweetAlert(steps[i]).then(function() {
+        var nextStep = null;
+        if (isFunction(steps)) {
+          nextStep = steps(i);
+        } else if (i < steps.length) {
+          nextStep = steps[i];
+        }
+        if (nextStep) {
+          sweetAlert(nextStep).then(function() {
             step(i+1, callback);
           }, function(dismiss) {
             reject(dismiss);
@@ -1313,7 +1326,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.0.16';
+  sweetAlert.version = '4.1.2';
 
   window.sweetAlert = window.swal = sweetAlert;
 
@@ -1338,6 +1351,8 @@
         // https://github.com/limonte/sweetalert2/issues/177
       });
     };
+  } else {
+    console.warn('SweetAlert2: Please inlude Promise polyfill BEFORE including sweetalert2.js if IE10+ support needed.');
   }
 
   return sweetAlert;

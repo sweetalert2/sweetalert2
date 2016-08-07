@@ -36,12 +36,12 @@ Or download from CDN: [https://www.jsdelivr.com/projects/sweetalert2](https://ww
 
 To use:
 
+
 ```html
+<script src="bower_components/es6-promise/promise.min.js"></script> <!-- for IE support -->
+
 <script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
-
-<!-- for IE support -->
-<script src="bower_components/es6-promise/promise.min.js"></script>
 ```
 
 
@@ -152,7 +152,7 @@ Methods
 | ------------------ | ----------- |
 | `swal.setDefaults({Object})`                    | If you end up using a lot of the same settings when calling SweetAlert2, you can use setDefaults at the start of your program to set them once and for all! |
 | `swal.resetDefaults()`                          | Resets settings to their default value. |
-| `swal.queue([Array])`                           | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals). |
+| `swal.queue([Array] || Function)`               | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another or a function that returns alert parameters given modal number. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals). |
 | `swal.close()` or `swal.closeModal()`           | Close the currently open SweetAlert2 modal programmatically. |
 | `swal.enableButtons()`                          | Enable "Confirm" and "Cancel" buttons. |
 | `swal.disableButtons()`                         | Disable "Confirm" and "Cancel" buttons. |

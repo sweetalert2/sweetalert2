@@ -2,7 +2,7 @@
 
 import { defaultParams, sweetHTML } from './utils/default.js';
 import { swalClasses, iconTypes } from './utils/classes.js';
-import { extend, colorLuminance } from './utils/utils.js';
+import { extend, colorLuminance, isFunction } from './utils/utils.js';
 import * as dom from './utils/dom.js';
 
 var modalParams = extend({}, defaultParams);
@@ -479,8 +479,7 @@ function modalDependant() {
         // determine if element is visible, the following is borrowed from jqeury $(elem).is(':visible') implementation
         var el = focusableElements[index];
         if (el.offsetWidth || el.offsetHeight || el.getClientRects().length) {
-          focusableElements[index].focus();
-          return;
+          return el.focus();
         }
       }
     }
@@ -790,8 +789,14 @@ function sweetAlert() {
 sweetAlert.queue = function(steps) {
   return new Promise(function(resolve, reject) {
     (function step(i, callback) {
-      if (i < steps.length) {
-        sweetAlert(steps[i]).then(function() {
+      var nextStep = null;
+      if (isFunction(steps)) {
+        nextStep = steps(i);
+      } else if (i < steps.length) {
+        nextStep = steps[i];
+      }
+      if (nextStep) {
+        sweetAlert(nextStep).then(function() {
           step(i+1, callback);
         }, function(dismiss) {
           reject(dismiss);
@@ -955,6 +960,8 @@ if (typeof Promise === 'function') {
       // https://github.com/limonte/sweetalert2/issues/177
     });
   };
+} else {
+  console.warn('SweetAlert2: Please inlude Promise polyfill BEFORE including sweetalert2.js if IE10+ support needed.');
 }
 
 export default sweetAlert;

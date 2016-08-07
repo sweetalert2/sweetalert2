@@ -198,6 +198,40 @@ test('queue', function(assert) {
   });
 });
 
+test('dynamic queue', function(assert) {
+  var stepGen = function(i) {
+    switch (i) {
+      case 0:
+        return 'Step 1';
+      case 1:
+        return 'Step 2';
+      default:
+        break;
+    }
+  };
+
+  swal.queue(stepGen).then(function() {
+    swal('All done!');
+  });
+  assert.equal('Step 1', $('.swal2-modal h2').text());
+  swal.clickConfirm();
+  setTimeout(function() {
+    assert.equal('Step 2', $('.swal2-modal h2').text());
+    swal.clickConfirm();
+  });
+  setTimeout(function() {
+    assert.equal('All done!', $('.swal2-modal h2').text());
+    swal.clickConfirm();
+  });
+
+  swal.queue(stepGen).done();
+  swal.clickCancel();
+
+  setTimeout(function() {
+    assert.ok($('.swal2-cancel').is(':hidden'));
+  });
+});
+
 
 test('showLoading and hideLoading', function(assert) {
   swal({

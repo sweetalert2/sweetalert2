@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.1.2
+ * sweetalert2 v4.1.3
  * Released under the MIT License.
  */
 'use strict';
@@ -1217,8 +1217,7 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
   var $warningIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.warning);
   removeClass($warningIcon, 'pulse-warning');
 
-  resetPrevState();
-
+  // If animation is supported, animate then clean
   if (animationEndEvent && !hasClass(modal, 'no-animation')) {
     modal.addEventListener(animationEndEvent, function swalCloseEventFinished() {
       modal.removeEventListener(animationEndEvent, swalCloseEventFinished);
@@ -1226,10 +1225,14 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
         _hide(modal);
         fadeOut(getOverlay(), 0);
       }
+
+      resetPrevState();
     });
   } else {
+    // Otherwise, clean immediately
     _hide(modal);
     _hide(getOverlay());
+    resetPrevState();
   }
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal);
@@ -1322,7 +1325,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '4.1.2';
+sweetAlert.version = '4.1.3';
 
 window.sweetAlert = window.swal = sweetAlert;
 
@@ -1341,7 +1344,7 @@ window.sweetAlert = window.swal = sweetAlert;
 })();
 
 if (typeof Promise === 'function') {
-  Promise.prototype.done = function() {
+  Promise.prototype.done = Promise.prototype.done || function() {
     return this.catch(function() {
       // Catch promise rejections silently.
       // https://github.com/limonte/sweetalert2/issues/177

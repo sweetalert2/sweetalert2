@@ -23,6 +23,8 @@
   overflow-y: auto;
   display: none;
   z-index: 2000; }
+  .swal2-modal:focus {
+    outline: none; }
   .swal2-modal.loading {
     overflow-y: hidden; }
   .swal2-modal h2 {
@@ -389,8 +391,8 @@
             animation: none; }
 
 .hide-swal2 {
-  -webkit-animation: hideSweetAlert 0.15s;
-          animation: hideSweetAlert 0.15s; }
+  -webkit-animation: hideSweetAlert 0.15s forwards;
+          animation: hideSweetAlert 0.15s forwards; }
   .hide-swal2.no-animation {
     -webkit-animation: none;
             animation: none; }

@@ -140,6 +140,7 @@ var setParameters = function(params) {
       $customImage.removeAttribute('height');
     }
 
+    $customImage.className = swalClasses.image;
     if (params.imageClass) {
       dom.addClass($customImage, params.imageClass);
     }

@@ -329,3 +329,14 @@ test('default focus', function(assert) {
     assert.ok(document.activeElement === $('.swal2-input')[0]);
   }, 0);
 });
+
+test('reversed buttons', function(assert) {
+  swal({
+    text: 'Modal with reversed buttons',
+    reverseButtons: true
+  });
+  assert.ok($('.swal2-confirm').index() - $('.swal2-cancel').index() === 1);
+
+  swal('Modal with buttons');
+  assert.ok($('.swal2-cancel').index() - $('.swal2-confirm').index() === 1);
+});

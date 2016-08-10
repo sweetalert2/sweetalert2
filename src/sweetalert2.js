@@ -458,6 +458,8 @@ function modalDependant() {
     // Reverse buttons if neede d
     if (params.reverseButtons) {
       $confirmButton.parentNode.insertBefore($cancelButton, $confirmButton);
+    } else {
+      $confirmButton.parentNode.insertBefore($confirmButton, $cancelButton);
     }
 
     // Focus handling

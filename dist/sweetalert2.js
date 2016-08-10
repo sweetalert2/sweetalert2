@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.1.4
+ * sweetalert2 v4.1.5
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -531,6 +531,7 @@
         $customImage.removeAttribute('height');
       }
 
+      $customImage.className = swalClasses.image;
       if (params.imageClass) {
         addClass($customImage, params.imageClass);
       }
@@ -849,6 +850,8 @@
       // Reverse buttons if neede d
       if (params.reverseButtons) {
         $confirmButton.parentNode.insertBefore($cancelButton, $confirmButton);
+      } else {
+        $confirmButton.parentNode.insertBefore($confirmButton, $cancelButton);
       }
 
       // Focus handling
@@ -1329,7 +1332,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.1.4';
+  sweetAlert.version = '4.1.5';
 
   window.sweetAlert = window.swal = sweetAlert;
 

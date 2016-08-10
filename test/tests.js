@@ -340,3 +340,18 @@ test('reversed buttons', function(assert) {
   swal('Modal with buttons');
   assert.ok($('.swal2-cancel').index() - $('.swal2-confirm').index() === 1);
 });
+
+test('image custom class', function(assert) {
+  swal({
+    text: 'Custom class is set',
+    imageUrl: 'image.png',
+    imageClass: 'image-custom-class'
+  });
+  assert.ok($('.swal2-image').hasClass('image-custom-class'));
+
+  swal({
+    text: 'Custom class isn\'t set',
+    imageUrl: 'image.png'
+  });
+  assert.notOk($('.swal2-image').hasClass('image-custom-class'));
+});

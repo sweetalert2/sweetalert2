@@ -39,7 +39,7 @@ export var defaultParams = {
   inputAttributes: {},
   inputValidator: null,
   onOpen: null,
-  onClose: null,
+  onClose: null
 };
 
 export var sweetHTML = '<div class="' + swalClasses.overlay + '" tabIndex="-1"></div>' +

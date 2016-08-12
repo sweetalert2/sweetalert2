@@ -20,6 +20,7 @@ export var defaultParams = {
   cancelButtonClass: null,
   buttonsStyling: true,
   reverseButtons: false,
+  focusCancel: false,
   showCloseButton: false,
   showLoaderOnConfirm: false,
   imageUrl: null,

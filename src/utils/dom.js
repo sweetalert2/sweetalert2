@@ -39,7 +39,7 @@ export var getCloseButton = function() {
 export var getFocusableElements = function(focusCancel) {
   var buttons = [getConfirmButton(), getCancelButton()];
   if (focusCancel) {
-    buttons = buttons.reverse();
+    buttons.reverse();
   }
   return buttons.concat(Array.prototype.slice.call(
     getModal().querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')

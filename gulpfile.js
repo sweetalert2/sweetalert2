@@ -1,10 +1,10 @@
-var gulp = require('gulp'),
-    cleanCSS   = require('gulp-clean-css'),
-    sass       = require('gulp-sass'),
-    rename     = require('gulp-rename'),
-    autoprefix = require('gulp-autoprefixer'),
-    eslint     = require('gulp-eslint'),
-    qunit      = require('gulp-qunit');
+var gulp       = require('gulp');
+var cleanCSS   = require('gulp-clean-css');
+var sass       = require('gulp-sass');
+var rename     = require('gulp-rename');
+var autoprefix = require('gulp-autoprefixer');
+var eslint     = require('gulp-eslint');
+var qunit      = require('gulp-qunit');
 
 var pack  = require('./package.json');
 var utils = require('./config/utils.js');
@@ -12,7 +12,7 @@ var utils = require('./config/utils.js');
 gulp.task('compress', ['lint', 'commonjs', 'dev', 'production']);
 
 gulp.task('lint', function() {
-  return gulp.src(['src/*.js', 'test/*.js'])
+  return gulp.src(['src/*.js', 'src/utils/*.js', 'test/*.js'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());

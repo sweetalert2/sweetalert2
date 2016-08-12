@@ -5,8 +5,8 @@ export var mediaqueryId = swalPrefix + 'mediaquery';
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export var states = {
-    previousWindowKeyDown: null,
-    previousActiveElement: null
+  previousWindowKeyDown: null,
+  previousActiveElement: null
 };
 
 /*
@@ -36,8 +36,12 @@ export var getCloseButton = function() {
   return elementByClass(swalClasses.close);
 };
 
-export var getFocusableElements = function() {
-  return [getConfirmButton(), getCancelButton()].concat(Array.prototype.slice.call(
+export var getFocusableElements = function(focusCancel) {
+  var buttons = [getConfirmButton(), getCancelButton()];
+  if (focusCancel) {
+    buttons = buttons.reverse();
+  }
+  return buttons.concat(Array.prototype.slice.call(
     getModal().querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')
   ));
 };
@@ -60,8 +64,8 @@ export var addClass = function(elem, className) {
     return;
   }
   var classes = className.split(/\s+/);
-  classes.forEach(function (className) {
-    elem.classList.add(className)
+  classes.forEach(function(className) {
+    elem.classList.add(className);
   });
 };
 
@@ -70,7 +74,7 @@ export var removeClass = function(elem, className) {
     return;
   }
   var classes = className.split(/\s+/);
-  classes.forEach(function (className) {
+  classes.forEach(function(className) {
     elem.classList.remove(className);
   });
 };

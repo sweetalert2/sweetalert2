@@ -465,7 +465,7 @@ function modalDependant() {
 
     // Focus handling
     function setFocus(index, increment) {
-      var focusableElements = dom.getFocusableElements();
+      var focusableElements = dom.getFocusableElements(params.focusCancel);
       // search for visible elements and select the next possible match
       for (var i = 0; i < focusableElements.length; i++) {
         index = index + increment;
@@ -498,7 +498,7 @@ function modalDependant() {
 
       var $targetElement = e.target || e.srcElement;
 
-      var focusableElements = dom.getFocusableElements();
+      var focusableElements = dom.getFocusableElements(params.focusCancel);
       var btnIndex = -1; // Find the button - note, this is a nodelist, not an array.
       for (var i = 0; i < focusableElements.length; i++) {
         if ($targetElement === focusableElements[i]) {
@@ -523,7 +523,11 @@ function modalDependant() {
         if (keyCode === 13 || keyCode === 32) {
           if (btnIndex === -1) {
             // ENTER/SPACE clicked outside of a button.
-            dom.fireClick($confirmButton, e);
+            if (params.focusCancel) {
+              dom.fireClick($cancelButton, e);
+            } else {
+              dom.fireClick($confirmButton, e);
+            }
           }
         } else if (keyCode === 27 && params.allowEscapeKey === true) {
           sweetAlert.closeModal(params.onClose);

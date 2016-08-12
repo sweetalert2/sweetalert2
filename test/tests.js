@@ -198,6 +198,7 @@ test('queue', function(assert) {
   });
 });
 
+
 test('dynamic queue', function(assert) {
   var stepGen = function(i) {
     switch (i) {
@@ -330,6 +331,7 @@ test('default focus', function(assert) {
   }, 0);
 });
 
+
 test('reversed buttons', function(assert) {
   swal({
     text: 'Modal with reversed buttons',
@@ -340,6 +342,17 @@ test('reversed buttons', function(assert) {
   swal('Modal with buttons');
   assert.ok($('.swal2-cancel').index() - $('.swal2-confirm').index() === 1);
 });
+
+
+test('focus cancel', function(assert) {
+  swal({
+    text: 'Modal with Cancel button focused',
+    showCancelButton: true,
+    focusCancel: true
+  });
+  assert.ok(document.activeElement === $('.swal2-cancel')[0]);
+});
+
 
 test('image custom class', function(assert) {
   swal({

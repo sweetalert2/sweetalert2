@@ -140,6 +140,7 @@ Configuration
 | `cancelButtonClass`   | `null`               | A custom CSS class for the "Cancel"-button. |
 | `buttonsStyling`      | `true`               | Apply default swal2 styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to `false`. |
 | `reverseButtons`      | `false`              | Set to `true` if you want to invert default buttons positions. |
+| `focusCancel`         | `false`              | Set to `true` if you want to focus the "Cancel"-button by default. |
 | `showCloseButton`     | `false`              | Set to `true` to show close button in top right corner of the modal. |
 | `showLoaderOnConfirm` | `false`              | Set to `true` to disable buttons and show that something is loading. Useful for AJAX requests. |
 | `preConfirm`          | `null`               | Function to execute before confirm, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#ajax-request">usage example</a>. |

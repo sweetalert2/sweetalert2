@@ -34,7 +34,10 @@ gulp.task('dev', function() {
 
 gulp.task('test', function() {
   return gulp.src('./test/test-runner.html')
-    .pipe(qunit());
+    .pipe(qunit())
+    .on('error', function(err){ // avoid the ugly error message on failing
+      this.emit('end');
+    });
 });
 
 gulp.task('production', function() {

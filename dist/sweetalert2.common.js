@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.1.6
+ * sweetalert2 v4.1.7
  * Released under the MIT License.
  */
 'use strict';
@@ -1288,6 +1288,7 @@ sweetAlert.init = function() {
   var $select = getChildByClass(modal, swalClasses.select);
   var $checkbox = modal.querySelector('#' + swalClasses.checkbox);
   var $textarea = getChildByClass(modal, swalClasses.textarea);
+  var $customImg = getChildByClass(modal, swalClasses.image);
 
   $input.oninput = function() {
     sweetAlert.resetValidationError();
@@ -1311,6 +1312,8 @@ sweetAlert.init = function() {
   $textarea.oninput = function() {
     sweetAlert.resetValidationError();
   };
+
+  $customImg.onload = fixVerticalPosition;
 
   window.addEventListener('resize', fixVerticalPosition, false);
 };
@@ -1337,7 +1340,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '4.1.6';
+sweetAlert.version = '4.1.7';
 
 window.sweetAlert = window.swal = sweetAlert;
 

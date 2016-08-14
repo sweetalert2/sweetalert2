@@ -12,7 +12,7 @@ var utils = require('./config/utils.js');
 gulp.task('compress', ['lint', 'commonjs', 'dev', 'production']);
 
 gulp.task('lint', function() {
-  return gulp.src(['src/*.js', 'src/utils/*.js', 'test/*.js'])
+  return gulp.src(['src/**/*.js', 'test/*.js'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
@@ -34,7 +34,13 @@ gulp.task('dev', function() {
 
 gulp.task('test', function() {
   return gulp.src('./test/test-runner.html')
-    .pipe(qunit());
+    .pipe(qunit())
+    .on('error', function(err){ // avoid the ugly error message on failing
+      if (process.env.CI) { // but still fail if we're running in a CI
+        throw err;
+      }
+      this.emit('end');
+    });
 });
 
 gulp.task('production', function() {
@@ -64,16 +70,12 @@ gulp.task('default', ['compress', 'sass']);
 
 gulp.task('watch', function() {
   gulp.watch([
-    'src/sweetalert2.js',
-    'src/utils/classes.js',
-    'src/utils/default.js',
-    'src/utils/dom.js',
-    'src/utils/utils.js',
-    'src/utils/classes.js'
-  ], ['compress']);
+    'src/**/*.js',
+    'test/*.js',
+  ], ['compress', 'test']);
 
   gulp.watch([
     'src/sweetalert2.scss',
     'example/example.scss'
-  ], ['sass']);
+  ], ['sass', 'test']);
 });

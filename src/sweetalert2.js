@@ -896,6 +896,7 @@ sweetAlert.init = function() {
   var $select = dom.getChildByClass(modal, swalClasses.select);
   var $checkbox = modal.querySelector('#' + swalClasses.checkbox);
   var $textarea = dom.getChildByClass(modal, swalClasses.textarea);
+  var $customImg = dom.getChildByClass(modal, swalClasses.image);
 
   $input.oninput = function() {
     sweetAlert.resetValidationError();
@@ -919,6 +920,8 @@ sweetAlert.init = function() {
   $textarea.oninput = function() {
     sweetAlert.resetValidationError();
   };
+
+  $customImg.onload = fixVerticalPosition;
 
   window.addEventListener('resize', fixVerticalPosition, false);
 };

@@ -12,7 +12,7 @@ var utils = require('./config/utils.js');
 gulp.task('compress', ['lint', 'commonjs', 'dev', 'production']);
 
 gulp.task('lint', function() {
-  return gulp.src(['src/*.js', 'src/utils/*.js', 'test/*.js'])
+  return gulp.src(['src/**/*.js', 'test/*.js'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
@@ -67,12 +67,8 @@ gulp.task('default', ['compress', 'sass']);
 
 gulp.task('watch', function() {
   gulp.watch([
-    'src/sweetalert2.js',
-    'src/utils/classes.js',
-    'src/utils/default.js',
-    'src/utils/dom.js',
-    'src/utils/utils.js',
-    'src/utils/classes.js'
+    'src/**/*.js',
+    'test/*.js',
   ], ['compress']);
 
   gulp.watch([

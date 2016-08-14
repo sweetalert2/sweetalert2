@@ -382,7 +382,7 @@ test('modal vertical offset', function(assert) {
     animation: false
   });
 
-  $('.swal2-image').on('load error', function(){
+  $('.swal2-image').on('load error', function() {
     var box = $('.swal2-modal')[0].getBoundingClientRect();
     var delta = box.top - (box.bottom - box.height);
     assert.ok(delta === 0);

@@ -373,7 +373,7 @@ test('modal vertical offset', function(assert) {
   var done = assert.async(1);
   // create a modal with dynamic-height content
   swal({
-    imageUrl: '../images/v_icon.png',
+    imageUrl: '../images/vs_icon.png',
     title: 'Title',
     html: '<hr /><div style="height: 50px"></div><p>Text content</p>',
     type: 'warning',
@@ -382,7 +382,13 @@ test('modal vertical offset', function(assert) {
     animation: false
   });
 
-  $('.swal2-image').on('load error', function() {
+  // if we can't load local images, load an external one instead
+  $('.swal2-image').on('error', function() {
+    this.src = 'https://unsplash.it/150/50?random';
+  });
+
+  // listen for image load
+  $('.swal2-image').on('load', function() {
     var box = $('.swal2-modal')[0].getBoundingClientRect();
     var delta = box.top - (box.bottom - box.height);
     // allow 1px difference, in case of uneven height

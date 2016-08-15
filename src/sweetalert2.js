@@ -921,7 +921,7 @@ sweetAlert.init = function() {
     sweetAlert.resetValidationError();
   };
 
-  $customImg.onload = fixVerticalPosition;
+  $customImg.onload = $customImg.onerror = fixVerticalPosition;
 
   window.addEventListener('resize', fixVerticalPosition, false);
 };

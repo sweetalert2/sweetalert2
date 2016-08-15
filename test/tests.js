@@ -370,10 +370,10 @@ test('image custom class', function(assert) {
 });
 
 test('modal vertical offset', function(assert) {
-  var done = assert.async();
+  var done = assert.async(1);
   // create a modal with dynamic-height content
   swal({
-    imageUrl: '../images/vs_icon.png',
+    imageUrl: '../images/v_icon.png',
     title: 'Title',
     html: '<hr /><div style="height: 50px"></div><p>Text content</p>',
     type: 'warning',
@@ -385,7 +385,8 @@ test('modal vertical offset', function(assert) {
   $('.swal2-image').on('load error', function() {
     var box = $('.swal2-modal')[0].getBoundingClientRect();
     var delta = box.top - (box.bottom - box.height);
-    assert.ok(delta === 0);
+    // allow 1px difference, in case of uneven height
+    assert.ok(Math.abs(delta) <= 1);
     done();
   });
 });

@@ -97,6 +97,9 @@ p {
   text-align: left; }
   p.center {
     text-align: center; }
+  p.note {
+    display: inline;
+    font-size: 13px; }
   p strong {
     color: #8a8f94;
     font-weight: 600; }
@@ -105,8 +108,6 @@ p {
     font-weight: 600; }
     p a:hover {
       text-decoration: underline; }
-    p a.twitter {
-      color: #5eaade; }
     p a.github {
       color: #323131; }
   @media all and (max-width: 750px) {

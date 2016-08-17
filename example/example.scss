@@ -137,6 +137,11 @@ p {
     text-align: center;
   }
 
+  &.note {
+    display: inline;
+    font-size: 13px;
+  }
+
   strong {
     color: #8a8f94;
     font-weight: 600;
@@ -148,10 +153,6 @@ p {
 
     &:hover {
       text-decoration: underline;
-    }
-
-    &.twitter {
-      color: #5eaade;
     }
 
     &.github {

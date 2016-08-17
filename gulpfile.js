@@ -60,10 +60,10 @@ gulp.task('sass', function() {
     .pipe(rename({extname: '.min.css'}))
     .pipe(gulp.dest('dist'));
 
-  gulp.src('example/example.scss')
+  gulp.src('docs/example.scss')
     .pipe(sass())
     .pipe(autoprefix())
-    .pipe(gulp.dest('example'));
+    .pipe(gulp.dest('docs'));
 });
 
 gulp.task('default', ['compress', 'sass']);
@@ -76,6 +76,6 @@ gulp.task('watch', function() {
 
   gulp.watch([
     'src/sweetalert2.scss',
-    'example/example.scss'
+    'docs/example.scss'
   ], ['sass', 'test']);
 });

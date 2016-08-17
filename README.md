@@ -114,7 +114,7 @@ Modal Types
 
 | `success`                                                                       | `error`                                                                       | `warning`                                                                       | `info`                                                                       | `question`                                                                       |
 | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-success.png) | ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-error.png) | ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-warning.png) | ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-info.png) | ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-question.png) |
+| ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-success.png) | ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-error.png) | ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-warning.png) | ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-info.png) | ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-question.png) |
 
 
 Configuration

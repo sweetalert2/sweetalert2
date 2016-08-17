@@ -10,7 +10,7 @@
     "es6-promise": "*"
   },
   "ignore": [
-    "package.json", "gulpfile.js", "example", "images", "sweetalert2.gif",
+    "package.json", "gulpfile.js", "docs", "sweetalert2.gif",
     ".eslintrc", ".github", ".gitignore", ".travis.yml"
   ],
   "description": "A replacement for JavaScript's popup boxes, supported fork of sweetalert",

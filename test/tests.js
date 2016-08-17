@@ -373,7 +373,7 @@ test('modal vertical offset', function(assert) {
   var done = assert.async(1);
   // create a modal with dynamic-height content
   swal({
-    imageUrl: '../images/vs_icon.png',
+    imageUrl: '../docs/vs_icon.png',
     title: 'Title',
     html: '<hr /><div style="height: 50px"></div><p>Text content</p>',
     type: 'warning',

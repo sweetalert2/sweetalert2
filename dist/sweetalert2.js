@@ -626,8 +626,10 @@
    */
   var fixVerticalPosition = function() {
     var modal = getModal();
-
-    modal.style.marginTop = getTopMargin(modal);
+    
+    if (modal !== null) {
+      modal.style.marginTop = getTopMargin(modal);
+    }
   };
 
   function modalDependant() {

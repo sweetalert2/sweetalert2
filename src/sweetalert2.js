@@ -230,8 +230,12 @@ var openModal = function(animation, onComplete) {
  */
 var fixVerticalPosition = function() {
   var modal = dom.getModal();
+  if (!modal){ 
+    return;
+  }
 
   modal.style.marginTop = dom.getTopMargin(modal);
+
 };
 
 function modalDependant() {

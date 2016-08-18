@@ -1,4 +1,4 @@
-If your issue is focused more on 'how do I do this?' rather than 'this is a broken functionality', then submit it to [StackOverflow](http://stackoverflow.com/questions/ask) instead of GitHub, and make sure you added [`sweetalert`](http://stackoverflow.com/questions/tagged/sweetalert) tag to the question.
+If your issue is focused more on 'how do I do this?' rather than 'this is a broken functionality', then either ask on our [Gitter](https://gitter.im/sweetalert2) or submit it to [StackOverflow](https://stackoverflow.com/questions/ask) instead of GitHub, and make sure you add the [`sweetalert`](https://stackoverflow.com/questions/tagged/sweetalert) tag to the question.
 
 ---
 

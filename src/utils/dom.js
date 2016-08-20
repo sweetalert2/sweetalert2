@@ -212,7 +212,6 @@ export var animationEndEvent = (function() {
   var testEl = document.createElement('div'),
     transEndEventNames = {
       'WebkitAnimation': 'webkitAnimationEnd',
-      'MozAnimation': 'animationend',
       'OAnimation': 'oAnimationEnd oanimationend',
       'msAnimation': 'MSAnimationEnd',
       'animation': 'animationend'

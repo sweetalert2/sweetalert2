@@ -169,6 +169,7 @@ Methods
 
 | Method             | Description |
 | ------------------ | ----------- |
+| `swal.isVisible()`                              | Determine if modal is shown. |
 | `swal.setDefaults({Object})`                    | If you end up using a lot of the same settings when calling SweetAlert2, you can use setDefaults at the start of your program to set them once and for all! |
 | `swal.resetDefaults()`                          | Resets settings to their default value. |
 | `swal.queue([Array] || Function)`               | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another or a function that returns alert parameters given modal number. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals). |

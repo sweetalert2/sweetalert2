@@ -1,9 +1,7 @@
 test('modal shows up', function(assert) {
-  var $modal = $('.swal2-modal');
-
-  assert.ok($modal.not(':visible'));
+  assert.notOk(swal.isVisible());
   swal('Hello world!');
-  assert.ok($modal.is(':visible'));
+  assert.ok(swal.isVisible());
 });
 
 

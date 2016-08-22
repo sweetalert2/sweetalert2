@@ -219,7 +219,6 @@ var openModal = function(animation, onComplete) {
   }
   dom.show(modal);
   dom.states.previousActiveElement = document.activeElement;
-  dom.addClass(modal, 'visible');
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal);
   }
@@ -230,7 +229,7 @@ var openModal = function(animation, onComplete) {
  */
 var fixVerticalPosition = function() {
   var modal = dom.getModal();
-  
+
   if (modal !== null) {
     modal.style.marginTop = dom.getTopMargin(modal);
   }
@@ -362,7 +361,6 @@ function modalDependant() {
       var cancelBtn = dom.getCancelButton();
       var targetedConfirm = confirmBtn === target || confirmBtn.contains(target);
       var targetedCancel = cancelBtn === target || cancelBtn.contains(target);
-      var modalIsVisible  = dom.hasClass(modal, 'visible');
 
       switch (e.type) {
         case 'mouseover':
@@ -395,7 +393,7 @@ function modalDependant() {
           break;
         case 'click':
           // Clicked 'confirm'
-          if (targetedConfirm && modalIsVisible) {
+          if (targetedConfirm && sweetAlert.isVisible()) {
             if (params.input) {
               var inputValue = getInputValue();
 
@@ -422,7 +420,7 @@ function modalDependant() {
             }
 
           // Clicked 'cancel'
-          } else if (targetedCancel && modalIsVisible) {
+          } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.closeModal(params.onClose);
             reject('cancel');
           }
@@ -481,9 +479,9 @@ function modalDependant() {
           index = focusableElements.length - 1;
         }
 
-        // determine if element is visible, the following is borrowed from jqeury $(elem).is(':visible') implementation
+        // determine if element is visible
         var el = focusableElements[index];
-        if (el.offsetWidth || el.offsetHeight || el.getClientRects().length) {
+        if (dom.isVisible(el)) {
           return el.focus();
         }
       }
@@ -785,12 +783,20 @@ function sweetAlert() {
     modal = dom.getModal();
   }
 
-  if (dom.hasClass(modal, 'visible')) {
+  if (sweetAlert.isVisible()) {
     dom.resetPrevState();
   }
 
   return modalDependant.apply(this, args);
 }
+
+/*
+ * Global function to determine if swal2 modal is visible
+ */
+sweetAlert.isVisible = function() {
+  var modal = dom.getModal();
+  return dom.isVisible(modal);
+};
 
 /*
  * Global function for chaining sweetAlert modals
@@ -824,7 +830,6 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
   var modal = dom.getModal();
   dom.removeClass(modal, 'show-swal2');
   dom.addClass(modal, 'hide-swal2');
-  dom.removeClass(modal, 'visible');
 
   // Reset icon animations
   var $successIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.success);

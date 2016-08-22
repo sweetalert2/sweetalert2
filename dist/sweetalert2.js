@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.1.8
+ * sweetalert2 v4.1.9
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -269,6 +269,11 @@
     for (var i = 0; i < elems.length; ++i) {
       _hide(elems[i]);
     }
+  };
+
+  // borrowed from jqeury $(elem).is(':visible') implementation
+  var isVisible = function(elem) {
+    return elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length;
   };
 
   var removeStyleProperty = function(elem, property) {
@@ -614,7 +619,6 @@
     }
     show(modal);
     states.previousActiveElement = document.activeElement;
-    addClass(modal, 'visible');
     if (onComplete !== null && typeof onComplete === 'function') {
       onComplete.call(this, modal);
     }
@@ -626,7 +630,9 @@
   var fixVerticalPosition = function() {
     var modal = getModal();
 
-    modal.style.marginTop = getTopMargin(modal);
+    if (modal !== null) {
+      modal.style.marginTop = getTopMargin(modal);
+    }
   };
 
   function modalDependant() {
@@ -755,7 +761,6 @@
         var cancelBtn = getCancelButton();
         var targetedConfirm = confirmBtn === target || confirmBtn.contains(target);
         var targetedCancel = cancelBtn === target || cancelBtn.contains(target);
-        var modalIsVisible  = hasClass(modal, 'visible');
 
         switch (e.type) {
           case 'mouseover':
@@ -788,7 +793,7 @@
             break;
           case 'click':
             // Clicked 'confirm'
-            if (targetedConfirm && modalIsVisible) {
+            if (targetedConfirm && sweetAlert.isVisible()) {
               if (params.input) {
                 var inputValue = getInputValue();
 
@@ -815,7 +820,7 @@
               }
 
             // Clicked 'cancel'
-            } else if (targetedCancel && modalIsVisible) {
+            } else if (targetedCancel && sweetAlert.isVisible()) {
               sweetAlert.closeModal(params.onClose);
               reject('cancel');
             }
@@ -874,9 +879,9 @@
             index = focusableElements.length - 1;
           }
 
-          // determine if element is visible, the following is borrowed from jqeury $(elem).is(':visible') implementation
+          // determine if element is visible
           var el = focusableElements[index];
-          if (el.offsetWidth || el.offsetHeight || el.getClientRects().length) {
+          if (isVisible(el)) {
             return el.focus();
           }
         }
@@ -1178,12 +1183,20 @@
       modal = getModal();
     }
 
-    if (hasClass(modal, 'visible')) {
+    if (sweetAlert.isVisible()) {
       resetPrevState();
     }
 
     return modalDependant.apply(this, args);
   }
+
+  /*
+   * Global function to determine if swal2 modal is visible
+   */
+  sweetAlert.isVisible = function() {
+    var modal = getModal();
+    return isVisible(modal);
+  };
 
   /*
    * Global function for chaining sweetAlert modals
@@ -1217,7 +1230,6 @@
     var modal = getModal();
     removeClass(modal, 'show-swal2');
     addClass(modal, 'hide-swal2');
-    removeClass(modal, 'visible');
 
     // Reset icon animations
     var $successIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.success);
@@ -1343,7 +1355,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.1.8';
+  sweetAlert.version = '4.1.9';
 
   window.sweetAlert = window.swal = sweetAlert;
 

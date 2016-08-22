@@ -115,6 +115,11 @@ export var hide = function(elems) {
   }
 };
 
+// borrowed from jqeury $(elem).is(':visible') implementation
+export var isVisible = function(elem) {
+  return elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length;
+};
+
 export var removeStyleProperty = function(elem, property) {
   if (elem.style.removeProperty) {
     elem.style.removeProperty(property);

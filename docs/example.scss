@@ -478,3 +478,56 @@ table {
   top: 0;
   right: 0;
 }
+
+#carbonads {
+  display: block;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 1em;
+  max-width: 300px;
+  border: solid 1px #a9b2bc;
+  border-radius: 2px;
+  box-shadow: inset 0 1px #fff;
+  text-shadow: 0 1px #fff;
+  font-size: 12px;
+  line-height: 1.5;
+
+  a {
+    color: #8d98a5;
+    transition: color .15s ease-in-out;
+
+    &:hover {
+      color: #ff7777;
+    }
+  }
+
+  span {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+
+  .carbon-img {
+    float: left;
+    margin-right: 1em;
+
+    img {
+      display: block;
+    }
+  }
+
+  .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+
+  .carbon-poweredby {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    font-size: 11px;
+  }
+}

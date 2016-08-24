@@ -340,3 +340,42 @@ table {
   position: fixed;
   top: 0;
   right: 0; }
+
+#carbonads {
+  display: block;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 1em;
+  max-width: 300px;
+  border: solid 1px #a9b2bc;
+  border-radius: 2px;
+  box-shadow: inset 0 1px #fff;
+  text-shadow: 0 1px #fff;
+  font-size: 12px;
+  line-height: 1.5; }
+  #carbonads a {
+    color: #8d98a5;
+    -webkit-transition: color .15s ease-in-out;
+    transition: color .15s ease-in-out; }
+    #carbonads a:hover {
+      color: #ff7777; }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden; }
+  #carbonads .carbon-img {
+    float: left;
+    margin-right: 1em; }
+    #carbonads .carbon-img img {
+      display: block; }
+  #carbonads .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left; }
+  #carbonads .carbon-poweredby {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    font-size: 11px; }

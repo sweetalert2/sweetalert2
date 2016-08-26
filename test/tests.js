@@ -172,32 +172,34 @@ test('input select', function(assert) {
 
 
 test('queue', function(assert) {
+  var done = assert.async();
   var steps = ['Step 1', 'Step 2'];
 
+  swal.setDefaults({animation: false});
   swal.queue(steps).then(function() {
     swal('All done!');
   });
   assert.equal('Step 1', $('.swal2-modal h2').text());
   swal.clickConfirm();
   setTimeout(function() {
-    assert.equal('Step 2', $('.swal2-modal h2').text());
+    assert.equal($('.swal2-modal h2').text(), 'Step 2');
     swal.clickConfirm();
-  });
-  setTimeout(function() {
-    assert.equal('All done!', $('.swal2-modal h2').text());
-    swal.clickConfirm();
-  });
+    setTimeout(function() {
+      assert.equal($('.swal2-modal h2').text(), 'All done!');
+      swal.clickConfirm();
 
-  swal.queue(steps).done();
-  swal.clickCancel();
-
-  setTimeout(function() {
-    assert.ok($('.swal2-cancel').is(':hidden'));
+      // test queue is cancelled on first step, other steps shouldn't be shown
+      swal.queue(steps).done();
+      swal.clickCancel();
+      assert.notOk(swal.isVisible());
+      done();
+    });
   });
 });
 
 
 test('dynamic queue', function(assert) {
+  var done = assert.async();
   var stepGen = function(i) {
     switch (i) {
       case 0:
@@ -217,17 +219,16 @@ test('dynamic queue', function(assert) {
   setTimeout(function() {
     assert.equal('Step 2', $('.swal2-modal h2').text());
     swal.clickConfirm();
-  });
-  setTimeout(function() {
-    assert.equal('All done!', $('.swal2-modal h2').text());
-    swal.clickConfirm();
-  });
+    setTimeout(function() {
+      assert.equal('All done!', $('.swal2-modal h2').text());
+      swal.clickConfirm();
 
-  swal.queue(stepGen).done();
-  swal.clickCancel();
-
-  setTimeout(function() {
-    assert.ok($('.swal2-cancel').is(':hidden'));
+      // test queue is cancelled on first step, other steps shouldn't be shown
+      swal.queue(stepGen).done();
+      swal.clickCancel();
+      assert.notOk(swal.isVisible());
+      done();
+    });
   });
 });
 
@@ -311,6 +312,8 @@ test('disable/enable input', function(assert) {
 
 
 test('default focus', function(assert) {
+  var done = assert.async();
+
   swal('Modal with the Confirm button only');
   assert.ok(document.activeElement === $('.swal2-confirm')[0]);
 
@@ -326,7 +329,8 @@ test('default focus', function(assert) {
   });
   setTimeout(function() {
     assert.ok(document.activeElement === $('.swal2-input')[0]);
-  }, 0);
+    done();
+  });
 });
 
 

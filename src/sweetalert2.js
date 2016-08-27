@@ -785,6 +785,7 @@ function sweetAlert() {
 
   if (sweetAlert.isVisible()) {
     dom.resetPrevState();
+    dom.removeMediaQuery();
   }
 
   return modalDependant.apply(this, args);
@@ -844,6 +845,8 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
   var $warningIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.warning);
   dom.removeClass($warningIcon, 'pulse-warning');
 
+  dom.resetPrevState();
+
   // If animation is supported, animate then clean
   if (dom.animationEndEvent && !dom.hasClass(modal, 'no-animation')) {
     modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished() {
@@ -852,14 +855,13 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
         dom._hide(modal);
         dom.fadeOut(dom.getOverlay(), 0);
       }
-
-      dom.resetPrevState();
+      dom.removeMediaQuery();
     });
   } else {
     // Otherwise, clean immediately
     dom._hide(modal);
     dom._hide(dom.getOverlay());
-    dom.resetPrevState();
+    dom.removeMediaQuery();
   }
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal);

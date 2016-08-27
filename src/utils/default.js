@@ -20,6 +20,7 @@ export var defaultParams = {
   cancelButtonClass: null,
   buttonsStyling: true,
   reverseButtons: false,
+  focusCancel: false,
   showCloseButton: false,
   showLoaderOnConfirm: false,
   imageUrl: null,
@@ -39,7 +40,7 @@ export var defaultParams = {
   inputAttributes: {},
   inputValidator: null,
   onOpen: null,
-  onClose: null,
+  onClose: null
 };
 
 export var sweetHTML = '<div class="' + swalClasses.overlay + '" tabIndex="-1"></div>' +

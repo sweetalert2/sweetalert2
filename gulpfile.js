@@ -1,10 +1,10 @@
-var gulp = require('gulp'),
-    cleanCSS   = require('gulp-clean-css'),
-    sass       = require('gulp-sass'),
-    rename     = require('gulp-rename'),
-    autoprefix = require('gulp-autoprefixer'),
-    eslint     = require('gulp-eslint'),
-    qunit      = require('gulp-qunit');
+var gulp       = require('gulp');
+var cleanCSS   = require('gulp-clean-css');
+var sass       = require('gulp-sass');
+var rename     = require('gulp-rename');
+var autoprefix = require('gulp-autoprefixer');
+var eslint     = require('gulp-eslint');
+var qunit      = require('gulp-qunit');
 
 var pack  = require('./package.json');
 var utils = require('./config/utils.js');
@@ -12,7 +12,7 @@ var utils = require('./config/utils.js');
 gulp.task('compress', ['lint', 'commonjs', 'dev', 'production']);
 
 gulp.task('lint', function() {
-  return gulp.src(['src/*.js', 'test/*.js'])
+  return gulp.src(['src/**/*.js', 'test/*.js'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
@@ -34,7 +34,13 @@ gulp.task('dev', function() {
 
 gulp.task('test', function() {
   return gulp.src('./test/test-runner.html')
-    .pipe(qunit());
+    .pipe(qunit())
+    .on('error', function(err){ // avoid the ugly error message on failing
+      if (process.env.CI) { // but still fail if we're running in a CI
+        throw err;
+      }
+      this.emit('end');
+    });
 });
 
 gulp.task('production', function() {
@@ -54,26 +60,22 @@ gulp.task('sass', function() {
     .pipe(rename({extname: '.min.css'}))
     .pipe(gulp.dest('dist'));
 
-  gulp.src('example/example.scss')
+  gulp.src('docs/example.scss')
     .pipe(sass())
     .pipe(autoprefix())
-    .pipe(gulp.dest('example'));
+    .pipe(gulp.dest('docs'));
 });
 
 gulp.task('default', ['compress', 'sass']);
 
 gulp.task('watch', function() {
   gulp.watch([
-    'src/sweetalert2.js',
-    'src/utils/classes.js',
-    'src/utils/default.js',
-    'src/utils/dom.js',
-    'src/utils/utils.js',
-    'src/utils/classes.js'
-  ], ['compress']);
+    'src/**/*.js',
+    'test/*.js',
+  ], ['compress', 'test']);
 
   gulp.watch([
     'src/sweetalert2.scss',
-    'example/example.scss'
-  ], ['sass']);
+    'docs/example.scss'
+  ], ['sass', 'test']);
 });

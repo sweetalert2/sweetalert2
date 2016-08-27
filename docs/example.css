@@ -97,6 +97,9 @@ p {
   text-align: left; }
   p.center {
     text-align: center; }
+  p.note {
+    display: inline;
+    font-size: 13px; }
   p strong {
     color: #8a8f94;
     font-weight: 600; }
@@ -105,8 +108,6 @@ p {
     font-weight: 600; }
     p a:hover {
       text-decoration: underline; }
-    p a.twitter {
-      color: #5eaade; }
     p a.github {
       color: #323131; }
   @media all and (max-width: 750px) {
@@ -227,8 +228,8 @@ pre {
   .showcase button {
     margin-bottom: 10px; }
   .showcase .vs-icon {
-    background-image: url("../images/vs_icon.png");
-    background-image: -webkit-image-set(url("../images/vs_icon.png") 1x, url("../images/vs_icon@2x.png") 2x);
+    background-image: url("vs_icon.png");
+    background-image: -webkit-image-set(url("vs_icon.png") 1x, url("vs_icon@2x.png") 2x);
     background-repeat: no-repeat;
     width: 69px;
     height: 69px;
@@ -339,3 +340,42 @@ table {
   position: fixed;
   top: 0;
   right: 0; }
+
+#carbonads {
+  display: block;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 1em;
+  max-width: 300px;
+  border: solid 1px #a9b2bc;
+  border-radius: 2px;
+  box-shadow: inset 0 1px #fff;
+  text-shadow: 0 1px #fff;
+  font-size: 12px;
+  line-height: 1.5; }
+  #carbonads a {
+    color: #8d98a5;
+    -webkit-transition: color .15s ease-in-out;
+    transition: color .15s ease-in-out; }
+    #carbonads a:hover {
+      color: #ff7777; }
+  #carbonads span {
+    position: relative;
+    display: block;
+    overflow: hidden; }
+  #carbonads .carbon-img {
+    float: left;
+    margin-right: 1em; }
+    #carbonads .carbon-img img {
+      display: block; }
+  #carbonads .carbon-text {
+    display: block;
+    float: left;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left; }
+  #carbonads .carbon-poweredby {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    font-size: 11px; }

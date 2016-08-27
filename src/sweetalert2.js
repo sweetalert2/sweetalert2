@@ -140,6 +140,7 @@ var setParameters = function(params) {
       $customImage.removeAttribute('height');
     }
 
+    $customImage.className = swalClasses.image;
     if (params.imageClass) {
       dom.addClass($customImage, params.imageClass);
     }
@@ -218,7 +219,6 @@ var openModal = function(animation, onComplete) {
   }
   dom.show(modal);
   dom.states.previousActiveElement = document.activeElement;
-  dom.addClass(modal, 'visible');
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal);
   }
@@ -230,7 +230,9 @@ var openModal = function(animation, onComplete) {
 var fixVerticalPosition = function() {
   var modal = dom.getModal();
 
-  modal.style.marginTop = dom.getTopMargin(modal);
+  if (modal !== null) {
+    modal.style.marginTop = dom.getTopMargin(modal);
+  }
 };
 
 function modalDependant() {
@@ -359,7 +361,6 @@ function modalDependant() {
       var cancelBtn = dom.getCancelButton();
       var targetedConfirm = confirmBtn === target || confirmBtn.contains(target);
       var targetedCancel = cancelBtn === target || cancelBtn.contains(target);
-      var modalIsVisible  = dom.hasClass(modal, 'visible');
 
       switch (e.type) {
         case 'mouseover':
@@ -392,7 +393,7 @@ function modalDependant() {
           break;
         case 'click':
           // Clicked 'confirm'
-          if (targetedConfirm && modalIsVisible) {
+          if (targetedConfirm && sweetAlert.isVisible()) {
             if (params.input) {
               var inputValue = getInputValue();
 
@@ -419,7 +420,7 @@ function modalDependant() {
             }
 
           // Clicked 'cancel'
-          } else if (targetedCancel && modalIsVisible) {
+          } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.closeModal(params.onClose);
             reject('cancel');
           }
@@ -458,11 +459,13 @@ function modalDependant() {
     // Reverse buttons if neede d
     if (params.reverseButtons) {
       $confirmButton.parentNode.insertBefore($cancelButton, $confirmButton);
+    } else {
+      $confirmButton.parentNode.insertBefore($confirmButton, $cancelButton);
     }
 
     // Focus handling
     function setFocus(index, increment) {
-      var focusableElements = dom.getFocusableElements();
+      var focusableElements = dom.getFocusableElements(params.focusCancel);
       // search for visible elements and select the next possible match
       for (var i = 0; i < focusableElements.length; i++) {
         index = index + increment;
@@ -476,9 +479,9 @@ function modalDependant() {
           index = focusableElements.length - 1;
         }
 
-        // determine if element is visible, the following is borrowed from jqeury $(elem).is(':visible') implementation
+        // determine if element is visible
         var el = focusableElements[index];
-        if (el.offsetWidth || el.offsetHeight || el.getClientRects().length) {
+        if (dom.isVisible(el)) {
           return el.focus();
         }
       }
@@ -495,7 +498,7 @@ function modalDependant() {
 
       var $targetElement = e.target || e.srcElement;
 
-      var focusableElements = dom.getFocusableElements();
+      var focusableElements = dom.getFocusableElements(params.focusCancel);
       var btnIndex = -1; // Find the button - note, this is a nodelist, not an array.
       for (var i = 0; i < focusableElements.length; i++) {
         if ($targetElement === focusableElements[i]) {
@@ -520,7 +523,11 @@ function modalDependant() {
         if (keyCode === 13 || keyCode === 32) {
           if (btnIndex === -1) {
             // ENTER/SPACE clicked outside of a button.
-            dom.fireClick($confirmButton, e);
+            if (params.focusCancel) {
+              dom.fireClick($cancelButton, e);
+            } else {
+              dom.fireClick($confirmButton, e);
+            }
           }
         } else if (keyCode === 27 && params.allowEscapeKey === true) {
           sweetAlert.closeModal(params.onClose);
@@ -776,12 +783,20 @@ function sweetAlert() {
     modal = dom.getModal();
   }
 
-  if (dom.hasClass(modal, 'visible')) {
+  if (sweetAlert.isVisible()) {
     dom.resetPrevState();
   }
 
   return modalDependant.apply(this, args);
 }
+
+/*
+ * Global function to determine if swal2 modal is visible
+ */
+sweetAlert.isVisible = function() {
+  var modal = dom.getModal();
+  return dom.isVisible(modal);
+};
 
 /*
  * Global function for chaining sweetAlert modals
@@ -844,7 +859,6 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
   var modal = dom.getModal();
   dom.removeClass(modal, 'show-swal2');
   dom.addClass(modal, 'hide-swal2');
-  dom.removeClass(modal, 'visible');
 
   // Reset icon animations
   var $successIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.success);
@@ -859,8 +873,7 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
   var $warningIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.warning);
   dom.removeClass($warningIcon, 'pulse-warning');
 
-  dom.resetPrevState();
-
+  // If animation is supported, animate then clean
   if (dom.animationEndEvent && !dom.hasClass(modal, 'no-animation')) {
     modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished() {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished);
@@ -868,10 +881,14 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
         dom._hide(modal);
         dom.fadeOut(dom.getOverlay(), 0);
       }
+
+      dom.resetPrevState();
     });
   } else {
+    // Otherwise, clean immediately
     dom._hide(modal);
     dom._hide(dom.getOverlay());
+    dom.resetPrevState();
   }
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal);
@@ -915,6 +932,7 @@ sweetAlert.init = function() {
   var $select = dom.getChildByClass(modal, swalClasses.select);
   var $checkbox = modal.querySelector('#' + swalClasses.checkbox);
   var $textarea = dom.getChildByClass(modal, swalClasses.textarea);
+  var $customImg = dom.getChildByClass(modal, swalClasses.image);
 
   $input.oninput = function() {
     sweetAlert.resetValidationError();
@@ -938,6 +956,8 @@ sweetAlert.init = function() {
   $textarea.oninput = function() {
     sweetAlert.resetValidationError();
   };
+
+  $customImg.onload = $customImg.onerror = fixVerticalPosition;
 
   window.addEventListener('resize', fixVerticalPosition, false);
 };
@@ -983,7 +1003,7 @@ window.sweetAlert = window.swal = sweetAlert;
 })();
 
 if (typeof Promise === 'function') {
-  Promise.prototype.done = function() {
+  Promise.prototype.done = Promise.prototype.done || function() {
     return this.catch(function() {
       // Catch promise rejections silently.
       // https://github.com/limonte/sweetalert2/issues/177

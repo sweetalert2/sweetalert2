@@ -490,7 +490,7 @@
 }
 
 .hide-swal2 {
-  @include animation('hideSweetAlert 0.15s');
+  @include animation('hideSweetAlert 0.15s forwards');
 
   &.no-animation {
     @include animation('none');

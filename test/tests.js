@@ -1,9 +1,7 @@
 test('modal shows up', function(assert) {
-  var $modal = $('.swal2-modal');
-
-  assert.ok($modal.not(':visible'));
+  assert.notOk(swal.isVisible());
   swal('Hello world!');
-  assert.ok($modal.is(':visible'));
+  assert.ok(swal.isVisible());
 });
 
 
@@ -174,31 +172,34 @@ test('input select', function(assert) {
 
 
 test('queue', function(assert) {
+  var done = assert.async();
   var steps = ['Step 1', 'Step 2'];
 
+  swal.setDefaults({animation: false});
   swal.queue(steps).then(function() {
     swal('All done!');
   });
   assert.equal('Step 1', $('.swal2-modal h2').text());
   swal.clickConfirm();
   setTimeout(function() {
-    assert.equal('Step 2', $('.swal2-modal h2').text());
+    assert.equal($('.swal2-modal h2').text(), 'Step 2');
     swal.clickConfirm();
-  });
-  setTimeout(function() {
-    assert.equal('All done!', $('.swal2-modal h2').text());
-    swal.clickConfirm();
-  });
+    setTimeout(function() {
+      assert.equal($('.swal2-modal h2').text(), 'All done!');
+      swal.clickConfirm();
 
-  swal.queue(steps).done();
-  swal.clickCancel();
-
-  setTimeout(function() {
-    assert.ok($('.swal2-cancel').is(':hidden'));
+      // test queue is cancelled on first step, other steps shouldn't be shown
+      swal.queue(steps).done();
+      swal.clickCancel();
+      assert.notOk(swal.isVisible());
+      done();
+    });
   });
 });
 
+
 test('dynamic queue', function(assert) {
+  var done = assert.async();
   var stepGen = function(i) {
     switch (i) {
       case 0:
@@ -218,17 +219,16 @@ test('dynamic queue', function(assert) {
   setTimeout(function() {
     assert.equal('Step 2', $('.swal2-modal h2').text());
     swal.clickConfirm();
-  });
-  setTimeout(function() {
-    assert.equal('All done!', $('.swal2-modal h2').text());
-    swal.clickConfirm();
-  });
+    setTimeout(function() {
+      assert.equal('All done!', $('.swal2-modal h2').text());
+      swal.clickConfirm();
 
-  swal.queue(stepGen).done();
-  swal.clickCancel();
-
-  setTimeout(function() {
-    assert.ok($('.swal2-cancel').is(':hidden'));
+      // test queue is cancelled on first step, other steps shouldn't be shown
+      swal.queue(stepGen).done();
+      swal.clickCancel();
+      assert.notOk(swal.isVisible());
+      done();
+    });
   });
 });
 
@@ -312,6 +312,8 @@ test('disable/enable input', function(assert) {
 
 
 test('default focus', function(assert) {
+  var done = assert.async();
+
   swal('Modal with the Confirm button only');
   assert.ok(document.activeElement === $('.swal2-confirm')[0]);
 
@@ -327,5 +329,72 @@ test('default focus', function(assert) {
   });
   setTimeout(function() {
     assert.ok(document.activeElement === $('.swal2-input')[0]);
-  }, 0);
+    done();
+  });
+});
+
+
+test('reversed buttons', function(assert) {
+  swal({
+    text: 'Modal with reversed buttons',
+    reverseButtons: true
+  });
+  assert.ok($('.swal2-confirm').index() - $('.swal2-cancel').index() === 1);
+
+  swal('Modal with buttons');
+  assert.ok($('.swal2-cancel').index() - $('.swal2-confirm').index() === 1);
+});
+
+
+test('focus cancel', function(assert) {
+  swal({
+    text: 'Modal with Cancel button focused',
+    showCancelButton: true,
+    focusCancel: true
+  });
+  assert.ok(document.activeElement === $('.swal2-cancel')[0]);
+});
+
+
+test('image custom class', function(assert) {
+  swal({
+    text: 'Custom class is set',
+    imageUrl: 'image.png',
+    imageClass: 'image-custom-class'
+  });
+  assert.ok($('.swal2-image').hasClass('image-custom-class'));
+
+  swal({
+    text: 'Custom class isn\'t set',
+    imageUrl: 'image.png'
+  });
+  assert.notOk($('.swal2-image').hasClass('image-custom-class'));
+});
+
+test('modal vertical offset', function(assert) {
+  var done = assert.async(1);
+  // create a modal with dynamic-height content
+  swal({
+    imageUrl: '../docs/vs_icon.png',
+    title: 'Title',
+    html: '<hr /><div style="height: 50px"></div><p>Text content</p>',
+    type: 'warning',
+    input: 'text',
+
+    animation: false
+  });
+
+  // if we can't load local images, load an external one instead
+  $('.swal2-image').on('error', function() {
+    this.src = 'https://unsplash.it/150/50?random';
+  });
+
+  // listen for image load
+  $('.swal2-image').on('load', function() {
+    var box = $('.swal2-modal')[0].getBoundingClientRect();
+    var delta = box.top - (box.bottom - box.height);
+    // allow 1px difference, in case of uneven height
+    assert.ok(Math.abs(delta) <= 1);
+    done();
+  });
 });

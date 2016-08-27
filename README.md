@@ -91,12 +91,30 @@ swal({
 [View more examples](https://limonte.github.io/sweetalert2/)
 
 
+Handling Dismissals
+-------------------
+
+When an alert is dismissed by the user, the Promise returned by `swal()` will reject with a string documenting the reason it was dismissed:
+
+| String      | Description                                             | Related configuration |
+| ----------- | ------------------------------------------------------- | --------------------- |
+| `"overlay"` | The user clicked the overlay.                           | `allowOutsideClick`   |
+| `"cancel"`  | The user clicked the cancel button.                     | `showCancelButton`    |
+| `"close"`   | The user clicked the close button.                      | `showCloseButton`     |
+| `"esc"`     | The user pressed the <kbd>Esc</kbd> key.                | `allowEscapeKey`      |
+| `"timer"`   | The timer ran out, and the alert closed automatically.  | `timer`               |
+
+If this rejection is not handled by your code, it will be logged as an error. To avoid this happening, you need to add a rejection handler to the Promise. Alternatively, SweetAlert2 provides the `.done()` method as a quick way to simply suppress the errors:
+
+    swal('...')
+      .done();
+
 Modal Types
 -----------
 
 | `success`                                                                       | `error`                                                                       | `warning`                                                                       | `info`                                                                       | `question`                                                                       |
 | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-success.png) | ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-error.png) | ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-warning.png) | ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-info.png) | ![](https://raw.github.com/limonte/sweetalert2/master/images/swal2-question.png) |
+| ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-success.png) | ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-error.png) | ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-warning.png) | ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-info.png) | ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-question.png) |
 
 
 Configuration
@@ -122,6 +140,7 @@ Configuration
 | `cancelButtonClass`   | `null`               | A custom CSS class for the "Cancel"-button. |
 | `buttonsStyling`      | `true`               | Apply default swal2 styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to `false`. |
 | `reverseButtons`      | `false`              | Set to `true` if you want to invert default buttons positions. |
+| `focusCancel`         | `false`              | Set to `true` if you want to focus the "Cancel"-button by default. |
 | `showCloseButton`     | `false`              | Set to `true` to show close button in top right corner of the modal. |
 | `showLoaderOnConfirm` | `false`              | Set to `true` to disable buttons and show that something is loading. Useful for AJAX requests. |
 | `preConfirm`          | `null`               | Function to execute before confirm, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#ajax-request">usage example</a>. |
@@ -150,6 +169,7 @@ Methods
 
 | Method             | Description |
 | ------------------ | ----------- |
+| `swal.isVisible()`                              | Determine if modal is shown. |
 | `swal.setDefaults({Object})`                    | If you end up using a lot of the same settings when calling SweetAlert2, you can use setDefaults at the start of your program to set them once and for all! |
 | `swal.resetDefaults()`                          | Resets settings to their default value. |
 | `swal.queue([Array] || Function)`               | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another or a function that returns alert parameters given modal number. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals). |

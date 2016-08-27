@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.2.1
+ * sweetalert2 v4.2.2
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -398,7 +398,7 @@
 
   // Remove dynamically created media query
   var addMediaQuery = function(content) {
-    var mediaqueryId = swalPrefix + 'mediaquery-' + Math.random().toString(36).substring(2, 5);
+    var mediaqueryId = swalPrefix + 'mediaquery-' + Math.random().toString(36).substring(2, 7);
     var head = document.getElementsByTagName('head')[0];
     var cssNode = document.createElement('style');
     cssNode.type = 'text/css';
@@ -410,6 +410,9 @@
 
   // Remove dynamically created media query
   var removeMediaQuery = function(mediaqueryId) {
+    if (!mediaqueryId) {
+      return false;
+    }
     var head = document.getElementsByTagName('head')[0];
     var mediaquery = document.getElementById(mediaqueryId);
     if (mediaquery) {
@@ -431,26 +434,41 @@
       }
     }
 
-    // set modal width, padding and margin-left
-    modal.style.width = params.width + 'px';
+    // set modal width and margin-left
+    params.width = params.width.toString();
+    var width = params.width.match(/^(\d+)(px|%)?$/);
+    var widthUnits;
+    if (!width) {
+      console.warn('SweetAlert2: Invalid width parameter, usage examples: "400px", "50%", or just 500 which equals to "500px"');
+    } else {
+      widthUnits = 'px';
+      if (width[2]) {
+        widthUnits = width[2];
+      }
+      width = parseInt(width[1], 10);
+      modal.style.width = width + widthUnits;
+      modal.style.marginLeft = -width / 2 + widthUnits;
+    }
+
     modal.style.padding = params.padding + 'px';
-    modal.style.marginLeft = -params.width / 2 + 'px';
     modal.style.background = params.background;
 
-    // add dynamic media query css
-    var margin = 5; // %
-    var mediaQueryMaxWidth = params.width + parseInt(params.width * (margin/100) * 2, 10);
-    var mediaqueryId = addMediaQuery(
-      '@media screen and (max-width: ' + mediaQueryMaxWidth + 'px) {' +
-        '.' + swalClasses.modal + ' {' +
-          'width: auto !important;' +
-          'left: ' + margin + '% !important;' +
-          'right: ' + margin + '% !important;' +
-          'margin-left: 0 !important;' +
-        '}' +
-      '}'
-    );
-    modal.setAttribute('data-mediaquery-id', mediaqueryId);
+    if (widthUnits === 'px') {
+      // add dynamic media query css
+      var margin = 5; // %
+      var mediaQueryMaxWidth = width + (width * (margin/100) * 2);
+      var mediaqueryId = addMediaQuery(
+        '@media screen and (max-width: ' + mediaQueryMaxWidth + 'px) {' +
+          '.' + swalClasses.modal + ' {' +
+            'width: auto !important;' +
+            'left: ' + margin + '% !important;' +
+            'right: ' + margin + '% !important;' +
+            'margin-left: 0 !important;' +
+          '}' +
+        '}'
+      );
+      modal.setAttribute('data-mediaquery-id', mediaqueryId);
+    }
 
     var $title = modal.querySelector('h2');
     var $content = modal.querySelector('.' + swalClasses.content);
@@ -1187,7 +1205,9 @@
     var args = arguments;
     var modal = getModal();
 
-    if (modal === null) {
+    if (modal) {
+      sweetAlert.close();
+    } else {
       sweetAlert.init();
       modal = getModal();
     }
@@ -1362,7 +1382,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.2.1';
+  sweetAlert.version = '4.2.2';
 
   window.sweetAlert = window.swal = sweetAlert;
 

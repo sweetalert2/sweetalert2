@@ -1,8 +1,5 @@
 import { swalPrefix, swalClasses } from './classes.js';
 
-
-export var mediaqueryId = swalPrefix + 'mediaquery';
-
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export var states = {
   previousWindowKeyDown: null,
@@ -243,7 +240,19 @@ export var resetPrevState = function() {
 };
 
 // Remove dynamically created media query
-export var removeMediaQuery = function() {
+export var addMediaQuery = function(content) {
+  var mediaqueryId = swalPrefix + 'mediaquery-' + Math.random().toString(36).substring(2, 5);
+  var head = document.getElementsByTagName('head')[0];
+  var cssNode = document.createElement('style');
+  cssNode.type = 'text/css';
+  cssNode.id = mediaqueryId;
+  cssNode.innerHTML = content;
+  head.appendChild(cssNode);
+  return mediaqueryId;
+};
+
+// Remove dynamically created media query
+export var removeMediaQuery = function(mediaqueryId) {
   var head = document.getElementsByTagName('head')[0];
   var mediaquery = document.getElementById(mediaqueryId);
   if (mediaquery) {

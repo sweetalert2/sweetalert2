@@ -19,26 +19,41 @@ var setParameters = function(params) {
     }
   }
 
-  // set modal width, padding and margin-left
-  modal.style.width = params.width + 'px';
+  // set modal width and margin-left
+  params.width = params.width.toString();
+  var width = params.width.match(/^(\d+)(px|%)?$/);
+  var widthUnits;
+  if (!width) {
+    console.warn('SweetAlert2: Invalid width parameter, usage examples: "400px", "50%", or just 500 which equals to "500px"');
+  } else {
+    widthUnits = 'px';
+    if (width[2]) {
+      widthUnits = width[2];
+    }
+    width = parseInt(width[1], 10);
+    modal.style.width = width + widthUnits;
+    modal.style.marginLeft = -width / 2 + widthUnits;
+  }
+
   modal.style.padding = params.padding + 'px';
-  modal.style.marginLeft = -params.width / 2 + 'px';
   modal.style.background = params.background;
 
-  // add dynamic media query css
-  var margin = 5; // %
-  var mediaQueryMaxWidth = params.width + parseInt(params.width * (margin/100) * 2, 10);
-  var mediaqueryId = dom.addMediaQuery(
-    '@media screen and (max-width: ' + mediaQueryMaxWidth + 'px) {' +
-      '.' + swalClasses.modal + ' {' +
-        'width: auto !important;' +
-        'left: ' + margin + '% !important;' +
-        'right: ' + margin + '% !important;' +
-        'margin-left: 0 !important;' +
-      '}' +
-    '}'
-  );
-  modal.setAttribute('data-mediaquery-id', mediaqueryId);
+  if (widthUnits === 'px') {
+    // add dynamic media query css
+    var margin = 5; // %
+    var mediaQueryMaxWidth = width + (width * (margin/100) * 2);
+    var mediaqueryId = dom.addMediaQuery(
+      '@media screen and (max-width: ' + mediaQueryMaxWidth + 'px) {' +
+        '.' + swalClasses.modal + ' {' +
+          'width: auto !important;' +
+          'left: ' + margin + '% !important;' +
+          'right: ' + margin + '% !important;' +
+          'margin-left: 0 !important;' +
+        '}' +
+      '}'
+    );
+    modal.setAttribute('data-mediaquery-id', mediaqueryId);
+  }
 
   var $title = modal.querySelector('h2');
   var $content = modal.querySelector('.' + swalClasses.content);

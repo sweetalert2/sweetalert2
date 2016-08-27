@@ -253,6 +253,9 @@ export var addMediaQuery = function(content) {
 
 // Remove dynamically created media query
 export var removeMediaQuery = function(mediaqueryId) {
+  if (!mediaqueryId) {
+    return false;
+  }
   var head = document.getElementsByTagName('head')[0];
   var mediaquery = document.getElementById(mediaqueryId);
   if (mediaquery) {

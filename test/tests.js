@@ -131,12 +131,12 @@ test('jQuery/js element as html param', function(assert) {
 test('set and reset defaults', function(assert) {
   swal.setDefaults({confirmButtonText: 'Next >', showCancelButton: true});
   swal('Modal with changed defaults');
-  assert.equal('Next >', $('.swal2-confirm').text());
+  assert.equal($('.swal2-confirm').text(), 'Next >');
   assert.ok($('.swal2-cancel').is(':visible'));
 
   swal.resetDefaults();
   swal('Modal after resetting defaults').done();
-  assert.equal('OK', $('.swal2-confirm').text());
+  assert.equal($('.swal2-confirm').text(), 'OK');
   assert.ok($('.swal2-cancel').is(':hidden'));
 
   swal.clickCancel();
@@ -179,7 +179,7 @@ test('queue', function(assert) {
   swal.queue(steps).then(function() {
     swal('All done!');
   });
-  assert.equal('Step 1', $('.swal2-modal h2').text());
+  assert.equal($('.swal2-modal h2').text(), 'Step 1');
   swal.clickConfirm();
   setTimeout(function() {
     assert.equal($('.swal2-modal h2').text(), 'Step 2');
@@ -213,19 +213,17 @@ test('dynamic queue', function(assert) {
 
   swal.queue(stepGen).then(function() {
     swal('All done!');
-  });
-  assert.equal('Step 1', $('.swal2-modal h2').text());
+  }).done();
+  assert.equal($('.swal2-modal h2').text(), 'Step 1');
   swal.clickConfirm();
   setTimeout(function() {
-    assert.equal('Step 2', $('.swal2-modal h2').text());
-    swal.clickConfirm();
-    setTimeout(function() {
-      assert.equal('All done!', $('.swal2-modal h2').text());
-      swal.clickConfirm();
+    assert.equal($('.swal2-modal h2').text(), 'Step 2');
 
-      // test queue is cancelled on first step, other steps shouldn't be shown
-      swal.queue(stepGen).done();
-      swal.clickCancel();
+    // test Esc on Step 2 (#262)
+    $(document).trigger($.Event('keydown', {
+      keyCode: 27
+    }));
+    setTimeout(function() {
       assert.notOk(swal.isVisible());
       done();
     });
@@ -453,16 +451,16 @@ test('image custom class', function(assert) {
   assert.notOk($('.swal2-image').hasClass('image-custom-class'));
 });
 
+
 test('modal vertical offset', function(assert) {
   var done = assert.async(1);
   // create a modal with dynamic-height content
   swal({
     imageUrl: '../docs/vs_icon.png',
     title: 'Title',
-    html: '<hr /><div style="height: 50px"></div><p>Text content</p>',
+    html: '<hr><div style="height: 50px"></div><p>Text content</p>',
     type: 'warning',
     input: 'text',
-
     animation: false
   });
 

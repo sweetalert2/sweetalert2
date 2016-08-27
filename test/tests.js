@@ -232,6 +232,88 @@ test('dynamic queue', function(assert) {
   });
 });
 
+test('state machine', function(assert) {
+  var done = assert.async();
+  var stepGen = function(obj) {
+    swal.setDefaults({
+      input: 'select',
+      inputValidator: function(value) {
+        switch (value) {
+          case 'insert':
+            obj.insert('Step 2');
+            break;
+          case 'fork':
+            obj.fork(['Step 3', 'Step 4']);
+            break;
+          case 'repeatCurrent':
+            obj.repeatCurrent();
+            break;
+          case 'terminate':
+            obj.terminate();
+            break;
+          default:
+            break;
+        }
+        return new Promise(function(resolve) {
+          resolve();
+        });
+      }
+    });
+    switch (obj.current) {
+      case 'Step 1':
+        return {
+          title: 'Step 1',
+          inputOptions: { insert: 1 }
+        };
+      case 'Step 2':
+        return {
+          title: 'Step 2',
+          inputOptions: { fork: 1 }
+        };
+      case 'Step 4':
+        return {
+          title: 'Step 4',
+          inputOptions: { repeatCurrent: 1 }
+        };
+      case 'Step 5':
+        return {
+          title: 'Step 5',
+          inputOptions: { terminate: 1 }
+        };
+      default:
+        return obj.current;
+    }
+  };
+  swal.queue(stepGen, ['Step 1', 'Step 5']);
+  assert.equal('Step 1', $('.swal2-modal h2').text());
+  swal.clickConfirm();
+  setTimeout(function() {
+    assert.equal('Step 2', $('.swal2-modal h2').text());
+    swal.clickConfirm();
+    setTimeout(function() {
+      assert.equal('Step 3', $('.swal2-modal h2').text());
+      swal.clickConfirm();
+      setTimeout(function() {
+        assert.equal('Step 4', $('.swal2-modal h2').text());
+        swal.clickConfirm();
+        setTimeout(function() {
+          assert.equal('Step 4', $('.swal2-modal h2').text());
+          swal.clickCancel();
+          setTimeout(function() {
+            assert.notOk(swal.isVisible());
+            swal.queue(stepGen, ['Step 5', 'Step 1']);
+            assert.equal('Step 5', $('.swal2-modal h2').text());
+            swal.clickConfirm();
+            setTimeout(function() {
+              assert.notOk(swal.isVisible());
+              done();
+            });
+          });
+        });
+      });
+    });
+  });
+});
 
 test('showLoading and hideLoading', function(assert) {
   swal({

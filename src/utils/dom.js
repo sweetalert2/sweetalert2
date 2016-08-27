@@ -5,8 +5,8 @@ export var mediaqueryId = swalPrefix + 'mediaquery';
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export var states = {
-    previousWindowKeyDown: null,
-    previousActiveElement: null
+  previousWindowKeyDown: null,
+  previousActiveElement: null
 };
 
 /*
@@ -36,8 +36,12 @@ export var getCloseButton = function() {
   return elementByClass(swalClasses.close);
 };
 
-export var getFocusableElements = function() {
-  return [getConfirmButton(), getCancelButton()].concat(Array.prototype.slice.call(
+export var getFocusableElements = function(focusCancel) {
+  var buttons = [getConfirmButton(), getCancelButton()];
+  if (focusCancel) {
+    buttons.reverse();
+  }
+  return buttons.concat(Array.prototype.slice.call(
     getModal().querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')
   ));
 };
@@ -60,8 +64,8 @@ export var addClass = function(elem, className) {
     return;
   }
   var classes = className.split(/\s+/);
-  classes.forEach(function (className) {
-    elem.classList.add(className)
+  classes.forEach(function(className) {
+    elem.classList.add(className);
   });
 };
 
@@ -70,7 +74,7 @@ export var removeClass = function(elem, className) {
     return;
   }
   var classes = className.split(/\s+/);
-  classes.forEach(function (className) {
+  classes.forEach(function(className) {
     elem.classList.remove(className);
   });
 };
@@ -109,6 +113,11 @@ export var hide = function(elems) {
   for (var i = 0; i < elems.length; ++i) {
     _hide(elems[i]);
   }
+};
+
+// borrowed from jqeury $(elem).is(':visible') implementation
+export var isVisible = function(elem) {
+  return elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length;
 };
 
 export var removeStyleProperty = function(elem, property) {
@@ -208,7 +217,6 @@ export var animationEndEvent = (function() {
   var testEl = document.createElement('div'),
     transEndEventNames = {
       'WebkitAnimation': 'webkitAnimationEnd',
-      'MozAnimation': 'animationend',
       'OAnimation': 'oAnimationEnd oanimationend',
       'msAnimation': 'MSAnimationEnd',
       'animation': 'animationend'

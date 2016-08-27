@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
   <title>SweetAlert2 - supported fork of t4t5/sweetalert</title>
 
-  <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="icon" href="./docs/favicon.png">
+  <link rel="apple-touch-icon" href="./docs/apple-touch-icon.png">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Courgette">
-  <link rel="stylesheet" href="./example/example.css">
-  <link rel="stylesheet" href="./example/buttons.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-  <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+  <link rel="stylesheet" href="./docs/example.css">
+  <link rel="stylesheet" href="./docs/buttons.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
   <!-- This is what you need -->
   <script src="https://cdn.jsdelivr.net/es6-promise/latest/es6-promise.min.js"></script> <!-- IE support -->
@@ -30,6 +30,7 @@
     <h1>Sweet<span>Alert</span>2</h1>
     <h2>A beautiful and customizable replacement for JavaScript's popup boxes</h2>
     <h2>Supported fork of t4t5/sweetalert</h2>
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=limontegithubiosweetalert2" id="_carbonads_js"></script>
     <a class="top-right-button download">Download</a>
     <a href="http://www.jsdelivr.com/projects/sweetalert2" class="top-right-button cdn">CDN</a>
   </header>
@@ -305,6 +306,14 @@ swal.queue(steps).then(<span class="func"><i>function</i></span>() {
   swal.resetDefaults();
 })</pre>
     </li>
+    <li>
+      <div class="ui"></div>
+      <p class="note">
+        <a href="https://github.com/matthew-andrews/Promise.prototype.finally" target="_blank">
+          Promise.prototype.finally polyfill <i class="fa fa-external-link" aria-hidden="true"></i>
+        </a>
+      </p>
+    </li>
 
     <li class="dynamic-queue" id="dynamic-queue">
       <div class="ui">
@@ -477,6 +486,11 @@ swal({
         <td><b>reverseButtons</b></td>
         <td><i>false</i></td>
         <td>Set to <strong>true</strong> if you want to invert default buttons positions.</td>
+      </tr>
+      <tr>
+        <td><b>focusCancel</b></td>
+        <td><i>false</i></td>
+        <td>Set to <strong>true</strong> if you want to focus the "Cancel"-button by default.</td>
       </tr>
       <tr>
         <td><b>showCloseButton</b></td>
@@ -878,6 +892,10 @@ swal({
         <th>
           Description
         </th>
+      </tr>
+      <tr>
+        <td><i>swal.isVisible()</i></td>
+        <td>Determine if modal is shown.</td>
       </tr>
       <tr>
         <td><i>swal.setDefaults({Object})</i></td>

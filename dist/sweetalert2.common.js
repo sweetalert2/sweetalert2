@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.1.2
+ * sweetalert2 v4.1.9
  * Released under the MIT License.
  */
 'use strict';
@@ -61,6 +61,7 @@ var defaultParams = {
   cancelButtonClass: null,
   buttonsStyling: true,
   reverseButtons: false,
+  focusCancel: false,
   showCloseButton: false,
   showLoaderOnConfirm: false,
   imageUrl: null,
@@ -80,7 +81,7 @@ var defaultParams = {
   inputAttributes: {},
   inputValidator: null,
   onOpen: null,
-  onClose: null,
+  onClose: null
 };
 
 var sweetHTML = '<div class="' + swalClasses.overlay + '" tabIndex="-1"></div>' +
@@ -149,15 +150,15 @@ var colorLuminance = function(hex, lum) {
  * check if variable is function type. http://stackoverflow.com/questions/5999998/how-can-i-check-if-a-javascript-variable-is-function-type
  */
 var isFunction = function(functionToCheck) {
-    return typeof functionToCheck === "function";
+  return typeof functionToCheck === 'function';
 };
 
 var mediaqueryId = swalPrefix + 'mediaquery';
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 var states = {
-    previousWindowKeyDown: null,
-    previousActiveElement: null
+  previousWindowKeyDown: null,
+  previousActiveElement: null
 };
 
 /*
@@ -187,8 +188,12 @@ var getCloseButton = function() {
   return elementByClass(swalClasses.close);
 };
 
-var getFocusableElements = function() {
-  return [getConfirmButton(), getCancelButton()].concat(Array.prototype.slice.call(
+var getFocusableElements = function(focusCancel) {
+  var buttons = [getConfirmButton(), getCancelButton()];
+  if (focusCancel) {
+    buttons.reverse();
+  }
+  return buttons.concat(Array.prototype.slice.call(
     getModal().querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')
   ));
 };
@@ -211,8 +216,8 @@ var addClass = function(elem, className) {
     return;
   }
   var classes = className.split(/\s+/);
-  classes.forEach(function (className) {
-    elem.classList.add(className)
+  classes.forEach(function(className) {
+    elem.classList.add(className);
   });
 };
 
@@ -221,7 +226,7 @@ var removeClass = function(elem, className) {
     return;
   }
   var classes = className.split(/\s+/);
-  classes.forEach(function (className) {
+  classes.forEach(function(className) {
     elem.classList.remove(className);
   });
 };
@@ -260,6 +265,11 @@ var hide = function(elems) {
   for (var i = 0; i < elems.length; ++i) {
     _hide(elems[i]);
   }
+};
+
+// borrowed from jqeury $(elem).is(':visible') implementation
+var isVisible = function(elem) {
+  return elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length;
 };
 
 var removeStyleProperty = function(elem, property) {
@@ -359,7 +369,6 @@ var animationEndEvent = (function() {
   var testEl = document.createElement('div'),
     transEndEventNames = {
       'WebkitAnimation': 'webkitAnimationEnd',
-      'MozAnimation': 'animationend',
       'OAnimation': 'oAnimationEnd oanimationend',
       'msAnimation': 'MSAnimationEnd',
       'animation': 'animationend'
@@ -527,6 +536,7 @@ var setParameters = function(params) {
       $customImage.removeAttribute('height');
     }
 
+    $customImage.className = swalClasses.image;
     if (params.imageClass) {
       addClass($customImage, params.imageClass);
     }
@@ -605,7 +615,6 @@ var openModal = function(animation, onComplete) {
   }
   show(modal);
   states.previousActiveElement = document.activeElement;
-  addClass(modal, 'visible');
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal);
   }
@@ -617,7 +626,9 @@ var openModal = function(animation, onComplete) {
 var fixVerticalPosition = function() {
   var modal = getModal();
 
-  modal.style.marginTop = getTopMargin(modal);
+  if (modal !== null) {
+    modal.style.marginTop = getTopMargin(modal);
+  }
 };
 
 function modalDependant() {
@@ -746,7 +757,6 @@ function modalDependant() {
       var cancelBtn = getCancelButton();
       var targetedConfirm = confirmBtn === target || confirmBtn.contains(target);
       var targetedCancel = cancelBtn === target || cancelBtn.contains(target);
-      var modalIsVisible  = hasClass(modal, 'visible');
 
       switch (e.type) {
         case 'mouseover':
@@ -779,7 +789,7 @@ function modalDependant() {
           break;
         case 'click':
           // Clicked 'confirm'
-          if (targetedConfirm && modalIsVisible) {
+          if (targetedConfirm && sweetAlert.isVisible()) {
             if (params.input) {
               var inputValue = getInputValue();
 
@@ -806,7 +816,7 @@ function modalDependant() {
             }
 
           // Clicked 'cancel'
-          } else if (targetedCancel && modalIsVisible) {
+          } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.closeModal(params.onClose);
             reject('cancel');
           }
@@ -845,11 +855,13 @@ function modalDependant() {
     // Reverse buttons if neede d
     if (params.reverseButtons) {
       $confirmButton.parentNode.insertBefore($cancelButton, $confirmButton);
+    } else {
+      $confirmButton.parentNode.insertBefore($confirmButton, $cancelButton);
     }
 
     // Focus handling
     function setFocus(index, increment) {
-      var focusableElements = getFocusableElements();
+      var focusableElements = getFocusableElements(params.focusCancel);
       // search for visible elements and select the next possible match
       for (var i = 0; i < focusableElements.length; i++) {
         index = index + increment;
@@ -863,9 +875,9 @@ function modalDependant() {
           index = focusableElements.length - 1;
         }
 
-        // determine if element is visible, the following is borrowed from jqeury $(elem).is(':visible') implementation
+        // determine if element is visible
         var el = focusableElements[index];
-        if (el.offsetWidth || el.offsetHeight || el.getClientRects().length) {
+        if (isVisible(el)) {
           return el.focus();
         }
       }
@@ -882,7 +894,7 @@ function modalDependant() {
 
       var $targetElement = e.target || e.srcElement;
 
-      var focusableElements = getFocusableElements();
+      var focusableElements = getFocusableElements(params.focusCancel);
       var btnIndex = -1; // Find the button - note, this is a nodelist, not an array.
       for (var i = 0; i < focusableElements.length; i++) {
         if ($targetElement === focusableElements[i]) {
@@ -907,7 +919,11 @@ function modalDependant() {
         if (keyCode === 13 || keyCode === 32) {
           if (btnIndex === -1) {
             // ENTER/SPACE clicked outside of a button.
-            fireClick($confirmButton, e);
+            if (params.focusCancel) {
+              fireClick($cancelButton, e);
+            } else {
+              fireClick($confirmButton, e);
+            }
           }
         } else if (keyCode === 27 && params.allowEscapeKey === true) {
           sweetAlert.closeModal(params.onClose);
@@ -1163,12 +1179,20 @@ function sweetAlert() {
     modal = getModal();
   }
 
-  if (hasClass(modal, 'visible')) {
+  if (sweetAlert.isVisible()) {
     resetPrevState();
   }
 
   return modalDependant.apply(this, args);
 }
+
+/*
+ * Global function to determine if swal2 modal is visible
+ */
+sweetAlert.isVisible = function() {
+  var modal = getModal();
+  return isVisible(modal);
+};
 
 /*
  * Global function for chaining sweetAlert modals
@@ -1202,7 +1226,6 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
   var modal = getModal();
   removeClass(modal, 'show-swal2');
   addClass(modal, 'hide-swal2');
-  removeClass(modal, 'visible');
 
   // Reset icon animations
   var $successIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.success);
@@ -1217,8 +1240,7 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
   var $warningIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.warning);
   removeClass($warningIcon, 'pulse-warning');
 
-  resetPrevState();
-
+  // If animation is supported, animate then clean
   if (animationEndEvent && !hasClass(modal, 'no-animation')) {
     modal.addEventListener(animationEndEvent, function swalCloseEventFinished() {
       modal.removeEventListener(animationEndEvent, swalCloseEventFinished);
@@ -1226,10 +1248,14 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
         _hide(modal);
         fadeOut(getOverlay(), 0);
       }
+
+      resetPrevState();
     });
   } else {
+    // Otherwise, clean immediately
     _hide(modal);
     _hide(getOverlay());
+    resetPrevState();
   }
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal);
@@ -1273,6 +1299,7 @@ sweetAlert.init = function() {
   var $select = getChildByClass(modal, swalClasses.select);
   var $checkbox = modal.querySelector('#' + swalClasses.checkbox);
   var $textarea = getChildByClass(modal, swalClasses.textarea);
+  var $customImg = getChildByClass(modal, swalClasses.image);
 
   $input.oninput = function() {
     sweetAlert.resetValidationError();
@@ -1296,6 +1323,8 @@ sweetAlert.init = function() {
   $textarea.oninput = function() {
     sweetAlert.resetValidationError();
   };
+
+  $customImg.onload = $customImg.onerror = fixVerticalPosition;
 
   window.addEventListener('resize', fixVerticalPosition, false);
 };
@@ -1322,7 +1351,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '4.1.2';
+sweetAlert.version = '4.1.9';
 
 window.sweetAlert = window.swal = sweetAlert;
 
@@ -1341,7 +1370,7 @@ window.sweetAlert = window.swal = sweetAlert;
 })();
 
 if (typeof Promise === 'function') {
-  Promise.prototype.done = function() {
+  Promise.prototype.done = Promise.prototype.done || function() {
     return this.catch(function() {
       // Catch promise rejections silently.
       // https://github.com/limonte/sweetalert2/issues/177

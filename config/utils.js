@@ -1,9 +1,9 @@
-var rollup = require('rollup').rollup,
-    pack   = require('../package.json'),
-    banner = require('./banner.js'),
-    fs     = require('fs'),
-    zlib   = require('zlib'),
-    uglify = require('uglify-js');
+var rollup = require('rollup').rollup;
+var pack   = require('../package.json');
+var banner = require('./banner.js');
+var fs     = require('fs');
+var zlib   = require('zlib');
+var uglify = require('uglify-js');
 
 var toUpper = function(_, c) {
   return c ? c.toUpperCase() : '';

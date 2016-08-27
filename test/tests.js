@@ -218,14 +218,12 @@ test('dynamic queue', function(assert) {
   swal.clickConfirm();
   setTimeout(function() {
     assert.equal('Step 2', $('.swal2-modal h2').text());
-    swal.clickConfirm();
-    setTimeout(function() {
-      assert.equal('All done!', $('.swal2-modal h2').text());
-      swal.clickConfirm();
 
-      // test queue is cancelled on first step, other steps shouldn't be shown
-      swal.queue(stepGen).done();
-      swal.clickCancel();
+    // test Esc on Step 2 (#262)
+    $(document).trigger($.Event('keydown', {
+      keyCode: 27
+    }));
+    setTimeout(function() {
       assert.notOk(swal.isVisible());
       done();
     });

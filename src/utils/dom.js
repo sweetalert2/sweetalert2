@@ -240,8 +240,10 @@ export var resetPrevState = function() {
     states.previousActiveElement.focus();
   }
   clearTimeout(modal.timeout);
+};
 
-  // Remove dynamically created media query
+// Remove dynamically created media query
+export var removeMediaQuery = function() {
   var head = document.getElementsByTagName('head')[0];
   var mediaquery = document.getElementById(mediaqueryId);
   if (mediaquery) {

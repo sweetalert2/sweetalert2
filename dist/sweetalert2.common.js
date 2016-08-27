@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.1.9
+ * sweetalert2 v4.2.1
  * Released under the MIT License.
  */
 'use strict';
@@ -152,8 +152,6 @@ var colorLuminance = function(hex, lum) {
 var isFunction = function(functionToCheck) {
   return typeof functionToCheck === 'function';
 };
-
-var mediaqueryId = swalPrefix + 'mediaquery';
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 var states = {
@@ -392,8 +390,22 @@ var resetPrevState = function() {
     states.previousActiveElement.focus();
   }
   clearTimeout(modal.timeout);
+};
 
-  // Remove dynamically created media query
+// Remove dynamically created media query
+var addMediaQuery = function(content) {
+  var mediaqueryId = swalPrefix + 'mediaquery-' + Math.random().toString(36).substring(2, 5);
+  var head = document.getElementsByTagName('head')[0];
+  var cssNode = document.createElement('style');
+  cssNode.type = 'text/css';
+  cssNode.id = mediaqueryId;
+  cssNode.innerHTML = content;
+  head.appendChild(cssNode);
+  return mediaqueryId;
+};
+
+// Remove dynamically created media query
+var removeMediaQuery = function(mediaqueryId) {
   var head = document.getElementsByTagName('head')[0];
   var mediaquery = document.getElementById(mediaqueryId);
   if (mediaquery) {
@@ -422,13 +434,9 @@ var setParameters = function(params) {
   modal.style.background = params.background;
 
   // add dynamic media query css
-  var head = document.getElementsByTagName('head')[0];
-  var cssNode = document.createElement('style');
-  cssNode.type = 'text/css';
-  cssNode.id = mediaqueryId;
   var margin = 5; // %
   var mediaQueryMaxWidth = params.width + parseInt(params.width * (margin/100) * 2, 10);
-  cssNode.innerHTML =
+  var mediaqueryId = addMediaQuery(
     '@media screen and (max-width: ' + mediaQueryMaxWidth + 'px) {' +
       '.' + swalClasses.modal + ' {' +
         'width: auto !important;' +
@@ -436,8 +444,9 @@ var setParameters = function(params) {
         'right: ' + margin + '% !important;' +
         'margin-left: 0 !important;' +
       '}' +
-    '}';
-  head.appendChild(cssNode);
+    '}'
+  );
+  modal.setAttribute('data-mediaquery-id', mediaqueryId);
 
   var $title = modal.querySelector('h2');
   var $content = modal.querySelector('.' + swalClasses.content);
@@ -1179,10 +1188,6 @@ function sweetAlert() {
     modal = getModal();
   }
 
-  if (sweetAlert.isVisible()) {
-    resetPrevState();
-  }
-
   return modalDependant.apply(this, args);
 }
 
@@ -1240,7 +1245,10 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
   var $warningIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.warning);
   removeClass($warningIcon, 'pulse-warning');
 
-  // If animation is supported, animate then clean
+  resetPrevState();
+
+  // If animation is supported, animate then remove mediaquery (#242)
+  var mediaqueryId = modal.getAttribute('data-mediaquery-id');
   if (animationEndEvent && !hasClass(modal, 'no-animation')) {
     modal.addEventListener(animationEndEvent, function swalCloseEventFinished() {
       modal.removeEventListener(animationEndEvent, swalCloseEventFinished);
@@ -1248,14 +1256,13 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
         _hide(modal);
         fadeOut(getOverlay(), 0);
       }
-
-      resetPrevState();
+      removeMediaQuery(mediaqueryId);
     });
   } else {
-    // Otherwise, clean immediately
+    // Otherwise, remove mediaquery immediately
     _hide(modal);
     _hide(getOverlay());
-    resetPrevState();
+    removeMediaQuery(mediaqueryId);
   }
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal);
@@ -1351,7 +1358,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '4.1.9';
+sweetAlert.version = '4.2.1';
 
 window.sweetAlert = window.swal = sweetAlert;
 

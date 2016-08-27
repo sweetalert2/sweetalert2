@@ -26,13 +26,9 @@ var setParameters = function(params) {
   modal.style.background = params.background;
 
   // add dynamic media query css
-  var head = document.getElementsByTagName('head')[0];
-  var cssNode = document.createElement('style');
-  cssNode.type = 'text/css';
-  cssNode.id = dom.mediaqueryId;
   var margin = 5; // %
   var mediaQueryMaxWidth = params.width + parseInt(params.width * (margin/100) * 2, 10);
-  cssNode.innerHTML =
+  var mediaqueryId = dom.addMediaQuery(
     '@media screen and (max-width: ' + mediaQueryMaxWidth + 'px) {' +
       '.' + swalClasses.modal + ' {' +
         'width: auto !important;' +
@@ -40,8 +36,9 @@ var setParameters = function(params) {
         'right: ' + margin + '% !important;' +
         'margin-left: 0 !important;' +
       '}' +
-    '}';
-  head.appendChild(cssNode);
+    '}'
+  );
+  modal.setAttribute('data-mediaquery-id', mediaqueryId);
 
   var $title = modal.querySelector('h2');
   var $content = modal.querySelector('.' + swalClasses.content);
@@ -783,10 +780,6 @@ function sweetAlert() {
     modal = dom.getModal();
   }
 
-  if (sweetAlert.isVisible()) {
-    dom.resetPrevState();
-  }
-
   return modalDependant.apply(this, args);
 }
 
@@ -844,7 +837,10 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
   var $warningIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.warning);
   dom.removeClass($warningIcon, 'pulse-warning');
 
-  // If animation is supported, animate then clean
+  dom.resetPrevState();
+
+  // If animation is supported, animate then remove mediaquery (#242)
+  var mediaqueryId = modal.getAttribute('data-mediaquery-id');
   if (dom.animationEndEvent && !dom.hasClass(modal, 'no-animation')) {
     modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished() {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished);
@@ -852,14 +848,13 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
         dom._hide(modal);
         dom.fadeOut(dom.getOverlay(), 0);
       }
-
-      dom.resetPrevState();
+      dom.removeMediaQuery(mediaqueryId);
     });
   } else {
-    // Otherwise, clean immediately
+    // Otherwise, remove mediaquery immediately
     dom._hide(modal);
     dom._hide(dom.getOverlay());
-    dom.resetPrevState();
+    dom.removeMediaQuery(mediaqueryId);
   }
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal);

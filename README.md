@@ -126,7 +126,12 @@ Configuration
 | `text`                | `null`               | A description for the modal. It can either be added to the object under the key "text" or passed as the second parameter of the function. |
 | `html`                | `null`               | A HTML description for the modal. If `text` and `html` parameters are provided in the same time, "text" will be used. |
 | `type `               | `null`               | The type of the modal. SweetAlert2 comes with [5 built-in types](#modal-types) which will show a corresponding icon animation: `warning`, `error`, `success`, `info` and `question`. It can either be put in the array under the key `type` or passed as the third parameter of the function. |
+| `input`               | `null`               | Input field type, can be `"text"`, `"email"`, `"password"`, `"textarea"`, `"select"`, `"radio"`, `"checkbox"` and `"file"`. |
+| `width`               | `500`                | Modal window width, including paddings (`box-sizing: border-box`). |
+| `padding`             | `20`                 | Modal window padding. |
+| `background`          | `"#fff"`             | Modal window background (CSS `background` property). |
 | `customClass`         | `null`               | A custom CSS class for the modal. |
+| `timer`               | `null`               | Auto close timer of the modal. Set in ms (milliseconds). |
 | `animation`           | `true`               | If set to `false`, modal CSS animation will be disabled. |
 | `allowOutsideClick`   | `true`               | If set to `false`, the user can't dismiss the modal by clicking outside it. |
 | `allowEscapeKey`      | `true`               | If set to `false`, the user can't dismiss the modal by pressing the Escape key. |
@@ -148,11 +153,6 @@ Configuration
 | `imageWidth`          | `null`               | If imageUrl is set, you can specify imageWidth to describes image width in px. |
 | `imageHeight`         | `null`               | Custom image height in px. |
 | `imageClass`          | `null`               | A custom CSS class for the customized icon. |
-| `timer`               | `null`               | Auto close timer of the modal. Set in ms (milliseconds). |
-| `width`               | `500`                | Modal window width, including paddings (`box-sizing: border-box`). |
-| `padding`             | `20`                 | Modal window padding. |
-| `background`          | `"#fff"`             | Modal window background (CSS `background` property). |
-| `input`               | `null`               | Input field type, can be `"text"`, `"email"`, `"password"`, `"textarea"`, `"select"`, `"radio"`, `"checkbox"` and `"file"`. |
 | `inputPlaceholder`    | `""`                 | Input field placeholder. |
 | `inputValue`          | `""`                 | Input field initial value. |
 | `inputOptions`        | `{}` or `Promise`    | If `input` parameter is set to `"select"` or `"radio"`, you can provide options. Object keys will represent options values, object values will represent options text values. |

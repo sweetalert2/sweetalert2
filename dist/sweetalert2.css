@@ -38,7 +38,7 @@
     padding: 0;
     line-height: 60px;
     display: block; }
-  .swal2-modal hr {
+  .swal2-modal .swal2-spacer {
     height: 10px;
     color: transparent;
     border: 0; }

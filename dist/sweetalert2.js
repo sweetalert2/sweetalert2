@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.1.9
+ * sweetalert2 v4.2.0
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -396,8 +396,10 @@
       states.previousActiveElement.focus();
     }
     clearTimeout(modal.timeout);
+  };
 
-    // Remove dynamically created media query
+  // Remove dynamically created media query
+  var removeMediaQuery = function() {
     var head = document.getElementsByTagName('head')[0];
     var mediaquery = document.getElementById(mediaqueryId);
     if (mediaquery) {
@@ -1185,6 +1187,7 @@
 
     if (sweetAlert.isVisible()) {
       resetPrevState();
+      removeMediaQuery();
     }
 
     return modalDependant.apply(this, args);
@@ -1244,6 +1247,8 @@
     var $warningIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.warning);
     removeClass($warningIcon, 'pulse-warning');
 
+    resetPrevState();
+
     // If animation is supported, animate then clean
     if (animationEndEvent && !hasClass(modal, 'no-animation')) {
       modal.addEventListener(animationEndEvent, function swalCloseEventFinished() {
@@ -1252,14 +1257,13 @@
           _hide(modal);
           fadeOut(getOverlay(), 0);
         }
-
-        resetPrevState();
+        removeMediaQuery();
       });
     } else {
       // Otherwise, clean immediately
       _hide(modal);
       _hide(getOverlay());
-      resetPrevState();
+      removeMediaQuery();
     }
     if (onComplete !== null && typeof onComplete === 'function') {
       onComplete.call(this, modal);
@@ -1355,7 +1359,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.1.9';
+  sweetAlert.version = '4.2.0';
 
   window.sweetAlert = window.swal = sweetAlert;
 

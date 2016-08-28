@@ -32,7 +32,9 @@ Or:
 npm install sweetalert2
 ```
 
-Or download from CDN: [https://www.jsdelivr.com/projects/sweetalert2](https://www.jsdelivr.com/projects/sweetalert2)
+Or download from CDN: 
+ - [https://www.jsdelivr.com/projects/sweetalert2](https://www.jsdelivr.com/projects/sweetalert2)
+ - [https://cdnjs.com/libraries/limonte-sweetalert2](https://cdnjs.com/libraries/limonte-sweetalert2)
 
 To use:
 

@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.2.2
+ * sweetalert2 v4.2.3
  * Released under the MIT License.
  */
 'use strict';
@@ -1201,11 +1201,13 @@ function sweetAlert() {
   var args = arguments;
   var modal = getModal();
 
-  if (modal) {
-    sweetAlert.close();
-  } else {
+  if (modal === null) {
     sweetAlert.init();
     modal = getModal();
+  }
+
+  if (sweetAlert.isVisible()) {
+    sweetAlert.close();
   }
 
   return modalDependant.apply(this, args);
@@ -1378,7 +1380,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '4.2.2';
+sweetAlert.version = '4.2.3';
 
 window.sweetAlert = window.swal = sweetAlert;
 

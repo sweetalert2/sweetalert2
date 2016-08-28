@@ -790,11 +790,13 @@ function sweetAlert() {
   var args = arguments;
   var modal = dom.getModal();
 
-  if (modal) {
-    sweetAlert.close();
-  } else {
+  if (modal === null) {
     sweetAlert.init();
     modal = dom.getModal();
+  }
+
+  if (sweetAlert.isVisible()) {
+    sweetAlert.close();
   }
 
   return modalDependant.apply(this, args);

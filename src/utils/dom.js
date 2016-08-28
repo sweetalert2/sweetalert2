@@ -241,7 +241,7 @@ export var resetPrevState = function() {
 
 // Remove dynamically created media query
 export var addMediaQuery = function(content) {
-  var mediaqueryId = swalPrefix + 'mediaquery-' + Math.random().toString(36).substring(2, 5);
+  var mediaqueryId = swalPrefix + 'mediaquery-' + Math.random().toString(36).substring(2, 7);
   var head = document.getElementsByTagName('head')[0];
   var cssNode = document.createElement('style');
   cssNode.type = 'text/css';
@@ -253,6 +253,9 @@ export var addMediaQuery = function(content) {
 
 // Remove dynamically created media query
 export var removeMediaQuery = function(mediaqueryId) {
+  if (!mediaqueryId) {
+    return false;
+  }
   var head = document.getElementsByTagName('head')[0];
   var mediaquery = document.getElementById(mediaqueryId);
   if (mediaquery) {

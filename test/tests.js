@@ -282,25 +282,25 @@ test('state machine', function(assert) {
         return obj.current;
     }
   };
-  swal.queue(stepGen, ['Step 1', 'Step 5']);
-  assert.equal('Step 1', $('.swal2-modal h2').text());
+  swal.queue(stepGen, ['Step 1', 'Step 5']).done();
+  assert.equal($('.swal2-modal h2').text(), 'Step 1');
   swal.clickConfirm();
   setTimeout(function() {
-    assert.equal('Step 2', $('.swal2-modal h2').text());
+    assert.equal($('.swal2-modal h2').text(), 'Step 2');
     swal.clickConfirm();
     setTimeout(function() {
-      assert.equal('Step 3', $('.swal2-modal h2').text());
+      assert.equal($('.swal2-modal h2').text(), 'Step 3');
       swal.clickConfirm();
       setTimeout(function() {
-        assert.equal('Step 4', $('.swal2-modal h2').text());
+        assert.equal($('.swal2-modal h2').text(), 'Step 4');
         swal.clickConfirm();
         setTimeout(function() {
-          assert.equal('Step 4', $('.swal2-modal h2').text());
+          assert.equal($('.swal2-modal h2').text(), 'Step 4');
           swal.clickCancel();
           setTimeout(function() {
             assert.notOk(swal.isVisible());
             swal.queue(stepGen, ['Step 5', 'Step 1']);
-            assert.equal('Step 5', $('.swal2-modal h2').text());
+            assert.equal($('.swal2-modal h2').text(), 'Step 5');
             swal.clickConfirm();
             setTimeout(function() {
               assert.notOk(swal.isVisible());

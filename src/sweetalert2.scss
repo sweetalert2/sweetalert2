@@ -32,9 +32,6 @@
   display: none;
   z-index: 2000;
 
-  /* github.com/limonte/sweetalert2/issues/268 */
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
   &:focus {
     outline: none;
   }
@@ -138,305 +135,309 @@
   > .swal2-checkbox {
     display: none;
   }
-}
 
-.swal2-content {
-  font-size: 18px;
-  text-align: center;
-  font-weight: 300;
-  position: relative;
-  float: none;
-  margin: 0;
-  padding: 0;
-  line-height: normal;
-  color: #555;
-}
+  .swal2-content {
+    font-size: 18px;
+    text-align: center;
+    font-weight: 300;
+    position: relative;
+    float: none;
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    color: #555;
+  }
 
-.swal2-icon {
-  $red:    #f27474;
-  $orange: #f8bb86;
-  $cyan:   #3fc3ee;
-  $blue:   #c9dae1;
-  $green:  #a5dc86;
+  .swal2-icon {
+    $red:    #f27474;
+    $orange: #f8bb86;
+    $cyan:   #3fc3ee;
+    $blue:   #c9dae1;
+    $green:  #a5dc86;
 
-  width: 80px;
-  height: 80px;
-  border: 4px solid #808080;
-  border-radius: 50%;
-  margin: 20px auto 30px;
-  padding: 0;
-  position: relative;
-  box-sizing: content-box;
-  cursor: default;
+    width: 80px;
+    height: 80px;
+    border: 4px solid #808080;
+    border-radius: 50%;
+    margin: 20px auto 30px;
+    padding: 0;
+    position: relative;
+    box-sizing: content-box;
+    cursor: default;
 
-  /* http://stackoverflow.com/a/4407335/1331425 */
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    /* http://stackoverflow.com/a/4407335/1331425 */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
-  &.swal2-error {
-    border-color: $red;
+    &.swal2-error {
+      border-color: $red;
 
-    .x-mark {
-      position: relative;
-      display: block;
-    }
-
-    .line {
-      position: absolute;
-      height: 5px;
-      width: 47px;
-      background-color: $red;
-      display: block;
-      top: 37px;
-      border-radius: 2px;
-
-      &.left {
-        transform: rotate(45deg);
-        left: 17px;
+      .x-mark {
+        position: relative;
+        display: block;
       }
 
-      &.right {
-        transform: rotate(-45deg);
-        right: 16px;
-      }
-    }
-  }
-
-  &.swal2-warning {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: $orange;
-    border-color: $orange;
-    font-size: 60px;
-    line-height: 80px;
-    text-align: center;
-  }
-
-  &.swal2-info {
-    font-family: "Open Sans", sans-serif;
-    color: $cyan;
-    border-color: $cyan;
-    font-size: 60px;
-    line-height: 80px;
-    text-align: center;
-  }
-
-  &.swal2-question {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: $blue;
-    border-color: $blue;
-    font-size: 60px;
-    line-height: 80px;
-    text-align: center;
-  }
-
-  &.swal2-success {
-    border-color: $green;
-
-    &::before,
-    &::after { // Emulate moving circular line
-      content: '';
-      border-radius: 50%;
-      position: absolute;
-      width: 60px;
-      height: 120px;
-      background: #fff;
-      transform: rotate(45deg);
-    }
-
-    &::before {
-      border-radius: 120px 0 0 120px;
-      top: -7px;
-      left: -33px;
-
-      transform: rotate(-45deg);
-      transform-origin: 60px 60px;
-    }
-
-    &::after {
-      border-radius: 0 120px 120px 0;
-      top: -11px;
-      left: 30px;
-
-      transform: rotate(-45deg);
-      transform-origin: 0 60px;
-    }
-
-    .placeholder { // Ring
-      width: 80px;
-      height: 80px;
-      border: 4px solid rgba($green, .2);
-      border-radius: 50%;
-      box-sizing: content-box;
-
-      position: absolute;
-      left: -4px;
-      top: -4px;
-      z-index: 2;
-    }
-
-    .fix {  // Hide corners left from animation
-      width: 7px;
-      height: 90px;
-      background-color: #fff;
-
-      position: absolute;
-      left: 28px;
-      top: 8px;
-      z-index: 1;
-
-      transform: rotate(-45deg);
-    }
-
-    .line {
-      height: 5px;
-      background-color: $green;
-      display: block;
-      border-radius: 2px;
-
-      position: absolute;
-      z-index: 2;
-
-      &.tip {
-        width: 25px;
-
-        left: 14px;
-        top: 46px;
-
-        transform: rotate(45deg);
-      }
-
-      &.long {
+      .line {
+        position: absolute;
+        height: 5px;
         width: 47px;
+        background-color: $red;
+        display: block;
+        top: 37px;
+        border-radius: 2px;
 
-        right: 8px;
-        top: 38px;
+        &.left {
+          transform: rotate(45deg);
+          left: 17px;
+        }
+
+        &.right {
+          transform: rotate(-45deg);
+          right: 16px;
+        }
+      }
+    }
+
+    &.swal2-warning {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: $orange;
+      border-color: $orange;
+      font-size: 60px;
+      line-height: 80px;
+      text-align: center;
+    }
+
+    &.swal2-info {
+      font-family: "Open Sans", sans-serif;
+      color: $cyan;
+      border-color: $cyan;
+      font-size: 60px;
+      line-height: 80px;
+      text-align: center;
+    }
+
+    &.swal2-question {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: $blue;
+      border-color: $blue;
+      font-size: 60px;
+      line-height: 80px;
+      text-align: center;
+    }
+
+    &.swal2-success {
+      border-color: $green;
+
+      &::before,
+      &::after { // Emulate moving circular line
+        content: '';
+        border-radius: 50%;
+        position: absolute;
+        width: 60px;
+        height: 120px;
+        background: #fff;
+        transform: rotate(45deg);
+      }
+
+      &::before {
+        border-radius: 120px 0 0 120px;
+        top: -7px;
+        left: -33px;
+
+        transform: rotate(-45deg);
+        transform-origin: 60px 60px;
+      }
+
+      &::after {
+        border-radius: 0 120px 120px 0;
+        top: -11px;
+        left: 30px;
+
+        transform: rotate(-45deg);
+        transform-origin: 0 60px;
+      }
+
+      .placeholder { // Ring
+        width: 80px;
+        height: 80px;
+        border: 4px solid rgba($green, .2);
+        border-radius: 50%;
+        box-sizing: content-box;
+
+        position: absolute;
+        left: -4px;
+        top: -4px;
+        z-index: 2;
+      }
+
+      .fix {  // Hide corners left from animation
+        width: 7px;
+        height: 90px;
+        background-color: #fff;
+
+        position: absolute;
+        left: 28px;
+        top: 8px;
+        z-index: 1;
 
         transform: rotate(-45deg);
       }
+
+      .line {
+        height: 5px;
+        background-color: $green;
+        display: block;
+        border-radius: 2px;
+
+        position: absolute;
+        z-index: 2;
+
+        &.tip {
+          width: 25px;
+
+          left: 14px;
+          top: 46px;
+
+          transform: rotate(45deg);
+        }
+
+        &.long {
+          width: 47px;
+
+          right: 8px;
+          top: 38px;
+
+          transform: rotate(-45deg);
+        }
+      }
     }
   }
-}
 
-.swal2-input,
-.swal2-textarea,
-.swal2-select,
-.swal2-radio,
-.swal2-checkbox {
-  margin: 20px auto;
-}
-
-.swal2-input:not([type="file"]), .swal2-textarea {
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 3px;
-  border: 1px solid rgb(215, 215, 215);
-  font-size: 18px;
-  box-shadow: inset 0px 1px 1px rgba(black, 0.06);
-  transition: all 0.3s;
-  &.error {
-    border-color: #f06e57 !important;
+  .swal2-input,
+  .swal2-textarea,
+  .swal2-select,
+  .swal2-radio,
+  .swal2-checkbox {
+    margin: 20px auto;
   }
-  &:focus {
-    outline: none;
-    box-shadow: 0px 0px 3px rgb(196, 230, 245);
-    border: 1px solid rgb(180, 219, 237);
+
+  .swal2-input:not([type="file"]), .swal2-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: 1px solid rgb(215, 215, 215);
+    font-size: 18px;
+    box-shadow: inset 0px 1px 1px rgba(black, 0.06);
+    transition: all 0.3s;
+    &.error {
+      border-color: #f06e57 !important;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0px 0px 3px rgb(196, 230, 245);
+      border: 1px solid rgb(180, 219, 237);
+      &::-moz-placeholder {
+        transition: opacity 0.3s 0.03s ease;
+        opacity: 0.8;
+      }
+      &:-ms-input-placeholder {
+        transition: opacity 0.3s 0.03s ease;
+        opacity: 0.8;
+      }
+      &::-webkit-input-placeholder {
+        transition: opacity 0.3s 0.03s ease;
+        opacity: 0.8;
+      }
+    }
     &::-moz-placeholder {
-      transition: opacity 0.3s 0.03s ease;
-      opacity: 0.8;
+      color: lighten(#575757, 40);
     }
     &:-ms-input-placeholder {
-      transition: opacity 0.3s 0.03s ease;
-      opacity: 0.8;
+      color: lighten(#575757, 40);
     }
     &::-webkit-input-placeholder {
-      transition: opacity 0.3s 0.03s ease;
-      opacity: 0.8;
+      color: lighten(#575757, 40);
     }
   }
-  &::-moz-placeholder {
-    color: lighten(#575757, 40);
-  }
-  &:-ms-input-placeholder {
-    color: lighten(#575757, 40);
-  }
-  &::-webkit-input-placeholder {
-    color: lighten(#575757, 40);
-  }
-}
 
-.swal2-input:not([type="file"]) {
-  height: 43px;
-  padding: 0 12px;
-}
-
-.swal2-input[type="file"] {
-  font-size: 20px;
-}
-
-.swal2-textarea {
-  height: 108px;
-  padding: 12px;
-}
-
-.swal2-select {
-  color: #555;
-  font-size: inherit;
-  padding: 5px 10px;
-  min-width: 40%;
-  max-width: 100%;
-}
-
-.swal2-radio {
-  border: 0;
-
-  label:not(:first-child) {
-    margin-left: 20px;
+  .swal2-input:not([type="file"]) {
+    height: 43px;
+    padding: 0 12px;
   }
 
-  input, span {
-    vertical-align: middle;
+  .swal2-input[type="file"] {
+    font-size: 20px;
   }
 
-  input {
-    margin: 0 3px 0 0;
+  .swal2-textarea {
+    height: 108px;
+    padding: 12px;
   }
-}
 
-.swal2-checkbox {
-  color: #555;
-  input, span {
-    vertical-align: middle;
+  .swal2-select {
+    color: #555;
+    font-size: inherit;
+    padding: 5px 10px;
+    min-width: 40%;
+    max-width: 100%;
   }
-}
 
-.swal2-validationerror {
-  background-color: #f1f1f1;
-  margin: 0 -20px;
-  overflow: hidden;
-  padding: 10px;
-  color: #797979;
-  font-size: 16px;
-  font-weight: 300;
-  display: none;
+  .swal2-radio {
+    border: 0;
 
-  &::before {
-    content: "!";
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background-color: rgb(234, 125, 125);
-    color: white;
-    line-height: 24px;
-    text-align: center;
-    margin-right: 10px;
+    label:not(:first-child) {
+      margin-left: 20px;
+    }
+
+    input, span {
+      vertical-align: middle;
+    }
+
+    input {
+      margin: 0 3px 0 0;
+    }
+  }
+
+  .swal2-checkbox {
+    color: #555;
+    input, span {
+      vertical-align: middle;
+    }
+  }
+
+  .swal2-validationerror {
+    background-color: #f1f1f1;
+    margin: 0 -20px;
+    overflow: hidden;
+    padding: 10px;
+    color: #797979;
+    font-size: 16px;
+    font-weight: 300;
+    display: none;
+
+    &::before {
+      content: "!";
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: rgb(234, 125, 125);
+      color: white;
+      line-height: 24px;
+      text-align: center;
+      margin-right: 10px;
+    }
   }
 }
 
+/* github.com/limonte/sweetalert2/issues/268 */
+[class^=swal2] {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
 
 // Animations
 

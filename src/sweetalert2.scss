@@ -32,6 +32,9 @@
   display: none;
   z-index: 2000;
 
+  /* github.com/limonte/sweetalert2/issues/268 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
   &:focus {
     outline: none;
   }
@@ -333,7 +336,6 @@
   border: 1px solid rgb(215, 215, 215);
   font-size: 18px;
   box-shadow: inset 0px 1px 1px rgba(black, 0.06);
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
   &.error {
     border-color: #f06e57 !important;

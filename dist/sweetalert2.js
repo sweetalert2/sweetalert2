@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.2.3
+ * sweetalert2 v4.2.4
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1228,12 +1228,41 @@
   /*
    * Global function for chaining sweetAlert modals
    */
-  sweetAlert.queue = function(steps) {
+  sweetAlert.queue = function(steps, path) {
+    var stateObject;
+    if (path) {
+      stateObject = {
+        fork: function(newPath) {
+          path = newPath;
+          this.next = newPath[0];
+        },
+        repeatCurrent: function() {
+          path.unshift(this.current);
+          this.next = this.current;
+        },
+        insert: function(state) {
+          path.unshift(state);
+          this.next = this.state;
+        },
+        terminate: function() {
+          path = [];
+          this.next = '';
+        }
+      };
+    }
     return new Promise(function(resolve, reject) {
       (function step(i, callback) {
         var nextStep = null;
         if (isFunction(steps)) {
-          nextStep = steps(i);
+          if (path && path.length > 0) {
+            stateObject.current = path[0];
+            stateObject.next = path.length > 1 ? path[1] : '';
+            stateObject.alertNumber = i;
+            path.shift();
+            nextStep = steps(stateObject);
+          } else {
+            nextStep = steps(i);
+          }
         } else if (i < steps.length) {
           nextStep = steps[i];
         }
@@ -1384,7 +1413,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.2.3';
+  sweetAlert.version = '4.2.4';
 
   window.sweetAlert = window.swal = sweetAlert;
 

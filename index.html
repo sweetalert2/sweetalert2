@@ -345,6 +345,63 @@ swal.queue(steps).then(<span class="func"><i>function</i></span>() {
 
 swal.queue(stepGen)</pre>
     </li>
+
+    <li class="state-machine" id="state-machine">
+      <div class="ui">
+        <p>State Machine</p>
+        <button>Try Me!</button>
+      </div>
+      <pre>
+<span class="func">var</span> stepGen = <span class="func">function</span> (obj) {
+  <span class="func">var</span> i = obj.alertNumber;
+  swal.setDefaults({
+    confirmButtonText: <span class="str">'Go'</span>,
+    showCancelButton: <span class="val">false</span>,
+    animation: <span class="val">true</span>,
+    text: <span class="str">'Message no. '</span> + i + <span class="str">', Jump to:'</span>,
+    input: <span class="str">'select'</span>,
+    inputValue: <span class="str">'default'</span>,
+    inputValidator: <span class="func">function</span> (value) {
+      <span class="tag">if</span> (value != <span class="str">'default'</span>)
+        obj.insert(value);
+        <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func">function</span> (resolve) {
+          resolve();
+        });
+    }
+  });
+  <span class="func">switch</span> (obj.current) {
+    <span class="func">case</span> <span class="str">'starting'</span>:
+      <span class="tag">return</span> {
+        title: <span class="str">'Starting Message'</span>,
+        inputOptions: {
+                        <span class="str">'default'</span>: <span class="str">'default'</span>,
+                        <span class="str">'middle'</span>: <span class="str">'middle'</span>,
+                        <span class="str">'last'</span>: <span class="str">'last'</span>
+                      }
+      };
+    <span class="func">case</span> <span class="str">'middle'</span>
+      <span class="tag">return</span> {
+        title: <span class="str">'Middle Message'</span>,
+        inputOptions: {
+                        <span class="str">'starting'</span>: <span class="str">'starting'</span>,
+                        <span class="str">'last'</span>: <span class="str">'last'</span>,
+                        <span class="str">'default'</span>: <span class="str">'default'</span>
+                      }
+      }
+    <span class="func">case</span> <span class="str">'last'</span>
+      <span class="tag">return</span> {
+        title: <span class="str">'Last Message'</span>
+        inputOptions: {
+                        <span class="str">'starting'</span>: <span class="str">'starting'</span>,
+                        <span class="str">'middle'</span>: <span class="str">'middle'</span>,
+                        <span class="str">'default'</span>: <span class="str">'default'</span>
+                      },
+      }
+    }
+  }
+swal.queue(stepGen, [<span class="str">'starting'</span>, <span class="str">'middle'</span>, <span class="str">'last'</span>]);
+</pre>
+    </li>
   </ul>
 
 
@@ -1334,12 +1391,49 @@ swal({
           return {
             title: secondTitle
           };
-
         default:
           break;
       }
     };
     swal.queue(stepGen);
+  });
+
+  $('.examples .state-machine').on('click', function() {
+    var stepGen = function(obj) {
+      swal.setDefaults({
+        confirmButtonText: 'Go',
+        showCancelButton: false,
+        animation: true,
+        text: 'Message no. ' + obj.alertNumber + ", Jump to:",
+        input: 'select',
+        inputValue: 'default',
+        inputValidator: function(value) {
+          if (value != 'default')
+            obj.insert(value);
+          return new Promise(function(resolve, reject) {
+            resolve();
+          });
+        }
+      });
+      switch (obj.current) {
+        case 'starting':
+          return {
+            title: 'Starting Message',
+            inputOptions: { 'default': 'default', 'middle': 'middle', 'last': 'last' },
+          };
+        case 'middle':
+          return {
+            title: "Middle Message",
+            inputOptions: { 'starting': 'starting', 'last': 'last', 'default': 'default' },
+          }
+        case 'last':
+          return {
+            title: "Last Message",
+            inputOptions: { 'starting': 'starting', 'middle': 'middle', 'default': 'default' },
+          }
+      }
+    }
+    swal.queue(stepGen, ['starting', 'middle', 'last']);
   });
 
   $('.modal-types button').on('click', function() {

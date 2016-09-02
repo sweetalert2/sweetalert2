@@ -67,7 +67,7 @@ export var sweetHTML = '<div class="' + swalClasses.overlay + '" tabIndex="-1"><
     '<textarea class="' + swalClasses.textarea + '"></textarea>' +
     '<div class="' + swalClasses.validationerror + '"></div>' +
     '<hr class="' + swalClasses.spacer + '">' +
-    '<button class="' + swalClasses.confirm + '">OK</button>' +
-    '<button class="' + swalClasses.cancel + '">Cancel</button>' +
+    '<button type="button" class="' + swalClasses.confirm + '">OK</button>' +
+    '<button type="button" class="' + swalClasses.cancel + '">Cancel</button>' +
     '<span class="' + swalClasses.close + '">&times;</span>' +
   '</div>';

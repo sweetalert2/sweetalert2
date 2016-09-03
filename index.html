@@ -477,7 +477,13 @@ swal({
       <tr id="input-parameter">
         <td><b>input</b></td>
         <td><i>null</i></td>
-        <td>Input field type, can be <strong>text</strong>, <strong>email</strong>, <strong>password</strong>, <strong>textarea</strong>, <strong>select</strong>, <strong>radio</strong>, <strong>checkbox</strong> and <strong>file</strong>.</td>
+        <td>
+          Input field type, can be
+          <strong>text</strong>, <strong>email</strong>, <strong>password</strong>,
+          <strong>number</strong>, <strong>tel</strong>, <strong>range</strong>,
+          <strong>textarea</strong>, <strong>select</strong>, <strong>radio</strong>,
+          <strong>checkbox</strong> and <strong>file</strong>.
+        </td>
       </tr>
       <tr>
         <td><b>width</b></td>
@@ -901,12 +907,34 @@ swal({
       </td>
       <td><button class="input-type-file">Try me!</button></td>
     </tr>
+
+    <tr id="input-range">
+      <td><strong>range</strong></td>
+      <td>
+        <pre>
+<span class="func">var</span> defaultValue = <span class="val">25</span>;
+swal({
+  title: <span class="str">'How old are you',</span>
+  type: <span class="str">'question',</span>
+  input: <span class="str">'range',</span>
+  html: <span class="str">'&lt;output id="amount"&gt;'</span> + defaultValue + <span class="str">'&lt;/output&gt;'</span>,
+  inputAttributes: {
+    min: <span class="val">8</span>,
+    max: <span class="val">120</span>,
+    step: <span class="val">1</span>
+    oninput: <span class="str">'amount.value = this.value'</span>
+  },
+  inputValue: defaultValue
+})</pre>
+      </td>
+      <td><button class="input-type-range">Try me!</button></td>
+    </tr>
   </table>
 
   <div class="mobile-hidden">
     <p>
       Multiple inputs aren't supported, you can achieve them by using <strong>html</strong> and <strong>preConfirm</strong> parameters.<br>
-      Notice that in <strong>preConfirm</strong> function you can pass the custom result to <strong>resolve()</strong>:
+      Inside the <strong>preConfirm()</strong> function you can pass the custom result to the <strong>resolve()</strong> function as a parameter:
     </p>
     <table class="modal-input-types">
       <tr id="multiple-inputs">
@@ -1306,6 +1334,23 @@ swal({
     }).done();
   });
 
+  $('.input-type-range').on('click', function() {
+    var defaultValue = 25;
+    swal({
+      title: 'How old are you?',
+      type: 'question',
+      html: '<output id="amount">' + defaultValue + '</output>',
+      input: 'range',
+      inputAttributes: {
+        min: 8,
+        max: 120,
+        step: 1,
+        oninput: 'amount.value = this.value'
+      },
+      inputValue: defaultValue
+    }).done();
+  });
+
   $('.input-type-multiple').on('click', function() {
     swal({
       title: 'Multiple inputs',
@@ -1398,7 +1443,7 @@ swal({
     swal.queue(stepGen);
   });
 
-  $('.examples .state-machine').on('click', function() {
+  $('.examples .state-machine button').on('click', function() {
     var stepGen = function(obj) {
       swal.setDefaults({
         confirmButtonText: 'Go',

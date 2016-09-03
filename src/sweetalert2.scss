@@ -373,6 +373,10 @@
     font-size: 20px;
   }
 
+  .swal2-input[type="number"] {
+    max-width: 150px;
+  }
+
   .swal2-textarea {
     height: 108px;
     padding: 12px;

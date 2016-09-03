@@ -32,7 +32,7 @@ Or:
 npm install sweetalert2
 ```
 
-Or download from CDN: 
+Or download from CDN:
  - [https://www.jsdelivr.com/projects/sweetalert2](https://www.jsdelivr.com/projects/sweetalert2)
  - [https://cdnjs.com/libraries/limonte-sweetalert2](https://cdnjs.com/libraries/limonte-sweetalert2)
 
@@ -128,7 +128,7 @@ Configuration
 | `text`                | `null`               | A description for the modal. It can either be added to the object under the key "text" or passed as the second parameter of the function. |
 | `html`                | `null`               | A HTML description for the modal. If `text` and `html` parameters are provided in the same time, "text" will be used. |
 | `type `               | `null`               | The type of the modal. SweetAlert2 comes with [5 built-in types](#modal-types) which will show a corresponding icon animation: `warning`, `error`, `success`, `info` and `question`. It can either be put in the array under the key `type` or passed as the third parameter of the function. |
-| `input`               | `null`               | Input field type, can be `"text"`, `"email"`, `"password"`, `"textarea"`, `"select"`, `"radio"`, `"checkbox"` and `"file"`. |
+| `input`               | `null`               | Input field type, can be `"text"`, `"email"`, `"password"`, `"number"`, `"tel"`, `"range"`, `"textarea"`, `"select"`, `"radio"`, `"checkbox"` and `"file"`. |
 | `width`               | `"500px"`            | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. |
 | `padding`             | `20`                 | Modal window padding. |
 | `background`          | `"#fff"`             | Modal window background (CSS `background` property). |

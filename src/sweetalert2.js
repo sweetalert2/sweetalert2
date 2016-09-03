@@ -675,6 +675,9 @@ function modalDependant() {
       case 'email':
       case 'password':
       case 'file':
+      case 'number':
+      case 'tel':
+      case 'range':
         input = dom.getChildByClass(modal, swalClasses.input);
         input.value = params.inputValue;
         input.placeholder = params.inputPlaceholder;

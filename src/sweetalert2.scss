@@ -148,175 +148,6 @@
     color: #555;
   }
 
-  .swal2-icon {
-    $red:    #f27474;
-    $orange: #f8bb86;
-    $cyan:   #3fc3ee;
-    $blue:   #c9dae1;
-    $green:  #a5dc86;
-
-    width: 80px;
-    height: 80px;
-    border: 4px solid #808080;
-    border-radius: 50%;
-    margin: 20px auto 30px;
-    padding: 0;
-    position: relative;
-    box-sizing: content-box;
-    cursor: default;
-
-    /* http://stackoverflow.com/a/4407335/1331425 */
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-    &.swal2-error {
-      border-color: $red;
-
-      .x-mark {
-        position: relative;
-        display: block;
-      }
-
-      .line {
-        position: absolute;
-        height: 5px;
-        width: 47px;
-        background-color: $red;
-        display: block;
-        top: 37px;
-        border-radius: 2px;
-
-        &.left {
-          transform: rotate(45deg);
-          left: 17px;
-        }
-
-        &.right {
-          transform: rotate(-45deg);
-          right: 16px;
-        }
-      }
-    }
-
-    &.swal2-warning {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      color: $orange;
-      border-color: $orange;
-      font-size: 60px;
-      line-height: 80px;
-      text-align: center;
-    }
-
-    &.swal2-info {
-      font-family: "Open Sans", sans-serif;
-      color: $cyan;
-      border-color: $cyan;
-      font-size: 60px;
-      line-height: 80px;
-      text-align: center;
-    }
-
-    &.swal2-question {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      color: $blue;
-      border-color: $blue;
-      font-size: 60px;
-      line-height: 80px;
-      text-align: center;
-    }
-
-    &.swal2-success {
-      border-color: $green;
-
-      &::before,
-      &::after { // Emulate moving circular line
-        content: '';
-        border-radius: 50%;
-        position: absolute;
-        width: 60px;
-        height: 120px;
-        background: #fff;
-        transform: rotate(45deg);
-      }
-
-      &::before {
-        border-radius: 120px 0 0 120px;
-        top: -7px;
-        left: -33px;
-
-        transform: rotate(-45deg);
-        transform-origin: 60px 60px;
-      }
-
-      &::after {
-        border-radius: 0 120px 120px 0;
-        top: -11px;
-        left: 30px;
-
-        transform: rotate(-45deg);
-        transform-origin: 0 60px;
-      }
-
-      .placeholder { // Ring
-        width: 80px;
-        height: 80px;
-        border: 4px solid rgba($green, .2);
-        border-radius: 50%;
-        box-sizing: content-box;
-
-        position: absolute;
-        left: -4px;
-        top: -4px;
-        z-index: 2;
-      }
-
-      .fix {  // Hide corners left from animation
-        width: 7px;
-        height: 90px;
-        background-color: #fff;
-
-        position: absolute;
-        left: 28px;
-        top: 8px;
-        z-index: 1;
-
-        transform: rotate(-45deg);
-      }
-
-      .line {
-        height: 5px;
-        background-color: $green;
-        display: block;
-        border-radius: 2px;
-
-        position: absolute;
-        z-index: 2;
-
-        &.tip {
-          width: 25px;
-
-          left: 14px;
-          top: 46px;
-
-          transform: rotate(45deg);
-        }
-
-        &.long {
-          width: 47px;
-
-          right: 8px;
-          top: 38px;
-
-          transform: rotate(-45deg);
-        }
-      }
-    }
-  }
-
   .swal2-input,
   .swal2-textarea,
   .swal2-select,
@@ -434,6 +265,175 @@
       line-height: 24px;
       text-align: center;
       margin-right: 10px;
+    }
+  }
+}
+
+.swal2-icon {
+  $red:    #f27474;
+  $orange: #f8bb86;
+  $cyan:   #3fc3ee;
+  $blue:   #c9dae1;
+  $green:  #a5dc86;
+
+  width: 80px;
+  height: 80px;
+  border: 4px solid #808080;
+  border-radius: 50%;
+  margin: 20px auto 30px;
+  padding: 0;
+  position: relative;
+  box-sizing: content-box;
+  cursor: default;
+
+  /* http://stackoverflow.com/a/4407335/1331425 */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &.swal2-error {
+    border-color: $red;
+
+    .x-mark {
+      position: relative;
+      display: block;
+    }
+
+    .line {
+      position: absolute;
+      height: 5px;
+      width: 47px;
+      background-color: $red;
+      display: block;
+      top: 37px;
+      border-radius: 2px;
+
+      &.left {
+        transform: rotate(45deg);
+        left: 17px;
+      }
+
+      &.right {
+        transform: rotate(-45deg);
+        right: 16px;
+      }
+    }
+  }
+
+  &.swal2-warning {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: $orange;
+    border-color: $orange;
+    font-size: 60px;
+    line-height: 80px;
+    text-align: center;
+  }
+
+  &.swal2-info {
+    font-family: "Open Sans", sans-serif;
+    color: $cyan;
+    border-color: $cyan;
+    font-size: 60px;
+    line-height: 80px;
+    text-align: center;
+  }
+
+  &.swal2-question {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: $blue;
+    border-color: $blue;
+    font-size: 60px;
+    line-height: 80px;
+    text-align: center;
+  }
+
+  &.swal2-success {
+    border-color: $green;
+
+    &::before,
+    &::after { // Emulate moving circular line
+      content: '';
+      border-radius: 50%;
+      position: absolute;
+      width: 60px;
+      height: 120px;
+      background: #fff;
+      transform: rotate(45deg);
+    }
+
+    &::before {
+      border-radius: 120px 0 0 120px;
+      top: -7px;
+      left: -33px;
+
+      transform: rotate(-45deg);
+      transform-origin: 60px 60px;
+    }
+
+    &::after {
+      border-radius: 0 120px 120px 0;
+      top: -11px;
+      left: 30px;
+
+      transform: rotate(-45deg);
+      transform-origin: 0 60px;
+    }
+
+    .placeholder { // Ring
+      width: 80px;
+      height: 80px;
+      border: 4px solid rgba($green, .2);
+      border-radius: 50%;
+      box-sizing: content-box;
+
+      position: absolute;
+      left: -4px;
+      top: -4px;
+      z-index: 2;
+    }
+
+    .fix {  // Hide corners left from animation
+      width: 7px;
+      height: 90px;
+      background-color: #fff;
+
+      position: absolute;
+      left: 28px;
+      top: 8px;
+      z-index: 1;
+
+      transform: rotate(-45deg);
+    }
+
+    .line {
+      height: 5px;
+      background-color: $green;
+      display: block;
+      border-radius: 2px;
+
+      position: absolute;
+      z-index: 2;
+
+      &.tip {
+        width: 25px;
+
+        left: 14px;
+        top: 46px;
+
+        transform: rotate(45deg);
+      }
+
+      &.long {
+        width: 47px;
+
+        right: 8px;
+        top: 38px;
+
+        transform: rotate(-45deg);
+      }
     }
   }
 }

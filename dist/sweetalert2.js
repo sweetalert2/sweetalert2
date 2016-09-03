@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.2.4
+ * sweetalert2 v4.2.5
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -112,8 +112,8 @@
       '<textarea class="' + swalClasses.textarea + '"></textarea>' +
       '<div class="' + swalClasses.validationerror + '"></div>' +
       '<hr class="' + swalClasses.spacer + '">' +
-      '<button class="' + swalClasses.confirm + '">OK</button>' +
-      '<button class="' + swalClasses.cancel + '">Cancel</button>' +
+      '<button type="button" class="' + swalClasses.confirm + '">OK</button>' +
+      '<button type="button" class="' + swalClasses.cancel + '">Cancel</button>' +
       '<span class="' + swalClasses.close + '">&times;</span>' +
     '</div>';
 
@@ -1090,6 +1090,9 @@
         case 'email':
         case 'password':
         case 'file':
+        case 'number':
+        case 'tel':
+        case 'range':
           input = getChildByClass(modal, swalClasses.input);
           input.value = params.inputValue;
           input.placeholder = params.inputPlaceholder;
@@ -1413,7 +1416,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.2.4';
+  sweetAlert.version = '4.2.5';
 
   window.sweetAlert = window.swal = sweetAlert;
 

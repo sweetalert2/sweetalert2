@@ -163,6 +163,7 @@ Configuration
 | `inputClass`          | `null`               | A custom CSS class for the input field. |
 | `onOpen`              | `null`               | Function to run when modal opens, provides modal DOM element as the first argument. |
 | `onClose`             | `null`               | Function to run when modal closes, provides modal DOM element as the first argument. |
+
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
 
 

@@ -24,7 +24,9 @@ export var swalClasses = prefix([
   'radio',
   'checkbox',
   'textarea',
-  'validationerror'
+  'validationerror',
+  'progresssteps',
+  'activeprogressstep'
 ]);
 
 export var iconTypes = prefix([

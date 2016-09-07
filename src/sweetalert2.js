@@ -97,6 +97,20 @@ var setParameters = function(params) {
     dom.addClass(modal, params.customClass);
   }
 
+  // Progress steps
+  var progressStepsContainer = dom.getProgressSteps();
+  dom.empty(progressStepsContainer);
+  if (params.progressSteps.length) {
+    params.progressSteps.forEach(function(step, index) {
+      var li = document.createElement('li');
+      li.innerHTML = step;
+      if (index === params.currentProgressStep) {
+        dom.addClass(li, swalClasses.activeprogressstep);
+      }
+      progressStepsContainer.appendChild(li);
+    });
+  }
+
   // Icon
   var icons = dom.getIcons();
   for (i = 0; i < icons.length; i++) {

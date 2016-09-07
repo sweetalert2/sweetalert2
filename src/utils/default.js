@@ -31,7 +31,7 @@ export var defaultParams = {
   width: 500,
   padding: 20,
   background: '#fff',
-  input: null, // 'text' | 'email' | 'password' | 'select' | 'radio' | 'checkbox' | 'textarea' | 'file'
+  input: null,
   inputPlaceholder: '',
   inputValue: '',
   inputOptions: {},
@@ -39,12 +39,15 @@ export var defaultParams = {
   inputClass: null,
   inputAttributes: {},
   inputValidator: null,
+  progressSteps: [],
+  currentProgressStep: 0,
   onOpen: null,
   onClose: null
 };
 
 export var sweetHTML = '<div class="' + swalClasses.overlay + '" tabIndex="-1"></div>' +
   '<div class="' + swalClasses.modal + '" style="display: none" tabIndex="-1">' +
+    '<ul class="' + swalClasses.progresssteps + '"></ul>' +
     '<div class="' + swalClasses.icon + ' ' + iconTypes.error + '">' +
       '<span class="x-mark"><span class="line left"></span><span class="line right"></span></span>' +
     '</div>' +

@@ -71,10 +71,10 @@ var setParameters = function(params) {
       $content.innerHTML = '';
       if (0 in params.html) {
         for (var i = 0; i in params.html; i++) {
-          $content.appendChild(params.html[i]);
+          $content.appendChild(params.html[i].cloneNode(true));
         }
       } else {
-        $content.appendChild(params.html);
+        $content.appendChild(params.html.cloneNode(true));
       }
     } else {
       $content.innerHTML = params.html || (params.text.split('\n').join('<br>'));
@@ -675,6 +675,9 @@ function modalDependant() {
       case 'email':
       case 'password':
       case 'file':
+      case 'number':
+      case 'tel':
+      case 'range':
         input = dom.getChildByClass(modal, swalClasses.input);
         input.value = params.inputValue;
         input.placeholder = params.inputPlaceholder;

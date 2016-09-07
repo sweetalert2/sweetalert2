@@ -667,6 +667,23 @@ function modalDependant() {
       }
     };
 
+    sweetAlert.getProgressSteps = function() {
+      return params.progressSteps;
+    };
+
+    sweetAlert.setProgressSteps = function(progressSteps) {
+      params.progressSteps = progressSteps;
+      setParameters(params);
+    };
+
+    sweetAlert.showProgressSteps = function() {
+      dom.show(dom.getProgressSteps());
+    };
+
+    sweetAlert.hideProgressSteps = function() {
+      dom.hide(dom.getProgressSteps());
+    };
+
     sweetAlert.enableButtons();
     sweetAlert.hideLoading();
     sweetAlert.resetValidationError();

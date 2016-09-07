@@ -111,6 +111,23 @@ If this rejection is not handled by your code, it will be logged as an error. To
     swal('...')
       .done();
 
+
+State Machine
+-------------
+
+When a series of alerts are needed but depend on user input and/or external resources (i.e. ajax), a state machine like function can be provided by `swal.queue(Function, [Array])`. The supplied function will be called upon for each modal and will receive a control hash as a parameter with the attributes/methods shown below. The supplied function must return a hash of swal parameters to build the current alert. The array parameter is the initial set of states to start the alert chain. See [usage example](https://limonte.github.io/sweetalert2/#state-machine)
+
+|Member                        | Type     | Description                                                                                                                          |
+|------------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------|
+| `current`                   | object   | Represents the state for the current alert.                                                                                   |
+| `next`                      | object   | Represents the next state that will follow the current if not altered. Null would indicated that this is the last alert in the chain.|
+| `fork(Array[object])`      | function | Replaces all remaining state objects in chain with the state array passed as a parameter.                                            |
+| `repeatCurrent()`          | function | Duplicates current alert state and inserts it next in state array                                                                    |
+| `insert(object)`           | function | Inserts new state to directly follow current.                                                                                        |
+| `terminate()`               | function | Removes all states that were queued to follow current.                                                                               |
+
+
+
 Modal Types
 -----------
 
@@ -163,6 +180,7 @@ Configuration
 | `inputClass`          | `null`               | A custom CSS class for the input field. |
 | `onOpen`              | `null`               | Function to run when modal opens, provides modal DOM element as the first argument. |
 | `onClose`             | `null`               | Function to run when modal closes, provides modal DOM element as the first argument. |
+
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
 
 
@@ -174,8 +192,7 @@ Methods
 | `swal.isVisible()`                              | Determine if modal is shown. |
 | `swal.setDefaults({Object})`                    | If you end up using a lot of the same settings when calling SweetAlert2, you can use setDefaults at the start of your program to set them once and for all! |
 | `swal.resetDefaults()`                          | Resets settings to their default value. |
-| `swal.queue([Array] || Function, [Array])`      | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another or a function that returns alert parameters given modal number. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals). |
-| `swal.queue(Function, [Array])`                 | Provide an function that performs state machine like direction of modal flow and an array of default states to follow. The function will recieve an object indicating current and next state along with helper methods (`insert(string)`, `fork([string])`, `repeatCurrent()`, `terminate()`) to augment the flow of modals. See [usage example](https://limonte.github.io/sweetalert2/#state-machine). |
+| `swal.queue([Array] || Function)`              | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another or a function that returns alert parameters given modal number. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals).  |
 | `swal.close()` or `swal.closeModal()`           | Close the currently open SweetAlert2 modal programmatically. |
 | `swal.enableButtons()`                          | Enable "Confirm" and "Cancel" buttons. |
 | `swal.disableButtons()`                         | Disable "Confirm" and "Cancel" buttons. |

@@ -561,6 +561,7 @@ function modalDependant() {
      * Show spinner instead of Confirm button and disable Cancel button
      */
     sweetAlert.showLoading = sweetAlert.enableLoading = function() {
+      dom.removeStyleProperty($confirmButton, 'display');
       dom.addClass($confirmButton, 'loading');
       dom.addClass(modal, 'loading');
       $confirmButton.disabled = true;

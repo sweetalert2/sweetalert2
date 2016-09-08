@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.2.6
+ * sweetalert2 v4.2.7
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -178,6 +178,15 @@
     return elementByClass(swalClasses.overlay);
   };
 
+  var getIcons = function() {
+    var modal = getModal();
+    return modal.querySelectorAll('.' + swalClasses.icon);
+  };
+
+  var getSpacer = function() {
+    return elementByClass(swalClasses.spacer);
+  };
+
   var getConfirmButton = function() {
     return elementByClass(swalClasses.confirm);
   };
@@ -241,32 +250,17 @@
     }
   };
 
-  var _show = function(elem) {
+  var show = function(elem, display) {
+    if (!display) {
+      display = 'block';
+    }
     elem.style.opacity = '';
-    elem.style.display = 'block';
+    elem.style.display = display;
   };
 
-  var show = function(elems) {
-    if (elems && !elems.length) {
-      return _show(elems);
-    }
-    for (var i = 0; i < elems.length; ++i) {
-      _show(elems[i]);
-    }
-  };
-
-  var _hide = function(elem) {
+  var hide = function(elem) {
     elem.style.opacity = '';
     elem.style.display = 'none';
-  };
-
-  var hide = function(elems) {
-    if (elems && !elems.length) {
-      return _hide(elems);
-    }
-    for (var i = 0; i < elems.length; ++i) {
-      _hide(elems[i]);
-    }
   };
 
   // borrowed from jqeury $(elem).is(':visible') implementation
@@ -327,7 +321,7 @@
         if (+elem.style.opacity > 0) {
           setTimeout(tick, interval);
         } else {
-          _hide(elem);
+          hide(elem);
         }
       };
       tick();
@@ -474,18 +468,18 @@
     var $content = modal.querySelector('.' + swalClasses.content);
     var $confirmBtn = getConfirmButton();
     var $cancelBtn = getCancelButton();
-    var $spacer = modal.querySelector('.' + swalClasses.spacer);
     var $closeButton = modal.querySelector('.' + swalClasses.close);
 
     // Title
     $title.innerHTML = params.title.split('\n').join('<br>');
 
     // Content
+    var i;
     if (params.text || params.html) {
       if (typeof params.html === 'object') {
         $content.innerHTML = '';
         if (0 in params.html) {
-          for (var i = 0; i in params.html; i++) {
+          for (i = 0; i in params.html; i++) {
             $content.appendChild(params.html[i].cloneNode(true));
           }
         } else {
@@ -513,7 +507,10 @@
     }
 
     // Icon
-    hide(modal.querySelectorAll('.' + swalClasses.icon));
+    var icons = getIcons();
+    for (i = 0; i < icons.length; i++) {
+      hide(icons[i]);
+    }
     if (params.type) {
       var validType = false;
       for (var iconType in iconTypes) {
@@ -590,10 +587,11 @@
     }
 
     // Buttons spacer
+    var spacer = getSpacer();
     if (!params.showConfirmButton && !params.showCancelButton) {
-      hide($spacer);
+      hide(spacer);
     } else {
-      show($spacer);
+      show(spacer);
     }
 
     // Edit text on cancel and confirm buttons
@@ -976,6 +974,8 @@
        * Show spinner instead of Confirm button and disable Cancel button
        */
       sweetAlert.showLoading = sweetAlert.enableLoading = function() {
+        show(getSpacer());
+        show($confirmButton, 'inline-block');
         addClass($confirmButton, 'loading');
         addClass(modal, 'loading');
         $confirmButton.disabled = true;
@@ -986,6 +986,12 @@
        * Show spinner instead of Confirm button and disable Cancel button
        */
       sweetAlert.hideLoading = sweetAlert.disableLoading = function() {
+        if (!params.showConfirmButton) {
+          hide($confirmButton);
+          if (!params.showCancelButton) {
+            hide(getSpacer());
+          }
+        }
         removeClass($confirmButton, 'loading');
         removeClass(modal, 'loading');
         $confirmButton.disabled = false;
@@ -1081,7 +1087,7 @@
           addClass(input, params.inputClass);
         }
 
-        _hide(input);
+        hide(input);
       }
 
       var populateInputOptions;
@@ -1097,7 +1103,7 @@
           input.value = params.inputValue;
           input.placeholder = params.inputPlaceholder;
           input.type = params.input;
-          _show(input);
+          show(input);
           break;
         case 'select':
           var select = getChildByClass(modal, swalClasses.select);
@@ -1120,7 +1126,7 @@
               }
               select.appendChild(option);
             }
-            _show(select);
+            show(select);
             select.focus();
           };
           break;
@@ -1146,7 +1152,7 @@
               radioLabel.for = radioInput.id;
               radio.appendChild(radioLabel);
             }
-            _show(radio);
+            show(radio);
             var radios = radio.querySelectorAll('input');
             if (radios.length) {
               radios[0].focus();
@@ -1165,13 +1171,13 @@
           label = document.createElement('span');
           label.innerHTML = params.inputPlaceholder;
           checkbox.appendChild(label);
-          _show(checkbox);
+          show(checkbox);
           break;
         case 'textarea':
           var textarea = getChildByClass(modal, swalClasses.textarea);
           textarea.value = params.inputValue;
           textarea.placeholder = params.inputPlaceholder;
-          _show(textarea);
+          show(textarea);
           break;
         case null:
           break;
@@ -1311,15 +1317,15 @@
       modal.addEventListener(animationEndEvent, function swalCloseEventFinished() {
         modal.removeEventListener(animationEndEvent, swalCloseEventFinished);
         if (hasClass(modal, 'hide-swal2')) {
-          _hide(modal);
+          hide(modal);
           fadeOut(getOverlay(), 0);
         }
         removeMediaQuery(mediaqueryId);
       });
     } else {
       // Otherwise, remove mediaquery immediately
-      _hide(modal);
-      _hide(getOverlay());
+      hide(modal);
+      hide(getOverlay());
       removeMediaQuery(mediaqueryId);
     }
     if (onComplete !== null && typeof onComplete === 'function') {
@@ -1416,7 +1422,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.2.6';
+  sweetAlert.version = '4.2.7';
 
   window.sweetAlert = window.swal = sweetAlert;
 

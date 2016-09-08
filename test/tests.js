@@ -341,6 +341,19 @@ test('showLoading and hideLoading', function(assert) {
   swal.hideLoading();
   assert.notOk($('.swal2-confirm').hasClass('loading'));
   assert.notOk($('.swal2-cancel').is(':disabled'));
+
+  swal({
+    title: 'test loading state',
+    showConfirmButton: false
+  });
+
+  swal.showLoading();
+  assert.ok($('.swal2-confirm').is(':visible'));
+  assert.ok($('.swal2-confirm').hasClass('loading'));
+
+  swal.hideLoading();
+  assert.notOk($('.swal2-confirm').is(':visible'));
+  assert.notOk($('.swal2-confirm').hasClass('loading'));
 });
 
 

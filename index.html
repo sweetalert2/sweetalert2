@@ -399,7 +399,11 @@ swal.queue(stepGen)</pre>
       }
     }
   }
-swal.queue(stepGen, [<span class="str">'starting'</span>, <span class="str">'middle'</span>, <span class="str">'last'</span>]);
+swal.queue(stepGen, [<span class="str">'starting'</span>, <span class="str">'middle'</span>, <span class="str">'last'</span>])
+.finally(<span class="func"><i>function</i></span>() {
+  swal.resetDefaults();
+})</pre>
+
 </pre>
     </li>
   </ul>
@@ -1449,13 +1453,14 @@ swal({
         confirmButtonText: 'Go',
         showCancelButton: false,
         animation: true,
-        text: 'Message no. ' + obj.alertNumber + ", Jump to:",
+        text: 'Message no. ' + obj.alertNumber + ', jump to:',
         input: 'select',
         inputValue: 'default',
         inputValidator: function(value) {
-          if (value != 'default')
+          if (value !== 'default') {
             obj.insert(value);
-          return new Promise(function(resolve, reject) {
+          }
+          return new Promise(function(resolve) {
             resolve();
           });
         }
@@ -1464,21 +1469,23 @@ swal({
         case 'starting':
           return {
             title: 'Starting Message',
-            inputOptions: { 'default': 'default', 'middle': 'middle', 'last': 'last' },
+            inputOptions: {'default': 'default', 'middle': 'middle', 'last': 'last'}
           };
         case 'middle':
           return {
-            title: "Middle Message",
-            inputOptions: { 'starting': 'starting', 'last': 'last', 'default': 'default' },
-          }
+            title: 'Middle Message',
+            inputOptions: {'starting': 'starting', 'last': 'last', 'default': 'default'}
+          };
         case 'last':
           return {
-            title: "Last Message",
-            inputOptions: { 'starting': 'starting', 'middle': 'middle', 'default': 'default' },
-          }
+            title: 'Last Message',
+            inputOptions: {'starting': 'starting', 'middle': 'middle', 'default': 'default'}
+          };
       }
-    }
-    swal.queue(stepGen, ['starting', 'middle', 'last']);
+    };
+    swal.queue(stepGen, ['starting', 'middle', 'last']).finally(function() {
+      swal.resetDefaults();
+    }).done();
   });
 
   $('.modal-types button').on('click', function() {

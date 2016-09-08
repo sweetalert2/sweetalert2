@@ -65,11 +65,12 @@ var setParameters = function(params) {
   $title.innerHTML = params.title.split('\n').join('<br>');
 
   // Content
+  var i;
   if (params.text || params.html) {
     if (typeof params.html === 'object') {
       $content.innerHTML = '';
       if (0 in params.html) {
-        for (var i = 0; i in params.html; i++) {
+        for (i = 0; i in params.html; i++) {
           $content.appendChild(params.html[i].cloneNode(true));
         }
       } else {
@@ -98,9 +99,9 @@ var setParameters = function(params) {
 
   // Icon
   var icons = dom.getIcons();
-  icons.forEach(function(icon) {
-    dom.hide(icon);
-  });
+  for (i = 0; i < icons.length; i++) {
+    dom.hide(icons[i]);
+  }
   if (params.type) {
     var validType = false;
     for (var iconType in iconTypes) {

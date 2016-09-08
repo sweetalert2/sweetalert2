@@ -59,7 +59,6 @@ var setParameters = function(params) {
   var $content = modal.querySelector('.' + swalClasses.content);
   var $confirmBtn = dom.getConfirmButton();
   var $cancelBtn = dom.getCancelButton();
-  var $spacer = modal.querySelector('.' + swalClasses.spacer);
   var $closeButton = modal.querySelector('.' + swalClasses.close);
 
   // Title
@@ -98,7 +97,10 @@ var setParameters = function(params) {
   }
 
   // Icon
-  dom.hide(modal.querySelectorAll('.' + swalClasses.icon));
+  var icons = dom.getIcons();
+  icons.forEach(function(icon) {
+    dom.hide(icon);
+  });
   if (params.type) {
     var validType = false;
     for (var iconType in iconTypes) {
@@ -175,10 +177,11 @@ var setParameters = function(params) {
   }
 
   // Buttons spacer
+  var spacer = dom.getSpacer();
   if (!params.showConfirmButton && !params.showCancelButton) {
-    dom.hide($spacer);
+    dom.hide(spacer);
   } else {
-    dom.show($spacer);
+    dom.show(spacer);
   }
 
   // Edit text on cancel and confirm buttons
@@ -561,6 +564,8 @@ function modalDependant() {
      * Show spinner instead of Confirm button and disable Cancel button
      */
     sweetAlert.showLoading = sweetAlert.enableLoading = function() {
+      dom.show(dom.getSpacer());
+      dom.show($confirmButton, 'inline-block');
       dom.addClass($confirmButton, 'loading');
       dom.addClass(modal, 'loading');
       $confirmButton.disabled = true;
@@ -571,6 +576,12 @@ function modalDependant() {
      * Show spinner instead of Confirm button and disable Cancel button
      */
     sweetAlert.hideLoading = sweetAlert.disableLoading = function() {
+      if (!params.showConfirmButton) {
+        dom.hide($confirmButton);
+        if (!params.showCancelButton) {
+          dom.hide(dom.getSpacer());
+        }
+      }
       dom.removeClass($confirmButton, 'loading');
       dom.removeClass(modal, 'loading');
       $confirmButton.disabled = false;
@@ -666,7 +677,7 @@ function modalDependant() {
         dom.addClass(input, params.inputClass);
       }
 
-      dom._hide(input);
+      dom.hide(input);
     }
 
     var populateInputOptions;
@@ -682,7 +693,7 @@ function modalDependant() {
         input.value = params.inputValue;
         input.placeholder = params.inputPlaceholder;
         input.type = params.input;
-        dom._show(input);
+        dom.show(input);
         break;
       case 'select':
         var select = dom.getChildByClass(modal, swalClasses.select);
@@ -705,7 +716,7 @@ function modalDependant() {
             }
             select.appendChild(option);
           }
-          dom._show(select);
+          dom.show(select);
           select.focus();
         };
         break;
@@ -731,7 +742,7 @@ function modalDependant() {
             radioLabel.for = radioInput.id;
             radio.appendChild(radioLabel);
           }
-          dom._show(radio);
+          dom.show(radio);
           var radios = radio.querySelectorAll('input');
           if (radios.length) {
             radios[0].focus();
@@ -750,13 +761,13 @@ function modalDependant() {
         label = document.createElement('span');
         label.innerHTML = params.inputPlaceholder;
         checkbox.appendChild(label);
-        dom._show(checkbox);
+        dom.show(checkbox);
         break;
       case 'textarea':
         var textarea = dom.getChildByClass(modal, swalClasses.textarea);
         textarea.value = params.inputValue;
         textarea.placeholder = params.inputPlaceholder;
-        dom._show(textarea);
+        dom.show(textarea);
         break;
       case null:
         break;
@@ -896,15 +907,15 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
     modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished() {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished);
       if (dom.hasClass(modal, 'hide-swal2')) {
-        dom._hide(modal);
+        dom.hide(modal);
         dom.fadeOut(dom.getOverlay(), 0);
       }
       dom.removeMediaQuery(mediaqueryId);
     });
   } else {
     // Otherwise, remove mediaquery immediately
-    dom._hide(modal);
-    dom._hide(dom.getOverlay());
+    dom.hide(modal);
+    dom.hide(dom.getOverlay());
     dom.removeMediaQuery(mediaqueryId);
   }
   if (onComplete !== null && typeof onComplete === 'function') {

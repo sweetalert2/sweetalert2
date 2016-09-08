@@ -21,6 +21,15 @@ export var getOverlay = function() {
   return elementByClass(swalClasses.overlay);
 };
 
+export var getIcons = function() {
+  var modal = getModal();
+  return modal.querySelectorAll('.' + swalClasses.icon);
+};
+
+export var getSpacer = function() {
+  return elementByClass(swalClasses.spacer);
+};
+
 export var getConfirmButton = function() {
   return elementByClass(swalClasses.confirm);
 };
@@ -84,32 +93,17 @@ export var getChildByClass = function(elem, className) {
   }
 };
 
-export var _show = function(elem) {
+export var show = function(elem, display) {
+  if (!display) {
+    display = 'block';
+  }
   elem.style.opacity = '';
-  elem.style.display = 'block';
+  elem.style.display = display;
 };
 
-export var show = function(elems) {
-  if (elems && !elems.length) {
-    return _show(elems);
-  }
-  for (var i = 0; i < elems.length; ++i) {
-    _show(elems[i]);
-  }
-};
-
-export var _hide = function(elem) {
+export var hide = function(elem) {
   elem.style.opacity = '';
   elem.style.display = 'none';
-};
-
-export var hide = function(elems) {
-  if (elems && !elems.length) {
-    return _hide(elems);
-  }
-  for (var i = 0; i < elems.length; ++i) {
-    _hide(elems[i]);
-  }
 };
 
 // borrowed from jqeury $(elem).is(':visible') implementation
@@ -170,7 +164,7 @@ export var fadeOut = function(elem, interval) {
       if (+elem.style.opacity > 0) {
         setTimeout(tick, interval);
       } else {
-        _hide(elem);
+        hide(elem);
       }
     };
     tick();

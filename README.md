@@ -123,47 +123,50 @@ Modal Types
 Configuration
 -------------
 
-| Argument              | Default value        | Description |
-| --------------------- | -------------------- | ----------- |
-| `title`               | `null`               | The title of the modal. It can either be added to the object under the key "title" or passed as the first parameter of the function. |
-| `text`                | `null`               | A description for the modal. It can either be added to the object under the key "text" or passed as the second parameter of the function. |
-| `html`                | `null`               | A HTML description for the modal. If `text` and `html` parameters are provided in the same time, "text" will be used. |
-| `type `               | `null`               | The type of the modal. SweetAlert2 comes with [5 built-in types](#modal-types) which will show a corresponding icon animation: `warning`, `error`, `success`, `info` and `question`. It can either be put in the array under the key `type` or passed as the third parameter of the function. |
-| `input`               | `null`               | Input field type, can be `"text"`, `"email"`, `"password"`, `"number"`, `"tel"`, `"range"`, `"textarea"`, `"select"`, `"radio"`, `"checkbox"` and `"file"`. |
-| `width`               | `"500px"`            | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. |
-| `padding`             | `20`                 | Modal window padding. |
-| `background`          | `"#fff"`             | Modal window background (CSS `background` property). |
-| `customClass`         | `null`               | A custom CSS class for the modal. |
-| `timer`               | `null`               | Auto close timer of the modal. Set in ms (milliseconds). |
-| `animation`           | `true`               | If set to `false`, modal CSS animation will be disabled. |
-| `allowOutsideClick`   | `true`               | If set to `false`, the user can't dismiss the modal by clicking outside it. |
-| `allowEscapeKey`      | `true`               | If set to `false`, the user can't dismiss the modal by pressing the Escape key. |
-| `showConfirmButton`   | `true`               | If set to `false`, a "Confirm"-button will not be shown. It can be useful when you're using `html` parameter for custom HTML description. |
-| `showCancelButton`    | `false`              | If set to `true`, a "Cancel"-button will be shown, which the user can click on to dismiss the modal. |
-| `confirmButtonText`   | `"OK"`               | Use this to change the text on the "Confirm"-button. |
-| `cancelButtonText`    | `"Cancel"`           | Use this to change the text on the "Cancel"-button. |
-| `confirmButtonColor`  | `"#3085d6"`          | Use this to change the background color of the "Confirm"-button (must be a HEX value). |
-| `cancelButtonColor`   | `"#aaa"`             | Use this to change the background color of the "Cancel"-button (must be a HEX value). |
-| `confirmButtonClass`  | `null`               | A custom CSS class for the "Confirm"-button. |
-| `cancelButtonClass`   | `null`               | A custom CSS class for the "Cancel"-button. |
-| `buttonsStyling`      | `true`               | Apply default swal2 styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to `false`. |
-| `reverseButtons`      | `false`              | Set to `true` if you want to invert default buttons positions. |
-| `focusCancel`         | `false`              | Set to `true` if you want to focus the "Cancel"-button by default. |
-| `showCloseButton`     | `false`              | Set to `true` to show close button in top right corner of the modal. |
-| `showLoaderOnConfirm` | `false`              | Set to `true` to disable buttons and show that something is loading. Useful for AJAX requests. |
-| `preConfirm`          | `null`               | Function to execute before confirm, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#ajax-request">usage example</a>. |
-| `imageUrl`            | `null`               | Add a customized icon for the modal. Should contain a string with the path or URL to the image. |
-| `imageWidth`          | `null`               | If imageUrl is set, you can specify imageWidth to describes image width in px. |
-| `imageHeight`         | `null`               | Custom image height in px. |
-| `imageClass`          | `null`               | A custom CSS class for the customized icon. |
-| `inputPlaceholder`    | `""`                 | Input field placeholder. |
-| `inputValue`          | `""`                 | Input field initial value. |
-| `inputOptions`        | `{}` or `Promise`    | If `input` parameter is set to `"select"` or `"radio"`, you can provide options. Object keys will represent options values, object values will represent options text values. |
-| `inputAutoTrim`       | `true`               | Automatically remove whitespaces from both ends of a result string. Set this parameter to `false` to disable auto-trimming. |
-| `inputValidator`      | `null`               | Validator for input field, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#select-box">usage example</a>. |
-| `inputClass`          | `null`               | A custom CSS class for the input field. |
-| `onOpen`              | `null`               | Function to run when modal opens, provides modal DOM element as the first argument. |
-| `onClose`             | `null`               | Function to run when modal closes, provides modal DOM element as the first argument. |
+| Argument                | Default value        | Description |
+| ----------------------- | -------------------- | ----------- |
+| `title`                 | `null`               | The title of the modal. It can either be added to the object under the key "title" or passed as the first parameter of the function. |
+| `text`                  | `null`               | A description for the modal. It can either be added to the object under the key "text" or passed as the second parameter of the function. |
+| `html`                  | `null`               | A HTML description for the modal. If `text` and `html` parameters are provided in the same time, "text" will be used. |
+| `type `                 | `null`               | The type of the modal. SweetAlert2 comes with [5 built-in types](#modal-types) which will show a corresponding icon animation: `warning`, `error`, `success`, `info` and `question`. It can either be put in the array under the key `type` or passed as the third parameter of the function. |
+| `input`                 | `null`               | Input field type, can be `"text"`, `"email"`, `"password"`, `"number"`, `"tel"`, `"range"`, `"textarea"`, `"select"`, `"radio"`, `"checkbox"` and `"file"`. |
+| `width`                 | `"500px"`            | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. |
+| `padding`               | `20`                 | Modal window padding. |
+| `background`            | `"#fff"`             | Modal window background (CSS `background` property). |
+| `customClass`           | `null`               | A custom CSS class for the modal. |
+| `timer`                 | `null`               | Auto close timer of the modal. Set in ms (milliseconds). |
+| `animation`             | `true`               | If set to `false`, modal CSS animation will be disabled. |
+| `allowOutsideClick`     | `true`               | If set to `false`, the user can't dismiss the modal by clicking outside it. |
+| `allowEscapeKey`        | `true`               | If set to `false`, the user can't dismiss the modal by pressing the Escape key. |
+| `showConfirmButton`     | `true`               | If set to `false`, a "Confirm"-button will not be shown. It can be useful when you're using `html` parameter for custom HTML description. |
+| `showCancelButton`      | `false`              | If set to `true`, a "Cancel"-button will be shown, which the user can click on to dismiss the modal. |
+| `confirmButtonText`     | `"OK"`               | Use this to change the text on the "Confirm"-button. |
+| `cancelButtonText`      | `"Cancel"`           | Use this to change the text on the "Cancel"-button. |
+| `confirmButtonColor`    | `"#3085d6"`          | Use this to change the background color of the "Confirm"-button (must be a HEX value). |
+| `cancelButtonColor`     | `"#aaa"`             | Use this to change the background color of the "Cancel"-button (must be a HEX value). |
+| `confirmButtonClass`    | `null`               | A custom CSS class for the "Confirm"-button. |
+| `cancelButtonClass`     | `null`               | A custom CSS class for the "Cancel"-button. |
+| `buttonsStyling`        | `true`               | Apply default swal2 styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to `false`. |
+| `reverseButtons`        | `false`              | Set to `true` if you want to invert default buttons positions. |
+| `focusCancel`           | `false`              | Set to `true` if you want to focus the "Cancel"-button by default. |
+| `showCloseButton`       | `false`              | Set to `true` to show close button in top right corner of the modal. |
+| `showLoaderOnConfirm`   | `false`              | Set to `true` to disable buttons and show that something is loading. Useful for AJAX requests. |
+| `preConfirm`            | `null`               | Function to execute before confirm, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#ajax-request">usage example</a>. |
+| `imageUrl`              | `null`               | Add a customized icon for the modal. Should contain a string with the path or URL to the image. |
+| `imageWidth`            | `null`               | If imageUrl is set, you can specify imageWidth to describes image width in px. |
+| `imageHeight`           | `null`               | Custom image height in px. |
+| `imageClass`            | `null`               | A custom CSS class for the customized icon. |
+| `inputPlaceholder`      | `""`                 | Input field placeholder. |
+| `inputValue`            | `""`                 | Input field initial value. |
+| `inputOptions`          | `{}` or `Promise`    | If `input` parameter is set to `"select"` or `"radio"`, you can provide options. Object keys will represent options values, object values will represent options text values. |
+| `inputAutoTrim`         | `true`               | Automatically remove whitespaces from both ends of a result string. Set this parameter to `false` to disable auto-trimming. |
+| `inputValidator`        | `null`               | Validator for input field, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#select-box">usage example</a>. |
+| `inputClass`            | `null`               | A custom CSS class for the input field. |
+| `progressSteps`         | `[]`                 | Progress steps, useful for modal queues, see <a href="https://limonte.github.io/sweetalert2/#chaining-modals">usage example</a>. |
+| `currentProgressStep`   | `0`                  | Current active progress step. |
+| `progressStepsDistance` | `"40px"`             | Distance between progress steps. |
+| `onOpen`                | `null`               | Function to run when modal opens, provides modal DOM element as the first argument. |
+| `onClose`               | `null`               | Function to run when modal closes, provides modal DOM element as the first argument. |
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
 
@@ -171,12 +174,12 @@ You can redefine default params by using `swal.setDefaults(customParams)` where 
 Methods
 -------
 
-| Method             | Description |
-| ------------------ | ----------- |
+| Method                                          | Description |
+| ----------------------------------------------- | ----------- |
 | `swal.isVisible()`                              | Determine if modal is shown. |
 | `swal.setDefaults({Object})`                    | If you end up using a lot of the same settings when calling SweetAlert2, you can use setDefaults at the start of your program to set them once and for all! |
 | `swal.resetDefaults()`                          | Resets settings to their default value. |
-| `swal.queue([Array] || Function)`              | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another or a function that returns alert parameters given modal number. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals).  |
+| `swal.queue([Array] || Function)`               | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another or a function that returns alert parameters given modal number. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals).  |
 | `swal.close()` or `swal.closeModal()`           | Close the currently open SweetAlert2 modal programmatically. |
 | `swal.enableButtons()`                          | Enable "Confirm" and "Cancel" buttons. |
 | `swal.disableButtons()`                         | Disable "Confirm" and "Cancel" buttons. |
@@ -190,6 +193,10 @@ Methods
 | `swal.resetValidationError()`                   | Hide validation error message. |
 | `swal.enableInput()`                            | Enable input, this method works with `input` parameter. |
 | `swal.disableInput()`                           | Disable input. |
+| `swal.getProgressSteps()`                       | Progress steps getter. |
+| `swal.setProgressSteps([])`                     | Progress steps setter. |
+| `swal.showProgressSteps()`                      | Show progress steps. |
+| `swal.hideProgressSteps()`                      | Hide progress steps. |
 
 
 State Machine

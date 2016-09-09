@@ -284,25 +284,34 @@ swal({
 swal.setDefaults({
   confirmButtonText: <span class="str">'Next &amp;rarr;'</span>,
   showCancelButton: <span class="val">true</span>,
-  animation: <span class="val">false</span>
+  animation: <span class="val">false</span>,
+  progressSteps: [<span class="str">'1'</span>, <span class="str">'2'</span>, <span class="str">'3'</span>]
 });
 
 <span class="func">var</span> steps = [
   {
     title: <span class="str">'Step 1'</span>,
-    text: <span class="str">'Chaining swal2 modals is easy'</span>
+    text: <span class="str">'Chaining swal2 modals is easy'</span>,
+    currentProgressStep: <span class="val">0</span>
   },
-  <span class="str">'Step 2'</span>,
-  <span class="str">'Step 3'</span>
+  {
+    title: <span class="str">'Step 2'</span>,
+    currentProgressStep: <span class="val">1</span>
+  },
+  {
+    title: <span class="str">'Step 3'</span>,
+    currentProgressStep: <span class="val">2</span>
+  }
 ];
 
 swal.queue(steps).then(<span class="func"><i>function</i></span>() {
+  swal.resetDefaults();
   swal({
     title: <span class="str">'All done!'</span>,
     confirmButtonText: <span class="str">'Lovely!'</span>,
     showCancelButton: <span class="val">false</span>
   });
-}).finally(<span class="func"><i>function</i></span>() {
+}, <span class="func"><i>function</i></span>() {
   swal.resetDefaults();
 })</pre>
     </li>
@@ -648,6 +657,21 @@ swal({
         <td><b>inputClass</b></td>
         <td><i>null</i></td>
         <td>A custom CSS class for the input field.</td>
+      </tr>
+      <tr>
+        <td><b>progressSteps</b></td>
+        <td><i>[]</i></td>
+        <td>Progress steps, useful for modal queues, see <a href="#chaining-modals">usage example</a>.</td>
+      </tr>
+      <tr>
+        <td><b>currentProgressStep</b></td>
+        <td><i>0</i></td>
+        <td>Current active progress step.</td>
+      </tr>
+      <tr>
+        <td><b>progressStepsDistance</b></td>
+        <td><i>"40px"</i></td>
+        <td>Distance between progress steps.</td>
       </tr>
       <tr>
         <td><b>onOpen</b></td>
@@ -1050,6 +1074,22 @@ swal({
         <td><i>swal.disableInput()</i></td>
         <td>Disable input.</td>
       </tr>
+      <tr>
+        <td><i>swal.getProgressSteps()</i></td>
+        <td>Progress steps getter.</td>
+      </tr>
+      <tr>
+        <td><i>swal.setProgressSteps([])</i></td>
+        <td>Progress steps setter.</td>
+      </tr>
+      <tr>
+        <td><i>swal.showProgressSteps()</i></td>
+        <td>Show progress steps.</td>
+      </tr>
+      <tr>
+        <td><i>swal.hideProgressSteps()</i></td>
+        <td>Hide progress steps.</td>
+      </tr>
     </table>
   </div>
 
@@ -1405,20 +1445,22 @@ swal({
     swal.setDefaults({
       confirmButtonText: 'Next &rarr;',
       showCancelButton: true,
-      animation: false
+      animation: false,
+      progressSteps: ['1', '2', '3']
     });
 
     var steps = [
-      {title: 'Step 1', text: 'Chaining swal2 modals is easy'},
-      'Step 2',
-      'Step 3'
+      {title: 'Step 1', text: 'Chaining swal2 modals is easy', currentProgressStep: 0},
+      {title: 'Step 2', currentProgressStep: 1},
+      {title: 'Step 3', currentProgressStep: 2}
     ];
 
     swal.queue(steps).then(function() {
-      swal({title: 'All done!', confirmButtonText: 'Lovely!', showCancelButton: false});
-    }).finally(function() {
       swal.resetDefaults();
-    }).done();
+      swal({title: 'All done!', confirmButtonText: 'Lovely!', showCancelButton: false});
+    }, function() {
+      swal.resetDefaults();
+    });
   });
 
   $('.examples .dynamic-queue button').on('click', function() {

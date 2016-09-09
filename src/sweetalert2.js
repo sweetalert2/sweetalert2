@@ -99,16 +99,33 @@ var setParameters = function(params) {
 
   // Progress steps
   var progressStepsContainer = dom.getProgressSteps();
-  dom.empty(progressStepsContainer);
+  params.currentProgressStep = parseInt(params.currentProgressStep, 10);
   if (params.progressSteps.length) {
+    dom.show(progressStepsContainer);
+    dom.empty(progressStepsContainer);
+    if (params.currentProgressStep >= params.progressSteps.length) {
+      console.warn(
+        'SweetAlert2: Invalid currentProgressStep parameter, it should be less than progressSteps.length ' +
+        '(currentProgressStep like JS arrays starts from 0)'
+      );
+    }
     params.progressSteps.forEach(function(step, index) {
-      var li = document.createElement('li');
-      li.innerHTML = step;
+      var circle = document.createElement('li');
+      dom.addClass(circle, swalClasses.progresscircle);
+      circle.innerHTML = step;
       if (index === params.currentProgressStep) {
-        dom.addClass(li, swalClasses.activeprogressstep);
+        dom.addClass(circle, swalClasses.activeprogressstep);
       }
-      progressStepsContainer.appendChild(li);
+      progressStepsContainer.appendChild(circle);
+      if (index !== params.progressSteps.length - 1) {
+        var line = document.createElement('li');
+        dom.addClass(line, swalClasses.progressline);
+        line.style.width = params.progressStepsDistance;
+        progressStepsContainer.appendChild(line);
+      }
     });
+  } else {
+    dom.hide(progressStepsContainer);
   }
 
   // Icon

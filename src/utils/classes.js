@@ -26,7 +26,9 @@ export var swalClasses = prefix([
   'textarea',
   'validationerror',
   'progresssteps',
-  'activeprogressstep'
+  'activeprogressstep',
+  'progresscircle',
+  'progressline'
 ]);
 
 export var iconTypes = prefix([

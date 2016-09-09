@@ -28,7 +28,7 @@ export var getIcons = function() {
 
 export var getSpacer = function() {
   return elementByClass(swalClasses.spacer);
-}
+};
 
 export var getProgressSteps = function() {
   return elementByClass(swalClasses.progresssteps);

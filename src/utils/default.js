@@ -41,6 +41,7 @@ export var defaultParams = {
   inputValidator: null,
   progressSteps: [],
   currentProgressStep: 0,
+  progressStepsDistance: '40px',
   onOpen: null,
   onClose: null
 };

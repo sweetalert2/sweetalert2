@@ -449,34 +449,22 @@ $white: #fff;
   padding: 0;
 
   li {
-    background: $blue;
-    border-radius: 1em;
-    color: $white;
     display: inline-block;
+    position: relative;
+  }
+
+  .swal2-progresscircle {
+    background: $blue;
+    border-radius: 2em;
+    color: $white;
     height: 2em;
     line-height: 2em;
-    margin: 0 3%;
-    position: relative;
     text-align: center;
     width: 2em;
-
-    &::before {
-      background: $blue;
-      content: "";
-      height: 0.2em;
-      left: -100%;
-      position: absolute;
-      top: 0.9em;
-      width: 100%;
-      z-index: -1;
-    }
+    z-index: 20;
 
     &:first-child {
       margin-left: 0;
-    }
-
-    &:first-child::before {
-      display: none;
     }
 
     &:last-child {
@@ -486,14 +474,21 @@ $white: #fff;
     &.swal2-activeprogressstep {
       background: $blue;
 
-      ~ li {
+      ~ .swal2-progresscircle {
         background: $lightblue;
+      }
 
-        &::before {
-          background: $lightblue;
-        }
+      ~ .swal2-progressline {
+        background: $lightblue;
       }
     }
+  }
+
+  .swal2-progressline {
+    background: $blue;
+    height: 0.4em;
+    margin: 0 -1px;
+    z-index: 10;
   }
 }
 

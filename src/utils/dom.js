@@ -30,6 +30,10 @@ export var getSpacer = function() {
   return elementByClass(swalClasses.spacer);
 };
 
+export var getProgressSteps = function() {
+  return elementByClass(swalClasses.progresssteps);
+};
+
 export var getConfirmButton = function() {
   return elementByClass(swalClasses.confirm);
 };
@@ -104,6 +108,12 @@ export var show = function(elem, display) {
 export var hide = function(elem) {
   elem.style.opacity = '';
   elem.style.display = 'none';
+};
+
+export var empty = function(elem) {
+  while (elem.firstChild) {
+    elem.removeChild(elem.firstChild);
+  }
 };
 
 // borrowed from jqeury $(elem).is(':visible') implementation

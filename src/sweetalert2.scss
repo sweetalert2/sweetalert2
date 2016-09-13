@@ -1,6 +1,8 @@
 // SweetAlert2
 // github.com/limonte/sweetalert2
 
+$white: #fff;
+
 .swal2-overlay {
   background-color: rgba(#000, .4);
 
@@ -15,7 +17,7 @@
 }
 
 .swal2-modal {
-  background-color: #fff;
+  background-color: $white;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-radius: 5px;
   box-sizing: border-box;
@@ -60,15 +62,15 @@
   }
 
   button.styled {
-    color: #fff;
     border: 0;
+    border-radius: 3px;
     box-shadow: none;
+    color: $white;
+    cursor: pointer;
     font-size: 17px;
     font-weight: 500;
-    border-radius: 3px;
-    padding: 10px 32px;
     margin: 0 5px;
-    cursor: pointer;
+    padding: 10px 32px;
 
     &:not(.loading)[disabled] {
       opacity: .4;
@@ -360,7 +362,7 @@
       position: absolute;
       width: 60px;
       height: 120px;
-      background: #fff;
+      background: $white;
       transform: rotate(45deg);
     }
 
@@ -398,7 +400,7 @@
     .fix {  // Hide corners left from animation
       width: 7px;
       height: 90px;
-      background-color: #fff;
+      background-color: $white;
 
       position: absolute;
       left: 28px;
@@ -437,6 +439,59 @@
     }
   }
 }
+
+.swal2-progresssteps {
+  $lightblue: #add8e6;
+  $blue: #3085d6;
+
+  font-weight: 600;
+  margin: 0 0 20px;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    position: relative;
+  }
+
+  .swal2-progresscircle {
+    background: $blue;
+    border-radius: 2em;
+    color: $white;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    width: 2em;
+    z-index: 20;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.swal2-activeprogressstep {
+      background: $blue;
+
+      ~ .swal2-progresscircle {
+        background: $lightblue;
+      }
+
+      ~ .swal2-progressline {
+        background: $lightblue;
+      }
+    }
+  }
+
+  .swal2-progressline {
+    background: $blue;
+    height: 0.4em;
+    margin: 0 -1px;
+    z-index: 10;
+  }
+}
+
 
 /* github.com/limonte/sweetalert2/issues/268 */
 [class^=swal2] {

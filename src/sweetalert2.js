@@ -97,6 +97,37 @@ var setParameters = function(params) {
     dom.addClass(modal, params.customClass);
   }
 
+  // Progress steps
+  var progressStepsContainer = dom.getProgressSteps();
+  params.currentProgressStep = parseInt(params.currentProgressStep, 10);
+  if (params.progressSteps.length) {
+    dom.show(progressStepsContainer);
+    dom.empty(progressStepsContainer);
+    if (params.currentProgressStep >= params.progressSteps.length) {
+      console.warn(
+        'SweetAlert2: Invalid currentProgressStep parameter, it should be less than progressSteps.length ' +
+        '(currentProgressStep like JS arrays starts from 0)'
+      );
+    }
+    params.progressSteps.forEach(function(step, index) {
+      var circle = document.createElement('li');
+      dom.addClass(circle, swalClasses.progresscircle);
+      circle.innerHTML = step;
+      if (index === params.currentProgressStep) {
+        dom.addClass(circle, swalClasses.activeprogressstep);
+      }
+      progressStepsContainer.appendChild(circle);
+      if (index !== params.progressSteps.length - 1) {
+        var line = document.createElement('li');
+        dom.addClass(line, swalClasses.progressline);
+        line.style.width = params.progressStepsDistance;
+        progressStepsContainer.appendChild(line);
+      }
+    });
+  } else {
+    dom.hide(progressStepsContainer);
+  }
+
   // Icon
   var icons = dom.getIcons();
   for (i = 0; i < icons.length; i++) {
@@ -651,6 +682,23 @@ function modalDependant() {
       if (input) {
         dom.removeClass(input, 'error');
       }
+    };
+
+    sweetAlert.getProgressSteps = function() {
+      return params.progressSteps;
+    };
+
+    sweetAlert.setProgressSteps = function(progressSteps) {
+      params.progressSteps = progressSteps;
+      setParameters(params);
+    };
+
+    sweetAlert.showProgressSteps = function() {
+      dom.show(dom.getProgressSteps());
+    };
+
+    sweetAlert.hideProgressSteps = function() {
+      dom.hide(dom.getProgressSteps());
     };
 
     sweetAlert.enableButtons();

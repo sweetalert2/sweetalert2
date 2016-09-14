@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.2.7
+ * sweetalert2 v4.2.8
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -34,7 +34,11 @@
     'radio',
     'checkbox',
     'textarea',
-    'validationerror'
+    'validationerror',
+    'progresssteps',
+    'activeprogressstep',
+    'progresscircle',
+    'progressline'
   ]);
 
   var iconTypes = prefix([
@@ -76,7 +80,7 @@
     width: 500,
     padding: 20,
     background: '#fff',
-    input: null, // 'text' | 'email' | 'password' | 'select' | 'radio' | 'checkbox' | 'textarea' | 'file'
+    input: null,
     inputPlaceholder: '',
     inputValue: '',
     inputOptions: {},
@@ -84,12 +88,16 @@
     inputClass: null,
     inputAttributes: {},
     inputValidator: null,
+    progressSteps: [],
+    currentProgressStep: 0,
+    progressStepsDistance: '40px',
     onOpen: null,
     onClose: null
   };
 
   var sweetHTML = '<div class="' + swalClasses.overlay + '" tabIndex="-1"></div>' +
     '<div class="' + swalClasses.modal + '" style="display: none" tabIndex="-1">' +
+      '<ul class="' + swalClasses.progresssteps + '"></ul>' +
       '<div class="' + swalClasses.icon + ' ' + iconTypes.error + '">' +
         '<span class="x-mark"><span class="line left"></span><span class="line right"></span></span>' +
       '</div>' +
@@ -187,6 +195,10 @@
     return elementByClass(swalClasses.spacer);
   };
 
+  var getProgressSteps = function() {
+    return elementByClass(swalClasses.progresssteps);
+  };
+
   var getConfirmButton = function() {
     return elementByClass(swalClasses.confirm);
   };
@@ -261,6 +273,12 @@
   var hide = function(elem) {
     elem.style.opacity = '';
     elem.style.display = 'none';
+  };
+
+  var empty = function(elem) {
+    while (elem.firstChild) {
+      elem.removeChild(elem.firstChild);
+    }
   };
 
   // borrowed from jqeury $(elem).is(':visible') implementation
@@ -504,6 +522,37 @@
     modal.className = swalClasses.modal;
     if (params.customClass) {
       addClass(modal, params.customClass);
+    }
+
+    // Progress steps
+    var progressStepsContainer = getProgressSteps();
+    params.currentProgressStep = parseInt(params.currentProgressStep, 10);
+    if (params.progressSteps.length) {
+      show(progressStepsContainer);
+      empty(progressStepsContainer);
+      if (params.currentProgressStep >= params.progressSteps.length) {
+        console.warn(
+          'SweetAlert2: Invalid currentProgressStep parameter, it should be less than progressSteps.length ' +
+          '(currentProgressStep like JS arrays starts from 0)'
+        );
+      }
+      params.progressSteps.forEach(function(step, index) {
+        var circle = document.createElement('li');
+        addClass(circle, swalClasses.progresscircle);
+        circle.innerHTML = step;
+        if (index === params.currentProgressStep) {
+          addClass(circle, swalClasses.activeprogressstep);
+        }
+        progressStepsContainer.appendChild(circle);
+        if (index !== params.progressSteps.length - 1) {
+          var line = document.createElement('li');
+          addClass(line, swalClasses.progressline);
+          line.style.width = params.progressStepsDistance;
+          progressStepsContainer.appendChild(line);
+        }
+      });
+    } else {
+      hide(progressStepsContainer);
     }
 
     // Icon
@@ -1062,6 +1111,23 @@
         }
       };
 
+      sweetAlert.getProgressSteps = function() {
+        return params.progressSteps;
+      };
+
+      sweetAlert.setProgressSteps = function(progressSteps) {
+        params.progressSteps = progressSteps;
+        setParameters(params);
+      };
+
+      sweetAlert.showProgressSteps = function() {
+        show(getProgressSteps());
+      };
+
+      sweetAlert.hideProgressSteps = function() {
+        hide(getProgressSteps());
+      };
+
       sweetAlert.enableButtons();
       sweetAlert.hideLoading();
       sweetAlert.resetValidationError();
@@ -1422,7 +1488,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.2.7';
+  sweetAlert.version = '4.2.8';
 
   window.sweetAlert = window.swal = sweetAlert;
 

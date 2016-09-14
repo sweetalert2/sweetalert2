@@ -1,3 +1,5 @@
+/* global $, test, swal */
+
 test('modal shows up', function(assert) {
   assert.notOk(swal.isVisible());
   swal('Hello world!');

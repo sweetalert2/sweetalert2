@@ -195,6 +195,7 @@ Methods
 | `swal.queue([Array])`                           | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another or a function that returns alert parameters given modal number. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals).  |
 | `swal.getQueueStep()`                           | Get the index of current modal in queue. When there's no active queue, `null` will be returned. |
 | `swal.insertQueueStep()`                        | Insert a modal to queue, you can specify modal positioning with second parameter. By default a modal will be added to the end of a queue. |
+| `swal.deleteQueueStep(index)`                   | Delete a modal at `index` from queue. |
 | `swal.getProgressSteps()`                       | Progress steps getter. |
 | `swal.setProgressSteps([])`                     | Progress steps setter. |
 | `swal.showProgressSteps()`                      | Show progress steps. |

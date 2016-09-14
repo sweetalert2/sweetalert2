@@ -230,8 +230,18 @@ test('dymanic queue', function(assert) {
         return new Promise(function(resolve) {
           // insert to the end by default
           swal.insertQueueStep('Step 3');
+          // step to be deleted
+          swal.insertQueueStep('Step to be deleted');
           // insert with positioning
-          swal.insertQueueStep('Step 2', 1);
+          swal.insertQueueStep({
+            title: 'Step 2',
+            preConfirm: function() {
+              return new Promise(function(resolve) {
+                swal.deleteQueueStep(3);
+                resolve();
+              });
+            }
+          }, 1);
           resolve();
         });
       }

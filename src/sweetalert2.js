@@ -921,6 +921,15 @@ sweetAlert.insertQueueStep = function(step, index) {
 };
 
 /*
+ * Global function for deleting a modal from the queue
+ */
+sweetAlert.deleteQueueStep = function(index) {
+  if (typeof queue[index] !== 'undefined') {
+    queue.splice(index, 1);
+  }
+};
+
+/*
  * Global function to close sweetAlert
  */
 sweetAlert.close = sweetAlert.closeModal = function(onComplete) {

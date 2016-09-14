@@ -273,7 +273,7 @@ swal({
 
     <li class="chaining-modals" id="chaining-modals">
       <div class="ui">
-        <p>Chaining modals example</p>
+        <p>Chaining modals (queue) example</p>
         <button>Try me!</button>
       </div>
       <pre>
@@ -310,6 +310,31 @@ swal.queue(steps).then(<span class="func"><i>function</i></span>() {
 }, <span class="func"><i>function</i></span>() {
   swal.resetDefaults();
 })</pre>
+    </li>
+
+    <li class="dynamic-queue" id="dynamic-queue">
+      <div class="ui">
+        <p>Dynamic queue example</p>
+        <button>Try me!</button>
+      </div>
+      <pre>
+swal.queue([{
+  title: <span class="str">'Your public IP'</span>,
+  confirmButtonText: <span class="str">'Show my public IP'</span>,
+  text:
+    <span class="str">'Your public IP will be received '</span> +
+    <span class="str">'via AJAX request'</span>,
+  showLoaderOnConfirm: <span class="val">true</span>,
+  preConfirm: <span class="func"><i>function</i></span>() {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve) {
+      $.get(<span class="str">'https://api.ipify.org?format=json'</span>)
+        .done(<span class="func"><i>function</i></span>(data) {
+          swal.insertQueueStep(data.ip);
+          resolve();
+        });
+    });
+  }
+}])</pre>
     </li>
   </ul>
 
@@ -1372,6 +1397,27 @@ swal({
     }, function() {
       swal.resetDefaults();
     });
+  });
+
+  $('.examples .dynamic-queue button').on('click', function() {
+    swal.queue([
+      {
+        title: 'Your public IP',
+        confirmButtonText: 'Show my public IP',
+        text: 'Your public IP will be received via AJAX request',
+        currentProgressStep: 0,
+        showLoaderOnConfirm: true,
+        preConfirm: function() {
+          return new Promise(function(resolve) {
+            $.get('https://api.ipify.org?format=json')
+              .done(function(data) {
+                swal.insertQueueStep(data.ip);
+                resolve();
+              });
+          });
+        }
+      }
+    ]);
   });
 
   $('.modal-types button').on('click', function() {

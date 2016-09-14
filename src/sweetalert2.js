@@ -2,7 +2,7 @@
 
 import { defaultParams, sweetHTML } from './utils/default.js';
 import { swalClasses, iconTypes } from './utils/classes.js';
-import { extend, colorLuminance, isFunction } from './utils/utils.js';
+import { extend, colorLuminance } from './utils/utils.js';
 import * as dom from './utils/dom.js';
 
 var modalParams = extend({}, defaultParams);
@@ -876,55 +876,32 @@ sweetAlert.isVisible = function() {
 /*
  * Global function for chaining sweetAlert modals
  */
-sweetAlert.queue = function(steps, path) {
-  var stateObject;
-  if (path) {
-    stateObject = {
-      fork: function(newPath) {
-        path = newPath;
-        this.next = newPath[0];
-      },
-      repeatCurrent: function() {
-        path.unshift(this.current);
-        this.next = this.current;
-      },
-      insert: function(state) {
-        path.unshift(state);
-        this.next = this.state;
-      },
-      terminate: function() {
-        path = [];
-        this.next = '';
-      }
-    };
-  }
+sweetAlert.queue = function(steps) {
   return new Promise(function(resolve, reject) {
     (function step(i, callback) {
-      var nextStep = null;
-      if (isFunction(steps)) {
-        if (path && path.length > 0) {
-          stateObject.current = path[0];
-          stateObject.next = path.length > 1 ? path[1] : '';
-          stateObject.alertNumber = i;
-          path.shift();
-          nextStep = steps(stateObject);
-        } else {
-          nextStep = steps(i);
-        }
-      } else if (i < steps.length) {
-        nextStep = steps[i];
-      }
-      if (nextStep) {
-        sweetAlert(nextStep).then(function() {
+      var modal = dom.getModal();
+      if (i < steps.length) {
+        modal.setAttribute('data-queue-step', i);
+
+        sweetAlert(steps[i]).then(function() {
           step(i+1, callback);
         }, function(dismiss) {
+          modal.removeAttribute('data-queue-step');
           reject(dismiss);
         });
       } else {
+        modal.removeAttribute('data-queue-step');
         resolve();
       }
     })(0);
   });
+};
+
+/*
+ * Global function for getting the index of current modal in queue
+ */
+sweetAlert.getQueueStep = function() {
+  return dom.getModal().getAttribute('data-queue-step');
 };
 
 /*

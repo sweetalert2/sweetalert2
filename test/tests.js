@@ -190,17 +190,25 @@ test('queue', function(assert) {
   var done = assert.async();
   var steps = ['Step 1', 'Step 2'];
 
+  assert.equal(swal.getQueueStep(), null);
+
   swal.setDefaults({animation: false});
   swal.queue(steps).then(function() {
     swal('All done!');
   });
+
   assert.equal($('.swal2-modal h2').text(), 'Step 1');
+  assert.equal(swal.getQueueStep(), 0);
   swal.clickConfirm();
+
   setTimeout(function() {
     assert.equal($('.swal2-modal h2').text(), 'Step 2');
+    assert.equal(swal.getQueueStep(), 1);
     swal.clickConfirm();
+
     setTimeout(function() {
       assert.equal($('.swal2-modal h2').text(), 'All done!');
+      assert.equal(swal.getQueueStep(), null);
       swal.clickConfirm();
 
       // test queue is cancelled on first step, other steps shouldn't be shown
@@ -212,121 +220,6 @@ test('queue', function(assert) {
   });
 });
 
-
-test('dynamic queue', function(assert) {
-  var done = assert.async();
-  var stepGen = function(i) {
-    switch (i) {
-      case 0:
-        return 'Step 1';
-      case 1:
-        return 'Step 2';
-      default:
-        break;
-    }
-  };
-
-  swal.queue(stepGen).then(function() {
-    swal('All done!');
-  }).done();
-  assert.equal($('.swal2-modal h2').text(), 'Step 1');
-  swal.clickConfirm();
-  setTimeout(function() {
-    assert.equal($('.swal2-modal h2').text(), 'Step 2');
-
-    // test Esc on Step 2 (#262)
-    $(document).trigger($.Event('keydown', {
-      keyCode: 27
-    }));
-    setTimeout(function() {
-      assert.notOk(swal.isVisible());
-      done();
-    });
-  });
-});
-
-test('state machine', function(assert) {
-  var done = assert.async();
-  var stepGen = function(obj) {
-    swal.setDefaults({
-      input: 'select',
-      inputValidator: function(value) {
-        switch (value) {
-          case 'insert':
-            obj.insert('Step 2');
-            break;
-          case 'fork':
-            obj.fork(['Step 3', 'Step 4']);
-            break;
-          case 'repeatCurrent':
-            obj.repeatCurrent();
-            break;
-          case 'terminate':
-            obj.terminate();
-            break;
-          default:
-            break;
-        }
-        return new Promise(function(resolve) {
-          resolve();
-        });
-      }
-    });
-    switch (obj.current) {
-      case 'Step 1':
-        return {
-          title: 'Step 1',
-          inputOptions: { insert: 1 }
-        };
-      case 'Step 2':
-        return {
-          title: 'Step 2',
-          inputOptions: { fork: 1 }
-        };
-      case 'Step 4':
-        return {
-          title: 'Step 4',
-          inputOptions: { repeatCurrent: 1 }
-        };
-      case 'Step 5':
-        return {
-          title: 'Step 5',
-          inputOptions: { terminate: 1 }
-        };
-      default:
-        return obj.current;
-    }
-  };
-  swal.queue(stepGen, ['Step 1', 'Step 5']).done();
-  assert.equal($('.swal2-modal h2').text(), 'Step 1');
-  swal.clickConfirm();
-  setTimeout(function() {
-    assert.equal($('.swal2-modal h2').text(), 'Step 2');
-    swal.clickConfirm();
-    setTimeout(function() {
-      assert.equal($('.swal2-modal h2').text(), 'Step 3');
-      swal.clickConfirm();
-      setTimeout(function() {
-        assert.equal($('.swal2-modal h2').text(), 'Step 4');
-        swal.clickConfirm();
-        setTimeout(function() {
-          assert.equal($('.swal2-modal h2').text(), 'Step 4');
-          swal.clickCancel();
-          setTimeout(function() {
-            assert.notOk(swal.isVisible());
-            swal.queue(stepGen, ['Step 5', 'Step 1']);
-            assert.equal($('.swal2-modal h2').text(), 'Step 5');
-            swal.clickConfirm();
-            setTimeout(function() {
-              assert.notOk(swal.isVisible());
-              done();
-            });
-          });
-        });
-      });
-    });
-  });
-});
 
 test('showLoading and hideLoading', function(assert) {
   swal({

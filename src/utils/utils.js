@@ -30,10 +30,3 @@ export var colorLuminance = function(hex, lum) {
 
   return rgb;
 };
-
-/*
- * check if variable is function type. http://stackoverflow.com/questions/5999998/how-can-i-check-if-a-javascript-variable-is-function-type
- */
-export var isFunction = function(functionToCheck) {
-  return typeof functionToCheck === 'function';
-};

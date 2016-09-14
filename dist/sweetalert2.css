@@ -43,15 +43,15 @@
     color: transparent;
     border: 0; }
   .swal2-modal button.styled {
-    color: #fff;
     border: 0;
+    border-radius: 3px;
     box-shadow: none;
+    color: #fff;
+    cursor: pointer;
     font-size: 17px;
     font-weight: 500;
-    border-radius: 3px;
-    padding: 10px 32px;
     margin: 0 5px;
-    cursor: pointer; }
+    padding: 10px 32px; }
     .swal2-modal button.styled:not(.loading)[disabled] {
       opacity: .4;
       cursor: no-drop; }
@@ -326,6 +326,38 @@
         top: 38px;
         -webkit-transform: rotate(-45deg);
                 transform: rotate(-45deg); }
+
+.swal2-progresssteps {
+  font-weight: 600;
+  margin: 0 0 20px;
+  padding: 0; }
+  .swal2-progresssteps li {
+    display: inline-block;
+    position: relative; }
+  .swal2-progresssteps .swal2-progresscircle {
+    background: #3085d6;
+    border-radius: 2em;
+    color: #fff;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    width: 2em;
+    z-index: 20; }
+    .swal2-progresssteps .swal2-progresscircle:first-child {
+      margin-left: 0; }
+    .swal2-progresssteps .swal2-progresscircle:last-child {
+      margin-right: 0; }
+    .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep {
+      background: #3085d6; }
+      .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep ~ .swal2-progresscircle {
+        background: #add8e6; }
+      .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep ~ .swal2-progressline {
+        background: #add8e6; }
+  .swal2-progresssteps .swal2-progressline {
+    background: #3085d6;
+    height: 0.4em;
+    margin: 0 -1px;
+    z-index: 10; }
 
 /* github.com/limonte/sweetalert2/issues/268 */
 [class^=swal2] {

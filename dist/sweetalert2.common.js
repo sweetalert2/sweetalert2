@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.2.8
+ * sweetalert2 v4.3.0
  * Released under the MIT License.
  */
 'use strict';
@@ -152,13 +152,6 @@ var colorLuminance = function(hex, lum) {
   }
 
   return rgb;
-};
-
-/*
- * check if variable is function type. http://stackoverflow.com/questions/5999998/how-can-i-check-if-a-javascript-variable-is-function-type
- */
-var isFunction = function(functionToCheck) {
-  return typeof functionToCheck === 'function';
 };
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
@@ -429,6 +422,7 @@ var removeMediaQuery = function(mediaqueryId) {
 };
 
 var modalParams = extend({}, defaultParams);
+var queue = [];
 
 /*
  * Set type, text and actions on modal
@@ -1299,55 +1293,56 @@ sweetAlert.isVisible = function() {
 /*
  * Global function for chaining sweetAlert modals
  */
-sweetAlert.queue = function(steps, path) {
-  var stateObject;
-  if (path) {
-    stateObject = {
-      fork: function(newPath) {
-        path = newPath;
-        this.next = newPath[0];
-      },
-      repeatCurrent: function() {
-        path.unshift(this.current);
-        this.next = this.current;
-      },
-      insert: function(state) {
-        path.unshift(state);
-        this.next = this.state;
-      },
-      terminate: function() {
-        path = [];
-        this.next = '';
-      }
-    };
-  }
+sweetAlert.queue = function(steps) {
+  queue = steps;
+  var modal = getModal();
+  var resetQueue = function() {
+    queue = [];
+    modal.removeAttribute('data-queue-step');
+  };
   return new Promise(function(resolve, reject) {
     (function step(i, callback) {
-      var nextStep = null;
-      if (isFunction(steps)) {
-        if (path && path.length > 0) {
-          stateObject.current = path[0];
-          stateObject.next = path.length > 1 ? path[1] : '';
-          stateObject.alertNumber = i;
-          path.shift();
-          nextStep = steps(stateObject);
-        } else {
-          nextStep = steps(i);
-        }
-      } else if (i < steps.length) {
-        nextStep = steps[i];
-      }
-      if (nextStep) {
-        sweetAlert(nextStep).then(function() {
+      if (i < queue.length) {
+        modal.setAttribute('data-queue-step', i);
+
+        sweetAlert(queue[i]).then(function() {
           step(i+1, callback);
         }, function(dismiss) {
+          resetQueue();
           reject(dismiss);
         });
       } else {
+        resetQueue();
         resolve();
       }
     })(0);
   });
+};
+
+/*
+ * Global function for getting the index of current modal in queue
+ */
+sweetAlert.getQueueStep = function() {
+  return getModal().getAttribute('data-queue-step');
+};
+
+/*
+ * Global function for inserting a modal to the queue
+ */
+sweetAlert.insertQueueStep = function(step, index) {
+  if (index && index < queue.length) {
+    return queue.splice(index, 0, step);
+  }
+  return queue.push(step);
+};
+
+/*
+ * Global function for deleting a modal from the queue
+ */
+sweetAlert.deleteQueueStep = function(index) {
+  if (typeof queue[index] !== 'undefined') {
+    queue.splice(index, 1);
+  }
 };
 
 /*
@@ -1484,7 +1479,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '4.2.8';
+sweetAlert.version = '4.3.0';
 
 window.sweetAlert = window.swal = sweetAlert;
 

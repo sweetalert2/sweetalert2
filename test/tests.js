@@ -221,6 +221,52 @@ test('queue', function(assert) {
 });
 
 
+test('dymanic queue', function(assert) {
+  var done = assert.async();
+  var steps = [
+    {
+      title: 'Step 1',
+      preConfirm: function() {
+        return new Promise(function(resolve) {
+          // insert to the end by default
+          swal.insertQueueStep('Step 3');
+          // insert with positioning
+          swal.insertQueueStep('Step 2', 1);
+          resolve();
+        });
+      }
+    }
+  ];
+
+  swal.setDefaults({animation: false});
+  swal.queue(steps).then(function() {
+    swal('All done!');
+  });
+
+  assert.equal($('.swal2-modal h2').text(), 'Step 1');
+  swal.clickConfirm();
+
+  setTimeout(function() {
+    assert.equal($('.swal2-modal h2').text(), 'Step 2');
+    assert.equal(swal.getQueueStep(), 1);
+    swal.clickConfirm();
+
+    setTimeout(function() {
+      assert.equal($('.swal2-modal h2').text(), 'Step 3');
+      assert.equal(swal.getQueueStep(), 2);
+      swal.clickConfirm();
+
+      setTimeout(function() {
+        assert.equal($('.swal2-modal h2').text(), 'All done!');
+        assert.equal(swal.getQueueStep(), null);
+        swal.clickConfirm();
+        done();
+      });
+    });
+  });
+});
+
+
 test('showLoading and hideLoading', function(assert) {
   swal({
     title: 'test loading state',

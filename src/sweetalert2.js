@@ -6,6 +6,7 @@ import { extend, colorLuminance } from './utils/utils.js';
 import * as dom from './utils/dom.js';
 
 var modalParams = extend({}, defaultParams);
+var queue = [];
 
 /*
  * Set type, text and actions on modal
@@ -877,20 +878,25 @@ sweetAlert.isVisible = function() {
  * Global function for chaining sweetAlert modals
  */
 sweetAlert.queue = function(steps) {
+  queue = steps;
+  var modal = dom.getModal();
+  var resetQueue = function() {
+    queue = [];
+    modal.removeAttribute('data-queue-step');
+  };
   return new Promise(function(resolve, reject) {
     (function step(i, callback) {
-      var modal = dom.getModal();
-      if (i < steps.length) {
+      if (i < queue.length) {
         modal.setAttribute('data-queue-step', i);
 
-        sweetAlert(steps[i]).then(function() {
+        sweetAlert(queue[i]).then(function() {
           step(i+1, callback);
         }, function(dismiss) {
-          modal.removeAttribute('data-queue-step');
+          resetQueue();
           reject(dismiss);
         });
       } else {
-        modal.removeAttribute('data-queue-step');
+        resetQueue();
         resolve();
       }
     })(0);
@@ -902,6 +908,16 @@ sweetAlert.queue = function(steps) {
  */
 sweetAlert.getQueueStep = function() {
   return dom.getModal().getAttribute('data-queue-step');
+};
+
+/*
+ * Global function for inserting a modal to the queue
+ */
+sweetAlert.insertQueueStep = function(step, index) {
+  if (index && index < queue.length) {
+    return queue.splice(index, 0, step);
+  }
+  return queue.push(step);
 };
 
 /*

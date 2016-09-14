@@ -202,23 +202,6 @@ Methods
 | `swal.hideProgressSteps()`                      | Hide progress steps. |
 
 
-State Machine
--------------
-
-When a series of alerts are needed but depend on user input and/or external resources (i.e. AJAX), a state machine like function can be provided by `swal.queue(Function, [Array])`.
-The supplied function will be called upon for each modal and will receive a control hash as a parameter with the attributes/methods shown below. The supplied function must return a hash of swal parameters to build the current alert.
-The array parameter is the initial set of states to start the alert chain. See [usage example](https://limonte.github.io/sweetalert2/#state-machine).
-
-|Member                        | Type       | Description                                                                                                                          |
-|------------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| `current`                    | `object`   | Represents the state for the current alert.                                                                                          |
-| `next`                       | `object`   | Represents the next state that will follow the current if not altered. Null would indicated that this is the last alert in the chain.|
-| `fork(Array[object])`        | `function` | Replaces all remaining state objects in chain with the state array passed as a parameter.                                            |
-| `repeatCurrent()`            | `function` | Duplicates current alert state and inserts it next in state array                                                                    |
-| `insert(object)`             | `function` | Inserts new state to directly follow current.                                                                                        |
-| `terminate()`                | `function` | Removes all states that were queued to follow current.                                                                               |
-
-
 Browser compatibility
 ---------------------
 

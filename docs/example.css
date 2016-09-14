@@ -97,9 +97,6 @@ p {
   text-align: left; }
   p.center {
     text-align: center; }
-  p.note {
-    display: inline;
-    font-size: 13px; }
   p strong {
     color: #8a8f94;
     font-weight: 600; }

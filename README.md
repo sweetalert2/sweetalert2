@@ -179,7 +179,6 @@ Methods
 | `swal.isVisible()`                              | Determine if modal is shown. |
 | `swal.setDefaults({Object})`                    | If you end up using a lot of the same settings when calling SweetAlert2, you can use setDefaults at the start of your program to set them once and for all! |
 | `swal.resetDefaults()`                          | Resets settings to their default value. |
-| `swal.queue([Array] || Function)`               | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another or a function that returns alert parameters given modal number. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals).  |
 | `swal.close()` or `swal.closeModal()`           | Close the currently open SweetAlert2 modal programmatically. |
 | `swal.enableButtons()`                          | Enable "Confirm" and "Cancel" buttons. |
 | `swal.disableButtons()`                         | Disable "Confirm" and "Cancel" buttons. |
@@ -193,6 +192,10 @@ Methods
 | `swal.resetValidationError()`                   | Hide validation error message. |
 | `swal.enableInput()`                            | Enable input, this method works with `input` parameter. |
 | `swal.disableInput()`                           | Disable input. |
+| `swal.queue([Array])`                           | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another or a function that returns alert parameters given modal number. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals).  |
+| `swal.getQueueStep()`                           | Get the index of current modal in queue. When there's no active queue, `null` will be returned. |
+| `swal.insertQueueStep()`                        | Insert a modal to queue, you can specify modal positioning with second parameter. By default a modal will be added to the end of a queue. |
+| `swal.deleteQueueStep(index)`                   | Delete a modal at `index` from queue. |
 | `swal.getProgressSteps()`                       | Progress steps getter. |
 | `swal.setProgressSteps([])`                     | Progress steps setter. |
 | `swal.showProgressSteps()`                      | Show progress steps. |

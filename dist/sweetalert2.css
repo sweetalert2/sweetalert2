@@ -1,12 +1,33 @@
-.swal2-overlay {
-  background-color: rgba(0, 0, 0, 0.4);
+body.swal2-in {
+  overflow-y: hidden; }
+
+.swal2-container {
+  /* centering */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: fixed;
-  left: 0;
-  right: 0;
   top: 0;
   bottom: 0;
-  display: none;
+  left: 0;
+  right: 0;
+  /* scrolling */
+  overflow-y: auto;
+  padding: 5%;
+  /* TODO: remove/add the element from DOM instead */
+  /* backdrop */
+  background-color: transparent;
   z-index: 1000; }
+  .swal2-container:not(.in) {
+    pointer-events: none; }
+  .swal2-container.fade {
+    -webkit-transition: background-color .1s;
+    transition: background-color .1s; }
+  .swal2-container.in {
+    background-color: rgba(0, 0, 0, 0.4); }
 
 .swal2-modal {
   background-color: #fff;
@@ -14,15 +35,11 @@
   border-radius: 5px;
   box-sizing: border-box;
   text-align: center;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  margin-top: -200px;
+  margin: auto;
   max-height: 90%;
   overflow-x: hidden;
   overflow-y: auto;
-  display: none;
-  z-index: 2000; }
+  display: none; }
   .swal2-modal:focus {
     outline: none; }
   .swal2-modal.loading {

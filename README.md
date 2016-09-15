@@ -1,4 +1,4 @@
-SweetAlert2 [![Build Status](https://travis-ci.org/limonte/sweetalert2.svg?branch=master)](https://travis-ci.org/limonte/sweetalert2) [![PayPal donate](https://img.shields.io/badge/Donate-PayPal-orange.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=limon.monte@gmail.com&item_name=Donation+to+the+SweetAlert2+project&amount=5%2e00&currency_code=USD)
+SweetAlert2 [![Build Status](https://travis-ci.org/limonte/sweetalert2.svg?branch=master)](https://travis-ci.org/limonte/sweetalert2)
 -----------
 
 An awesome replacement for JavaScript's popup boxes.

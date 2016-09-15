@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.3.0
+ * sweetalert2 v4.3.1
  * Released under the MIT License.
  */
 'use strict';
@@ -85,7 +85,7 @@ var defaultParams = {
   inputAttributes: {},
   inputValidator: null,
   progressSteps: [],
-  currentProgressStep: 0,
+  currentProgressStep: null,
   progressStepsDistance: '40px',
   onOpen: null,
   onClose: null
@@ -516,11 +516,11 @@ var setParameters = function(params) {
 
   // Progress steps
   var progressStepsContainer = getProgressSteps();
-  params.currentProgressStep = parseInt(params.currentProgressStep, 10);
+  var currentProgressStep = parseInt(params.currentProgressStep === null? swal.getQueueStep() : params.currentProgressStep, 10);
   if (params.progressSteps.length) {
     show(progressStepsContainer);
     empty(progressStepsContainer);
-    if (params.currentProgressStep >= params.progressSteps.length) {
+    if (currentProgressStep >= params.progressSteps.length) {
       console.warn(
         'SweetAlert2: Invalid currentProgressStep parameter, it should be less than progressSteps.length ' +
         '(currentProgressStep like JS arrays starts from 0)'
@@ -530,7 +530,7 @@ var setParameters = function(params) {
       var circle = document.createElement('li');
       addClass(circle, swalClasses.progresscircle);
       circle.innerHTML = step;
-      if (index === params.currentProgressStep) {
+      if (index === currentProgressStep) {
         addClass(circle, swalClasses.activeprogressstep);
       }
       progressStepsContainer.appendChild(circle);
@@ -1295,7 +1295,7 @@ sweetAlert.isVisible = function() {
  */
 sweetAlert.queue = function(steps) {
   queue = steps;
-  var modal = getModal();
+  var modal = getModal() || sweetAlert.init();
   var resetQueue = function() {
     queue = [];
     modal.removeAttribute('data-queue-step');
@@ -1455,6 +1455,8 @@ sweetAlert.init = function() {
   $customImg.onload = $customImg.onerror = fixVerticalPosition;
 
   window.addEventListener('resize', fixVerticalPosition, false);
+
+  return modal;
 };
 
 /**
@@ -1479,7 +1481,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '4.3.0';
+sweetAlert.version = '4.3.1';
 
 window.sweetAlert = window.swal = sweetAlert;
 

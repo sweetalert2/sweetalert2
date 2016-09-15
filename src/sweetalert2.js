@@ -879,7 +879,7 @@ sweetAlert.isVisible = function() {
  */
 sweetAlert.queue = function(steps) {
   queue = steps;
-  var modal = dom.getModal();
+  var modal = dom.getModal() || sweetAlert.init();
   var resetQueue = function() {
     queue = [];
     modal.removeAttribute('data-queue-step');
@@ -1039,6 +1039,8 @@ sweetAlert.init = function() {
   $customImg.onload = $customImg.onerror = fixVerticalPosition;
 
   window.addEventListener('resize', fixVerticalPosition, false);
+
+  return modal;
 };
 
 /**

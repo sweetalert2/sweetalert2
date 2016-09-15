@@ -40,7 +40,7 @@ export var defaultParams = {
   inputAttributes: {},
   inputValidator: null,
   progressSteps: [],
-  currentProgressStep: 0,
+  currentProgressStep: null,
   progressStepsDistance: '40px',
   onOpen: null,
   onClose: null

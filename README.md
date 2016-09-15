@@ -163,7 +163,7 @@ Configuration
 | `inputValidator`        | `null`               | Validator for input field, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#select-box">usage example</a>. |
 | `inputClass`            | `null`               | A custom CSS class for the input field. |
 | `progressSteps`         | `[]`                 | Progress steps, useful for modal queues, see <a href="https://limonte.github.io/sweetalert2/#chaining-modals">usage example</a>. |
-| `currentProgressStep`   | `0`                  | Current active progress step. |
+| `currentProgressStep`   | `null`               | Current active progress step. The default is `swal.getQueueStep()`. |
 | `progressStepsDistance` | `"40px"`             | Distance between progress steps. |
 | `onOpen`                | `null`               | Function to run when modal opens, provides modal DOM element as the first argument. |
 | `onClose`               | `null`               | Function to run when modal closes, provides modal DOM element as the first argument. |

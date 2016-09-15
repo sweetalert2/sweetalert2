@@ -100,11 +100,11 @@ var setParameters = function(params) {
 
   // Progress steps
   var progressStepsContainer = dom.getProgressSteps();
-  params.currentProgressStep = parseInt(params.currentProgressStep, 10);
+  var currentProgressStep = parseInt(params.currentProgressStep === null? swal.getQueueStep() : params.currentProgressStep, 10);
   if (params.progressSteps.length) {
     dom.show(progressStepsContainer);
     dom.empty(progressStepsContainer);
-    if (params.currentProgressStep >= params.progressSteps.length) {
+    if (currentProgressStep >= params.progressSteps.length) {
       console.warn(
         'SweetAlert2: Invalid currentProgressStep parameter, it should be less than progressSteps.length ' +
         '(currentProgressStep like JS arrays starts from 0)'
@@ -114,7 +114,7 @@ var setParameters = function(params) {
       var circle = document.createElement('li');
       dom.addClass(circle, swalClasses.progresscircle);
       circle.innerHTML = step;
-      if (index === params.currentProgressStep) {
+      if (index === currentProgressStep) {
         dom.addClass(circle, swalClasses.activeprogressstep);
       }
       progressStepsContainer.appendChild(circle);

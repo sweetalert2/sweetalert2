@@ -155,6 +155,7 @@ $white: #fff;
   .swal2-select,
   .swal2-radio,
   .swal2-checkbox,
+  .swal2-range input,
   .swal2-range output {
     margin: 20px auto;
   }
@@ -213,6 +214,7 @@ $white: #fff;
   }
 
   .swal2-input:not([type="file"]),
+  .swal2-range input,
   .swal2-range output {
     height: 43px;
     line-height: 43px;

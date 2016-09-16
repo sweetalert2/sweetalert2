@@ -854,19 +854,16 @@ swal({
       <td><strong>range</strong></td>
       <td>
         <pre>
-<span class="func">var</span> defaultValue = <span class="val">25</span>;
 swal({
-  title: <span class="str">'How old are you',</span>
+  title: <span class="str">'How old are you?',</span>
   type: <span class="str">'question',</span>
   input: <span class="str">'range',</span>
-  html: <span class="str">'&lt;output id="amount"&gt;'</span> + defaultValue + <span class="str">'&lt;/output&gt;'</span>,
   inputAttributes: {
     min: <span class="val">8</span>,
     max: <span class="val">120</span>,
     step: <span class="val">1</span>
-    oninput: <span class="str">'amount.value = this.value'</span>
   },
-  inputValue: defaultValue
+  inputValue: <span class="val">25</span>
 })</pre>
       </td>
       <td><button class="input-type-range">Try me!</button></td>
@@ -1308,19 +1305,16 @@ swal({
   });
 
   $('.input-type-range').on('click', function() {
-    var defaultValue = 25;
     swal({
       title: 'How old are you?',
       type: 'question',
-      html: '<output id="amount">' + defaultValue + '</output>',
       input: 'range',
       inputAttributes: {
         min: 8,
         max: 120,
-        step: 1,
-        oninput: 'amount.value = this.value'
+        step: 1
       },
-      inputValue: defaultValue
+      inputValue: 25
     }).done();
   });
 

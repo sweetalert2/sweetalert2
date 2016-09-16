@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.3.1
+ * sweetalert2 v4.3.2
  * Released under the MIT License.
  */
 'use strict';
@@ -26,6 +26,7 @@ var swalClasses = prefix([
   'icon',
   'image',
   'input',
+  'range',
   'select',
   'radio',
   'checkbox',
@@ -108,6 +109,10 @@ var sweetHTML = '<div class="' + swalClasses.overlay + '" tabIndex="-1"></div>' 
     '<h2></h2>' +
     '<div class="' + swalClasses.content + '"></div>' +
     '<input class="' + swalClasses.input + '">' +
+    '<div class="' + swalClasses.range + '">' +
+      '<output></output>' +
+      '<input type="range" class="' + swalClasses.input + '">' +
+    '</div>' +
     '<select class="' + swalClasses.select + '"></select>' +
     '<div class="' + swalClasses.radio + '"></div>' +
     '<label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">' +
@@ -755,21 +760,24 @@ function modalDependant() {
       }, params.timer);
     }
 
+    // Get input element by specified type or, if type isn't specified, by params.input
     var getInput = function() {
       switch (params.input) {
         case 'select':
-          return getChildByClass(modal, swalClasses.select);
+        case 'checkbox':
+        case 'textarea':
+          return getChildByClass(modal, swalClasses[params.input]);
         case 'radio':
           return modal.querySelector('.' + swalClasses.radio + ' input:checked') ||
             modal.querySelector('.' + swalClasses.radio + ' input:first-child');
-        case 'checkbox':
-          return modal.querySelector('#' + swalClasses.checkbox);
-        case 'textarea':
-          return getChildByClass(modal, swalClasses.textarea);
+        case 'range':
+          return modal.querySelector('.' + swalClasses.range + ' input');
         default:
           return getChildByClass(modal, swalClasses.input);
       }
     };
+
+    // Get the value of the modal input
     var getInputValue = function() {
       var input = getInput();
       switch (params.input) {
@@ -784,6 +792,7 @@ function modalDependant() {
       }
     };
 
+    // input autofocus
     if (params.input) {
       setTimeout(function() {
         var input = getInput();
@@ -1123,7 +1132,7 @@ function modalDependant() {
     sweetAlert.resetValidationError();
 
     // input, select
-    var inputTypes = ['input', 'select', 'radio', 'checkbox', 'textarea'];
+    var inputTypes = ['input', 'range', 'select', 'radio', 'checkbox', 'textarea'];
     var input;
     for (i = 0; i < inputTypes.length; i++) {
       var inputClass = swalClasses[inputTypes[i]];
@@ -1154,12 +1163,19 @@ function modalDependant() {
       case 'file':
       case 'number':
       case 'tel':
-      case 'range':
         input = getChildByClass(modal, swalClasses.input);
         input.value = params.inputValue;
         input.placeholder = params.inputPlaceholder;
         input.type = params.input;
         show(input);
+        break;
+      case 'range':
+        var range = getChildByClass(modal, swalClasses.range);
+        var rangeInput = range.querySelector('input');
+        var rangeOutput = range.querySelector('output');
+        rangeInput.value = params.inputValue;
+        rangeOutput.value = params.inputValue;
+        show(range);
         break;
       case 'select':
         var select = getChildByClass(modal, swalClasses.select);
@@ -1424,10 +1440,11 @@ sweetAlert.init = function() {
 
   var modal = getModal();
   var $input = getChildByClass(modal, swalClasses.input);
+  var $range = modal.querySelector('.' + swalClasses.range + ' input');
   var $select = getChildByClass(modal, swalClasses.select);
   var $checkbox = modal.querySelector('#' + swalClasses.checkbox);
   var $textarea = getChildByClass(modal, swalClasses.textarea);
-  var $customImg = getChildByClass(modal, swalClasses.image);
+  var $image = getChildByClass(modal, swalClasses.image);
 
   $input.oninput = function() {
     sweetAlert.resetValidationError();
@@ -1438,6 +1455,16 @@ sweetAlert.init = function() {
     if (event.keyCode === 13) {
       sweetAlert.clickConfirm();
     }
+  };
+
+  $range.oninput = function() {
+    sweetAlert.resetValidationError();
+    $range.previousSibling.value = $range.value;
+  };
+
+  $range.onchange = function() {
+    sweetAlert.resetValidationError();
+    $range.previousSibling.value = $range.value;
   };
 
   $select.onchange = function() {
@@ -1452,7 +1479,8 @@ sweetAlert.init = function() {
     sweetAlert.resetValidationError();
   };
 
-  $customImg.onload = $customImg.onerror = fixVerticalPosition;
+  $image.onload = fixVerticalPosition;
+  $image.onerror = fixVerticalPosition;
 
   window.addEventListener('resize', fixVerticalPosition, false);
 
@@ -1481,7 +1509,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '4.3.1';
+sweetAlert.version = '4.3.2';
 
 window.sweetAlert = window.swal = sweetAlert;
 

@@ -118,7 +118,8 @@
   .swal2-modal .swal2-textarea,
   .swal2-modal .swal2-select,
   .swal2-modal .swal2-radio,
-  .swal2-modal .swal2-checkbox {
+  .swal2-modal .swal2-checkbox,
+  .swal2-modal .swal2-range output {
     margin: 20px auto; }
   .swal2-modal .swal2-input:not([type="file"]), .swal2-modal .swal2-textarea {
     width: 100%;
@@ -153,8 +154,19 @@
       color: #bdbdbd; }
     .swal2-modal .swal2-input:not([type="file"])::-webkit-input-placeholder, .swal2-modal .swal2-textarea::-webkit-input-placeholder {
       color: #bdbdbd; }
-  .swal2-modal .swal2-input:not([type="file"]) {
+  .swal2-modal .swal2-range input {
+    float: left;
+    padding: 0 !important;
+    width: 80% !important; }
+  .swal2-modal .swal2-range output {
+    float: right;
+    font-size: 20px;
+    font-weight: 600; }
+  .swal2-modal .swal2-input:not([type="file"]),
+  .swal2-modal .swal2-range output {
     height: 43px;
+    line-height: 43px;
+    vertical-align: middle;
     padding: 0 12px; }
   .swal2-modal .swal2-input[type="file"] {
     font-size: 20px; }

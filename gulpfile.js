@@ -35,7 +35,7 @@ gulp.task('dev', function() {
 gulp.task('test', function() {
   return gulp.src('./test/test-runner.html')
     .pipe(qunit())
-    .on('error', function(err){ // avoid the ugly error message on failing
+    .on('error', function(err) { // avoid the ugly error message on failing
       if (process.env.CI) { // but still fail if we're running in a CI
         throw err;
       }
@@ -71,11 +71,11 @@ gulp.task('default', ['compress', 'sass']);
 gulp.task('watch', function() {
   gulp.watch([
     'src/**/*.js',
-    'test/*.js',
+    'test/*.js'
   ], ['compress', 'test']);
 
   gulp.watch([
     'src/sweetalert2.scss',
     'docs/example.scss'
-  ], ['sass', 'test']);
+  ], ['sass']);
 });

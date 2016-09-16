@@ -119,6 +119,7 @@
   .swal2-modal .swal2-select,
   .swal2-modal .swal2-radio,
   .swal2-modal .swal2-checkbox,
+  .swal2-modal .swal2-range input,
   .swal2-modal .swal2-range output {
     margin: 20px auto; }
   .swal2-modal .swal2-input:not([type="file"]), .swal2-modal .swal2-textarea {
@@ -163,6 +164,7 @@
     font-size: 20px;
     font-weight: 600; }
   .swal2-modal .swal2-input:not([type="file"]),
+  .swal2-modal .swal2-range input,
   .swal2-modal .swal2-range output {
     height: 43px;
     line-height: 43px;

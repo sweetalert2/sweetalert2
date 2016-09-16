@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.3.2
+ * sweetalert2 v4.3.3
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -115,12 +115,12 @@
       '<input class="' + swalClasses.input + '">' +
       '<div class="' + swalClasses.range + '">' +
         '<output></output>' +
-        '<input type="range" class="' + swalClasses.input + '">' +
+        '<input type="range">' +
       '</div>' +
       '<select class="' + swalClasses.select + '"></select>' +
       '<div class="' + swalClasses.radio + '"></div>' +
       '<label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">' +
-        '<input type="checkbox" id="' + swalClasses.checkbox + '">' +
+        '<input type="checkbox">' +
       '</label>' +
       '<textarea class="' + swalClasses.textarea + '"></textarea>' +
       '<div class="' + swalClasses.validationerror + '"></div>' +
@@ -765,12 +765,14 @@
       }
 
       // Get input element by specified type or, if type isn't specified, by params.input
-      var getInput = function() {
-        switch (params.input) {
+      var getInput = function(inputType) {
+        inputType = inputType || params.input;
+        switch (inputType) {
           case 'select':
-          case 'checkbox':
           case 'textarea':
-            return getChildByClass(modal, swalClasses[params.input]);
+            return getChildByClass(modal, swalClasses[inputType]);
+          case 'checkbox':
+            return modal.querySelector('.' + swalClasses.checkbox + ' input');
           case 'radio':
             return modal.querySelector('.' + swalClasses.radio + ' input:checked') ||
               modal.querySelector('.' + swalClasses.radio + ' input:first-child');
@@ -784,6 +786,9 @@
       // Get the value of the modal input
       var getInputValue = function() {
         var input = getInput();
+        if (!input) {
+          return null;
+        }
         switch (params.input) {
           case 'checkbox':
             return input.checked ? 1 : 0;
@@ -1070,6 +1075,9 @@
 
       sweetAlert.enableInput = function() {
         var input = getInput();
+        if (!input) {
+          return false;
+        }
         if (input.type === 'radio') {
           var radiosContainer = input.parentNode.parentNode;
           var radios = radiosContainer.querySelectorAll('input');
@@ -1083,7 +1091,10 @@
 
       sweetAlert.disableInput = function() {
         var input = getInput();
-        if (input.type === 'radio') {
+        if (!input) {
+          return false;
+        }
+        if (input && input.type === 'radio') {
           var radiosContainer = input.parentNode.parentNode;
           var radios = radiosContainer.querySelectorAll('input');
           for (var i = 0; i < radios.length; i++) {
@@ -1140,23 +1151,26 @@
       var input;
       for (i = 0; i < inputTypes.length; i++) {
         var inputClass = swalClasses[inputTypes[i]];
-        input = getChildByClass(modal, inputClass);
+        var inputContainer = getChildByClass(modal, inputClass);
+        input = getInput(inputTypes[i]);
 
         // set attributes
-        while (input.attributes.length > 0) {
-          input.removeAttribute(input.attributes[0].name);
-        }
-        for (var attr in params.inputAttributes) {
-          input.setAttribute(attr, params.inputAttributes[attr]);
+        if (input) {
+          while (input.attributes.length > 0) {
+            input.removeAttribute(input.attributes[0].name);
+          }
+          for (var attr in params.inputAttributes) {
+            input.setAttribute(attr, params.inputAttributes[attr]);
+          }
         }
 
         // set class
-        input.className = inputClass;
+        inputContainer.className = inputClass;
         if (params.inputClass) {
-          addClass(input, params.inputClass);
+          addClass(inputContainer, params.inputClass);
         }
 
-        hide(input);
+        hide(inputContainer);
       }
 
       var populateInputOptions;
@@ -1178,6 +1192,7 @@
           var rangeInput = range.querySelector('input');
           var rangeOutput = range.querySelector('output');
           rangeInput.value = params.inputValue;
+          rangeInput.type = params.input;
           rangeOutput.value = params.inputValue;
           show(range);
           break;
@@ -1237,8 +1252,10 @@
           break;
         case 'checkbox':
           var checkbox = getChildByClass(modal, swalClasses.checkbox);
-          var checkboxInput = modal.querySelector('#' + swalClasses.checkbox);
+          var checkboxInput = getInput('checkbox');
+          checkboxInput.type = 'checkbox';
           checkboxInput.value = 1;
+          checkboxInput.id = swalClasses.checkbox;
           checkboxInput.checked = Boolean(params.inputValue);
           var label = checkbox.getElementsByTagName('span');
           if (label.length) {
@@ -1446,7 +1463,7 @@
     var $input = getChildByClass(modal, swalClasses.input);
     var $range = modal.querySelector('.' + swalClasses.range + ' input');
     var $select = getChildByClass(modal, swalClasses.select);
-    var $checkbox = modal.querySelector('#' + swalClasses.checkbox);
+    var $checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input');
     var $textarea = getChildByClass(modal, swalClasses.textarea);
     var $image = getChildByClass(modal, swalClasses.image);
 
@@ -1513,7 +1530,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.3.2';
+  sweetAlert.version = '4.3.3';
 
   window.sweetAlert = window.swal = sweetAlert;
 

@@ -64,8 +64,8 @@ export var sweetHTML = '<div class="' + swalClasses.overlay + '" tabIndex="-1"><
     '<div class="' + swalClasses.content + '"></div>' +
     '<input class="' + swalClasses.input + '">' +
     '<div class="' + swalClasses.range + '">' +
-      '<input type="range">' +
       '<output></output>' +
+      '<input type="range" class="' + swalClasses.input + '">' +
     '</div>' +
     '<select class="' + swalClasses.select + '"></select>' +
     '<div class="' + swalClasses.radio + '"></div>' +

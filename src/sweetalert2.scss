@@ -154,7 +154,8 @@ $white: #fff;
   .swal2-textarea,
   .swal2-select,
   .swal2-radio,
-  .swal2-checkbox {
+  .swal2-checkbox,
+  .swal2-range output {
     margin: 20px auto;
   }
 
@@ -197,8 +198,25 @@ $white: #fff;
     }
   }
 
-  .swal2-input:not([type="file"]) {
+  .swal2-range {
+    input {
+      float: left;
+      padding: 0 !important;
+      width: 80% !important;
+    }
+
+    output {
+      float: right;
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+
+  .swal2-input:not([type="file"]),
+  .swal2-range output {
     height: 43px;
+    line-height: 43px;
+    vertical-align: middle;
     padding: 0 12px;
   }
 

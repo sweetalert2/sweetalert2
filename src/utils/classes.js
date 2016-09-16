@@ -20,6 +20,7 @@ export var swalClasses = prefix([
   'icon',
   'image',
   'input',
+  'range',
   'select',
   'radio',
   'checkbox',

@@ -188,6 +188,30 @@ test('input select', function(assert) {
 });
 
 
+test('input checkbox', function(assert) {
+  var done = assert.async();
+  var checkbox = $('.swal2-checkbox input');
+
+  swal({input: 'checkbox', inputAttributes: {name: 'test-checkbox'}}).then(function(result) {
+    assert.equal(checkbox.attr('name'), 'test-checkbox');
+    assert.equal(result, '1');
+    done();
+  });
+
+  checkbox.prop('checked', true);
+  swal.clickConfirm();
+});
+
+
+test('input range', function(assert) {
+  swal({input: 'range', inputAttributes: {min: 1, max: 10}, inputValue: 5 });
+  var input = $('.swal2-range input');
+  assert.equal(input.attr('min'), '1');
+  assert.equal(input.attr('max'), '10');
+  assert.equal(input.val(), '5');
+});
+
+
 test('queue', function(assert) {
   var done = assert.async();
   var steps = ['Step 1', 'Step 2'];

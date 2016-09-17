@@ -37,9 +37,6 @@ body {
   bottom: 0;
   right: 0;
 
-  // scrolling
-  overflow-y: auto;
-
   // TODO: remove/add the element from DOM instead
   &:not(.in) { pointer-events: none; }
 

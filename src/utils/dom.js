@@ -1,24 +1,22 @@
 import { swalPrefix, swalClasses } from './classes.js';
+import { sweetWrap } from './default.js';
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export var states = {
   previousWindowKeyDown: null,
-  previousActiveElement: null
+  previousActiveElement: null,
+  previousBodyPadding: null
 };
 
 /*
  * Manipulate DOM
  */
 export var elementByClass = function(className) {
-  return document.querySelector('.' + className);
+  return sweetWrap.querySelector('.' + className);
 };
 
 export var getModal = function() {
   return elementByClass(swalClasses.modal);
-};
-
-export var getOverlay = function() {
-  return elementByClass(swalClasses.overlay);
 };
 
 export var getIcons = function() {
@@ -243,26 +241,15 @@ export var resetPrevState = function() {
   clearTimeout(modal.timeout);
 };
 
-// Remove dynamically created media query
-export var addMediaQuery = function(content) {
-  var mediaqueryId = swalPrefix + 'mediaquery-' + Math.random().toString(36).substring(2, 7);
-  var head = document.getElementsByTagName('head')[0];
-  var cssNode = document.createElement('style');
-  cssNode.type = 'text/css';
-  cssNode.id = mediaqueryId;
-  cssNode.innerHTML = content;
-  head.appendChild(cssNode);
-  return mediaqueryId;
-};
-
-// Remove dynamically created media query
-export var removeMediaQuery = function(mediaqueryId) {
-  if (!mediaqueryId) {
-    return false;
-  }
-  var head = document.getElementsByTagName('head')[0];
-  var mediaquery = document.getElementById(mediaqueryId);
-  if (mediaquery) {
-    head.removeChild(mediaquery);
-  }
+// Measure width of scrollbar
+// https://github.com/twbs/bootstrap/blob/master/js/modal.js#L279-L286
+export var measureScrollbar = function() {
+  var scrollDiv = document.createElement('div');
+  scrollDiv.style.width = '50px';
+  scrollDiv.style.height = '50px';
+  scrollDiv.style.overflow = 'scroll';
+  document.body.appendChild(scrollDiv);
+  var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+  document.body.removeChild(scrollDiv);
+  return scrollbarWidth;
 };

@@ -16,21 +16,43 @@ $error:    #f27474;
 $warning:  #f8bb86;
 $info:     #3fc3ee;
 $question: #87adbd;
+$success-border: rgba($success, .2);
 
 $overlay: rgba($black, .4);
 $input-box-shadow: rgba($black, .06);
-$success-border: rgba($success, .2);
 
-.swal2-overlay {
-  background-color: $overlay;
+body {
+  &.swal2-in {
+    overflow-y: hidden;
+  }
+}
 
+.swal2-container {
+  // centering
+  display: flex;
+  justify-content: center;
   position: fixed;
-  left: 0;
-  right: 0;
   top: 0;
+  left: 0;
   bottom: 0;
+  right: 0;
 
-  display: none;
+  // scrolling
+  overflow-y: auto;
+
+  // TODO: remove/add the element from DOM instead
+  &:not(.in) { pointer-events: none; }
+
+  // backdrop
+  background-color: transparent;
+
+  &.fade {
+    transition: background-color .1s;
+  }
+
+  &.in {
+    background-color: $overlay;
+  }
   z-index: 1000;
 }
 
@@ -40,17 +62,11 @@ $success-border: rgba($success, .2);
   border-radius: 5px;
   box-sizing: border-box;
   text-align: center;
-
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  margin-top: -200px;
-
+  margin: auto;
   max-height: 90%;
   overflow-x: hidden;
   overflow-y: auto;
   display: none;
-  z-index: 2000;
 
   &:focus {
     outline: none;

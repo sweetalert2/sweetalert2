@@ -1,6 +1,6 @@
 'use strict';
 
-import { defaultParams, sweetHTML } from './utils/default.js';
+import { defaultParams, sweetWrap } from './utils/default.js';
 import { swalClasses, iconTypes } from './utils/classes.js';
 import { extend, colorLuminance } from './utils/utils.js';
 import * as dom from './utils/dom.js';
@@ -21,40 +21,10 @@ var setParameters = function(params) {
   }
 
   // set modal width and margin-left
-  params.width = params.width.toString();
-  var width = params.width.match(/^(\d+)(px|%)?$/);
-  var widthUnits;
-  if (!width) {
-    console.warn('SweetAlert2: Invalid width parameter, usage examples: "400px", "50%", or just 500 which equals to "500px"');
-  } else {
-    widthUnits = 'px';
-    if (width[2]) {
-      widthUnits = width[2];
-    }
-    width = parseInt(width[1], 10);
-    modal.style.width = width + widthUnits;
-    modal.style.marginLeft = -width / 2 + widthUnits;
-  }
+  modal.style.width = (typeof params.width === 'number') ? params.width + 'px' : params.width;
 
   modal.style.padding = params.padding + 'px';
   modal.style.background = params.background;
-
-  if (widthUnits === 'px') {
-    // add dynamic media query css
-    var margin = 5; // %
-    var mediaQueryMaxWidth = width + (width * (margin/100) * 2);
-    var mediaqueryId = dom.addMediaQuery(
-      '@media screen and (max-width: ' + mediaQueryMaxWidth + 'px) {' +
-        '.' + swalClasses.modal + ' {' +
-          'width: auto !important;' +
-          'left: ' + margin + '% !important;' +
-          'right: ' + margin + '% !important;' +
-          'margin-left: 0 !important;' +
-        '}' +
-      '}'
-    );
-    modal.setAttribute('data-mediaquery-id', mediaqueryId);
-  }
 
   var $title = modal.querySelector('h2');
   var $content = modal.querySelector('.' + swalClasses.content);
@@ -259,29 +229,41 @@ var setParameters = function(params) {
 var openModal = function(animation, onComplete) {
   var modal = dom.getModal();
   if (animation) {
-    dom.fadeIn(dom.getOverlay(), 10);
     dom.addClass(modal, 'show-swal2');
+    dom.addClass(sweetWrap, 'fade');
     dom.removeClass(modal, 'hide-swal2');
   } else {
-    dom.show(dom.getOverlay());
+    dom.removeClass(modal, 'fade');
   }
   dom.show(modal);
+  dom.addClass(sweetWrap, 'in');
+  dom.addClass(document.body, 'swal2-in');
+  fixScrollbar();
   dom.states.previousActiveElement = document.activeElement;
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal);
   }
 };
 
-/*
- * Set 'margin-top'-property on modal based on its computed height
- */
-var fixVerticalPosition = function() {
-  var modal = dom.getModal();
-
-  if (modal !== null) {
-    modal.style.marginTop = dom.getTopMargin(modal);
+function fixScrollbar() {
+  // for queues, do not do this more than once
+  if (dom.states.previousBodyPadding !== null) {
+    return;
   }
-};
+  // if the body has overflow
+  if (document.body.scrollHeight > window.innerHeight) {
+    // add padding so the content doesn't shift after removal of scrollbar
+    dom.states.previousBodyPadding = document.body.style.paddingRight;
+    document.body.style.paddingRight = dom.measureScrollbar() + 'px';
+  }
+}
+
+function undoScrollbar() {
+  if (dom.states.previousBodyPadding !== null) {
+    document.body.style.paddingRight = dom.states.previousBodyPadding;
+    dom.states.previousBodyPadding = null;
+  }
+}
 
 function modalDependant() {
 
@@ -503,7 +485,10 @@ function modalDependant() {
     };
 
     // Closing modal by overlay click
-    dom.getOverlay().onclick = function() {
+    sweetWrap.onclick = function(e) {
+      if (e.target !== sweetWrap) {
+        return;
+      }
       if (params.allowOutsideClick) {
         sweetAlert.closeModal(params.onClose);
         reject('overlay');
@@ -868,11 +853,19 @@ function modalDependant() {
       }
     }
 
-    fixVerticalPosition();
+    // set modal min-height to disable modal scrolling
+    modal.style.minHeight = '';
+    dom.show(modal);
+    modal.style.minHeight = (modal.scrollHeight + 1) + 'px';
+    dom.hide(modal);
+
     openModal(params.animation, params.onOpen);
 
     // Focus the first element (input or button)
     setFocus(-1, 1);
+
+    // fix scroll
+    sweetWrap.scrollTop = 0;
   });
 }
 
@@ -980,22 +973,23 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
 
   dom.resetPrevState();
 
-  // If animation is supported, animate then remove mediaquery (#242)
-  var mediaqueryId = modal.getAttribute('data-mediaquery-id');
+  // If animation is supported, animate
   if (dom.animationEndEvent && !dom.hasClass(modal, 'no-animation')) {
     modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished() {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished);
       if (dom.hasClass(modal, 'hide-swal2')) {
         dom.hide(modal);
-        dom.fadeOut(dom.getOverlay(), 0);
+        dom.removeClass(sweetWrap, 'in');
+        dom.removeClass(document.body, 'swal2-in');
+        undoScrollbar();
       }
-      dom.removeMediaQuery(mediaqueryId);
     });
   } else {
-    // Otherwise, remove mediaquery immediately
+    // Otherwise, hide immediately
     dom.hide(modal);
-    dom.hide(dom.getOverlay());
-    dom.removeMediaQuery(mediaqueryId);
+    dom.removeClass(sweetWrap, 'in');
+    dom.removeClass(document.body, 'swal2-in');
+    undoScrollbar();
   }
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal);
@@ -1027,11 +1021,6 @@ sweetAlert.init = function() {
     return;
   }
 
-  var sweetWrap = document.createElement('div');
-  sweetWrap.className = swalClasses.container;
-
-  sweetWrap.innerHTML = sweetHTML;
-
   document.body.appendChild(sweetWrap);
 
   var modal = dom.getModal();
@@ -1040,7 +1029,6 @@ sweetAlert.init = function() {
   var $select = dom.getChildByClass(modal, swalClasses.select);
   var $checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input');
   var $textarea = dom.getChildByClass(modal, swalClasses.textarea);
-  var $image = dom.getChildByClass(modal, swalClasses.image);
 
   $input.oninput = function() {
     sweetAlert.resetValidationError();
@@ -1074,11 +1062,6 @@ sweetAlert.init = function() {
   $textarea.oninput = function() {
     sweetAlert.resetValidationError();
   };
-
-  $image.onload = fixVerticalPosition;
-  $image.onerror = fixVerticalPosition;
-
-  window.addEventListener('resize', fixVerticalPosition, false);
 
   return modal;
 };

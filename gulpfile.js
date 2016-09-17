@@ -4,14 +4,15 @@ var sass       = require('gulp-sass');
 var rename     = require('gulp-rename');
 var autoprefix = require('gulp-autoprefixer');
 var eslint     = require('gulp-eslint');
+var sassLint   = require('gulp-sass-lint');
 var qunit      = require('gulp-qunit');
 
 var pack  = require('./package.json');
 var utils = require('./config/utils.js');
 
-gulp.task('compress', ['lint', 'commonjs', 'dev', 'production']);
+gulp.task('compress', ['eslint', 'commonjs', 'dev', 'production']);
 
-gulp.task('lint', function() {
+gulp.task('eslint', function() {
   return gulp.src(['src/**/*.js', 'test/*.js'])
     .pipe(eslint())
     .pipe(eslint.format())
@@ -66,6 +67,13 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('docs'));
 });
 
+gulp.task('sass-lint', function() {
+  return gulp.src(['src/**/*.scss', 'docs/**/*.scss'])
+    .pipe(sassLint())
+    .pipe(sassLint.format())
+    .pipe(sassLint.failOnError());
+});
+
 gulp.task('default', ['compress', 'sass']);
 
 gulp.task('watch', function() {
@@ -77,5 +85,5 @@ gulp.task('watch', function() {
   gulp.watch([
     'src/sweetalert2.scss',
     'docs/example.scss'
-  ], ['sass']);
+  ], ['sass-lint', 'sass']);
 });

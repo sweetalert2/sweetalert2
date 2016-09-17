@@ -1,51 +1,74 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300); // Open Sans font
-@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);   // Condensed
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300'); // Open Sans font
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');   // Condensed
 
-@mixin retina-background($url, $type:png) {
-  background-image: url("#{$url}.#{$type}");
-  background-image: -webkit-image-set(url("#{$url}.#{$type}") 1x,
-                            url("#{$url}@2x.#{$type}") 2x);
+$black: #000;
+$white: #fff;
+$athens: #f2f4f6;
+$salmon: #f77;
+$hitgray: #a9b2bc;
+$oslogray: #848d94;
+$regentgray: #8d98a5;
+$towergray: #acb9be;
+$chateaugray: #a7adb2;
+$curiousblue: #3085d6;
+$loblolly: #c7ccd1;
+$porcelain: #e2e5e8;
+$pear: #a6e22d;
+$amaranth: #e92772;
+$heliotrope: #a381ff;
+$spray: #66d9ef;
+$chenin: #e6db74;
+$armadillo: #49483e;
+$cinnabar: #eb4c36;
+$pigeonpost: #abcada;
+$white-button: rgba($white, .8);
+
+@mixin retina-background($url, $type: png) {
+  background-image: image-set(url('#{$url}.#{$type}') 1x, url('#{$url}@2x.#{$type}') 2x);
   background-repeat: no-repeat;
 }
 
-html, body {
+html,
+body {
   margin: 0;
 }
 
 body {
-  background-color: #f2f4f6;
+  background-color: $athens;
   font-family: 'Open Sans', sans-serif;
   text-align: center;
 }
 
-header h1 {
-  font-family: 'Courgette', serif;
-  font-size: 60px;
-  color: #aaa;
-  white-space: nowrap;
-  margin: 50px auto;
+header {
+  h1 {
+    font-family: 'Courgette', serif;
+    font-size: 60px;
+    color: lighten($black, 66);
+    white-space: nowrap;
+    margin: 50px auto;
 
-  span {
-    margin: 0 10px;
-    color: #f77;
+    span {
+      margin: 0 10px;
+      color: $salmon;
+    }
+
+    @media all and (max-width: 440px) {
+      font-size: 50px;
+    }
   }
 
-  @media all and (max-width: 440px) {
-    font-size: 50px;
-  }
-}
+  h2 {
+    font-size: 20px;
+    color: $hitgray;
+    line-height: 25px;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+    display: block;
 
-header h2 {
-  font-size: 20px;
-  color: #a9b2bc;
-  line-height: 25px;
-  text-transform: uppercase;
-  font-weight: 300;
-  text-align: center;
-  display: block;
-
-  a {
-    color: #3085d6;
+    a {
+      color: $curiousblue;
+    }
   }
 }
 
@@ -62,12 +85,16 @@ header h2 {
     text-align: center;
     width: 33%;
   }
-  .swal2-icon, button {
+
+  .swal2-icon,
+  button {
     display: inline-block;
     margin: 0;
   }
+
   .swal2-success {
-    &::before, &::after {
+    &::before,
+    &::after {
       background: transparent !important;
     }
   }
@@ -75,10 +102,13 @@ header h2 {
 
 .modal-input-types {
   tr {
-    td:first-child {
-      padding-top: 45px;
+    td {
+      &:first-child {
+        padding-top: 45px;
+      }
     }
   }
+
   td {
     vertical-align: middle;
     text-align: center;
@@ -88,7 +118,7 @@ header h2 {
 
 h3 {
   font-size: 28px;
-  color: #c7ccd1;
+  color: $loblolly;
   text-transform: uppercase;
   font-family: 'Open Sans Condensed', sans-serif;
   margin-top: 100px;
@@ -102,7 +132,7 @@ h3 {
 
   &::after {
     content: '';
-    background-color: #e2e5e8;
+    background-color: $porcelain;
     height: 4px;
     width: 700px;
     left: 50%;
@@ -122,6 +152,17 @@ h3 {
 
 a {
   text-decoration: none;
+  color: $pigeonpost;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.github {
+    color: lighten($black, 20);
+  }
 }
 
 p {
@@ -129,7 +170,7 @@ p {
   margin: 30px auto;
   font-size: 17px;
   font-weight: 300;
-  color: #848d94;
+  color: $oslogray;
   line-height: 25px;
   text-align: left;
 
@@ -138,21 +179,8 @@ p {
   }
 
   strong {
-    color: #8a8f94;
+    color: $oslogray;
     font-weight: 600;
-  }
-
-  a {
-    color: #9ecadf;
-    font-weight: 600;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    &.github {
-      color: #323131;
-    }
   }
 
   @media all and (max-width: 750px) {
@@ -167,7 +195,7 @@ button,
   $btn-gray: #d0d0d0;
 
   background-color: $btn-blue;
-  color: #fff;
+  color: $white;
   border: 0;
   box-shadow: none;
   font-size: 17px;
@@ -209,19 +237,22 @@ button,
   z-index: 3;
   text-transform: uppercase;
   font-weight: 500;
-  background-color: rgba(#fff, .9);
+  background-color: $white-button;
   border-radius: 2px;
   cursor: pointer;
 
+  &:hover {
+    text-decoration: none;
+  }
+
   &.download {
     top: 30px;
-    color: #abcada;
-
+    color: $pigeonpost;
   }
 
   &.cdn {
     top: 90px;
-    color: #eb4c36;
+    color: $cinnabar;
   }
 
   @media all and (max-width: 1278px) {
@@ -235,8 +266,8 @@ button,
 }
 
 pre {
-  background-color: #49483e;
-  color: #f8f8f2;
+  background-color: $armadillo;
+  color: lighten($black, 97);
   padding: 10px;
   border-radius: 5px;
   text-align: left;
@@ -244,32 +275,32 @@ pre {
   overflow: hidden;
 
   .str {
-    color: #e6db74;
+    color: $chenin;
   }
 
   .func {
-    color: #66d9ef;
+    color: $spray;
   }
 
   .val {
-    color: #a381ff;
+    color: $heliotrope;
   }
 
   .tag {
-    color: #e92772;
+    color: $amaranth;
   }
 
   .attr {
-    color: #a6e22d;
+    color: $pear;
   }
 
   .comment {
-    color: #85939e;
+    color: $regentgray;
   }
 }
 
 .showcase {
-  background-color: #eceef0;
+  background-color: $porcelain;
   padding: 20px;
   display: inline-block;
   width: 383px;
@@ -286,20 +317,22 @@ pre {
 
   h4 {
     font-size: 16px;
-    color: #bcbcbc;
+    color: lighten($black, 70);
     line-height: 22px;
     margin: 0 auto;
     font-weight: 800;
   }
 
-  &.sweet h4 {
-    font-family: 'Courgette', serif;
-    font-size: 24px;
-    color: #aaa;
+  &.sweet {
+    h4 {
+      font-family: 'Courgette', serif;
+      font-size: 24px;
+      color: lighten($black, 66);
 
-    span {
-      margin: 0 4px;
-      color: #f77;
+      span {
+        margin: 0 4px;
+        color: $salmon;
+      }
     }
   }
 
@@ -308,7 +341,7 @@ pre {
     text-align: left;
     font-weight: 500;
     text-transform: uppercase;
-    color: rgb(194, 194, 194);
+    color: lighten($black, 77);
   }
 
   button {
@@ -386,8 +419,10 @@ pre {
     }
   }
 
-  .warning pre {
-    margin-top: 93px;
+  .warning {
+    pre {
+      margin-top: 93px;
+    }
   }
 }
 
@@ -399,7 +434,7 @@ ol {
   padding-left: 0;
 
   li {
-    color: #a7adb2;
+    color: $chateaugray;
 
     p {
       margin-bottom: 10px;
@@ -411,7 +446,7 @@ ol {
 table {
   width: 725px;
   font-size: 14px;
-  color: #8a8f94;
+  color: $oslogray;
   margin: 10px auto;
   text-align: left;
   border-collapse: collapse;
@@ -421,12 +456,12 @@ table {
   }
 
   th {
-    background-color: #fff;
-    padding: 9px;
-    color: rgb(172, 185, 190);
+    background-color: $white;
+    padding: 10px 20px;
+    color: $towergray;
     font-weight: 400;
-    text-align: center;
     position: relative;
+    white-space: nowrap;
 
     @media all and (max-width: 750px) {
       &:nth-child(2) {
@@ -438,14 +473,6 @@ table {
   td {
     padding: 10px 20px;
     vertical-align: top;
-
-    &:first-child {
-      padding-left: 0;
-    }
-
-    &:last-child {
-      padding-right: 0;
-    }
 
     @media all and (max-width: 750px) {
       &:nth-child(2) {
@@ -480,19 +507,19 @@ table {
   margin: 0 auto;
   padding: 1em;
   max-width: 300px;
-  border: solid 1px #a9b2bc;
+  border: solid 1px $hitgray;
   border-radius: 2px;
-  box-shadow: inset 0 1px #fff;
-  text-shadow: 0 1px #fff;
+  box-shadow: inset 0 1px $white;
+  text-shadow: 0 1px $white;
   font-size: 12px;
   line-height: 1.5;
 
   a {
-    color: #8d98a5;
+    color: $regentgray;
     transition: color .15s ease-in-out;
 
     &:hover {
-      color: #ff7777;
+      color: $salmon;
     }
   }
 

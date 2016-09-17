@@ -47,7 +47,7 @@
     <button>Show error message</button>
 
     <pre>
-sweetAlert(
+swal(
   <span class="str">'Oops...'</span>,
   <span class="str">'Something went wrong!'</span>,
   <span class="str">'error'</span>
@@ -59,8 +59,6 @@ sweetAlert(
 
   <!-- Examples -->
   <h3>More examples</h3>
-
-  <p class="center">In these examples, we're using the shorthand function <strong>swal</strong>.</p>
 
   <ul class="examples">
 
@@ -293,12 +291,12 @@ swal.setDefaults({
 ];
 
 swal.queue(steps).then(<span class="func"><i>function</i></span>() {
+  swal.resetDefaults();
   swal({
     title: <span class="str">'All done!'</span>,
     confirmButtonText: <span class="str">'Lovely!'</span>,
     showCancelButton: <span class="val">false</span>
   });
-  swal.resetDefaults();
 }, <span class="func"><i>function</i></span>() {
   swal.resetDefaults();
 })</pre>
@@ -340,9 +338,9 @@ swal.queue([{
     <pre class="center">$ npm install sweetalert2</pre>
     <p>
       Or download from CDN:
-      <a href="https://www.jsdelivr.com/projects/sweetalert2">jsdelivr.com/sweetalert2</a>
+      <a href="https://www.jsdelivr.com/projects/sweetalert2" target="_blank">jsdelivr.com/sweetalert2 <i class="fa fa-external-link"></i></a>
       <span class="mobile-hidden"> | </span>
-      <a href="https://cdnjs.com/libraries/limonte-sweetalert2">cdnjs.com/limonte-sweetalert2</a>
+      <a href="https://cdnjs.com/libraries/limonte-sweetalert2" target="_blank">cdnjs.com/limonte-sweetalert2 <i class="fa fa-external-link"></i></a>
     </p>
   </div>
 
@@ -1383,8 +1381,8 @@ swal({
     ];
 
     swal.queue(steps).then(function() {
-      swal({title: 'All done!', confirmButtonText: 'Lovely!', showCancelButton: false});
       swal.resetDefaults();
+      swal({title: 'All done!', confirmButtonText: 'Lovely!', showCancelButton: false});
     }, function() {
       swal.resetDefaults();
     });

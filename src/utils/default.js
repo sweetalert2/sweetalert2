@@ -79,6 +79,6 @@ var sweetHTML = '<div class="' + swalClasses.modal + '" style="display: none" ta
     '<span class="' + swalClasses.close + '">&times;</span>' +
   '</div>';
 
-export var sweetWrap = document.createElement('div');
-sweetWrap.className = swalClasses.container;
-sweetWrap.innerHTML = sweetHTML;
+export var sweetContainer = document.createElement('div');
+sweetContainer.className = swalClasses.container;
+sweetContainer.innerHTML = sweetHTML;

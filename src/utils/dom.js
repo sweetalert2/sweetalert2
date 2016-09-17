@@ -1,5 +1,5 @@
 import { swalPrefix, swalClasses } from './classes.js';
-import { sweetWrap } from './default.js';
+import { sweetContainer } from './default.js';
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export var states = {
@@ -12,7 +12,7 @@ export var states = {
  * Manipulate DOM
  */
 export var elementByClass = function(className) {
-  return sweetWrap.querySelector('.' + className);
+  return sweetContainer.querySelector('.' + className);
 };
 
 export var getModal = function() {

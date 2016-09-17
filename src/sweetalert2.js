@@ -1,6 +1,6 @@
 'use strict';
 
-import { defaultParams, sweetWrap } from './utils/default.js';
+import { defaultParams, sweetContainer } from './utils/default.js';
 import { swalClasses, iconTypes } from './utils/classes.js';
 import { extend, colorLuminance } from './utils/utils.js';
 import * as dom from './utils/dom.js';
@@ -230,13 +230,13 @@ var openModal = function(animation, onComplete) {
   var modal = dom.getModal();
   if (animation) {
     dom.addClass(modal, 'show-swal2');
-    dom.addClass(sweetWrap, 'fade');
+    dom.addClass(sweetContainer, 'fade');
     dom.removeClass(modal, 'hide-swal2');
   } else {
     dom.removeClass(modal, 'fade');
   }
   dom.show(modal);
-  dom.addClass(sweetWrap, 'in');
+  dom.addClass(sweetContainer, 'in');
   dom.addClass(document.body, 'swal2-in');
   fixScrollbar();
   dom.states.previousActiveElement = document.activeElement;
@@ -485,8 +485,8 @@ function modalDependant() {
     };
 
     // Closing modal by overlay click
-    sweetWrap.onclick = function(e) {
-      if (e.target !== sweetWrap) {
+    sweetContainer.onclick = function(e) {
+      if (e.target !== sweetContainer) {
         return;
       }
       if (params.allowOutsideClick) {
@@ -862,7 +862,7 @@ function modalDependant() {
     setFocus(-1, 1);
 
     // fix scroll
-    sweetWrap.scrollTop = 0;
+    sweetContainer.scrollTop = 0;
   });
 }
 
@@ -976,7 +976,7 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished);
       if (dom.hasClass(modal, 'hide-swal2')) {
         dom.hide(modal);
-        dom.removeClass(sweetWrap, 'in');
+        dom.removeClass(sweetContainer, 'in');
         dom.removeClass(document.body, 'swal2-in');
         undoScrollbar();
       }
@@ -984,7 +984,7 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
   } else {
     // Otherwise, hide immediately
     dom.hide(modal);
-    dom.removeClass(sweetWrap, 'in');
+    dom.removeClass(sweetContainer, 'in');
     dom.removeClass(document.body, 'swal2-in');
     undoScrollbar();
   }
@@ -1018,7 +1018,7 @@ sweetAlert.init = function() {
     return;
   }
 
-  document.body.appendChild(sweetWrap);
+  document.body.appendChild(sweetContainer);
 
   var modal = dom.getModal();
   var $input = dom.getChildByClass(modal, swalClasses.input);

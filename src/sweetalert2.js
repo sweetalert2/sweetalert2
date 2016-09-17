@@ -236,6 +236,18 @@ var openModal = function(animation, onComplete) {
     dom.removeClass(modal, 'fade');
   }
   dom.show(modal);
+
+  // scrolling is 'hidden' until animation is done, after that 'auto'
+  sweetContainer.style.overflowY = 'hidden';
+  if (dom.animationEndEvent && !dom.hasClass(modal, 'no-animation')) {
+    modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished() {
+      modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished);
+      sweetContainer.style.overflowY = 'auto';
+    });
+  } else {
+    sweetContainer.style.overflowY = 'auto';
+  }
+
   dom.addClass(sweetContainer, 'in');
   dom.addClass(document.body, 'swal2-in');
   fixScrollbar();

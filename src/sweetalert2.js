@@ -691,6 +691,7 @@ function modalDependant() {
     sweetAlert.resetValidationError = function() {
       var $validationError = modal.querySelector('.' + swalClasses.validationerror);
       dom.hide($validationError);
+      dom.setModalMinHeight();
 
       var input = getInput();
       if (input) {

@@ -858,6 +858,7 @@ function modalDependant() {
         params.inputOptions.then(function(inputOptions) {
           sweetAlert.hideLoading();
           populateInputOptions(inputOptions);
+          dom.setModalMinHeight();
         });
       } else if (typeof params.inputOptions === 'object') {
         populateInputOptions(params.inputOptions);

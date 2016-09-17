@@ -257,8 +257,9 @@ export var measureScrollbar = function() {
 // Set modal min-height to disable scrolling inside the modal
 export var setModalMinHeight = function() {
   var modal = getModal();
+  var prevState = modal.style.display;
   modal.style.minHeight = '';
   show(modal);
   modal.style.minHeight = (modal.scrollHeight + 1) + 'px';
-  hide(modal);
+  modal.style.display = prevState;
 };

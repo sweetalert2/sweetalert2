@@ -46,8 +46,7 @@ export var defaultParams = {
   onClose: null
 };
 
-export var sweetHTML = '<div class="' + swalClasses.overlay + '" tabIndex="-1"></div>' +
-  '<div class="' + swalClasses.modal + '" style="display: none" tabIndex="-1">' +
+var sweetHTML = '<div class="' + swalClasses.modal + '" style="display: none" tabIndex="-1">' +
     '<ul class="' + swalClasses.progresssteps + '"></ul>' +
     '<div class="' + swalClasses.icon + ' ' + iconTypes.error + '">' +
       '<span class="x-mark"><span class="line left"></span><span class="line right"></span></span>' +
@@ -79,3 +78,7 @@ export var sweetHTML = '<div class="' + swalClasses.overlay + '" tabIndex="-1"><
     '<button type="button" class="' + swalClasses.cancel + '">Cancel</button>' +
     '<span class="' + swalClasses.close + '">&times;</span>' +
   '</div>';
+
+export var sweetWrap = document.createElement('div');
+sweetWrap.className = swalClasses.container;
+sweetWrap.innerHTML = sweetHTML;

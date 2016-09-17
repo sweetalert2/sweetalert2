@@ -96,7 +96,7 @@ test('overlay click', function(assert) {
     }
   );
 
-  $('.swal2-overlay').click();
+  $('.swal2-container').click();
 });
 
 

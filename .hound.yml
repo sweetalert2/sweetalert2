@@ -4,3 +4,6 @@ jshint:
 eslint:
   enabled: true
   config_file: .eslintrc
+
+scss:
+  config_file: .sass-lint.yml

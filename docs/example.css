@@ -1,6 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
-html, body {
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700");
+html,
+body {
   margin: 0; }
 
 body {
@@ -11,7 +12,7 @@ body {
 header h1 {
   font-family: 'Courgette', serif;
   font-size: 60px;
-  color: #aaa;
+  color: #a8a8a8;
   white-space: nowrap;
   margin: 50px auto; }
   header h1 span {
@@ -41,7 +42,8 @@ header h2 {
   text-align: center;
   width: 33%; }
 
-.modal-types .swal2-icon, .modal-types button {
+.modal-types .swal2-icon,
+.modal-types button {
   display: inline-block;
   margin: 0; }
 
@@ -85,7 +87,14 @@ h3 {
         margin-left: 0; } }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: #abcada;
+  font-weight: 600;
+  cursor: pointer; }
+  a:hover {
+    text-decoration: underline; }
+  a.github {
+    color: #333333; }
 
 p {
   max-width: 826px;
@@ -98,15 +107,8 @@ p {
   p.center {
     text-align: center; }
   p strong {
-    color: #8a8f94;
+    color: #848d94;
     font-weight: 600; }
-  p a {
-    color: #9ecadf;
-    font-weight: 600; }
-    p a:hover {
-      text-decoration: underline; }
-    p a.github {
-      color: #323131; }
   @media all and (max-width: 750px) {
     p {
       text-align: center;
@@ -151,9 +153,11 @@ button,
   z-index: 3;
   text-transform: uppercase;
   font-weight: 500;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 2px;
   cursor: pointer; }
+  .top-right-button:hover {
+    text-decoration: none; }
   .top-right-button.download {
     top: 30px;
     color: #abcada; }
@@ -170,7 +174,7 @@ button,
 
 pre {
   background-color: #49483e;
-  color: #f8f8f2;
+  color: #f7f7f7;
   padding: 10px;
   border-radius: 5px;
   text-align: left;
@@ -187,10 +191,10 @@ pre {
   pre .attr {
     color: #a6e22d; }
   pre .comment {
-    color: #85939e; }
+    color: #8d98a5; }
 
 .showcase {
-  background-color: #eceef0;
+  background-color: #e2e5e8;
   padding: 20px;
   display: inline-block;
   width: 383px;
@@ -205,14 +209,14 @@ pre {
       width: auto; } }
   .showcase h4 {
     font-size: 16px;
-    color: #bcbcbc;
+    color: #b3b3b3;
     line-height: 22px;
     margin: 0 auto;
     font-weight: 800; }
   .showcase.sweet h4 {
     font-family: 'Courgette', serif;
     font-size: 24px;
-    color: #aaa; }
+    color: #a8a8a8; }
     .showcase.sweet h4 span {
       margin: 0 4px;
       color: #f77; }
@@ -221,12 +225,12 @@ pre {
     text-align: left;
     font-weight: 500;
     text-transform: uppercase;
-    color: #c2c2c2; }
+    color: #c4c4c4; }
   .showcase button {
     margin-bottom: 10px; }
   .showcase .vs-icon {
-    background-image: url("vs_icon.png");
     background-image: -webkit-image-set(url("vs_icon.png") 1x, url("vs_icon@2x.png") 2x);
+    background-image: image-set(url("vs_icon.png") 1x, url("vs_icon@2x.png") 2x);
     background-repeat: no-repeat;
     width: 69px;
     height: 69px;
@@ -295,7 +299,7 @@ ol {
 table {
   width: 725px;
   font-size: 14px;
-  color: #8a8f94;
+  color: #848d94;
   margin: 10px auto;
   text-align: left;
   border-collapse: collapse; }
@@ -305,21 +309,17 @@ table {
       margin: 10px auto; } }
   table th {
     background-color: #fff;
-    padding: 9px;
+    padding: 10px 20px;
     color: #acb9be;
     font-weight: 400;
-    text-align: center;
-    position: relative; }
+    position: relative;
+    white-space: nowrap; }
     @media all and (max-width: 750px) {
       table th:nth-child(2) {
         display: none; } }
   table td {
     padding: 10px 20px;
     vertical-align: top; }
-    table td:first-child {
-      padding-left: 0; }
-    table td:last-child {
-      padding-right: 0; }
     @media all and (max-width: 750px) {
       table td:nth-child(2) {
         display: none; } }
@@ -355,7 +355,7 @@ table {
     -webkit-transition: color .15s ease-in-out;
     transition: color .15s ease-in-out; }
     #carbonads a:hover {
-      color: #ff7777; }
+      color: #f77; }
   #carbonads span {
     position: relative;
     display: block;

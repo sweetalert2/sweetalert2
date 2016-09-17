@@ -246,6 +246,18 @@ body {
     }
   }
 
+  @supports (-ms-accelerator: true) {
+    .swal2-range {
+      input {
+        width: 100%;
+      }
+
+      output {
+        display: none;
+      }
+    }
+  }
+
   .swal2-input {
     &:not([type='file']) {
       height: 43px;

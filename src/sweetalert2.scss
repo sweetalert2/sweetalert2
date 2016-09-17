@@ -243,18 +243,7 @@ body {
       line-height: 43px;
       vertical-align: middle;
       margin: 20px auto;
-    }
-  }
-
-  @supports (-ms-accelerator: true) {
-    .swal2-range {
-      input {
-        width: 100%;
-      }
-
-      output {
-        display: none;
-      }
+      padding: 0;
     }
   }
 
@@ -335,6 +324,30 @@ body {
       line-height: 24px;
       text-align: center;
       margin-right: 10px;
+    }
+  }
+}
+
+@supports (-ms-accelerator: true) {
+  .swal2-range {
+    input {
+      width: 100% !important;
+    }
+
+    output {
+      display: none;
+    }
+  }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .swal2-range {
+    input {
+      width: 100% !important;
+    }
+
+    output {
+      display: none;
     }
   }
 }

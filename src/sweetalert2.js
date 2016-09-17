@@ -669,6 +669,7 @@ function modalDependant() {
       var $validationError = modal.querySelector('.' + swalClasses.validationerror);
       $validationError.innerHTML = error;
       dom.show($validationError);
+      dom.setModalMinHeight();
 
       var input = getInput();
       dom.focusInput(input);
@@ -853,11 +854,7 @@ function modalDependant() {
       }
     }
 
-    // set modal min-height to disable modal scrolling
-    modal.style.minHeight = '';
-    dom.show(modal);
-    modal.style.minHeight = (modal.scrollHeight + 1) + 'px';
-    dom.hide(modal);
+    dom.setModalMinHeight();
 
     openModal(params.animation, params.onOpen);
 

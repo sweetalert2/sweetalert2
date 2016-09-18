@@ -1300,7 +1300,7 @@ swal({
       reader.onload = function(e) {
         swal({
           imageUrl: e.target.result
-        });
+        }).done();
       };
       reader.readAsDataURL(file);
     }).done();

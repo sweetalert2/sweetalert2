@@ -61,10 +61,13 @@ export var hasClass = function(elem, className) {
 export var focusInput = function(input) {
   input.focus();
 
-  // http://stackoverflow.com/a/2345915/1331425
-  var val = input.value;
-  input.value = '';
-  input.value = val;
+  // place cursor at end of text in text input
+  if (input.type !== 'file') {
+    // http://stackoverflow.com/a/2345915/1331425
+    var val = input.value;
+    input.value = '';
+    input.value = val;
+  }
 };
 
 export var addClass = function(elem, className) {

@@ -732,7 +732,10 @@ function modalDependant() {
       if (input) {
         for (var j in input.attributes) {
           if (input.attributes.hasOwnProperty(j)) {
-            input.removeAttribute(input.attributes[j].name);
+            var attrName = input.attributes[j].name;
+            if (attrName !== 'type' && attrName !== 'value') {
+              input.removeAttribute(attrName);
+            }
           }
         }
         for (var attr in params.inputAttributes) {

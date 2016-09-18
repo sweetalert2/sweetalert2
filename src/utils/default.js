@@ -62,7 +62,7 @@ var sweetHTML = '<div class="' + swalClasses.modal + '" style="display: none" ta
     '<h2></h2>' +
     '<div class="' + swalClasses.content + '"></div>' +
     '<input class="' + swalClasses.input + '">' +
-    '<input class="' + swalClasses.file + '">' +
+    '<input type="file" class="' + swalClasses.file + '">' +
     '<div class="' + swalClasses.range + '">' +
       '<output></output>' +
       '<input type="range">' +

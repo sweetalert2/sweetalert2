@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.0.1
+ * sweetalert2 v5.0.2
  * Released under the MIT License.
  */
 'use strict';
@@ -110,7 +110,7 @@ var sweetHTML = '<div class="' + swalClasses.modal + '" style="display: none" ta
     '<h2></h2>' +
     '<div class="' + swalClasses.content + '"></div>' +
     '<input class="' + swalClasses.input + '">' +
-    '<input class="' + swalClasses.file + '">' +
+    '<input type="file" class="' + swalClasses.file + '">' +
     '<div class="' + swalClasses.range + '">' +
       '<output></output>' +
       '<input type="range">' +
@@ -1103,7 +1103,10 @@ function modalDependant() {
       if (input) {
         for (var j in input.attributes) {
           if (input.attributes.hasOwnProperty(j)) {
-            input.removeAttribute(input.attributes[j].name);
+            var attrName = input.attributes[j].name;
+            if (attrName !== 'type' && attrName !== 'value') {
+              input.removeAttribute(attrName);
+            }
           }
         }
         for (var attr in params.inputAttributes) {
@@ -1482,7 +1485,7 @@ sweetAlert.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '5.0.1';
+sweetAlert.version = '5.0.2';
 
 window.sweetAlert = window.swal = sweetAlert;
 

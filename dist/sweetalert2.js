@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v4.3.3
+ * sweetalert2 v5.0.0
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -96,8 +96,7 @@
     onClose: null
   };
 
-  var sweetHTML = '<div class="' + swalClasses.overlay + '" tabIndex="-1"></div>' +
-    '<div class="' + swalClasses.modal + '" style="display: none" tabIndex="-1">' +
+  var sweetHTML = '<div class="' + swalClasses.modal + '" style="display: none" tabIndex="-1">' +
       '<ul class="' + swalClasses.progresssteps + '"></ul>' +
       '<div class="' + swalClasses.icon + ' ' + iconTypes.error + '">' +
         '<span class="x-mark"><span class="line left"></span><span class="line right"></span></span>' +
@@ -129,6 +128,10 @@
       '<button type="button" class="' + swalClasses.cancel + '">Cancel</button>' +
       '<span class="' + swalClasses.close + '">&times;</span>' +
     '</div>';
+
+  var sweetContainer = document.createElement('div');
+  sweetContainer.className = swalClasses.container;
+  sweetContainer.innerHTML = sweetHTML;
 
   var extend = function(a, b) {
     for (var key in b) {
@@ -166,22 +169,19 @@
   // Remember state in cases where opening and handling a modal will fiddle with it.
   var states = {
     previousWindowKeyDown: null,
-    previousActiveElement: null
+    previousActiveElement: null,
+    previousBodyPadding: null
   };
 
   /*
    * Manipulate DOM
    */
   var elementByClass = function(className) {
-    return document.querySelector('.' + className);
+    return sweetContainer.querySelector('.' + className);
   };
 
   var getModal = function() {
     return elementByClass(swalClasses.modal);
-  };
-
-  var getOverlay = function() {
-    return elementByClass(swalClasses.overlay);
   };
 
   var getIcons = function() {
@@ -292,58 +292,6 @@
     }
   };
 
-  var getTopMargin = function(elem) {
-    var elemDisplay = elem.style.display;
-    elem.style.left = '-9999px';
-    elem.style.display = 'block';
-
-    var height = elem.clientHeight;
-
-    elem.style.left = '';
-    elem.style.display = elemDisplay;
-    return ('-' + parseInt(height / 2, 10) + 'px');
-  };
-
-  var fadeIn = function(elem, interval) {
-    if (+elem.style.opacity < 1) {
-      interval = interval || 16;
-      elem.style.opacity = 0;
-      elem.style.display = 'block';
-      var last = +new Date();
-      var tick = function() {
-        var newOpacity = +elem.style.opacity + (new Date() - last) / 100;
-        elem.style.opacity = (newOpacity > 1) ? 1 : newOpacity;
-        last = +new Date();
-
-        if (+elem.style.opacity < 1) {
-          setTimeout(tick, interval);
-        }
-      };
-      tick();
-    }
-  };
-
-  var fadeOut = function(elem, interval) {
-    if (+elem.style.opacity > 0) {
-      interval = interval || 16;
-      var opacity = elem.style.opacity;
-      var last = +new Date();
-      var tick = function() {
-        var change = new Date() - last;
-        var newOpacity = +elem.style.opacity - change / (opacity * 100);
-        elem.style.opacity = newOpacity;
-        last = +new Date();
-
-        if (+elem.style.opacity > 0) {
-          setTimeout(tick, interval);
-        } else {
-          hide(elem);
-        }
-      };
-      tick();
-    }
-  };
-
   var fireClick = function(node) {
     // Taken from http://www.nonobtrusive.com/2011/11/29/programatically-fire-crossbrowser-click-event-with-javascript/
     // Then fixed for today's Chrome browser.
@@ -406,28 +354,27 @@
     clearTimeout(modal.timeout);
   };
 
-  // Remove dynamically created media query
-  var addMediaQuery = function(content) {
-    var mediaqueryId = swalPrefix + 'mediaquery-' + Math.random().toString(36).substring(2, 7);
-    var head = document.getElementsByTagName('head')[0];
-    var cssNode = document.createElement('style');
-    cssNode.type = 'text/css';
-    cssNode.id = mediaqueryId;
-    cssNode.innerHTML = content;
-    head.appendChild(cssNode);
-    return mediaqueryId;
+  // Measure width of scrollbar
+  // https://github.com/twbs/bootstrap/blob/master/js/modal.js#L279-L286
+  var measureScrollbar = function() {
+    var scrollDiv = document.createElement('div');
+    scrollDiv.style.width = '50px';
+    scrollDiv.style.height = '50px';
+    scrollDiv.style.overflow = 'scroll';
+    document.body.appendChild(scrollDiv);
+    var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+    document.body.removeChild(scrollDiv);
+    return scrollbarWidth;
   };
 
-  // Remove dynamically created media query
-  var removeMediaQuery = function(mediaqueryId) {
-    if (!mediaqueryId) {
-      return false;
-    }
-    var head = document.getElementsByTagName('head')[0];
-    var mediaquery = document.getElementById(mediaqueryId);
-    if (mediaquery) {
-      head.removeChild(mediaquery);
-    }
+  // Set modal min-height to disable scrolling inside the modal
+  var setModalMinHeight = function() {
+    var modal = getModal();
+    var prevState = modal.style.display;
+    modal.style.minHeight = '';
+    show(modal);
+    modal.style.minHeight = (modal.scrollHeight + 1) + 'px';
+    modal.style.display = prevState;
   };
 
   var modalParams = extend({}, defaultParams);
@@ -446,40 +393,10 @@
     }
 
     // set modal width and margin-left
-    params.width = params.width.toString();
-    var width = params.width.match(/^(\d+)(px|%)?$/);
-    var widthUnits;
-    if (!width) {
-      console.warn('SweetAlert2: Invalid width parameter, usage examples: "400px", "50%", or just 500 which equals to "500px"');
-    } else {
-      widthUnits = 'px';
-      if (width[2]) {
-        widthUnits = width[2];
-      }
-      width = parseInt(width[1], 10);
-      modal.style.width = width + widthUnits;
-      modal.style.marginLeft = -width / 2 + widthUnits;
-    }
+    modal.style.width = (typeof params.width === 'number') ? params.width + 'px' : params.width;
 
     modal.style.padding = params.padding + 'px';
     modal.style.background = params.background;
-
-    if (widthUnits === 'px') {
-      // add dynamic media query css
-      var margin = 5; // %
-      var mediaQueryMaxWidth = width + (width * (margin/100) * 2);
-      var mediaqueryId = addMediaQuery(
-        '@media screen and (max-width: ' + mediaQueryMaxWidth + 'px) {' +
-          '.' + swalClasses.modal + ' {' +
-            'width: auto !important;' +
-            'left: ' + margin + '% !important;' +
-            'right: ' + margin + '% !important;' +
-            'margin-left: 0 !important;' +
-          '}' +
-        '}'
-      );
-      modal.setAttribute('data-mediaquery-id', mediaqueryId);
-    }
 
     var $title = modal.querySelector('h2');
     var $content = modal.querySelector('.' + swalClasses.content);
@@ -684,32 +601,55 @@
   var openModal = function(animation, onComplete) {
     var modal = getModal();
     if (animation) {
-      fadeIn(getOverlay(), 10);
       addClass(modal, 'show-swal2');
+      addClass(sweetContainer, 'fade');
       removeClass(modal, 'hide-swal2');
     } else {
-      show(getOverlay());
+      removeClass(modal, 'fade');
     }
     show(modal);
+
+    // scrolling is 'hidden' until animation is done, after that 'auto'
+    sweetContainer.style.overflowY = 'hidden';
+    if (animationEndEvent && !hasClass(modal, 'no-animation')) {
+      modal.addEventListener(animationEndEvent, function swalCloseEventFinished() {
+        modal.removeEventListener(animationEndEvent, swalCloseEventFinished);
+        sweetContainer.style.overflowY = 'auto';
+      });
+    } else {
+      sweetContainer.style.overflowY = 'auto';
+    }
+
+    addClass(sweetContainer, 'in');
+    addClass(document.body, 'swal2-in');
+    fixScrollbar();
     states.previousActiveElement = document.activeElement;
     if (onComplete !== null && typeof onComplete === 'function') {
       onComplete.call(this, modal);
     }
   };
 
-  /*
-   * Set 'margin-top'-property on modal based on its computed height
-   */
-  var fixVerticalPosition = function() {
-    var modal = getModal();
-
-    if (modal !== null) {
-      modal.style.marginTop = getTopMargin(modal);
+  function fixScrollbar() {
+    // for queues, do not do this more than once
+    if (states.previousBodyPadding !== null) {
+      return;
     }
-  };
+    // if the body has overflow
+    if (document.body.scrollHeight > window.innerHeight) {
+      // add padding so the content doesn't shift after removal of scrollbar
+      states.previousBodyPadding = document.body.style.paddingRight;
+      document.body.style.paddingRight = measureScrollbar() + 'px';
+    }
+  }
+
+  function undoScrollbar() {
+    if (states.previousBodyPadding !== null) {
+      document.body.style.paddingRight = states.previousBodyPadding;
+      states.previousBodyPadding = null;
+    }
+  }
 
   function modalDependant() {
-
     if (arguments[0] === undefined) {
       console.error('SweetAlert2 expects at least 1 attribute!');
       return false;
@@ -928,7 +868,10 @@
       };
 
       // Closing modal by overlay click
-      getOverlay().onclick = function() {
+      sweetContainer.onclick = function(e) {
+        if (e.target !== sweetContainer) {
+          return;
+        }
         if (params.allowOutsideClick) {
           sweetAlert.closeModal(params.onClose);
           reject('overlay');
@@ -1109,6 +1052,7 @@
         var $validationError = modal.querySelector('.' + swalClasses.validationerror);
         $validationError.innerHTML = error;
         show($validationError);
+        setModalMinHeight();
 
         var input = getInput();
         focusInput(input);
@@ -1118,6 +1062,7 @@
       sweetAlert.resetValidationError = function() {
         var $validationError = modal.querySelector('.' + swalClasses.validationerror);
         hide($validationError);
+        setModalMinHeight();
 
         var input = getInput();
         if (input) {
@@ -1156,8 +1101,10 @@
 
         // set attributes
         if (input) {
-          while (input.attributes.length > 0) {
-            input.removeAttribute(input.attributes[0].name);
+          for (var j in input.attributes) {
+            if (input.attributes.hasOwnProperty(j)) {
+              input.removeAttribute(input.attributes[j].name);
+            }
           }
           for (var attr in params.inputAttributes) {
             input.setAttribute(attr, params.inputAttributes[attr]);
@@ -1285,6 +1232,7 @@
           params.inputOptions.then(function(inputOptions) {
             sweetAlert.hideLoading();
             populateInputOptions(inputOptions);
+            setModalMinHeight();
           });
         } else if (typeof params.inputOptions === 'object') {
           populateInputOptions(params.inputOptions);
@@ -1293,11 +1241,15 @@
         }
       }
 
-      fixVerticalPosition();
+      setModalMinHeight();
+
       openModal(params.animation, params.onOpen);
 
       // Focus the first element (input or button)
       setFocus(-1, 1);
+
+      // fix scroll
+      sweetContainer.scrollTop = 0;
     });
   }
 
@@ -1405,22 +1357,23 @@
 
     resetPrevState();
 
-    // If animation is supported, animate then remove mediaquery (#242)
-    var mediaqueryId = modal.getAttribute('data-mediaquery-id');
+    // If animation is supported, animate
     if (animationEndEvent && !hasClass(modal, 'no-animation')) {
       modal.addEventListener(animationEndEvent, function swalCloseEventFinished() {
         modal.removeEventListener(animationEndEvent, swalCloseEventFinished);
         if (hasClass(modal, 'hide-swal2')) {
           hide(modal);
-          fadeOut(getOverlay(), 0);
+          removeClass(sweetContainer, 'in');
+          removeClass(document.body, 'swal2-in');
+          undoScrollbar();
         }
-        removeMediaQuery(mediaqueryId);
       });
     } else {
-      // Otherwise, remove mediaquery immediately
+      // Otherwise, hide immediately
       hide(modal);
-      hide(getOverlay());
-      removeMediaQuery(mediaqueryId);
+      removeClass(sweetContainer, 'in');
+      removeClass(document.body, 'swal2-in');
+      undoScrollbar();
     }
     if (onComplete !== null && typeof onComplete === 'function') {
       onComplete.call(this, modal);
@@ -1452,12 +1405,7 @@
       return;
     }
 
-    var sweetWrap = document.createElement('div');
-    sweetWrap.className = swalClasses.container;
-
-    sweetWrap.innerHTML = sweetHTML;
-
-    document.body.appendChild(sweetWrap);
+    document.body.appendChild(sweetContainer);
 
     var modal = getModal();
     var $input = getChildByClass(modal, swalClasses.input);
@@ -1465,7 +1413,6 @@
     var $select = getChildByClass(modal, swalClasses.select);
     var $checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input');
     var $textarea = getChildByClass(modal, swalClasses.textarea);
-    var $image = getChildByClass(modal, swalClasses.image);
 
     $input.oninput = function() {
       sweetAlert.resetValidationError();
@@ -1500,11 +1447,6 @@
       sweetAlert.resetValidationError();
     };
 
-    $image.onload = fixVerticalPosition;
-    $image.onerror = fixVerticalPosition;
-
-    window.addEventListener('resize', fixVerticalPosition, false);
-
     return modal;
   };
 
@@ -1530,7 +1472,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '4.3.3';
+  sweetAlert.version = '5.0.0';
 
   window.sweetAlert = window.swal = sweetAlert;
 

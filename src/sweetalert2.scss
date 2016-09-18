@@ -166,6 +166,7 @@ body {
   }
 
   > .swal2-input,
+  > .swal2-file,
   > .swal2-textarea,
   > .swal2-select,
   > .swal2-radio,
@@ -186,6 +187,7 @@ body {
   }
 
   .swal2-input,
+  .swal2-file,
   .swal2-textarea,
   .swal2-select,
   .swal2-radio,
@@ -194,6 +196,7 @@ body {
   }
 
   .swal2-input,
+  .swal2-file,
   .swal2-textarea {
     width: 100%;
     box-sizing: border-box;
@@ -248,18 +251,16 @@ body {
   }
 
   .swal2-input {
-    &:not([type='file']) {
-      height: 43px;
-      padding: 0 12px;
-    }
-
-    &[type='file'] {
-      font-size: 20px;
-    }
+    height: 43px;
+    padding: 0 12px;
 
     &[type='number'] {
       max-width: 150px;
     }
+  }
+
+  .swal2-file {
+    font-size: 20px;
   }
 
   .swal2-textarea {

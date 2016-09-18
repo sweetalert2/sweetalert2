@@ -338,6 +338,7 @@ function modalDependant() {
       switch (inputType) {
         case 'select':
         case 'textarea':
+        case 'file':
           return dom.getChildByClass(modal, swalClasses[inputType]);
         case 'checkbox':
           return modal.querySelector('.' + swalClasses.checkbox + ' input');
@@ -719,8 +720,8 @@ function modalDependant() {
     sweetAlert.hideLoading();
     sweetAlert.resetValidationError();
 
-    // input, select
-    var inputTypes = ['input', 'range', 'select', 'radio', 'checkbox', 'textarea'];
+    // inputs
+    var inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea'];
     var input;
     for (i = 0; i < inputTypes.length; i++) {
       var inputClass = swalClasses[inputTypes[i]];
@@ -753,11 +754,16 @@ function modalDependant() {
       case 'text':
       case 'email':
       case 'password':
-      case 'file':
       case 'number':
       case 'tel':
         input = dom.getChildByClass(modal, swalClasses.input);
         input.value = params.inputValue;
+        input.placeholder = params.inputPlaceholder;
+        input.type = params.input;
+        dom.show(input);
+        break;
+      case 'file':
+        input = dom.getChildByClass(modal, swalClasses.file);
         input.placeholder = params.inputPlaceholder;
         input.type = params.input;
         dom.show(input);
@@ -1036,42 +1042,47 @@ sweetAlert.init = function() {
   document.body.appendChild(sweetContainer);
 
   var modal = dom.getModal();
-  var $input = dom.getChildByClass(modal, swalClasses.input);
-  var $range = modal.querySelector('.' + swalClasses.range + ' input');
-  var $select = dom.getChildByClass(modal, swalClasses.select);
-  var $checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input');
-  var $textarea = dom.getChildByClass(modal, swalClasses.textarea);
+  var input = dom.getChildByClass(modal, swalClasses.input);
+  var file = dom.getChildByClass(modal, swalClasses.file);
+  var range = modal.querySelector('.' + swalClasses.range + ' input');
+  var select = dom.getChildByClass(modal, swalClasses.select);
+  var checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input');
+  var textarea = dom.getChildByClass(modal, swalClasses.textarea);
 
-  $input.oninput = function() {
+  input.oninput = function() {
     sweetAlert.resetValidationError();
   };
 
-  $input.onkeyup = function(event) {
+  input.onkeyup = function(event) {
     event.stopPropagation();
     if (event.keyCode === 13) {
       sweetAlert.clickConfirm();
     }
   };
 
-  $range.oninput = function() {
-    sweetAlert.resetValidationError();
-    $range.previousSibling.value = $range.value;
-  };
-
-  $range.onchange = function() {
-    sweetAlert.resetValidationError();
-    $range.previousSibling.value = $range.value;
-  };
-
-  $select.onchange = function() {
+  file.onchange = function() {
     sweetAlert.resetValidationError();
   };
 
-  $checkbox.onchange = function() {
+  range.oninput = function() {
+    sweetAlert.resetValidationError();
+    range.previousSibling.value = range.value;
+  };
+
+  range.onchange = function() {
+    sweetAlert.resetValidationError();
+    range.previousSibling.value = range.value;
+  };
+
+  select.onchange = function() {
     sweetAlert.resetValidationError();
   };
 
-  $textarea.oninput = function() {
+  checkbox.onchange = function() {
+    sweetAlert.resetValidationError();
+  };
+
+  textarea.oninput = function() {
     sweetAlert.resetValidationError();
   };
 

@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.0.2
+ * sweetalert2 v5.0.3
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -229,10 +229,13 @@
   var focusInput = function(input) {
     input.focus();
 
-    // http://stackoverflow.com/a/2345915/1331425
-    var val = input.value;
-    input.value = '';
-    input.value = val;
+    // place cursor at end of text in text input
+    if (input.type !== 'file') {
+      // http://stackoverflow.com/a/2345915/1331425
+      var val = input.value;
+      input.value = '';
+      input.value = val;
+    }
   };
 
   var addClass = function(elem, className) {
@@ -370,14 +373,19 @@
     return scrollbarWidth;
   };
 
-  // Set modal min-height to disable scrolling inside the modal
-  var setModalMinHeight = function() {
-    var modal = getModal();
-    var prevState = modal.style.display;
-    modal.style.minHeight = '';
-    show(modal);
-    modal.style.minHeight = (modal.scrollHeight + 1) + 'px';
-    modal.style.display = prevState;
+  var debounce = function(func, wait, immediate) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
   };
 
   var modalParams = extend({}, defaultParams);
@@ -1052,21 +1060,31 @@
         }
       };
 
+      // Set modal min-height to disable scrolling inside the modal
+      sweetAlert.recalculateHeight = function() {
+        var modal = getModal();
+        var prevState = modal.style.display;
+        modal.style.minHeight = '';
+        show(modal);
+        modal.style.minHeight = (modal.scrollHeight + 1) + 'px';
+        modal.style.display = prevState;
+      };
+
+      // Show block with validation error
       sweetAlert.showValidationError = function(error) {
         var $validationError = modal.querySelector('.' + swalClasses.validationerror);
         $validationError.innerHTML = error;
         show($validationError);
-        setModalMinHeight();
 
         var input = getInput();
         focusInput(input);
         addClass(input, 'error');
       };
 
+      // Hide block with validation error
       sweetAlert.resetValidationError = function() {
         var $validationError = modal.querySelector('.' + swalClasses.validationerror);
         hide($validationError);
-        setModalMinHeight();
 
         var input = getInput();
         if (input) {
@@ -1244,7 +1262,6 @@
           params.inputOptions.then(function(inputOptions) {
             sweetAlert.hideLoading();
             populateInputOptions(inputOptions);
-            setModalMinHeight();
           });
         } else if (typeof params.inputOptions === 'object') {
           populateInputOptions(params.inputOptions);
@@ -1252,8 +1269,6 @@
           console.error('SweetAlert2: Unexpected type of inputOptions! Expected object or Promise, got ' + typeof params.inputOptions);
         }
       }
-
-      setModalMinHeight();
 
       openModal(params.animation, params.onOpen);
 
@@ -1464,6 +1479,15 @@
       sweetAlert.resetValidationError();
     };
 
+    // Observe changes inside the modal and adjust height
+    if (typeof MutationObserver !== 'undefined') {
+      var mutationsHandler = debounce(function() {
+        sweetAlert.recalculateHeight();
+      }, 50);
+      var swal2Observer = new MutationObserver(mutationsHandler);
+      swal2Observer.observe(modal, {attributes: true, childList: true, characterData: true});
+    }
+
     return modal;
   };
 
@@ -1489,7 +1513,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '5.0.2';
+  sweetAlert.version = '5.0.3';
 
   window.sweetAlert = window.swal = sweetAlert;
 

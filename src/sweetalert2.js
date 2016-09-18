@@ -278,7 +278,6 @@ function undoScrollbar() {
 }
 
 function modalDependant() {
-
   if (arguments[0] === undefined) {
     console.error('SweetAlert2 expects at least 1 attribute!');
     return false;
@@ -730,8 +729,10 @@ function modalDependant() {
 
       // set attributes
       if (input) {
-        while (input.attributes.length > 0) {
-          input.removeAttribute(input.attributes[0].name);
+        for (var j in input.attributes) {
+          if (input.attributes.hasOwnProperty(j)) {
+            input.removeAttribute(input.attributes[j].name);
+          }
         }
         for (var attr in params.inputAttributes) {
           input.setAttribute(attr, params.inputAttributes[attr]);

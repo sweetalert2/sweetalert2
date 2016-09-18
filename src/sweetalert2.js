@@ -677,21 +677,33 @@ function modalDependant() {
       }
     };
 
+    // Set modal min-height to disable scrolling inside the modal
+    sweetAlert.recalculateHeight = function() {
+      var modal = dom.getModal();
+      var prevState = modal.style.display;
+      modal.style.minHeight = '';
+      dom.show(modal);
+      modal.style.minHeight = (modal.scrollHeight + 1) + 'px';
+      modal.style.display = prevState;
+    };
+
+    // Show block with validation error
     sweetAlert.showValidationError = function(error) {
       var $validationError = modal.querySelector('.' + swalClasses.validationerror);
       $validationError.innerHTML = error;
       dom.show($validationError);
-      dom.setModalMinHeight();
+      sweetAlert.recalculateHeight();
 
       var input = getInput();
       dom.focusInput(input);
       dom.addClass(input, 'error');
     };
 
+    // Hide block with validation error
     sweetAlert.resetValidationError = function() {
       var $validationError = modal.querySelector('.' + swalClasses.validationerror);
       dom.hide($validationError);
-      dom.setModalMinHeight();
+      sweetAlert.recalculateHeight();
 
       var input = getInput();
       if (input) {
@@ -869,7 +881,7 @@ function modalDependant() {
         params.inputOptions.then(function(inputOptions) {
           sweetAlert.hideLoading();
           populateInputOptions(inputOptions);
-          dom.setModalMinHeight();
+          sweetAlert.recalculateHeight();
         });
       } else if (typeof params.inputOptions === 'object') {
         populateInputOptions(params.inputOptions);
@@ -878,7 +890,7 @@ function modalDependant() {
       }
     }
 
-    dom.setModalMinHeight();
+    sweetAlert.recalculateHeight();
 
     openModal(params.animation, params.onOpen);
 

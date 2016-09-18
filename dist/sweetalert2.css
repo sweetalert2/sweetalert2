@@ -1,12 +1,27 @@
-.swal2-overlay {
-  background-color: rgba(0, 0, 0, 0.4);
+body.swal2-in {
+  overflow-y: hidden; }
+
+.swal2-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: fixed;
-  left: 0;
-  right: 0;
   top: 0;
+  left: 0;
   bottom: 0;
-  display: none;
+  right: 0;
+  background-color: transparent;
   z-index: 1000; }
+  .swal2-container:not(.in) {
+    pointer-events: none; }
+  .swal2-container.fade {
+    -webkit-transition: background-color .1s;
+    transition: background-color .1s; }
+  .swal2-container.in {
+    background-color: rgba(0, 0, 0, 0.4); }
 
 .swal2-modal {
   background-color: #fff;
@@ -14,15 +29,11 @@
   border-radius: 5px;
   box-sizing: border-box;
   text-align: center;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  margin-top: -200px;
+  margin: auto;
   max-height: 90%;
   overflow-x: hidden;
   overflow-y: auto;
-  display: none;
-  z-index: 2000; }
+  display: none; }
   .swal2-modal:focus {
     outline: none; }
   .swal2-modal.loading {
@@ -184,7 +195,8 @@
     height: 43px;
     line-height: 43px;
     vertical-align: middle;
-    margin: 20px auto; }
+    margin: 20px auto;
+    padding: 0; }
   .swal2-modal .swal2-input:not([type='file']) {
     height: 43px;
     padding: 0 12px; }
@@ -235,6 +247,18 @@
       line-height: 24px;
       text-align: center;
       margin-right: 10px; }
+
+@supports (-ms-accelerator: true) {
+  .swal2-range input {
+    width: 100% !important; }
+  .swal2-range output {
+    display: none; } }
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .swal2-range input {
+    width: 100% !important; }
+  .swal2-range output {
+    display: none; } }
 
 .swal2-icon {
   width: 80px;

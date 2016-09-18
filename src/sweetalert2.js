@@ -249,7 +249,7 @@ var openModal = function(animation, onComplete) {
   }
 
   dom.addClass(sweetContainer, 'in');
-  dom.addClass(document.body, 'swal2-in');
+  dom.addClass(document.body, swalClasses.in);
   fixScrollbar();
   dom.states.previousActiveElement = document.activeElement;
   if (onComplete !== null && typeof onComplete === 'function') {
@@ -998,7 +998,7 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
       if (dom.hasClass(modal, 'hide-swal2')) {
         dom.hide(modal);
         dom.removeClass(sweetContainer, 'in');
-        dom.removeClass(document.body, 'swal2-in');
+        dom.removeClass(document.body, swalClasses.in);
         undoScrollbar();
       }
     });
@@ -1006,7 +1006,7 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
     // Otherwise, hide immediately
     dom.hide(modal);
     dom.removeClass(sweetContainer, 'in');
-    dom.removeClass(document.body, 'swal2-in');
+    dom.removeClass(document.body, swalClasses.in);
     undoScrollbar();
   }
   if (onComplete !== null && typeof onComplete === 'function') {
@@ -1033,7 +1033,7 @@ sweetAlert.clickCancel = function() {
  */
 sweetAlert.init = function() {
   if (typeof document === 'undefined') {
-    console.log('SweetAlert2 requires document to initialize');
+    console.error('SweetAlert2 requires document to initialize');
     return;
   } else if (document.getElementsByClassName(swalClasses.container).length) {
     return;

@@ -110,6 +110,7 @@ body.swal2-in {
     .swal2-modal .swal2-close:hover {
       color: #d55; }
   .swal2-modal > .swal2-input,
+  .swal2-modal > .swal2-file,
   .swal2-modal > .swal2-textarea,
   .swal2-modal > .swal2-select,
   .swal2-modal > .swal2-radio,
@@ -126,12 +127,14 @@ body.swal2-in {
     line-height: normal;
     color: #545454; }
   .swal2-modal .swal2-input,
+  .swal2-modal .swal2-file,
   .swal2-modal .swal2-textarea,
   .swal2-modal .swal2-select,
   .swal2-modal .swal2-radio,
   .swal2-modal .swal2-checkbox {
     margin: 20px auto; }
   .swal2-modal .swal2-input,
+  .swal2-modal .swal2-file,
   .swal2-modal .swal2-textarea {
     width: 100%;
     box-sizing: border-box;
@@ -142,43 +145,53 @@ body.swal2-in {
     -webkit-transition: border-color box-shadow .3s;
     transition: border-color box-shadow .3s; }
     .swal2-modal .swal2-input.error,
+    .swal2-modal .swal2-file.error,
     .swal2-modal .swal2-textarea.error {
       border-color: #f06e57; }
     .swal2-modal .swal2-input:focus,
+    .swal2-modal .swal2-file:focus,
     .swal2-modal .swal2-textarea:focus {
       outline: none;
       box-shadow: 0 0 3px #c4e6f5;
       border: 1px solid #b4dbed; }
       .swal2-modal .swal2-input:focus::-webkit-input-placeholder,
+      .swal2-modal .swal2-file:focus::-webkit-input-placeholder,
       .swal2-modal .swal2-textarea:focus::-webkit-input-placeholder {
         -webkit-transition: opacity .3s .03s ease;
         transition: opacity .3s .03s ease;
         opacity: .8; }
       .swal2-modal .swal2-input:focus::-moz-placeholder,
+      .swal2-modal .swal2-file:focus::-moz-placeholder,
       .swal2-modal .swal2-textarea:focus::-moz-placeholder {
         -webkit-transition: opacity .3s .03s ease;
         transition: opacity .3s .03s ease;
         opacity: .8; }
       .swal2-modal .swal2-input:focus:-ms-input-placeholder,
+      .swal2-modal .swal2-file:focus:-ms-input-placeholder,
       .swal2-modal .swal2-textarea:focus:-ms-input-placeholder {
         -webkit-transition: opacity .3s .03s ease;
         transition: opacity .3s .03s ease;
         opacity: .8; }
       .swal2-modal .swal2-input:focus::placeholder,
+      .swal2-modal .swal2-file:focus::placeholder,
       .swal2-modal .swal2-textarea:focus::placeholder {
         -webkit-transition: opacity .3s .03s ease;
         transition: opacity .3s .03s ease;
         opacity: .8; }
     .swal2-modal .swal2-input::-webkit-input-placeholder,
+    .swal2-modal .swal2-file::-webkit-input-placeholder,
     .swal2-modal .swal2-textarea::-webkit-input-placeholder {
       color: #e6e6e6; }
     .swal2-modal .swal2-input::-moz-placeholder,
+    .swal2-modal .swal2-file::-moz-placeholder,
     .swal2-modal .swal2-textarea::-moz-placeholder {
       color: #e6e6e6; }
     .swal2-modal .swal2-input:-ms-input-placeholder,
+    .swal2-modal .swal2-file:-ms-input-placeholder,
     .swal2-modal .swal2-textarea:-ms-input-placeholder {
       color: #e6e6e6; }
     .swal2-modal .swal2-input::placeholder,
+    .swal2-modal .swal2-file::placeholder,
     .swal2-modal .swal2-textarea::placeholder {
       color: #e6e6e6; }
   .swal2-modal .swal2-range input {
@@ -197,13 +210,13 @@ body.swal2-in {
     vertical-align: middle;
     margin: 20px auto;
     padding: 0; }
-  .swal2-modal .swal2-input:not([type='file']) {
+  .swal2-modal .swal2-input {
     height: 43px;
     padding: 0 12px; }
-  .swal2-modal .swal2-input[type='file'] {
+    .swal2-modal .swal2-input[type='number'] {
+      max-width: 150px; }
+  .swal2-modal .swal2-file {
     font-size: 20px; }
-  .swal2-modal .swal2-input[type='number'] {
-    max-width: 150px; }
   .swal2-modal .swal2-textarea {
     height: 108px;
     padding: 12px; }

@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.0.0
+ * sweetalert2 v5.0.1
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -20,6 +20,7 @@
 
   var swalClasses = prefix([
     'container',
+    'in',
     'modal',
     'overlay',
     'close',
@@ -30,6 +31,7 @@
     'icon',
     'image',
     'input',
+    'file',
     'range',
     'select',
     'radio',
@@ -112,6 +114,7 @@
       '<h2></h2>' +
       '<div class="' + swalClasses.content + '"></div>' +
       '<input class="' + swalClasses.input + '">' +
+      '<input class="' + swalClasses.file + '">' +
       '<div class="' + swalClasses.range + '">' +
         '<output></output>' +
         '<input type="range">' +
@@ -621,7 +624,7 @@
     }
 
     addClass(sweetContainer, 'in');
-    addClass(document.body, 'swal2-in');
+    addClass(document.body, swalClasses.in);
     fixScrollbar();
     states.previousActiveElement = document.activeElement;
     if (onComplete !== null && typeof onComplete === 'function') {
@@ -710,6 +713,7 @@
         switch (inputType) {
           case 'select':
           case 'textarea':
+          case 'file':
             return getChildByClass(modal, swalClasses[inputType]);
           case 'checkbox':
             return modal.querySelector('.' + swalClasses.checkbox + ' input');
@@ -1091,8 +1095,8 @@
       sweetAlert.hideLoading();
       sweetAlert.resetValidationError();
 
-      // input, select
-      var inputTypes = ['input', 'range', 'select', 'radio', 'checkbox', 'textarea'];
+      // inputs
+      var inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea'];
       var input;
       for (i = 0; i < inputTypes.length; i++) {
         var inputClass = swalClasses[inputTypes[i]];
@@ -1125,11 +1129,16 @@
         case 'text':
         case 'email':
         case 'password':
-        case 'file':
         case 'number':
         case 'tel':
           input = getChildByClass(modal, swalClasses.input);
           input.value = params.inputValue;
+          input.placeholder = params.inputPlaceholder;
+          input.type = params.input;
+          show(input);
+          break;
+        case 'file':
+          input = getChildByClass(modal, swalClasses.file);
           input.placeholder = params.inputPlaceholder;
           input.type = params.input;
           show(input);
@@ -1364,7 +1373,7 @@
         if (hasClass(modal, 'hide-swal2')) {
           hide(modal);
           removeClass(sweetContainer, 'in');
-          removeClass(document.body, 'swal2-in');
+          removeClass(document.body, swalClasses.in);
           undoScrollbar();
         }
       });
@@ -1372,7 +1381,7 @@
       // Otherwise, hide immediately
       hide(modal);
       removeClass(sweetContainer, 'in');
-      removeClass(document.body, 'swal2-in');
+      removeClass(document.body, swalClasses.in);
       undoScrollbar();
     }
     if (onComplete !== null && typeof onComplete === 'function') {
@@ -1399,7 +1408,7 @@
    */
   sweetAlert.init = function() {
     if (typeof document === 'undefined') {
-      console.log('SweetAlert2 requires document to initialize');
+      console.error('SweetAlert2 requires document to initialize');
       return;
     } else if (document.getElementsByClassName(swalClasses.container).length) {
       return;
@@ -1408,42 +1417,47 @@
     document.body.appendChild(sweetContainer);
 
     var modal = getModal();
-    var $input = getChildByClass(modal, swalClasses.input);
-    var $range = modal.querySelector('.' + swalClasses.range + ' input');
-    var $select = getChildByClass(modal, swalClasses.select);
-    var $checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input');
-    var $textarea = getChildByClass(modal, swalClasses.textarea);
+    var input = getChildByClass(modal, swalClasses.input);
+    var file = getChildByClass(modal, swalClasses.file);
+    var range = modal.querySelector('.' + swalClasses.range + ' input');
+    var select = getChildByClass(modal, swalClasses.select);
+    var checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input');
+    var textarea = getChildByClass(modal, swalClasses.textarea);
 
-    $input.oninput = function() {
+    input.oninput = function() {
       sweetAlert.resetValidationError();
     };
 
-    $input.onkeyup = function(event) {
+    input.onkeyup = function(event) {
       event.stopPropagation();
       if (event.keyCode === 13) {
         sweetAlert.clickConfirm();
       }
     };
 
-    $range.oninput = function() {
-      sweetAlert.resetValidationError();
-      $range.previousSibling.value = $range.value;
-    };
-
-    $range.onchange = function() {
-      sweetAlert.resetValidationError();
-      $range.previousSibling.value = $range.value;
-    };
-
-    $select.onchange = function() {
+    file.onchange = function() {
       sweetAlert.resetValidationError();
     };
 
-    $checkbox.onchange = function() {
+    range.oninput = function() {
+      sweetAlert.resetValidationError();
+      range.previousSibling.value = range.value;
+    };
+
+    range.onchange = function() {
+      sweetAlert.resetValidationError();
+      range.previousSibling.value = range.value;
+    };
+
+    select.onchange = function() {
       sweetAlert.resetValidationError();
     };
 
-    $textarea.oninput = function() {
+    checkbox.onchange = function() {
+      sweetAlert.resetValidationError();
+    };
+
+    textarea.oninput = function() {
       sweetAlert.resetValidationError();
     };
 
@@ -1472,7 +1486,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '5.0.0';
+  sweetAlert.version = '5.0.1';
 
   window.sweetAlert = window.swal = sweetAlert;
 

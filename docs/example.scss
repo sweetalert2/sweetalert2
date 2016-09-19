@@ -31,6 +31,8 @@ $white-button: rgba($white, .8);
 html,
 body {
   margin: 0;
+
+  -webkit-overflow-scrolling: touch;
 }
 
 body {

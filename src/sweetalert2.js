@@ -1099,7 +1099,9 @@ sweetAlert.init = function() {
   // Observe changes inside the modal and adjust height
   if (typeof MutationObserver !== 'undefined') {
     var mutationsHandler = dom.debounce(function() {
-      sweetAlert.recalculateHeight();
+      if (typeof sweetAlert.recalculateHeight === 'function') {
+        sweetAlert.recalculateHeight();
+      }
     }, 50);
     var swal2Observer = new MutationObserver(mutationsHandler);
     swal2Observer.observe(modal, {attributes: true, childList: true, characterData: true});

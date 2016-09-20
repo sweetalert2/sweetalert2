@@ -50,7 +50,8 @@ body {
   &.in {
     background-color: $overlay;
   }
-  z-index: 1000;
+
+  z-index: 1060;
 }
 
 .swal2-modal {

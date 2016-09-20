@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.0.3
+ * sweetalert2 v5.0.4
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1062,7 +1062,7 @@
 
       // Set modal min-height to disable scrolling inside the modal
       sweetAlert.recalculateHeight = function() {
-        var modal = getModal();
+        var modal = getModal() || sweetAlert.init();
         var prevState = modal.style.display;
         modal.style.minHeight = '';
         show(modal);
@@ -1513,7 +1513,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '5.0.3';
+  sweetAlert.version = '5.0.4';
 
   window.sweetAlert = window.swal = sweetAlert;
 

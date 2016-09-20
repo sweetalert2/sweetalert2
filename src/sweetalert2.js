@@ -679,7 +679,7 @@ function modalDependant() {
 
     // Set modal min-height to disable scrolling inside the modal
     sweetAlert.recalculateHeight = function() {
-      var modal = dom.getModal();
+      var modal = dom.getModal() || sweetAlert.init();
       var prevState = modal.style.display;
       modal.style.minHeight = '';
       dom.show(modal);

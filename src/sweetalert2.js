@@ -894,6 +894,15 @@ function modalDependant() {
 
     // fix scroll
     sweetContainer.scrollTop = 0;
+
+    // Observe changes inside the modal and adjust height
+    if (typeof MutationObserver !== 'undefined') {
+      var mutationsHandler = dom.debounce(function() {
+        sweetAlert.recalculateHeight();
+      }, 50);
+      var swal2Observer = new MutationObserver(mutationsHandler);
+      swal2Observer.observe(modal, {childList: true, characterData: true, subtree: true});
+    }
   });
 }
 
@@ -1095,15 +1104,6 @@ sweetAlert.init = function() {
   textarea.oninput = function() {
     sweetAlert.resetValidationError();
   };
-
-  // Observe changes inside the modal and adjust height
-  if (typeof MutationObserver !== 'undefined') {
-    var mutationsHandler = dom.debounce(function() {
-      sweetAlert.recalculateHeight();
-    }, 50);
-    var swal2Observer = new MutationObserver(mutationsHandler);
-    swal2Observer.observe(modal, {childList: true, characterData: true, subtree: true});
-  }
 
   return modal;
 };

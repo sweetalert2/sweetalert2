@@ -80,6 +80,14 @@ var sweetHTML = '<div class="' + swalClasses.modal + '" style="display: none" ta
     '<span class="' + swalClasses.close + '">&times;</span>' +
   '</div>';
 
-export var sweetContainer = document.createElement('div');
-sweetContainer.className = swalClasses.container;
-sweetContainer.innerHTML = sweetHTML;
+export var sweetContainer;
+
+var existingSweetContainers = document.getElementsByClassName(swalClasses.container);
+
+if (existingSweetContainers.length) {
+  sweetContainer = existingSweetContainers[0];
+} else {
+  sweetContainer = document.createElement('div');
+  sweetContainer.className = swalClasses.container;
+  sweetContainer.innerHTML = sweetHTML;
+}

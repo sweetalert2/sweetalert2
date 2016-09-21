@@ -7,6 +7,7 @@ import * as dom from './utils/dom.js';
 
 var modalParams = extend({}, defaultParams);
 var queue = [];
+var swal2Observer;
 
 /*
  * Set type, text and actions on modal
@@ -894,6 +895,15 @@ function modalDependant() {
 
     // fix scroll
     sweetContainer.scrollTop = 0;
+
+    // Observe changes inside the modal and adjust height
+    if (typeof MutationObserver !== 'undefined' && !swal2Observer) {
+      var mutationsHandler = dom.debounce(function() {
+        sweetAlert.recalculateHeight();
+      }, 50);
+      swal2Observer = new MutationObserver(mutationsHandler);
+      swal2Observer.observe(modal, {childList: true, characterData: true, subtree: true});
+    }
   });
 }
 
@@ -1095,15 +1105,6 @@ sweetAlert.init = function() {
   textarea.oninput = function() {
     sweetAlert.resetValidationError();
   };
-
-  // Observe changes inside the modal and adjust height
-  if (typeof MutationObserver !== 'undefined') {
-    var mutationsHandler = dom.debounce(function() {
-      sweetAlert.recalculateHeight();
-    }, 50);
-    var swal2Observer = new MutationObserver(mutationsHandler);
-    swal2Observer.observe(modal, {childList: true, characterData: true, subtree: true});
-  }
 
   return modal;
 };

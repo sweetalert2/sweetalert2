@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.0.6
+ * sweetalert2 v5.0.7
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -132,9 +132,17 @@
       '<span class="' + swalClasses.close + '">&times;</span>' +
     '</div>';
 
-  var sweetContainer = document.createElement('div');
-  sweetContainer.className = swalClasses.container;
-  sweetContainer.innerHTML = sweetHTML;
+  var sweetContainer;
+
+  var existingSweetContainers = document.getElementsByClassName(swalClasses.container);
+
+  if (existingSweetContainers.length) {
+    sweetContainer = existingSweetContainers[0];
+  } else {
+    sweetContainer = document.createElement('div');
+    sweetContainer.className = swalClasses.container;
+    sweetContainer.innerHTML = sweetHTML;
+  }
 
   var extend = function(a, b) {
     for (var key in b) {
@@ -392,6 +400,7 @@
 
   var modalParams = extend({}, defaultParams);
   var queue = [];
+  var swal2Observer;
 
   /*
    * Set type, text and actions on modal
@@ -1279,6 +1288,15 @@
 
       // fix scroll
       sweetContainer.scrollTop = 0;
+
+      // Observe changes inside the modal and adjust height
+      if (typeof MutationObserver !== 'undefined' && !swal2Observer) {
+        var mutationsHandler = debounce(function() {
+          sweetAlert.recalculateHeight();
+        }, 50);
+        swal2Observer = new MutationObserver(mutationsHandler);
+        swal2Observer.observe(modal, {childList: true, characterData: true, subtree: true});
+      }
     });
   }
 
@@ -1481,15 +1499,6 @@
       sweetAlert.resetValidationError();
     };
 
-    // Observe changes inside the modal and adjust height
-    if (typeof MutationObserver !== 'undefined') {
-      var mutationsHandler = debounce(function() {
-        sweetAlert.recalculateHeight();
-      }, 50);
-      var swal2Observer = new MutationObserver(mutationsHandler);
-      swal2Observer.observe(modal, {childList: true, characterData: true, subtree: true});
-    }
-
     return modal;
   };
 
@@ -1515,7 +1524,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '5.0.6';
+  sweetAlert.version = '5.0.7';
 
   window.sweetAlert = window.swal = sweetAlert;
 

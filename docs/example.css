@@ -334,6 +334,7 @@ table {
 
 #carbonads {
   display: block;
+  height: 100px;
   overflow: hidden;
   margin: 0 auto;
   padding: 1em;

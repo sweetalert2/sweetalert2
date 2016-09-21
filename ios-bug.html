@@ -1,0 +1,47 @@
+<!doctype html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <title>SweetAlert2 iOS bug</title>
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+  <script src="./dist/sweetalert2.js"></script>
+  <link rel="stylesheet" href="./dist/sweetalert2.css">
+  <style type="text/css">
+    .body-percent {
+      font-size: 3em;
+      font-family: Monospace;
+      color: #ccc;
+      text-align: center;
+      padding: .4em;
+    }
+
+    #show-swal2-modal {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+
+<body>
+<button id="show-swal2-modal">Show sweetalert2 modal</button>
+
+<script>
+  $(function() {
+    for (var i = 1; i <= 100; i++) {
+      $('body').append('<div class="body-percent">' + i + '%</div>');
+    }
+
+    $('#show-swal2-modal').on('click', function() {
+      swal({
+        text: 'In iOS body is scrolled to the middle anter focusing the input',
+        input: 'text'
+      }).done();
+    });
+  });
+</script>
+</body>

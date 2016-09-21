@@ -1382,7 +1382,7 @@ swal({
 
     swal.queue(steps).then(function() {
       swal.resetDefaults();
-      swal({title: 'All done!', confirmButtonText: 'Lovely!', showCancelButton: false});
+      swal({title: 'All done!', confirmButtonText: 'Lovely!', showCancelButton: false}).done();
     }, function() {
       swal.resetDefaults();
     });

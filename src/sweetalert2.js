@@ -1102,7 +1102,7 @@ sweetAlert.init = function() {
       sweetAlert.recalculateHeight();
     }, 50);
     var swal2Observer = new MutationObserver(mutationsHandler);
-    swal2Observer.observe(modal, {attributes: true, childList: true, characterData: true});
+    swal2Observer.observe(modal, {childList: true, characterData: true, subtree: true});
   }
 
   return modal;

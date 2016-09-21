@@ -13,8 +13,9 @@ body.swal2-in {
   left: 0;
   bottom: 0;
   right: 0;
+  padding: 10px;
   background-color: transparent;
-  z-index: 1000; }
+  z-index: 1060; }
   .swal2-container:not(.in) {
     pointer-events: none; }
   .swal2-container.fade {

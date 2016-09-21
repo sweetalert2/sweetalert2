@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.0.4
+ * sweetalert2 v5.0.5
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -373,6 +373,8 @@
     return scrollbarWidth;
   };
 
+  // JavaScript Debounce Function
+  // https://davidwalsh.name/javascript-debounce-function
   var debounce = function(func, wait, immediate) {
     var timeout;
     return function() {
@@ -1485,7 +1487,7 @@
         sweetAlert.recalculateHeight();
       }, 50);
       var swal2Observer = new MutationObserver(mutationsHandler);
-      swal2Observer.observe(modal, {attributes: true, childList: true, characterData: true});
+      swal2Observer.observe(modal, {childList: true, characterData: true, subtree: true});
     }
 
     return modal;
@@ -1513,7 +1515,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '5.0.4';
+  sweetAlert.version = '5.0.5';
 
   window.sweetAlert = window.swal = sweetAlert;
 

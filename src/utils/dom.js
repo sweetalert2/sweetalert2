@@ -257,6 +257,8 @@ export var measureScrollbar = function() {
   return scrollbarWidth;
 };
 
+// JavaScript Debounce Function
+// https://davidwalsh.name/javascript-debounce-function
 export var debounce = function(func, wait, immediate) {
   var timeout;
   return function() {

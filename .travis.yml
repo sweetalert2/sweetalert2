@@ -8,6 +8,10 @@ cache:
   directories:
     - node_modules
 
+before_script:
+  - npm install -g gulp
+  - gulp
+
 deploy:
   api_key:
     secure: TaF0rF0+n/t3jchds6RSahdIwV+VozFEzGXdnwKzX8TnW2afGU7hh50BJHdQA6/mm0VbgxwAfIDMYU2luLwQn8CJCcJYp7g3+g8xsH15q8ny2AUmIkQQ2sWY43Vk1yMHIwzuAlHy5Pv5qKk8cYRVY5fwaCl/4KfvpIn4F2/DjwU=

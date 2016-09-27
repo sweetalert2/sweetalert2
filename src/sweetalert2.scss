@@ -65,6 +65,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   display: none;
+  position: relative;
 
   &:focus {
     outline: none;

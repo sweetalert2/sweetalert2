@@ -174,6 +174,28 @@ test('input text', function(assert) {
 });
 
 
+test('validation error', function(assert) {
+  var done = assert.async();
+
+  swal({input: 'email', animation: false});
+  assert.ok($('.swal2-validationerror').is(':hidden'));
+  setTimeout(function() {
+    var initialModalHeight = $('.swal2-modal').outerHeight();
+
+    swal.clickConfirm();
+    setTimeout(function() {
+      assert.ok($('.swal2-validationerror').is(':visible'));
+      assert.ok($('.swal2-modal').outerHeight() > initialModalHeight);
+
+      $('.swal2-input').val('blah-blah').trigger('input');
+      assert.ok($('.swal2-validationerror').is(':hidden'));
+      assert.ok($('.swal2-modal').outerHeight() === initialModalHeight);
+      done();
+    });
+  }, 60);
+});
+
+
 test('input select', function(assert) {
   var done = assert.async();
 

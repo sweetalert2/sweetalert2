@@ -93,6 +93,10 @@ export var getProgressSteps = function() {
   return elementByClass(swalClasses.progresssteps);
 };
 
+export var getValidationError = function() {
+  return elementByClass(swalClasses.validationerror);
+};
+
 export var getConfirmButton = function() {
   return elementByClass(swalClasses.confirm);
 };

@@ -679,20 +679,20 @@ function modalDependant() {
     };
 
     // Set modal min-height to disable scrolling inside the modal
-    sweetAlert.recalculateHeight = function() {
+    sweetAlert.recalculateHeight = dom.debounce(function() {
       var modal = dom.getModal();
       var prevState = modal.style.display;
       modal.style.minHeight = '';
       dom.show(modal);
       modal.style.minHeight = (modal.scrollHeight + 1) + 'px';
       modal.style.display = prevState;
-    };
+    }, 50);
 
     // Show block with validation error
     sweetAlert.showValidationError = function(error) {
-      var $validationError = modal.querySelector('.' + swalClasses.validationerror);
-      $validationError.innerHTML = error;
-      dom.show($validationError);
+      var validationError = dom.getValidationError();
+      validationError.innerHTML = error;
+      dom.show(validationError);
 
       var input = getInput();
       dom.focusInput(input);
@@ -701,8 +701,9 @@ function modalDependant() {
 
     // Hide block with validation error
     sweetAlert.resetValidationError = function() {
-      var $validationError = modal.querySelector('.' + swalClasses.validationerror);
-      dom.hide($validationError);
+      var validationError = dom.getValidationError();
+      dom.hide(validationError);
+      sweetAlert.recalculateHeight();
 
       var input = getInput();
       if (input) {
@@ -898,10 +899,7 @@ function modalDependant() {
 
     // Observe changes inside the modal and adjust height
     if (typeof MutationObserver !== 'undefined' && !swal2Observer) {
-      var mutationsHandler = dom.debounce(function() {
-        sweetAlert.recalculateHeight();
-      }, 50);
-      swal2Observer = new MutationObserver(mutationsHandler);
+      swal2Observer = new MutationObserver(sweetAlert.recalculateHeight);
       swal2Observer.observe(modal, {childList: true, characterData: true, subtree: true});
     }
   });

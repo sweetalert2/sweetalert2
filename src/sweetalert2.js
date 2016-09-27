@@ -71,7 +71,7 @@ var setParameters = function(params) {
 
   // Progress steps
   var progressStepsContainer = dom.getProgressSteps();
-  var currentProgressStep = parseInt(params.currentProgressStep === null? swal.getQueueStep() : params.currentProgressStep, 10);
+  var currentProgressStep = parseInt(params.currentProgressStep === null? sweetAlert.getQueueStep() : params.currentProgressStep, 10);
   if (params.progressSteps.length) {
     dom.show(progressStepsContainer);
     dom.empty(progressStepsContainer);

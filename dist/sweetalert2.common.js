@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.1.0
+ * sweetalert2 v5.1.1
  * Released under the MIT License.
  */
 'use strict';
@@ -265,6 +265,10 @@ var getProgressSteps = function() {
   return elementByClass(swalClasses.progresssteps);
 };
 
+var getValidationError = function() {
+  return elementByClass(swalClasses.validationerror);
+};
+
 var getConfirmButton = function() {
   return elementByClass(swalClasses.confirm);
 };
@@ -521,7 +525,7 @@ var setParameters = function(params) {
 
   // Progress steps
   var progressStepsContainer = getProgressSteps();
-  var currentProgressStep = parseInt(params.currentProgressStep === null? swal.getQueueStep() : params.currentProgressStep, 10);
+  var currentProgressStep = parseInt(params.currentProgressStep === null? sweetAlert$1.getQueueStep() : params.currentProgressStep, 10);
   if (params.progressSteps.length) {
     show(progressStepsContainer);
     empty(progressStepsContainer);
@@ -1129,20 +1133,20 @@ function modalDependant() {
     };
 
     // Set modal min-height to disable scrolling inside the modal
-    sweetAlert$1.recalculateHeight = function() {
+    sweetAlert$1.recalculateHeight = debounce(function() {
       var modal = getModal();
       var prevState = modal.style.display;
       modal.style.minHeight = '';
       show(modal);
       modal.style.minHeight = (modal.scrollHeight + 1) + 'px';
       modal.style.display = prevState;
-    };
+    }, 50);
 
     // Show block with validation error
     sweetAlert$1.showValidationError = function(error) {
-      var $validationError = modal.querySelector('.' + swalClasses.validationerror);
-      $validationError.innerHTML = error;
-      show($validationError);
+      var validationError = getValidationError();
+      validationError.innerHTML = error;
+      show(validationError);
 
       var input = getInput();
       focusInput(input);
@@ -1151,8 +1155,9 @@ function modalDependant() {
 
     // Hide block with validation error
     sweetAlert$1.resetValidationError = function() {
-      var $validationError = modal.querySelector('.' + swalClasses.validationerror);
-      hide($validationError);
+      var validationError = getValidationError();
+      hide(validationError);
+      sweetAlert$1.recalculateHeight();
 
       var input = getInput();
       if (input) {
@@ -1348,10 +1353,7 @@ function modalDependant() {
 
     // Observe changes inside the modal and adjust height
     if (typeof MutationObserver !== 'undefined' && !swal2Observer) {
-      var mutationsHandler = debounce(function() {
-        sweetAlert$1.recalculateHeight();
-      }, 50);
-      swal2Observer = new MutationObserver(mutationsHandler);
+      swal2Observer = new MutationObserver(sweetAlert$1.recalculateHeight);
       swal2Observer.observe(modal, {childList: true, characterData: true, subtree: true});
     }
   });

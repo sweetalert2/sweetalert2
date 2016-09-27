@@ -9,6 +9,67 @@ export var states = {
 };
 
 /*
+ * Add modal + overlay to DOM
+ */
+export var init = function() {
+  if (typeof document === 'undefined') {
+    console.error('SweetAlert2 requires document to initialize');
+    return;
+  } else if (document.getElementsByClassName(swalClasses.container).length) {
+    return;
+  }
+
+  document.body.appendChild(sweetContainer);
+
+  var modal = getModal();
+  var input = getChildByClass(modal, swalClasses.input);
+  var file = getChildByClass(modal, swalClasses.file);
+  var range = modal.querySelector('.' + swalClasses.range + ' input');
+  var select = getChildByClass(modal, swalClasses.select);
+  var checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input');
+  var textarea = getChildByClass(modal, swalClasses.textarea);
+
+  input.oninput = function() {
+    sweetAlert.resetValidationError();
+  };
+
+  input.onkeyup = function(event) {
+    event.stopPropagation();
+    if (event.keyCode === 13) {
+      sweetAlert.clickConfirm();
+    }
+  };
+
+  file.onchange = function() {
+    sweetAlert.resetValidationError();
+  };
+
+  range.oninput = function() {
+    sweetAlert.resetValidationError();
+    range.previousSibling.value = range.value;
+  };
+
+  range.onchange = function() {
+    sweetAlert.resetValidationError();
+    range.previousSibling.value = range.value;
+  };
+
+  select.onchange = function() {
+    sweetAlert.resetValidationError();
+  };
+
+  checkbox.onchange = function() {
+    sweetAlert.resetValidationError();
+  };
+
+  textarea.oninput = function() {
+    sweetAlert.resetValidationError();
+  };
+
+  return modal;
+};
+
+/*
  * Manipulate DOM
  */
 export var elementByClass = function(className) {
@@ -16,7 +77,7 @@ export var elementByClass = function(className) {
 };
 
 export var getModal = function() {
-  return elementByClass(swalClasses.modal);
+  return document.body.querySelector('.' + swalClasses.modal) || init();
 };
 
 export var getIcons = function() {

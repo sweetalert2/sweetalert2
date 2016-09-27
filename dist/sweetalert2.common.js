@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.0.7
+ * sweetalert2 v5.1.0
  * Released under the MIT License.
  */
 'use strict';
@@ -181,6 +181,67 @@ var states = {
 };
 
 /*
+ * Add modal + overlay to DOM
+ */
+var init = function() {
+  if (typeof document === 'undefined') {
+    console.error('SweetAlert2 requires document to initialize');
+    return;
+  } else if (document.getElementsByClassName(swalClasses.container).length) {
+    return;
+  }
+
+  document.body.appendChild(sweetContainer);
+
+  var modal = getModal();
+  var input = getChildByClass(modal, swalClasses.input);
+  var file = getChildByClass(modal, swalClasses.file);
+  var range = modal.querySelector('.' + swalClasses.range + ' input');
+  var select = getChildByClass(modal, swalClasses.select);
+  var checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input');
+  var textarea = getChildByClass(modal, swalClasses.textarea);
+
+  input.oninput = function() {
+    sweetAlert.resetValidationError();
+  };
+
+  input.onkeyup = function(event) {
+    event.stopPropagation();
+    if (event.keyCode === 13) {
+      sweetAlert.clickConfirm();
+    }
+  };
+
+  file.onchange = function() {
+    sweetAlert.resetValidationError();
+  };
+
+  range.oninput = function() {
+    sweetAlert.resetValidationError();
+    range.previousSibling.value = range.value;
+  };
+
+  range.onchange = function() {
+    sweetAlert.resetValidationError();
+    range.previousSibling.value = range.value;
+  };
+
+  select.onchange = function() {
+    sweetAlert.resetValidationError();
+  };
+
+  checkbox.onchange = function() {
+    sweetAlert.resetValidationError();
+  };
+
+  textarea.oninput = function() {
+    sweetAlert.resetValidationError();
+  };
+
+  return modal;
+};
+
+/*
  * Manipulate DOM
  */
 var elementByClass = function(className) {
@@ -188,7 +249,7 @@ var elementByClass = function(className) {
 };
 
 var getModal = function() {
-  return elementByClass(swalClasses.modal);
+  return document.body.querySelector('.' + swalClasses.modal) || init();
 };
 
 var getIcons = function() {
@@ -717,7 +778,7 @@ function modalDependant() {
     // Close on timer
     if (params.timer) {
       modal.timeout = setTimeout(function() {
-        sweetAlert.closeModal(params.onClose);
+        sweetAlert$1.closeModal(params.onClose);
         reject('timer');
       }, params.timer);
     }
@@ -772,24 +833,24 @@ function modalDependant() {
 
     var confirm = function(value) {
       if (params.showLoaderOnConfirm) {
-        sweetAlert.showLoading();
+        sweetAlert$1.showLoading();
       }
 
       if (params.preConfirm) {
         params.preConfirm(value, params.extraParams).then(
           function(preConfirmValue) {
-            sweetAlert.closeModal(params.onClose);
+            sweetAlert$1.closeModal(params.onClose);
             resolve(preConfirmValue || value);
           },
           function(error) {
-            sweetAlert.hideLoading();
+            sweetAlert$1.hideLoading();
             if (error) {
-              sweetAlert.showValidationError(error);
+              sweetAlert$1.showValidationError(error);
             }
           }
         );
       } else {
-        sweetAlert.closeModal(params.onClose);
+        sweetAlert$1.closeModal(params.onClose);
         resolve(value);
       }
     };
@@ -834,21 +895,21 @@ function modalDependant() {
           break;
         case 'click':
           // Clicked 'confirm'
-          if (targetedConfirm && sweetAlert.isVisible()) {
+          if (targetedConfirm && sweetAlert$1.isVisible()) {
             if (params.input) {
               var inputValue = getInputValue();
 
               if (params.inputValidator) {
-                sweetAlert.disableInput();
+                sweetAlert$1.disableInput();
                 params.inputValidator(inputValue, params.extraParams).then(
                   function() {
-                    sweetAlert.enableInput();
+                    sweetAlert$1.enableInput();
                     confirm(inputValue);
                   },
                   function(error) {
-                    sweetAlert.enableInput();
+                    sweetAlert$1.enableInput();
                     if (error) {
-                      sweetAlert.showValidationError(error);
+                      sweetAlert$1.showValidationError(error);
                     }
                   }
                 );
@@ -861,8 +922,8 @@ function modalDependant() {
             }
 
           // Clicked 'cancel'
-          } else if (targetedCancel && sweetAlert.isVisible()) {
-            sweetAlert.closeModal(params.onClose);
+          } else if (targetedCancel && sweetAlert$1.isVisible()) {
+            sweetAlert$1.closeModal(params.onClose);
             reject('cancel');
           }
 
@@ -882,7 +943,7 @@ function modalDependant() {
 
     // Closing modal by close button
     getCloseButton().onclick = function() {
-      sweetAlert.closeModal(params.onClose);
+      sweetAlert$1.closeModal(params.onClose);
       reject('close');
     };
 
@@ -892,7 +953,7 @@ function modalDependant() {
         return;
       }
       if (params.allowOutsideClick) {
-        sweetAlert.closeModal(params.onClose);
+        sweetAlert$1.closeModal(params.onClose);
         reject('overlay');
       }
     };
@@ -974,7 +1035,7 @@ function modalDependant() {
             }
           }
         } else if (keyCode === 27 && params.allowEscapeKey === true) {
-          sweetAlert.closeModal(params.onClose);
+          sweetAlert$1.closeModal(params.onClose);
           reject('esc');
         }
       }
@@ -992,7 +1053,7 @@ function modalDependant() {
     /**
      * Show spinner instead of Confirm button and disable Cancel button
      */
-    sweetAlert.showLoading = sweetAlert.enableLoading = function() {
+    sweetAlert$1.showLoading = sweetAlert$1.enableLoading = function() {
       show(getSpacer());
       show($confirmButton, 'inline-block');
       addClass($confirmButton, 'loading');
@@ -1004,7 +1065,7 @@ function modalDependant() {
     /**
      * Show spinner instead of Confirm button and disable Cancel button
      */
-    sweetAlert.hideLoading = sweetAlert.disableLoading = function() {
+    sweetAlert$1.hideLoading = sweetAlert$1.disableLoading = function() {
       if (!params.showConfirmButton) {
         hide($confirmButton);
         if (!params.showCancelButton) {
@@ -1017,25 +1078,25 @@ function modalDependant() {
       $cancelButton.disabled = false;
     };
 
-    sweetAlert.enableButtons = function() {
+    sweetAlert$1.enableButtons = function() {
       $confirmButton.disabled = false;
       $cancelButton.disabled = false;
     };
 
-    sweetAlert.disableButtons = function() {
+    sweetAlert$1.disableButtons = function() {
       $confirmButton.disabled = true;
       $cancelButton.disabled = true;
     };
 
-    sweetAlert.enableConfirmButton = function() {
+    sweetAlert$1.enableConfirmButton = function() {
       $confirmButton.disabled = false;
     };
 
-    sweetAlert.disableConfirmButton = function() {
+    sweetAlert$1.disableConfirmButton = function() {
       $confirmButton.disabled = true;
     };
 
-    sweetAlert.enableInput = function() {
+    sweetAlert$1.enableInput = function() {
       var input = getInput();
       if (!input) {
         return false;
@@ -1051,7 +1112,7 @@ function modalDependant() {
       }
     };
 
-    sweetAlert.disableInput = function() {
+    sweetAlert$1.disableInput = function() {
       var input = getInput();
       if (!input) {
         return false;
@@ -1068,8 +1129,8 @@ function modalDependant() {
     };
 
     // Set modal min-height to disable scrolling inside the modal
-    sweetAlert.recalculateHeight = function() {
-      var modal = getModal() || sweetAlert.init();
+    sweetAlert$1.recalculateHeight = function() {
+      var modal = getModal();
       var prevState = modal.style.display;
       modal.style.minHeight = '';
       show(modal);
@@ -1078,7 +1139,7 @@ function modalDependant() {
     };
 
     // Show block with validation error
-    sweetAlert.showValidationError = function(error) {
+    sweetAlert$1.showValidationError = function(error) {
       var $validationError = modal.querySelector('.' + swalClasses.validationerror);
       $validationError.innerHTML = error;
       show($validationError);
@@ -1089,7 +1150,7 @@ function modalDependant() {
     };
 
     // Hide block with validation error
-    sweetAlert.resetValidationError = function() {
+    sweetAlert$1.resetValidationError = function() {
       var $validationError = modal.querySelector('.' + swalClasses.validationerror);
       hide($validationError);
 
@@ -1099,26 +1160,26 @@ function modalDependant() {
       }
     };
 
-    sweetAlert.getProgressSteps = function() {
+    sweetAlert$1.getProgressSteps = function() {
       return params.progressSteps;
     };
 
-    sweetAlert.setProgressSteps = function(progressSteps) {
+    sweetAlert$1.setProgressSteps = function(progressSteps) {
       params.progressSteps = progressSteps;
       setParameters(params);
     };
 
-    sweetAlert.showProgressSteps = function() {
+    sweetAlert$1.showProgressSteps = function() {
       show(getProgressSteps());
     };
 
-    sweetAlert.hideProgressSteps = function() {
+    sweetAlert$1.hideProgressSteps = function() {
       hide(getProgressSteps());
     };
 
-    sweetAlert.enableButtons();
-    sweetAlert.hideLoading();
-    sweetAlert.resetValidationError();
+    sweetAlert$1.enableButtons();
+    sweetAlert$1.hideLoading();
+    sweetAlert$1.resetValidationError();
 
     // inputs
     var inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea'];
@@ -1265,9 +1326,9 @@ function modalDependant() {
 
     if (params.input === 'select' || params.input === 'radio') {
       if (params.inputOptions instanceof Promise) {
-        sweetAlert.showLoading();
+        sweetAlert$1.showLoading();
         params.inputOptions.then(function(inputOptions) {
-          sweetAlert.hideLoading();
+          sweetAlert$1.hideLoading();
           populateInputOptions(inputOptions);
         });
       } else if (typeof params.inputOptions === 'object') {
@@ -1288,7 +1349,7 @@ function modalDependant() {
     // Observe changes inside the modal and adjust height
     if (typeof MutationObserver !== 'undefined' && !swal2Observer) {
       var mutationsHandler = debounce(function() {
-        sweetAlert.recalculateHeight();
+        sweetAlert$1.recalculateHeight();
       }, 50);
       swal2Observer = new MutationObserver(mutationsHandler);
       swal2Observer.observe(modal, {childList: true, characterData: true, subtree: true});
@@ -1297,18 +1358,12 @@ function modalDependant() {
 }
 
 // SweetAlert function
-function sweetAlert() {
+function sweetAlert$1() {
   // Copy arguments to the local args variable
   var args = arguments;
-  var modal = getModal();
 
-  if (modal === null) {
-    sweetAlert.init();
-    modal = getModal();
-  }
-
-  if (sweetAlert.isVisible()) {
-    sweetAlert.close();
+  if (sweetAlert$1.isVisible()) {
+    sweetAlert$1.close();
   }
 
   return modalDependant.apply(this, args);
@@ -1317,7 +1372,7 @@ function sweetAlert() {
 /*
  * Global function to determine if swal2 modal is visible
  */
-sweetAlert.isVisible = function() {
+sweetAlert$1.isVisible = function() {
   var modal = getModal();
   return isVisible(modal);
 };
@@ -1325,9 +1380,9 @@ sweetAlert.isVisible = function() {
 /*
  * Global function for chaining sweetAlert modals
  */
-sweetAlert.queue = function(steps) {
+sweetAlert$1.queue = function(steps) {
   queue = steps;
-  var modal = getModal() || sweetAlert.init();
+  var modal = getModal();
   var resetQueue = function() {
     queue = [];
     modal.removeAttribute('data-queue-step');
@@ -1337,7 +1392,7 @@ sweetAlert.queue = function(steps) {
       if (i < queue.length) {
         modal.setAttribute('data-queue-step', i);
 
-        sweetAlert(queue[i]).then(function() {
+        sweetAlert$1(queue[i]).then(function() {
           step(i+1, callback);
         }, function(dismiss) {
           resetQueue();
@@ -1354,14 +1409,14 @@ sweetAlert.queue = function(steps) {
 /*
  * Global function for getting the index of current modal in queue
  */
-sweetAlert.getQueueStep = function() {
+sweetAlert$1.getQueueStep = function() {
   return getModal().getAttribute('data-queue-step');
 };
 
 /*
  * Global function for inserting a modal to the queue
  */
-sweetAlert.insertQueueStep = function(step, index) {
+sweetAlert$1.insertQueueStep = function(step, index) {
   if (index && index < queue.length) {
     return queue.splice(index, 0, step);
   }
@@ -1371,7 +1426,7 @@ sweetAlert.insertQueueStep = function(step, index) {
 /*
  * Global function for deleting a modal from the queue
  */
-sweetAlert.deleteQueueStep = function(index) {
+sweetAlert$1.deleteQueueStep = function(index) {
   if (typeof queue[index] !== 'undefined') {
     queue.splice(index, 1);
   }
@@ -1380,7 +1435,7 @@ sweetAlert.deleteQueueStep = function(index) {
 /*
  * Global function to close sweetAlert
  */
-sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
+sweetAlert$1.close = sweetAlert$1.closeModal = function(onComplete) {
   var modal = getModal();
   removeClass(modal, 'show-swal2');
   addClass(modal, 'hide-swal2');
@@ -1426,83 +1481,22 @@ sweetAlert.close = sweetAlert.closeModal = function(onComplete) {
 /*
  * Global function to click 'Confirm' button
  */
-sweetAlert.clickConfirm = function() {
+sweetAlert$1.clickConfirm = function() {
   getConfirmButton().click();
 };
 
 /*
  * Global function to click 'Cancel' button
  */
-sweetAlert.clickCancel = function() {
+sweetAlert$1.clickCancel = function() {
   getCancelButton().click();
-};
-
-/*
- * Add modal + overlay to DOM
- */
-sweetAlert.init = function() {
-  if (typeof document === 'undefined') {
-    console.error('SweetAlert2 requires document to initialize');
-    return;
-  } else if (document.getElementsByClassName(swalClasses.container).length) {
-    return;
-  }
-
-  document.body.appendChild(sweetContainer);
-
-  var modal = getModal();
-  var input = getChildByClass(modal, swalClasses.input);
-  var file = getChildByClass(modal, swalClasses.file);
-  var range = modal.querySelector('.' + swalClasses.range + ' input');
-  var select = getChildByClass(modal, swalClasses.select);
-  var checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input');
-  var textarea = getChildByClass(modal, swalClasses.textarea);
-
-  input.oninput = function() {
-    sweetAlert.resetValidationError();
-  };
-
-  input.onkeyup = function(event) {
-    event.stopPropagation();
-    if (event.keyCode === 13) {
-      sweetAlert.clickConfirm();
-    }
-  };
-
-  file.onchange = function() {
-    sweetAlert.resetValidationError();
-  };
-
-  range.oninput = function() {
-    sweetAlert.resetValidationError();
-    range.previousSibling.value = range.value;
-  };
-
-  range.onchange = function() {
-    sweetAlert.resetValidationError();
-    range.previousSibling.value = range.value;
-  };
-
-  select.onchange = function() {
-    sweetAlert.resetValidationError();
-  };
-
-  checkbox.onchange = function() {
-    sweetAlert.resetValidationError();
-  };
-
-  textarea.oninput = function() {
-    sweetAlert.resetValidationError();
-  };
-
-  return modal;
 };
 
 /**
  * Set default params for each popup
  * @param {Object} userParams
  */
-sweetAlert.setDefaults = function(userParams) {
+sweetAlert$1.setDefaults = function(userParams) {
   if (!userParams) {
     throw new Error('userParams is required');
   }
@@ -1516,27 +1510,13 @@ sweetAlert.setDefaults = function(userParams) {
 /**
  * Reset default params for each popup
  */
-sweetAlert.resetDefaults = function() {
+sweetAlert$1.resetDefaults = function() {
   modalParams = extend({}, defaultParams);
 };
 
-sweetAlert.version = '5.0.7';
+sweetAlert$1.version = '';
 
-window.sweetAlert = window.swal = sweetAlert;
-
-/*
-* If library is injected after page has loaded
-*/
-(function() {
-  if (document.readyState === 'complete' || document.readyState === 'interactive' && document.body) {
-    sweetAlert.init();
-  } else {
-    document.addEventListener('DOMContentLoaded', function onDomContentLoaded() {
-      document.removeEventListener('DOMContentLoaded', onDomContentLoaded, false);
-      sweetAlert.init();
-    }, false);
-  }
-})();
+window.sweetAlert = window.swal = sweetAlert$1;
 
 if (typeof Promise === 'function') {
   Promise.prototype.done = Promise.prototype.done || function() {
@@ -1549,4 +1529,4 @@ if (typeof Promise === 'function') {
   console.warn('SweetAlert2: Please inlude Promise polyfill BEFORE including sweetalert2.js if IE10+ support needed.');
 }
 
-module.exports = sweetAlert;
+module.exports = sweetAlert$1;

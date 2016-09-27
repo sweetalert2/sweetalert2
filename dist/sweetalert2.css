@@ -33,7 +33,8 @@ body.swal2-in {
   margin: auto;
   overflow-x: hidden;
   overflow-y: auto;
-  display: none; }
+  display: none;
+  position: relative; }
   .swal2-modal:focus {
     outline: none; }
   .swal2-modal.loading {

@@ -680,7 +680,7 @@ function modalDependant() {
 
     // Set modal min-height to disable scrolling inside the modal
     sweetAlert.recalculateHeight = function() {
-      var modal = dom.getModal() || sweetAlert.init();
+      var modal = dom.getModal();
       var prevState = modal.style.display;
       modal.style.minHeight = '';
       dom.show(modal);
@@ -911,12 +911,6 @@ function modalDependant() {
 function sweetAlert() {
   // Copy arguments to the local args variable
   var args = arguments;
-  var modal = dom.getModal();
-
-  if (modal === null) {
-    sweetAlert.init();
-    modal = dom.getModal();
-  }
 
   if (sweetAlert.isVisible()) {
     sweetAlert.close();
@@ -938,7 +932,7 @@ sweetAlert.isVisible = function() {
  */
 sweetAlert.queue = function(steps) {
   queue = steps;
-  var modal = dom.getModal() || sweetAlert.init();
+  var modal = dom.getModal();
   var resetQueue = function() {
     queue = [];
     modal.removeAttribute('data-queue-step');
@@ -1048,67 +1042,6 @@ sweetAlert.clickCancel = function() {
   dom.getCancelButton().click();
 };
 
-/*
- * Add modal + overlay to DOM
- */
-sweetAlert.init = function() {
-  if (typeof document === 'undefined') {
-    console.error('SweetAlert2 requires document to initialize');
-    return;
-  } else if (document.getElementsByClassName(swalClasses.container).length) {
-    return;
-  }
-
-  document.body.appendChild(sweetContainer);
-
-  var modal = dom.getModal();
-  var input = dom.getChildByClass(modal, swalClasses.input);
-  var file = dom.getChildByClass(modal, swalClasses.file);
-  var range = modal.querySelector('.' + swalClasses.range + ' input');
-  var select = dom.getChildByClass(modal, swalClasses.select);
-  var checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input');
-  var textarea = dom.getChildByClass(modal, swalClasses.textarea);
-
-  input.oninput = function() {
-    sweetAlert.resetValidationError();
-  };
-
-  input.onkeyup = function(event) {
-    event.stopPropagation();
-    if (event.keyCode === 13) {
-      sweetAlert.clickConfirm();
-    }
-  };
-
-  file.onchange = function() {
-    sweetAlert.resetValidationError();
-  };
-
-  range.oninput = function() {
-    sweetAlert.resetValidationError();
-    range.previousSibling.value = range.value;
-  };
-
-  range.onchange = function() {
-    sweetAlert.resetValidationError();
-    range.previousSibling.value = range.value;
-  };
-
-  select.onchange = function() {
-    sweetAlert.resetValidationError();
-  };
-
-  checkbox.onchange = function() {
-    sweetAlert.resetValidationError();
-  };
-
-  textarea.oninput = function() {
-    sweetAlert.resetValidationError();
-  };
-
-  return modal;
-};
-
 /**
  * Set default params for each popup
  * @param {Object} userParams
@@ -1134,20 +1067,6 @@ sweetAlert.resetDefaults = function() {
 sweetAlert.version = '';
 
 window.sweetAlert = window.swal = sweetAlert;
-
-/*
-* If library is injected after page has loaded
-*/
-(function() {
-  if (document.readyState === 'complete' || document.readyState === 'interactive' && document.body) {
-    sweetAlert.init();
-  } else {
-    document.addEventListener('DOMContentLoaded', function onDomContentLoaded() {
-      document.removeEventListener('DOMContentLoaded', onDomContentLoaded, false);
-      sweetAlert.init();
-    }, false);
-  }
-})();
 
 if (typeof Promise === 'function') {
   Promise.prototype.done = Promise.prototype.done || function() {

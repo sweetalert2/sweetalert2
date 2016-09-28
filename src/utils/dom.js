@@ -1,3 +1,4 @@
+import { default as sweetAlert } from '../sweetalert2.js';
 import { swalPrefix, swalClasses } from './classes.js';
 import { sweetContainer } from './default.js';
 

@@ -36,6 +36,7 @@ var write = function(dest, code) {
 };
 
 var packageRollup = function(options) {
+  const moduleId = classify(pack.name);
   return rollup({
     entry: 'src/sweetalert2.js'
   })
@@ -43,7 +44,8 @@ var packageRollup = function(options) {
     var code = bundle.generate({
       format: options.format,
       banner: banner,
-      moduleName: classify(pack.name)
+      moduleName: classify(pack.name),
+      footer: `if (window.${moduleId}) window.sweetAlert = window.swal = window.${moduleId};`
     }).code.replace(/sweetAlert\.version = '(.*)'/, "sweetAlert.version = '" + pack.version + "'");
 
     if (options.minify) {

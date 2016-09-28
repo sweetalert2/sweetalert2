@@ -46,6 +46,16 @@ To use:
 <link rel="stylesheet" type="text/css" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
 ```
 
+Or:
+
+```javascript
+// ES6 Modules
+import { default as swal } from 'sweetalert2'
+
+// CommonJS
+const swal = require('sweetalert2')
+```
+
 
 Examples
 --------

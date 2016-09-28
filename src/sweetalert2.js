@@ -1064,8 +1064,6 @@ sweetAlert.resetDefaults = function() {
 
 sweetAlert.version = '';
 
-window.sweetAlert = window.swal = sweetAlert;
-
 if (typeof Promise === 'function') {
   Promise.prototype.done = Promise.prototype.done || function() {
     return this.catch(function() {

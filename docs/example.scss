@@ -260,6 +260,17 @@ button,
   }
 }
 
+.donate-form {
+  position: fixed;
+  right: 80px;
+  top: 170px;
+  cursor: pointer;
+
+  @media all and (max-width: 1278px) {
+    display: none;
+  }
+}
+
 .center-container {
   max-width: 725px;
   margin: 70px auto;

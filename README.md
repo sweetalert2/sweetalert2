@@ -1,4 +1,4 @@
-SweetAlert2 [![Build Status](https://travis-ci.org/limonte/sweetalert2.svg?branch=master)](https://travis-ci.org/limonte/sweetalert2)
+SweetAlert2 [![Build Status](https://travis-ci.org/limonte/sweetalert2.svg?branch=master)](https://travis-ci.org/limonte/sweetalert2) [![Downloads](https://img.shields.io/npm/dt/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2) [![Version](https://img.shields.io/npm/v/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2)
 -----------
 
 An awesome replacement for JavaScript's popup boxes.

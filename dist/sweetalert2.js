@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.2.0
+ * sweetalert2 v5.2.1
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -41,7 +41,9 @@
     'progresssteps',
     'activeprogressstep',
     'progresscircle',
-    'progressline'
+    'progressline',
+    'loading',
+    'styled'
   ]);
 
   var iconTypes = prefix([
@@ -664,11 +666,11 @@
 
     // Buttons styling
     if (params.buttonsStyling) {
-      addClass($confirmBtn, 'styled');
-      addClass($cancelBtn, 'styled');
+      addClass($confirmBtn, swalClasses.styled);
+      addClass($cancelBtn, swalClasses.styled);
     } else {
-      removeClass($confirmBtn, 'styled');
-      removeClass($cancelBtn, 'styled');
+      removeClass($confirmBtn, swalClasses.styled);
+      removeClass($cancelBtn, swalClasses.styled);
 
       $confirmBtn.style.backgroundColor = $confirmBtn.style.borderLeftColor = $confirmBtn.style.borderRightColor = '';
       $cancelBtn.style.backgroundColor = $cancelBtn.style.borderLeftColor = $cancelBtn.style.borderRightColor = '';
@@ -1064,8 +1066,8 @@
       sweetAlert.showLoading = sweetAlert.enableLoading = function() {
         show(getSpacer());
         show($confirmButton, 'inline-block');
-        addClass($confirmButton, 'loading');
-        addClass(modal, 'loading');
+        addClass($confirmButton, swalClasses.loading);
+        addClass(modal, swalClasses.loading);
         $confirmButton.disabled = true;
         $cancelButton.disabled = true;
       };
@@ -1080,8 +1082,8 @@
             hide(getSpacer());
           }
         }
-        removeClass($confirmButton, 'loading');
-        removeClass(modal, 'loading');
+        removeClass($confirmButton, swalClasses.loading);
+        removeClass(modal, swalClasses.loading);
         $confirmButton.disabled = false;
         $cancelButton.disabled = false;
       };
@@ -1520,7 +1522,7 @@
     modalParams = extend({}, defaultParams);
   };
 
-  sweetAlert.version = '5.2.0';
+  sweetAlert.version = '5.2.1';
 
   if (typeof Promise === 'function') {
     Promise.prototype.done = Promise.prototype.done || function() {

@@ -37,7 +37,7 @@ body.swal2-in {
   position: relative; }
   .swal2-modal:focus {
     outline: none; }
-  .swal2-modal.loading {
+  .swal2-modal.swal2-loading {
     overflow-y: hidden; }
   .swal2-modal h2 {
     color: #595959;
@@ -54,7 +54,7 @@ body.swal2-in {
     height: 10px;
     color: transparent;
     border: 0; }
-  .swal2-modal .styled {
+  .swal2-modal .swal2-styled {
     border: 0;
     border-radius: 3px;
     box-shadow: none;
@@ -64,10 +64,10 @@ body.swal2-in {
     font-weight: 500;
     margin: 0 5px;
     padding: 10px 32px; }
-    .swal2-modal .styled:not(.loading)[disabled] {
+    .swal2-modal .swal2-styled:not(.swal2-loading)[disabled] {
       opacity: .4;
       cursor: no-drop; }
-    .swal2-modal .styled.loading {
+    .swal2-modal .swal2-styled.swal2-loading {
       box-sizing: border-box;
       border: 4px solid transparent;
       border-color: transparent;
@@ -82,7 +82,7 @@ body.swal2-in {
       border-radius: 100%;
       -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
               animation: rotate-loading 1.5s linear 0s infinite normal; }
-  .swal2-modal :not(.styled).loading::after {
+  .swal2-modal :not(.swal2-styled).swal2-loading::after {
     display: inline-block;
     content: '';
     margin-left: 5px;

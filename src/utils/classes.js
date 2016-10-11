@@ -31,7 +31,9 @@ export var swalClasses = prefix([
   'progresssteps',
   'activeprogressstep',
   'progresscircle',
-  'progressline'
+  'progressline',
+  'loading',
+  'styled'
 ]);
 
 export var iconTypes = prefix([

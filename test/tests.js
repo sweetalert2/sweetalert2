@@ -332,11 +332,11 @@ test('showLoading and hideLoading', function(assert) {
   });
 
   swal.showLoading();
-  assert.ok($('.swal2-confirm').hasClass('loading'));
+  assert.ok($('.swal2-confirm').hasClass('swal2-loading'));
   assert.ok($('.swal2-cancel').is(':disabled'));
 
   swal.hideLoading();
-  assert.notOk($('.swal2-confirm').hasClass('loading'));
+  assert.notOk($('.swal2-confirm').hasClass('swal2-loading'));
   assert.notOk($('.swal2-cancel').is(':disabled'));
 
   swal({
@@ -346,11 +346,11 @@ test('showLoading and hideLoading', function(assert) {
 
   swal.showLoading();
   assert.ok($('.swal2-confirm').is(':visible'));
-  assert.ok($('.swal2-confirm').hasClass('loading'));
+  assert.ok($('.swal2-confirm').hasClass('swal2-loading'));
 
   swal.hideLoading();
   assert.notOk($('.swal2-confirm').is(':visible'));
-  assert.notOk($('.swal2-confirm').hasClass('loading'));
+  assert.notOk($('.swal2-confirm').hasClass('swal2-loading'));
 });
 
 

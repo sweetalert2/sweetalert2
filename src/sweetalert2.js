@@ -206,11 +206,11 @@ var setParameters = function(params) {
 
   // Buttons styling
   if (params.buttonsStyling) {
-    dom.addClass($confirmBtn, 'styled');
-    dom.addClass($cancelBtn, 'styled');
+    dom.addClass($confirmBtn, swalClasses.styled);
+    dom.addClass($cancelBtn, swalClasses.styled);
   } else {
-    dom.removeClass($confirmBtn, 'styled');
-    dom.removeClass($cancelBtn, 'styled');
+    dom.removeClass($confirmBtn, swalClasses.styled);
+    dom.removeClass($cancelBtn, swalClasses.styled);
 
     $confirmBtn.style.backgroundColor = $confirmBtn.style.borderLeftColor = $confirmBtn.style.borderRightColor = '';
     $cancelBtn.style.backgroundColor = $cancelBtn.style.borderLeftColor = $cancelBtn.style.borderRightColor = '';
@@ -606,8 +606,8 @@ function modalDependant() {
     sweetAlert.showLoading = sweetAlert.enableLoading = function() {
       dom.show(dom.getSpacer());
       dom.show($confirmButton, 'inline-block');
-      dom.addClass($confirmButton, 'loading');
-      dom.addClass(modal, 'loading');
+      dom.addClass($confirmButton, swalClasses.loading);
+      dom.addClass(modal, swalClasses.loading);
       $confirmButton.disabled = true;
       $cancelButton.disabled = true;
     };
@@ -622,8 +622,8 @@ function modalDependant() {
           dom.hide(dom.getSpacer());
         }
       }
-      dom.removeClass($confirmButton, 'loading');
-      dom.removeClass(modal, 'loading');
+      dom.removeClass($confirmButton, swalClasses.loading);
+      dom.removeClass(modal, swalClasses.loading);
       $confirmButton.disabled = false;
       $cancelButton.disabled = false;
     };

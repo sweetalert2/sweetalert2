@@ -1,4 +1,4 @@
-SweetAlert2 [![Build Status](https://travis-ci.org/limonte/sweetalert2.svg?branch=master)](https://travis-ci.org/limonte/sweetalert2) [![Downloads](https://img.shields.io/npm/dt/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2) [![Version](https://img.shields.io/npm/v/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2)
+SweetAlert2 [![Build Status](https://travis-ci.org/limonte/sweetalert2.svg?branch=master)](https://travis-ci.org/limonte/sweetalert2) [![Downloads](https://img.shields.io/npm/dt/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2) [![Version](https://img.shields.io/npm/v/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2) [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 -----------
 
 An awesome replacement for JavaScript's popup boxes.
@@ -48,7 +48,7 @@ To use:
 
 Or:
 
-```javascript
+```js
 // ES6 Modules
 import { default as swal } from 'sweetalert2'
 
@@ -62,32 +62,32 @@ Examples
 
 The most basic message:
 
-```javascript
-swal('Hello world!');
+```js
+swal('Hello world!')
 ```
 
 A message signaling an error:
 
-```javascript
-swal('Oops...', 'Something went wrong!', 'error');
+```js
+swal('Oops...', 'Something went wrong!', 'error')
 ```
 
 Handling the result of SweetAlert2 modal:
 
-```javascript
+```js
 swal({
   title: 'Are you sure?',
   text: 'You will not be able to recover this imaginary file!',
   type: 'warning',
   showCancelButton: true,
   confirmButtonText: 'Yes, delete it!',
-  cancelButtonText: 'No, keep it',
+  cancelButtonText: 'No, keep it'
 }).then(function() {
   swal(
     'Deleted!',
     'Your imaginary file has been deleted.',
     'success'
-  );
+  )
 }, function(dismiss) {
   // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
   if (dismiss === 'cancel') {
@@ -95,9 +95,9 @@ swal({
       'Cancelled',
       'Your imaginary file is safe :)',
       'error'
-    );
+    )
   }
-});
+})
 ```
 
 [View more examples](https://limonte.github.io/sweetalert2/)
@@ -110,17 +110,18 @@ When an alert is dismissed by the user, the Promise returned by `swal()` will re
 
 | String      | Description                                             | Related configuration |
 | ----------- | ------------------------------------------------------- | --------------------- |
-| `"overlay"` | The user clicked the overlay.                           | `allowOutsideClick`   |
-| `"cancel"`  | The user clicked the cancel button.                     | `showCancelButton`    |
-| `"close"`   | The user clicked the close button.                      | `showCloseButton`     |
-| `"esc"`     | The user pressed the <kbd>Esc</kbd> key.                | `allowEscapeKey`      |
-| `"timer"`   | The timer ran out, and the alert closed automatically.  | `timer`               |
+| `'overlay'` | The user clicked the overlay.                           | `allowOutsideClick`   |
+| `'cancel'`  | The user clicked the cancel button.                     | `showCancelButton`    |
+| `'close'`   | The user clicked the close button.                      | `showCloseButton`     |
+| `'esc'`     | The user pressed the <kbd>Esc</kbd> key.                | `allowEscapeKey`      |
+| `'timer'`   | The timer ran out, and the alert closed automatically.  | `timer`               |
 
 If rejections are not handled, it will be logged as an error. To avoid this, add a rejection handler to the Promise. Alternatively, SweetAlert2 provides the `.done()` method as a quick way to simply suppress the errors:
 
-    swal('...')
-      .done();
-
+```js
+swal('...')
+  .done()
+```
 
 Modal Types
 -----------
@@ -139,10 +140,10 @@ Configuration
 | `text`                  | `null`               | A description for the modal. It can either be added to the object under the key "text" or passed as the second parameter of the function. |
 | `html`                  | `null`               | A HTML description for the modal. If `text` and `html` parameters are provided in the same time, "text" will be used. |
 | `type `                 | `null`               | The type of the modal. SweetAlert2 comes with [5 built-in types](#modal-types) which will show a corresponding icon animation: `warning`, `error`, `success`, `info` and `question`. It can either be put in the array under the key `type` or passed as the third parameter of the function. |
-| `input`                 | `null`               | Input field type, can be `"text"`, `"email"`, `"password"`, `"number"`, `"tel"`, `"range"`, `"textarea"`, `"select"`, `"radio"`, `"checkbox"` and `"file"`. |
-| `width`                 | `"500px"`            | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. |
+| `input`                 | `null`               | Input field type, can be `'text'`, `'email'`, `'password'`, `'number'`, `'tel'`, `'range'`, `'textarea'`, `'select'`, `'radio'`, `'checkbox'` and `'file'`. |
+| `width`                 | `'500px'`            | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. |
 | `padding`               | `20`                 | Modal window padding. |
-| `background`            | `"#fff"`             | Modal window background (CSS `background` property). |
+| `background`            | `'#fff'`             | Modal window background (CSS `background` property). |
 | `customClass`           | `null`               | A custom CSS class for the modal. |
 | `timer`                 | `null`               | Auto close timer of the modal. Set in ms (milliseconds). |
 | `animation`             | `true`               | If set to `false`, modal CSS animation will be disabled. |
@@ -150,10 +151,10 @@ Configuration
 | `allowEscapeKey`        | `true`               | If set to `false`, the user can't dismiss the modal by pressing the Escape key. |
 | `showConfirmButton`     | `true`               | If set to `false`, a "Confirm"-button will not be shown. It can be useful when you're using `html` parameter for custom HTML description. |
 | `showCancelButton`      | `false`              | If set to `true`, a "Cancel"-button will be shown, which the user can click on to dismiss the modal. |
-| `confirmButtonText`     | `"OK"`               | Use this to change the text on the "Confirm"-button. |
-| `cancelButtonText`      | `"Cancel"`           | Use this to change the text on the "Cancel"-button. |
-| `confirmButtonColor`    | `"#3085d6"`          | Use this to change the background color of the "Confirm"-button (must be a HEX value). |
-| `cancelButtonColor`     | `"#aaa"`             | Use this to change the background color of the "Cancel"-button (must be a HEX value). |
+| `confirmButtonText`     | `'OK'`               | Use this to change the text on the "Confirm"-button. |
+| `cancelButtonText`      | `'Cancel'`           | Use this to change the text on the "Cancel"-button. |
+| `confirmButtonColor`    | `'#3085d6'`          | Use this to change the background color of the "Confirm"-button (must be a HEX value). |
+| `cancelButtonColor`     | `'#aaa'`             | Use this to change the background color of the "Cancel"-button (must be a HEX value). |
 | `confirmButtonClass`    | `null`               | A custom CSS class for the "Confirm"-button. |
 | `cancelButtonClass`     | `null`               | A custom CSS class for the "Cancel"-button. |
 | `buttonsStyling`        | `true`               | Apply default swal2 styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to `false`. |
@@ -166,15 +167,15 @@ Configuration
 | `imageWidth`            | `null`               | If imageUrl is set, you can specify imageWidth to describes image width in px. |
 | `imageHeight`           | `null`               | Custom image height in px. |
 | `imageClass`            | `null`               | A custom CSS class for the customized icon. |
-| `inputPlaceholder`      | `""`                 | Input field placeholder. |
-| `inputValue`            | `""`                 | Input field initial value. |
-| `inputOptions`          | `{}` or `Promise`    | If `input` parameter is set to `"select"` or `"radio"`, you can provide options. Object keys will represent options values, object values will represent options text values. |
+| `inputPlaceholder`      | `''`                 | Input field placeholder. |
+| `inputValue`            | `''`                 | Input field initial value. |
+| `inputOptions`          | `{}` or `Promise`    | If `input` parameter is set to `'select'` or `'radio'`, you can provide options. Object keys will represent options values, object values will represent options text values. |
 | `inputAutoTrim`         | `true`               | Automatically remove whitespaces from both ends of a result string. Set this parameter to `false` to disable auto-trimming. |
 | `inputValidator`        | `null`               | Validator for input field, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#select-box">usage example</a>. |
 | `inputClass`            | `null`               | A custom CSS class for the input field. |
 | `progressSteps`         | `[]`                 | Progress steps, useful for modal queues, see <a href="https://limonte.github.io/sweetalert2/#chaining-modals">usage example</a>. |
 | `currentProgressStep`   | `null`               | Current active progress step. The default is `swal.getQueueStep()`. |
-| `progressStepsDistance` | `"40px"`             | Distance between progress steps. |
+| `progressStepsDistance` | `'40px'`             | Distance between progress steps. |
 | `onOpen`                | `null`               | Function to run when modal opens, provides modal DOM element as the first argument. |
 | `onClose`               | `null`               | Function to run when modal closes, provides modal DOM element as the first argument. |
 
@@ -234,10 +235,10 @@ If you would like to contribute enhancements or fixes, please do the following:
 
 1. Fork the plugin repository.
 
-1. Make sure you have [Node](http://nodejs.org/) and [NPM](https://www.npmjs.com/) installed.
+2. Make sure you have [Node](http://nodejs.org/) and [NPM](https://www.npmjs.com/) installed.
 
-1. When in the SweetAlert2 directory, run the command ``npm install`` to install npm packages.
+3. When in the SweetAlert2 directory, run the command ``npm install`` to install npm packages.
 
-1. Start gulp watcher ``gulp watch`` to automatically build and minify the SCSS and JS-files.
+4. Start gulp watcher ``gulp watch`` to automatically build and minify the SCSS and JS-files.
 
-1. Make sure that `dist/*` files aren't committed and create a pull request.
+5. Make sure that `dist/*` files aren't committed and create a pull request.

@@ -1,12 +1,12 @@
-export var swalPrefix = 'swal2-';
+export var swalPrefix = 'swal2-'
 
-export var prefix = function(items) {
-  var result = {};
+export var prefix = function (items) {
+  var result = {}
   for (var i in items) {
-    result[items[i]] = swalPrefix + items[i];
+    result[items[i]] = swalPrefix + items[i]
   }
-  return result;
-};
+  return result
+}
 
 export var swalClasses = prefix([
   'container',
@@ -34,7 +34,7 @@ export var swalClasses = prefix([
   'progressline',
   'loading',
   'styled'
-]);
+])
 
 export var iconTypes = prefix([
   'success',
@@ -42,4 +42,4 @@ export var iconTypes = prefix([
   'info',
   'question',
   'error'
-]);
+])

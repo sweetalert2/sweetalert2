@@ -1,4 +1,4 @@
-import { swalClasses, iconTypes } from './classes.js';
+import { swalClasses, iconTypes } from './classes.js'
 
 export var defaultParams = {
   title: '',
@@ -44,7 +44,7 @@ export var defaultParams = {
   progressStepsDistance: '40px',
   onOpen: null,
   onClose: null
-};
+}
 
 var sweetHTML = '<div class="' + swalClasses.modal + '" style="display: none" tabIndex="-1">' +
     '<ul class="' + swalClasses.progresssteps + '"></ul>' +
@@ -78,16 +78,16 @@ var sweetHTML = '<div class="' + swalClasses.modal + '" style="display: none" ta
     '<button type="button" class="' + swalClasses.confirm + '">OK</button>' +
     '<button type="button" class="' + swalClasses.cancel + '">Cancel</button>' +
     '<span class="' + swalClasses.close + '">&times;</span>' +
-  '</div>';
+  '</div>'
 
-export var sweetContainer;
+export var sweetContainer
 
-var existingSweetContainers = document.getElementsByClassName(swalClasses.container);
+var existingSweetContainers = document.getElementsByClassName(swalClasses.container)
 
 if (existingSweetContainers.length) {
-  sweetContainer = existingSweetContainers[0];
+  sweetContainer = existingSweetContainers[0]
 } else {
-  sweetContainer = document.createElement('div');
-  sweetContainer.className = swalClasses.container;
-  sweetContainer.innerHTML = sweetHTML;
+  sweetContainer = document.createElement('div')
+  sweetContainer.className = swalClasses.container
+  sweetContainer.innerHTML = sweetHTML
 }

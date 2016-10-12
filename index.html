@@ -172,7 +172,7 @@ swal({
     <span class="str">'Deleted!'</span>,
     <span class="str">'Your file has been deleted.'</span>,
     <span class="str">'success'</span>
-  );
+  )
 })</pre>
     </li>
 
@@ -199,7 +199,7 @@ swal({
     <span class="str">'Deleted!'</span>,
     <span class="str">'Your file has been deleted.'</span>,
     <span class="str">'success'</span>
-  );
+  )
 }, <span class="func"><i>function</i></span>(dismiss) {
   <span class="comment">// dismiss can be 'cancel', 'overlay',</span>
   <span class="comment">// 'close', and 'timer'</span>
@@ -208,7 +208,7 @@ swal({
       <span class="str">'Cancelled'</span>,
       <span class="str">'Your imaginary file is safe :)'</span>,
       <span class="str">'error'</span>
-    );
+    )
   }
 })</pre>
     </li>
@@ -259,12 +259,12 @@ swal({
     <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
       <span class="func">setTimeout</span>(<span class="func">function</span>() {
         <span class="tag">if</span> (email === <span class="str">'taken@example.com'</span>) {
-          reject(<span class="str">'This email is already taken.'</span>);
+          reject(<span class="str">'This email is already taken.'</span>)
         } else {
-          resolve();
+          resolve()
         }
-      }, <span class="val">2000</span>);
-    });
+      }, <span class="val">2000</span>)
+    })
   },
   allowOutsideClick: <span class="val">false</span>
 }).then(<span class="func"><i>function</i></span>(email) {
@@ -272,7 +272,7 @@ swal({
     type: <span class="str">'success'</span>,
     title: <span class="str">'Ajax request finished!'</span>,
     html: <span class="str">'Submitted email: '</span> + email
-  });
+  })
 })</pre>
     </li>
 
@@ -287,7 +287,7 @@ swal.setDefaults({
   showCancelButton: <span class="val">true</span>,
   animation: <span class="val">false</span>,
   progressSteps: [<span class="str">'1'</span>, <span class="str">'2'</span>, <span class="str">'3'</span>]
-});
+})
 
 <span class="func">var</span> steps = [
   {
@@ -296,17 +296,17 @@ swal.setDefaults({
   },
   <span class="str">'Step 2'</span>,
   <span class="str">'Step 3'</span>
-];
+]
 
 swal.queue(steps).then(<span class="func"><i>function</i></span>() {
-  swal.resetDefaults();
+  swal.resetDefaults()
   swal({
     title: <span class="str">'All done!'</span>,
     confirmButtonText: <span class="str">'Lovely!'</span>,
     showCancelButton: <span class="val">false</span>
-  });
+  })
 }, <span class="func"><i>function</i></span>() {
-  swal.resetDefaults();
+  swal.resetDefaults()
 })</pre>
     </li>
 
@@ -327,10 +327,10 @@ swal.queue([{
     <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve) {
       $.get(<span class="str">'https://api.ipify.org?format=json'</span>)
         .done(<span class="func"><i>function</i></span>(data) {
-          swal.insertQueueStep(data.ip);
-          resolve();
-        });
-    });
+          swal.insertQueueStep(data.ip)
+          resolve()
+        })
+    })
   }
 }])</pre>
     </li>
@@ -356,10 +356,16 @@ swal.queue([{
     <li>
       <p>Initialize the plugin by referencing the necessary files:</p>
 <pre><span class="comment">&lt;!-- for IE support --&gt;</span>
-&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/es6-promise/es6-promise.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
+&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/es6-promise/es6-promise.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt
 
-&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
+&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt
 &lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="tag">href</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.css"</span>&gt;</pre>
+      <p>Or</p>
+<pre><span class="comment">// ES6 Modules</span>
+<span class="val">import</span> { default as swal } <span class="val">from</span> <span class="str">'sweetalert2'</span>
+
+<span class="comment">// CommonJS</span>
+<span class="val">const</span> swal = <span class="func">require</span>(<span class="str">'sweetalert2'</span>)</pre>
     </li>
 
     <li>
@@ -424,7 +430,7 @@ swal({
       </tr>
       <tr>
         <td><b>width</b></td>
-        <td><i>"500px"</i></td>
+        <td><i>'500px'</i></td>
         <td>Modal window width, including paddings (<i>box-sizing: border-box</i>). Can be in `px` or `%`.</td>
       </tr>
       <tr>
@@ -434,7 +440,7 @@ swal({
       </tr>
       <tr>
         <td><b>background</b></td>
-        <td><i>"#fff"</i></td>
+        <td><i>'#fff'</i></td>
         <td>Modal window background (CSS background property).</td>
       </tr>
       <tr>
@@ -474,22 +480,22 @@ swal({
       </tr>
       <tr>
         <td><b>confirmButtonText</b></td>
-        <td><i>"OK"</i></td>
+        <td><i>'OK'</i></td>
         <td>Use this to change the text on the "Confirm"-button.</td>
       </tr>
       <tr>
         <td><b>cancelButtonText</b></td>
-        <td><i>"Cancel"</i></td>
+        <td><i>'Cancel'</i></td>
         <td>Use this to change the text on the "Cancel"-button.</td>
       </tr>
       <tr>
         <td><b>confirmButtonColor</b></td>
-        <td><i>"#3085d6"</i></td>
+        <td><i>'#3085d6'</i></td>
         <td>Use this to change the background color of the "Confirm"-button (must be a HEX value).</td>
       </tr>
       <tr>
         <td><b>cancelButtonColor</b></td>
-        <td><i>"#aaa"</i></td>
+        <td><i>'#aaa'</i></td>
         <td>Use this to change the background color of the "Cancel"-button (must be a HEX value).</td>
       </tr>
       <tr>
@@ -554,12 +560,12 @@ swal({
       </tr>
       <tr>
         <td><b>inputPlaceholder</b></td>
-        <td><i>""</i></td>
+        <td><i>''</i></td>
         <td>Input field placeholder.</td>
       </tr>
       <tr>
         <td><b>inputValue</b></td>
-        <td><i>""</i></td>
+        <td><i>''</i></td>
         <td>Input field initial value.</td>
       </tr>
       <tr>
@@ -594,7 +600,7 @@ swal({
       </tr>
       <tr>
         <td><b>progressStepsDistance</b></td>
-        <td><i>"40px"</i></td>
+        <td><i>'40px'</i></td>
         <td>Distance between progress steps.</td>
       </tr>
       <tr>
@@ -660,17 +666,17 @@ swal({
   inputValidator: <span class="func"><i>function</i></span>(value) {
     <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
       <span class="tag">if</span> (value) {
-        resolve();
+        resolve()
       } <span class="tag">else</span> {
-        reject(<span class="str">'You need to write something!'</span>);
+        reject(<span class="str">'You need to write something!'</span>)
       }
-    });
+    })
   }
 }).then(<span class="func"><i>function</i></span>(result) {
   swal({
     type: <span class="str">'success'</span>,
     html: <span class="str">'You entered: '</span> + result
-  });
+  })
 })</pre>
       </td>
       <td><button class="input-type-text">Try me!</button></td>
@@ -687,7 +693,7 @@ swal({
   swal({
     type: <span class="str">'success'</span>,
     html: <span class="str">'Entered email: '</span> + email
-  });
+  })
 })</pre>
       </td>
       <td><button class="input-type-email">Try me!</button></td>
@@ -710,7 +716,7 @@ swal({
     swal({
       type: <span class="str">'success'</span>,
       html: <span class="str">'Entered password: '</span> + password
-    });
+    })
   }
 })</pre>
       </td>
@@ -726,7 +732,7 @@ swal({
   showCancelButton: <span class="val">true</span>
 }).then(<span class="func"><i>function</i></span>(text) {
   <span class="tag">if</span> (text) {
-    swal(text);
+    swal(text)
   }
 })</pre>
       </td>
@@ -750,17 +756,17 @@ swal({
   inputValidator: <span class="func"><i>function</i></span>(value) {
     <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
       <span class="tag">if</span> (value === <span class="str">'UKR'</span>) {
-        resolve();
+        resolve()
       } <span class="tag">else</span> {
-        reject(<span class="str">'You need to select Ukraine :)'</span>);
+        reject(<span class="str">'You need to select Ukraine :)'</span>)
       }
-    });
+    })
   }
 }).then(<span class="func"><i>function</i></span>(result) {
   swal({
     type: <span class="str">'success'</span>,
     html: <span class="str">'You selected: '</span> + result
-  });
+  })
 })</pre>
 
       </td>
@@ -778,9 +784,9 @@ swal({
       <span class="str">'#ff0000'</span>: <span class="str">'Red'</span>,
       <span class="str">'#00ff00'</span>: <span class="str">'Green'</span>,
       <span class="str">'#0000ff'</span>: <span class="str">'Blue'</span>
-    });
-  }, <span class="val">2000</span>);
-});
+    })
+  }, <span class="val">2000</span>)
+})
 
 swal({
   title: <span class="str">'Select color'</span>,
@@ -789,17 +795,17 @@ swal({
   inputValidator: <span class="func"><i>function</i></span>(result) {
     <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
       <span class="tag">if</span> (result) {
-        resolve();
+        resolve()
       } <span class="tag">else</span> {
-        reject(<span class="str">'You need to select something!'</span>);
+        reject(<span class="str">'You need to select something!'</span>)
       }
-    });
+    })
   }
 }).then(<span class="func"><i>function</i></span>(result) {
   swal({
     type: <span class="str">'success'</span>,
     html: <span class="str">'You selected: '</span> + result
-  });
+  })
 })</pre>
       </td>
       <td><button class="input-type-radio">Try me!</button></td>
@@ -820,17 +826,17 @@ swal({
   inputValidator: <span class="func"><i>function</i></span>(result) {
     <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
       <span class="tag">if</span> (result) {
-        resolve();
+        resolve()
       } <span class="tag">else</span> {
-        reject(<span class="str">'You need to agree with T&amp;C'</span>);
+        reject(<span class="str">'You need to agree with T&amp;C'</span>)
       }
-    });
+    })
   }
 }).then(<span class="func"><i>function</i></span>(result) {
   swal({
     type: <span class="str">'success'</span>,
     text: <span class="str">'You agreed with T&amp;C :)'</span>
-  });
+  })
 })</pre>
 
       </td>
@@ -848,13 +854,13 @@ swal({
     accept: <span class="str">'image/*'</span>
   }
 }).then(<span class="func"><i>function</i></span>(file) {
-  <span class="func">var</span> reader = <span class="tag">new</span> <span class="func">FileReader</span>;
+  <span class="func">var</span> reader = <span class="tag">new</span> <span class="func">FileReader</span>
   reader.onload = <span class="func"><i>function</i></span>(e) {
     swal({
       imageUrl: e.target.result
-    });
-  };
-  reader.readAsDataURL(file);
+    })
+  }
+  reader.readAsDataURL(file)
 })</pre>
       </td>
       <td><button class="input-type-file">Try me!</button></td>
@@ -901,12 +907,12 @@ swal({
         resolve([
           $(<span class="str">'#swal-input1'</span>).val(),
           $(<span class="str">'#swal-input2'</span>).val()
-        ]);
+        ])
       }
-    });
+    })
   }
 }).then(<span class="func"><i>function</i></span>(result) {
-  swal(JSON.stringify(result));
+  swal(JSON.stringify(result))
 })</pre>
 
         </td>
@@ -1036,31 +1042,32 @@ swal({
   <a href="https://github.com/limonte/sweetalert2" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
 <script>
-  $('.download').on('click', function() {
-    $('html, body').animate({scrollTop: $('.download-section').offset().top}, 1000);
-  });
+  /* global $, swal, FileReader */
+  $('.download').on('click', function () {
+    $('html, body').animate({scrollTop: $('.download-section').offset().top}, 1000)
+  })
 
-  $('.showcase.normal button').on('click', function() {
-    window.alert('Oops! Something went wrong!');
-  });
+  $('.showcase.normal button').on('click', function () {
+    window.alert('Oops! Something went wrong!')
+  })
 
-  $('.showcase.sweet button').on('click', function() {
-    swal('Oops...', 'Something went wrong!', 'error').done();
-  });
+  $('.showcase.sweet button').on('click', function () {
+    swal('Oops...', 'Something went wrong!', 'error').done()
+  })
 
-  $('.examples .message button').on('click', function() {
-    swal('Any fool can use a computer').done();
-  });
+  $('.examples .message button').on('click', function () {
+    swal('Any fool can use a computer').done()
+  })
 
-  $('.examples .timer button').on('click', function() {
+  $('.examples .timer button').on('click', function () {
     swal({
       title: 'Auto close alert!',
       text: 'I will close in 2 seconds.',
       timer: 2000
-    }).done();
-  });
+    }).done()
+  })
 
-  $('.examples .html button').on('click', function() {
+  $('.examples .html button').on('click', function () {
     swal({
       title: '<i>HTML</i> <u>example</u>',
       type: 'info',
@@ -1072,25 +1079,25 @@ swal({
       showCancelButton: true,
       confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
       cancelButtonText: '<i class="fa fa-thumbs-down"></i>'
-    }).done();
-  });
+    }).done()
+  })
 
-  $('.examples .html-jquery button').on('click', function() {
+  $('.examples .html-jquery button').on('click', function () {
     swal({
       title: 'jQuery HTML example',
       html: $('<div>').addClass('some-class').text('jQuery is everywhere.')
-    }).done();
-  });
+    }).done()
+  })
 
-  $('.examples .title-text button').on('click', function() {
-    swal('The Internet?', 'That thing is still around?', 'question').done();
-  });
+  $('.examples .title-text button').on('click', function () {
+    swal('The Internet?', 'That thing is still around?', 'question').done()
+  })
 
-  $('.examples .success button').on('click', function() {
-    swal('Good job!', 'You clicked the button!', 'success').done();
-  });
+  $('.examples .success button').on('click', function () {
+    swal('Good job!', 'You clicked the button!', 'success').done()
+  })
 
-  $('.examples .warning.confirm button').on('click', function() {
+  $('.examples .warning.confirm button').on('click', function () {
     swal({
       title: 'Are you sure?',
       text: 'You won\'t be able to revert this!',
@@ -1099,12 +1106,12 @@ swal({
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
-    }).then(function() {
-      swal('Deleted!', 'Your file has been deleted!', 'success');
-    }).done();
-  });
+    }).then(function () {
+      swal('Deleted!', 'Your file has been deleted!', 'success')
+    }).done()
+  })
 
-  $('.examples .warning.cancel button').on('click', function() {
+  $('.examples .warning.cancel button').on('click', function () {
     swal({
       title: 'Are you sure?',
       text: 'Buttons below are styled with Bootstrap classes',
@@ -1117,17 +1124,17 @@ swal({
       confirmButtonClass: 'btn btn-success',
       cancelButtonClass: 'btn btn-danger',
       buttonsStyling: false
-    }).then(function() {
-      swal('Deleted!', 'Your file has been deleted!', 'success');
-    }, function(dismiss) {
+    }).then(function () {
+      swal('Deleted!', 'Your file has been deleted!', 'success')
+    }, function (dismiss) {
       // dismiss can be 'cancel', 'overlay', 'close', 'timer'
       if (dismiss === 'cancel') {
-        swal('Cancelled', 'Your imaginary file is safe :)', 'error');
+        swal('Cancelled', 'Your imaginary file is safe :)', 'error')
       }
-    });
-  });
+    })
+  })
 
-  $('.examples .custom-image button').on('click', function() {
+  $('.examples .custom-image button').on('click', function () {
     swal({
       title: 'Sweet!',
       text: 'Modal with a custom image.',
@@ -1135,53 +1142,53 @@ swal({
       imageWidth: 400,
       imageHeight: 200,
       animation: false
-    }).done();
-  });
+    }).done()
+  })
 
-  $('.examples .custom-width-padding-background button').on('click', function() {
+  $('.examples .custom-width-padding-background button').on('click', function () {
     swal({
       title: 'Custom width, padding, background.',
       width: 600,
       padding: 100,
       background: '#fff url(https://bit.ly/1Nqn9HU)'
-    }).done();
-  });
+    }).done()
+  })
 
-  $('.input-type-text').on('click', function() {
+  $('.input-type-text').on('click', function () {
     swal({
       title: 'Input something',
       input: 'text',
       showCancelButton: true,
-      inputValidator: function(value) {
-        return new Promise(function(resolve, reject) {
+      inputValidator: function (value) {
+        return new Promise(function (resolve, reject) {
           if (value) {
-            resolve();
+            resolve()
           } else {
-            reject('You need to write something!');
+            reject('You need to write something!')
           }
-        });
+        })
       }
-    }).then(function(result) {
+    }).then(function (result) {
       swal({
         type: 'success',
         html: 'You entered: <strong>' + result + '</strong>'
-      });
-    }).done();
-  });
+      })
+    }).done()
+  })
 
-  $('.input-type-email').on('click', function() {
+  $('.input-type-email').on('click', function () {
     swal({
       title: 'Input email address',
       input: 'email'
-    }).then(function(email) {
+    }).then(function (email) {
       swal({
         type: 'success',
         html: 'Entered email: <strong>' + email + '</strong>'
-      });
-    }).done();
-  });
+      })
+    }).done()
+  })
 
-  $('.input-type-password').on('click', function() {
+  $('.input-type-password').on('click', function () {
     swal({
       title: 'Enter your password',
       input: 'password',
@@ -1190,28 +1197,28 @@ swal({
         'autocapitalize': 'off',
         'autocorrect': 'off'
       }
-    }).then(function(password) {
+    }).then(function (password) {
       if (password) {
         swal({
           type: 'success',
           html: 'Entered password: <strong>' + password + '</strong>'
-        });
+        })
       }
-    }).done();
-  });
+    }).done()
+  })
 
-  $('.input-type-textarea').on('click', function() {
+  $('.input-type-textarea').on('click', function () {
     swal({
       input: 'textarea',
       showCancelButton: true
-    }).then(function(text) {
+    }).then(function (text) {
       if (text) {
-        swal(text);
+        swal(text)
       }
-    }).done();
-  });
+    }).done()
+  })
 
-  $('.input-type-select').on('click', function() {
+  $('.input-type-select').on('click', function () {
     swal({
       title: 'Select Ukraine',
       input: 'select',
@@ -1222,56 +1229,56 @@ swal({
       },
       inputPlaceholder: 'Select country',
       showCancelButton: true,
-      inputValidator: function(value) {
-        return new Promise(function(resolve, reject) {
+      inputValidator: function (value) {
+        return new Promise(function (resolve, reject) {
           if (value === 'UKR') {
-            resolve();
+            resolve()
           } else {
-            reject('You need to select Ukraine :)');
+            reject('You need to select Ukraine :)')
           }
-        });
+        })
       }
-    }).then(function(result) {
+    }).then(function (result) {
       swal({
         type: 'success',
         html: 'You selected: <strong>' + result + '</strong>'
-      });
-    }).done();
-  });
+      })
+    }).done()
+  })
 
-  $('.input-type-radio').on('click', function() {
-    var inputOptions = new Promise(function(resolve) {
-      setTimeout(function() {
+  $('.input-type-radio').on('click', function () {
+    var inputOptions = new Promise(function (resolve) {
+      setTimeout(function () {
         resolve({
           '#FF0000': 'Red',
           '#00FF00': 'Green',
           '#0000FF': 'Blue'
-        });
-      }, 2000);
-    });
+        })
+      }, 2000)
+    })
 
     swal({
       title: 'Select color',
       input: 'radio',
       inputOptions: inputOptions,
-      inputValidator: function(value) {
-        return new Promise(function(resolve, reject) {
+      inputValidator: function (value) {
+        return new Promise(function (resolve, reject) {
           if (value) {
-            resolve();
+            resolve()
           } else {
-            reject('You need to choose something!');
+            reject('You need to choose something!')
           }
-        });
+        })
       }
-    }).then(function(result) {
+    }).then(function (result) {
       swal({
         type: 'success',
         html: 'You selected: <strong>' + result + '</strong>'
-      });
-    }).done();
-  });
+      })
+    }).done()
+  })
 
-  $('.input-type-checkbox').on('click', function() {
+  $('.input-type-checkbox').on('click', function () {
     swal({
       title: 'Terms and conditions',
       input: 'checkbox',
@@ -1279,42 +1286,42 @@ swal({
       inputClass: 'aaa',
       inputPlaceholder: 'I agree with the terms and conditions',
       confirmButtonText: 'Continue <i class="fa fa-arrow-right" style="margin-left: 10px"></i>',
-      inputValidator: function(result) {
-        return new Promise(function(resolve, reject) {
+      inputValidator: function (result) {
+        return new Promise(function (resolve, reject) {
           if (result) {
-            resolve();
+            resolve()
           } else {
-            reject('To continue you need to agree with T&amp;C');
+            reject('To continue you need to agree with T&amp;C')
           }
-        });
+        })
       }
-    }).then(function() {
+    }).then(function () {
       swal({
         type: 'success',
         text: 'You agreed with T&amp;C :)'
-      });
-    }).done();
-  });
+      })
+    }).done()
+  })
 
-  $('.input-type-file').on('click', function() {
+  $('.input-type-file').on('click', function () {
     swal({
       title: 'Select image',
       input: 'file',
       inputAttributes: {
         accept: 'image/*'
       }
-    }).then(function(file) {
-      var reader = new FileReader();
-      reader.onload = function(e) {
+    }).then(function (file) {
+      var reader = new FileReader()
+      reader.onload = function (e) {
         swal({
           imageUrl: e.target.result
-        }).done();
-      };
-      reader.readAsDataURL(file);
-    }).done();
-  });
+        }).done()
+      }
+      reader.readAsDataURL(file)
+    }).done()
+  })
 
-  $('.input-type-range').on('click', function() {
+  $('.input-type-range').on('click', function () {
     swal({
       title: 'How old are you?',
       type: 'question',
@@ -1325,27 +1332,27 @@ swal({
         step: 1
       },
       inputValue: 25
-    }).done();
-  });
+    }).done()
+  })
 
-  $('.input-type-multiple').on('click', function() {
+  $('.input-type-multiple').on('click', function () {
     swal({
       title: 'Multiple inputs',
       html: '<input id="swal-input1" class="swal2-input" autofocus><input id="swal-input2" class="swal2-input">',
-      preConfirm: function() {
-        return new Promise(function(resolve) {
+      preConfirm: function () {
+        return new Promise(function (resolve) {
           resolve([
             $('#swal-input1').val(),
             $('#swal-input2').val()
-          ]);
-        });
+          ])
+        })
       }
-    }).then(function(result) {
-      swal(JSON.stringify(result));
-    }).done();
-  });
+    }).then(function (result) {
+      swal(JSON.stringify(result))
+    }).done()
+  })
 
-  $('.examples .ajax-request button').on('click', function() {
+  $('.examples .ajax-request button').on('click', function () {
     swal({
       title: 'Submit email to run ajax request',
       input: 'email',
@@ -1353,50 +1360,50 @@ swal({
       confirmButtonText: 'Submit',
       width: 600,
       showLoaderOnConfirm: true,
-      preConfirm: function(email) {
-        return new Promise(function(resolve, reject) {
-          setTimeout(function() {
+      preConfirm: function (email) {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
             if (email === 'taken@example.com') {
-              reject('This email is already taken.');
+              reject('This email is already taken.')
             } else {
-              resolve();
+              resolve()
             }
-          }, 2000);
-        });
+          }, 2000)
+        })
       },
       allowOutsideClick: false
-    }).then(function(email) {
+    }).then(function (email) {
       swal({
         type: 'success',
         title: 'Ajax request finished!',
         html: 'Submitted email: ' + '<strong>' + email + '</strong>'
-      });
-    }).done();
-  });
+      })
+    }).done()
+  })
 
-  $('.examples .chaining-modals button').on('click', function() {
+  $('.examples .chaining-modals button').on('click', function () {
     swal.setDefaults({
       confirmButtonText: 'Next &rarr;',
       showCancelButton: true,
       animation: false,
       progressSteps: ['1', '2', '3']
-    });
+    })
 
     var steps = [
       {title: 'Step 1', text: 'Chaining swal2 modals is easy'},
       'Step 2',
       'Step 3'
-    ];
+    ]
 
-    swal.queue(steps).then(function() {
-      swal.resetDefaults();
-      swal({title: 'All done!', confirmButtonText: 'Lovely!', showCancelButton: false}).done();
-    }, function() {
-      swal.resetDefaults();
-    });
-  });
+    swal.queue(steps).then(function () {
+      swal.resetDefaults()
+      swal({title: 'All done!', confirmButtonText: 'Lovely!', showCancelButton: false}).done()
+    }, function () {
+      swal.resetDefaults()
+    })
+  })
 
-  $('.examples .dynamic-queue button').on('click', function() {
+  $('.examples .dynamic-queue button').on('click', function () {
     swal.queue([
       {
         title: 'Your public IP',
@@ -1404,31 +1411,31 @@ swal({
         text: 'Your public IP will be received via AJAX request',
         currentProgressStep: 0,
         showLoaderOnConfirm: true,
-        preConfirm: function() {
-          return new Promise(function(resolve) {
+        preConfirm: function () {
+          return new Promise(function (resolve) {
             $.get('https://api.ipify.org?format=json')
-              .done(function(data) {
-                swal.insertQueueStep(data.ip);
-                resolve();
-              });
-          });
+              .done(function (data) {
+                swal.insertQueueStep(data.ip)
+                resolve()
+              })
+          })
         }
       }
-    ]).done();
-  });
+    ]).done()
+  })
 
-  $('.modal-types button').on('click', function() {
-    var type = $(this).attr('class').slice(5);
-    swal(type + '!', '', type).done();
-  });
+  $('.modal-types button').on('click', function () {
+    var type = $(this).attr('class').slice(5)
+    swal(type + '!', '', type).done()
+  })
 
   // Google Analytics
   /*eslint-disable */
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (function (i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function (){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-83618163-1', 'auto');
-  ga('send', 'pageview');
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga')
+  ga('create', 'UA-83618163-1', 'auto')
+  ga('send', 'pageview')
 </script>
 </body>

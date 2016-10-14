@@ -251,6 +251,7 @@ var openModal = function (animation, onComplete) {
   dom.addClass(sweetContainer, swalClasses.in)
   dom.addClass(document.body, swalClasses.in)
   fixScrollbar()
+  iOSfix()
   dom.states.previousActiveElement = document.activeElement
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal)
@@ -275,6 +276,19 @@ function undoScrollbar () {
     document.body.style.paddingRight = dom.states.previousBodyPadding
     dom.states.previousBodyPadding = null
   }
+}
+
+// Fix iOS scrolling http://stackoverflow.com/q/39626302/1331425
+function iOSfix () {
+  var offset = document.body.scrollTop
+  document.body.style.top = (offset * -1) + 'px'
+  dom.addClass(document.body, swalClasses.iosfix)
+}
+
+function undoIOSfix () {
+  var offset = parseInt(document.body.style.top, 10)
+  dom.removeClass(document.body, swalClasses.iosfix)
+  document.body.scrollTop = (offset * -1)
 }
 
 function modalDependant () {
@@ -1009,6 +1023,7 @@ sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
         dom.removeClass(sweetContainer, swalClasses.in)
         dom.removeClass(document.body, swalClasses.in)
         undoScrollbar()
+        undoIOSfix()
       }
     })
   } else {
@@ -1017,6 +1032,7 @@ sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
     dom.removeClass(sweetContainer, swalClasses.in)
     dom.removeClass(document.body, swalClasses.in)
     undoScrollbar()
+    undoIOSfix()
   }
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal)

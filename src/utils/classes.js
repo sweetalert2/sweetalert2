@@ -11,6 +11,7 @@ export var prefix = function (items) {
 export var swalClasses = prefix([
   'container',
   'in',
+  'iosfix',
   'modal',
   'overlay',
   'close',

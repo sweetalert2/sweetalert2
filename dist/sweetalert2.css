@@ -1,6 +1,11 @@
 body.swal2-in {
   overflow-y: hidden; }
 
+body.swal2-iosfix {
+  position: fixed;
+  left: 0;
+  right: 0; }
+
 .swal2-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -16,12 +21,12 @@ body.swal2-in {
   padding: 10px;
   background-color: transparent;
   z-index: 1060; }
-  .swal2-container:not(.in) {
+  .swal2-container:not(.swal2-in) {
     pointer-events: none; }
   .swal2-container.fade {
     -webkit-transition: background-color .1s;
     transition: background-color .1s; }
-  .swal2-container.in {
+  .swal2-container.swal2-in {
     background-color: rgba(0, 0, 0, 0.4); }
 
 .swal2-modal {

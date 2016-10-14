@@ -25,6 +25,12 @@ body {
   &.swal2-in {
     overflow-y: hidden;
   }
+
+  &.swal2-iosfix {
+    position: fixed;
+    left: 0;
+    right: 0;
+  }
 }
 
 .swal2-container {

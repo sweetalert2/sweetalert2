@@ -39,7 +39,7 @@ body {
   padding: 10px;
 
   // TODO: remove/add the element from DOM instead
-  &:not(.in) { pointer-events: none; }
+  &:not(.swal2-in) { pointer-events: none; }
 
   // backdrop
   background-color: transparent;
@@ -48,7 +48,7 @@ body {
     transition: background-color .1s;
   }
 
-  &.in {
+  &.swal2-in {
     background-color: $overlay;
   }
 

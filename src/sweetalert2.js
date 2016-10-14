@@ -248,7 +248,7 @@ var openModal = function (animation, onComplete) {
     sweetContainer.style.overflowY = 'auto'
   }
 
-  dom.addClass(sweetContainer, 'in')
+  dom.addClass(sweetContainer, swalClasses.in)
   dom.addClass(document.body, swalClasses.in)
   fixScrollbar()
   dom.states.previousActiveElement = document.activeElement
@@ -1006,7 +1006,7 @@ sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
       if (dom.hasClass(modal, 'hide-swal2')) {
         dom.hide(modal)
-        dom.removeClass(sweetContainer, 'in')
+        dom.removeClass(sweetContainer, swalClasses.in)
         dom.removeClass(document.body, swalClasses.in)
         undoScrollbar()
       }
@@ -1014,7 +1014,7 @@ sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
   } else {
     // Otherwise, hide immediately
     dom.hide(modal)
-    dom.removeClass(sweetContainer, 'in')
+    dom.removeClass(sweetContainer, swalClasses.in)
     dom.removeClass(document.body, swalClasses.in)
     undoScrollbar()
   }

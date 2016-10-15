@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.3.0
+ * sweetalert2 v5.3.1
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -740,15 +740,19 @@
 
   // Fix iOS scrolling http://stackoverflow.com/q/39626302/1331425
   function iOSfix () {
-    var offset = document.body.scrollTop
-    document.body.style.top = (offset * -1) + 'px'
-    addClass(document.body, swalClasses.iosfix)
+    if (!hasClass(document.body, swalClasses.iosfix)) {
+      var offset = document.body.scrollTop
+      document.body.style.top = (offset * -1) + 'px'
+      addClass(document.body, swalClasses.iosfix)
+    }
   }
 
   function undoIOSfix () {
-    var offset = parseInt(document.body.style.top, 10)
-    removeClass(document.body, swalClasses.iosfix)
-    document.body.scrollTop = (offset * -1)
+    if (hasClass(document.body, swalClasses.iosfix)) {
+      var offset = parseInt(document.body.style.top, 10)
+      removeClass(document.body, swalClasses.iosfix)
+      document.body.scrollTop = (offset * -1)
+    }
   }
 
   function modalDependant () {
@@ -1535,7 +1539,7 @@
     modalParams = extend({}, defaultParams)
   }
 
-  sweetAlert.version = '5.3.0'
+  sweetAlert.version = '5.3.1'
 
   if (typeof Promise === 'function') {
     Promise.prototype.done = Promise.prototype.done || function () { // eslint-disable-line

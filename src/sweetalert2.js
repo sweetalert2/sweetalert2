@@ -229,7 +229,7 @@ var setParameters = function (params) {
 var openModal = function (animation, onComplete) {
   var modal = dom.getModal()
   if (animation) {
-    dom.addClass(modal, 'show-swal2')
+    dom.addClass(modal, swalClasses.show)
     dom.addClass(sweetContainer, swalClasses.fade)
     dom.removeClass(modal, 'hide-swal2')
   } else {
@@ -1000,7 +1000,7 @@ sweetAlert.deleteQueueStep = function (index) {
  */
 sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
   var modal = dom.getModal()
-  dom.removeClass(modal, 'show-swal2')
+  dom.removeClass(modal, swalClasses.show)
   dom.addClass(modal, 'hide-swal2')
 
   // Reset icon animations

@@ -16,6 +16,7 @@ export var swalClasses = prefix([
   'overlay',
   'fade',
   'show',
+  'hide',
   'close',
   'content',
   'spacer',

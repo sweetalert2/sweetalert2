@@ -14,6 +14,7 @@ export var swalClasses = prefix([
   'iosfix',
   'modal',
   'overlay',
+  'fade',
   'close',
   'content',
   'spacer',

@@ -32,6 +32,7 @@ export var swalClasses = prefix([
   'radio',
   'checkbox',
   'textarea',
+  'inputerror',
   'validationerror',
   'progresssteps',
   'activeprogressstep',

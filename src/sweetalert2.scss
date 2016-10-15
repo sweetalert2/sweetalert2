@@ -628,7 +628,7 @@ body {
   }
 }
 
-.hide-swal2 {
+.swal2-hide {
   @include animation('hideSweetAlert 0.15s forwards');
 
   &.no-animation {

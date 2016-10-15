@@ -231,7 +231,7 @@ var openModal = function (animation, onComplete) {
   if (animation) {
     dom.addClass(modal, swalClasses.show)
     dom.addClass(sweetContainer, swalClasses.fade)
-    dom.removeClass(modal, 'hide-swal2')
+    dom.removeClass(modal, swalClasses.hide)
   } else {
     dom.removeClass(modal, swalClasses.fade)
   }
@@ -1001,7 +1001,7 @@ sweetAlert.deleteQueueStep = function (index) {
 sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
   var modal = dom.getModal()
   dom.removeClass(modal, swalClasses.show)
-  dom.addClass(modal, 'hide-swal2')
+  dom.addClass(modal, swalClasses.hide)
 
   // Reset icon animations
   var $successIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.success)
@@ -1022,7 +1022,7 @@ sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
   if (dom.animationEndEvent && !dom.hasClass(modal, 'no-animation')) {
     modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
-      if (dom.hasClass(modal, 'hide-swal2')) {
+      if (dom.hasClass(modal, swalClasses.hide)) {
         dom.hide(modal)
         dom.removeClass(sweetContainer, swalClasses.in)
         dom.removeClass(document.body, swalClasses.in)

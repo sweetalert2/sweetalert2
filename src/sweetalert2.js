@@ -217,9 +217,9 @@ var setParameters = function (params) {
 
   // CSS animation
   if (params.animation === true) {
-    dom.removeClass(modal, 'no-animation')
+    dom.removeClass(modal, swalClasses.noanimation)
   } else {
-    dom.addClass(modal, 'no-animation')
+    dom.addClass(modal, swalClasses.noanimation)
   }
 }
 
@@ -239,7 +239,7 @@ var openModal = function (animation, onComplete) {
 
   // scrolling is 'hidden' until animation is done, after that 'auto'
   sweetContainer.style.overflowY = 'hidden'
-  if (dom.animationEndEvent && !dom.hasClass(modal, 'no-animation')) {
+  if (dom.animationEndEvent && !dom.hasClass(modal, swalClasses.noanimation)) {
     modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
       sweetContainer.style.overflowY = 'auto'
@@ -1019,7 +1019,7 @@ sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
   dom.resetPrevState()
 
   // If animation is supported, animate
-  if (dom.animationEndEvent && !dom.hasClass(modal, 'no-animation')) {
+  if (dom.animationEndEvent && !dom.hasClass(modal, swalClasses.noanimation)) {
     modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
       if (dom.hasClass(modal, swalClasses.hide)) {

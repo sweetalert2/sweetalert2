@@ -230,10 +230,10 @@ var openModal = function (animation, onComplete) {
   var modal = dom.getModal()
   if (animation) {
     dom.addClass(modal, 'show-swal2')
-    dom.addClass(sweetContainer, 'fade')
+    dom.addClass(sweetContainer, swalClasses.fade)
     dom.removeClass(modal, 'hide-swal2')
   } else {
-    dom.removeClass(modal, 'fade')
+    dom.removeClass(modal, swalClasses.fade)
   }
   dom.show(modal)
 

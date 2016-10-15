@@ -620,7 +620,7 @@ body {
   }
 }
 
-.show-swal2 {
+.swal2-show {
   @include animation('showSweetAlert 0.3s');
 
   &.no-animation {

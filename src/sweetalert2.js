@@ -711,7 +711,7 @@ function modalDependant () {
 
       var input = getInput()
       dom.focusInput(input)
-      dom.addClass(input, 'error')
+      dom.addClass(input, swalClasses.inputerror)
     }
 
     // Hide block with validation error
@@ -722,7 +722,7 @@ function modalDependant () {
 
       var input = getInput()
       if (input) {
-        dom.removeClass(input, 'error')
+        dom.removeClass(input, swalClasses.inputerror)
       }
     }
 

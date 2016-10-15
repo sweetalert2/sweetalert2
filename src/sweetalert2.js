@@ -280,15 +280,19 @@ function undoScrollbar () {
 
 // Fix iOS scrolling http://stackoverflow.com/q/39626302/1331425
 function iOSfix () {
-  var offset = document.body.scrollTop
-  document.body.style.top = (offset * -1) + 'px'
-  dom.addClass(document.body, swalClasses.iosfix)
+  if (!dom.hasClass(document.body, swalClasses.iosfix)) {
+    var offset = document.body.scrollTop
+    document.body.style.top = (offset * -1) + 'px'
+    dom.addClass(document.body, swalClasses.iosfix)
+  }
 }
 
 function undoIOSfix () {
-  var offset = parseInt(document.body.style.top, 10)
-  dom.removeClass(document.body, swalClasses.iosfix)
-  document.body.scrollTop = (offset * -1)
+  if (dom.hasClass(document.body, swalClasses.iosfix)) {
+    var offset = parseInt(document.body.style.top, 10)
+    dom.removeClass(document.body, swalClasses.iosfix)
+    document.body.scrollTop = (offset * -1)
+  }
 }
 
 function modalDependant () {

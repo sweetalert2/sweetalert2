@@ -23,7 +23,7 @@ body.swal2-iosfix {
   z-index: 1060; }
   .swal2-container:not(.swal2-in) {
     pointer-events: none; }
-  .swal2-container.fade {
+  .swal2-container.swal2-fade {
     -webkit-transition: background-color .1s;
     transition: background-color .1s; }
   .swal2-container.swal2-in {
@@ -150,9 +150,9 @@ body.swal2-iosfix {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06);
     -webkit-transition: border-color box-shadow .3s;
     transition: border-color box-shadow .3s; }
-    .swal2-modal .swal2-input.error,
-    .swal2-modal .swal2-file.error,
-    .swal2-modal .swal2-textarea.error {
+    .swal2-modal .swal2-input.swal2-inputerror,
+    .swal2-modal .swal2-file.swal2-inputerror,
+    .swal2-modal .swal2-textarea.swal2-inputerror {
       border-color: #f06e57; }
     .swal2-modal .swal2-input:focus,
     .swal2-modal .swal2-file:focus,
@@ -485,17 +485,17 @@ body.swal2-iosfix {
             transform: scale(0.5);
     opacity: 0; } }
 
-.show-swal2 {
+.swal2-show {
   -webkit-animation: showSweetAlert 0.3s;
           animation: showSweetAlert 0.3s; }
-  .show-swal2.no-animation {
+  .swal2-show.swal2-noanimation {
     -webkit-animation: none;
             animation: none; }
 
-.hide-swal2 {
+.swal2-hide {
   -webkit-animation: hideSweetAlert 0.15s forwards;
           animation: hideSweetAlert 0.15s forwards; }
-  .hide-swal2.no-animation {
+  .swal2-hide.swal2-noanimation {
     -webkit-animation: none;
             animation: none; }
 

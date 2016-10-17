@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.3.1
+ * sweetalert2 v5.3.2
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -24,6 +24,10 @@
     'iosfix',
     'modal',
     'overlay',
+    'fade',
+    'show',
+    'hide',
+    'noanimation',
     'close',
     'content',
     'spacer',
@@ -38,6 +42,7 @@
     'radio',
     'checkbox',
     'textarea',
+    'inputerror',
     'validationerror',
     'progresssteps',
     'activeprogressstep',
@@ -677,9 +682,9 @@
 
     // CSS animation
     if (params.animation === true) {
-      removeClass(modal, 'no-animation')
+      removeClass(modal, swalClasses.noanimation)
     } else {
-      addClass(modal, 'no-animation')
+      addClass(modal, swalClasses.noanimation)
     }
   }
 
@@ -689,17 +694,17 @@
   var openModal = function (animation, onComplete) {
     var modal = getModal()
     if (animation) {
-      addClass(modal, 'show-swal2')
-      addClass(sweetContainer, 'fade')
-      removeClass(modal, 'hide-swal2')
+      addClass(modal, swalClasses.show)
+      addClass(sweetContainer, swalClasses.fade)
+      removeClass(modal, swalClasses.hide)
     } else {
-      removeClass(modal, 'fade')
+      removeClass(modal, swalClasses.fade)
     }
     show(modal)
 
     // scrolling is 'hidden' until animation is done, after that 'auto'
     sweetContainer.style.overflowY = 'hidden'
-    if (animationEndEvent && !hasClass(modal, 'no-animation')) {
+    if (animationEndEvent && !hasClass(modal, swalClasses.noanimation)) {
       modal.addEventListener(animationEndEvent, function swalCloseEventFinished () {
         modal.removeEventListener(animationEndEvent, swalCloseEventFinished)
         sweetContainer.style.overflowY = 'auto'
@@ -740,7 +745,8 @@
 
   // Fix iOS scrolling http://stackoverflow.com/q/39626302/1331425
   function iOSfix () {
-    if (!hasClass(document.body, swalClasses.iosfix)) {
+    var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+    if (iOS && !hasClass(document.body, swalClasses.iosfix)) {
       var offset = document.body.scrollTop
       document.body.style.top = (offset * -1) + 'px'
       addClass(document.body, swalClasses.iosfix)
@@ -1171,7 +1177,7 @@
 
         var input = getInput()
         focusInput(input)
-        addClass(input, 'error')
+        addClass(input, swalClasses.inputerror)
       }
 
       // Hide block with validation error
@@ -1182,7 +1188,7 @@
 
         var input = getInput()
         if (input) {
-          removeClass(input, 'error')
+          removeClass(input, swalClasses.inputerror)
         }
       }
 
@@ -1460,8 +1466,8 @@
    */
   sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
     var modal = getModal()
-    removeClass(modal, 'show-swal2')
-    addClass(modal, 'hide-swal2')
+    removeClass(modal, swalClasses.show)
+    addClass(modal, swalClasses.hide)
 
     // Reset icon animations
     var $successIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.success)
@@ -1479,10 +1485,10 @@
     resetPrevState()
 
     // If animation is supported, animate
-    if (animationEndEvent && !hasClass(modal, 'no-animation')) {
+    if (animationEndEvent && !hasClass(modal, swalClasses.noanimation)) {
       modal.addEventListener(animationEndEvent, function swalCloseEventFinished () {
         modal.removeEventListener(animationEndEvent, swalCloseEventFinished)
-        if (hasClass(modal, 'hide-swal2')) {
+        if (hasClass(modal, swalClasses.hide)) {
           hide(modal)
           removeClass(sweetContainer, swalClasses.in)
           removeClass(document.body, swalClasses.in)
@@ -1539,7 +1545,7 @@
     modalParams = extend({}, defaultParams)
   }
 
-  sweetAlert.version = '5.3.1'
+  sweetAlert.version = '5.3.2'
 
   if (typeof Promise === 'function') {
     Promise.prototype.done = Promise.prototype.done || function () { // eslint-disable-line

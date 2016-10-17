@@ -280,7 +280,8 @@ function undoScrollbar () {
 
 // Fix iOS scrolling http://stackoverflow.com/q/39626302/1331425
 function iOSfix () {
-  if (!dom.hasClass(document.body, swalClasses.iosfix)) {
+  var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+  if (iOS && !dom.hasClass(document.body, swalClasses.iosfix)) {
     var offset = document.body.scrollTop
     document.body.style.top = (offset * -1) + 'px'
     dom.addClass(document.body, swalClasses.iosfix)

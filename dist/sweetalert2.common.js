@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.3.2
+ * sweetalert2 v5.3.3
  * Released under the MIT License.
  */
 'use strict';
@@ -1541,7 +1541,9 @@ sweetAlert.resetDefaults = function () {
   modalParams = extend({}, defaultParams)
 }
 
-sweetAlert.version = '5.3.2'
+sweetAlert.noop = function () { }
+
+sweetAlert.version = '5.3.3'
 
 if (typeof Promise === 'function') {
   Promise.prototype.done = Promise.prototype.done || function () { // eslint-disable-line

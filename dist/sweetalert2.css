@@ -86,7 +86,11 @@ body.swal2-iosfix {
       cursor: default;
       border-radius: 100%;
       -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
-              animation: rotate-loading 1.5s linear 0s infinite normal; }
+              animation: rotate-loading 1.5s linear 0s infinite normal;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none; }
   .swal2-modal :not(.swal2-styled).swal2-loading::after {
     display: inline-block;
     content: '';

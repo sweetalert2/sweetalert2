@@ -448,7 +448,7 @@ swal({
         <td><i>null</i></td>
         <td>A custom CSS class for the modal.</td>
       </tr>
-      <tr>
+      <tr id="timer">
         <td><b>timer</b></td>
         <td><i>null</i></td>
         <td>Auto close timer of the modal. Set in ms (milliseconds).</td>
@@ -458,12 +458,12 @@ swal({
         <td><i>true</i></td>
         <td>If set to <strong>false</strong>, modal CSS animation will be disabled.</td>
       </tr>
-      <tr>
+      <tr id="allow-outside-click">
         <td><b>allowOutsideClick</b></td>
         <td><i>true</i></td>
         <td>If set to <strong>false</strong>, the user can't dismiss the modal by clicking outside it.</td>
       </tr>
-      <tr>
+      <tr id="allow-escape-key">
         <td><b>allowEscapeKey</b></td>
         <td><i>true</i></td>
         <td>If set to <strong>false</strong>, the user can't dismiss the modal by pressing the Escape key.</td>
@@ -473,7 +473,7 @@ swal({
         <td><i>true</i></td>
         <td>If set to <strong>false</strong>, a "Confirm"-button will not be shown. It can be useful when you're using custom HTML description.</td>
       </tr>
-      <tr>
+      <tr id="show-cancel-button">
         <td><b>showCancelButton</b></td>
         <td><i>false</i></td>
         <td>If set to <strong>true</strong>, a "Cancel"-button will be shown, which the user can click on to dismiss the modal.</td>
@@ -523,7 +523,7 @@ swal({
         <td><i>false</i></td>
         <td>Set to <strong>true</strong> if you want to focus the "Cancel"-button by default.</td>
       </tr>
-      <tr>
+      <tr id="show-close-button">
         <td><b>showCloseButton</b></td>
         <td><i>false</i></td>
         <td>Set to <strong>true</strong> to show close button in top right corner of the modal.</td>
@@ -620,6 +620,56 @@ swal({
     </p>
   </div>
 
+
+  <!-- Handling Dismissals -->
+  <div class="center-container">
+    <h3>Handling Dismissals</h3>
+
+    <p class="center">When an alert is dismissed by the user, the Promise returned by <strong>swal()</strong> will reject with a string documenting the reason it was dismissed:</p>
+
+    <table>
+      <tr class="titles">
+        <th>String</th>
+        <th>Description</th>
+        <th>Related configuration</th>
+      </tr>
+      <tr>
+        <td><strong>'overlay'</strong></td>
+        <td>The user clicked the overlay.</td>
+        <td><a href="#allow-outside-click">allowOutsideClick</a></td>
+      </tr>
+      <tr>
+        <td><strong>'cancel'</strong></td>
+        <td>The user clicked the cancel button.</td>
+        <td><a href="#show-cancel-button">showCancelButton</a></td>
+      </tr>
+      <tr>
+        <td><strong>'close'</strong></td>
+        <td>The user clicked the close button.</td>
+        <td><a href="#show-close-button">showCloseButton</a></td>
+      </tr>
+      <tr>
+        <td><strong>'esc'</strong></td>
+        <td>The user clicked the Esc key.</td>
+        <td><a href="#allow-escape-key">allowEscapeKey</a></td>
+      </tr>
+      <tr>
+        <td><strong>'timer'</strong></td>
+        <td>The timer ran out, and the alert closed automatically.</td>
+        <td><a href="#timer">timer</a></td>
+      </tr>
+    </table>
+
+    <p class="center">
+      If rejections are not handled, it will be logged as an error.
+      To avoid this, add a rejection handler to the Promise.<br>
+      Alternatively, you can use <strong>.catch(swal.noop)</strong> as a quick way to simply suppress the errors:
+    </p>
+
+    <pre>
+swal('...')
+  .catch(swal.noop)</pre>
+  </div>
 
   <!-- Modal Types -->
   <h3>Modal Types</h3>
@@ -1052,11 +1102,11 @@ swal({
   })
 
   $('.showcase.sweet button').on('click', function () {
-    swal('Oops...', 'Something went wrong!', 'error').done()
+    swal('Oops...', 'Something went wrong!', 'error').catch(swal.noop)
   })
 
   $('.examples .message button').on('click', function () {
-    swal('Any fool can use a computer').done()
+    swal('Any fool can use a computer').catch(swal.noop)
   })
 
   $('.examples .timer button').on('click', function () {
@@ -1064,7 +1114,7 @@ swal({
       title: 'Auto close alert!',
       text: 'I will close in 2 seconds.',
       timer: 2000
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.examples .html button').on('click', function () {
@@ -1079,22 +1129,22 @@ swal({
       showCancelButton: true,
       confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
       cancelButtonText: '<i class="fa fa-thumbs-down"></i>'
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.examples .html-jquery button').on('click', function () {
     swal({
       title: 'jQuery HTML example',
       html: $('<div>').addClass('some-class').text('jQuery is everywhere.')
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.examples .title-text button').on('click', function () {
-    swal('The Internet?', 'That thing is still around?', 'question').done()
+    swal('The Internet?', 'That thing is still around?', 'question').catch(swal.noop)
   })
 
   $('.examples .success button').on('click', function () {
-    swal('Good job!', 'You clicked the button!', 'success').done()
+    swal('Good job!', 'You clicked the button!', 'success').catch(swal.noop)
   })
 
   $('.examples .warning.confirm button').on('click', function () {
@@ -1108,7 +1158,7 @@ swal({
       confirmButtonText: 'Yes, delete it!'
     }).then(function () {
       swal('Deleted!', 'Your file has been deleted!', 'success')
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.examples .warning.cancel button').on('click', function () {
@@ -1142,7 +1192,7 @@ swal({
       imageWidth: 400,
       imageHeight: 200,
       animation: false
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.examples .custom-width-padding-background button').on('click', function () {
@@ -1151,7 +1201,7 @@ swal({
       width: 600,
       padding: 100,
       background: '#fff url(https://bit.ly/1Nqn9HU)'
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.input-type-text').on('click', function () {
@@ -1173,7 +1223,7 @@ swal({
         type: 'success',
         html: 'You entered: <strong>' + result + '</strong>'
       })
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.input-type-email').on('click', function () {
@@ -1185,7 +1235,7 @@ swal({
         type: 'success',
         html: 'Entered email: <strong>' + email + '</strong>'
       })
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.input-type-password').on('click', function () {
@@ -1204,7 +1254,7 @@ swal({
           html: 'Entered password: <strong>' + password + '</strong>'
         })
       }
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.input-type-textarea').on('click', function () {
@@ -1215,7 +1265,7 @@ swal({
       if (text) {
         swal(text)
       }
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.input-type-select').on('click', function () {
@@ -1243,7 +1293,7 @@ swal({
         type: 'success',
         html: 'You selected: <strong>' + result + '</strong>'
       })
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.input-type-radio').on('click', function () {
@@ -1275,7 +1325,7 @@ swal({
         type: 'success',
         html: 'You selected: <strong>' + result + '</strong>'
       })
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.input-type-checkbox').on('click', function () {
@@ -1300,7 +1350,7 @@ swal({
         type: 'success',
         text: 'You agreed with T&amp;C :)'
       })
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.input-type-file').on('click', function () {
@@ -1315,10 +1365,10 @@ swal({
       reader.onload = function (e) {
         swal({
           imageUrl: e.target.result
-        }).done()
+        }).catch(swal.noop)
       }
       reader.readAsDataURL(file)
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.input-type-range').on('click', function () {
@@ -1332,7 +1382,7 @@ swal({
         step: 1
       },
       inputValue: 25
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.input-type-multiple').on('click', function () {
@@ -1349,7 +1399,7 @@ swal({
       }
     }).then(function (result) {
       swal(JSON.stringify(result))
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.examples .ajax-request button').on('click', function () {
@@ -1378,7 +1428,7 @@ swal({
         title: 'Ajax request finished!',
         html: 'Submitted email: ' + '<strong>' + email + '</strong>'
       })
-    }).done()
+    }).catch(swal.noop)
   })
 
   $('.examples .chaining-modals button').on('click', function () {
@@ -1397,7 +1447,7 @@ swal({
 
     swal.queue(steps).then(function () {
       swal.resetDefaults()
-      swal({title: 'All done!', confirmButtonText: 'Lovely!', showCancelButton: false}).done()
+      swal({title: 'All done!', confirmButtonText: 'Lovely!', showCancelButton: false}).catch(swal.noop)
     }, function () {
       swal.resetDefaults()
     })
@@ -1421,12 +1471,12 @@ swal({
           })
         }
       }
-    ]).done()
+    ]).catch(swal.noop)
   })
 
   $('.modal-types button').on('click', function () {
     var type = $(this).attr('class').slice(5)
-    swal(type + '!', '', type).done()
+    swal(type + '!', '', type).catch(swal.noop)
   })
 
   // Google Analytics

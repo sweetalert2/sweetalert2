@@ -116,11 +116,11 @@ When an alert is dismissed by the user, the Promise returned by `swal()` will re
 | `'esc'`     | The user pressed the <kbd>Esc</kbd> key.                | `allowEscapeKey`      |
 | `'timer'`   | The timer ran out, and the alert closed automatically.  | `timer`               |
 
-If rejections are not handled, it will be logged as an error. To avoid this, add a rejection handler to the Promise. Alternatively, SweetAlert2 provides the `.done()` method as a quick way to simply suppress the errors:
+If rejections are not handled, it will be logged as an error. To avoid this, add a rejection handler to the Promise. Alternatively, you can use `.catch(swal.noop)` as a quick way to simply suppress the errors:
 
 ```js
 swal('...')
-  .done()
+  .catch(swal.noop)
 ```
 
 Modal Types

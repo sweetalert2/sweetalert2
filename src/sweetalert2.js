@@ -1080,6 +1080,8 @@ sweetAlert.resetDefaults = function () {
   modalParams = extend({}, defaultParams)
 }
 
+sweetAlert.noop = function () { }
+
 sweetAlert.version = ''
 
 if (typeof Promise === 'function') {

@@ -132,6 +132,7 @@ body {
       cursor: default;
       border-radius: 100%;
       animation: rotate-loading 1.5s linear 0s infinite normal;
+      user-select: none;
     }
   }
 

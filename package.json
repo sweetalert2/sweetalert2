@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "5.3.3",
+  "version": "5.3.4",
   "repository": "https://github.com/limonte/sweetalert2.git",
   "homepage": "https://limonte.github.io/sweetalert2/",
   "description": "A replacement for JavaScript's popup boxes, supported fork of sweetalert",

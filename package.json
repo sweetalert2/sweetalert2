@@ -24,6 +24,11 @@
     "gulp-sass-lint": "latest",
     "gulp-qunit": "latest"
   },
+  "standard": {
+    "ignore": [
+      "dist/"
+    ]
+  },
   "files": [
     "dist",
     "src"

@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="./docs/example.css">
   <link rel="stylesheet" href="./docs/buttons.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/animatecss/3.5.2/animate.css">
   <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
   <!-- This is what you need -->
@@ -141,7 +142,7 @@ swal({
 
     <li class="html-jquery">
       <div class="ui">
-        <p>jQuery HTML</p>
+        <p>jQuery HTML with custom animation (<a href="https://daneden.github.io/animate.css/" target="_blank">Animate.css <i class="fa fa-external-link"></i></a>)</p>
         <button>Try me!</button>
       </div>
       <pre>
@@ -149,7 +150,9 @@ swal({
   title: <span class="str">'jQuery HTML example'</span>,
   html: $(<span class="str">'&lt;div&gt;'</span>)
     .addClass(<span class="str">'some-class'</span>)
-    .text(<span class="str">'jQuery is everywhere.'</span>)
+    .text(<span class="str">'jQuery is everywhere.'</span>),
+  animation: <span class="val">false</span>,
+  customClass: <span class="str">'animated tada'</span>
 })</pre>
     </li>
 
@@ -431,7 +434,7 @@ swal({
       <tr>
         <td><b>width</b></td>
         <td><i>'500px'</i></td>
-        <td>Modal window width, including paddings (<i>box-sizing: border-box</i>). Can be in `px` or `%`.</td>
+        <td>Modal window width, including paddings (<i>box-sizing: border-box</i>). Can be in <strong>px</strong> or <strong>%</strong>.</td>
       </tr>
       <tr>
         <td><b>padding</b></td>
@@ -1135,7 +1138,9 @@ swal({
   $('.examples .html-jquery button').on('click', function () {
     swal({
       title: 'jQuery HTML example',
-      html: $('<div>').addClass('some-class').text('jQuery is everywhere.')
+      html: $('<div>').addClass('some-class').text('jQuery is everywhere.'),
+      animation: false,
+      customClass: 'animated tada'
     }).catch(swal.noop)
   })
 
@@ -1480,7 +1485,7 @@ swal({
   })
 
   // Google Analytics
-  /*eslint-disable */
+  /* eslint-disable */
   if (typeof ga !== 'undeifned') {
     (function (i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function (){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

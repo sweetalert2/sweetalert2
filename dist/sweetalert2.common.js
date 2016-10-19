@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.3.3
+ * sweetalert2 v5.3.5
  * Released under the MIT License.
  */
 'use strict';
@@ -1480,25 +1480,26 @@ sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
 
   resetPrevState()
 
+  var hideModalAndResetState = function () {
+    hide(modal)
+    modal.style.minHeight = ''
+    removeClass(sweetContainer, swalClasses.in)
+    removeClass(document.body, swalClasses.in)
+    undoScrollbar()
+    undoIOSfix()
+  }
+
   // If animation is supported, animate
   if (animationEndEvent && !hasClass(modal, swalClasses.noanimation)) {
     modal.addEventListener(animationEndEvent, function swalCloseEventFinished () {
       modal.removeEventListener(animationEndEvent, swalCloseEventFinished)
       if (hasClass(modal, swalClasses.hide)) {
-        hide(modal)
-        removeClass(sweetContainer, swalClasses.in)
-        removeClass(document.body, swalClasses.in)
-        undoScrollbar()
-        undoIOSfix()
+        hideModalAndResetState()
       }
     })
   } else {
     // Otherwise, hide immediately
-    hide(modal)
-    removeClass(sweetContainer, swalClasses.in)
-    removeClass(document.body, swalClasses.in)
-    undoScrollbar()
-    undoIOSfix()
+    hideModalAndResetState()
   }
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal)
@@ -1543,7 +1544,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () { }
 
-sweetAlert.version = '5.3.3'
+sweetAlert.version = '5.3.5'
 
 if (typeof Promise === 'function') {
   Promise.prototype.done = Promise.prototype.done || function () { // eslint-disable-line

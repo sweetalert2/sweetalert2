@@ -1019,25 +1019,26 @@ sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
 
   dom.resetPrevState()
 
+  var hideModalAndResetState = function () {
+    dom.hide(modal)
+    modal.style.minHeight = ''
+    dom.removeClass(sweetContainer, swalClasses.in)
+    dom.removeClass(document.body, swalClasses.in)
+    undoScrollbar()
+    undoIOSfix()
+  }
+
   // If animation is supported, animate
   if (dom.animationEndEvent && !dom.hasClass(modal, swalClasses.noanimation)) {
     modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
       if (dom.hasClass(modal, swalClasses.hide)) {
-        dom.hide(modal)
-        dom.removeClass(sweetContainer, swalClasses.in)
-        dom.removeClass(document.body, swalClasses.in)
-        undoScrollbar()
-        undoIOSfix()
+        hideModalAndResetState()
       }
     })
   } else {
     // Otherwise, hide immediately
-    dom.hide(modal)
-    dom.removeClass(sweetContainer, swalClasses.in)
-    dom.removeClass(document.body, swalClasses.in)
-    undoScrollbar()
-    undoIOSfix()
+    hideModalAndResetState()
   }
   if (onComplete !== null && typeof onComplete === 'function') {
     onComplete.call(this, modal)

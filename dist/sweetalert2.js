@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.3.5
+ * sweetalert2 v5.3.6
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1416,12 +1416,14 @@
       queue = []
       modal.removeAttribute('data-queue-step')
     }
+    var queueResult = []
     return new Promise(function (resolve, reject) {
       (function step (i, callback) {
         if (i < queue.length) {
           modal.setAttribute('data-queue-step', i)
 
-          sweetAlert(queue[i]).then(function () {
+          sweetAlert(queue[i]).then(function (result) {
+            queueResult.push(result)
             step(i + 1, callback)
           }, function (dismiss) {
             resetQueue()
@@ -1429,7 +1431,7 @@
           })
         } else {
           resetQueue()
-          resolve()
+          resolve(queueResult)
         }
       })(0)
     })
@@ -1548,7 +1550,7 @@
 
   sweetAlert.noop = function () { }
 
-  sweetAlert.version = '5.3.5'
+  sweetAlert.version = '5.3.6'
 
   if (typeof Promise === 'function') {
     Promise.prototype.done = Promise.prototype.done || function () { // eslint-disable-line

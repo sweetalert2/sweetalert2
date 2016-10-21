@@ -37,9 +37,9 @@ export var init = function () {
   }
 
   input.onkeydown = function (event) {
-    event.stopPropagation()
     setTimeout(function () {
       if (event.keyCode === 13) {
+        event.stopPropagation()
         sweetAlert.clickConfirm()
       }
     }, 0)

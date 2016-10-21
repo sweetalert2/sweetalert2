@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v5.3.7
+ * sweetalert2 v5.3.8
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -217,9 +217,9 @@
     }
 
     input.onkeydown = function (event) {
-      event.stopPropagation()
       setTimeout(function () {
         if (event.keyCode === 13) {
+          event.stopPropagation()
           sweetAlert.clickConfirm()
         }
       }, 0)
@@ -1552,7 +1552,7 @@
 
   sweetAlert.noop = function () { }
 
-  sweetAlert.version = '5.3.7'
+  sweetAlert.version = '5.3.8'
 
   if (typeof Promise === 'function') {
     Promise.prototype.done = Promise.prototype.done || function () { // eslint-disable-line

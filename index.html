@@ -286,6 +286,7 @@ swal({
       </div>
       <pre>
 swal.setDefaults({
+  input: <span class="str">'text'</span>,
   confirmButtonText: <span class="str">'Next &amp;rarr;'</span>,
   showCancelButton: <span class="val">true</span>,
   animation: <span class="val">false</span>,
@@ -294,17 +295,21 @@ swal.setDefaults({
 
 <span class="func">var</span> steps = [
   {
-    title: <span class="str">'Step 1'</span>,
+    title: <span class="str">'Question 1'</span>,
     text: <span class="str">'Chaining swal2 modals is easy'</span>
   },
-  <span class="str">'Step 2'</span>,
-  <span class="str">'Step 3'</span>
+  <span class="str">'Question 2'</span>,
+  <span class="str">'Question 3'</span>
 ]
 
 swal.queue(steps).then(<span class="func"><i>function</i></span>() {
   swal.resetDefaults()
   swal({
     title: <span class="str">'All done!'</span>,
+    html:
+      <span class="str">'Your answers: &lt;pre&gt;'</span> +
+        JSON.stringify(result) +
+      <span class="str">'&lt;/pre&gt;'</span>,
     confirmButtonText: <span class="str">'Lovely!'</span>,
     showCancelButton: <span class="val">false</span>
   })
@@ -1438,6 +1443,7 @@ swal({
 
   $('.examples .chaining-modals button').on('click', function () {
     swal.setDefaults({
+      input: 'text',
       confirmButtonText: 'Next &rarr;',
       showCancelButton: true,
       animation: false,
@@ -1445,14 +1451,19 @@ swal({
     })
 
     var steps = [
-      {title: 'Step 1', text: 'Chaining swal2 modals is easy'},
-      'Step 2',
-      'Step 3'
+      {title: 'Question 1', text: 'Chaining swal2 modals is easy'},
+      'Question 2',
+      'Question 3'
     ]
 
-    swal.queue(steps).then(function () {
+    swal.queue(steps).then(function (result) {
       swal.resetDefaults()
-      swal({title: 'All done!', confirmButtonText: 'Lovely!', showCancelButton: false}).catch(swal.noop)
+      swal({
+        title: 'All done!',
+        html: 'Your answers: <pre>' + JSON.stringify(result) + '</pre>',
+        confirmButtonText: 'Lovely!',
+        showCancelButton: false
+      }).catch(swal.noop)
     }, function () {
       swal.resetDefaults()
     })

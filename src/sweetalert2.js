@@ -951,12 +951,14 @@ sweetAlert.queue = function (steps) {
     queue = []
     modal.removeAttribute('data-queue-step')
   }
+  var queueResult = []
   return new Promise(function (resolve, reject) {
     (function step (i, callback) {
       if (i < queue.length) {
         modal.setAttribute('data-queue-step', i)
 
-        sweetAlert(queue[i]).then(function () {
+        sweetAlert(queue[i]).then(function (result) {
+          queueResult.push(result)
           step(i + 1, callback)
         }, function (dismiss) {
           resetQueue()
@@ -964,7 +966,7 @@ sweetAlert.queue = function (steps) {
         })
       } else {
         resetQueue()
-        resolve()
+        resolve(queueResult)
       }
     })(0)
   })

@@ -6,9 +6,8 @@ An awesome replacement for JavaScript's popup boxes.
 What's the difference between SweetAlert and SweetAlert2?
 ---------------------------------------------------------
 
-Reason of creating this fork is inactivity of original SweetAlert plugin:
-[http://stackoverflow.com/a/27842854/1331425](http://stackoverflow.com/a/27842854/1331425)
-[SweetAlert to SweetAlert2 migration guide](https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2)
+ - [Reason of creating this fork is inactivity of original SweetAlert plugin](http://stackoverflow.com/a/27842854/1331425)
+ - [SweetAlert to SweetAlert2 migration guide](https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2)
 
 ---
 
@@ -148,7 +147,7 @@ Configuration
 | `timer`                 | `null`               | Auto close timer of the modal. Set in ms (milliseconds). |
 | `animation`             | `true`               | If set to `false`, modal CSS animation will be disabled. |
 | `allowOutsideClick`     | `true`               | If set to `false`, the user can't dismiss the modal by clicking outside it. |
-| `allowEscapeKey`        | `true`               | If set to `false`, the user can't dismiss the modal by pressing the Escape key. |
+| `allowEscapeKey`        | `true`               | If set to `false`, the user can't dismiss the modal by pressing the <kbd>Esc</kbd> key. |
 | `showConfirmButton`     | `true`               | If set to `false`, a "Confirm"-button will not be shown. It can be useful when you're using `html` parameter for custom HTML description. |
 | `showCancelButton`      | `false`              | If set to `true`, a "Cancel"-button will be shown, which the user can click on to dismiss the modal. |
 | `confirmButtonText`     | `'OK'`               | Use this to change the text on the "Confirm"-button. |
@@ -157,16 +156,16 @@ Configuration
 | `cancelButtonColor`     | `'#aaa'`             | Use this to change the background color of the "Cancel"-button (must be a HEX value). |
 | `confirmButtonClass`    | `null`               | A custom CSS class for the "Confirm"-button. |
 | `cancelButtonClass`     | `null`               | A custom CSS class for the "Cancel"-button. |
-| `buttonsStyling`        | `true`               | Apply default swal2 styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to `false`. |
+| `buttonsStyling`        | `true`               | Apply default styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to `false`. |
 | `reverseButtons`        | `false`              | Set to `true` if you want to invert default buttons positions. |
 | `focusCancel`           | `false`              | Set to `true` if you want to focus the "Cancel"-button by default. |
 | `showCloseButton`       | `false`              | Set to `true` to show close button in top right corner of the modal. |
 | `showLoaderOnConfirm`   | `false`              | Set to `true` to disable buttons and show that something is loading. Useful for AJAX requests. |
 | `preConfirm`            | `null`               | Function to execute before confirm, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#ajax-request">usage example</a>. |
-| `imageUrl`              | `null`               | Add a customized icon for the modal. Should contain a string with the path or URL to the image. |
+| `imageUrl`              | `null`               | Add an image for the modal. Should contain a string with the path or URL to the image. |
 | `imageWidth`            | `null`               | If imageUrl is set, you can specify imageWidth to describes image width in px. |
 | `imageHeight`           | `null`               | Custom image height in px. |
-| `imageClass`            | `null`               | A custom CSS class for the customized icon. |
+| `imageClass`            | `null`               | A custom CSS class for the image. |
 | `inputPlaceholder`      | `''`                 | Input field placeholder. |
 | `inputValue`            | `''`                 | Input field initial value. |
 | `inputOptions`          | `{}` or `Promise`    | If `input` parameter is set to `'select'` or `'radio'`, you can provide options. Object keys will represent options values, object values will represent options text values. |

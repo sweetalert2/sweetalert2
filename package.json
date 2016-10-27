@@ -11,18 +11,18 @@
   },
   "devDependencies": {
     "gulp": "latest",
-    "standard": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "latest",
+    "gulp-qunit": "latest",
     "gulp-rename": "latest",
     "gulp-rollup": "latest",
     "gulp-sass": "latest",
+    "gulp-sass-lint": "latest",
+    "gulp-standard": "latest",
     "gulp-uglify": "latest",
     "rollup": "latest",
-    "uglify-js": "latest",
-    "gulp-standard": "latest",
-    "gulp-sass-lint": "latest",
-    "gulp-qunit": "latest"
+    "standard": "latest",
+    "uglify-js": "latest"
   },
   "standard": {
     "ignore": [

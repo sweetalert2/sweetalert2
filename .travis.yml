@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - stable
+  - 6
 
 cache:
   bundler: true

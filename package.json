@@ -10,6 +10,7 @@
     "es6-promise": "latest"
   },
   "devDependencies": {
+    "babel-preset-es2015-rollup": "latest",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "latest",
@@ -21,6 +22,7 @@
     "gulp-standard": "latest",
     "gulp-uglify": "latest",
     "rollup": "latest",
+    "rollup-plugin-babel": "latest",
     "standard": "latest",
     "uglify-js": "latest"
   },

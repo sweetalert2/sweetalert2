@@ -1,4 +1,5 @@
 var rollup = require('rollup').rollup
+var babel = require('rollup-plugin-babel')
 var pack = require('../package.json')
 var banner = require('./banner.js')
 var fs = require('fs')
@@ -38,7 +39,12 @@ var write = function (dest, code) {
 var packageRollup = function (options) {
   const moduleId = classify(pack.name)
   return rollup({
-    entry: 'src/sweetalert2.js'
+    entry: 'src/sweetalert2.js',
+    plugins: [
+      babel({
+        exclude: 'node_modules/**'
+      })
+    ]
   })
   .then(function (bundle) {
     var code = bundle.generate({

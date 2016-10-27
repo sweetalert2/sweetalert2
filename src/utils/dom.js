@@ -125,7 +125,10 @@ export var getFocusableElements = function (focusCancel) {
 }
 
 export var hasClass = function (elem, className) {
-  return elem.classList.contains(className)
+  if (elem.classList) {
+    return elem.classList.contains(className)
+  }
+  return false
 }
 
 export var focusInput = function (input) {

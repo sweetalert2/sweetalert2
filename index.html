@@ -1307,7 +1307,7 @@ swal({
   })
 
   $('.input-type-radio').on('click', function () {
-    var inputOptions = new Promise(function (resolve) {
+    var inputOptionsPromise = new Promise(function (resolve) {
       setTimeout(function () {
         resolve({
           '#FF0000': 'Red',
@@ -1320,7 +1320,7 @@ swal({
     swal({
       title: 'Select color',
       input: 'radio',
-      inputOptions: inputOptions,
+      inputOptions: inputOptionsPromise,
       inputValidator: function (value) {
         return new Promise(function (resolve, reject) {
           if (value) {

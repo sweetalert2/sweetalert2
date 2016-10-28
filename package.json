@@ -10,6 +10,8 @@
     "es6-promise": "latest"
   },
   "devDependencies": {
+    "babel-preset-es2015-rollup": "latest",
+    "babel-plugin-transform-object-assign": "latest",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "latest",
@@ -21,12 +23,16 @@
     "gulp-standard": "latest",
     "gulp-uglify": "latest",
     "rollup": "latest",
+    "rollup-plugin-babel": "latest",
     "standard": "latest",
     "uglify-js": "latest"
   },
   "standard": {
     "ignore": [
       "dist/"
+    ],
+    "global": [
+      "MutationObserver"
     ]
   },
   "files": [

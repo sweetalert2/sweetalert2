@@ -21,7 +21,7 @@ test('modal width', function (assert) {
 })
 
 test('confirm button', function (assert) {
-  var done = assert.async()
+  const done = assert.async()
 
   swal('Confirm me').then(function (result) {
     assert.equal(result, true)
@@ -50,7 +50,7 @@ test('custom buttons classes', function (assert) {
 })
 
 test('cancel button', function (assert) {
-  var done = assert.async()
+  const done = assert.async()
 
   swal('Cancel me').then(
     function () {},
@@ -64,7 +64,7 @@ test('cancel button', function (assert) {
 })
 
 test('esc key', function (assert) {
-  var done = assert.async()
+  const done = assert.async()
 
   swal('Esc me').then(
     function () {},
@@ -80,7 +80,7 @@ test('esc key', function (assert) {
 })
 
 test('overlay click', function (assert) {
-  var done = assert.async()
+  const done = assert.async()
 
   swal('Overlay click').then(
     function () {},
@@ -94,7 +94,7 @@ test('overlay click', function (assert) {
 })
 
 test('timer works', function (assert) {
-  var done = assert.async()
+  const done = assert.async()
 
   swal({title: 'Timer test', timer: 10, animation: false}).then(
     function () {},
@@ -106,7 +106,7 @@ test('timer works', function (assert) {
 })
 
 test('close button', function (assert) {
-  var done = assert.async()
+  const done = assert.async()
 
   swal({title: 'Close button test', showCloseButton: true}).then(
     function () {},
@@ -116,7 +116,7 @@ test('close button', function (assert) {
     }
   )
 
-  var $closeButton = $('.swal2-close')
+  const $closeButton = $('.swal2-close')
   assert.ok($closeButton.is(':visible'))
   $closeButton.click()
 })
@@ -127,7 +127,7 @@ test('jQuery/js element as html param', function (assert) {
   })
   assert.equal($('.swal2-content').html(), '<p>jQuery element</p>')
 
-  var p = document.createElement('p')
+  const p = document.createElement('p')
   p.textContent = 'js element'
   swal({
     html: p
@@ -150,9 +150,9 @@ test('set and reset defaults', function (assert) {
 })
 
 test('input text', function (assert) {
-  var done = assert.async()
+  const done = assert.async()
 
-  var string = 'Live for yourself'
+  const string = 'Live for yourself'
   swal({input: 'text'}).then(function (result) {
     assert.equal(result, string)
     done()
@@ -163,12 +163,12 @@ test('input text', function (assert) {
 })
 
 test('validation error', function (assert) {
-  var done = assert.async()
+  const done = assert.async()
 
   swal({input: 'email', animation: false})
   assert.ok($('.swal2-validationerror').is(':hidden'))
   setTimeout(function () {
-    var initialModalHeight = $('.swal2-modal').outerHeight()
+    const initialModalHeight = $('.swal2-modal').outerHeight()
 
     swal.clickConfirm()
     setTimeout(function () {
@@ -184,9 +184,9 @@ test('validation error', function (assert) {
 })
 
 test('input select', function (assert) {
-  var done = assert.async()
+  const done = assert.async()
 
-  var selected = 'dos'
+  const selected = 'dos'
   swal({ input: 'select', inputOptions: {uno: 1, dos: 2} }).then(function (result) {
     assert.equal(result, selected)
     done()
@@ -197,8 +197,8 @@ test('input select', function (assert) {
 })
 
 test('input checkbox', function (assert) {
-  var done = assert.async()
-  var checkbox = $('.swal2-checkbox input')
+  const done = assert.async()
+  const checkbox = $('.swal2-checkbox input')
 
   swal({input: 'checkbox', inputAttributes: {name: 'test-checkbox'}}).then(function (result) {
     assert.equal(checkbox.attr('name'), 'test-checkbox')
@@ -212,15 +212,15 @@ test('input checkbox', function (assert) {
 
 test('input range', function (assert) {
   swal({ input: 'range', inputAttributes: {min: 1, max: 10}, inputValue: 5 })
-  var input = $('.swal2-range input')
+  const input = $('.swal2-range input')
   assert.equal(input.attr('min'), '1')
   assert.equal(input.attr('max'), '10')
   assert.equal(input.val(), '5')
 })
 
 test('queue', function (assert) {
-  var done = assert.async()
-  var steps = ['Step 1', 'Step 2']
+  const done = assert.async()
+  const steps = ['Step 1', 'Step 2']
 
   assert.equal(swal.getQueueStep(), null)
 
@@ -253,8 +253,8 @@ test('queue', function (assert) {
 })
 
 test('dymanic queue', function (assert) {
-  var done = assert.async()
-  var steps = [
+  const done = assert.async()
+  const steps = [
     {
       title: 'Step 1',
       preConfirm: function () {
@@ -395,7 +395,7 @@ test('disable/enable input', function (assert) {
 })
 
 test('default focus', function (assert) {
-  var done = assert.async()
+  const done = assert.async()
 
   swal('Modal with the Confirm button only')
   assert.ok(document.activeElement === $('.swal2-confirm')[0])
@@ -452,7 +452,7 @@ test('image custom class', function (assert) {
 })
 
 test('modal vertical offset', function (assert) {
-  var done = assert.async(1)
+  const done = assert.async(1)
   // create a modal with dynamic-height content
   swal({
     imageUrl: '../docs/vs_icon.png',
@@ -470,8 +470,8 @@ test('modal vertical offset', function (assert) {
 
   // listen for image load
   $('.swal2-image').on('load', function () {
-    var box = $('.swal2-modal')[0].getBoundingClientRect()
-    var delta = box.top - (box.bottom - box.height)
+    const box = $('.swal2-modal')[0].getBoundingClientRect()
+    const delta = box.top - (box.bottom - box.height)
     // allow 1px difference, in case of uneven height
     assert.ok(Math.abs(delta) <= 1)
     done()

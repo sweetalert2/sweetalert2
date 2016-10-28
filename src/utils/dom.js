@@ -317,18 +317,15 @@ export const measureScrollbar = () => {
 }
 
 // JavaScript Debounce Function
-// https://davidwalsh.name/javascript-debounce-function
-export const debounce = (func, wait, immediate) => {
+// Simplivied version of https://davidwalsh.name/javascript-debounce-function
+export const debounce = (func, wait) => {
   let timeout
   return () => {
-    const args = arguments
     const later = () => {
       timeout = null
-      if (!immediate) func.apply(undefined, args)
+      func()
     }
-    const callNow = immediate && !timeout
     clearTimeout(timeout)
     timeout = setTimeout(later, wait)
-    if (callNow) func.apply(undefined, args)
   }
 }

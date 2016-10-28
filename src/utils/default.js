@@ -80,7 +80,7 @@ const sweetHTML = `
     <button type="button" class="${swalClasses.cancel}">Cancel</button>
     <span class="${swalClasses.close}">&times;</span>
   </div>
-`
+`.replace(/(^|\n)\s*/g, '')
 
 export let sweetContainer
 

@@ -1,13 +1,3 @@
-export var extend = function (a, b) {
-  for (var key in b) {
-    if (b.hasOwnProperty(key)) {
-      a[key] = b[key]
-    }
-  }
-
-  return a
-}
-
 /*
  * Set hover, active and focus-states for buttons (source: http://www.sitepoint.com/javascript-generate-lighter-darker-color)
  */

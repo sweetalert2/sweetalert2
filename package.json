@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "babel-preset-es2015-rollup": "latest",
+    "babel-plugin-transform-object-assign": "latest",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "latest",

@@ -2,10 +2,10 @@
 
 import { defaultParams, sweetContainer } from './utils/default.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
-import { extend, colorLuminance } from './utils/utils.js'
+import { colorLuminance } from './utils/utils.js'
 import * as dom from './utils/dom.js'
 
-var modalParams = extend({}, defaultParams)
+var modalParams = Object.assign({}, defaultParams)
 var queue = []
 var swal2Observer
 
@@ -302,7 +302,7 @@ function modalDependant () {
     return false
   }
 
-  var params = extend({}, modalParams)
+  var params = Object.assign({}, modalParams)
 
   switch (typeof arguments[0]) {
 
@@ -314,7 +314,7 @@ function modalDependant () {
       break
 
     case 'object':
-      extend(params, arguments[0])
+      Object.assign(params, arguments[0])
       params.extraParams = arguments[0].extraParams
 
       if (params.input === 'email' && params.inputValidator === null) {
@@ -1073,14 +1073,14 @@ sweetAlert.setDefaults = function (userParams) {
     throw new Error('userParams has to be a object')
   }
 
-  extend(modalParams, userParams)
+  Object.assign(modalParams, userParams)
 }
 
 /**
  * Reset default params for each popup
  */
 sweetAlert.resetDefaults = function () {
-  modalParams = extend({}, defaultParams)
+  modalParams = Object.assign({}, defaultParams)
 }
 
 sweetAlert.noop = function () { }

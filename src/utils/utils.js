@@ -1,7 +1,7 @@
 /*
  * Set hover, active and focus-states for buttons (source: http://www.sitepoint.com/javascript-generate-lighter-darker-color)
  */
-export const colorLuminance = function (hex, lum) {
+export const colorLuminance = (hex, lum) => {
   // Validate hex string
   hex = String(hex).replace(/[^0-9a-f]/gi, '')
   if (hex.length < 6) {

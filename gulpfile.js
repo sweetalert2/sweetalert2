@@ -12,7 +12,7 @@ const utils = require('./config/utils.js')
 
 gulp.task('compress', ['standard', 'commonjs', 'dev', 'production'])
 
-gulp.task('standard', function () {
+gulp.task('standard', () => {
   return gulp.src(['src/**/*.js', 'test/*.js'])
     .pipe(standard())
     .pipe(standard.reporter('default', {
@@ -20,24 +20,24 @@ gulp.task('standard', function () {
     }))
 })
 
-gulp.task('commonjs', function () {
+gulp.task('commonjs', () => {
   return utils.packageRollup({
     dest: 'dist/' + pack.name + '.common.js',
     format: 'cjs'
   })
 })
 
-gulp.task('dev', function () {
+gulp.task('dev', () => {
   return utils.packageRollup({
     dest: 'dist/' + pack.name + '.js',
     format: 'umd'
   })
 })
 
-gulp.task('test', function () {
+gulp.task('test', () => {
   return gulp.src('./test/test-runner.html')
     .pipe(qunit())
-    .on('error', function (err) { // avoid the ugly error message on failing
+    .on('error', (err) => { // avoid the ugly error message on failing
       if (process.env.CI) { // but still fail if we're running in a CI
         throw err
       }
@@ -45,7 +45,7 @@ gulp.task('test', function () {
     })
 })
 
-gulp.task('production', function () {
+gulp.task('production', () => {
   return utils.packageRollup({
     dest: 'dist/' + pack.name + '.min.js',
     format: 'umd',
@@ -53,7 +53,7 @@ gulp.task('production', function () {
   }).then(utils.zip)
 })
 
-gulp.task('sass', function () {
+gulp.task('sass', () => {
   gulp.src('src/sweetalert2.scss')
     .pipe(sass())
     .pipe(autoprefix())
@@ -68,7 +68,7 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('docs'))
 })
 
-gulp.task('sass-lint', function () {
+gulp.task('sass-lint', () => {
   return gulp.src(['src/**/*.scss', 'docs/**/*.scss'])
     .pipe(sassLint())
     .pipe(sassLint.format())
@@ -77,7 +77,7 @@ gulp.task('sass-lint', function () {
 
 gulp.task('default', ['compress', 'sass'])
 
-gulp.task('watch', function () {
+gulp.task('watch', () => {
   gulp.watch([
     'src/**/*.js',
     'test/*.js'

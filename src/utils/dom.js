@@ -14,7 +14,7 @@ export const states = {
 /*
  * Add modal + overlay to DOM
  */
-export const init = function () {
+export const init = () => {
   if (typeof document === 'undefined') {
     console.error('SweetAlert2 requires document to initialize')
     return
@@ -27,17 +27,17 @@ export const init = function () {
   const modal = getModal()
   const input = getChildByClass(modal, swalClasses.input)
   const file = getChildByClass(modal, swalClasses.file)
-  const range = modal.querySelector('.' + swalClasses.range + ' input')
+  const range = modal.querySelector(`.${swalClasses.range} input`)
   const select = getChildByClass(modal, swalClasses.select)
-  const checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input')
+  const checkbox = modal.querySelector(`.${swalClasses.checkbox} input`)
   const textarea = getChildByClass(modal, swalClasses.textarea)
 
-  input.oninput = function () {
+  input.oninput = () => {
     sweetAlert.resetValidationError()
   }
 
-  input.onkeydown = function (event) {
-    setTimeout(function () {
+  input.onkeydown = (event) => {
+    setTimeout(() => {
       if (event.keyCode === 13) {
         event.stopPropagation()
         sweetAlert.clickConfirm()
@@ -45,29 +45,29 @@ export const init = function () {
     }, 0)
   }
 
-  file.onchange = function () {
+  file.onchange = () => {
     sweetAlert.resetValidationError()
   }
 
-  range.oninput = function () {
-    sweetAlert.resetValidationError()
-    range.previousSibling.value = range.value
-  }
-
-  range.onchange = function () {
+  range.oninput = () => {
     sweetAlert.resetValidationError()
     range.previousSibling.value = range.value
   }
 
-  select.onchange = function () {
+  range.onchange = () => {
+    sweetAlert.resetValidationError()
+    range.previousSibling.value = range.value
+  }
+
+  select.onchange = () => {
     sweetAlert.resetValidationError()
   }
 
-  checkbox.onchange = function () {
+  checkbox.onchange = () => {
     sweetAlert.resetValidationError()
   }
 
-  textarea.oninput = function () {
+  textarea.oninput = () => {
     sweetAlert.resetValidationError()
   }
 
@@ -77,44 +77,28 @@ export const init = function () {
 /*
  * Manipulate DOM
  */
-export const elementByClass = function (className) {
-  return sweetContainer.querySelector('.' + className)
-}
+export const elementByClass = (className) => sweetContainer.querySelector('.' + className)
 
-export const getModal = function () {
-  return document.body.querySelector('.' + swalClasses.modal) || init()
-}
+export const getModal = () => document.body.querySelector('.' + swalClasses.modal) || init()
 
-export const getIcons = function () {
+export const getIcons = () => {
   const modal = getModal()
   return modal.querySelectorAll('.' + swalClasses.icon)
 }
 
-export const getSpacer = function () {
-  return elementByClass(swalClasses.spacer)
-}
+export const getSpacer = () => elementByClass(swalClasses.spacer)
 
-export const getProgressSteps = function () {
-  return elementByClass(swalClasses.progresssteps)
-}
+export const getProgressSteps = () => elementByClass(swalClasses.progresssteps)
 
-export const getValidationError = function () {
-  return elementByClass(swalClasses.validationerror)
-}
+export const getValidationError = () => elementByClass(swalClasses.validationerror)
 
-export const getConfirmButton = function () {
-  return elementByClass(swalClasses.confirm)
-}
+export const getConfirmButton = () => elementByClass(swalClasses.confirm)
 
-export const getCancelButton = function () {
-  return elementByClass(swalClasses.cancel)
-}
+export const getCancelButton = () => elementByClass(swalClasses.cancel)
 
-export const getCloseButton = function () {
-  return elementByClass(swalClasses.close)
-}
+export const getCloseButton = () => elementByClass(swalClasses.close)
 
-export const getFocusableElements = function (focusCancel) {
+export const getFocusableElements = (focusCancel) => {
   const buttons = [getConfirmButton(), getCancelButton()]
   if (focusCancel) {
     buttons.reverse()
@@ -124,14 +108,14 @@ export const getFocusableElements = function (focusCancel) {
   ))
 }
 
-export const hasClass = function (elem, className) {
+export const hasClass = (elem, className) => {
   if (elem.classList) {
     return elem.classList.contains(className)
   }
   return false
 }
 
-export const focusInput = function (input) {
+export const focusInput = (input) => {
   input.focus()
 
   // place cursor at end of text in text input
@@ -143,27 +127,27 @@ export const focusInput = function (input) {
   }
 }
 
-export const addClass = function (elem, className) {
+export const addClass = (elem, className) => {
   if (!elem || !className) {
     return
   }
   const classes = className.split(/\s+/)
-  classes.forEach(function (className) {
+  classes.forEach((className) => {
     elem.classList.add(className)
   })
 }
 
-export const removeClass = function (elem, className) {
+export const removeClass = (elem, className) => {
   if (!elem || !className) {
     return
   }
   const classes = className.split(/\s+/)
-  classes.forEach(function (className) {
+  classes.forEach((className) => {
     elem.classList.remove(className)
   })
 }
 
-export const getChildByClass = function (elem, className) {
+export const getChildByClass = (elem, className) => {
   for (let i = 0; i < elem.childNodes.length; i++) {
     if (hasClass(elem.childNodes[i], className)) {
       return elem.childNodes[i]
@@ -171,7 +155,7 @@ export const getChildByClass = function (elem, className) {
   }
 }
 
-export const show = function (elem, display) {
+export const show = (elem, display) => {
   if (!display) {
     display = 'block'
   }
@@ -179,23 +163,23 @@ export const show = function (elem, display) {
   elem.style.display = display
 }
 
-export const hide = function (elem) {
+export const hide = (elem) => {
   elem.style.opacity = ''
   elem.style.display = 'none'
 }
 
-export const empty = function (elem) {
+export const empty = (elem) => {
   while (elem.firstChild) {
     elem.removeChild(elem.firstChild)
   }
 }
 
 // borrowed from jqeury $(elem).is(':visible') implementation
-export const isVisible = function (elem) {
+export const isVisible = (elem) => {
   return elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length
 }
 
-export const removeStyleProperty = function (elem, property) {
+export const removeStyleProperty = (elem, property) => {
   if (elem.style.removeProperty) {
     elem.style.removeProperty(property)
   } else {
@@ -203,7 +187,7 @@ export const removeStyleProperty = function (elem, property) {
   }
 }
 
-export const getTopMargin = function (elem) {
+export const getTopMargin = (elem) => {
   const elemDisplay = elem.style.display
   elem.style.left = '-9999px'
   elem.style.display = 'block'
@@ -215,13 +199,13 @@ export const getTopMargin = function (elem) {
   return ('-' + parseInt(height / 2, 10) + 'px')
 }
 
-export const fadeIn = function (elem, interval) {
+export const fadeIn = (elem, interval) => {
   if (+elem.style.opacity < 1) {
     interval = interval || 16
     elem.style.opacity = 0
     elem.style.display = 'block'
     let last = +new Date()
-    const tick = function () {
+    const tick = () => {
       const newOpacity = +elem.style.opacity + (new Date() - last) / 100
       elem.style.opacity = (newOpacity > 1) ? 1 : newOpacity
       last = +new Date()
@@ -234,12 +218,12 @@ export const fadeIn = function (elem, interval) {
   }
 }
 
-export const fadeOut = function (elem, interval) {
+export const fadeOut = (elem, interval) => {
   if (+elem.style.opacity > 0) {
     interval = interval || 16
     const opacity = elem.style.opacity
     let last = +new Date()
-    const tick = function () {
+    const tick = () => {
       const change = new Date() - last
       const newOpacity = +elem.style.opacity - change / (opacity * 100)
       elem.style.opacity = newOpacity
@@ -255,7 +239,7 @@ export const fadeOut = function (elem, interval) {
   }
 }
 
-export const fireClick = function (node) {
+export const fireClick = (node) => {
   // Taken from http://www.nonobtrusive.com/2011/11/29/programatically-fire-crossbrowser-click-event-with-javascript/
   // Then fixed for today's Chrome browser.
   if (typeof MouseEvent === 'function') {
@@ -278,7 +262,7 @@ export const fireClick = function (node) {
   }
 }
 
-export const stopEventPropagation = function (e) {
+export const stopEventPropagation = (e) => {
   // In particular, make sure the space bar doesn't scroll the main window.
   if (typeof e.stopPropagation === 'function') {
     e.stopPropagation()
@@ -288,7 +272,7 @@ export const stopEventPropagation = function (e) {
   }
 }
 
-export const animationEndEvent = (function () {
+export const animationEndEvent = (() => {
   const testEl = document.createElement('div')
   const transEndEventNames = {
     'WebkitAnimation': 'webkitAnimationEnd',
@@ -307,7 +291,7 @@ export const animationEndEvent = (function () {
 })()
 
 // Reset the page to its previous state
-export const resetPrevState = function () {
+export const resetPrevState = () => {
   const modal = getModal()
   window.onkeydown = states.previousWindowKeyDown
   if (states.previousActiveElement && states.previousActiveElement.focus) {
@@ -318,7 +302,7 @@ export const resetPrevState = function () {
 
 // Measure width of scrollbar
 // https://github.com/twbs/bootstrap/blob/master/js/modal.js#L279-L286
-export const measureScrollbar = function () {
+export const measureScrollbar = () => {
   const scrollDiv = document.createElement('div')
   scrollDiv.style.width = '50px'
   scrollDiv.style.height = '50px'
@@ -331,18 +315,17 @@ export const measureScrollbar = function () {
 
 // JavaScript Debounce Function
 // https://davidwalsh.name/javascript-debounce-function
-export const debounce = function (func, wait, immediate) {
+export const debounce = (func, wait, immediate) => {
   let timeout
-  return function () {
-    const context = this
+  return () => {
     const args = arguments
-    const later = function () {
+    const later = () => {
       timeout = null
-      if (!immediate) func.apply(context, args)
+      if (!immediate) func.apply(undefined, args)
     }
     const callNow = immediate && !timeout
     clearTimeout(timeout)
     timeout = setTimeout(later, wait)
-    if (callNow) func.apply(context, args)
+    if (callNow) func.apply(undefined, args)
   }
 }

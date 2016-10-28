@@ -5,7 +5,7 @@ import { swalPrefix, swalClasses } from './classes.js'
 import { sweetContainer } from './default.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
-export var states = {
+export const states = {
   previousWindowKeyDown: null,
   previousActiveElement: null,
   previousBodyPadding: null
@@ -14,7 +14,7 @@ export var states = {
 /*
  * Add modal + overlay to DOM
  */
-export var init = function () {
+export const init = function () {
   if (typeof document === 'undefined') {
     console.error('SweetAlert2 requires document to initialize')
     return
@@ -24,13 +24,13 @@ export var init = function () {
 
   document.body.appendChild(sweetContainer)
 
-  var modal = getModal()
-  var input = getChildByClass(modal, swalClasses.input)
-  var file = getChildByClass(modal, swalClasses.file)
-  var range = modal.querySelector('.' + swalClasses.range + ' input')
-  var select = getChildByClass(modal, swalClasses.select)
-  var checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input')
-  var textarea = getChildByClass(modal, swalClasses.textarea)
+  const modal = getModal()
+  const input = getChildByClass(modal, swalClasses.input)
+  const file = getChildByClass(modal, swalClasses.file)
+  const range = modal.querySelector('.' + swalClasses.range + ' input')
+  const select = getChildByClass(modal, swalClasses.select)
+  const checkbox = modal.querySelector('.' + swalClasses.checkbox + ' input')
+  const textarea = getChildByClass(modal, swalClasses.textarea)
 
   input.oninput = function () {
     sweetAlert.resetValidationError()
@@ -77,45 +77,45 @@ export var init = function () {
 /*
  * Manipulate DOM
  */
-export var elementByClass = function (className) {
+export const elementByClass = function (className) {
   return sweetContainer.querySelector('.' + className)
 }
 
-export var getModal = function () {
+export const getModal = function () {
   return document.body.querySelector('.' + swalClasses.modal) || init()
 }
 
-export var getIcons = function () {
-  var modal = getModal()
+export const getIcons = function () {
+  const modal = getModal()
   return modal.querySelectorAll('.' + swalClasses.icon)
 }
 
-export var getSpacer = function () {
+export const getSpacer = function () {
   return elementByClass(swalClasses.spacer)
 }
 
-export var getProgressSteps = function () {
+export const getProgressSteps = function () {
   return elementByClass(swalClasses.progresssteps)
 }
 
-export var getValidationError = function () {
+export const getValidationError = function () {
   return elementByClass(swalClasses.validationerror)
 }
 
-export var getConfirmButton = function () {
+export const getConfirmButton = function () {
   return elementByClass(swalClasses.confirm)
 }
 
-export var getCancelButton = function () {
+export const getCancelButton = function () {
   return elementByClass(swalClasses.cancel)
 }
 
-export var getCloseButton = function () {
+export const getCloseButton = function () {
   return elementByClass(swalClasses.close)
 }
 
-export var getFocusableElements = function (focusCancel) {
-  var buttons = [getConfirmButton(), getCancelButton()]
+export const getFocusableElements = function (focusCancel) {
+  const buttons = [getConfirmButton(), getCancelButton()]
   if (focusCancel) {
     buttons.reverse()
   }
@@ -124,54 +124,54 @@ export var getFocusableElements = function (focusCancel) {
   ))
 }
 
-export var hasClass = function (elem, className) {
+export const hasClass = function (elem, className) {
   if (elem.classList) {
     return elem.classList.contains(className)
   }
   return false
 }
 
-export var focusInput = function (input) {
+export const focusInput = function (input) {
   input.focus()
 
   // place cursor at end of text in text input
   if (input.type !== 'file') {
     // http://stackoverflow.com/a/2345915/1331425
-    var val = input.value
+    const val = input.value
     input.value = ''
     input.value = val
   }
 }
 
-export var addClass = function (elem, className) {
+export const addClass = function (elem, className) {
   if (!elem || !className) {
     return
   }
-  var classes = className.split(/\s+/)
+  const classes = className.split(/\s+/)
   classes.forEach(function (className) {
     elem.classList.add(className)
   })
 }
 
-export var removeClass = function (elem, className) {
+export const removeClass = function (elem, className) {
   if (!elem || !className) {
     return
   }
-  var classes = className.split(/\s+/)
+  const classes = className.split(/\s+/)
   classes.forEach(function (className) {
     elem.classList.remove(className)
   })
 }
 
-export var getChildByClass = function (elem, className) {
-  for (var i = 0; i < elem.childNodes.length; i++) {
+export const getChildByClass = function (elem, className) {
+  for (let i = 0; i < elem.childNodes.length; i++) {
     if (hasClass(elem.childNodes[i], className)) {
       return elem.childNodes[i]
     }
   }
 }
 
-export var show = function (elem, display) {
+export const show = function (elem, display) {
   if (!display) {
     display = 'block'
   }
@@ -179,23 +179,23 @@ export var show = function (elem, display) {
   elem.style.display = display
 }
 
-export var hide = function (elem) {
+export const hide = function (elem) {
   elem.style.opacity = ''
   elem.style.display = 'none'
 }
 
-export var empty = function (elem) {
+export const empty = function (elem) {
   while (elem.firstChild) {
     elem.removeChild(elem.firstChild)
   }
 }
 
 // borrowed from jqeury $(elem).is(':visible') implementation
-export var isVisible = function (elem) {
+export const isVisible = function (elem) {
   return elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length
 }
 
-export var removeStyleProperty = function (elem, property) {
+export const removeStyleProperty = function (elem, property) {
   if (elem.style.removeProperty) {
     elem.style.removeProperty(property)
   } else {
@@ -203,26 +203,26 @@ export var removeStyleProperty = function (elem, property) {
   }
 }
 
-export var getTopMargin = function (elem) {
-  var elemDisplay = elem.style.display
+export const getTopMargin = function (elem) {
+  const elemDisplay = elem.style.display
   elem.style.left = '-9999px'
   elem.style.display = 'block'
 
-  var height = elem.clientHeight
+  const height = elem.clientHeight
 
   elem.style.left = ''
   elem.style.display = elemDisplay
   return ('-' + parseInt(height / 2, 10) + 'px')
 }
 
-export var fadeIn = function (elem, interval) {
+export const fadeIn = function (elem, interval) {
   if (+elem.style.opacity < 1) {
     interval = interval || 16
     elem.style.opacity = 0
     elem.style.display = 'block'
-    var last = +new Date()
-    var tick = function () {
-      var newOpacity = +elem.style.opacity + (new Date() - last) / 100
+    let last = +new Date()
+    const tick = function () {
+      const newOpacity = +elem.style.opacity + (new Date() - last) / 100
       elem.style.opacity = (newOpacity > 1) ? 1 : newOpacity
       last = +new Date()
 
@@ -234,14 +234,14 @@ export var fadeIn = function (elem, interval) {
   }
 }
 
-export var fadeOut = function (elem, interval) {
+export const fadeOut = function (elem, interval) {
   if (+elem.style.opacity > 0) {
     interval = interval || 16
-    var opacity = elem.style.opacity
-    var last = +new Date()
-    var tick = function () {
-      var change = new Date() - last
-      var newOpacity = +elem.style.opacity - change / (opacity * 100)
+    const opacity = elem.style.opacity
+    let last = +new Date()
+    const tick = function () {
+      const change = new Date() - last
+      const newOpacity = +elem.style.opacity - change / (opacity * 100)
       elem.style.opacity = newOpacity
       last = +new Date()
 
@@ -255,12 +255,12 @@ export var fadeOut = function (elem, interval) {
   }
 }
 
-export var fireClick = function (node) {
+export const fireClick = function (node) {
   // Taken from http://www.nonobtrusive.com/2011/11/29/programatically-fire-crossbrowser-click-event-with-javascript/
   // Then fixed for today's Chrome browser.
   if (typeof MouseEvent === 'function') {
     // Up-to-date approach
-    var mevt = new MouseEvent('click', {
+    const mevt = new MouseEvent('click', {
       view: window,
       bubbles: false,
       cancelable: true
@@ -268,7 +268,7 @@ export var fireClick = function (node) {
     node.dispatchEvent(mevt)
   } else if (document.createEvent) {
     // Fallback
-    var evt = document.createEvent('MouseEvents')
+    const evt = document.createEvent('MouseEvents')
     evt.initEvent('click', false, false)
     node.dispatchEvent(evt)
   } else if (document.createEventObject) {
@@ -278,7 +278,7 @@ export var fireClick = function (node) {
   }
 }
 
-export var stopEventPropagation = function (e) {
+export const stopEventPropagation = function (e) {
   // In particular, make sure the space bar doesn't scroll the main window.
   if (typeof e.stopPropagation === 'function') {
     e.stopPropagation()
@@ -288,15 +288,15 @@ export var stopEventPropagation = function (e) {
   }
 }
 
-export var animationEndEvent = (function () {
-  var testEl = document.createElement('div')
-  var transEndEventNames = {
+export const animationEndEvent = (function () {
+  const testEl = document.createElement('div')
+  const transEndEventNames = {
     'WebkitAnimation': 'webkitAnimationEnd',
     'OAnimation': 'oAnimationEnd oanimationend',
     'msAnimation': 'MSAnimationEnd',
     'animation': 'animationend'
   }
-  for (var i in transEndEventNames) {
+  for (const i in transEndEventNames) {
     if (transEndEventNames.hasOwnProperty(i) &&
       testEl.style[i] !== undefined) {
       return transEndEventNames[i]
@@ -307,8 +307,8 @@ export var animationEndEvent = (function () {
 })()
 
 // Reset the page to its previous state
-export var resetPrevState = function () {
-  var modal = getModal()
+export const resetPrevState = function () {
+  const modal = getModal()
   window.onkeydown = states.previousWindowKeyDown
   if (states.previousActiveElement && states.previousActiveElement.focus) {
     states.previousActiveElement.focus()
@@ -318,29 +318,29 @@ export var resetPrevState = function () {
 
 // Measure width of scrollbar
 // https://github.com/twbs/bootstrap/blob/master/js/modal.js#L279-L286
-export var measureScrollbar = function () {
-  var scrollDiv = document.createElement('div')
+export const measureScrollbar = function () {
+  const scrollDiv = document.createElement('div')
   scrollDiv.style.width = '50px'
   scrollDiv.style.height = '50px'
   scrollDiv.style.overflow = 'scroll'
   document.body.appendChild(scrollDiv)
-  var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
+  const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
   document.body.removeChild(scrollDiv)
   return scrollbarWidth
 }
 
 // JavaScript Debounce Function
 // https://davidwalsh.name/javascript-debounce-function
-export var debounce = function (func, wait, immediate) {
-  var timeout
+export const debounce = function (func, wait, immediate) {
+  let timeout
   return function () {
-    var context = this
-    var args = arguments
-    var later = function () {
+    const context = this
+    const args = arguments
+    const later = function () {
       timeout = null
       if (!immediate) func.apply(context, args)
     }
-    var callNow = immediate && !timeout
+    const callNow = immediate && !timeout
     clearTimeout(timeout)
     timeout = setTimeout(later, wait)
     if (callNow) func.apply(context, args)

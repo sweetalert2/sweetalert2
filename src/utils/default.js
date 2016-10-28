@@ -1,6 +1,6 @@
 import { swalClasses, iconTypes } from './classes.js'
 
-export var defaultParams = {
+export const defaultParams = {
   title: '',
   text: '',
   html: '',
@@ -46,7 +46,7 @@ export var defaultParams = {
   onClose: null
 }
 
-var sweetHTML = `
+const sweetHTML = `
   <div class="${swalClasses.modal}" style="display: none" tabIndex="-1">
     <ul class="${swalClasses.progresssteps}"></ul>
     <div class="${swalClasses.icon} ${iconTypes.error}">
@@ -82,9 +82,9 @@ var sweetHTML = `
   </div>
 `
 
-export var sweetContainer
+export let sweetContainer
 
-var existingSweetContainers = document.getElementsByClassName(swalClasses.container)
+const existingSweetContainers = document.getElementsByClassName(swalClasses.container)
 
 if (existingSweetContainers.length) {
   sweetContainer = existingSweetContainers[0]

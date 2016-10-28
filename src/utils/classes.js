@@ -1,14 +1,14 @@
-export var swalPrefix = 'swal2-'
+export const swalPrefix = 'swal2-'
 
-export var prefix = function (items) {
-  var result = {}
-  for (var i in items) {
+export const prefix = (items) => {
+  const result = {}
+  for (const i in items) {
     result[items[i]] = swalPrefix + items[i]
   }
   return result
 }
 
-export var swalClasses = prefix([
+export const swalClasses = prefix([
   'container',
   'in',
   'iosfix',
@@ -42,7 +42,7 @@ export var swalClasses = prefix([
   'styled'
 ])
 
-export var iconTypes = prefix([
+export const iconTypes = prefix([
   'success',
   'warning',
   'info',

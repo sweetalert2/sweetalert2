@@ -1,6 +1,6 @@
 import { swalClasses, iconTypes } from './classes.js'
 
-export var defaultParams = {
+export const defaultParams = {
   title: '',
   text: '',
   html: '',
@@ -46,43 +46,45 @@ export var defaultParams = {
   onClose: null
 }
 
-var sweetHTML = '<div class="' + swalClasses.modal + '" style="display: none" tabIndex="-1">' +
-    '<ul class="' + swalClasses.progresssteps + '"></ul>' +
-    '<div class="' + swalClasses.icon + ' ' + iconTypes.error + '">' +
-      '<span class="x-mark"><span class="line left"></span><span class="line right"></span></span>' +
-    '</div>' +
-    '<div class="' + swalClasses.icon + ' ' + iconTypes.question + '">?</div>' +
-    '<div class="' + swalClasses.icon + ' ' + iconTypes.warning + '">!</div>' +
-    '<div class="' + swalClasses.icon + ' ' + iconTypes.info + '">i</div>' +
-    '<div class="' + swalClasses.icon + ' ' + iconTypes.success + '">' +
-      '<span class="line tip"></span> <span class="line long"></span>' +
-      '<div class="placeholder"></div> <div class="fix"></div>' +
-    '</div>' +
-    '<img class="' + swalClasses.image + '">' +
-    '<h2></h2>' +
-    '<div class="' + swalClasses.content + '"></div>' +
-    '<input class="' + swalClasses.input + '">' +
-    '<input type="file" class="' + swalClasses.file + '">' +
-    '<div class="' + swalClasses.range + '">' +
-      '<output></output>' +
-      '<input type="range">' +
-    '</div>' +
-    '<select class="' + swalClasses.select + '"></select>' +
-    '<div class="' + swalClasses.radio + '"></div>' +
-    '<label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">' +
-      '<input type="checkbox">' +
-    '</label>' +
-    '<textarea class="' + swalClasses.textarea + '"></textarea>' +
-    '<div class="' + swalClasses.validationerror + '"></div>' +
-    '<hr class="' + swalClasses.spacer + '">' +
-    '<button type="button" class="' + swalClasses.confirm + '">OK</button>' +
-    '<button type="button" class="' + swalClasses.cancel + '">Cancel</button>' +
-    '<span class="' + swalClasses.close + '">&times;</span>' +
-  '</div>'
+const sweetHTML = `
+  <div class="${swalClasses.modal}" style="display: none" tabIndex="-1">
+    <ul class="${swalClasses.progresssteps}"></ul>
+    <div class="${swalClasses.icon} ${iconTypes.error}">
+      <span class="x-mark"><span class="line left"></span><span class="line right"></span></span>
+    </div>
+    <div class="${swalClasses.icon} ${iconTypes.question}">?</div>
+    <div class="${swalClasses.icon} ${iconTypes.warning}">!</div>
+    <div class="${swalClasses.icon} ${iconTypes.info}">i</div>
+    <div class="${swalClasses.icon} ${iconTypes.success}">
+      <span class="line tip"></span> <span class="line long"></span>
+      <div class="placeholder"></div> <div class="fix"></div>
+    </div>
+    <img class="${swalClasses.image}">
+    <h2></h2>
+    <div class="${swalClasses.content}"></div>
+    <input class="${swalClasses.input}">
+    <input type="file" class="${swalClasses.file}">
+    <div class="${swalClasses.range}">
+      <output></output>
+      <input type="range">
+    </div>
+    <select class="${swalClasses.select}"></select>
+    <div class="${swalClasses.radio}"></div>
+    <label for="${swalClasses.checkbox}" class="${swalClasses.checkbox}">
+      <input type="checkbox">
+    </label>
+    <textarea class="${swalClasses.textarea}"></textarea>
+    <div class="${swalClasses.validationerror}"></div>
+    <hr class="${swalClasses.spacer}">
+    <button type="button" class="${swalClasses.confirm}">OK</button>
+    <button type="button" class="${swalClasses.cancel}">Cancel</button>
+    <span class="${swalClasses.close}">&times;</span>
+  </div>
+`.replace(/(^|\n)\s*/g, '')
 
-export var sweetContainer
+export let sweetContainer
 
-var existingSweetContainers = document.getElementsByClassName(swalClasses.container)
+const existingSweetContainers = document.getElementsByClassName(swalClasses.container)
 
 if (existingSweetContainers.length) {
   sweetContainer = existingSweetContainers[0]

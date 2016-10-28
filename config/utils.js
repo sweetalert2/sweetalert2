@@ -1,24 +1,25 @@
-var rollup = require('rollup').rollup
-var pack = require('../package.json')
-var banner = require('./banner.js')
-var fs = require('fs')
-var zlib = require('zlib')
-var uglify = require('uglify-js')
+const rollup = require('rollup').rollup
+const babel = require('rollup-plugin-babel')
+const pack = require('../package.json')
+const banner = require('./banner.js')
+const fs = require('fs')
+const zlib = require('zlib')
+const uglify = require('uglify-js')
 
-var toUpper = function (_, c) {
+const toUpper = (_, c) => {
   return c ? c.toUpperCase() : ''
 }
 
 const classifyRE = /(?:^|[-_\/])(\w)/g
-var classify = function (str) {
+const classify = (str) => {
   return str.replace(classifyRE, toUpper)
 }
 
-var zip = function () {
-  return new Promise(function (resolve, reject) {
-    fs.readFile('dist/' + pack.name + '.min.js', function (err, buf) {
+const zip = () => {
+  return new Promise((resolve, reject) => {
+    fs.readFile('dist/' + pack.name + '.min.js', (err, buf) => {
       if (err) return reject(err)
-      zlib.gzip(buf, function (err, buf) {
+      zlib.gzip(buf, (err, buf) => {
         if (err) return reject(err)
         write('dist/' + pack.name + '.min.js.gz', buf).then(resolve)
       })
@@ -26,22 +27,27 @@ var zip = function () {
   })
 }
 
-var write = function (dest, code) {
-  return new Promise(function (resolve, reject) {
-    fs.writeFile(dest, code, function (err) {
+const write = (dest, code) => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile(dest, code, (err) => {
       if (err) return reject(err)
       resolve()
     })
   })
 }
 
-var packageRollup = function (options) {
+const packageRollup = (options) => {
   const moduleId = classify(pack.name)
   return rollup({
-    entry: 'src/sweetalert2.js'
+    entry: 'src/sweetalert2.js',
+    plugins: [
+      babel({
+        exclude: 'node_modules/**'
+      })
+    ]
   })
-  .then(function (bundle) {
-    var code = bundle.generate({
+  .then((bundle) => {
+    let code = bundle.generate({
       format: options.format,
       banner: banner,
       moduleName: classify(pack.name),

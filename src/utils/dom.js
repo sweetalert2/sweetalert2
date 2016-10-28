@@ -28,6 +28,7 @@ export const init = () => {
   const input = getChildByClass(modal, swalClasses.input)
   const file = getChildByClass(modal, swalClasses.file)
   const range = modal.querySelector(`.${swalClasses.range} input`)
+  const rangeOutput = modal.querySelector(`.${swalClasses.range} output`)
   const select = getChildByClass(modal, swalClasses.select)
   const checkbox = modal.querySelector(`.${swalClasses.checkbox} input`)
   const textarea = getChildByClass(modal, swalClasses.textarea)
@@ -51,7 +52,7 @@ export const init = () => {
 
   range.oninput = () => {
     sweetAlert.resetValidationError()
-    range.previousSibling.value = range.value
+    rangeOutput.value = range.value
   }
 
   range.onchange = () => {
@@ -85,6 +86,8 @@ export const getIcons = () => {
   const modal = getModal()
   return modal.querySelectorAll('.' + swalClasses.icon)
 }
+
+export const getImage = () => elementByClass(swalClasses.image)
 
 export const getSpacer = () => elementByClass(swalClasses.spacer)
 

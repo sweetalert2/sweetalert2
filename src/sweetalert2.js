@@ -25,39 +25,39 @@ const setParameters = (params) => {
   modal.style.padding = params.padding + 'px'
   modal.style.background = params.background
 
-  let $title = modal.querySelector('h2')
-  let $content = modal.querySelector('.' + swalClasses.content)
-  let $confirmBtn = dom.getConfirmButton()
-  let $cancelBtn = dom.getCancelButton()
-  let $closeButton = modal.querySelector('.' + swalClasses.close)
+  const title = modal.querySelector('h2')
+  const content = modal.querySelector('.' + swalClasses.content)
+  const confirmButton = dom.getConfirmButton()
+  const cancelButton = dom.getCancelButton()
+  const closeButton = modal.querySelector('.' + swalClasses.close)
 
   // Title
-  $title.innerHTML = params.title.split('\n').join('<br>')
+  title.innerHTML = params.title.split('\n').join('<br>')
 
   // Content
   if (params.text || params.html) {
     if (typeof params.html === 'object') {
-      $content.innerHTML = ''
+      content.innerHTML = ''
       if (0 in params.html) {
         for (let i = 0; i in params.html; i++) {
-          $content.appendChild(params.html[i].cloneNode(true))
+          content.appendChild(params.html[i].cloneNode(true))
         }
       } else {
-        $content.appendChild(params.html.cloneNode(true))
+        content.appendChild(params.html.cloneNode(true))
       }
     } else {
-      $content.innerHTML = params.html || (params.text.split('\n').join('<br>'))
+      content.innerHTML = params.html || (params.text.split('\n').join('<br>'))
     }
-    dom.show($content)
+    dom.show(content)
   } else {
-    dom.hide($content)
+    dom.hide(content)
   }
 
   // Close button
   if (params.showCloseButton) {
-    dom.show($closeButton)
+    dom.show(closeButton)
   } else {
-    dom.hide($closeButton)
+    dom.hide(closeButton)
   }
 
   // Custom Class
@@ -114,22 +114,22 @@ const setParameters = (params) => {
       console.error(`SweetAlert2: Unknown alert type: ${params.type}`)
       return false
     }
-    const $icon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes[params.type])
-    dom.show($icon)
+    const icon = modal.querySelector(`.${swalClasses.icon}.${iconTypes[params.type]}`)
+    dom.show(icon)
 
     // Animate icon
     switch (params.type) {
       case 'success':
-        dom.addClass($icon, 'animate')
-        dom.addClass($icon.querySelector('.tip'), 'animate-success-tip')
-        dom.addClass($icon.querySelector('.long'), 'animate-success-long')
+        dom.addClass(icon, 'animate')
+        dom.addClass(icon.querySelector('.tip'), 'animate-success-tip')
+        dom.addClass(icon.querySelector('.long'), 'animate-success-long')
         break
       case 'error':
-        dom.addClass($icon, 'animate-error-icon')
-        dom.addClass($icon.querySelector('.x-mark'), 'animate-x-mark')
+        dom.addClass(icon, 'animate-error-icon')
+        dom.addClass(icon.querySelector('.x-mark'), 'animate-x-mark')
         break
       case 'warning':
-        dom.addClass($icon, 'pulse-warning')
+        dom.addClass(icon, 'pulse-warning')
         break
       default:
         break
@@ -137,43 +137,43 @@ const setParameters = (params) => {
   }
 
   // Custom image
-  const $customImage = modal.querySelector('.' + swalClasses.image)
+  const image = dom.getImage()
   if (params.imageUrl) {
-    $customImage.setAttribute('src', params.imageUrl)
-    dom.show($customImage)
+    image.setAttribute('src', params.imageUrl)
+    dom.show(image)
 
     if (params.imageWidth) {
-      $customImage.setAttribute('width', params.imageWidth)
+      image.setAttribute('width', params.imageWidth)
     } else {
-      $customImage.removeAttribute('width')
+      image.removeAttribute('width')
     }
 
     if (params.imageHeight) {
-      $customImage.setAttribute('height', params.imageHeight)
+      image.setAttribute('height', params.imageHeight)
     } else {
-      $customImage.removeAttribute('height')
+      image.removeAttribute('height')
     }
 
-    $customImage.className = swalClasses.image
+    image.className = swalClasses.image
     if (params.imageClass) {
-      dom.addClass($customImage, params.imageClass)
+      dom.addClass(image, params.imageClass)
     }
   } else {
-    dom.hide($customImage)
+    dom.hide(image)
   }
 
   // Cancel button
   if (params.showCancelButton) {
-    $cancelBtn.style.display = 'inline-block'
+    cancelButton.style.display = 'inline-block'
   } else {
-    dom.hide($cancelBtn)
+    dom.hide(cancelButton)
   }
 
   // Confirm button
   if (params.showConfirmButton) {
-    dom.removeStyleProperty($confirmBtn, 'display')
+    dom.removeStyleProperty(confirmButton, 'display')
   } else {
-    dom.hide($confirmBtn)
+    dom.hide(confirmButton)
   }
 
   // Buttons spacer
@@ -185,31 +185,31 @@ const setParameters = (params) => {
   }
 
   // Edit text on cancel and confirm buttons
-  $confirmBtn.innerHTML = params.confirmButtonText
-  $cancelBtn.innerHTML = params.cancelButtonText
+  confirmButton.innerHTML = params.confirmButtonText
+  cancelButton.innerHTML = params.cancelButtonText
 
   // Set buttons to selected background colors
   if (params.buttonsStyling) {
-    $confirmBtn.style.backgroundColor = params.confirmButtonColor
-    $cancelBtn.style.backgroundColor = params.cancelButtonColor
+    confirmButton.style.backgroundColor = params.confirmButtonColor
+    cancelButton.style.backgroundColor = params.cancelButtonColor
   }
 
   // Add buttons custom classes
-  $confirmBtn.className = swalClasses.confirm
-  dom.addClass($confirmBtn, params.confirmButtonClass)
-  $cancelBtn.className = swalClasses.cancel
-  dom.addClass($cancelBtn, params.cancelButtonClass)
+  confirmButton.className = swalClasses.confirm
+  dom.addClass(confirmButton, params.confirmButtonClass)
+  cancelButton.className = swalClasses.cancel
+  dom.addClass(cancelButton, params.cancelButtonClass)
 
   // Buttons styling
   if (params.buttonsStyling) {
-    dom.addClass($confirmBtn, swalClasses.styled)
-    dom.addClass($cancelBtn, swalClasses.styled)
+    dom.addClass(confirmButton, swalClasses.styled)
+    dom.addClass(cancelButton, swalClasses.styled)
   } else {
-    dom.removeClass($confirmBtn, swalClasses.styled)
-    dom.removeClass($cancelBtn, swalClasses.styled)
+    dom.removeClass(confirmButton, swalClasses.styled)
+    dom.removeClass(cancelButton, swalClasses.styled)
 
-    $confirmBtn.style.backgroundColor = $confirmBtn.style.borderLeftColor = $confirmBtn.style.borderRightColor = ''
-    $cancelBtn.style.backgroundColor = $cancelBtn.style.borderLeftColor = $cancelBtn.style.borderRightColor = ''
+    confirmButton.style.backgroundColor = confirmButton.style.borderLeftColor = confirmButton.style.borderRightColor = ''
+    cancelButton.style.backgroundColor = cancelButton.style.borderLeftColor = cancelButton.style.borderRightColor = ''
   }
 
   // CSS animation
@@ -357,12 +357,12 @@ const modalDependant = (...args) => {
         case 'file':
           return dom.getChildByClass(modal, swalClasses[inputType])
         case 'checkbox':
-          return modal.querySelector('.' + swalClasses.checkbox + ' input')
+          return modal.querySelector(`.${swalClasses.checkbox} input`)
         case 'radio':
-          return modal.querySelector('.' + swalClasses.radio + ' input:checked') ||
-            modal.querySelector('.' + swalClasses.radio + ' input:first-child')
+          return modal.querySelector(`.${swalClasses.radio} input:checked`) ||
+            modal.querySelector(`.${swalClasses.radio} input:first-child`)
         case 'range':
-          return modal.querySelector('.' + swalClasses.range + ' input')
+          return modal.querySelector(`.${swalClasses.range} input`)
         default:
           return dom.getChildByClass(modal, swalClasses.input)
       }
@@ -424,37 +424,37 @@ const modalDependant = (...args) => {
     const onButtonEvent = (event) => {
       const e = event || window.event
       const target = e.target || e.srcElement
-      const confirmBtn = dom.getConfirmButton()
-      const cancelBtn = dom.getCancelButton()
-      const targetedConfirm = confirmBtn === target || confirmBtn.contains(target)
-      const targetedCancel = cancelBtn === target || cancelBtn.contains(target)
+      const confirmButton = dom.getConfirmButton()
+      const cancelButton = dom.getCancelButton()
+      const targetedConfirm = confirmButton === target || confirmButton.contains(target)
+      const targetedCancel = cancelButton === target || cancelButton.contains(target)
 
       switch (e.type) {
         case 'mouseover':
         case 'mouseup':
           if (params.buttonsStyling) {
             if (targetedConfirm) {
-              confirmBtn.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1)
+              confirmButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1)
             } else if (targetedCancel) {
-              cancelBtn.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.1)
+              cancelButton.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.1)
             }
           }
           break
         case 'mouseout':
           if (params.buttonsStyling) {
             if (targetedConfirm) {
-              confirmBtn.style.backgroundColor = params.confirmButtonColor
+              confirmButton.style.backgroundColor = params.confirmButtonColor
             } else if (targetedCancel) {
-              cancelBtn.style.backgroundColor = params.cancelButtonColor
+              cancelButton.style.backgroundColor = params.cancelButtonColor
             }
           }
           break
         case 'mousedown':
           if (params.buttonsStyling) {
             if (targetedConfirm) {
-              confirmBtn.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.2)
+              confirmButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.2)
             } else if (targetedCancel) {
-              cancelBtn.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.2)
+              cancelButton.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.2)
             }
           }
           break
@@ -496,12 +496,12 @@ const modalDependant = (...args) => {
       }
     }
 
-    const $buttons = modal.querySelectorAll('button')
-    for (let i = 0; i < $buttons.length; i++) {
-      $buttons[i].onclick = onButtonEvent
-      $buttons[i].onmouseover = onButtonEvent
-      $buttons[i].onmouseout = onButtonEvent
-      $buttons[i].onmousedown = onButtonEvent
+    const buttons = modal.querySelectorAll('button')
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].onclick = onButtonEvent
+      buttons[i].onmouseover = onButtonEvent
+      buttons[i].onmouseout = onButtonEvent
+      buttons[i].onmousedown = onButtonEvent
     }
 
     // Closing modal by close button
@@ -521,14 +521,14 @@ const modalDependant = (...args) => {
       }
     }
 
-    const $confirmButton = dom.getConfirmButton()
-    const $cancelButton = dom.getCancelButton()
+    const confirmButton = dom.getConfirmButton()
+    const cancelButton = dom.getCancelButton()
 
     // Reverse buttons if neede d
     if (params.reverseButtons) {
-      $confirmButton.parentNode.insertBefore($cancelButton, $confirmButton)
+      confirmButton.parentNode.insertBefore(cancelButton, confirmButton)
     } else {
-      $confirmButton.parentNode.insertBefore($confirmButton, $cancelButton)
+      confirmButton.parentNode.insertBefore(confirmButton, cancelButton)
     }
 
     // Focus handling
@@ -564,12 +564,12 @@ const modalDependant = (...args) => {
         return
       }
 
-      const $targetElement = e.target || e.srcElement
+      const targetElement = e.target || e.srcElement
 
       const focusableElements = dom.getFocusableElements(params.focusCancel)
       let btnIndex = -1 // Find the button - note, this is a nodelist, not an array.
       for (let i = 0; i < focusableElements.length; i++) {
-        if ($targetElement === focusableElements[i]) {
+        if (targetElement === focusableElements[i]) {
           btnIndex = i
           break
         }
@@ -591,9 +591,9 @@ const modalDependant = (...args) => {
           if (btnIndex === -1) {
             // ENTER/SPACE clicked outside of a button.
             if (params.focusCancel) {
-              dom.fireClick($cancelButton, e)
+              dom.fireClick(cancelButton, e)
             } else {
-              dom.fireClick($confirmButton, e)
+              dom.fireClick(confirmButton, e)
             }
           }
         } else if (keyCode === 27 && params.allowEscapeKey === true) {
@@ -608,8 +608,8 @@ const modalDependant = (...args) => {
 
     // Loading state
     if (params.buttonsStyling) {
-      $confirmButton.style.borderLeftColor = params.confirmButtonColor
-      $confirmButton.style.borderRightColor = params.confirmButtonColor
+      confirmButton.style.borderLeftColor = params.confirmButtonColor
+      confirmButton.style.borderRightColor = params.confirmButtonColor
     }
 
     /**
@@ -617,11 +617,11 @@ const modalDependant = (...args) => {
      */
     sweetAlert.showLoading = sweetAlert.enableLoading = () => {
       dom.show(dom.getSpacer())
-      dom.show($confirmButton, 'inline-block')
-      dom.addClass($confirmButton, swalClasses.loading)
+      dom.show(confirmButton, 'inline-block')
+      dom.addClass(confirmButton, swalClasses.loading)
       dom.addClass(modal, swalClasses.loading)
-      $confirmButton.disabled = true
-      $cancelButton.disabled = true
+      confirmButton.disabled = true
+      cancelButton.disabled = true
     }
 
     /**
@@ -629,33 +629,33 @@ const modalDependant = (...args) => {
      */
     sweetAlert.hideLoading = sweetAlert.disableLoading = () => {
       if (!params.showConfirmButton) {
-        dom.hide($confirmButton)
+        dom.hide(confirmButton)
         if (!params.showCancelButton) {
           dom.hide(dom.getSpacer())
         }
       }
-      dom.removeClass($confirmButton, swalClasses.loading)
+      dom.removeClass(confirmButton, swalClasses.loading)
       dom.removeClass(modal, swalClasses.loading)
-      $confirmButton.disabled = false
-      $cancelButton.disabled = false
+      confirmButton.disabled = false
+      cancelButton.disabled = false
     }
 
     sweetAlert.enableButtons = () => {
-      $confirmButton.disabled = false
-      $cancelButton.disabled = false
+      confirmButton.disabled = false
+      cancelButton.disabled = false
     }
 
     sweetAlert.disableButtons = () => {
-      $confirmButton.disabled = true
-      $cancelButton.disabled = true
+      confirmButton.disabled = true
+      cancelButton.disabled = true
     }
 
     sweetAlert.enableConfirmButton = () => {
-      $confirmButton.disabled = false
+      confirmButton.disabled = false
     }
 
     sweetAlert.disableConfirmButton = () => {
-      $confirmButton.disabled = true
+      confirmButton.disabled = true
     }
 
     sweetAlert.enableInput = () => {
@@ -1003,17 +1003,17 @@ sweetAlert.close = sweetAlert.closeModal = (onComplete) => {
   dom.addClass(modal, swalClasses.hide)
 
   // Reset icon animations
-  const $successIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.success)
-  dom.removeClass($successIcon, 'animate')
-  dom.removeClass($successIcon.querySelector('.tip'), 'animate-success-tip')
-  dom.removeClass($successIcon.querySelector('.long'), 'animate-success-long')
+  const successIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.success)
+  dom.removeClass(successIcon, 'animate')
+  dom.removeClass(successIcon.querySelector('.tip'), 'animate-success-tip')
+  dom.removeClass(successIcon.querySelector('.long'), 'animate-success-long')
 
-  const $errorIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.error)
-  dom.removeClass($errorIcon, 'animate-error-icon')
-  dom.removeClass($errorIcon.querySelector('.x-mark'), 'animate-x-mark')
+  const errorIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.error)
+  dom.removeClass(errorIcon, 'animate-error-icon')
+  dom.removeClass(errorIcon.querySelector('.x-mark'), 'animate-x-mark')
 
-  const $warningIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.warning)
-  dom.removeClass($warningIcon, 'pulse-warning')
+  const warningIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.warning)
+  dom.removeClass(warningIcon, 'pulse-warning')
 
   dom.resetPrevState()
 
@@ -1062,11 +1062,15 @@ sweetAlert.clickCancel = () => {
  * @param {Object} userParams
  */
 sweetAlert.setDefaults = (userParams) => {
-  if (!userParams) {
-    throw new Error('userParams is required')
+  if (!userParams || typeof userParams !== 'object') {
+    return console.error('SweetAlert2: the argument for setDefaults() is required and has to be a object')
   }
-  if (typeof userParams !== 'object') {
-    throw new Error('userParams has to be a object')
+
+  for (let param in userParams) {
+    if (!defaultParams.hasOwnProperty(param) && param !== 'extraParams') {
+      console.warn(`SweetAlert2: Unknown parameter "${param}"`)
+      delete userParams[param]
+    }
   }
 
   Object.assign(modalParams, userParams)

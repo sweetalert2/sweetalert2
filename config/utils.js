@@ -1,21 +1,21 @@
-var rollup = require('rollup').rollup
-var babel = require('rollup-plugin-babel')
-var pack = require('../package.json')
-var banner = require('./banner.js')
-var fs = require('fs')
-var zlib = require('zlib')
-var uglify = require('uglify-js')
+const rollup = require('rollup').rollup
+const babel = require('rollup-plugin-babel')
+const pack = require('../package.json')
+const banner = require('./banner.js')
+const fs = require('fs')
+const zlib = require('zlib')
+const uglify = require('uglify-js')
 
-var toUpper = function (_, c) {
+const toUpper = function (_, c) {
   return c ? c.toUpperCase() : ''
 }
 
 const classifyRE = /(?:^|[-_\/])(\w)/g
-var classify = function (str) {
+const classify = function (str) {
   return str.replace(classifyRE, toUpper)
 }
 
-var zip = function () {
+const zip = function () {
   return new Promise(function (resolve, reject) {
     fs.readFile('dist/' + pack.name + '.min.js', function (err, buf) {
       if (err) return reject(err)
@@ -27,7 +27,7 @@ var zip = function () {
   })
 }
 
-var write = function (dest, code) {
+const write = function (dest, code) {
   return new Promise(function (resolve, reject) {
     fs.writeFile(dest, code, function (err) {
       if (err) return reject(err)
@@ -36,7 +36,7 @@ var write = function (dest, code) {
   })
 }
 
-var packageRollup = function (options) {
+const packageRollup = function (options) {
   const moduleId = classify(pack.name)
   return rollup({
     entry: 'src/sweetalert2.js',
@@ -47,7 +47,7 @@ var packageRollup = function (options) {
     ]
   })
   .then(function (bundle) {
-    var code = bundle.generate({
+    let code = bundle.generate({
       format: options.format,
       banner: banner,
       moduleName: classify(pack.name),

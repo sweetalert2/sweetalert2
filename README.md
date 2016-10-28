@@ -234,10 +234,10 @@ If you would like to contribute enhancements or fixes, please do the following:
 
 1. Fork the plugin repository.
 
-2. Make sure you have [Node](http://nodejs.org/) and [NPM](https://www.npmjs.com/) installed.
+2. Make sure you have [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/) installed.
 
-3. When in the SweetAlert2 directory, run the command ``npm install`` to install npm packages.
+3. When in the SweetAlert2 directory, run `npm install` or `yarn install` to install dependencies.
 
-4. Start gulp watcher ``gulp watch`` to automatically build and minify the SCSS and JS-files.
+4. Start gulp watcher `gulp watch` to automatically build and minify the SCSS and JS-files.
 
 5. Make sure that `dist/*` files aren't committed and create a pull request.

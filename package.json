@@ -30,6 +30,9 @@
   "standard": {
     "ignore": [
       "dist/"
+    ],
+    "global": [
+      "MutationObserver"
     ]
   },
   "files": [

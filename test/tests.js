@@ -58,7 +58,7 @@ test('cancel button', function (assert) {
       assert.equal(dismiss, 'cancel')
       done()
     }
-  ).done()
+  ).catch(swal.noop)
 
   swal.clickCancel()
 })
@@ -142,7 +142,7 @@ test('set and reset defaults', function (assert) {
   assert.ok($('.swal2-cancel').is(':visible'))
 
   swal.resetDefaults()
-  swal('Modal after resetting defaults').done()
+  swal('Modal after resetting defaults').catch(swal.noop)
   assert.equal($('.swal2-confirm').text(), 'OK')
   assert.ok($('.swal2-cancel').is(':hidden'))
 
@@ -244,7 +244,7 @@ test('queue', function (assert) {
       swal.clickConfirm()
 
       // test queue is cancelled on first step, other steps shouldn't be shown
-      swal.queue(steps).done()
+      swal.queue(steps).catch(swal.noop)
       swal.clickCancel()
       assert.notOk(swal.isVisible())
       done()

@@ -13,7 +13,7 @@ What's the difference between SweetAlert and SweetAlert2?
 
 [See SweetAlert2 in action!](https://limonte.github.io/sweetalert2/)
 
-<img src="https://raw.github.com/limonte/sweetalert2/master/sweetalert2.gif" width="686">
+<img src="https://raw.github.com/limonte/sweetalert2/master/assets/sweetalert2.gif" width="686">
 
 
 Usage
@@ -127,7 +127,7 @@ Modal Types
 
 | `success`                                                                       | `error`                                                                       | `warning`                                                                       | `info`                                                                       | `question`                                                                       |
 | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-success.png) | ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-error.png) | ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-warning.png) | ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-info.png) | ![](https://raw.github.com/limonte/sweetalert2/master/docs/swal2-question.png) |
+| ![](https://raw.github.com/limonte/sweetalert2/master/assets/swal2-success.png) | ![](https://raw.github.com/limonte/sweetalert2/master/assets/swal2-error.png) | ![](https://raw.github.com/limonte/sweetalert2/master/assets/swal2-warning.png) | ![](https://raw.github.com/limonte/sweetalert2/master/assets/swal2-info.png) | ![](https://raw.github.com/limonte/sweetalert2/master/assets/swal2-question.png) |
 
 
 Configuration

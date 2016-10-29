@@ -1,12 +1,12 @@
-/* global $, test, swal */
+/* global $, QUnit, swal */
 
-test('modal shows up', function (assert) {
+QUnit.test('modal shows up', function (assert) {
   assert.notOk(swal.isVisible())
   swal('Hello world!')
   assert.ok(swal.isVisible())
 })
 
-test('modal width', function (assert) {
+QUnit.test('modal width', function (assert) {
   swal({text: '400px', width: 300})
   assert.equal($('.swal2-modal')[0].style.width, '300px')
 
@@ -20,7 +20,7 @@ test('modal width', function (assert) {
   assert.equal($('.swal2-modal')[0].style.width, '500px')
 })
 
-test('confirm button', function (assert) {
+QUnit.test('confirm button', function (assert) {
   const done = assert.async()
 
   swal('Confirm me').then(function (result) {
@@ -31,7 +31,7 @@ test('confirm button', function (assert) {
   swal.clickConfirm()
 })
 
-test('custom buttons classes', function (assert) {
+QUnit.test('custom buttons classes', function (assert) {
   swal({
     text: 'Modal with custom buttons classes',
     confirmButtonClass: 'btn btn-success',
@@ -49,7 +49,7 @@ test('custom buttons classes', function (assert) {
   assert.notOk($('.swal2-cancel').hasClass('btn-warning'))
 })
 
-test('cancel button', function (assert) {
+QUnit.test('cancel button', function (assert) {
   const done = assert.async()
 
   swal('Cancel me').then(
@@ -63,7 +63,7 @@ test('cancel button', function (assert) {
   swal.clickCancel()
 })
 
-test('esc key', function (assert) {
+QUnit.test('esc key', function (assert) {
   const done = assert.async()
 
   swal('Esc me').then(
@@ -79,7 +79,7 @@ test('esc key', function (assert) {
   }))
 })
 
-test('overlay click', function (assert) {
+QUnit.test('overlay click', function (assert) {
   const done = assert.async()
 
   swal('Overlay click').then(
@@ -93,7 +93,7 @@ test('overlay click', function (assert) {
   $('.swal2-container').click()
 })
 
-test('timer works', function (assert) {
+QUnit.test('timer works', function (assert) {
   const done = assert.async()
 
   swal({title: 'Timer test', timer: 10, animation: false}).then(
@@ -105,7 +105,7 @@ test('timer works', function (assert) {
   )
 })
 
-test('close button', function (assert) {
+QUnit.test('close button', function (assert) {
   const done = assert.async()
 
   swal({title: 'Close button test', showCloseButton: true}).then(
@@ -121,7 +121,7 @@ test('close button', function (assert) {
   $closeButton.click()
 })
 
-test('jQuery/js element as html param', function (assert) {
+QUnit.test('jQuery/js element as html param', function (assert) {
   swal({
     html: $('<p>jQuery element</p>')
   })
@@ -135,7 +135,7 @@ test('jQuery/js element as html param', function (assert) {
   assert.equal($('.swal2-content').html(), '<p>js element</p>')
 })
 
-test('set and reset defaults', function (assert) {
+QUnit.test('set and reset defaults', function (assert) {
   swal.setDefaults({confirmButtonText: 'Next >', showCancelButton: true})
   swal('Modal with changed defaults')
   assert.equal($('.swal2-confirm').text(), 'Next >')
@@ -149,7 +149,7 @@ test('set and reset defaults', function (assert) {
   swal.clickCancel()
 })
 
-test('input text', function (assert) {
+QUnit.test('input text', function (assert) {
   const done = assert.async()
 
   const string = 'Live for yourself'
@@ -162,7 +162,7 @@ test('input text', function (assert) {
   swal.clickConfirm()
 })
 
-test('validation error', function (assert) {
+QUnit.test('validation error', function (assert) {
   const done = assert.async()
 
   swal({input: 'email', animation: false})
@@ -183,7 +183,7 @@ test('validation error', function (assert) {
   }, 60)
 })
 
-test('input select', function (assert) {
+QUnit.test('input select', function (assert) {
   const done = assert.async()
 
   const selected = 'dos'
@@ -196,7 +196,7 @@ test('input select', function (assert) {
   swal.clickConfirm()
 })
 
-test('input checkbox', function (assert) {
+QUnit.test('input checkbox', function (assert) {
   const done = assert.async()
   const checkbox = $('.swal2-checkbox input')
 
@@ -210,7 +210,7 @@ test('input checkbox', function (assert) {
   swal.clickConfirm()
 })
 
-test('input range', function (assert) {
+QUnit.test('input range', function (assert) {
   swal({ input: 'range', inputAttributes: {min: 1, max: 10}, inputValue: 5 })
   const input = $('.swal2-range input')
   assert.equal(input.attr('min'), '1')
@@ -218,7 +218,7 @@ test('input range', function (assert) {
   assert.equal(input.val(), '5')
 })
 
-test('queue', function (assert) {
+QUnit.test('queue', function (assert) {
   const done = assert.async()
   const steps = ['Step 1', 'Step 2']
 
@@ -252,7 +252,7 @@ test('queue', function (assert) {
   })
 })
 
-test('dymanic queue', function (assert) {
+QUnit.test('dymanic queue', function (assert) {
   const done = assert.async()
   const steps = [
     {
@@ -307,7 +307,7 @@ test('dymanic queue', function (assert) {
   })
 })
 
-test('showLoading and hideLoading', function (assert) {
+QUnit.test('showLoading and hideLoading', function (assert) {
   swal({
     title: 'test loading state',
     showCancelButton: true
@@ -335,7 +335,7 @@ test('showLoading and hideLoading', function (assert) {
   assert.notOk($('.swal2-confirm').hasClass('swal2-loading'))
 })
 
-test('disable/enable buttons', function (assert) {
+QUnit.test('disable/enable buttons', function (assert) {
   swal('test disable/enable buttons')
 
   swal.disableButtons()
@@ -353,7 +353,7 @@ test('disable/enable buttons', function (assert) {
   assert.notOk($('.swal2-confirm').is(':disabled'))
 })
 
-test('input radio', function (assert) {
+QUnit.test('input radio', function (assert) {
   swal({
     input: 'radio',
     inputOptions: {
@@ -366,7 +366,7 @@ test('input radio', function (assert) {
   assert.equal($('.swal2-radio input[type="radio"]').length, 2)
 })
 
-test('disable/enable input', function (assert) {
+QUnit.test('disable/enable input', function (assert) {
   swal({
     input: 'text'
   })
@@ -394,7 +394,7 @@ test('disable/enable input', function (assert) {
   })
 })
 
-test('default focus', function (assert) {
+QUnit.test('default focus', function (assert) {
   const done = assert.async()
 
   swal('Modal with the Confirm button only')
@@ -416,7 +416,7 @@ test('default focus', function (assert) {
   })
 })
 
-test('reversed buttons', function (assert) {
+QUnit.test('reversed buttons', function (assert) {
   swal({
     text: 'Modal with reversed buttons',
     reverseButtons: true
@@ -427,7 +427,7 @@ test('reversed buttons', function (assert) {
   assert.ok($('.swal2-cancel').index() - $('.swal2-confirm').index() === 1)
 })
 
-test('focus cancel', function (assert) {
+QUnit.test('focus cancel', function (assert) {
   swal({
     text: 'Modal with Cancel button focused',
     showCancelButton: true,
@@ -436,7 +436,7 @@ test('focus cancel', function (assert) {
   assert.ok(document.activeElement === $('.swal2-cancel')[0])
 })
 
-test('image custom class', function (assert) {
+QUnit.test('image custom class', function (assert) {
   swal({
     text: 'Custom class is set',
     imageUrl: 'image.png',
@@ -451,7 +451,7 @@ test('image custom class', function (assert) {
   assert.notOk($('.swal2-image').hasClass('image-custom-class'))
 })
 
-test('modal vertical offset', function (assert) {
+QUnit.test('modal vertical offset', function (assert) {
   const done = assert.async(1)
   // create a modal with dynamic-height content
   swal({

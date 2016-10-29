@@ -1087,15 +1087,4 @@ sweetAlert.noop = () => { }
 
 sweetAlert.version = ''
 
-if (typeof Promise === 'function') {
-  Promise.prototype.done = Promise.prototype.done || function () { // eslint-disable-line
-    return this.catch(function () {
-      // Catch promise rejections silently.
-      // https://github.com/limonte/sweetalert2/issues/177
-    })
-  }
-} else {
-  console.warn('SweetAlert2: Please inlude Promise polyfill BEFORE including sweetalert2.js if IE10+ support needed.')
-}
-
 export default sweetAlert

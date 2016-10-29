@@ -302,12 +302,8 @@ const modalDependant = (...args) => {
   let params = Object.assign({}, modalParams)
 
   switch (typeof args[0]) {
-
     case 'string':
-      params.title = args[0]
-      params.text = args[1] || ''
-      params.type = args[2] || ''
-
+      [params.title, params.text, params.type] = args
       break
 
     case 'object':
@@ -326,7 +322,6 @@ const modalDependant = (...args) => {
           })
         }
       }
-
       break
 
     default:
@@ -336,7 +331,6 @@ const modalDependant = (...args) => {
 
   setParameters(params)
 
-  // Modal interactions
   const modal = dom.getModal()
 
   return new Promise((resolve, reject) => {
@@ -490,7 +484,6 @@ const modalDependant = (...args) => {
             sweetAlert.closeModal(params.onClose)
             reject('cancel')
           }
-
           break
         default:
       }
@@ -584,8 +577,10 @@ const modalDependant = (...args) => {
           // Cycle to the prev button
           setFocus(btnIndex, -1)
         }
+        e.stopPropagation()
+        e.preventDefault()
 
-        dom.stopEventPropagation(e)
+      // ENTER/SPACE
       } else {
         if (keyCode === 13 || keyCode === 32) {
           if (btnIndex === -1) {
@@ -971,9 +966,7 @@ sweetAlert.queue = (steps) => {
 /*
  * Global function for getting the index of current modal in queue
  */
-sweetAlert.getQueueStep = () => {
-  return dom.getModal().getAttribute('data-queue-step')
-}
+sweetAlert.getQueueStep = () => dom.getModal().getAttribute('data-queue-step')
 
 /*
  * Global function for inserting a modal to the queue
@@ -1046,16 +1039,12 @@ sweetAlert.close = sweetAlert.closeModal = (onComplete) => {
 /*
  * Global function to click 'Confirm' button
  */
-sweetAlert.clickConfirm = () => {
-  dom.getConfirmButton().click()
-}
+sweetAlert.clickConfirm = () => dom.getConfirmButton().click()
 
 /*
  * Global function to click 'Cancel' button
  */
-sweetAlert.clickCancel = () => {
-  dom.getCancelButton().click()
-}
+sweetAlert.clickCancel = () => dom.getCancelButton().click()
 
 /**
  * Set default params for each popup

@@ -178,9 +178,7 @@ export const empty = (elem) => {
 }
 
 // borrowed from jqeury $(elem).is(':visible') implementation
-export const isVisible = (elem) => {
-  return elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length
-}
+export const isVisible = (elem) => elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length
 
 export const removeStyleProperty = (elem, property) => {
   if (elem.style.removeProperty) {
@@ -262,16 +260,6 @@ export const fireClick = (node) => {
     node.fireEvent('onclick')
   } else if (typeof node.onclick === 'function') {
     node.onclick()
-  }
-}
-
-export const stopEventPropagation = (e) => {
-  // In particular, make sure the space bar doesn't scroll the main window.
-  if (typeof e.stopPropagation === 'function') {
-    e.stopPropagation()
-    e.preventDefault()
-  } else if (window.event && window.event.hasOwnProperty('cancelBubble')) {
-    window.event.cancelBubble = true
   }
 }
 

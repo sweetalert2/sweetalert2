@@ -62,14 +62,14 @@ gulp.task('sass', () => {
     .pipe(rename({extname: '.min.css'}))
     .pipe(gulp.dest('dist'))
 
-  gulp.src('docs/example.scss')
+  gulp.src('assets/example.scss')
     .pipe(sass())
     .pipe(autoprefix())
-    .pipe(gulp.dest('docs'))
+    .pipe(gulp.dest('assets'))
 })
 
 gulp.task('sass-lint', () => {
-  return gulp.src(['src/**/*.scss', 'docs/**/*.scss'])
+  return gulp.src(['src/**/*.scss', 'assets/**/*.scss'])
     .pipe(sassLint())
     .pipe(sassLint.format())
     .pipe(sassLint.failOnError())
@@ -85,6 +85,6 @@ gulp.task('watch', () => {
 
   gulp.watch([
     'src/sweetalert2.scss',
-    'docs/example.scss'
+    'assets/example.scss'
   ], ['sass-lint', 'sass'])
 })

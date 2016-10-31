@@ -34,8 +34,8 @@ QUnit.test('confirm button', function (assert) {
 QUnit.test('custom buttons classes', function (assert) {
   swal({
     text: 'Modal with custom buttons classes',
-    confirmButtonClass: 'btn btn-success',
-    cancelButtonClass: 'btn btn-warning'
+    confirmButtonClass: 'btn btn-success ',
+    cancelButtonClass: 'btn btn-warning '
   })
   assert.ok($('.swal2-confirm').hasClass('btn'))
   assert.ok($('.swal2-confirm').hasClass('btn-success'))

@@ -134,7 +134,7 @@ export const addClass = (elem, className) => {
   if (!elem || !className) {
     return
   }
-  const classes = className.split(/\s+/)
+  const classes = className.split(/\s+/).filter(Boolean)
   classes.forEach((className) => {
     elem.classList.add(className)
   })
@@ -144,7 +144,7 @@ export const removeClass = (elem, className) => {
   if (!elem || !className) {
     return
   }
-  const classes = className.split(/\s+/)
+  const classes = className.split(/\s+/).filter(Boolean)
   classes.forEach((className) => {
     elem.classList.remove(className)
   })

@@ -45,8 +45,10 @@ const setParameters = (params) => {
       } else {
         content.appendChild(params.html.cloneNode(true))
       }
-    } else {
-      content.innerHTML = params.html || (params.text.split('\n').join('<br>'))
+    } else if (params.html) {
+      content.innerHTML = params.html
+    } else if (params.text) {
+      content.innerHTML = ('' + params.text).split('\n').join('<br>')
     }
     dom.show(content)
   } else {

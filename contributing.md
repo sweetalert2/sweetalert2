@@ -8,7 +8,7 @@ For bug reports, please include:
 - expected behavior of the plugin
 - actual behavior
 
-JSFiddle template: https://jsfiddle.net/limon/ad3quksn/
+JSFiddle template: https://jsfiddle.net/ad3quksn/51/
 
 ---
 

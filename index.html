@@ -115,7 +115,15 @@ swal({
   title: <span class="str">'Auto close alert!'</span>,
   text: <span class="str">'I will close in 2 seconds.'</span>,
   timer: <span class="val">2000</span>
-})</pre>
+}).then(
+  <span class="func"><i>function</i></span> () {},
+  <span class="comment">// handling the promise rejection</span>
+  <span class="func"><i>function</i></span> (dismiss) {
+    <span class="tag">if</span> (dismiss === <span class="str">'timer'</span>) {
+      console.log(<span class="str">'I was closed by the timer'</span>)
+    }
+  }
+)</pre>
     </li>
 
     <li class="html">
@@ -1122,7 +1130,15 @@ swal({
       title: 'Auto close alert!',
       text: 'I will close in 2 seconds.',
       timer: 2000
-    }).catch(swal.noop)
+    }).then(
+      function () {},
+      // handling the promise rejection
+      function (dismiss) {
+        if (dismiss === 'timer') {
+          console.log('I was closed by the timer')
+        }
+      }
+    )
   })
 
   $('.examples .html button').on('click', function () {

@@ -87,6 +87,10 @@ export const getIcons = () => {
   return modal.querySelectorAll('.' + swalClasses.icon)
 }
 
+export const getTitle = () => elementByClass(swalClasses.title)
+
+export const getContent = () => elementByClass(swalClasses.content)
+
 export const getImage = () => elementByClass(swalClasses.image)
 
 export const getSpacer = () => elementByClass(swalClasses.spacer)

@@ -25,11 +25,11 @@ const setParameters = (params) => {
   modal.style.padding = params.padding + 'px'
   modal.style.background = params.background
 
-  const title = modal.querySelector('h2')
-  const content = modal.querySelector('.' + swalClasses.content)
+  const title = dom.getTitle()
+  const content = dom.getContent()
   const confirmButton = dom.getConfirmButton()
   const cancelButton = dom.getCancelButton()
-  const closeButton = modal.querySelector('.' + swalClasses.close)
+  const closeButton = dom.getCloseButton()
 
   // Title
   title.innerHTML = params.title.split('\n').join('<br>')

@@ -60,7 +60,7 @@ const sweetHTML = `
       <div class="placeholder"></div> <div class="fix"></div>
     </div>
     <img class="${swalClasses.image}">
-    <h2></h2>
+    <h2 class="${swalClasses.title}"></h2>
     <div class="${swalClasses.content}"></div>
     <input class="${swalClasses.input}">
     <input type="file" class="${swalClasses.file}">

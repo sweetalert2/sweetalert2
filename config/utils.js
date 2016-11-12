@@ -15,18 +15,6 @@ const classify = (str) => {
   return str.replace(classifyRE, toUpper)
 }
 
-const zip = () => {
-  return new Promise((resolve, reject) => {
-    fs.readFile('dist/' + pack.name + '.min.js', (err, buf) => {
-      if (err) return reject(err)
-      zlib.gzip(buf, (err, buf) => {
-        if (err) return reject(err)
-        write('dist/' + pack.name + '.min.js.gz', buf).then(resolve)
-      })
-    })
-  })
-}
-
 const write = (dest, code) => {
   return new Promise((resolve, reject) => {
     fs.writeFile(dest, code, (err) => {
@@ -66,7 +54,6 @@ const packageRollup = (options) => {
 module.exports = {
   packageRollup: packageRollup,
   write: write,
-  zip: zip,
   classify: classify,
   toUpper: toUpper
 }

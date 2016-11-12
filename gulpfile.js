@@ -50,7 +50,7 @@ gulp.task('production', () => {
     dest: 'dist/' + pack.name + '.min.js',
     format: 'umd',
     minify: true
-  }).then(utils.zip)
+  })
 })
 
 gulp.task('sass', () => {

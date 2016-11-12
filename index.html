@@ -178,7 +178,7 @@ swal({
   confirmButtonColor: <span class="str">'#3085d6'</span>,
   cancelButtonColor: <span class="str">'#d33'</span>,
   confirmButtonText: <span class="str">'Yes, delete it!'</span>
-}).then(<span class="func"><i>function</i></span>() {
+}).then(<span class="func"><i>function</i></span> () {
   swal(
     <span class="str">'Deleted!'</span>,
     <span class="str">'Your file has been deleted.'</span>,
@@ -205,13 +205,13 @@ swal({
   confirmButtonClass: <span class="str">'btn btn-success'</span>,
   cancelButtonClass: <span class="str">'btn btn-danger'</span>,
   buttonsStyling: <span class="val">false</span>
-}).then(<span class="func"><i>function</i></span>() {
+}).then(<span class="func"><i>function</i></span> () {
   swal(
     <span class="str">'Deleted!'</span>,
     <span class="str">'Your file has been deleted.'</span>,
     <span class="str">'success'</span>
   )
-}, <span class="func"><i>function</i></span>(dismiss) {
+}, <span class="func"><i>function</i></span> (dismiss) {
   <span class="comment">// dismiss can be 'cancel', 'overlay',</span>
   <span class="comment">// 'close', and 'timer'</span>
   <span class="tag">if</span> (dismiss === <span class="str">'cancel'</span>) {
@@ -266,8 +266,8 @@ swal({
   showCancelButton: <span class="val">true</span>,
   confirmButtonText: <span class="str">'Submit'</span>,
   showLoaderOnConfirm: <span class="val">true</span>,
-  preConfirm: <span class="func"><i>function</i></span>(email) {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
+  preConfirm: <span class="func"><i>function</i></span> (email) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve, reject) {
       <span class="func">setTimeout</span>(<span class="func">function</span>() {
         <span class="tag">if</span> (email === <span class="str">'taken@example.com'</span>) {
           reject(<span class="str">'This email is already taken.'</span>)
@@ -278,7 +278,7 @@ swal({
     })
   },
   allowOutsideClick: <span class="val">false</span>
-}).then(<span class="func"><i>function</i></span>(email) {
+}).then(<span class="func"><i>function</i></span> (email) {
   swal({
     type: <span class="str">'success'</span>,
     title: <span class="str">'Ajax request finished!'</span>,
@@ -310,7 +310,7 @@ swal.setDefaults({
   <span class="str">'Question 3'</span>
 ]
 
-swal.queue(steps).then(<span class="func"><i>function</i></span>(result) {
+swal.queue(steps).then(<span class="func"><i>function</i></span> (result) {
   swal.resetDefaults()
   swal({
     title: <span class="str">'All done!'</span>,
@@ -321,7 +321,7 @@ swal.queue(steps).then(<span class="func"><i>function</i></span>(result) {
     confirmButtonText: <span class="str">'Lovely!'</span>,
     showCancelButton: <span class="val">false</span>
   })
-}, <span class="func"><i>function</i></span>() {
+}, <span class="func"><i>function</i></span> () {
   swal.resetDefaults()
 })</pre>
     </li>
@@ -339,10 +339,10 @@ swal.queue([{
     <span class="str">'Your public IP will be received '</span> +
     <span class="str">'via AJAX request'</span>,
   showLoaderOnConfirm: <span class="val">true</span>,
-  preConfirm: <span class="func"><i>function</i></span>() {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve) {
+  preConfirm: <span class="func"><i>function</i></span> () {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve) {
       $.get(<span class="str">'https://api.ipify.org?format=json'</span>)
-        .done(<span class="func"><i>function</i></span>(data) {
+        .done(<span class="func"><i>function</i></span> (data) {
           swal.insertQueueStep(data.ip)
           resolve()
         })
@@ -729,8 +729,8 @@ swal({
   title: <span class="str">'Input something'</span>,
   input: <span class="str">'text'</span>,
   showCancelButton: <span class="val">true</span>,
-  inputValidator: <span class="func"><i>function</i></span>(value) {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
+  inputValidator: <span class="func"><i>function</i></span> (value) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve, reject) {
       <span class="tag">if</span> (value) {
         resolve()
       } <span class="tag">else</span> {
@@ -738,7 +738,7 @@ swal({
       }
     })
   }
-}).then(<span class="func"><i>function</i></span>(result) {
+}).then(<span class="func"><i>function</i></span> (result) {
   swal({
     type: <span class="str">'success'</span>,
     html: <span class="str">'You entered: '</span> + result
@@ -755,7 +755,7 @@ swal({
 swal({
   title: <span class="str">'Input email address'</span>,
   input: <span class="str">'email'</span>
-}).then(<span class="func"><i>function</i></span>(email) {
+}).then(<span class="func"><i>function</i></span> (email) {
   swal({
     type: <span class="str">'success'</span>,
     html: <span class="str">'Entered email: '</span> + email
@@ -777,7 +777,7 @@ swal({
     <span class="str">'autocapitalize'</span>: <span class="str">'off'</span>,
     <span class="str">'autocorrect'</span>: <span class="str">'off'</span>
   }
-}).then(<span class="func"><i>function</i></span>(password) {
+}).then(<span class="func"><i>function</i></span> (password) {
   <span class="tag">if</span> (password) {
     swal({
       type: <span class="str">'success'</span>,
@@ -796,7 +796,7 @@ swal({
 swal({
   input: <span class="str">'textarea'</span>,
   showCancelButton: <span class="val">true</span>
-}).then(<span class="func"><i>function</i></span>(text) {
+}).then(<span class="func"><i>function</i></span> (text) {
   <span class="tag">if</span> (text) {
     swal(text)
   }
@@ -819,8 +819,8 @@ swal({
   },
   inputPlaceholder: <span class="str">'Select country'</span>,
   showCancelButton: <span class="val">true</span>,
-  inputValidator: <span class="func"><i>function</i></span>(value) {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
+  inputValidator: <span class="func"><i>function</i></span> (value) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve, reject) {
       <span class="tag">if</span> (value === <span class="str">'UKR'</span>) {
         resolve()
       } <span class="tag">else</span> {
@@ -828,7 +828,7 @@ swal({
       }
     })
   }
-}).then(<span class="func"><i>function</i></span>(result) {
+}).then(<span class="func"><i>function</i></span> (result) {
   swal({
     type: <span class="str">'success'</span>,
     html: <span class="str">'You selected: '</span> + result
@@ -844,8 +844,8 @@ swal({
       <td>
         <pre>
 <span class="comment">// inputOptions can be an object or Promise</span>
-<span class="func">var</span> inputOptions = <span class="tag">new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve) {
-  setTimeout(<span class="func"><i>function</i></span>() {
+<span class="func">var</span> inputOptions = <span class="tag">new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve) {
+  setTimeout(<span class="func"><i>function</i></span> () {
     resolve({
       <span class="str">'#ff0000'</span>: <span class="str">'Red'</span>,
       <span class="str">'#00ff00'</span>: <span class="str">'Green'</span>,
@@ -858,8 +858,8 @@ swal({
   title: <span class="str">'Select color'</span>,
   input: <span class="str">'radio'</span>,
   inputOptions: inputOptions,
-  inputValidator: <span class="func"><i>function</i></span>(result) {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
+  inputValidator: <span class="func"><i>function</i></span> (result) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve, reject) {
       <span class="tag">if</span> (result) {
         resolve()
       } <span class="tag">else</span> {
@@ -867,7 +867,7 @@ swal({
       }
     })
   }
-}).then(<span class="func"><i>function</i></span>(result) {
+}).then(<span class="func"><i>function</i></span> (result) {
   swal({
     type: <span class="str">'success'</span>,
     html: <span class="str">'You selected: '</span> + result
@@ -889,8 +889,8 @@ swal({
     <span class="str">'I agree with the terms and conditions'</span>,
   confirmButtonText:
     <span class="str">'Continue &lt;i class="fa fa-arrow-right&gt;&lt;/i&gt;'</span>,
-  inputValidator: <span class="func"><i>function</i></span>(result) {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve, reject) {
+  inputValidator: <span class="func"><i>function</i></span> (result) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve, reject) {
       <span class="tag">if</span> (result) {
         resolve()
       } <span class="tag">else</span> {
@@ -898,7 +898,7 @@ swal({
       }
     })
   }
-}).then(<span class="func"><i>function</i></span>(result) {
+}).then(<span class="func"><i>function</i></span> (result) {
   swal({
     type: <span class="str">'success'</span>,
     text: <span class="str">'You agreed with T&amp;C :)'</span>
@@ -919,9 +919,9 @@ swal({
   inputAttributes: {
     accept: <span class="str">'image/*'</span>
   }
-}).then(<span class="func"><i>function</i></span>(file) {
+}).then(<span class="func"><i>function</i></span> (file) {
   <span class="func">var</span> reader = <span class="tag">new</span> <span class="func">FileReader</span>
-  reader.onload = <span class="func"><i>function</i></span>(e) {
+  reader.onload = <span class="func"><i>function</i></span> (e) {
     swal({
       imageUrl: e.target.result
     })
@@ -967,19 +967,17 @@ swal({
   html:
     <span class="str">'&lt;input id="swal-input1" class="swal2-input" autofocus&gt;'</span> +
     <span class="str">'&lt;input id="swal-input2" class="swal2-input"&gt;'</span>,
-  preConfirm: <span class="func"><i>function</i></span>() {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span>(resolve) {
-      <span class="tag">if</span> (result) {
-        resolve([
-          $(<span class="str">'#swal-input1'</span>).val(),
-          $(<span class="str">'#swal-input2'</span>).val()
-        ])
-      }
+  preConfirm: <span class="func"><i>function</i></span> () {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve) {
+      resolve([
+        $(<span class="str">'#swal-input1'</span>).val(),
+        $(<span class="str">'#swal-input2'</span>).val()
+      ])
     })
   }
-}).then(<span class="func"><i>function</i></span>(result) {
+}).then(<span class="func"><i>function</i></span> (result) {
   swal(JSON.stringify(result))
-})</pre>
+}).catch(swal.noop)</pre>
 
         </td>
         <td><button class="input-type-multiple">Try me!</button></td>

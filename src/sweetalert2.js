@@ -253,7 +253,7 @@ const openModal = (animation, onComplete) => {
   iOSfix()
   dom.states.previousActiveElement = document.activeElement
   if (onComplete !== null && typeof onComplete === 'function') {
-    onComplete(undefined, modal)
+    onComplete(modal)
   }
 }
 
@@ -1034,7 +1034,7 @@ sweetAlert.close = sweetAlert.closeModal = (onComplete) => {
     hideModalAndResetState()
   }
   if (onComplete !== null && typeof onComplete === 'function') {
-    onComplete(undefined, modal)
+    onComplete(modal)
   }
 }
 

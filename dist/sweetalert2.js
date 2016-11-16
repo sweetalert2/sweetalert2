@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.1.0
+ * sweetalert2 v6.1.1
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -860,7 +860,7 @@ var openModal = function openModal(animation, onComplete) {
   iOSfix();
   states.previousActiveElement = document.activeElement;
   if (onComplete !== null && typeof onComplete === 'function') {
-    onComplete(undefined, modal);
+    onComplete(modal);
   }
 };
 
@@ -1649,7 +1649,7 @@ sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
     hideModalAndResetState();
   }
   if (onComplete !== null && typeof onComplete === 'function') {
-    onComplete(undefined, modal);
+    onComplete(modal);
   }
 };
 
@@ -1695,7 +1695,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.1.0';
+sweetAlert.version = '6.1.1';
 
 return sweetAlert;
 

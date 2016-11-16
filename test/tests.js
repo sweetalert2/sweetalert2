@@ -479,28 +479,28 @@ QUnit.test('modal vertical offset', function (assert) {
 })
 
 QUnit.test('onOpen', function (assert) {
-  const done = assert.async(1)
+  const done = assert.async()
 
   // create a modal with an onOpen callback
   swal({
     title: 'onOpen test',
-    onOpen: $modal => {
+    onOpen: function ($modal) {
       assert.ok($('.swal2-modal').is($modal))
       done()
     }
   })
 })
 QUnit.test('onClose', function (assert) {
-  const done = assert.async(1)
+  const done = assert.async()
 
   // create a modal with an onClose callback
   swal({
     title: 'onClose test',
-    onClose: _$modal => {
+    onClose: function (_$modal) {
       assert.ok($modal.is(_$modal))
       done()
     }
-  }).catch(() => {})
+  })
 
   const $modal = $('.swal2-modal')
   $('.swal2-close').click()

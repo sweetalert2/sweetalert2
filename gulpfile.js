@@ -34,10 +34,11 @@ gulp.task('dev', () => {
   })
 })
 
+var gutil = require('gulp-util')
 gulp.task('test', () => {
   return gulp.src('./test/test-runner.html')
     .pipe(qunit())
-    .on('error', (err) => { // avoid the ugly error message on failing
+    .on('error', function (err) { // avoid the ugly error message on failing
       if (process.env.CI) { // but still fail if we're running in a CI
         throw err
       }

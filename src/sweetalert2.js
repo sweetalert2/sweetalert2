@@ -291,6 +291,7 @@ const undoIOSfix = () => {
   if (dom.hasClass(document.body, swalClasses.iosfix)) {
     const offset = parseInt(document.body.style.top, 10)
     dom.removeClass(document.body, swalClasses.iosfix)
+    document.body.style.top = ''
     document.body.scrollTop = (offset * -1)
   }
 }

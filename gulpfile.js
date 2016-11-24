@@ -34,13 +34,17 @@ gulp.task('dev', () => {
   })
 })
 
-var gutil = require('gulp-util')
 gulp.task('test', () => {
   return gulp.src('./test/test-runner.html')
     .pipe(qunit())
     .on('error', function (err) { // avoid the ugly error message on failing
       if (process.env.CI) { // but still fail if we're running in a CI
         throw err
+      } else if (err.name !== "Error" || err.code !== 1) {
+        // rather crude filter
+        // this blocks the 'Command failed' error every time gulp-qunit fails
+        // logs all other errors without breaking the watcher
+        console.error(err.toString())
       }
       this.emit('end')
     })

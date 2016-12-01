@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.1.1
+ * sweetalert2 v6.2.0
  * Released under the MIT License.
  */
 'use strict';
@@ -894,6 +894,7 @@ var undoIOSfix = function undoIOSfix() {
   if (hasClass(document.body, swalClasses.iosfix)) {
     var offset = parseInt(document.body.style.top, 10);
     removeClass(document.body, swalClasses.iosfix);
+    document.body.style.top = '';
     document.body.scrollTop = offset * -1;
   }
 };
@@ -1691,7 +1692,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.1.1';
+sweetAlert.version = '6.2.0';
 
 module.exports = sweetAlert;
 if (window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;

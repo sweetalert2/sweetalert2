@@ -217,14 +217,14 @@ Browser compatibility
 
 SweetAlert2 works in most major browsers (yes, even IE). Some details:
 
-- **IE: 10+**, Promise polyfill should be included (see [usage example](#usage)).
+- **IE: 11**, Promise polyfill should be included (see [usage example](#usage)).
 - **Microsoft Edge: 12+**
 - **Safari: 4+**
 - **Firefox: 4+**
 - **Chrome 14+**
 - **Opera: 15+**
 
-Note that SweetAlert2 **does not** and **will not** provide support or functionality of any kind on IE9 and lower.
+Note that SweetAlert2 **does not** and **will not** provide support or functionality of any kind on IE10 and lower.
 
 
 Contributing

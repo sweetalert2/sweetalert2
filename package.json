@@ -7,7 +7,7 @@
   "main": "dist/sweetalert2.js",
   "jsnext:main": "src/sweetalert2.js",
   "dependencies": {
-    "es6-promise": "latest"
+    "es6-promise": "^4.0.5"
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "latest",

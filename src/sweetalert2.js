@@ -32,7 +32,11 @@ const setParameters = (params) => {
   const closeButton = dom.getCloseButton()
 
   // Title
-  title.innerHTML = params.title.split('\n').join('<br>')
+  if (params.titleText) {
+    title.innerText = params.titleText
+  } else {
+    title.innerHTML = params.title.split('\n').join('<br>')
+  }
 
   // Content
   if (params.text || params.html) {
@@ -48,7 +52,7 @@ const setParameters = (params) => {
     } else if (params.html) {
       content.innerHTML = params.html
     } else if (params.text) {
-      content.innerHTML = ('' + params.text).split('\n').join('<br>')
+      content.textContent = params.text
     }
     dom.show(content)
   } else {

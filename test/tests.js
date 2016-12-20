@@ -121,6 +121,28 @@ QUnit.test('close button', function (assert) {
   $closeButton.click()
 })
 
+QUnit.test('content/title is set (html)', function (assert) {
+  swal({
+    title: '<strong>Strong</strong>, <em>Emphasis</em>',
+    html: '<p>Paragraph</p><img /><button></button>'
+  })
+
+  assert.equal($('strong, em', '.swal2-title').length, 2)
+  assert.equal($('p, img, button', '.swal2-content').length, 3)
+})
+
+QUnit.test('content/title is set (text)', function (assert) {
+  swal({
+    titleText: '<strong>Strong</strong>, <em>Emphasis</em>',
+    text: '<p>Paragraph</p><img /><button></button>'
+  })
+
+  assert.equal($('.swal2-title').text(), '<strong>Strong</strong>, <em>Emphasis</em>')
+  assert.equal($('.swal2-content').text(), '<p>Paragraph</p><img /><button></button>')
+  assert.equal($('strong, em', '.swal2-title').length, 0)
+  assert.equal($('p, img, button', '.swal2-content').length, 0)
+})
+
 QUnit.test('jQuery/js element as html param', function (assert) {
   swal({
     html: $('<p>jQuery element</p>')

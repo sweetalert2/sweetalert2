@@ -2,6 +2,7 @@ import { swalClasses, iconTypes } from './classes.js'
 
 export const defaultParams = {
   title: '',
+  titleText: '',
   text: '',
   html: '',
   type: null,

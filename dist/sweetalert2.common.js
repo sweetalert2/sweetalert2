@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.2.2
+ * sweetalert2 v6.2.3
  * Released under the MIT License.
  */
 'use strict';
@@ -919,7 +919,7 @@ var modalDependant = function modalDependant() {
   switch (_typeof(args[0])) {
     case 'string':
       params.title = args[0];
-      params.text = args[1];
+      params.html = args[1];
       params.type = args[2];
 
       break;
@@ -1697,7 +1697,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.2.2';
+sweetAlert.version = '6.2.3';
 
 module.exports = sweetAlert;
 if (window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;

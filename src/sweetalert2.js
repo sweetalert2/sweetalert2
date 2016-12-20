@@ -310,7 +310,7 @@ const modalDependant = (...args) => {
 
   switch (typeof args[0]) {
     case 'string':
-      [params.title, params.text, params.type] = args
+      [params.title, params.html, params.type] = args
       break
 
     case 'object':

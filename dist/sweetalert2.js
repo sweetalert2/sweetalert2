@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.2.1
+ * sweetalert2 v6.2.2
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -24,6 +24,7 @@ var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
 var defaultParams = {
   title: '',
+  titleText: '',
   text: '',
   html: '',
   type: null,
@@ -642,7 +643,11 @@ var setParameters = function setParameters(params) {
   var closeButton = getCloseButton();
 
   // Title
-  title.innerHTML = params.title.split('\n').join('<br>');
+  if (params.titleText) {
+    title.innerText = params.titleText;
+  } else {
+    title.innerHTML = params.title.split('\n').join('<br>');
+  }
 
   // Content
   if (params.text || params.html) {
@@ -658,7 +663,7 @@ var setParameters = function setParameters(params) {
     } else if (params.html) {
       content.innerHTML = params.html;
     } else if (params.text) {
-      content.innerHTML = ('' + params.text).split('\n').join('<br>');
+      content.textContent = params.text;
     }
     show(content);
   } else {
@@ -1696,7 +1701,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.2.1';
+sweetAlert.version = '6.2.2';
 
 return sweetAlert;
 

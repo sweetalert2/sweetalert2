@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.2.3
+ * sweetalert2 v6.2.4
  * Released under the MIT License.
  */
 'use strict';
@@ -320,6 +320,10 @@ var removeStyleProperty = function removeStyleProperty(elem, property) {
 
 
 var fireClick = function fireClick(node) {
+  if (!isVisible(node)) {
+    return false;
+  }
+
   // Taken from http://www.nonobtrusive.com/2011/11/29/programatically-fire-crossbrowser-click-event-with-javascript/
   // Then fixed for today's Chrome browser.
   if (typeof MouseEvent === 'function') {
@@ -1697,7 +1701,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.2.3';
+sweetAlert.version = '6.2.4';
 
 module.exports = sweetAlert;
 if (window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;

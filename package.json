@@ -6,6 +6,7 @@
   "description": "A replacement for JavaScript's popup boxes, supported fork of sweetalert",
   "main": "dist/sweetalert2.js",
   "jsnext:main": "src/sweetalert2.js",
+  "module": "src/sweetalert2.js",
   "dependencies": {
     "es6-promise": "^4.0.5"
   },

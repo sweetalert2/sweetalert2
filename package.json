@@ -7,6 +7,7 @@
   "main": "dist/sweetalert2.js",
   "jsnext:main": "src/sweetalert2.js",
   "module": "src/sweetalert2.js",
+  "types": "sweetalert2.d.ts",
   "dependencies": {
     "es6-promise": "^4.0.5"
   },

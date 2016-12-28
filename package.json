@@ -43,10 +43,14 @@
     "src",
     "sweetalert2.d.ts"
   ],
-  "author": "Tristan Edwards <tristan.edwards@me.com> (http://tristanedwards.me)",
+  "author": "Limon Monte <limon.monte@gmail.com> (https://limonte.github.io)",
   "contributors": [
-    "Limon Monte <limon.monte@gmail.com> (https://limonte.github.io)",
-    "Sam Turrell <sam@samturrell.co.uk> (http://samturrell.co.uk)"
+    "Johan Fagerberg (https://github.com/birjolaxew)",
+    "Morgan Touverey-Quilling <mtouverey@alembic-dev.com> (https://github.com/toverux)",
+    "Sam Turrell <sam@samturrell.co.uk> (http://samturrell.co.uk)",
+    "Tristan Edwards <tristan.edwards@me.com> (http://tristanedwards.me)",
+    "Leo Correa <lcorr005@gmail.com> (https://leonardocorrea.com/)",
+    "Joseph Schultz (https://github.com/acupajoe)"
   ],
   "keywords": [
     "sweetalert",

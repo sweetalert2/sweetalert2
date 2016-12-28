@@ -1,12 +1,12 @@
 {
   "name": "sweetalert2",
-  "version": "6.2.6",
+  "version": "6.2.7",
   "repository": "limonte/sweetalert2",
   "homepage": "https://limonte.github.io/sweetalert2/",
   "description": "A replacement for JavaScript's popup boxes, supported fork of sweetalert",
   "main": "dist/sweetalert2.js",
-  "jsnext:main": "src/sweetalert2.js",
-  "module": "src/sweetalert2.js",
+  "jsnext:main": "dist/sweetalert2.js",
+  "module": "dist/sweetalert2.js",
   "types": "sweetalert2.d.ts",
   "dependencies": {
     "es6-promise": "^4.0.5"

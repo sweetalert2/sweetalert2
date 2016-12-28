@@ -1,7 +1,6 @@
 language: node_js
 
-node_js:
-  - 7
+node_js: stable
 
 cache:
   bundler: true
@@ -9,7 +8,6 @@ cache:
     - node_modules
 
 before_script:
-  - npm install -g gulp
   - gulp
 
 deploy:

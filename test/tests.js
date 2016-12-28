@@ -1,6 +1,7 @@
 /* global $, QUnit, swal */
 
 QUnit.test('modal shows up', function (assert) {
+  assert.ok(swal.version.match(/\d+\.\d+\.\d+/))
   assert.notOk(swal.isVisible())
   swal('Hello world!')
   assert.ok(swal.isVisible())

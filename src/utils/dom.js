@@ -245,6 +245,10 @@ export const fadeOut = (elem, interval) => {
 }
 
 export const fireClick = (node) => {
+  if (!isVisible(node)) {
+    return false
+  }
+
   // Taken from http://www.nonobtrusive.com/2011/11/29/programatically-fire-crossbrowser-click-event-with-javascript/
   // Then fixed for today's Chrome browser.
   if (typeof MouseEvent === 'function') {

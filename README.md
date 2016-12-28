@@ -1,4 +1,4 @@
-SweetAlert2 [![Build Status](https://travis-ci.org/limonte/sweetalert2.svg?branch=master)](https://travis-ci.org/limonte/sweetalert2) [![Downloads](https://img.shields.io/npm/dt/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2) [![Version](https://img.shields.io/npm/v/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2) [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+SweetAlert2 [![Build Status](https://travis-ci.org/limonte/sweetalert2.svg?branch=master)](https://travis-ci.org/limonte/sweetalert2) [![Downloads](https://img.shields.io/npm/dt/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2) [![Version](https://img.shields.io/npm/v/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2) [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sweetalert2/Lobby)
 -----------
 
 An awesome replacement for JavaScript's popup boxes.
@@ -135,8 +135,9 @@ Configuration
 
 | Argument                | Default value        | Description |
 | ----------------------- | -------------------- | ----------- |
-| `title`                 | `null`               | The title of the modal. It can either be added to the object under the key "title" or passed as the first parameter of the function. |
-| `text`                  | `null`               | A description for the modal. It can either be added to the object under the key "text" or passed as the second parameter of the function. |
+| `title`                 | `null`               | The title of the modal, as HTML. It can either be added to the object under the key "title" or passed as the first parameter of the function. |
+| `titleText`             | `null`               | The title of the modal, as text. Useful to avoid HTML injection. |
+| `text`                  | `null`               | A description for the modal. It can either be added to the object under the key "text" or passed as the second parameter of the function. |
 | `html`                  | `null`               | A HTML description for the modal. If `text` and `html` parameters are provided in the same time, "text" will be used. |
 | `type `                 | `null`               | The type of the modal. SweetAlert2 comes with [5 built-in types](#modal-types) which will show a corresponding icon animation: `warning`, `error`, `success`, `info` and `question`. It can either be put in the array under the key `type` or passed as the third parameter of the function. |
 | `input`                 | `null`               | Input field type, can be `'text'`, `'email'`, `'password'`, `'number'`, `'tel'`, `'range'`, `'textarea'`, `'select'`, `'radio'`, `'checkbox'` and `'file'`. |

@@ -3,7 +3,6 @@ const babel = require('rollup-plugin-babel')
 const pack = require('../package.json')
 const banner = require('./banner.js')
 const fs = require('fs')
-const zlib = require('zlib')
 const uglify = require('uglify-js')
 
 const toUpper = (_, c) => {

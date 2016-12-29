@@ -241,4 +241,6 @@ If you would like to contribute enhancements or fixes, please do the following:
 
 4. Start gulp watcher `gulp watch` to automatically build and minify the SCSS and JS-files.
 
-5. Make sure that `dist/*` files aren't committed and create a pull request.
+5. Check that your code is compliant with code linters: `gulp lint`.
+
+6. Make sure that `dist/*` files aren't committed and create a pull request.

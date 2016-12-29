@@ -21,6 +21,8 @@ $success-border: rgba($success, .2);
 $overlay: rgba($black, .4);
 $input-box-shadow: rgba($black, .06);
 
+$transparent: rgba($black, 0);
+
 body {
   &.swal2-in {
     overflow-y: hidden;
@@ -44,11 +46,13 @@ body {
   right: 0;
   padding: 10px;
 
-  // TODO: remove/add the element from DOM instead
-  &:not(.swal2-in) { pointer-events: none; }
-
   // backdrop
   background-color: transparent;
+
+  z-index: 1060;
+
+  // TODO: remove/add the element from DOM instead
+  &:not(.swal2-in) { pointer-events: none; }
 
   &.swal2-fade {
     transition: background-color .1s;
@@ -57,8 +61,6 @@ body {
   &.swal2-in {
     background-color: $overlay;
   }
-
-  z-index: 1060;
 }
 
 .swal2-modal {
@@ -573,7 +575,7 @@ body {
 
 // github.com/limonte/sweetalert2/issues/268
 [class^='swal2'] {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: $transparent;
 }
 
 // Animations

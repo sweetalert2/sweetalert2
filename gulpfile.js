@@ -10,15 +10,7 @@ const qunit = require('gulp-qunit')
 const pack = require('./package.json')
 const utils = require('./config/utils.js')
 
-gulp.task('compress', ['standard', 'commonjs', 'dev', 'production'])
-
-gulp.task('standard', () => {
-  return gulp.src(['src/**/*.js', 'test/*.js'])
-    .pipe(standard())
-    .pipe(standard.reporter('default', {
-      breakOnError: true
-    }))
-})
+gulp.task('compress', ['js-lint', 'commonjs', 'dev', 'production'])
 
 gulp.task('commonjs', () => {
   return utils.packageRollup({
@@ -58,7 +50,7 @@ gulp.task('production', () => {
   })
 })
 
-gulp.task('sass', () => {
+gulp.task('sass', ['sass-lint'], () => {
   gulp.src('src/sweetalert2.scss')
     .pipe(sass())
     .pipe(autoprefix())
@@ -71,6 +63,16 @@ gulp.task('sass', () => {
     .pipe(sass())
     .pipe(autoprefix())
     .pipe(gulp.dest('assets'))
+})
+
+gulp.task('lint', ['js-lint', 'sass-lint'])
+
+gulp.task('js-lint', () => {
+  return gulp.src(['src/**/*.js', 'test/*.js'])
+    .pipe(standard())
+    .pipe(standard.reporter('default', {
+      breakOnError: true
+    }))
 })
 
 gulp.task('sass-lint', () => {
@@ -91,5 +93,5 @@ gulp.task('watch', () => {
   gulp.watch([
     'src/sweetalert2.scss',
     'assets/example.scss'
-  ], ['sass-lint', 'sass'])
+  ], ['sass'])
 })

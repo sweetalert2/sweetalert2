@@ -3,10 +3,10 @@
  * Released under the MIT License.
  */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global.Sweetalert2 = factory());
-}(this, (function () { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (factory((global.Sweetalert2 = global.Sweetalert2 || {})));
+}(this, (function (exports) { 'use strict';
 
 var swalPrefix = 'swal2-';
 
@@ -1707,7 +1707,9 @@ sweetAlert.noop = function () {};
 
 sweetAlert.version = '6.2.9';
 
-return sweetAlert;
+exports['default'] = sweetAlert;
+
+Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 if (window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;

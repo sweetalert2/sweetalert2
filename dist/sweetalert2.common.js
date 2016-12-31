@@ -4,6 +4,8 @@
  */
 'use strict';
 
+Object.defineProperty(exports, '__esModule', { value: true });
+
 var swalPrefix = 'swal2-';
 
 var prefix = function prefix(items) {
@@ -1703,5 +1705,5 @@ sweetAlert.noop = function () {};
 
 sweetAlert.version = '6.2.9';
 
-module.exports = sweetAlert;
+exports['default'] = sweetAlert;
 if (window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;

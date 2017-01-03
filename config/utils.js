@@ -36,7 +36,6 @@ const packageRollup = (options) => {
   .then((bundle) => {
     let code = bundle.generate({
       format: options.format,
-      exports: 'named',
       banner: banner,
       moduleName: classify(pack.name),
       footer: `if (window.${moduleId}) window.sweetAlert = window.swal = window.${moduleId};`

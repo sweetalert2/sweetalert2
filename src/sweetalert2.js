@@ -1083,4 +1083,6 @@ sweetAlert.noop = () => { }
 
 sweetAlert.version = ''
 
+sweetAlert.default = sweetAlert
+
 export default sweetAlert

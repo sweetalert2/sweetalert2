@@ -12,8 +12,9 @@
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "latest",
-    "babel-preset-es2015": "latest",
     "babel-plugin-transform-object-assign": "latest",
+    "babel-preset-es2015": "latest",
+    "express": "^4.14.0",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "latest",

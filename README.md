@@ -22,13 +22,13 @@ Usage
 To install:
 
 ```bash
-bower install sweetalert2
+npm install --save sweetalert2
 ```
 
 Or:
 
 ```bash
-npm install sweetalert2
+bower install --save sweetalert2
 ```
 
 Or download from CDN:
@@ -48,12 +48,14 @@ To use:
 Or:
 
 ```js
-// ES6 Modules
-import { default as swal } from 'sweetalert2'
+// ES6 Modules or TypeScript
+import swal from 'sweetalert2'
 
 // CommonJS
 const swal = require('sweetalert2')
 ```
+
+Please note that TypeScript is supported, so you don't have to install a third-party declaration file.
 
 
 Examples

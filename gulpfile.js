@@ -5,7 +5,6 @@ const rename = require('gulp-rename')
 const autoprefix = require('gulp-autoprefixer')
 const standard = require('gulp-standard')
 const sassLint = require('gulp-sass-lint')
-const qunit = require('gulp-qunit')
 
 const pack = require('./package.json')
 const utils = require('./config/utils.js')
@@ -24,22 +23,6 @@ gulp.task('dev', () => {
     dest: 'dist/' + pack.name + '.js',
     format: 'umd'
   })
-})
-
-gulp.task('test', () => {
-  return gulp.src('./test/test-runner.html')
-    .pipe(qunit())
-    .on('error', function (err) { // avoid the ugly error message on failing
-      if (process.env.CI) { // but still fail if we're running in a CI
-        throw err
-      } else if (err.name !== 'Error' || err.code !== 1) {
-        // rather crude filter
-        // this blocks the 'Command failed' error every time gulp-qunit fails
-        // logs all other errors without breaking the watcher
-        console.error(err.toString())
-      }
-      this.emit('end')
-    })
 })
 
 gulp.task('production', () => {
@@ -88,7 +71,7 @@ gulp.task('watch', () => {
   gulp.watch([
     'src/**/*.js',
     'test/*.js'
-  ], ['compress', 'test'])
+  ], ['compress'])
 
   gulp.watch([
     'src/sweetalert2.scss',

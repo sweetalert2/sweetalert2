@@ -192,58 +192,6 @@ export const removeStyleProperty = (elem, property) => {
   }
 }
 
-export const getTopMargin = (elem) => {
-  const elemDisplay = elem.style.display
-  elem.style.left = '-9999px'
-  elem.style.display = 'block'
-
-  const height = elem.clientHeight
-
-  elem.style.left = ''
-  elem.style.display = elemDisplay
-  return ('-' + parseInt(height / 2, 10) + 'px')
-}
-
-export const fadeIn = (elem, interval) => {
-  if (+elem.style.opacity < 1) {
-    interval = interval || 16
-    elem.style.opacity = 0
-    elem.style.display = 'block'
-    let last = +new Date()
-    const tick = () => {
-      const newOpacity = +elem.style.opacity + (new Date() - last) / 100
-      elem.style.opacity = (newOpacity > 1) ? 1 : newOpacity
-      last = +new Date()
-
-      if (+elem.style.opacity < 1) {
-        setTimeout(tick, interval)
-      }
-    }
-    tick()
-  }
-}
-
-export const fadeOut = (elem, interval) => {
-  if (+elem.style.opacity > 0) {
-    interval = interval || 16
-    const opacity = elem.style.opacity
-    let last = +new Date()
-    const tick = () => {
-      const change = new Date() - last
-      const newOpacity = +elem.style.opacity - change / (opacity * 100)
-      elem.style.opacity = newOpacity
-      last = +new Date()
-
-      if (+elem.style.opacity > 0) {
-        setTimeout(tick, interval)
-      } else {
-        hide(elem)
-      }
-    }
-    tick()
-  }
-}
-
 export const fireClick = (node) => {
   if (!isVisible(node)) {
     return false

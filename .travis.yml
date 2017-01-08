@@ -1,5 +1,5 @@
 language: node_js
-
+dist: trusty
 node_js: stable
 
 cache:
@@ -7,8 +7,15 @@ cache:
   directories:
     - node_modules
 
+addons:
+  firefox: latest
+  google-chrome: latest
+
 before_script:
   - gulp
+
+script:
+  - xvfb-run testee test/test-runner.html --browsers chrome,firefox
 
 deploy:
   api_key:

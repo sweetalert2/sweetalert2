@@ -235,7 +235,7 @@ If you would like to contribute enhancements or fixes, please do the following:
 
 1. Fork the plugin repository.
 
-2. Make sure you have [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/) installed.
+2. Make sure you have [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) installed.
 
 3. When in the SweetAlert2 directory, run `npm install` or `yarn install` to install dependencies.
 

@@ -523,7 +523,7 @@ QUnit.test('onClose', function (assert) {
       assert.ok($modal.is(_$modal))
       done()
     }
-  })
+  }).catch(swal.noop)
 
   const $modal = $('.swal2-modal')
   $('.swal2-close').click()

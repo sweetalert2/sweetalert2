@@ -51,9 +51,8 @@ body.swal2-iosfix {
     font-weight: 600;
     text-transform: none;
     position: relative;
-    margin: 0;
+    margin: 0 0 .4em;
     padding: 0;
-    line-height: 60px;
     display: block; }
   .swal2-modal .swal2-spacer {
     height: 10px;

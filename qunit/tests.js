@@ -206,6 +206,19 @@ QUnit.test('validation error', function (assert) {
   }, 60)
 })
 
+QUnit.test('built-in email validation', function (assert) {
+  const done = assert.async()
+
+  var validEmailAddress = 'team+support+a.b@example.com'
+  swal({input: 'email', animation: false}).then(function (result) {
+    assert.equal(result, validEmailAddress)
+    done()
+  })
+
+  $('.swal2-input').val(validEmailAddress)
+  swal.clickConfirm()
+})
+
 QUnit.test('input select', function (assert) {
   const done = assert.async()
 

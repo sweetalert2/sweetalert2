@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.3.0
+ * sweetalert2 v6.3.1
  * Released under the MIT License.
  */
 'use strict';
@@ -312,12 +312,6 @@ var removeStyleProperty = function removeStyleProperty(elem, property) {
     elem.style.removeAttribute(property);
   }
 };
-
-
-
-
-
-
 
 var fireClick = function fireClick(node) {
   if (!isVisible(node)) {
@@ -761,7 +755,7 @@ var modalDependant = function modalDependant() {
       if (params.input === 'email' && params.inputValidator === null) {
         params.inputValidator = function (email) {
           return new Promise(function (resolve, reject) {
-            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            var emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             if (emailRegex.test(email)) {
               resolve();
             } else {
@@ -1527,7 +1521,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.3.0';
+sweetAlert.version = '6.3.1';
 
 sweetAlert.default = sweetAlert;
 

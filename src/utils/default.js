@@ -48,7 +48,7 @@ export const defaultParams = {
 }
 
 const sweetHTML = `
-  <div class="${swalClasses.modal}" tabIndex="-1">
+  <div class="${swalClasses.modal}" tabIndex="-1" role="alert">
     <ul class="${swalClasses.progresssteps}"></ul>
     <div class="${swalClasses.icon} ${iconTypes.error}">
       <span class="x-mark"><span class="line left"></span><span class="line right"></span></span>

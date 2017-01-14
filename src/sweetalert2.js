@@ -645,6 +645,13 @@ const modalDependant = (...args) => {
       cancelButton.disabled = false
     }
 
+    sweetAlert.getTitle = () => dom.getTitle()
+    sweetAlert.getContent = () => dom.getContent()
+    sweetAlert.getInput = () => getInput()
+    sweetAlert.getImage = () => dom.getImage()
+    sweetAlert.getConfirmButton = () => dom.getConfirmButton()
+    sweetAlert.getCancelButton = () => dom.getCancelButton()
+
     sweetAlert.enableButtons = () => {
       confirmButton.disabled = false
       cancelButton.disabled = false
@@ -661,10 +668,6 @@ const modalDependant = (...args) => {
 
     sweetAlert.disableConfirmButton = () => {
       confirmButton.disabled = true
-    }
-
-    sweetAlert.getInput = () => {
-      return getInput()
     }
 
     sweetAlert.enableInput = () => {

@@ -1,4 +1,4 @@
-SweetAlert2 
+SweetAlert2
 -----------
 
 [![Build Status](https://travis-ci.org/limonte/sweetalert2.svg?branch=master)](https://travis-ci.org/limonte/sweetalert2) [![Downloads](https://img.shields.io/npm/dt/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2) [![Version](https://img.shields.io/npm/v/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2) [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sweetalert2/Lobby)
@@ -195,6 +195,11 @@ Methods
 | `swal.setDefaults({Object})`                    | If you end up using a lot of the same settings when calling SweetAlert2, you can use setDefaults at the start of your program to set them once and for all! |
 | `swal.resetDefaults()`                          | Resets settings to their default value. |
 | `swal.close()` or `swal.closeModal()`           | Close the currently open SweetAlert2 modal programmatically. |
+| `swal.getTitle()`                               | Get the modal title. |
+| `swal.getContent()`                             | Get the modal content. |
+| `swal.getImage()`                               | Get the image. |
+| `swal.getConfirmButton()`                       | Get the "Confirm" button. |
+| `swal.getCancelButton()`                        | Get the "Cancel" button. |
 | `swal.enableButtons()`                          | Enable "Confirm" and "Cancel" buttons. |
 | `swal.disableButtons()`                         | Disable "Confirm" and "Cancel" buttons. |
 | `swal.enableConfirmButton()`                    | Enable the "Confirm"-button only. |
@@ -205,7 +210,7 @@ Methods
 | `swal.clickCancel()`                            | Click the "Cancel"-button programmatically. |
 | `swal.showValidationError(error)`               | Show validation error message. |
 | `swal.resetValidationError()`                   | Hide validation error message. |
-| `swal.getInput()`                               | Get input node or array of nodes (radios), this method works with `input` parameter. |
+| `swal.getInput()`                               | Get the input DOM node, this method works with `input` parameter. |
 | `swal.disableInput()`                           | Disable input. A disabled input element is unusable and un-clickable. |
 | `swal.enableInput()`                            | Enable input. |
 | `swal.queue([Array])`                           | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another or a function that returns alert parameters given modal number. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals).  |

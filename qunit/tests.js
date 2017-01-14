@@ -21,6 +21,36 @@ QUnit.test('modal width', function (assert) {
   assert.equal($('.swal2-modal')[0].style.width, '500px')
 })
 
+QUnit.test('getters', function (assert) {
+  swal('Title', 'Content')
+  assert.equal(swal.getTitle().innerText, 'Title')
+  assert.equal(swal.getContent().innerText, 'Content')
+
+  swal({
+    showCancelButton: true,
+    imageUrl: 'image.png',
+    confirmButtonText: 'Confirm button',
+    cancelButtonText: 'Cancel button'
+  })
+  assert.ok(swal.getImage().src.indexOf('image.png'))
+  assert.equal(swal.getConfirmButton().innerText, 'Confirm button')
+  assert.equal(swal.getCancelButton().innerText, 'Cancel button')
+
+  swal({input: 'text'})
+  $('.swal2-input').val('input text')
+  assert.equal(swal.getInput().value, 'input text')
+
+  swal({
+    input: 'radio',
+    inputOptions: {
+      'one': 'one',
+      'two': 'two'
+    }
+  })
+  $('.swal2-radio input[value="two"]').prop('checked', true)
+  assert.equal(swal.getInput().value, 'two')
+})
+
 QUnit.test('confirm button', function (assert) {
   const done = assert.async()
 

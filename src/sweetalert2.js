@@ -846,14 +846,12 @@ const modalDependant = (...args) => {
         radio.innerHTML = ''
         populateInputOptions = (inputOptions) => {
           for (let radioValue in inputOptions) {
-            let id = 1
             const radioInput = document.createElement('input')
             const radioLabel = document.createElement('label')
             const radioLabelSpan = document.createElement('span')
             radioInput.type = 'radio'
             radioInput.name = swalClasses.radio
             radioInput.value = radioValue
-            radioInput.id = swalClasses.radio + '-' + (id++)
             if (params.inputValue === radioValue) {
               radioInput.checked = true
             }

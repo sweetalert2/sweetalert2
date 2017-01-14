@@ -58,6 +58,31 @@ declare module "sweetalert2" {
         function close(onComplete?: (modalElement: HTMLElement) => void): void;
 
         /**
+         * Get the modal title.
+         */
+        function getTitle(): HTMLElement;
+
+        /**
+         * Get the modal content.
+         */
+        function getContent(): HTMLElement;
+
+        /**
+         * Get the image.
+         */
+        function getImage(): HTMLElement;
+
+        /**
+         * Get the "Confirm" button.
+         */
+        function getConfirmButton(): HTMLElement;
+
+        /**
+         * Get the "Cancel" button.
+         */
+        function getCancelButton(): HTMLElement;
+
+        /**
          * Enable "Confirm" and "Cancel" buttons.
          */
         function enableButtons(): void;
@@ -108,14 +133,19 @@ declare module "sweetalert2" {
         function resetValidationError(): void;
 
         /**
-         * Enable input, this method works with input parameter.
+         * Get the input DOM node, this method works with input parameter.
          */
-        function enableInput(): void;
+        function getInput(): HTMLElement;
 
         /**
-         * Disable input.
+         * Disable input. A disabled input element is unusable and un-clickable.
          */
         function disableInput(): void;
+
+        /**
+        * Enable input.
+        */
+        function enableInput(): void;
 
         /**
          * Provide array of SweetAlert2 parameters to show multiple modals, one modal after another.
@@ -205,7 +235,7 @@ declare module "sweetalert2" {
          * It can either be put in the array under the key "type" or passed as the third parameter of the function.
          * Default: null
          */
-            type?: SweetAlertType;
+        type?: SweetAlertType;
 
         /**
          * Input field type, can be text, email, password, number, tel, range, textarea, select, radio, checkbox and file.

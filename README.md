@@ -247,6 +247,6 @@ If you would like to contribute enhancements or fixes, please do the following:
 
 5. Check that your code is compliant with code linters: `gulp lint`.
 
-6. Ensure that you didn't break any of tests: `testee qunit`.
+6. Ensure that you didn't break any of tests: `npm test`.
 
 7. Make sure that `dist/*` files aren't committed and create a pull request.

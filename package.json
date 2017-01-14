@@ -61,6 +61,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "test": "testee qunit",
     "assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --assume-unchanged",
     "no-assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --no-assume-unchanged"
   },

@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.3.1
+ * sweetalert2 v6.3.2
  * Released under the MIT License.
  */
 'use strict';
@@ -787,6 +787,9 @@ var modalDependant = function modalDependant() {
     // Get input element by specified type or, if type isn't specified, by params.input
     var getInput = function getInput(inputType) {
       inputType = inputType || params.input;
+      if (!inputType) {
+        return null;
+      }
       switch (inputType) {
         case 'select':
         case 'textarea':
@@ -1072,6 +1075,25 @@ var modalDependant = function modalDependant() {
       cancelButton.disabled = false;
     };
 
+    sweetAlert.getTitle = function () {
+      return getTitle();
+    };
+    sweetAlert.getContent = function () {
+      return getContent();
+    };
+    sweetAlert.getInput = function () {
+      return getInput();
+    };
+    sweetAlert.getImage = function () {
+      return getImage();
+    };
+    sweetAlert.getConfirmButton = function () {
+      return getConfirmButton();
+    };
+    sweetAlert.getCancelButton = function () {
+      return getCancelButton();
+    };
+
     sweetAlert.enableButtons = function () {
       confirmButton.disabled = false;
       cancelButton.disabled = false;
@@ -1268,14 +1290,12 @@ var modalDependant = function modalDependant() {
           radio.innerHTML = '';
           populateInputOptions = function populateInputOptions(inputOptions) {
             for (var radioValue in inputOptions) {
-              var id = 1;
               var radioInput = document.createElement('input');
               var radioLabel = document.createElement('label');
               var radioLabelSpan = document.createElement('span');
               radioInput.type = 'radio';
               radioInput.name = swalClasses.radio;
               radioInput.value = radioValue;
-              radioInput.id = swalClasses.radio + '-' + id++;
               if (params.inputValue === radioValue) {
                 radioInput.checked = true;
               }
@@ -1521,7 +1541,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.3.1';
+sweetAlert.version = '6.3.2';
 
 sweetAlert.default = sweetAlert;
 

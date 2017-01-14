@@ -352,6 +352,9 @@ const modalDependant = (...args) => {
     // Get input element by specified type or, if type isn't specified, by params.input
     const getInput = (inputType) => {
       inputType = inputType || params.input
+      if (!inputType) {
+        return null
+      }
       switch (inputType) {
         case 'select':
         case 'textarea':
@@ -658,6 +661,10 @@ const modalDependant = (...args) => {
 
     sweetAlert.disableConfirmButton = () => {
       confirmButton.disabled = true
+    }
+
+    sweetAlert.getInput = () => {
+      return getInput()
     }
 
     sweetAlert.enableInput = () => {

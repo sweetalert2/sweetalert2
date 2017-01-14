@@ -108,14 +108,19 @@ declare module "sweetalert2" {
         function resetValidationError(): void;
 
         /**
-         * Enable input, this method works with input parameter.
+         * Get input, this method works with input parameter.
          */
-        function enableInput(): void;
+        function getInput(): HTMLElement;
 
         /**
          * Disable input.
          */
         function disableInput(): void;
+
+        /**
+        * Enable input, this method works with input parameter.
+        */
+        function enableInput(): void;
 
         /**
          * Provide array of SweetAlert2 parameters to show multiple modals, one modal after another.

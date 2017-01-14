@@ -205,8 +205,9 @@ Methods
 | `swal.clickCancel()`                            | Click the "Cancel"-button programmatically. |
 | `swal.showValidationError(error)`               | Show validation error message. |
 | `swal.resetValidationError()`                   | Hide validation error message. |
-| `swal.enableInput()`                            | Enable input, this method works with `input` parameter. |
-| `swal.disableInput()`                           | Disable input. |
+| `swal.getInput()`                               | Get input node or array of nodes (radios), this method works with `input` parameter. |
+| `swal.disableInput()`                           | Disable input. A disabled input element is unusable and un-clickable. |
+| `swal.enableInput()`                            | Enable input. |
 | `swal.queue([Array])`                           | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another or a function that returns alert parameters given modal number. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals).  |
 | `swal.getQueueStep()`                           | Get the index of current modal in queue. When there's no active queue, `null` will be returned. |
 | `swal.insertQueueStep()`                        | Insert a modal to queue, you can specify modal positioning with second parameter. By default a modal will be added to the end of a queue. |

@@ -352,6 +352,9 @@ const modalDependant = (...args) => {
     // Get input element by specified type or, if type isn't specified, by params.input
     const getInput = (inputType) => {
       inputType = inputType || params.input
+      if (!inputType) {
+        return null
+      }
       switch (inputType) {
         case 'select':
         case 'textarea':
@@ -642,6 +645,13 @@ const modalDependant = (...args) => {
       cancelButton.disabled = false
     }
 
+    sweetAlert.getTitle = () => dom.getTitle()
+    sweetAlert.getContent = () => dom.getContent()
+    sweetAlert.getInput = () => getInput()
+    sweetAlert.getImage = () => dom.getImage()
+    sweetAlert.getConfirmButton = () => dom.getConfirmButton()
+    sweetAlert.getCancelButton = () => dom.getCancelButton()
+
     sweetAlert.enableButtons = () => {
       confirmButton.disabled = false
       cancelButton.disabled = false
@@ -836,14 +846,12 @@ const modalDependant = (...args) => {
         radio.innerHTML = ''
         populateInputOptions = (inputOptions) => {
           for (let radioValue in inputOptions) {
-            let id = 1
             const radioInput = document.createElement('input')
             const radioLabel = document.createElement('label')
             const radioLabelSpan = document.createElement('span')
             radioInput.type = 'radio'
             radioInput.name = swalClasses.radio
             radioInput.value = radioValue
-            radioInput.id = swalClasses.radio + '-' + (id++)
             if (params.inputValue === radioValue) {
               radioInput.checked = true
             }

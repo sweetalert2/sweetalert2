@@ -559,7 +559,7 @@ swal({
         <td><i>null</i></td>
         <td>Function to execute before confirm, should return Promise, see <a href="#ajax-request">usage example</a>.</td>
       </tr>
-      <tr>
+      <tr id="image">
         <td><b>imageUrl</b></td>
         <td><i>null</i></td>
         <td>Add a customized icon for the modal. Should contain a string with the path or URL to the image.</td>
@@ -1023,6 +1023,26 @@ swal({
         <td>Enable "Confirm" and "Cancel" buttons.</td>
       </tr>
       <tr>
+        <td><i>swal.getTitle()</i></td>
+        <td>Get the modal title.</td>
+      </tr>
+      <tr>
+        <td><i>swal.getContent()</i></td>
+        <td>Get the modal content.</td>
+      </tr>
+      <tr>
+        <td><i>swal.getImage()</i></td>
+        <td>Get the <a href="#image">image</a>.</td>
+      </tr>
+      <tr>
+        <td><i>swal.getConfirmButton()</i></td>
+        <td>Get the "Confirm" button.</td>
+      </tr>
+      <tr>
+        <td><i>swal.getCancelButton()</i></td>
+        <td>Get the "Cancel" button.</td>
+      </tr>
+      <tr>
         <td><i>swal.disableButtons()</i></td>
         <td>Disable "Confirm" and "Cancel" buttons.</td>
       </tr>
@@ -1059,12 +1079,16 @@ swal({
         <td>Hide validation error message.</td>
       </tr>
       <tr>
-        <td><i>swal.enableInput()</i></td>
-        <td>Enable input, this method works with <a href="#input-parameter">input parameter</a>.</td>
+        <td><i>swal.getInput()</i></td>
+        <td>Get the input DOM node, this method works with <a href="#input-parameter">input parameter</a>.</td>
       </tr>
       <tr>
         <td><i>swal.disableInput()</i></td>
-        <td>Disable input.</td>
+        <td>Disable input. A disabled input element is unusable and un-clickable.</td>
+      </tr>
+      <tr>
+        <td><i>swal.enableInput()</i></td>
+        <td>Enable input.</td>
       </tr>
       <tr>
         <td><i>swal.queue([Array])</i></td>

@@ -11,7 +11,7 @@ let swal2Observer
  * Set type, text and actions on modal
  */
 const setParameters = (params) => {
-  const modal = dom.getModal()
+  const modal = dom.getModal() || dom.init()
 
   for (let param in params) {
     if (!defaultParams.hasOwnProperty(param) && param !== 'extraParams') {
@@ -305,7 +305,8 @@ const undoIOSfix = () => {
   }
 }
 
-const modalDependant = (...args) => {
+// SweetAlert entry point
+const sweetAlert = (...args) => {
   if (args[0] === undefined) {
     console.error('SweetAlert2 expects at least 1 attribute!')
     return false
@@ -533,7 +534,7 @@ const modalDependant = (...args) => {
     const confirmButton = dom.getConfirmButton()
     const cancelButton = dom.getCancelButton()
 
-    // Reverse buttons if neede d
+    // Reverse buttons (Confirm on the right side)
     if (params.reverseButtons) {
       confirmButton.parentNode.insertBefore(cancelButton, confirmButton)
     } else {
@@ -710,7 +711,7 @@ const modalDependant = (...args) => {
 
     // Set modal min-height to disable scrolling inside the modal
     sweetAlert.recalculateHeight = dom.debounce(() => {
-      const modal = dom.getModal()
+      const modal = dom.getModal() || dom.init()
       const prevState = modal.style.display
       modal.style.minHeight = ''
       dom.show(modal)
@@ -935,21 +936,11 @@ const modalDependant = (...args) => {
   })
 }
 
-// SweetAlert entry point
-const sweetAlert = (...args) => {
-  if (sweetAlert.isVisible()) {
-    sweetAlert.close()
-  }
-
-  return modalDependant.apply(undefined, args)
-}
-
 /*
- * Global function to determine if swal2 modal is visible
+ * Global function to determine if swal2 modal is shown
  */
 sweetAlert.isVisible = () => {
-  const modal = dom.getModal()
-  return dom.isVisible(modal)
+  return !!dom.getModal()
 }
 
 /*
@@ -957,16 +948,15 @@ sweetAlert.isVisible = () => {
  */
 sweetAlert.queue = (steps) => {
   queue = steps
-  const modal = dom.getModal()
   const resetQueue = () => {
     queue = []
-    modal.removeAttribute('data-queue-step')
+    document.body.removeAttribute('data-swal2-queue-step')
   }
   let queueResult = []
   return new Promise((resolve, reject) => {
     (function step (i, callback) {
       if (i < queue.length) {
-        modal.setAttribute('data-queue-step', i)
+        document.body.setAttribute('data-swal2-queue-step', i)
 
         sweetAlert(queue[i]).then(
           (result) => {
@@ -989,7 +979,7 @@ sweetAlert.queue = (steps) => {
 /*
  * Global function for getting the index of current modal in queue
  */
-sweetAlert.getQueueStep = () => dom.getModal().getAttribute('data-queue-step')
+sweetAlert.getQueueStep = () => document.body.getAttribute('data-swal2-queue-step')
 
 /*
  * Global function for inserting a modal to the queue
@@ -1016,30 +1006,19 @@ sweetAlert.deleteQueueStep = (index) => {
 sweetAlert.close = sweetAlert.closeModal = (onComplete) => {
   const container = dom.getContainer()
   const modal = dom.getModal()
+  if (!modal) {
+    return
+  }
   dom.removeClass(modal, swalClasses.show)
   dom.addClass(modal, swalClasses.hide)
-
-  // Reset icon animations
-  const successIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.success)
-  dom.removeClass(successIcon, 'animate')
-  dom.removeClass(successIcon.querySelector('.tip'), 'animate-success-tip')
-  dom.removeClass(successIcon.querySelector('.long'), 'animate-success-long')
-
-  const errorIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.error)
-  dom.removeClass(errorIcon, 'animate-error-icon')
-  dom.removeClass(errorIcon.querySelector('.x-mark'), 'animate-x-mark')
-
-  const warningIcon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes.warning)
-  dom.removeClass(warningIcon, 'pulse-warning')
+  clearTimeout(modal.timeout)
 
   dom.resetPrevState()
 
-  const hideModalAndResetState = () => {
-    dom.hide(modal)
-    modal.style.minHeight = ''
+  const removeModalAndResetState = () => {
+    document.body.removeChild(container)
     dom.removeClass(document.documentElement, swalClasses.shown)
     dom.removeClass(document.body, swalClasses.shown)
-    dom.removeClass(container, swalClasses.shown)
     undoScrollbar()
     undoIOSfix()
   }
@@ -1049,12 +1028,12 @@ sweetAlert.close = sweetAlert.closeModal = (onComplete) => {
     modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
       if (dom.hasClass(modal, swalClasses.hide)) {
-        hideModalAndResetState()
+        removeModalAndResetState()
       }
     })
   } else {
-    // Otherwise, hide immediately
-    hideModalAndResetState()
+    // Otherwise, remove immediately
+    removeModalAndResetState()
   }
   if (onComplete !== null && typeof onComplete === 'function') {
     setTimeout(function () {

@@ -256,3 +256,11 @@ If you would like to contribute enhancements or fixes, please do the following:
 6. Ensure that you didn't break any of tests: `npm test`.
 
 7. Make sure that `dist/*` files aren't committed and create a pull request.
+
+
+Donations
+---------
+
+If you liked this plugin, you can donate to support it:
+
+- https://www.paypal.me/limonte

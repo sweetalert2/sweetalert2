@@ -156,7 +156,7 @@ body.swal2-iosfix {
     .swal2-modal .swal2-input.swal2-inputerror,
     .swal2-modal .swal2-file.swal2-inputerror,
     .swal2-modal .swal2-textarea.swal2-inputerror {
-      border-color: #f06e57; }
+      border-color: #f06e57 !important; }
     .swal2-modal .swal2-input:focus,
     .swal2-modal .swal2-file:focus,
     .swal2-modal .swal2-textarea:focus {

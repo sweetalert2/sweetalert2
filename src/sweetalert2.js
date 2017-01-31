@@ -719,8 +719,10 @@ const modalDependant = (...args) => {
       dom.show(validationError)
 
       const input = getInput()
-      dom.focusInput(input)
-      dom.addClass(input, swalClasses.inputerror)
+      if (input) {
+        dom.focusInput(input)
+        dom.addClass(input, swalClasses.inputerror)
+      }
     }
 
     // Hide block with validation error

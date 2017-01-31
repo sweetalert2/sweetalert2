@@ -217,7 +217,7 @@ body {
     transition: border-color box-shadow .3s;
 
     &.swal2-inputerror {
-      border-color: $sienna;
+      border-color: $sienna !important;
     }
 
     &:focus {

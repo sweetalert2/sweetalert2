@@ -48,7 +48,7 @@ export const defaultParams = {
 }
 
 const sweetHTML = `
-  <div class="${swalClasses.modal}" tabIndex="-1" role="alert">
+  <div  role="dialog" aria-labelledby="modalTitleId" aria-describedby="modalContentId" class="${swalClasses.modal}" tabIndex="-1" >
     <ul class="${swalClasses.progresssteps}"></ul>
     <div class="${swalClasses.icon} ${iconTypes.error}">
       <span class="x-mark"><span class="line left"></span><span class="line right"></span></span>
@@ -61,8 +61,8 @@ const sweetHTML = `
       <div class="placeholder"></div> <div class="fix"></div>
     </div>
     <img class="${swalClasses.image}">
-    <h2 class="${swalClasses.title}"></h2>
-    <div class="${swalClasses.content}"></div>
+    <h2 class="${swalClasses.title}" id="modalTitleId"></h2>
+    <div id="modalContentId" class="${swalClasses.content}"></div>
     <input class="${swalClasses.input}">
     <input type="file" class="${swalClasses.file}">
     <div class="${swalClasses.range}">
@@ -77,8 +77,8 @@ const sweetHTML = `
     <textarea class="${swalClasses.textarea}"></textarea>
     <div class="${swalClasses.validationerror}"></div>
     <hr class="${swalClasses.spacer}">
-    <button type="button" class="${swalClasses.confirm}">OK</button>
-    <button type="button" class="${swalClasses.cancel}">Cancel</button>
+    <button type="button" role="button" tabIndex="0" class="${swalClasses.confirm}">OK</button>
+    <button type="button" role="button" tabIndex="0" class="${swalClasses.cancel}">Cancel</button>
     <span class="${swalClasses.close}">&times;</span>
   </div>
 `.replace(/(^|\n)\s*/g, '')

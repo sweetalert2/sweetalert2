@@ -381,10 +381,10 @@ declare module "sweetalert2" {
          *    html:
          *      '<input id="swal-input1" class="swal2-input" autofocus>' +
          *      '<input id="swal-input2" class="swal2-input">',
-         *    preConfirm: () => new Promise(resolve => resolve([$('#swal-input1').val(), $('#swal-input2').val()]))
+         *    preConfirm: () => Promise.resolve([$('#swal-input1').val(), $('#swal-input2').val()])
          *  }).then(result => swal(JSON.stringify(result));
          */
-        preConfirm?: () => Promise<any>;
+        preConfirm?: (inputValue: any) => Promise<any>;
 
         /**
          * Add a customized icon for the modal. Should contain a string with the path or URL to the image.

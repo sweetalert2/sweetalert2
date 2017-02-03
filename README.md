@@ -122,7 +122,7 @@ When an alert is dismissed by the user, the Promise returned by `swal()` will re
 If rejections are not handled, it will be logged as an error. To avoid this, add a rejection handler to the Promise. Alternatively, you can use `.catch(swal.noop)` as a quick way to simply suppress the errors:
 
 ```js
-swal('...')
+swal(...)
   .catch(swal.noop)
 ```
 
@@ -162,7 +162,7 @@ Configuration
 | `confirmButtonClass`    | `null`               | A custom CSS class for the "Confirm"-button. |
 | `cancelButtonClass`     | `null`               | A custom CSS class for the "Cancel"-button. |
 | `buttonsStyling`        | `true`               | Apply default styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to `false`. |
-| `reverseButtons`        | `false`              | Set to `true` if you want to invert default buttons positions. |
+| `reverseButtons`        | `false`              | Set to `true` if you want to invert default buttons positions ("Confirm"-button on the right side). |
 | `focusCancel`           | `false`              | Set to `true` if you want to focus the "Cancel"-button by default. |
 | `showCloseButton`       | `false`              | Set to `true` to show close button in top right corner of the modal. |
 | `showLoaderOnConfirm`   | `false`              | Set to `true` to disable buttons and show that something is loading. Useful for AJAX requests. |

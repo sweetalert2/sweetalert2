@@ -968,7 +968,7 @@ swal({
 swal({
   title: <span class="str">'Multiple inputs'</span>,
   html:
-    <span class="str">'&lt;input id="swal-input1" class="swal2-input" autofocus&gt;'</span> +
+    <span class="str">'&lt;input id="swal-input1" class="swal2-input"&gt;'</span> +
     <span class="str">'&lt;input id="swal-input2" class="swal2-input"&gt;'</span>,
   preConfirm: <span class="func"><i>function</i></span> () {
     <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve) {
@@ -977,6 +977,9 @@ swal({
         $(<span class="str">'#swal-input2'</span>).val()
       ])
     })
+  },
+  onOpen: <span class="func"><i>function</i></span> () {
+    $(<span class="str">'#swal-input1'</span>).focus()
   }
 }).then(<span class="func"><i>function</i></span> (result) {
   swal(JSON.stringify(result))
@@ -1439,7 +1442,7 @@ swal({
   $('.input-type-multiple').on('click', function () {
     swal({
       title: 'Multiple inputs',
-      html: '<input id="swal-input1" class="swal2-input" autofocus><input id="swal-input2" class="swal2-input">',
+      html: '<input id="swal-input1" class="swal2-input"><input id="swal-input2" class="swal2-input">',
       preConfirm: function () {
         return new Promise(function (resolve) {
           resolve([
@@ -1447,6 +1450,9 @@ swal({
             $('#swal-input2').val()
           ])
         })
+      },
+      onOpen: function () {
+        $('#swal-input1').focus();
       }
     }).then(function (result) {
       swal(JSON.stringify(result))

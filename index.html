@@ -352,9 +352,8 @@ swal.queue([{
 
 
   <!-- Download & Install -->
-  <h3 class="download-section">Download & install</h3>
-
-  <div class="center-container">
+  <div class="center-container" class="download-section">
+    <h3>Download & install</h3>
     <pre class="center">$ bower install sweetalert2</pre>
     <p>Or</p>
     <pre class="center">$ npm install sweetalert2</pre>
@@ -366,9 +365,10 @@ swal.queue([{
     </p>
   </div>
 
-  <ol>
-    <li>
-      <p>Initialize the plugin by referencing the necessary files:</p>
+
+  <div class="center-container">
+    <h3>Usage</h3>
+    <p>1. Initialize the plugin by referencing the necessary files:</p>
 <pre><span class="comment">&lt;!-- for IE support --&gt;</span>
 &lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/es6-promise/es6-promise.auto.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt
 
@@ -380,19 +380,15 @@ swal.queue([{
 
 <span class="comment">// CommonJS</span>
 <span class="val">const</span> swal = <span class="func">require</span>(<span class="str">'sweetalert2'</span>)</pre>
-    </li>
 
-    <li>
-      <p>Call the sweetAlert2-function after the page has loaded</p>
-      <pre>
-swal({
+    <p>2. Call the sweetAlert2-function after the page has loaded</p>
+<pre>swal({
   title: <span class="str">'Error!'</span>,
   text: <span class="str">'Do you want to continue'</span>,
   type: <span class="str">'error'</span>,
   confirmButtonText: <span class="str">'Cool'</span>
 })</pre>
-    </li>
-  </ol>
+  </div>
 
 
   <div class="mobile-hidden">

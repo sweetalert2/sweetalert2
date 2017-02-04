@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.3.4
+ * sweetalert2 v6.3.5
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -374,6 +374,10 @@ var resetPrevState = function resetPrevState() {
 // Measure width of scrollbar
 // https://github.com/twbs/bootstrap/blob/master/js/modal.js#L279-L286
 var measureScrollbar = function measureScrollbar() {
+  var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+  if (supportsTouch) {
+    return 0;
+  }
   var scrollDiv = document.createElement('div');
   scrollDiv.style.width = '50px';
   scrollDiv.style.height = '50px';
@@ -1547,7 +1551,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.3.4';
+sweetAlert.version = '6.3.5';
 
 sweetAlert.default = sweetAlert;
 

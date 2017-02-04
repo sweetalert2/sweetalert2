@@ -242,7 +242,10 @@ export const resetPrevState = () => {
   const modal = getModal()
   window.onkeydown = states.previousWindowKeyDown
   if (states.previousActiveElement && states.previousActiveElement.focus) {
+    let x = window.scrollX
+    let y = window.scrollY
     states.previousActiveElement.focus()
+    window.scrollTo(x, y)
   }
   clearTimeout(modal.timeout)
 }

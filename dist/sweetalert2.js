@@ -1,11 +1,11 @@
 /*!
- * sweetalert2 v6.3.3
+ * sweetalert2 v6.3.4
  * Released under the MIT License.
  */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global.Sweetalert2 = factory());
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.Sweetalert2 = factory());
 }(this, (function () { 'use strict';
 
 var swalPrefix = 'swal2-';
@@ -1547,7 +1547,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.3.3';
+sweetAlert.version = '6.3.4';
 
 sweetAlert.default = sweetAlert;
 

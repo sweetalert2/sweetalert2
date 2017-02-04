@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.3.3
+ * sweetalert2 v6.3.4
  * Released under the MIT License.
  */
 'use strict';
@@ -1543,7 +1543,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.3.3';
+sweetAlert.version = '6.3.4';
 
 sweetAlert.default = sweetAlert;
 

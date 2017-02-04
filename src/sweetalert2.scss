@@ -25,6 +25,7 @@ $transparent: rgba($black, 0);
 
 body {
   &.swal2-in {
+    height: 999999999px;
     overflow-y: hidden;
   }
 

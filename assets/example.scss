@@ -255,16 +255,15 @@ button,
     color: $cinnabar;
   }
 
-  @media all and (max-width: 1278px) {
-    display: none;
-  }
-}
+  &.donate {
+    top: 170px;
+    color: $curiousblue;
+    font-weight: 600;
 
-.donate-form {
-  position: fixed;
-  right: 80px;
-  top: 170px;
-  cursor: pointer;
+    img {
+      vertical-align: -9px;
+    }
+  }
 
   @media all and (max-width: 1278px) {
     display: none;

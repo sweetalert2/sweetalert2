@@ -23,6 +23,12 @@ $input-box-shadow: rgba($black, .06);
 
 $transparent: rgba($black, 0);
 
+html {
+  &.swal2-in {
+    overflow-y: hidden;
+  }
+}
+
 body {
   &.swal2-in {
     overflow-y: hidden;

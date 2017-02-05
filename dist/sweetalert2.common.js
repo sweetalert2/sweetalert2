@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.3.7
+ * sweetalert2 v6.3.8
  * Released under the MIT License.
  */
 'use strict';
@@ -686,8 +686,9 @@ var openModal = function openModal(animation, onComplete) {
     sweetContainer.style.overflowY = 'auto';
   }
 
-  addClass(sweetContainer, swalClasses.in);
+  addClass(document.documentElement, swalClasses.in);
   addClass(document.body, swalClasses.in);
+  addClass(sweetContainer, swalClasses.in);
   fixScrollbar();
   iOSfix();
   states.previousActiveElement = document.activeElement;
@@ -1487,8 +1488,9 @@ sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
   var hideModalAndResetState = function hideModalAndResetState() {
     hide(modal);
     modal.style.minHeight = '';
-    removeClass(sweetContainer, swalClasses.in);
+    removeClass(document.documentElement, swalClasses.in);
     removeClass(document.body, swalClasses.in);
+    removeClass(sweetContainer, swalClasses.in);
     undoScrollbar();
     undoIOSfix();
   };
@@ -1554,7 +1556,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.3.7';
+sweetAlert.version = '6.3.8';
 
 sweetAlert.default = sweetAlert;
 

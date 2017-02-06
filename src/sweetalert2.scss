@@ -109,7 +109,7 @@ body {
     cursor: pointer;
     font-size: 17px;
     font-weight: 500;
-    margin: 15px 5px 0;
+    margin: 0 5px;
     padding: 10px 32px;
 
     &:not(.swal2-loading) {
@@ -117,6 +117,10 @@ body {
         opacity: .4;
         cursor: no-drop;
       }
+    }
+    
+    .swal2-styled + .swal2-styled {
+      margin-top: 15px;
     }
 
     &.swal2-loading {

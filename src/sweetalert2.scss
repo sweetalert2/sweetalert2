@@ -124,6 +124,10 @@ body {
         cursor: no-drop;
       }
     }
+    
+    .swal2-styled + .swal2-styled {
+      margin-top: 15px;
+    }
 
     &.swal2-loading {
       box-sizing: border-box;

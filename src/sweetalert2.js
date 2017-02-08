@@ -207,7 +207,7 @@ const setParameters = (params) => {
   if (params.buttonsStyling) {
     confirmButton.style.backgroundColor = params.confirmButtonColor
     cancelButton.style.backgroundColor = params.cancelButtonColor
-    altActionButton.style.backgroundColor = params.confirmButtonColor
+    altActionButton.style.backgroundColor = params.altActionButtonColor
   }
 
   // Add buttons custom classes

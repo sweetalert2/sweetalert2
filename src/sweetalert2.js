@@ -28,6 +28,7 @@ const setParameters = (params) => {
   const title = dom.getTitle()
   const content = dom.getContent()
   const confirmButton = dom.getConfirmButton()
+  const altActionButton = dom.getAltActionButton()
   const cancelButton = dom.getCancelButton()
   const closeButton = dom.getCloseButton()
 
@@ -175,6 +176,13 @@ const setParameters = (params) => {
     dom.hide(cancelButton)
   }
 
+  // Alt action button
+  if (params.showAltActionButton) {
+    altActionButton.style.display = 'inline-block'
+  } else {
+    dom.hide(altActionButton)
+  }
+
   // Confirm button
   if (params.showConfirmButton) {
     dom.removeStyleProperty(confirmButton, 'display')
@@ -193,11 +201,13 @@ const setParameters = (params) => {
   // Edit text on cancel and confirm buttons
   confirmButton.innerHTML = params.confirmButtonText
   cancelButton.innerHTML = params.cancelButtonText
+  altActionButton.innerHTML = params.altActionButtonText
 
   // Set buttons to selected background colors
   if (params.buttonsStyling) {
     confirmButton.style.backgroundColor = params.confirmButtonColor
     cancelButton.style.backgroundColor = params.cancelButtonColor
+    altActionButton.style.backgroundColor = params.confirmButtonColor
   }
 
   // Add buttons custom classes
@@ -205,17 +215,22 @@ const setParameters = (params) => {
   dom.addClass(confirmButton, params.confirmButtonClass)
   cancelButton.className = swalClasses.cancel
   dom.addClass(cancelButton, params.cancelButtonClass)
+  altActionButton.className = swalClasses.altaction
+  dom.addClass(altActionButton, params.altActionButtonClass)
 
   // Buttons styling
   if (params.buttonsStyling) {
     dom.addClass(confirmButton, swalClasses.styled)
     dom.addClass(cancelButton, swalClasses.styled)
+    dom.addClass(altActionButton, swalClasses.styled)
   } else {
     dom.removeClass(confirmButton, swalClasses.styled)
     dom.removeClass(cancelButton, swalClasses.styled)
+    dom.removeClass(altActionButton, swalClasses.styled)
 
     confirmButton.style.backgroundColor = confirmButton.style.borderLeftColor = confirmButton.style.borderRightColor = ''
     cancelButton.style.backgroundColor = cancelButton.style.borderLeftColor = cancelButton.style.borderRightColor = ''
+    altActionButton.style.backgroundColor = altActionButton.style.borderLeftColor = altActionButton.style.borderRightColor = ''
   }
 
   // CSS animation
@@ -432,8 +447,10 @@ const modalDependant = (...args) => {
       const e = event || window.event
       const target = e.target || e.srcElement
       const confirmButton = dom.getConfirmButton()
+      const altActionButton = dom.getAltActionButton()
       const cancelButton = dom.getCancelButton()
       const targetedConfirm = confirmButton === target || confirmButton.contains(target)
+      const targetedAltAction = altActionButton === target || altActionButton.contains(target)
       const targetedCancel = cancelButton === target || cancelButton.contains(target)
 
       switch (e.type) {
@@ -444,6 +461,8 @@ const modalDependant = (...args) => {
               confirmButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1)
             } else if (targetedCancel) {
               cancelButton.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.1)
+            } else if (targetedAltAction) {
+              altActionButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1)
             }
           }
           break
@@ -453,6 +472,8 @@ const modalDependant = (...args) => {
               confirmButton.style.backgroundColor = params.confirmButtonColor
             } else if (targetedCancel) {
               cancelButton.style.backgroundColor = params.cancelButtonColor
+            } else if (targetedAltAction) {
+              altActionButton.style.backgroundColor = params.confirmButtonColor
             }
           }
           break
@@ -462,6 +483,8 @@ const modalDependant = (...args) => {
               confirmButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.2)
             } else if (targetedCancel) {
               cancelButton.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.2)
+            } else if (targetedAltAction) {
+              altActionButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.2)
             }
           }
           break
@@ -493,6 +516,8 @@ const modalDependant = (...args) => {
             }
 
           // Clicked 'cancel'
+          } else if (targetedAltAction && sweetAlert.isVisible()) {
+            reject('altaction')
           } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.closeModal(params.onClose)
             reject('cancel')

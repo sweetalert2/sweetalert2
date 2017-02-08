@@ -222,6 +222,39 @@ swal({
 })</pre>
     </li>
 
+    <li class="threeway" id="threeway-handle">
+      <div class="ui">
+        <p>Confirm dialog with three options.</p>
+        <button>Try me!</button>
+      </div>
+      <pre>
+    swal({
+      title: <span class="str">'Three-way confirm dialog'</span>,
+      text: <span class="str">'Discard unsaved changes?'</span>,
+      focusCancel: <span class="val">true</span>,
+      showAltActionButton: <span class="val">true</span>,
+      showCancelButton: <span class="val">true</span>,
+      confirmButtonText: <span class="str">'Discard'</span>,
+      cancelButtonText: <span class="str">'Cancel'</span>,
+      altActionButtonText: <span class="str">'Save'</span>
+    }).then(
+      <span class="comment">// handling the promise resolution</span>
+      <span class="func"><i>function</i></span> () {
+        console.log(<span class="str">'Discard and leave'</span>);
+      },
+      <span class="comment">// handling the promise rejection</span>
+      <span class="func"><i>function</i></span> (dismiss) {
+        if (dismiss === <span class="str">'altaction'</span>) {
+          console.log(<span class="str">'Save and leave'</span>);
+          swal.close();
+        } else {
+          console.log(<span class="str">'Cancelled'</span>);
+        }
+      }
+    ).catch(swal.noop());</pre>
+    </li>
+
+
     <li class="custom-image">
       <div class="ui">
         <p>A message with a custom image and CSS animation disabled</p>
@@ -493,6 +526,11 @@ swal.queue([{
         <td><i>false</i></td>
         <td>If set to <strong>true</strong>, a "Cancel"-button will be shown, which the user can click on to dismiss the modal.</td>
       </tr>
+      <tr id="show-altaction-button">
+        <td><b>showAltActionButton</b></td>
+        <td><i>false</i></td>
+        <td>If set to <strong>true</strong>, a third button will be shown, which the user can click on to trigger a third option. (Promise is rejected with dismiss='altaction').</td>
+      </tr>
       <tr>
         <td><b>confirmButtonText</b></td>
         <td><i>'OK'</i></td>
@@ -504,6 +542,12 @@ swal.queue([{
         <td>Use this to change the text on the "Cancel"-button.</td>
       </tr>
       <tr>
+      <tr>
+        <td><b>altActionButtonText</b></td>
+        <td><i>'AltAction'</i></td>
+        <td>Use this to change the text on the "AltAction"-button.</td>
+      </tr>
+      <tr>
         <td><b>confirmButtonColor</b></td>
         <td><i>'#3085d6'</i></td>
         <td>Use this to change the background color of the "Confirm"-button (must be a HEX value).</td>
@@ -512,6 +556,12 @@ swal.queue([{
         <td><b>cancelButtonColor</b></td>
         <td><i>'#aaa'</i></td>
         <td>Use this to change the background color of the "Cancel"-button (must be a HEX value).</td>
+      </tr>
+
+      <tr>
+        <td><b>altActionButtonColor</b></td>
+        <td><i>'#3085d6'</i></td>
+        <td>Use this to change the background color of the "AltAction"-button (must be a HEX value).</td>
       </tr>
       <tr>
         <td><b>confirmButtonClass</b></td>
@@ -522,6 +572,12 @@ swal.queue([{
         <td><b>cancelButtonClass</b></td>
         <td><i>null</i></td>
         <td>A custom CSS class for the "Cancel"-button.</td>
+      </tr>
+      <tr>
+      <tr>
+        <td><b>altActionButtonClass</b></td>
+        <td><i>null</i></td>
+        <td>A custom CSS class for the "AltAction"-button.</td>
       </tr>
       <tr>
         <td><b>buttonsStyling</b></td>
@@ -672,6 +728,11 @@ swal.queue([{
         <td><strong>'timer'</strong></td>
         <td>The timer ran out, and the alert closed automatically.</td>
         <td><a href="#timer">timer</a></td>
+      </tr>
+      <tr>
+        <td><strong>'altaction'</strong></td>
+        <td>The user clicked the third button, ('AltAction').</td>
+        <td><a href="#show-altaction-button">showAltActionButton</a></td>
       </tr>
     </table>
 
@@ -1232,6 +1293,42 @@ swal({
         swal('Cancelled', 'Your imaginary file is safe :)', 'error')
       }
     })
+  })
+
+  $('.examples .threeway button').on('click', function () {
+    swal({
+      title: 'Three-way dialog',
+      text: 'Discard unsaved changes?',
+      focusCancel: true,
+      showAltActionButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Discard',
+      cancelButtonText: 'Cancel',
+      altActionButtonText: 'Save'
+    }).then(
+      // handling the promise resolution
+      function () {
+        console.log('Discard and leave')
+        swal(
+          'Discarded',
+          'Your imaginary data has been discarded',
+          'success'
+        )
+      },
+      // handling the promise rejection
+      function (dismiss) {
+        if (dismiss === 'altaction') {
+          console.log('Save and leave')
+          swal(
+            'Saved',
+            'Your imaginary data is safe',
+            'success'
+          )
+        } else {
+          console.log('Cancelled')
+        }
+      }
+    ).catch(swal.noop())
   })
 
   $('.examples .custom-image button').on('click', function () {

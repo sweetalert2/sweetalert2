@@ -24,6 +24,7 @@ export const swalClasses = prefix([
   'spacer',
   'confirm',
   'cancel',
+  'altaction',
   'icon',
   'image',
   'input',

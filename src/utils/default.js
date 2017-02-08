@@ -11,11 +11,15 @@ export const defaultParams = {
   allowOutsideClick: true,
   allowEscapeKey: true,
   showConfirmButton: true,
+  showAltActionButton: false,
   showCancelButton: false,
   preConfirm: null,
   confirmButtonText: 'OK',
   confirmButtonColor: '#3085d6',
   confirmButtonClass: null,
+  altActionButtonText: 'AltAction',
+  altActionButtonColor: '#3085d6',
+  altActionButtonClass: null,
   cancelButtonText: 'Cancel',
   cancelButtonColor: '#aaa',
   cancelButtonClass: null,
@@ -78,6 +82,7 @@ const sweetHTML = `
     <div class="${swalClasses.validationerror}"></div>
     <hr class="${swalClasses.spacer}">
     <button type="button" role="button" tabIndex="0" class="${swalClasses.confirm}">OK</button>
+    <button type="button" role="button" tabIndex="0" class="${swalClasses.altaction}">AltAction</button>
     <button type="button" role="button" tabIndex="0" class="${swalClasses.cancel}">Cancel</button>
     <span class="${swalClasses.close}">&times;</span>
   </div>

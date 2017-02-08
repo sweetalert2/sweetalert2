@@ -1,11 +1,11 @@
 /*!
- * sweetalert2 v6.3.8
+ * sweetalert2 v6.3.9
  * Released under the MIT License.
  */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global.Sweetalert2 = factory());
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.Sweetalert2 = factory());
 }(this, (function () { 'use strict';
 
 var swalPrefix = 'swal2-';
@@ -18,7 +18,7 @@ var prefix = function prefix(items) {
   return result;
 };
 
-var swalClasses = prefix(['container', 'in', 'iosfix', 'modal', 'overlay', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'content', 'spacer', 'confirm', 'cancel', 'icon', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled']);
+var swalClasses = prefix(['container', 'in', 'iosfix', 'modal', 'overlay', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'content', 'spacer', 'confirm', 'cancel', 'altaction', 'icon', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled']);
 
 var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
@@ -33,11 +33,15 @@ var defaultParams = {
   allowOutsideClick: true,
   allowEscapeKey: true,
   showConfirmButton: true,
+  showAltActionButton: false,
   showCancelButton: false,
   preConfirm: null,
   confirmButtonText: 'OK',
   confirmButtonColor: '#3085d6',
   confirmButtonClass: null,
+  altActionButtonText: 'AltAction',
+  altActionButtonColor: '#3085d6',
+  altActionButtonClass: null,
   cancelButtonText: 'Cancel',
   cancelButtonColor: '#aaa',
   cancelButtonClass: null,
@@ -69,7 +73,7 @@ var defaultParams = {
   onClose: null
 };
 
-var sweetHTML = ('\n  <div  role="dialog" aria-labelledby="modalTitleId" aria-describedby="modalContentId" class="' + swalClasses.modal + '" tabIndex="-1" >\n    <ul class="' + swalClasses.progresssteps + '"></ul>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.error + '">\n      <span class="x-mark"><span class="line left"></span><span class="line right"></span></span>\n    </div>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.question + '">?</div>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.warning + '">!</div>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.info + '">i</div>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.success + '">\n      <span class="line tip"></span> <span class="line long"></span>\n      <div class="placeholder"></div> <div class="fix"></div>\n    </div>\n    <img class="' + swalClasses.image + '">\n    <h2 class="' + swalClasses.title + '" id="modalTitleId"></h2>\n    <div id="modalContentId" class="' + swalClasses.content + '"></div>\n    <input class="' + swalClasses.input + '">\n    <input type="file" class="' + swalClasses.file + '">\n    <div class="' + swalClasses.range + '">\n      <output></output>\n      <input type="range">\n    </div>\n    <select class="' + swalClasses.select + '"></select>\n    <div class="' + swalClasses.radio + '"></div>\n    <label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">\n      <input type="checkbox">\n    </label>\n    <textarea class="' + swalClasses.textarea + '"></textarea>\n    <div class="' + swalClasses.validationerror + '"></div>\n    <hr class="' + swalClasses.spacer + '">\n    <button type="button" role="button" tabIndex="0" class="' + swalClasses.confirm + '">OK</button>\n    <button type="button" role="button" tabIndex="0" class="' + swalClasses.cancel + '">Cancel</button>\n    <span class="' + swalClasses.close + '">&times;</span>\n  </div>\n').replace(/(^|\n)\s*/g, '');
+var sweetHTML = ('\n  <div  role="dialog" aria-labelledby="modalTitleId" aria-describedby="modalContentId" class="' + swalClasses.modal + '" tabIndex="-1" >\n    <ul class="' + swalClasses.progresssteps + '"></ul>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.error + '">\n      <span class="x-mark"><span class="line left"></span><span class="line right"></span></span>\n    </div>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.question + '">?</div>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.warning + '">!</div>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.info + '">i</div>\n    <div class="' + swalClasses.icon + ' ' + iconTypes.success + '">\n      <span class="line tip"></span> <span class="line long"></span>\n      <div class="placeholder"></div> <div class="fix"></div>\n    </div>\n    <img class="' + swalClasses.image + '">\n    <h2 class="' + swalClasses.title + '" id="modalTitleId"></h2>\n    <div id="modalContentId" class="' + swalClasses.content + '"></div>\n    <input class="' + swalClasses.input + '">\n    <input type="file" class="' + swalClasses.file + '">\n    <div class="' + swalClasses.range + '">\n      <output></output>\n      <input type="range">\n    </div>\n    <select class="' + swalClasses.select + '"></select>\n    <div class="' + swalClasses.radio + '"></div>\n    <label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">\n      <input type="checkbox">\n    </label>\n    <textarea class="' + swalClasses.textarea + '"></textarea>\n    <div class="' + swalClasses.validationerror + '"></div>\n    <hr class="' + swalClasses.spacer + '">\n    <button type="button" role="button" tabIndex="0" class="' + swalClasses.confirm + '">OK</button>\n    <button type="button" role="button" tabIndex="0" class="' + swalClasses.altaction + '">AltAction</button>\n    <button type="button" role="button" tabIndex="0" class="' + swalClasses.cancel + '">Cancel</button>\n    <span class="' + swalClasses.close + '">&times;</span>\n  </div>\n').replace(/(^|\n)\s*/g, '');
 
 var sweetContainer = void 0;
 
@@ -220,6 +224,10 @@ var getValidationError = function getValidationError() {
 
 var getConfirmButton = function getConfirmButton() {
   return elementByClass(swalClasses.confirm);
+};
+
+var getAltActionButton = function getAltActionButton() {
+  return elementByClass(swalClasses.altaction);
 };
 
 var getCancelButton = function getCancelButton() {
@@ -470,6 +478,7 @@ var setParameters = function setParameters(params) {
   var title = getTitle();
   var content = getContent();
   var confirmButton = getConfirmButton();
+  var altActionButton = getAltActionButton();
   var cancelButton = getCancelButton();
   var closeButton = getCloseButton();
 
@@ -614,6 +623,13 @@ var setParameters = function setParameters(params) {
     hide(cancelButton);
   }
 
+  // Alt action button
+  if (params.showAltActionButton) {
+    altActionButton.style.display = 'inline-block';
+  } else {
+    hide(altActionButton);
+  }
+
   // Confirm button
   if (params.showConfirmButton) {
     removeStyleProperty(confirmButton, 'display');
@@ -632,11 +648,13 @@ var setParameters = function setParameters(params) {
   // Edit text on cancel and confirm buttons
   confirmButton.innerHTML = params.confirmButtonText;
   cancelButton.innerHTML = params.cancelButtonText;
+  altActionButton.innerHTML = params.altActionButtonText;
 
   // Set buttons to selected background colors
   if (params.buttonsStyling) {
     confirmButton.style.backgroundColor = params.confirmButtonColor;
     cancelButton.style.backgroundColor = params.cancelButtonColor;
+    altActionButton.style.backgroundColor = params.altActionButtonColor;
   }
 
   // Add buttons custom classes
@@ -644,17 +662,22 @@ var setParameters = function setParameters(params) {
   addClass(confirmButton, params.confirmButtonClass);
   cancelButton.className = swalClasses.cancel;
   addClass(cancelButton, params.cancelButtonClass);
+  altActionButton.className = swalClasses.altaction;
+  addClass(altActionButton, params.altActionButtonClass);
 
   // Buttons styling
   if (params.buttonsStyling) {
     addClass(confirmButton, swalClasses.styled);
     addClass(cancelButton, swalClasses.styled);
+    addClass(altActionButton, swalClasses.styled);
   } else {
     removeClass(confirmButton, swalClasses.styled);
     removeClass(cancelButton, swalClasses.styled);
+    removeClass(altActionButton, swalClasses.styled);
 
     confirmButton.style.backgroundColor = confirmButton.style.borderLeftColor = confirmButton.style.borderRightColor = '';
     cancelButton.style.backgroundColor = cancelButton.style.borderLeftColor = cancelButton.style.borderRightColor = '';
+    altActionButton.style.backgroundColor = altActionButton.style.borderLeftColor = altActionButton.style.borderRightColor = '';
   }
 
   // CSS animation
@@ -874,8 +897,10 @@ var modalDependant = function modalDependant() {
       var e = event || window.event;
       var target = e.target || e.srcElement;
       var confirmButton = getConfirmButton();
+      var altActionButton = getAltActionButton();
       var cancelButton = getCancelButton();
       var targetedConfirm = confirmButton === target || confirmButton.contains(target);
+      var targetedAltAction = altActionButton === target || altActionButton.contains(target);
       var targetedCancel = cancelButton === target || cancelButton.contains(target);
 
       switch (e.type) {
@@ -886,6 +911,8 @@ var modalDependant = function modalDependant() {
               confirmButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1);
             } else if (targetedCancel) {
               cancelButton.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.1);
+            } else if (targetedAltAction) {
+              altActionButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1);
             }
           }
           break;
@@ -895,6 +922,8 @@ var modalDependant = function modalDependant() {
               confirmButton.style.backgroundColor = params.confirmButtonColor;
             } else if (targetedCancel) {
               cancelButton.style.backgroundColor = params.cancelButtonColor;
+            } else if (targetedAltAction) {
+              altActionButton.style.backgroundColor = params.confirmButtonColor;
             }
           }
           break;
@@ -904,6 +933,8 @@ var modalDependant = function modalDependant() {
               confirmButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.2);
             } else if (targetedCancel) {
               cancelButton.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.2);
+            } else if (targetedAltAction) {
+              altActionButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.2);
             }
           }
           break;
@@ -934,6 +965,8 @@ var modalDependant = function modalDependant() {
             }
 
             // Clicked 'cancel'
+          } else if (targetedAltAction && sweetAlert.isVisible()) {
+            reject('altaction');
           } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.closeModal(params.onClose);
             reject('cancel');
@@ -1560,7 +1593,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.3.8';
+sweetAlert.version = '6.3.9';
 
 sweetAlert.default = sweetAlert;
 

@@ -101,6 +101,8 @@ export const getValidationError = () => elementByClass(swalClasses.validationerr
 
 export const getConfirmButton = () => elementByClass(swalClasses.confirm)
 
+export const getAltActionButton = () => elementByClass(swalClasses.altaction)
+
 export const getCancelButton = () => elementByClass(swalClasses.cancel)
 
 export const getCloseButton = () => elementByClass(swalClasses.close)

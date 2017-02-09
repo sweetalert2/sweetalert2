@@ -253,9 +253,9 @@ const openModal = (animation, onComplete) => {
     container.style.overflowY = 'auto'
   }
 
-  dom.addClass(document.documentElement, swalClasses.in)
-  dom.addClass(document.body, swalClasses.in)
-  dom.addClass(container, swalClasses.in)
+  dom.addClass(document.documentElement, swalClasses.shown)
+  dom.addClass(document.body, swalClasses.shown)
+  dom.addClass(container, swalClasses.shown)
   fixScrollbar()
   iOSfix()
   dom.states.previousActiveElement = document.activeElement
@@ -1037,9 +1037,9 @@ sweetAlert.close = sweetAlert.closeModal = (onComplete) => {
   const hideModalAndResetState = () => {
     dom.hide(modal)
     modal.style.minHeight = ''
-    dom.removeClass(document.documentElement, swalClasses.in)
-    dom.removeClass(document.body, swalClasses.in)
-    dom.removeClass(container, swalClasses.in)
+    dom.removeClass(document.documentElement, swalClasses.shown)
+    dom.removeClass(document.body, swalClasses.shown)
+    dom.removeClass(container, swalClasses.shown)
     undoScrollbar()
     undoIOSfix()
   }

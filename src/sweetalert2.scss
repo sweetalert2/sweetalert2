@@ -24,13 +24,13 @@ $input-box-shadow: rgba($black, .06);
 $transparent: rgba($black, 0);
 
 html {
-  &.swal2-in {
+  &.swal2-shown {
     overflow-y: hidden;
   }
 }
 
 body {
-  &.swal2-in {
+  &.swal2-shown {
     overflow-y: hidden;
   }
 
@@ -58,13 +58,13 @@ body {
   z-index: 1060;
 
   // TODO: remove/add the element from DOM instead
-  &:not(.swal2-in) { pointer-events: none; }
+  &:not(.swal2-shown) { pointer-events: none; }
 
   &.swal2-fade {
     transition: background-color .1s;
   }
 
-  &.swal2-in {
+  &.swal2-shown {
     background-color: $overlay;
   }
 }
@@ -124,7 +124,7 @@ body {
         cursor: no-drop;
       }
     }
-    
+
     .swal2-styled + .swal2-styled {
       margin-top: 15px;
     }

@@ -1,4 +1,4 @@
-import { defaultParams, sweetContainer } from './utils/default.js'
+import defaultParams from './utils/default.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
 import { colorLuminance } from './utils/utils.js'
 import * as dom from './utils/dom.js'
@@ -230,10 +230,12 @@ const setParameters = (params) => {
  * Animations
  */
 const openModal = (animation, onComplete) => {
+  const container = dom.getContainer()
   const modal = dom.getModal()
+
   if (animation) {
     dom.addClass(modal, swalClasses.show)
-    dom.addClass(sweetContainer, swalClasses.fade)
+    dom.addClass(container, swalClasses.fade)
     dom.removeClass(modal, swalClasses.hide)
   } else {
     dom.removeClass(modal, swalClasses.fade)
@@ -241,19 +243,19 @@ const openModal = (animation, onComplete) => {
   dom.show(modal)
 
   // scrolling is 'hidden' until animation is done, after that 'auto'
-  sweetContainer.style.overflowY = 'hidden'
+  container.style.overflowY = 'hidden'
   if (dom.animationEndEvent && !dom.hasClass(modal, swalClasses.noanimation)) {
     modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
-      sweetContainer.style.overflowY = 'auto'
+      container.style.overflowY = 'auto'
     })
   } else {
-    sweetContainer.style.overflowY = 'auto'
+    container.style.overflowY = 'auto'
   }
 
   dom.addClass(document.documentElement, swalClasses.in)
   dom.addClass(document.body, swalClasses.in)
-  dom.addClass(sweetContainer, swalClasses.in)
+  dom.addClass(container, swalClasses.in)
   fixScrollbar()
   iOSfix()
   dom.states.previousActiveElement = document.activeElement
@@ -341,6 +343,7 @@ const modalDependant = (...args) => {
 
   setParameters(params)
 
+  const container = dom.getContainer()
   const modal = dom.getModal()
 
   return new Promise((resolve, reject) => {
@@ -517,8 +520,8 @@ const modalDependant = (...args) => {
     }
 
     // Closing modal by overlay click
-    sweetContainer.onclick = (e) => {
-      if (e.target !== sweetContainer) {
+    container.onclick = (e) => {
+      if (e.target !== container) {
         return
       }
       if (params.allowOutsideClick) {
@@ -922,7 +925,7 @@ const modalDependant = (...args) => {
     setFocus(-1, 1)
 
     // fix scroll
-    sweetContainer.scrollTop = 0
+    dom.getContainer().scrollTop = 0
 
     // Observe changes inside the modal and adjust height
     if (typeof MutationObserver !== 'undefined' && !swal2Observer) {
@@ -1011,6 +1014,7 @@ sweetAlert.deleteQueueStep = (index) => {
  * Global function to close sweetAlert
  */
 sweetAlert.close = sweetAlert.closeModal = (onComplete) => {
+  const container = dom.getContainer()
   const modal = dom.getModal()
   dom.removeClass(modal, swalClasses.show)
   dom.addClass(modal, swalClasses.hide)
@@ -1035,7 +1039,7 @@ sweetAlert.close = sweetAlert.closeModal = (onComplete) => {
     modal.style.minHeight = ''
     dom.removeClass(document.documentElement, swalClasses.in)
     dom.removeClass(document.body, swalClasses.in)
-    dom.removeClass(sweetContainer, swalClasses.in)
+    dom.removeClass(container, swalClasses.in)
     undoScrollbar()
     undoIOSfix()
   }

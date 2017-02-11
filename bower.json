@@ -26,7 +26,7 @@
     "gulpfile.js",
     "package.json"
   ],
-  "description": "A replacement for JavaScript's popup boxes, supported fork of sweetalert",
+  "description": "An awesome and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
   "main": [
     "dist/sweetalert2.js",
     "src/sweetalert2.scss",

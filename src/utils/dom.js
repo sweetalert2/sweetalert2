@@ -17,11 +17,12 @@ export const init = () => {
   if (typeof document === 'undefined') {
     console.error('SweetAlert2 requires document to initialize')
     return
-  } else if (document.getElementsByClassName(swalClasses.container).length) {
-    return
   }
 
-  document.body.appendChild(getContainer())
+  const container = document.createElement('div')
+  container.className = swalClasses.container
+  container.innerHTML = sweetHTML
+  document.body.appendChild(container)
 
   const modal = getModal()
   const input = getChildByClass(modal, swalClasses.input)
@@ -114,27 +115,16 @@ const sweetHTML = `
  </div>
 `.replace(/(^|\n)\s*/g, '')
 
-export const getContainer = () => {
-  const existingContainers = document.getElementsByClassName(swalClasses.container)
+export const getContainer = () => document.body.querySelector('.' + swalClasses.container)
 
-  if (existingContainers.length) {
-    return existingContainers[0]
-  } else {
-    const container = document.createElement('div')
-    container.className = swalClasses.container
-    container.innerHTML = sweetHTML
-    return container
-  }
-}
-
-export const getModal = () => document.body.querySelector('.' + swalClasses.modal) || init()
+export const getModal = () => getContainer() ? getContainer().querySelector('.' + swalClasses.modal) : null
 
 export const getIcons = () => {
   const modal = getModal()
   return modal.querySelectorAll('.' + swalClasses.icon)
 }
 
-export const elementByClass = (className) => getContainer().querySelector('.' + className)
+export const elementByClass = (className) => getContainer() ? getContainer().querySelector('.' + className) : null
 
 export const getTitle = () => elementByClass(swalClasses.title)
 
@@ -286,9 +276,8 @@ export const animationEndEvent = (() => {
   return false
 })()
 
-// Reset the page to its previous state
+// Reset previous window keydown handler and focued element
 export const resetPrevState = () => {
-  const modal = getModal()
   window.onkeydown = states.previousWindowKeyDown
   if (states.previousActiveElement && states.previousActiveElement.focus) {
     let x = window.scrollX
@@ -296,7 +285,6 @@ export const resetPrevState = () => {
     states.previousActiveElement.focus()
     window.scrollTo(x, y)
   }
-  clearTimeout(modal.timeout)
 }
 
 // Measure width of scrollbar

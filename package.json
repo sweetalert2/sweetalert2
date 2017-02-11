@@ -3,7 +3,7 @@
   "version": "6.3.8",
   "repository": "limonte/sweetalert2",
   "homepage": "https://limonte.github.io/sweetalert2/",
-  "description": "A replacement for JavaScript's popup boxes, supported fork of sweetalert",
+  "description": "An awesome and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
   "main": "dist/sweetalert2.js",
   "jsnext:main": "src/sweetalert2.js",
   "types": "sweetalert2.d.ts",

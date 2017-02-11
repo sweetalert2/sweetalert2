@@ -283,7 +283,9 @@ export const resetPrevState = () => {
     let x = window.scrollX
     let y = window.scrollY
     states.previousActiveElement.focus()
-    window.scrollTo(x, y)
+    if (x && y) { // IE has no scrollX/scrollY support
+      window.scrollTo(x, y)
+    }
   }
 }
 

@@ -122,10 +122,6 @@ body {
       }
     }
 
-    .swal2-styled + .swal2-styled {
-      margin-top: 15px;
-    }
-
     &.swal2-loading {
       box-sizing: border-box;
       border: 4px solid transparent;
@@ -142,6 +138,10 @@ body {
       animation: rotate-loading 1.5s linear 0s infinite normal;
       user-select: none;
     }
+  }
+
+  .swal2-styled + .swal2-styled {
+    margin-top: 15px;
   }
 
   :not(.swal2-styled) {

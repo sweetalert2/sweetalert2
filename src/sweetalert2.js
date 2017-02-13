@@ -598,20 +598,19 @@ const sweetAlert = (...args) => {
         e.preventDefault()
 
       // ENTER/SPACE
-      } else {
-        if (keyCode === 13 || keyCode === 32) {
-          if (btnIndex === -1) {
-            // ENTER/SPACE clicked outside of a button.
-            if (params.focusCancel) {
-              dom.fireClick(cancelButton, e)
-            } else {
-              dom.fireClick(confirmButton, e)
-            }
+      } else if (keyCode === 13 || keyCode === 32) {
+        if (btnIndex === -1) {
+          // ENTER/SPACE clicked outside of a button.
+          if (params.focusCancel) {
+            dom.fireClick(cancelButton, e)
+          } else {
+            dom.fireClick(confirmButton, e)
           }
-        } else if (keyCode === 27 && params.allowEscapeKey === true) {
-          sweetAlert.closeModal(params.onClose)
-          reject('esc')
         }
+      // ESC
+      } else if (keyCode === 27 && params.allowEscapeKey === true) {
+        sweetAlert.closeModal(params.onClose)
+        reject('esc')
       }
     }
 

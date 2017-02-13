@@ -11,7 +11,7 @@ let swal2Observer
  * Set type, text and actions on modal
  */
 const setParameters = (params) => {
-  const modal = dom.getModal() || dom.init()
+  const modal = dom.getModal() || dom.init(params)
 
   for (let param in params) {
     if (!defaultParams.hasOwnProperty(param) && param !== 'extraParams') {
@@ -599,7 +599,7 @@ const sweetAlert = (...args) => {
 
       // ENTER/SPACE
       } else if (keyCode === 13 || keyCode === 32) {
-        if (btnIndex === -1) {
+        if (btnIndex === -1 && params.allowEnterKey) {
           // ENTER/SPACE clicked outside of a button.
           if (params.focusCancel) {
             dom.fireClick(cancelButton, e)
@@ -710,7 +710,7 @@ const sweetAlert = (...args) => {
 
     // Set modal min-height to disable scrolling inside the modal
     sweetAlert.recalculateHeight = dom.debounce(() => {
-      const modal = dom.getModal() || dom.init()
+      const modal = dom.getModal() || dom.init(params)
       const prevState = modal.style.display
       modal.style.minHeight = ''
       dom.show(modal)
@@ -922,7 +922,13 @@ const sweetAlert = (...args) => {
     openModal(params.animation, params.onOpen)
 
     // Focus the first element (input or button)
-    setFocus(-1, 1)
+    if (params.allowEnterKey) {
+      setFocus(-1, 1)
+    } else {
+      if (document.activeElement) {
+        document.activeElement.blur()
+      }
+    }
 
     // fix scroll
     dom.getContainer().scrollTop = 0

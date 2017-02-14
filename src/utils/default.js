@@ -8,6 +8,7 @@ export default {
   animation: true,
   allowOutsideClick: true,
   allowEscapeKey: true,
+  allowEnterKey: true,
   showConfirmButton: true,
   showCancelButton: false,
   preConfirm: null,

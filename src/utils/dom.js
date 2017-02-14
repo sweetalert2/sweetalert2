@@ -13,7 +13,7 @@ export const states = {
 /*
  * Add modal + overlay to DOM
  */
-export const init = () => {
+export const init = (params) => {
   if (typeof document === 'undefined') {
     console.error('SweetAlert2 requires document to initialize')
     return
@@ -39,7 +39,7 @@ export const init = () => {
 
   input.onkeydown = (event) => {
     setTimeout(() => {
-      if (event.keyCode === 13) {
+      if (event.keyCode === 13 && params.allowEnterKey) {
         event.stopPropagation()
         sweetAlert.clickConfirm()
       }

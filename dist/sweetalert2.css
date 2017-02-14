@@ -72,8 +72,6 @@ body.swal2-iosfix {
     .swal2-modal .swal2-styled:not(.swal2-loading)[disabled] {
       opacity: .4;
       cursor: no-drop; }
-    .swal2-modal .swal2-styled .swal2-styled + .swal2-styled {
-      margin-top: 15px; }
     .swal2-modal .swal2-styled.swal2-loading {
       box-sizing: border-box;
       border: 4px solid transparent;
@@ -93,6 +91,8 @@ body.swal2-iosfix {
          -moz-user-select: none;
           -ms-user-select: none;
               user-select: none; }
+  .swal2-modal .swal2-styled + .swal2-styled {
+    margin-top: 15px; }
   .swal2-modal :not(.swal2-styled).swal2-loading::after {
     display: inline-block;
     content: '';

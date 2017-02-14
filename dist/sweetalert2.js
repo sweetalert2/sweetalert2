@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.4.0
+ * sweetalert2 v6.4.1
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -18,6 +18,7 @@ var defaultParams = {
   animation: true,
   allowOutsideClick: true,
   allowEscapeKey: true,
+  allowEnterKey: true,
   showConfirmButton: true,
   showCancelButton: false,
   preConfirm: null,
@@ -103,7 +104,7 @@ var states = {
 /*
  * Add modal + overlay to DOM
  */
-var init = function init() {
+var init = function init(params) {
   if (typeof document === 'undefined') {
     console.error('SweetAlert2 requires document to initialize');
     return;
@@ -129,7 +130,7 @@ var init = function init() {
 
   input.onkeydown = function (event) {
     setTimeout(function () {
-      if (event.keyCode === 13) {
+      if (event.keyCode === 13 && params.allowEnterKey) {
         event.stopPropagation();
         sweetAlert.clickConfirm();
       }
@@ -448,7 +449,7 @@ var swal2Observer = void 0;
  * Set type, text and actions on modal
  */
 var setParameters = function setParameters(params) {
-  var modal = getModal() || init();
+  var modal = getModal() || init(params);
 
   for (var param in params) {
     if (!defaultParams.hasOwnProperty(param) && param !== 'extraParams') {
@@ -909,6 +910,7 @@ var sweetAlert = function sweetAlert() {
         case 'click':
           // Clicked 'confirm'
           if (targetedConfirm && sweetAlert.isVisible()) {
+            sweetAlert.disableButtons();
             if (params.input) {
               (function () {
                 var inputValue = getInputValue();
@@ -916,9 +918,11 @@ var sweetAlert = function sweetAlert() {
                 if (params.inputValidator) {
                   sweetAlert.disableInput();
                   params.inputValidator(inputValue, params.extraParams).then(function () {
+                    sweetAlert.enableButtons();
                     sweetAlert.enableInput();
                     confirm(inputValue);
                   }, function (error) {
+                    sweetAlert.enableButtons();
                     sweetAlert.enableInput();
                     if (error) {
                       sweetAlert.showValidationError(error);
@@ -934,6 +938,7 @@ var sweetAlert = function sweetAlert() {
 
             // Clicked 'cancel'
           } else if (targetedCancel && sweetAlert.isVisible()) {
+            sweetAlert.disableButtons();
             sweetAlert.closeModal(params.onClose);
             reject('cancel');
           }
@@ -1034,20 +1039,19 @@ var sweetAlert = function sweetAlert() {
         e.preventDefault();
 
         // ENTER/SPACE
-      } else {
-        if (keyCode === 13 || keyCode === 32) {
-          if (btnIndex === -1) {
-            // ENTER/SPACE clicked outside of a button.
-            if (params.focusCancel) {
-              fireClick(cancelButton, e);
-            } else {
-              fireClick(confirmButton, e);
-            }
+      } else if (keyCode === 13 || keyCode === 32) {
+        if (btnIndex === -1 && params.allowEnterKey) {
+          // ENTER/SPACE clicked outside of a button.
+          if (params.focusCancel) {
+            fireClick(cancelButton, e);
+          } else {
+            fireClick(confirmButton, e);
           }
-        } else if (keyCode === 27 && params.allowEscapeKey === true) {
-          sweetAlert.closeModal(params.onClose);
-          reject('esc');
         }
+        // ESC
+      } else if (keyCode === 27 && params.allowEscapeKey === true) {
+        sweetAlert.closeModal(params.onClose);
+        reject('esc');
       }
     };
 
@@ -1159,7 +1163,7 @@ var sweetAlert = function sweetAlert() {
 
     // Set modal min-height to disable scrolling inside the modal
     sweetAlert.recalculateHeight = debounce(function () {
-      var modal = getModal() || init();
+      var modal = getModal() || init(params);
       var prevState = modal.style.display;
       modal.style.minHeight = '';
       show(modal);
@@ -1374,7 +1378,13 @@ var sweetAlert = function sweetAlert() {
     openModal(params.animation, params.onOpen);
 
     // Focus the first element (input or button)
-    setFocus(-1, 1);
+    if (params.allowEnterKey) {
+      setFocus(-1, 1);
+    } else {
+      if (document.activeElement) {
+        document.activeElement.blur();
+      }
+    }
 
     // fix scroll
     getContainer().scrollTop = 0;
@@ -1534,7 +1544,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.4.0';
+sweetAlert.version = '6.4.1';
 
 sweetAlert.default = sweetAlert;
 

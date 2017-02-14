@@ -472,6 +472,7 @@ const sweetAlert = (...args) => {
         case 'click':
           // Clicked 'confirm'
           if (targetedConfirm && sweetAlert.isVisible()) {
+            sweetAlert.disableButtons()
             if (params.input) {
               const inputValue = getInputValue()
 
@@ -479,10 +480,12 @@ const sweetAlert = (...args) => {
                 sweetAlert.disableInput()
                 params.inputValidator(inputValue, params.extraParams).then(
                   () => {
+                    sweetAlert.enableButtons()
                     sweetAlert.enableInput()
                     confirm(inputValue)
                   },
                   (error) => {
+                    sweetAlert.enableButtons()
                     sweetAlert.enableInput()
                     if (error) {
                       sweetAlert.showValidationError(error)
@@ -498,6 +501,7 @@ const sweetAlert = (...args) => {
 
           // Clicked 'cancel'
           } else if (targetedCancel && sweetAlert.isVisible()) {
+            sweetAlert.disableButtons()
             sweetAlert.closeModal(params.onClose)
             reject('cancel')
           }

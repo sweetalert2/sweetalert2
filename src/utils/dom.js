@@ -22,7 +22,13 @@ export const init = (params) => {
   const container = document.createElement('div')
   container.className = swalClasses.container
   container.innerHTML = sweetHTML
-  document.body.appendChild(container)
+
+  let targetElement = document.querySelector(params.target)
+  if (!targetElement) {
+    console.warn(`SweetAlert2: Can't find the target "${params.target}"`)
+    targetElement = document.body
+  }
+  targetElement.appendChild(container)
 
   const modal = getModal()
   const input = getChildByClass(modal, swalClasses.input)

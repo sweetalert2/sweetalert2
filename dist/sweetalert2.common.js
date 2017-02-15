@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.4.1
+ * sweetalert2 v6.4.2
  * Released under the MIT License.
  */
 'use strict';
@@ -11,6 +11,7 @@ var defaultParams = {
   html: '',
   type: null,
   customClass: '',
+  target: 'body',
   animation: true,
   allowOutsideClick: true,
   allowEscapeKey: true,
@@ -109,7 +110,13 @@ var init = function init(params) {
   var container = document.createElement('div');
   container.className = swalClasses.container;
   container.innerHTML = sweetHTML;
-  document.body.appendChild(container);
+
+  var targetElement = document.querySelector(params.target);
+  if (!targetElement) {
+    console.warn('SweetAlert2: Can\'t find the target "' + params.target + '"');
+    targetElement = document.body;
+  }
+  targetElement.appendChild(container);
 
   var modal = getModal();
   var input = getChildByClass(modal, swalClasses.input);
@@ -1159,7 +1166,10 @@ var sweetAlert = function sweetAlert() {
 
     // Set modal min-height to disable scrolling inside the modal
     sweetAlert.recalculateHeight = debounce(function () {
-      var modal = getModal() || init(params);
+      var modal = getModal();
+      if (!modal) {
+        return;
+      }
       var prevState = modal.style.display;
       modal.style.minHeight = '';
       show(modal);
@@ -1472,7 +1482,7 @@ sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
   resetPrevState();
 
   var removeModalAndResetState = function removeModalAndResetState() {
-    document.body.removeChild(container);
+    container.parentNode.removeChild(container);
     removeClass(document.documentElement, swalClasses.shown);
     removeClass(document.body, swalClasses.shown);
     undoScrollbar();
@@ -1540,7 +1550,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.4.1';
+sweetAlert.version = '6.4.2';
 
 sweetAlert.default = sweetAlert;
 

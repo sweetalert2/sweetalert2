@@ -544,6 +544,15 @@ QUnit.test('modal vertical offset', function (assert) {
   })
 })
 
+QUnit.test('target', function (assert) {
+  swal('Default target');
+  assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
+  swal.close();
+
+  swal({title: 'Custom target', target: '#qunit'});
+  assert.equal(document.querySelector('#qunit'), document.querySelector('.swal2-container').parentNode)
+})
+
 QUnit.test('onOpen', function (assert) {
   const done = assert.async()
 

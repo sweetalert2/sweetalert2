@@ -5,6 +5,7 @@ export default {
   html: '',
   type: null,
   customClass: '',
+  target: 'body',
   animation: true,
   allowOutsideClick: true,
   allowEscapeKey: true,

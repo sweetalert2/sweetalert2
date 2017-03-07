@@ -21,11 +21,11 @@
     "gulp-rollup": "latest",
     "gulp-sass": "latest",
     "gulp-sass-lint": "latest",
-    "gulp-standard": "latest",
+    "gulp-standard": "^8.0.0",
     "gulp-uglify": "latest",
     "rollup": "latest",
     "rollup-plugin-babel": "latest",
-    "standard": "latest",
+    "standard": "^8.0.0",
     "testee": "^0.3.0",
     "uglify-js": "latest"
   },

@@ -197,7 +197,7 @@ declare module "sweetalert2" {
 
     export type SweetAlertType = 'success'|'error'|'warning'|'info'|'question'|undefined;
 
-    export type SweetAlertInputType = 'text'|'email'|'password'|'number'|'tel'|'range'|'textarea'|'select'|'radio'|'checkbox'|'file'|undefined;
+    export type SweetAlertInputType = 'text'|'email'|'password'|'number'|'tel'|'range'|'textarea'|'select'|'radio'|'checkbox'|'file'|'url'|undefined;
 
     export type SweetAlertInputOptions = { [inputValue: string]: string };
 
@@ -238,7 +238,7 @@ declare module "sweetalert2" {
         type?: SweetAlertType;
 
         /**
-         * Input field type, can be text, email, password, number, tel, range, textarea, select, radio, checkbox and file.
+         * Input field type, can be text, email, password, number, tel, range, textarea, select, radio, checkbox, file and url.
          * Default: null
          */
         input?: SweetAlertInputType;

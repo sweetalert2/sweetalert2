@@ -335,6 +335,19 @@ const sweetAlert = (...args) => {
           })
         }
       }
+
+      if (params.input === 'url' && params.inputValidator === null) {
+        params.inputValidator = (url) => {
+          return new Promise((resolve, reject) => {
+            const urlRegex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/
+            if (urlRegex.test(url)) {
+              resolve()
+            } else {
+              reject('Invalid URL')
+            }
+          })
+        }
+      }
       break
 
     default:
@@ -810,6 +823,7 @@ const sweetAlert = (...args) => {
       case 'password':
       case 'number':
       case 'tel':
+      case 'url':
         input = dom.getChildByClass(modal, swalClasses.input)
         input.value = params.inputValue
         input.placeholder = params.inputPlaceholder
@@ -908,7 +922,7 @@ const sweetAlert = (...args) => {
       case null:
         break
       default:
-        console.error('SweetAlert2: Unexpected type of input! Expected "text", "email", "password", "select", "checkbox", "textarea" or "file", got "' + params.input + '"')
+        console.error(`SweetAlert2: Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`)
         break
     }
 

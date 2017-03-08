@@ -15,7 +15,7 @@ before_script:
   - gulp
 
 script:
-  - xvfb-run testee qunit --browsers chrome,firefox
+  - xvfb-run testem ci --reporter dot
 
 deploy:
   api_key:

@@ -26,7 +26,7 @@
     "rollup": "latest",
     "rollup-plugin-babel": "latest",
     "standard": "^8.0.0",
-    "testee": "^0.3.0",
+    "testem": "latest",
     "uglify-js": "latest"
   },
   "standard": {
@@ -61,7 +61,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "testee qunit",
+    "test": "testem ci",
     "assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --assume-unchanged",
     "no-assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --no-assume-unchanged"
   },

@@ -1,0 +1,14 @@
+{
+    "framework": "qunit",
+    "src_files": [
+      "https://code.jquery.com/jquery-3.1.1.min.js",
+      "qunit/tests.js",
+      "dist/sweetalert2.js"
+    ],
+    "css_files": [
+      "dist/sweetalert2.css"
+    ],
+    "launch_in_ci": [
+      "Chrome"
+    ]
+}

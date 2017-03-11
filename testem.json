@@ -9,6 +9,7 @@
       "dist/sweetalert2.css"
     ],
     "launch_in_ci": [
-      "Chrome"
+      "Chrome",
+      "Firefox"
     ]
 }

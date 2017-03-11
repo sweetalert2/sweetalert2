@@ -8,7 +8,7 @@ cache:
     - node_modules
 
 addons:
-  firefox: latest
+  firefox: "51.0" # testem doesn't work with Firefox 52, revisit and set to latest if possible
   google-chrome: latest
 
 before_script:

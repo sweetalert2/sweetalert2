@@ -201,6 +201,12 @@ declare module "sweetalert2" {
 
     export type SweetAlertInputOptions = { [inputValue: string]: string };
 
+    export type SweetAlertInputAttributes = {
+        [P in keyof HTMLInputElement]?: string;
+    } & {
+        [customAttribute: string]: string;
+    };
+
     export interface SweetAlertOptions {
         /**
          * The title of the modal, as HTML.
@@ -436,7 +442,7 @@ declare module "sweetalert2" {
         inputAutoTrim?: boolean;
 
         /**
-         * HTML input attributes (e.g. min, max, step, accept ...), that are added to the input field.
+         * HTML input attributes (e.g. min, max, step, accept...), that are added to the input field.
          * Default: null
          *
          * ex.
@@ -448,7 +454,7 @@ declare module "sweetalert2" {
          *     }
          *   })
          */
-        inputAttributes?: any;
+        inputAttributes?: SweetAlertInputAttributes;
 
         /**
          * Validator for input field, should return a Promise.

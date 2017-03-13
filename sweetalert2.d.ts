@@ -201,11 +201,7 @@ declare module "sweetalert2" {
 
     export type SweetAlertInputOptions = { [inputValue: string]: string };
 
-    export type SweetAlertInputAttributes = {
-        [P in keyof HTMLInputElement]?: string;
-    } & {
-        [customAttribute: string]: string;
-    };
+    export type SweetAlertInputAttributes = { [attribute: string]: string };
 
     export interface SweetAlertOptions {
         /**

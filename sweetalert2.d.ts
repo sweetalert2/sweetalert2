@@ -436,6 +436,21 @@ declare module "sweetalert2" {
         inputAutoTrim?: boolean;
 
         /**
+         * HTML input attributes (e.g. min, max, step, accept ...), that are added to the input field.
+         * Default: null
+         *
+         * ex.
+         *   swal({
+         *     title: 'Select a file',
+         *     input: 'file',
+         *     inputAttributes: {
+         *       accept: 'image/*'
+         *     }
+         *   })
+         */
+        inputAttributes?: any;
+
+        /**
          * Validator for input field, should return a Promise.
          * Default: null
          *

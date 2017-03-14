@@ -240,6 +240,12 @@ declare module "sweetalert2" {
         type?: SweetAlertType;
 
         /**
+         * The container element for adding modal into (query selector only).
+         * Default: "body"
+         */
+        target?: string;
+
+        /**
          * Input field type, can be text, email, password, number, tel, range, textarea, select, radio, checkbox, file and url.
          * Default: null
          */
@@ -292,6 +298,13 @@ declare module "sweetalert2" {
          * Default: true
          */
         allowEscapeKey?: boolean
+
+        /**
+         * If set to false, the user can't confirm the modal by pressing the Enter or Space keys,
+         * unless they manually focus the confirm button.
+         * Default: true
+         */
+        allowEnterKey?: boolean;
 
         /**
          * If set to false, a "Confirm"-button will not be shown.

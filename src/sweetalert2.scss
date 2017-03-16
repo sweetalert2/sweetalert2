@@ -195,6 +195,7 @@ body {
     padding: 0;
     line-height: normal;
     color: lighten($black, 33);
+    word-wrap: break-word;
   }
 
   .swal2-input,

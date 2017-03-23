@@ -1,4 +1,4 @@
-import defaultParams from './utils/default.js'
+import defaultParams from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
 import { colorLuminance } from './utils/utils.js'
 import * as dom from './utils/dom.js'

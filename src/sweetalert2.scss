@@ -11,11 +11,11 @@ $apricot: #ea7d7d;
 $corn: #f8d486;
 $manhattan: #f8bb86;
 
-$success:  #a5dc86;
-$error:    #f27474;
-$warning:  #f8bb86;
-$info:     #3fc3ee;
-$question: #87adbd;
+$success:  #a5dc86 !default;
+$error:    #f27474 !default;
+$warning:  #f8bb86 !default;
+$info:     #3fc3ee !default;
+$question: #87adbd !default;
 $success-border: rgba($success, .2);
 
 $overlay: rgba($black, .4);

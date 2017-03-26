@@ -134,11 +134,12 @@ body {
           &::after {
             display: inline-block;
             content: '';
-            margin-left: 5px;
+            margin-left: 5px 0 15px;
             vertical-align: -1px;
-            height: 6px;
-            width: 6px;
+            height: 15px;
+            width: 15px;
             border: 3px solid lighten($black, 60);
+            box-shadow: 1px 1px 1px $white;
             border-right-color: transparent;
             border-radius: 50%;
             animation: rotate-loading 1.5s linear 0s infinite normal;

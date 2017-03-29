@@ -21,7 +21,7 @@ export const swalClasses = prefix([
   'close',
   'title',
   'content',
-  'spacer',
+  'buttonswrapper',
   'confirm',
   'cancel',
   'icon',

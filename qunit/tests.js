@@ -380,11 +380,11 @@ QUnit.test('showLoading and hideLoading', function (assert) {
   })
 
   swal.showLoading()
-  assert.ok($('.swal2-confirm').hasClass('swal2-loading'))
+  assert.ok($('.swal2-buttonswrapper').hasClass('swal2-loading'))
   assert.ok($('.swal2-cancel').is(':disabled'))
 
   swal.hideLoading()
-  assert.notOk($('.swal2-confirm').hasClass('swal2-loading'))
+  assert.notOk($('.swal2-buttonswrapper').hasClass('swal2-loading'))
   assert.notOk($('.swal2-cancel').is(':disabled'))
 
   swal({
@@ -393,12 +393,12 @@ QUnit.test('showLoading and hideLoading', function (assert) {
   })
 
   swal.showLoading()
-  assert.ok($('.swal2-confirm').is(':visible'))
-  assert.ok($('.swal2-confirm').hasClass('swal2-loading'))
+  assert.ok($('.swal2-buttonswrapper').is(':visible'))
+  assert.ok($('.swal2-buttonswrapper').hasClass('swal2-loading'))
 
   swal.hideLoading()
-  assert.notOk($('.swal2-confirm').is(':visible'))
-  assert.notOk($('.swal2-confirm').hasClass('swal2-loading'))
+  assert.notOk($('.swal2-buttonswrapper').is(':visible'))
+  assert.notOk($('.swal2-buttonswrapper').hasClass('swal2-loading'))
 })
 
 QUnit.test('disable/enable buttons', function (assert) {
@@ -545,11 +545,11 @@ QUnit.test('modal vertical offset', function (assert) {
 })
 
 QUnit.test('target', function (assert) {
-  swal('Default target');
+  swal('Default target')
   assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
-  swal.close();
+  swal.close()
 
-  swal({title: 'Custom target', target: '#qunit'});
+  swal({title: 'Custom target', target: '#qunit'})
   assert.equal(document.querySelector('#qunit'), document.querySelector('.swal2-container').parentNode)
 })
 

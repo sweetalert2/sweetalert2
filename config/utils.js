@@ -9,7 +9,7 @@ const toUpper = (_, c) => {
   return c ? c.toUpperCase() : ''
 }
 
-const classifyRE = /(?:^|[-_\/])(\w)/g
+const classifyRE = /(?:^|[-_/])(\w)/g
 const classify = (str) => {
   return str.replace(classifyRE, toUpper)
 }

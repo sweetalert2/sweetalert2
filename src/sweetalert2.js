@@ -1,4 +1,4 @@
-import defaultParams from './utils/default.js'
+import defaultParams from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
 import { colorLuminance } from './utils/utils.js'
 import * as dom from './utils/dom.js'
@@ -27,6 +27,7 @@ const setParameters = (params) => {
 
   const title = dom.getTitle()
   const content = dom.getContent()
+  const buttonsWrapper = dom.getButtonsWrapper()
   const confirmButton = dom.getConfirmButton()
   const cancelButton = dom.getCancelButton()
   const closeButton = dom.getCloseButton()
@@ -182,12 +183,11 @@ const setParameters = (params) => {
     dom.hide(confirmButton)
   }
 
-  // Buttons spacer
-  const spacer = dom.getSpacer()
+  // Buttons wrapper
   if (!params.showConfirmButton && !params.showCancelButton) {
-    dom.hide(spacer)
+    dom.hide(buttonsWrapper)
   } else {
-    dom.show(spacer)
+    dom.show(buttonsWrapper)
   }
 
   // Edit text on cancel and confirm buttons
@@ -548,6 +548,7 @@ const sweetAlert = (...args) => {
       }
     }
 
+    const buttonsWrapper = dom.getButtonsWrapper()
     const confirmButton = dom.getConfirmButton()
     const cancelButton = dom.getCancelButton()
 
@@ -644,9 +645,9 @@ const sweetAlert = (...args) => {
      * Show spinner instead of Confirm button and disable Cancel button
      */
     sweetAlert.showLoading = sweetAlert.enableLoading = () => {
-      dom.show(dom.getSpacer())
+      dom.show(buttonsWrapper)
       dom.show(confirmButton, 'inline-block')
-      dom.addClass(confirmButton, swalClasses.loading)
+      dom.addClass(buttonsWrapper, swalClasses.loading)
       dom.addClass(modal, swalClasses.loading)
       confirmButton.disabled = true
       cancelButton.disabled = true
@@ -659,10 +660,10 @@ const sweetAlert = (...args) => {
       if (!params.showConfirmButton) {
         dom.hide(confirmButton)
         if (!params.showCancelButton) {
-          dom.hide(dom.getSpacer())
+          dom.hide(dom.getButtonsWrapper())
         }
       }
-      dom.removeClass(confirmButton, swalClasses.loading)
+      dom.removeClass(buttonsWrapper, swalClasses.loading)
       dom.removeClass(modal, swalClasses.loading)
       confirmButton.disabled = false
       cancelButton.disabled = false

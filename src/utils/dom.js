@@ -114,9 +114,10 @@ const sweetHTML = `
    </label>
    <textarea class="${swalClasses.textarea}"></textarea>
    <div class="${swalClasses.validationerror}"></div>
-   <hr class="${swalClasses.spacer}">
-   <button type="button" role="button" tabIndex="0" class="${swalClasses.confirm}">OK</button>
-   <button type="button" role="button" tabIndex="0" class="${swalClasses.cancel}">Cancel</button>
+   <div class="${swalClasses.buttonswrapper}">
+     <button type="button" role="button" tabIndex="0" class="${swalClasses.confirm}">OK</button>
+     <button type="button" role="button" tabIndex="0" class="${swalClasses.cancel}">Cancel</button>
+   </div>
    <span class="${swalClasses.close}">&times;</span>
  </div>
 `.replace(/(^|\n)\s*/g, '')
@@ -138,7 +139,7 @@ export const getContent = () => elementByClass(swalClasses.content)
 
 export const getImage = () => elementByClass(swalClasses.image)
 
-export const getSpacer = () => elementByClass(swalClasses.spacer)
+export const getButtonsWrapper = () => elementByClass(swalClasses.buttonswrapper)
 
 export const getProgressSteps = () => elementByClass(swalClasses.progresssteps)
 

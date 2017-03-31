@@ -24,10 +24,8 @@ What's the difference between SweetAlert and SweetAlert2?
 <img src="https://raw.github.com/limonte/sweetalert2/master/assets/sweetalert2.gif" width="686">
 
 
-Usage
------
-
-To install:
+Installation
+------------
 
 ```bash
 npm install --save sweetalert2
@@ -39,12 +37,11 @@ Or:
 bower install --save sweetalert2
 ```
 
-Or download from CDN:
- - [https://www.jsdelivr.com/projects/sweetalert2](https://www.jsdelivr.com/projects/sweetalert2)
- - [https://cdnjs.com/libraries/limonte-sweetalert2](https://cdnjs.com/libraries/limonte-sweetalert2)
+Or download from CDN: [jsdelivr.com](https://www.jsdelivr.com/projects/sweetalert2) | [cdnjs.com](https://cdnjs.com/libraries/limonte-sweetalert2)
 
-To use:
 
+Usage
+-----
 
 ```html
 <script src="bower_components/es6-promise/es6-promise.auto.min.js"></script> <!-- for IE support -->

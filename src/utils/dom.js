@@ -118,7 +118,7 @@ const sweetHTML = `
      <button type="button" role="button" tabIndex="0" class="${swalClasses.confirm}">OK</button>
      <button type="button" role="button" tabIndex="0" class="${swalClasses.cancel}">Cancel</button>
    </div>
-   <button type="button" tabindex="0" class="${swalClasses.close}" title="Close this window">&times;</button>
+   <button type="button" tabindex="0" class="${swalClasses.close}" aria-label="Close this window">&times;</button>
  </div>
 `.replace(/(^|\n)\s*/g, '')
 

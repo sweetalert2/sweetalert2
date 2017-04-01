@@ -154,31 +154,26 @@ body.swal2-iosfix {
   .swal2-modal .swal2-textarea {
     width: 100%;
     box-sizing: border-box;
+    font-size: 18px;
     border-radius: 3px;
     border: 1px solid #d9d9d9;
-    font-size: 18px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06);
     -webkit-transition: border-color box-shadow .3s;
     transition: border-color box-shadow .3s; }
     .swal2-modal .swal2-input.swal2-inputerror,
     .swal2-modal .swal2-file.swal2-inputerror,
     .swal2-modal .swal2-textarea.swal2-inputerror {
-      border-color: #f06e57 !important; }
+      border-color: #f27474 !important;
+      box-shadow: 0 0 2px #f27474 !important; }
     .swal2-modal .swal2-input:focus,
     .swal2-modal .swal2-file:focus,
     .swal2-modal .swal2-textarea:focus {
       outline: none;
-      box-shadow: 0 0 3px #c4e6f5;
-      border: 1px solid #b4dbed; }
+      border: 1px solid #b4dbed;
+      box-shadow: 0 0 3px #c4e6f5; }
       .swal2-modal .swal2-input:focus::-webkit-input-placeholder,
       .swal2-modal .swal2-file:focus::-webkit-input-placeholder,
       .swal2-modal .swal2-textarea:focus::-webkit-input-placeholder {
-        -webkit-transition: opacity .3s .03s ease;
-        transition: opacity .3s .03s ease;
-        opacity: .8; }
-      .swal2-modal .swal2-input:focus::-moz-placeholder,
-      .swal2-modal .swal2-file:focus::-moz-placeholder,
-      .swal2-modal .swal2-textarea:focus::-moz-placeholder {
         -webkit-transition: opacity .3s .03s ease;
         transition: opacity .3s .03s ease;
         opacity: .8; }
@@ -197,10 +192,6 @@ body.swal2-iosfix {
     .swal2-modal .swal2-input::-webkit-input-placeholder,
     .swal2-modal .swal2-file::-webkit-input-placeholder,
     .swal2-modal .swal2-textarea::-webkit-input-placeholder {
-      color: #e6e6e6; }
-    .swal2-modal .swal2-input::-moz-placeholder,
-    .swal2-modal .swal2-file::-moz-placeholder,
-    .swal2-modal .swal2-textarea::-moz-placeholder {
       color: #e6e6e6; }
     .swal2-modal .swal2-input:-ms-input-placeholder,
     .swal2-modal .swal2-file:-ms-input-placeholder,
@@ -698,22 +689,6 @@ body.swal2-iosfix {
 .animate-x-mark {
   -webkit-animation: animate-x-mark 0.5s;
           animation: animate-x-mark 0.5s; }
-
-@-webkit-keyframes pulse-warning {
-  0% {
-    border-color: #f8d486; }
-  100% {
-    border-color: #f8bb86; } }
-
-@keyframes pulse-warning {
-  0% {
-    border-color: #f8d486; }
-  100% {
-    border-color: #f8bb86; } }
-
-.pulse-warning {
-  -webkit-animation: pulse-warning 0.75s infinite alternate;
-          animation: pulse-warning 0.75s infinite alternate; }
 
 @-webkit-keyframes rotate-loading {
   0% {

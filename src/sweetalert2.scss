@@ -36,7 +36,7 @@ body {
   }
 
   &.swal2-shown {
-    background-color: $overlay;
+    background-color: $swal2-overlay;
   }
 }
 
@@ -160,11 +160,11 @@ body {
     top: 5px;
     right: 8px;
     cursor: pointer;
-    color: $close-button;
+    color: $swal2-close-button;
     transition: color .1s ease;
 
     &:hover {
-      color: $close-button-hover;
+      color: $swal2-close-button-hover;
     }
   }
 
@@ -206,19 +206,19 @@ body {
     box-sizing: border-box;
     font-size: 18px;
     border-radius: 3px;
-    border: 1px solid $input-border;
-    box-shadow: inset 0 1px 1px $input-box-shadow;
+    border: 1px solid $swal2-input-border;
+    box-shadow: inset 0 1px 1px $swal2-input-box-shadow;
     transition: border-color box-shadow .3s;
 
     &.swal2-inputerror {
-      border-color: $error !important;
-      box-shadow: 0 0 2px $error !important;
+      border-color: $swal2-error !important;
+      box-shadow: 0 0 2px $swal2-error !important;
     }
 
     &:focus {
       outline: none;
-      border: 1px solid $input-border-focus;
-      box-shadow: 0 0 3px $input-box-shadow-focus;
+      border: 1px solid $swal2-input-border-focus;
+      box-shadow: 0 0 3px $swal2-input-box-shadow-focus;
 
       &::placeholder {
         transition: opacity .3s .03s ease;
@@ -325,8 +325,8 @@ body {
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      background-color: $validationerror-background;
-      color: $validationerror-color;
+      background-color: $swal2-validationerror-background;
+      color: $swal2-validationerror-color;
       line-height: 24px;
       text-align: center;
       margin-right: 10px;
@@ -371,7 +371,7 @@ body {
   user-select: none;
 
   &.swal2-error {
-    border-color: $error;
+    border-color: $swal2-error;
 
     .x-mark {
       position: relative;
@@ -382,7 +382,7 @@ body {
       position: absolute;
       height: 5px;
       width: 47px;
-      background-color: $error;
+      background-color: $swal2-error;
       display: block;
       top: 37px;
       border-radius: 2px;
@@ -401,8 +401,8 @@ body {
 
   &.swal2-warning {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: $warning;
-    border-color: lighten($warning, 7);
+    color: $swal2-warning;
+    border-color: lighten($swal2-warning, 7);
     font-size: 60px;
     line-height: 80px;
     text-align: center;
@@ -410,8 +410,8 @@ body {
 
   &.swal2-info {
     font-family: 'Open Sans', sans-serif;
-    color: $info;
-    border-color: lighten($info, 20);
+    color: $swal2-info;
+    border-color: lighten($swal2-info, 20);
     font-size: 60px;
     line-height: 80px;
     text-align: center;
@@ -419,15 +419,15 @@ body {
 
   &.swal2-question {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: $question;
-    border-color: lighten($question, 20);
+    color: $swal2-question;
+    border-color: lighten($swal2-question, 20);
     font-size: 60px;
     line-height: 80px;
     text-align: center;
   }
 
   &.swal2-success {
-    border-color: $success;
+    border-color: $swal2-success;
 
     &::before,
     &::after { // Emulate moving circular line
@@ -461,7 +461,7 @@ body {
     .placeholder { // Ring
       width: 80px;
       height: 80px;
-      border: 4px solid $success-border;
+      border: 4px solid $swal2-success-border;
       border-radius: 50%;
       box-sizing: content-box;
 
@@ -486,7 +486,7 @@ body {
 
     .line {
       height: 5px;
-      background-color: $success;
+      background-color: $swal2-success;
       display: block;
       border-radius: 2px;
 

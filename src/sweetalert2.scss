@@ -168,12 +168,17 @@ body {
   }
 
   .swal2-close {
+    background: $transparent;
+    margin: 0;
+    padding: 0;
+    width: 38px;
+    height: 40px;
     font-size: 36px;
-    line-height: 36px;
+    line-height: 40px;
     font-family: serif;
     position: absolute;
     top: 5px;
-    right: 13px;
+    right: 8px;
     cursor: pointer;
     color: lighten($black, 80);
     transition: color .1s ease;

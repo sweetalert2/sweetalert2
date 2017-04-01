@@ -624,6 +624,8 @@ const sweetAlert = (...args) => {
           } else {
             dom.fireClick(confirmButton, e)
           }
+          e.stopPropagation()
+          e.preventDefault()
         }
       // ESC
       } else if (keyCode === 27 && params.allowEscapeKey === true) {

@@ -212,6 +212,7 @@ body {
 
     &.swal2-inputerror {
       border-color: $error !important;
+      box-shadow: 0 0 2px $error !important;
     }
 
     &:focus {

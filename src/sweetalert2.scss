@@ -1,27 +1,7 @@
 // SweetAlert2
 // github.com/limonte/sweetalert2
 
-$white: #fff;
-$black: #000;
-$roman: #d55;
-$sienna: #f06e57;
-$tulip: #c4e6f5;
-$spindle: #b4dbed;
-$apricot: #ea7d7d;
-$corn: #f8d486;
-$manhattan: #f8bb86;
-
-$success:  #a5dc86 !default;
-$error:    #f27474 !default;
-$warning:  #f8bb86 !default;
-$info:     #3fc3ee !default;
-$question: #87adbd !default;
-$success-border: rgba($success, .2);
-
-$overlay: rgba($black, .4);
-$input-box-shadow: rgba($black, .06);
-
-$transparent: rgba($black, 0);
+@import 'colors';
 
 body {
   &.swal2-shown {
@@ -180,11 +160,11 @@ body {
     top: 5px;
     right: 8px;
     cursor: pointer;
-    color: lighten($black, 80);
+    color: $close-button;
     transition: color .1s ease;
 
     &:hover {
-      color: $roman;
+      color: $close-button-hover;
     }
   }
 
@@ -224,20 +204,20 @@ body {
   .swal2-textarea {
     width: 100%;
     box-sizing: border-box;
-    border-radius: 3px;
-    border: 1px solid lighten($black, 85);
     font-size: 18px;
+    border-radius: 3px;
+    border: 1px solid $input-border;
     box-shadow: inset 0 1px 1px $input-box-shadow;
     transition: border-color box-shadow .3s;
 
     &.swal2-inputerror {
-      border-color: $sienna !important;
+      border-color: $error !important;
     }
 
     &:focus {
       outline: none;
-      box-shadow: 0 0 3px $tulip;
-      border: 1px solid $spindle;
+      border: 1px solid $input-border-focus;
+      box-shadow: 0 0 3px $input-box-shadow-focus;
 
       &::placeholder {
         transition: opacity .3s .03s ease;
@@ -344,8 +324,8 @@ body {
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      background-color: $apricot;
-      color: $white;
+      background-color: $validationerror-background;
+      color: $validationerror-color;
       line-height: 24px;
       text-align: center;
       margin-right: 10px;
@@ -794,20 +774,6 @@ body {
 
 .animate-x-mark {
   @include animation('animate-x-mark 0.5s');
-}
-
-@include keyframes(pulse-warning) {
-  0% {
-    border-color: $corn;
-  }
-
-  100% {
-    border-color: $manhattan;
-  }
-}
-
-.pulse-warning {
-  @include animation('pulse-warning 0.75s infinite alternate');
 }
 
 @include keyframes(rotate-loading) {

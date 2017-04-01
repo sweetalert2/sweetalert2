@@ -135,9 +135,6 @@ const setParameters = (params) => {
         dom.addClass(icon, 'animate-error-icon')
         dom.addClass(icon.querySelector('.x-mark'), 'animate-x-mark')
         break
-      case 'warning':
-        dom.addClass(icon, 'pulse-warning')
-        break
       default:
         break
     }

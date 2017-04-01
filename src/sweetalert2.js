@@ -672,6 +672,7 @@ const sweetAlert = (...args) => {
     sweetAlert.getContent = () => dom.getContent()
     sweetAlert.getInput = () => getInput()
     sweetAlert.getImage = () => dom.getImage()
+    sweetAlert.getButtonsWrapper = () => dom.getButtonsWrapper()
     sweetAlert.getConfirmButton = () => dom.getConfirmButton()
     sweetAlert.getCancelButton = () => dom.getCancelButton()
 

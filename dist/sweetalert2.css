@@ -108,6 +108,7 @@ body.swal2-iosfix {
     max-width: 100%; }
   .swal2-modal .swal2-close {
     background: transparent;
+    border: 0;
     margin: 0;
     padding: 0;
     width: 38px;

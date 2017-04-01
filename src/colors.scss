@@ -1,0 +1,23 @@
+$white: #fff;
+$black: #000;
+$transparent: rgba($black, 0);
+
+$success:        #a5dc86 !default;
+$success-border: rgba($success, .2) !default;
+$error:          #f27474 !default;
+$warning:        #f8bb86 !default;
+$info:           #3fc3ee !default;
+$question:       #87adbd !default;
+
+$overlay: rgba($black, .4) !default;
+
+$close-button: lighten($black, 80) !default;
+$close-button-hover: #d55 !default;
+
+$input-border: lighten($black, 85) !default;
+$input-border-focus: #b4dbed !default;
+$input-box-shadow: rgba($black, .06) !default;
+$input-box-shadow-focus: #c4e6f5 !default;
+
+$validationerror-background: #ea7d7d !default;
+$validationerror-color: $white !default;

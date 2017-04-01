@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.4.4
+ * sweetalert2 v6.5.0
  * Released under the MIT License.
  */
 'use strict';
@@ -63,7 +63,7 @@ var prefix = function prefix(items) {
   return result;
 };
 
-var swalClasses = prefix(['container', 'shown', 'iosfix', 'modal', 'overlay', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'content', 'spacer', 'confirm', 'cancel', 'icon', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled']);
+var swalClasses = prefix(['container', 'shown', 'iosfix', 'modal', 'overlay', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'content', 'buttonswrapper', 'confirm', 'cancel', 'icon', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled']);
 
 var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
@@ -173,7 +173,7 @@ var init = function init(params) {
  * Manipulate DOM
  */
 
-var sweetHTML = ('\n <div  role="dialog" aria-labelledby="modalTitleId" aria-describedby="modalContentId" class="' + swalClasses.modal + '" tabIndex="-1" >\n   <ul class="' + swalClasses.progresssteps + '"></ul>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.error + '">\n     <span class="x-mark"><span class="line left"></span><span class="line right"></span></span>\n   </div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.question + '">?</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.warning + '">!</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.info + '">i</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.success + '">\n     <span class="line tip"></span> <span class="line long"></span>\n     <div class="placeholder"></div> <div class="fix"></div>\n   </div>\n   <img class="' + swalClasses.image + '">\n   <h2 class="' + swalClasses.title + '" id="modalTitleId"></h2>\n   <div id="modalContentId" class="' + swalClasses.content + '"></div>\n   <input class="' + swalClasses.input + '">\n   <input type="file" class="' + swalClasses.file + '">\n   <div class="' + swalClasses.range + '">\n     <output></output>\n     <input type="range">\n   </div>\n   <select class="' + swalClasses.select + '"></select>\n   <div class="' + swalClasses.radio + '"></div>\n   <label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">\n     <input type="checkbox">\n   </label>\n   <textarea class="' + swalClasses.textarea + '"></textarea>\n   <div class="' + swalClasses.validationerror + '"></div>\n   <hr class="' + swalClasses.spacer + '">\n   <button type="button" role="button" tabIndex="0" class="' + swalClasses.confirm + '">OK</button>\n   <button type="button" role="button" tabIndex="0" class="' + swalClasses.cancel + '">Cancel</button>\n   <span class="' + swalClasses.close + '">&times;</span>\n </div>\n').replace(/(^|\n)\s*/g, '');
+var sweetHTML = ('\n <div role="dialog" aria-labelledby="' + swalClasses.title + '" aria-describedby="' + swalClasses.content + '" class="' + swalClasses.modal + '" tabindex="-1">\n   <ul class="' + swalClasses.progresssteps + '"></ul>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.error + '">\n     <span class="x-mark"><span class="line left"></span><span class="line right"></span></span>\n   </div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.question + '">?</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.warning + '">!</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.info + '">i</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.success + '">\n     <span class="line tip"></span> <span class="line long"></span>\n     <div class="placeholder"></div> <div class="fix"></div>\n   </div>\n   <img class="' + swalClasses.image + '">\n   <h2 class="' + swalClasses.title + '" id="' + swalClasses.title + '"></h2>\n   <div id="' + swalClasses.content + '" class="' + swalClasses.content + '"></div>\n   <input class="' + swalClasses.input + '">\n   <input type="file" class="' + swalClasses.file + '">\n   <div class="' + swalClasses.range + '">\n     <output></output>\n     <input type="range">\n   </div>\n   <select class="' + swalClasses.select + '"></select>\n   <div class="' + swalClasses.radio + '"></div>\n   <label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">\n     <input type="checkbox">\n   </label>\n   <textarea class="' + swalClasses.textarea + '"></textarea>\n   <div class="' + swalClasses.validationerror + '"></div>\n   <div class="' + swalClasses.buttonswrapper + '">\n     <button type="button" role="button" tabIndex="0" class="' + swalClasses.confirm + '">OK</button>\n     <button type="button" role="button" tabIndex="0" class="' + swalClasses.cancel + '">Cancel</button>\n   </div>\n   <button type="button" tabindex="0" class="' + swalClasses.close + '" title="Close this window">&times;</button>\n </div>\n').replace(/(^|\n)\s*/g, '');
 
 var getContainer = function getContainer() {
   return document.body.querySelector('.' + swalClasses.container);
@@ -204,8 +204,8 @@ var getImage = function getImage() {
   return elementByClass(swalClasses.image);
 };
 
-var getSpacer = function getSpacer() {
-  return elementByClass(swalClasses.spacer);
+var getButtonsWrapper = function getButtonsWrapper() {
+  return elementByClass(swalClasses.buttonswrapper);
 };
 
 var getProgressSteps = function getProgressSteps() {
@@ -233,7 +233,9 @@ var getFocusableElements = function getFocusableElements(focusCancel) {
   if (focusCancel) {
     buttons.reverse();
   }
-  return buttons.concat(Array.prototype.slice.call(getModal().querySelectorAll('button:not([class^=' + swalPrefix + ']), input:not([type=hidden]), textarea, select')));
+  var focusableElements = buttons.concat(Array.prototype.slice.call(getModal().querySelectorAll('button, input:not([type=hidden]), textarea, select, *[tabindex]:not([tabindex="-1"])')));
+  var uniqueFocusableElements = new Set(focusableElements);
+  return Array.from(uniqueFocusableElements);
 };
 
 var hasClass = function hasClass(elem, className) {
@@ -468,6 +470,7 @@ var setParameters = function setParameters(params) {
 
   var title = getTitle();
   var content = getContent();
+  var buttonsWrapper = getButtonsWrapper();
   var confirmButton = getConfirmButton();
   var cancelButton = getCancelButton();
   var closeButton = getCloseButton();
@@ -620,12 +623,11 @@ var setParameters = function setParameters(params) {
     hide(confirmButton);
   }
 
-  // Buttons spacer
-  var spacer = getSpacer();
+  // Buttons wrapper
   if (!params.showConfirmButton && !params.showCancelButton) {
-    hide(spacer);
+    hide(buttonsWrapper);
   } else {
-    show(spacer);
+    show(buttonsWrapper);
   }
 
   // Edit text on cancel and confirm buttons
@@ -986,6 +988,7 @@ var sweetAlert = function sweetAlert() {
       }
     };
 
+    var buttonsWrapper = getButtonsWrapper();
     var confirmButton = getConfirmButton();
     var cancelButton = getCancelButton();
 
@@ -1061,6 +1064,8 @@ var sweetAlert = function sweetAlert() {
           } else {
             fireClick(confirmButton, e);
           }
+          e.stopPropagation();
+          e.preventDefault();
         }
         // ESC
       } else if (keyCode === 27 && params.allowEscapeKey === true) {
@@ -1082,9 +1087,9 @@ var sweetAlert = function sweetAlert() {
      * Show spinner instead of Confirm button and disable Cancel button
      */
     sweetAlert.showLoading = sweetAlert.enableLoading = function () {
-      show(getSpacer());
+      show(buttonsWrapper);
       show(confirmButton, 'inline-block');
-      addClass(confirmButton, swalClasses.loading);
+      addClass(buttonsWrapper, swalClasses.loading);
       addClass(modal, swalClasses.loading);
       confirmButton.disabled = true;
       cancelButton.disabled = true;
@@ -1097,10 +1102,10 @@ var sweetAlert = function sweetAlert() {
       if (!params.showConfirmButton) {
         hide(confirmButton);
         if (!params.showCancelButton) {
-          hide(getSpacer());
+          hide(getButtonsWrapper());
         }
       }
-      removeClass(confirmButton, swalClasses.loading);
+      removeClass(buttonsWrapper, swalClasses.loading);
       removeClass(modal, swalClasses.loading);
       confirmButton.disabled = false;
       cancelButton.disabled = false;
@@ -1559,7 +1564,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.4.4';
+sweetAlert.version = '6.5.0';
 
 sweetAlert.default = sweetAlert;
 

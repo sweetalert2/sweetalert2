@@ -51,32 +51,21 @@ body.swal2-iosfix {
     position: relative;
     margin: 0 0 .4em;
     padding: 0;
-    display: block; }
-  .swal2-modal .swal2-spacer {
-    height: 10px;
-    color: transparent;
-    border: 0; }
-  .swal2-modal .swal2-styled {
-    border: 0;
-    border-radius: 3px;
-    box-shadow: none;
-    color: #fff;
-    cursor: pointer;
-    font-size: 17px;
-    font-weight: 500;
-    margin: 0 5px;
-    padding: 10px 32px; }
-    .swal2-modal .swal2-styled:not(.swal2-loading)[disabled] {
+    display: block;
+    word-wrap: break-word; }
+  .swal2-modal .swal2-buttonswrapper {
+    margin-top: 15px; }
+    .swal2-modal .swal2-buttonswrapper:not(.swal2-loading) .swal2-styled[disabled] {
       opacity: .4;
       cursor: no-drop; }
-    .swal2-modal .swal2-styled.swal2-loading {
+    .swal2-modal .swal2-buttonswrapper.swal2-loading .swal2-styled.swal2-confirm {
       box-sizing: border-box;
       border: 4px solid transparent;
       border-color: transparent;
       width: 40px;
       height: 40px;
       padding: 0;
-      margin: -2px 30px;
+      margin: 7.5px;
       vertical-align: top;
       background-color: transparent !important;
       color: transparent;
@@ -88,30 +77,47 @@ body.swal2-iosfix {
          -moz-user-select: none;
           -ms-user-select: none;
               user-select: none; }
-  .swal2-modal .swal2-styled + .swal2-styled {
-    margin-top: 15px; }
-  .swal2-modal :not(.swal2-styled).swal2-loading::after {
-    display: inline-block;
-    content: '';
-    margin-left: 5px;
-    vertical-align: -1px;
-    height: 6px;
-    width: 6px;
-    border: 3px solid #999999;
-    border-right-color: transparent;
-    border-radius: 50%;
-    -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
-            animation: rotate-loading 1.5s linear 0s infinite normal; }
+    .swal2-modal .swal2-buttonswrapper.swal2-loading .swal2-styled.swal2-cancel {
+      margin-left: 30px;
+      margin-right: 30px; }
+    .swal2-modal .swal2-buttonswrapper.swal2-loading :not(.swal2-styled).swal2-confirm::after {
+      display: inline-block;
+      content: '';
+      margin-left: 5px 0 15px;
+      vertical-align: -1px;
+      height: 15px;
+      width: 15px;
+      border: 3px solid #999999;
+      box-shadow: 1px 1px 1px #fff;
+      border-right-color: transparent;
+      border-radius: 50%;
+      -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
+              animation: rotate-loading 1.5s linear 0s infinite normal; }
+  .swal2-modal .swal2-styled {
+    border: 0;
+    border-radius: 3px;
+    box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 500;
+    margin: 15px 5px 0;
+    padding: 10px 32px; }
   .swal2-modal .swal2-image {
     margin: 20px auto;
     max-width: 100%; }
   .swal2-modal .swal2-close {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    width: 38px;
+    height: 40px;
     font-size: 36px;
-    line-height: 36px;
+    line-height: 40px;
     font-family: serif;
     position: absolute;
     top: 5px;
-    right: 13px;
+    right: 8px;
     cursor: pointer;
     color: #cccccc;
     -webkit-transition: color .1s ease;

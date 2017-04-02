@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.5.4
+ * sweetalert2 v6.5.5
  * Released under the MIT License.
  */
 'use strict';
@@ -890,8 +890,8 @@ var sweetAlert = function sweetAlert() {
       var target = e.target || e.srcElement;
       var confirmButton = getConfirmButton();
       var cancelButton = getCancelButton();
-      var targetedConfirm = confirmButton === target || confirmButton.contains(target);
-      var targetedCancel = cancelButton === target || cancelButton.contains(target);
+      var targetedConfirm = confirmButton && (confirmButton === target || confirmButton.contains(target));
+      var targetedCancel = cancelButton && (cancelButton === target || cancelButton.contains(target));
 
       switch (e.type) {
         case 'mouseover':
@@ -1564,7 +1564,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.5.4';
+sweetAlert.version = '6.5.5';
 
 sweetAlert.default = sweetAlert;
 

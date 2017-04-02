@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.5.3
+ * sweetalert2 v6.5.4
  * Released under the MIT License.
  */
 'use strict';
@@ -1120,6 +1120,9 @@ var sweetAlert = function sweetAlert() {
     sweetAlert.getImage = function () {
       return getImage();
     };
+    sweetAlert.getButtonsWrapper = function () {
+      return getButtonsWrapper();
+    };
     sweetAlert.getConfirmButton = function () {
       return getConfirmButton();
     };
@@ -1561,7 +1564,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.5.3';
+sweetAlert.version = '6.5.4';
 
 sweetAlert.default = sweetAlert;
 

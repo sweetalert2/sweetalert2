@@ -447,8 +447,8 @@ const sweetAlert = (...args) => {
       const target = e.target || e.srcElement
       const confirmButton = dom.getConfirmButton()
       const cancelButton = dom.getCancelButton()
-      const targetedConfirm = confirmButton === target || confirmButton.contains(target)
-      const targetedCancel = cancelButton === target || cancelButton.contains(target)
+      const targetedConfirm = confirmButton && (confirmButton === target || confirmButton.contains(target))
+      const targetedCancel = cancelButton && (cancelButton === target || cancelButton.contains(target))
 
       switch (e.type) {
         case 'mouseover':

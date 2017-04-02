@@ -1,6 +1,6 @@
-$white:       #fff;
-$black:       #000;
-$transparent: rgba($black, 0);
+$swal2-white:       #fff !default;
+$swal2-black:       #000 !default;
+$swal2-transparent: rgba($swal2-black, 0) !default;
 
 $swal2-success:        #a5dc86 !default;
 $swal2-success-border: rgba($swal2-success, .2) !default;
@@ -9,15 +9,15 @@ $swal2-warning:        #f8bb86 !default;
 $swal2-info:           #3fc3ee !default;
 $swal2-question:       #87adbd !default;
 
-$swal2-overlay:        rgba($black, .4) !default;
+$swal2-overlay:        rgba($swal2-black, .4) !default;
 
-$swal2-close-button:               lighten($black, 80) !default;
+$swal2-close-button:               lighten($swal2-black, 80) !default;
 $swal2-close-button-hover:         #d55 !default;
 
-$swal2-input-border:               lighten($black, 85) !default;
+$swal2-input-border:               lighten($swal2-black, 85) !default;
 $swal2-input-border-focus:         #b4dbed !default;
-$swal2-input-box-shadow:           rgba($black, .06) !default;
+$swal2-input-box-shadow:           rgba($swal2-black, .06) !default;
 $swal2-input-box-shadow-focus:     #c4e6f5 !default;
 
 $swal2-validationerror-background: #ea7d7d !default;
-$swal2-validationerror-color:      $white !default;
+$swal2-validationerror-color:      $swal2-white !default;

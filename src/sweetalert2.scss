@@ -41,7 +41,7 @@ body {
 }
 
 .swal2-modal {
-  background-color: $white;
+  background-color: $swal2-white;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   border-radius: 5px;
   box-sizing: border-box;
@@ -61,7 +61,7 @@ body {
   }
 
   .swal2-title {
-    color: lighten($black, 35);
+    color: lighten($swal2-black, 35);
     font-size: 30px;
     text-align: center;
     font-weight: 600;
@@ -119,8 +119,8 @@ body {
             vertical-align: -1px;
             height: 15px;
             width: 15px;
-            border: 3px solid lighten($black, 60);
-            box-shadow: 1px 1px 1px $white;
+            border: 3px solid lighten($swal2-black, 60);
+            box-shadow: 1px 1px 1px $swal2-white;
             border-right-color: transparent;
             border-radius: 50%;
             animation: rotate-loading 1.5s linear 0s infinite normal;
@@ -134,7 +134,7 @@ body {
     border: 0;
     border-radius: 3px;
     box-shadow: none;
-    color: $white;
+    color: $swal2-white;
     cursor: pointer;
     font-size: 17px;
     font-weight: 500;
@@ -148,7 +148,7 @@ body {
   }
 
   .swal2-close {
-    background: $transparent;
+    background: $swal2-transparent;
     border: 0;
     margin: 0;
     padding: 0;
@@ -187,7 +187,7 @@ body {
     margin: 0;
     padding: 0;
     line-height: normal;
-    color: lighten($black, 33);
+    color: lighten($swal2-black, 33);
     word-wrap: break-word;
   }
 
@@ -228,7 +228,7 @@ body {
     }
 
     &::placeholder {
-      color: lighten($black, 90);
+      color: lighten($swal2-black, 90);
     }
   }
 
@@ -275,7 +275,7 @@ body {
   }
 
   .swal2-select {
-    color: lighten($black, 33);
+    color: lighten($swal2-black, 33);
     font-size: inherit;
     padding: 5px 10px;
     min-width: 40%;
@@ -302,7 +302,7 @@ body {
   }
 
   .swal2-checkbox {
-    color: lighten($black, 33);
+    color: lighten($swal2-black, 33);
 
     input,
     span {
@@ -311,11 +311,11 @@ body {
   }
 
   .swal2-validationerror {
-    background-color: lighten($black, 94);
+    background-color: lighten($swal2-black, 94);
     margin: 0 -20px;
     overflow: hidden;
     padding: 10px;
-    color: lighten($black, 50);
+    color: lighten($swal2-black, 50);
     font-size: 16px;
     font-weight: 300;
     display: none;
@@ -437,7 +437,7 @@ body {
       position: absolute;
       width: 60px;
       height: 120px;
-      background: $white;
+      background: $swal2-white;
       transform: rotate(45deg);
     }
 
@@ -475,7 +475,7 @@ body {
     .fix { // Hide corners left from animation
       width: 7px;
       height: 90px;
-      background-color: $white;
+      background-color: $swal2-white;
 
       position: absolute;
       left: 28px;
@@ -531,7 +531,7 @@ body {
   .swal2-progresscircle {
     background: $blue;
     border-radius: 2em;
-    color: $white;
+    color: $swal2-white;
     height: 2em;
     line-height: 2em;
     text-align: center;
@@ -570,7 +570,7 @@ body {
 
 // github.com/limonte/sweetalert2/issues/268
 [class^='swal2'] {
-  -webkit-tap-highlight-color: $transparent;
+  -webkit-tap-highlight-color: $swal2-transparent;
 }
 
 // Animations

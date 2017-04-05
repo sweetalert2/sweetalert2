@@ -264,6 +264,13 @@ If you would like to contribute enhancements or fixes, please do the following:
 7. Make sure that `dist/*` files aren't committed and create a pull request.
 
 
+Related projects
+----------------
+
+- [toverux/ngsweetalert2](https://github.com/toverux/ngsweetalert2) - SweetAlert2 directive for Angular 2+
+- [limonte/sweetalert2-webpack-demo](https://github.com/limonte/sweetalert2-webpack-demo) - SweetAlert2 + webpack demo
+
+
 Donations
 ---------
 

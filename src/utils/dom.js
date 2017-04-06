@@ -2,6 +2,7 @@
 
 import { default as sweetAlert } from '../sweetalert2.js'
 import { swalClasses, iconTypes } from './classes.js'
+import { uniqueArray } from './utils.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
@@ -159,8 +160,7 @@ export const getFocusableElements = (focusCancel) => {
   const focusableElements = buttons.concat(Array.prototype.slice.call(
     getModal().querySelectorAll('button, input:not([type=hidden]), textarea, select, *[tabindex]:not([tabindex="-1"])')
   ))
-  const uniqueFocusableElements = new Set(focusableElements)
-  return Array.from(uniqueFocusableElements)
+  return uniqueArray(focusableElements)
 }
 
 export const hasClass = (elem, className) => {

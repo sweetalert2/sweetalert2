@@ -19,3 +19,13 @@ export const colorLuminance = (hex, lum) => {
 
   return rgb
 }
+
+export const uniqueArray = (arr) => {
+  const result = []
+  for (var i in arr) {
+    if (result.indexOf(arr[i]) === -1) {
+      result.push(arr[i])
+    }
+  }
+  return result
+}

@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.5.5
+ * sweetalert2 v6.5.6
  * Released under the MIT License.
  */
 'use strict';
@@ -87,6 +87,16 @@ var colorLuminance = function colorLuminance(hex, lum) {
   }
 
   return rgb;
+};
+
+var uniqueArray = function uniqueArray(arr) {
+  var result = [];
+  for (var i in arr) {
+    if (result.indexOf(arr[i]) === -1) {
+      result.push(arr[i]);
+    }
+  }
+  return result;
 };
 
 /* global MouseEvent */
@@ -233,9 +243,8 @@ var getFocusableElements = function getFocusableElements(focusCancel) {
   if (focusCancel) {
     buttons.reverse();
   }
-  var focusableElements = buttons.concat(Array.prototype.slice.call(getModal().querySelectorAll('button, input:not([type=hidden]), textarea, select, *[tabindex]:not([tabindex="-1"])')));
-  var uniqueFocusableElements = new Set(focusableElements);
-  return Array.from(uniqueFocusableElements);
+  var focusableElements = buttons.concat(Array.prototype.slice.call(getModal().querySelectorAll('button, input:not([type=hidden]), textarea, select, a, *[tabindex]:not([tabindex="-1"])')));
+  return uniqueArray(focusableElements);
 };
 
 var hasClass = function hasClass(elem, className) {
@@ -1564,7 +1573,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.5.5';
+sweetAlert.version = '6.5.6';
 
 sweetAlert.default = sweetAlert;
 

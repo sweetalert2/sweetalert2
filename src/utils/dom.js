@@ -158,7 +158,7 @@ export const getFocusableElements = (focusCancel) => {
     buttons.reverse()
   }
   const focusableElements = buttons.concat(Array.prototype.slice.call(
-    getModal().querySelectorAll('button, input:not([type=hidden]), textarea, select, *[tabindex]:not([tabindex="-1"])')
+    getModal().querySelectorAll('button, input:not([type=hidden]), textarea, select, a, *[tabindex]:not([tabindex="-1"])')
   ))
   return uniqueArray(focusableElements)
 }

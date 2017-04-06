@@ -116,8 +116,8 @@ const sweetHTML = `
    <textarea class="${swalClasses.textarea}"></textarea>
    <div class="${swalClasses.validationerror}"></div>
    <div class="${swalClasses.buttonswrapper}">
-     <button type="button" role="button" tabIndex="0" class="${swalClasses.confirm}">OK</button>
-     <button type="button" role="button" tabIndex="0" class="${swalClasses.cancel}">Cancel</button>
+     <button type="button" class="${swalClasses.confirm}">OK</button>
+     <button type="button" class="${swalClasses.cancel}">Cancel</button>
    </div>
    <button type="button" tabindex="0" class="${swalClasses.close}" aria-label="Close this dialog">&times;</button>
  </div>

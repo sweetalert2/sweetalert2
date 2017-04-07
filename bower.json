@@ -10,9 +10,6 @@
     "Leo Correa <lcorr005@gmail.com> (https://leonardocorrea.com/)",
     "Joseph Schultz (https://github.com/acupajoe)"
   ],
-  "dependencies": {
-    "es6-promise": "*"
-  },
   "ignore": [
     "assets",
     "config",

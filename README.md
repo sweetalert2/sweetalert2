@@ -44,7 +44,7 @@ Usage
 -----
 
 ```html
-<script src="bower_components/es6-promise/es6-promise.auto.min.js"></script> <!-- for IE support -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script> <!-- for IE and Android native browser support -->
 
 <script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="bower_components/sweetalert2/dist/sweetalert2.min.css">

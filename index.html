@@ -17,7 +17,7 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
   <!-- This is what you need -->
-  <script src="https://cdn.jsdelivr.net/es6-promise/latest/es6-promise.auto.min.js"></script> <!-- IE11 support -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script> <!-- IE11 and Android native browser support -->
   <script src="./dist/sweetalert2.js"></script>
   <link rel="stylesheet" href="./dist/sweetalert2.min.css">
   <!--.......................-->
@@ -370,8 +370,8 @@ swal.queue([{
   <div class="center-container">
     <h3>Usage</h3>
     <p>1. Initialize the plugin by referencing the necessary files:</p>
-<pre><span class="comment">&lt;!-- for IE support --&gt;</span>
-&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/es6-promise/es6-promise.auto.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
+<pre><span class="comment">&lt;!-- for IE and Android native browser support --&gt;</span>
+&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
 
 &lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
 &lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="tag">href</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.css"</span>&gt;</pre>

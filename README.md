@@ -9,7 +9,7 @@ SweetAlert2
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sweetalert2/Lobby)
 [![PayPal Donate](https://img.shields.io/badge/donate-PayPal.me-ff69b4.svg)](https://www.paypal.me/limonte/5)
 
-A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes.
+A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement for JavaScript's popup boxes. Zero dependencies.
 
 What's the difference between SweetAlert and SweetAlert2?
 ---------------------------------------------------------

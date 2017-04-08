@@ -374,12 +374,12 @@ body {
   &.swal2-error {
     border-color: $swal2-error;
 
-    .x-mark {
+    .swal2-x-mark {
       position: relative;
       display: block;
     }
 
-    .line {
+    [class^='swal2-x-mark-line'] {
       position: absolute;
       height: 5px;
       width: 47px;
@@ -388,12 +388,12 @@ body {
       top: 37px;
       border-radius: 2px;
 
-      &.left {
+      &[class$='left'] {
         transform: rotate(45deg);
         left: 17px;
       }
 
-      &.right {
+      &[class$='right'] {
         transform: rotate(-45deg);
         right: 16px;
       }
@@ -430,36 +430,33 @@ body {
   &.swal2-success {
     border-color: $swal2-success;
 
-    &::before,
-    &::after { // Emulate moving circular line
-      content: '';
+    [class^='swal2-success-circular-line'] { // Emulate moving circular line
       border-radius: 50%;
       position: absolute;
       width: 60px;
       height: 120px;
-      background: $swal2-white;
       transform: rotate(45deg);
+
+      &[class$='left'] {
+        border-radius: 120px 0 0 120px;
+        top: -7px;
+        left: -33px;
+
+        transform: rotate(-45deg);
+        transform-origin: 60px 60px;
+      }
+
+      &[class$='right'] {
+        border-radius: 0 120px 120px 0;
+        top: -11px;
+        left: 30px;
+
+        transform: rotate(-45deg);
+        transform-origin: 0 60px;
+      }
     }
 
-    &::before {
-      border-radius: 120px 0 0 120px;
-      top: -7px;
-      left: -33px;
-
-      transform: rotate(-45deg);
-      transform-origin: 60px 60px;
-    }
-
-    &::after {
-      border-radius: 0 120px 120px 0;
-      top: -11px;
-      left: 30px;
-
-      transform: rotate(-45deg);
-      transform-origin: 0 60px;
-    }
-
-    .placeholder { // Ring
+    .swal2-success-ring { // Ring
       width: 80px;
       height: 80px;
       border: 4px solid $swal2-success-border;
@@ -472,10 +469,9 @@ body {
       z-index: 2;
     }
 
-    .fix { // Hide corners left from animation
+    .swal2-success-fix { // Hide corners left from animation
       width: 7px;
       height: 90px;
-      background-color: $swal2-white;
 
       position: absolute;
       left: 28px;
@@ -485,7 +481,7 @@ body {
       transform: rotate(-45deg);
     }
 
-    .line {
+    [class^='swal2-success-line'] {
       height: 5px;
       background-color: $swal2-success;
       display: block;
@@ -494,7 +490,7 @@ body {
       position: absolute;
       z-index: 2;
 
-      &.tip {
+      &[class$='tip'] {
         width: 25px;
 
         left: 14px;
@@ -503,7 +499,7 @@ body {
         transform: rotate(45deg);
       }
 
-      &.long {
+      &[class$='long'] {
         width: 47px;
 
         right: 8px;
@@ -714,17 +710,17 @@ body {
   }
 }
 
-.animate-success-tip {
+.swal2-animate-success-line-tip {
   @include animation('animate-success-tip 0.75s');
 }
 
-.animate-success-long {
+.swal2-animate-success-line-long {
   @include animation('animate-success-long 0.75s');
 }
 
 .swal2-success {
-  &.animate {
-    &::after {
+  &.swal2-animate-success-icon {
+    .swal2-success-circular-line-right {
       @include animation('rotatePlaceholder 4.25s ease-in');
     }
   }
@@ -745,7 +741,7 @@ body {
   }
 }
 
-.animate-error-icon {
+.swal2-animate-error-icon {
   @include animation('animate-error-icon 0.5s');
 }
 
@@ -774,7 +770,7 @@ body {
   }
 }
 
-.animate-x-mark {
+.swal2-animate-x-mark {
   @include animation('animate-x-mark 0.5s');
 }
 

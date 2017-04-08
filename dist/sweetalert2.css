@@ -297,10 +297,10 @@ body.swal2-iosfix {
           user-select: none; }
   .swal2-icon.swal2-error {
     border-color: #f27474; }
-    .swal2-icon.swal2-error .x-mark {
+    .swal2-icon.swal2-error .swal2-x-mark {
       position: relative;
       display: block; }
-    .swal2-icon.swal2-error .line {
+    .swal2-icon.swal2-error [class^='swal2-x-mark-line'] {
       position: absolute;
       height: 5px;
       width: 47px;
@@ -308,11 +308,11 @@ body.swal2-iosfix {
       display: block;
       top: 37px;
       border-radius: 2px; }
-      .swal2-icon.swal2-error .line.left {
+      .swal2-icon.swal2-error [class^='swal2-x-mark-line'][class$='left'] {
         -webkit-transform: rotate(45deg);
                 transform: rotate(45deg);
         left: 17px; }
-      .swal2-icon.swal2-error .line.right {
+      .swal2-icon.swal2-error [class^='swal2-x-mark-line'][class$='right'] {
         -webkit-transform: rotate(-45deg);
                 transform: rotate(-45deg);
         right: 16px; }
@@ -339,32 +339,30 @@ body.swal2-iosfix {
     text-align: center; }
   .swal2-icon.swal2-success {
     border-color: #a5dc86; }
-    .swal2-icon.swal2-success::before, .swal2-icon.swal2-success::after {
-      content: '';
+    .swal2-icon.swal2-success [class^='swal2-success-circular-line'] {
       border-radius: 50%;
       position: absolute;
       width: 60px;
       height: 120px;
-      background: #fff;
       -webkit-transform: rotate(45deg);
               transform: rotate(45deg); }
-    .swal2-icon.swal2-success::before {
-      border-radius: 120px 0 0 120px;
-      top: -7px;
-      left: -33px;
-      -webkit-transform: rotate(-45deg);
-              transform: rotate(-45deg);
-      -webkit-transform-origin: 60px 60px;
-              transform-origin: 60px 60px; }
-    .swal2-icon.swal2-success::after {
-      border-radius: 0 120px 120px 0;
-      top: -11px;
-      left: 30px;
-      -webkit-transform: rotate(-45deg);
-              transform: rotate(-45deg);
-      -webkit-transform-origin: 0 60px;
-              transform-origin: 0 60px; }
-    .swal2-icon.swal2-success .placeholder {
+      .swal2-icon.swal2-success [class^='swal2-success-circular-line'][class$='left'] {
+        border-radius: 120px 0 0 120px;
+        top: -7px;
+        left: -33px;
+        -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+        -webkit-transform-origin: 60px 60px;
+                transform-origin: 60px 60px; }
+      .swal2-icon.swal2-success [class^='swal2-success-circular-line'][class$='right'] {
+        border-radius: 0 120px 120px 0;
+        top: -11px;
+        left: 30px;
+        -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+        -webkit-transform-origin: 0 60px;
+                transform-origin: 0 60px; }
+    .swal2-icon.swal2-success .swal2-success-ring {
       width: 80px;
       height: 80px;
       border: 4px solid rgba(165, 220, 134, 0.2);
@@ -374,30 +372,29 @@ body.swal2-iosfix {
       left: -4px;
       top: -4px;
       z-index: 2; }
-    .swal2-icon.swal2-success .fix {
+    .swal2-icon.swal2-success .swal2-success-fix {
       width: 7px;
       height: 90px;
-      background-color: #fff;
       position: absolute;
       left: 28px;
       top: 8px;
       z-index: 1;
       -webkit-transform: rotate(-45deg);
               transform: rotate(-45deg); }
-    .swal2-icon.swal2-success .line {
+    .swal2-icon.swal2-success [class^='swal2-success-line'] {
       height: 5px;
       background-color: #a5dc86;
       display: block;
       border-radius: 2px;
       position: absolute;
       z-index: 2; }
-      .swal2-icon.swal2-success .line.tip {
+      .swal2-icon.swal2-success [class^='swal2-success-line'][class$='tip'] {
         width: 25px;
         left: 14px;
         top: 46px;
         -webkit-transform: rotate(45deg);
                 transform: rotate(45deg); }
-      .swal2-icon.swal2-success .line.long {
+      .swal2-icon.swal2-success [class^='swal2-success-line'][class$='long'] {
         width: 47px;
         right: 8px;
         top: 38px;
@@ -609,15 +606,15 @@ body.swal2-iosfix {
     -webkit-transform: rotate(-405deg);
             transform: rotate(-405deg); } }
 
-.animate-success-tip {
+.swal2-animate-success-line-tip {
   -webkit-animation: animate-success-tip 0.75s;
           animation: animate-success-tip 0.75s; }
 
-.animate-success-long {
+.swal2-animate-success-line-long {
   -webkit-animation: animate-success-long 0.75s;
           animation: animate-success-long 0.75s; }
 
-.swal2-success.animate::after {
+.swal2-success.swal2-animate-success-icon .swal2-success-circular-line-right {
   -webkit-animation: rotatePlaceholder 4.25s ease-in;
           animation: rotatePlaceholder 4.25s ease-in; }
 
@@ -641,7 +638,7 @@ body.swal2-iosfix {
             transform: rotateX(0deg);
     opacity: 1; } }
 
-.animate-error-icon {
+.swal2-animate-error-icon {
   -webkit-animation: animate-error-icon 0.5s;
           animation: animate-error-icon 0.5s; }
 
@@ -687,7 +684,7 @@ body.swal2-iosfix {
     margin-top: 0;
     opacity: 1; } }
 
-.animate-x-mark {
+.swal2-animate-x-mark {
   -webkit-animation: animate-x-mark 0.5s;
           animation: animate-x-mark 0.5s; }
 

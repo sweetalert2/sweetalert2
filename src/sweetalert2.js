@@ -24,6 +24,10 @@ const setParameters = (params) => {
 
   modal.style.padding = params.padding + 'px'
   modal.style.background = params.background
+  const successIconParts = modal.querySelectorAll('[class^=swal2-success-circular-line], .swal2-success-fix')
+  for (let i = 0; i < successIconParts.length; i++) {
+    successIconParts[i].style.background = params.background
+  }
 
   const title = dom.getTitle()
   const content = dom.getContent()
@@ -125,18 +129,20 @@ const setParameters = (params) => {
     dom.show(icon)
 
     // Animate icon
-    switch (params.type) {
-      case 'success':
-        dom.addClass(icon, 'animate')
-        dom.addClass(icon.querySelector('.tip'), 'animate-success-tip')
-        dom.addClass(icon.querySelector('.long'), 'animate-success-long')
-        break
-      case 'error':
-        dom.addClass(icon, 'animate-error-icon')
-        dom.addClass(icon.querySelector('.x-mark'), 'animate-x-mark')
-        break
-      default:
-        break
+    if (params.animation) {
+      switch (params.type) {
+        case 'success':
+          dom.addClass(icon, 'swal2-animate-success-icon')
+          dom.addClass(icon.querySelector('.swal2-success-line-tip'), 'swal2-animate-success-line-tip')
+          dom.addClass(icon.querySelector('.swal2-success-line-long'), 'swal2-animate-success-line-long')
+          break
+        case 'error':
+          dom.addClass(icon, 'swal2-animate-error-icon')
+          dom.addClass(icon.querySelector('.swal2-x-mark'), 'swal2-animate-x-mark')
+          break
+        default:
+          break
+      }
     }
   }
 

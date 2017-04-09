@@ -268,6 +268,7 @@ Related projects
 ----------------
 
 - [toverux/ngsweetalert2](https://github.com/toverux/ngsweetalert2) - SweetAlert2 directive for Angular 2+
+- [lishengzxc/vue-sweetalert](https://github.com/lishengzxc/vue-sweetalert) - SweetAlert2 plugin for Vue.js
 - [limonte/sweetalert2-webpack-demo](https://github.com/limonte/sweetalert2-webpack-demo) - SweetAlert2 + webpack demo
 
 

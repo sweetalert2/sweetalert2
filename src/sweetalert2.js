@@ -590,7 +590,7 @@ const sweetAlert = (...args) => {
       const e = event || window.event
       const keyCode = e.keyCode || e.which
 
-      if ([9, 13, 32, 27].indexOf(keyCode) === -1) {
+      if ([9, 13, 32, 27, 37, 38, 39, 40].indexOf(keyCode) === -1) {
         // Don't do work on keys we don't care about.
         return
       }
@@ -618,6 +618,16 @@ const sweetAlert = (...args) => {
         e.stopPropagation()
         e.preventDefault()
 
+      // ARROWS - switch focus between buttons
+      } else if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
+        // focus Cancel button if Confirm button is currently focused
+        if (document.activeElement === confirmButton && dom.isVisible(cancelButton)) {
+          cancelButton.focus()
+        // and vice versa
+        } else if (document.activeElement === cancelButton && dom.isVisible(confirmButton)) {
+          confirmButton.focus()
+        }
+
       // ENTER/SPACE
       } else if (keyCode === 13 || keyCode === 32) {
         if (btnIndex === -1 && params.allowEnterKey) {
@@ -630,6 +640,7 @@ const sweetAlert = (...args) => {
           e.stopPropagation()
           e.preventDefault()
         }
+
       // ESC
       } else if (keyCode === 27 && params.allowEscapeKey === true) {
         sweetAlert.closeModal(params.onClose)

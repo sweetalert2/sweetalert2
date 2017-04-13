@@ -3,7 +3,6 @@ SweetAlert2
 
 [![Build Status](https://travis-ci.org/limonte/sweetalert2.svg?branch=master)](https://travis-ci.org/limonte/sweetalert2)
 [![Version](https://img.shields.io/npm/v/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2)
-[![Downloads](https://img.shields.io/npm/dt/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2)
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/limonte/sweetalert2.svg)](http://isitmaintained.com/project/limonte/sweetalert2 "Average time to resolve an issue")
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sweetalert2/Lobby)

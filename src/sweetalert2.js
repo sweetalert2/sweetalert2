@@ -44,7 +44,7 @@ const setParameters = (params, close) => {
   }
 
   // Content
-  const calculatedHTML = typeof params.html === 'function' ? params.html(close) : params.html;
+  const calculatedHTML = typeof params.html === 'function' ? params.html(close) : params.html
 
   if (params.text || calculatedHTML) {
     if (typeof calculatedHTML === 'object') {
@@ -250,7 +250,7 @@ const openModal = (animation, onComplete) => {
   // scrolling is 'hidden' until animation is done, after that 'auto'
   container.style.overflowY = 'hidden'
   if (dom.animationEndEvent && !dom.hasClass(modal, swalClasses.noanimation)) {
-    modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished() {
+    modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
       container.style.overflowY = 'auto'
     })
@@ -361,7 +361,6 @@ const sweetAlert = (...args) => {
   }
 
   return new Promise((resolve, reject) => {
-
     const confirm = (value) => {
       if (params.showLoaderOnConfirm) {
         sweetAlert.showLoading()
@@ -1001,7 +1000,7 @@ sweetAlert.queue = (steps) => {
   }
   let queueResult = []
   return new Promise((resolve, reject) => {
-    (function step(i, callback) {
+    (function step (i, callback) {
       if (i < queue.length) {
         document.body.setAttribute('data-swal2-queue-step', i)
 
@@ -1072,7 +1071,7 @@ sweetAlert.close = sweetAlert.closeModal = (onComplete) => {
 
   // If animation is supported, animate
   if (dom.animationEndEvent && !dom.hasClass(modal, swalClasses.noanimation)) {
-    modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished() {
+    modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
       if (dom.hasClass(modal, swalClasses.hide)) {
         removeModalAndResetState()

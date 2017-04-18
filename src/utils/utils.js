@@ -33,7 +33,7 @@ export const uniqueArray = (arr) => {
 export const cloneNode = (node) => {
   const dupNode = node.cloneNode(true);
   ['onclick', 'onmouseover', 'onmouseout'].forEach(function (method) {
-    dupNode[method] = node[method];
-  });
-  return dupNode;
+    dupNode[method] = node[method]
+  })
+  return dupNode
 }

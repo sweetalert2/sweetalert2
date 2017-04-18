@@ -10,7 +10,7 @@ let swal2Observer
 /*
  * Set type, text and actions on modal
  */
-const setParameters = (params) => {
+const setParameters = (params, resolve, reject) => {
   const modal = dom.getModal() || dom.init(params)
 
   for (let param in params) {
@@ -54,6 +54,8 @@ const setParameters = (params) => {
       } else {
         content.appendChild(params.html.cloneNode(true))
       }
+    } else if (typeof params.html === 'function') {
+      content.innerHTML = params.html(resolve, reject)
     } else if (params.html) {
       content.innerHTML = params.html
     } else if (params.text) {
@@ -358,12 +360,13 @@ const sweetAlert = (...args) => {
       return false
   }
 
-  setParameters(params)
-
-  const container = dom.getContainer()
-  const modal = dom.getModal()
-
   return new Promise((resolve, reject) => {
+
+    setParameters(params, resolve, reject)
+
+    const container = dom.getContainer()
+    const modal = dom.getModal()
+
     // Close on timer
     if (params.timer) {
       modal.timeout = setTimeout(() => {
@@ -515,7 +518,7 @@ const sweetAlert = (...args) => {
               confirm(true)
             }
 
-          // Clicked 'cancel'
+            // Clicked 'cancel'
           } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.disableButtons()
             sweetAlert.closeModal(params.onClose)
@@ -573,7 +576,7 @@ const sweetAlert = (...args) => {
         if (index === focusableElements.length) {
           index = 0
 
-        // go to last item
+          // go to last item
         } else if (index === -1) {
           index = focusableElements.length - 1
         }
@@ -618,17 +621,17 @@ const sweetAlert = (...args) => {
         e.stopPropagation()
         e.preventDefault()
 
-      // ARROWS - switch focus between buttons
+        // ARROWS - switch focus between buttons
       } else if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
         // focus Cancel button if Confirm button is currently focused
         if (document.activeElement === confirmButton && dom.isVisible(cancelButton)) {
           cancelButton.focus()
-        // and vice versa
+          // and vice versa
         } else if (document.activeElement === cancelButton && dom.isVisible(confirmButton)) {
           confirmButton.focus()
         }
 
-      // ENTER/SPACE
+        // ENTER/SPACE
       } else if (keyCode === 13 || keyCode === 32) {
         if (btnIndex === -1 && params.allowEnterKey) {
           // ENTER/SPACE clicked outside of a button.
@@ -641,7 +644,7 @@ const sweetAlert = (...args) => {
           e.preventDefault()
         }
 
-      // ESC
+        // ESC
       } else if (keyCode === 27 && params.allowEscapeKey === true) {
         sweetAlert.closeModal(params.onClose)
         reject('esc')
@@ -975,7 +978,7 @@ const sweetAlert = (...args) => {
     // Observe changes inside the modal and adjust height
     if (typeof MutationObserver !== 'undefined' && !swal2Observer) {
       swal2Observer = new MutationObserver(sweetAlert.recalculateHeight)
-      swal2Observer.observe(modal, {childList: true, characterData: true, subtree: true})
+      swal2Observer.observe(modal, { childList: true, characterData: true, subtree: true })
     }
   })
 }
@@ -998,7 +1001,7 @@ sweetAlert.queue = (steps) => {
   }
   let queueResult = []
   return new Promise((resolve, reject) => {
-    (function step (i, callback) {
+    (function step(i, callback) {
       if (i < queue.length) {
         document.body.setAttribute('data-swal2-queue-step', i)
 
@@ -1069,7 +1072,7 @@ sweetAlert.close = sweetAlert.closeModal = (onComplete) => {
 
   // If animation is supported, animate
   if (dom.animationEndEvent && !dom.hasClass(modal, swalClasses.noanimation)) {
-    modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
+    modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished() {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
       if (dom.hasClass(modal, swalClasses.hide)) {
         removeModalAndResetState()

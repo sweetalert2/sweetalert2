@@ -44,20 +44,20 @@ const setParameters = (params, resolve, reject) => {
   }
 
   // Content
-  if (params.text || params.html) {
-    if (typeof params.html === 'object') {
+  const calculatedHTML = typeof params.html === 'function' ? params.html(resolve, reject) : params.html;
+
+  if (params.text || calculatedHTML) {
+    if (typeof calculatedHTML === 'object') {
       content.innerHTML = ''
-      if (0 in params.html) {
-        for (let i = 0; i in params.html; i++) {
-          content.appendChild(params.html[i].cloneNode(true))
+      if (0 in calculatedHTML) {
+        for (let i = 0; i in calculatedHTML; i++) {
+          content.appendChild(calculatedHTML[i].cloneNode(true))
         }
       } else {
-        content.appendChild(params.html.cloneNode(true))
+        content.appendChild(calculatedHTML.cloneNode(true))
       }
-    } else if (typeof params.html === 'function') {
-      content.innerHTML = params.html(resolve, reject)
-    } else if (params.html) {
-      content.innerHTML = params.html
+    } else if (calculatedHTML) {
+      content.innerHTML = calculatedHTML
     } else if (params.text) {
       content.textContent = params.text
     }

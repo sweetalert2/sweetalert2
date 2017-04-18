@@ -229,7 +229,7 @@ declare module "sweetalert2" {
          * If "text" and "html" parameters are provided in the same time, "text" will be used.
          * Default: null
          */
-        html?: HTMLElement | HTMLElement[] | string | ((resolve: (val: any) => void, reject: (val: any) => void) => void);
+        html?: HTMLElement | HTMLElement[] | string | ((resolve: (val: any) => void, reject: (val: any) => void) => HTMLElement | HTMLElement[] | string);
 
         /**
          * The type of the modal.

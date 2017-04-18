@@ -36,7 +36,7 @@
     <a class="top-right-button download">Download</a>
     <a href="https://www.jsdelivr.com/projects/sweetalert2" class="top-right-button cdn">CDN</a>
     <a href="https://www.paypal.me/limonte/5" class="top-right-button donate">
-      <img src="https://www.paypalobjects.com/webstatic/icon/pp32.png" alt="PayPal logo">
+      <img src="https://www.paypalobjects.com/webstatic/icon/pp32.png" width="32" height="32" alt="PayPal logo">
       <span>Donate</span>
     </a>
   </header>
@@ -605,6 +605,11 @@ swal.queue([{
         <td><b>inputAutoTrim</b></td>
         <td><i>true</i></td>
         <td>Automatically remove whitespaces from both ends of a result string. Set this parameter to <strong>false</strong> to disable auto-trimming.</td>
+      </tr>
+      <tr id="input-auto-trim">
+        <td><b>inputAttributes</b></td>
+        <td><i>{}</i></td>
+        <td>HTML input attributes (e.g. <strong>min</strong>, <strong>max</strong>, <strong>autocomplete</strong>, <strong>accept</strong>), that are added to the input field. Object keys will represent attributes names, object values will represent attributes values.</td>
       </tr>
       <tr id="input-validator">
         <td><b>inputValidator</b></td>

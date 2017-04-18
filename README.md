@@ -179,7 +179,7 @@ Configuration
 | `inputValue`            | `''`                 | Input field initial value. |
 | `inputOptions`          | `{}` or `Promise`    | If `input` parameter is set to `'select'` or `'radio'`, you can provide options. Object keys will represent options values, object values will represent options text values. |
 | `inputAutoTrim`         | `true`               | Automatically remove whitespaces from both ends of a result string. Set this parameter to `false` to disable auto-trimming. |
-| `inputAttributes`       | `null`               | HTML input attributes (e.g. `'min'`, `'max'`, `'step'`, `'accept'` ...), that are added to the input field. |
+| `inputAttributes`       | `{}`                 | HTML input attributes (e.g. `'min'`, `'max'`, `'autocomplete'`, `'accept'`), that are added to the input field. Object keys will represent attributes names, object values will represent attributes values. |
 | `inputValidator`        | `null`               | Validator for input field, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#select-box">usage example</a>. |
 | `inputClass`            | `null`               | A custom CSS class for the input field. |
 | `progressSteps`         | `[]`                 | Progress steps, useful for modal queues, see <a href="https://limonte.github.io/sweetalert2/#chaining-modals">usage example</a>. |

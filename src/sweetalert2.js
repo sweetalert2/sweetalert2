@@ -1,6 +1,6 @@
 import defaultParams from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
-import { colorLuminance } from './utils/utils.js'
+import { colorLuminance, cloneNode } from './utils/utils.js'
 import * as dom from './utils/dom.js'
 
 let modalParams = Object.assign({}, defaultParams)
@@ -10,7 +10,7 @@ let swal2Observer
 /*
  * Set type, text and actions on modal
  */
-const setParameters = (params, resolve, reject) => {
+const setParameters = (params, close) => {
   const modal = dom.getModal() || dom.init(params)
 
   for (let param in params) {
@@ -44,17 +44,17 @@ const setParameters = (params, resolve, reject) => {
   }
 
   // Content
-  const calculatedHTML = typeof params.html === 'function' ? params.html(resolve, reject) : params.html;
+  const calculatedHTML = typeof params.html === 'function' ? params.html(close) : params.html;
 
   if (params.text || calculatedHTML) {
     if (typeof calculatedHTML === 'object') {
       content.innerHTML = ''
       if (0 in calculatedHTML) {
         for (let i = 0; i in calculatedHTML; i++) {
-          content.appendChild(calculatedHTML[i].cloneNode(true))
+          content.appendChild(cloneNode(calculatedHTML[i]))
         }
       } else {
-        content.appendChild(calculatedHTML.cloneNode(true))
+        content.appendChild(cloneNode(calculatedHTML))
       }
     } else if (calculatedHTML) {
       content.innerHTML = calculatedHTML
@@ -250,7 +250,7 @@ const openModal = (animation, onComplete) => {
   // scrolling is 'hidden' until animation is done, after that 'auto'
   container.style.overflowY = 'hidden'
   if (dom.animationEndEvent && !dom.hasClass(modal, swalClasses.noanimation)) {
-    modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
+    modal.addEventListener(dom.animationEndEvent, function swalCloseEventFinished() {
       modal.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
       container.style.overflowY = 'auto'
     })
@@ -362,7 +362,31 @@ const sweetAlert = (...args) => {
 
   return new Promise((resolve, reject) => {
 
-    setParameters(params, resolve, reject)
+    const confirm = (value) => {
+      if (params.showLoaderOnConfirm) {
+        sweetAlert.showLoading()
+      }
+
+      if (params.preConfirm) {
+        params.preConfirm(value, params.extraParams).then(
+          (preConfirmValue) => {
+            sweetAlert.closeModal(params.onClose)
+            resolve(preConfirmValue || value)
+          },
+          (error) => {
+            sweetAlert.hideLoading()
+            if (error) {
+              sweetAlert.showValidationError(error)
+            }
+          }
+        )
+      } else {
+        sweetAlert.closeModal(params.onClose)
+        resolve(value)
+      }
+    }
+
+    setParameters(params, confirm)
 
     const container = dom.getContainer()
     const modal = dom.getModal()
@@ -424,30 +448,6 @@ const sweetAlert = (...args) => {
           dom.focusInput(input)
         }
       }, 0)
-    }
-
-    const confirm = (value) => {
-      if (params.showLoaderOnConfirm) {
-        sweetAlert.showLoading()
-      }
-
-      if (params.preConfirm) {
-        params.preConfirm(value, params.extraParams).then(
-          (preConfirmValue) => {
-            sweetAlert.closeModal(params.onClose)
-            resolve(preConfirmValue || value)
-          },
-          (error) => {
-            sweetAlert.hideLoading()
-            if (error) {
-              sweetAlert.showValidationError(error)
-            }
-          }
-        )
-      } else {
-        sweetAlert.closeModal(params.onClose)
-        resolve(value)
-      }
     }
 
     // Mouse interactions
@@ -529,7 +529,7 @@ const sweetAlert = (...args) => {
       }
     }
 
-    const buttons = modal.querySelectorAll('button')
+    const buttons = modal.querySelectorAll('.swal2-buttonswrapper button')
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].onclick = onButtonEvent
       buttons[i].onmouseover = onButtonEvent

@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.6.0
+ * sweetalert2 v6.6.1
  * Released under the MIT License.
  */
 'use strict';
@@ -1039,7 +1039,7 @@ var sweetAlert = function sweetAlert() {
       var e = event || window.event;
       var keyCode = e.keyCode || e.which;
 
-      if ([9, 13, 32, 27].indexOf(keyCode) === -1) {
+      if ([9, 13, 32, 27, 37, 38, 39, 40].indexOf(keyCode) === -1) {
         // Don't do work on keys we don't care about.
         return;
       }
@@ -1067,6 +1067,16 @@ var sweetAlert = function sweetAlert() {
         e.stopPropagation();
         e.preventDefault();
 
+        // ARROWS - switch focus between buttons
+      } else if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
+        // focus Cancel button if Confirm button is currently focused
+        if (document.activeElement === confirmButton && isVisible(cancelButton)) {
+          cancelButton.focus();
+          // and vice versa
+        } else if (document.activeElement === cancelButton && isVisible(confirmButton)) {
+          confirmButton.focus();
+        }
+
         // ENTER/SPACE
       } else if (keyCode === 13 || keyCode === 32) {
         if (btnIndex === -1 && params.allowEnterKey) {
@@ -1079,6 +1089,7 @@ var sweetAlert = function sweetAlert() {
           e.stopPropagation();
           e.preventDefault();
         }
+
         // ESC
       } else if (keyCode === 27 && params.allowEscapeKey === true) {
         sweetAlert.closeModal(params.onClose);
@@ -1511,7 +1522,9 @@ sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
   resetPrevState();
 
   var removeModalAndResetState = function removeModalAndResetState() {
-    container.parentNode.removeChild(container);
+    if (container.parentNode) {
+      container.parentNode.removeChild(container);
+    }
     removeClass(document.documentElement, swalClasses.shown);
     removeClass(document.body, swalClasses.shown);
     undoScrollbar();
@@ -1579,7 +1592,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.6.0';
+sweetAlert.version = '6.6.1';
 
 sweetAlert.default = sweetAlert;
 

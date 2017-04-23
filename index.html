@@ -17,9 +17,11 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
   <!-- This is what you need -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script> <!-- IE11 and Android native browser support -->
   <script src="./dist/sweetalert2.js"></script>
   <link rel="stylesheet" href="./dist/sweetalert2.min.css">
+
+  <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <!--.......................-->
 </head>
 
@@ -372,11 +374,11 @@ swal.queue([{
   <div class="center-container">
     <h3>Usage</h3>
     <p>1. Initialize the plugin by referencing the necessary files:</p>
-<pre><span class="comment">&lt;!-- for IE and Android native browser support --&gt;</span>
-&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
+<pre>&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
+&lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="tag">href</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.css"</span>&gt;
 
-&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
-&lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="tag">href</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.css"</span>&gt;</pre>
+<span class="comment">&lt;!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser --&gt;</span>
+&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;</pre>
       <p>Or</p>
 <pre><span class="comment">// ES6 Modules</span>
 <span class="val">import</span> { default as swal } <span class="val">from</span> <span class="str">'sweetalert2'</span>

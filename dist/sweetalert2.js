@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.6.1
+ * sweetalert2 v6.6.2
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -475,7 +475,7 @@ var setParameters = function setParameters(params) {
     }
   }
 
-  // set modal width and margin-left
+  // Set modal width
   modal.style.width = typeof params.width === 'number' ? params.width + 'px' : params.width;
 
   modal.style.padding = params.padding + 'px';
@@ -1596,7 +1596,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.6.1';
+sweetAlert.version = '6.6.2';
 
 sweetAlert.default = sweetAlert;
 

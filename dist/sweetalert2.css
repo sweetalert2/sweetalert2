@@ -37,7 +37,8 @@ body.swal2-iosfix {
   overflow-x: hidden;
   overflow-y: auto;
   display: none;
-  position: relative; }
+  position: relative;
+  max-width: 100%; }
   .swal2-modal:focus {
     outline: none; }
   .swal2-modal.swal2-loading {

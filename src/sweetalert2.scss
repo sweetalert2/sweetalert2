@@ -51,6 +51,7 @@ body {
   overflow-y: auto;
   display: none;
   position: relative;
+  max-width: 100%;
 
   &:focus {
     outline: none;

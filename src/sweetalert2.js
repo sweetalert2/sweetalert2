@@ -19,7 +19,7 @@ const setParameters = (params) => {
     }
   }
 
-  // set modal width and margin-left
+  // Set modal width
   modal.style.width = (typeof params.width === 'number') ? params.width + 'px' : params.width
 
   modal.style.padding = params.padding + 'px'

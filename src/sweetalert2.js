@@ -1,6 +1,6 @@
 import defaultParams from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
-import { colorLuminance } from './utils/utils.js'
+import { colorLuminance, cloneNode } from './utils/utils.js'
 import * as dom from './utils/dom.js'
 
 let modalParams = Object.assign({}, defaultParams)
@@ -10,7 +10,7 @@ let swal2Observer
 /*
  * Set type, text and actions on modal
  */
-const setParameters = (params) => {
+const setParameters = (params, close) => {
   const modal = dom.getModal() || dom.init(params)
 
   for (let param in params) {
@@ -44,18 +44,20 @@ const setParameters = (params) => {
   }
 
   // Content
-  if (params.text || params.html) {
-    if (typeof params.html === 'object') {
+  const calculatedHTML = typeof params.html === 'function' ? params.html(close) : params.html
+
+  if (params.text || calculatedHTML) {
+    if (typeof calculatedHTML === 'object') {
       content.innerHTML = ''
-      if (0 in params.html) {
-        for (let i = 0; i in params.html; i++) {
-          content.appendChild(params.html[i].cloneNode(true))
+      if (0 in calculatedHTML) {
+        for (let i = 0; i in calculatedHTML; i++) {
+          content.appendChild(cloneNode(calculatedHTML[i]))
         }
       } else {
-        content.appendChild(params.html.cloneNode(true))
+        content.appendChild(cloneNode(calculatedHTML))
       }
-    } else if (params.html) {
-      content.innerHTML = params.html
+    } else if (calculatedHTML) {
+      content.innerHTML = calculatedHTML
     } else if (params.text) {
       content.textContent = params.text
     }
@@ -358,12 +360,36 @@ const sweetAlert = (...args) => {
       return false
   }
 
-  setParameters(params)
-
-  const container = dom.getContainer()
-  const modal = dom.getModal()
-
   return new Promise((resolve, reject) => {
+    const confirm = (value) => {
+      if (params.showLoaderOnConfirm) {
+        sweetAlert.showLoading()
+      }
+
+      if (params.preConfirm) {
+        params.preConfirm(value, params.extraParams).then(
+          (preConfirmValue) => {
+            sweetAlert.closeModal(params.onClose)
+            resolve(preConfirmValue || value)
+          },
+          (error) => {
+            sweetAlert.hideLoading()
+            if (error) {
+              sweetAlert.showValidationError(error)
+            }
+          }
+        )
+      } else {
+        sweetAlert.closeModal(params.onClose)
+        resolve(value)
+      }
+    }
+
+    setParameters(params, confirm)
+
+    const container = dom.getContainer()
+    const modal = dom.getModal()
+
     // Close on timer
     if (params.timer) {
       modal.timeout = setTimeout(() => {
@@ -421,30 +447,6 @@ const sweetAlert = (...args) => {
           dom.focusInput(input)
         }
       }, 0)
-    }
-
-    const confirm = (value) => {
-      if (params.showLoaderOnConfirm) {
-        sweetAlert.showLoading()
-      }
-
-      if (params.preConfirm) {
-        params.preConfirm(value, params.extraParams).then(
-          (preConfirmValue) => {
-            sweetAlert.closeModal(params.onClose)
-            resolve(preConfirmValue || value)
-          },
-          (error) => {
-            sweetAlert.hideLoading()
-            if (error) {
-              sweetAlert.showValidationError(error)
-            }
-          }
-        )
-      } else {
-        sweetAlert.closeModal(params.onClose)
-        resolve(value)
-      }
     }
 
     // Mouse interactions
@@ -515,7 +517,7 @@ const sweetAlert = (...args) => {
               confirm(true)
             }
 
-          // Clicked 'cancel'
+            // Clicked 'cancel'
           } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.disableButtons()
             sweetAlert.closeModal(params.onClose)
@@ -526,7 +528,7 @@ const sweetAlert = (...args) => {
       }
     }
 
-    const buttons = modal.querySelectorAll('button')
+    const buttons = modal.querySelectorAll('.swal2-buttonswrapper button')
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].onclick = onButtonEvent
       buttons[i].onmouseover = onButtonEvent
@@ -573,7 +575,7 @@ const sweetAlert = (...args) => {
         if (index === focusableElements.length) {
           index = 0
 
-        // go to last item
+          // go to last item
         } else if (index === -1) {
           index = focusableElements.length - 1
         }
@@ -618,17 +620,17 @@ const sweetAlert = (...args) => {
         e.stopPropagation()
         e.preventDefault()
 
-      // ARROWS - switch focus between buttons
+        // ARROWS - switch focus between buttons
       } else if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
         // focus Cancel button if Confirm button is currently focused
         if (document.activeElement === confirmButton && dom.isVisible(cancelButton)) {
           cancelButton.focus()
-        // and vice versa
+          // and vice versa
         } else if (document.activeElement === cancelButton && dom.isVisible(confirmButton)) {
           confirmButton.focus()
         }
 
-      // ENTER/SPACE
+        // ENTER/SPACE
       } else if (keyCode === 13 || keyCode === 32) {
         if (btnIndex === -1 && params.allowEnterKey) {
           // ENTER/SPACE clicked outside of a button.
@@ -641,7 +643,7 @@ const sweetAlert = (...args) => {
           e.preventDefault()
         }
 
-      // ESC
+        // ESC
       } else if (keyCode === 27 && params.allowEscapeKey === true) {
         sweetAlert.closeModal(params.onClose)
         reject('esc')
@@ -975,7 +977,7 @@ const sweetAlert = (...args) => {
     // Observe changes inside the modal and adjust height
     if (typeof MutationObserver !== 'undefined' && !swal2Observer) {
       swal2Observer = new MutationObserver(sweetAlert.recalculateHeight)
-      swal2Observer.observe(modal, {childList: true, characterData: true, subtree: true})
+      swal2Observer.observe(modal, { childList: true, characterData: true, subtree: true })
     }
   })
 }

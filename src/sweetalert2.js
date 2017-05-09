@@ -368,7 +368,11 @@ const sweetAlert = (...args) => {
     if (params.timer) {
       modal.timeout = setTimeout(() => {
         sweetAlert.closeModal(params.onClose)
-        reject('timer')
+        if (params.useRejections) {
+          reject('timer')
+        } else {
+          resolve({dismiss: 'timer'})
+        }
       }, params.timer)
     }
 
@@ -443,7 +447,11 @@ const sweetAlert = (...args) => {
         )
       } else {
         sweetAlert.closeModal(params.onClose)
-        resolve(value)
+        if (params.useRejections) {
+          resolve(value)
+        } else {
+          resolve({value: value})
+        }
       }
     }
 

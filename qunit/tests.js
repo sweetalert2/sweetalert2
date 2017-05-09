@@ -650,3 +650,32 @@ QUnit.test('cancel button Dismissal test', function (assert) {
 
   swal.clickCancel()
 })
+QUnit.test('timer Dismissal test', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Timer test',
+    timer: 10,
+    animation: false,
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.equal(result.dismiss, 'timer')
+      done()
+    },
+    function () {}
+  )
+})
+QUnit.test('confirm button object format', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Confirm me',
+    useRejections: false
+  }).then(function (result) {
+    assert.equal(result.value, true)
+    done()
+  })
+
+  swal.clickConfirm()
+})

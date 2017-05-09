@@ -580,7 +580,7 @@ QUnit.test('onClose', function (assert) {
   const $modal = $('.swal2-modal')
   $('.swal2-close').click()
 })
-QUnit.test('esc key Dismissal test', function (assert) {
+QUnit.test('esc key no rejections test', function (assert) {
   const done = assert.async()
 
   swal({
@@ -588,7 +588,7 @@ QUnit.test('esc key Dismissal test', function (assert) {
     useRejections: false
   }).then(
     function (result) {
-      assert.equal(result.dismiss, 'esc')
+      assert.deepEqual(result, {dismiss: 'esc'})
       done()
     },
     function () {
@@ -599,7 +599,7 @@ QUnit.test('esc key Dismissal test', function (assert) {
     keyCode: 27
   }))
 })
-QUnit.test('close button Dismissal test', function (assert) {
+QUnit.test('close button no rejections test', function (assert) {
   const done = assert.async()
 
   swal({
@@ -608,7 +608,7 @@ QUnit.test('close button Dismissal test', function (assert) {
     useRejections: false
   }).then(
     function (result) {
-      assert.equal(result.dismiss, 'close')
+      assert.deepEqual(result, {dismiss: 'close'})
       done()
     },
     function () {}
@@ -618,7 +618,7 @@ QUnit.test('close button Dismissal test', function (assert) {
   assert.ok($closeButton.is(':visible'))
   $closeButton.click()
 })
-QUnit.test('overlay click Dismissal test', function (assert) {
+QUnit.test('overlay click no rejections test', function (assert) {
   const done = assert.async()
 
   swal({
@@ -626,7 +626,7 @@ QUnit.test('overlay click Dismissal test', function (assert) {
     useRejections: false
   }).then(
     function (result) {
-      assert.equal(result.dismiss, 'overlay')
+      assert.deepEqual(result, {dismiss: 'overlay'})
       done()
     },
     function () {}
@@ -634,7 +634,7 @@ QUnit.test('overlay click Dismissal test', function (assert) {
 
   $('.swal2-container').click()
 })
-QUnit.test('cancel button Dismissal test', function (assert) {
+QUnit.test('cancel button no rejections test', function (assert) {
   const done = assert.async()
 
   swal({
@@ -642,7 +642,7 @@ QUnit.test('cancel button Dismissal test', function (assert) {
     useRejections: false
   }).then(
     function (result) {
-      assert.equal(result.dismiss, 'cancel')
+      assert.deepEqual(result, {dismiss: 'cancel'})
       done()
     },
     function () {}
@@ -650,7 +650,7 @@ QUnit.test('cancel button Dismissal test', function (assert) {
 
   swal.clickCancel()
 })
-QUnit.test('timer Dismissal test', function (assert) {
+QUnit.test('timer no rejections test', function (assert) {
   const done = assert.async()
 
   swal({
@@ -660,7 +660,7 @@ QUnit.test('timer Dismissal test', function (assert) {
     useRejections: false
   }).then(
     function (result) {
-      assert.equal(result.dismiss, 'timer')
+      assert.deepEqual(result, {dismiss: 'timer'})
       done()
     },
     function () {}
@@ -668,14 +668,17 @@ QUnit.test('timer Dismissal test', function (assert) {
 })
 QUnit.test('confirm button object format', function (assert) {
   const done = assert.async()
-
   swal({
-    title: 'Confirm me',
+    input: 'radio',
+    inputOptions: {
+      'one': 'one',
+      'two': 'two'
+    },
     useRejections: false
   }).then(function (result) {
-    assert.equal(result.value, true)
+    assert.deepEqual(result, {value: 'two'})
     done()
   })
-
+  $('.swal2-radio input[value="two"]').prop('checked', true)
   swal.clickConfirm()
 })

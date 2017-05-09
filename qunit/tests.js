@@ -580,3 +580,73 @@ QUnit.test('onClose', function (assert) {
   const $modal = $('.swal2-modal')
   $('.swal2-close').click()
 })
+QUnit.test('esc key Dismissal test', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Esc me',
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.equal(result.dismiss, 'esc')
+      done()
+    },
+    function () {
+    }
+  )
+
+  $(document).trigger($.Event('keydown', {
+    keyCode: 27
+  }))
+})
+QUnit.test('close button Dismissal test', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Close button test',
+    showCloseButton: true,
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.equal(result.dismiss, 'close')
+      done()
+    },
+    function () {}
+  )
+
+  const $closeButton = $('.swal2-close')
+  assert.ok($closeButton.is(':visible'))
+  $closeButton.click()
+})
+QUnit.test('overlay click Dismissal test', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Overlay click',
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.equal(result.dismiss, 'overlay')
+      done()
+    },
+    function () {}
+  )
+
+  $('.swal2-container').click()
+})
+QUnit.test('cancel button Dismissal test', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Cancel me',
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.equal(result.dismiss, 'cancel')
+      done()
+    },
+    function () {}
+  ).catch(swal.noop)
+
+  swal.clickCancel()
+})

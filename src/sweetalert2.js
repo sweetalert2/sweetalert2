@@ -519,7 +519,11 @@ const sweetAlert = (...args) => {
           } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.disableButtons()
             sweetAlert.closeModal(params.onClose)
-            reject('cancel')
+            if (params.useRejections) {
+              reject('cancel')
+            } else {
+              resolve({dismiss: 'cancel'})
+            }
           }
           break
         default:
@@ -537,7 +541,11 @@ const sweetAlert = (...args) => {
     // Closing modal by close button
     dom.getCloseButton().onclick = () => {
       sweetAlert.closeModal(params.onClose)
-      reject('close')
+      if (params.useRejections) {
+        reject('close')
+      } else {
+        resolve({dismiss: 'close'})
+      }
     }
 
     // Closing modal by overlay click
@@ -547,7 +555,11 @@ const sweetAlert = (...args) => {
       }
       if (params.allowOutsideClick) {
         sweetAlert.closeModal(params.onClose)
-        reject('overlay')
+        if (params.useRejections) {
+          reject('overlay')
+        } else {
+          resolve({dismiss: 'overlay'})
+        }
       }
     }
 
@@ -644,7 +656,11 @@ const sweetAlert = (...args) => {
       // ESC
       } else if (keyCode === 27 && params.allowEscapeKey === true) {
         sweetAlert.closeModal(params.onClose)
-        reject('esc')
+        if (params.useRejections) {
+          reject('esc')
+        } else {
+          resolve({dismiss: 'esc'})
+        }
       }
     }
 

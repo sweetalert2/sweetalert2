@@ -580,3 +580,105 @@ QUnit.test('onClose', function (assert) {
   const $modal = $('.swal2-modal')
   $('.swal2-close').click()
 })
+QUnit.test('esc key no rejections test', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Esc me',
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.deepEqual(result, {dismiss: 'esc'})
+      done()
+    },
+    function () {
+    }
+  )
+
+  $(document).trigger($.Event('keydown', {
+    keyCode: 27
+  }))
+})
+QUnit.test('close button no rejections test', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Close button test',
+    showCloseButton: true,
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.deepEqual(result, {dismiss: 'close'})
+      done()
+    },
+    function () {}
+  )
+
+  const $closeButton = $('.swal2-close')
+  assert.ok($closeButton.is(':visible'))
+  $closeButton.click()
+})
+QUnit.test('overlay click no rejections test', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Overlay click',
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.deepEqual(result, {dismiss: 'overlay'})
+      done()
+    },
+    function () {}
+  )
+
+  $('.swal2-container').click()
+})
+QUnit.test('cancel button no rejections test', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Cancel me',
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.deepEqual(result, {dismiss: 'cancel'})
+      done()
+    },
+    function () {}
+  ).catch(swal.noop)
+
+  swal.clickCancel()
+})
+QUnit.test('timer no rejections test', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Timer test',
+    timer: 10,
+    animation: false,
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.deepEqual(result, {dismiss: 'timer'})
+      done()
+    },
+    function () {}
+  )
+})
+QUnit.test('confirm button object format', function (assert) {
+  const done = assert.async()
+  swal({
+    input: 'radio',
+    inputOptions: {
+      'one': 'one',
+      'two': 'two'
+    },
+    useRejections: false
+  }).then(function (result) {
+    assert.deepEqual(result, {value: 'two'})
+    done()
+  })
+  $('.swal2-radio input[value="two"]').prop('checked', true)
+  swal.clickConfirm()
+})

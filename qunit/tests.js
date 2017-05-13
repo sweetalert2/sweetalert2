@@ -21,6 +21,20 @@ QUnit.test('modal width', function (assert) {
   assert.equal($('.swal2-modal')[0].style.width, '500px')
 })
 
+QUnit.test('window keydown handler', function (assert) {
+  console.log(window.onkeydown)
+  swal('hi')
+  assert.ok(window.onkeydown.toString().match('function handleKeyDown'))
+  swal.close()
+  assert.equal(window.onkeydown, null)
+
+  swal('first call')
+  swal('second call')
+  assert.ok(window.onkeydown.toString().match('function handleKeyDown'))
+  swal.close()
+  assert.equal(window.onkeydown, null)
+})
+
 QUnit.test('getters', function (assert) {
   swal('Title', 'Content')
   assert.equal(swal.getTitle().innerText, 'Title')

@@ -672,8 +672,10 @@ const sweetAlert = (...args) => {
       }
     }
 
-    dom.states.previousWindowKeyDown = window.onkeydown
-    window.onkeydown = handleKeyDown
+    if (!window.onkeydown || window.onkeydown.toString() !== handleKeyDown.toString()) {
+      dom.states.previousWindowKeyDown = window.onkeydown
+      window.onkeydown = handleKeyDown
+    }
 
     // Loading state
     if (params.buttonsStyling) {

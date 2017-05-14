@@ -119,7 +119,8 @@ button,
   background-color: #3085d6;
   color: #fff;
   border: 0;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   font-size: 17px;
   font-weight: 500;
   border-radius: 3px;
@@ -348,7 +349,8 @@ table {
     max-width: 300px;
     border: solid 1px #a9b2bc;
     border-radius: 2px;
-    box-shadow: inset 0 1px #fff;
+    -webkit-box-shadow: inset 0 1px #fff;
+            box-shadow: inset 0 1px #fff;
     text-shadow: 0 1px #fff;
     font-size: 12px;
     line-height: 1.5; }

@@ -42,9 +42,7 @@ const packageRollup = (options) => {
     }).code.replace(/sweetAlert\.version = '(.*)'/, "sweetAlert.version = '" + pack.version + "'")
 
     if (options.minify) {
-      code = uglify.minify(code, {
-        fromString: true
-      }).code
+      code = uglify.minify(code).code
     }
     return write(options.dest, code)
   })

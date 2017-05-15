@@ -515,6 +515,13 @@ declare module "sweetalert2" {
          * Default: null
          */
         onClose?: (modalElement: HTMLElement) => void;
+
+        /**
+         * Determines whether dismissals (outside click, cancel button, close button, esc key) should reject, or resolve with an object of the format `{ dismiss: reason }`.
+         * Set it to `false` to get a cleaner control flow when using `await`, as explained here: https://github.com/limonte/sweetalert2/issues/485
+         * Default: true
+         */
+        useRejections?: boolean;
     }
 
     export default swal;

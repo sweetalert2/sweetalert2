@@ -188,7 +188,7 @@ Configuration
 | `progressStepsDistance` | `'40px'`             | Distance between progress steps. |
 | `onOpen`                | `null`               | Function to run when modal opens, provides modal DOM element as the first argument. |
 | `onClose`               | `null`               | Function to run when modal closes, provides modal DOM element as the first argument. |
-| `useRejections`         | `true`               | Determines whether dismissals (outside click, cancel button, close button, esc key) should reject, or resolve with an object of the format `{ dismiss: reason }`. Set it to `false` to get a cleaner control flow when using `await`, as explained in issue [#485](https://github.com/limonte/sweetalert2/issues/485) |
+| `useRejections`         | `true`               | Determines whether dismissals (outside click, cancel button, close button, esc key) should reject, or resolve with an object of the format `{ dismiss: reason }`. Set it to `false` to get a cleaner control flow when using `await`, as explained in [#485](https://github.com/limonte/sweetalert2/issues/485). |
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
 

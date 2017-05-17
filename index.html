@@ -648,6 +648,11 @@ swal.queue([{
         <td><i>null</i></td>
         <td>Function to run when modal closes, provides modal DOM element as the first argument.</td>
       </tr>
+      <tr>
+        <td><b>useRejections</b></td>
+        <td><i>true</i></td>
+        <td>Determines whether dismissals (outside click, cancel button, close button, esc key) should reject, or resolve with an object of the format <i>{ dismiss: reason }</i>. Set it to <i>false</i> to get a cleaner control flow when using <i>await</i>, as explained in <a href="https://github.com/limonte/sweetalert2/issues/485">#485</a>.</td>
+      </tr>
     </table>
 
     <p class="center">

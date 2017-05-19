@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
   <title>SweetAlert2 - a beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes</title>
 
@@ -608,7 +608,7 @@ swal.queue([{
         <td><i>true</i></td>
         <td>Automatically remove whitespaces from both ends of a result string. Set this parameter to <strong>false</strong> to disable auto-trimming.</td>
       </tr>
-      <tr id="input-auto-trim">
+      <tr id="input-attributes">
         <td><b>inputAttributes</b></td>
         <td><i>{}</i></td>
         <td>HTML input attributes (e.g. <strong>min</strong>, <strong>max</strong>, <strong>autocomplete</strong>, <strong>accept</strong>), that are added to the input field. Object keys will represent attributes names, object values will represent attributes values.</td>
@@ -756,7 +756,7 @@ swal(...)
   <!-- Input Types -->
   <h3>Input Types</h3>
   <table class="modal-input-types">
-    <tr id="input-field">
+    <tr id="input-text">
       <td><strong>text</strong></td>
       <td>
         <pre>
@@ -840,7 +840,7 @@ swal({
       <td><button class="input-type-textarea">Try me!</button></td>
     </tr>
 
-    <tr id="select-box">
+    <tr id="input-select">
       <td><strong>select</strong></td>
       <td>
         <pre>
@@ -874,7 +874,7 @@ swal({
       <td><button class="input-type-select">Try me!</button></td>
     </tr>
 
-    <tr id="radio-inputs">
+    <tr id="input-radio">
       <td><strong>radio</strong></td>
       <td>
         <pre>
@@ -912,7 +912,7 @@ swal({
       <td><button class="input-type-radio">Try me!</button></td>
     </tr>
 
-    <tr id="checkbox">
+    <tr id="input-checkbox">
       <td><strong>checkbox</strong></td>
       <td>
         <pre>

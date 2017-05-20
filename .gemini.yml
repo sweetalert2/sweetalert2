@@ -1,0 +1,19 @@
+rootUrl: https://limonte.github.io/sweetalert2/
+gridUrl: http://127.0.0.1:4444/wd/hub
+
+system:
+  plugins:
+    sauce: true
+
+browsers:
+  chrome:
+    desiredCapabilities:
+      browserName: "chrome"
+      version: "57.0"
+      platform: "Windows 10"
+
+  edge:
+    desiredCapabilities:
+      browserName: "microsoftedge"
+      version: "14"
+      platform: "Windows 10"

@@ -686,18 +686,6 @@ const sweetAlert = (...args) => {
     /**
      * Show spinner instead of Confirm button and disable Cancel button
      */
-    sweetAlert.showLoading = sweetAlert.enableLoading = () => {
-      dom.show(buttonsWrapper)
-      dom.show(confirmButton, 'inline-block')
-      dom.addClass(buttonsWrapper, swalClasses.loading)
-      dom.addClass(modal, swalClasses.loading)
-      confirmButton.disabled = true
-      cancelButton.disabled = true
-    }
-
-    /**
-     * Show spinner instead of Confirm button and disable Cancel button
-     */
     sweetAlert.hideLoading = sweetAlert.disableLoading = () => {
       if (!params.showConfirmButton) {
         dom.hide(confirmButton)
@@ -1123,6 +1111,26 @@ sweetAlert.clickConfirm = () => dom.getConfirmButton().click()
  * Global function to click 'Cancel' button
  */
 sweetAlert.clickCancel = () => dom.getCancelButton().click()
+
+/**
+ * Show spinner instead of Confirm button and disable Cancel button
+ */
+sweetAlert.showLoading = sweetAlert.enableLoading = () => {
+  const modal = dom.getModal()
+  if (!modal) {
+    sweetAlert('')
+  }
+  const buttonsWrapper = dom.getButtonsWrapper()
+  const confirmButton = dom.getConfirmButton()
+  const cancelButton = dom.getCancelButton()
+
+  dom.show(buttonsWrapper)
+  dom.show(confirmButton, 'inline-block')
+  dom.addClass(buttonsWrapper, swalClasses.loading)
+  dom.addClass(modal, swalClasses.loading)
+  confirmButton.disabled = true
+  cancelButton.disabled = true
+}
 
 /**
  * Set default params for each popup

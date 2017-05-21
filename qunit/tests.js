@@ -388,11 +388,6 @@ QUnit.test('dymanic queue', function (assert) {
 })
 
 QUnit.test('showLoading and hideLoading', function (assert) {
-  swal({
-    title: 'test loading state',
-    showCancelButton: true
-  })
-
   swal.showLoading()
   assert.ok($('.swal2-buttonswrapper').hasClass('swal2-loading'))
   assert.ok($('.swal2-cancel').is(':disabled'))

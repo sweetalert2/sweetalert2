@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.6.3
+ * sweetalert2 v6.6.4
  * Released under the MIT License.
  */
 'use strict';
@@ -1136,18 +1136,6 @@ var sweetAlert = function sweetAlert() {
     /**
      * Show spinner instead of Confirm button and disable Cancel button
      */
-    sweetAlert.showLoading = sweetAlert.enableLoading = function () {
-      show(buttonsWrapper);
-      show(confirmButton, 'inline-block');
-      addClass(buttonsWrapper, swalClasses.loading);
-      addClass(modal, swalClasses.loading);
-      confirmButton.disabled = true;
-      cancelButton.disabled = true;
-    };
-
-    /**
-     * Show spinner instead of Confirm button and disable Cancel button
-     */
     sweetAlert.hideLoading = sweetAlert.disableLoading = function () {
       if (!params.showConfirmButton) {
         hide(confirmButton);
@@ -1592,6 +1580,26 @@ sweetAlert.clickCancel = function () {
 };
 
 /**
+ * Show spinner instead of Confirm button and disable Cancel button
+ */
+sweetAlert.showLoading = sweetAlert.enableLoading = function () {
+  var modal = getModal();
+  if (!modal) {
+    sweetAlert('');
+  }
+  var buttonsWrapper = getButtonsWrapper();
+  var confirmButton = getConfirmButton();
+  var cancelButton = getCancelButton();
+
+  show(buttonsWrapper);
+  show(confirmButton, 'inline-block');
+  addClass(buttonsWrapper, swalClasses.loading);
+  addClass(modal, swalClasses.loading);
+  confirmButton.disabled = true;
+  cancelButton.disabled = true;
+};
+
+/**
  * Set default params for each popup
  * @param {Object} userParams
  */
@@ -1619,7 +1627,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.6.3';
+sweetAlert.version = '6.6.4';
 
 sweetAlert.default = sweetAlert;
 

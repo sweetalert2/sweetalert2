@@ -1,6 +1,8 @@
 SweetAlert2
 -----------
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/limonte/sweetalert2.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/limonte/sweetalert2.svg?branch=master)](https://travis-ci.org/limonte/sweetalert2)
 [![Version](https://img.shields.io/npm/v/sweetalert2.svg)](https://www.npmjs.com/package/sweetalert2)
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)

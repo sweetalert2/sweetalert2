@@ -36,7 +36,7 @@ Or:
 bower install --save sweetalert2
 ```
 
-Or download from CDN: [jsdelivr.com](https://www.jsdelivr.com/projects/sweetalert2) | [cdnjs.com](https://cdnjs.com/libraries/limonte-sweetalert2)
+Or download from CDN: [cdnjs.com/limonte-sweetalert2](https://cdnjs.com/libraries/limonte-sweetalert2)
 
 
 Usage

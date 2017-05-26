@@ -9,12 +9,15 @@
   <link rel="icon" href="./assets/favicon.png">
   <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Courgette">
   <link rel="stylesheet" href="./assets/example.css">
   <link rel="stylesheet" href="./assets/buttons.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/animatecss/3.5.2/animate.css">
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!-- This is what you need -->
   <script src="./dist/sweetalert2.min.js"></script>
@@ -36,7 +39,7 @@
       <script src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=limontegithubiosweetalert2" id="_carbonads_js" async></script>
     </div>
     <a class="top-right-button download">Download</a>
-    <a href="https://www.jsdelivr.com/projects/sweetalert2" class="top-right-button cdn">CDN</a>
+    <a href="https://cdnjs.com/libraries/limonte-sweetalert2" class="top-right-button cdn" target="_blank" rel="noopener">CDN</a>
     <a href="https://www.paypal.me/limonte/5" class="top-right-button donate">
       <img src="https://www.paypalobjects.com/webstatic/icon/pp32.png" width="32" height="32" alt="PayPal logo">
       <span>Donate</span>
@@ -153,7 +156,7 @@ swal({
 
     <li class="html-jquery">
       <div class="ui">
-        <p>jQuery HTML with custom animation (<a href="https://daneden.github.io/animate.css/" target="_blank">Animate.css <i class="fa fa-external-link"></i></a>)</p>
+        <p>jQuery HTML with custom animation (<a href="https://daneden.github.io/animate.css/" target="_blank" rel="noopener">Animate.css <i class="fa fa-external-link"></i></a>)</p>
         <button>Try me!</button>
       </div>
       <pre>
@@ -359,14 +362,12 @@ swal.queue([{
   <!-- Download & Install -->
   <div class="center-container download-section">
     <h3>Download & install</h3>
-    <pre class="center">$ bower install sweetalert2</pre>
-    <p>Or</p>
     <pre class="center">$ npm install sweetalert2</pre>
+    <p>Or</p>
+    <pre class="center">$ bower install sweetalert2</pre>
     <p>
       Or download from CDN:
-      <a href="https://www.jsdelivr.com/projects/sweetalert2" target="_blank">jsdelivr.com/sweetalert2 <i class="fa fa-external-link"></i></a>
-      <span class="mobile-hidden"> | </span>
-      <a href="https://cdnjs.com/libraries/limonte-sweetalert2" target="_blank">cdnjs.com/limonte-sweetalert2 <i class="fa fa-external-link"></i></a>
+      <a href="https://cdnjs.com/libraries/limonte-sweetalert2" target="_blank" rel="noopener">cdnjs.com/limonte-sweetalert2 <i class="fa fa-external-link"></i></a>
     </p>
   </div>
 

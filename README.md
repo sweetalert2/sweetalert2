@@ -233,15 +233,11 @@ Methods
 Browser compatibility
 ---------------------
 
-SweetAlert2 works in all major browsers (yes, even IE):
+| IE11* | Edge | Chrome | Firefox | Safari | Opera | Android Browser* | UC Browser* |
+|-------|------|--------|---------|--------|-------|------------------|-------------|
+|  ✅   |   ✅  |   ✅   |     ✅   |   ✅   |    ✅   |        ✅        |      ✅      |
 
-- Chrome: :white_check_mark:
-- Safari: :white_check_mark:
-- Firefox: :white_check_mark:
-- Microsoft Edge: :white_check_mark:
-- IE11: :white_check_mark: (ES6 Promise polyfill should be included, see [usage example](#usage)).
-- Opera: :white_check_mark:
-- UC Browser: :white_check_mark:
+\* ES6 Promise polyfill should be included, see [usage example](#usage).
 
 Note that SweetAlert2 **does not** and **will not** provide support or functionality of any kind on IE10 and lower.
 

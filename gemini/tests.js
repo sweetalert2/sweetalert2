@@ -40,6 +40,21 @@ gemini.suite('input-types', (suite) => {
       actions.click(find('.swal2-confirm'))
       actions.wait(200)
     })
+    .capture('url-invalid', function (actions, find) {
+      actions.sendKeys(gemini.ESCAPE)
+      actions.click(find('#input-url button'))
+      actions.sendKeys('invalid URL')
+      actions.click(find('.swal2-confirm'))
+      actions.sendKeys(gemini.TAB)
+      actions.wait(200)
+    })
+    .capture('url-valid', function (actions, find) {
+      actions.sendKeys(gemini.ESCAPE)
+      actions.click(find('#input-url button'))
+      actions.sendKeys('https://www.youtube.com/watch?v=PWgvGjAhvIw')
+      actions.click(find('.swal2-confirm'))
+      actions.wait(200)
+    })
     .capture('password-dots', function (actions, find) {
       actions.sendKeys(gemini.ESCAPE)
       actions.click(find('#input-password button'))

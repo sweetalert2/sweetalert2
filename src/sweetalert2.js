@@ -342,7 +342,8 @@ const sweetAlert = (...args) => {
       if (params.input === 'url' && params.inputValidator === null) {
         params.inputValidator = (url) => {
           return new Promise((resolve, reject) => {
-            const urlRegex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/
+            // taken from https://stackoverflow.com/a/3809435/1331425
+            const urlRegex = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/
             if (urlRegex.test(url)) {
               resolve()
             } else {

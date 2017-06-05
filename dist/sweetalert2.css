@@ -187,6 +187,12 @@ body.swal2-iosfix {
         -webkit-transition: opacity .3s .03s ease;
         transition: opacity .3s .03s ease;
         opacity: .8; }
+      .swal2-modal .swal2-input:focus::-moz-placeholder,
+      .swal2-modal .swal2-file:focus::-moz-placeholder,
+      .swal2-modal .swal2-textarea:focus::-moz-placeholder {
+        -webkit-transition: opacity .3s .03s ease;
+        transition: opacity .3s .03s ease;
+        opacity: .8; }
       .swal2-modal .swal2-input:focus:-ms-input-placeholder,
       .swal2-modal .swal2-file:focus:-ms-input-placeholder,
       .swal2-modal .swal2-textarea:focus:-ms-input-placeholder {
@@ -202,6 +208,10 @@ body.swal2-iosfix {
     .swal2-modal .swal2-input::-webkit-input-placeholder,
     .swal2-modal .swal2-file::-webkit-input-placeholder,
     .swal2-modal .swal2-textarea::-webkit-input-placeholder {
+      color: #e6e6e6; }
+    .swal2-modal .swal2-input::-moz-placeholder,
+    .swal2-modal .swal2-file::-moz-placeholder,
+    .swal2-modal .swal2-textarea::-moz-placeholder {
       color: #e6e6e6; }
     .swal2-modal .swal2-input:-ms-input-placeholder,
     .swal2-modal .swal2-file:-ms-input-placeholder,

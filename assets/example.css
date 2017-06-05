@@ -166,12 +166,24 @@ button,
     top: 90px;
     color: #eb4c36; }
   .top-right-button.donate {
-    top: 210px;
+    background-color: #fff;
     color: #3085d6;
-    font-weight: 600; }
+    font-weight: 600;
+    top: 170px; }
     .top-right-button.donate img {
       vertical-align: -9px; }
-  @media all and (max-width: 1278px) {
+    .top-right-button.donate .currencies {
+      background-color: #fff;
+      text-transform: none;
+      text-align: left;
+      line-height: initial;
+      -webkit-transition: opacity .2s ease-in-out;
+      transition: opacity .2s ease-in-out;
+      margin: 0;
+      padding-bottom: 1px; }
+      .top-right-button.donate .currencies li {
+        margin-bottom: 10px; }
+  @media all and (max-width: 900px) {
     .top-right-button {
       display: none; } }
 
@@ -329,6 +341,9 @@ table {
         padding: 10px 4px; }
         table td b {
           font-size: 13px; } }
+
+.hidden {
+  opacity: 0; }
 
 @media all and (max-width: 750px) {
   .mobile-hidden {

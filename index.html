@@ -40,10 +40,15 @@
     </div>
     <a class="top-right-button download">Download</a>
     <a href="https://cdnjs.com/libraries/limonte-sweetalert2" class="top-right-button cdn" target="_blank" rel="noopener">CDN</a>
-    <a href="https://www.paypal.me/limonte/5eur" class="top-right-button donate">
+    <div class="top-right-button donate">
       <img src="https://www.paypalobjects.com/webstatic/icon/pp32.png" width="32" height="32" alt="PayPal logo">
       <span>Donate</span>
-    </a>
+      <ul class="currencies hidden">
+        <li><a href="https://www.paypal.me/limonte/5usd">in US Dollars</a></li>
+        <li><a href="https://www.paypal.me/limonte/5eur">in Euros</a></li>
+        <li><a href="https://www.paypal.me/limonte/10">in other currencies</a></li>
+      </ul>
+    </div>
   </header>
 
   <p>Here’s a comparison of a standard error message. The first one uses the built-in <strong>alert</strong>-function, while the second is using <strong>SweetAlert2</strong>.</p>
@@ -1197,6 +1202,14 @@ swal({
 
   $('.showcase.sweet button').on('click', function () {
     swal('Oops...', 'Something went wrong!', 'error').catch(swal.noop)
+  })
+
+  $('.donate').on('click', function () {
+    $('.currencies').toggleClass('hidden');
+  })
+
+  $('.currencies').on('click', function (e) {
+    e.stopPropagation()
   })
 
   $('.examples .message button').on('click', function () {

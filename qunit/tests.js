@@ -22,7 +22,6 @@ QUnit.test('modal width', function (assert) {
 })
 
 QUnit.test('window keydown handler', function (assert) {
-  console.log(window.onkeydown)
   swal('hi')
   assert.ok(window.onkeydown.toString().match('function handleKeyDown'))
   swal.close()

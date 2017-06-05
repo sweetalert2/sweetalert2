@@ -801,6 +801,23 @@ swal({
       <td><button class="input-type-email">Try me!</button></td>
     </tr>
 
+    <tr id="input-url">
+      <td><strong>url</strong></td>
+      <td>
+        <pre>
+swal({
+  title: <span class="str">'Input URL'</span>,
+  input: <span class="str">'url'</span>
+}).then(<span class="func"><i>function</i></span> (url) {
+  swal({
+    type: <span class="str">'success'</span>,
+    html: <span class="str">'Entered URL: '</span> + url
+  })
+})</pre>
+      </td>
+      <td><button class="input-type-url">Try me!</button></td>
+    </tr>
+
     <tr id="input-password">
       <td><strong>password</strong></td>
       <td>
@@ -1321,6 +1338,18 @@ swal({
       swal({
         type: 'success',
         html: 'Entered email: <strong>' + email + '</strong>'
+      })
+    }).catch(swal.noop)
+  })
+
+  $('.input-type-url').on('click', function () {
+    swal({
+      title: 'Input URL',
+      input: 'url'
+    }).then(function (url) {
+      swal({
+        type: 'success',
+        html: 'Entered URL: <strong>' + url + '</strong>'
       })
     }).catch(swal.noop)
   })

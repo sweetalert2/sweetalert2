@@ -18,11 +18,11 @@
     "gulp-rollup": "latest",
     "gulp-sass": "latest",
     "gulp-sass-lint": "latest",
-    "gulp-standard": "^8.0.0",
+    "gulp-standard": "^10.0.0",
     "gulp-uglify": "latest",
     "rollup": "latest",
     "rollup-plugin-babel": "latest",
-    "standard": "^8.0.0",
+    "standard": "^10.0.2",
     "testem": "latest",
     "uglify-js": "latest"
   },

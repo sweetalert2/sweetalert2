@@ -890,14 +890,33 @@ const sweetAlert = (...args) => {
           select.appendChild(placeholder)
         }
         populateInputOptions = (inputOptions) => {
-          for (let optionValue in inputOptions) {
+          var selectListHandler = {}
+          selectListHandler.populateSelectListOption = (optionValue, optionLabel, select, selectedValue) => {
             const option = document.createElement('option')
             option.value = optionValue
-            option.innerHTML = inputOptions[optionValue]
-            if (params.inputValue === optionValue) {
+            option.innerHTML = optionLabel
+            if (selectedValue === optionValue) {
               option.selected = true
             }
             select.appendChild(option)
+          }
+          for (let optionGroupLabel in inputOptions) {
+            // check this is an option group
+            const optionGroup = inputOptions[optionGroupLabel]
+            var isOptionGroup = (typeof optionGroup !== 'string' && typeof optionGroup === 'object')
+            if (isOptionGroup) {
+              const optGroup = document.createElement('optgroup')
+              optGroup.label = optionGroupLabel
+              for (let optionValue in optionGroup) {
+                selectListHandler.populateSelectListOption(optionValue, optionGroup[optionValue], optGroup, params.inputValue)
+              }
+              select.appendChild(optGroup)
+            } else {
+              // single option without option group
+              var optionValue = optionGroupLabel
+              var optionText = optionGroup
+              selectListHandler.populateSelectListOption(optionValue, optionText, select, params.inputValue)
+            }
           }
           dom.show(select)
           select.focus()

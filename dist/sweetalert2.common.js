@@ -1355,14 +1355,33 @@ var sweetAlert = function sweetAlert() {
           select.appendChild(placeholder);
         }
         populateInputOptions = function populateInputOptions(inputOptions) {
-          for (var optionValue in inputOptions) {
+          var selectListHandler = {};
+          selectListHandler.populateSelectListOption = function (optionValue, optionLabel, select, selectedValue) {
             var option = document.createElement('option');
             option.value = optionValue;
-            option.innerHTML = inputOptions[optionValue];
-            if (params.inputValue === optionValue) {
+            option.innerHTML = optionLabel;
+            if (selectedValue === optionValue) {
               option.selected = true;
             }
             select.appendChild(option);
+          };
+          for (var optionGroupLabel in inputOptions) {
+            // check this is an option group
+            var optionGroup = inputOptions[optionGroupLabel];
+            var isOptionGroup = typeof optionGroup !== 'string' && (typeof optionGroup === 'undefined' ? 'undefined' : _typeof(optionGroup)) === 'object';
+            if (isOptionGroup) {
+              var optGroup = document.createElement('optgroup');
+              optGroup.label = optionGroupLabel;
+              for (var _optionValue in optionGroup) {
+                selectListHandler.populateSelectListOption(_optionValue, optionGroup[_optionValue], optGroup, params.inputValue);
+              }
+              select.appendChild(optGroup);
+            } else {
+              // single option without option group
+              var optionValue = optionGroupLabel;
+              var optionText = optionGroup;
+              selectListHandler.populateSelectListOption(optionValue, optionText, select, params.inputValue);
+            }
           }
           show(select);
           select.focus();

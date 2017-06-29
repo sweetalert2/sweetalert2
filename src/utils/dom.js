@@ -101,19 +101,19 @@ const sweetHTML = `
      <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>
      <div class="swal2-success-circular-line-right"></div>
    </div>
-   <img class="${swalClasses.image}">
+   <img class="${swalClasses.image}" />
    <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
    <div id="${swalClasses.content}" class="${swalClasses.content}"></div>
-   <input class="${swalClasses.input}">
-   <input type="file" class="${swalClasses.file}">
+   <input class="${swalClasses.input}" />
+   <input type="file" class="${swalClasses.file}" />
    <div class="${swalClasses.range}">
      <output></output>
-     <input type="range">
+     <input type="range" />
    </div>
    <select class="${swalClasses.select}"></select>
    <div class="${swalClasses.radio}"></div>
    <label for="${swalClasses.checkbox}" class="${swalClasses.checkbox}">
-     <input type="checkbox">
+     <input type="checkbox" />
    </label>
    <textarea class="${swalClasses.textarea}"></textarea>
    <div class="${swalClasses.validationerror}"></div>
@@ -121,7 +121,7 @@ const sweetHTML = `
      <button type="button" class="${swalClasses.confirm}">OK</button>
      <button type="button" class="${swalClasses.cancel}">Cancel</button>
    </div>
-   <button type="button" class="${swalClasses.close}" aria-label="Close this dialog">&times;</button>
+   <button type="button" class="${swalClasses.close}" aria-label="Close this dialog">&#215;</button>
  </div>
 `.replace(/(^|\n)\s*/g, '')
 

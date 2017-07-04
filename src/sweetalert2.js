@@ -40,7 +40,7 @@ const setParameters = (params) => {
   if (params.titleText) {
     title.innerText = params.titleText
   } else {
-    title.innerHTML = params.title.split('\n').join('<br>')
+    title.innerHTML = params.title.split('\n').join('<br />')
   }
 
   // Content

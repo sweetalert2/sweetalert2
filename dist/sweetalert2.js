@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.6.5
+ * sweetalert2 v6.6.6
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -187,7 +187,7 @@ var states = {
  * Manipulate DOM
  */
 
-var sweetHTML = ('\n <div role="dialog" aria-labelledby="' + swalClasses.title + '" aria-describedby="' + swalClasses.content + '" class="' + swalClasses.modal + '" tabindex="-1">\n   <ul class="' + swalClasses.progresssteps + '"></ul>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.error + '">\n     <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>\n   </div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.question + '">?</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.warning + '">!</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.info + '">i</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.success + '">\n     <div class="swal2-success-circular-line-left"></div>\n     <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>\n     <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>\n     <div class="swal2-success-circular-line-right"></div>\n   </div>\n   <img class="' + swalClasses.image + '">\n   <h2 class="' + swalClasses.title + '" id="' + swalClasses.title + '"></h2>\n   <div id="' + swalClasses.content + '" class="' + swalClasses.content + '"></div>\n   <input class="' + swalClasses.input + '">\n   <input type="file" class="' + swalClasses.file + '">\n   <div class="' + swalClasses.range + '">\n     <output></output>\n     <input type="range">\n   </div>\n   <select class="' + swalClasses.select + '"></select>\n   <div class="' + swalClasses.radio + '"></div>\n   <label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">\n     <input type="checkbox">\n   </label>\n   <textarea class="' + swalClasses.textarea + '"></textarea>\n   <div class="' + swalClasses.validationerror + '"></div>\n   <div class="' + swalClasses.buttonswrapper + '">\n     <button type="button" class="' + swalClasses.confirm + '">OK</button>\n     <button type="button" class="' + swalClasses.cancel + '">Cancel</button>\n   </div>\n   <button type="button" class="' + swalClasses.close + '" aria-label="Close this dialog">&times;</button>\n </div>\n').replace(/(^|\n)\s*/g, '');
+var sweetHTML = ('\n <div role="dialog" aria-labelledby="' + swalClasses.title + '" aria-describedby="' + swalClasses.content + '" class="' + swalClasses.modal + '" tabindex="-1">\n   <ul class="' + swalClasses.progresssteps + '"></ul>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.error + '">\n     <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>\n   </div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.question + '">?</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.warning + '">!</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.info + '">i</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.success + '">\n     <div class="swal2-success-circular-line-left"></div>\n     <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>\n     <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>\n     <div class="swal2-success-circular-line-right"></div>\n   </div>\n   <img class="' + swalClasses.image + '" />\n   <h2 class="' + swalClasses.title + '" id="' + swalClasses.title + '"></h2>\n   <div id="' + swalClasses.content + '" class="' + swalClasses.content + '"></div>\n   <input class="' + swalClasses.input + '" />\n   <input type="file" class="' + swalClasses.file + '" />\n   <div class="' + swalClasses.range + '">\n     <output></output>\n     <input type="range" />\n   </div>\n   <select class="' + swalClasses.select + '"></select>\n   <div class="' + swalClasses.radio + '"></div>\n   <label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">\n     <input type="checkbox" />\n   </label>\n   <textarea class="' + swalClasses.textarea + '"></textarea>\n   <div class="' + swalClasses.validationerror + '"></div>\n   <div class="' + swalClasses.buttonswrapper + '">\n     <button type="button" class="' + swalClasses.confirm + '">OK</button>\n     <button type="button" class="' + swalClasses.cancel + '">Cancel</button>\n   </div>\n   <button type="button" class="' + swalClasses.close + '" aria-label="Close this dialog">\xD7</button>\n </div>\n').replace(/(^|\n)\s*/g, '');
 
 var getContainer = function getContainer() {
   return document.body.querySelector('.' + swalClasses.container);
@@ -259,10 +259,10 @@ var hasClass = function hasClass(elem, className) {
 };
 
 var focusInput = function focusInput(input) {
-  input.focus
+  input.focus();
 
   // place cursor at end of text in text input
-  ();if (input.type !== 'file') {
+  if (input.type !== 'file') {
     // http://stackoverflow.com/a/2345915/1331425
     var val = input.value;
     input.value = '';
@@ -372,10 +372,10 @@ var animationEndEvent = function () {
   }
 
   return false;
-}
+}();
 
 // Reset previous window keydown handler and focued element
-();var resetPrevState = function resetPrevState() {
+var resetPrevState = function resetPrevState() {
   window.onkeydown = states.previousWindowKeyDown;
   if (states.previousActiveElement && states.previousActiveElement.focus) {
     var x = window.scrollX;
@@ -490,13 +490,13 @@ var setParameters = function setParameters(params) {
   var buttonsWrapper = getButtonsWrapper();
   var confirmButton = getConfirmButton();
   var cancelButton = getCancelButton();
-  var closeButton = getCloseButton
+  var closeButton = getCloseButton();
 
   // Title
-  ();if (params.titleText) {
+  if (params.titleText) {
     title.innerText = params.titleText;
   } else {
-    title.innerHTML = params.title.split('\n').join('<br>');
+    title.innerHTML = params.title.split('\n').join('<br />');
   }
 
   // Content
@@ -579,10 +579,10 @@ var setParameters = function setParameters(params) {
       return false;
     }
     var icon = modal.querySelector('.' + swalClasses.icon + '.' + iconTypes[params.type]);
-    show(icon
+    show(icon);
 
     // Animate icon
-    );if (params.animation) {
+    if (params.animation) {
       switch (params.type) {
         case 'success':
           addClass(icon, 'swal2-animate-success-icon');
@@ -660,10 +660,10 @@ var setParameters = function setParameters(params) {
   confirmButton.className = swalClasses.confirm;
   addClass(confirmButton, params.confirmButtonClass);
   cancelButton.className = swalClasses.cancel;
-  addClass(cancelButton, params.cancelButtonClass
+  addClass(cancelButton, params.cancelButtonClass);
 
   // Buttons styling
-  );if (params.buttonsStyling) {
+  if (params.buttonsStyling) {
     addClass(confirmButton, swalClasses.styled);
     addClass(cancelButton, swalClasses.styled);
   } else {
@@ -696,10 +696,10 @@ var openModal = function openModal(animation, onComplete) {
   } else {
     removeClass(modal, swalClasses.fade);
   }
-  show(modal
+  show(modal);
 
   // scrolling is 'hidden' until animation is done, after that 'auto'
-  );container.style.overflowY = 'hidden';
+  container.style.overflowY = 'hidden';
   if (animationEndEvent && !hasClass(modal, swalClasses.noanimation)) {
     modal.addEventListener(animationEndEvent, function swalCloseEventFinished() {
       modal.removeEventListener(animationEndEvent, swalCloseEventFinished);
@@ -1027,10 +1027,10 @@ var sweetAlert = function sweetAlert() {
 
     var buttonsWrapper = getButtonsWrapper();
     var confirmButton = getConfirmButton();
-    var cancelButton = getCancelButton
+    var cancelButton = getCancelButton();
 
     // Reverse buttons (Confirm on the right side)
-    ();if (params.reverseButtons) {
+    if (params.reverseButtons) {
       confirmButton.parentNode.insertBefore(cancelButton, confirmButton);
     } else {
       confirmButton.parentNode.insertBefore(confirmButton, cancelButton);
@@ -1038,9 +1038,9 @@ var sweetAlert = function sweetAlert() {
 
     // Focus handling
     var setFocus = function setFocus(index, increment) {
-      var focusableElements = getFocusableElements(params.focusCancel
+      var focusableElements = getFocusableElements(params.focusCancel);
       // search for visible elements and select the next possible match
-      );for (var _i3 = 0; _i3 < focusableElements.length; _i3++) {
+      for (var _i3 = 0; _i3 < focusableElements.length; _i3++) {
         index = index + increment;
 
         // rollover to first item
@@ -1090,16 +1090,14 @@ var sweetAlert = function sweetAlert() {
           setFocus(btnIndex, -1);
         }
         e.stopPropagation();
-        e.preventDefault
+        e.preventDefault();
 
         // ARROWS - switch focus between buttons
-        ();
       } else if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
         // focus Cancel button if Confirm button is currently focused
         if (document.activeElement === confirmButton && isVisible(cancelButton)) {
-          cancelButton.focus
+          cancelButton.focus();
           // and vice versa
-          ();
         } else if (document.activeElement === cancelButton && isVisible(confirmButton)) {
           confirmButton.focus();
         }
@@ -1238,10 +1236,10 @@ var sweetAlert = function sweetAlert() {
       show(modal);
       modal.style.minHeight = modal.scrollHeight + 1 + 'px';
       modal.style.display = prevState;
-    }, 50
+    }, 50);
 
     // Show block with validation error
-    );sweetAlert.showValidationError = function (error) {
+    sweetAlert.showValidationError = function (error) {
       var validationError = getValidationError();
       validationError.innerHTML = error;
       show(validationError);
@@ -1284,18 +1282,18 @@ var sweetAlert = function sweetAlert() {
 
     sweetAlert.enableButtons();
     sweetAlert.hideLoading();
-    sweetAlert.resetValidationError
+    sweetAlert.resetValidationError();
 
     // inputs
-    ();var inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea'];
+    var inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea'];
     var input = void 0;
     for (var _i7 = 0; _i7 < inputTypes.length; _i7++) {
       var inputClass = swalClasses[inputTypes[_i7]];
       var inputContainer = getChildByClass(modal, inputClass);
-      input = getInput(inputTypes[_i7]
+      input = getInput(inputTypes[_i7]);
 
       // set attributes
-      );if (input) {
+      if (input) {
         for (var j in input.attributes) {
           if (input.attributes.hasOwnProperty(j)) {
             var attrName = input.attributes[j].name;
@@ -1442,10 +1440,10 @@ var sweetAlert = function sweetAlert() {
       }
     }
 
-    openModal(params.animation, params.onOpen
+    openModal(params.animation, params.onOpen);
 
     // Focus the first element (input or button)
-    );if (params.allowEnterKey) {
+    if (params.allowEnterKey) {
       setFocus(-1, 1);
     } else {
       if (document.activeElement) {
@@ -1505,13 +1503,13 @@ sweetAlert.queue = function (steps) {
  * Global function for getting the index of current modal in queue
  */
 sweetAlert.getQueueStep = function () {
-  return document.body.getAttribute('data-swal2-queue-step'
+  return document.body.getAttribute('data-swal2-queue-step');
+};
 
-  /*
-   * Global function for inserting a modal to the queue
-   */
-  );
-};sweetAlert.insertQueueStep = function (step, index) {
+/*
+ * Global function for inserting a modal to the queue
+ */
+sweetAlert.insertQueueStep = function (step, index) {
   if (index && index < queue.length) {
     return queue.splice(index, 0, step);
   }
@@ -1575,20 +1573,20 @@ sweetAlert.close = sweetAlert.closeModal = function (onComplete) {
  * Global function to click 'Confirm' button
  */
 sweetAlert.clickConfirm = function () {
-  return getConfirmButton().click
+  return getConfirmButton().click();
+};
 
-  /*
-   * Global function to click 'Cancel' button
-   */
-  ();
-};sweetAlert.clickCancel = function () {
-  return getCancelButton().click
+/*
+ * Global function to click 'Cancel' button
+ */
+sweetAlert.clickCancel = function () {
+  return getCancelButton().click();
+};
 
-  /**
-   * Show spinner instead of Confirm button and disable Cancel button
-   */
-  ();
-};sweetAlert.showLoading = sweetAlert.enableLoading = function () {
+/**
+ * Show spinner instead of Confirm button and disable Cancel button
+ */
+sweetAlert.showLoading = sweetAlert.enableLoading = function () {
   var modal = getModal();
   if (!modal) {
     sweetAlert('');
@@ -1633,7 +1631,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.6.5';
+sweetAlert.version = '6.6.6';
 
 sweetAlert.default = sweetAlert;
 

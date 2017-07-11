@@ -34,17 +34,20 @@ const packageRollup = (options) => {
     ]
   })
   .then((bundle) => {
-    let code = bundle.generate({
+    bundle.generate({
       format: options.format,
       banner: banner,
       moduleName: classify(pack.name),
       footer: `if (window.${moduleId}) window.sweetAlert = window.swal = window.${moduleId};`
-    }).code.replace(/sweetAlert\.version = '(.*)'/, "sweetAlert.version = '" + pack.version + "'")
+    })
+    .then((result) => {
+      var code = result.code.replace(/sweetAlert\.version = '(.*)'/, "sweetAlert.version = '" + pack.version + "'")
+      if (options.minify) {
+        code = uglify.minify(code).code
+      }
+      return write(options.dest, code)
+    })
 
-    if (options.minify) {
-      code = uglify.minify(code).code
-    }
-    return write(options.dest, code)
   })
 }
 

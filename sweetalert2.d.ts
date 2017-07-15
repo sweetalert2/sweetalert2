@@ -531,7 +531,7 @@ declare module 'sweetalert2' {
          *
          * @default []
          */
-        progressSteps?: SweetAlertOptions[];
+        progressSteps?: string[];
 
         /**
          * Current active progress step.

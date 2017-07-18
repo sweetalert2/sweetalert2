@@ -861,6 +861,9 @@ const sweetAlert = (...args) => {
         input.value = params.inputValue
         input.placeholder = params.inputPlaceholder
         input.type = params.input
+        if (params.onKeyUp) {
+          input.addEventListener('keyup', (e) => params.onKeyUp(e.target.value, e))
+        }
         dom.show(input)
         break
       case 'file':

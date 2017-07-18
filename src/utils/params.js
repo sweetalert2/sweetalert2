@@ -13,6 +13,7 @@ export default {
   showConfirmButton: true,
   showCancelButton: false,
   preConfirm: null,
+  onKeyUp: null,
   confirmButtonText: 'OK',
   confirmButtonColor: '#3085d6',
   confirmButtonClass: null,

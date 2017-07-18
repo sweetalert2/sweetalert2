@@ -361,6 +361,33 @@ swal.queue([{
   }
 }])</pre>
     </li>
+
+
+    <li class="on-key-press" id="on-key-press">
+      <div class="ui">
+        <p>Key press event example</p>
+        <button aria-label="Try me! Example: On Key Press">Try me!</button>
+      </div>
+      <pre>
+
+swal({
+  title: <span class="str">'Confirm delete'</span>,
+  input: <span class="str">'text'</span>,
+  confirmButtonText: <span class="str">'Confirm'</span>,
+  text: <span class="str">'Type "confirm"'</span>,
+  showLoaderOnConfirm: <span class="val">true</span>,
+  showCancelButton: <span class="val">true</span>,
+  confirmButtonColor: <span class="str">'#ec4758'</span>,
+  onKeyUp: <span class="func"><i>function</i></span> () (inputText, e) {
+    <span class="tag">if</span>(inputText <span class="tag">===</span> <span class="str">'confirm'</span>) {
+      swal.enableConfirmButton()
+    } <span class="tag">else</span> {
+      swal.disableConfirmButton()
+    }
+  }
+})
+swal.disableConfirmButton()</pre>
+    </li>
   </ul>
 
 
@@ -1610,6 +1637,26 @@ swal({
         }
       }
     ]).catch(swal.noop)
+  })
+
+  $('.examples .on-key-press button').on('click', function () {
+    swal({
+      title: 'Confirm delete',
+      input: 'text',
+      confirmButtonText: 'Confirm',
+      text: 'Type "confirm"',
+      showLoaderOnConfirm: true,
+      showCancelButton: true,
+      confirmButtonColor: '#ec4758',
+      onKeyUp: function (inputText, e) {
+        if(inputText === 'confirm') {
+          swal.enableConfirmButton()
+        } else {
+          swal.disableConfirmButton()
+        }
+      }
+    }).catch(swal.noop)
+    swal.disableConfirmButton()
   })
 
   $('.modal-types button').on('click', function () {

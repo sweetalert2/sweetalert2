@@ -172,6 +172,7 @@ Configuration
 | `showCloseButton`       | `false`              | Set to `true` to show close button in top right corner of the modal. |
 | `showLoaderOnConfirm`   | `false`              | Set to `true` to disable buttons and show that something is loading. Useful for AJAX requests. |
 | `preConfirm`            | `null`               | Function to execute before confirm, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#ajax-request">usage example</a>. |
+| `onKeyUp`               | `null`               | Function to execute on key up of an input of type `text`, `email`, `password`, `number`, `tel` or `url`. Requires the property `input`. |
 | `imageUrl`              | `null`               | Add an image for the modal. Should contain a string with the path or URL to the image. |
 | `imageWidth`            | `null`               | If imageUrl is set, you can specify imageWidth to describes image width in px. |
 | `imageHeight`           | `null`               | Custom image height in px. |

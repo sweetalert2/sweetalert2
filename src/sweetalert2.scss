@@ -116,7 +116,7 @@ body {
           &::after {
             display: inline-block;
             content: '';
-            margin-left: 5px 0 15px;
+            margin-left: 5px;
             vertical-align: -1px;
             height: 15px;
             width: 15px;
@@ -210,7 +210,7 @@ body {
     border-radius: 3px;
     border: 1px solid $swal2-input-border;
     box-shadow: inset 0 1px 1px $swal2-input-box-shadow;
-    transition: border-color box-shadow .3s;
+    transition: border-color .3s, box-shadow .3s;
 
     &.swal2-inputerror {
       border-color: $swal2-error !important;

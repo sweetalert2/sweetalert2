@@ -11,7 +11,21 @@ let swal2Observer
  * Set type, text and actions on modal
  */
 const setParameters = (params) => {
-  const modal = dom.getModal() || dom.init(params)
+  // If a custom element is set, determine if it is valid
+  if ((typeof params.target === 'string' && !document.querySelector(params.target)) || (typeof params.target !== 'string' && !params.target.appendChild)) {
+    console.warn('SweetAlert2: Target parameter is not valid, defaulting to "body"')
+    params.target = 'body'
+  }
+
+  let modal
+  const oldModal = dom.getModal()
+  let targetElement = typeof params.target === 'string' ? document.querySelector(params.target) : params.target
+  // If the model target has changed, refresh the modal
+  if (oldModal && targetElement && oldModal.parentNode !== targetElement.parentNode) {
+    modal = dom.init(params)
+  } else {
+    modal = oldModal || dom.init(params)
+  }
 
   for (let param in params) {
     if (!defaultParams.hasOwnProperty(param) && param !== 'extraParams') {

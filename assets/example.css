@@ -183,7 +183,7 @@ button,
       padding-bottom: 1px; }
       .top-right-button.donate .currencies li {
         margin-bottom: 10px; }
-  @media all and (max-width: 900px) {
+  @media all and (max-width: 1500px) {
     .top-right-button {
       display: none; } }
 

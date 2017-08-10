@@ -15,5 +15,5 @@ browsers:
   edge:
     desiredCapabilities:
       browserName: "microsoftedge"
-      version: "14"
+      version: "15"
       platform: "Windows 10"

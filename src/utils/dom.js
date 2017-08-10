@@ -15,9 +15,9 @@ export const states = {
  * Add modal + overlay to DOM
  */
 export const init = (params) => {
-  // Clean up old modals
-  while (getContainer()) {
-    const c = getContainer()
+  // Clean up the old modal if it exists
+  const c = getContainer()
+  if (c) {
     c.parentNode.removeChild(c)
   }
 

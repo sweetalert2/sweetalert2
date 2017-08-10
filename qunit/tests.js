@@ -277,7 +277,6 @@ QUnit.test('input select', function (assert) {
 
 QUnit.test('input checkbox', function (assert) {
   const done = assert.async()
-  const checkbox = $('.swal2-checkbox input')
 
   swal({input: 'checkbox', inputAttributes: {name: 'test-checkbox'}}).then(function (result) {
     assert.equal(checkbox.attr('name'), 'test-checkbox')
@@ -285,6 +284,7 @@ QUnit.test('input checkbox', function (assert) {
     done()
   })
 
+  const checkbox = $('.swal2-checkbox input')
   checkbox.prop('checked', true)
   swal.clickConfirm()
 })
@@ -553,12 +553,28 @@ QUnit.test('modal vertical offset', function (assert) {
 })
 
 QUnit.test('target', function (assert) {
+  const warn = console.warn // Suppress the warnings
+  console.warn = () => true // Suppress the warnings
   swal('Default target')
   assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
   swal.close()
 
-  swal({title: 'Custom target', target: '#qunit'})
+  swal({title: 'Custom valid target (string)', target: '#qunit'}) //switch targets
   assert.equal(document.querySelector('#qunit'), document.querySelector('.swal2-container').parentNode)
+  swal.close()
+
+  swal({title: 'Custom invalid target (string)', target: 'lorem_ipsum'}) //switch targets
+  assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
+  swal.close()
+
+  swal({ title: 'Custom valid target (element)', target: $('#qunit')[0] })
+  assert.equal($('#qunit')[0], document.querySelector('.swal2-container').parentNode)
+  swal.close()
+
+  swal({ title: 'Custom invalid target (element)', target: true })
+  assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
+  swal.close()
+  console.warn = warn // Suppress the warnings
 })
 
 QUnit.test('onOpen', function (assert) {

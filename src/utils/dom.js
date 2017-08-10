@@ -24,7 +24,7 @@ export const init = (params) => {
   container.className = swalClasses.container
   container.innerHTML = sweetHTML
 
-  let targetElement = document.querySelector(params.target)
+  let targetElement = typeof params.target === 'string' ? document.querySelector(params.target) : params.target
   if (!targetElement) {
     console.warn(`SweetAlert2: Can't find the target "${params.target}"`)
     targetElement = document.body

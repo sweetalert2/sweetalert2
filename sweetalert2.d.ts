@@ -189,6 +189,11 @@ declare module 'sweetalert2' {
         function hideProgressSteps(): void;
 
         /**
+         * Determine if parameter name is valid.
+         */
+        function isValidParameter(paramName: string): boolean;
+
+        /**
          * An utility function to make SweetAlert rejections silencious (no error in the console when clicking Cancel).
          * ex. swal(...).catch(swal.noop)
          */

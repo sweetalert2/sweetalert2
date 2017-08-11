@@ -1148,6 +1148,14 @@ sweetAlert.showLoading = sweetAlert.enableLoading = () => {
 }
 
 /**
+ * Is valid parameter
+ * @param {String} paramName
+ */
+sweetAlert.isValidParameter = (paramName) => {
+  return defaultParams.hasOwnProperty(paramName) || paramName === 'extraParams'
+}
+
+  /**
  * Set default params for each popup
  * @param {Object} userParams
  */
@@ -1157,7 +1165,7 @@ sweetAlert.setDefaults = (userParams) => {
   }
 
   for (let param in userParams) {
-    if (!defaultParams.hasOwnProperty(param) && param !== 'extraParams') {
+    if (!sweetAlert.isValidParameter(param)) {
       console.warn(`SweetAlert2: Unknown parameter "${param}"`)
       delete userParams[param]
     }

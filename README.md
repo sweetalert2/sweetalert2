@@ -228,6 +228,7 @@ Methods
 | `swal.setProgressSteps([])`                     | Progress steps setter. |
 | `swal.showProgressSteps()`                      | Show progress steps. |
 | `swal.hideProgressSteps()`                      | Hide progress steps. |
+| `swal.isValidParameter({String})`               | Determine if parameter name is valid. |
 
 
 Browser compatibility

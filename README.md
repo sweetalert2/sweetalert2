@@ -266,10 +266,10 @@ If you would like to contribute enhancements or fixes, please do the following:
 Related projects
 ----------------
 
-- [toverux/ngsweetalert2](https://github.com/toverux/ngsweetalert2) - SweetAlert2 directive for Angular 2+
-- [lishengzxc/vue-sweetalert](https://github.com/lishengzxc/vue-sweetalert) - SweetAlert2 plugin for Vue.js
-- [limonte/sweetalert2-polymer](https://github.com/limonte/sweetalert2-polymer) - SweetAlert2 wrapper for Polymer
-- [limonte/sweetalert2-webpack-demo](https://github.com/limonte/sweetalert2-webpack-demo) - SweetAlert2 + webpack demo
+- [toverux/ngsweetalert2](https://github.com/toverux/ngsweetalert2) - Angular 2+ directive
+- [lishengzxc/vue-sweetalert](https://github.com/lishengzxc/vue-sweetalert) - Vue.js plugin
+- [limonte/sweetalert2-polymer](https://github.com/limonte/sweetalert2-polymer) - Polymer wrapper
+- [limonte/sweetalert2-webpack-demo](https://github.com/limonte/sweetalert2-webpack-demo) - webpack demo
 
 
 Donations

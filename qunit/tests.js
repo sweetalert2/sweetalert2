@@ -706,3 +706,8 @@ QUnit.test('confirm button object format', function (assert) {
   $('.swal2-radio input[value="two"]').prop('checked', true)
   swal.clickConfirm()
 })
+
+QUnit.test('params validation', function (assert) {
+  assert.ok(swal.isValidParameter('title'))
+  assert.notOk(swal.isValidParameter('foobar'))
+})

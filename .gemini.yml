@@ -9,7 +9,7 @@ browsers:
   chrome:
     desiredCapabilities:
       browserName: "chrome"
-      version: "59.0"
+      version: "60"
       platform: "Windows 10"
 
   edge:

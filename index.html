@@ -329,8 +329,7 @@ swal.queue(steps).then(<span class="func"><i>function</i></span> (result) {
       <span class="str">'Your answers: &lt;pre&gt;'</span> +
         JSON.stringify(result) +
       <span class="str">'&lt;/pre&gt;'</span>,
-    confirmButtonText: <span class="str">'Lovely!'</span>,
-    showCancelButton: <span class="val">false</span>
+    confirmButtonText: <span class="str">'Lovely!'</span>
   })
 }, <span class="func"><i>function</i></span> () {
   swal.resetDefaults()
@@ -1075,10 +1074,6 @@ swal({
         <td>Close the currently open SweetAlert2 modal programmatically.</td>
       </tr>
       <tr>
-        <td><i>swal.enableButtons()</i></td>
-        <td>Enable "Confirm" and "Cancel" buttons.</td>
-      </tr>
-      <tr>
         <td><i>swal.getTitle()</i></td>
         <td>Get the modal title.</td>
       </tr>
@@ -1097,6 +1092,10 @@ swal({
       <tr>
         <td><i>swal.getCancelButton()</i></td>
         <td>Get the "Cancel" button.</td>
+      </tr>
+      <tr>
+        <td><i>swal.enableButtons()</i></td>
+        <td>Enable "Confirm" and "Cancel" buttons.</td>
       </tr>
       <tr>
         <td><i>swal.disableButtons()</i></td>
@@ -1587,8 +1586,7 @@ swal({
       swal({
         title: 'All done!',
         html: 'Your answers: <pre>' + JSON.stringify(result) + '</pre>',
-        confirmButtonText: 'Lovely!',
-        showCancelButton: false
+        confirmButtonText: 'Lovely!'
       }).catch(swal.noop)
     }, function () {
       swal.resetDefaults()

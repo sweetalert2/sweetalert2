@@ -28,7 +28,7 @@ const setParameters = (params) => {
   }
 
   for (let param in params) {
-    if (!defaultParams.hasOwnProperty(param) && param !== 'extraParams') {
+    if (!sweetAlert.isValidParameter(param)) {
       console.warn(`SweetAlert2: Unknown parameter "${param}"`)
     }
   }
@@ -240,6 +240,15 @@ const setParameters = (params) => {
     dom.removeClass(modal, swalClasses.noanimation)
   } else {
     dom.addClass(modal, swalClasses.noanimation)
+  }
+
+  // showLoaderOnConfirm && preConfirm
+  if (params.showLoaderOnConfirm && !params.preConfirm) {
+    console.warn(
+      'SweetAlert2: showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' +
+      'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' +
+      'https://limonte.github.io/sweetalert2/#ajax-request'
+    )
   }
 }
 

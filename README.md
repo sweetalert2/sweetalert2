@@ -170,7 +170,7 @@ Configuration
 | `reverseButtons`        | `false`              | Set to `true` if you want to invert default buttons positions ("Confirm"-button on the right side). |
 | `focusCancel`           | `false`              | Set to `true` if you want to focus the "Cancel"-button by default. |
 | `showCloseButton`       | `false`              | Set to `true` to show close button in top right corner of the modal. |
-| `showLoaderOnConfirm`   | `false`              | Set to `true` to disable buttons and show that something is loading. Useful for AJAX requests. |
+| `showLoaderOnConfirm`   | `false`              | Set to `true` to disable buttons and show that something is loading. Use it in combination with the `preConfirm` parameter. |
 | `preConfirm`            | `null`               | Function to execute before confirm, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#ajax-request">usage example</a>. |
 | `imageUrl`              | `null`               | Add an image for the modal. Should contain a string with the path or URL to the image. |
 | `imageWidth`            | `null`               | If imageUrl is set, you can specify imageWidth to describes image width in px. |

@@ -11,9 +11,3 @@ browsers:
       browserName: "chrome"
       version: "60"
       platform: "Windows 10"
-
-  edge:
-    desiredCapabilities:
-      browserName: "microsoftedge"
-      version: "15"
-      platform: "Windows 10"

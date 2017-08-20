@@ -989,7 +989,7 @@ const sweetAlert = (...args) => {
 
     openModal(params.animation, params.onOpen)
 
-    // Focus the first element (input or button)
+    // Focus the first focusable element
     if (params.allowEnterKey) {
       setFocus(-1, 1)
     } else {

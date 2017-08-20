@@ -161,10 +161,27 @@ export const getFocusableElements = (focusCancel) => {
   if (focusCancel) {
     buttons.reverse()
   }
-  const focusableElements = buttons.concat(Array.prototype.slice.call(
-    getModal().querySelectorAll('button, input:not([type=hidden]), textarea, select, a, *[tabindex]:not([tabindex="-1"])')
-  ))
-  return uniqueArray(focusableElements)
+
+  const focusableElementsWithTabindex = Array.from(
+    getModal().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')
+  )
+  // sort according to tabindex
+  .sort((a, b) => {
+    a = parseInt(a.getAttribute('tabindex'))
+    b = parseInt(b.getAttribute('tabindex'))
+    if (a > b) {
+      return 1
+    } else if (a < b) {
+      return -1
+    }
+    return 0
+  })
+
+  const otherFocusableElements = Array.prototype.slice.call(
+    getModal().querySelectorAll('button, input:not([type=hidden]), textarea, select, a, [tabindex="0"]')
+  )
+
+  return uniqueArray(buttons.concat(focusableElementsWithTabindex, otherFocusableElements))
 }
 
 export const hasClass = (elem, className) => {

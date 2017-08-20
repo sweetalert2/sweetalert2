@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.6.8
+ * sweetalert2 v6.6.9
  * Released under the MIT License.
  */
 'use strict';
@@ -245,8 +245,23 @@ var getFocusableElements = function getFocusableElements(focusCancel) {
   if (focusCancel) {
     buttons.reverse();
   }
-  var focusableElements = buttons.concat(Array.prototype.slice.call(getModal().querySelectorAll('button, input:not([type=hidden]), textarea, select, a, *[tabindex]:not([tabindex="-1"])')));
-  return uniqueArray(focusableElements);
+
+  var focusableElementsWithTabindex = Array.from(getModal().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])'))
+  // sort according to tabindex
+  .sort(function (a, b) {
+    a = parseInt(a.getAttribute('tabindex'));
+    b = parseInt(b.getAttribute('tabindex'));
+    if (a > b) {
+      return 1;
+    } else if (a < b) {
+      return -1;
+    }
+    return 0;
+  });
+
+  var otherFocusableElements = Array.prototype.slice.call(getModal().querySelectorAll('button, input:not([type=hidden]), textarea, select, a, [tabindex="0"]'));
+
+  return uniqueArray(buttons.concat(focusableElementsWithTabindex, otherFocusableElements));
 };
 
 var hasClass = function hasClass(elem, className) {
@@ -482,7 +497,7 @@ var setParameters = function setParameters(params) {
   }
 
   for (var param in params) {
-    if (!defaultParams.hasOwnProperty(param) && param !== 'extraParams') {
+    if (!sweetAlert.isValidParameter(param)) {
       console.warn('SweetAlert2: Unknown parameter "' + param + '"');
     }
   }
@@ -691,6 +706,11 @@ var setParameters = function setParameters(params) {
     removeClass(modal, swalClasses.noanimation);
   } else {
     addClass(modal, swalClasses.noanimation);
+  }
+
+  // showLoaderOnConfirm && preConfirm
+  if (params.showLoaderOnConfirm && !params.preConfirm) {
+    console.warn('SweetAlert2: showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' + 'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' + 'https://limonte.github.io/sweetalert2/#ajax-request');
   }
 };
 
@@ -1454,7 +1474,7 @@ var sweetAlert = function sweetAlert() {
 
     openModal(params.animation, params.onOpen);
 
-    // Focus the first element (input or button)
+    // Focus the first focusable element
     if (params.allowEnterKey) {
       setFocus(-1, 1);
     } else {
@@ -1651,7 +1671,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.6.8';
+sweetAlert.version = '6.6.9';
 
 sweetAlert.default = sweetAlert;
 

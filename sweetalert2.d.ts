@@ -238,7 +238,7 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        html?: string;
+        html?: string|JQuery;
 
         /**
          * The type of the modal.
@@ -576,4 +576,15 @@ declare module 'sweetalert2' {
     }
 
     export default swal;
+}
+
+/**
+ * These interfaces aren't provided by SweetAlert2, but its definitions use them.
+ * They will be merged with 'true' definitions.
+ */
+
+interface JQuery {
+}
+
+interface Promise<T> {
 }

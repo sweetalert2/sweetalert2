@@ -279,6 +279,7 @@ const openModal = (animation, onComplete) => {
     container.style.overflowY = 'auto'
   }
 
+  dom.addClass(document.documentElement, swalClasses.blur)
   dom.addClass(document.documentElement, swalClasses.shown)
   dom.addClass(document.body, swalClasses.shown)
   dom.addClass(container, swalClasses.shown)
@@ -1105,6 +1106,17 @@ sweetAlert.close = sweetAlert.closeModal = (onComplete) => {
     dom.removeClass(document.body, swalClasses.shown)
     undoScrollbar()
     undoIOSfix()
+
+    // if blur background is enabled, unblur the background
+    // and put back the body elements
+    if (dom.hasClass(document.documentElement, swalClasses.blur)) {
+      dom.removeClass(document.documentElement, swalClasses.blur)
+      var backgroundContainer = document.getElementsByClassName(swalClasses.background)[0]
+      while (backgroundContainer.firstChild) {
+        document.body.appendChild(backgroundContainer.firstChild)
+      }
+      document.body.removeChild(backgroundContainer)
+    }
   }
 
   // If animation is supported, animate

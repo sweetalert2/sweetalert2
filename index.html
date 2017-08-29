@@ -116,6 +116,19 @@ swal(
 )</pre>
     </li>
 
+    <li class="blurred">
+      <div class="ui">
+        <p>A basic message with blurred background <b>(EXPERIMENTAL)</b></p>
+        <button aria-label="Try me! Example: A basic message with blurred background">Try me!</button>
+      </div>
+      <pre>
+swal({
+  text: <span class="str">'Can you see me?'</span>,
+  blurBackground: true
+})
+      </pre>
+    </li>
+
     <li class="timer">
       <div class="ui">
         <p>A message with auto close timer</p>
@@ -1265,6 +1278,13 @@ swal({
 
   $('.examples .success button').on('click', function () {
     swal('Good job!', 'You clicked the button!', 'success').catch(swal.noop)
+  })
+
+  $('.examples .blurred button').on('click', function () {
+    swal({
+      text: 'Can you see me?',
+      blurBackground: true
+    })
   })
 
   $('.examples .warning.confirm button').on('click', function () {

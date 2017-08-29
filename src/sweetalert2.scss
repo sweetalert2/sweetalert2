@@ -15,6 +15,22 @@ body {
   }
 }
 
+.swal2-blur .swal2-background {
+	-webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+}
+
+.swal2-blur .swal2-container {
+	-webkit-filter: blur(0px) !important;
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px) !important;
+}
+
 .swal2-container {
   // centering
   display: flex;

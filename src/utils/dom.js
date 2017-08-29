@@ -30,6 +30,15 @@ export const init = (params) => {
   container.className = swalClasses.container
   container.innerHTML = sweetHTML
 
+  if (params.blurBackground) {
+    const backgroundContainer = document.createElement('div')
+    backgroundContainer.className = swalClasses.background
+    while (document.body.firstChild) {
+      backgroundContainer.appendChild(document.body.firstChild)
+    }
+    document.body.appendChild(backgroundContainer)
+  }
+
   let targetElement = typeof params.target === 'string' ? document.querySelector(params.target) : params.target
   targetElement.appendChild(container)
 

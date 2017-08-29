@@ -40,7 +40,9 @@ export const swalClasses = prefix([
   'progresscircle',
   'progressline',
   'loading',
-  'styled'
+  'styled',
+  'blur',
+  'background'
 ])
 
 export const iconTypes = prefix([

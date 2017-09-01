@@ -6,7 +6,8 @@ SweetAlert2
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/limonte/sweetalert2.svg)](http://isitmaintained.com/project/limonte/sweetalert2 "Average time to resolve an issue")
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sweetalert2/Lobby)
-[![PayPal Donate](https://img.shields.io/badge/donate-PayPal.me-ff69b4.svg)](https://www.paypal.me/limonte/5eur)
+[![Support me on Patreon](http://ionicabizau.github.io/badges/patreon.svg)](https://www.patreon.com/limonte)
+[![PayPal Donate](http://ionicabizau.github.io/badges/paypal.svg)](https://www.paypal.me/limonte/5eur)
 
 A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement for JavaScript's popup boxes. Zero dependencies.
 

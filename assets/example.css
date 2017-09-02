@@ -145,7 +145,7 @@ button,
       background-color: #b7b7b7; }
 
 .top-right-button {
-  position: fixed;
+  position: absolute;
   right: 80px;
   width: 170px;
   height: 50px;
@@ -169,21 +169,10 @@ button,
     background-color: #fff;
     color: #3085d6;
     font-weight: 600;
-    top: 170px; }
+    top: 160px; }
     .top-right-button.donate img {
       vertical-align: -9px; }
-    .top-right-button.donate .currencies {
-      background-color: #fff;
-      text-transform: none;
-      text-align: left;
-      line-height: initial;
-      -webkit-transition: opacity .2s ease-in-out;
-      transition: opacity .2s ease-in-out;
-      margin: 0;
-      padding-bottom: 1px; }
-      .top-right-button.donate .currencies li {
-        margin-bottom: 10px; }
-  @media all and (max-width: 1500px) {
+  @media all and (max-width: 1150px) {
     .top-right-button {
       display: none; } }
 

@@ -183,36 +183,18 @@ body.swal2-iosfix {
       border: 1px solid #b4dbed;
       -webkit-box-shadow: 0 0 3px #c4e6f5;
               box-shadow: 0 0 3px #c4e6f5; }
-      .swal2-modal .swal2-input:focus::-webkit-input-placeholder,
-      .swal2-modal .swal2-file:focus::-webkit-input-placeholder,
-      .swal2-modal .swal2-textarea:focus::-webkit-input-placeholder {
-        -webkit-transition: opacity .3s .03s ease;
-        transition: opacity .3s .03s ease;
-        opacity: .8; }
-      .swal2-modal .swal2-input:focus:-ms-input-placeholder,
-      .swal2-modal .swal2-file:focus:-ms-input-placeholder,
-      .swal2-modal .swal2-textarea:focus:-ms-input-placeholder {
-        -webkit-transition: opacity .3s .03s ease;
-        transition: opacity .3s .03s ease;
-        opacity: .8; }
-      .swal2-modal .swal2-input:focus::placeholder,
-      .swal2-modal .swal2-file:focus::placeholder,
-      .swal2-modal .swal2-textarea:focus::placeholder {
-        -webkit-transition: opacity .3s .03s ease;
-        transition: opacity .3s .03s ease;
-        opacity: .8; }
     .swal2-modal .swal2-input::-webkit-input-placeholder,
     .swal2-modal .swal2-file::-webkit-input-placeholder,
     .swal2-modal .swal2-textarea::-webkit-input-placeholder {
-      color: #e6e6e6; }
+      color: #cccccc; }
     .swal2-modal .swal2-input:-ms-input-placeholder,
     .swal2-modal .swal2-file:-ms-input-placeholder,
     .swal2-modal .swal2-textarea:-ms-input-placeholder {
-      color: #e6e6e6; }
+      color: #cccccc; }
     .swal2-modal .swal2-input::placeholder,
     .swal2-modal .swal2-file::placeholder,
     .swal2-modal .swal2-textarea::placeholder {
-      color: #e6e6e6; }
+      color: #cccccc; }
   .swal2-modal .swal2-range input {
     float: left;
     width: 80%; }

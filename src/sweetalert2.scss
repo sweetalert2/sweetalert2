@@ -221,15 +221,10 @@ body {
       outline: none;
       border: 1px solid $swal2-input-border-focus;
       box-shadow: 0 0 3px $swal2-input-box-shadow-focus;
-
-      &::placeholder {
-        transition: opacity .3s .03s ease;
-        opacity: .8;
-      }
     }
 
     &::placeholder {
-      color: lighten($swal2-black, 90);
+      color: lighten($swal2-black, 80);
     }
   }
 

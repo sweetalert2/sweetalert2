@@ -228,7 +228,7 @@ button,
 }
 
 .top-right-button {
-  position: fixed;
+  position: absolute;
   right: 80px;
   width: 170px;
   height: 50px;
@@ -259,28 +259,14 @@ button,
     background-color: $white;
     color: $curiousblue;
     font-weight: 600;
-    top: 170px;
+    top: 160px;
 
     img {
       vertical-align: -9px;
     }
-
-    .currencies {
-      background-color: $white;
-      text-transform: none;
-      text-align: left;
-      line-height: initial;
-      transition: opacity .2s ease-in-out;
-      margin: 0;
-      padding-bottom: 1px;
-
-      li {
-        margin-bottom: 10px;
-      }
-    }
   }
 
-  @media all and (max-width: 1500px) {
+  @media all and (max-width: 1150px) {
     display: none;
   }
 }

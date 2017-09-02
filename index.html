@@ -43,11 +43,6 @@
     <div class="top-right-button donate">
       <img src="https://www.paypalobjects.com/webstatic/icon/pp32.png" width="32" height="32" alt="PayPal logo">
       <span>Donate</span>
-      <ul class="currencies hidden">
-        <li><a href="https://www.paypal.me/limonte/5usd">in US Dollars</a></li>
-        <li><a href="https://www.paypal.me/limonte/5eur">in Euros</a></li>
-        <li><a href="https://www.paypal.me/limonte/10">in other currencies</a></li>
-      </ul>
     </div>
   </header>
 
@@ -1208,11 +1203,21 @@ swal({
   })
 
   $('.donate').on('click', function () {
-    $('.currencies').toggleClass('hidden');
-  })
-
-  $('.currencies').on('click', function (e) {
-    e.stopPropagation()
+    swal({
+      title: 'How would you like to pay?',
+      input: 'select',
+      inputOptions: {
+        eur: 'In Euros',
+        usd: 'In US Dollars',
+        '': 'In other currencies',
+      },
+      inputValue: 'eur',
+      confirmButtonText: 'Pay with PayPal'
+    }).then(
+      function (currency) {
+        location.assign('https://www.paypal.me/limonte/5' + currency);
+      },
+    ).catch(swal.noop)
   })
 
   $('.examples .message button').on('click', function () {

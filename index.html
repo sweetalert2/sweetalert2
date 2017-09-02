@@ -761,8 +761,9 @@ swal(...)
       <td>
         <pre>
 swal({
-  title: <span class="str">'Input something'</span>,
+  title: <span class="str">'What is your name?'</span>,
   input: <span class="str">'text'</span>,
+  inputPlaceholder: <span class="str">'Your name or nickname'</span>,
   showCancelButton: <span class="val">true</span>,
   inputValidator: <span class="func"><i>function</i></span> (value) {
     <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve, reject) {
@@ -773,10 +774,10 @@ swal({
       }
     })
   }
-}).then(<span class="func"><i>function</i></span> (result) {
+}).then(<span class="func"><i>function</i></span> (name) {
   swal({
     type: <span class="str">'success'</span>,
-    html: <span class="str">'You entered: '</span> + result
+    html: <span class="str">'Hi, '</span> + name
   })
 })</pre>
       </td>
@@ -847,6 +848,7 @@ swal({
         <pre>
 swal({
   input: <span class="str">'textarea'</span>,
+  inputPlaceholder: <span class="str">'Type your message here'</span>,
   showCancelButton: <span class="val">true</span>
 }).then(<span class="func"><i>function</i></span> (text) {
   <span class="tag">if</span> (text) {
@@ -1331,8 +1333,9 @@ swal({
 
   $('.input-type-text').on('click', function () {
     swal({
-      title: 'Input something',
+      title: 'What is your name?',
       input: 'text',
+      inputPlaceholder: 'Your name or nickname',
       showCancelButton: true,
       inputValidator: function (value) {
         return new Promise(function (resolve, reject) {
@@ -1343,10 +1346,10 @@ swal({
           }
         })
       }
-    }).then(function (result) {
+    }).then(function (name) {
       swal({
         type: 'success',
-        html: 'You entered: <strong>' + result + '</strong>'
+        html: 'Hi, ' + name
       })
     }).catch(swal.noop)
   })
@@ -1397,6 +1400,7 @@ swal({
   $('.input-type-textarea').on('click', function () {
     swal({
       input: 'textarea',
+      inputPlaceholder: 'Type your message here',
       showCancelButton: true
     }).then(function (text) {
       if (text) {

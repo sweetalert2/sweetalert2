@@ -1,6 +1,6 @@
 language: node_js
 dist: trusty
-node_js: 8.0
+node_js: 8.1
 
 addons:
   firefox: latest
@@ -12,7 +12,7 @@ before_script:
 script:
   - xvfb-run testem ci --reporter dot
   - if [[ "$TRAVIS_EVENT_TYPE" != "pull_request" ]]; then
-      npm i gemini@^4.0.0 gemini-sauce;
+      npm i gemini@^4.0.0 gemini-sauce &&
       travis_retry gemini test;
     fi
 

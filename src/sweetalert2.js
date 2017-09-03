@@ -212,8 +212,8 @@ const setParameters = (params) => {
   cancelButton.innerHTML = params.cancelButtonText
 
   // ARIA labels for confirm and cancel buttons
-  confirmButton.setAttribute('aria-label', params.confirmButtonLabel)
-  cancelButton.setAttribute('aria-label', params.cancelButtonLabel)
+  confirmButton.setAttribute('aria-label', params.confirmButtonAriaLabel)
+  cancelButton.setAttribute('aria-label', params.cancelButtonAriaLabel)
 
   // Set buttons to selected background colors
   if (params.buttonsStyling) {

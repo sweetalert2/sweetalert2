@@ -43,11 +43,15 @@ QUnit.test('getters', function (assert) {
     showCancelButton: true,
     imageUrl: 'image.png',
     confirmButtonText: 'Confirm button',
-    cancelButtonText: 'Cancel button'
+    confirmButtonAriaLabel: 'Confirm button aria-label',
+    cancelButtonText: 'Cancel button',
+    cancelButtonAriaLabel: 'Cancel button aria-label'
   })
   assert.ok(swal.getImage().src.indexOf('image.png'))
   assert.equal(swal.getConfirmButton().innerText, 'Confirm button')
   assert.equal(swal.getCancelButton().innerText, 'Cancel button')
+  assert.equal(swal.getConfirmButton().getAttribute('aria-label'), 'Confirm button aria-label')
+  assert.equal(swal.getCancelButton().getAttribute('aria-label'), 'Cancel button aria-label')
 
   swal({input: 'text'})
   $('.swal2-input').val('input text')

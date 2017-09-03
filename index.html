@@ -134,7 +134,7 @@ swal({
 
     <li class="html">
       <div class="ui">
-        <p>Custom HTML description and buttons</p>
+        <p>Custom HTML description and buttons with ARIA labels</p>
         <button aria-label="Try me! Example: Custom HTML description and buttons">Try me!</button>
       </div>
       <pre>
@@ -149,8 +149,10 @@ swal({
   showCancelButton: <span class="val">true</span>,
   confirmButtonText:
     <span class="str">'&lt;i class="fa fa-thumbs-up"&gt;&lt;/i&gt; Great!'</span>,
+  confirmButtonAriaLabel: <span class="str">'Thumbs up, great!'</span>,
   cancelButtonText:
-    <span class="str">'&lt;i class="fa fa-thumbs-down"&gt;&lt;/i&gt;'</span>
+  <span class="str">'&lt;i class="fa fa-thumbs-down"&gt;&lt;/i&gt;'</span>,
+  cancelButtonAriaLabel: <span class="str">'Thumbs down'</span>,
 })</pre>
     </li>
 
@@ -537,6 +539,16 @@ swal.queue([{
         <td><b>cancelButtonClass</b></td>
         <td><i>null</i></td>
         <td>A custom CSS class for the "Cancel"-button.</td>
+      </tr>
+      <tr>
+        <td><b>confirmButtonAriaLabel</b></td>
+        <td><i>''</i></td>
+        <td>Use this to change the <strong>aria-label</strong> for the "Confirm"-button.</td>
+      </tr>
+      <tr>
+        <td><b>cancelButtonAriaLabel</b></td>
+        <td><i>''</i></td>
+        <td>Use this to change the <strong>aria-label</strong> for the "Cancel"-button.</td>
       </tr>
       <tr>
         <td><b>buttonsStyling</b></td>
@@ -1253,7 +1265,9 @@ swal({
       showCloseButton: true,
       showCancelButton: true,
       confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
-      cancelButtonText: '<i class="fa fa-thumbs-down"></i>'
+      confirmButtonAriaLabel: 'Thumbs up, great!',
+      cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
+      cancelButtonAriaLabel: 'Thumbs down'
     }).catch(swal.noop)
   })
 

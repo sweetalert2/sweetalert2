@@ -7,7 +7,8 @@ body {
 body {
   background-color: #f2f4f6;
   font-family: 'Open Sans', sans-serif;
-  text-align: center; }
+  text-align: center;
+  color: #555; }
 
 header h1 {
   font-family: 'Courgette', serif;
@@ -24,7 +25,6 @@ header h1 {
 
 header h2 {
   font-size: 20px;
-  color: #a9b2bc;
   line-height: 25px;
   text-transform: uppercase;
   font-weight: 300;
@@ -60,7 +60,7 @@ header h2 {
 
 h3 {
   font-size: 28px;
-  color: #c7ccd1;
+  color: #666;
   text-transform: uppercase;
   font-family: 'Open Sans Condensed', sans-serif;
   margin-top: 100px;
@@ -88,26 +88,22 @@ h3 {
 
 a {
   text-decoration: none;
-  color: #abcada;
+  color: #2196f3;
   font-weight: 600;
   cursor: pointer; }
   a:hover {
     text-decoration: underline; }
-  a.github {
-    color: #333333; }
 
 p {
   max-width: 826px;
   margin: 30px auto;
   font-size: 17px;
   font-weight: 300;
-  color: #848d94;
   line-height: 25px;
   text-align: left; }
   p.center {
     text-align: center; }
   p strong {
-    color: #848d94;
     font-weight: 600; }
   @media all and (max-width: 750px) {
     p {
@@ -161,7 +157,7 @@ button,
     text-decoration: none; }
   .top-right-button.download {
     top: 30px;
-    color: #abcada; }
+    color: #2196f3; }
   .top-right-button.cdn {
     top: 90px;
     color: #eb4c36; }
@@ -203,6 +199,7 @@ pre {
 
 .showcase {
   background-color: #e2e5e8;
+  margin-top: 15px;
   padding: 20px;
   display: inline-block;
   width: 383px;
@@ -301,7 +298,6 @@ ol {
 table {
   width: 725px;
   font-size: 14px;
-  color: #848d94;
   margin: 10px auto;
   text-align: left;
   border-collapse: collapse; }
@@ -312,7 +308,7 @@ table {
   table th {
     background-color: #fff;
     padding: 10px 20px;
-    color: #acb9be;
+    color: #8d98a5;
     font-weight: 400;
     position: relative;
     white-space: nowrap; }
@@ -351,7 +347,7 @@ table {
     margin: 0 auto;
     padding: 1em;
     max-width: 300px;
-    border: solid 1px #a9b2bc;
+    border: solid 1px #8d98a5;
     border-radius: 2px;
     -webkit-box-shadow: inset 0 1px #fff;
             box-shadow: inset 0 1px #fff;
@@ -384,3 +380,17 @@ table {
       bottom: 0;
       display: block;
       font-size: 11px; }
+
+.donation-options {
+  max-width: 700px;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-size: 20px; }
+  .donation-options a {
+    text-decoration: none; }
+  .donation-options img {
+    margin-top: 10px; }

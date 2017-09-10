@@ -13,7 +13,7 @@ script:
   - xvfb-run testem ci --reporter dot
   - if [[ "$TRAVIS_EVENT_TYPE" != "pull_request" ]]; then
       npm i gemini@^4.0.0 gemini-sauce &&
-      travis_retry gemini test;
+      gemini test;
     fi
 
 deploy:

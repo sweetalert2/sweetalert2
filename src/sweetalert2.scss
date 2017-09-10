@@ -565,18 +565,10 @@ body {
   -webkit-tap-highlight-color: $swal2-transparent;
 }
 
-// Animations
-
-@mixin keyframes($animation-name) {
-  @keyframes #{$animation-name} {
-    @content;
-  }
-}
-
 
 // Modal animations
 
-@include keyframes(showSweetAlert) {
+@keyframes showSweetAlert {
   0% {
     transform: scale(.7);
   }
@@ -594,7 +586,7 @@ body {
   }
 }
 
-@include keyframes(hideSweetAlert) {
+@keyframes hideSweetAlert {
   0% {
     transform: scale(1);
     opacity: 1;
@@ -626,7 +618,7 @@ body {
 
 // Success icon animation
 
-@include keyframes(animate-success-tip) {
+@keyframes animate-success-tip {
   0% {
     width: 0;
     left: 1px;
@@ -658,7 +650,7 @@ body {
   }
 }
 
-@include keyframes(animate-success-long) {
+@keyframes animate-success-long {
   0% {
     width: 0;
     right: 46px;
@@ -684,7 +676,7 @@ body {
   }
 }
 
-@include keyframes(rotatePlaceholder) {
+@keyframes rotatePlaceholder {
   0% {
     transform: rotate(-45deg);
   }
@@ -721,7 +713,7 @@ body {
 
 // Error icon animation
 
-@include keyframes(animate-error-icon) {
+@keyframes animate-error-icon {
   0% {
     transform: rotateX(100deg);
     opacity: 0;
@@ -737,7 +729,7 @@ body {
   animation: animate-error-icon .5s;
 }
 
-@include keyframes(animate-x-mark) {
+@keyframes animate-x-mark {
   0% {
     transform: scale(.4);
     margin-top: 26px;
@@ -766,7 +758,7 @@ body {
   animation: animate-x-mark .5s;
 }
 
-@include keyframes(rotate-loading) {
+@keyframes rotate-loading {
   0% {
     transform: rotate(0deg);
   }

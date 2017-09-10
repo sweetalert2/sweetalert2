@@ -23,6 +23,7 @@ gemini.suite('input-types', (suite) => {
     .capture('text', function (actions, find) {
       actions.click(find('#input-text button'))
       actions.sendKeys('Hola!')
+      actions.sendKeys(gemini.TAB)
       actions.wait(200)
     })
     .capture('email-invalid', function (actions, find) {

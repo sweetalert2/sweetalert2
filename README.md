@@ -276,6 +276,8 @@ Related projects
 Donations
 ---------
 
-If you liked this plugin, you can donate to support it:
+Has SweetAlert2 helped you create an amazing application?  
+You can show your support by making a donation in one of two ways:
 
 - https://www.paypal.me/limonte/5eur
+- https://www.patreon.com/limonte

@@ -10,28 +10,30 @@ body {
   text-align: center;
   color: #555; }
 
-header h1 {
-  font-family: 'Courgette', serif;
-  font-size: 60px;
-  color: #a8a8a8;
-  white-space: nowrap;
-  margin: 50px auto 0; }
-  header h1 span {
-    margin: 0 10px;
-    color: #f77; }
-  @media all and (max-width: 440px) {
-    header h1 {
-      font-size: 50px; } }
-
-header h2 {
-  font-size: 20px;
-  line-height: 25px;
-  text-transform: uppercase;
-  font-weight: 300;
-  text-align: center;
-  display: block; }
-  header h2 a {
-    color: #3085d6; }
+header {
+  max-width: 650px;
+  margin: auto; }
+  header h1 {
+    font-family: 'Courgette', serif;
+    font-size: 60px;
+    color: #a8a8a8;
+    white-space: nowrap;
+    margin: 50px auto 0; }
+    header h1 span {
+      margin: 0 10px;
+      color: #f77; }
+    @media all and (max-width: 440px) {
+      header h1 {
+        font-size: 50px; } }
+  header h2 {
+    font-size: 20px;
+    line-height: 25px;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+    display: block; }
+    header h2 a {
+      color: #3085d6; }
 
 .swal2-alert h2 {
   font-family: 'Open Sans', sans-serif;

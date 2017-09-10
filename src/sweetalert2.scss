@@ -573,12 +573,8 @@ body {
   }
 }
 
-@mixin animation($str) {
-  animation: #{$str};
-}
 
-
-// Modal animation
+// Modal animations
 
 @include keyframes(showSweetAlert) {
   0% {
@@ -611,18 +607,18 @@ body {
 }
 
 .swal2-show {
-  @include animation('showSweetAlert 0.3s');
+  animation: showSweetAlert .3s;
 
   &.swal2-noanimation {
-    @include animation('none');
+    animation: none;
   }
 }
 
 .swal2-hide {
-  @include animation('hideSweetAlert 0.15s forwards');
+  animation: hideSweetAlert .15s forwards;
 
   &.swal2-noanimation {
-    @include animation('none');
+    animation: none;
   }
 }
 
@@ -707,17 +703,17 @@ body {
 }
 
 .swal2-animate-success-line-tip {
-  @include animation('animate-success-tip 0.75s');
+  animation: animate-success-tip .75s;
 }
 
 .swal2-animate-success-line-long {
-  @include animation('animate-success-long 0.75s');
+  animation: animate-success-long .75s;
 }
 
 .swal2-success {
   &.swal2-animate-success-icon {
     .swal2-success-circular-line-right {
-      @include animation('rotatePlaceholder 4.25s ease-in');
+      animation: rotatePlaceholder 4.25s ease-in;
     }
   }
 }
@@ -738,7 +734,7 @@ body {
 }
 
 .swal2-animate-error-icon {
-  @include animation('animate-error-icon 0.5s');
+  animation: animate-error-icon .5s;
 }
 
 @include keyframes(animate-x-mark) {
@@ -767,7 +763,7 @@ body {
 }
 
 .swal2-animate-x-mark {
-  @include animation('animate-x-mark 0.5s');
+  animation: animate-x-mark .5s;
 }
 
 @include keyframes(rotate-loading) {

@@ -276,8 +276,7 @@ Related projects
 Donations
 ---------
 
-Has SweetAlert2 helped you create an amazing application?  
-You can show your support by making a donation in one of two ways:
+Has SweetAlert2 helped you create an amazing application? You can show your support by making a donation in one of two ways:
 
 - https://www.paypal.me/limonte/5eur
 - https://www.patreon.com/limonte

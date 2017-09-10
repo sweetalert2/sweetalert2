@@ -44,12 +44,10 @@
     <a class="top-right-button download">Download</a>
     <a href="https://cdnjs.com/libraries/limonte-sweetalert2" class="top-right-button cdn" target="_blank" rel="noopener">CDN</a>
     <div class="top-right-button donate">
-      <img src="https://www.paypalobjects.com/webstatic/icon/pp32.png" width="32" height="32" alt="PayPal logo">
+      <img src="./assets/paypal.png" width="32" height="32" alt="">
       <span>Donate</span>
     </div>
   </header>
-
-  <p>Here’s a comparison of a standard error message. The first one uses the built-in <strong>alert</strong>-function, while the second is using <strong>SweetAlert2</strong>.</p>
 
   <div class="showcase normal">
     <h4>Normal alert</h4>
@@ -1185,6 +1183,26 @@ swal({
   </div>
 
 
+  <!-- Donations -->
+  <h3 class="donations-section">Donations</h3>
+  <p class="center">Has SweetAlert2 helped you create an amazing application?<br> You can show your support by making a donation in one of two ways:</p>
+  <div class="donation-options">
+    <div>
+      <a href="https://www.patreon.com/limonte" target="_blank" rel="noopener" aria-label="Donate via Patreon">
+        Patreon
+        <br>
+        <img src="./assets/patreon.png" width="125" alt="">
+      </a>
+    </div>
+    <div>
+      <a href class="paypal" aria-label="Donate via PayPal">
+        PayPal
+        <br>
+        <img src="./assets/paypal.png" width="125" alt="">
+      </a>
+    </div>
+  </div>
+
   <!-- Contribute -->
   <h3>Contribute</h3>
   <p class="center">Feel free to fork SweetAlert2 on <a href="https://github.com/limonte/sweetalert2" class="github">GitHub</a> if you have any features that you want to add!</p>
@@ -1199,6 +1217,10 @@ swal({
     $('html, body').animate({scrollTop: $('.download-section').offset().top}, 1000)
   })
 
+  $('.donate').on('click', function () {
+    $('html, body').animate({scrollTop: $('.donations-section').offset().top}, 1000)
+  })
+
   $('.showcase.normal button').on('click', function () {
     window.alert('Oops! Something went wrong!')
   })
@@ -1207,7 +1229,7 @@ swal({
     swal('Oops...', 'Something went wrong!', 'error').catch(swal.noop)
   })
 
-  $('.donate').on('click', function () {
+  $('.paypal').on('click', function () {
     swal({
       title: 'How would you like to pay?',
       input: 'select',
@@ -1223,6 +1245,8 @@ swal({
         location.assign('https://www.paypal.me/limonte/5' + currency);
       }
     ).catch(swal.noop)
+
+    return false;
   })
 
   $('.examples .message button').on('click', function () {

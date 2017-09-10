@@ -5,13 +5,11 @@ $black: #000;
 $white: #fff;
 $athens: #f2f4f6;
 $salmon: #f77;
-$hitgray: #a9b2bc;
-$oslogray: #848d94;
+$emperor: #555;
+$dovegray: #666;
 $regentgray: #8d98a5;
-$towergray: #acb9be;
 $chateaugray: #a7adb2;
 $curiousblue: #3085d6;
-$loblolly: #c7ccd1;
 $porcelain: #e2e5e8;
 $pear: #a6e22d;
 $amaranth: #e92772;
@@ -20,7 +18,7 @@ $spray: #66d9ef;
 $chenin: #e6db74;
 $armadillo: #49483e;
 $cinnabar: #eb4c36;
-$pigeonpost: #abcada;
+$cornflowerblue: #2196f3;
 $white-button: rgba($white, .8);
 
 @mixin retina-background($url, $type: png) {
@@ -37,6 +35,7 @@ body {
   background-color: $athens;
   font-family: 'Open Sans', sans-serif;
   text-align: center;
+  color: $emperor;
 }
 
 header {
@@ -59,7 +58,6 @@ header {
 
   h2 {
     font-size: 20px;
-    color: $hitgray;
     line-height: 25px;
     text-transform: uppercase;
     font-weight: 300;
@@ -118,7 +116,7 @@ header {
 
 h3 {
   font-size: 28px;
-  color: $loblolly;
+  color: $dovegray;
   text-transform: uppercase;
   font-family: 'Open Sans Condensed', sans-serif;
   margin-top: 100px;
@@ -152,16 +150,12 @@ h3 {
 
 a {
   text-decoration: none;
-  color: $pigeonpost;
+  color: $cornflowerblue;
   font-weight: 600;
   cursor: pointer;
 
   &:hover {
     text-decoration: underline;
-  }
-
-  &.github {
-    color: lighten($black, 20);
   }
 }
 
@@ -170,7 +164,6 @@ p {
   margin: 30px auto;
   font-size: 17px;
   font-weight: 300;
-  color: $oslogray;
   line-height: 25px;
   text-align: left;
 
@@ -179,7 +172,6 @@ p {
   }
 
   strong {
-    color: $oslogray;
     font-weight: 600;
   }
 
@@ -247,7 +239,7 @@ button,
 
   &.download {
     top: 30px;
-    color: $pigeonpost;
+    color: $cornflowerblue;
   }
 
   &.cdn {
@@ -312,6 +304,7 @@ pre {
 
 .showcase {
   background-color: $porcelain;
+  margin-top: 15px;
   padding: 20px;
   display: inline-block;
   width: 383px;
@@ -449,7 +442,6 @@ ol {
 table {
   width: 725px;
   font-size: 14px;
-  color: $oslogray;
   margin: 10px auto;
   text-align: left;
   border-collapse: collapse;
@@ -461,7 +453,7 @@ table {
   th {
     background-color: $white;
     padding: 10px 20px;
-    color: $towergray;
+    color: $regentgray;
     font-weight: 400;
     position: relative;
     white-space: nowrap;
@@ -517,7 +509,7 @@ table {
     margin: 0 auto;
     padding: 1em;
     max-width: 300px;
-    border: solid 1px $hitgray;
+    border: solid 1px $regentgray;
     border-radius: 2px;
     box-shadow: inset 0 1px $white;
     text-shadow: 0 1px $white;
@@ -562,5 +554,21 @@ table {
       display: block;
       font-size: 11px;
     }
+  }
+}
+
+.donation-options {
+  max-width: 700px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    margin-top: 10px;
   }
 }

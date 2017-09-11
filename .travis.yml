@@ -12,7 +12,7 @@ before_script:
 script:
   - xvfb-run testem ci --reporter dot
   - if [[ "$TRAVIS_EVENT_TYPE" != "pull_request" ]]; then
-      npm i gemini@^4.0.0 gemini-sauce &&
+      npm i --no-save gemini@^4.0.0 gemini-sauce &&
       gemini test;
     fi
 

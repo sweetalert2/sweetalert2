@@ -383,16 +383,26 @@ table {
       display: block;
       font-size: 11px; }
 
-.donation-options {
+.donation-options,
+.collaborators {
   max-width: 700px;
   margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   font-size: 20px; }
-  .donation-options a {
+  .donation-options a,
+  .collaborators a {
+    display: inline-block;
+    min-width: 140px;
     text-decoration: none; }
-  .donation-options img {
+  .donation-options img,
+  .collaborators img {
     margin-top: 10px; }
+
+.collaborators {
+  font-size: 16px; }

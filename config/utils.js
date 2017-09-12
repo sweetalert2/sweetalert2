@@ -26,7 +26,7 @@ const write = (dest, code) => {
 const packageRollup = (options) => {
   const moduleId = classify(pack.name)
   return rollup({
-    entry: 'src/sweetalert2.js',
+    input: 'src/sweetalert2.js',
     plugins: [
       babel({
         exclude: 'node_modules/**'
@@ -37,7 +37,7 @@ const packageRollup = (options) => {
     bundle.generate({
       format: options.format,
       banner: banner,
-      moduleName: classify(pack.name),
+      name: classify(pack.name),
       footer: `if (window.${moduleId}) window.sweetAlert = window.swal = window.${moduleId};`
     })
     .then((result) => {

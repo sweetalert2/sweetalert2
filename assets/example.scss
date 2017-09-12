@@ -560,18 +560,26 @@ table {
   }
 }
 
-.donation-options {
+.donation-options,
+.collaborators {
   max-width: 700px;
   margin: auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   font-size: 20px;
 
   a {
+    display: inline-block;
+    min-width: 140px;
     text-decoration: none;
   }
 
   img {
     margin-top: 10px;
   }
+}
+
+.collaborators {
+  font-size: 16px;
 }

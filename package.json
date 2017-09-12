@@ -31,7 +31,6 @@
       "dist/"
     ],
     "global": [
-      "gemini",
       "MutationObserver"
     ]
   },

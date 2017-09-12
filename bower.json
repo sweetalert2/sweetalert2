@@ -3,12 +3,11 @@
   "homepage": "https://limonte.github.io/sweetalert2/",
   "authors": [
     "Limon Monte <limon.monte@gmail.com> (https://limonte.github.io)",
-    "Johan Fagerberg (https://github.com/birjolaxew)",
     "Morgan Touverey-Quilling <mtouverey@alembic-dev.com> (https://github.com/toverux)",
-    "Sam Turrell <sam@samturrell.co.uk> (http://samturrell.co.uk)",
-    "Tristan Edwards <tristan.edwards@me.com> (http://tristanedwards.me)",
-    "Leo Correa <lcorr005@gmail.com> (https://leonardocorrea.com/)",
-    "Joseph Schultz (https://github.com/acupajoe)"
+    "Johan Fagerberg (https://github.com/birjolaxew)",
+    "Sam Turrell <sam@samturrell.co.uk> (https://github.com/samturrell)",
+    "Joseph Schultz (https://github.com/acupajoe)",
+    "Patrick H. Lauke (https://github.com/patrickhlauke)"
   ],
   "ignore": [
     "assets",

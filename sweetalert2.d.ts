@@ -385,6 +385,20 @@ declare module 'sweetalert2' {
         cancelButtonClass?: string;
 
         /**
+         * Use this to change the aria-label for the "Confirm"-button.
+         *
+         * @default ''
+         */
+        confirmButtonAriaLabel?: string;
+
+        /**
+         * Use this to change the aria-label for the "Cancel"-button.
+         *
+         * @default ''
+         */
+        cancelButtonAriaLabel?: string;
+
+        /**
          * Whether to apply the default swal2 styling to buttons.
          * If you want to use your own classes (e.g. Bootstrap classes) set this parameter to false.
          *

@@ -141,55 +141,57 @@ Modal Types
 Configuration
 -------------
 
-| Argument                | Default value        | Description |
-| ----------------------- | -------------------- | ----------- |
-| `title`                 | `null`               | The title of the modal, as HTML. It can either be added to the object under the key "title" or passed as the first parameter of the function. |
-| `titleText`             | `null`               | The title of the modal, as text. Useful to avoid HTML injection. |
-| `text`                  | `null`               | A description for the modal. It can either be added to the object under the key "text" or passed as the second parameter of the function. |
-| `html`                  | `null`               | A HTML description for the modal. If `text` and `html` parameters are provided in the same time, "text" will be used. |
-| `type`                  | `null`               | The type of the modal. SweetAlert2 comes with [5 built-in types](#modal-types) which will show a corresponding icon animation: `warning`, `error`, `success`, `info` and `question`. It can either be put in the array under the key `type` or passed as the third parameter of the function. |
-| `target`                | `'body'`             | The container element for adding modal into. |
-| `input`                 | `null`               | Input field type, can be `'text'`, `'email'`, `'password'`, `'number'`, `'tel'`, `'range'`, `'textarea'`, `'select'`, `'radio'`, `'checkbox'`, `'file'` and `'url'`. |
-| `width`                 | `'500px'`            | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. |
-| `padding`               | `20`                 | Modal window padding. |
-| `background`            | `'#fff'`             | Modal window background (CSS `background` property). |
-| `customClass`           | `null`               | A custom CSS class for the modal. |
-| `timer`                 | `null`               | Auto close timer of the modal. Set in ms (milliseconds). |
-| `animation`             | `true`               | If set to `false`, modal CSS animation will be disabled. |
-| `allowOutsideClick`     | `true`               | If set to `false`, the user can't dismiss the modal by clicking outside it. |
-| `allowEscapeKey`        | `true`               | If set to `false`, the user can't dismiss the modal by pressing the <kbd>Esc</kbd> key. |
-| `allowEnterKey`         | `true`               | If set to `false`, the user can't confirm the modal by pressing the <kbd>Enter</kbd> or <kbd>Space</kbd> keys, unless they manually focus the confirm button. |
-| `showConfirmButton`     | `true`               | If set to `false`, a "Confirm"-button will not be shown. It can be useful when you're using `html` parameter for custom HTML description. |
-| `showCancelButton`      | `false`              | If set to `true`, a "Cancel"-button will be shown, which the user can click on to dismiss the modal. |
-| `confirmButtonText`     | `'OK'`               | Use this to change the text on the "Confirm"-button. |
-| `cancelButtonText`      | `'Cancel'`           | Use this to change the text on the "Cancel"-button. |
-| `confirmButtonColor`    | `'#3085d6'`          | Use this to change the background color of the "Confirm"-button (must be a HEX value). |
-| `cancelButtonColor`     | `'#aaa'`             | Use this to change the background color of the "Cancel"-button (must be a HEX value). |
-| `confirmButtonClass`    | `null`               | A custom CSS class for the "Confirm"-button. |
-| `cancelButtonClass`     | `null`               | A custom CSS class for the "Cancel"-button. |
-| `buttonsStyling`        | `true`               | Apply default styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to `false`. |
-| `reverseButtons`        | `false`              | Set to `true` if you want to invert default buttons positions ("Confirm"-button on the right side). |
-| `focusCancel`           | `false`              | Set to `true` if you want to focus the "Cancel"-button by default. |
-| `showCloseButton`       | `false`              | Set to `true` to show close button in top right corner of the modal. |
-| `showLoaderOnConfirm`   | `false`              | Set to `true` to disable buttons and show that something is loading. Use it in combination with the `preConfirm` parameter. |
-| `preConfirm`            | `null`               | Function to execute before confirm, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#ajax-request">usage example</a>. |
-| `imageUrl`              | `null`               | Add an image for the modal. Should contain a string with the path or URL to the image. |
-| `imageWidth`            | `null`               | If imageUrl is set, you can specify imageWidth to describes image width in px. |
-| `imageHeight`           | `null`               | Custom image height in px. |
-| `imageClass`            | `null`               | A custom CSS class for the image. |
-| `inputPlaceholder`      | `''`                 | Input field placeholder. |
-| `inputValue`            | `''`                 | Input field initial value. |
-| `inputOptions`          | `{}` or `Promise`    | If `input` parameter is set to `'select'` or `'radio'`, you can provide options. Object keys will represent options values, object values will represent options text values. |
-| `inputAutoTrim`         | `true`               | Automatically remove whitespaces from both ends of a result string. Set this parameter to `false` to disable auto-trimming. |
-| `inputAttributes`       | `{}`                 | HTML input attributes (e.g. `'min'`, `'max'`, `'autocomplete'`, `'accept'`), that are added to the input field. Object keys will represent attributes names, object values will represent attributes values. |
-| `inputValidator`        | `null`               | Validator for input field, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#select-box">usage example</a>. |
-| `inputClass`            | `null`               | A custom CSS class for the input field. |
-| `progressSteps`         | `[]`                 | Progress steps, useful for modal queues, see <a href="https://limonte.github.io/sweetalert2/#chaining-modals">usage example</a>. |
-| `currentProgressStep`   | `null`               | Current active progress step. The default is `swal.getQueueStep()`. |
-| `progressStepsDistance` | `'40px'`             | Distance between progress steps. |
-| `onOpen`                | `null`               | Function to run when modal opens, provides modal DOM element as the first argument. |
-| `onClose`               | `null`               | Function to run when modal closes, provides modal DOM element as the first argument. |
-| `useRejections`         | `true`               | Determines whether dismissals (outside click, cancel button, close button, esc key) should reject, or resolve with an object of the format `{ dismiss: reason }`. Set it to `false` to get a cleaner control flow when using `await`, as explained in [#485](https://github.com/limonte/sweetalert2/issues/485). |
+| Argument                 | Default value        | Description |
+| ------------------------ | -------------------- | ----------- |
+| `title`                  | `null`               | The title of the modal, as HTML. It can either be added to the object under the key "title" or passed as the first parameter of the function. |
+| `titleText`              | `null`               | The title of the modal, as text. Useful to avoid HTML injection. |
+| `text`                   | `null`               | A description for the modal. It can either be added to the object under the key "text" or passed as the second parameter of the function. |
+| `html`                   | `null`               | A HTML description for the modal. If `text` and `html` parameters are provided in the same time, "text" will be used. |
+| `type`                   | `null`               | The type of the modal. SweetAlert2 comes with [5 built-in types](#modal-types) which will show a corresponding icon animation: `warning`, `error`, `success`, `info` and `question`. It can either be put in the array under the key `type` or passed as the third parameter of the function. |
+| `target`                 | `'body'`             | The container element for adding modal into. |
+| `input`                  | `null`               | Input field type, can be `'text'`, `'email'`, `'password'`, `'number'`, `'tel'`, `'range'`, `'textarea'`, `'select'`, `'radio'`, `'checkbox'`, `'file'` and `'url'`. |
+| `width`                  | `'500px'`            | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. |
+| `padding`                | `20`                 | Modal window padding. |
+| `background`             | `'#fff'`             | Modal window background (CSS `background` property). |
+| `customClass`            | `null`               | A custom CSS class for the modal. |
+| `timer`                  | `null`               | Auto close timer of the modal. Set in ms (milliseconds). |
+| `animation`              | `true`               | If set to `false`, modal CSS animation will be disabled. |
+| `allowOutsideClick`      | `true`               | If set to `false`, the user can't dismiss the modal by clicking outside it. |
+| `allowEscapeKey`         | `true`               | If set to `false`, the user can't dismiss the modal by pressing the <kbd>Esc</kbd> key. |
+| `allowEnterKey`          | `true`               | If set to `false`, the user can't confirm the modal by pressing the <kbd>Enter</kbd> or <kbd>Space</kbd> keys, unless they manually focus the confirm button. |
+| `showConfirmButton`      | `true`               | If set to `false`, a "Confirm"-button will not be shown. It can be useful when you're using `html` parameter for custom HTML description. |
+| `showCancelButton`       | `false`              | If set to `true`, a "Cancel"-button will be shown, which the user can click on to dismiss the modal. |
+| `confirmButtonText`      | `'OK'`               | Use this to change the text on the "Confirm"-button. |
+| `cancelButtonText`       | `'Cancel'`           | Use this to change the text on the "Cancel"-button. |
+| `confirmButtonColor`     | `'#3085d6'`          | Use this to change the background color of the "Confirm"-button (must be a HEX value). |
+| `cancelButtonColor`      | `'#aaa'`             | Use this to change the background color of the "Cancel"-button (must be a HEX value). |
+| `confirmButtonClass`     | `null`               | A custom CSS class for the "Confirm"-button. |
+| `cancelButtonClass`      | `null`               | A custom CSS class for the "Cancel"-button. |
+| `confirmButtonAriaLabel` | `''`                 | Use this to change the `aria-label` for the "Confirm"-button. |
+| `cancelButtonAriaLabel`  | `''`                 | Use this to change the `aria-label` for the "Cancel"-button. |
+| `buttonsStyling`         | `true`               | Apply default styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to `false`. |
+| `reverseButtons`         | `false`              | Set to `true` if you want to invert default buttons positions ("Confirm"-button on the right side). |
+| `focusCancel`            | `false`              | Set to `true` if you want to focus the "Cancel"-button by default. |
+| `showCloseButton`        | `false`              | Set to `true` to show close button in top right corner of the modal. |
+| `showLoaderOnConfirm`    | `false`              | Set to `true` to disable buttons and show that something is loading. Use it in combination with the `preConfirm` parameter. |
+| `preConfirm`             | `null`               | Function to execute before confirm, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#ajax-request">usage example</a>. |
+| `imageUrl`               | `null`               | Add an image for the modal. Should contain a string with the path or URL to the image. |
+| `imageWidth`             | `null`               | If imageUrl is set, you can specify imageWidth to describes image width in px. |
+| `imageHeight`            | `null`               | Custom image height in px. |
+| `imageClass`             | `null`               | A custom CSS class for the image. |
+| `inputPlaceholder`       | `''`                 | Input field placeholder. |
+| `inputValue`             | `''`                 | Input field initial value. |
+| `inputOptions`           | `{}` or `Promise`    | If `input` parameter is set to `'select'` or `'radio'`, you can provide options. Object keys will represent options values, object values will represent options text values. |
+| `inputAutoTrim`          | `true`               | Automatically remove whitespaces from both ends of a result string. Set this parameter to `false` to disable auto-trimming. |
+| `inputAttributes`        | `{}`                 | HTML input attributes (e.g. `'min'`, `'max'`, `'autocomplete'`, `'accept'`), that are added to the input field. Object keys will represent attributes names, object values will represent attributes values. |
+| `inputValidator`         | `null`               | Validator for input field, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#select-box">usage example</a>. |
+| `inputClass`             | `null`               | A custom CSS class for the input field. |
+| `progressSteps`          | `[]`                 | Progress steps, useful for modal queues, see <a href="https://limonte.github.io/sweetalert2/#chaining-modals">usage example</a>. |
+| `currentProgressStep`    | `null`               | Current active progress step. The default is `swal.getQueueStep()`. |
+| `progressStepsDistance`  | `'40px'`             | Distance between progress steps. |
+| `onOpen`                 | `null`               | Function to run when modal opens, provides modal DOM element as the first argument. |
+| `onClose`                | `null`               | Function to run when modal closes, provides modal DOM element as the first argument. |
+| `useRejections`          | `true`               | Determines whether dismissals (outside click, cancel button, close button, esc key) should reject, or resolve with an object of the format `{ dismiss: reason }`. Set it to `false` to get a cleaner control flow when using `await`, as explained in [#485](https://github.com/limonte/sweetalert2/issues/485). |
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
 

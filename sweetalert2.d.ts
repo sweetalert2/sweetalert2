@@ -472,6 +472,13 @@ declare module 'sweetalert2' {
         imageHeight?: number;
 
         /**
+         * An alternative text for the custom image icon.
+         *
+         * @default ''
+         */
+        imageAlt?: string;
+
+        /**
          * A custom CSS class for the customized icon.
          *
          * @default null

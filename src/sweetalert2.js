@@ -164,6 +164,7 @@ const setParameters = (params) => {
   const image = dom.getImage()
   if (params.imageUrl) {
     image.setAttribute('src', params.imageUrl)
+    image.setAttribute('alt', params.imageAlt)
     dom.show(image)
 
     if (params.imageWidth) {

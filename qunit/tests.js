@@ -514,13 +514,15 @@ QUnit.test('focus cancel', function (assert) {
   assert.ok(document.activeElement === $('.swal2-cancel')[0])
 })
 
-QUnit.test('image custom class', function (assert) {
+QUnit.test('image alt text and custom class', function (assert) {
   swal({
     text: 'Custom class is set',
     imageUrl: 'image.png',
+    imageAlt: 'Custom icon',
     imageClass: 'image-custom-class'
   })
   assert.ok($('.swal2-image').hasClass('image-custom-class'))
+  assert.equal($('.swal2-image').attr('alt'), 'Custom icon')
 
   swal({
     text: 'Custom class isn\'t set',

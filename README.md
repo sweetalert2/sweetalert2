@@ -178,6 +178,7 @@ Configuration
 | `imageUrl`               | `null`               | Add an image for the modal. Should contain a string with the path or URL to the image. |
 | `imageWidth`             | `null`               | If imageUrl is set, you can specify imageWidth to describes image width in px. |
 | `imageHeight`            | `null`               | Custom image height in px. |
+| `imageAlt`               | `''`                 | An alternative text for the custom image icon. |
 | `imageClass`             | `null`               | A custom CSS class for the image. |
 | `inputPlaceholder`       | `''`                 | Input field placeholder. |
 | `inputValue`             | `''`                 | Input field initial value. |

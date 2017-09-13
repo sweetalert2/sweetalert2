@@ -244,6 +244,7 @@ swal({
   imageUrl: <span class="str">'https://unsplash.it/400/200'</span>,
   imageWidth: <span class="val">400</span>,
   imageHeight: <span class="val">200</span>,
+  imageAlt: <span class="str">'Custom image'</span>,
   animation: <span class="val">false</span>
 })</pre>
     </li>
@@ -594,6 +595,11 @@ swal.queue([{
         <td><b>imageHeight</b></td>
         <td><i>null</i></td>
         <td>Custom image height in px.</td>
+      </tr>
+      <tr>
+        <td><b>imageAlt</b></td>
+        <td><i>''</i></td>
+        <td>An alternative text for the custom image icon.</td>
       </tr>
       <tr>
         <td><b>imageClass</b></td>
@@ -989,7 +995,8 @@ swal({
   <span class="func">var</span> reader = <span class="tag">new</span> <span class="func">FileReader</span>
   reader.onload = <span class="func"><i>function</i></span> (e) {
     swal({
-      imageUrl: e.target.result
+      imageUrl: e.target.result,
+      imageAlt: <span class="str">'The uploaded image'</span>
     })
   }
   reader.readAsDataURL(file)
@@ -1389,6 +1396,7 @@ swal({
       imageUrl: 'https://unsplash.it/400/200/?random',
       imageWidth: 400,
       imageHeight: 200,
+      imageAlt: 'Custom image',
       animation: false
     }).catch(swal.noop)
   })
@@ -1576,7 +1584,8 @@ swal({
       var reader = new FileReader()
       reader.onload = function (e) {
         swal({
-          imageUrl: e.target.result
+          imageUrl: e.target.result,
+          imageAlt: 'The uploaded image'
         }).catch(swal.noop)
       }
       reader.readAsDataURL(file)

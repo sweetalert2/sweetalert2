@@ -243,10 +243,12 @@ QUnit.test('validation error', function (assert) {
     swal.clickConfirm()
     setTimeout(function () {
       assert.ok($('.swal2-validationerror').is(':visible'))
+      assert.ok($('.swal2-input').attr('aria-invalid'))
       assert.ok($('.swal2-modal').outerHeight() > initialModalHeight)
 
       $('.swal2-input').val('blah-blah').trigger('input')
       assert.ok($('.swal2-validationerror').is(':hidden'))
+      assert.notOk($('.swal2-input').attr('aria-invalid'))
       assert.ok($('.swal2-modal').outerHeight() === initialModalHeight)
       done()
     })

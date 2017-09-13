@@ -806,6 +806,8 @@ const sweetAlert = (...args) => {
 
       const input = getInput()
       if (input) {
+        input.setAttribute('aria-invalid', true)
+        input.setAttribute('aria-describedBy', swalClasses.validationerror)
         dom.focusInput(input)
         dom.addClass(input, swalClasses.inputerror)
       }
@@ -819,6 +821,8 @@ const sweetAlert = (...args) => {
 
       const input = getInput()
       if (input) {
+        input.removeAttribute('aria-invalid')
+        input.removeAttribute('aria-describedBy')
         dom.removeClass(input, swalClasses.inputerror)
       }
     }

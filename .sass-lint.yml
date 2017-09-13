@@ -2,6 +2,7 @@ rules:
   nesting-depth:
     - 1
     - max-depth: 3
+  no-duplicate-properties: 0
   no-important: 0
   no-url-domains: 0
   no-url-protocols: 0

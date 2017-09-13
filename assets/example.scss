@@ -3,6 +3,7 @@
 
 $black: #000;
 $white: #fff;
+$transparent: rgba($black, 0);
 $athens: #f2f4f6;
 $salmon: #f77;
 $emperor: #555;
@@ -204,6 +205,11 @@ button,
   &:hover {
     background-color: darken($btn-blue, 3%);
   }
+
+  &:focus {
+    box-shadow: 0 0 0 2px $athens, 0 0 0 4px $chateaugray;
+  }
+
 
   &:active {
     background-color: darken($btn-blue, 10%);

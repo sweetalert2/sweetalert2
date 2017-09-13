@@ -118,7 +118,7 @@ const sweetHTML = `
      <input type="checkbox" />
    </label>
    <textarea class="${swalClasses.textarea}"></textarea>
-   <div class="${swalClasses.validationerror}"></div>
+   <div class="${swalClasses.validationerror}" id="${swalClasses.validationerror}"></div>
    <div class="${swalClasses.buttonswrapper}">
      <button type="button" class="${swalClasses.confirm}">OK</button>
      <button type="button" class="${swalClasses.cancel}">Cancel</button>

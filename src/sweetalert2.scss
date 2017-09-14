@@ -141,6 +141,11 @@ body {
     font-weight: 500;
     margin: 15px 5px 0;
     padding: 10px 32px;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px $swal2-white, 0 0 0 4px $swal2-focus-outline;
+    }
   }
 
   .swal2-image {

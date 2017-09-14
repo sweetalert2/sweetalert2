@@ -712,6 +712,7 @@ const sweetAlert = (...args) => {
       }
       dom.removeClass(buttonsWrapper, swalClasses.loading)
       dom.removeClass(modal, swalClasses.loading)
+      modal.removeAttribute('aria-busy')
       confirmButton.disabled = false
       cancelButton.disabled = false
     }
@@ -1155,6 +1156,9 @@ sweetAlert.showLoading = sweetAlert.enableLoading = () => {
   dom.addClass(modal, swalClasses.loading)
   confirmButton.disabled = true
   cancelButton.disabled = true
+
+  modal.setAttribute('aria-busy', true)
+  modal.focus()
 }
 
 /**

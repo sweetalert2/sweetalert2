@@ -108,6 +108,10 @@ body.swal2-iosfix {
     font-weight: 500;
     margin: 15px 5px 0;
     padding: 10px 32px; }
+    .swal2-modal .swal2-styled:focus {
+      outline: none;
+      -webkit-box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, 0.4);
+              box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, 0.4); }
   .swal2-modal .swal2-image {
     margin: 20px auto;
     max-width: 100%; }

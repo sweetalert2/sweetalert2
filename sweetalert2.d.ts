@@ -435,6 +435,13 @@ declare module 'sweetalert2' {
         showCloseButton?: boolean;
 
         /**
+         * Use this to change the `aria-label` for the close button.
+         *
+         * @default 'Close this dialog'
+         */
+        closeButtonAriaLabel?: string;
+
+        /**
          * Set to true to disable buttons and show that something is loading. Useful for AJAX requests.
          *
          * @default false

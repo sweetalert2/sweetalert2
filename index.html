@@ -147,6 +147,7 @@ swal({
     <span class="str">'and other HTML tags'</span>,
   showCloseButton: <span class="val">true</span>,
   showCancelButton: <span class="val">true</span>,
+  focusConfirm: <span class="val">false</span>
   confirmButtonText:
     <span class="str">'&lt;i class="fa fa-thumbs-up"&gt;&lt;/i&gt; Great!'</span>,
   confirmButtonAriaLabel: <span class="str">'Thumbs up, great!'</span>,
@@ -560,6 +561,11 @@ swal.queue([{
         <td><b>reverseButtons</b></td>
         <td><i>false</i></td>
         <td>Set to <strong>true</strong> if you want to invert default buttons positions ("Confirm"-button on the right side).</td>
+      </tr>
+      <tr>
+        <td><b>focusConfirm</b></td>
+        <td><i>true</i></td>
+        <td> Set to <strong>false</strong> if you want to focus the first element in tab order instead of "Confirm"-button by default.</td>
       </tr>
       <tr>
         <td><b>focusCancel</b></td>
@@ -1328,6 +1334,7 @@ swal({
         'and other HTML tags',
       showCloseButton: true,
       showCancelButton: true,
+      focusConfirm: false,
       confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
       confirmButtonAriaLabel: 'Thumbs up, great!',
       cancelButtonText: '<i class="fa fa-thumbs-down"></i>',

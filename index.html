@@ -792,7 +792,7 @@ swal(...)
 swal({
   title: <span class="str">'What is your name?'</span>,
   input: <span class="str">'text'</span>,
-  inputPlaceholder: <span class="str">'Your name or nickname'</span>,
+  inputPlaceholder: <span class="str">'Enter your name or nickname'</span>,
   showCancelButton: <span class="val">true</span>,
   inputValidator: <span class="func"><i>function</i></span> (value) {
     <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve, reject) {
@@ -806,7 +806,7 @@ swal({
 }).then(<span class="func"><i>function</i></span> (name) {
   swal({
     type: <span class="str">'success'</span>,
-    html: <span class="str">'Hi, '</span> + name
+    title: <span class="str">'Hi, '</span> + name
   })
 })</pre>
       </td>
@@ -819,7 +819,8 @@ swal({
         <pre>
 swal({
   title: <span class="str">'Input email address'</span>,
-  input: <span class="str">'email'</span>
+  input: <span class="str">'email'</span>,
+  inputPlaceholder: <span class="str">'Enter your email address'</span>
 }).then(<span class="func"><i>function</i></span> (email) {
   swal({
     type: <span class="str">'success'</span>,
@@ -835,8 +836,8 @@ swal({
       <td>
         <pre>
 swal({
-  title: <span class="str">'Input URL'</span>,
-  input: <span class="str">'url'</span>
+  input: <span class="str">'url'</span>,
+  inputPlaceholder: <span class="str">'Enter the URL'</span>
 }).then(<span class="func"><i>function</i></span> (url) {
   swal({
     type: <span class="str">'success'</span>,
@@ -854,6 +855,7 @@ swal({
 swal({
   title: <span class="str">'Enter your password'</span>,
   input: <span class="str">'password'</span>,
+  inputPlaceholder: <span class="str">'Enter your password'</span>,
   inputAttributes: {
     <span class="str">'maxlength'</span>: <span class="val">10</span>,
     <span class="str">'autocapitalize'</span>: <span class="str">'off'</span>,
@@ -1000,14 +1002,16 @@ swal({
   title: <span class="str">'Select image',</span>
   input: <span class="str">'file',</span>
   inputAttributes: {
-    accept: <span class="str">'image/*'</span>
+    <span class="str">'accept'</span>: <span class="str">'image/*'</span>,
+    <span class="str">'aria-label'</span>: <span class="str">'Upload your profile picture'</span>
   }
 }).then(<span class="func"><i>function</i></span> (file) {
   <span class="func">var</span> reader = <span class="tag">new</span> <span class="func">FileReader</span>
   reader.onload = <span class="func"><i>function</i></span> (e) {
     swal({
+      title: 'Your uploaded picture'
       imageUrl: e.target.result,
-      imageAlt: <span class="str">'The uploaded image'</span>
+      imageAlt: <span class="str">'The uploaded picture'</span>
     })
   }
   reader.readAsDataURL(file)
@@ -1051,6 +1055,7 @@ swal({
   html:
     <span class="str">'&lt;input id="swal-input1" class="swal2-input"&gt;'</span> +
     <span class="str">'&lt;input id="swal-input2" class="swal2-input"&gt;'</span>,
+  focusConfirm: <span class="val">false</span>,
   preConfirm: <span class="func"><i>function</i></span> () {
     <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve) {
       resolve([
@@ -1058,9 +1063,6 @@ swal({
         $(<span class="str">'#swal-input2'</span>).val()
       ])
     })
-  },
-  onOpen: <span class="func"><i>function</i></span> () {
-    $(<span class="str">'#swal-input1'</span>).focus()
   }
 }).then(<span class="func"><i>function</i></span> (result) {
   swal(JSON.stringify(result))
@@ -1426,7 +1428,7 @@ swal({
     swal({
       title: 'What is your name?',
       input: 'text',
-      inputPlaceholder: 'Your name or nickname',
+      inputPlaceholder: 'Enter your name or nickname',
       showCancelButton: true,
       inputValidator: function (value) {
         return new Promise(function (resolve, reject) {
@@ -1440,7 +1442,7 @@ swal({
     }).then(function (name) {
       swal({
         type: 'success',
-        html: 'Hi, ' + name
+        title: 'Hi, ' + name
       })
     }).catch(swal.noop)
   })
@@ -1448,7 +1450,8 @@ swal({
   $('.input-type-email').on('click', function () {
     swal({
       title: 'Input email address',
-      input: 'email'
+      input: 'email',
+      inputPlaceholder: 'Enter your email address',
     }).then(function (email) {
       swal({
         type: 'success',
@@ -1459,8 +1462,8 @@ swal({
 
   $('.input-type-url').on('click', function () {
     swal({
-      title: 'Input URL',
-      input: 'url'
+      input: 'url',
+      inputPlaceholder: 'Enter the URL'
     }).then(function (url) {
       swal({
         type: 'success',
@@ -1473,6 +1476,7 @@ swal({
     swal({
       title: 'Enter your password',
       input: 'password',
+      inputPlaceholder: 'Enter your password',
       inputAttributes: {
         'maxlength': 10,
         'autocapitalize': 'off',
@@ -1492,6 +1496,9 @@ swal({
     swal({
       input: 'textarea',
       inputPlaceholder: 'Type your message here',
+      inputAttributes: {
+        'aria-label': 'Type your message here'
+      },
       showCancelButton: true
     }).then(function (text) {
       if (text) {
@@ -1565,7 +1572,6 @@ swal({
       title: 'Terms and conditions',
       input: 'checkbox',
       inputValue: 1,
-      inputClass: 'aaa',
       inputPlaceholder: 'I agree with the terms and conditions',
       confirmButtonText: 'Continue <i class="fa fa-arrow-right" style="margin-left: 10px"></i>',
       inputValidator: function (result) {
@@ -1590,14 +1596,16 @@ swal({
       title: 'Select image',
       input: 'file',
       inputAttributes: {
-        accept: 'image/*'
+        'accept': 'image/*',
+        'aria-label': 'Upload your profile picture'
       }
     }).then(function (file) {
       var reader = new FileReader()
       reader.onload = function (e) {
         swal({
+          title: 'Your uploaded picture',
           imageUrl: e.target.result,
-          imageAlt: 'The uploaded image'
+          imageAlt: 'The uploaded picture'
         }).catch(swal.noop)
       }
       reader.readAsDataURL(file)
@@ -1621,7 +1629,10 @@ swal({
   $('.input-type-multiple').on('click', function () {
     swal({
       title: 'Multiple inputs',
-      html: '<input id="swal-input1" class="swal2-input"><input id="swal-input2" class="swal2-input">',
+      html:
+        '<input id="swal-input1" class="swal2-input" placeholder="first input field">' +
+        '<input id="swal-input2" class="swal2-input" placeholder="second input field">',
+      focusConfirm: false,
       preConfirm: function () {
         return new Promise(function (resolve) {
           resolve([
@@ -1629,9 +1640,6 @@ swal({
             $('#swal-input2').val()
           ])
         })
-      },
-      onOpen: function () {
-        $('#swal-input1').focus();
       }
     }).then(function (result) {
       swal(JSON.stringify(result))

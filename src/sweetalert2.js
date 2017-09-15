@@ -80,6 +80,7 @@ const setParameters = (params) => {
 
   // Close button
   if (params.showCloseButton) {
+    closeButton.setAttribute('aria-label', params.closeButtonAriaLabel)
     dom.show(closeButton)
   } else {
     dom.hide(closeButton)

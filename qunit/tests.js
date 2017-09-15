@@ -663,6 +663,7 @@ QUnit.test('close button no rejections test', function (assert) {
 
   const $closeButton = $('.swal2-close')
   assert.ok($closeButton.is(':visible'))
+  assert.equal($closeButton.attr('aria-label'), 'Close this dialog')
   $closeButton.click()
 })
 QUnit.test('overlay click no rejections test', function (assert) {

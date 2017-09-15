@@ -207,7 +207,9 @@ button,
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px $athens, 0 0 0 4px $chateaugray;
+    &:not(.swal2-close) {
+      box-shadow: 0 0 0 2px $athens, 0 0 0 4px $chateaugray;
+    }
   }
 
 

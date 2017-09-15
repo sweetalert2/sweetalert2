@@ -455,8 +455,9 @@ declare module 'sweetalert2' {
          *   swal({
          *    title: 'Multiple inputs',
          *    html:
-         *      '<input id="swal-input1" class="swal2-input" autofocus>' +
+         *      '<input id="swal-input1" class="swal2-input">' +
          *      '<input id="swal-input2" class="swal2-input">',
+         *    focusConfirm: false,
          *    preConfirm: () => Promise.resolve([$('#swal-input1').val(), $('#swal-input2').val()])
          *  }).then(result => swal(JSON.stringify(result));
          *

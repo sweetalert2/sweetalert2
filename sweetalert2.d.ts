@@ -414,6 +414,13 @@ declare module 'sweetalert2' {
         reverseButtons?: boolean;
 
         /**
+         * Set to false if you want to focus the first element in tab order instead of "Confirm"-button by default.
+         *
+         * @default true
+         */
+        focusConfirm?: boolean;
+
+        /**
          * Set to true if you want to focus the "Cancel"-button by default.
          *
          * @default false

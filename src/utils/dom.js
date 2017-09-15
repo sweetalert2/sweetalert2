@@ -1,5 +1,3 @@
-/* global MouseEvent */
-
 import { default as sweetAlert } from '../sweetalert2.js'
 import { swalClasses, iconTypes } from './classes.js'
 import { uniqueArray } from './utils.js'
@@ -156,12 +154,7 @@ export const getCancelButton = () => elementByClass(swalClasses.cancel)
 
 export const getCloseButton = () => elementByClass(swalClasses.close)
 
-export const getFocusableElements = (focusCancel) => {
-  const buttons = [getConfirmButton(), getCancelButton()]
-  if (focusCancel) {
-    buttons.reverse()
-  }
-
+export const getFocusableElements = () => {
   const focusableElementsWithTabindex = Array.from(
     getModal().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')
   )
@@ -181,7 +174,7 @@ export const getFocusableElements = (focusCancel) => {
     getModal().querySelectorAll('button, input:not([type=hidden]), textarea, select, a, [tabindex="0"]')
   )
 
-  return uniqueArray(buttons.concat(focusableElementsWithTabindex, otherFocusableElements))
+  return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements))
 }
 
 export const hasClass = (elem, className) => {
@@ -258,33 +251,6 @@ export const removeStyleProperty = (elem, property) => {
     elem.style.removeProperty(property)
   } else {
     elem.style.removeAttribute(property)
-  }
-}
-
-export const fireClick = (node) => {
-  if (!isVisible(node)) {
-    return false
-  }
-
-  // Taken from http://www.nonobtrusive.com/2011/11/29/programatically-fire-crossbrowser-click-event-with-javascript/
-  // Then fixed for today's Chrome browser.
-  if (typeof MouseEvent === 'function') {
-    // Up-to-date approach
-    const mevt = new MouseEvent('click', {
-      view: window,
-      bubbles: false,
-      cancelable: true
-    })
-    node.dispatchEvent(mevt)
-  } else if (document.createEvent) {
-    // Fallback
-    const evt = document.createEvent('MouseEvents')
-    evt.initEvent('click', false, false)
-    node.dispatchEvent(evt)
-  } else if (document.createEventObject) {
-    node.fireEvent('onclick')
-  } else if (typeof node.onclick === 'function') {
-    node.onclick()
   }
 }
 

@@ -507,7 +507,22 @@ QUnit.test('reversed buttons', function (assert) {
   assert.ok($('.swal2-cancel').index() - $('.swal2-confirm').index() === 1)
 })
 
-QUnit.test('focus cancel', function (assert) {
+QUnit.test('focusConfirm', function (assert) {
+  swal({
+    showCancelButton: true
+  })
+  assert.ok(document.activeElement === $('.swal2-confirm')[0])
+
+  const anchor = $('<a href>link</a>')
+  swal({
+    html: anchor,
+    showCancelButton: true,
+    focusConfirm: false
+  })
+  assert.ok(document.activeElement.outerHTML === anchor[0].outerHTML)
+})
+
+QUnit.test('focusCancel', function (assert) {
   swal({
     text: 'Modal with Cancel button focused',
     showCancelButton: true,

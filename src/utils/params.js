@@ -23,6 +23,7 @@ export default {
   cancelButtonClass: null,
   buttonsStyling: true,
   reverseButtons: false,
+  focusConfirm: true,
   focusCancel: false,
   showCloseButton: false,
   showLoaderOnConfirm: false,

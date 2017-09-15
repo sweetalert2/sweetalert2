@@ -677,19 +677,6 @@ const sweetAlert = (...args) => {
           confirmButton.focus()
         }
 
-      // ENTER/SPACE
-      } else if (keyCode === 13 || keyCode === 32) {
-        if (btnIndex === -1 && params.allowEnterKey) {
-          // ENTER/SPACE clicked outside of a button.
-          if (params.focusCancel) {
-            dom.fireClick(cancelButton, e)
-          } else {
-            dom.fireClick(confirmButton, e)
-          }
-          e.stopPropagation()
-          e.preventDefault()
-        }
-
       // ESC
       } else if (keyCode === 27 && params.allowEscapeKey === true) {
         sweetAlert.closeModal(params.onClose)
@@ -1007,13 +994,16 @@ const sweetAlert = (...args) => {
 
     openModal(params.animation, params.onOpen)
 
-    // Focus the first focusable element
-    if (params.allowEnterKey) {
-      setFocus(-1, 1)
-    } else {
+    if (!params.allowEnterKey) {
       if (document.activeElement) {
         document.activeElement.blur()
       }
+    } else if (params.focusCancel && dom.isVisible(cancelButton)) {
+      cancelButton.focus()
+    } else if (params.focusConfirm && dom.isVisible(confirmButton)) {
+      confirmButton.focus()
+    } else {
+      setFocus(-1, 1)
     }
 
     // fix scroll

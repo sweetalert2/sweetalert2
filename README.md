@@ -171,6 +171,7 @@ Configuration
 | `cancelButtonAriaLabel`  | `''`                 | Use this to change the `aria-label` for the "Cancel"-button. |
 | `buttonsStyling`         | `true`               | Apply default styling to buttons. If you want to use your own classes (e.g. Bootstrap classes) set this parameter to `false`. |
 | `reverseButtons`         | `false`              | Set to `true` if you want to invert default buttons positions ("Confirm"-button on the right side). |
+| `focusConfirm`           | `true`               | Set to `false` if you want to focus the first element in tab order instead of "Confirm"-button by default. |
 | `focusCancel`            | `false`              | Set to `true` if you want to focus the "Cancel"-button by default. |
 | `showCloseButton`        | `false`              | Set to `true` to show close button in top right corner of the modal. |
 | `showLoaderOnConfirm`    | `false`              | Set to `true` to disable buttons and show that something is loading. Use it in combination with the `preConfirm` parameter. |

@@ -1140,10 +1140,11 @@ sweetAlert.clickCancel = () => dom.getCancelButton().click()
  * Show spinner instead of Confirm button and disable Cancel button
  */
 sweetAlert.showLoading = sweetAlert.enableLoading = () => {
-  const modal = dom.getModal()
+  let modal = dom.getModal()
   if (!modal) {
     sweetAlert('')
   }
+  modal = dom.getModal()
   const buttonsWrapper = dom.getButtonsWrapper()
   const confirmButton = dom.getConfirmButton()
   const cancelButton = dom.getCancelButton()

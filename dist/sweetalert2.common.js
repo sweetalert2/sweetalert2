@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.8.0
+ * sweetalert2 v6.9.0
  * Released under the MIT License.
  */
 'use strict';
@@ -29,8 +29,10 @@ var defaultParams = {
   cancelButtonClass: null,
   buttonsStyling: true,
   reverseButtons: false,
+  focusConfirm: true,
   focusCancel: false,
   showCloseButton: false,
+  closeButtonAriaLabel: 'Close this dialog',
   showLoaderOnConfirm: false,
   imageUrl: null,
   imageWidth: null,
@@ -102,8 +104,6 @@ var uniqueArray = function uniqueArray(arr) {
   }
   return result;
 };
-
-/* global MouseEvent */
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 var states = {
@@ -188,7 +188,7 @@ var states = {
  * Manipulate DOM
  */
 
-var sweetHTML = ('\n <div role="dialog" aria-labelledby="' + swalClasses.title + '" aria-describedby="' + swalClasses.content + '" class="' + swalClasses.modal + '" tabindex="-1">\n   <ul class="' + swalClasses.progresssteps + '"></ul>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.error + '">\n     <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>\n   </div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.question + '">?</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.warning + '">!</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.info + '">i</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.success + '">\n     <div class="swal2-success-circular-line-left"></div>\n     <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>\n     <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>\n     <div class="swal2-success-circular-line-right"></div>\n   </div>\n   <img class="' + swalClasses.image + '" />\n   <h2 class="' + swalClasses.title + '" id="' + swalClasses.title + '"></h2>\n   <div id="' + swalClasses.content + '" class="' + swalClasses.content + '"></div>\n   <input class="' + swalClasses.input + '" />\n   <input type="file" class="' + swalClasses.file + '" />\n   <div class="' + swalClasses.range + '">\n     <output></output>\n     <input type="range" />\n   </div>\n   <select class="' + swalClasses.select + '"></select>\n   <div class="' + swalClasses.radio + '"></div>\n   <label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">\n     <input type="checkbox" />\n   </label>\n   <textarea class="' + swalClasses.textarea + '"></textarea>\n   <div class="' + swalClasses.validationerror + '" id="' + swalClasses.validationerror + '"></div>\n   <div class="' + swalClasses.buttonswrapper + '">\n     <button type="button" class="' + swalClasses.confirm + '">OK</button>\n     <button type="button" class="' + swalClasses.cancel + '">Cancel</button>\n   </div>\n   <button type="button" class="' + swalClasses.close + '" aria-label="Close this dialog">\xD7</button>\n </div>\n').replace(/(^|\n)\s*/g, '');
+var sweetHTML = ('\n <div role="dialog" aria-labelledby="' + swalClasses.title + '" aria-describedby="' + swalClasses.content + '" class="' + swalClasses.modal + '" tabindex="-1">\n   <ul class="' + swalClasses.progresssteps + '"></ul>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.error + '">\n     <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>\n   </div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.question + '">?</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.warning + '">!</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.info + '">i</div>\n   <div class="' + swalClasses.icon + ' ' + iconTypes.success + '">\n     <div class="swal2-success-circular-line-left"></div>\n     <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>\n     <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>\n     <div class="swal2-success-circular-line-right"></div>\n   </div>\n   <img class="' + swalClasses.image + '" />\n   <h2 class="' + swalClasses.title + '" id="' + swalClasses.title + '"></h2>\n   <div id="' + swalClasses.content + '" class="' + swalClasses.content + '"></div>\n   <input class="' + swalClasses.input + '" />\n   <input type="file" class="' + swalClasses.file + '" />\n   <div class="' + swalClasses.range + '">\n     <output></output>\n     <input type="range" />\n   </div>\n   <select class="' + swalClasses.select + '"></select>\n   <div class="' + swalClasses.radio + '"></div>\n   <label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">\n     <input type="checkbox" />\n   </label>\n   <textarea class="' + swalClasses.textarea + '"></textarea>\n   <div class="' + swalClasses.validationerror + '" id="' + swalClasses.validationerror + '"></div>\n   <div class="' + swalClasses.buttonswrapper + '">\n     <button type="button" class="' + swalClasses.confirm + '">OK</button>\n     <button type="button" class="' + swalClasses.cancel + '">Cancel</button>\n   </div>\n   <button type="button" class="' + swalClasses.close + '">\xD7</button>\n </div>\n').replace(/(^|\n)\s*/g, '');
 
 var getContainer = function getContainer() {
   return document.body.querySelector('.' + swalClasses.container);
@@ -243,12 +243,7 @@ var getCloseButton = function getCloseButton() {
   return elementByClass(swalClasses.close);
 };
 
-var getFocusableElements = function getFocusableElements(focusCancel) {
-  var buttons = [getConfirmButton(), getCancelButton()];
-  if (focusCancel) {
-    buttons.reverse();
-  }
-
+var getFocusableElements = function getFocusableElements() {
   var focusableElementsWithTabindex = Array.from(getModal().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])'))
   // sort according to tabindex
   .sort(function (a, b) {
@@ -264,7 +259,7 @@ var getFocusableElements = function getFocusableElements(focusCancel) {
 
   var otherFocusableElements = Array.prototype.slice.call(getModal().querySelectorAll('button, input:not([type=hidden]), textarea, select, a, [tabindex="0"]'));
 
-  return uniqueArray(buttons.concat(focusableElementsWithTabindex, otherFocusableElements));
+  return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements));
 };
 
 var hasClass = function hasClass(elem, className) {
@@ -343,33 +338,6 @@ var removeStyleProperty = function removeStyleProperty(elem, property) {
     elem.style.removeProperty(property);
   } else {
     elem.style.removeAttribute(property);
-  }
-};
-
-var fireClick = function fireClick(node) {
-  if (!isVisible(node)) {
-    return false;
-  }
-
-  // Taken from http://www.nonobtrusive.com/2011/11/29/programatically-fire-crossbrowser-click-event-with-javascript/
-  // Then fixed for today's Chrome browser.
-  if (typeof MouseEvent === 'function') {
-    // Up-to-date approach
-    var mevt = new MouseEvent('click', {
-      view: window,
-      bubbles: false,
-      cancelable: true
-    });
-    node.dispatchEvent(mevt);
-  } else if (document.createEvent) {
-    // Fallback
-    var evt = document.createEvent('MouseEvents');
-    evt.initEvent('click', false, false);
-    node.dispatchEvent(evt);
-  } else if (document.createEventObject) {
-    node.fireEvent('onclick');
-  } else if (typeof node.onclick === 'function') {
-    node.onclick();
   }
 };
 
@@ -663,6 +631,7 @@ var setParameters = function setParameters(params) {
 
   // Close button
   if (params.showCloseButton) {
+    closeButton.setAttribute('aria-label', params.closeButtonAriaLabel);
     show(closeButton);
   } else {
     hide(closeButton);
@@ -1253,19 +1222,6 @@ var sweetAlert = function sweetAlert() {
           confirmButton.focus();
         }
 
-        // ENTER/SPACE
-      } else if (keyCode === 13 || keyCode === 32) {
-        if (btnIndex === -1 && params.allowEnterKey) {
-          // ENTER/SPACE clicked outside of a button.
-          if (params.focusCancel) {
-            fireClick(cancelButton, e);
-          } else {
-            fireClick(confirmButton, e);
-          }
-          e.stopPropagation();
-          e.preventDefault();
-        }
-
         // ESC
       } else if (keyCode === 27 && params.allowEscapeKey === true) {
         sweetAlert.closeModal(params.onClose);
@@ -1300,6 +1256,7 @@ var sweetAlert = function sweetAlert() {
       }
       removeClass(buttonsWrapper, swalClasses.loading);
       removeClass(modal, swalClasses.loading);
+      modal.removeAttribute('aria-busy');
       confirmButton.disabled = false;
       cancelButton.disabled = false;
     };
@@ -1597,13 +1554,16 @@ var sweetAlert = function sweetAlert() {
 
     openModal(params.animation, params.onOpen);
 
-    // Focus the first focusable element
-    if (params.allowEnterKey) {
-      setFocus(-1, 1);
-    } else {
+    if (!params.allowEnterKey) {
       if (document.activeElement) {
         document.activeElement.blur();
       }
+    } else if (params.focusCancel && isVisible(cancelButton)) {
+      cancelButton.focus();
+    } else if (params.focusConfirm && isVisible(confirmButton)) {
+      confirmButton.focus();
+    } else {
+      setFocus(-1, 1);
     }
 
     // fix scroll
@@ -1746,6 +1706,7 @@ sweetAlert.showLoading = sweetAlert.enableLoading = function () {
   if (!modal) {
     sweetAlert('');
   }
+  modal = getModal();
   var buttonsWrapper = getButtonsWrapper();
   var confirmButton = getConfirmButton();
   var cancelButton = getCancelButton();
@@ -1756,6 +1717,9 @@ sweetAlert.showLoading = sweetAlert.enableLoading = function () {
   addClass(modal, swalClasses.loading);
   confirmButton.disabled = true;
   cancelButton.disabled = true;
+
+  modal.setAttribute('aria-busy', true);
+  modal.focus();
 };
 
 /**
@@ -1794,7 +1758,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.8.0';
+sweetAlert.version = '6.9.0';
 
 sweetAlert.default = sweetAlert;
 

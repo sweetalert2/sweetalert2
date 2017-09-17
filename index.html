@@ -111,27 +111,6 @@ swal(
 )</pre>
     </li>
 
-    <li class="timer">
-      <div class="ui">
-        <p>A message with auto close timer</p>
-        <button aria-label="Try me! Example: A message with auto close timer">Try me!</button>
-      </div>
-      <pre>
-swal({
-  title: <span class="str">'Auto close alert!'</span>,
-  text: <span class="str">'I will close in 2 seconds.'</span>,
-  timer: <span class="val">2000</span>
-}).then(
-  <span class="func"><i>function</i></span> () {},
-  <span class="comment">// handling the promise rejection</span>
-  <span class="func"><i>function</i></span> (dismiss) {
-    <span class="tag">if</span> (dismiss === <span class="str">'timer'</span>) {
-      console.log(<span class="str">'I was closed by the timer'</span>)
-    }
-  }
-)</pre>
-    </li>
-
     <li class="html" id="custom-html">
       <div class="ui">
         <p>Custom HTML description and buttons with ARIA labels</p>
@@ -262,6 +241,30 @@ swal({
   padding: <span class="val">100</span>,
   background: <span class="str">'#fff url(//bit.ly/1Nqn9HU)'</span>
 })</pre>
+    </li>
+
+    <li class="timer">
+      <div class="ui">
+        <p>A message with auto close timer</p>
+        <button aria-label="Try me! Example: A message with auto close timer">Try me!</button>
+      </div>
+      <pre>
+swal({
+  title: <span class="str">'Auto close alert!'</span>,
+  text: <span class="str">'I will close in 5 seconds.'</span>,
+  timer: <span class="val">5000</span>,
+  onOpen: <span class="func"><i>function</i></span> () {
+    swal.showLoading()
+  }
+}).then(
+  <span class="func"><i>function</i></span> () {},
+  <span class="comment">// handling the promise rejection</span>
+  <span class="func"><i>function</i></span> (dismiss) {
+    <span class="tag">if</span> (dismiss === <span class="str">'timer'</span>) {
+      console.log(<span class="str">'I was closed by the timer'</span>)
+    }
+  }
+)</pre>
     </li>
 
     <li class="ajax-request" id="ajax-request">
@@ -1318,8 +1321,11 @@ swal({
   $('.examples .timer button').on('click', function () {
     swal({
       title: 'Auto close alert!',
-      text: 'I will close in 2 seconds.',
-      timer: 2000
+      text: 'I will close in 5 seconds.',
+      timer: 5000,
+      onOpen: function() {
+        swal.showLoading()
+      }
     }).then(
       function () {},
       // handling the promise rejection

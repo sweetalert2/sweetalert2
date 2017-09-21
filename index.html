@@ -1043,16 +1043,15 @@ swal({
     </tr>
   </table>
 
-  <div class="mobile-hidden">
-    <p>
-      Multiple inputs aren't supported, you can achieve them by using <strong>html</strong> and <strong>preConfirm</strong> parameters.<br>
-      Inside the <strong>preConfirm()</strong> function you can pass the custom result to the <strong>resolve()</strong> function as a parameter:
-    </p>
-    <table class="modal-input-types">
-      <tr id="multiple-inputs">
-        <td></td>
-        <td>
-          <pre>
+  <p id="multiple-inputs">
+    Multiple inputs aren't supported, you can achieve them by using <strong>html</strong> and <strong>preConfirm</strong> parameters.<br>
+    Inside the <strong>preConfirm()</strong> function you can pass the custom result to the <strong>resolve()</strong> function as a parameter:
+  </p>
+  <table class="modal-input-types">
+    <tr id="multiple-inputs">
+      <td class="mobile-hidden"></td>
+      <td>
+        <pre>
 swal({
   title: <span class="str">'Multiple inputs'</span>,
   html:
@@ -1071,13 +1070,13 @@ swal({
   swal(JSON.stringify(result))
 }).catch(swal.noop)</pre>
 
-        </td>
-        <td><button class="input-type-multiple" aria-label="Try me! Example: multiple inputs">Try me!</button></td>
-      </tr>
+      </td>
+      <td><button class="input-type-multiple" aria-label="Try me! Example: multiple inputs">Try me!</button></td>
+    </tr>
 
-    </table>
+  </table>
 
-
+  <div class="mobile-hidden">
     <!-- Methods -->
     <h3>Methods</h3>
     <table>

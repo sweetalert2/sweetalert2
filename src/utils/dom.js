@@ -259,7 +259,6 @@ export const animationEndEvent = (() => {
   const transEndEventNames = {
     'WebkitAnimation': 'webkitAnimationEnd',
     'OAnimation': 'oAnimationEnd oanimationend',
-    'msAnimation': 'MSAnimationEnd',
     'animation': 'animationend'
   }
   for (const i in transEndEventNames) {

@@ -12,6 +12,7 @@
     "babel-plugin-external-helpers": "latest",
     "babel-plugin-transform-object-assign": "latest",
     "babel-preset-es2015": "latest",
+    "cli-color": "latest",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "latest",
@@ -21,11 +22,14 @@
     "gulp-sass-lint": "latest",
     "gulp-standard": "^8.0.0",
     "gulp-uglify": "latest",
+    "looks-same": "latest",
+    "puppeteer": "latest",
     "rollup": "latest",
     "rollup-plugin-babel": "latest",
     "standard": "^8.0.0",
     "testem": "latest",
-    "uglify-js": "latest"
+    "uglify-js": "latest",
+    "yargs": "latest"
   },
   "standard": {
     "ignore": [

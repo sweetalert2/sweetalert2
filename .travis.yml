@@ -11,6 +11,9 @@ before_script:
 
 script:
   - xvfb-run testem ci --reporter dot
+  - if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
+      node test/puppeteer/visual-tests.js;
+    fi
 
 deploy:
   api_key:

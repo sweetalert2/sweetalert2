@@ -4,6 +4,7 @@ const pack = require('../package.json')
 const banner = require('./banner.js')
 const fs = require('fs')
 const uglify = require('uglify-js')
+const scss = require('rollup-plugin-collect-sass')
 
 const toUpper = (_, c) => {
   return c ? c.toUpperCase() : ''
@@ -26,8 +27,9 @@ const write = (dest, code) => {
 const packageRollup = (options) => {
   const moduleId = classify(pack.name)
   return rollup({
-    input: 'src/sweetalert2.js',
+    input: options.entry || 'src/sweetalert2.js',
     plugins: [
+      scss(),
       babel({
         exclude: 'node_modules/**'
       })

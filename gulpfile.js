@@ -9,7 +9,7 @@ const sassLint = require('gulp-sass-lint')
 const pack = require('./package.json')
 const utils = require('./config/utils.js')
 
-gulp.task('compress', ['js-lint', 'commonjs', 'dev', 'production'])
+gulp.task('compress', ['js-lint', 'commonjs', 'dev', 'production', 'all'])
 
 gulp.task('commonjs', () => {
   return utils.packageRollup({
@@ -30,6 +30,15 @@ gulp.task('production', () => {
     dest: 'dist/' + pack.name + '.min.js',
     format: 'umd',
     minify: true
+  })
+})
+
+gulp.task('all', () => {
+  return utils.packageRollup({
+    entry: 'src/sweetalert2.all.js',
+    dest: 'dist/' + pack.name + '.all.min.js',
+    format: 'umd',
+    minify: true,
   })
 })
 

@@ -1,6 +1,6 @@
 import defaultParams from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
-import { colorLuminance } from './utils/utils.js'
+import { colorLuminance, warn, error } from './utils/utils.js'
 import * as dom from './utils/dom.js'
 
 let modalParams = Object.assign({}, defaultParams)
@@ -8,12 +8,20 @@ let queue = []
 let swal2Observer
 
 /*
+ * Check for the existence of Promise
+ * Hopefully to avoid many github issues
+ */
+if (typeof Promise === 'undefined') {
+  error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)')
+}
+
+/*
  * Set type, text and actions on modal
  */
 const setParameters = (params) => {
   // If a custom element is set, determine if it is valid
   if ((typeof params.target === 'string' && !document.querySelector(params.target)) || (typeof params.target !== 'string' && !params.target.appendChild)) {
-    console.warn('SweetAlert2: Target parameter is not valid, defaulting to "body"')
+    warn('SweetAlert2: Target parameter is not valid, defaulting to "body"')
     params.target = 'body'
   }
 
@@ -29,7 +37,7 @@ const setParameters = (params) => {
 
   for (let param in params) {
     if (!sweetAlert.isValidParameter(param)) {
-      console.warn(`SweetAlert2: Unknown parameter "${param}"`)
+      warn(`SweetAlert2: Unknown parameter "${param}"`)
     }
   }
 
@@ -99,7 +107,7 @@ const setParameters = (params) => {
     dom.show(progressStepsContainer)
     dom.empty(progressStepsContainer)
     if (currentProgressStep >= params.progressSteps.length) {
-      console.warn(
+      warn(
         'SweetAlert2: Invalid currentProgressStep parameter, it should be less than progressSteps.length ' +
         '(currentProgressStep like JS arrays starts from 0)'
       )
@@ -137,7 +145,7 @@ const setParameters = (params) => {
       }
     }
     if (!validType) {
-      console.error(`SweetAlert2: Unknown alert type: ${params.type}`)
+      error(`SweetAlert2: Unknown alert type: ${params.type}`)
       return false
     }
     const icon = modal.querySelector(`.${swalClasses.icon}.${iconTypes[params.type]}`)
@@ -250,7 +258,7 @@ const setParameters = (params) => {
 
   // showLoaderOnConfirm && preConfirm
   if (params.showLoaderOnConfirm && !params.preConfirm) {
-    console.warn(
+    warn(
       'SweetAlert2: showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' +
       'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' +
       'https://limonte.github.io/sweetalert2/#ajax-request'
@@ -340,7 +348,7 @@ const undoIOSfix = () => {
 // SweetAlert entry point
 const sweetAlert = (...args) => {
   if (args[0] === undefined) {
-    console.error('SweetAlert2 expects at least 1 attribute!')
+    error('SweetAlert2 expects at least 1 attribute!')
     return false
   }
 
@@ -384,7 +392,7 @@ const sweetAlert = (...args) => {
       break
 
     default:
-      console.error('SweetAlert2: Unexpected type of argument! Expected "string" or "object", got ' + typeof args[0])
+      error('SweetAlert2: Unexpected type of argument! Expected "string" or "object", got ' + typeof args[0])
       return false
   }
 
@@ -976,7 +984,7 @@ const sweetAlert = (...args) => {
       case null:
         break
       default:
-        console.error(`SweetAlert2: Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`)
+        error(`SweetAlert2: Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`)
         break
     }
 
@@ -990,7 +998,7 @@ const sweetAlert = (...args) => {
       } else if (typeof params.inputOptions === 'object') {
         populateInputOptions(params.inputOptions)
       } else {
-        console.error('SweetAlert2: Unexpected type of inputOptions! Expected object or Promise, got ' + typeof params.inputOptions)
+        error('SweetAlert2: Unexpected type of inputOptions! Expected object or Promise, got ' + typeof params.inputOptions)
       }
     }
 
@@ -1175,12 +1183,12 @@ sweetAlert.isValidParameter = (paramName) => {
  */
 sweetAlert.setDefaults = (userParams) => {
   if (!userParams || typeof userParams !== 'object') {
-    return console.error('SweetAlert2: the argument for setDefaults() is required and has to be a object')
+    return error('SweetAlert2: the argument for setDefaults() is required and has to be a object')
   }
 
   for (let param in userParams) {
     if (!sweetAlert.isValidParameter(param)) {
-      console.warn(`SweetAlert2: Unknown parameter "${param}"`)
+      warn(`SweetAlert2: Unknown parameter "${param}"`)
       delete userParams[param]
     }
   }

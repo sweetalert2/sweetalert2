@@ -1,6 +1,6 @@
 import { default as sweetAlert } from '../sweetalert2.js'
 import { swalClasses, iconTypes } from './classes.js'
-import { uniqueArray } from './utils.js'
+import { uniqueArray, error } from './utils.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
@@ -20,7 +20,7 @@ export const init = (params) => {
   }
 
   if (typeof document === 'undefined') {
-    console.error('SweetAlert2 requires document to initialize')
+    error('SweetAlert2 requires document to initialize')
     return
   }
 

@@ -43,7 +43,10 @@ const packageRollup = (options) => {
       footer: `if (window.${moduleId}) window.sweetAlert = window.swal = window.${moduleId};`
     })
     .then((result) => {
-      var code = result.code.replace(/sweetAlert\.version = '(.*)'/, "sweetAlert.version = '" + pack.version + "'")
+      var code = result.code.replace(
+        /(sweetAlert.*?).version = ''/,
+        `$1.version = '${pack.version}'`
+      )
       if (options.minify) {
         code = uglify.minify(code).code
       }

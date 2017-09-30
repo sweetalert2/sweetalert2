@@ -52,11 +52,17 @@ Usage
 -----
 
 ```html
-<script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
-<link rel="stylesheet" type="text/css" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
+<script src="bower_components/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
 <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+```
+
+You can also include the stylesheet separately if desired:
+
+```html
+<script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
 ```
 
 Or:

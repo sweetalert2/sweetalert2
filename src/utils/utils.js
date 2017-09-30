@@ -1,3 +1,5 @@
+export const consolePrefix = 'SweetAlert2:'
+
 /*
  * Set hover, active and focus-states for buttons (source: http://www.sitepoint.com/javascript-generate-lighter-darker-color)
  */
@@ -28,4 +30,20 @@ export const uniqueArray = (arr) => {
     }
   }
   return result
+}
+
+/**
+ * Standardise console warnings
+ * @param message
+ */
+export const warn = (message) => {
+  console.warn(`${consolePrefix} ${message}`)
+}
+
+/**
+ * Standardise console errors
+ * @param message
+ */
+export const error = (message) => {
+  console.error(`${consolePrefix} ${message}`)
 }

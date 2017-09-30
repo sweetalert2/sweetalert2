@@ -582,11 +582,11 @@ QUnit.test('target', function (assert) {
   assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
   swal.close()
 
-  swal({title: 'Custom valid target (string)', target: '#qunit'}) //switch targets
+  swal({title: 'Custom valid target (string)', target: '#qunit'}) // switch targets
   assert.equal(document.querySelector('#qunit'), document.querySelector('.swal2-container').parentNode)
   swal.close()
 
-  swal({title: 'Custom invalid target (string)', target: 'lorem_ipsum'}) //switch targets
+  swal({title: 'Custom invalid target (string)', target: 'lorem_ipsum'}) // switch targets
   assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
   swal.close()
 

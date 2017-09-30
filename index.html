@@ -24,8 +24,7 @@
   <link rel="preload" href="https://bit.ly/1Nqn9HU" as="image">
 
   <!-- This is what you need -->
-  <script src="./dist/sweetalert2.min.js"></script>
-  <link rel="stylesheet" href="./dist/sweetalert2.min.css">
+  <script src="./dist/sweetalert2.all.min.js"></script>
 
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
@@ -381,11 +380,13 @@ swal.queue([{
   <div class="center-container">
     <h3>Usage</h3>
     <p>1. Initialize the plugin by referencing the necessary files:</p>
-<pre>&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
-&lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="tag">href</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.css"</span>&gt;
+    <pre>&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.all.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
 
 <span class="comment">&lt;!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser --&gt;</span>
 &lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;</pre>
+    <p>You can also include the stylesheet separately if desired:</p>
+    <pre>&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.js"</span>&gt;&lt;/<span class="tag">script</span>&gt;
+&lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="tag">href</span>=<span class="str">"bower_components/sweetalert2/dist/sweetalert2.min.css"</span>&gt;</pre>
       <p>Or</p>
 <pre><span class="comment">// ES6 Modules or TypeScript</span>
 <span class="val">import</span> swal <span class="val">from</span> <span class="str">'sweetalert2'</span>

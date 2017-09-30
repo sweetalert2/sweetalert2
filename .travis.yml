@@ -10,7 +10,14 @@ before_script:
   - gulp
 
 script:
+  # unit tests against dist/sweetalert2.js
   - xvfb-run testem ci --reporter dot
+
+  # unit tests against dist/sweetalert2.all.min.js
+  - sed -i 's/sweetalert2.js/sweetalert2.all.min.js/g' testem.json
+  - xvfb-run testem ci --reporter dot
+
+  # visual tests (puppeteer)
   - if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
       node test/puppeteer/visual-tests.js;
     fi

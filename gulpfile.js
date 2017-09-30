@@ -38,7 +38,7 @@ gulp.task('all', () => {
     entry: 'src/sweetalert2.all.js',
     dest: 'dist/' + pack.name + '.all.min.js',
     format: 'umd',
-    minify: true,
+    minify: true
   })
 })
 

@@ -49,7 +49,6 @@ const packageRollup = (options) => {
       }
       return write(options.dest, code)
     })
-
   })
 }
 

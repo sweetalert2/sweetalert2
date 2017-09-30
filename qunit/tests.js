@@ -1,7 +1,10 @@
 /* global $, QUnit, swal */
 
-QUnit.test('modal shows up', function (assert) {
+QUnit.test('version is correct semver', function (assert) {
   assert.ok(swal.version.match(/\d+\.\d+\.\d+/))
+})
+
+QUnit.test('modal shows up', function (assert) {
   assert.notOk(swal.isVisible())
   swal('Hello world!')
   assert.ok(swal.isVisible())
@@ -23,13 +26,13 @@ QUnit.test('modal width', function (assert) {
 
 QUnit.test('window keydown handler', function (assert) {
   swal('hi')
-  assert.ok(window.onkeydown.toString().match('function handleKeyDown'))
+  assert.ok(window.onkeydown)
   swal.close()
   assert.equal(window.onkeydown, null)
 
   swal('first call')
   swal('second call')
-  assert.ok(window.onkeydown.toString().match('function handleKeyDown'))
+  assert.ok(window.onkeydown)
   swal.close()
   assert.equal(window.onkeydown, null)
 })

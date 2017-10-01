@@ -209,6 +209,7 @@ button,
     &:not(.swal2-close) {
       &:not(.btn) {
         box-shadow: 0 0 0 2px $athens, 0 0 0 4px $chateaugray;
+        outline: none;
       }
     }
   }

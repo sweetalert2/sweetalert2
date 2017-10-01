@@ -132,7 +132,8 @@ button,
   button:focus:not(.swal2-close):not(.btn),
   .button:focus:not(.swal2-close):not(.btn) {
     -webkit-box-shadow: 0 0 0 2px #f2f4f6, 0 0 0 4px #a7adb2;
-            box-shadow: 0 0 0 2px #f2f4f6, 0 0 0 4px #a7adb2; }
+            box-shadow: 0 0 0 2px #f2f4f6, 0 0 0 4px #a7adb2;
+    outline: none; }
   button:active,
   .button:active {
     background-color: #236bb0; }

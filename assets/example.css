@@ -408,5 +408,10 @@ table {
   .collaborators img {
     margin-top: 10px; }
 
+.stats {
+  font-size: 13px;
+  opacity: 0;
+  margin-top: 7px; }
+
 .collaborators {
   font-size: 16px; }

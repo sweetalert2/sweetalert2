@@ -23,11 +23,11 @@
   <link rel="preload" href="https://unsplash.it/400/200/?random" as="image">
   <link rel="preload" href="https://bit.ly/1Nqn9HU" as="image">
 
-  <!-- This is what you need -->
-  <script src="./dist/sweetalert2.all.min.js"></script>
-
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+
+  <!-- This is what you need -->
+  <script src="./dist/sweetalert2.all.min.js"></script>
   <!--.......................-->
 </head>
 
@@ -38,6 +38,11 @@
     <h2>Zero dependencies</h2>
     <div class="carbonads-wrapper">
       <script src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=limontegithubiosweetalert2" id="_carbonads_js" async></script>
+    </div>
+    <div class="stats">
+      Current version: <a href="https://github.com/limonte/sweetalert2/releases" id="current-version" aria-label="Current version "></a> ●
+      Latest update: <a href="https://github.com/limonte/sweetalert2/issues" id="latest-update" aria-label="Latest update "></a> ●
+      Downloads last month: <a href="http://npm-stat.com/charts.html?package=sweetalert2" id="downloads-last-month" aria-label="Downloads last month "></a>
     </div>
     <a class="top-right-button download">Download</a>
     <a href="https://cdnjs.com/libraries/limonte-sweetalert2" class="top-right-button cdn" target="_blank" rel="noopener">CDN</a>
@@ -1745,5 +1750,6 @@ swal({
     ga('send', 'pageview')
   }
 </script>
+<script src="./assets/example.js"></script>
 </body>
 </html>

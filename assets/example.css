@@ -195,9 +195,9 @@ pre {
   pre .func {
     color: #66d9ef; }
   pre .val {
-    color: #a381ff; }
+    color: #e3dcff; }
   pre .tag {
-    color: #e92772; }
+    color: #f77; }
   pre .attr {
     color: #a6e22d; }
   pre .comment {
@@ -314,7 +314,7 @@ table {
   table th {
     background-color: #fff;
     padding: 10px 20px;
-    color: #8d98a5;
+    color: #666;
     font-weight: 400;
     position: relative;
     white-space: nowrap; }

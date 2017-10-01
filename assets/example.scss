@@ -13,8 +13,7 @@ $chateaugray: #a7adb2;
 $curiousblue: #3085d6;
 $porcelain: #e2e5e8;
 $pear: #a6e22d;
-$amaranth: #e92772;
-$heliotrope: #a381ff;
+$fog: #e3dcff;
 $spray: #66d9ef;
 $chenin: #e6db74;
 $armadillo: #49483e;
@@ -299,11 +298,11 @@ pre {
   }
 
   .val {
-    color: $heliotrope;
+    color: $fog;
   }
 
   .tag {
-    color: $amaranth;
+    color: $salmon;
   }
 
   .attr {
@@ -466,7 +465,7 @@ table {
   th {
     background-color: $white;
     padding: 10px 20px;
-    color: $regentgray;
+    color: $dovegray;
     font-weight: 400;
     position: relative;
     white-space: nowrap;

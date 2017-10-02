@@ -54,19 +54,19 @@
 
   <div class="showcase normal">
     <h4>Normal alert</h4>
-    <button aria-label="Show error message - normal alert">Show error message</button>
-    <pre><span class="func">alert</span>(<span class="str">'Oops! Something went wrong!'</span>)</pre>
+    <button aria-label="Show error message - normal alert">Show success message</button>
+    <pre><span class="func">alert</span>(<span class="str">'You clicked the button!'</span>)</pre>
     <div class="vs-icon"></div>
   </div>
 
   <div class="showcase sweet">
     <h4>Sweet<span>Alert</span>2</h4>
-    <button aria-label="Show error message - SweetAlert2">Show error message</button>
+    <button aria-label="Show error message - SweetAlert2">Show success message</button>
     <pre>
 swal(
-  <span class="str">'Oops...'</span>,
-  <span class="str">'Something went wrong!'</span>,
-  <span class="str">'error'</span>
+  <span class="str">'Good job!'</span>,
+  <span class="str">'You clicked the button!'</span>,
+  <span class="str">'success'</span>
 )</pre>
   </div>
 
@@ -99,16 +99,16 @@ swal(
 )</pre>
     </li>
 
-    <li class="success">
+    <li class="error">
       <div class="ui">
-        <p>A success message!</p>
-        <button aria-label="Try me! Example: A success message!">Try me!</button>
+        <p>An error message</p>
+        <button aria-label="Try me! Example: An error message!">Try me!</button>
       </div>
       <pre>
 swal(
-  <span class="str">'Good job!'</span>,
-  <span class="str">'You clicked the button!'</span>,
-  <span class="str">'success'</span>
+  <span class="str">'Oops...'</span>,
+  <span class="str">'Something went wrong!'</span>,
+  <span class="str">'error'</span>
 )</pre>
     </li>
 
@@ -1289,11 +1289,11 @@ swal({
   })
 
   $('.showcase.normal button').on('click', function () {
-    window.alert('Oops! Something went wrong!')
+    window.alert('You clicked the button!')
   })
 
   $('.showcase.sweet button').on('click', function () {
-    swal('Oops...', 'Something went wrong!', 'error').catch(swal.noop)
+    swal('Good job!', 'You clicked the button!', 'success').catch(swal.noop)
   })
 
   $('.paypal').on('click', function () {
@@ -1370,8 +1370,8 @@ swal({
     swal('The Internet?', 'That thing is still around?', 'question').catch(swal.noop)
   })
 
-  $('.examples .success button').on('click', function () {
-    swal('Good job!', 'You clicked the button!', 'success').catch(swal.noop)
+  $('.examples .error button').on('click', function () {
+    swal('Oops...', 'Something went wrong!', 'error').catch(swal.noop)
   })
 
   $('.examples .warning.confirm button').on('click', function () {

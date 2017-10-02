@@ -16,13 +16,13 @@ async function run (testCase) {
 
   switch (testCase) {
     case 'modal-type-success':
-      await page.click('.success button')
+      await page.click('.showcase.sweet button')
       break
     case 'modal-type-question':
       await page.click('.title-text button')
       break
     case 'modal-type-error':
-      await page.click('.showcase.sweet button')
+      await page.click('.error button')
       break
     case 'input-type-text':
       await page.click('#input-text button')

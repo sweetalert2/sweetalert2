@@ -1,12 +1,11 @@
 /* global XMLHttpRequest */
-function makeApiRequest (endpoint, desiredKey, array) {
+function makeApiRequest (endpoint) {
   return new Promise(function (resolve, reject) {
     var xhr = new XMLHttpRequest()
     xhr.open('GET', endpoint)
     xhr.onload = function () {
       if (xhr.status === 200) {
-        var json = JSON.parse(xhr.responseText)
-        resolve(array ? json[0][desiredKey] : json[desiredKey])
+        resolve(JSON.parse(xhr.responseText))
       } else {
         reject()
       }
@@ -18,24 +17,26 @@ function makeApiRequest (endpoint, desiredKey, array) {
 var stats = {}
 
 // latest release
-makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/releases/latest', 'tag_name').then(
-  function (latestRelease) {
-    stats.latestRelease = latestRelease
+makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/releases/latest').then(
+  function (response) {
+    stats.latestRelease = response.tag_name
     showStats()
   },
   function () {}
 )
 
 // recent activity
-makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/issues', 'updated_at', true).then(
-  function (recentActivity) {
+makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/commits').then(
+  function (response) {
+    var recentActivity = response[0].commit.author.date
+    console.log(recentActivity)
     recentActivity = new Date(recentActivity)
     var today = new Date()
     var diffDays = parseInt((today - recentActivity) / (1000 * 60 * 60 * 24))
     switch (diffDays) {
       case 0: recentActivity = 'today'; break
       case 1: recentActivity = 'yesterday'; break
-      default: recentActivity = diffDays + 'days ago'; break
+      default: recentActivity = diffDays + ' days ago'; break
     }
     stats.recentActivity = recentActivity
     showStats()
@@ -44,9 +45,9 @@ makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/issues', 'updat
 )
 
 // number of downloads last month
-makeApiRequest('https://api.npmjs.org/downloads/point/last-month/sweetalert2', 'downloads').then(
-  function (downloadsLastMonth) {
-    stats.downloadsLastMonth = downloadsLastMonth.toLocaleString()
+makeApiRequest('https://api.npmjs.org/downloads/point/last-month/sweetalert2').then(
+  function (response) {
+    stats.downloadsLastMonth = response.downloads.toLocaleString()
     showStats()
   },
   function () {}

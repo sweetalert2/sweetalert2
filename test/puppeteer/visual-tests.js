@@ -6,7 +6,10 @@ const puppeteer = require('puppeteer')
 let code = 0
 
 async function run (testCase) {
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({
+    // debug mode, uncomment this to see the browser
+    // headless: false
+  })
   const page = await browser.newPage()
   const path = `test/puppeteer/screens/`
   await page.goto('https://limonte.github.io/sweetalert2/')
@@ -99,7 +102,7 @@ async function run (testCase) {
       await page.click('#ajax-request button')
       await page.type('taken@example.com')
       await page.click('.swal2-confirm')
-      await page.waitFor(2000)
+      await page.waitFor(2100)
       break
     case 'ajax-request-success':
       await page.click('#ajax-request button')
@@ -131,13 +134,19 @@ async function run (testCase) {
   }
 
   await page.focus('.swal2-confirm')
-  await page.waitFor(1000)
+  await page.waitFor(1200)
+
+  const swalContainerHandle = await page.$('.swal2-container')
+  await page.evaluate((swalContainer) => {
+    swalContainer.style.padding = 0
+  }, swalContainerHandle)
 
   const swalModalHandle = await page.$('.swal2-modal')
   const swalModalSize = await page.evaluate((swalModal) => {
+    swalModal.style.borderRadius = 0
     return {
       width: swalModal.clientWidth,
-      height: swalModal.clientHeight + 20
+      height: swalModal.clientHeight
     }
   }, swalModalHandle)
 
@@ -165,8 +174,8 @@ async function run (testCase) {
             current: `${path}${screenName}-test.png`,
             diff: `${path}${screenName}-diff.png`,
             highlightColor: '#ff0000' // color to highlight the differences
-          }, function (error) {
-            console.log(error)
+          }, (error) => {
+            error && console.log(error)
           })
           code = 1
         }

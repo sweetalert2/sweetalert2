@@ -119,7 +119,7 @@ button,
   border: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 500;
   border-radius: 3px;
   padding: 15px 35px;
@@ -214,11 +214,13 @@ pre {
   position: relative; }
   @media all and (max-width: 865px) {
     .showcase {
-      margin: 5px auto;
-      padding: 35px 10px; } }
-  @media all and (max-width: 440px) {
+      padding: 0 10px; }
+      .showcase.normal,
+      .showcase h4 {
+        display: none; } }
+  @media all and (max-width: 423px) {
     .showcase {
-      width: auto; } }
+      width: 90%; } }
   .showcase h4 {
     font-size: 16px;
     color: #b3b3b3;

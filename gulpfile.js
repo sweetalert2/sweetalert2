@@ -83,7 +83,7 @@ gulp.task('watch', () => {
   ], ['compress'])
 
   gulp.watch([
-    'src/sweetalert2.scss',
+    'src/*.scss',
     'assets/example.scss'
-  ], ['sass'])
+  ], ['sass', 'compress'])
 })

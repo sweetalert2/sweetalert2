@@ -647,8 +647,14 @@ const sweetAlert = (...args) => {
     const handleKeyDown = (event) => {
       const e = event || window.event
 
+      if (e.key === 'Enter') {
+        if (e.target === getInput()) {
+          sweetAlert.clickConfirm()
+          e.preventDefault()
+        }
+
       // TAB
-      if (e.key === 'Tab') {
+      } else if (e.key === 'Tab') {
         const targetElement = e.target || e.srcElement
 
         const focusableElements = dom.getFocusableElements(params.focusCancel)

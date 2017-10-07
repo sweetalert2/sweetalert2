@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.10.1
+ * sweetalert2 v6.10.2
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -186,15 +186,6 @@ var states = {
     sweetAlert.resetValidationError();
   };
 
-  input.onkeydown = function (event) {
-    setTimeout(function () {
-      if (event.keyCode === 13 && params.allowEnterKey) {
-        event.stopPropagation();
-        sweetAlert.clickConfirm();
-      }
-    }, 0);
-  };
-
   file.onchange = function () {
     sweetAlert.resetValidationError();
   };
@@ -259,10 +250,6 @@ var getImage = function getImage() {
   return elementByClass(swalClasses.image);
 };
 
-var getButtonsWrapper = function getButtonsWrapper() {
-  return elementByClass(swalClasses.buttonswrapper);
-};
-
 var getProgressSteps = function getProgressSteps() {
   return elementByClass(swalClasses.progresssteps);
 };
@@ -277,6 +264,10 @@ var getConfirmButton = function getConfirmButton() {
 
 var getCancelButton = function getCancelButton() {
   return elementByClass(swalClasses.cancel);
+};
+
+var getButtonsWrapper = function getButtonsWrapper() {
+  return elementByClass(swalClasses.buttonswrapper);
 };
 
 var getCloseButton = function getCloseButton() {
@@ -1229,26 +1220,26 @@ var sweetAlert = function sweetAlert() {
 
     var handleKeyDown = function handleKeyDown(event) {
       var e = event || window.event;
-      var keyCode = e.keyCode || e.which;
 
-      if ([9, 13, 32, 27, 37, 38, 39, 40].indexOf(keyCode) === -1) {
-        // Don't do work on keys we don't care about.
-        return;
-      }
-
-      var targetElement = e.target || e.srcElement;
-
-      var focusableElements = getFocusableElements(params.focusCancel);
-      var btnIndex = -1; // Find the button - note, this is a nodelist, not an array.
-      for (var _i4 = 0; _i4 < focusableElements.length; _i4++) {
-        if (targetElement === focusableElements[_i4]) {
-          btnIndex = _i4;
-          break;
+      if (e.key === 'Enter') {
+        if (e.target === getInput()) {
+          sweetAlert.clickConfirm();
+          e.preventDefault();
         }
-      }
 
-      // TAB
-      if (keyCode === 9) {
+        // TAB
+      } else if (e.key === 'Tab') {
+        var targetElement = e.target || e.srcElement;
+
+        var focusableElements = getFocusableElements(params.focusCancel);
+        var btnIndex = -1; // Find the button - note, this is a nodelist, not an array.
+        for (var _i4 = 0; _i4 < focusableElements.length; _i4++) {
+          if (targetElement === focusableElements[_i4]) {
+            btnIndex = _i4;
+            break;
+          }
+        }
+
         if (!e.shiftKey) {
           // Cycle to the next button
           setFocus(btnIndex, 1);
@@ -1260,7 +1251,7 @@ var sweetAlert = function sweetAlert() {
         e.preventDefault();
 
         // ARROWS - switch focus between buttons
-      } else if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
+      } else if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'Arrowdown'].includes(e.key)) {
         // focus Cancel button if Confirm button is currently focused
         if (document.activeElement === confirmButton && isVisible(cancelButton)) {
           cancelButton.focus();
@@ -1270,7 +1261,7 @@ var sweetAlert = function sweetAlert() {
         }
 
         // ESC
-      } else if (keyCode === 27 && params.allowEscapeKey === true) {
+      } else if (e.key === 'Escape' && params.allowEscapeKey === true) {
         sweetAlert.closeModal(params.onClose);
         if (params.useRejections) {
           reject('esc');
@@ -1805,7 +1796,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.10.1';
+sweetAlert.version = '6.10.2';
 
 sweetAlert.default = sweetAlert;
 

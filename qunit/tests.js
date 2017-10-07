@@ -127,7 +127,7 @@ QUnit.test('esc key', function (assert) {
   )
 
   $(document).trigger($.Event('keydown', {
-    keyCode: 27
+    key: 'Escape'
   }))
 })
 
@@ -647,7 +647,7 @@ QUnit.test('esc key no rejections test', function (assert) {
   )
 
   $(document).trigger($.Event('keydown', {
-    keyCode: 27
+    key: 'Escape'
   }))
 })
 QUnit.test('close button no rejections test', function (assert) {

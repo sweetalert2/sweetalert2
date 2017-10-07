@@ -46,7 +46,7 @@ export const init = (params) => {
 
   input.onkeydown = (event) => {
     setTimeout(() => {
-      if (event.keyCode === 13 && params.allowEnterKey) {
+      if (event.key === 'Enter' && params.allowEnterKey) {
         event.stopPropagation()
         sweetAlert.clickConfirm()
       }

@@ -646,26 +646,20 @@ const sweetAlert = (...args) => {
 
     const handleKeyDown = (event) => {
       const e = event || window.event
-      const keyCode = e.keyCode || e.which
-
-      if ([9, 13, 32, 27, 37, 38, 39, 40].indexOf(keyCode) === -1) {
-        // Don't do work on keys we don't care about.
-        return
-      }
-
-      const targetElement = e.target || e.srcElement
-
-      const focusableElements = dom.getFocusableElements(params.focusCancel)
-      let btnIndex = -1 // Find the button - note, this is a nodelist, not an array.
-      for (let i = 0; i < focusableElements.length; i++) {
-        if (targetElement === focusableElements[i]) {
-          btnIndex = i
-          break
-        }
-      }
 
       // TAB
-      if (keyCode === 9) {
+      if (e.key === 'Tab') {
+        const targetElement = e.target || e.srcElement
+
+        const focusableElements = dom.getFocusableElements(params.focusCancel)
+        let btnIndex = -1 // Find the button - note, this is a nodelist, not an array.
+        for (let i = 0; i < focusableElements.length; i++) {
+          if (targetElement === focusableElements[i]) {
+            btnIndex = i
+            break
+          }
+        }
+
         if (!e.shiftKey) {
           // Cycle to the next button
           setFocus(btnIndex, 1)
@@ -677,7 +671,7 @@ const sweetAlert = (...args) => {
         e.preventDefault()
 
       // ARROWS - switch focus between buttons
-      } else if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
+      } else if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'Arrowdown'].includes(e.key)) {
         // focus Cancel button if Confirm button is currently focused
         if (document.activeElement === confirmButton && dom.isVisible(cancelButton)) {
           cancelButton.focus()
@@ -687,7 +681,7 @@ const sweetAlert = (...args) => {
         }
 
       // ESC
-      } else if (keyCode === 27 && params.allowEscapeKey === true) {
+      } else if (e.key === 'Escape' && params.allowEscapeKey === true) {
         sweetAlert.closeModal(params.onClose)
         if (params.useRejections) {
           reject('esc')

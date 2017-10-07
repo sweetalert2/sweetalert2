@@ -195,6 +195,10 @@ body.swal2-iosfix {
     .swal2-modal .swal2-file:-ms-input-placeholder,
     .swal2-modal .swal2-textarea:-ms-input-placeholder {
       color: #cccccc; }
+    .swal2-modal .swal2-input::-ms-input-placeholder,
+    .swal2-modal .swal2-file::-ms-input-placeholder,
+    .swal2-modal .swal2-textarea::-ms-input-placeholder {
+      color: #cccccc; }
     .swal2-modal .swal2-input::placeholder,
     .swal2-modal .swal2-file::placeholder,
     .swal2-modal .swal2-textarea::placeholder {

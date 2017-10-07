@@ -83,6 +83,11 @@ declare module 'sweetalert2' {
         function getCancelButton(): HTMLElement;
 
         /**
+         * Get the buttons wrapper.
+         */
+        function getButtonsWrapper(): HTMLElement;
+
+        /**
          * Enable "Confirm" and "Cancel" buttons.
          */
         function enableButtons(): void;

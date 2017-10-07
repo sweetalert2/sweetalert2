@@ -227,6 +227,7 @@ Methods
 | `swal.getImage()`                               | Get the image. |
 | `swal.getConfirmButton()`                       | Get the "Confirm" button. |
 | `swal.getCancelButton()`                        | Get the "Cancel" button. |
+| `swal.getButtonsWrapper()`                      | Get the buttons wrapper. |
 | `swal.enableButtons()`                          | Enable "Confirm" and "Cancel" buttons. |
 | `swal.disableButtons()`                         | Disable "Confirm" and "Cancel" buttons. |
 | `swal.enableConfirmButton()`                    | Enable the "Confirm"-button only. |

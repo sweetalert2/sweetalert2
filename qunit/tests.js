@@ -51,6 +51,7 @@ QUnit.test('getters', function (assert) {
     cancelButtonAriaLabel: 'Cancel button aria-label'
   })
   assert.ok(swal.getImage().src.indexOf('image.png'))
+  assert.equal(swal.getButtonsWrapper().textContent, 'Confirm buttonCancel button')
   assert.equal(swal.getConfirmButton().innerText, 'Confirm button')
   assert.equal(swal.getCancelButton().innerText, 'Cancel button')
   assert.equal(swal.getConfirmButton().getAttribute('aria-label'), 'Confirm button aria-label')

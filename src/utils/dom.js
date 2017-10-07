@@ -142,8 +142,6 @@ export const getContent = () => elementByClass(swalClasses.content)
 
 export const getImage = () => elementByClass(swalClasses.image)
 
-export const getButtonsWrapper = () => elementByClass(swalClasses.buttonswrapper)
-
 export const getProgressSteps = () => elementByClass(swalClasses.progresssteps)
 
 export const getValidationError = () => elementByClass(swalClasses.validationerror)
@@ -151,6 +149,8 @@ export const getValidationError = () => elementByClass(swalClasses.validationerr
 export const getConfirmButton = () => elementByClass(swalClasses.confirm)
 
 export const getCancelButton = () => elementByClass(swalClasses.cancel)
+
+export const getButtonsWrapper = () => elementByClass(swalClasses.buttonswrapper)
 
 export const getCloseButton = () => elementByClass(swalClasses.close)
 

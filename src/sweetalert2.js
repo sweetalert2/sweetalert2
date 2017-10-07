@@ -290,10 +290,8 @@ const setParameters = (params) => {
   }
 
   // CSS animation
-  if (params.animation === true) {
-    dom.removeClass(popup, swalClasses.noanimation)
-  } else {
-    dom.addClass(popup, swalClasses.noanimation)
+  if (!params.animation) {
+    dom.addClass([container, backdrop, popup], swalClasses.noanimation)
   }
 
   // showLoaderOnConfirm && preConfirm
@@ -323,10 +321,7 @@ const openPopup = (animation, onBeforeOpen, onComplete) => {
 
   if (animation) {
     dom.addClass(popup, swalClasses.show)
-    dom.addClass(container, swalClasses.fade)
     dom.removeClass(popup, swalClasses.hide)
-  } else {
-    dom.removeClass(popup, swalClasses.fade)
   }
   dom.show(popup)
 
@@ -341,11 +336,15 @@ const openPopup = (animation, onBeforeOpen, onComplete) => {
     container.style.overflowY = 'auto'
   }
 
-  dom.addClass([document.documentElement, document.body, container], swalClasses.shown)
+  setTimeout(() => { // sweetalert2/issues/653
+    dom.addClass([document.documentElement, document.body, container], swalClasses.shown)
+  })
+
   if (dom.isModal()) {
     fixScrollbar()
     iOSfix()
   }
+
   dom.states.previousActiveElement = document.activeElement
   if (onComplete !== null && typeof onComplete === 'function') {
     setTimeout(() => {
@@ -1223,9 +1222,10 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
   if (!popup) {
     return
   }
-  dom.removeClass(popup, swalClasses.show)
-  dom.addClass(popup, swalClasses.hide)
-  clearTimeout(popup.timeout)
+
+  dom.removeClass([container, modal], swalClasses.shown)
+  dom.addClass(modal, swalClasses.hide)
+  clearTimeout(modal.timeout)
 
   if (!dom.isToast()) {
     dom.resetPrevState()

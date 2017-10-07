@@ -29,7 +29,6 @@ makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/releases/latest
 makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/commits').then(
   function (response) {
     var recentActivity = response[0].commit.author.date
-    console.log(recentActivity)
     recentActivity = new Date(recentActivity)
     var today = new Date()
     var diffDays = parseInt((today - recentActivity) / (1000 * 60 * 60 * 24))

@@ -44,15 +44,6 @@ export const init = (params) => {
     sweetAlert.resetValidationError()
   }
 
-  input.onkeydown = (event) => {
-    setTimeout(() => {
-      if (event.key === 'Enter' && params.allowEnterKey) {
-        event.stopPropagation()
-        sweetAlert.clickConfirm()
-      }
-    }, 0)
-  }
-
   file.onchange = () => {
     sweetAlert.resetValidationError()
   }

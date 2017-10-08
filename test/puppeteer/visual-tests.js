@@ -134,6 +134,7 @@ async function run (testCase) {
   }
 
   await page.focus('.swal2-confirm')
+  await page.hover('.swal2-modal')
   await page.waitFor(1200)
 
   const swalContainerHandle = await page.$('.swal2-container')

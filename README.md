@@ -69,7 +69,7 @@ Or:
 
 ```js
 // ES6 Modules or TypeScript
-import swal from 'sweetalert2'
+import swal from 'sweetalert2/dist/sweetalert2.all.min.js'
 
 // CommonJS
 const swal = require('sweetalert2')

@@ -112,6 +112,17 @@ swal(
 )</pre>
     </li>
 
+    <li id="long-text">
+      <div class="ui">
+        <p>A modal window with a long text inside:</p>
+        <button aria-label="Try me! Example: A modal window with a long text inside">Try me!</button>
+      </div>
+      <pre>
+swal({
+  html: <span class="str">'Less is more.&lt;br>'</span>.repeat(<span class="val">100</span>)
+})</pre>
+    </li>
+
     <li class="html" id="custom-html">
       <div class="ui">
         <p>Custom HTML description and buttons with ARIA labels</p>
@@ -1375,6 +1386,10 @@ swal({
 
   $('.examples .error button').on('click', function () {
     swal('Oops...', 'Something went wrong!', 'error').catch(swal.noop)
+  })
+
+  $('.examples #long-text button').on('click', function () {
+    swal({html: 'Less is more.<br>'.repeat(100)}).catch(swal.noop)
   })
 
   $('.examples .warning.confirm button').on('click', function () {

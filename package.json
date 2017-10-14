@@ -22,8 +22,6 @@
     "gulp-sass-lint": "latest",
     "gulp-standard": "^8.0.0",
     "gulp-uglify": "latest",
-    "looks-same": "latest",
-    "puppeteer": "latest",
     "rollup": "latest",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-collect-sass": "^1.0.9",

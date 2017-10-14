@@ -19,7 +19,7 @@ script:
 
   # visual tests (puppeteer)
   - if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
-      node test/puppeteer/visual-tests.js;
+      npm i puppeteer looks-same && node test/puppeteer/visual-tests.js;
     fi
 
 deploy:

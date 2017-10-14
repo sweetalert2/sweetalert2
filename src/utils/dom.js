@@ -78,7 +78,7 @@ export const init = (params) => {
  */
 
 const sweetHTML = `
- <div role="dialog" aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses.content}" class="${swalClasses.modal}" tabindex="-1">
+ <div role="dialog" aria-modal="true" aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses.content}" class="${swalClasses.modal}" tabindex="-1">
    <ul class="${swalClasses.progresssteps}"></ul>
    <div class="${swalClasses.icon} ${iconTypes.error}">
      <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>

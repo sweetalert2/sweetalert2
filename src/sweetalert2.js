@@ -923,7 +923,7 @@ const sweetAlert = (...args) => {
             const option = document.createElement('option')
             option.value = optionValue
             option.innerHTML = inputOptions[optionValue]
-            if (params.inputValue === optionValue) {
+            if (params.inputValue.toString() === optionValue) {
               option.selected = true
             }
             select.appendChild(option)
@@ -943,7 +943,7 @@ const sweetAlert = (...args) => {
             radioInput.type = 'radio'
             radioInput.name = swalClasses.radio
             radioInput.value = radioValue
-            if (params.inputValue === radioValue) {
+            if (params.inputValue.toString() === radioValue) {
               radioInput.checked = true
             }
             radioLabelSpan.innerHTML = inputOptions[radioValue]

@@ -121,6 +121,8 @@ const sweetHTML = `
  </div>
 `.replace(/(^|\n)\s*/g, '')
 
+export const getBackdrop = () => document.body.querySelector('.' + swalClasses.backdrop)
+
 export const getContainer = () => document.body.querySelector('.' + swalClasses.container)
 
 export const getPopup = () => getContainer() ? getContainer().querySelector('.' + swalClasses.popup) : null

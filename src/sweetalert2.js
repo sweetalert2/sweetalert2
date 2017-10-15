@@ -8,6 +8,19 @@ let queue = []
 
 let previousWindowKeyDown, windowOnkeydownOverridden
 
+if (typeof document === 'undefined') {
+  error('SweetAlert2 requires document to initialize')
+}
+
+/*
+ * Init backdrop
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  const backdrop = document.createElement('div')
+  backdrop.className = swalClasses.backdrop
+  document.body.appendChild(backdrop)
+})
+
 /*
  * Check for the existence of Promise
  * Hopefully to avoid many github issues
@@ -66,7 +79,7 @@ const setParameters = (params) => {
   for (let i = 0; i < successIconParts.length; i++) {
     successIconParts[i].style.background = params.background
   }
-
+  const backdrop = dom.getBackdrop()
   const container = dom.getContainer()
   const title = dom.getTitle()
   const content = dom.getContent()
@@ -344,7 +357,6 @@ const openPopup = (animation, onBeforeOpen, onComplete) => {
     fixScrollbar()
     iOSfix()
   }
-
   dom.states.previousActiveElement = document.activeElement
   if (onComplete !== null && typeof onComplete === 'function') {
     setTimeout(() => {
@@ -1164,9 +1176,12 @@ sweetAlert.queue = (steps) => {
   queue = steps
   const resetQueue = () => {
     queue = []
+    dom.removeClass(document.body, swalClasses.inqueue)
     document.body.removeAttribute('data-swal2-queue-step')
   }
   let queueResult = []
+  dom.addClass(document.body, swalClasses.inqueue)
+
   return new Promise((resolve, reject) => {
     (function step (i, callback) {
       if (i < queue.length) {
@@ -1217,15 +1232,15 @@ sweetAlert.deleteQueueStep = (index) => {
  * Global function to close sweetAlert
  */
 sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.closeToast = (onComplete) => {
+  const backdrop = dom.getBackdrop()
   const container = dom.getContainer()
   const popup = dom.getPopup()
   if (!popup) {
     return
   }
-
-  dom.removeClass([container, modal], swalClasses.shown)
-  dom.addClass(modal, swalClasses.hide)
-  clearTimeout(modal.timeout)
+  dom.removeClass([container, popup], swalClasses.shown)
+  dom.addClass(popup, swalClasses.hide)
+  clearTimeout(popup.timeout)
 
   if (!dom.isToast()) {
     dom.resetPrevState()
@@ -1246,6 +1261,10 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
         swalClasses['toast-shown']
       ]
     )
+
+    setTimeout(() => {
+      dom.removeClass(backdrop, swalClasses.noanimation)
+    })
 
     if (dom.isModal()) {
       undoScrollbar()

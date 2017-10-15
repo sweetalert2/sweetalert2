@@ -9,6 +9,8 @@ export const prefix = (items) => {
 }
 
 export const swalClasses = prefix([
+  'backdrop',
+  'inqueue',
   'container',
   'shown',
   'iosfix',

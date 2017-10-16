@@ -167,6 +167,7 @@ Configuration
 | `width`                  | `'500px'`             | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. |
 | `padding`                | `20`                  | Modal window padding. |
 | `background`             | `'#fff'`              | Modal window background (CSS `background` property). |
+| `position`               | `'center'`            | Modal window position, can be `'top'`, `'center'`, or '`bottom`'  |
 | `customClass`            | `null`                | A custom CSS class for the modal. |
 | `timer`                  | `null`                | Auto close timer of the modal. Set in ms (milliseconds). |
 | `animation`              | `true`                | If set to `false`, modal CSS animation will be disabled. |

@@ -18,7 +18,9 @@ body {
 .swal2-container {
   // centering
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -30,6 +32,18 @@ body {
   background-color: transparent;
 
   z-index: 1060;
+
+  &.swal2-top {
+    align-items: flex-start;
+  }
+
+  &.swal2-center {
+    align-items: center;
+  }
+
+  &.swal2-bottom {
+    align-items: flex-end;
+  }
 
   &.swal2-fade {
     transition: background-color .1s;
@@ -46,7 +60,6 @@ body {
   border-radius: 5px;
   box-sizing: border-box;
   text-align: center;
-  margin: auto;
   overflow-x: hidden;
   overflow-y: auto;
   display: none;

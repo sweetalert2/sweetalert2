@@ -45,6 +45,7 @@ export default {
   inputClass: null,
   inputAttributes: {},
   inputValidator: null,
+  position: 'center',
   progressSteps: [],
   currentProgressStep: null,
   progressStepsDistance: '40px',

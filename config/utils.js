@@ -36,7 +36,7 @@ const packageRollup = (options) => {
     ]
   })
   .then((bundle) => {
-    bundle.generate({
+    return bundle.generate({
       format: options.format,
       banner: banner,
       name: classify(pack.name),

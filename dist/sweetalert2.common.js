@@ -979,15 +979,19 @@ var sweetAlert = function sweetAlert() {
   var modal = getModal();
 
   return new Promise(function (resolve, reject) {
+    // functions to handle all resolving/rejecting/settling
+    var succeedWith = function succeedWith(value) {
+      return params.useRejections ? resolve(value) : resolve({ value: value });
+    };
+    var dismissWith = function dismissWith(dismiss) {
+      return params.useRejections ? reject(dismiss) : resolve({ dismiss: dismiss });
+    };
+
     // Close on timer
     if (params.timer) {
       modal.timeout = setTimeout(function () {
         sweetAlert.closeModal(params.onClose);
-        if (params.useRejections) {
-          reject('timer');
-        } else {
-          resolve({ dismiss: 'timer' });
-        }
+        dismissWith('timer');
       }, params.timer);
     }
 
@@ -1058,11 +1062,7 @@ var sweetAlert = function sweetAlert() {
         });
       } else {
         sweetAlert.closeModal(params.onClose);
-        if (params.useRejections) {
-          resolve(value);
-        } else {
-          resolve({ value: value });
-        }
+        succeedWith(value);
       }
     };
 
@@ -1135,11 +1135,7 @@ var sweetAlert = function sweetAlert() {
           } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.disableButtons();
             sweetAlert.closeModal(params.onClose);
-            if (params.useRejections) {
-              reject('cancel');
-            } else {
-              resolve({ dismiss: 'cancel' });
-            }
+            dismissWith('cancel');
           }
           break;
         default:
@@ -1157,11 +1153,7 @@ var sweetAlert = function sweetAlert() {
     // Closing modal by close button
     getCloseButton().onclick = function () {
       sweetAlert.closeModal(params.onClose);
-      if (params.useRejections) {
-        reject('close');
-      } else {
-        resolve({ dismiss: 'close' });
-      }
+      dismissWith('close');
     };
 
     // Closing modal by overlay click
@@ -1171,11 +1163,7 @@ var sweetAlert = function sweetAlert() {
       }
       if (params.allowOutsideClick) {
         sweetAlert.closeModal(params.onClose);
-        if (params.useRejections) {
-          reject('overlay');
-        } else {
-          resolve({ dismiss: 'overlay' });
-        }
+        dismissWith('overlay');
       }
     };
 
@@ -1259,11 +1247,7 @@ var sweetAlert = function sweetAlert() {
         // ESC
       } else if (e.key === 'Escape' && params.allowEscapeKey === true) {
         sweetAlert.closeModal(params.onClose);
-        if (params.useRejections) {
-          reject('esc');
-        } else {
-          resolve({ dismiss: 'esc' });
-        }
+        dismissWith('esc');
       }
     };
 

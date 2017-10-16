@@ -419,15 +419,15 @@ const sweetAlert = (...args) => {
   const modal = dom.getModal()
 
   return new Promise((resolve, reject) => {
+    // functions to handle all resolving/rejecting/settling
+    const succeedWith = value => params.useRejections ? resolve(value) : resolve({value})
+    const dismissWith = dismiss => params.useRejections ? reject(dismiss) : resolve({dismiss})
+
     // Close on timer
     if (params.timer) {
       modal.timeout = setTimeout(() => {
         sweetAlert.closeModal(params.onClose)
-        if (params.useRejections) {
-          reject('timer')
-        } else {
-          resolve({dismiss: 'timer'})
-        }
+        dismissWith('timer')
       }, params.timer)
     }
 
@@ -502,11 +502,7 @@ const sweetAlert = (...args) => {
         )
       } else {
         sweetAlert.closeModal(params.onClose)
-        if (params.useRejections) {
-          resolve(value)
-        } else {
-          resolve({value: value})
-        }
+        succeedWith(value)
       }
     }
 
@@ -582,11 +578,7 @@ const sweetAlert = (...args) => {
           } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.disableButtons()
             sweetAlert.closeModal(params.onClose)
-            if (params.useRejections) {
-              reject('cancel')
-            } else {
-              resolve({dismiss: 'cancel'})
-            }
+            dismissWith('cancel')
           }
           break
         default:
@@ -604,11 +596,7 @@ const sweetAlert = (...args) => {
     // Closing modal by close button
     dom.getCloseButton().onclick = () => {
       sweetAlert.closeModal(params.onClose)
-      if (params.useRejections) {
-        reject('close')
-      } else {
-        resolve({dismiss: 'close'})
-      }
+      dismissWith('close')
     }
 
     // Closing modal by overlay click
@@ -618,11 +606,7 @@ const sweetAlert = (...args) => {
       }
       if (params.allowOutsideClick) {
         sweetAlert.closeModal(params.onClose)
-        if (params.useRejections) {
-          reject('overlay')
-        } else {
-          resolve({dismiss: 'overlay'})
-        }
+        dismissWith('overlay')
       }
     }
 
@@ -706,11 +690,7 @@ const sweetAlert = (...args) => {
       // ESC
       } else if (e.key === 'Escape' && params.allowEscapeKey === true) {
         sweetAlert.closeModal(params.onClose)
-        if (params.useRejections) {
-          reject('esc')
-        } else {
-          resolve({dismiss: 'esc'})
-        }
+        dismissWith('esc')
       }
     }
 

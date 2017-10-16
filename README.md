@@ -206,6 +206,7 @@ Configuration
 | `progressSteps`          | `[]`                  | Progress steps, useful for modal queues, see <a href="https://limonte.github.io/sweetalert2/#chaining-modals">usage example</a>. |
 | `currentProgressStep`    | `null`                | Current active progress step. The default is `swal.getQueueStep()`. |
 | `progressStepsDistance`  | `'40px'`              | Distance between progress steps. |
+| `onBeforeOpen`           | `null`                | Function to run when modal built, but not shown yet. Provides modal DOM element as the first argument. |
 | `onOpen`                 | `null`                | Function to run when modal opens, provides modal DOM element as the first argument. |
 | `onClose`                | `null`                | Function to run when modal closes, provides modal DOM element as the first argument. |
 | `useRejections`          | `true`                | Determines whether dismissals (outside click, cancel button, close button, esc key) should reject, or resolve with an object of the format `{ dismiss: reason }`. Set it to `false` to get a cleaner control flow when using `await`, as explained in [#485](https://github.com/limonte/sweetalert2/issues/485). |

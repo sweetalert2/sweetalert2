@@ -594,6 +594,13 @@ declare module 'sweetalert2' {
         progressStepsDistance?: string;
 
         /**
+         * Function to run when modal built, but not shown yet. Provides modal DOM element as the first argument.
+         *
+         * @default null
+         */
+        onBeforeOpen?: (modalElement: HTMLElement) => void;
+
+        /**
          * Function to run when modal opens, provides modal DOM element as the first argument.
          *
          * @default null

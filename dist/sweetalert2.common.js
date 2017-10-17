@@ -1061,10 +1061,10 @@ var sweetAlert = function sweetAlert() {
           preConfirmPromise.then(function (preConfirmValue) {
             sweetAlert.closeModal(params.onClose);
             succeedWith(preConfirmValue || value);
-          }, function (error$$1) {
+          }, function (validationError) {
             sweetAlert.hideLoading();
-            if (error$$1) {
-              sweetAlert.showValidationError(error$$1);
+            if (validationError) {
+              sweetAlert.showValidationError(validationError);
             }
           });
         } else {
@@ -1134,11 +1134,11 @@ var sweetAlert = function sweetAlert() {
                     sweetAlert.enableButtons();
                     sweetAlert.enableInput();
                     confirm(inputValue);
-                  }, function (error$$1) {
+                  }, function (validationError) {
                     sweetAlert.enableButtons();
                     sweetAlert.enableInput();
-                    if (error$$1) {
-                      sweetAlert.showValidationError(error$$1);
+                    if (validationError) {
+                      sweetAlert.showValidationError(validationError);
                     }
                   });
                 } else {

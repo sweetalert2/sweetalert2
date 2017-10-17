@@ -482,10 +482,10 @@ const sweetAlert = (...args) => {
               sweetAlert.closeModal(params.onClose)
               succeedWith(preConfirmValue || value)
             },
-            (error) => {
+            (validationError) => {
               sweetAlert.hideLoading()
-              if (error) {
-                sweetAlert.showValidationError(error)
+              if (validationError) {
+                sweetAlert.showValidationError(validationError)
               }
             }
           )
@@ -559,11 +559,11 @@ const sweetAlert = (...args) => {
                       sweetAlert.enableInput()
                       confirm(inputValue)
                     },
-                    (error) => {
+                    (validationError) => {
                       sweetAlert.enableButtons()
                       sweetAlert.enableInput()
-                      if (error) {
-                        sweetAlert.showValidationError(error)
+                      if (validationError) {
+                        sweetAlert.showValidationError(validationError)
                       }
                     }
                   )

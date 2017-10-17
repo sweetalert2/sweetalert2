@@ -1053,7 +1053,7 @@ var sweetAlert = function sweetAlert() {
       if (params.preConfirm) {
         params.preConfirm(value, params.extraParams).then(function (preConfirmValue) {
           sweetAlert.closeModal(params.onClose);
-          resolve(preConfirmValue || value);
+          succeedWith(preConfirmValue || value);
         }, function (error$$1) {
           sweetAlert.hideLoading();
           if (error$$1) {

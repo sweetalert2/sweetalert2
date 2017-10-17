@@ -50,5 +50,6 @@ export default {
   progressStepsDistance: '40px',
   onOpen: null,
   onClose: null,
-  useRejections: true
+  useRejections: true,
+  expectRejections: true
 }

@@ -74,7 +74,8 @@ var defaultParams = {
   progressStepsDistance: '40px',
   onOpen: null,
   onClose: null,
-  useRejections: true
+  useRejections: true,
+  expectRejections: true
 };
 
 var swalPrefix = 'swal2-';
@@ -986,6 +987,10 @@ var sweetAlert = function sweetAlert() {
     var dismissWith = function dismissWith(dismiss) {
       return params.useRejections ? reject(dismiss) : resolve({ dismiss: dismiss });
     };
+    var errorWith = function errorWith(error$$1) {
+      sweetAlert.closeModal(params.onClose);
+      reject(error$$1);
+    };
 
     // Close on timer
     if (params.timer) {
@@ -1051,15 +1056,25 @@ var sweetAlert = function sweetAlert() {
       }
 
       if (params.preConfirm) {
-        params.preConfirm(value, params.extraParams).then(function (preConfirmValue) {
-          sweetAlert.closeModal(params.onClose);
-          succeedWith(preConfirmValue || value);
-        }, function (error$$1) {
-          sweetAlert.hideLoading();
-          if (error$$1) {
-            sweetAlert.showValidationError(error$$1);
-          }
-        });
+        var preConfirmPromise = params.preConfirm(value, params.extraParams);
+        if (params.expectRejections) {
+          preConfirmPromise.then(function (preConfirmValue) {
+            sweetAlert.closeModal(params.onClose);
+            succeedWith(preConfirmValue || value);
+          }, function (error$$1) {
+            sweetAlert.hideLoading();
+            if (error$$1) {
+              sweetAlert.showValidationError(error$$1);
+            }
+          });
+        } else {
+          preConfirmPromise.then(function (preConfirmValue) {
+            sweetAlert.closeModal(params.onClose);
+            succeedWith(preConfirmValue || value);
+          }, function (error$$1) {
+            return errorWith(error$$1);
+          });
+        }
       } else {
         sweetAlert.closeModal(params.onClose);
         succeedWith(value);
@@ -1113,17 +1128,32 @@ var sweetAlert = function sweetAlert() {
 
               if (params.inputValidator) {
                 sweetAlert.disableInput();
-                params.inputValidator(inputValue, params.extraParams).then(function () {
-                  sweetAlert.enableButtons();
-                  sweetAlert.enableInput();
-                  confirm(inputValue);
-                }, function (error$$1) {
-                  sweetAlert.enableButtons();
-                  sweetAlert.enableInput();
-                  if (error$$1) {
-                    sweetAlert.showValidationError(error$$1);
-                  }
-                });
+                var validationPromise = params.inputValidator(inputValue, params.extraParams);
+                if (params.expectRejections) {
+                  validationPromise.then(function () {
+                    sweetAlert.enableButtons();
+                    sweetAlert.enableInput();
+                    confirm(inputValue);
+                  }, function (error$$1) {
+                    sweetAlert.enableButtons();
+                    sweetAlert.enableInput();
+                    if (error$$1) {
+                      sweetAlert.showValidationError(error$$1);
+                    }
+                  });
+                } else {
+                  validationPromise.then(function (validationError) {
+                    sweetAlert.enableButtons();
+                    sweetAlert.enableInput();
+                    if (validationError) {
+                      sweetAlert.showValidationError(validationError);
+                    } else {
+                      confirm(inputValue);
+                    }
+                  }, function (error$$1) {
+                    return errorWith(error$$1);
+                  });
+                }
               } else {
                 confirm(inputValue);
               }

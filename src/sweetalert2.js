@@ -522,10 +522,10 @@ const sweetAlert = (...args) => {
               sweetAlert.closePopup(params.onClose)
               succeedWith(preConfirmValue || value)
             },
-            (error) => {
+            (validationError) => {
               sweetAlert.hideLoading()
-              if (error) {
-                sweetAlert.showValidationError(error)
+              if (validationError) {
+                sweetAlert.showValidationError(validationError)
               }
             }
           )
@@ -599,11 +599,11 @@ const sweetAlert = (...args) => {
                       sweetAlert.enableInput()
                       confirm(inputValue)
                     },
-                    (error) => {
+                    (validationError) => {
                       sweetAlert.enableButtons()
                       sweetAlert.enableInput()
-                      if (error) {
-                        sweetAlert.showValidationError(error)
+                      if (validationError) {
+                        sweetAlert.showValidationError(validationError)
                       }
                     }
                   )
@@ -1108,9 +1108,9 @@ sweetAlert.queue = (steps) => {
             queueResult.push(result)
             step(i + 1, callback)
           },
-          (dismiss) => {
+          (error) => {
             resetQueue()
-            reject(dismiss)
+            reject(error)
           }
         )
       } else {

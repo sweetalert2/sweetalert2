@@ -1034,9 +1034,9 @@ sweetAlert.queue = (steps) => {
             queueResult.push(result)
             step(i + 1, callback)
           },
-          (dismiss) => {
+          (error) => {
             resetQueue()
-            reject(dismiss)
+            reject(error)
           }
         )
       } else {

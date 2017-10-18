@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v6.10.3
+ * sweetalert2 v6.11.0
  * Released under the MIT License.
  */
 'use strict';
@@ -69,9 +69,12 @@ var defaultParams = {
   inputClass: null,
   inputAttributes: {},
   inputValidator: null,
+  grow: false,
+  position: 'center',
   progressSteps: [],
   currentProgressStep: null,
   progressStepsDistance: '40px',
+  onBeforeOpen: null,
   onOpen: null,
   onClose: null,
   useRejections: true
@@ -87,7 +90,7 @@ var prefix = function prefix(items) {
   return result;
 };
 
-var swalClasses = prefix(['container', 'shown', 'iosfix', 'modal', 'overlay', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'content', 'buttonswrapper', 'confirm', 'cancel', 'icon', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled']);
+var swalClasses = prefix(['container', 'shown', 'iosfix', 'modal', 'overlay', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'content', 'buttonswrapper', 'confirm', 'cancel', 'icon', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled', 'top', 'top-left', 'top-right', 'center', 'center-left', 'center-right', 'bottom', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen']);
 
 var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
@@ -628,6 +631,7 @@ var setParameters = function setParameters(params) {
     successIconParts[i].style.background = params.background;
   }
 
+  var container = getContainer();
   var title = getTitle();
   var content = getContent();
   var buttonsWrapper = getButtonsWrapper();
@@ -661,6 +665,19 @@ var setParameters = function setParameters(params) {
     show(content);
   } else {
     hide(content);
+  }
+
+  // Position
+  if (params.position in swalClasses) {
+    addClass(container, swalClasses[params.position]);
+  }
+
+  // Grow
+  if (params.grow && typeof params.grow === 'string') {
+    var growClass = 'grow-' + params.grow;
+    if (growClass in swalClasses) {
+      addClass(container, swalClasses[growClass]);
+    }
   }
 
   // Close button
@@ -839,9 +856,13 @@ var setParameters = function setParameters(params) {
 /*
  * Animations
  */
-var openModal = function openModal(animation, onComplete) {
+var openModal = function openModal(animation, onBeforeOpen, onComplete) {
   var container = getContainer();
   var modal = getModal();
+
+  if (onBeforeOpen !== null && typeof onBeforeOpen === 'function') {
+    onBeforeOpen(modal);
+  }
 
   if (animation) {
     addClass(modal, swalClasses.show);
@@ -1586,7 +1607,7 @@ var sweetAlert = function sweetAlert() {
       }
     }
 
-    openModal(params.animation, params.onOpen);
+    openModal(params.animation, params.onBeforeOpen, params.onOpen);
 
     if (!params.allowEnterKey) {
       if (document.activeElement) {
@@ -1792,7 +1813,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.10.3';
+sweetAlert.version = '6.11.0';
 
 sweetAlert.default = sweetAlert;
 

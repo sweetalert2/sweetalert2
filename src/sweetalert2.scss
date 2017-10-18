@@ -75,6 +75,13 @@ body {
     justify-content: flex-end;
   }
 
+  &.swal2-grow-fullscreen > .swal2-modal {
+    display: flex !important;
+    flex: 1;
+    align-self: stretch;
+    justify-content: center;
+  }
+
   &.swal2-grow-row > .swal2-modal {
     display: flex !important;
     flex: 1;

@@ -301,7 +301,7 @@ declare module 'sweetalert2' {
          *
          * @default false
          */
-        grow?: 'row' | 'column' | boolean
+        grow?: 'row' | 'column' | 'fullscreen' | boolean
 
         /**
          * A custom CSS class for the modal.

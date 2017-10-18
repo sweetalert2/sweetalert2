@@ -420,8 +420,22 @@ const sweetAlert = (...args) => {
 
   return new Promise((resolve, reject) => {
     // functions to handle all resolving/rejecting/settling
-    const succeedWith = value => params.useRejections ? resolve(value) : resolve({value})
-    const dismissWith = dismiss => params.useRejections ? reject(dismiss) : resolve({dismiss})
+    const succeedWith = (value) => {
+      sweetAlert.closeModal(params.onClose)
+      if (params.useRejections) {
+        resolve(value)
+      } else {
+        resolve({value})
+      }
+    }
+    const dismissWith = (dismiss) => {
+      sweetAlert.closeModal(params.onClose)
+      if (params.useRejections) {
+        reject(dismiss)
+      } else {
+        resolve({dismiss})
+      }
+    }
     const errorWith = error => {
       sweetAlert.closeModal(params.onClose)
       reject(error)
@@ -429,10 +443,7 @@ const sweetAlert = (...args) => {
 
     // Close on timer
     if (params.timer) {
-      modal.timeout = setTimeout(() => {
-        sweetAlert.closeModal(params.onClose)
-        dismissWith('timer')
-      }, params.timer)
+      modal.timeout = setTimeout(() => dismissWith('timer'), params.timer)
     }
 
     // Get input element by specified type or, if type isn't specified, by params.input
@@ -495,10 +506,7 @@ const sweetAlert = (...args) => {
         const preConfirmPromise = params.preConfirm(value, params.extraParams)
         if (params.expectRejections) {
           preConfirmPromise.then(
-            (preConfirmValue) => {
-              sweetAlert.closeModal(params.onClose)
-              succeedWith(preConfirmValue || value)
-            },
+            (preConfirmValue) => succeedWith(preConfirmValue || value),
             (validationError) => {
               sweetAlert.hideLoading()
               if (validationError) {
@@ -508,15 +516,11 @@ const sweetAlert = (...args) => {
           )
         } else {
           preConfirmPromise.then(
-            (preConfirmValue) => {
-              sweetAlert.closeModal(params.onClose)
-              succeedWith(preConfirmValue || value)
-            },
+            (preConfirmValue) => succeedWith(preConfirmValue || value),
             (error) => errorWith(error)
           )
         }
       } else {
-        sweetAlert.closeModal(params.onClose)
         succeedWith(value)
       }
     }
@@ -608,7 +612,6 @@ const sweetAlert = (...args) => {
           // Clicked 'cancel'
           } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.disableButtons()
-            sweetAlert.closeModal(params.onClose)
             dismissWith('cancel')
           }
           break
@@ -626,7 +629,6 @@ const sweetAlert = (...args) => {
 
     // Closing modal by close button
     dom.getCloseButton().onclick = () => {
-      sweetAlert.closeModal(params.onClose)
       dismissWith('close')
     }
 
@@ -636,7 +638,6 @@ const sweetAlert = (...args) => {
         return
       }
       if (params.allowOutsideClick) {
-        sweetAlert.closeModal(params.onClose)
         dismissWith('overlay')
       }
     }
@@ -720,7 +721,6 @@ const sweetAlert = (...args) => {
 
       // ESC
       } else if (e.key === 'Escape' && params.allowEscapeKey === true) {
-        sweetAlert.closeModal(params.onClose)
         dismissWith('esc')
       }
     }

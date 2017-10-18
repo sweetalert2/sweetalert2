@@ -168,6 +168,7 @@ Configuration
 | `padding`                | `20`                  | Modal window padding. |
 | `background`             | `'#fff'`              | Modal window background (CSS `background` property). |
 | `position`               | `'center'`            | Modal window position, can be `'top'`, `'top-left'`, `'top-right'`, `'center'`, `'center-left'`, `'center-right'`, '`bottom`', '`bottom-left`', or '`bottom-right`'  |
+| `grow`                   | `false`               | Paired with window position, sets the direction the modal should grow in, can be set to `'row'`, `'column'`, or `false`
 | `customClass`            | `null`                | A custom CSS class for the modal. |
 | `timer`                  | `null`                | Auto close timer of the modal. Set in ms (milliseconds). |
 | `animation`              | `true`                | If set to `false`, modal CSS animation will be disabled. |

@@ -92,6 +92,14 @@ const setParameters = (params) => {
     dom.addClass(container, swalClasses[params.position])
   }
 
+  // Grow
+  if (params.grow && typeof params.grow === 'string') {
+    let growClass = 'grow-' + params.grow
+    if (growClass in swalClasses) {
+      dom.addClass(container, swalClasses[growClass])
+    }
+  }
+
   // Close button
   if (params.showCloseButton) {
     closeButton.setAttribute('aria-label', params.closeButtonAriaLabel)

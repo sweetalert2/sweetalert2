@@ -269,9 +269,13 @@ const setParameters = (params) => {
 /*
  * Animations
  */
-const openModal = (animation, onComplete) => {
+const openModal = (animation, onBeforeOpen, onComplete) => {
   const container = dom.getContainer()
   const modal = dom.getModal()
+
+  if (onBeforeOpen !== null && typeof onBeforeOpen === 'function') {
+    onBeforeOpen(modal)
+  }
 
   if (animation) {
     dom.addClass(modal, swalClasses.show)
@@ -1002,7 +1006,7 @@ const sweetAlert = (...args) => {
       }
     }
 
-    openModal(params.animation, params.onOpen)
+    openModal(params.animation, params.onBeforeOpen, params.onOpen)
 
     if (!params.allowEnterKey) {
       if (document.activeElement) {

@@ -137,6 +137,21 @@ swal({
 })</pre>
     </li>
 
+    <li id="position">
+      <div class="ui">
+        <p>A custom positioned dialog</p>
+        <button aria-label="Try me! Example: A custom positioned dialog">Try me!</button>
+      </div>
+      <pre>
+swal({
+  position: <span class="str">'top-right'</span>,
+  type: <span class="str">'success'</span>,
+  title: <span class="str">'Your work has been saved'</span>,
+  showConfirmButton: <span class="val">false</span>,
+  timer: <span class="str">1500</span>
+})</pre>
+    </li>
+
     <li class="html-jquery">
       <div class="ui">
         <p>jQuery HTML with custom animation (<a href="https://daneden.github.io/animate.css/" target="_blank" rel="noopener">Animate.css <i class="fa fa-external-link"></i></a>)</p>
@@ -479,13 +494,13 @@ swal.queue([{
       </tr>
       <tr>
         <td><b>position</b></td>
-        <td><i>'center</i></td>
-        <td>Modal window position, can be 'top', 'top-left', 'top-right', 'center', 'center-left', 'center-right', 'bottom', 'bottom-left', or 'bottom-right'</td>
+        <td><i>'center'</i></td>
+        <td>Modal window position, can be <strong>'top'</strong>, <strong>'top-left'</strong>, <strong>'top-right'</strong>, <strong>'center'</strong>, <strong>'center-left'</strong>, <strong>'center-right'</strong>, <strong>'bottom'</strong>, <strong>'bottom-left'</strong>, or <strong>'bottom-right'</strong>.</td>
       </tr>
       <tr>
         <td><b>grow</b></td>
         <td><i>'false'</i></td>
-        <td>Paired with window position, sets the direction the modal should grow in, can be set to 'row', 'column', 'fullscreen', or false</td>
+        <td>Paired with window position, sets the direction the modal should grow in, can be set to <strong>'row'</strong>, <strong>'column'</strong>, <strong>'fullscreen'</strong>, or <strong>false</strong>.</td>
       </tr>
       <tr>
         <td><b>customClass</b></td>
@@ -1373,6 +1388,16 @@ swal({
       cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
       cancelButtonAriaLabel: 'Thumbs down'
     }).catch(swal.noop)
+  })
+
+  $('.examples #position button').on('click', function () {
+    swal({
+      position: 'top-right',
+      type: 'success',
+      title: 'Your work has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
   })
 
   $('.examples .html-jquery button').on('click', function () {

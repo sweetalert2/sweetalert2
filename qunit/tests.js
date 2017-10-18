@@ -616,6 +616,32 @@ QUnit.test('onOpen', function (assert) {
     }
   })
 })
+
+QUnit.test('onBeforeOpen', function (assert) {
+  const done = assert.async()
+
+  // create a modal with an onBeforeOpen callback
+  swal({
+    title: 'onBeforeOpen test',
+    onBeforeOpen: function ($modal) {
+      assert.ok($('.swal2-modal').is($modal))
+    }
+  })
+
+  // check that onBeforeOpen calls properly
+  const dynamicTitle = 'Set onBeforeOpen title'
+  swal({
+    title: 'onBeforeOpen test',
+    onBeforeOpen: function ($modal) {
+      $('.swal2-title').html(dynamicTitle)
+    },
+    onOpen: function () {
+      assert.equal($('.swal2-title').html(), dynamicTitle)
+      done()
+    }
+  })
+})
+
 QUnit.test('onClose', function (assert) {
   const done = assert.async()
 

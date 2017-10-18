@@ -404,7 +404,7 @@ const sweetAlert = (...args) => {
       params.extraParams = args[0].extraParams
 
       if (params.input === 'email' && params.inputValidator === null) {
-        params.inputValidator = (email) => {
+        const inputValidator = (email) => {
           return new Promise((resolve, reject) => {
             const emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
             if (emailRegex.test(email)) {
@@ -414,10 +414,11 @@ const sweetAlert = (...args) => {
             }
           })
         }
+        params.inputValidator = params.expectRejections ? inputValidator : sweetAlert.adaptInputValidator(inputValidator)
       }
 
       if (params.input === 'url' && params.inputValidator === null) {
-        params.inputValidator = (url) => {
+        const inputValidator = (url) => {
           return new Promise((resolve, reject) => {
             // taken from https://stackoverflow.com/a/3809435/1331425
             const urlRegex = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/
@@ -428,6 +429,7 @@ const sweetAlert = (...args) => {
             }
           })
         }
+        params.inputValidator = params.expectRejections ? inputValidator : sweetAlert.adaptInputValidator(inputValidator)
       }
       break
 
@@ -1263,6 +1265,16 @@ sweetAlert.setDefaults = (userParams) => {
  */
 sweetAlert.resetDefaults = () => {
   popupParams = Object.assign({}, defaultParams)
+}
+
+/**
+ * Adapt a legacy inputValidator for use with expectRejections=false
+ */
+sweetAlert.adaptInputValidator = (legacyValidator) => {
+  return function adaptedInputValidator (inputValue, extraParams) {
+    return legacyValidator.call(this, inputValue, extraParams)
+      .then(() => undefined, validationError => validationError)
+  }
 }
 
 sweetAlert.noop = () => { }

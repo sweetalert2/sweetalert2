@@ -37,12 +37,42 @@ body {
     align-items: flex-start;
   }
 
+  &.swal2-top-left {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  &.swal2-top-right {
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
   &.swal2-center {
     align-items: center;
   }
 
+  &.swal2-center-left {
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &.swal2-center-right {
+    align-items: center;
+    justify-content: flex-end;
+  }
+
   &.swal2-bottom {
     align-items: flex-end;
+  }
+
+  &.swal2-bottom-left {
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
+  &.swal2-bottom-right {
+    align-items: flex-end;
+    justify-content: flex-end;
   }
 
   &.swal2-fade {

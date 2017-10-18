@@ -42,8 +42,14 @@ export const swalClasses = prefix([
   'loading',
   'styled',
   'top',
+  'top-left',
+  'top-right',
   'center',
-  'bottom'
+  'center-left',
+  'center-right',
+  'bottom',
+  'bottom-left',
+  'bottom-right'
 ])
 
 export const iconTypes = prefix([

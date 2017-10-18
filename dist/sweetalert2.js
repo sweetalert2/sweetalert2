@@ -946,7 +946,7 @@ var sweetAlert = function sweetAlert() {
       params.extraParams = args[0].extraParams;
 
       if (params.input === 'email' && params.inputValidator === null) {
-        params.inputValidator = function (email) {
+        var inputValidator = function inputValidator(email) {
           return new Promise(function (resolve, reject) {
             var emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             if (emailRegex.test(email)) {
@@ -956,10 +956,11 @@ var sweetAlert = function sweetAlert() {
             }
           });
         };
+        params.inputValidator = params.expectRejections ? inputValidator : sweetAlert.adaptInputValidator(inputValidator);
       }
 
       if (params.input === 'url' && params.inputValidator === null) {
-        params.inputValidator = function (url) {
+        var _inputValidator = function _inputValidator(url) {
           return new Promise(function (resolve, reject) {
             // taken from https://stackoverflow.com/a/3809435/1331425
             var urlRegex = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/;
@@ -970,6 +971,7 @@ var sweetAlert = function sweetAlert() {
             }
           });
         };
+        params.inputValidator = params.expectRejections ? _inputValidator : sweetAlert.adaptInputValidator(_inputValidator);
       }
       break;
 
@@ -1808,6 +1810,19 @@ sweetAlert.setDefaults = function (userParams) {
  */
 sweetAlert.resetDefaults = function () {
   modalParams = _extends({}, defaultParams);
+};
+
+/**
+ * Adapt a legacy inputValidator for use with expectRejections=false
+ */
+sweetAlert.adaptInputValidator = function (legacyValidator) {
+  return function adaptedInputValidator(inputValue, extraParams) {
+    return legacyValidator.call(this, inputValue, extraParams).then(function () {
+      return undefined;
+    }, function (validationError) {
+      return validationError;
+    });
+  };
 };
 
 sweetAlert.noop = function () {};

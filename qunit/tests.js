@@ -155,8 +155,9 @@ QUnit.test('input text', function (assert) {
 
 QUnit.test('validation error', function (assert) {
   const done = assert.async()
+  const inputValidator = (value) => Promise.resolve(!value && 'no falsy values')
 
-  swal({input: 'email', animation: false})
+  swal({input: 'text', animation: false, inputValidator})
   assert.ok($('.swal2-validationerror').is(':hidden'))
   setTimeout(function () {
     const initialModalHeight = $('.swal2-modal').outerHeight()
@@ -164,6 +165,7 @@ QUnit.test('validation error', function (assert) {
     swal.clickConfirm()
     setTimeout(function () {
       assert.ok($('.swal2-validationerror').is(':visible'))
+      assert.equal($('.swal2-validationerror').text(), 'no falsy values')
       assert.ok($('.swal2-input').attr('aria-invalid'))
       assert.ok($('.swal2-modal').outerHeight() > initialModalHeight)
 

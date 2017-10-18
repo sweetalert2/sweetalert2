@@ -18,7 +18,9 @@ body {
 .swal2-container {
   // centering
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -31,6 +33,92 @@ body {
 
   z-index: 1060;
 
+  &.swal2-top {
+    align-items: flex-start;
+  }
+
+  &.swal2-top-left {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  &.swal2-top-right {
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  &.swal2-center {
+    align-items: center;
+  }
+
+  &.swal2-center-left {
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &.swal2-center-right {
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &.swal2-bottom {
+    align-items: flex-end;
+  }
+
+  &.swal2-bottom-left {
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
+  &.swal2-bottom-right {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  &.swal2-grow-fullscreen > .swal2-modal {
+    display: flex !important;
+    flex: 1;
+    align-self: stretch;
+    justify-content: center;
+  }
+
+  &.swal2-grow-row > .swal2-modal {
+    display: flex !important;
+    flex: 1;
+    align-content: center;
+    justify-content: center;
+  }
+
+  &.swal2-grow-column {
+    flex: 1;
+    flex-direction: column;
+
+    &.swal2-top,
+    &.swal2-center,
+    &.swal2-bottom {
+      align-items: center;
+    }
+
+    &.swal2-top-left,
+    &.swal2-center-left,
+    &.swal2-bottom-left {
+      align-items: flex-start;
+    }
+
+    &.swal2-top-right,
+    &.swal2-center-right,
+    &.swal2-bottom-right {
+      align-items: flex-end;
+    }
+
+    & > .swal2-modal {
+      display: flex !important;
+      flex: 1;
+      align-content: center;
+      justify-content: center;
+    }
+  }
+
   &.swal2-fade {
     transition: background-color .1s;
   }
@@ -41,12 +129,12 @@ body {
 }
 
 .swal2-modal {
+  flex-direction: column;
   background-color: $swal2-white;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   border-radius: 5px;
   box-sizing: border-box;
   text-align: center;
-  margin: auto;
   overflow-x: hidden;
   overflow-y: auto;
   display: none;

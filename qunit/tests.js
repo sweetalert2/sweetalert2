@@ -328,6 +328,32 @@ QUnit.test('validation error', function (assert) {
   const inputValidator = (value) => !value ? Promise.reject('no falsy values') : Promise.resolve()
 
   swal({input: 'text', animation: false, inputValidator})
+  // Below this line is the same as the next test (sorry for the huge copy-paste)
+  assert.ok($('.swal2-validationerror').is(':hidden'))
+  setTimeout(function () {
+    const initialModalHeight = $('.swal2-modal').outerHeight()
+
+    swal.clickConfirm()
+    setTimeout(function () {
+      assert.ok($('.swal2-validationerror').is(':visible'))
+      assert.equal($('.swal2-validationerror').text(), 'no falsy values')
+      assert.ok($('.swal2-input').attr('aria-invalid'))
+      assert.ok($('.swal2-modal').outerHeight() > initialModalHeight)
+
+      $('.swal2-input').val('blah-blah').trigger('input')
+      assert.ok($('.swal2-validationerror').is(':hidden'))
+      assert.notOk($('.swal2-input').attr('aria-invalid'))
+      assert.ok($('.swal2-modal').outerHeight() === initialModalHeight)
+      done()
+    })
+  }, 60)
+})
+QUnit.test('validation error /w expectRejections=false', function (assert) {
+  const done = assert.async()
+  const inputValidator = (value) => Promise.resolve(!value ? 'no falsy values' : null)
+
+  swal({input: 'text', animation: false, expectRejections: false, inputValidator})
+  // Below this line is the same as the previous test (sorry for the huge copy-paste)
   assert.ok($('.swal2-validationerror').is(':hidden'))
   setTimeout(function () {
     const initialModalHeight = $('.swal2-modal').outerHeight()

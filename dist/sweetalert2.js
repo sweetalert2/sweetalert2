@@ -986,10 +986,20 @@ var sweetAlert = function sweetAlert() {
   return new Promise(function (resolve, reject) {
     // functions to handle all resolving/rejecting/settling
     var succeedWith = function succeedWith(value) {
-      return params.useRejections ? resolve(value) : resolve({ value: value });
+      sweetAlert.closeModal(params.onClose);
+      if (params.useRejections) {
+        resolve(value);
+      } else {
+        resolve({ value: value });
+      }
     };
     var dismissWith = function dismissWith(dismiss) {
-      return params.useRejections ? reject(dismiss) : resolve({ dismiss: dismiss });
+      sweetAlert.closeModal(params.onClose);
+      if (params.useRejections) {
+        reject(dismiss);
+      } else {
+        resolve({ dismiss: dismiss });
+      }
     };
     var errorWith = function errorWith(error$$1) {
       sweetAlert.closeModal(params.onClose);
@@ -999,8 +1009,7 @@ var sweetAlert = function sweetAlert() {
     // Close on timer
     if (params.timer) {
       modal.timeout = setTimeout(function () {
-        sweetAlert.closeModal(params.onClose);
-        dismissWith('timer');
+        return dismissWith('timer');
       }, params.timer);
     }
 
@@ -1063,8 +1072,7 @@ var sweetAlert = function sweetAlert() {
         var preConfirmPromise = params.preConfirm(value, params.extraParams);
         if (params.expectRejections) {
           preConfirmPromise.then(function (preConfirmValue) {
-            sweetAlert.closeModal(params.onClose);
-            succeedWith(preConfirmValue || value);
+            return succeedWith(preConfirmValue || value);
           }, function (validationError) {
             sweetAlert.hideLoading();
             if (validationError) {
@@ -1073,14 +1081,12 @@ var sweetAlert = function sweetAlert() {
           });
         } else {
           preConfirmPromise.then(function (preConfirmValue) {
-            sweetAlert.closeModal(params.onClose);
-            succeedWith(preConfirmValue || value);
+            return succeedWith(preConfirmValue || value);
           }, function (error$$1) {
             return errorWith(error$$1);
           });
         }
       } else {
-        sweetAlert.closeModal(params.onClose);
         succeedWith(value);
       }
     };
@@ -1168,7 +1174,6 @@ var sweetAlert = function sweetAlert() {
             // Clicked 'cancel'
           } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.disableButtons();
-            sweetAlert.closeModal(params.onClose);
             dismissWith('cancel');
           }
           break;
@@ -1186,7 +1191,6 @@ var sweetAlert = function sweetAlert() {
 
     // Closing modal by close button
     getCloseButton().onclick = function () {
-      sweetAlert.closeModal(params.onClose);
       dismissWith('close');
     };
 
@@ -1196,7 +1200,6 @@ var sweetAlert = function sweetAlert() {
         return;
       }
       if (params.allowOutsideClick) {
-        sweetAlert.closeModal(params.onClose);
         dismissWith('overlay');
       }
     };
@@ -1280,7 +1283,6 @@ var sweetAlert = function sweetAlert() {
 
         // ESC
       } else if (e.key === 'Escape' && params.allowEscapeKey === true) {
-        sweetAlert.closeModal(params.onClose);
         dismissWith('esc');
       }
     };

@@ -290,6 +290,20 @@ declare module 'sweetalert2' {
         background?: string;
 
         /**
+         * Modal window position
+         *
+         * @default 'center'
+         */
+        position?: 'top' | 'top-left' | 'top-right' | 'center' | 'center-left' | 'center-right' | 'bottom' | 'bottom-left' | 'bottom-right'
+
+        /**
+         * Modal window grow direction
+         *
+         * @default false
+         */
+        grow?: 'row' | 'column' | 'fullscreen' | boolean
+
+        /**
          * A custom CSS class for the modal.
          *
          * @default null

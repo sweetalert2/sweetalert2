@@ -51,6 +51,7 @@ const setParameters = (params) => {
     successIconParts[i].style.background = params.background
   }
 
+  const container = dom.getContainer()
   const title = dom.getTitle()
   const content = dom.getContent()
   const buttonsWrapper = dom.getButtonsWrapper()
@@ -84,6 +85,19 @@ const setParameters = (params) => {
     dom.show(content)
   } else {
     dom.hide(content)
+  }
+
+  // Position
+  if (params.position in swalClasses) {
+    dom.addClass(container, swalClasses[params.position])
+  }
+
+  // Grow
+  if (params.grow && typeof params.grow === 'string') {
+    let growClass = 'grow-' + params.grow
+    if (growClass in swalClasses) {
+      dom.addClass(container, swalClasses[growClass])
+    }
   }
 
   // Close button

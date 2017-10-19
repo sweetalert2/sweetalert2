@@ -5,7 +5,6 @@ import * as dom from './utils/dom.js'
 
 let modalParams = Object.assign({}, defaultParams)
 let queue = []
-let swal2Observer
 
 /*
  * Check for the existence of Promise
@@ -801,19 +800,6 @@ const sweetAlert = (...args) => {
       }
     }
 
-    // Set modal min-height to disable scrolling inside the modal
-    sweetAlert.recalculateHeight = dom.debounce(() => {
-      const modal = dom.getModal()
-      if (!modal) {
-        return
-      }
-      const prevState = modal.style.display
-      modal.style.minHeight = ''
-      dom.show(modal)
-      modal.style.minHeight = (modal.scrollHeight + 1) + 'px'
-      modal.style.display = prevState
-    }, 50)
-
     // Show block with validation error
     sweetAlert.showValidationError = (error) => {
       const validationError = dom.getValidationError()
@@ -833,7 +819,6 @@ const sweetAlert = (...args) => {
     sweetAlert.resetValidationError = () => {
       const validationError = dom.getValidationError()
       dom.hide(validationError)
-      sweetAlert.recalculateHeight()
 
       const input = getInput()
       if (input) {
@@ -1036,12 +1021,6 @@ const sweetAlert = (...args) => {
 
     // fix scroll
     dom.getContainer().scrollTop = 0
-
-    // Observe changes inside the modal and adjust height
-    if (typeof MutationObserver !== 'undefined' && !swal2Observer) {
-      swal2Observer = new MutationObserver(sweetAlert.recalculateHeight)
-      swal2Observer.observe(modal, {childList: true, characterData: true, subtree: true})
-    }
   })
 }
 

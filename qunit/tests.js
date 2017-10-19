@@ -764,7 +764,7 @@ QUnit.test('result object format  /w useRejections=false', function (assert) {
   swal.clickConfirm()
 })
 
-QUnit.test('handles errors in user-defined functions /w expectRejections=false', function (assert) {
+QUnit.test('does not swallow errors in user-defined functions /w expectRejections=false', function (assert) {
   const done = assert.async()
 
   const expectedError = new Error('my bad')
@@ -772,6 +772,7 @@ QUnit.test('handles errors in user-defined functions /w expectRejections=false',
     return Promise.reject(expectedError)
   }
 
+  // inputValidator
   const rejectedPromise = swal({input: 'text', expectRejections: false, inputValidator: erroringFunction})
   swal.clickConfirm()
   rejectedPromise.catch(function (error) {
@@ -779,6 +780,7 @@ QUnit.test('handles errors in user-defined functions /w expectRejections=false',
     setTimeout(function () {
       assert.notOk(swal.isVisible()) // display is cleaned up
 
+      // preConfirm
       const rejectedPromise = swal({expectRejections: false, preConfirm: erroringFunction})
       swal.clickConfirm()
       rejectedPromise.catch(function (error) {

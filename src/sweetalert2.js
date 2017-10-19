@@ -5,7 +5,6 @@ import * as dom from './utils/dom.js'
 
 let popupParams = Object.assign({}, defaultParams)
 let queue = []
-let swal2Observer
 
 /*
  * Check for the existence of Promise
@@ -828,24 +827,6 @@ const sweetAlert = (...args) => {
       }
     }
 
-    // Set popup min-height to disable scrolling inside the popup
-    sweetAlert.recalculateHeight = dom.debounce(() => {
-      const popup = dom.getPopup()
-      if (!popup) {
-        return
-      }
-
-      if (!params.toast) {
-        const prevState = popup.style.display
-        popup.style.minHeight = ''
-        dom.show(popup)
-        popup.style.minHeight = (popup.scrollHeight + 1) + 'px'
-        popup.style.display = prevState
-      } else {
-        dom.show(popup)
-      }
-    }, 50)
-
     // Show block with validation error
     sweetAlert.showValidationError = (error) => {
       const validationError = dom.getValidationError()
@@ -865,7 +846,6 @@ const sweetAlert = (...args) => {
     sweetAlert.resetValidationError = () => {
       const validationError = dom.getValidationError()
       dom.hide(validationError)
-      sweetAlert.recalculateHeight()
 
       const input = getInput()
       if (input) {
@@ -1068,12 +1048,6 @@ const sweetAlert = (...args) => {
 
     // fix scroll
     dom.getContainer().scrollTop = 0
-
-    // Observe changes inside the popup and adjust height
-    if (typeof MutationObserver !== 'undefined' && !swal2Observer) {
-      swal2Observer = new MutationObserver(sweetAlert.recalculateHeight)
-      swal2Observer.observe(popup, {childList: true, characterData: true, subtree: true})
-    }
   })
 }
 

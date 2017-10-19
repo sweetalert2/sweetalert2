@@ -9,6 +9,87 @@ body {
     overflow-y: hidden;
   }
 
+  &.swal2-toast-shown {
+    overflow-y: auto;
+
+    & > .swal2-container {
+      position: fixed;
+      background-color: transparent;
+
+      &.swal2-shown {
+        background-color: transparent;
+      }
+
+      &.swal2-top {
+        top: 0;
+        left: 50%;
+        bottom: auto;
+        right: auto;
+        transform: translateX(-50%);
+      }
+
+      &.swal2-top-right {
+        top: 0;
+        left: auto;
+        bottom: auto;
+        right: 0;
+      }
+
+      &.swal2-top-left {
+        top: 0;
+        left: 0;
+        bottom: auto;
+        right: auto;
+      }
+
+      &.swal2-center-left {
+        top: 50%;
+        left: 0;
+        bottom: auto;
+        right: auto;
+        transform: translateY(-50%);
+      }
+
+      &.swal2-center {
+        top: 50%;
+        left: 50%;
+        bottom: auto;
+        right: auto;
+        transform: translate(-50%, -50%);
+      }
+
+      &.swal2-center-right {
+        top: 50%;
+        left: auto;
+        bottom: auto;
+        right: 0;
+        transform: translateY(-50%);
+      }
+
+      &.swal2-bottom-left {
+        top: auto;
+        left: 0;
+        bottom: 0;
+        right: auto;
+      }
+
+      &.swal2-bottom {
+        top: auto;
+        left: 50%;
+        bottom: 0;
+        right: auto;
+        transform: translateX(-50%);
+      }
+
+      &.swal2-bottom-right {
+        top: auto;
+        left: auto;
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+
   &.swal2-iosfix {
     position: fixed;
     left: 0;
@@ -143,7 +224,8 @@ body {
   }
 }
 
-.swal2-modal {
+
+.swal2-popup {
   flex-direction: column;
   background-color: $swal2-white;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -155,6 +237,70 @@ body {
   display: none;
   position: relative;
   max-width: 100%;
+
+  &.swal2-toast {
+    width: 300px;
+    padding: 0 15px;
+    flex-direction: row;
+    align-items: center;
+    overflow-y: hidden;
+    box-shadow: 0 0 5px $swal2-box-shadow;
+
+    .swal2-title {
+      font-size: 14px;
+      max-width: 300px;
+    }
+
+    .swal2-icon {
+      width: 32px;
+      height: 32px;
+      margin: 0 15px 0 0;
+
+      &.swal2-success {
+
+        .swal2-success-ring {
+          width: 32px;
+          height: 32px;
+        }
+      }
+
+      &.swal2-info,
+      &.swal2-warning,
+      &.swal2-question {
+        font-size: 26px;
+        line-height: 32px;
+      }
+
+      &.swal2-error {
+
+        [class^='swal2-x-mark-line'] {
+          top: 14px;
+          width: 22px;
+
+          &[class$='left'] {
+            left: 5px;
+          }
+
+          &[class$='right'] {
+            right: 5px;
+          }
+        }
+      }
+    }
+
+    .swal2-buttonswrapper {
+      margin: 0 0 0 5px;
+    }
+
+    .swal2-styled {
+      margin: 0 0 0 5px;
+      padding: 5px 10px;
+
+      &:focus {
+        box-shadow: 0 0 0 1px $swal2-white, 0 0 0 2px $swal2-focus-outline;
+      }
+    }
+  }
 
   &:focus {
     outline: none;
@@ -178,6 +324,8 @@ body {
   }
 
   .swal2-buttonswrapper {
+    align-items: center;
+    justify-content: center;
     margin-top: 15px;
 
     &:not(.swal2-loading) {

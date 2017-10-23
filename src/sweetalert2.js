@@ -1034,16 +1034,18 @@ const sweetAlert = (...args) => {
 
     openPopup(params.animation, params.onBeforeOpen, params.onOpen)
 
-    if (!params.allowEnterKey) {
-      if (document.activeElement) {
-        document.activeElement.blur()
+    if (!params.toast) {
+      if (!params.allowEnterKey) {
+        if (document.activeElement) {
+          document.activeElement.blur()
+        }
+      } else if (params.focusCancel && dom.isVisible(cancelButton)) {
+        cancelButton.focus()
+      } else if (params.focusConfirm && dom.isVisible(confirmButton)) {
+        confirmButton.focus()
+      } else {
+        setFocus(-1, 1)
       }
-    } else if (params.focusCancel && dom.isVisible(cancelButton)) {
-      cancelButton.focus()
-    } else if (params.focusConfirm && dom.isVisible(confirmButton)) {
-      confirmButton.focus()
-    } else {
-      setFocus(-1, 1)
     }
 
     // fix scroll

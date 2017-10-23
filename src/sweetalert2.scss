@@ -858,9 +858,45 @@ body {
   -webkit-tap-highlight-color: $swal2-transparent;
 }
 
+// Toast Animations
+@keyframes showSweetToast {
+  0% {
+    transform: translateY(-10px) rotateZ(2deg);
+    opacity: 0;
+  }
+
+  33% {
+    transform: translateY(0) rotateZ(-2deg);
+    opacity: .5;
+  }
+
+  66% {
+    transform: translateY(5px) rotateZ(2deg);
+    opacity: .7;
+  }
+
+  100% {
+    transform: translateY(0) rotateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes hideSweetToast {
+  0% {
+    opacity: 1;
+  }
+
+  33% {
+    opacity: .5;
+  }
+
+  100% {
+    transform: rotateZ(1deg);
+    opacity: 0;
+  }
+}
 
 // Modal animations
-
 @keyframes showSweetAlert {
   0% {
     transform: scale(.7);
@@ -894,6 +930,10 @@ body {
 .swal2-show {
   animation: showSweetAlert .3s;
 
+  &.swal2-toast {
+    animation: showSweetToast .5s;
+  }
+
   &.swal2-noanimation {
     animation: none;
   }
@@ -901,6 +941,10 @@ body {
 
 .swal2-hide {
   animation: hideSweetAlert .15s forwards;
+
+  &.swal2-toast {
+    animation: hideSweetToast .2s forwards;
+  }
 
   &.swal2-noanimation {
     animation: none;

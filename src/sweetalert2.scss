@@ -12,6 +12,32 @@ body {
   &.swal2-toast-shown {
     overflow-y: auto;
 
+    &.swal2-input  > .swal2-container {
+      & > .swal2-toast {
+        flex-direction: column;
+
+        .swal2-icon {
+          margin: 0 0 15px;
+        }
+
+        .swal2-buttonswrapper {
+          flex: 1;
+          align-self: stretch;
+          justify-content: flex-end;
+        }
+
+        .swal2-loading {
+          justify-content: center;
+        }
+
+        .swal2-input {
+          height: 32px;
+          font-size: 14px;
+          margin: 5px auto;
+        }
+      }
+    }
+
     & > .swal2-container {
       position: fixed;
       background-color: transparent;
@@ -247,8 +273,14 @@ body {
     box-shadow: 0 0 5px $swal2-box-shadow;
 
     .swal2-title {
-      font-size: 14px;
       max-width: 300px;
+      font-size: 16px;
+      text-align: left;
+    }
+
+    .swal2-content {
+      font-size: 14px;
+      text-align: left;
     }
 
     .swal2-icon {
@@ -299,6 +331,11 @@ body {
       &:focus {
         box-shadow: 0 0 0 1px $swal2-white, 0 0 0 2px $swal2-focus-outline;
       }
+    }
+
+    .swal2-validationerror {
+      width: 100%;
+      margin: 5px -20px;
     }
   }
 

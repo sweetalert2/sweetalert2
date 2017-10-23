@@ -93,8 +93,10 @@ const sweetHTML = `
      <div class="swal2-success-circular-line-right"></div>
    </div>
    <img class="${swalClasses.image}" />
+   <div class="${swalClasses.contentwrapper}">
    <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
    <div id="${swalClasses.content}" class="${swalClasses.content}"></div>
+   </div>
    <input class="${swalClasses.input}" />
    <input type="file" class="${swalClasses.file}" />
    <div class="${swalClasses.range}">

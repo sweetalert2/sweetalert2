@@ -876,6 +876,10 @@ const sweetAlert = (...args) => {
     sweetAlert.hideLoading()
     sweetAlert.resetValidationError()
 
+    if (params.input) {
+      dom.addClass(document.body, swalClasses.input)
+    }
+
     // inputs
     const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
     let input
@@ -1138,6 +1142,7 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
     }
     dom.removeClass(document.documentElement, swalClasses.shown)
     dom.removeClass(document.body, swalClasses.shown)
+    dom.removeClass(document.body, swalClasses.input)
     dom.removeClass(document.body, swalClasses['toast-shown'])
     undoScrollbar()
     undoIOSfix()

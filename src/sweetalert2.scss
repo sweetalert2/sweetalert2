@@ -12,7 +12,7 @@ body {
   &.swal2-toast-shown {
     overflow-y: auto;
 
-    &.swal2-input  > .swal2-container {
+    &.swal2-has-input  > .swal2-container {
       & > .swal2-toast {
         flex-direction: column;
 

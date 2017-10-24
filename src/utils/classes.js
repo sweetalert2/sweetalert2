@@ -31,6 +31,7 @@ export const swalClasses = prefix([
   'icon',
   'image',
   'input',
+  'has-input',
   'file',
   'range',
   'select',

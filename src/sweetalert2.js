@@ -877,7 +877,7 @@ const sweetAlert = (...args) => {
     sweetAlert.resetValidationError()
 
     if (params.input) {
-      dom.addClass(document.body, swalClasses.input)
+      dom.addClass(document.body, swalClasses['has-input'])
     }
 
     // inputs
@@ -1142,7 +1142,7 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
     }
     dom.removeClass(document.documentElement, swalClasses.shown)
     dom.removeClass(document.body, swalClasses.shown)
-    dom.removeClass(document.body, swalClasses.input)
+    dom.removeClass(document.body, swalClasses['has-input'])
     dom.removeClass(document.body, swalClasses['toast-shown'])
     undoScrollbar()
     undoIOSfix()

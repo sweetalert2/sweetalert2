@@ -337,6 +337,70 @@ body {
       width: 100%;
       margin: 5px -20px;
     }
+
+    .swal2-success {
+      border-color: $swal2-success;
+
+      [class^='swal2-success-circular-line'] { // Emulate moving circular line
+        border-radius: 50%;
+        position: absolute;
+        width: 32px;
+        height: 64px;
+        transform: rotate(45deg);
+
+        &[class$='left'] {
+          border-radius: 64px 0 0 64px;
+          top: -4px;
+          left: -15px;
+
+          transform: rotate(-45deg);
+          transform-origin: 32px 32px;
+        }
+
+        &[class$='right'] {
+          border-radius: 0 64px 64px 0;
+          top: -5px;
+          left: 14px;
+          transform-origin: 0 32px;
+        }
+      }
+
+      .swal2-success-ring {
+        width: 32px;
+        height: 32px;
+      }
+
+      .swal2-success-fix {
+        width: 7px;
+        height: 90px;
+        left: 28px;
+        top: 8px;
+      }
+
+      [class^='swal2-success-line'] {
+        height: 5px;
+
+        &[class$='tip'] {
+          width: 12px;
+          left: 3px;
+          top: 18px;
+        }
+
+        &[class$='long'] {
+          width: 22px;
+          right: 3px;
+          top: 15px;
+        }
+      }
+    }
+
+    .swal2-animate-success-line-tip {
+      animation: animate-toast-success-tip .75s;
+    }
+
+    .swal2-animate-success-line-long {
+      animation: animate-toast-success-long .75s;
+    }
   }
 
   &:focus {
@@ -1010,6 +1074,64 @@ body {
     width: 47px;
     right: 8px;
     top: 38px;
+  }
+}
+
+@keyframes animate-toast-success-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 9px;
+  }
+
+  54% {
+    width: 0;
+    left: 1px;
+    top: 9px;
+  }
+
+  70% {
+    width: 24px;
+    left: -4px;
+    top: 17px;
+  }
+
+  84% {
+    width: 8px;
+    left: 10px;
+    top: 20px;
+  }
+
+  100% {
+    width: 12px;
+    left: 3px;
+    top: 18px;
+  }
+}
+
+@keyframes animate-toast-success-long {
+  0% {
+    width: 0;
+    right: 22px;
+    top: 26px;
+  }
+
+  65% {
+    width: 0;
+    right: 22px;
+    top: 26px;
+  }
+
+  84% {
+    width: 26px;
+    right: 0;
+    top: 15px;
+  }
+
+  100% {
+    width: 22px;
+    right: 3px;
+    top: 15px;
   }
 }
 

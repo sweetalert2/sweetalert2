@@ -65,6 +65,10 @@ const setParameters = (params) => {
     title.innerHTML = params.title.split('\n').join('<br />')
   }
 
+  if (!params.backdrop) {
+    dom.addClass(container, swalClasses['no-backdrop'])
+  }
+
   // Content
   if (params.text || params.html) {
     if (typeof params.html === 'object') {
@@ -1109,6 +1113,8 @@ sweetAlert.close = sweetAlert.closeModal = (onComplete) => {
     }
     dom.removeClass(document.documentElement, swalClasses.shown)
     dom.removeClass(document.body, swalClasses.shown)
+    dom.removeClass(container, swalClasses['no-backdrop'])
+    
     undoScrollbar()
     undoIOSfix()
   }

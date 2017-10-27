@@ -13,6 +13,7 @@ export const swalClasses = prefix([
   'shown',
   'iosfix',
   'modal',
+  'no-backdrop',
   'overlay',
   'fade',
   'show',

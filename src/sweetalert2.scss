@@ -22,11 +22,11 @@ body {
   align-items: center;
   justify-content: center;
   position: fixed;
+  padding: 10px;
   top: 0;
   left: 0;
-  bottom: 0;
   right: 0;
-  padding: 10px;
+  bottom: 0;
 
   // backdrop
   background-color: transparent;
@@ -119,12 +119,73 @@ body {
     }
   }
 
+  &.swal2-no-backdrop {
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+
+    &.swal2-top {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &.swal2-top-left {
+      top: 0;
+      left: 0;
+    }
+
+    &.swal2-top-right {
+      top: 0;
+      right: 0;
+    }
+
+    &.swal2-center {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &.swal2-center-left {
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+
+    &.swal2-center-right {
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+
+    &.swal2-bottom {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &.swal2-bottom-left {
+      bottom:0;
+      left: 0;
+    }
+
+    &.swal2-bottom-right {
+      bottom: 0;
+      right: 0;
+    }
+  }
+
   &.swal2-fade {
     transition: background-color .1s;
   }
 
   &.swal2-shown {
     background-color: $swal2-overlay;
+
+    &.swal2-no-backdrop {
+      background-color: transparent;
+    }
   }
 }
 

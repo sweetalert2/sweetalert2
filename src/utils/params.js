@@ -6,6 +6,7 @@ export default {
   type: null,
   customClass: '',
   target: 'body',
+  backdrop: true,
   animation: true,
   allowOutsideClick: true,
   allowEscapeKey: true,

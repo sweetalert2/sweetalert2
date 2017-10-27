@@ -1114,7 +1114,7 @@ sweetAlert.close = sweetAlert.closeModal = (onComplete) => {
     dom.removeClass(document.documentElement, swalClasses.shown)
     dom.removeClass(document.body, swalClasses.shown)
     dom.removeClass(container, swalClasses['no-backdrop'])
-    
+
     undoScrollbar()
     undoIOSfix()
   }

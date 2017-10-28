@@ -15,14 +15,14 @@ export const colorLuminance = (hex, lum) => {
   let rgb = '#'
   for (let i = 0; i < 3; i++) {
     let c = parseInt(hex.substr(i * 2, 2), 16)
-    c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16)
+    c = Math.round(Math.min(Math.max(0, c + c * lum), 255)).toString(16)
     rgb += ('00' + c).substr(c.length)
   }
 
   return rgb
 }
 
-export const uniqueArray = (arr) => {
+export const uniqueArray = arr => {
   const result = []
   for (var i in arr) {
     if (result.indexOf(arr[i]) === -1) {
@@ -36,7 +36,7 @@ export const uniqueArray = (arr) => {
  * Standardise console warnings
  * @param message
  */
-export const warn = (message) => {
+export const warn = message => {
   console.warn(`${consolePrefix} ${message}`)
 }
 
@@ -44,6 +44,6 @@ export const warn = (message) => {
  * Standardise console errors
  * @param message
  */
-export const error = (message) => {
+export const error = message => {
   console.error(`${consolePrefix} ${message}`)
 }

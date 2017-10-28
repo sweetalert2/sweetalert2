@@ -11,16 +11,16 @@ QUnit.test('modal shows up', function (assert) {
 })
 
 QUnit.test('modal width', function (assert) {
-  swal({text: '400px', width: 300})
+  swal({ text: '400px', width: 300 })
   assert.equal($('.swal2-modal')[0].style.width, '300px')
 
-  swal({text: '500px', width: '400px'})
+  swal({ text: '500px', width: '400px' })
   assert.equal($('.swal2-modal')[0].style.width, '400px')
 
-  swal({text: '90%', width: '90%'})
+  swal({ text: '90%', width: '90%' })
   assert.equal($('.swal2-modal')[0].style.width, '90%')
 
-  swal({text: 'default width'})
+  swal({ text: 'default width' })
   assert.equal($('.swal2-modal')[0].style.width, '500px')
 })
 
@@ -51,21 +51,30 @@ QUnit.test('getters', function (assert) {
     cancelButtonAriaLabel: 'Cancel button aria-label'
   })
   assert.ok(swal.getImage().src.indexOf('image.png'))
-  assert.equal(swal.getButtonsWrapper().textContent, 'Confirm buttonCancel button')
+  assert.equal(
+    swal.getButtonsWrapper().textContent,
+    'Confirm buttonCancel button'
+  )
   assert.equal(swal.getConfirmButton().innerText, 'Confirm button')
   assert.equal(swal.getCancelButton().innerText, 'Cancel button')
-  assert.equal(swal.getConfirmButton().getAttribute('aria-label'), 'Confirm button aria-label')
-  assert.equal(swal.getCancelButton().getAttribute('aria-label'), 'Cancel button aria-label')
+  assert.equal(
+    swal.getConfirmButton().getAttribute('aria-label'),
+    'Confirm button aria-label'
+  )
+  assert.equal(
+    swal.getCancelButton().getAttribute('aria-label'),
+    'Cancel button aria-label'
+  )
 
-  swal({input: 'text'})
+  swal({ input: 'text' })
   $('.swal2-input').val('input text')
   assert.equal(swal.getInput().value, 'input text')
 
   swal({
     input: 'radio',
     inputOptions: {
-      'one': 'one',
-      'two': 'two'
+      one: 'one',
+      two: 'two'
     }
   })
   $('.swal2-radio input[value="two"]').prop('checked', true)
@@ -104,13 +113,15 @@ QUnit.test('custom buttons classes', function (assert) {
 QUnit.test('cancel button', function (assert) {
   const done = assert.async()
 
-  swal('Cancel me').then(
-    function () {},
-    function (dismiss) {
-      assert.equal(dismiss, 'cancel')
-      done()
-    }
-  ).catch(swal.noop)
+  swal('Cancel me')
+    .then(
+      function () {},
+      function (dismiss) {
+        assert.equal(dismiss, 'cancel')
+        done()
+      }
+    )
+    .catch(swal.noop)
 
   swal.clickCancel()
 })
@@ -126,9 +137,11 @@ QUnit.test('esc key', function (assert) {
     }
   )
 
-  $(document).trigger($.Event('keydown', {
-    key: 'Escape'
-  }))
+  $(document).trigger(
+    $.Event('keydown', {
+      key: 'Escape'
+    })
+  )
 })
 
 QUnit.test('overlay click', function (assert) {
@@ -148,7 +161,7 @@ QUnit.test('overlay click', function (assert) {
 QUnit.test('timer works', function (assert) {
   const done = assert.async()
 
-  swal({title: 'Timer test', timer: 10, animation: false}).then(
+  swal({ title: 'Timer test', timer: 10, animation: false }).then(
     function () {},
     function (dismiss) {
       assert.equal(dismiss, 'timer')
@@ -160,7 +173,7 @@ QUnit.test('timer works', function (assert) {
 QUnit.test('close button', function (assert) {
   const done = assert.async()
 
-  swal({title: 'Close button test', showCloseButton: true}).then(
+  swal({ title: 'Close button test', showCloseButton: true }).then(
     function () {},
     function (dismiss) {
       assert.equal(dismiss, 'close')
@@ -189,8 +202,14 @@ QUnit.test('content/title is set (text)', function (assert) {
     text: '<p>Paragraph</p><img /><button></button>'
   })
 
-  assert.equal($('.swal2-title').text(), '<strong>Strong</strong>, <em>Emphasis</em>')
-  assert.equal($('.swal2-content').text(), '<p>Paragraph</p><img /><button></button>')
+  assert.equal(
+    $('.swal2-title').text(),
+    '<strong>Strong</strong>, <em>Emphasis</em>'
+  )
+  assert.equal(
+    $('.swal2-content').text(),
+    '<p>Paragraph</p><img /><button></button>'
+  )
   assert.equal($('strong, em', '.swal2-title').length, 0)
   assert.equal($('p, img, button', '.swal2-content').length, 0)
 })
@@ -210,7 +229,7 @@ QUnit.test('jQuery/js element as html param', function (assert) {
 })
 
 QUnit.test('set and reset defaults', function (assert) {
-  swal.setDefaults({confirmButtonText: 'Next >', showCancelButton: true})
+  swal.setDefaults({ confirmButtonText: 'Next >', showCancelButton: true })
   swal('Modal with changed defaults')
   assert.equal($('.swal2-confirm').text(), 'Next >')
   assert.ok($('.swal2-cancel').is(':visible'))
@@ -227,7 +246,7 @@ QUnit.test('input text', function (assert) {
   const done = assert.async()
 
   const string = 'Live for yourself'
-  swal({input: 'text'}).then(function (result) {
+  swal({ input: 'text' }).then(function (result) {
     assert.equal(result, string)
     done()
   })
@@ -239,7 +258,7 @@ QUnit.test('input text', function (assert) {
 QUnit.test('validation error', function (assert) {
   const done = assert.async()
 
-  swal({input: 'email', animation: false})
+  swal({ input: 'email', animation: false })
   assert.ok($('.swal2-validationerror').is(':hidden'))
   setTimeout(function () {
     const initialModalHeight = $('.swal2-modal').outerHeight()
@@ -263,7 +282,7 @@ QUnit.test('built-in email validation', function (assert) {
   const done = assert.async()
 
   var validEmailAddress = 'team+support+a.b@example.com'
-  swal({input: 'email', animation: false}).then(function (result) {
+  swal({ input: 'email', animation: false }).then(function (result) {
     assert.equal(result, validEmailAddress)
     done()
   })
@@ -276,7 +295,9 @@ QUnit.test('input select', function (assert) {
   const done = assert.async()
 
   const selected = 'dos'
-  swal({ input: 'select', inputOptions: {uno: 1, dos: 2} }).then(function (result) {
+  swal({ input: 'select', inputOptions: { uno: 1, dos: 2 } }).then(function (
+    result
+  ) {
     assert.equal(result, selected)
     done()
   })
@@ -288,7 +309,10 @@ QUnit.test('input select', function (assert) {
 QUnit.test('input checkbox', function (assert) {
   const done = assert.async()
 
-  swal({input: 'checkbox', inputAttributes: {name: 'test-checkbox'}}).then(function (result) {
+  swal({
+    input: 'checkbox',
+    inputAttributes: { name: 'test-checkbox' }
+  }).then(function (result) {
     assert.equal(checkbox.attr('name'), 'test-checkbox')
     assert.equal(result, '1')
     done()
@@ -300,7 +324,7 @@ QUnit.test('input checkbox', function (assert) {
 })
 
 QUnit.test('input range', function (assert) {
-  swal({ input: 'range', inputAttributes: {min: 1, max: 10}, inputValue: 5 })
+  swal({ input: 'range', inputAttributes: { min: 1, max: 10 }, inputValue: 5 })
   const input = $('.swal2-range input')
   assert.equal(input.attr('min'), '1')
   assert.equal(input.attr('max'), '10')
@@ -313,7 +337,7 @@ QUnit.test('queue', function (assert) {
 
   assert.equal(swal.getQueueStep(), null)
 
-  swal.setDefaults({animation: false})
+  swal.setDefaults({ animation: false })
   swal.queue(steps).then(function () {
     swal('All done!')
   })
@@ -353,22 +377,25 @@ QUnit.test('dymanic queue', function (assert) {
           // step to be deleted
           swal.insertQueueStep('Step to be deleted')
           // insert with positioning
-          swal.insertQueueStep({
-            title: 'Step 2',
-            preConfirm: function () {
-              return new Promise(function (resolve) {
-                swal.deleteQueueStep(3)
-                resolve()
-              })
-            }
-          }, 1)
+          swal.insertQueueStep(
+            {
+              title: 'Step 2',
+              preConfirm: function () {
+                return new Promise(function (resolve) {
+                  swal.deleteQueueStep(3)
+                  resolve()
+                })
+              }
+            },
+            1
+          )
           resolve()
         })
       }
     }
   ]
 
-  swal.setDefaults({animation: false})
+  swal.setDefaults({ animation: false })
   swal.queue(steps).then(function () {
     swal('All done!')
   })
@@ -441,8 +468,8 @@ QUnit.test('input radio', function (assert) {
   swal({
     input: 'radio',
     inputOptions: {
-      'one': 'one',
-      'two': 'two'
+      one: 'one',
+      two: 'two'
     }
   })
 
@@ -463,8 +490,8 @@ QUnit.test('disable/enable input', function (assert) {
   swal({
     input: 'radio',
     inputOptions: {
-      'one': 'one',
-      'two': 'two'
+      one: 'one',
+      two: 'two'
     }
   })
 
@@ -546,7 +573,7 @@ QUnit.test('image alt text and custom class', function (assert) {
   assert.equal($('.swal2-image').attr('alt'), 'Custom icon')
 
   swal({
-    text: 'Custom class isn\'t set',
+    text: "Custom class isn't set",
     imageUrl: 'image.png'
   })
   assert.notOk($('.swal2-image').hasClass('image-custom-class'))
@@ -583,23 +610,38 @@ QUnit.test('target', function (assert) {
   const warn = console.warn // Suppress the warnings
   console.warn = () => true // Suppress the warnings
   swal('Default target')
-  assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
+  assert.equal(
+    document.body,
+    document.querySelector('.swal2-container').parentNode
+  )
   swal.close()
 
-  swal({title: 'Custom valid target (string)', target: '#qunit'}) // switch targets
-  assert.equal(document.querySelector('#qunit'), document.querySelector('.swal2-container').parentNode)
+  swal({ title: 'Custom valid target (string)', target: '#qunit' }) // switch targets
+  assert.equal(
+    document.querySelector('#qunit'),
+    document.querySelector('.swal2-container').parentNode
+  )
   swal.close()
 
-  swal({title: 'Custom invalid target (string)', target: 'lorem_ipsum'}) // switch targets
-  assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
+  swal({ title: 'Custom invalid target (string)', target: 'lorem_ipsum' }) // switch targets
+  assert.equal(
+    document.body,
+    document.querySelector('.swal2-container').parentNode
+  )
   swal.close()
 
   swal({ title: 'Custom valid target (element)', target: $('#qunit')[0] })
-  assert.equal($('#qunit')[0], document.querySelector('.swal2-container').parentNode)
+  assert.equal(
+    $('#qunit')[0],
+    document.querySelector('.swal2-container').parentNode
+  )
   swal.close()
 
   swal({ title: 'Custom invalid target (element)', target: true })
-  assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
+  assert.equal(
+    document.body,
+    document.querySelector('.swal2-container').parentNode
+  )
   swal.close()
   console.warn = warn // Suppress the warnings
 })
@@ -665,16 +707,17 @@ QUnit.test('esc key no rejections test', function (assert) {
     useRejections: false
   }).then(
     function (result) {
-      assert.deepEqual(result, {dismiss: 'esc'})
+      assert.deepEqual(result, { dismiss: 'esc' })
       done()
     },
-    function () {
-    }
+    function () {}
   )
 
-  $(document).trigger($.Event('keydown', {
-    key: 'Escape'
-  }))
+  $(document).trigger(
+    $.Event('keydown', {
+      key: 'Escape'
+    })
+  )
 })
 QUnit.test('close button no rejections test', function (assert) {
   const done = assert.async()
@@ -685,7 +728,7 @@ QUnit.test('close button no rejections test', function (assert) {
     useRejections: false
   }).then(
     function (result) {
-      assert.deepEqual(result, {dismiss: 'close'})
+      assert.deepEqual(result, { dismiss: 'close' })
       done()
     },
     function () {}
@@ -704,7 +747,7 @@ QUnit.test('overlay click no rejections test', function (assert) {
     useRejections: false
   }).then(
     function (result) {
-      assert.deepEqual(result, {dismiss: 'overlay'})
+      assert.deepEqual(result, { dismiss: 'overlay' })
       done()
     },
     function () {}
@@ -718,13 +761,15 @@ QUnit.test('cancel button no rejections test', function (assert) {
   swal({
     title: 'Cancel me',
     useRejections: false
-  }).then(
-    function (result) {
-      assert.deepEqual(result, {dismiss: 'cancel'})
-      done()
-    },
-    function () {}
-  ).catch(swal.noop)
+  })
+    .then(
+      function (result) {
+        assert.deepEqual(result, { dismiss: 'cancel' })
+        done()
+      },
+      function () {}
+    )
+    .catch(swal.noop)
 
   swal.clickCancel()
 })
@@ -738,7 +783,7 @@ QUnit.test('timer no rejections test', function (assert) {
     useRejections: false
   }).then(
     function (result) {
-      assert.deepEqual(result, {dismiss: 'timer'})
+      assert.deepEqual(result, { dismiss: 'timer' })
       done()
     },
     function () {}
@@ -749,12 +794,12 @@ QUnit.test('confirm button object format', function (assert) {
   swal({
     input: 'radio',
     inputOptions: {
-      'one': 'one',
-      'two': 'two'
+      one: 'one',
+      two: 'two'
     },
     useRejections: false
   }).then(function (result) {
-    assert.deepEqual(result, {value: 'two'})
+    assert.deepEqual(result, { value: 'two' })
     done()
   })
   $('.swal2-radio input[value="two"]').prop('checked', true)

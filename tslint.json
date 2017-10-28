@@ -1,0 +1,8 @@
+{
+    "defaultSeverity": "error",
+    "extends": ["tslint:recommended"],
+    "rules": {
+      "quotemark": false,
+      "interface-name": false
+    }
+}

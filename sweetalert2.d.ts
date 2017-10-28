@@ -23,7 +23,8 @@ declare module 'sweetalert2' {
     function swal(settings: SweetAlertOptions): Promise<any>;
 
     /**
-     * A namespace inside the default function, containing utility function for controlling the currently-displayed modal.
+     * A namespace inside the default function, containing utility function for controlling the currently-displayed
+     * modal.
      *
      * ex.
      *   import swal from 'sweetalert2';
@@ -155,12 +156,12 @@ declare module 'sweetalert2' {
         /**
          * Provide array of SweetAlert2 parameters to show multiple modals, one modal after another.
          */
-        function queue(steps: (SweetAlertOptions|string)[]): Promise<any>;
+        function queue(steps: Array<SweetAlertOptions | string>): Promise<any>;
 
         /**
          * Get the index of current modal in queue. When there's no active queue, null will be returned.
          */
-        function getQueueStep(): string|null;
+        function getQueueStep(): string | null;
 
         /**
          * Insert a modal to queue, you can specify modal positioning with second parameter.
@@ -205,13 +206,21 @@ declare module 'sweetalert2' {
         function noop(): void;
     }
 
-    export type SweetAlertType = 'success'|'error'|'warning'|'info'|'question'|undefined;
+    export type SweetAlertType = 'success' | 'error' | 'warning' | 'info' | 'question' | undefined;
 
-    export type SweetAlertInputType = 'text'|'email'|'password'|'number'|'tel'|'range'|'textarea'|'select'|'radio'|'checkbox'|'file'|'url'|undefined;
+    export type SweetAlertInputType =
+        | 'text' | 'email' | 'password' | 'number' | 'tel' | 'range' | 'textarea' | 'select' | 'radio' | 'checkbox'
+        | 'file' | 'url' | undefined;
 
-    export type SweetAlertInputOptions = { [inputValue: string]: string };
+    export type SweetAlertDismissalReason = 'cancel' | 'close' | 'overlay' | 'esc' | 'timer';
 
-    export type SweetAlertInputAttributes = { [attribute: string]: string };
+    export interface SweetAlertInputOptions {
+        [inputValue: string]: string;
+    }
+
+    export interface SweetAlertInputAttributes {
+        [attribute: string]: string;
+    }
 
     export interface SweetAlertOptions {
         /**
@@ -243,11 +252,12 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        html?: string|JQuery;
+        html?: string | JQuery;
 
         /**
          * The type of the modal.
-         * SweetAlert2 comes with 5 built-in types which will show a corresponding icon animation: warning, error, success, info and question.
+         * SweetAlert2 comes with 5 built-in types which will show a corresponding icon animation: 'warning', 'error',
+         * 'success', 'info' and 'question'.
          * It can either be put in the array under the key "type" or passed as the third parameter of the function.
          *
          * @default null
@@ -262,7 +272,8 @@ declare module 'sweetalert2' {
         target?: string;
 
         /**
-         * Input field type, can be text, email, password, number, tel, range, textarea, select, radio, checkbox, file and url.
+         * Input field type, can be text, email, password, number, tel, range, textarea, select, radio, checkbox, file
+         * and url.
          *
          * @default null
          */
@@ -273,7 +284,7 @@ declare module 'sweetalert2' {
          *
          * @default '500px'
          */
-        width?: number|string;
+        width?: number | string;
 
         /**
          * Modal window padding.
@@ -294,14 +305,16 @@ declare module 'sweetalert2' {
          *
          * @default 'center'
          */
-        position?: 'top' | 'top-left' | 'top-right' | 'center' | 'center-left' | 'center-right' | 'bottom' | 'bottom-left' | 'bottom-right'
+        position?: | 'top' | 'top-left' | 'top-right'
+            | 'center' | 'center-left' | 'center-right'
+            | 'bottom' | 'bottom-left' | 'bottom-right';
 
         /**
          * Modal window grow direction
          *
          * @default false
          */
-        grow?: 'row' | 'column' | 'fullscreen' | boolean
+        grow?: 'row' | 'column' | 'fullscreen' | false;
 
         /**
          * A custom CSS class for the modal.
@@ -336,7 +349,7 @@ declare module 'sweetalert2' {
          *
          * @default true
          */
-        allowEscapeKey?: boolean
+        allowEscapeKey?: boolean;
 
         /**
          * If set to false, the user can't confirm the modal by pressing the Enter or Space keys,
@@ -537,7 +550,7 @@ declare module 'sweetalert2' {
          * If input parameter is set to "select" or "radio", you can provide options.
          * Object keys will represent options values, object values will represent options text values.
          */
-        inputOptions?: SweetAlertInputOptions|Promise<SweetAlertInputOptions>;
+        inputOptions?: SweetAlertInputOptions | Promise<SweetAlertInputOptions>;
 
         /**
          * Automatically remove whitespaces from both ends of a result string.
@@ -629,8 +642,12 @@ declare module 'sweetalert2' {
         onClose?: (modalElement: HTMLElement) => void;
 
         /**
-         * Determines whether dismissals (outside click, cancel button, close button, esc key) should reject, or resolve with an object of the format `{ dismiss: reason }`.
-         * Set it to `false` to get a cleaner control flow when using `await`, as explained here: https://github.com/limonte/sweetalert2/issues/485
+         * Determines whether dismissals (outside click, cancel button, close button, esc key) should reject, or resolve
+         * with an object of the format `{ dismiss: SweetAlertDismissalReason }`.
+         * Confirm-ed alerts will resolve too with an object of format `{ value: any }`.
+         *
+         * Set it to `false` to get a cleaner control flow when using `await`:
+         * {@link https://github.com/limonte/sweetalert2/issues/485}
          *
          * @default true
          */
@@ -644,6 +661,8 @@ declare module 'sweetalert2' {
  * These interfaces aren't provided by SweetAlert2, but its definitions use them.
  * They will be merged with 'true' definitions.
  */
+
+// tslint:disable:no-empty-interface
 
 interface JQuery {
 }

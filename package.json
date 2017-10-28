@@ -22,6 +22,8 @@
     "gulp-sass": "latest",
     "gulp-sass-lint": "latest",
     "gulp-standard": "^8.0.0",
+    "gulp-tslint": "^8.1.2",
+    "gulp-typescript": "^3.2.3",
     "gulp-uglify": "latest",
     "rollup": "latest",
     "rollup-plugin-babel": "^3.0.2",

@@ -5,6 +5,8 @@ const rename = require('gulp-rename')
 const autoprefix = require('gulp-autoprefixer')
 const standard = require('gulp-standard')
 const sassLint = require('gulp-sass-lint')
+const ts = require('gulp-typescript');
+const tslint = require('gulp-tslint');
 
 const pack = require('./package.json')
 const utils = require('./config/utils.js')
@@ -57,7 +59,12 @@ gulp.task('sass', ['sass-lint'], () => {
     .pipe(gulp.dest('assets'))
 })
 
-gulp.task('lint', ['js-lint', 'sass-lint'])
+gulp.task('ts', ['ts-lint'], () => {
+  return gulp.src('sweetalert2.d.ts')
+    .pipe(ts())
+});
+
+gulp.task('lint', ['js-lint', 'sass-lint', 'ts-lint'])
 
 gulp.task('js-lint', () => {
   return gulp.src(['src/**/*.js', 'test/*.js'])
@@ -74,7 +81,13 @@ gulp.task('sass-lint', () => {
     .pipe(sassLint.failOnError())
 })
 
-gulp.task('default', ['compress', 'sass'])
+gulp.task('ts-lint', () => {
+  return gulp.src('sweetalert2.d.ts')
+    .pipe(tslint({ formatter: 'verbose' }))
+    .pipe(tslint.report())
+});
+
+gulp.task('default', ['compress', 'sass', 'ts'])
 
 gulp.task('watch', () => {
   gulp.watch([

@@ -26,31 +26,31 @@ async function run (testCase) {
       break
     case 'input-type-text':
       await page.click('#input-text button')
-      await page.type('Hola!')
+      await page.type('.swal2-input', 'Hola!')
       break
     case 'input-type-email-invalid':
       await page.click('#input-email button')
-      await page.type('invalid email')
+      await page.type('.swal2-input', 'invalid email')
       await page.click('.swal2-confirm')
       break
     case 'input-type-email-valid':
       await page.click('#input-email button')
-      await page.type('email@example.com')
+      await page.type('.swal2-input', 'email@example.com')
       await page.click('.swal2-confirm')
       break
     case 'input-type-url-invalid':
       await page.click('#input-url button')
-      await page.type('invalid URL')
+      await page.type('.swal2-input', 'invalid URL')
       await page.click('.swal2-confirm')
       break
     case 'input-type-url-valid':
       await page.click('#input-url button')
-      await page.type('https://www.youtube.com/watch?v=PWgvGjAhvIw')
+      await page.type('.swal2-input', 'https://www.youtube.com/watch?v=PWgvGjAhvIw')
       await page.click('.swal2-confirm')
       break
     case 'input-type-password':
       await page.click('#input-password button')
-      await page.type('passw0rd')
+      await page.type('.swal2-input', 'passw0rd')
       break
     case 'input-type-textarea':
       await page.click('#input-textarea button')
@@ -64,8 +64,8 @@ async function run (testCase) {
       break
     case 'input-type-select-valid':
       await page.click('#input-select button')
-      await page.press('ArrowDown')
-      await page.press('ArrowDown')
+      await page.keyboard.press('ArrowDown')
+      await page.keyboard.press('ArrowDown')
       await page.click('.swal2-confirm')
       break
     case 'input-type-radio':
@@ -80,7 +80,7 @@ async function run (testCase) {
     case 'input-type-radio-valid':
       await page.click('#input-radio button')
       await page.waitFor(2000)
-      await page.press('ArrowRight')
+      await page.keyboard.press('ArrowRight')
       await page.click('.swal2-confirm')
       break
     case 'input-type-checkbox':
@@ -88,7 +88,7 @@ async function run (testCase) {
       break
     case 'input-type-checkbox-invalid':
       await page.click('#input-checkbox button')
-      await page.press(' ')
+      await page.keyboard.press(' ')
       await page.click('.swal2-confirm')
       break
     case 'input-type-checkbox-valid':
@@ -100,13 +100,13 @@ async function run (testCase) {
       break
     case 'ajax-request-reject':
       await page.click('#ajax-request button')
-      await page.type('taken@example.com')
+      await page.type('.swal2-input', 'taken@example.com')
       await page.click('.swal2-confirm')
       await page.waitFor(2100)
       break
     case 'ajax-request-success':
       await page.click('#ajax-request button')
-      await page.type('email@example.com')
+      await page.type('.swal2-input', 'email@example.com')
       await page.click('.swal2-confirm')
       await page.waitFor(2000)
       break
@@ -124,11 +124,11 @@ async function run (testCase) {
       break
     case 'chaining-modals-success':
       await page.click('#chaining-modals button')
-      await page.type('1')
+      await page.type('.swal2-input', '1')
       await page.click('.swal2-confirm')
-      await page.type('2')
+      await page.type('.swal2-input', '2')
       await page.click('.swal2-confirm')
-      await page.type('3')
+      await page.type('.swal2-input', '3')
       await page.click('.swal2-confirm')
       break
   }

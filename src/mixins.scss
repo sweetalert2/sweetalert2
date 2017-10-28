@@ -1,0 +1,15 @@
+// https://stackoverflow.com/a/30250161/1331425
+@mixin not($ignor-list...) {
+  @if (length($ignor-list) == 1) {
+    $ignor-list: nth($ignor-list, 1);
+  }
+
+  $not-output: '';
+  @each $not in $ignor-list {
+    $not-output: $not-output + ':not(#{$not})';
+  }
+
+  &#{$not-output} {
+    @content;
+  }
+}

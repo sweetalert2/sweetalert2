@@ -6,10 +6,12 @@ const puppeteer = require('puppeteer')
 let code = 0
 
 async function run (testCase) {
-  const browser = await puppeteer.launch({
-    // debug mode, uncomment this to see the browser
-    // headless: false
-  })
+  const browser = await puppeteer.launch(
+    {
+      // debug mode, uncomment this to see the browser
+      // headless: false
+    }
+  )
   const page = await browser.newPage()
   const path = `test/puppeteer/screens/`
   await page.goto('https://limonte.github.io/sweetalert2/')
@@ -45,7 +47,10 @@ async function run (testCase) {
       break
     case 'input-type-url-valid':
       await page.click('#input-url button')
-      await page.type('.swal2-input', 'https://www.youtube.com/watch?v=PWgvGjAhvIw')
+      await page.type(
+        '.swal2-input',
+        'https://www.youtube.com/watch?v=PWgvGjAhvIw'
+      )
       await page.click('.swal2-confirm')
       break
     case 'input-type-password':
@@ -138,12 +143,12 @@ async function run (testCase) {
   await page.waitFor(1200)
 
   const swalContainerHandle = await page.$('.swal2-container')
-  await page.evaluate((swalContainer) => {
+  await page.evaluate(swalContainer => {
     swalContainer.style.padding = 0
   }, swalContainerHandle)
 
   const swalModalHandle = await page.$('.swal2-modal')
-  const swalModalSize = await page.evaluate((swalModal) => {
+  const swalModalSize = await page.evaluate(swalModal => {
     swalModal.style.borderRadius = 0
     return {
       width: swalModal.clientWidth,
@@ -164,24 +169,29 @@ async function run (testCase) {
     console.log(clc.green('✓') + ` ${testCase}`)
   } else {
     await new Promise(resolve => {
-      looksSame(`${path}${screenName}.png`, `${path}${screenName}-test.png`, (error, equal) => {
-        error && console.log(error)
-        console.log(
-          (equal ? clc.green('✓') : clc.red('✖')) + ` ${testCase}`
-        )
-        if (!equal) {
-          looksSame.createDiff({
-            reference: `${path}${screenName}.png`,
-            current: `${path}${screenName}-test.png`,
-            diff: `${path}${screenName}-diff.png`,
-            highlightColor: '#ff0000' // color to highlight the differences
-          }, (error) => {
-            error && console.log(error)
-          })
-          code = 1
+      looksSame(
+        `${path}${screenName}.png`,
+        `${path}${screenName}-test.png`,
+        (error, equal) => {
+          error && console.log(error)
+          console.log((equal ? clc.green('✓') : clc.red('✖')) + ` ${testCase}`)
+          if (!equal) {
+            looksSame.createDiff(
+              {
+                reference: `${path}${screenName}.png`,
+                current: `${path}${screenName}-test.png`,
+                diff: `${path}${screenName}-diff.png`,
+                highlightColor: '#ff0000' // color to highlight the differences
+              },
+              error => {
+                error && console.log(error)
+              }
+            )
+            code = 1
+          }
+          resolve()
         }
-        resolve()
-      })
+      )
     })
   }
 }

@@ -1,6 +1,6 @@
 export const swalPrefix = 'swal2-'
 
-export const prefix = (items) => {
+export const prefix = items => {
   const result = {}
   for (const i in items) {
     result[items[i]] = swalPrefix + items[i]

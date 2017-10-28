@@ -12,7 +12,7 @@ export const states = {
 /*
  * Add modal + overlay to DOM
  */
-export const init = (params) => {
+export const init = params => {
   // Clean up the old modal if it exists
   const c = getContainer()
   if (c) {
@@ -28,7 +28,9 @@ export const init = (params) => {
   container.className = swalClasses.container
   container.innerHTML = sweetHTML
 
-  let targetElement = typeof params.target === 'string' ? document.querySelector(params.target) : params.target
+  let targetElement = typeof params.target === 'string'
+    ? document.querySelector(params.target)
+    : params.target
   targetElement.appendChild(container)
 
   const modal = getModal()
@@ -116,16 +118,21 @@ const sweetHTML = `
  </div>
 `.replace(/(^|\n)\s*/g, '')
 
-export const getContainer = () => document.body.querySelector('.' + swalClasses.container)
+export const getContainer = () =>
+  document.body.querySelector('.' + swalClasses.container)
 
-export const getModal = () => getContainer() ? getContainer().querySelector('.' + swalClasses.modal) : null
+export const getModal = () =>
+  (getContainer()
+    ? getContainer().querySelector('.' + swalClasses.modal)
+    : null)
 
 export const getIcons = () => {
   const modal = getModal()
   return modal.querySelectorAll('.' + swalClasses.icon)
 }
 
-export const elementByClass = (className) => getContainer() ? getContainer().querySelector('.' + className) : null
+export const elementByClass = className =>
+  (getContainer() ? getContainer().querySelector('.' + className) : null)
 
 export const getTitle = () => elementByClass(swalClasses.title)
 
@@ -135,37 +142,45 @@ export const getImage = () => elementByClass(swalClasses.image)
 
 export const getProgressSteps = () => elementByClass(swalClasses.progresssteps)
 
-export const getValidationError = () => elementByClass(swalClasses.validationerror)
+export const getValidationError = () =>
+  elementByClass(swalClasses.validationerror)
 
 export const getConfirmButton = () => elementByClass(swalClasses.confirm)
 
 export const getCancelButton = () => elementByClass(swalClasses.cancel)
 
-export const getButtonsWrapper = () => elementByClass(swalClasses.buttonswrapper)
+export const getButtonsWrapper = () =>
+  elementByClass(swalClasses.buttonswrapper)
 
 export const getCloseButton = () => elementByClass(swalClasses.close)
 
 export const getFocusableElements = () => {
   const focusableElementsWithTabindex = Array.from(
-    getModal().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')
+    getModal().querySelectorAll(
+      '[tabindex]:not([tabindex="-1"]):not([tabindex="0"])'
+    )
   )
-  // sort according to tabindex
-  .sort((a, b) => {
-    a = parseInt(a.getAttribute('tabindex'))
-    b = parseInt(b.getAttribute('tabindex'))
-    if (a > b) {
-      return 1
-    } else if (a < b) {
-      return -1
-    }
-    return 0
-  })
+    // sort according to tabindex
+    .sort((a, b) => {
+      a = parseInt(a.getAttribute('tabindex'))
+      b = parseInt(b.getAttribute('tabindex'))
+      if (a > b) {
+        return 1
+      } else if (a < b) {
+        return -1
+      }
+      return 0
+    })
 
   const otherFocusableElements = Array.prototype.slice.call(
-    getModal().querySelectorAll('button, input:not([type=hidden]), textarea, select, a, [tabindex="0"]')
+    getModal().querySelectorAll(
+      'button, input:not([type=hidden]), textarea, select, a, [tabindex="0"]'
+    )
   )
 
-  return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements))
+  return uniqueArray(
+    focusableElementsWithTabindex.concat(otherFocusableElements)
+  )
 }
 
 export const hasClass = (elem, className) => {
@@ -175,7 +190,7 @@ export const hasClass = (elem, className) => {
   return false
 }
 
-export const focusInput = (input) => {
+export const focusInput = input => {
   input.focus()
 
   // place cursor at end of text in text input
@@ -192,7 +207,7 @@ export const addClass = (elem, className) => {
     return
   }
   const classes = className.split(/\s+/).filter(Boolean)
-  classes.forEach((className) => {
+  classes.forEach(className => {
     elem.classList.add(className)
   })
 }
@@ -202,7 +217,7 @@ export const removeClass = (elem, className) => {
     return
   }
   const classes = className.split(/\s+/).filter(Boolean)
-  classes.forEach((className) => {
+  classes.forEach(className => {
     elem.classList.remove(className)
   })
 }
@@ -223,19 +238,20 @@ export const show = (elem, display) => {
   elem.style.display = display
 }
 
-export const hide = (elem) => {
+export const hide = elem => {
   elem.style.opacity = ''
   elem.style.display = 'none'
 }
 
-export const empty = (elem) => {
+export const empty = elem => {
   while (elem.firstChild) {
     elem.removeChild(elem.firstChild)
   }
 }
 
 // borrowed from jqeury $(elem).is(':visible') implementation
-export const isVisible = (elem) => elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length
+export const isVisible = elem =>
+  elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length
 
 export const removeStyleProperty = (elem, property) => {
   if (elem.style.removeProperty) {
@@ -248,13 +264,12 @@ export const removeStyleProperty = (elem, property) => {
 export const animationEndEvent = (() => {
   const testEl = document.createElement('div')
   const transEndEventNames = {
-    'WebkitAnimation': 'webkitAnimationEnd',
-    'OAnimation': 'oAnimationEnd oanimationend',
-    'animation': 'animationend'
+    WebkitAnimation: 'webkitAnimationEnd',
+    OAnimation: 'oAnimationEnd oanimationend',
+    animation: 'animationend'
   }
   for (const i in transEndEventNames) {
-    if (transEndEventNames.hasOwnProperty(i) &&
-      testEl.style[i] !== undefined) {
+    if (transEndEventNames.hasOwnProperty(i) && testEl.style[i] !== undefined) {
       return transEndEventNames[i]
     }
   }
@@ -269,7 +284,8 @@ export const resetPrevState = () => {
     let x = window.scrollX
     let y = window.scrollY
     states.previousActiveElement.focus()
-    if (x && y) { // IE has no scrollX/scrollY support
+    if (x && y) {
+      // IE has no scrollX/scrollY support
       window.scrollTo(x, y)
     }
   }

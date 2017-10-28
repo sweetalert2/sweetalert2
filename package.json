@@ -28,6 +28,8 @@
     "rollup-plugin-collect-sass": "^1.0.9",
     "standard": "^8.0.0",
     "testem": "latest",
+    "tslint": "^5.8.0",
+    "typescript": "^2.5.3",
     "uglify-js": "latest",
     "yargs": "latest"
   },
@@ -63,6 +65,8 @@
   },
   "scripts": {
     "test": "testem ci",
+    "lint-dts": "tslint sweetalert2.d.ts --format verbose",
+    "check-dts": "tsc sweetalert2.d.ts && npm run lint-dts",
     "assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --assume-unchanged",
     "no-assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --no-assume-unchanged"
   },

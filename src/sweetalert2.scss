@@ -2,6 +2,7 @@
 // github.com/limonte/sweetalert2
 
 @import 'colors';
+@import 'mixins';
 
 body {
   &.swal2-shown {
@@ -116,6 +117,20 @@ body {
       flex: 1;
       align-content: center;
       justify-content: center;
+    }
+  }
+
+  @include not(
+    '.swal2-top',
+    '.swal2-top-left',
+    '.swal2-top-right',
+    '.swal2-center-left',
+    '.swal2-center-right',
+    '.swal2-bottom',
+    '.swal2-bottom-left',
+    '.swal2-bottom-right') {
+    & > .swal2-modal {
+      margin: auto;
     }
   }
 

@@ -212,6 +212,8 @@ declare module 'sweetalert2' {
         | 'text' | 'email' | 'password' | 'number' | 'tel' | 'range' | 'textarea' | 'select' | 'radio' | 'checkbox'
         | 'file' | 'url' | undefined;
 
+    export type SweetAlertDismissalReason = 'cancel' | 'close' | 'overlay' | 'esc' | 'timer';
+
     export interface SweetAlertInputOptions {
         [inputValue: string]: string;
     }
@@ -641,8 +643,8 @@ declare module 'sweetalert2' {
 
         /**
          * Determines whether dismissals (outside click, cancel button, close button, esc key) should reject, or resolve
-         * with an object of the format `{ dismiss: reason }`.
-         * Confirm-ed alerts will resolve too with an object of format `{ value: alertResult }`.
+         * with an object of the format `{ dismiss: SweetAlertDismissalReason }`.
+         * Confirm-ed alerts will resolve too with an object of format `{ value: any }`.
          *
          * Set it to `false` to get a cleaner control flow when using `await`:
          * {@link https://github.com/limonte/sweetalert2/issues/485}

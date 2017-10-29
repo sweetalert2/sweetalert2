@@ -21,7 +21,7 @@ SweetAlert2 is already more popular than original SweetAlert:
 
 | SweetAlert | SweetAlert2 |
 |------------|-------------|
-| ![](https://img.shields.io/npm/dm/sweetalert.svg) | ![](https://img.shields.io/npm/dm/sweetalert2.svg) |
+| [![](https://img.shields.io/npm/dm/sweetalert.svg)](https://npm-stat.com/charts.html?package=sweetalert) | [![](https://img.shields.io/npm/dm/sweetalert2.svg)](https://npm-stat.com/charts.html?package=sweetalert2) |
 
 You'll get much better support and developer experience (DX) by using SweetAlert2.
 

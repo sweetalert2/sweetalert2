@@ -24,6 +24,9 @@ async function run (testCase) {
     case 'modal-type-error':
       await page.click('.error button')
       break
+    case 'long-text':
+      await page.click('#long-text button')
+      break
     case 'input-type-text':
       await page.click('#input-text button')
       await page.type('.swal2-input', 'Hola!')
@@ -190,6 +193,8 @@ async function runAll (testCase) {
   await run('modal-type-success')
   await run('modal-type-error')
   await run('modal-type-question')
+
+  await run('long-text')
 
   await run('input-type-text')
   await run('input-type-email-invalid')

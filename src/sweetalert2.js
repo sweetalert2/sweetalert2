@@ -323,8 +323,10 @@ const openPopup = (animation, onBeforeOpen, onComplete) => {
   dom.addClass(document.documentElement, swalClasses.shown)
   dom.addClass(document.body, swalClasses.shown)
   dom.addClass(container, swalClasses.shown)
-  fixScrollbar()
-  iOSfix()
+  if (dom.isModal()) {
+    fixScrollbar()
+    iOSfix()
+  }
   dom.states.previousActiveElement = document.activeElement
   if (onComplete !== null && typeof onComplete === 'function') {
     setTimeout(function () {
@@ -624,7 +626,6 @@ const sweetAlert = (...args) => {
     if (params.toast) {
       // Closing popup by overlay click
       popup.onclick = (e) => {
-        console.log(e.target)
         if (e.target !== popup || (params.showConfirmButton || params.showCancelButton)) {
           return
         }
@@ -1134,7 +1135,9 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
   dom.addClass(popup, swalClasses.hide)
   clearTimeout(popup.timeout)
 
-  dom.resetPrevState()
+  if (!dom.isToast()) {
+    dom.resetPrevState()
+  }
 
   const removePopupAndResetState = () => {
     if (container.parentNode) {
@@ -1144,8 +1147,10 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
     dom.removeClass(document.body, swalClasses.shown)
     dom.removeClass(document.body, swalClasses['has-input'])
     dom.removeClass(document.body, swalClasses['toast-shown'])
-    undoScrollbar()
-    undoIOSfix()
+    if (dom.isModal()) {
+      undoScrollbar()
+      undoIOSfix()
+    }
   }
 
   // If animation is supported, animate

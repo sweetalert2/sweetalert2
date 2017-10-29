@@ -172,6 +172,14 @@ export const getFocusableElements = () => {
   return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements))
 }
 
+export const isModal = () => {
+  return !document.body.classList.contains(swalClasses['toast-shown'])
+}
+
+export const isToast = () => {
+  return document.body.classList.contains(swalClasses['toast-shown'])
+}
+
 export const hasClass = (elem, className) => {
   if (elem.classList) {
     return elem.classList.contains(className)

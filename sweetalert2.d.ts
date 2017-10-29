@@ -271,7 +271,7 @@ declare module 'sweetalert2' {
          *
          * @default false
          */
-        toast?: boolean
+        toast?: boolean;
 
         /**
          * The container element for adding modal into (query selector only).

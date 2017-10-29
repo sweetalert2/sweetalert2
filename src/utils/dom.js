@@ -17,6 +17,7 @@ export const init = (params) => {
   const c = getContainer()
   if (c) {
     c.parentNode.removeChild(c)
+    removeClass(document.body, swalClasses['no-backdrop'])
   }
 
   if (typeof document === 'undefined') {

@@ -66,7 +66,7 @@ const setParameters = (params) => {
   }
 
   if (!params.backdrop) {
-    dom.addClass(container, swalClasses['no-backdrop'])
+    dom.addClass(document.body, swalClasses['no-backdrop'])
   }
 
   // Content
@@ -1113,7 +1113,7 @@ sweetAlert.close = sweetAlert.closeModal = (onComplete) => {
     }
     dom.removeClass(document.documentElement, swalClasses.shown)
     dom.removeClass(document.body, swalClasses.shown)
-    dom.removeClass(container, swalClasses['no-backdrop'])
+    dom.removeClass(document.body, swalClasses['no-backdrop'])
 
     undoScrollbar()
     undoIOSfix()

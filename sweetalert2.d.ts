@@ -268,7 +268,7 @@ declare module 'sweetalert2' {
          * Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop
          * @default true
          */
-        backdrop?: boolean
+        backdrop?: boolean;
 
         /**
          * The container element for adding modal into (query selector only).

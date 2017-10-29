@@ -13,7 +13,6 @@
     "babel-plugin-external-helpers": "latest",
     "babel-plugin-transform-object-assign": "latest",
     "babel-preset-es2015": "latest",
-    "cli-color": "latest",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "^3.9.0",
@@ -32,8 +31,7 @@
     "testem": "latest",
     "tslint": "^5.8.0",
     "typescript": "^2.5.3",
-    "uglify-js": "latest",
-    "yargs": "latest"
+    "uglify-js": "latest"
   },
   "standard": {
     "ignore": [

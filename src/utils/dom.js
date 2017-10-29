@@ -17,6 +17,8 @@ export const init = (params) => {
   const c = getContainer()
   if (c) {
     c.parentNode.removeChild(c)
+    removeClass(document.body, swalClasses['has-input'])
+    removeClass(document.body, swalClasses['toast-shown'])
   }
 
   if (typeof document === 'undefined') {

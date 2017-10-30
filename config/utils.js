@@ -4,7 +4,7 @@ const pack = require('../package.json')
 const banner = require('./banner.js')
 const fs = require('fs')
 const uglify = require('uglify-js')
-const scss = require('rollup-plugin-collect-sass')
+const css = require('rollup-plugin-css-only')
 
 const toUpper = (_, c) => {
   return c ? c.toUpperCase() : ''
@@ -29,7 +29,7 @@ const packageRollup = (options) => {
   return rollup({
     input: options.entry || 'src/sweetalert2.js',
     plugins: [
-      scss(),
+      css({ output: false }),
       babel({
         exclude: 'node_modules/**'
       })

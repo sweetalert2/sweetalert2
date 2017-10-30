@@ -26,7 +26,7 @@
     "gulp-uglify": "latest",
     "rollup": "latest",
     "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-collect-sass": "^1.0.9",
+    "rollup-plugin-css-only": "^0.2.0",
     "standard": "^8.0.0",
     "testem": "latest",
     "tslint": "^5.8.0",

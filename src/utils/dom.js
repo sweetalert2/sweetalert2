@@ -292,20 +292,6 @@ export const measureScrollbar = () => {
   return scrollbarWidth
 }
 
-// JavaScript Debounce Function
-// Simplified version of https://davidwalsh.name/javascript-debounce-function
-export const debounce = (func, wait) => {
-  let timeout
-  return () => {
-    const later = () => {
-      timeout = null
-      func()
-    }
-    clearTimeout(timeout)
-    timeout = setTimeout(later, wait)
-  }
-}
-
 /**
  * Inject a string of CSS into the page header
  *

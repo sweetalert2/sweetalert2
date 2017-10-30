@@ -234,7 +234,7 @@ export const empty = (elem) => {
   }
 }
 
-// borrowed from jqeury $(elem).is(':visible') implementation
+// borrowed from jquery $(elem).is(':visible') implementation
 export const isVisible = (elem) => elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length
 
 export const removeStyleProperty = (elem, property) => {
@@ -278,7 +278,7 @@ export const resetPrevState = () => {
 // Measure width of scrollbar
 // https://github.com/twbs/bootstrap/blob/master/js/modal.js#L279-L286
 export const measureScrollbar = () => {
-  var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints
+  const supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints
   if (supportsTouch) {
     return 0
   }
@@ -293,7 +293,7 @@ export const measureScrollbar = () => {
 }
 
 // JavaScript Debounce Function
-// Simplivied version of https://davidwalsh.name/javascript-debounce-function
+// Simplified version of https://davidwalsh.name/javascript-debounce-function
 export const debounce = (func, wait) => {
   let timeout
   return () => {
@@ -303,5 +303,23 @@ export const debounce = (func, wait) => {
     }
     clearTimeout(timeout)
     timeout = setTimeout(later, wait)
+  }
+}
+
+/**
+ * Inject a string of CSS into the page header
+ *
+ * @param {String} css
+ */
+export const injectCSS = (css = '') => {
+  let head = document.head || document.getElementsByTagName('head')[0]
+  let style = document.createElement('style')
+  style.type = 'text/css'
+  head.appendChild(style)
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css
+  } else {
+    style.appendChild(document.createTextNode(css))
   }
 }

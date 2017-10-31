@@ -140,6 +140,9 @@ body.swal2-iosfix {
               justify-content: center; }
   .swal2-container:not(.swal2-top):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-left):not(.swal2-bottom-right) > .swal2-modal {
     margin: auto; }
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .swal2-container .swal2-modal {
+      margin: 0 !important; } }
   .swal2-container.swal2-fade {
     -webkit-transition: background-color .1s;
     transition: background-color .1s; }

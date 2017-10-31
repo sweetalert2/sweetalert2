@@ -134,6 +134,12 @@ body {
     }
   }
 
+  @include ie {
+    .swal2-modal {
+      margin: 0 !important;
+    }
+  }
+
   &.swal2-fade {
     transition: background-color .1s;
   }

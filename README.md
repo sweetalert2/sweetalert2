@@ -163,6 +163,7 @@ Configuration
 | `html`                   | `null`                | A HTML description for the modal. If `text` and `html` parameters are provided in the same time, "text" will be used. |
 | `type`                   | `null`                | The type of the modal. SweetAlert2 comes with [5 built-in types](#modal-types) which will show a corresponding icon animation: `warning`, `error`, `success`, `info` and `question`. It can either be put in the array under the key `type` or passed as the third parameter of the function. |
 | `backdrop`               | `true`                | Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop
+| `toast`                  | `false`               | Whether or not an alert should be treated as a toast notification. This option is normally coupled with the `position` parameter and a timer. Toasts are NEVER autofocused.
 | `target`                 | `'body'`              | The container element for adding modal into. |
 | `input`                  | `null`                | Input field type, can be `'text'`, `'email'`, `'password'`, `'number'`, `'tel'`, `'range'`, `'textarea'`, `'select'`, `'radio'`, `'checkbox'`, `'file'` and `'url'`. |
 | `width`                  | `'500px'`             | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. |

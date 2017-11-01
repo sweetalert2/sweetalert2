@@ -27,8 +27,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 
   <!-- This is what you need -->
-  <script src="./dist/sweetalert2.js"></script>
-  <link rel="stylesheet" href="./dist/sweetalert2.css">
+  <script src="./dist/sweetalert2.all.min.js"></script>
   <!--.......................-->
 </head>
 
@@ -477,6 +476,11 @@ swal.queue([{
         <td><b>backdrop</b></td>
         <td><i>true</i></td>
         <td>Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop</td>
+      </tr>
+      <tr>
+        <td><b>toast</b></td>
+        <td><i>false</i></td>
+        <td> Whether or not an alert should be treated as a toast notification. This option is normally coupled with the <strong>position</strong> parameter and a timer. Toasts are NEVER autofocused.</td>
       </tr>
       <tr>
         <td><b>target</b></td>

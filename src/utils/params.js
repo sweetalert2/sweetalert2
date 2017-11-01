@@ -4,6 +4,7 @@ export default {
   text: '',
   html: '',
   type: null,
+  toast: false,
   customClass: '',
   target: 'body',
   backdrop: true,

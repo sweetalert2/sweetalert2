@@ -265,10 +265,20 @@ declare module 'sweetalert2' {
         type?: SweetAlertType;
 
         /**
-         * Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop
+         * Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop.
+         *
          * @default true
          */
         backdrop?: boolean;
+
+        /**
+         * Whether or not an alert should be treated as a toast notification.
+         * This option is normally coupled with the `position` parameter and a timer.
+         * Toasts are NEVER autofocused.
+         *
+         * @default false
+         */
+        toast?: boolean;
 
         /**
          * The container element for adding modal into (query selector only).

@@ -13,11 +13,13 @@ export const states = {
  * Add modal + overlay to DOM
  */
 export const init = (params) => {
-  // Clean up the old modal if it exists
+  // Clean up the old popup if it exists
   const c = getContainer()
   if (c) {
     c.parentNode.removeChild(c)
     removeClass(document.body, swalClasses['no-backdrop'])
+    removeClass(document.body, swalClasses['has-input'])
+    removeClass(document.body, swalClasses['toast-shown'])
   }
 
   if (typeof document === 'undefined') {
@@ -32,14 +34,14 @@ export const init = (params) => {
   let targetElement = typeof params.target === 'string' ? document.querySelector(params.target) : params.target
   targetElement.appendChild(container)
 
-  const modal = getModal()
-  const input = getChildByClass(modal, swalClasses.input)
-  const file = getChildByClass(modal, swalClasses.file)
-  const range = modal.querySelector(`.${swalClasses.range} input`)
-  const rangeOutput = modal.querySelector(`.${swalClasses.range} output`)
-  const select = getChildByClass(modal, swalClasses.select)
-  const checkbox = modal.querySelector(`.${swalClasses.checkbox} input`)
-  const textarea = getChildByClass(modal, swalClasses.textarea)
+  const popup = getPopup()
+  const input = getChildByClass(popup, swalClasses.input)
+  const file = getChildByClass(popup, swalClasses.file)
+  const range = popup.querySelector(`.${swalClasses.range} input`)
+  const rangeOutput = popup.querySelector(`.${swalClasses.range} output`)
+  const select = getChildByClass(popup, swalClasses.select)
+  const checkbox = popup.querySelector(`.${swalClasses.checkbox} input`)
+  const textarea = getChildByClass(popup, swalClasses.textarea)
 
   input.oninput = () => {
     sweetAlert.resetValidationError()
@@ -71,7 +73,7 @@ export const init = (params) => {
     sweetAlert.resetValidationError()
   }
 
-  return modal
+  return popup
 }
 
 /*
@@ -79,7 +81,7 @@ export const init = (params) => {
  */
 
 const sweetHTML = `
- <div role="dialog" aria-modal="true" aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses.content}" class="${swalClasses.modal}" tabindex="-1">
+ <div role="dialog" aria-modal="true" aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses.content}" class="${swalClasses.popup}" tabindex="-1">
    <ul class="${swalClasses.progresssteps}"></ul>
    <div class="${swalClasses.icon} ${iconTypes.error}">
      <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>
@@ -94,8 +96,10 @@ const sweetHTML = `
      <div class="swal2-success-circular-line-right"></div>
    </div>
    <img class="${swalClasses.image}" />
+   <div class="${swalClasses.contentwrapper}">
    <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
    <div id="${swalClasses.content}" class="${swalClasses.content}"></div>
+   </div>
    <input class="${swalClasses.input}" />
    <input type="file" class="${swalClasses.file}" />
    <div class="${swalClasses.range}">
@@ -119,11 +123,11 @@ const sweetHTML = `
 
 export const getContainer = () => document.body.querySelector('.' + swalClasses.container)
 
-export const getModal = () => getContainer() ? getContainer().querySelector('.' + swalClasses.modal) : null
+export const getPopup = () => getContainer() ? getContainer().querySelector('.' + swalClasses.popup) : null
 
 export const getIcons = () => {
-  const modal = getModal()
-  return modal.querySelectorAll('.' + swalClasses.icon)
+  const popup = getPopup()
+  return popup.querySelectorAll('.' + swalClasses.icon)
 }
 
 export const elementByClass = (className) => getContainer() ? getContainer().querySelector('.' + className) : null
@@ -148,7 +152,7 @@ export const getCloseButton = () => elementByClass(swalClasses.close)
 
 export const getFocusableElements = () => {
   const focusableElementsWithTabindex = Array.from(
-    getModal().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')
+    getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')
   )
   // sort according to tabindex
   .sort((a, b) => {
@@ -163,10 +167,18 @@ export const getFocusableElements = () => {
   })
 
   const otherFocusableElements = Array.prototype.slice.call(
-    getModal().querySelectorAll('button, input:not([type=hidden]), textarea, select, a, [tabindex="0"]')
+    getPopup().querySelectorAll('button, input:not([type=hidden]), textarea, select, a, [tabindex="0"]')
   )
 
   return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements))
+}
+
+export const isModal = () => {
+  return !document.body.classList.contains(swalClasses['toast-shown'])
+}
+
+export const isToast = () => {
+  return document.body.classList.contains(swalClasses['toast-shown'])
 }
 
 export const hasClass = (elem, className) => {
@@ -218,7 +230,7 @@ export const getChildByClass = (elem, className) => {
 
 export const show = (elem, display) => {
   if (!display) {
-    display = 'block'
+    display = (elem === getPopup() || elem === getButtonsWrapper()) ? 'flex' : 'block'
   }
   elem.style.opacity = ''
   elem.style.display = display
@@ -235,7 +247,7 @@ export const empty = (elem) => {
   }
 }
 
-// borrowed from jqeury $(elem).is(':visible') implementation
+// borrowed from jquery $(elem).is(':visible') implementation
 export const isVisible = (elem) => elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length
 
 export const removeStyleProperty = (elem, property) => {
@@ -279,7 +291,7 @@ export const resetPrevState = () => {
 // Measure width of scrollbar
 // https://github.com/twbs/bootstrap/blob/master/js/modal.js#L279-L286
 export const measureScrollbar = () => {
-  var supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints
+  const supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints
   if (supportsTouch) {
     return 0
   }
@@ -293,16 +305,20 @@ export const measureScrollbar = () => {
   return scrollbarWidth
 }
 
-// JavaScript Debounce Function
-// Simplivied version of https://davidwalsh.name/javascript-debounce-function
-export const debounce = (func, wait) => {
-  let timeout
-  return () => {
-    const later = () => {
-      timeout = null
-      func()
-    }
-    clearTimeout(timeout)
-    timeout = setTimeout(later, wait)
+/**
+ * Inject a string of CSS into the page header
+ *
+ * @param {String} css
+ */
+export const injectCSS = (css = '') => {
+  let head = document.head || document.getElementsByTagName('head')[0]
+  let style = document.createElement('style')
+  style.type = 'text/css'
+  head.appendChild(style)
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css
+  } else {
+    style.appendChild(document.createTextNode(css))
   }
 }

@@ -4,7 +4,7 @@
   "repository": "limonte/sweetalert2",
   "homepage": "https://limonte.github.io/sweetalert2/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
-  "main": "dist/sweetalert2.js",
+  "main": "dist/sweetalert2.all.js",
   "jsnext:main": "src/sweetalert2.js",
   "types": "sweetalert2.d.ts",
   "devDependencies": {

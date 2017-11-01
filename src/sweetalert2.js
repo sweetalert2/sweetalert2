@@ -14,8 +14,11 @@ if (typeof Promise === 'undefined') {
   error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)')
 }
 
-/*
+/**
  * Set type, text and actions on popup
+ *
+ * @param params
+ * @returns {boolean}
  */
 const setParameters = (params) => {
   // If a custom element is set, determine if it is valid
@@ -289,8 +292,12 @@ const setParameters = (params) => {
   }
 }
 
-/*
+/**
  * Animations
+ *
+ * @param animation
+ * @param onBeforeOpen
+ * @param onComplete
  */
 const openPopup = (animation, onBeforeOpen, onComplete) => {
   const container = dom.getContainer()
@@ -1214,7 +1221,7 @@ sweetAlert.isValidParameter = (paramName) => {
   return defaultParams.hasOwnProperty(paramName) || paramName === 'extraParams'
 }
 
-  /**
+/**
  * Set default params for each popup
  * @param {Object} userParams
  */

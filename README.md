@@ -212,7 +212,7 @@ Configuration
 | `onBeforeOpen`           | `null`                | Function to run when modal built, but not shown yet. Provides modal DOM element as the first argument. |
 | `onOpen`                 | `null`                | Function to run when modal opens, provides modal DOM element as the first argument. |
 | `onClose`                | `null`                | Function to run when modal closes, provides modal DOM element as the first argument. |
-| `useRejections`          | `true`                | Determines whether dismissals (outside click, cancel button, close button, esc key) should reject, or resolve with an object of the format `{ dismiss: reason }`. Set it to `false` to get a cleaner control flow when using `await`, as explained in [#485](https://github.com/limonte/sweetalert2/issues/485). |
+| `useRejections`          | `false`               | Determines whether dismissals (outside click, cancel button, close button, <kdb>Esc</kbd> key, timer) should resolve with an object of the format `{ dismiss: reason }` or reject the promise. |
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
 

@@ -54,5 +54,5 @@ export default {
   onBeforeOpen: null,
   onOpen: null,
   onClose: null,
-  useRejections: true
+  useRejections: false
 }

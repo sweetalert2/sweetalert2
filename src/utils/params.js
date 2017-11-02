@@ -7,6 +7,7 @@ export default {
   toast: false,
   customClass: '',
   target: 'body',
+  backdrop: true,
   animation: true,
   allowOutsideClick: true,
   allowEscapeKey: true,

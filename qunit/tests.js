@@ -765,3 +765,11 @@ QUnit.test('params validation', function (assert) {
   assert.ok(swal.isValidParameter('title'))
   assert.notOk(swal.isValidParameter('foobar'))
 })
+
+
+QUnit.test('addition and removal of backdrop', function(assert) {
+  swal({backdrop: false})
+  assert.ok(document.body.classList.contains('swal2-no-backdrop'))
+  swal({title: 'test'})
+  assert.notOk(document.body.classList.contains('swal2-no-backdrop'))
+})

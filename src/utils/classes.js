@@ -14,6 +14,7 @@ export const swalClasses = prefix([
   'iosfix',
   'popup',
   'modal',
+  'no-backdrop',
   'toast',
   'toast-shown',
   'overlay',

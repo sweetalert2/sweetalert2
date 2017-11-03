@@ -114,6 +114,22 @@ QUnit.test('cancel button', function (assert) {
 
   swal.clickCancel()
 })
+QUnit.test('cancel button /w useRejections=false', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Cancel me',
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.deepEqual(result, {dismiss: 'cancel'})
+      done()
+    },
+    function () {}
+  ).catch(swal.noop)
+
+  swal.clickCancel()
+})
 
 QUnit.test('esc key', function (assert) {
   const done = assert.async()
@@ -123,6 +139,25 @@ QUnit.test('esc key', function (assert) {
     function (dismiss) {
       assert.equal(dismiss, 'esc')
       done()
+    }
+  )
+
+  $(document).trigger($.Event('keydown', {
+    key: 'Escape'
+  }))
+})
+QUnit.test('esc key /w useRejections=false', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Esc me',
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.deepEqual(result, {dismiss: 'esc'})
+      done()
+    },
+    function () {
     }
   )
 
@@ -144,6 +179,22 @@ QUnit.test('overlay click', function (assert) {
 
   $('.swal2-container').click()
 })
+QUnit.test('overlay click /w useRejections=false', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Overlay click',
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.deepEqual(result, {dismiss: 'overlay'})
+      done()
+    },
+    function () {}
+  )
+
+  $('.swal2-container').click()
+})
 
 QUnit.test('timer works', function (assert) {
   const done = assert.async()
@@ -154,6 +205,22 @@ QUnit.test('timer works', function (assert) {
       assert.equal(dismiss, 'timer')
       done()
     }
+  )
+})
+QUnit.test('timer works /w useRejections=false', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Timer test',
+    timer: 10,
+    animation: false,
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.deepEqual(result, {dismiss: 'timer'})
+      done()
+    },
+    function () {}
   )
 })
 
@@ -170,6 +237,26 @@ QUnit.test('close button', function (assert) {
 
   const $closeButton = $('.swal2-close')
   assert.ok($closeButton.is(':visible'))
+  $closeButton.click()
+})
+QUnit.test('close button /w useRejections=false', function (assert) {
+  const done = assert.async()
+
+  swal({
+    title: 'Close button test',
+    showCloseButton: true,
+    useRejections: false
+  }).then(
+    function (result) {
+      assert.deepEqual(result, {dismiss: 'close'})
+      done()
+    },
+    function () {}
+  )
+
+  const $closeButton = $('.swal2-close')
+  assert.ok($closeButton.is(':visible'))
+  assert.equal($closeButton.attr('aria-label'), 'Close this dialog')
   $closeButton.click()
 })
 
@@ -238,8 +325,10 @@ QUnit.test('input text', function (assert) {
 
 QUnit.test('validation error', function (assert) {
   const done = assert.async()
+  const inputValidator = (value) => !value ? Promise.reject('no falsy values') : Promise.resolve()
 
-  swal({input: 'email', animation: false})
+  swal({input: 'text', animation: false, inputValidator})
+  // Below this line is the same as the next test (sorry for the huge copy-paste)
   assert.ok($('.swal2-validationerror').is(':hidden'))
   setTimeout(function () {
     const initialModalHeight = $('.swal2-modal').outerHeight()
@@ -247,6 +336,32 @@ QUnit.test('validation error', function (assert) {
     swal.clickConfirm()
     setTimeout(function () {
       assert.ok($('.swal2-validationerror').is(':visible'))
+      assert.equal($('.swal2-validationerror').text(), 'no falsy values')
+      assert.ok($('.swal2-input').attr('aria-invalid'))
+      assert.ok($('.swal2-modal').outerHeight() > initialModalHeight)
+
+      $('.swal2-input').val('blah-blah').trigger('input')
+      assert.ok($('.swal2-validationerror').is(':hidden'))
+      assert.notOk($('.swal2-input').attr('aria-invalid'))
+      assert.ok($('.swal2-modal').outerHeight() === initialModalHeight)
+      done()
+    })
+  }, 60)
+})
+QUnit.test('validation error /w expectRejections=false', function (assert) {
+  const done = assert.async()
+  const inputValidator = (value) => Promise.resolve(!value ? 'no falsy values' : null)
+
+  swal({input: 'text', animation: false, expectRejections: false, inputValidator})
+  // Below this line is the same as the previous test (sorry for the huge copy-paste)
+  assert.ok($('.swal2-validationerror').is(':hidden'))
+  setTimeout(function () {
+    const initialModalHeight = $('.swal2-modal').outerHeight()
+
+    swal.clickConfirm()
+    setTimeout(function () {
+      assert.ok($('.swal2-validationerror').is(':visible'))
+      assert.equal($('.swal2-validationerror').text(), 'no falsy values')
       assert.ok($('.swal2-input').attr('aria-invalid'))
       assert.ok($('.swal2-modal').outerHeight() > initialModalHeight)
 
@@ -657,94 +772,8 @@ QUnit.test('onClose', function (assert) {
   const $modal = $('.swal2-modal')
   $('.swal2-close').click()
 })
-QUnit.test('esc key no rejections test', function (assert) {
-  const done = assert.async()
 
-  swal({
-    title: 'Esc me',
-    useRejections: false
-  }).then(
-    function (result) {
-      assert.deepEqual(result, {dismiss: 'esc'})
-      done()
-    },
-    function () {
-    }
-  )
-
-  $(document).trigger($.Event('keydown', {
-    key: 'Escape'
-  }))
-})
-QUnit.test('close button no rejections test', function (assert) {
-  const done = assert.async()
-
-  swal({
-    title: 'Close button test',
-    showCloseButton: true,
-    useRejections: false
-  }).then(
-    function (result) {
-      assert.deepEqual(result, {dismiss: 'close'})
-      done()
-    },
-    function () {}
-  )
-
-  const $closeButton = $('.swal2-close')
-  assert.ok($closeButton.is(':visible'))
-  assert.equal($closeButton.attr('aria-label'), 'Close this dialog')
-  $closeButton.click()
-})
-QUnit.test('overlay click no rejections test', function (assert) {
-  const done = assert.async()
-
-  swal({
-    title: 'Overlay click',
-    useRejections: false
-  }).then(
-    function (result) {
-      assert.deepEqual(result, {dismiss: 'overlay'})
-      done()
-    },
-    function () {}
-  )
-
-  $('.swal2-container').click()
-})
-QUnit.test('cancel button no rejections test', function (assert) {
-  const done = assert.async()
-
-  swal({
-    title: 'Cancel me',
-    useRejections: false
-  }).then(
-    function (result) {
-      assert.deepEqual(result, {dismiss: 'cancel'})
-      done()
-    },
-    function () {}
-  ).catch(swal.noop)
-
-  swal.clickCancel()
-})
-QUnit.test('timer no rejections test', function (assert) {
-  const done = assert.async()
-
-  swal({
-    title: 'Timer test',
-    timer: 10,
-    animation: false,
-    useRejections: false
-  }).then(
-    function (result) {
-      assert.deepEqual(result, {dismiss: 'timer'})
-      done()
-    },
-    function () {}
-  )
-})
-QUnit.test('confirm button object format', function (assert) {
+QUnit.test('result object format  /w useRejections=false', function (assert) {
   const done = assert.async()
   swal({
     input: 'radio',
@@ -759,6 +788,37 @@ QUnit.test('confirm button object format', function (assert) {
   })
   $('.swal2-radio input[value="two"]').prop('checked', true)
   swal.clickConfirm()
+})
+
+QUnit.test('does not swallow errors in user-defined functions /w expectRejections=false', function (assert) {
+  const done = assert.async()
+
+  const expectedError = new Error('my bad')
+  const erroringFunction = function () {
+    return Promise.reject(expectedError)
+  }
+
+  // inputValidator
+  const rejectedPromise = swal({input: 'text', expectRejections: false, inputValidator: erroringFunction})
+  swal.clickConfirm()
+  rejectedPromise.catch(function (error) {
+    assert.equal(error, expectedError) // error is bubbled up back to user code
+    setTimeout(function () {
+      assert.notOk(swal.isVisible()) // display is cleaned up
+
+      // preConfirm
+      const rejectedPromise = swal({expectRejections: false, preConfirm: erroringFunction})
+      swal.clickConfirm()
+      rejectedPromise.catch(function (error) {
+        assert.equal(error, expectedError) // error is bubbled up back to user code
+        setTimeout(function () {
+          assert.notOk(swal.isVisible()) // display is cleaned up
+
+          done()
+        }, 60)
+      })
+    }, 60)
+  })
 })
 
 QUnit.test('params validation', function (assert) {

@@ -1621,9 +1621,9 @@ sweetAlert.queue = function (steps) {
         sweetAlert(queue[i]).then(function (result) {
           queueResult.push(result);
           step(i + 1, callback);
-        }, function (dismiss) {
+        }, function (error$$1) {
           resetQueue();
-          reject(dismiss);
+          reject(error$$1);
         });
       } else {
         resetQueue();

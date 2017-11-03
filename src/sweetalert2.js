@@ -404,7 +404,7 @@ const sweetAlert = (...args) => {
       params.extraParams = args[0].extraParams
 
       if (params.input === 'email' && params.inputValidator === null) {
-        params.inputValidator = (email) => {
+        const inputValidator = (email) => {
           return new Promise((resolve, reject) => {
             const emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
             if (emailRegex.test(email)) {
@@ -414,10 +414,11 @@ const sweetAlert = (...args) => {
             }
           })
         }
+        params.inputValidator = params.expectRejections ? inputValidator : sweetAlert.adaptInputValidator(inputValidator)
       }
 
       if (params.input === 'url' && params.inputValidator === null) {
-        params.inputValidator = (url) => {
+        const inputValidator = (url) => {
           return new Promise((resolve, reject) => {
             // taken from https://stackoverflow.com/a/3809435/1331425
             const urlRegex = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/
@@ -428,6 +429,7 @@ const sweetAlert = (...args) => {
             }
           })
         }
+        params.inputValidator = params.expectRejections ? inputValidator : sweetAlert.adaptInputValidator(inputValidator)
       }
       break
 
@@ -442,16 +444,31 @@ const sweetAlert = (...args) => {
   const popup = dom.getPopup()
 
   return new Promise((resolve, reject) => {
+    // functions to handle all resolving/rejecting/settling
+    const succeedWith = (value) => {
+      sweetAlert.closeModal(params.onClose)
+      if (params.useRejections) {
+        resolve(value)
+      } else {
+        resolve({value})
+      }
+    }
+    const dismissWith = (dismiss) => {
+      sweetAlert.closeModal(params.onClose)
+      if (params.useRejections) {
+        reject(dismiss)
+      } else {
+        resolve({dismiss})
+      }
+    }
+    const errorWith = error => {
+      sweetAlert.closeModal(params.onClose)
+      reject(error)
+    }
+
     // Close on timer
     if (params.timer) {
-      popup.timeout = setTimeout(() => {
-        sweetAlert.closePopup(params.onClose)
-        if (params.useRejections) {
-          reject('timer')
-        } else {
-          resolve({dismiss: 'timer'})
-        }
-      }, params.timer)
+      popup.timeout = setTimeout(() => dismissWith('timer'), params.timer)
     }
 
     // Get input element by specified type or, if type isn't specified, by params.input
@@ -511,25 +528,25 @@ const sweetAlert = (...args) => {
       }
 
       if (params.preConfirm) {
-        params.preConfirm(value, params.extraParams).then(
-          (preConfirmValue) => {
-            sweetAlert.closePopup(params.onClose)
-            resolve(preConfirmValue || value)
-          },
-          (error) => {
-            sweetAlert.hideLoading()
-            if (error) {
-              sweetAlert.showValidationError(error)
+        const preConfirmPromise = params.preConfirm(value, params.extraParams)
+        if (params.expectRejections) {
+          preConfirmPromise.then(
+            (preConfirmValue) => succeedWith(preConfirmValue || value),
+            (validationError) => {
+              sweetAlert.hideLoading()
+              if (validationError) {
+                sweetAlert.showValidationError(validationError)
+              }
             }
-          }
-        )
-      } else {
-        sweetAlert.closePopup(params.onClose)
-        if (params.useRejections) {
-          resolve(value)
+          )
         } else {
-          resolve({value: value})
+          preConfirmPromise.then(
+            (preConfirmValue) => succeedWith(preConfirmValue || value),
+            (error) => errorWith(error)
+          )
         }
+      } else {
+        succeedWith(value)
       }
     }
 
@@ -580,20 +597,36 @@ const sweetAlert = (...args) => {
 
               if (params.inputValidator) {
                 sweetAlert.disableInput()
-                params.inputValidator(inputValue, params.extraParams).then(
-                  () => {
-                    sweetAlert.enableButtons()
-                    sweetAlert.enableInput()
-                    confirm(inputValue)
-                  },
-                  (error) => {
-                    sweetAlert.enableButtons()
-                    sweetAlert.enableInput()
-                    if (error) {
-                      sweetAlert.showValidationError(error)
+                const validationPromise = params.inputValidator(inputValue, params.extraParams)
+                if (params.expectRejections) {
+                  validationPromise.then(
+                    () => {
+                      sweetAlert.enableButtons()
+                      sweetAlert.enableInput()
+                      confirm(inputValue)
+                    },
+                    (validationError) => {
+                      sweetAlert.enableButtons()
+                      sweetAlert.enableInput()
+                      if (validationError) {
+                        sweetAlert.showValidationError(validationError)
+                      }
                     }
-                  }
-                )
+                  )
+                } else {
+                  validationPromise.then(
+                    (validationError) => {
+                      sweetAlert.enableButtons()
+                      sweetAlert.enableInput()
+                      if (validationError) {
+                        sweetAlert.showValidationError(validationError)
+                      } else {
+                        confirm(inputValue)
+                      }
+                    },
+                    error => errorWith(error)
+                  )
+                }
               } else {
                 confirm(inputValue)
               }
@@ -604,12 +637,7 @@ const sweetAlert = (...args) => {
           // Clicked 'cancel'
           } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.disableButtons()
-            sweetAlert.closePopup(params.onClose)
-            if (params.useRejections) {
-              reject('cancel')
-            } else {
-              resolve({dismiss: 'cancel'})
-            }
+            dismissWith('cancel')
           }
           break
         default:
@@ -626,12 +654,7 @@ const sweetAlert = (...args) => {
 
     // Closing popup by close button
     dom.getCloseButton().onclick = () => {
-      sweetAlert.closePopup(params.onClose)
-      if (params.useRejections) {
-        reject('close')
-      } else {
-        resolve({dismiss: 'close'})
-      }
+      dismissWith('close')
     }
 
     if (params.toast) {
@@ -641,12 +664,7 @@ const sweetAlert = (...args) => {
           return
         }
         if (params.allowOutsideClick) {
-          sweetAlert.closePopup(params.onClose)
-          if (params.useRejections) {
-            reject('overlay')
-          } else {
-            resolve({dismiss: 'overlay'})
-          }
+          dismissWith('overlay')
         }
       }
     } else {
@@ -655,12 +673,7 @@ const sweetAlert = (...args) => {
           return
         }
         if (params.allowOutsideClick) {
-          sweetAlert.closePopup(params.onClose)
-          if (params.useRejections) {
-            reject('overlay')
-          } else {
-            resolve({dismiss: 'overlay'})
-          }
+          dismissWith('overlay')
         }
       }
     }
@@ -749,12 +762,7 @@ const sweetAlert = (...args) => {
 
       // ESC
       } else if (e.key === 'Escape' && params.allowEscapeKey === true) {
-        sweetAlert.closePopup(params.onClose)
-        if (params.useRejections) {
-          reject('esc')
-        } else {
-          resolve({dismiss: 'esc'})
-        }
+        dismissWith('esc')
       }
     }
 
@@ -1101,9 +1109,9 @@ sweetAlert.queue = (steps) => {
             queueResult.push(result)
             step(i + 1, callback)
           },
-          (dismiss) => {
+          (error) => {
             resetQueue()
-            reject(dismiss)
+            reject(error)
           }
         )
       } else {
@@ -1256,6 +1264,16 @@ sweetAlert.setDefaults = (userParams) => {
  */
 sweetAlert.resetDefaults = () => {
   popupParams = Object.assign({}, defaultParams)
+}
+
+/**
+ * Adapt a legacy inputValidator for use with expectRejections=false
+ */
+sweetAlert.adaptInputValidator = (legacyValidator) => {
+  return function adaptedInputValidator (inputValue, extraParams) {
+    return legacyValidator.call(this, inputValue, extraParams)
+      .then(() => undefined, validationError => validationError)
+  }
 }
 
 sweetAlert.noop = () => { }

@@ -655,6 +655,7 @@ declare module 'sweetalert2' {
          * resolve with an object of the format `{ dismiss: SweetAlertDismissalReason }` or reject the promise.
          *
          * @default false
+         * @deprecated
          */
         useRejections?: boolean;
     }

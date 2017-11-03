@@ -212,7 +212,7 @@ Configuration
 | `onBeforeOpen`           | `null`                | Function to run when modal built, but not shown yet. Provides modal DOM element as the first argument. |
 | `onOpen`                 | `null`                | Function to run when modal opens, provides modal DOM element as the first argument. |
 | `onClose`                | `null`                | Function to run when modal closes, provides modal DOM element as the first argument. |
-| `useRejections`          | `false`               | Determines whether dismissals (outside click, cancel button, close button, <kdb>Esc</kbd> key, timer) should resolve with an object of the format `{ dismiss: reason }` or reject the promise. |
+| `useRejections`          | `false`               | **Deprecated and will be removed in the next major release.** Determines whether dismissals (outside click, cancel button, close button, <kdb>Esc</kbd> key, timer) should resolve with an object of the format `{ dismiss: reason }` or reject the promise. |
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
 

@@ -1,26 +1,8 @@
 /*!
- * sweetalert2 v6.11.0
+ * sweetalert2 v6.11.4
  * Released under the MIT License.
  */
 'use strict';
-
-function __$styleInject(css, returnValue) {
-  if (typeof document === 'undefined') {
-    return returnValue;
-  }
-  css = css || '';
-  var head = document.head || document.getElementsByTagName('head')[0];
-  var style = document.createElement('style');
-  style.type = 'text/css';
-  head.appendChild(style);
-  
-  if (style.styleSheet){
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-  return returnValue;
-}
 
 var defaultParams = {
   title: '',
@@ -358,7 +340,7 @@ var empty = function empty(elem) {
   }
 };
 
-// borrowed from jqeury $(elem).is(':visible') implementation
+// borrowed from jquery $(elem).is(':visible') implementation
 var isVisible = function isVisible(elem) {
   return elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length;
 };
@@ -418,19 +400,11 @@ var measureScrollbar = function measureScrollbar() {
   return scrollbarWidth;
 };
 
-// JavaScript Debounce Function
-// Simplivied version of https://davidwalsh.name/javascript-debounce-function
-var debounce = function debounce(func, wait) {
-  var timeout = void 0;
-  return function () {
-    var later = function later() {
-      timeout = null;
-      func();
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-};
+/**
+ * Inject a string of CSS into the page header
+ *
+ * @param {String} css
+ */
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
   return typeof obj;
@@ -585,7 +559,6 @@ var _extends = Object.assign || function (target) {
 
 var modalParams = _extends({}, defaultParams);
 var queue = [];
-var swal2Observer = void 0;
 
 /*
  * Check for the existence of Promise
@@ -595,8 +568,11 @@ if (typeof Promise === 'undefined') {
   error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)');
 }
 
-/*
+/**
  * Set type, text and actions on modal
+ *
+ * @param params
+ * @returns {boolean}
  */
 var setParameters = function setParameters(params) {
   // If a custom element is set, determine if it is valid
@@ -853,8 +829,12 @@ var setParameters = function setParameters(params) {
   }
 };
 
-/*
+/**
  * Animations
+ *
+ * @param animation
+ * @param onBeforeOpen
+ * @param onComplete
  */
 var openModal = function openModal(animation, onBeforeOpen, onComplete) {
   var container = getContainer();
@@ -1268,7 +1248,7 @@ var sweetAlert = function sweetAlert() {
         e.preventDefault();
 
         // ARROWS - switch focus between buttons
-      } else if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'Arrowdown'].includes(e.key)) {
+      } else if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'Arrowdown'].indexOf(e.key) !== -1) {
         // focus Cancel button if Confirm button is currently focused
         if (document.activeElement === confirmButton && isVisible(cancelButton)) {
           cancelButton.focus();
@@ -1388,19 +1368,6 @@ var sweetAlert = function sweetAlert() {
       }
     };
 
-    // Set modal min-height to disable scrolling inside the modal
-    sweetAlert.recalculateHeight = debounce(function () {
-      var modal = getModal();
-      if (!modal) {
-        return;
-      }
-      var prevState = modal.style.display;
-      modal.style.minHeight = '';
-      show(modal);
-      modal.style.minHeight = modal.scrollHeight + 1 + 'px';
-      modal.style.display = prevState;
-    }, 50);
-
     // Show block with validation error
     sweetAlert.showValidationError = function (error$$1) {
       var validationError = getValidationError();
@@ -1420,7 +1387,6 @@ var sweetAlert = function sweetAlert() {
     sweetAlert.resetValidationError = function () {
       var validationError = getValidationError();
       hide(validationError);
-      sweetAlert.recalculateHeight();
 
       var input = getInput();
       if (input) {
@@ -1623,12 +1589,6 @@ var sweetAlert = function sweetAlert() {
 
     // fix scroll
     getContainer().scrollTop = 0;
-
-    // Observe changes inside the modal and adjust height
-    if (typeof MutationObserver !== 'undefined' && !swal2Observer) {
-      swal2Observer = new MutationObserver(sweetAlert.recalculateHeight);
-      swal2Observer.observe(modal, { childList: true, characterData: true, subtree: true });
-    }
   });
 };
 
@@ -1786,9 +1746,9 @@ sweetAlert.isValidParameter = function (paramName) {
 };
 
 /**
-* Set default params for each popup
-* @param {Object} userParams
-*/
+ * Set default params for each popup
+ * @param {Object} userParams
+ */
 sweetAlert.setDefaults = function (userParams) {
   if (!userParams || (typeof userParams === 'undefined' ? 'undefined' : _typeof(userParams)) !== 'object') {
     return error('the argument for setDefaults() is required and has to be a object');
@@ -1813,7 +1773,7 @@ sweetAlert.resetDefaults = function () {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '6.11.0';
+sweetAlert.version = '6.11.4';
 
 sweetAlert.default = sweetAlert;
 

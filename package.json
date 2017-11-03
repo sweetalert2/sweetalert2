@@ -1,18 +1,18 @@
 {
   "name": "sweetalert2",
-  "version": "6.11.0",
+  "version": "6.11.4",
   "repository": "limonte/sweetalert2",
   "homepage": "https://limonte.github.io/sweetalert2/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
-  "main": "dist/sweetalert2.js",
+  "main": "dist/sweetalert2.all.js",
   "jsnext:main": "src/sweetalert2.js",
   "types": "sweetalert2.d.ts",
   "devDependencies": {
     "babel-core": "latest",
+    "babel-plugin-array-includes": "latest",
     "babel-plugin-external-helpers": "latest",
     "babel-plugin-transform-object-assign": "latest",
     "babel-preset-es2015": "latest",
-    "cli-color": "latest",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "^3.9.0",
@@ -21,14 +21,17 @@
     "gulp-sass": "latest",
     "gulp-sass-lint": "latest",
     "gulp-standard": "^8.0.0",
+    "gulp-tslint": "^8.1.2",
+    "gulp-typescript": "^3.2.3",
     "gulp-uglify": "latest",
     "rollup": "latest",
     "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-collect-sass": "^1.0.9",
+    "rollup-plugin-css-only": "^0.2.0",
     "standard": "^8.0.0",
     "testem": "latest",
-    "uglify-js": "latest",
-    "yargs": "latest"
+    "tslint": "^5.8.0",
+    "typescript": "^2.5.3",
+    "uglify-js": "latest"
   },
   "standard": {
     "ignore": [
@@ -62,6 +65,8 @@
   },
   "scripts": {
     "test": "testem ci",
+    "lint-dts": "tslint sweetalert2.d.ts --format verbose",
+    "check-dts": "tsc sweetalert2.d.ts && npm run lint-dts",
     "assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --assume-unchanged",
     "no-assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --no-assume-unchanged"
   },

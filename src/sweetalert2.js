@@ -703,6 +703,11 @@ const sweetAlert = (...args) => {
     const handleKeyDown = (event) => {
       const e = event || window.event
 
+      const arrowKeys = [
+        'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
+        'Left', 'Right', 'Up', 'Down' // IE11
+      ]
+
       if (e.key === 'Enter') {
         if (e.target === getInput()) {
           sweetAlert.clickConfirm()
@@ -733,7 +738,7 @@ const sweetAlert = (...args) => {
         e.preventDefault()
 
       // ARROWS - switch focus between buttons
-      } else if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'Arrowdown'].includes(e.key)) {
+      } else if (arrowKeys.includes(e.key)) {
         // focus Cancel button if Confirm button is currently focused
         if (document.activeElement === confirmButton && dom.isVisible(cancelButton)) {
           cancelButton.focus()

@@ -72,17 +72,6 @@ QUnit.test('getters', function (assert) {
   assert.equal(swal.getInput().value, 'two')
 })
 
-QUnit.test('confirm button', function (assert) {
-  const done = assert.async()
-
-  swal('Confirm me').then(function (result) {
-    assert.equal(result, true)
-    done()
-  })
-
-  swal.clickConfirm()
-})
-
 QUnit.test('custom buttons classes', function (assert) {
   swal({
     text: 'Modal with custom buttons classes',
@@ -99,78 +88,6 @@ QUnit.test('custom buttons classes', function (assert) {
   assert.notOk($('.swal2-confirm').hasClass('btn-success'))
   assert.notOk($('.swal2-cancel').hasClass('btn'))
   assert.notOk($('.swal2-cancel').hasClass('btn-warning'))
-})
-
-QUnit.test('cancel button', function (assert) {
-  const done = assert.async()
-
-  swal('Cancel me').then(
-    function () {},
-    function (dismiss) {
-      assert.equal(dismiss, 'cancel')
-      done()
-    }
-  ).catch(swal.noop)
-
-  swal.clickCancel()
-})
-
-QUnit.test('esc key', function (assert) {
-  const done = assert.async()
-
-  swal('Esc me').then(
-    function () {},
-    function (dismiss) {
-      assert.equal(dismiss, 'esc')
-      done()
-    }
-  )
-
-  $(document).trigger($.Event('keydown', {
-    key: 'Escape'
-  }))
-})
-
-QUnit.test('overlay click', function (assert) {
-  const done = assert.async()
-
-  swal('Overlay click').then(
-    function () {},
-    function (dismiss) {
-      assert.equal(dismiss, 'overlay')
-      done()
-    }
-  )
-
-  $('.swal2-container').click()
-})
-
-QUnit.test('timer works', function (assert) {
-  const done = assert.async()
-
-  swal({title: 'Timer test', timer: 10, animation: false}).then(
-    function () {},
-    function (dismiss) {
-      assert.equal(dismiss, 'timer')
-      done()
-    }
-  )
-})
-
-QUnit.test('close button', function (assert) {
-  const done = assert.async()
-
-  swal({title: 'Close button test', showCloseButton: true}).then(
-    function () {},
-    function (dismiss) {
-      assert.equal(dismiss, 'close')
-      done()
-    }
-  )
-
-  const $closeButton = $('.swal2-close')
-  assert.ok($closeButton.is(':visible'))
-  $closeButton.click()
 })
 
 QUnit.test('content/title is set (html)', function (assert) {
@@ -228,7 +145,7 @@ QUnit.test('input text', function (assert) {
 
   const string = 'Live for yourself'
   swal({input: 'text'}).then(function (result) {
-    assert.equal(result, string)
+    assert.equal(result.value, string)
     done()
   })
 
@@ -263,8 +180,8 @@ QUnit.test('built-in email validation', function (assert) {
   const done = assert.async()
 
   var validEmailAddress = 'team+support+a.b@example.com'
-  swal({input: 'email', animation: false}).then(function (result) {
-    assert.equal(result, validEmailAddress)
+  swal({input: 'email'}).then(function (result) {
+    assert.equal(result.value, validEmailAddress)
     done()
   })
 
@@ -276,8 +193,11 @@ QUnit.test('input select', function (assert) {
   const done = assert.async()
 
   const selected = 'dos'
-  swal({ input: 'select', inputOptions: {uno: 1, dos: 2} }).then(function (result) {
-    assert.equal(result, selected)
+  swal({
+    input: 'select',
+    inputOptions: {uno: 1, dos: 2}
+  }).then(function (result) {
+    assert.equal(result.value, selected)
     done()
   })
 
@@ -290,7 +210,7 @@ QUnit.test('input checkbox', function (assert) {
 
   swal({input: 'checkbox', inputAttributes: {name: 'test-checkbox'}}).then(function (result) {
     assert.equal(checkbox.attr('name'), 'test-checkbox')
-    assert.equal(result, '1')
+    assert.equal(result.value, '1')
     done()
   })
 
@@ -657,12 +577,11 @@ QUnit.test('onClose', function (assert) {
   const $modal = $('.swal2-modal')
   $('.swal2-close').click()
 })
-QUnit.test('esc key no rejections test', function (assert) {
+QUnit.test('esc key', function (assert) {
   const done = assert.async()
 
   swal({
-    title: 'Esc me',
-    useRejections: false
+    title: 'Esc me'
   }).then(
     function (result) {
       assert.deepEqual(result, {dismiss: 'esc'})
@@ -676,13 +595,12 @@ QUnit.test('esc key no rejections test', function (assert) {
     key: 'Escape'
   }))
 })
-QUnit.test('close button no rejections test', function (assert) {
+QUnit.test('close button', function (assert) {
   const done = assert.async()
 
   swal({
     title: 'Close button test',
-    showCloseButton: true,
-    useRejections: false
+    showCloseButton: true
   }).then(
     function (result) {
       assert.deepEqual(result, {dismiss: 'close'})
@@ -696,12 +614,11 @@ QUnit.test('close button no rejections test', function (assert) {
   assert.equal($closeButton.attr('aria-label'), 'Close this dialog')
   $closeButton.click()
 })
-QUnit.test('overlay click no rejections test', function (assert) {
+QUnit.test('overlay click', function (assert) {
   const done = assert.async()
 
   swal({
-    title: 'Overlay click',
-    useRejections: false
+    title: 'Overlay click'
   }).then(
     function (result) {
       assert.deepEqual(result, {dismiss: 'overlay'})
@@ -712,12 +629,11 @@ QUnit.test('overlay click no rejections test', function (assert) {
 
   $('.swal2-container').click()
 })
-QUnit.test('cancel button no rejections test', function (assert) {
+QUnit.test('cancel button', function (assert) {
   const done = assert.async()
 
   swal({
-    title: 'Cancel me',
-    useRejections: false
+    title: 'Cancel me'
   }).then(
     function (result) {
       assert.deepEqual(result, {dismiss: 'cancel'})
@@ -728,14 +644,13 @@ QUnit.test('cancel button no rejections test', function (assert) {
 
   swal.clickCancel()
 })
-QUnit.test('timer no rejections test', function (assert) {
+QUnit.test('timer', function (assert) {
   const done = assert.async()
 
   swal({
     title: 'Timer test',
     timer: 10,
-    animation: false,
-    useRejections: false
+    animation: false
   }).then(
     function (result) {
       assert.deepEqual(result, {dismiss: 'timer'})
@@ -744,15 +659,14 @@ QUnit.test('timer no rejections test', function (assert) {
     function () {}
   )
 })
-QUnit.test('confirm button object format', function (assert) {
+QUnit.test('confirm button', function (assert) {
   const done = assert.async()
   swal({
     input: 'radio',
     inputOptions: {
       'one': 'one',
       'two': 'two'
-    },
-    useRejections: false
+    }
   }).then(function (result) {
     assert.deepEqual(result, {value: 'two'})
     done()

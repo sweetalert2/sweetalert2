@@ -60,5 +60,6 @@ export default {
 }
 
 export const deprecatedParams = [
-  'useRejections'
+  'useRejections',
+  'expectRejections'
 ]

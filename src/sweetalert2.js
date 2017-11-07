@@ -528,7 +528,7 @@ const sweetAlert = (...args) => {
       }
 
       if (params.preConfirm) {
-        const preConfirmPromise = params.preConfirm(value, params.extraParams)
+        const preConfirmPromise = Promise.resolve().then(() => params.preConfirm(value, params.extraParams))
         if (params.expectRejections) {
           preConfirmPromise.then(
             (preConfirmValue) => succeedWith(preConfirmValue || value),
@@ -597,7 +597,7 @@ const sweetAlert = (...args) => {
 
               if (params.inputValidator) {
                 sweetAlert.disableInput()
-                const validationPromise = params.inputValidator(inputValue, params.extraParams)
+                const validationPromise = Promise.resolve().then(() => params.inputValidator(inputValue, params.extraParams))
                 if (params.expectRejections) {
                   validationPromise.then(
                     () => {

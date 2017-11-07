@@ -1,6 +1,6 @@
 /* global $, QUnit, swal */
 
-QUnit.test('confirm button', function (assert) {
+QUnit.test('confirm button /w useRejections: true', function (assert) {
   const done = assert.async()
 
   swal({
@@ -14,7 +14,7 @@ QUnit.test('confirm button', function (assert) {
   swal.clickConfirm()
 })
 
-QUnit.test('cancel button', function (assert) {
+QUnit.test('cancel button /w useRejections: true', function (assert) {
   const done = assert.async()
 
   swal({
@@ -31,7 +31,7 @@ QUnit.test('cancel button', function (assert) {
   swal.clickCancel()
 })
 
-QUnit.test('esc key', function (assert) {
+QUnit.test('esc key /w useRejections: true', function (assert) {
   const done = assert.async()
 
   swal({
@@ -50,7 +50,7 @@ QUnit.test('esc key', function (assert) {
   }))
 })
 
-QUnit.test('overlay click', function (assert) {
+QUnit.test('overlay click /w useRejections: true', function (assert) {
   const done = assert.async()
 
   swal({
@@ -67,7 +67,7 @@ QUnit.test('overlay click', function (assert) {
   $('.swal2-container').click()
 })
 
-QUnit.test('timer', function (assert) {
+QUnit.test('timer /w useRejections: true', function (assert) {
   const done = assert.async()
 
   swal({
@@ -84,7 +84,7 @@ QUnit.test('timer', function (assert) {
   )
 })
 
-QUnit.test('close button', function (assert) {
+QUnit.test('close button /w useRejections: true', function (assert) {
   const done = assert.async()
 
   swal({
@@ -104,7 +104,7 @@ QUnit.test('close button', function (assert) {
   $closeButton.click()
 })
 
-QUnit.test('input text', function (assert) {
+QUnit.test('input text /w useRejections: true', function (assert) {
   const done = assert.async()
 
   const string = 'Live for yourself'
@@ -120,7 +120,7 @@ QUnit.test('input text', function (assert) {
   swal.clickConfirm()
 })
 
-QUnit.test('built-in email validation', function (assert) {
+QUnit.test('built-in email validation /w useRejections: true', function (assert) {
   const done = assert.async()
 
   var validEmailAddress = 'team+support+a.b@example.com'
@@ -136,7 +136,7 @@ QUnit.test('built-in email validation', function (assert) {
   swal.clickConfirm()
 })
 
-QUnit.test('input select', function (assert) {
+QUnit.test('input select /w useRejections: true', function (assert) {
   const done = assert.async()
 
   const selected = 'dos'
@@ -153,7 +153,7 @@ QUnit.test('input select', function (assert) {
   swal.clickConfirm()
 })
 
-QUnit.test('input checkbox', function (assert) {
+QUnit.test('input checkbox /w useRejections: true', function (assert) {
   const done = assert.async()
 
   swal({

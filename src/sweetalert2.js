@@ -514,7 +514,7 @@ const sweetAlert = (...args) => {
         params.preConfirm(value, params.extraParams).then(
           (preConfirmValue) => {
             sweetAlert.closePopup(params.onClose)
-            resolve(preConfirmValue || value)
+            succeedWith(preConfirmValue || value)
           },
           (error) => {
             sweetAlert.hideLoading()

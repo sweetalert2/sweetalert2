@@ -57,3 +57,7 @@ export default {
   onClose: null,
   useRejections: false
 }
+
+export const deprecatedParams = [
+  'useRejections'
+]

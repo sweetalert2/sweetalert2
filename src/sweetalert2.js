@@ -1,6 +1,6 @@
-import defaultParams from './utils/params.js'
+import defaultParams, { deprecatedParams } from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
-import { colorLuminance, warn, error } from './utils/utils.js'
+import { colorLuminance, warn, error, warnOnce } from './utils/utils.js'
 import * as dom from './utils/dom.js'
 
 let popupParams = Object.assign({}, defaultParams)
@@ -12,6 +12,22 @@ let queue = []
  */
 if (typeof Promise === 'undefined') {
   error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)')
+}
+
+/**
+ * Show relevant warnings for given params
+ *
+ * @param params
+ */
+const showWarningsForParams = (params) => {
+  for (const param in params) {
+    if (!sweetAlert.isValidParameter(param)) {
+      warn(`Unknown parameter "${param}"`)
+    }
+    if (sweetAlert.isDeprecatedParameter(param)) {
+      warnOnce(`The parameter "${param}" is deprecated and will be removed in the next major release.`)
+    }
+  }
 }
 
 /**
@@ -37,11 +53,7 @@ const setParameters = (params) => {
     popup = oldPopup || dom.init(params)
   }
 
-  for (let param in params) {
-    if (!sweetAlert.isValidParameter(param)) {
-      warn(`Unknown parameter "${param}"`)
-    }
-  }
+  showWarningsForParams(params)
 
   // Set popup width
   let popupWidth = (params.width === defaultParams.width && params.toast) ? 'auto' : params.width
@@ -1233,6 +1245,14 @@ sweetAlert.isValidParameter = (paramName) => {
 }
 
 /**
+ * Is deprecated parameter
+ * @param {String} paramName
+ */
+sweetAlert.isDeprecatedParameter = (paramName) => {
+  return deprecatedParams.includes(paramName)
+}
+
+/**
  * Set default params for each popup
  * @param {Object} userParams
  */
@@ -1241,14 +1261,14 @@ sweetAlert.setDefaults = (userParams) => {
     return error('the argument for setDefaults() is required and has to be a object')
   }
 
-  for (let param in userParams) {
-    if (!sweetAlert.isValidParameter(param)) {
-      warn(`Unknown parameter "${param}"`)
-      delete userParams[param]
+  showWarningsForParams(userParams)
+
+  // assign valid params from userParams to popupParams
+  for (const param in userParams) {
+    if (sweetAlert.isValidParameter(param)) {
+      popupParams[param] = userParams[param]
     }
   }
-
-  Object.assign(popupParams, userParams)
 }
 
 /**

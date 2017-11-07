@@ -442,15 +442,15 @@ const sweetAlert = (...args) => {
   const popup = dom.getPopup()
 
   return new Promise((resolve, reject) => {
+    // functions to handle all resolving/rejecting/settling
+    const succeedWith = value => params.useRejections ? resolve(value) : resolve({value})
+    const dismissWith = dismiss => params.useRejections ? reject(dismiss) : resolve({dismiss})
+
     // Close on timer
     if (params.timer) {
       popup.timeout = setTimeout(() => {
         sweetAlert.closePopup(params.onClose)
-        if (params.useRejections) {
-          reject('timer')
-        } else {
-          resolve({dismiss: 'timer'})
-        }
+        dismissWith('timer')
       }, params.timer)
     }
 
@@ -525,11 +525,7 @@ const sweetAlert = (...args) => {
         )
       } else {
         sweetAlert.closePopup(params.onClose)
-        if (params.useRejections) {
-          resolve(value)
-        } else {
-          resolve({value: value})
-        }
+        succeedWith(value)
       }
     }
 
@@ -605,11 +601,7 @@ const sweetAlert = (...args) => {
           } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.disableButtons()
             sweetAlert.closePopup(params.onClose)
-            if (params.useRejections) {
-              reject('cancel')
-            } else {
-              resolve({dismiss: 'cancel'})
-            }
+            dismissWith('cancel')
           }
           break
         default:
@@ -627,11 +619,7 @@ const sweetAlert = (...args) => {
     // Closing popup by close button
     dom.getCloseButton().onclick = () => {
       sweetAlert.closePopup(params.onClose)
-      if (params.useRejections) {
-        reject('close')
-      } else {
-        resolve({dismiss: 'close'})
-      }
+      dismissWith('close')
     }
 
     if (params.toast) {
@@ -642,11 +630,7 @@ const sweetAlert = (...args) => {
         }
         if (params.allowOutsideClick) {
           sweetAlert.closePopup(params.onClose)
-          if (params.useRejections) {
-            reject('overlay')
-          } else {
-            resolve({dismiss: 'overlay'})
-          }
+          dismissWith('overlay')
         }
       }
     } else {
@@ -656,11 +640,7 @@ const sweetAlert = (...args) => {
         }
         if (params.allowOutsideClick) {
           sweetAlert.closePopup(params.onClose)
-          if (params.useRejections) {
-            reject('overlay')
-          } else {
-            resolve({dismiss: 'overlay'})
-          }
+          dismissWith('overlay')
         }
       }
     }
@@ -750,11 +730,7 @@ const sweetAlert = (...args) => {
       // ESC
       } else if ((e.key === 'Escape' || e.key === 'Esc') && params.allowEscapeKey === true) {
         sweetAlert.closePopup(params.onClose)
-        if (params.useRejections) {
-          reject('esc')
-        } else {
-          resolve({dismiss: 'esc'})
-        }
+        dismissWith('esc')
       }
     }
 

@@ -209,8 +209,8 @@ declare module 'sweetalert2' {
     export type SweetAlertType = 'success' | 'error' | 'warning' | 'info' | 'question' | undefined;
 
     export type SweetAlertInputType =
-        | 'text' | 'email' | 'password' | 'number' | 'tel' | 'range' | 'textarea' | 'select' | 'radio' | 'checkbox'
-        | 'file' | 'url' | undefined;
+        'text' | 'email' | 'password' | 'number' | 'tel' | 'range' | 'textarea' | 'select' | 'radio' | 'checkbox' |
+        'file' | 'url' | undefined;
 
     export type SweetAlertDismissalReason = 'cancel' | 'close' | 'overlay' | 'esc' | 'timer';
 
@@ -321,9 +321,10 @@ declare module 'sweetalert2' {
          *
          * @default 'center'
          */
-        position?: | 'top' | 'top-left' | 'top-right'
-            | 'center' | 'center-left' | 'center-right'
-            | 'bottom' | 'bottom-left' | 'bottom-right';
+        position?:
+            'top' | 'top-left' | 'top-right' |
+            'center' | 'center-left' | 'center-right' |
+            'bottom' | 'bottom-left' | 'bottom-right';
 
         /**
          * Modal window grow direction

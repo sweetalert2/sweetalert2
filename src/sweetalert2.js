@@ -541,7 +541,11 @@ const sweetAlert = (...args) => {
           )
         } else {
           preConfirmPromise.then(
-            (preConfirmValue) => succeedWith(preConfirmValue || value),
+            (preConfirmValue) => {
+              if (!dom.isVisible(dom.getValidationError())) {
+                succeedWith(preConfirmValue || value)
+              }
+            },
             (error) => errorWith(error)
           )
         }

@@ -3756,9 +3756,9 @@ rollup@^0.49.3:
   version "0.49.3"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.49.3.tgz#4cce32643dd8cf2154c69ff0e43470067db0adbf"
 
-rollup@latest:
-  version "0.50.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.50.0.tgz#4c158f4e780e6cb33ff0dbfc184a52cc58cd5f3b"
+rollup@^0.51.1:
+  version "0.51.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.51.1.tgz#16288ceafbed0a629d3a127c1e92e503f182e8b1"
 
 run-async@^0.1.0:
   version "0.1.0"
@@ -4433,12 +4433,19 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
 typescript@^2.5.3:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.5.3.tgz#df3dcdc38f3beb800d4bc322646b04a3f6ca7f0d"
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.6.1.tgz#ef39cdea27abac0b500242d6726ab90e0c846631"
 
-uglify-js@^3.0.5, uglify-js@latest:
+uglify-js@^3.0.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.1.5.tgz#4c1a6d53b2fe77e4710dd94631853effd3ff5143"
+  dependencies:
+    commander "~2.11.0"
+    source-map "~0.6.1"
+
+uglify-js@^3.1.8:
+  version "3.1.8"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.1.8.tgz#780d08b4f6782fe36ea5484d952362eddaf1d7b8"
   dependencies:
     commander "~2.11.0"
     source-map "~0.6.1"

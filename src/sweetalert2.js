@@ -711,7 +711,7 @@ const sweetAlert = (...args) => {
         }
 
       // ESC
-      } else if (e.key === 'Escape' && params.allowEscapeKey === true) {
+      } else if ((e.key === 'Escape' || e.key === 'Esc') && params.allowEscapeKey === true) {
         sweetAlert.closeModal(params.onClose)
         if (params.useRejections) {
           reject('esc')

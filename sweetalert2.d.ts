@@ -497,7 +497,7 @@ declare module 'sweetalert2' {
         showLoaderOnConfirm?: boolean;
 
         /**
-         * Function to execute before confirm, should return Promise.
+         * Function to execute before confirm, may be async (Promise-returning) or sync.
          *
          * ex.
          *   swal({
@@ -506,7 +506,7 @@ declare module 'sweetalert2' {
          *      '<input id="swal-input1" class="swal2-input">' +
          *      '<input id="swal-input2" class="swal2-input">',
          *    focusConfirm: false,
-         *    preConfirm: () => Promise.resolve([$('#swal-input1').val(), $('#swal-input2').val()])
+         *    preConfirm: () => [$('#swal-input1').val(), $('#swal-input2').val()]
          *  }).then(result => swal(JSON.stringify(result));
          *
          * @default null
@@ -593,15 +593,13 @@ declare module 'sweetalert2' {
         inputAttributes?: SweetAlertInputAttributes;
 
         /**
-         * Validator for input field, should return a Promise.
+         * Validator for input field, may be async (Promise-returning) or sync.
          *
          * ex.
          *   swal({
          *     title: 'Select color',
          *     input: 'radio',
-         *     inputValidator: result => new Promise((resolve, reject) => {
-         *       result ? resolve() : reject('You need to select something!');
-         *     })
+         *     inputValidator: result => !result && 'You need to select something!'
          *   })
          *
          * @default null
@@ -665,6 +663,15 @@ declare module 'sweetalert2' {
          * @deprecated
          */
         useRejections?: boolean;
+
+        /**
+         * Determines whether given `inputValidator` and `preConfirm` functions should be expected to to signal
+         * validation errors by rejecting, or by their respective means (see documentation for each option).
+         *
+         * @default false
+         * @deprecated
+         */
+        expectRejections?: boolean;
     }
 
     export default swal;

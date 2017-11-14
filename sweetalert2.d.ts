@@ -511,7 +511,7 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        preConfirm?: (inputValue: any) => Promise<any>;
+        preConfirm?: (inputValue: any) => Promise<any | void> | any | void;
 
         /**
          * Add a customized icon for the modal. Should contain a string with the path or URL to the image.
@@ -604,7 +604,7 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        inputValidator?: (result: any) => Promise<void>;
+        inputValidator?: (inputValue: any) => Promise<string | null> | string | null;
 
         /**
          * A custom CSS class for the input field.

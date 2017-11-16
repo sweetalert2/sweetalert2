@@ -310,10 +310,9 @@ swal({
     <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve, reject) {
       <span class="func">setTimeout</span>(<span class="func">function</span>() {
         <span class="tag">if</span> (email === <span class="str">'taken@example.com'</span>) {
-          reject(<span class="str">'This email is already taken.'</span>)
-        } else {
-          resolve()
+          swal.showValidationError(<span class="str">'This email is already taken.'</span>)
         }
+        resolve()
       }, <span class="val">2000</span>)
     })
   },
@@ -378,13 +377,10 @@ swal.queue([{
     <span class="str">'via AJAX request'</span>,
   showLoaderOnConfirm: <span class="val">true</span>,
   preConfirm: <span class="func"><i>function</i></span> () {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve) {
-      $.get(<span class="str">'https://api.ipify.org?format=json'</span>)
-        .done(<span class="func"><i>function</i></span> (data) {
-          swal.insertQueueStep(data.ip)
-          resolve()
-        })
-    })
+    <span class="tag">return</span> $.get(<span class="str">'https://api.ipify.org?format=json'</span>)
+      .then(<span class="func"><i>function</i></span> (data) {
+        swal.insertQueueStep(data.ip)
+      })
   }
 }])</pre>
     </li>
@@ -641,7 +637,7 @@ swal.queue([{
       <tr id="pre-confirm">
         <td><b>preConfirm</b></td>
         <td><i>null</i></td>
-        <td>Function to execute before confirm, should return Promise, see <a href="#ajax-request">usage example</a>.</td>
+        <td>Function to execute before confirm, may be async (Promise-returning) or sync, see <a href="#ajax-request">usage example</a>.</td>
       </tr>
       <tr id="image">
         <td><b>imageUrl</b></td>
@@ -696,7 +692,7 @@ swal.queue([{
       <tr id="input-validator">
         <td><b>inputValidator</b></td>
         <td><i>null</i></td>
-        <td>Validator for input field, should return Promise, see <a href="#select-box">usage example</a>.</td>
+        <td>Validator for input field, may be async (Promise-returning) or sync, see <a href="#input-select">usage example</a>.</td>
       </tr>
       <tr id="input-class">
         <td><b>inputClass</b></td>
@@ -737,6 +733,11 @@ swal.queue([{
         <td><b>useRejections</b></td>
         <td><i>false</i></td>
         <td><strong>Deprecated and will be removed in the next major release.</strong> Determines whether dismissals (outside click, cancel button, close button, Esc key, timer) should resolve with an object of the format <strong>{ dismiss: reason }</strong> or reject the promise.</td>
+      </tr>
+      <tr>
+        <td><b>expectRejections</b></td>
+        <td><i>false</i></td>
+        <td><strong>Deprecated and will be removed in the next major release.</strong> Determines whether given <strong>inputValidator</strong> and <strong>preConfirm</strong> functions should be expected to to signal validation errors by rejecting, or by their respective means (see documentation for each option). </td>
       </tr>
     </table>
 
@@ -851,13 +852,7 @@ swal({
   inputPlaceholder: <span class="str">'Enter your name or nickname'</span>,
   showCancelButton: <span class="val">true</span>,
   inputValidator: <span class="func"><i>function</i></span> (value) {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve, reject) {
-      <span class="tag">if</span> (value) {
-        resolve()
-      } <span class="tag">else</span> {
-        reject(<span class="str">'You need to write something!'</span>)
-      }
-    })
+    <span class="tag">return</span> !value && <span class="str">'You need to write something!'</span>
   }
 }).then(<span class="func"><i>function</i></span> (name) {
   swal({
@@ -965,7 +960,7 @@ swal({
       <span class="tag">if</span> (value === <span class="str">'UKR'</span>) {
         resolve()
       } <span class="tag">else</span> {
-        reject(<span class="str">'You need to select Ukraine :)'</span>)
+        resolve(<span class="str">'You need to select Ukraine :)'</span>)
       }
     })
   }
@@ -999,14 +994,8 @@ swal({
   title: <span class="str">'Select color'</span>,
   input: <span class="str">'radio'</span>,
   inputOptions: inputOptions,
-  inputValidator: <span class="func"><i>function</i></span> (result) {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve, reject) {
-      <span class="tag">if</span> (result) {
-        resolve()
-      } <span class="tag">else</span> {
-        reject(<span class="str">'You need to select something!'</span>)
-      }
-    })
+  inputValidator: <span class="func"><i>function</i></span> (value) {
+    <span class="tag">return</span> !value && <span class="str">'You need to write something!'</span>
   }
 }).then(<span class="func"><i>function</i></span> (result) {
   swal({
@@ -1031,13 +1020,7 @@ swal({
   confirmButtonText:
     <span class="str">'Continue &lt;i class="fa fa-arrow-right&gt;&lt;/i&gt;'</span>,
   inputValidator: <span class="func"><i>function</i></span> (result) {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve, reject) {
-      <span class="tag">if</span> (result) {
-        resolve()
-      } <span class="tag">else</span> {
-        reject(<span class="str">'You need to agree with T&amp;C'</span>)
-      }
-    })
+    <span class="tag">return</span> !result && <span class="str">'You need to agree with T&amp;C'</span>
   }
 }).then(<span class="func"><i>function</i></span> (result) {
   swal({
@@ -1098,7 +1081,7 @@ swal({
 
   <p id="multiple-inputs">
     Multiple inputs aren't supported, you can achieve them by using <strong>html</strong> and <strong>preConfirm</strong> parameters.<br>
-    Inside the <strong>preConfirm()</strong> function you can pass the custom result to the <strong>resolve()</strong> function as a parameter:
+    Inside the <strong>preConfirm()</strong> function you can return (or, if async, resolve with) the custom result:
   </p>
   <table class="modal-input-types">
     <tr id="multiple-inputs">
@@ -1112,12 +1095,10 @@ swal({
     <span class="str">'&lt;input id="swal-input2" class="swal2-input"&gt;'</span>,
   focusConfirm: <span class="val">false</span>,
   preConfirm: <span class="func"><i>function</i></span> () {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve) {
-      resolve([
-        $(<span class="str">'#swal-input1'</span>).val(),
-        $(<span class="str">'#swal-input2'</span>).val()
-      ])
-    })
+    <span class="tag">return</span> [
+      $(<span class="str">'#swal-input1'</span>).val(),
+      $(<span class="str">'#swal-input2'</span>).val()
+    ]
   }
 }).then(<span class="func"><i>function</i></span> (result) {
   swal(JSON.stringify(result))
@@ -1507,13 +1488,7 @@ swal({
       inputPlaceholder: 'Enter your name or nickname',
       showCancelButton: true,
       inputValidator: function (value) {
-        return new Promise(function (resolve, reject) {
-          if (value) {
-            resolve()
-          } else {
-            reject('You need to write something!')
-          }
-        })
+        return !value && 'You need to write something!'
       }
     }).then(function (name) {
       swal({
@@ -1599,7 +1574,7 @@ swal({
           if (value === 'UKR') {
             resolve()
           } else {
-            reject('You need to select Ukraine :)')
+            resolve('You need to select Ukraine :)')
           }
         })
       }
@@ -1627,13 +1602,7 @@ swal({
       input: 'radio',
       inputOptions: inputOptionsPromise,
       inputValidator: function (value) {
-        return new Promise(function (resolve, reject) {
-          if (value) {
-            resolve()
-          } else {
-            reject('You need to choose something!')
-          }
-        })
+        return !value && 'You need to choose something!'
       }
     }).then(function (result) {
       swal({
@@ -1651,13 +1620,7 @@ swal({
       inputPlaceholder: 'I agree with the terms and conditions',
       confirmButtonText: 'Continue <i class="fa fa-arrow-right" style="margin-left: 10px"></i>',
       inputValidator: function (result) {
-        return new Promise(function (resolve, reject) {
-          if (result) {
-            resolve()
-          } else {
-            reject('To continue you need to agree with T&amp;C')
-          }
-        })
+        return !result && 'To continue you need to agree with T&amp;C'
       }
     }).then(function () {
       swal({
@@ -1710,12 +1673,10 @@ swal({
         '<input id="swal-input2" class="swal2-input" placeholder="second input field">',
       focusConfirm: false,
       preConfirm: function () {
-        return new Promise(function (resolve) {
-          resolve([
-            $('#swal-input1').val(),
-            $('#swal-input2').val()
-          ])
-        })
+        return [
+          $('#swal-input1').val(),
+          $('#swal-input2').val()
+        ]
       }
     }).then(function (result) {
       swal(JSON.stringify(result))
@@ -1734,10 +1695,9 @@ swal({
         return new Promise(function (resolve, reject) {
           setTimeout(function () {
             if (email === 'taken@example.com') {
-              reject('This email is already taken.')
-            } else {
-              resolve()
+              swal.showValidationError('This email is already taken.')
             }
+            resolve()
           }, 2000)
         })
       },
@@ -1786,13 +1746,10 @@ swal({
         currentProgressStep: 0,
         showLoaderOnConfirm: true,
         preConfirm: function () {
-          return new Promise(function (resolve) {
-            $.get('https://api.ipify.org?format=json')
-              .done(function (data) {
-                swal.insertQueueStep(data.ip)
-                resolve()
-              })
-          })
+          return $.get('https://api.ipify.org?format=json')
+            .then(function (data) {
+              swal.insertQueueStep(data.ip)
+            })
         }
       }
     ]).catch(swal.noop)

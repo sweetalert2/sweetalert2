@@ -234,7 +234,7 @@ pre {
       margin: 0 4px;
       color: #f77; }
   .showcase button {
-    margin-bottom: 10px; }
+    margin: 20px; }
   .showcase .vs-icon {
     background-image: -webkit-image-set(url("vs_icon.png") 1x, url("vs_icon@2x.png") 2x);
     background-image: image-set(url("vs_icon.png") 1x, url("vs_icon@2x.png") 2x);
@@ -404,11 +404,15 @@ table {
   .donation-options a,
   .collaborators a {
     display: inline-block;
-    min-width: 140px;
-    text-decoration: none; }
+    min-width: 110px;
+    text-decoration: none;
+    font-size: 13px; }
   .donation-options img,
   .collaborators img {
     margin-top: 10px; }
+
+.donation-options a {
+  font-size: 20px; }
 
 .stats {
   font-size: 13px;

@@ -357,7 +357,7 @@ pre {
   }
 
   button {
-    margin-bottom: 10px;
+    margin: 20px;
   }
 
   .vs-icon {
@@ -584,12 +584,19 @@ table {
 
   a {
     display: inline-block;
-    min-width: 140px;
+    min-width: 110px;
     text-decoration: none;
+    font-size: 13px;
   }
 
   img {
     margin-top: 10px;
+  }
+}
+
+.donation-options {
+  a {
+    font-size: 20px;
   }
 }
 

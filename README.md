@@ -194,7 +194,7 @@ Configuration
 | `showCloseButton`        | `false`               | Set to `true` to show close button in top right corner of the modal. |
 | `closeButtonAriaLabel`   | `'Close this dialog'` | Use this to change the `aria-label` for the close button. |
 | `showLoaderOnConfirm`    | `false`               | Set to `true` to disable buttons and show that something is loading. Use it in combination with the `preConfirm` parameter. |
-| `preConfirm`             | `null`                | Function to execute before confirm, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#ajax-request">usage example</a>. |
+| `preConfirm`             | `null`                | Function to execute before confirm, may be async (Promise-returning) or sync, see <a href="https://limonte.github.io/sweetalert2/#ajax-request">usage example</a>. |
 | `imageUrl`               | `null`                | Add an image for the modal. Should contain a string with the path or URL to the image. |
 | `imageWidth`             | `null`                | If imageUrl is set, you can specify imageWidth to describes image width in px. |
 | `imageHeight`            | `null`                | Custom image height in px. |
@@ -205,7 +205,7 @@ Configuration
 | `inputOptions`           | `{}` or `Promise`     | If `input` parameter is set to `'select'` or `'radio'`, you can provide options. Object keys will represent options values, object values will represent options text values. |
 | `inputAutoTrim`          | `true`                | Automatically remove whitespaces from both ends of a result string. Set this parameter to `false` to disable auto-trimming. |
 | `inputAttributes`        | `{}`                  | HTML input attributes (e.g. `'min'`, `'max'`, `'autocomplete'`, `'accept'`), that are added to the input field. Object keys will represent attributes names, object values will represent attributes values. |
-| `inputValidator`         | `null`                | Validator for input field, should return Promise, see <a href="https://limonte.github.io/sweetalert2/#select-box">usage example</a>. |
+| `inputValidator`         | `null`                | Validator for input field, may be async (Promise-returning) or sync, see <a href="https://limonte.github.io/sweetalert2/#input-select">usage example</a>. |
 | `inputClass`             | `null`                | A custom CSS class for the input field. |
 | `progressSteps`          | `[]`                  | Progress steps, useful for modal queues, see <a href="https://limonte.github.io/sweetalert2/#chaining-modals">usage example</a>. |
 | `currentProgressStep`    | `null`                | Current active progress step. The default is `swal.getQueueStep()`. |
@@ -214,6 +214,7 @@ Configuration
 | `onOpen`                 | `null`                | Function to run when modal opens, provides modal DOM element as the first argument. |
 | `onClose`                | `null`                | Function to run when modal closes, provides modal DOM element as the first argument. |
 | `useRejections`          | `false`               | **Deprecated and will be removed in the next major release.** Determines whether dismissals (outside click, cancel button, close button, <kdb>Esc</kbd> key, timer) should resolve with an object of the format `{ dismiss: reason }` or reject the promise. |
+| `expectRejections`       | `false`               | **Deprecated and will be removed in the next major release.** Determines whether given `inputValidator` and `preConfirm` functions should be expected to to signal validation errors by rejecting, or by their respective means (see documentation for each option). |
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
 

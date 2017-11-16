@@ -155,8 +155,9 @@ QUnit.test('input text', function (assert) {
 
 QUnit.test('validation error', function (assert) {
   const done = assert.async()
+  const inputValidator = (value) => Promise.resolve(!value && 'no falsy values')
 
-  swal({input: 'email', animation: false})
+  swal({input: 'text', animation: false, inputValidator})
   assert.ok($('.swal2-validationerror').is(':hidden'))
   setTimeout(function () {
     const initialModalHeight = $('.swal2-modal').outerHeight()
@@ -164,6 +165,7 @@ QUnit.test('validation error', function (assert) {
     swal.clickConfirm()
     setTimeout(function () {
       assert.ok($('.swal2-validationerror').is(':visible'))
+      assert.equal($('.swal2-validationerror').text(), 'no falsy values')
       assert.ok($('.swal2-input').attr('aria-invalid'))
       assert.ok($('.swal2-modal').outerHeight() > initialModalHeight)
 
@@ -673,6 +675,37 @@ QUnit.test('confirm button', function (assert) {
   })
   $('.swal2-radio input[value="two"]').prop('checked', true)
   swal.clickConfirm()
+})
+
+QUnit.test('on errors in *async* user-defined functions, cleans up and propagates the error', function (assert) {
+  const done = assert.async()
+
+  const expectedError = new Error('my bad')
+  const erroringFunction = function () {
+    return Promise.reject(expectedError)
+  }
+
+  // inputValidator
+  const rejectedPromise = swal({input: 'text', expectRejections: false, inputValidator: erroringFunction})
+  swal.clickConfirm()
+  rejectedPromise.catch(function (error) {
+    assert.equal(error, expectedError) // error is bubbled up back to user code
+    setTimeout(function () {
+      assert.notOk(swal.isVisible()) // display is cleaned up
+
+      // preConfirm
+      const rejectedPromise = swal({expectRejections: false, preConfirm: erroringFunction})
+      swal.clickConfirm()
+      rejectedPromise.catch(function (error) {
+        assert.equal(error, expectedError) // error is bubbled up back to user code
+        setTimeout(function () {
+          assert.notOk(swal.isVisible()) // display is cleaned up
+
+          done()
+        }, 60)
+      })
+    }, 60)
+  })
 })
 
 QUnit.test('params validation', function (assert) {

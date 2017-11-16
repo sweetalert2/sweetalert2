@@ -172,3 +172,28 @@ QUnit.test('input checkbox /w useRejections: true', function (assert) {
   checkbox.prop('checked', true)
   swal.clickConfirm()
 })
+
+QUnit.test('validation error /w expectRejections: true', function (assert) {
+  const done = assert.async()
+  const inputValidator = (value) => !value ? Promise.reject('no falsy values') : Promise.resolve()
+
+  swal({input: 'text', animation: false, inputValidator, expectRejections: true})
+  assert.ok($('.swal2-validationerror').is(':hidden'))
+  setTimeout(function () {
+    const initialModalHeight = $('.swal2-modal').outerHeight()
+
+    swal.clickConfirm()
+    setTimeout(function () {
+      assert.ok($('.swal2-validationerror').is(':visible'))
+      assert.equal($('.swal2-validationerror').text(), 'no falsy values')
+      assert.ok($('.swal2-input').attr('aria-invalid'))
+      assert.ok($('.swal2-modal').outerHeight() > initialModalHeight)
+
+      $('.swal2-input').val('blah-blah').trigger('input')
+      assert.ok($('.swal2-validationerror').is(':hidden'))
+      assert.notOk($('.swal2-input').attr('aria-invalid'))
+      assert.ok($('.swal2-modal').outerHeight() === initialModalHeight)
+      done()
+    })
+  }, 60)
+})

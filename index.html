@@ -857,7 +857,10 @@ swal(...)
     <span class="tag">return</span> !value <span class="val">&&</span> <span class="str">'You need to write something!'</span>
   }
 })
-name <span class="val">&&</span> swal({type: <span class="str">'success'</span>, title: <span class="str">'Hi, '</span> + name})</pre>
+
+<span class="tag">if</span> (name) {
+  swal({type: <span class="str">'success'</span>, title: <span class="str">'Hi, '</span> + name})
+}</pre>
       </td>
       <td><button class="input-type-text" aria-label="Try me! Example: input type text">Try me!</button></td>
     </tr>
@@ -871,7 +874,10 @@ name <span class="val">&&</span> swal({type: <span class="str">'success'</span>,
   input: <span class="str">'email'</span>,
   inputPlaceholder: <span class="str">'Enter your email address'</span>
 })
-email <span class="val">&&</span> swal({html: <span class="str">'Entered email: '</span> + email})</pre>
+
+<span class="tag">if</span> (email) {
+  swal(<span class="str">'Entered email: '</span> + email)
+}</pre>
       </td>
       <td><button class="input-type-email" aria-label="Try me! Example: input type email">Try me!</button></td>
     </tr>
@@ -884,7 +890,10 @@ email <span class="val">&&</span> swal({html: <span class="str">'Entered email: 
   input: <span class="str">'url'</span>,
   inputPlaceholder: <span class="str">'Enter the URL'</span>
 })
-email <span class="val">&&</span> swal({html: <span class="str">'Entered URL: '</span> + url})</pre>
+
+<span class="tag">if</span> (url) {
+  swal(<span class="str">'Entered URL: '</span> + url)
+}</pre>
       </td>
       <td><button class="input-type-url">Try me!</button></td>
     </tr>
@@ -903,7 +912,10 @@ email <span class="val">&&</span> swal({html: <span class="str">'Entered URL: '<
     <span class="str">'autocorrect'</span>: <span class="str">'off'</span>
   }
 })
-password <span class="val">&&</span> swal({html: <span class="str">'Entered password: '</span> + password})</pre>
+
+<span class="tag">if</span> (password) {
+  swal(<span class="str">'Entered password: '</span> + password)
+}</pre>
       </td>
       <td><button class="input-type-password" aria-label="Try me! Example: input type password">Try me!</button></td>
     </tr>
@@ -917,7 +929,10 @@ password <span class="val">&&</span> swal({html: <span class="str">'Entered pass
   inputPlaceholder: <span class="str">'Type your message here'</span>,
   showCancelButton: <span class="val">true</span>
 })
-password <span class="val">&&</span> swal(text)</pre>
+
+<span class="tag">if</span> (text) {
+  swal(text)
+}</pre>
       </td>
       <td><button class="input-type-textarea" aria-label="Try me! Example: input type textarea">Try me!</button></td>
     </tr>
@@ -926,7 +941,7 @@ password <span class="val">&&</span> swal(text)</pre>
       <td><strong>select</strong></td>
       <td>
         <pre>
-swal({
+<span class="val">const</span> {value: country} = <span class="func">await</span> swal({
   title: <span class="str">'Select Ukraine'</span>,
   input: <span class="str">'select'</span>,
   inputOptions: {
@@ -945,13 +960,11 @@ swal({
       }
     })
   }
-}).then(<span class="func"><i>function</i></span> (result) {
-  swal({
-    type: <span class="str">'success'</span>,
-    html: <span class="str">'You selected: '</span> + result
-  })
-})</pre>
+})
 
+<span class="tag">if</span> (country) {
+  swal(<span class="str">'You selected: '</span> + country)
+}</pre>
       </td>
       <td><button class="input-type-select" aria-label="Try me! Example: input type select">Try me!</button></td>
     </tr>
@@ -971,19 +984,18 @@ swal({
   }, <span class="val">2000</span>)
 })
 
-swal({
+<span class="val">const</span> {value: color} = <span class="func">await</span> swal({
   title: <span class="str">'Select color'</span>,
   input: <span class="str">'radio'</span>,
   inputOptions: inputOptions,
   inputValidator: <span class="func"><i>function</i></span> (value) {
-    <span class="tag">return</span> !value && <span class="str">'You need to write something!'</span>
+    <span class="tag">return</span> !value && <span class="str">'You need to choose something!'</span>
   }
-}).then(<span class="func"><i>function</i></span> (result) {
-  swal({
-    type: <span class="str">'success'</span>,
-    html: <span class="str">'You selected: '</span> + result
-  })
-})</pre>
+})
+
+<span class="tag">if</span> (color) {
+  swal({html: <span class="str">'You selected: '</span> + result})
+}</pre>
       </td>
       <td><button class="input-type-radio" aria-label="Try me! Example: input type radio">Try me!</button></td>
     </tr>
@@ -992,7 +1004,7 @@ swal({
       <td><strong>checkbox</strong></td>
       <td>
         <pre>
-swal({
+<span class="val">const</span> {value: accept} = <span class="func">await</span> swal({
   title: <span class="str">'Terms and conditions'</span>,
   input: <span class="str">'checkbox'</span>,
   inputValue: <span class="val">1</span>,
@@ -1003,12 +1015,11 @@ swal({
   inputValidator: <span class="func"><i>function</i></span> (result) {
     <span class="tag">return</span> !result && <span class="str">'You need to agree with T&amp;C'</span>
   }
-}).then(<span class="func"><i>function</i></span> (result) {
-  swal({
-    type: <span class="str">'success'</span>,
-    text: <span class="str">'You agreed with T&amp;C :)'</span>
-  })
-})</pre>
+})
+
+<span class="tag">if</span> (accept) {
+  swal(<span class="str">'You agreed with T&amp;C :)'</span>)
+}</pre>
 
       </td>
       <td><button class="input-type-checkbox" aria-label="Try me! Example: input type checkbox">Try me!</button></td>
@@ -1018,24 +1029,26 @@ swal({
       <td><strong>file</strong></td>
       <td>
         <pre>
-swal({
-  title: <span class="str">'Select image',</span>
-  input: <span class="str">'file',</span>
+<span class="val">const</span> {value: file} = <span class="func">await</span> swal({
+  title: <span class="str">'Select image'</span>,
+  input: <span class="str">'file'</span>,
   inputAttributes: {
     <span class="str">'accept'</span>: <span class="str">'image/*'</span>,
     <span class="str">'aria-label'</span>: <span class="str">'Upload your profile picture'</span>
   }
-}).then(<span class="func"><i>function</i></span> (file) {
+})
+
+<span class="tag">if</span> (file) {
   <span class="func">var</span> reader = <span class="tag">new</span> <span class="func">FileReader</span>
   reader.onload = <span class="func"><i>function</i></span> (e) {
     swal({
-      title: 'Your uploaded picture',
+      title: <span class="str">'Your uploaded picture'</span>,
       imageUrl: e.target.result,
       imageAlt: <span class="str">'The uploaded picture'</span>
     })
   }
   reader.readAsDataURL(file)
-})</pre>
+}</pre>
       </td>
       <td><button class="input-type-file" aria-label="Try me! Example: input type file">Try me!</button></td>
     </tr>
@@ -1069,7 +1082,7 @@ swal({
       <td class="mobile-hidden"></td>
       <td>
         <pre>
-swal({
+<span class="val">const</span> {value: formValues} = <span class="func">await</span> swal({
   title: <span class="str">'Multiple inputs'</span>,
   html:
     <span class="str">'&lt;input id="swal-input1" class="swal2-input"&gt;'</span> +
@@ -1081,9 +1094,11 @@ swal({
       $(<span class="str">'#swal-input2'</span>).val()
     ]
   }
-}).then(<span class="func"><i>function</i></span> (result) {
-  swal(JSON.stringify(result))
-})</pre>
+})
+
+<span class="tag">if</span> (formValues) {
+  swal(<span class="func">JSON</span>.stringify(formValues))
+}</pre>
 
       </td>
       <td><button class="input-type-multiple" aria-label="Try me! Example: multiple inputs">Try me!</button></td>
@@ -1540,96 +1555,95 @@ swal({
   })
 
   $('.input-type-select').on('click', function () {
-    swal({
-      title: 'Select Ukraine',
-      input: 'select',
-      inputOptions: {
-        'SRB': 'Serbia',
-        'UKR': 'Ukraine',
-        'HRV': 'Croatia'
-      },
-      inputPlaceholder: 'Select country',
-      showCancelButton: true,
-      inputValidator: function (value) {
-        return new Promise(function (resolve, reject) {
-          if (value === 'UKR') {
-            resolve()
-          } else {
-            resolve('You need to select Ukraine :)')
-          }
-        })
-      }
-    }).then(function (result) {
-      swal({
-        type: 'success',
-        html: 'You selected: <strong>' + result + '</strong>'
+    (async function getCountry() {
+      const {value: country} = await swal({
+        title: 'Select Ukraine',
+        input: 'select',
+        inputOptions: {
+          'SRB': 'Serbia',
+          'UKR': 'Ukraine',
+          'HRV': 'Croatia'
+        },
+        inputPlaceholder: 'Select country',
+        showCancelButton: true,
+        inputValidator: function (value) {
+          return new Promise(function (resolve, reject) {
+            if (value === 'UKR') {
+              resolve()
+            } else {
+              resolve('You need to select Ukraine :)')
+            }
+          })
+        }
       })
-    })
+      country && swal({html: 'You selected: <strong>' + country + '</strong>'})
+    })()
   })
 
   $('.input-type-radio').on('click', function () {
-    var inputOptionsPromise = new Promise(function (resolve) {
-      setTimeout(function () {
-        resolve({
-          '#FF0000': 'Red',
-          '#00FF00': 'Green',
-          '#0000FF': 'Blue'
-        })
-      }, 2000)
-    })
-
-    swal({
-      title: 'Select color',
-      input: 'radio',
-      inputOptions: inputOptionsPromise,
-      inputValidator: function (value) {
-        return !value && 'You need to choose something!'
-      }
-    }).then(function (result) {
-      swal({
-        type: 'success',
-        html: 'You selected: <strong>' + result + '</strong>'
+    (async function getColor() {
+      var inputOptionsPromise = new Promise(function (resolve) {
+        setTimeout(function () {
+          resolve({
+            '#FF0000': 'Red',
+            '#00FF00': 'Green',
+            '#0000FF': 'Blue'
+          })
+        }, 2000)
       })
-    })
+
+      const {value: color} = await swal({
+        title: 'Select color',
+        input: 'radio',
+        inputOptions: inputOptionsPromise,
+        inputValidator: function (value) {
+          return !value && 'You need to choose something!'
+        }
+      })
+
+      color && swal({html: 'You selected: <strong>' + color + '</strong>'})
+    })()
   })
 
   $('.input-type-checkbox').on('click', function () {
-    swal({
-      title: 'Terms and conditions',
-      input: 'checkbox',
-      inputValue: 1,
-      inputPlaceholder: 'I agree with the terms and conditions',
-      confirmButtonText: 'Continue <i class="fa fa-arrow-right" style="margin-left: 10px"></i>',
-      inputValidator: function (result) {
-        return !result && 'To continue you need to agree with T&amp;C'
-      }
-    }).then(function () {
-      swal({
-        type: 'success',
-        text: 'You agreed with T&C :)'
+    (async function acceptTerms() {
+      const {value: accept} = await swal({
+        title: 'Terms and conditions',
+        input: 'checkbox',
+        inputValue: 1,
+        inputPlaceholder: 'I agree with the terms and conditions',
+        confirmButtonText: 'Continue <i class="fa fa-arrow-right" style="margin-left: 10px"></i>',
+        inputValidator: function (result) {
+          return !result && 'To continue you need to agree with T&amp;C'
+        }
       })
-    })
+
+      accept && swal({text: 'You agreed with T&C :)'})
+    })()
   })
 
   $('.input-type-file').on('click', function () {
-    swal({
-      title: 'Select image',
-      input: 'file',
-      inputAttributes: {
-        'accept': 'image/*',
-        'aria-label': 'Upload your profile picture'
+    (async function getColor() {
+      const {value: file} = await swal({
+        title: 'Select image',
+        input: 'file',
+        inputAttributes: {
+          'accept': 'image/*',
+          'aria-label': 'Upload your profile picture'
+        }
+      })
+      if (file) {
+        var reader = new FileReader()
+        reader.onload = function (e) {
+          swal({
+            title: 'Your uploaded picture',
+            imageUrl: e.target.result,
+            imageAlt: 'The uploaded picture'
+          })
+        }
+        reader.readAsDataURL(file)
       }
-    }).then(function (file) {
-      var reader = new FileReader()
-      reader.onload = function (e) {
-        swal({
-          title: 'Your uploaded picture',
-          imageUrl: e.target.result,
-          imageAlt: 'The uploaded picture'
-        })
-      }
-      reader.readAsDataURL(file)
-    })
+    })()
   })
 
   $('.input-type-range').on('click', function () {
@@ -1647,21 +1661,22 @@ swal({
   })
 
   $('.input-type-multiple').on('click', function () {
-    swal({
-      title: 'Multiple inputs',
-      html:
-        '<input id="swal-input1" class="swal2-input" placeholder="first input field">' +
-        '<input id="swal-input2" class="swal2-input" placeholder="second input field">',
-      focusConfirm: false,
-      preConfirm: function () {
-        return [
-          $('#swal-input1').val(),
-          $('#swal-input2').val()
-        ]
-      }
-    }).then(function (result) {
-      swal(JSON.stringify(result))
-    })
+    (async function getForm() {
+      const {value: formValues} = await swal({
+        title: 'Multiple inputs',
+        html:
+          '<input id="swal-input1" class="swal2-input" placeholder="first input field">' +
+          '<input id="swal-input2" class="swal2-input" placeholder="second input field">',
+        focusConfirm: false,
+        preConfirm: function () {
+          return [
+            $('#swal-input1').val(),
+            $('#swal-input2').val()
+          ]
+        }
+      })
+      formValues && swal(JSON.stringify(formValues))
+    })()
   })
 
   $('.examples .ajax-request button').on('click', function () {

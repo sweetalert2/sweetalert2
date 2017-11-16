@@ -273,9 +273,9 @@ Note that SweetAlert2 **does not** and **will not** provide support or functiona
 Collaborators
 -------------
 
-| ![](https://avatars1.githubusercontent.com/u/1343250?v=4&s=80) | ![](https://avatars2.githubusercontent.com/u/4542461?v=4&s=80) | ![](https://avatars1.githubusercontent.com/u/5918348?v=4&s=80) | ![](https://avatars3.githubusercontent.com/u/9093699?v=4&s=80) | ![](https://avatars2.githubusercontent.com/u/895831?v=4&s=80) |
-|-|-|-|-|-|
-| [@toverux](https://github.com/toverux) | [@birjolaxew](https://github.com/birjolaxew) | [@samturrell](https://github.com/samturrell) | [@acupajoe](https://github.com/acupajoe) | [@patrickhlauke](https://github.com/patrickhlauke) |
+| [![](https://avatars1.githubusercontent.com/u/1343250?v=4&s=80)](https://github.com/toverux) | [![](https://avatars2.githubusercontent.com/u/4542461?v=4&s=80)](https://github.com/birjolaxew) | [![](https://avatars1.githubusercontent.com/u/5918348?v=4&s=80)](https://github.com/samturrell) | [![](https://avatars3.githubusercontent.com/u/9093699?v=4&s=80)](https://github.com/acupajoe) | [![](https://avatars3.githubusercontent.com/u/3198597?v=4&s=80)](https://github.com/zenflow) | [![](https://avatars2.githubusercontent.com/u/895831?v=4&s=80)](https://github.com/patrickhlauke) |
+|-|-|-|-|-|-|
+| [@toverux](https://github.com/toverux) | [@birjolaxew](https://github.com/birjolaxew) | [@samturrell](https://github.com/samturrell) | [@acupajoe](https://github.com/acupajoe) | [@zenflow](https://github.com/zenflow) | [@patrickhlauke](https://github.com/patrickhlauke) |
 
 
 Contributing

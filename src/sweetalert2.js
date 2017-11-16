@@ -742,6 +742,10 @@ const sweetAlert = (...args) => {
 
       if (e.key === 'Enter') {
         if (e.target === getInput()) {
+          if (e.target.tagName.toLowerCase() === 'textarea') {
+            return // do not submit
+          }
+
           sweetAlert.clickConfirm()
           e.preventDefault()
         }

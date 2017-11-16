@@ -193,12 +193,14 @@ swal({
   confirmButtonColor: <span class="str">'#3085d6'</span>,
   cancelButtonColor: <span class="str">'#d33'</span>,
   confirmButtonText: <span class="str">'Yes, delete it!'</span>
-}).then(<span class="func"><i>function</i></span> () {
-  swal(
-    <span class="str">'Deleted!'</span>,
-    <span class="str">'Your file has been deleted.'</span>,
-    <span class="str">'success'</span>
-  )
+}).then(<span class="func"><i>function</i></span> (result) {
+  <span class="tag">if</span> (result.value) {
+    swal(
+      <span class="str">'Deleted!'</span>,
+      <span class="str">'Your file has been deleted.'</span>,
+      <span class="str">'success'</span>
+    )
+  }
 })</pre>
     </li>
 
@@ -220,16 +222,16 @@ swal({
   confirmButtonClass: <span class="str">'btn btn-success'</span>,
   cancelButtonClass: <span class="str">'btn btn-danger'</span>,
   buttonsStyling: <span class="val">false</span>
-}).then(<span class="func"><i>function</i></span> () {
-  swal(
-    <span class="str">'Deleted!'</span>,
-    <span class="str">'Your file has been deleted.'</span>,
-    <span class="str">'success'</span>
-  )
-}, <span class="func"><i>function</i></span> (dismiss) {
-  <span class="comment">// dismiss can be 'cancel', 'overlay',</span>
+}).then(<span class="func"><i>function</i></span> (result) {
+  <span class="tag">if</span> (result.value) {
+    swal(
+      <span class="str">'Deleted!'</span>,
+      <span class="str">'Your file has been deleted.'</span>,
+      <span class="str">'success'</span>
+    )
+  <span class="comment">// result.dismiss can be 'cancel', 'overlay',</span>
   <span class="comment">// 'close', and 'timer'</span>
-  <span class="tag">if</span> (dismiss === <span class="str">'cancel'</span>) {
+  } <span class="tag">else if</span> (result.dismiss === <span class="str">'cancel'</span>) {
     swal(
       <span class="str">'Cancelled'</span>,
       <span class="str">'Your imaginary file is safe :)'</span>,
@@ -283,15 +285,11 @@ swal({
   onOpen: <span class="func"><i>function</i></span> () {
     swal.showLoading()
   }
-}).then(
-  <span class="func"><i>function</i></span> () {},
-  <span class="comment">// handling the promise rejection</span>
-  <span class="func"><i>function</i></span> (dismiss) {
-    <span class="tag">if</span> (dismiss === <span class="str">'timer'</span>) {
-      console.log(<span class="str">'I was closed by the timer'</span>)
-    }
+}).then(<span class="func"><i>function</i></span> (result) {
+  <span class="tag">if</span> (result.dismiss === <span class="str">'timer'</span>) {
+    console.log(<span class="str">'I was closed by the timer'</span>)
   }
-)</pre>
+})</pre>
     </li>
 
     <li class="ajax-request" id="ajax-request">
@@ -310,19 +308,23 @@ swal({
     <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve, reject) {
       <span class="func">setTimeout</span>(<span class="func">function</span>() {
         <span class="tag">if</span> (email === <span class="str">'taken@example.com'</span>) {
-          swal.showValidationError(<span class="str">'This email is already taken.'</span>)
+          swal.showValidationError(
+            <span class="str">'This email is already taken.'</span>
+          )
         }
         resolve()
       }, <span class="val">2000</span>)
     })
   },
   allowOutsideClick: <span class="val">false</span>
-}).then(<span class="func"><i>function</i></span> (email) {
-  swal({
-    type: <span class="str">'success'</span>,
-    title: <span class="str">'Ajax request finished!'</span>,
-    html: <span class="str">'Submitted email: '</span> + email
-  })
+}).then(<span class="func"><i>function</i></span> (result) {
+  <span class="tag">if</span> (result.value) {
+    swal({
+      type: <span class="str">'success'</span>,
+      title: <span class="str">'Ajax request finished!'</span>,
+      html: <span class="str">'Submitted email: '</span> + result.email
+    })
+  }
 })</pre>
     </li>
 
@@ -789,12 +791,12 @@ swal.queue([{
     <p class="center">
       If rejections are not handled, it will be logged as an error.
       To avoid this, add a rejection handler to the Promise.<br>
-      Alternatively, you can use <strong>.catch(swal.noop)</strong> as a quick way to simply suppress the errors:
+      Alternatively, you can use <strong></strong> as a quick way to simply suppress the errors:
     </p>
 
     <pre>
 swal(...)
-  .catch(swal.noop)</pre>
+  </pre>
   </div>
 
   <!-- Modal Types -->
@@ -846,20 +848,16 @@ swal(...)
       <td><strong>text</strong></td>
       <td>
         <pre>
-swal({
+<span class="val">const</span> {value: name} = <span class="func">await</span> swal({
   title: <span class="str">'What is your name?'</span>,
   input: <span class="str">'text'</span>,
   inputPlaceholder: <span class="str">'Enter your name or nickname'</span>,
   showCancelButton: <span class="val">true</span>,
   inputValidator: <span class="func"><i>function</i></span> (value) {
-    <span class="tag">return</span> !value && <span class="str">'You need to write something!'</span>
+    <span class="tag">return</span> !value <span class="val">&&</span> <span class="str">'You need to write something!'</span>
   }
-}).then(<span class="func"><i>function</i></span> (name) {
-  swal({
-    type: <span class="str">'success'</span>,
-    title: <span class="str">'Hi, '</span> + name
-  })
-})</pre>
+})
+name <span class="val">&&</span> swal({type: <span class="str">'success'</span>, title: <span class="str">'Hi, '</span> + name})</pre>
       </td>
       <td><button class="input-type-text" aria-label="Try me! Example: input type text">Try me!</button></td>
     </tr>
@@ -868,16 +866,12 @@ swal({
       <td><strong>email</strong></td>
       <td>
         <pre>
-swal({
+<span class="val">const</span> {value: email} = <span class="func">await</span> swal({
   title: <span class="str">'Input email address'</span>,
   input: <span class="str">'email'</span>,
   inputPlaceholder: <span class="str">'Enter your email address'</span>
-}).then(<span class="func"><i>function</i></span> (email) {
-  swal({
-    type: <span class="str">'success'</span>,
-    html: <span class="str">'Entered email: '</span> + email
-  })
-})</pre>
+})
+email <span class="val">&&</span> swal({html: <span class="str">'Entered email: '</span> + email})</pre>
       </td>
       <td><button class="input-type-email" aria-label="Try me! Example: input type email">Try me!</button></td>
     </tr>
@@ -886,15 +880,11 @@ swal({
       <td><strong>url</strong></td>
       <td>
         <pre>
-swal({
+<span class="val">const</span> {value: url} = <span class="func">await</span> swal({
   input: <span class="str">'url'</span>,
   inputPlaceholder: <span class="str">'Enter the URL'</span>
-}).then(<span class="func"><i>function</i></span> (url) {
-  swal({
-    type: <span class="str">'success'</span>,
-    html: <span class="str">'Entered URL: '</span> + url
-  })
-})</pre>
+})
+email <span class="val">&&</span> swal({html: <span class="str">'Entered URL: '</span> + url})</pre>
       </td>
       <td><button class="input-type-url">Try me!</button></td>
     </tr>
@@ -903,7 +893,7 @@ swal({
       <td><strong>password</strong></td>
       <td>
         <pre>
-swal({
+<span class="val">const</span> {value: password} = <span class="func">await</span> swal({
   title: <span class="str">'Enter your password'</span>,
   input: <span class="str">'password'</span>,
   inputPlaceholder: <span class="str">'Enter your password'</span>,
@@ -912,14 +902,8 @@ swal({
     <span class="str">'autocapitalize'</span>: <span class="str">'off'</span>,
     <span class="str">'autocorrect'</span>: <span class="str">'off'</span>
   }
-}).then(<span class="func"><i>function</i></span> (password) {
-  <span class="tag">if</span> (password) {
-    swal({
-      type: <span class="str">'success'</span>,
-      html: <span class="str">'Entered password: '</span> + password
-    })
-  }
-})</pre>
+})
+password <span class="val">&&</span> swal({html: <span class="str">'Entered password: '</span> + password})</pre>
       </td>
       <td><button class="input-type-password" aria-label="Try me! Example: input type password">Try me!</button></td>
     </tr>
@@ -928,15 +912,12 @@ swal({
       <td><strong>textarea</strong></td>
       <td>
         <pre>
-swal({
+<span class="val">const</span> {value: text} = <span class="func">await</span> swal({
   input: <span class="str">'textarea'</span>,
   inputPlaceholder: <span class="str">'Type your message here'</span>,
   showCancelButton: <span class="val">true</span>
-}).then(<span class="func"><i>function</i></span> (text) {
-  <span class="tag">if</span> (text) {
-    swal(text)
-  }
-})</pre>
+})
+password <span class="val">&&</span> swal(text)</pre>
       </td>
       <td><button class="input-type-textarea" aria-label="Try me! Example: input type textarea">Try me!</button></td>
     </tr>
@@ -1102,7 +1083,7 @@ swal({
   }
 }).then(<span class="func"><i>function</i></span> (result) {
   swal(JSON.stringify(result))
-}).catch(swal.noop)</pre>
+})</pre>
 
       </td>
       <td><button class="input-type-multiple" aria-label="Try me! Example: multiple inputs">Try me!</button></td>
@@ -1328,7 +1309,7 @@ swal({
   })
 
   $('.showcase.sweet button').on('click', function () {
-    swal('Good job!', 'You clicked the button!', 'success').catch(swal.noop)
+    swal('Good job!', 'You clicked the button!', 'success')
   })
 
   $('.paypal').on('click', function () {
@@ -1346,13 +1327,13 @@ swal({
       function (currency) {
         location.assign('https://www.paypal.me/limonte/5' + currency);
       }
-    ).catch(swal.noop)
+    )
 
     return false;
   })
 
   $('.examples .message button').on('click', function () {
-    swal('Any fool can use a computer').catch(swal.noop)
+    swal('Any fool can use a computer')
   })
 
   $('.examples .timer button').on('click', function () {
@@ -1363,15 +1344,11 @@ swal({
       onOpen: function() {
         swal.showLoading()
       }
-    }).then(
-      function () {},
-      // handling the promise rejection
-      function (dismiss) {
-        if (dismiss === 'timer') {
-          console.log('I was closed by the timer')
-        }
+    }).then(function (result) {
+      if (result.dismiss === 'timer') {
+        console.log('I was closed by the timer')
       }
-    )
+    })
   })
 
   $('.examples .html button').on('click', function () {
@@ -1389,7 +1366,7 @@ swal({
       confirmButtonAriaLabel: 'Thumbs up, great!',
       cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
       cancelButtonAriaLabel: 'Thumbs down'
-    }).catch(swal.noop)
+    })
   })
 
   $('.examples #position button').on('click', function () {
@@ -1408,19 +1385,19 @@ swal({
       html: $('<div>').addClass('some-class').text('jQuery is everywhere.'),
       animation: false,
       customClass: 'animated tada'
-    }).catch(swal.noop)
+    })
   })
 
   $('.examples .title-text button').on('click', function () {
-    swal('The Internet?', 'That thing is still around?', 'question').catch(swal.noop)
+    swal('The Internet?', 'That thing is still around?', 'question')
   })
 
   $('.examples .error button').on('click', function () {
-    swal('Oops...', 'Something went wrong!', 'error').catch(swal.noop)
+    swal('Oops...', 'Something went wrong!', 'error')
   })
 
   $('.examples #long-text button').on('click', function () {
-    swal({html: 'Less is more.<br>'.repeat(100)}).catch(swal.noop)
+    swal({html: 'Less is more.<br>'.repeat(100)})
   })
 
   $('.examples .warning.confirm button').on('click', function () {
@@ -1432,9 +1409,11 @@ swal({
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
-    }).then(function () {
-      swal('Deleted!', 'Your file has been deleted!', 'success')
-    }).catch(swal.noop)
+    }).then(function (result) {
+      if (result.value) {
+        swal('Deleted!', 'Your file has been deleted!', 'success')
+      }
+    })
   })
 
   $('.examples .warning.cancel button').on('click', function () {
@@ -1450,12 +1429,20 @@ swal({
       confirmButtonClass: 'btn btn-success',
       cancelButtonClass: 'btn btn-danger',
       buttonsStyling: false
-    }).then(function () {
-      swal('Deleted!', 'Your file has been deleted!', 'success')
-    }, function (dismiss) {
-      // dismiss can be 'cancel', 'overlay', 'close', 'timer'
-      if (dismiss === 'cancel') {
-        swal('Cancelled', 'Your imaginary file is safe :)', 'error')
+    }).then(function (result) {
+      if (result.value) {
+        swal(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      // result.dismiss can be 'cancel', 'overlay', 'close', and 'timer'
+      } else if (result.dismiss === 'cancel') {
+        swal(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
       }
     })
   })
@@ -1469,7 +1456,7 @@ swal({
       imageHeight: 200,
       imageAlt: 'Custom image',
       animation: false
-    }).catch(swal.noop)
+    })
   })
 
   $('.examples .custom-width-padding-background button').on('click', function () {
@@ -1478,84 +1465,73 @@ swal({
       width: 600,
       padding: 100,
       background: '#fff url(https://bit.ly/1Nqn9HU)'
-    }).catch(swal.noop)
+    })
   })
 
   $('.input-type-text').on('click', function () {
-    swal({
-      title: 'What is your name?',
-      input: 'text',
-      inputPlaceholder: 'Enter your name or nickname',
-      showCancelButton: true,
-      inputValidator: function (value) {
-        return !value && 'You need to write something!'
-      }
-    }).then(function (name) {
-      swal({
-        type: 'success',
-        title: 'Hi, ' + name
-      })
-    }).catch(swal.noop)
+    (async function getName() {
+      const {value: name} = await swal({
+        title: 'What is your name?',
+        input: 'text',
+        inputPlaceholder: 'Enter your name or nickname',
+        showCancelButton: true,
+        inputValidator: function (value) {
+          return !value && 'You need to write something!'
+        }
+      });
+      name && swal({type: 'success', title: `Hi, ${name}`})
+    })()
   })
 
   $('.input-type-email').on('click', function () {
-    swal({
-      title: 'Input email address',
-      input: 'email',
-      inputPlaceholder: 'Enter your email address',
-    }).then(function (email) {
-      swal({
-        type: 'success',
-        html: 'Entered email: <strong>' + email + '</strong>'
+    (async function getEmail() {
+      const {value: email} = await swal({
+        title: 'Input email address',
+        input: 'email',
+        inputPlaceholder: 'Enter your email address',
       })
-    }).catch(swal.noop)
+      email && swal({html: 'Entered email: <strong>' + email + '</strong>'})
+    })()
   })
 
   $('.input-type-url').on('click', function () {
-    swal({
-      input: 'url',
-      inputPlaceholder: 'Enter the URL'
-    }).then(function (url) {
-      swal({
-        type: 'success',
-        html: 'Entered URL: <strong>' + url + '</strong>'
+    (async function getUrl() {
+      const {value: url} = await swal({
+        input: 'url',
+        inputPlaceholder: 'Enter the URL'
       })
-    }).catch(swal.noop)
+      url && swal({html: 'Entered URL: <strong>' + url + '</strong>'})
+    })()
   })
 
   $('.input-type-password').on('click', function () {
-    swal({
-      title: 'Enter your password',
-      input: 'password',
-      inputPlaceholder: 'Enter your password',
-      inputAttributes: {
-        'maxlength': 10,
-        'autocapitalize': 'off',
-        'autocorrect': 'off'
-      }
-    }).then(function (password) {
-      if (password) {
-        swal({
-          type: 'success',
-          html: 'Entered password: <strong>' + password + '</strong>'
-        })
-      }
-    }).catch(swal.noop)
+    (async function getPassword() {
+      const {value: password} = await swal({
+        title: 'Enter your password',
+        input: 'password',
+        inputPlaceholder: 'Enter your password',
+        inputAttributes: {
+          'maxlength': 10,
+          'autocapitalize': 'off',
+          'autocorrect': 'off'
+        }
+      })
+      password && swal({html: 'Entered password: <strong>' + password + '</strong>'})
+    })()
   })
 
   $('.input-type-textarea').on('click', function () {
-    swal({
-      input: 'textarea',
-      inputPlaceholder: 'Type your message here',
-      inputAttributes: {
-        'aria-label': 'Type your message here'
-      },
-      showCancelButton: true
-    }).then(function (text) {
-      if (text) {
-        swal(text)
-      }
-    }).catch(swal.noop)
+    (async function getMessage() {
+      const {value: text} = await swal({
+        input: 'textarea',
+        inputPlaceholder: 'Type your message here',
+        inputAttributes: {
+          'aria-label': 'Type your message here'
+        },
+        showCancelButton: true
+      })
+      text && swal(text)
+    })()
   })
 
   $('.input-type-select').on('click', function () {
@@ -1583,7 +1559,7 @@ swal({
         type: 'success',
         html: 'You selected: <strong>' + result + '</strong>'
       })
-    }).catch(swal.noop)
+    })
   })
 
   $('.input-type-radio').on('click', function () {
@@ -1609,7 +1585,7 @@ swal({
         type: 'success',
         html: 'You selected: <strong>' + result + '</strong>'
       })
-    }).catch(swal.noop)
+    })
   })
 
   $('.input-type-checkbox').on('click', function () {
@@ -1627,7 +1603,7 @@ swal({
         type: 'success',
         text: 'You agreed with T&C :)'
       })
-    }).catch(swal.noop)
+    })
   })
 
   $('.input-type-file').on('click', function () {
@@ -1645,10 +1621,10 @@ swal({
           title: 'Your uploaded picture',
           imageUrl: e.target.result,
           imageAlt: 'The uploaded picture'
-        }).catch(swal.noop)
+        })
       }
       reader.readAsDataURL(file)
-    }).catch(swal.noop)
+    })
   })
 
   $('.input-type-range').on('click', function () {
@@ -1662,7 +1638,7 @@ swal({
         step: 1
       },
       inputValue: 25
-    }).catch(swal.noop)
+    })
   })
 
   $('.input-type-multiple').on('click', function () {
@@ -1680,7 +1656,7 @@ swal({
       }
     }).then(function (result) {
       swal(JSON.stringify(result))
-    }).catch(swal.noop)
+    })
   })
 
   $('.examples .ajax-request button').on('click', function () {
@@ -1702,13 +1678,15 @@ swal({
         })
       },
       allowOutsideClick: false
-    }).then(function (email) {
-      swal({
-        type: 'success',
-        title: 'Ajax request finished!',
-        html: 'Submitted email: ' + '<strong>' + email + '</strong>'
-      })
-    }).catch(swal.noop)
+    }).then(function (result) {
+      if (result.value) {
+        swal({
+          type: 'success',
+          title: 'Ajax request finished!',
+          html: 'Submitted email: <strong>' + result.value + '</strong>'
+        })
+      }
+    })
   })
 
   $('.examples .chaining-modals button').on('click', function () {
@@ -1731,7 +1709,7 @@ swal({
         title: 'All done!',
         html: 'Your answers: <pre>' + JSON.stringify(result) + '</pre>',
         confirmButtonText: 'Lovely!'
-      }).catch(swal.noop)
+      })
     }, function () {
       swal.resetDefaults()
     })
@@ -1752,12 +1730,12 @@ swal({
             })
         }
       }
-    ]).catch(swal.noop)
+    ])
   })
 
   $('.modal-types button').on('click', function () {
     var type = $(this).attr('class').slice(5)
-    swal(type + '!', '', type).catch(swal.noop)
+    swal(type + '!', '', type)
   })
 
   // Google Analytics

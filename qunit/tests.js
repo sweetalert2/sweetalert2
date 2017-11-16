@@ -5,7 +5,6 @@ QUnit.test('version is correct semver', function (assert) {
 })
 
 QUnit.test('modal shows up', function (assert) {
-  assert.notOk(swal.isVisible())
   swal('Hello world!')
   assert.ok(swal.isVisible())
 })
@@ -133,7 +132,7 @@ QUnit.test('set and reset defaults', function (assert) {
   assert.ok($('.swal2-cancel').is(':visible'))
 
   swal.resetDefaults()
-  swal('Modal after resetting defaults').catch(swal.noop)
+  swal('Modal after resetting defaults')
   assert.equal($('.swal2-confirm').text(), 'OK')
   assert.ok($('.swal2-cancel').is(':hidden'))
 
@@ -255,7 +254,7 @@ QUnit.test('queue', function (assert) {
       swal.clickConfirm()
 
       // test queue is cancelled on first step, other steps shouldn't be shown
-      swal.queue(steps).catch(swal.noop)
+      swal.queue(steps)
       swal.clickCancel()
       assert.notOk(swal.isVisible())
       done()
@@ -574,7 +573,7 @@ QUnit.test('onClose', function (assert) {
       assert.ok($modal.is(_$modal))
       done()
     }
-  }).catch(swal.noop)
+  })
 
   const $modal = $('.swal2-modal')
   $('.swal2-close').click()
@@ -642,7 +641,7 @@ QUnit.test('cancel button', function (assert) {
       done()
     },
     function () {}
-  ).catch(swal.noop)
+  )
 
   swal.clickCancel()
 })

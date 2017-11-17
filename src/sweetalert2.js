@@ -418,7 +418,7 @@ const sweetAlert = (...args) => {
       if (params.input === 'email' && params.inputValidator === null) {
         const inputValidator = (email) => {
           return new Promise((resolve, reject) => {
-            const emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
+            const emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/
             if (emailRegex.test(email)) {
               resolve()
             } else {

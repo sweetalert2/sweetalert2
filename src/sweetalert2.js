@@ -740,7 +740,7 @@ const sweetAlert = (...args) => {
         'Left', 'Right', 'Up', 'Down' // IE11
       ]
 
-      if (e.key === 'Enter' &&  !e.isComposing) {
+      if (e.key === 'Enter' && !e.isComposing) {
         if (e.target === getInput()) {
           if (e.target.tagName.toLowerCase() === 'textarea') {
             return // do not submit

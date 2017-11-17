@@ -35,8 +35,6 @@
 
 --------
 
-<br/>
-
 What's the difference between SweetAlert and SweetAlert2?
 ---------------------------------------------------------
 

@@ -753,7 +753,7 @@ swal.queue([{
   <div class="center-container">
     <h3>Handling Dismissals</h3>
 
-    <p class="center">When an alert is dismissed by the user, the Promise returned by <strong>swal()</strong> will reject with a string documenting the reason it was dismissed:</p>
+    <p class="center">When an alert is dismissed by the user, the Promise returned by <strong>swal()</strong> will be resolved with an object `{dismiss: &lt;reason&gt;}` documenting the reason it was dismissed:</p>
 
     <table>
       <tr class="titles">
@@ -787,17 +787,6 @@ swal.queue([{
         <td><a href="#timer">timer</a></td>
       </tr>
     </table>
-
-    <p class="center">
-      If rejections are not handled, it will be logged as an error.
-      To avoid this, add a rejection handler to the Promise.<br>
-      Alternatively, you can use <strong></strong> as a quick way to simply suppress the errors:
-    </p>
-
-    <pre>
-swal(...)
-  </pre>
-  </div>
 
   <!-- Modal Types -->
   <h3>Modal Types</h3>

@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300");
-@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700");
 html,
 body {
   margin: 0; }
@@ -13,18 +12,10 @@ body {
 header {
   max-width: 650px;
   margin: auto; }
-  header h1 {
-    font-family: 'Courgette', serif;
-    font-size: 60px;
-    color: #a8a8a8;
-    white-space: nowrap;
-    margin: 50px auto 0; }
-    header h1 span {
-      margin: 0 10px;
-      color: #f77; }
-    @media all and (max-width: 440px) {
-      header h1 {
-        font-size: 50px; } }
+  header .logo {
+    margin: 2em 0 1em;
+    max-width: 90%; }
+  header h1,
   header h2 {
     font-size: 20px;
     line-height: 25px;
@@ -32,6 +23,7 @@ header {
     font-weight: 300;
     text-align: center;
     display: block; }
+    header h1 a,
     header h2 a {
       color: #3085d6; }
 
@@ -215,7 +207,7 @@ pre {
     .showcase {
       padding: 0 10px; }
       .showcase.normal,
-      .showcase h4 {
+      .showcase img {
         display: none; } }
   @media all and (max-width: 423px) {
     .showcase {
@@ -226,13 +218,10 @@ pre {
     line-height: 22px;
     margin: 0 auto;
     font-weight: 800; }
-  .showcase.sweet h4 {
-    font-family: 'Courgette', serif;
-    font-size: 24px;
-    color: #a8a8a8; }
-    .showcase.sweet h4 span {
-      margin: 0 4px;
-      color: #f77; }
+  .showcase.sweet {
+    padding-top: 14px; }
+    .showcase.sweet button {
+      margin-top: 13px; }
   .showcase button {
     margin: 20px; }
   .showcase .vs-icon {

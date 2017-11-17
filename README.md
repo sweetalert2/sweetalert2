@@ -151,7 +151,7 @@ swal({
 Handling Dismissals
 -------------------
 
-When an alert is dismissed by the user, the Promise returned by `swal()` will be resolved with an object `{dismiss: <reason>}` documenting the reason it was dismissed:
+When an alert is dismissed by the user, the Promise returned by `swal()` will be resolved with an object `{ dismiss: reason }` documenting the reason it was dismissed:
 
 | String      | Description                                             | Related configuration |
 | ----------- | ------------------------------------------------------- | --------------------- |

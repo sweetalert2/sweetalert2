@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300'); // Open Sans font
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');   // Condensed
 
 $black: #000;
 $white: #fff;
@@ -42,23 +41,12 @@ header {
   max-width: 650px;
   margin: auto;
 
-  h1 {
-    font-family: 'Courgette', serif;
-    font-size: 60px;
-    color: lighten($black, 66);
-    white-space: nowrap;
-    margin: 50px auto 0;
-
-    span {
-      margin: 0 10px;
-      color: $salmon;
-    }
-
-    @media all and (max-width: 440px) {
-      font-size: 50px;
-    }
+  .logo {
+    margin: 2em 0 1em;
+    max-width: 90%;
   }
 
+  h1,
   h2 {
     font-size: 20px;
     line-height: 25px;
@@ -327,7 +315,7 @@ pre {
     padding: 0 10px;
 
     &.normal,
-    h4 {
+    img {
       display: none;
     }
   }
@@ -344,15 +332,10 @@ pre {
   }
 
   &.sweet {
-    h4 {
-      font-family: 'Courgette', serif;
-      font-size: 24px;
-      color: lighten($black, 66);
+    padding-top: 14px;
 
-      span {
-        margin: 0 4px;
-        color: $salmon;
-      }
+    button {
+      margin-top: 13px;
     }
   }
 

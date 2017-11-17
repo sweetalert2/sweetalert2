@@ -103,15 +103,15 @@ swal({
   showCancelButton: true,
   confirmButtonText: 'Yes, delete it!',
   cancelButtonText: 'No, keep it'
-}).then(function() {
-  swal(
-    'Deleted!',
-    'Your imaginary file has been deleted.',
-    'success'
-  )
-}, function(dismiss) {
-  // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
-  if (dismiss === 'cancel') {
+}).then(function(result) {
+  if (result.value) {
+    swal(
+      'Deleted!',
+      'Your imaginary file has been deleted.',
+      'success'
+    )
+  // result.dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+  } else if (result.dismiss === 'cancel') {
     swal(
       'Cancelled',
       'Your imaginary file is safe :)',
@@ -127,7 +127,7 @@ swal({
 Handling Dismissals
 -------------------
 
-When an alert is dismissed by the user, the Promise returned by `swal()` will reject with a string documenting the reason it was dismissed:
+When an alert is dismissed by the user, the Promise returned by `swal()` will be resolved with an object `{dismiss: <reason>}` documenting the reason it was dismissed:
 
 | String      | Description                                             | Related configuration |
 | ----------- | ------------------------------------------------------- | --------------------- |
@@ -137,12 +137,6 @@ When an alert is dismissed by the user, the Promise returned by `swal()` will re
 | `'esc'`     | The user pressed the <kbd>Esc</kbd> key.                | `allowEscapeKey`      |
 | `'timer'`   | The timer ran out, and the alert closed automatically.  | `timer`               |
 
-If rejections are not handled, it will be logged as an error. To avoid this, add a rejection handler to the Promise. Alternatively, you can use `.catch(swal.noop)` as a quick way to simply suppress the errors:
-
-```js
-swal(...)
-  .catch(swal.noop)
-```
 
 Modal Types
 -----------

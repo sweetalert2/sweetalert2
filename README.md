@@ -321,7 +321,7 @@ If you would like to contribute enhancements or fixes, please do the following:
 Related projects
 ----------------
 
-- [toverux/ngsweetalert2](https://github.com/toverux/ngsweetalert2) - Angular 2+ directive
+- [toverux/ngx-sweetalert2](https://github.com/toverux/ngx-sweetalert2) - Angular 4+ integration
 - [lishengzxc/vue-sweetalert](https://github.com/lishengzxc/vue-sweetalert) - Vue.js plugin
 - [limonte/sweetalert2-polymer](https://github.com/limonte/sweetalert2-polymer) - Polymer wrapper
 - [limonte/sweetalert2-webpack-demo](https://github.com/limonte/sweetalert2-webpack-demo) - webpack demo

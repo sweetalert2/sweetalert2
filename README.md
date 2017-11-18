@@ -33,6 +33,8 @@
     A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement for JavaScript's popup boxes. Zero dependencies.
 </p>
 
+:point_right: **Upgrading from v6.x to v7.x?** [Read the release notes!](https://github.com/limonte/sweetalert2/releases/tag/v7.0.0)
+
 --------
 
 What's the difference between SweetAlert and SweetAlert2?

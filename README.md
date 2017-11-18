@@ -1,36 +1,22 @@
 <p align="center">
-    <img alt="SweetAlert2" src="/assets/swal2-logo.png"/>
+  <a href="https://limonte.github.io/sweetalert2/">
+    <img src="/assets/swal2-logo.png" alt="SweetAlert2">
+  </a>
 </p>
 
-<br/>
-<br/>
+<br>
 
 <p align="center">
-    <a href="https://travis-ci.org/limonte/sweetalert2">
-        <img alt="Build Status" src="https://travis-ci.org/limonte/sweetalert2.svg?branch=master"/>
-    </a>
-    <a href="https://www.npmjs.com/package/sweetalert2">
-        <img alt="Version" src="https://img.shields.io/npm/v/sweetalert2.svg"/>
-    </a>
-    <a href="http://standardjs.com/">
-        <img alt="Standard - JavaScript Style Guide" src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg"/>
-    </a>
-    <a href="http://isitmaintained.com/project/limonte/sweetalert2">
-        <img alt="Average time to resolve an issue" src="http://isitmaintained.com/badge/resolution/limonte/sweetalert2.svg"/>
-    </a>
-    <a href="https://gitter.im/sweetalert2/Lobby">
-        <img alt="Gitter" src="https://badges.gitter.im/Join%20Chat.svg"/>
-    </a>
-    <a href="https://www.patreon.com/limonte">
-        <img alt="Support me on Patreon" src="http://ionicabizau.github.io/badges/patreon.svg"/>
-    </a>
-    <a href="https://www.paypal.me/limonte/5eur">
-        <img alt="PayPal Donate" src="http://ionicabizau.github.io/badges/paypal.svg"/>
-    </a>
+  <a href="https://travis-ci.org/limonte/sweetalert2"><img alt="Build Status" src="https://travis-ci.org/limonte/sweetalert2.svg?branch=master"></a>
+  <a href="https://www.npmjs.com/package/sweetalert2"><img alt="Version" src="https://img.shields.io/npm/v/sweetalert2.svg"></a>
+  <a href="http://isitmaintained.com/project/limonte/sweetalert2"><img alt="Average time to resolve an issue" src="http://isitmaintained.com/badge/resolution/limonte/sweetalert2.svg"></a>
+  <a href="https://gitter.im/sweetalert2/Lobby"><img alt="Gitter" src="https://badges.gitter.im/Join%20Chat.svg"></a>
+  <a href="https://www.patreon.com/limonte"><img alt="Support me on Patreon" src="http://ionicabizau.github.io/badges/patreon.svg"></a>
+  <a href="https://www.paypal.me/limonte/5eur"><img alt="PayPal Donate" src="http://ionicabizau.github.io/badges/paypal.svg"></a>
 </p>
 
 <p align="center">
-    A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement for JavaScript's popup boxes. Zero dependencies.
+  A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement for JavaScript's popup boxes. Zero dependencies.
 </p>
 
 :point_right: **Upgrading from v6.x to v7.x?** [Read the release notes!](https://github.com/limonte/sweetalert2/releases/tag/v7.0.0)

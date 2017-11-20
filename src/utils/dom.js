@@ -4,7 +4,6 @@ import { uniqueArray, error } from './utils.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
-  previousWindowKeyDown: null,
   previousActiveElement: null,
   previousBodyPadding: null
 }
@@ -277,7 +276,6 @@ export const animationEndEvent = (() => {
 
 // Reset previous window keydown handler and focued element
 export const resetPrevState = () => {
-  window.onkeydown = states.previousWindowKeyDown
   if (states.previousActiveElement && states.previousActiveElement.focus) {
     let x = window.scrollX
     let y = window.scrollY

@@ -6,6 +6,8 @@ import * as dom from './utils/dom.js'
 let popupParams = Object.assign({}, defaultParams)
 let queue = []
 
+let previousWindowKeyDown, windowOnkeydownOverridden
+
 /*
  * Check for the existence of Promise
  * Hopefully to avoid many github issues
@@ -789,8 +791,9 @@ const sweetAlert = (...args) => {
       }
     }
 
-    if (!window.onkeydown || window.onkeydown.toString() !== handleKeyDown.toString()) {
-      dom.states.previousWindowKeyDown = window.onkeydown
+    if (!windowOnkeydownOverridden) {
+      previousWindowKeyDown = window.onkeydown
+      windowOnkeydownOverridden = true
       window.onkeydown = handleKeyDown
     }
 
@@ -1184,6 +1187,8 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
 
   if (!dom.isToast()) {
     dom.resetPrevState()
+    window.onkeydown = previousWindowKeyDown
+    windowOnkeydownOverridden = false
   }
 
   const removePopupAndResetState = () => {

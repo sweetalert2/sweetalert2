@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.0.0
+ * sweetalert2 v7.0.1
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -155,7 +155,6 @@ var warnOnce = function warnOnce(message) {
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 var states = {
-  previousWindowKeyDown: null,
   previousActiveElement: null,
   previousBodyPadding: null
 
@@ -193,34 +192,24 @@ var states = {
   var checkbox = popup.querySelector('.' + swalClasses.checkbox + ' input');
   var textarea = getChildByClass(popup, swalClasses.textarea);
 
-  input.oninput = function () {
-    sweetAlert.resetValidationError();
+  var resetValidationError = function resetValidationError() {
+    sweetAlert.isVisible() && sweetAlert.resetValidationError();
   };
 
-  file.onchange = function () {
-    sweetAlert.resetValidationError();
-  };
+  input.oninput = resetValidationError;
+  file.onchange = resetValidationError;
+  select.onchange = resetValidationError;
+  checkbox.onchange = resetValidationError;
+  textarea.oninput = resetValidationError;
 
   range.oninput = function () {
-    sweetAlert.resetValidationError();
+    resetValidationError();
     rangeOutput.value = range.value;
   };
 
   range.onchange = function () {
-    sweetAlert.resetValidationError();
+    resetValidationError();
     range.previousSibling.value = range.value;
-  };
-
-  select.onchange = function () {
-    sweetAlert.resetValidationError();
-  };
-
-  checkbox.onchange = function () {
-    sweetAlert.resetValidationError();
-  };
-
-  textarea.oninput = function () {
-    sweetAlert.resetValidationError();
   };
 
   return popup;
@@ -409,7 +398,6 @@ var animationEndEvent = function () {
 
 // Reset previous window keydown handler and focued element
 var resetPrevState = function resetPrevState() {
-  window.onkeydown = states.previousWindowKeyDown;
   if (states.previousActiveElement && states.previousActiveElement.focus) {
     var x = window.scrollX;
     var y = window.scrollY;
@@ -486,6 +474,9 @@ var _extends = Object.assign || function (target) {
 
 var popupParams = _extends({}, defaultParams);
 var queue = [];
+
+var previousWindowKeyDown = void 0;
+var windowOnkeydownOverridden = void 0;
 
 /*
  * Check for the existence of Promise
@@ -899,7 +890,7 @@ var sweetAlert = function sweetAlert() {
       if (params.input === 'email' && params.inputValidator === null) {
         var inputValidator = function inputValidator(email) {
           return new Promise(function (resolve, reject) {
-            var emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            var emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/;
             if (emailRegex.test(email)) {
               resolve();
             } else {
@@ -1218,8 +1209,12 @@ var sweetAlert = function sweetAlert() {
       var arrowKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Left', 'Right', 'Up', 'Down' // IE11
       ];
 
-      if (e.key === 'Enter') {
+      if (e.key === 'Enter' && !e.isComposing) {
         if (e.target === getInput()) {
+          if (e.target.tagName.toLowerCase() === 'textarea') {
+            return; // do not submit
+          }
+
           sweetAlert.clickConfirm();
           e.preventDefault();
         }
@@ -1263,8 +1258,9 @@ var sweetAlert = function sweetAlert() {
       }
     };
 
-    if (!window.onkeydown || window.onkeydown.toString() !== handleKeyDown.toString()) {
-      states.previousWindowKeyDown = window.onkeydown;
+    if (!windowOnkeydownOverridden) {
+      previousWindowKeyDown = window.onkeydown;
+      windowOnkeydownOverridden = true;
       window.onkeydown = handleKeyDown;
     }
 
@@ -1616,15 +1612,17 @@ sweetAlert.queue = function (steps) {
         document.body.setAttribute('data-swal2-queue-step', i);
 
         sweetAlert(queue[i]).then(function (result) {
-          queueResult.push(result);
-          step(i + 1, callback);
-        }, function (error$$1) {
-          resetQueue();
-          reject(error$$1);
+          if (result.value) {
+            queueResult.push(result.value);
+            step(i + 1, callback);
+          } else {
+            resetQueue();
+            resolve({ dismiss: result.dismiss });
+          }
         });
       } else {
         resetQueue();
-        resolve(queueResult);
+        resolve({ value: queueResult });
       }
     })(0);
   });
@@ -1671,6 +1669,8 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
 
   if (!isToast()) {
     resetPrevState();
+    window.onkeydown = previousWindowKeyDown;
+    windowOnkeydownOverridden = false;
   }
 
   var removePopupAndResetState = function removePopupAndResetState() {
@@ -1803,7 +1803,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.0.0';
+sweetAlert.version = '7.0.1';
 
 sweetAlert.default = sweetAlert;
 

@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "repository": "limonte/sweetalert2",
   "homepage": "https://limonte.github.io/sweetalert2/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
@@ -24,14 +24,14 @@
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.3",
     "gulp-uglify": "latest",
-    "rollup": "latest",
+    "rollup": "^0.51.8",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-css-only": "^0.2.0",
     "standard": "^8.0.0",
     "testem": "latest",
     "tslint": "^5.8.0",
     "typescript": "^2.5.3",
-    "uglify-js": "latest"
+    "uglify-js": "^3.1.10"
   },
   "standard": {
     "ignore": [

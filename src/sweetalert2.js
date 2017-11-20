@@ -1131,7 +1131,7 @@ sweetAlert.queue = (steps) => {
         document.body.setAttribute('data-swal2-queue-step', i)
 
         sweetAlert(queue[i]).then(result => {
-          if (result.value) {
+          if (result.value !== undefined) {
             queueResult.push(result.value)
             step(i + 1, callback)
           } else {

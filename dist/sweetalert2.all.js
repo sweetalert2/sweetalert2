@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.0.1
+ * sweetalert2 v7.0.2
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1335,7 +1335,7 @@ sweetAlert$1.queue = function (steps) {
         document.body.setAttribute('data-swal2-queue-step', i);
 
         sweetAlert$1(queue[i]).then(function (result) {
-          if (result.value) {
+          if (result.value !== undefined) {
             queueResult.push(result.value);
             step(i + 1, callback);
           } else {
@@ -1526,7 +1526,7 @@ sweetAlert$1.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert$1.noop = function () {};
 
-sweetAlert$1.version = '7.0.1';
+sweetAlert$1.version = '7.0.2';
 
 sweetAlert$1.default = sweetAlert$1;
 

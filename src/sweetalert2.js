@@ -1130,19 +1130,18 @@ sweetAlert.queue = (steps) => {
       if (i < queue.length) {
         document.body.setAttribute('data-swal2-queue-step', i)
 
-        sweetAlert(queue[i]).then(
-          (result) => {
-            queueResult.push(result)
+        sweetAlert(queue[i]).then(result => {
+          if (result.value) {
+            queueResult.push(result.value)
             step(i + 1, callback)
-          },
-          (error) => {
+          } else {
             resetQueue()
-            reject(error)
+            resolve({dismiss: result.dismiss})
           }
-        )
+        })
       } else {
         resetQueue()
-        resolve(queueResult)
+        resolve({value: queueResult})
       }
     })(0)
   })

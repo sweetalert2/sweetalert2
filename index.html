@@ -193,7 +193,7 @@ swal({
   confirmButtonColor: <span class="str">'#3085d6'</span>,
   cancelButtonColor: <span class="str">'#d33'</span>,
   confirmButtonText: <span class="str">'Yes, delete it!'</span>
-}).then(<span class="func"><i>function</i></span> (result) {
+}).<span class="tag">then</span>(<span class="func"><i>function</i></span> (result) {
   <span class="tag">if</span> (result.value) {
     swal(
       <span class="str">'Deleted!'</span>,
@@ -222,7 +222,7 @@ swal({
   confirmButtonClass: <span class="str">'btn btn-success'</span>,
   cancelButtonClass: <span class="str">'btn btn-danger'</span>,
   buttonsStyling: <span class="val">false</span>
-}).then(<span class="func"><i>function</i></span> (result) {
+}).<span class="tag">then</span>(<span class="func"><i>function</i></span> (result) {
   <span class="tag">if</span> (result.value) {
     swal(
       <span class="str">'Deleted!'</span>,
@@ -282,10 +282,10 @@ swal({
   title: <span class="str">'Auto close alert!'</span>,
   text: <span class="str">'I will close in 5 seconds.'</span>,
   timer: <span class="val">5000</span>,
-  onOpen: <span class="func"><i>function</i></span> () {
+  onOpen: <span class="func"><i>function</i></span> () => {
     swal.showLoading()
   }
-}).then(<span class="func"><i>function</i></span> (result) {
+}).<span class="tag">then</span>(<span class="func"><i>function</i></span> (result) {
   <span class="tag">if</span> (result.dismiss === <span class="str">'timer'</span>) {
     console.log(<span class="str">'I was closed by the timer'</span>)
   }
@@ -304,9 +304,9 @@ swal({
   showCancelButton: <span class="val">true</span>,
   confirmButtonText: <span class="str">'Submit'</span>,
   showLoaderOnConfirm: <span class="val">true</span>,
-  preConfirm: <span class="func"><i>function</i></span> (email) {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve, reject) {
-      <span class="func">setTimeout</span>(<span class="func">function</span>() {
+  preConfirm: <span class="func"><i>function</i></span> (email) => {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve) => {
+      <span class="func">setTimeout</span>(<span class="func"><i>function</i></span> () {
         <span class="tag">if</span> (email === <span class="str">'taken@example.com'</span>) {
           swal.showValidationError(
             <span class="str">'This email is already taken.'</span>
@@ -317,7 +317,7 @@ swal({
     })
   },
   allowOutsideClick: <span class="val">false</span>
-}).then(<span class="func"><i>function</i></span> (result) {
+}).<span class="tag">then</span>(<span class="func"><i>function</i></span> (result) {
   <span class="tag">if</span> (result.value) {
     swal({
       type: <span class="str">'success'</span>,
@@ -350,18 +350,19 @@ swal.setDefaults({
   <span class="str">'Question 3'</span>
 ]
 
-swal.queue(steps).then(<span class="func"><i>function</i></span> (result) {
+swal.queue(steps).<span class="tag">then</span>(<span class="func"><i>function</i></span> (result) {
   swal.resetDefaults()
-  swal({
-    title: <span class="str">'All done!'</span>,
-    html:
-      <span class="str">'Your answers: &lt;pre&gt;'</span> +
-        JSON.stringify(result) +
-      <span class="str">'&lt;/pre&gt;'</span>,
-    confirmButtonText: <span class="str">'Lovely!'</span>
-  })
-}, <span class="func"><i>function</i></span> () {
-  swal.resetDefaults()
+
+  <span class="tag">if</span> (result.value) {
+    swal({
+      title: <span class="str">'All done!'</span>,
+      html:
+        <span class="str">'Your answers: &lt;pre&gt;'</span> +
+          JSON.stringify(result.value) +
+        <span class="str">'&lt;/pre&gt;'</span>,
+      confirmButtonText: <span class="str">'Lovely!'</span>
+    })
+  }
 })</pre>
     </li>
 
@@ -371,6 +372,8 @@ swal.queue(steps).then(<span class="func"><i>function</i></span> (result) {
         <button aria-label="Try me! Example: Dynamic queue">Try me!</button>
       </div>
       <pre>
+const ipAPI = <span class="str">'https://api.ipify.org?format=json'</span>
+
 swal.queue([{
   title: <span class="str">'Your public IP'</span>,
   confirmButtonText: <span class="str">'Show my public IP'</span>,
@@ -379,10 +382,11 @@ swal.queue([{
     <span class="str">'via AJAX request'</span>,
   showLoaderOnConfirm: <span class="val">true</span>,
   preConfirm: <span class="func"><i>function</i></span> () {
-    <span class="tag">return</span> $.get(<span class="str">'https://api.ipify.org?format=json'</span>)
-      .then(<span class="func"><i>function</i></span> (data) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve) {
+      <span class="tag">return</span> $.get(ipAPI).<span class="tag">then</span>(<span class="func"><i>function</i></span> (data) {
         swal.insertQueueStep(data.ip)
       })
+    }}
   }
 }])</pre>
     </li>
@@ -941,7 +945,7 @@ swal.queue([{
   inputPlaceholder: <span class="str">'Select country'</span>,
   showCancelButton: <span class="val">true</span>,
   inputValidator: <span class="func"><i>function</i></span> (value) {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve, reject) {
+    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve) {
       <span class="tag">if</span> (value === <span class="str">'UKR'</span>) {
         resolve()
       } <span class="tag">else</span> {
@@ -1332,11 +1336,11 @@ swal({
       },
       inputValue: 'eur',
       confirmButtonText: 'Pay with PayPal'
-    }).then(
-      function (currency) {
-        location.assign('https://www.paypal.me/limonte/5' + currency);
+    }).then(function (result) {
+      if (result.value) {
+        location.assign('https://www.paypal.me/limonte/5' + result.value);
       }
-    )
+    })
 
     return false;
   })
@@ -1556,7 +1560,7 @@ swal({
         inputPlaceholder: 'Select country',
         showCancelButton: true,
         inputValidator: function (value) {
-          return new Promise(function (resolve, reject) {
+          return new Promise(function (resolve) {
             if (value === 'UKR') {
               resolve()
             } else {
@@ -1677,7 +1681,7 @@ swal({
       width: 600,
       showLoaderOnConfirm: true,
       preConfirm: function (email) {
-        return new Promise(function (resolve, reject) {
+        return new Promise(function (resolve) {
           setTimeout(function () {
             if (email === 'taken@example.com') {
               swal.showValidationError('This email is already taken.')
@@ -1714,13 +1718,14 @@ swal({
 
     swal.queue(steps).then(function (result) {
       swal.resetDefaults()
-      swal({
-        title: 'All done!',
-        html: 'Your answers: <pre>' + JSON.stringify(result) + '</pre>',
-        confirmButtonText: 'Lovely!'
-      })
-    }, function () {
-      swal.resetDefaults()
+
+      if (result.value) {
+        swal({
+          title: 'All done!',
+          html: 'Your answers: <pre>' + JSON.stringify(result.value) + '</pre>',
+          confirmButtonText: 'Lovely!'
+        })
+      }
     })
   })
 
@@ -1730,13 +1735,14 @@ swal({
         title: 'Your public IP',
         confirmButtonText: 'Show my public IP',
         text: 'Your public IP will be received via AJAX request',
-        currentProgressStep: 0,
         showLoaderOnConfirm: true,
         preConfirm: function () {
-          return $.get('https://api.ipify.org?format=json')
-            .then(function (data) {
+          return new Promise(function (resolve) {
+            $.get('https://api.ipify.org?format=json').then(function(data) {
               swal.insertQueueStep(data.ip)
+              resolve()
             })
+          })
         }
       }
     ])

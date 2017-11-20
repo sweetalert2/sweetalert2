@@ -42,34 +42,24 @@ export const init = (params) => {
   const checkbox = popup.querySelector(`.${swalClasses.checkbox} input`)
   const textarea = getChildByClass(popup, swalClasses.textarea)
 
-  input.oninput = () => {
-    sweetAlert.resetValidationError()
+  const resetValidationError = () => {
+    sweetAlert.isVisible() && sweetAlert.resetValidationError()
   }
 
-  file.onchange = () => {
-    sweetAlert.resetValidationError()
-  }
+  input.oninput = resetValidationError
+  file.onchange = resetValidationError
+  select.onchange = resetValidationError
+  checkbox.onchange = resetValidationError
+  textarea.oninput = resetValidationError
 
   range.oninput = () => {
-    sweetAlert.resetValidationError()
+    resetValidationError()
     rangeOutput.value = range.value
   }
 
   range.onchange = () => {
-    sweetAlert.resetValidationError()
+    resetValidationError()
     range.previousSibling.value = range.value
-  }
-
-  select.onchange = () => {
-    sweetAlert.resetValidationError()
-  }
-
-  checkbox.onchange = () => {
-    sweetAlert.resetValidationError()
-  }
-
-  textarea.oninput = () => {
-    sweetAlert.resetValidationError()
   }
 
   return popup

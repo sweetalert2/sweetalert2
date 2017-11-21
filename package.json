@@ -13,6 +13,7 @@
     "babel-plugin-external-helpers": "latest",
     "babel-plugin-transform-object-assign": "latest",
     "babel-preset-es2015": "latest",
+    "bundlesize": "^0.15.3",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "^3.9.0",

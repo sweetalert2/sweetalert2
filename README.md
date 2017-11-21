@@ -139,7 +139,7 @@ swal({
 Handling Dismissals
 -------------------
 
-When an alert is dismissed by the user, the Promise returned by `swal()` will be resolved with an object `{ dismiss: reason }` documenting the reason it was dismissed:
+When an alert is dismissed by the user, the Promise returned by `swal()` will be resolved with an object `{dismiss: reason}` documenting the reason it was dismissed:
 
 | String      | Description                                             | Related configuration |
 | ----------- | ------------------------------------------------------- | --------------------- |
@@ -219,7 +219,7 @@ Configuration
 | `onBeforeOpen`           | `null`                | Function to run when modal built, but not shown yet. Provides modal DOM element as the first argument. |
 | `onOpen`                 | `null`                | Function to run when modal opens, provides modal DOM element as the first argument. |
 | `onClose`                | `null`                | Function to run when modal closes, provides modal DOM element as the first argument. |
-| `useRejections`          | `false`               | **Deprecated and will be removed in the next major release.** Determines whether dismissals (outside click, cancel button, close button, <kdb>Esc</kbd> key, timer) should resolve with an object of the format `{ dismiss: reason }` or reject the promise. |
+| `useRejections`          | `false`               | **Deprecated and will be removed in the next major release.** Determines whether dismissals (outside click, cancel button, close button, <kdb>Esc</kbd> key, timer) should resolve with an object of the format `{dismiss: reason}` or reject the promise. |
 | `expectRejections`       | `false`               | **Deprecated and will be removed in the next major release.** Determines whether given `inputValidator` and `preConfirm` functions should be expected to to signal validation errors by rejecting, or by their respective means (see documentation for each option). |
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.

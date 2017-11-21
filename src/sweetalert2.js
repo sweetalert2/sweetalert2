@@ -55,8 +55,6 @@ const setParameters = (params) => {
     popup = oldPopup || dom.init(params)
   }
 
-  showWarningsForParams(params)
-
   // Set popup width
   let popupWidth = (params.width === defaultParams.width && params.toast) ? 'auto' : params.width
   popup.style.width = (typeof popupWidth === 'number') ? popupWidth + 'px' : popupWidth
@@ -414,6 +412,7 @@ const sweetAlert = (...args) => {
       break
 
     case 'object':
+      showWarningsForParams(args[0])
       Object.assign(params, args[0])
       params.extraParams = args[0].extraParams
 

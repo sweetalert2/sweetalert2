@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.0.2
+ * sweetalert2 v7.0.3
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -247,8 +247,6 @@ var setParameters = function setParameters(params) {
   } else {
     popup = oldPopup || init(params);
   }
-
-  showWarningsForParams(params);
 
   // Set popup width
   var popupWidth = params.width === defaultParams.width && params.toast ? 'auto' : params.width;
@@ -607,6 +605,7 @@ var sweetAlert$1 = function sweetAlert() {
       break;
 
     case 'object':
+      showWarningsForParams(args[0]);
       _extends(params, args[0]);
       params.extraParams = args[0].extraParams;
 
@@ -1526,7 +1525,7 @@ sweetAlert$1.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert$1.noop = function () {};
 
-sweetAlert$1.version = '7.0.2';
+sweetAlert$1.version = '7.0.3';
 
 sweetAlert$1.default = sweetAlert$1;
 

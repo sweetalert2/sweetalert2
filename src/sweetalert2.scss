@@ -6,7 +6,10 @@
 
 body {
   &.swal2-shown {
-    &:not(.swal2-no-backdrop) {
+    @include not(
+      '.swal2-no-backdrop',
+      '.swal2-toast-shown'
+    ) {
       overflow-y: hidden;
     }
   }

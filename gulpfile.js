@@ -96,7 +96,7 @@ gulp.task('ts-lint', () => {
     .pipe(tslint.report())
 })
 
-gulp.task('default', ['sass', 'compress'])
+gulp.task('default', ['sass', 'ts', 'compress'])
 
 gulp.task('watch', () => {
   gulp.watch([

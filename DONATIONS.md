@@ -2,6 +2,9 @@ We would like to thank everyone that contributed to this library. If you find ou
 
 
 # Donors
+- **Legoman99573** (0,20 EUR)
+
+    > I dont have much, but I can say that SweetAlert2 is badass and have used it. Here is what I still have left in my paypal balance. Like to see more features in the future to play with.
 
 - **Munsifali Rashid** (5 USD)
 

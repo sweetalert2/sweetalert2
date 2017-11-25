@@ -251,6 +251,11 @@ export const removeStyleProperty = (elem, property) => {
 }
 
 export const animationEndEvent = (() => {
+  // Prevent run in Node env
+  if (typeof document === 'undefined') {
+    return false
+  }
+
   const testEl = document.createElement('div')
   const transEndEventNames = {
     'WebkitAnimation': 'webkitAnimationEnd',
@@ -302,6 +307,11 @@ export const measureScrollbar = () => {
  * @param {String} css
  */
 export const injectCSS = (css = '') => {
+  // Prevent run in Node env
+  if (typeof document === 'undefined') {
+    return false
+  }
+
   let head = document.head || document.getElementsByTagName('head')[0]
   let style = document.createElement('style')
   style.type = 'text/css'

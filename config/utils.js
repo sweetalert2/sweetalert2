@@ -40,7 +40,7 @@ const packageRollup = (options) => {
       format: options.format,
       banner: banner,
       name: classify(pack.name),
-      footer: `if (window.${moduleId}) window.sweetAlert = window.swal = window.${moduleId};`
+      footer: `if (typeof window !== 'undefined' && window.${moduleId}) window.sweetAlert = window.swal = window.${moduleId};`
     })
     .then((result) => {
       var code = result.code.replace(

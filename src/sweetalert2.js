@@ -399,6 +399,11 @@ const undoIOSfix = () => {
 
 // SweetAlert entry point
 const sweetAlert = (...args) => {
+  // Prevent run in Node env
+  if (typeof window === 'undefined') {
+    return
+  }
+
   if (args[0] === undefined) {
     error('SweetAlert2 expects at least 1 attribute!')
     return false

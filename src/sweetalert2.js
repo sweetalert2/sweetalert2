@@ -352,7 +352,7 @@ const openPopup = (animation, onBeforeOpen, onComplete) => {
   }
   dom.states.previousActiveElement = document.activeElement
   if (onComplete !== null && typeof onComplete === 'function') {
-    setTimeout(function () {
+    setTimeout(() => {
       onComplete(popup)
     })
   }
@@ -474,7 +474,7 @@ const sweetAlert = (...args) => {
         resolve({dismiss})
       }
     }
-    const errorWith = error => {
+    const errorWith = (error) => {
       sweetAlert.closePopup(params.onClose)
       reject(error)
     }
@@ -1129,7 +1129,7 @@ sweetAlert.queue = (steps) => {
       if (i < queue.length) {
         document.body.setAttribute('data-swal2-queue-step', i)
 
-        sweetAlert(queue[i]).then(result => {
+        sweetAlert(queue[i]).then((result) => {
           if (result.value !== undefined) {
             queueResult.push(result.value)
             step(i + 1, callback)
@@ -1218,7 +1218,7 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
     removePopupAndResetState()
   }
   if (onComplete !== null && typeof onComplete === 'function') {
-    setTimeout(function () {
+    setTimeout(() => {
       onComplete(popup)
     })
   }

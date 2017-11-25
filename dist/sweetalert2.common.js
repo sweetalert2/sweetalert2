@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.0.3
+ * sweetalert2 v7.0.4
  * Released under the MIT License.
  */
 'use strict';
@@ -187,6 +187,9 @@ var states = {
   var select = getChildByClass(popup, swalClasses.select);
   var checkbox = popup.querySelector('.' + swalClasses.checkbox + ' input');
   var textarea = getChildByClass(popup, swalClasses.textarea);
+
+  // a11y
+  popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive');
 
   var resetValidationError = function resetValidationError() {
     sweetAlert.isVisible() && sweetAlert.resetValidationError();
@@ -860,6 +863,11 @@ var undoIOSfix = function undoIOSfix() {
 var sweetAlert = function sweetAlert() {
   for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
+  }
+
+  // Prevent run in Node env
+  if (typeof window === 'undefined') {
+    return;
   }
 
   if (args[0] === undefined) {
@@ -1798,9 +1806,9 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.0.3';
+sweetAlert.version = '7.0.4';
 
 sweetAlert.default = sweetAlert;
 
 module.exports = sweetAlert;
-if (window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;
+if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;

@@ -1,4 +1,4 @@
-body.swal2-shown:not(.swal2-no-backdrop) {
+body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
   overflow-y: hidden; }
 
 body.swal2-toast-shown {

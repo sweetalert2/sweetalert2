@@ -42,6 +42,9 @@ export const init = (params) => {
   const checkbox = popup.querySelector(`.${swalClasses.checkbox} input`)
   const textarea = getChildByClass(popup, swalClasses.textarea)
 
+  // a11y
+  popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive')
+
   const resetValidationError = () => {
     sweetAlert.isVisible() && sweetAlert.resetValidationError()
   }

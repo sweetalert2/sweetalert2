@@ -116,7 +116,7 @@ swal({
   showCancelButton: true,
   confirmButtonText: 'Yes, delete it!',
   cancelButtonText: 'No, keep it'
-}).then(function(result) {
+}).then((result) => {
   if (result.value) {
     swal(
       'Deleted!',

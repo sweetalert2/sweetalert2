@@ -193,7 +193,7 @@ swal({
   confirmButtonColor: <span class="str">'#3085d6'</span>,
   cancelButtonColor: <span class="str">'#d33'</span>,
   confirmButtonText: <span class="str">'Yes, delete it!'</span>
-}).<span class="tag">then</span>(<span class="func"><i>function</i></span> (result) {
+}).<span class="tag">then</span>((result) => {
   <span class="tag">if</span> (result.value) {
     swal(
       <span class="str">'Deleted!'</span>,
@@ -222,7 +222,7 @@ swal({
   confirmButtonClass: <span class="str">'btn btn-success'</span>,
   cancelButtonClass: <span class="str">'btn btn-danger'</span>,
   buttonsStyling: <span class="val">false</span>
-}).<span class="tag">then</span>(<span class="func"><i>function</i></span> (result) {
+}).<span class="tag">then</span>((result) => {
   <span class="tag">if</span> (result.value) {
     swal(
       <span class="str">'Deleted!'</span>,
@@ -282,10 +282,10 @@ swal({
   title: <span class="str">'Auto close alert!'</span>,
   text: <span class="str">'I will close in 5 seconds.'</span>,
   timer: <span class="val">5000</span>,
-  onOpen: <span class="func"><i>function</i></span> () => {
+  onOpen: () => {
     swal.showLoading()
   }
-}).<span class="tag">then</span>(<span class="func"><i>function</i></span> (result) {
+}).<span class="tag">then</span>((result) => {
   <span class="tag">if</span> (result.dismiss === <span class="str">'timer'</span>) {
     console.log(<span class="str">'I was closed by the timer'</span>)
   }
@@ -304,9 +304,9 @@ swal({
   showCancelButton: <span class="val">true</span>,
   confirmButtonText: <span class="str">'Submit'</span>,
   showLoaderOnConfirm: <span class="val">true</span>,
-  preConfirm: <span class="func"><i>function</i></span> (email) => {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve) => {
-      <span class="func">setTimeout</span>(<span class="func"><i>function</i></span> () {
+  preConfirm: (email) => {
+    <span class="tag">return new</span> <span class="func">Promise</span>((resolve) => {
+      <span class="func">setTimeout</span>(() => {
         <span class="tag">if</span> (email === <span class="str">'taken@example.com'</span>) {
           swal.showValidationError(
             <span class="str">'This email is already taken.'</span>
@@ -317,7 +317,7 @@ swal({
     })
   },
   allowOutsideClick: <span class="val">false</span>
-}).<span class="tag">then</span>(<span class="func"><i>function</i></span> (result) {
+}).<span class="tag">then</span>((result) => {
   <span class="tag">if</span> (result.value) {
     swal({
       type: <span class="str">'success'</span>,
@@ -350,7 +350,7 @@ swal.setDefaults({
   <span class="str">'Question 3'</span>
 ]
 
-swal.queue(steps).<span class="tag">then</span>(<span class="func"><i>function</i></span> (result) {
+swal.queue(steps).<span class="tag">then</span>((result) => {
   swal.resetDefaults()
 
   <span class="tag">if</span> (result.value) {
@@ -381,9 +381,9 @@ swal.queue([{
     <span class="str">'Your public IP will be received '</span> +
     <span class="str">'via AJAX request'</span>,
   showLoaderOnConfirm: <span class="val">true</span>,
-  preConfirm: <span class="func"><i>function</i></span> () {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve) {
-      <span class="tag">return</span> $.get(ipAPI).<span class="tag">then</span>(<span class="func"><i>function</i></span> (data) {
+  preConfirm: () => {
+    <span class="tag">return new</span> <span class="func">Promise</span>((resolve) => {
+      <span class="tag">return</span> $.get(ipAPI).<span class="tag">then</span>((data) => {
         swal.insertQueueStep(data.ip)
       })
     }}
@@ -846,7 +846,7 @@ swal.queue([{
   input: <span class="str">'text'</span>,
   inputPlaceholder: <span class="str">'Enter your name or nickname'</span>,
   showCancelButton: <span class="val">true</span>,
-  inputValidator: <span class="func"><i>function</i></span> (value) {
+  inputValidator: (value) => {
     <span class="tag">return</span> !value <span class="val">&&</span> <span class="str">'You need to write something!'</span>
   }
 })
@@ -944,8 +944,8 @@ swal.queue([{
   },
   inputPlaceholder: <span class="str">'Select country'</span>,
   showCancelButton: <span class="val">true</span>,
-  inputValidator: <span class="func"><i>function</i></span> (value) {
-    <span class="tag">return new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve) {
+  inputValidator: (value) => {
+    <span class="tag">return new</span> <span class="func">Promise</span>((resolve) => {
       <span class="tag">if</span> (value === <span class="str">'UKR'</span>) {
         resolve()
       } <span class="tag">else</span> {
@@ -967,8 +967,8 @@ swal.queue([{
       <td>
         <pre>
 <span class="comment">// inputOptions can be an object or Promise</span>
-<span class="func">var</span> inputOptions = <span class="tag">new</span> <span class="func">Promise</span>(<span class="func"><i>function</i></span> (resolve) {
-  setTimeout(<span class="func"><i>function</i></span> () {
+<span class="func">var</span> inputOptions = <span class="tag">new</span> <span class="func">Promise</span>((resolve) => {
+  setTimeout(() => {
     resolve({
       <span class="str">'#ff0000'</span>: <span class="str">'Red'</span>,
       <span class="str">'#00ff00'</span>: <span class="str">'Green'</span>,
@@ -981,7 +981,7 @@ swal.queue([{
   title: <span class="str">'Select color'</span>,
   input: <span class="str">'radio'</span>,
   inputOptions: inputOptions,
-  inputValidator: <span class="func"><i>function</i></span> (value) {
+  inputValidator: (value) => {
     <span class="tag">return</span> !value && <span class="str">'You need to choose something!'</span>
   }
 })
@@ -1005,7 +1005,7 @@ swal.queue([{
     <span class="str">'I agree with the terms and conditions'</span>,
   confirmButtonText:
     <span class="str">'Continue &lt;i class="fa fa-arrow-right&gt;&lt;/i&gt;'</span>,
-  inputValidator: <span class="func"><i>function</i></span> (result) {
+  inputValidator: (result) => {
     <span class="tag">return</span> !result && <span class="str">'You need to agree with T&amp;C'</span>
   }
 })
@@ -1033,7 +1033,7 @@ swal.queue([{
 
 <span class="tag">if</span> (file) {
   <span class="func">var</span> reader = <span class="tag">new</span> <span class="func">FileReader</span>
-  reader.onload = <span class="func"><i>function</i></span> (e) {
+  reader.onload = (e) => {
     swal({
       title: <span class="str">'Your uploaded picture'</span>,
       imageUrl: e.target.result,
@@ -1081,7 +1081,7 @@ swal({
     <span class="str">'&lt;input id="swal-input1" class="swal2-input"&gt;'</span> +
     <span class="str">'&lt;input id="swal-input2" class="swal2-input"&gt;'</span>,
   focusConfirm: <span class="val">false</span>,
-  preConfirm: <span class="func"><i>function</i></span> () {
+  preConfirm: () => {
     <span class="tag">return</span> [
       $(<span class="str">'#swal-input1'</span>).val(),
       $(<span class="str">'#swal-input2'</span>).val()
@@ -1309,23 +1309,23 @@ swal({
 
 <script>
   /* global $, swal, FileReader */
-  $('.download').on('click', function () {
+  $('.download').on('click', () => {
     $('html, body').animate({scrollTop: $('.download-section').offset().top}, 1000)
   })
 
-  $('.donate').on('click', function () {
+  $('.donate').on('click', () => {
     $('html, body').animate({scrollTop: $('.donations-section').offset().top}, 1000)
   })
 
-  $('.showcase.normal button').on('click', function () {
+  $('.showcase.normal button').on('click', () => {
     window.alert('You clicked the button!')
   })
 
-  $('.showcase.sweet button').on('click', function () {
+  $('.showcase.sweet button').on('click', () => {
     swal('Good job!', 'You clicked the button!', 'success')
   })
 
-  $('.paypal').on('click', function () {
+  $('.paypal').on('click', () => {
     swal({
       title: 'How would you like to pay?',
       input: 'select',
@@ -1336,7 +1336,7 @@ swal({
       },
       inputValue: 'eur',
       confirmButtonText: 'Pay with PayPal'
-    }).then(function (result) {
+    }).then((result) => {
       if (result.value) {
         location.assign('https://www.paypal.me/limonte/5' + result.value);
       }
@@ -1345,26 +1345,26 @@ swal({
     return false;
   })
 
-  $('.examples .message button').on('click', function () {
+  $('.examples .message button').on('click', () => {
     swal('Any fool can use a computer')
   })
 
-  $('.examples .timer button').on('click', function () {
+  $('.examples .timer button').on('click', () => {
     swal({
       title: 'Auto close alert!',
       text: 'I will close in 5 seconds.',
       timer: 5000,
-      onOpen: function() {
+      onOpen: () => {
         swal.showLoading()
       }
-    }).then(function (result) {
+    }).then((result) => {
       if (result.dismiss === 'timer') {
         console.log('I was closed by the timer')
       }
     })
   })
 
-  $('.examples .html button').on('click', function () {
+  $('.examples .html button').on('click', () => {
     swal({
       title: '<i>HTML</i> <u>example</u>',
       type: 'info',
@@ -1382,7 +1382,7 @@ swal({
     })
   })
 
-  $('.examples #position button').on('click', function () {
+  $('.examples #position button').on('click', () => {
     swal({
       position: 'top-right',
       type: 'success',
@@ -1392,7 +1392,7 @@ swal({
     })
   })
 
-  $('.examples .html-jquery button').on('click', function () {
+  $('.examples .html-jquery button').on('click', () => {
     swal({
       title: 'jQuery HTML example',
       html: $('<div>').addClass('some-class').text('jQuery is everywhere.'),
@@ -1401,19 +1401,19 @@ swal({
     })
   })
 
-  $('.examples .title-text button').on('click', function () {
+  $('.examples .title-text button').on('click', () => {
     swal('The Internet?', 'That thing is still around?', 'question')
   })
 
-  $('.examples .error button').on('click', function () {
+  $('.examples .error button').on('click', () => {
     swal('Oops...', 'Something went wrong!', 'error')
   })
 
-  $('.examples #long-text button').on('click', function () {
+  $('.examples #long-text button').on('click', () => {
     swal({html: 'Less is more.<br>'.repeat(100)})
   })
 
-  $('.examples .warning.confirm button').on('click', function () {
+  $('.examples .warning.confirm button').on('click', () => {
     swal({
       title: 'Are you sure?',
       text: 'You won\'t be able to revert this!',
@@ -1422,14 +1422,14 @@ swal({
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
-    }).then(function (result) {
+    }).then((result) => {
       if (result.value) {
         swal('Deleted!', 'Your file has been deleted!', 'success')
       }
     })
   })
 
-  $('.examples .warning.cancel button').on('click', function () {
+  $('.examples .warning.cancel button').on('click', () => {
     swal({
       title: 'Are you sure?',
       text: 'Buttons below are styled with Bootstrap classes',
@@ -1442,7 +1442,7 @@ swal({
       confirmButtonClass: 'btn btn-success',
       cancelButtonClass: 'btn btn-danger',
       buttonsStyling: false
-    }).then(function (result) {
+    }).then((result) => {
       if (result.value) {
         swal(
           'Deleted!',
@@ -1460,7 +1460,7 @@ swal({
     })
   })
 
-  $('.examples .custom-image button').on('click', function () {
+  $('.examples .custom-image button').on('click', () => {
     swal({
       title: 'Sweet!',
       text: 'Modal with a custom image.',
@@ -1472,7 +1472,7 @@ swal({
     })
   })
 
-  $('.examples .custom-width-padding-background button').on('click', function () {
+  $('.examples .custom-width-padding-background button').on('click', () => {
     swal({
       title: 'Custom width, padding, background.',
       width: 600,
@@ -1481,14 +1481,14 @@ swal({
     })
   })
 
-  $('.input-type-text').on('click', function () {
+  $('.input-type-text').on('click', () => {
     (async function getName() {
       const {value: name} = await swal({
         title: 'What is your name?',
         input: 'text',
         inputPlaceholder: 'Enter your name or nickname',
         showCancelButton: true,
-        inputValidator: function (value) {
+        inputValidator: (value) => {
           return !value && 'You need to write something!'
         }
       });
@@ -1496,7 +1496,7 @@ swal({
     })()
   })
 
-  $('.input-type-email').on('click', function () {
+  $('.input-type-email').on('click', () => {
     (async function getEmail() {
       const {value: email} = await swal({
         title: 'Input email address',
@@ -1507,7 +1507,7 @@ swal({
     })()
   })
 
-  $('.input-type-url').on('click', function () {
+  $('.input-type-url').on('click', () => {
     (async function getUrl() {
       const {value: url} = await swal({
         input: 'url',
@@ -1517,7 +1517,7 @@ swal({
     })()
   })
 
-  $('.input-type-password').on('click', function () {
+  $('.input-type-password').on('click', () => {
     (async function getPassword() {
       const {value: password} = await swal({
         title: 'Enter your password',
@@ -1533,7 +1533,7 @@ swal({
     })()
   })
 
-  $('.input-type-textarea').on('click', function () {
+  $('.input-type-textarea').on('click', () => {
     (async function getMessage() {
       const {value: text} = await swal({
         input: 'textarea',
@@ -1547,7 +1547,7 @@ swal({
     })()
   })
 
-  $('.input-type-select').on('click', function () {
+  $('.input-type-select').on('click', () => {
     (async function getCountry() {
       const {value: country} = await swal({
         title: 'Select Ukraine',
@@ -1559,8 +1559,8 @@ swal({
         },
         inputPlaceholder: 'Select country',
         showCancelButton: true,
-        inputValidator: function (value) {
-          return new Promise(function (resolve) {
+        inputValidator: (value) => {
+          return new Promise((resolve) => {
             if (value === 'UKR') {
               resolve()
             } else {
@@ -1573,10 +1573,10 @@ swal({
     })()
   })
 
-  $('.input-type-radio').on('click', function () {
+  $('.input-type-radio').on('click', () => {
     (async function getColor() {
-      var inputOptionsPromise = new Promise(function (resolve) {
-        setTimeout(function () {
+      var inputOptionsPromise = new Promise((resolve) => {
+        setTimeout(() => {
           resolve({
             '#FF0000': 'Red',
             '#00FF00': 'Green',
@@ -1589,7 +1589,7 @@ swal({
         title: 'Select color',
         input: 'radio',
         inputOptions: inputOptionsPromise,
-        inputValidator: function (value) {
+        inputValidator: (value) => {
           return !value && 'You need to choose something!'
         }
       })
@@ -1598,7 +1598,7 @@ swal({
     })()
   })
 
-  $('.input-type-checkbox').on('click', function () {
+  $('.input-type-checkbox').on('click', () => {
     (async function acceptTerms() {
       const {value: accept} = await swal({
         title: 'Terms and conditions',
@@ -1606,7 +1606,7 @@ swal({
         inputValue: 1,
         inputPlaceholder: 'I agree with the terms and conditions',
         confirmButtonText: 'Continue <i class="fa fa-arrow-right" style="margin-left: 10px"></i>',
-        inputValidator: function (result) {
+        inputValidator: (result) => {
           return !result && 'To continue you need to agree with T&amp;C'
         }
       })
@@ -1615,7 +1615,7 @@ swal({
     })()
   })
 
-  $('.input-type-file').on('click', function () {
+  $('.input-type-file').on('click', () => {
     (async function getColor() {
       const {value: file} = await swal({
         title: 'Select image',
@@ -1627,7 +1627,7 @@ swal({
       })
       if (file) {
         var reader = new FileReader()
-        reader.onload = function (e) {
+        reader.onload = (e) => {
           swal({
             title: 'Your uploaded picture',
             imageUrl: e.target.result,
@@ -1639,7 +1639,7 @@ swal({
     })()
   })
 
-  $('.input-type-range').on('click', function () {
+  $('.input-type-range').on('click', () => {
     swal({
       title: 'How old are you?',
       type: 'question',
@@ -1653,7 +1653,7 @@ swal({
     })
   })
 
-  $('.input-type-multiple').on('click', function () {
+  $('.input-type-multiple').on('click', () => {
     (async function getForm() {
       const {value: formValues} = await swal({
         title: 'Multiple inputs',
@@ -1661,7 +1661,7 @@ swal({
           '<input id="swal-input1" class="swal2-input" placeholder="first input field">' +
           '<input id="swal-input2" class="swal2-input" placeholder="second input field">',
         focusConfirm: false,
-        preConfirm: function () {
+        preConfirm: () => {
           return [
             $('#swal-input1').val(),
             $('#swal-input2').val()
@@ -1672,7 +1672,7 @@ swal({
     })()
   })
 
-  $('.examples .ajax-request button').on('click', function () {
+  $('.examples .ajax-request button').on('click', () => {
     swal({
       title: 'Submit email to run ajax request',
       input: 'email',
@@ -1680,9 +1680,9 @@ swal({
       confirmButtonText: 'Submit',
       width: 600,
       showLoaderOnConfirm: true,
-      preConfirm: function (email) {
-        return new Promise(function (resolve) {
-          setTimeout(function () {
+      preConfirm: (email) => {
+        return new Promise((resolve) => {
+          setTimeout(() => {
             if (email === 'taken@example.com') {
               swal.showValidationError('This email is already taken.')
             }
@@ -1691,7 +1691,7 @@ swal({
         })
       },
       allowOutsideClick: false
-    }).then(function (result) {
+    }).then((result) => {
       if (result.value) {
         swal({
           type: 'success',
@@ -1702,7 +1702,7 @@ swal({
     })
   })
 
-  $('.examples .chaining-modals button').on('click', function () {
+  $('.examples .chaining-modals button').on('click', () => {
     swal.setDefaults({
       input: 'text',
       confirmButtonText: 'Next &rarr;',
@@ -1716,7 +1716,7 @@ swal({
       'Question 3'
     ]
 
-    swal.queue(steps).then(function (result) {
+    swal.queue(steps).then((result) => {
       swal.resetDefaults()
 
       if (result.value) {
@@ -1729,16 +1729,16 @@ swal({
     })
   })
 
-  $('.examples .dynamic-queue button').on('click', function () {
+  $('.examples .dynamic-queue button').on('click', () => {
     swal.queue([
       {
         title: 'Your public IP',
         confirmButtonText: 'Show my public IP',
         text: 'Your public IP will be received via AJAX request',
         showLoaderOnConfirm: true,
-        preConfirm: function () {
-          return new Promise(function (resolve) {
-            $.get('https://api.ipify.org?format=json').then(function(data) {
+        preConfirm: () => {
+          return new Promise((resolve) => {
+            $.get('https://api.ipify.org?format=json').then((data) => {
               swal.insertQueueStep(data.ip)
               resolve()
             })
@@ -1748,7 +1748,7 @@ swal({
     ])
   })
 
-  $('.modal-types button').on('click', function () {
+  $('.modal-types button').on('click', () => {
     var type = $(this).attr('class').slice(5)
     swal(type + '!', '', type)
   })

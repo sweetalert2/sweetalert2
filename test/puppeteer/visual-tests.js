@@ -166,7 +166,7 @@ async function run (testCase) {
   if (argv.update) {
     console.log(clc.green('✓') + ` ${testCase}`)
   } else {
-    await new Promise(resolve => {
+    await new Promise((resolve) => {
       looksSame(`${path}${screenName}.png`, `${path}${screenName}-test.png`, (error, equal) => {
         error && console.log(error)
         console.log(

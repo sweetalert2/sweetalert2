@@ -1,9 +1,9 @@
 /* global XMLHttpRequest */
 function makeApiRequest (endpoint) {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     var xhr = new XMLHttpRequest()
     xhr.open('GET', endpoint)
-    xhr.onload = function () {
+    xhr.onload = () => {
       if (xhr.status === 200) {
         resolve(JSON.parse(xhr.responseText))
       } else {
@@ -18,16 +18,16 @@ var stats = {}
 
 // latest release
 makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/releases/latest').then(
-  function (response) {
+  (response) => {
     stats.latestRelease = response.tag_name
     showStats()
   },
-  function () {}
+  () => {}
 )
 
 // recent activity
 makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/commits').then(
-  function (response) {
+  (response) => {
     var recentActivity = response[0].commit.author.date
     recentActivity = new Date(recentActivity)
     var today = new Date()
@@ -40,16 +40,16 @@ makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/commits').then(
     stats.recentActivity = recentActivity
     showStats()
   },
-  function () {}
+  () => {}
 )
 
 // number of downloads last month
 makeApiRequest('https://api.npmjs.org/downloads/point/last-month/sweetalert2').then(
-  function (response) {
+  (response) => {
     stats.downloadsLastMonth = response.downloads.toLocaleString()
     showStats()
   },
-  function () {}
+  () => {}
 )
 
 function showStats () {

@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.0.4
+ * sweetalert2 v7.0.5
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1530,7 +1530,7 @@ sweetAlert$1.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert$1.noop = function () {};
 
-sweetAlert$1.version = '7.0.4';
+sweetAlert$1.version = '7.0.5';
 
 sweetAlert$1.default = sweetAlert$1;
 
@@ -1765,6 +1765,11 @@ var removeStyleProperty = function removeStyleProperty(elem, property) {
 };
 
 var animationEndEvent = function () {
+  // Prevent run in Node env
+  if (typeof document === 'undefined') {
+    return false;
+  }
+
   var testEl = document.createElement('div');
   var transEndEventNames = {
     'WebkitAnimation': 'webkitAnimationEnd',
@@ -1817,6 +1822,11 @@ var measureScrollbar = function measureScrollbar() {
  */
 var injectCSS = function injectCSS() {
   var css = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+  // Prevent run in Node env
+  if (typeof document === 'undefined') {
+    return false;
+  }
 
   var head = document.head || document.getElementsByTagName('head')[0];
   var style = document.createElement('style');

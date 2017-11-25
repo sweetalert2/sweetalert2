@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.0.4
+ * sweetalert2 v7.0.5
  * Released under the MIT License.
  */
 'use strict';
@@ -380,6 +380,11 @@ var removeStyleProperty = function removeStyleProperty(elem, property) {
 };
 
 var animationEndEvent = function () {
+  // Prevent run in Node env
+  if (typeof document === 'undefined') {
+    return false;
+  }
+
   var testEl = document.createElement('div');
   var transEndEventNames = {
     'WebkitAnimation': 'webkitAnimationEnd',
@@ -1806,7 +1811,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.0.4';
+sweetAlert.version = '7.0.5';
 
 sweetAlert.default = sweetAlert;
 

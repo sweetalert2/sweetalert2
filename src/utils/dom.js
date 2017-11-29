@@ -1,6 +1,6 @@
 import { default as sweetAlert } from '../sweetalert2.js'
 import { swalClasses, iconTypes } from './classes.js'
-import { uniqueArray, error } from './utils.js'
+import { isDefined, uniqueArray, error } from './utils.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
@@ -21,7 +21,7 @@ export const init = (params) => {
     removeClass(document.body, swalClasses['toast-shown'])
   }
 
-  if (typeof document === 'undefined') {
+  if (!isDefined(document)) {
     error('SweetAlert2 requires document to initialize')
     return
   }
@@ -252,7 +252,7 @@ export const removeStyleProperty = (elem, property) => {
 
 export const animationEndEvent = (() => {
   // Prevent run in Node env
-  if (typeof document === 'undefined') {
+  if (!isDefined(document)) {
     return false
   }
 
@@ -263,8 +263,7 @@ export const animationEndEvent = (() => {
     'animation': 'animationend'
   }
   for (const i in transEndEventNames) {
-    if (transEndEventNames.hasOwnProperty(i) &&
-      testEl.style[i] !== undefined) {
+    if (transEndEventNames.hasOwnProperty(i) && isDefined(testEl.style[i])) {
       return transEndEventNames[i]
     }
   }
@@ -308,7 +307,7 @@ export const measureScrollbar = () => {
  */
 export const injectCSS = (css = '') => {
   // Prevent run in Node env
-  if (typeof document === 'undefined') {
+  if (!isDefined(document)) {
     return false
   }
 

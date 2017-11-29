@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.0.5
+ * sweetalert2 v7.0.6
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -109,6 +109,18 @@ var colorLuminance = function colorLuminance(hex, lum) {
   return rgb;
 };
 
+/**
+ * Check if variable exists
+ * @param variable
+ */
+var isDefined = function isDefined(variable) {
+  return typeof variable !== 'undefined';
+};
+
+/**
+ * Filter the unique values into a new array
+ * @param arr
+ */
 var uniqueArray = function uniqueArray(arr) {
   var result = [];
   for (var i in arr) {
@@ -171,7 +183,7 @@ var states = {
     removeClass(document.body, swalClasses['toast-shown']);
   }
 
-  if (typeof document === 'undefined') {
+  if (!isDefined(document)) {
     error('SweetAlert2 requires document to initialize');
     return;
   }
@@ -385,7 +397,7 @@ var removeStyleProperty = function removeStyleProperty(elem, property) {
 
 var animationEndEvent = function () {
   // Prevent run in Node env
-  if (typeof document === 'undefined') {
+  if (!isDefined(document)) {
     return false;
   }
 
@@ -396,7 +408,7 @@ var animationEndEvent = function () {
     'animation': 'animationend'
   };
   for (var i in transEndEventNames) {
-    if (transEndEventNames.hasOwnProperty(i) && testEl.style[i] !== undefined) {
+    if (transEndEventNames.hasOwnProperty(i) && isDefined(testEl.style[i])) {
       return transEndEventNames[i];
     }
   }
@@ -410,8 +422,8 @@ var resetPrevState = function resetPrevState() {
     var x = window.scrollX;
     var y = window.scrollY;
     states.previousActiveElement.focus();
-    if (x && y) {
-      // IE has no scrollX/scrollY support
+    if (isDefined(x) && isDefined(y)) {
+      // IE doesn't have scrollX/scrollY support
       window.scrollTo(x, y);
     }
   }
@@ -490,7 +502,7 @@ var windowOnkeydownOverridden = void 0;
  * Check for the existence of Promise
  * Hopefully to avoid many github issues
  */
-if (typeof Promise === 'undefined') {
+if (!isDefined(Promise)) {
   error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)');
 }
 
@@ -875,11 +887,11 @@ var sweetAlert = function sweetAlert() {
   }
 
   // Prevent run in Node env
-  if (typeof window === 'undefined') {
+  if (!isDefined(window)) {
     return;
   }
 
-  if (args[0] === undefined) {
+  if (!isDefined(args[0])) {
     error('SweetAlert2 expects at least 1 attribute!');
     return false;
   }
@@ -1624,7 +1636,7 @@ sweetAlert.queue = function (steps) {
         document.body.setAttribute('data-swal2-queue-step', i);
 
         sweetAlert(queue[i]).then(function (result) {
-          if (result.value !== undefined) {
+          if (isDefined(result.value)) {
             queueResult.push(result.value);
             step(i + 1, callback);
           } else {
@@ -1661,7 +1673,7 @@ sweetAlert.insertQueueStep = function (step, index) {
  * Global function for deleting a popup from the queue
  */
 sweetAlert.deleteQueueStep = function (index) {
-  if (typeof queue[index] !== 'undefined') {
+  if (isDefined(queue[index])) {
     queue.splice(index, 1);
   }
 };
@@ -1815,7 +1827,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.0.5';
+sweetAlert.version = '7.0.6';
 
 sweetAlert.default = sweetAlert;
 

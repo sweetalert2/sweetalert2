@@ -22,6 +22,16 @@ export const colorLuminance = (hex, lum) => {
   return rgb
 }
 
+/**
+ * Check if variable exists
+ * @param variable
+ */
+export const isDefined = (variable) => typeof variable !== 'undefined'
+
+/**
+ * Filter the unique values into a new array
+ * @param arr
+ */
 export const uniqueArray = (arr) => {
   const result = []
   for (var i in arr) {

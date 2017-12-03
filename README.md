@@ -20,16 +20,20 @@
   A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement for JavaScript's popup boxes. Zero dependencies.
 </p>
 
+<p align="center">
+  <a href="https://limonte.github.io/sweetalert2/">
+    <img src="https://raw.github.com/limonte/sweetalert2/master/assets/sweetalert2.gif" width="515"><br>
+    See SweetAlert2 in action ↗
+  </a>
+</p>
+
+---
+
 :point_right: **Upgrading from v6.x to v7.x?** [Read the release notes!](https://github.com/limonte/sweetalert2/releases/tag/v7.0.0)
 
 :point_right: **Migrating from [SweetAlert](https://github.com/t4t5/sweetalert)?** [SweetAlert 1.x to SweetAlert2 migration guide](https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2)
 
 ---
-
-[See SweetAlert2 in action ↗](https://limonte.github.io/sweetalert2/)
-
-[<img src="https://raw.github.com/limonte/sweetalert2/master/assets/sweetalert2.gif" width="515">](https://limonte.github.io/sweetalert2/)
-
 
 Installation
 ------------

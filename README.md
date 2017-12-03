@@ -22,19 +22,13 @@
 
 :point_right: **Upgrading from v6.x to v7.x?** [Read the release notes!](https://github.com/limonte/sweetalert2/releases/tag/v7.0.0)
 
---------
-
-What's the difference between SweetAlert and SweetAlert2?
----------------------------------------------------------
-
- - [Reason of creating this fork is inactivity of original SweetAlert plugin](http://stackoverflow.com/a/27842854/1331425)
- - [SweetAlert 1.x to SweetAlert2 migration guide](https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2)
+:point_right: **Migrating from [SweetAlert](https://github.com/t4t5/sweetalert)?** [SweetAlert 1.x to SweetAlert2 migration guide](https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2)
 
 ---
 
-[See SweetAlert2 in action!](https://limonte.github.io/sweetalert2/)
+[See SweetAlert2 in action ↗](https://limonte.github.io/sweetalert2/)
 
-<img src="https://raw.github.com/limonte/sweetalert2/master/assets/sweetalert2.gif" width="686">
+[<img src="https://raw.github.com/limonte/sweetalert2/master/assets/sweetalert2.gif" width="515">](https://limonte.github.io/sweetalert2/)
 
 
 Installation

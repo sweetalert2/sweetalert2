@@ -30,14 +30,6 @@ What's the difference between SweetAlert and SweetAlert2?
  - [Reason of creating this fork is inactivity of original SweetAlert plugin](http://stackoverflow.com/a/27842854/1331425)
  - [SweetAlert 1.x to SweetAlert2 migration guide](https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2)
 
-SweetAlert2 is already more popular than original SweetAlert:
-
-| SweetAlert | SweetAlert2 |
-|------------|-------------|
-| [![](https://img.shields.io/npm/dm/sweetalert.svg)](https://npm-stat.com/charts.html?package=sweetalert) | [![](https://img.shields.io/npm/dm/sweetalert2.svg)](https://npm-stat.com/charts.html?package=sweetalert2) |
-
-You'll get much better support and developer experience (DX) by using SweetAlert2.
-
 ---
 
 [See SweetAlert2 in action!](https://limonte.github.io/sweetalert2/)

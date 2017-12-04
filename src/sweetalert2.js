@@ -795,7 +795,12 @@ const sweetAlert = (...args) => {
       }
     }
 
-    if (!windowOnkeydownOverridden) {
+    if (params.toast && windowOnkeydownOverridden) {
+      window.onkeydown = previousWindowKeyDown
+      windowOnkeydownOverridden = false
+    }
+
+    if (!params.toast && !windowOnkeydownOverridden) {
       previousWindowKeyDown = window.onkeydown
       windowOnkeydownOverridden = true
       window.onkeydown = handleKeyDown

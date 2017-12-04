@@ -101,6 +101,9 @@ async function run (testCase) {
     case 'input-type-range':
       await page.click('#input-range button')
       break
+    case 'bootstrap-buttons':
+      await page.click('.bootstrap-buttons button')
+      break
     case 'ajax-request-reject':
       await page.click('#ajax-request button')
       await page.type('.swal2-input', 'taken@example.com')
@@ -214,6 +217,8 @@ async function runAll (testCase) {
   await run('input-type-checkbox-invalid')
   await run('input-type-checkbox-valid')
   await run('input-type-range')
+
+  await run('bootstrap-buttons')
 
   // TODO: re-enable, currently instable for some reason (puppeteer 0.12.0)
   // await run('ajax-request-success')

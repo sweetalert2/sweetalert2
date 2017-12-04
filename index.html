@@ -204,7 +204,7 @@ swal({
 })</pre>
     </li>
 
-    <li class="warning cancel" id="dismiss-handle">
+    <li class="bootstrap-buttons" id="dismiss-handle">
       <div class="ui">
         <p>... and by passing a parameter, you can execute something else for "Cancel".</p>
         <button aria-label="Try me! Example: passing a parameter, you can execute something else for 'Cancel'">Try me!</button>
@@ -221,7 +221,8 @@ swal({
   cancelButtonText: <span class="str">'No, cancel!'</span>,
   confirmButtonClass: <span class="str">'btn btn-success'</span>,
   cancelButtonClass: <span class="str">'btn btn-danger'</span>,
-  buttonsStyling: <span class="val">false</span>
+  buttonsStyling: <span class="val">false</span>,
+  reverseButtons: <span class="val">true</span>
 }).<span class="tag">then</span>((result) => {
   <span class="tag">if</span> (result.value) {
     swal(
@@ -1429,7 +1430,7 @@ swal({
     })
   })
 
-  $('.examples .warning.cancel button').on('click', () => {
+  $('.examples .bootstrap-buttons button').on('click', () => {
     swal({
       title: 'Are you sure?',
       text: 'Buttons below are styled with Bootstrap classes',
@@ -1441,7 +1442,8 @@ swal({
       cancelButtonText: 'No, cancel!',
       confirmButtonClass: 'btn btn-success',
       cancelButtonClass: 'btn btn-danger',
-      buttonsStyling: false
+      buttonsStyling: false,
+      reverseButtons: true
     }).then((result) => {
       if (result.value) {
         swal(

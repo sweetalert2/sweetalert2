@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.0.6
+ * sweetalert2 v7.0.7
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -997,7 +997,12 @@ var sweetAlert$1 = function sweetAlert() {
       }
     };
 
-    if (!windowOnkeydownOverridden) {
+    if (params.toast && windowOnkeydownOverridden) {
+      window.onkeydown = previousWindowKeyDown;
+      windowOnkeydownOverridden = false;
+    }
+
+    if (!params.toast && !windowOnkeydownOverridden) {
       previousWindowKeyDown = window.onkeydown;
       windowOnkeydownOverridden = true;
       window.onkeydown = handleKeyDown;
@@ -1542,7 +1547,7 @@ sweetAlert$1.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert$1.noop = function () {};
 
-sweetAlert$1.version = '7.0.6';
+sweetAlert$1.version = '7.0.7';
 
 sweetAlert$1.default = sweetAlert$1;
 

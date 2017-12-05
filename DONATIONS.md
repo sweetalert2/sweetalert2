@@ -24,6 +24,10 @@ We would like to thank everyone who contributed to this library. If you find our
 
 - **Pawel Terebinski** (5 EUR)
 
+- **Morgan Touverey** (10 EUR)
+
+    > From [@toverux](github.com/toverux) with love!
+
 - **Singdavid Srun** (2 EUR)
 
 - **Victor Felipe De Freitas** (10 BRL)

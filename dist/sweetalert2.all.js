@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.0.7
+ * sweetalert2 v7.0.8
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1547,7 +1547,7 @@ sweetAlert$1.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert$1.noop = function () {};
 
-sweetAlert$1.version = '7.0.7';
+sweetAlert$1.version = '7.0.8';
 
 sweetAlert$1.default = sweetAlert$1;
 
@@ -1556,10 +1556,15 @@ var states = {
   previousActiveElement: null,
   previousBodyPadding: null
 
-  /*
-   * Add modal + overlay to DOM
-   */
-};var init = function init(params) {
+  // Detect Node env
+};var isNodeEnv = function isNodeEnv() {
+  return typeof window === 'undefined' || typeof document === 'undefined';
+};
+
+/*
+ * Add modal + overlay to DOM
+ */
+var init = function init(params) {
   // Clean up the old popup if it exists
   var c = getContainer();
   if (c) {
@@ -1569,7 +1574,7 @@ var states = {
     removeClass(document.body, swalClasses['toast-shown']);
   }
 
-  if (!isDefined(document)) {
+  if (isNodeEnv()) {
     error('SweetAlert2 requires document to initialize');
     return;
   }
@@ -1783,7 +1788,7 @@ var removeStyleProperty = function removeStyleProperty(elem, property) {
 
 var animationEndEvent = function () {
   // Prevent run in Node env
-  if (!isDefined(document)) {
+  if (isNodeEnv()) {
     return false;
   }
 
@@ -1841,7 +1846,7 @@ var injectCSS = function injectCSS() {
   var css = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
   // Prevent run in Node env
-  if (!isDefined(document)) {
+  if (isNodeEnv()) {
     return false;
   }
 

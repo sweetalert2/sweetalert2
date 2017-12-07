@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.0.7
+ * sweetalert2 v7.0.8
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -170,10 +170,15 @@ var states = {
   previousActiveElement: null,
   previousBodyPadding: null
 
-  /*
-   * Add modal + overlay to DOM
-   */
-};var init = function init(params) {
+  // Detect Node env
+};var isNodeEnv = function isNodeEnv() {
+  return typeof window === 'undefined' || typeof document === 'undefined';
+};
+
+/*
+ * Add modal + overlay to DOM
+ */
+var init = function init(params) {
   // Clean up the old popup if it exists
   var c = getContainer();
   if (c) {
@@ -183,7 +188,7 @@ var states = {
     removeClass(document.body, swalClasses['toast-shown']);
   }
 
-  if (!isDefined(document)) {
+  if (isNodeEnv()) {
     error('SweetAlert2 requires document to initialize');
     return;
   }
@@ -397,7 +402,7 @@ var removeStyleProperty = function removeStyleProperty(elem, property) {
 
 var animationEndEvent = function () {
   // Prevent run in Node env
-  if (!isDefined(document)) {
+  if (isNodeEnv()) {
     return false;
   }
 
@@ -1832,7 +1837,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.0.7';
+sweetAlert.version = '7.0.8';
 
 sweetAlert.default = sweetAlert;
 

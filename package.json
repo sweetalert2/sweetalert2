@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "7.0.7",
+  "version": "7.0.8",
   "repository": "limonte/sweetalert2",
   "homepage": "https://limonte.github.io/sweetalert2/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",

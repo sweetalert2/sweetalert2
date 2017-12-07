@@ -8,6 +8,9 @@ export const states = {
   previousBodyPadding: null
 }
 
+// Detect Node env
+export const isNodeEnv = () => typeof window === 'undefined' || typeof document === 'undefined'
+
 /*
  * Add modal + overlay to DOM
  */
@@ -21,7 +24,7 @@ export const init = (params) => {
     removeClass(document.body, swalClasses['toast-shown'])
   }
 
-  if (!isDefined(document)) {
+  if (isNodeEnv()) {
     error('SweetAlert2 requires document to initialize')
     return
   }
@@ -252,7 +255,7 @@ export const removeStyleProperty = (elem, property) => {
 
 export const animationEndEvent = (() => {
   // Prevent run in Node env
-  if (!isDefined(document)) {
+  if (isNodeEnv()) {
     return false
   }
 
@@ -307,7 +310,7 @@ export const measureScrollbar = () => {
  */
 export const injectCSS = (css = '') => {
   // Prevent run in Node env
-  if (!isDefined(document)) {
+  if (isNodeEnv()) {
     return false
   }
 

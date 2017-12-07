@@ -383,11 +383,9 @@ swal.queue([{
     <span class="str">'via AJAX request'</span>,
   showLoaderOnConfirm: <span class="val">true</span>,
   preConfirm: () => {
-    <span class="tag">return new</span> <span class="func">Promise</span>((resolve) => {
-      <span class="tag">return</span> $.get(ipAPI).<span class="tag">then</span>((data) => {
-        swal.insertQueueStep(data.ip)
-      })
-    }}
+    <span class="tag">return</span> $.get(ipAPI).<span class="tag">then</span>((data) => {
+      swal.insertQueueStep(data.ip)
+    })
   }
 }])</pre>
     </li>
@@ -1739,11 +1737,8 @@ swal({
         text: 'Your public IP will be received via AJAX request',
         showLoaderOnConfirm: true,
         preConfirm: () => {
-          return new Promise((resolve) => {
-            $.get('https://api.ipify.org?format=json').then((data) => {
-              swal.insertQueueStep(data.ip)
-              resolve()
-            })
+          return $.get('https://api.ipify.org?format=json').then((data) => {
+            swal.insertQueueStep(data.ip)
           })
         }
       }

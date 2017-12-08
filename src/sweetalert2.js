@@ -546,6 +546,7 @@ const sweetAlert = (...args) => {
       }
 
       if (params.preConfirm) {
+        sweetAlert.resetValidationError()
         const preConfirmPromise = Promise.resolve().then(() => params.preConfirm(value, params.extraParams))
         if (params.expectRejections) {
           preConfirmPromise.then(

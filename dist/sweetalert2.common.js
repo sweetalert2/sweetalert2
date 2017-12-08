@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.0.8
+ * sweetalert2 v7.0.9
  * Released under the MIT License.
  */
 'use strict';
@@ -1038,6 +1038,7 @@ var sweetAlert = function sweetAlert() {
       }
 
       if (params.preConfirm) {
+        sweetAlert.resetValidationError();
         var preConfirmPromise = Promise.resolve().then(function () {
           return params.preConfirm(value, params.extraParams);
         });
@@ -1833,7 +1834,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.0.8';
+sweetAlert.version = '7.0.9';
 
 sweetAlert.default = sweetAlert;
 

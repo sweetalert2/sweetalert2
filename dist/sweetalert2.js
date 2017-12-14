@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.0.9
+ * sweetalert2 v7.0.10
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -107,14 +107,6 @@ var colorLuminance = function colorLuminance(hex, lum) {
   }
 
   return rgb;
-};
-
-/**
- * Check if variable exists
- * @param variable
- */
-var isDefined = function isDefined(variable) {
-  return typeof variable !== 'undefined';
 };
 
 /**
@@ -413,7 +405,7 @@ var animationEndEvent = function () {
     'animation': 'animationend'
   };
   for (var i in transEndEventNames) {
-    if (transEndEventNames.hasOwnProperty(i) && isDefined(testEl.style[i])) {
+    if (transEndEventNames.hasOwnProperty(i) && typeof testEl.style[i] !== 'undefined') {
       return transEndEventNames[i];
     }
   }
@@ -427,7 +419,7 @@ var resetPrevState = function resetPrevState() {
     var x = window.scrollX;
     var y = window.scrollY;
     states.previousActiveElement.focus();
-    if (isDefined(x) && isDefined(y)) {
+    if (typeof x !== 'undefined' && typeof y !== 'undefined') {
       // IE doesn't have scrollX/scrollY support
       window.scrollTo(x, y);
     }
@@ -507,7 +499,7 @@ var windowOnkeydownOverridden = void 0;
  * Check for the existence of Promise
  * Hopefully to avoid many github issues
  */
-if (!isDefined(Promise)) {
+if (typeof Promise === 'undefined') {
   error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)');
 }
 
@@ -892,11 +884,11 @@ var sweetAlert = function sweetAlert() {
   }
 
   // Prevent run in Node env
-  if (!isDefined(window)) {
+  if (typeof window === 'undefined') {
     return;
   }
 
-  if (!isDefined(args[0])) {
+  if (typeof args[0] === 'undefined') {
     error('SweetAlert2 expects at least 1 attribute!');
     return false;
   }
@@ -1647,7 +1639,7 @@ sweetAlert.queue = function (steps) {
         document.body.setAttribute('data-swal2-queue-step', i);
 
         sweetAlert(queue[i]).then(function (result) {
-          if (isDefined(result.value)) {
+          if (typeof result.value !== 'undefined') {
             queueResult.push(result.value);
             step(i + 1, callback);
           } else {
@@ -1684,7 +1676,7 @@ sweetAlert.insertQueueStep = function (step, index) {
  * Global function for deleting a popup from the queue
  */
 sweetAlert.deleteQueueStep = function (index) {
-  if (isDefined(queue[index])) {
+  if (typeof queue[index] !== 'undefined') {
     queue.splice(index, 1);
   }
 };
@@ -1838,7 +1830,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.0.9';
+sweetAlert.version = '7.0.10';
 
 sweetAlert.default = sweetAlert;
 

@@ -23,12 +23,6 @@ export const colorLuminance = (hex, lum) => {
 }
 
 /**
- * Check if variable exists
- * @param variable
- */
-export const isDefined = (variable) => typeof variable !== 'undefined'
-
-/**
  * Filter the unique values into a new array
  * @param arr
  */

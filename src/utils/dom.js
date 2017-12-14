@@ -1,6 +1,6 @@
 import { default as sweetAlert } from '../sweetalert2.js'
 import { swalClasses, iconTypes } from './classes.js'
-import { isDefined, uniqueArray, error } from './utils.js'
+import { uniqueArray, error } from './utils.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
@@ -266,7 +266,7 @@ export const animationEndEvent = (() => {
     'animation': 'animationend'
   }
   for (const i in transEndEventNames) {
-    if (transEndEventNames.hasOwnProperty(i) && isDefined(testEl.style[i])) {
+    if (transEndEventNames.hasOwnProperty(i) && typeof testEl.style[i] !== 'undefined') {
       return transEndEventNames[i]
     }
   }
@@ -280,7 +280,7 @@ export const resetPrevState = () => {
     let x = window.scrollX
     let y = window.scrollY
     states.previousActiveElement.focus()
-    if (isDefined(x) && isDefined(y)) { // IE doesn't have scrollX/scrollY support
+    if (typeof x !== 'undefined' && typeof y !== 'undefined') { // IE doesn't have scrollX/scrollY support
       window.scrollTo(x, y)
     }
   }

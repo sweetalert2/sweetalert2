@@ -1,6 +1,6 @@
 import defaultParams, { deprecatedParams } from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
-import { isDefined, colorLuminance, warn, error, warnOnce } from './utils/utils.js'
+import { colorLuminance, warn, error, warnOnce } from './utils/utils.js'
 import * as dom from './utils/dom.js'
 
 let popupParams = Object.assign({}, defaultParams)
@@ -12,7 +12,7 @@ let previousWindowKeyDown, windowOnkeydownOverridden
  * Check for the existence of Promise
  * Hopefully to avoid many github issues
  */
-if (!isDefined(Promise)) {
+if (typeof Promise === 'undefined') {
   error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)')
 }
 
@@ -400,11 +400,11 @@ const undoIOSfix = () => {
 // SweetAlert entry point
 const sweetAlert = (...args) => {
   // Prevent run in Node env
-  if (!isDefined(window)) {
+  if (typeof window === 'undefined') {
     return
   }
 
-  if (!isDefined(args[0])) {
+  if (typeof args[0] === 'undefined') {
     error('SweetAlert2 expects at least 1 attribute!')
     return false
   }
@@ -1141,7 +1141,7 @@ sweetAlert.queue = (steps) => {
         document.body.setAttribute('data-swal2-queue-step', i)
 
         sweetAlert(queue[i]).then((result) => {
-          if (isDefined(result.value)) {
+          if (typeof result.value !== 'undefined') {
             queueResult.push(result.value)
             step(i + 1, callback)
           } else {
@@ -1176,7 +1176,7 @@ sweetAlert.insertQueueStep = (step, index) => {
  * Global function for deleting a popup from the queue
  */
 sweetAlert.deleteQueueStep = (index) => {
-  if (isDefined(queue[index])) {
+  if (typeof queue[index] !== 'undefined') {
     queue.splice(index, 1)
   }
 }

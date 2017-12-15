@@ -215,6 +215,7 @@ Configuration
 
 You can redefine default params by using `swal.setDefaults(customParams)` where `customParams` is an object.
 
+Note that if there is a global `window._swalDefaults` object then `swal.setDefaults` will be invoked with this object upon the library being loaded.
 
 Methods
 -------

@@ -694,7 +694,7 @@ const sweetAlert = (...args) => {
         }
       }
     } else {
-      // We should igonore clicks that had mousedown on the popup but
+      // We should ignore clicks that had mousedown on the popup but
       // mouseup on the container, this can happen when the user drags a slider
       let ignoreOutsideClick = false
 

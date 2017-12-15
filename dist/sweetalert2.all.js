@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.0.10
+ * sweetalert2 v7.1.0
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1540,9 +1540,16 @@ sweetAlert$1.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert$1.noop = function () {};
 
-sweetAlert$1.version = '7.0.10';
+sweetAlert$1.version = '7.1.0';
 
 sweetAlert$1.default = sweetAlert$1;
+
+/**
+ * Set default params if `window._swalDefaults` is an object
+ */
+if (_typeof(window._swalDefaults) === 'object') {
+  sweetAlert$1.setDefaults(window._swalDefaults);
+}
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 var states = {

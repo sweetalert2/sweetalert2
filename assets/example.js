@@ -17,9 +17,9 @@ function makeApiRequest (endpoint) {
 var stats = {}
 
 // latest release
-makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/releases/latest').then(
+makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/tags').then(
   (response) => {
-    stats.latestRelease = response.tag_name
+    stats.latestRelease = response[0].name
     showStats()
   },
   () => {}

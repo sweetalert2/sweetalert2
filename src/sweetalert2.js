@@ -694,14 +694,27 @@ const sweetAlert = (...args) => {
         }
       }
     } else {
-      // We should ignore clicks that had mousedown on the popup but
-      // mouseup on the container, this can happen when the user drags a slider
       let ignoreOutsideClick = false
 
-      popup.onmousedown = (e) => {
+      // Ignore click events that had mousedown on the popup but mouseup on the container
+      // This can happen when the user drags a slider
+      popup.onmousedown = () => {
         container.onmouseup = function (e) {
           container.onmouseup = undefined
+          // We only check if the mouseup target is the container because usually it doesn't
+          // have any other direct children aside of the popup
           if (e.target === container) {
+            ignoreOutsideClick = true
+          }
+        }
+      }
+
+      // Ignore click events that had mousedown on the container but mouseup on the popup
+      container.onmousedown = () => {
+        popup.onmouseup = function (e) {
+          popup.onmouseup = undefined
+          // We also need to check if the mouseup target is a child of the popup
+          if (e.target === popup || popup.contains(e.target)) {
             ignoreOutsideClick = true
           }
         }

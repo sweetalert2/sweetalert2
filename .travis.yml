@@ -20,7 +20,7 @@ script:
 
   # visual tests (puppeteer)
   - if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
-      npm i --no-save puppeteer@0.12.0 looks-same cli-color yargs;
+      npm i --no-save puppeteer@0.13.0 looks-same cli-color yargs;
       node test/puppeteer/visual-tests.js;
     fi
 

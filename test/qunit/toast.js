@@ -13,8 +13,6 @@ QUnit.test('.swal2-has-input', (assert) => {
     swal({input: input})
     assert.ok(document.body.classList.contains('swal2-has-input'), input)
   })
-  swal({input: false})
-  assert.notOk(document.body.classList.contains('swal2-has-input'))
 })
 
 QUnit.test('should not overrie window.onkeydown', (assert) => {

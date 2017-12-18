@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.1.0
+ * sweetalert2 v7.1.1
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -890,7 +890,37 @@ var sweetAlert$1 = function sweetAlert() {
         }
       };
     } else {
+      var ignoreOutsideClick = false;
+
+      // Ignore click events that had mousedown on the popup but mouseup on the container
+      // This can happen when the user drags a slider
+      popup.onmousedown = function () {
+        container.onmouseup = function (e) {
+          container.onmouseup = undefined;
+          // We only check if the mouseup target is the container because usually it doesn't
+          // have any other direct children aside of the popup
+          if (e.target === container) {
+            ignoreOutsideClick = true;
+          }
+        };
+      };
+
+      // Ignore click events that had mousedown on the container but mouseup on the popup
+      container.onmousedown = function () {
+        popup.onmouseup = function (e) {
+          popup.onmouseup = undefined;
+          // We also need to check if the mouseup target is a child of the popup
+          if (e.target === popup || popup.contains(e.target)) {
+            ignoreOutsideClick = true;
+          }
+        };
+      };
+
       container.onclick = function (e) {
+        if (ignoreOutsideClick) {
+          ignoreOutsideClick = false;
+          return;
+        }
         if (e.target !== container) {
           return;
         }
@@ -1540,7 +1570,7 @@ sweetAlert$1.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert$1.noop = function () {};
 
-sweetAlert$1.version = '7.1.0';
+sweetAlert$1.version = '7.1.1';
 
 sweetAlert$1.default = sweetAlert$1;
 

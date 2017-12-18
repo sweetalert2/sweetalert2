@@ -694,7 +694,37 @@ const sweetAlert = (...args) => {
         }
       }
     } else {
+      let ignoreOutsideClick = false
+
+      // Ignore click events that had mousedown on the popup but mouseup on the container
+      // This can happen when the user drags a slider
+      popup.onmousedown = () => {
+        container.onmouseup = function (e) {
+          container.onmouseup = undefined
+          // We only check if the mouseup target is the container because usually it doesn't
+          // have any other direct children aside of the popup
+          if (e.target === container) {
+            ignoreOutsideClick = true
+          }
+        }
+      }
+
+      // Ignore click events that had mousedown on the container but mouseup on the popup
+      container.onmousedown = () => {
+        popup.onmouseup = function (e) {
+          popup.onmouseup = undefined
+          // We also need to check if the mouseup target is a child of the popup
+          if (e.target === popup || popup.contains(e.target)) {
+            ignoreOutsideClick = true
+          }
+        }
+      }
+
       container.onclick = (e) => {
+        if (ignoreOutsideClick) {
+          ignoreOutsideClick = false
+          return
+        }
         if (e.target !== container) {
           return
         }

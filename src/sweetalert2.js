@@ -83,8 +83,7 @@ const setParameters = (params) => {
   }
 
   if (!params.backdrop) {
-    dom.addClass(document.documentElement, swalClasses['no-backdrop'])
-    dom.addClass(document.body, swalClasses['no-backdrop'])
+    dom.addClass([document.documentElement, document.body], swalClasses['no-backdrop'])
   }
 
   // Content
@@ -132,8 +131,7 @@ const setParameters = (params) => {
   // Default Class
   popup.className = swalClasses.popup
   if (params.toast) {
-    dom.addClass(document.documentElement, swalClasses['toast-shown'])
-    dom.addClass(document.body, swalClasses['toast-shown'])
+    dom.addClass([document.documentElement, document.body], swalClasses['toast-shown'])
     dom.addClass(popup, swalClasses.toast)
   } else {
     dom.addClass(popup, swalClasses.modal)
@@ -283,11 +281,9 @@ const setParameters = (params) => {
 
   // Buttons styling
   if (params.buttonsStyling) {
-    dom.addClass(confirmButton, swalClasses.styled)
-    dom.addClass(cancelButton, swalClasses.styled)
+    dom.addClass([confirmButton, cancelButton], swalClasses.styled)
   } else {
-    dom.removeClass(confirmButton, swalClasses.styled)
-    dom.removeClass(cancelButton, swalClasses.styled)
+    dom.removeClass([confirmButton, cancelButton], swalClasses.styled)
 
     confirmButton.style.backgroundColor = confirmButton.style.borderLeftColor = confirmButton.style.borderRightColor = ''
     cancelButton.style.backgroundColor = cancelButton.style.borderLeftColor = cancelButton.style.borderRightColor = ''
@@ -345,9 +341,7 @@ const openPopup = (animation, onBeforeOpen, onComplete) => {
     container.style.overflowY = 'auto'
   }
 
-  dom.addClass(document.documentElement, swalClasses.shown)
-  dom.addClass(document.body, swalClasses.shown)
-  dom.addClass(container, swalClasses.shown)
+  dom.addClass([document.documentElement, document.body, container], swalClasses.shown)
   if (dom.isModal()) {
     fixScrollbar()
     iOSfix()
@@ -855,8 +849,7 @@ const sweetAlert = (...args) => {
           dom.hide(dom.getButtonsWrapper())
         }
       }
-      dom.removeClass(buttonsWrapper, swalClasses.loading)
-      dom.removeClass(popup, swalClasses.loading)
+      dom.removeClass([popup, buttonsWrapper], swalClasses.loading)
       popup.removeAttribute('aria-busy')
       confirmButton.disabled = false
       cancelButton.disabled = false
@@ -1236,13 +1229,15 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
     if (container.parentNode) {
       container.parentNode.removeChild(container)
     }
-    dom.removeClass(document.documentElement, swalClasses.shown)
-    dom.removeClass(document.body, swalClasses.shown)
-    dom.removeClass(document.documentElement, swalClasses['no-backdrop'])
-    dom.removeClass(document.body, swalClasses['no-backdrop'])
-    dom.removeClass(document.body, swalClasses['has-input'])
-    dom.removeClass(document.documentElement, swalClasses['toast-shown'])
-    dom.removeClass(document.body, swalClasses['toast-shown'])
+    dom.removeClass(
+      [document.documentElement, document.body],
+      [
+        swalClasses.shown,
+        swalClasses['no-backdrop'],
+        swalClasses['has-input'],
+        swalClasses['toast-shown']
+      ]
+    )
 
     if (dom.isModal()) {
       undoScrollbar()
@@ -1294,8 +1289,7 @@ sweetAlert.showLoading = sweetAlert.enableLoading = () => {
 
   dom.show(buttonsWrapper)
   dom.show(confirmButton, 'inline-block')
-  dom.addClass(buttonsWrapper, swalClasses.loading)
-  dom.addClass(popup, swalClasses.loading)
+  dom.addClass([popup, buttonsWrapper], swalClasses.loading)
   confirmButton.disabled = true
   cancelButton.disabled = true
 

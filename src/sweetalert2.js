@@ -83,6 +83,7 @@ const setParameters = (params) => {
   }
 
   if (!params.backdrop) {
+    dom.addClass(document.documentElement, swalClasses['no-backdrop'])
     dom.addClass(document.body, swalClasses['no-backdrop'])
   }
 
@@ -131,6 +132,7 @@ const setParameters = (params) => {
   // Default Class
   popup.className = swalClasses.popup
   if (params.toast) {
+    dom.addClass(document.documentElement, swalClasses['toast-shown'])
     dom.addClass(document.body, swalClasses['toast-shown'])
     dom.addClass(popup, swalClasses.toast)
   } else {
@@ -1236,8 +1238,10 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
     }
     dom.removeClass(document.documentElement, swalClasses.shown)
     dom.removeClass(document.body, swalClasses.shown)
+    dom.removeClass(document.documentElement, swalClasses['no-backdrop'])
     dom.removeClass(document.body, swalClasses['no-backdrop'])
     dom.removeClass(document.body, swalClasses['has-input'])
+    dom.removeClass(document.documentElement, swalClasses['toast-shown'])
     dom.removeClass(document.body, swalClasses['toast-shown'])
 
     if (dom.isModal()) {

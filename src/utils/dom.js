@@ -22,6 +22,8 @@ export const init = (params) => {
     removeClass(document.body, swalClasses['no-backdrop'])
     removeClass(document.body, swalClasses['has-input'])
     removeClass(document.body, swalClasses['toast-shown'])
+    removeClass(document.documentElement, swalClasses['toast-shown'])
+    removeClass(document.documentElement, swalClasses['no-backdrop'])
   }
 
   if (isNodeEnv()) {

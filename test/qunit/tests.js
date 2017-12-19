@@ -751,6 +751,8 @@ QUnit.test('params validation', (assert) => {
 QUnit.test('addition and removal of backdrop', (assert) => {
   swal({backdrop: false})
   assert.ok(document.body.classList.contains('swal2-no-backdrop'))
+  assert.ok(document.documentElement.classList.contains('swal2-no-backdrop'))
   swal({title: 'test'})
   assert.notOk(document.body.classList.contains('swal2-no-backdrop'))
+  assert.notOk(document.documentElement.classList.contains('swal2-no-backdrop'))
 })

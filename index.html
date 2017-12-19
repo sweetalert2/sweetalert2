@@ -293,6 +293,22 @@ swal({
 })</pre>
     </li>
 
+    <li class="rtl">
+      <div class="ui">
+        <p>Right-to-left support for Arabic, Hebrew, and other RTL languages</p>
+        <button aria-label="Try me! Example: A message with auto close timer">Try me!</button>
+      </div>
+      <pre>
+swal({
+  title: <span class="str">'هل تريد الاستمرار؟'</span>,
+  confirmButtonText:  <span class="str">'نعم'</span>,
+  cancelButtonText:  <span class="str">'لا'</span>,
+  showCancelButton: <span class="val">true</span>,
+  showCloseButton: <span class="val">true</span>,
+  target: $(<span class="str">'#rtl-container'</span>)[0]
+})</pre>
+    </li>
+
     <li class="ajax-request" id="ajax-request">
       <div class="ui">
         <p>Ajax request example</p>
@@ -790,6 +806,7 @@ swal.queue([{
         <td><a href="#timer">timer</a></td>
       </tr>
     </table>
+  </div>
 
   <!-- Modal Types -->
   <h3>Modal Types</h3>
@@ -1391,6 +1408,17 @@ swal({
     })
   })
 
+  $('.examples .rtl button').on('click', () => {
+    swal({
+      title: 'هل تريد الاستمرار؟',
+      confirmButtonText: 'نعم',
+      cancelButtonText: 'لا',
+      showCancelButton: true,
+      showCloseButton: true,
+      target: $('#rtl-container')[0]
+    })
+  })
+
   $('.examples .html-jquery button').on('click', () => {
     swal({
       title: 'jQuery HTML example',
@@ -1762,5 +1790,6 @@ swal({
   }
 </script>
 <script src="./assets/example.js"></script>
+<div id="rtl-container" dir="rtl"></div>
 </body>
 </html>

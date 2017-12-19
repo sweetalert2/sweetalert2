@@ -1093,6 +1093,14 @@ body {
 }
 
 
+// Right-to-left support
+[dir='rtl'] {
+  .swal2-close {
+    left: 8px;
+    right: auto;
+  }
+}
+
 
 // Success icon animation
 

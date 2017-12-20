@@ -1773,8 +1773,8 @@ swal({
     ])
   })
 
-  $('.modal-types button').on('click', () => {
-    var type = $(this).attr('class').slice(5)
+  $('.modal-types button').on('click', (e) => {
+    var type = $(e.currentTarget).attr('class').slice(5)
     swal(type + '!', '', type)
   })
 

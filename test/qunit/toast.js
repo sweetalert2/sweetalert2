@@ -3,8 +3,10 @@
 QUnit.test('.swal2-toast-shown', (assert) => {
   swal({toast: true})
   assert.ok(document.body.classList.contains('swal2-toast-shown'))
+  assert.ok(document.documentElement.classList.contains('swal2-toast-shown'))
   swal({toast: false})
   assert.notOk(document.body.classList.contains('swal2-toast-shown'))
+  assert.notOk(document.documentElement.classList.contains('swal2-toast-shown'))
 })
 
 QUnit.test('.swal2-has-input', (assert) => {

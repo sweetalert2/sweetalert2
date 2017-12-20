@@ -19,9 +19,14 @@ export const init = (params) => {
   const c = getContainer()
   if (c) {
     c.parentNode.removeChild(c)
-    removeClass(document.body, swalClasses['no-backdrop'])
-    removeClass(document.body, swalClasses['has-input'])
-    removeClass(document.body, swalClasses['toast-shown'])
+    removeClass(
+      [document.documentElement, document.body],
+      [
+        swalClasses['no-backdrop'],
+        swalClasses['has-input'],
+        swalClasses['toast-shown']
+      ]
+    )
   }
 
   if (isNodeEnv()) {
@@ -195,24 +200,30 @@ export const focusInput = (input) => {
   }
 }
 
-export const addClass = (elem, className) => {
-  if (!elem || !className) {
+const addOrRemoveClass = (target, classList, add) => {
+  if (!target || !classList) {
     return
   }
-  const classes = className.split(/\s+/).filter(Boolean)
-  classes.forEach((className) => {
-    elem.classList.add(className)
+  if (typeof classList === 'string') {
+    classList = classList.split(/\s+/).filter(Boolean)
+  }
+  classList.forEach((className) => {
+    if (target.forEach) {
+      target.forEach((elem) => {
+        add ? elem.classList.add(className) : elem.classList.remove(className)
+      })
+    } else {
+      add ? target.classList.add(className) : target.classList.remove(className)
+    }
   })
 }
 
-export const removeClass = (elem, className) => {
-  if (!elem || !className) {
-    return
-  }
-  const classes = className.split(/\s+/).filter(Boolean)
-  classes.forEach((className) => {
-    elem.classList.remove(className)
-  })
+export const addClass = (target, classList) => {
+  addOrRemoveClass(target, classList, true)
+}
+
+export const removeClass = (target, classList) => {
+  addOrRemoveClass(target, classList, false)
 }
 
 export const getChildByClass = (elem, className) => {

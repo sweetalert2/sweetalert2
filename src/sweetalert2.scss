@@ -4,6 +4,7 @@
 @import 'colors';
 @import 'mixins';
 
+html,
 body {
   &.swal2-shown {
     @include not(
@@ -13,10 +14,10 @@ body {
       overflow-y: hidden;
     }
   }
+}
 
+body {
   &.swal2-toast-shown {
-    overflow-y: auto;
-
     &.swal2-has-input  > .swal2-container {
       & > .swal2-toast {
         flex-direction: column;

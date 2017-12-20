@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.1.1
+ * sweetalert2 v7.1.2
  * Released under the MIT License.
  */
 'use strict';
@@ -171,9 +171,7 @@ var init = function init(params) {
   var c = getContainer();
   if (c) {
     c.parentNode.removeChild(c);
-    removeClass(document.body, swalClasses['no-backdrop']);
-    removeClass(document.body, swalClasses['has-input']);
-    removeClass(document.body, swalClasses['toast-shown']);
+    removeClass([document.documentElement, document.body], [swalClasses['no-backdrop'], swalClasses['has-input'], swalClasses['toast-shown']]);
   }
 
   if (isNodeEnv()) {
@@ -328,24 +326,30 @@ var focusInput = function focusInput(input) {
   }
 };
 
-var addClass = function addClass(elem, className) {
-  if (!elem || !className) {
+var addOrRemoveClass = function addOrRemoveClass(target, classList, add) {
+  if (!target || !classList) {
     return;
   }
-  var classes = className.split(/\s+/).filter(Boolean);
-  classes.forEach(function (className) {
-    elem.classList.add(className);
+  if (typeof classList === 'string') {
+    classList = classList.split(/\s+/).filter(Boolean);
+  }
+  classList.forEach(function (className) {
+    if (target.forEach) {
+      target.forEach(function (elem) {
+        add ? elem.classList.add(className) : elem.classList.remove(className);
+      });
+    } else {
+      add ? target.classList.add(className) : target.classList.remove(className);
+    }
   });
 };
 
-var removeClass = function removeClass(elem, className) {
-  if (!elem || !className) {
-    return;
-  }
-  var classes = className.split(/\s+/).filter(Boolean);
-  classes.forEach(function (className) {
-    elem.classList.remove(className);
-  });
+var addClass = function addClass(target, classList) {
+  addOrRemoveClass(target, classList, true);
+};
+
+var removeClass = function removeClass(target, classList) {
+  addOrRemoveClass(target, classList, false);
 };
 
 var getChildByClass = function getChildByClass(elem, className) {
@@ -566,7 +570,7 @@ var setParameters = function setParameters(params) {
   }
 
   if (!params.backdrop) {
-    addClass(document.body, swalClasses['no-backdrop']);
+    addClass([document.documentElement, document.body], swalClasses['no-backdrop']);
   }
 
   // Content
@@ -614,7 +618,7 @@ var setParameters = function setParameters(params) {
   // Default Class
   popup.className = swalClasses.popup;
   if (params.toast) {
-    addClass(document.body, swalClasses['toast-shown']);
+    addClass([document.documentElement, document.body], swalClasses['toast-shown']);
     addClass(popup, swalClasses.toast);
   } else {
     addClass(popup, swalClasses.modal);
@@ -761,11 +765,9 @@ var setParameters = function setParameters(params) {
 
   // Buttons styling
   if (params.buttonsStyling) {
-    addClass(confirmButton, swalClasses.styled);
-    addClass(cancelButton, swalClasses.styled);
+    addClass([confirmButton, cancelButton], swalClasses.styled);
   } else {
-    removeClass(confirmButton, swalClasses.styled);
-    removeClass(cancelButton, swalClasses.styled);
+    removeClass([confirmButton, cancelButton], swalClasses.styled);
 
     confirmButton.style.backgroundColor = confirmButton.style.borderLeftColor = confirmButton.style.borderRightColor = '';
     cancelButton.style.backgroundColor = cancelButton.style.borderLeftColor = cancelButton.style.borderRightColor = '';
@@ -819,9 +821,7 @@ var openPopup = function openPopup(animation, onBeforeOpen, onComplete) {
     container.style.overflowY = 'auto';
   }
 
-  addClass(document.documentElement, swalClasses.shown);
-  addClass(document.body, swalClasses.shown);
-  addClass(container, swalClasses.shown);
+  addClass([document.documentElement, document.body, container], swalClasses.shown);
   if (isModal()) {
     fixScrollbar();
     iOSfix();
@@ -1333,8 +1333,7 @@ var sweetAlert = function sweetAlert() {
           hide(getButtonsWrapper());
         }
       }
-      removeClass(buttonsWrapper, swalClasses.loading);
-      removeClass(popup, swalClasses.loading);
+      removeClass([popup, buttonsWrapper], swalClasses.loading);
       popup.removeAttribute('aria-busy');
       confirmButton.disabled = false;
       cancelButton.disabled = false;
@@ -1730,11 +1729,7 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
     if (container.parentNode) {
       container.parentNode.removeChild(container);
     }
-    removeClass(document.documentElement, swalClasses.shown);
-    removeClass(document.body, swalClasses.shown);
-    removeClass(document.body, swalClasses['no-backdrop']);
-    removeClass(document.body, swalClasses['has-input']);
-    removeClass(document.body, swalClasses['toast-shown']);
+    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['no-backdrop'], swalClasses['has-input'], swalClasses['toast-shown']]);
 
     if (isModal()) {
       undoScrollbar();
@@ -1790,8 +1785,7 @@ sweetAlert.showLoading = sweetAlert.enableLoading = function () {
 
   show(buttonsWrapper);
   show(confirmButton, 'inline-block');
-  addClass(buttonsWrapper, swalClasses.loading);
-  addClass(popup, swalClasses.loading);
+  addClass([popup, buttonsWrapper], swalClasses.loading);
   confirmButton.disabled = true;
   cancelButton.disabled = true;
 
@@ -1856,7 +1850,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.1.1';
+sweetAlert.version = '7.1.2';
 
 sweetAlert.default = sweetAlert;
 

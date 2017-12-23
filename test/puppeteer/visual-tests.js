@@ -1,3 +1,4 @@
+const fs = require('fs')
 const argv = require('yargs').argv
 const clc = require('cli-color')
 const looksSame = require('looks-same')
@@ -139,8 +140,8 @@ async function run (testCase) {
       break
   }
 
-  await page.focus('.swal2-confirm')
-  await page.hover('.swal2-modal')
+  // await page.focus('.swal2-confirm')
+  // await page.hover('.swal2-modal')
   await page.waitFor(1200)
 
   const swalContainerHandle = await page.$('.swal2-container')
@@ -186,7 +187,7 @@ async function run (testCase) {
           })
           code = 1
         }
-        resolve()
+        fs.unlink(`${path}${screenName}-test.png`, () => resolve())
       })
     })
   }
@@ -206,8 +207,7 @@ async function runAll (testCase) {
   await run('input-type-url-valid')
   await run('input-type-password')
   await run('input-type-textarea')
-  // TODO: re-enable, currently instable for some reason (puppeteer 0.12.0)
-  // await run('input-type-select')
+  await run('input-type-select')
   await run('input-type-select-invalid')
   await run('input-type-select-valid')
   await run('input-type-radio')
@@ -220,9 +220,8 @@ async function runAll (testCase) {
 
   await run('bootstrap-buttons')
 
-  // TODO: re-enable, currently instable for some reason (puppeteer 0.12.0)
-  // await run('ajax-request-success')
-  // await run('ajax-request-reject')
+  await run('ajax-request-success')
+  await run('ajax-request-reject')
 
   // await run('chaining-modals-step1')
   // await run('chaining-modals-step2')

@@ -9,7 +9,7 @@ export default {
   target: 'body',
   backdrop: true,
   animation: true,
-  allowOutsideClick: true,
+  allowOutsideClick: 'always',
   allowEscapeKey: true,
   allowEnterKey: true,
   showConfirmButton: true,

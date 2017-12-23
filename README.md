@@ -171,7 +171,7 @@ Configuration
 | `customClass`            | `null`                | A custom CSS class for the modal. |
 | `timer`                  | `null`                | Auto close timer of the modal. Set in ms (milliseconds). |
 | `animation`              | `true`                | If set to `false`, modal CSS animation will be disabled. |
-| `allowOutsideClick`      | `true`                | If set to `false`, the user can't dismiss the modal by clicking outside it. |
+| `allowOutsideClick`      | `'always'`            | If set to `false`, the user can't dismiss the modal by clicking outside it. If set to `'when-not-loading'`, the modal can't be dismissed by outside click when it's in loading state (e.g. AJAX requests in the [preConfirm callback](#ajax-request)). |
 | `allowEscapeKey`         | `true`                | If set to `false`, the user can't dismiss the modal by pressing the <kbd>Esc</kbd> key. |
 | `allowEnterKey`          | `true`                | If set to `false`, the user can't confirm the modal by pressing the <kbd>Enter</kbd> or <kbd>Space</kbd> keys, unless they manually focus the confirm button. |
 | `showConfirmButton`      | `true`                | If set to `false`, a "Confirm"-button will not be shown. It can be useful when you're using `html` parameter for custom HTML description. |

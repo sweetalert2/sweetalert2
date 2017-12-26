@@ -1358,7 +1358,7 @@ sweetAlert.default = sweetAlert
 /**
  * Set default params if `window._swalDefaults` is an object
  */
-if (typeof window._swalDefaults === 'object') {
+if (typeof window !== 'undefined' && typeof window._swalDefaults === 'object') {
   sweetAlert.setDefaults(window._swalDefaults)
 }
 

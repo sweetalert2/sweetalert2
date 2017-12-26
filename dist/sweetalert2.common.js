@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.1.2
+ * sweetalert2 v7.1.3
  * Released under the MIT License.
  */
 'use strict';
@@ -1850,14 +1850,14 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.1.2';
+sweetAlert.version = '7.1.3';
 
 sweetAlert.default = sweetAlert;
 
 /**
  * Set default params if `window._swalDefaults` is an object
  */
-if (_typeof(window._swalDefaults) === 'object') {
+if (typeof window !== 'undefined' && _typeof(window._swalDefaults) === 'object') {
   sweetAlert.setDefaults(window._swalDefaults);
 }
 

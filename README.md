@@ -303,6 +303,7 @@ Related projects
 - [lishengzxc/vue-sweetalert](https://github.com/lishengzxc/vue-sweetalert) - Vue.js plugin
 - [softon/sweetalert](https://github.com/softon/sweetalert) - Laravel 5 Package
 - [limonte/sweetalert2-polymer](https://github.com/limonte/sweetalert2-polymer) - Polymer wrapper
+- [limonte/sweetalert2-adonisjs-nuxtjs](https://github.com/limonte/sweetalert2-adonisjs-nuxtjs) - AdonisJS + Nuxt.js
 - [limonte/sweetalert2-webpack-demo](https://github.com/limonte/sweetalert2-webpack-demo) - webpack demo
 
 

@@ -322,9 +322,9 @@ declare module 'sweetalert2' {
          * @default 'center'
          */
         position?:
-            'top' | 'top-left' | 'top-right' |
-            'center' | 'center-left' | 'center-right' |
-            'bottom' | 'bottom-left' | 'bottom-right';
+            'top' | 'top-start' | 'top-end' | 'top-left' | 'top-right' |
+            'center' | 'center-start' | 'center-end' | 'center-left' | 'center-right' |
+            'bottom' | 'bottom-start' | 'bottom-end' | 'bottom-left' | 'bottom-right';
 
         /**
          * Modal window grow direction

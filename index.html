@@ -333,7 +333,7 @@ swal({
       }, <span class="val">2000</span>)
     })
   },
-  allowOutsideClick: () => swal.isLoading()
+  allowOutsideClick: () => !swal.isLoading()
 }).<span class="tag">then</span>((result) => {
   <span class="tag">if</span> (result.value) {
     swal({

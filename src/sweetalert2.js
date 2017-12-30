@@ -725,7 +725,13 @@ const sweetAlert = (...args) => {
           return
         }
         if (params.allowOutsideClick) {
-          dismissWith('overlay')
+          if (typeof params.allowOutsideClick === 'function') {
+            if (params.allowOutsideClick()) {
+              dismissWith('overlay')
+            }
+          } else {
+            dismissWith('overlay')
+          }
         }
       }
     }
@@ -851,6 +857,7 @@ const sweetAlert = (...args) => {
       }
       dom.removeClass([popup, buttonsWrapper], swalClasses.loading)
       popup.removeAttribute('aria-busy')
+      popup.removeAttribute('data-loading')
       confirmButton.disabled = false
       cancelButton.disabled = false
     }
@@ -862,6 +869,7 @@ const sweetAlert = (...args) => {
     sweetAlert.getButtonsWrapper = () => dom.getButtonsWrapper()
     sweetAlert.getConfirmButton = () => dom.getConfirmButton()
     sweetAlert.getCancelButton = () => dom.getCancelButton()
+    sweetAlert.isLoading = () => dom.isLoading()
 
     sweetAlert.enableButtons = () => {
       confirmButton.disabled = false
@@ -1293,6 +1301,7 @@ sweetAlert.showLoading = sweetAlert.enableLoading = () => {
   confirmButton.disabled = true
   cancelButton.disabled = true
 
+  popup.setAttribute('data-loading', true)
   popup.setAttribute('aria-busy', true)
   popup.focus()
 }

@@ -171,7 +171,7 @@ Configuration
 | `customClass`            | `null`                | A custom CSS class for the modal. |
 | `timer`                  | `null`                | Auto close timer of the modal. Set in ms (milliseconds). |
 | `animation`              | `true`                | If set to `false`, modal CSS animation will be disabled. |
-| `allowOutsideClick`      | `true`                | If set to `false`, the user can't dismiss the modal by clicking outside it. |
+| `allowOutsideClick`      | `true`                | If set to `false`, the user can't dismiss the modal by clicking outside it. You can also pass a custom function returning a boolean value, e.g. if you want to disable outside clicks for the loading state of a modal. |
 | `allowEscapeKey`         | `true`                | If set to `false`, the user can't dismiss the modal by pressing the <kbd>Esc</kbd> key. |
 | `allowEnterKey`          | `true`                | If set to `false`, the user can't confirm the modal by pressing the <kbd>Enter</kbd> or <kbd>Space</kbd> keys, unless they manually focus the confirm button. |
 | `showConfirmButton`      | `true`                | If set to `false`, a "Confirm"-button will not be shown. It can be useful when you're using `html` parameter for custom HTML description. |
@@ -236,8 +236,9 @@ Methods
 | `swal.disableButtons()`                         | Disable "Confirm" and "Cancel" buttons. |
 | `swal.enableConfirmButton()`                    | Enable the "Confirm"-button only. |
 | `swal.disableConfirmButton()`                   | Disable the "Confirm"-button only. |
-| `swal.enableLoading()` or `swal.showLoading()`  | Disable buttons and show loader. This is useful with AJAX requests. |
-| `swal.disableLoading()` or `swal.hideLoading()` | Enable buttons and hide loader. |
+| `swal.showLoading()` or `swal.enableLoading()`  | Disable buttons and show loader. This is useful with AJAX requests. |
+| `swal.hideLoading()` or `swal.disableLoading()` | Enable buttons and hide loader. |
+| `swal.isLoading()`                              | Determine if modal is in the loading state. Related methods: `swal.showLoading()` and `swal.hideLoading()`. |
 | `swal.clickConfirm()`                           | Click the "Confirm"-button programmatically. |
 | `swal.clickCancel()`                            | Click the "Cancel"-button programmatically. |
 | `swal.showValidationError(error)`               | Show validation error message. |

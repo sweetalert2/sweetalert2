@@ -181,6 +181,10 @@ export const isToast = () => {
   return document.body.classList.contains(swalClasses['toast-shown'])
 }
 
+export const isLoading = () => {
+  return getPopup().hasAttribute('data-loading')
+}
+
 export const hasClass = (elem, className) => {
   if (elem.classList) {
     return elem.classList.contains(className)
@@ -254,7 +258,7 @@ export const empty = (elem) => {
 }
 
 // borrowed from jquery $(elem).is(':visible') implementation
-export const isVisible = (elem) => elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length
+export const isVisible = (elem) => elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length)
 
 export const removeStyleProperty = (elem, property) => {
   if (elem.style.removeProperty) {

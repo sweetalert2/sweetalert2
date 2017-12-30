@@ -357,9 +357,12 @@ declare module 'sweetalert2' {
         /**
          * If set to false, the user can't dismiss the modal by clicking outside it.
          *
-         * @default true
+         * If set to 'when-not-loading', the modal can't be dismissed by outside click when it's
+         * in loading state (e.g. AJAX request in the preConfirm callback).
+         *
+         * @default 'always'
          */
-        allowOutsideClick?: boolean;
+        allowOutsideClick?: 'always' | 'when-not-loading' | false;
 
         /**
          * If set to false, the user can't dismiss the modal by pressing the Escape key.

@@ -333,7 +333,7 @@ swal({
       }, <span class="val">2000</span>)
     })
   },
-  allowOutsideClick: <span class="val">false</span>
+  allowOutsideClick: <span class="str">'when-not-loading'</span>
 }).<span class="tag">then</span>((result) => {
   <span class="tag">if</span> (result.value) {
     swal({
@@ -557,8 +557,11 @@ swal.queue([{
       </tr>
       <tr id="allow-outside-click">
         <td><b>allowOutsideClick</b></td>
-        <td><i>true</i></td>
-        <td>If set to <strong>false</strong>, the user can't dismiss the modal by clicking outside it.</td>
+        <td><i>'always'</i></td>
+        <td>
+          If set to <strong>false</strong>, the user can't dismiss the modal by clicking outside it.
+          <br>If set to <strong>'when-not-loading'</strong>, the modal can't be dismissed by outside click when it's in loading state (e.g. AJAX requests in the <a href="#pre-confirm">preConfirm callback</a>).
+        </td>
       </tr>
       <tr id="allow-escape-key">
         <td><b>allowEscapeKey</b></td>
@@ -1718,7 +1721,7 @@ swal({
           }, 2000)
         })
       },
-      allowOutsideClick: false
+      allowOutsideClick: 'when-not-loading'
     }).then((result) => {
       if (result.value) {
         swal({

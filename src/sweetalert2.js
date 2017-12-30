@@ -725,7 +725,17 @@ const sweetAlert = (...args) => {
           return
         }
         if (params.allowOutsideClick) {
-          dismissWith('overlay')
+          if (params.allowOutsideClick === 'always') {
+            dismissWith('overlay')
+          } else if (params.allowOutsideClick === 'when-not-loading' && !dom.isLoading()) {
+            dismissWith('overlay')
+          // @deprecated
+          } else if (params.allowOutsideClick === true) {
+            warnOnce(`The value "true" for the parameter "allowOutsideClick" is deprecated and will be removed in the next major release, use "always" or "when-not-loading" instead. https://limonte.github.io/sweetalert2/#allow-outside-click`)
+            dismissWith('overlay')
+          } else {
+            error(`Unexpected value for allowOutsideClick! Expected "always", "when-not-loading" or false, got "${params.allowOutsideClick}"`)
+          }
         }
       }
     }
@@ -851,6 +861,7 @@ const sweetAlert = (...args) => {
       }
       dom.removeClass([popup, buttonsWrapper], swalClasses.loading)
       popup.removeAttribute('aria-busy')
+      popup.removeAttribute('data-loading')
       confirmButton.disabled = false
       cancelButton.disabled = false
     }
@@ -1293,6 +1304,7 @@ sweetAlert.showLoading = sweetAlert.enableLoading = () => {
   confirmButton.disabled = true
   cancelButton.disabled = true
 
+  popup.setAttribute('data-loading', true)
   popup.setAttribute('aria-busy', true)
   popup.focus()
 }

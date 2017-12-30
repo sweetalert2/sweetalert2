@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.2.0
+ * sweetalert2 v7.3.0
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -921,7 +921,13 @@ var sweetAlert$1 = function sweetAlert() {
           return;
         }
         if (params.allowOutsideClick) {
-          dismissWith('overlay');
+          if (typeof params.allowOutsideClick === 'function') {
+            if (params.allowOutsideClick()) {
+              dismissWith('overlay');
+            }
+          } else {
+            dismissWith('overlay');
+          }
         }
       };
     }
@@ -1045,6 +1051,7 @@ var sweetAlert$1 = function sweetAlert() {
       }
       removeClass([popup, buttonsWrapper], swalClasses.loading);
       popup.removeAttribute('aria-busy');
+      popup.removeAttribute('data-loading');
       confirmButton.disabled = false;
       cancelButton.disabled = false;
     };
@@ -1069,6 +1076,9 @@ var sweetAlert$1 = function sweetAlert() {
     };
     sweetAlert.getCancelButton = function () {
       return getCancelButton();
+    };
+    sweetAlert.isLoading = function () {
+      return isLoading();
     };
 
     sweetAlert.enableButtons = function () {
@@ -1499,6 +1509,7 @@ sweetAlert$1.showLoading = sweetAlert$1.enableLoading = function () {
   confirmButton.disabled = true;
   cancelButton.disabled = true;
 
+  popup.setAttribute('data-loading', true);
   popup.setAttribute('aria-busy', true);
   popup.focus();
 };
@@ -1560,7 +1571,7 @@ sweetAlert$1.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert$1.noop = function () {};
 
-sweetAlert$1.version = '7.2.0';
+sweetAlert$1.version = '7.3.0';
 
 sweetAlert$1.default = sweetAlert$1;
 
@@ -1725,6 +1736,10 @@ var isToast = function isToast() {
   return document.body.classList.contains(swalClasses['toast-shown']);
 };
 
+var isLoading = function isLoading() {
+  return getPopup().hasAttribute('data-loading');
+};
+
 var hasClass = function hasClass(elem, className) {
   if (elem.classList) {
     return elem.classList.contains(className);
@@ -1799,7 +1814,7 @@ var empty = function empty(elem) {
 
 // borrowed from jquery $(elem).is(':visible') implementation
 var isVisible = function isVisible(elem) {
-  return elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length;
+  return elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
 };
 
 var removeStyleProperty = function removeStyleProperty(elem, property) {

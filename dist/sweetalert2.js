@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.2.0
+ * sweetalert2 v7.3.0
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -311,6 +311,10 @@ var isToast = function isToast() {
   return document.body.classList.contains(swalClasses['toast-shown']);
 };
 
+var isLoading = function isLoading() {
+  return getPopup().hasAttribute('data-loading');
+};
+
 var hasClass = function hasClass(elem, className) {
   if (elem.classList) {
     return elem.classList.contains(className);
@@ -385,7 +389,7 @@ var empty = function empty(elem) {
 
 // borrowed from jquery $(elem).is(':visible') implementation
 var isVisible = function isVisible(elem) {
-  return elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length;
+  return elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
 };
 
 var removeStyleProperty = function removeStyleProperty(elem, property) {
@@ -1215,7 +1219,13 @@ var sweetAlert = function sweetAlert() {
           return;
         }
         if (params.allowOutsideClick) {
-          dismissWith('overlay');
+          if (typeof params.allowOutsideClick === 'function') {
+            if (params.allowOutsideClick()) {
+              dismissWith('overlay');
+            }
+          } else {
+            dismissWith('overlay');
+          }
         }
       };
     }
@@ -1339,6 +1349,7 @@ var sweetAlert = function sweetAlert() {
       }
       removeClass([popup, buttonsWrapper], swalClasses.loading);
       popup.removeAttribute('aria-busy');
+      popup.removeAttribute('data-loading');
       confirmButton.disabled = false;
       cancelButton.disabled = false;
     };
@@ -1363,6 +1374,9 @@ var sweetAlert = function sweetAlert() {
     };
     sweetAlert.getCancelButton = function () {
       return getCancelButton();
+    };
+    sweetAlert.isLoading = function () {
+      return isLoading();
     };
 
     sweetAlert.enableButtons = function () {
@@ -1793,6 +1807,7 @@ sweetAlert.showLoading = sweetAlert.enableLoading = function () {
   confirmButton.disabled = true;
   cancelButton.disabled = true;
 
+  popup.setAttribute('data-loading', true);
   popup.setAttribute('aria-busy', true);
   popup.focus();
 };
@@ -1854,7 +1869,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.2.0';
+sweetAlert.version = '7.3.0';
 
 sweetAlert.default = sweetAlert;
 

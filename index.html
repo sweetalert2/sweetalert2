@@ -333,7 +333,7 @@ swal({
       }, <span class="val">2000</span>)
     })
   },
-  allowOutsideClick: <span class="val">false</span>
+  allowOutsideClick: () => swal.isLoading()
 }).<span class="tag">then</span>((result) => {
   <span class="tag">if</span> (result.value) {
     swal({
@@ -558,7 +558,7 @@ swal.queue([{
       <tr id="allow-outside-click">
         <td><b>allowOutsideClick</b></td>
         <td><i>true</i></td>
-        <td>If set to <strong>false</strong>, the user can't dismiss the modal by clicking outside it.</td>
+        <td>If set to <strong>false</strong>, the user can't dismiss the modal by clicking outside it.<br>You can also pass a custom function returning a boolean value, e.g. if you want to disable outside clicks for the loading state of a modal.</td>
       </tr>
       <tr id="allow-escape-key">
         <td><b>allowEscapeKey</b></td>
@@ -1183,13 +1183,17 @@ swal({
         <td><i>swal.disableConfirmButton()</i></td>
         <td>Disable the "Confirm"-button only.</td>
       </tr>
-      <tr>
+      <tr id="showLoading">
         <td><i>swal.showLoading()</i> or <i>swal.enableLoading()</i></td>
         <td>Disable buttons and show loader. This is useful with AJAX requests.</td>
       </tr>
-      <tr>
+      <tr id="hideLoading">
         <td><i>swal.hideLoading()</i> or <i>swal.disableLoading()</i></td>
         <td>Enable buttons and hide loader.</td>
+      </tr>
+      <tr>
+        <td><i>swal.isLoading()</i></td>
+        <td>Determine if modal is in the loading state. Related methods: <a href="#showLoading">swal.showLoading()</a> and  <a href="#hideLoading">swal.hideLoading()</a></td>
       </tr>
       <tr>
         <td><i>swal.clickConfirm()</i></td>
@@ -1718,7 +1722,7 @@ swal({
           }, 2000)
         })
       },
-      allowOutsideClick: false
+      allowOutsideClick: () => !swal.isLoading()
     }).then((result) => {
       if (result.value) {
         swal({

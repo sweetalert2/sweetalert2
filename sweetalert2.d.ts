@@ -119,6 +119,11 @@ declare module 'sweetalert2' {
         function hideLoading(): void;
 
         /**
+         * Determine if modal is in the loading state.
+         */
+        function isLoading(): boolean;
+
+        /**
          * Click the "Confirm"-button programmatically.
          */
         function clickConfirm(): void;
@@ -213,6 +218,8 @@ declare module 'sweetalert2' {
         'file' | 'url' | undefined;
 
     export type SweetAlertDismissalReason = 'cancel' | 'close' | 'overlay' | 'esc' | 'timer';
+
+    export type SweetAlertAllowOutsideClick = () => boolean;
 
     export interface SweetAlertInputOptions {
         [inputValue: string]: string;
@@ -356,10 +363,12 @@ declare module 'sweetalert2' {
 
         /**
          * If set to false, the user can't dismiss the modal by clicking outside it.
+         * You can also pass a custom function returning a boolean value, e.g. if you want
+         * to disable outside clicks for the loading state of a modal.
          *
          * @default true
          */
-        allowOutsideClick?: boolean;
+        allowOutsideClick?: boolean | SweetAlertAllowOutsideClick;
 
         /**
          * If set to false, the user can't dismiss the modal by pressing the Escape key.

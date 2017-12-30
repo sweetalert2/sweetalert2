@@ -1,12 +1,5 @@
 /* global $, QUnit, swal */
 
-const simulateMouseEvent = (x, y, eventType) => {
-  var event = $.Event(eventType)
-  event.clientX = x
-  event.clientY = y
-  $(document.elementFromPoint(x, y)).trigger(event)
-}
-
 QUnit.test('version is correct semver', (assert) => {
   assert.ok(swal.version.match(/\d+\.\d+\.\d+/))
 })
@@ -590,13 +583,10 @@ QUnit.test('esc key', (assert) => {
 
   swal({
     title: 'Esc me'
-  }).then(
-    (result) => {
-      assert.deepEqual(result, {dismiss: 'esc'})
-      done()
-    },
-    () => {}
-  )
+  }).then((result) => {
+    assert.deepEqual(result, {dismiss: 'esc'})
+    done()
+  })
 
   $(document).trigger($.Event('keydown', {
     key: 'Escape'
@@ -608,76 +598,25 @@ QUnit.test('close button', (assert) => {
   swal({
     title: 'Close button test',
     showCloseButton: true
-  }).then(
-    (result) => {
-      assert.deepEqual(result, {dismiss: 'close'})
-      done()
-    },
-    () => {}
-  )
+  }).then((result) => {
+    assert.deepEqual(result, {dismiss: 'close'})
+    done()
+  })
 
   const $closeButton = $('.swal2-close')
   assert.ok($closeButton.is(':visible'))
   assert.equal($closeButton.attr('aria-label'), 'Close this dialog')
   $closeButton.click()
 })
-QUnit.test('overlay click', (assert) => {
-  const done = assert.async()
-
-  swal({
-    title: 'Overlay click'
-  }).then(
-    (result) => {
-      assert.deepEqual(result, {dismiss: 'overlay'})
-      done()
-    },
-    () => {}
-  )
-
-  $('.swal2-container').click()
-})
-QUnit.test('popup mousedown, overlay mouseup', (assert) => {
-  const done = assert.async()
-
-  swal({
-    title: 'popup mousedown, overlay mouseup'
-  })
-
-  simulateMouseEvent(1, 1, 'mousedown')
-  simulateMouseEvent(window.innerWidth / 2, window.innerHeight / 2, 'mouseup')
-
-  setTimeout(() => {
-    assert.ok(swal.isVisible())
-    done()
-  }, 300)
-})
-QUnit.test('overlay mousedown, popup mouseup', (assert) => {
-  const done = assert.async()
-
-  swal({
-    title: 'overlay mousedown, popup mouseup'
-  })
-
-  simulateMouseEvent(window.innerWidth / 2, window.innerHeight / 2, 'mousedown')
-  simulateMouseEvent(1, 1, 'mouseup')
-
-  setTimeout(() => {
-    assert.ok(swal.isVisible())
-    done()
-  }, 300)
-})
 QUnit.test('cancel button', (assert) => {
   const done = assert.async()
 
   swal({
     title: 'Cancel me'
-  }).then(
-    (result) => {
-      assert.deepEqual(result, {dismiss: 'cancel'})
-      done()
-    },
-    () => {}
-  )
+  }).then((result) => {
+    assert.deepEqual(result, {dismiss: 'cancel'})
+    done()
+  })
 
   swal.clickCancel()
 })
@@ -688,13 +627,10 @@ QUnit.test('timer', (assert) => {
     title: 'Timer test',
     timer: 10,
     animation: false
-  }).then(
-    (result) => {
-      assert.deepEqual(result, {dismiss: 'timer'})
-      done()
-    },
-    () => {}
-  )
+  }).then((result) => {
+    assert.deepEqual(result, {dismiss: 'timer'})
+    done()
+  })
 })
 QUnit.test('confirm button', (assert) => {
   const done = assert.async()

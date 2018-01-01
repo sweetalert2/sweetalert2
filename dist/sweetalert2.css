@@ -289,7 +289,7 @@ body.swal2-no-backdrop > .swal2-shown {
       -ms-flex-direction: column;
           flex-direction: column;
   background-color: #fff;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border-radius: 5px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -680,21 +680,21 @@ body.swal2-no-backdrop > .swal2-shown {
                 transform: rotate(-45deg);
         right: 16px; }
   .swal2-icon.swal2-warning {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #f8bb86;
     border-color: #facea8;
     font-size: 60px;
     line-height: 80px;
     text-align: center; }
   .swal2-icon.swal2-info {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #3fc3ee;
     border-color: #9de0f6;
     font-size: 60px;
     line-height: 80px;
     text-align: center; }
   .swal2-icon.swal2-question {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #87adbd;
     border-color: #c9dae1;
     font-size: 60px;

@@ -1,7 +1,7 @@
 // SweetAlert2
 // github.com/limonte/sweetalert2
 
-@import 'colors';
+@import 'variables';
 @import 'mixins';
 
 html,
@@ -361,7 +361,7 @@ body {
 .swal2-popup {
   flex-direction: column;
   background-color: $swal2-white;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: $swal2-font;
   border-radius: 5px;
   box-sizing: border-box;
   text-align: center;
@@ -862,7 +862,7 @@ body {
   }
 
   &.swal2-warning {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: $swal2-font;
     color: $swal2-warning;
     border-color: lighten($swal2-warning, 7);
     font-size: 60px;
@@ -871,7 +871,7 @@ body {
   }
 
   &.swal2-info {
-    font-family: 'Open Sans', sans-serif;
+    font-family: $swal2-font;
     color: $swal2-info;
     border-color: lighten($swal2-info, 20);
     font-size: 60px;
@@ -880,7 +880,7 @@ body {
   }
 
   &.swal2-question {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: $swal2-font;
     color: $swal2-question;
     border-color: lighten($swal2-question, 20);
     font-size: 60px;

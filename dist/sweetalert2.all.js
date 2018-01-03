@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.3.1
+ * sweetalert2 v7.3.2
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1571,7 +1571,7 @@ sweetAlert$1.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert$1.noop = function () {};
 
-sweetAlert$1.version = '7.3.1';
+sweetAlert$1.version = '7.3.2';
 
 sweetAlert$1.default = sweetAlert$1;
 
@@ -1710,7 +1710,7 @@ var getCloseButton = function getCloseButton() {
 };
 
 var getFocusableElements = function getFocusableElements() {
-  var focusableElementsWithTabindex = Array.from(getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])'))
+  var focusableElementsWithTabindex = Array.prototype.slice.call(getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])'))
   // sort according to tabindex
   .sort(function (a, b) {
     a = parseInt(a.getAttribute('tabindex'));

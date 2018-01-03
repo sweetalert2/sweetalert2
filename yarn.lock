@@ -2,6 +2,17 @@
 # yarn lockfile v1
 
 
+"@59naga/array.from@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@59naga/array.from/-/array.from-2.0.2.tgz#e3649539b6b617eedeec953cdc21eb659bc9fb4b"
+
+"@59naga/babel-plugin-transform-array-from@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@59naga/babel-plugin-transform-array-from/-/babel-plugin-transform-array-from-0.0.0.tgz#cf5d4b0045f6b3dd31297b997a414dbdaa697b2d"
+  dependencies:
+    "@59naga/array.from" "^2.0.2"
+    babel-template "^6.7.0"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -602,7 +613,7 @@ babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
     core-js "^2.4.0"
     regenerator-runtime "^0.11.0"
 
-babel-template@^6.24.1, babel-template@^6.26.0:
+babel-template@^6.24.1, babel-template@^6.26.0, babel-template@^6.7.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-template/-/babel-template-6.26.0.tgz#de03e2d16396b069f46dd9fff8521fb1a0e35e02"
   dependencies:

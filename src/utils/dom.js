@@ -166,7 +166,7 @@ export const getFocusableElements = () => {
     return 0
   })
 
-  const otherFocusableElements = Array.prototype.slice.call(
+  const otherFocusableElements = Array.from(
     getPopup().querySelectorAll('button, input:not([type=hidden]), textarea, select, a, [tabindex="0"]')
   )
 

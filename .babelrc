@@ -8,6 +8,7 @@
   ]
   ],
   "plugins": [
+    "@59naga/babel-plugin-transform-array-from",
     "array-includes",
     "external-helpers",
     "transform-object-assign"

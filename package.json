@@ -8,6 +8,7 @@
   "jsnext:main": "src/sweetalert2.js",
   "types": "sweetalert2.d.ts",
   "devDependencies": {
+    "@59naga/babel-plugin-transform-array-from": "^0.0.0",
     "babel-core": "latest",
     "babel-plugin-array-includes": "latest",
     "babel-plugin-external-helpers": "latest",

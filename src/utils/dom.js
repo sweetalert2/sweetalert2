@@ -151,7 +151,7 @@ export const getButtonsWrapper = () => elementByClass(swalClasses.buttonswrapper
 export const getCloseButton = () => elementByClass(swalClasses.close)
 
 export const getFocusableElements = () => {
-  const focusableElementsWithTabindex = Array.from(
+  const focusableElementsWithTabindex = Array.prototype.slice.call(
     getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')
   )
   // sort according to tabindex

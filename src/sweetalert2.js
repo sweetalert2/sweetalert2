@@ -1,3 +1,5 @@
+/* globals React, ReactDOM */
+
 import defaultParams, { deprecatedParams } from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
 import { colorLuminance, warn, error, warnOnce } from './utils/utils.js'
@@ -88,7 +90,11 @@ const setParameters = (params) => {
 
   // Content
   if (params.text || params.html) {
-    if (typeof params.html === 'object') {
+    if (typeof React !== 'undefined' && typeof ReactDOM !== 'undefined') {
+      if (React.isValidElement(params.html)) {
+        ReactDOM.render(params.html, dom.getContent())
+      }
+    } else if (typeof params.html === 'object') {
       content.innerHTML = ''
       if (0 in params.html) {
         for (let i = 0; i in params.html; i++) {
@@ -1234,6 +1240,10 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
   }
 
   const removePopupAndResetState = () => {
+    if (typeof ReactDOM !== 'undefined') {
+      ReactDOM.unmountComponentAtNode(dom.getContent())
+    }
+
     if (container.parentNode) {
       container.parentNode.removeChild(container)
     }

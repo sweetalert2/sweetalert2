@@ -20,6 +20,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+  <!-- React integration -->
+  <script src="https://unpkg.com/babel-core@5.8.33/browser.js"></script>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
   <link rel="preload" href="https://unsplash.it/400/200/?random" as="image">
   <link rel="preload" href="https://bit.ly/1Nqn9HU" as="image">
 
@@ -404,6 +409,24 @@ swal.queue([{
     })
   }
 }])</pre>
+    </li>
+  </ul>
+
+  <!-- Download & Install -->
+  <div class="center-container download-section">
+    <h3>Integration with frameworks</h3>
+  </div>
+
+  <ul class="examples">
+    <li class="react-integration" id="react-integration">
+      <div class="ui">
+        <p>Just pass JSX to the html parameter</p>
+        <button aria-label="Try me! Example: Dynamic queue">Try me!</button>
+      </div>
+      <pre>
+swal({
+  html: <span class="val">&lt;div></span>Hello, React!<span class="val">&lt;/div></span>,
+})</pre>
     </li>
   </ul>
 
@@ -1793,6 +1816,15 @@ swal({
     ga('send', 'pageview')
   }
 </script>
+
+<script type="text/babel">
+  $('.examples .react-integration button').on('click', () => {
+    swal({
+      html: <div>Hello, React!</div>
+    })
+  })
+</script>
+
 <script src="./assets/example.js"></script>
 <div id="rtl-container" dir="rtl"></div>
 </body>

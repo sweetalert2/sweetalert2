@@ -10,7 +10,7 @@ For bug reports, please include:
 
 JSFiddle template: https://jsfiddle.net/ad3quksn/280/
 
-JSFiddle template for IE11 and other old browsers: https://jsfiddle.net/ad3quksn/279/
+JSFiddle template for IE11 and other old browsers: https://jsfiddle.net/ad3quksn/281/
 
 ---
 

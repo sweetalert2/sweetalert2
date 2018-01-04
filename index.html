@@ -114,12 +114,14 @@ swal(
 
     <li id="long-text">
       <div class="ui">
-        <p>A modal window with a long text inside:</p>
-        <button aria-label="Try me! Example: A modal window with a long text inside">Try me!</button>
+        <p>A modal window with a long content inside:</p>
+        <button aria-label="Try me! Example: A modal window with a long content inside">Try me!</button>
       </div>
       <pre>
 swal({
-  html: <span class="str">'Less is more.&lt;br>'</span>.repeat(<span class="val">100</span>)
+  imageUrl: <span class="str">'./assets/robot.jpg'</span>,
+  imageHeight: <span class="val">1512</span>,
+  imageAlt: <span class="str">'A tall image'</span>
 })</pre>
     </li>
 
@@ -305,7 +307,7 @@ swal({
   cancelButtonText:  <span class="str">'لا'</span>,
   showCancelButton: <span class="val">true</span>,
   showCloseButton: <span class="val">true</span>,
-  target: $(<span class="str">'#rtl-container'</span>)[0]
+  target: document.getElementById(<span class="str">'rtl-container'</span>)
 })</pre>
     </li>
 
@@ -1419,7 +1421,7 @@ swal({
       cancelButtonText: 'لا',
       showCancelButton: true,
       showCloseButton: true,
-      target: $('#rtl-container')[0]
+      target: document.getElementById('rtl-container')
     })
   })
 
@@ -1441,7 +1443,11 @@ swal({
   })
 
   $('.examples #long-text button').on('click', () => {
-    swal({html: 'Less is more.<br>'.repeat(100)})
+    swal({
+      imageUrl: './assets/robot.jpg',
+      imageHeight: 1512,
+      imageAlt: 'A tall image'
+    })
   })
 
   $('.examples .warning.confirm button').on('click', () => {

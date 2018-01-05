@@ -17,7 +17,7 @@ function makeApiRequest (endpoint) {
 var stats = {}
 
 // latest release
-makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/tags').then(
+makeApiRequest('https://api.github.com/repos/sweetalert2/sweetalert2/tags').then(
   (response) => {
     stats.latestRelease = response[0].name
     showStats()
@@ -26,7 +26,7 @@ makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/tags').then(
 )
 
 // recent activity
-makeApiRequest('https://api.github.com/repos/limonte/sweetalert2/commits').then(
+makeApiRequest('https://api.github.com/repos/sweetalert2/sweetalert2/commits').then(
   (response) => {
     var recentActivity = response[0].commit.author.date
     recentActivity = new Date(recentActivity)

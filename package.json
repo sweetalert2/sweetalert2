@@ -1,8 +1,8 @@
 {
   "name": "sweetalert2",
   "version": "7.3.2",
-  "repository": "limonte/sweetalert2",
-  "homepage": "https://limonte.github.io/sweetalert2/",
+  "repository": "sweetalert2/sweetalert2",
+  "homepage": "https://sweetalert2.github.io/sweetalert2/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
   "main": "dist/sweetalert2.all.js",
   "jsnext:main": "src/sweetalert2.js",
@@ -69,6 +69,6 @@
     "assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --assume-unchanged",
     "no-assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --no-assume-unchanged"
   },
-  "bugs": "https://github.com/limonte/sweetalert2/issues",
+  "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
   "license": "MIT"
 }

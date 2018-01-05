@@ -1,5 +1,5 @@
 // SweetAlert2
-// github.com/limonte/sweetalert2
+// github.com/sweetalert2/sweetalert2
 
 @import 'variables';
 @import 'mixins';
@@ -1025,7 +1025,7 @@ body {
 }
 
 
-// github.com/limonte/sweetalert2/issues/268
+// github.com/sweetalert2/sweetalert2/issues/268
 [class^='swal2'] {
   -webkit-tap-highlight-color: $swal2-transparent;
 }

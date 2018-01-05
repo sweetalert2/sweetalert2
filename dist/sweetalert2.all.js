@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.3.3
+ * sweetalert2 v7.3.4
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -492,7 +492,7 @@ var setParameters = function setParameters(params) {
 
   // showLoaderOnConfirm && preConfirm
   if (params.showLoaderOnConfirm && !params.preConfirm) {
-    warn('showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' + 'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' + 'https://sweetalert2.github.io/sweetalert2/#ajax-request');
+    warn('showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' + 'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' + 'https://sweetalert2.github.io/#ajax-request');
   }
 };
 
@@ -1571,7 +1571,7 @@ sweetAlert$1.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert$1.noop = function () {};
 
-sweetAlert$1.version = '7.3.3';
+sweetAlert$1.version = '7.3.4';
 
 sweetAlert$1.default = sweetAlert$1;
 

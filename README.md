@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://limonte.github.io/sweetalert2/">
+  <a href="https://sweetalert2.github.io/sweetalert2/">
     <img src="/assets/swal2-logo.png" alt="SweetAlert2">
   </a>
 </p>
@@ -7,10 +7,10 @@
 <br>
 
 <p align="center">
-  <a href="https://travis-ci.org/limonte/sweetalert2"><img alt="Build Status" src="https://travis-ci.org/limonte/sweetalert2.svg?branch=master"></a>
+  <a href="https://travis-ci.org/limonte/sweetalert2"><img alt="Build Status" src="https://travis-ci.org/sweetalert2/sweetalert2.svg?branch=master"></a>
   <a href="https://www.npmjs.com/package/sweetalert2"><img alt="Version" src="https://img.shields.io/npm/v/sweetalert2.svg"></a>
-  <a href="https://checkgzipcompression.com/?url=https%3A%2F%2Fraw.githubusercontent.com%2Flimonte%2Fsweetalert2%2Fmaster%2Fdist%2Fsweetalert2.all.min.js"><img alt="gzip size" src="http://img.badgesize.io/limonte/sweetalert2/master/dist/sweetalert2.all.min.js.svg?compression=gzip"></a>
-  <a href="http://isitmaintained.com/project/limonte/sweetalert2"><img alt="Average time to resolve an issue" src="http://isitmaintained.com/badge/resolution/limonte/sweetalert2.svg"></a>
+  <a href="https://checkgzipcompression.com/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsweetalert2%2Fsweetalert2%2Fmaster%2Fdist%2Fsweetalert2.all.min.js"><img alt="gzip size" src="http://img.badgesize.io/sweetalert2/sweetalert2/master/dist/sweetalert2.all.min.js.svg?compression=gzip"></a>
+  <a href="http://isitmaintained.com/project/sweetalert2/sweetalert2"><img alt="Average time to resolve an issue" src="http://isitmaintained.com/badge/resolution/sweetalert2/sweetalert2.svg"></a>
   <a href="https://gitter.im/sweetalert2/Lobby"><img alt="Gitter" src="https://badges.gitter.im/Join%20Chat.svg"></a>
   <a href="https://www.patreon.com/limonte"><img alt="Support me on Patreon" src="http://ionicabizau.github.io/badges/patreon.svg"></a>
   <a href="https://www.paypal.me/limonte/5eur"><img alt="PayPal Donate" src="http://ionicabizau.github.io/badges/paypal.svg"></a>
@@ -21,17 +21,17 @@
 </p>
 
 <p align="center">
-  <a href="https://limonte.github.io/sweetalert2/">
-    <img src="https://raw.github.com/limonte/sweetalert2/master/assets/sweetalert2.gif" width="515"><br>
+  <a href="https://sweetalert2.github.io/sweetalert2/">
+    <img src="https://raw.github.com/sweetalert2/sweetalert2/master/assets/sweetalert2.gif" width="515"><br>
     See SweetAlert2 in action ↗
   </a>
 </p>
 
 ---
 
-:point_right: **Upgrading from v6.x to v7.x?** [Read the release notes!](https://github.com/limonte/sweetalert2/releases/tag/v7.0.0)
+:point_right: **Upgrading from v6.x to v7.x?** [Read the release notes!](https://github.com/sweetalert2/sweetalert2/releases/tag/v7.0.0)
 
-:point_right: **Migrating from [SweetAlert](https://github.com/t4t5/sweetalert)?** [SweetAlert 1.x to SweetAlert2 migration guide](https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2)
+:point_right: **Migrating from [SweetAlert](https://github.com/t4t5/sweetalert)?** [SweetAlert 1.x to SweetAlert2 migration guide](https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2)
 
 ---
 
@@ -124,7 +124,7 @@ swal({
 })
 ```
 
-[View more examples](https://limonte.github.io/sweetalert2/)
+[View more examples](https://sweetalert2.github.io/sweetalert2/)
 
 
 Handling Dismissals
@@ -146,7 +146,7 @@ Modal Types
 
 | `success`                                                                       | `error`                                                                       | `warning`                                                                       | `info`                                                                       | `question`                                                                       |
 | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| ![](https://raw.github.com/limonte/sweetalert2/master/assets/swal2-success.png) | ![](https://raw.github.com/limonte/sweetalert2/master/assets/swal2-error.png) | ![](https://raw.github.com/limonte/sweetalert2/master/assets/swal2-warning.png) | ![](https://raw.github.com/limonte/sweetalert2/master/assets/swal2-info.png) | ![](https://raw.github.com/limonte/sweetalert2/master/assets/swal2-question.png) |
+| ![](https://raw.github.com/sweetalert2/sweetalert2/master/assets/swal2-success.png) | ![](https://raw.github.com/sweetalert2/sweetalert2/master/assets/swal2-error.png) | ![](https://raw.github.com/sweetalert2/sweetalert2/master/assets/swal2-warning.png) | ![](https://raw.github.com/sweetalert2/sweetalert2/master/assets/swal2-info.png) | ![](https://raw.github.com/sweetalert2/sweetalert2/master/assets/swal2-question.png) |
 
 
 Configuration
@@ -191,7 +191,7 @@ Configuration
 | `showCloseButton`        | `false`               | Set to `true` to show close button in top right corner of the modal. |
 | `closeButtonAriaLabel`   | `'Close this dialog'` | Use this to change the `aria-label` for the close button. |
 | `showLoaderOnConfirm`    | `false`               | Set to `true` to disable buttons and show that something is loading. Use it in combination with the `preConfirm` parameter. |
-| `preConfirm`             | `null`                | Function to execute before confirm, may be async (Promise-returning) or sync, see <a href="https://limonte.github.io/sweetalert2/#ajax-request">usage example</a>. |
+| `preConfirm`             | `null`                | Function to execute before confirm, may be async (Promise-returning) or sync, see <a href="https://sweetalert2.github.io/sweetalert2/#ajax-request">usage example</a>. |
 | `imageUrl`               | `null`                | Add an image for the modal. Should contain a string with the path or URL to the image. |
 | `imageWidth`             | `null`                | If imageUrl is set, you can specify imageWidth to describes image width in px. |
 | `imageHeight`            | `null`                | Custom image height in px. |
@@ -202,9 +202,9 @@ Configuration
 | `inputOptions`           | `{}` or `Promise`     | If `input` parameter is set to `'select'` or `'radio'`, you can provide options. Object keys will represent options values, object values will represent options text values. |
 | `inputAutoTrim`          | `true`                | Automatically remove whitespaces from both ends of a result string. Set this parameter to `false` to disable auto-trimming. |
 | `inputAttributes`        | `{}`                  | HTML input attributes (e.g. `'min'`, `'max'`, `'autocomplete'`, `'accept'`), that are added to the input field. Object keys will represent attributes names, object values will represent attributes values. |
-| `inputValidator`         | `null`                | Validator for input field, may be async (Promise-returning) or sync, see <a href="https://limonte.github.io/sweetalert2/#input-select">usage example</a>. |
+| `inputValidator`         | `null`                | Validator for input field, may be async (Promise-returning) or sync, see <a href="https://sweetalert2.github.io/sweetalert2/#input-select">usage example</a>. |
 | `inputClass`             | `null`                | A custom CSS class for the input field. |
-| `progressSteps`          | `[]`                  | Progress steps, useful for modal queues, see <a href="https://limonte.github.io/sweetalert2/#chaining-modals">usage example</a>. |
+| `progressSteps`          | `[]`                  | Progress steps, useful for modal queues, see <a href="https://sweetalert2.github.io/sweetalert2/#chaining-modals">usage example</a>. |
 | `currentProgressStep`    | `null`                | Current active progress step. The default is `swal.getQueueStep()`. |
 | `progressStepsDistance`  | `'40px'`              | Distance between progress steps. |
 | `onBeforeOpen`           | `null`                | Function to run when modal built, but not shown yet. Provides modal DOM element as the first argument. |
@@ -246,7 +246,7 @@ Methods
 | `swal.getInput()`                               | Get the input DOM node, this method works with `input` parameter. |
 | `swal.disableInput()`                           | Disable input. A disabled input element is unusable and un-clickable. |
 | `swal.enableInput()`                            | Enable input. |
-| `swal.queue([Array])`                           | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another or a function that returns alert parameters given modal number. See [usage example](https://limonte.github.io/sweetalert2/#chaining-modals).  |
+| `swal.queue([Array])`                           | Provide array of SweetAlert2 parameters to show multiple modals, one modal after another or a function that returns alert parameters given modal number. See [usage example](https://sweetalert2.github.io/sweetalert2/#chaining-modals).  |
 | `swal.getQueueStep()`                           | Get the index of current modal in queue. When there's no active queue, `null` will be returned. |
 | `swal.insertQueueStep()`                        | Insert a modal to queue, you can specify modal positioning with second parameter. By default a modal will be added to the end of a queue. |
 | `swal.deleteQueueStep(index)`                   | Delete a modal at `index` from queue. |
@@ -300,12 +300,12 @@ If you would like to contribute enhancements or fixes, please do the following:
 Related projects
 ----------------
 
-- [toverux/ngx-sweetalert2](https://github.com/toverux/ngx-sweetalert2) - Angular 4+ integration
+- [sweetalert2/ngx-sweetalert2](https://github.com/sweetalert2/ngx-sweetalert2) - Angular 4+ integration
 - [lishengzxc/vue-sweetalert](https://github.com/lishengzxc/vue-sweetalert) - Vue.js plugin
 - [softon/sweetalert](https://github.com/softon/sweetalert) - Laravel 5 Package
-- [limonte/sweetalert2-polymer](https://github.com/limonte/sweetalert2-polymer) - Polymer wrapper
-- [limonte/sweetalert2-adonisjs-nuxtjs](https://github.com/limonte/sweetalert2-adonisjs-nuxtjs) - AdonisJS + Nuxt.js
-- [limonte/sweetalert2-webpack-demo](https://github.com/limonte/sweetalert2-webpack-demo) - webpack demo
+- [sweetalert2/sweetalert2-polymer](https://github.com/sweetalert2/sweetalert2-polymer) - Polymer wrapper
+- [sweetalert2/sweetalert2-adonisjs-nuxtjs](https://github.com/sweetalert2/sweetalert2-adonisjs-nuxtjs) - AdonisJS + Nuxt.js
+- [sweetalert2/sweetalert2-webpack-demo](https://github.com/sweetalert2/sweetalert2-webpack-demo) - webpack demo
 - [alex-shamshurin/sweetalert2-react](https://github.com/alex-shamshurin/sweetalert2-react) - React component
 
 Donations

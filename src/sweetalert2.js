@@ -301,7 +301,7 @@ const setParameters = (params) => {
     warn(
       'showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' +
       'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' +
-      'https://sweetalert2.github.io/sweetalert2/#ajax-request'
+      'https://sweetalert2.github.io/#ajax-request'
     )
   }
 }

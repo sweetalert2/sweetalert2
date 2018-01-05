@@ -13,7 +13,7 @@ async function run (testCase) {
   })
   const page = await browser.newPage()
   const path = `test/puppeteer/screens/`
-  await page.goto('https://limonte.github.io/sweetalert2/')
+  await page.goto('https://sweetalert2.github.io/sweetalert2/')
 
   switch (testCase) {
     case 'modal-type-success':

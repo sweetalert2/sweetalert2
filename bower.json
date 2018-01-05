@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "homepage": "https://limonte.github.io/sweetalert2/",
+  "homepage": "https://sweetalert2.github.io/sweetalert2/",
   "authors": [
     "Limon Monte <limon.monte@gmail.com> (https://limonte.github.io)",
     "Morgan Touverey-Quilling <mtouverey@alembic-dev.com> (https://github.com/toverux)",
@@ -39,7 +39,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/limonte/sweetalert2.git"
+    "url": "git://github.com/sweetalert2/sweetalert2.git"
   },
   "license": "MIT"
 }

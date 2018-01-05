@@ -13,7 +13,7 @@ let previousWindowKeyDown, windowOnkeydownOverridden
  * Hopefully to avoid many github issues
  */
 if (typeof Promise === 'undefined') {
-  error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)')
+  error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)')
 }
 
 /**
@@ -301,7 +301,7 @@ const setParameters = (params) => {
     warn(
       'showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' +
       'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' +
-      'https://limonte.github.io/sweetalert2/#ajax-request'
+      'https://sweetalert2.github.io/sweetalert2/#ajax-request'
     )
   }
 }

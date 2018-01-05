@@ -7,7 +7,7 @@
 <br>
 
 <p align="center">
-  <a href="https://travis-ci.org/limonte/sweetalert2"><img alt="Build Status" src="https://travis-ci.org/sweetalert2/sweetalert2.svg?branch=master"></a>
+  <a href="https://travis-ci.org/sweetalert2/sweetalert2"><img alt="Build Status" src="https://travis-ci.org/sweetalert2/sweetalert2.svg?branch=master"></a>
   <a href="https://www.npmjs.com/package/sweetalert2"><img alt="Version" src="https://img.shields.io/npm/v/sweetalert2.svg"></a>
   <a href="https://checkgzipcompression.com/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsweetalert2%2Fsweetalert2%2Fmaster%2Fdist%2Fsweetalert2.all.min.js"><img alt="gzip size" src="http://img.badgesize.io/sweetalert2/sweetalert2/master/dist/sweetalert2.all.min.js.svg?compression=gzip"></a>
   <a href="http://isitmaintained.com/project/sweetalert2/sweetalert2"><img alt="Average time to resolve an issue" src="http://isitmaintained.com/badge/resolution/sweetalert2/sweetalert2.svg"></a>

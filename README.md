@@ -306,7 +306,7 @@ Related projects
 - [limonte/sweetalert2-polymer](https://github.com/limonte/sweetalert2-polymer) - Polymer wrapper
 - [limonte/sweetalert2-adonisjs-nuxtjs](https://github.com/limonte/sweetalert2-adonisjs-nuxtjs) - AdonisJS + Nuxt.js
 - [limonte/sweetalert2-webpack-demo](https://github.com/limonte/sweetalert2-webpack-demo) - webpack demo
-
+- [alex-shamshurin/sweetalert2-react](https://github.com/alex-shamshurin/sweetalert2-react) - React component
 
 Donations
 ---------

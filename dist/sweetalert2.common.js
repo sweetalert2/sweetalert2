@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.3.2
+ * sweetalert2 v7.3.3
  * Released under the MIT License.
  */
 'use strict';
@@ -504,7 +504,7 @@ var windowOnkeydownOverridden = void 0;
  * Hopefully to avoid many github issues
  */
 if (typeof Promise === 'undefined') {
-  error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/limonte/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)');
+  error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)');
 }
 
 /**
@@ -786,7 +786,7 @@ var setParameters = function setParameters(params) {
 
   // showLoaderOnConfirm && preConfirm
   if (params.showLoaderOnConfirm && !params.preConfirm) {
-    warn('showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' + 'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' + 'https://limonte.github.io/sweetalert2/#ajax-request');
+    warn('showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' + 'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' + 'https://sweetalert2.github.io/sweetalert2/#ajax-request');
   }
 };
 
@@ -1865,7 +1865,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.3.2';
+sweetAlert.version = '7.3.3';
 
 sweetAlert.default = sweetAlert;
 

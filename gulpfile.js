@@ -61,11 +61,6 @@ gulp.task('sass', ['sass-lint'], (cb) => {
     .pipe(rename({extname: '.min.css'}))
     .pipe(gulp.dest('dist'))
     .on('end', cb)
-
-  gulp.src('assets/example.scss')
-    .pipe(sass())
-    .pipe(autoprefix())
-    .pipe(gulp.dest('assets'))
 })
 
 gulp.task('ts', ['ts-lint'], () => {
@@ -84,7 +79,7 @@ gulp.task('js-lint', () => {
 })
 
 gulp.task('sass-lint', () => {
-  return gulp.src(['src/**/*.scss', 'assets/**/*.scss'])
+  return gulp.src(['src/**/*.scss'])
     .pipe(sassLint())
     .pipe(sassLint.format())
     .pipe(sassLint.failOnError())
@@ -104,8 +99,5 @@ gulp.task('watch', () => {
     'test/*.js'
   ], ['compress'])
 
-  gulp.watch([
-    'src/*.scss',
-    'assets/example.scss'
-  ], ['sass', 'compress'])
+  gulp.watch(['src/*.scss'], ['sass', 'compress'])
 })

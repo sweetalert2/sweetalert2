@@ -477,7 +477,7 @@ QUnit.test('modal vertical offset', (assert) => {
   const done = assert.async(1)
   // create a modal with dynamic-height content
   swal({
-    imageUrl: '../assets/vs_icon.png',
+    imageUrl: '../assets/swal2-logo.png',
     title: 'Title',
     html: '<hr><div style="height: 50px"></div><p>Text content</p>',
     type: 'warning',

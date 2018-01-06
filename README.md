@@ -301,6 +301,7 @@ Related projects
 ----------------
 
 - [sweetalert2/ngx-sweetalert2](https://github.com/sweetalert2/ngx-sweetalert2) - Angular 4+ integration
+- [avil13/vue-sweetalert2](https://github.com/avil13/vue-sweetalert2) - Vue.js plugin
 - [lishengzxc/vue-sweetalert](https://github.com/lishengzxc/vue-sweetalert) - Vue.js plugin
 - [softon/sweetalert](https://github.com/softon/sweetalert) - Laravel 5 Package
 - [sweetalert2/sweetalert2-polymer](https://github.com/sweetalert2/sweetalert2-polymer) - Polymer wrapper

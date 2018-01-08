@@ -1,0 +1,19 @@
+<script src="../dist/sweetalert2.js"></script>
+<link rel="stylesheet" href="../dist/sweetalert2.css">
+
+<body>
+  <script>
+    swal({
+      title: 'Test modal with input',
+      html: 'custom <strong>content</strong>',
+      input: 'text',
+      preConfirm: (value) => {
+        if (!value) {
+          swal.showValidationError('Should not be empty!')
+        }
+      }
+    }).then((result) => {
+      console.log(result)
+    })
+  </script>
+</body>

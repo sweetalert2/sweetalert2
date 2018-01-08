@@ -781,7 +781,7 @@ const sweetAlert = (...args) => {
 
       if (e.key === 'Enter' && !e.isComposing) {
         if (e.target === getInput()) {
-          if (e.target.tagName.toLowerCase() === 'textarea') {
+          if (['textarea', 'file'].includes(params.input)) {
             return // do not submit
           }
 

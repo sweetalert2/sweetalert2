@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.3.4
+ * sweetalert2 v7.3.5
  * Released under the MIT License.
  */
 'use strict';
@@ -1269,7 +1269,7 @@ var sweetAlert = function sweetAlert() {
 
       if (e.key === 'Enter' && !e.isComposing) {
         if (e.target === getInput()) {
-          if (e.target.tagName.toLowerCase() === 'textarea') {
+          if (['textarea', 'file'].indexOf(params.input) !== -1) {
             return; // do not submit
           }
 
@@ -1865,7 +1865,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.3.4';
+sweetAlert.version = '7.3.5';
 
 sweetAlert.default = sweetAlert;
 

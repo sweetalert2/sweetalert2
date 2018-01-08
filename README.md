@@ -301,14 +301,19 @@ If you would like to contribute enhancements or fixes, please do the following:
 
 
 Related projects
-----------------
+-------------------------
 
-- [sweetalert2/ngx-sweetalert2](https://github.com/sweetalert2/ngx-sweetalert2) - Angular 4+ integration
-- [sweetalert2/vue-sweetalert2](https://github.com/sweetalert2/vue-sweetalert2) - Vue.js plugin
+- [ngx-sweetalert2](https://github.com/sweetalert2/ngx-sweetalert2) - Angular 4+ integration
+- [vue-sweetalert2](https://github.com/sweetalert2/vue-sweetalert2) - Vue.js plugin
+- [sweetalert2-polymer](https://github.com/sweetalert2/sweetalert2-polymer) - Polymer wrapper
+- [sweetalert2-adonisjs-nuxtjs](https://github.com/sweetalert2/sweetalert2-adonisjs-nuxtjs) - AdonisJS + Nuxt.js
+- [sweetalert2-webpack-demo](https://github.com/sweetalert2/sweetalert2-webpack-demo) - webpack demo
+
+
+Related community projects
+-------------------------
+
 - [softon/sweetalert](https://github.com/softon/sweetalert) - Laravel 5 Package
-- [sweetalert2/sweetalert2-polymer](https://github.com/sweetalert2/sweetalert2-polymer) - Polymer wrapper
-- [sweetalert2/sweetalert2-adonisjs-nuxtjs](https://github.com/sweetalert2/sweetalert2-adonisjs-nuxtjs) - AdonisJS + Nuxt.js
-- [sweetalert2/sweetalert2-webpack-demo](https://github.com/sweetalert2/sweetalert2-webpack-demo) - webpack demo
 - [alex-shamshurin/sweetalert2-react](https://github.com/alex-shamshurin/sweetalert2-react) - React component
 
 Donations

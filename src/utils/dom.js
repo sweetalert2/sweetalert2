@@ -86,6 +86,7 @@ const sweetHTML = `
    <div class="${swalClasses.icon} ${iconTypes.error}">
      <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>
    </div>
+   <h2 class="${swalClasses.titleFirst}" id="${swalClasses.titleFirst}"></h2>
    <div class="${swalClasses.icon} ${iconTypes.question}">?</div>
    <div class="${swalClasses.icon} ${iconTypes.warning}">!</div>
    <div class="${swalClasses.icon} ${iconTypes.info}">i</div>
@@ -133,6 +134,8 @@ export const getIcons = () => {
 export const elementByClass = (className) => getContainer() ? getContainer().querySelector('.' + className) : null
 
 export const getTitle = () => elementByClass(swalClasses.title)
+
+export const getTitleFirst = () => elementByClass(swalClasses.titleFirst)
 
 export const getContent = () => elementByClass(swalClasses.content)
 

@@ -312,7 +312,7 @@ body.swal2-no-backdrop > .swal2-shown {
     overflow-y: hidden;
     -webkit-box-shadow: 0 0 10px #d9d9d9;
             box-shadow: 0 0 10px #d9d9d9; }
-    .swal2-popup.swal2-toast .swal2-title {
+    .swal2-popup.swal2-toast .swal2-title, .swal2-popup.swal2-toast .swal2-titleFirst {
       max-width: 300px;
       font-size: 16px;
       text-align: left; }
@@ -399,7 +399,7 @@ body.swal2-no-backdrop > .swal2-shown {
     outline: none; }
   .swal2-popup.swal2-loading {
     overflow-y: hidden; }
-  .swal2-popup .swal2-title {
+  .swal2-popup .swal2-title, .swal2-popup .swal2-titleFirst {
     color: #595959;
     font-size: 30px;
     text-align: center;

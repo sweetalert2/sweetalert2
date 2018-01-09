@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2a9aac5f-9472-4233-9227-5c1d875157fa" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/dist/sweetalert2.all.js" afterPath="$PROJECT_DIR$/dist/sweetalert2.all.js" />
+      <change beforePath="$PROJECT_DIR$/dist/sweetalert2.all.min.js" afterPath="$PROJECT_DIR$/dist/sweetalert2.all.min.js" />
+      <change beforePath="$PROJECT_DIR$/dist/sweetalert2.common.js" afterPath="$PROJECT_DIR$/dist/sweetalert2.common.js" />
+      <change beforePath="$PROJECT_DIR$/dist/sweetalert2.css" afterPath="$PROJECT_DIR$/dist/sweetalert2.css" />
+      <change beforePath="$PROJECT_DIR$/dist/sweetalert2.js" afterPath="$PROJECT_DIR$/dist/sweetalert2.js" />
+      <change beforePath="$PROJECT_DIR$/dist/sweetalert2.min.css" afterPath="$PROJECT_DIR$/dist/sweetalert2.min.css" />
+      <change beforePath="$PROJECT_DIR$/dist/sweetalert2.min.js" afterPath="$PROJECT_DIR$/dist/sweetalert2.min.js" />
+      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change beforePath="$PROJECT_DIR$/src/sweetalert2.js" afterPath="$PROJECT_DIR$/src/sweetalert2.js" />
+      <change beforePath="$PROJECT_DIR$/src/sweetalert2.scss" afterPath="$PROJECT_DIR$/src/sweetalert2.scss" />
+      <change beforePath="$PROJECT_DIR$/src/utils/classes.js" afterPath="$PROJECT_DIR$/src/utils/classes.js" />
+      <change beforePath="$PROJECT_DIR$/src/utils/dom.js" afterPath="$PROJECT_DIR$/src/utils/dom.js" />
+      <change beforePath="$PROJECT_DIR$/src/utils/params.js" afterPath="$PROJECT_DIR$/src/utils/params.js" />
+      <change beforePath="$PROJECT_DIR$/test/sandbox.html" afterPath="$PROJECT_DIR$/test/sandbox.html" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="sweetalert2.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sweetalert2.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="548">
+              <caret line="91" column="5" lean-forward="true" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#67#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sweetalert2.all.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sweetalert2.all.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sweetalert2.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dist/sweetalert2.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="401" column="59" lean-forward="false" selection-start-line="401" selection-start-column="59" selection-end-line="401" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sweetalert2.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sweetalert2.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="381" column="16" lean-forward="false" selection-start-line="381" selection-start-column="5" selection-end-line="381" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dom.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/dom.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="88" column="38" lean-forward="false" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#57#0" expanded="true" />
+                <marker date="1515514902459" expanded="true" signature="2504:4447" ph="..." />
+                <marker date="1515514902459" expanded="true" signature="2610:2749" ph="..." />
+                <marker date="1515514902459" expanded="true" signature="3078:3383" ph="..." />
+                <marker date="1515514902459" expanded="true" signature="3470:3622" ph="..." />
+                <marker date="1515514902459" expanded="true" signature="3755:3816" ph="..." />
+                <marker date="1515514902459" expanded="true" signature="3984:4027" ph="..." />
+                <marker date="1515514902459" expanded="true" signature="4221:4374" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sandbox.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/sandbox.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>dom</find>
+      <find>h2</find>
+      <find>params</find>
+      <find>.title</find>
+      <find>html =</find>
+      <find>popupParams</find>
+      <find>sweetAlert.defa</find>
+      <find>swalClasses</find>
+      <find>sweetAlert</find>
+      <find>html</find>
+      <find>question</find>
+      <find>type =</find>
+      <find>success</find>
+      <find>confirm</find>
+      <find>hide</find>
+      <find>fir</find>
+      <find>image</find>
+      <find>attri</find>
+      <find>remove</find>
+      <find>swalClasses.title</find>
+      <find>getTitle</find>
+      <find>firstTi</find>
+      <find>first</find>
+      <find>type</find>
+      <find>title</find>
+      <find>titleFirst</find>
+      <find>swal2-title</find>
+      <find>console.</find>
+      <find>console.log</find>
+    </findStrings>
+    <dirStrings>
+      <dir>E:\xampp\htdocs\sweetalert2\src</dir>
+      <dir>E:\xampp\htdocs\sweetalert2</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/utils/params.js" />
+        <option value="$PROJECT_DIR$/src/utils/classes.js" />
+        <option value="$PROJECT_DIR$/src/utils/dom.js" />
+        <option value="$PROJECT_DIR$/dist/sweetalert2.css" />
+        <option value="$PROJECT_DIR$/src/sweetalert2.scss" />
+        <option value="$PROJECT_DIR$/src/sweetalert2.js" />
+        <option value="$PROJECT_DIR$/test/sandbox.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="260" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="sweetalert2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sweetalert2" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="sweetalert2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sweetalert2" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="SearchEverywhereHistoryKey" value="all&#9;FILE&#9;file://E:/xampp/htdocs/sweetalert2/src/sweetalert2.all.js&#10;.html&#9;FILE&#9;file://E:/xampp/htdocs/sweetalert2/test/sandbox.html&#10;sandbox.html&#9;FILE&#9;file://E:/xampp/htdocs/sweetalert2/test/sandbox.html" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2a9aac5f-9472-4233-9227-5c1d875157fa" name="Default" comment="" />
+      <created>1515511107136</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1515511107136</updated>
+      <workItem from="1515511108376" duration="3847000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3847000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/dist/sweetalert2.common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1219">
+          <caret line="65" column="2" lean-forward="false" selection-start-line="65" selection-start-column="2" selection-end-line="65" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/sweetalert2.all.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="1677" column="33" lean-forward="false" selection-start-line="1677" selection-start-column="33" selection-end-line="1677" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/params.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="56" column="16" lean-forward="true" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/classes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="66" column="20" lean-forward="false" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/dom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="88" column="38" lean-forward="false" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+            <marker date="1515514902459" expanded="true" signature="2504:4447" ph="..." />
+            <marker date="1515514902459" expanded="true" signature="2610:2749" ph="..." />
+            <marker date="1515514902459" expanded="true" signature="3078:3383" ph="..." />
+            <marker date="1515514902459" expanded="true" signature="3470:3622" ph="..." />
+            <marker date="1515514902459" expanded="true" signature="3755:3816" ph="..." />
+            <marker date="1515514902459" expanded="true" signature="3984:4027" ph="..." />
+            <marker date="1515514902459" expanded="true" signature="4221:4374" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sweetalert2.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="381" column="16" lean-forward="false" selection-start-line="381" selection-start-column="5" selection-end-line="381" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sweetalert2.all.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sweetalert2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="91" column="5" lean-forward="true" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/sweetalert2.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="401" column="59" lean-forward="false" selection-start-line="401" selection-start-column="59" selection-end-line="401" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/sandbox.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

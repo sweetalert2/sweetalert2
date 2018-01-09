@@ -82,6 +82,16 @@ const setParameters = (params) => {
     title.innerHTML = params.title.split('\n').join('<br />')
   }
 
+  if (params.titleFirst) {
+    if (params.titleText) {
+      dom.getTitleFirst().innerText = params.titleText
+      title.innerText = ''
+    } else {
+      dom.getTitleFirst().innerHTML = params.title.split('\n').join('<br />')
+      title.innerHTML = ''
+    }
+  }
+
   if (!params.backdrop) {
     dom.addClass([document.documentElement, document.body], swalClasses['no-backdrop'])
   }
@@ -863,6 +873,7 @@ const sweetAlert = (...args) => {
     }
 
     sweetAlert.getTitle = () => dom.getTitle()
+    sweetAlert.getTitleFirst = () => dom.getTitleFirst()
     sweetAlert.getContent = () => dom.getContent()
     sweetAlert.getInput = () => getInput()
     sweetAlert.getImage = () => dom.getImage()

@@ -56,7 +56,8 @@ export default {
   onOpen: null,
   onClose: null,
   useRejections: false,
-  expectRejections: false
+  expectRejections: false,
+  titleFirst: false
 }
 
 export const deprecatedParams = [

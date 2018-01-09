@@ -5,8 +5,9 @@
   <script>
     swal({
       title: 'Test modal with input',
-      html: 'custom <strong>content</strong>',
-      input: 'text',
+        type:'success',
+      // html: 'custom <strong>content</strong>',
+      // input: 'text',
       preConfirm: (value) => {
         if (!value) {
           swal.showValidationError('Should not be empty!')

@@ -104,7 +104,10 @@ gulp.task('watch', () => {
     startPath: 'test/sandbox.html'
   })
 
-  gulp.watch(['dist/sweetalert2.all.min.js']).on('change', browserSync.reload)
+  gulp.watch([
+    'test/sandbox.html',
+    'dist/sweetalert2.all.min.js'
+  ]).on('change', browserSync.reload)
 
   gulp.watch([
     'src/**/*.js',

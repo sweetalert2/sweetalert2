@@ -136,7 +136,7 @@ body {
 
   &.swal2-no-backdrop {
 
-    & > .swal2-shown {
+    .swal2-shown {
       top: auto;
       bottom: auto;
       left: auto;

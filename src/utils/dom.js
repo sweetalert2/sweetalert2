@@ -1,6 +1,6 @@
 import { default as sweetAlert } from '../sweetalert2.js'
 import { swalClasses, iconTypes } from './classes.js'
-import { uniqueArray, error } from './utils.js'
+import { uniqueArray, error, warnOnce } from './utils.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
@@ -42,13 +42,14 @@ export const init = (params) => {
   targetElement.appendChild(container)
 
   const popup = getPopup()
-  const input = getChildByClass(popup, swalClasses.input)
-  const file = getChildByClass(popup, swalClasses.file)
-  const range = popup.querySelector(`.${swalClasses.range} input`)
-  const rangeOutput = popup.querySelector(`.${swalClasses.range} output`)
-  const select = getChildByClass(popup, swalClasses.select)
-  const checkbox = popup.querySelector(`.${swalClasses.checkbox} input`)
-  const textarea = getChildByClass(popup, swalClasses.textarea)
+  const content = getContent()
+  const input = getChildByClass(content, swalClasses.input)
+  const file = getChildByClass(content, swalClasses.file)
+  const range = content.querySelector(`.${swalClasses.range} input`)
+  const rangeOutput = content.querySelector(`.${swalClasses.range} output`)
+  const select = getChildByClass(content, swalClasses.select)
+  const checkbox = content.querySelector(`.${swalClasses.checkbox} input`)
+  const textarea = getChildByClass(content, swalClasses.textarea)
 
   // a11y
   popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive')
@@ -82,42 +83,44 @@ export const init = (params) => {
 
 const sweetHTML = `
  <div role="dialog" aria-modal="true" aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses.content}" class="${swalClasses.popup}" tabindex="-1">
-   <ul class="${swalClasses.progresssteps}"></ul>
-   <div class="${swalClasses.icon} ${iconTypes.error}">
-     <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>
+   <div class="${swalClasses.header}">
+     <ul class="${swalClasses.progresssteps}"></ul>
+     <div class="${swalClasses.icon} ${iconTypes.error}">
+       <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>
+     </div>
+     <div class="${swalClasses.icon} ${iconTypes.question}">?</div>
+     <div class="${swalClasses.icon} ${iconTypes.warning}">!</div>
+     <div class="${swalClasses.icon} ${iconTypes.info}">i</div>
+     <div class="${swalClasses.icon} ${iconTypes.success}">
+       <div class="swal2-success-circular-line-left"></div>
+       <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
+       <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>
+       <div class="swal2-success-circular-line-right"></div>
+     </div>
+     <img class="${swalClasses.image}" />
+     <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
+     <button type="button" class="${swalClasses.close}">×</button>
    </div>
-   <div class="${swalClasses.icon} ${iconTypes.question}">?</div>
-   <div class="${swalClasses.icon} ${iconTypes.warning}">!</div>
-   <div class="${swalClasses.icon} ${iconTypes.info}">i</div>
-   <div class="${swalClasses.icon} ${iconTypes.success}">
-     <div class="swal2-success-circular-line-left"></div>
-     <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
-     <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>
-     <div class="swal2-success-circular-line-right"></div>
+   <div class="${swalClasses.content}">
+     <div id="${swalClasses.content}"></div>
+     <input class="${swalClasses.input}" />
+     <input type="file" class="${swalClasses.file}" />
+     <div class="${swalClasses.range}">
+       <output></output>
+       <input type="range" />
+     </div>
+     <select class="${swalClasses.select}"></select>
+     <div class="${swalClasses.radio}"></div>
+     <label for="${swalClasses.checkbox}" class="${swalClasses.checkbox}">
+       <input type="checkbox" />
+     </label>
+     <textarea class="${swalClasses.textarea}"></textarea>
+     <div class="${swalClasses.validationerror}" id="${swalClasses.validationerror}"></div>
    </div>
-   <img class="${swalClasses.image}" />
-   <div class="${swalClasses.contentwrapper}">
-   <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
-   <div id="${swalClasses.content}" class="${swalClasses.content}"></div>
-   </div>
-   <input class="${swalClasses.input}" />
-   <input type="file" class="${swalClasses.file}" />
-   <div class="${swalClasses.range}">
-     <output></output>
-     <input type="range" />
-   </div>
-   <select class="${swalClasses.select}"></select>
-   <div class="${swalClasses.radio}"></div>
-   <label for="${swalClasses.checkbox}" class="${swalClasses.checkbox}">
-     <input type="checkbox" />
-   </label>
-   <textarea class="${swalClasses.textarea}"></textarea>
-   <div class="${swalClasses.validationerror}" id="${swalClasses.validationerror}"></div>
-   <div class="${swalClasses.buttonswrapper}">
+   <div class="${swalClasses.actions}">
      <button type="button" class="${swalClasses.confirm}">OK</button>
      <button type="button" class="${swalClasses.cancel}">Cancel</button>
    </div>
-   <button type="button" class="${swalClasses.close}">×</button>
  </div>
 `.replace(/(^|\n)\s*/g, '')
 
@@ -146,7 +149,12 @@ export const getConfirmButton = () => elementByClass(swalClasses.confirm)
 
 export const getCancelButton = () => elementByClass(swalClasses.cancel)
 
-export const getButtonsWrapper = () => elementByClass(swalClasses.buttonswrapper)
+export const getButtonsWrapper = () => {
+  warnOnce(`swal.getButtonsWrapper() is deprecated and will be removed in the next major release, use swal.getActions() instead`)
+  return elementByClass(swalClasses.actions)
+}
+
+export const getActions = () => elementByClass(swalClasses.actions)
 
 export const getCloseButton = () => elementByClass(swalClasses.close)
 
@@ -240,7 +248,7 @@ export const getChildByClass = (elem, className) => {
 
 export const show = (elem, display) => {
   if (!display) {
-    display = (elem === getPopup() || elem === getButtonsWrapper()) ? 'flex' : 'block'
+    display = (elem === getPopup() || elem === getActions()) ? 'flex' : 'block'
   }
   elem.style.opacity = ''
   elem.style.display = display

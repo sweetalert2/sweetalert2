@@ -39,7 +39,7 @@ QUnit.test('window keydown handler', (assert) => {
 QUnit.test('getters', (assert) => {
   swal('Title', 'Content')
   assert.equal(swal.getTitle().innerText, 'Title')
-  assert.equal(swal.getContent().innerText, 'Content')
+  assert.equal(swal.getContent().innerText.trim(), 'Content')
 
   swal({
     showCancelButton: true,
@@ -50,7 +50,7 @@ QUnit.test('getters', (assert) => {
     cancelButtonAriaLabel: 'Cancel button aria-label'
   })
   assert.ok(swal.getImage().src.indexOf('image.png'))
-  assert.equal(swal.getButtonsWrapper().textContent, 'Confirm buttonCancel button')
+  assert.equal(swal.getActions().textContent, 'Confirm buttonCancel button')
   assert.equal(swal.getConfirmButton().innerText, 'Confirm button')
   assert.equal(swal.getCancelButton().innerText, 'Cancel button')
   assert.equal(swal.getConfirmButton().getAttribute('aria-label'), 'Confirm button aria-label')
@@ -115,14 +115,14 @@ QUnit.test('jQuery/js element as html param', (assert) => {
   swal({
     html: $('<p>jQuery element</p>')
   })
-  assert.equal($('.swal2-content').html(), '<p>jQuery element</p>')
+  assert.equal($('#swal2-content').html(), '<p>jQuery element</p>')
 
   const p = document.createElement('p')
   p.textContent = 'js element'
   swal({
     html: p
   })
-  assert.equal($('.swal2-content').html(), '<p>js element</p>')
+  assert.equal($('#swal2-content').html(), '<p>js element</p>')
 })
 
 QUnit.test('set and reset defaults', (assert) => {
@@ -319,11 +319,11 @@ QUnit.test('dymanic queue', (assert) => {
 
 QUnit.test('showLoading and hideLoading', (assert) => {
   swal.showLoading()
-  assert.ok($('.swal2-buttonswrapper').hasClass('swal2-loading'))
+  assert.ok($('.swal2-actions').hasClass('swal2-loading'))
   assert.ok($('.swal2-cancel').is(':disabled'))
 
   swal.hideLoading()
-  assert.notOk($('.swal2-buttonswrapper').hasClass('swal2-loading'))
+  assert.notOk($('.swal2-actions').hasClass('swal2-loading'))
   assert.notOk($('.swal2-cancel').is(':disabled'))
 
   swal({
@@ -332,12 +332,12 @@ QUnit.test('showLoading and hideLoading', (assert) => {
   })
 
   swal.showLoading()
-  assert.ok($('.swal2-buttonswrapper').is(':visible'))
-  assert.ok($('.swal2-buttonswrapper').hasClass('swal2-loading'))
+  assert.ok($('.swal2-actions').is(':visible'))
+  assert.ok($('.swal2-actions').hasClass('swal2-loading'))
 
   swal.hideLoading()
-  assert.notOk($('.swal2-buttonswrapper').is(':visible'))
-  assert.notOk($('.swal2-buttonswrapper').hasClass('swal2-loading'))
+  assert.notOk($('.swal2-actions').is(':visible'))
+  assert.notOk($('.swal2-actions').hasClass('swal2-loading'))
 })
 
 QUnit.test('disable/enable buttons', (assert) => {

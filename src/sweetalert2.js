@@ -69,8 +69,8 @@ const setParameters = (params) => {
 
   const container = dom.getContainer()
   const title = dom.getTitle()
-  const content = dom.getContent()
-  const buttonsWrapper = dom.getButtonsWrapper()
+  const content = dom.getContent().querySelector('#' + swalClasses.content)
+  const actions = dom.getActions()
   const confirmButton = dom.getConfirmButton()
   const cancelButton = dom.getCancelButton()
   const closeButton = dom.getCloseButton()
@@ -252,11 +252,11 @@ const setParameters = (params) => {
     dom.hide(confirmButton)
   }
 
-  // Buttons wrapper
+  // Actions (buttons) wrapper
   if (!params.showConfirmButton && !params.showCancelButton) {
-    dom.hide(buttonsWrapper)
+    dom.hide(actions)
   } else {
-    dom.show(buttonsWrapper)
+    dom.show(actions)
   }
 
   // Edit text on confirm and cancel buttons
@@ -495,7 +495,7 @@ const sweetAlert = (...args) => {
         case 'select':
         case 'textarea':
         case 'file':
-          return dom.getChildByClass(popup, swalClasses[inputType])
+          return dom.getChildByClass(content, swalClasses[inputType])
         case 'checkbox':
           return popup.querySelector(`.${swalClasses.checkbox} input`)
         case 'radio':
@@ -504,7 +504,7 @@ const sweetAlert = (...args) => {
         case 'range':
           return popup.querySelector(`.${swalClasses.range} input`)
         default:
-          return dom.getChildByClass(popup, swalClasses.input)
+          return dom.getChildByClass(content, swalClasses.input)
       }
     }
 
@@ -736,7 +736,8 @@ const sweetAlert = (...args) => {
       }
     }
 
-    const buttonsWrapper = dom.getButtonsWrapper()
+    const content = dom.getContent()
+    const actions = dom.getActions()
     const confirmButton = dom.getConfirmButton()
     const cancelButton = dom.getCancelButton()
 
@@ -852,10 +853,10 @@ const sweetAlert = (...args) => {
       if (!params.showConfirmButton) {
         dom.hide(confirmButton)
         if (!params.showCancelButton) {
-          dom.hide(dom.getButtonsWrapper())
+          dom.hide(dom.getActions())
         }
       }
-      dom.removeClass([popup, buttonsWrapper], swalClasses.loading)
+      dom.removeClass([popup, actions], swalClasses.loading)
       popup.removeAttribute('aria-busy')
       popup.removeAttribute('data-loading')
       confirmButton.disabled = false
@@ -867,6 +868,7 @@ const sweetAlert = (...args) => {
     sweetAlert.getInput = () => getInput()
     sweetAlert.getImage = () => dom.getImage()
     sweetAlert.getButtonsWrapper = () => dom.getButtonsWrapper()
+    sweetAlert.getActions = () => dom.getActions()
     sweetAlert.getConfirmButton = () => dom.getConfirmButton()
     sweetAlert.getCancelButton = () => dom.getCancelButton()
     sweetAlert.isLoading = () => dom.isLoading()
@@ -979,7 +981,7 @@ const sweetAlert = (...args) => {
     let input
     for (let i = 0; i < inputTypes.length; i++) {
       const inputClass = swalClasses[inputTypes[i]]
-      const inputContainer = dom.getChildByClass(popup, inputClass)
+      const inputContainer = dom.getChildByClass(content, inputClass)
       input = getInput(inputTypes[i])
 
       // set attributes
@@ -1014,20 +1016,20 @@ const sweetAlert = (...args) => {
       case 'number':
       case 'tel':
       case 'url':
-        input = dom.getChildByClass(popup, swalClasses.input)
+        input = dom.getChildByClass(content, swalClasses.input)
         input.value = params.inputValue
         input.placeholder = params.inputPlaceholder
         input.type = params.input
         dom.show(input)
         break
       case 'file':
-        input = dom.getChildByClass(popup, swalClasses.file)
+        input = dom.getChildByClass(content, swalClasses.file)
         input.placeholder = params.inputPlaceholder
         input.type = params.input
         dom.show(input)
         break
       case 'range':
-        const range = dom.getChildByClass(popup, swalClasses.range)
+        const range = dom.getChildByClass(content, swalClasses.range)
         const rangeInput = range.querySelector('input')
         const rangeOutput = range.querySelector('output')
         rangeInput.value = params.inputValue
@@ -1036,7 +1038,7 @@ const sweetAlert = (...args) => {
         dom.show(range)
         break
       case 'select':
-        const select = dom.getChildByClass(popup, swalClasses.select)
+        const select = dom.getChildByClass(content, swalClasses.select)
         select.innerHTML = ''
         if (params.inputPlaceholder) {
           const placeholder = document.createElement('option')
@@ -1061,7 +1063,7 @@ const sweetAlert = (...args) => {
         }
         break
       case 'radio':
-        const radio = dom.getChildByClass(popup, swalClasses.radio)
+        const radio = dom.getChildByClass(content, swalClasses.radio)
         radio.innerHTML = ''
         populateInputOptions = (inputOptions) => {
           for (let radioValue in inputOptions) {
@@ -1088,7 +1090,7 @@ const sweetAlert = (...args) => {
         }
         break
       case 'checkbox':
-        const checkbox = dom.getChildByClass(popup, swalClasses.checkbox)
+        const checkbox = dom.getChildByClass(content, swalClasses.checkbox)
         const checkboxInput = getInput('checkbox')
         checkboxInput.type = 'checkbox'
         checkboxInput.value = 1
@@ -1104,7 +1106,7 @@ const sweetAlert = (...args) => {
         dom.show(checkbox)
         break
       case 'textarea':
-        const textarea = dom.getChildByClass(popup, swalClasses.textarea)
+        const textarea = dom.getChildByClass(content, swalClasses.textarea)
         textarea.value = params.inputValue
         textarea.placeholder = params.inputPlaceholder
         dom.show(textarea)
@@ -1291,13 +1293,13 @@ sweetAlert.showLoading = sweetAlert.enableLoading = () => {
     sweetAlert('')
   }
   popup = dom.getPopup()
-  const buttonsWrapper = dom.getButtonsWrapper()
+  const actions = dom.getActions()
   const confirmButton = dom.getConfirmButton()
   const cancelButton = dom.getCancelButton()
 
-  dom.show(buttonsWrapper)
+  dom.show(actions)
   dom.show(confirmButton, 'inline-block')
-  dom.addClass([popup, buttonsWrapper], swalClasses.loading)
+  dom.addClass([popup, actions], swalClasses.loading)
   confirmButton.disabled = true
   cancelButton.disabled = true
 

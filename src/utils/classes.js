@@ -64,7 +64,13 @@ export const swalClasses = prefix([
   'bottom-right',
   'grow-row',
   'grow-column',
-  'grow-fullscreen'
+  'grow-fullscreen',
+  'inputs-wrapper',
+  'form-control',
+  'radio-input-container',
+  'checkbox-input-container',
+  'radio-input',
+  'checkbox-input'
 ])
 
 export const iconTypes = prefix([

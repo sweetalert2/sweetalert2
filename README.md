@@ -291,14 +291,12 @@ If you would like to contribute enhancements or fixes, please do the following:
 
 4. Start gulp watcher `gulp watch` to automatically serve, build, and minify the SCSS and JS-files.
 
-5. Check that your code is compliant with code linters: `gulp lint`.
-
-6. Ensure that you didn't break any of tests:
+5. Ensure that you didn't break any of tests:
 
   - in browser: http://localhost:8080/test/qunit/
   - via CLI: `npm test`
 
-7. Make sure that `dist/*` files aren't committed and create a pull request.
+6. Make sure that `dist/*` files aren't committed and create a pull request.
 
 
 Related projects

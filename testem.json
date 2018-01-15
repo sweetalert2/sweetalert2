@@ -1,15 +1,20 @@
 {
-    "framework": "qunit",
-    "src_files": [
-      "https://code.jquery.com/jquery-3.1.1.min.js",
-      "test/qunit/**/*.js",
-      "dist/sweetalert2.js"
-    ],
-    "css_files": [
-      "dist/sweetalert2.css"
-    ],
-    "launch_in_ci": [
-      "Chrome",
-      "Firefox"
-    ]
+  "port": 7357,
+  "framework": "qunit",
+  "serve_files": [
+    "dist/sweetalert2.js",
+    "https://code.jquery.com/jquery-3.1.1.min.js",
+    "test/**/*.js"
+  ],
+  "css_files": [
+    "dist/sweetalert2.css"
+  ],
+  "watch_files": [
+    "test/**"
+  ],
+  "launch_in_ci": [
+    "Chrome",
+    "Firefox"
+  ],
+  "parallel": 100
 }

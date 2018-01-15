@@ -11,10 +11,10 @@ before_script:
   - npm run build-dist
 
 script:
-  - xvfb-run npm run check-bundlesize
-  - xvfb-run npm run check-lint
+  - npm run check-bundlesize
+  - npm run check-lint
   - xvfb-run npm run check-test
-  - xvfb-run npm run check-dts
+  - npm run check-dts
 
 deploy:
   api_key:

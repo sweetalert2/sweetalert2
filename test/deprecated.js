@@ -5,7 +5,8 @@ QUnit.test('confirm button /w useRejections: true', (assert) => {
 
   swal({
     title: 'Confirm me',
-    useRejections: true
+    useRejections: true,
+    animation: false
   }).then((result) => {
     assert.equal(result, true)
     done()

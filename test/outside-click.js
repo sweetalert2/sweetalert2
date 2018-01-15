@@ -11,7 +11,8 @@ QUnit.test('overlay click', (assert) => {
   const done = assert.async()
 
   swal({
-    title: 'Overlay click'
+    title: 'Overlay click',
+    animation: false
   }).then((result) => {
     assert.deepEqual(result, {dismiss: 'overlay'})
     done()
@@ -24,7 +25,8 @@ QUnit.test('popup mousedown, overlay mouseup', (assert) => {
   const done = assert.async()
 
   swal({
-    title: 'popup mousedown, overlay mouseup'
+    title: 'popup mousedown, overlay mouseup',
+    animation: false
   })
 
   simulateMouseEvent(1, 1, 'mousedown')
@@ -33,14 +35,15 @@ QUnit.test('popup mousedown, overlay mouseup', (assert) => {
   setTimeout(() => {
     assert.ok(swal.isVisible())
     done()
-  }, 300)
+  })
 })
 
 QUnit.test('overlay mousedown, popup mouseup', (assert) => {
   const done = assert.async()
 
   swal({
-    title: 'overlay mousedown, popup mouseup'
+    title: 'overlay mousedown, popup mouseup',
+    animation: false
   })
 
   simulateMouseEvent(window.innerWidth / 2, window.innerHeight / 2, 'mousedown')
@@ -49,7 +52,7 @@ QUnit.test('overlay mousedown, popup mouseup', (assert) => {
   setTimeout(() => {
     assert.ok(swal.isVisible())
     done()
-  }, 300)
+  })
 })
 
 QUnit.test('allowOutsideClick: false', (assert) => {
@@ -57,7 +60,8 @@ QUnit.test('allowOutsideClick: false', (assert) => {
 
   swal({
     title: 'allowOutsideClick: false',
-    allowOutsideClick: false
+    allowOutsideClick: false,
+    animation: false
   })
 
   $('.swal2-container').click()
@@ -65,7 +69,7 @@ QUnit.test('allowOutsideClick: false', (assert) => {
   setTimeout(() => {
     assert.ok(swal.isVisible())
     done()
-  }, 300)
+  })
 })
 
 QUnit.test('allowOutsideClick: () => !swal.isLoading()', (assert) => {
@@ -73,7 +77,8 @@ QUnit.test('allowOutsideClick: () => !swal.isLoading()', (assert) => {
 
   swal({
     title: 'allowOutsideClick: () => !swal.isLoading()',
-    allowOutsideClick: () => !swal.isLoading()
+    allowOutsideClick: () => !swal.isLoading(),
+    animation: false
   }).then((result) => {
     assert.deepEqual(result, {dismiss: 'overlay'})
     done()
@@ -87,5 +92,5 @@ QUnit.test('allowOutsideClick: () => !swal.isLoading()', (assert) => {
     assert.ok(swal.isVisible())
     swal.hideLoading()
     $('.swal2-container').click()
-  }, 300)
+  })
 })

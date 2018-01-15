@@ -77,7 +77,9 @@
     "check-test": "testem ci",
     "check-dts": "tsc sweetalert2.d.ts",
     "check-everything": "npm run check-bundlesize && npm run check-lint && npm run check-test && npm run check-dts",
-    "precommit": "npm run check-lint"
+    "test": "npm run build-dist && npm run check-everything",
+    "precommit": "npm run check-lint",
+    "prepublish": "npm run test"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
   "license": "MIT"

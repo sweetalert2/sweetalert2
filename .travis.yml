@@ -16,10 +16,6 @@ before_script:
 
 script:
 
-  # unit tests against dist/sweetalert2.all.min.js (TODO: why not sweetalert2.all.js & sweetalert2.min.js min too?)
-  - sed -i 's/sweetalert2.js/sweetalert2.all.min.js/g' testem.json
-  - xvfb-run npm run check-test
-
 deploy:
   api_key:
     secure: TaF0rF0+n/t3jchds6RSahdIwV+VozFEzGXdnwKzX8TnW2afGU7hh50BJHdQA6/mm0VbgxwAfIDMYU2luLwQn8CJCcJYp7g3+g8xsH15q8ny2AUmIkQQ2sWY43Vk1yMHIwzuAlHy5Pv5qKk8cYRVY5fwaCl/4KfvpIn4F2/DjwU=

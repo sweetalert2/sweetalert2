@@ -1,4 +1,4 @@
-import styles from '../dist/sweetalert2.css'
+import styles from './sweetalert2.scss'
 import { injectCSS } from './utils/dom'
 import sweetAlert from './sweetalert2'
 

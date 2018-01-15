@@ -35,7 +35,8 @@
   ],
   "keywords": [
     "alert",
-    "modal"
+    "modal",
+    "prompt"
   ],
   "repository": {
     "type": "git",

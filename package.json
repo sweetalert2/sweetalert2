@@ -13,28 +13,31 @@
     "babel-plugin-external-helpers": "latest",
     "babel-plugin-transform-object-assign": "latest",
     "babel-preset-es2015": "latest",
-    "browser-sync": "^2.23.3",
     "bundlesize": "^0.15.3",
-    "gulp": "latest",
+    "execa": "^0.9.0",
+    "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "^3.9.0",
+    "gulp-if": "^2.0.2",
     "gulp-rename": "latest",
     "gulp-rollup": "latest",
     "gulp-sass": "latest",
     "gulp-sass-lint": "latest",
     "gulp-standard": "^8.0.0",
     "gulp-tslint": "^8.1.2",
-    "gulp-typescript": "^3.2.3",
     "gulp-uglify": "latest",
     "husky": "^0.14.3",
+    "mkdirp": "^0.5.1",
+    "pify": "^3.0.0",
     "rollup": "^0.51.8",
     "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-css-only": "^0.2.0",
+    "rollup-plugin-sass": "^0.5.3",
     "standard": "^8.0.0",
-    "testem": "latest",
+    "testem": "^1.18.4",
+    "touch": "^3.1.0",
     "tslint": "^5.8.0",
     "typescript": "^2.5.3",
-    "uglify-js": "^3.1.10"
+    "uglify-js": "^3.3.7"
   },
   "standard": {
     "ignore": [
@@ -59,18 +62,22 @@
     "sweetalert",
     "sweetalert2",
     "alert",
-    "prompt"
+    "prompt",
+    "confirm"
   ],
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "testem ci",
-    "precommit": "./node_modules/.bin/standard --fix && git add .",
-    "lint-dts": "tslint sweetalert2.d.ts --format verbose",
-    "check-dts": "tsc sweetalert2.d.ts && npm run lint-dts",
-    "assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --assume-unchanged",
-    "no-assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --no-assume-unchanged"
+    "dev": "gulp dev",
+    "fix-lint": "standard --fix",
+    "build-dist": "gulp build --dist",
+    "check-bundlesize": "bundlesize -f dist/sweetalert2.all.min.js -s 15kB",
+    "check-lint": "gulp lint",
+    "check-test": "testem ci",
+    "check-dts": "tsc sweetalert2.d.ts",
+    "precommit": "npm run check-lint",
+    "prepublish": "npm run build-dist && npm run check-bundlesize && npm run check-lint && npm run check-test && npm run check-dts"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
   "license": "MIT"

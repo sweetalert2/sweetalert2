@@ -8,16 +8,17 @@ addons:
   google-chrome: latest
 
 before_script:
-  - gulp
-  - bundlesize -f dist/sweetalert2.all.min.js -s 15kB
+  - npm run build-dist
+  - npm run check-bundlesize
+  - npm run check-lint
+  - npm run check-test
+  - npm run check-dts
 
 script:
-  # unit tests against dist/sweetalert2.js
-  - xvfb-run testem ci --reporter dot
 
-  # unit tests against dist/sweetalert2.all.min.js
+  # unit tests against dist/sweetalert2.all.min.js (TODO: why not sweetalert2.all.js & sweetalert2.min.js min too?)
   - sed -i 's/sweetalert2.js/sweetalert2.all.min.js/g' testem.json
-  - xvfb-run testem ci --reporter dot
+  - xvfb-run npm run check-test
 
 deploy:
   api_key:

@@ -1,5 +1,5 @@
 {
-  "port": 8080,
+  "port": 7357,
   "framework": "qunit",
   "serve_files": [
     "dist/sweetalert2.js",

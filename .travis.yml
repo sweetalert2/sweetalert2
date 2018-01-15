@@ -9,12 +9,12 @@ addons:
 
 before_script:
   - npm run build-dist
+
+script:
   - npm run check-bundlesize
   - npm run check-lint
   - npm run check-test
   - npm run check-dts
-
-script:
 
 deploy:
   api_key:

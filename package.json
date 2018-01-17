@@ -20,6 +20,7 @@
     "gulp-clean-css": "^3.9.0",
     "gulp-rename": "latest",
     "gulp-rollup": "latest",
+    "gulp-run": "^1.7.1",
     "gulp-sass": "latest",
     "gulp-sass-lint": "latest",
     "gulp-standard": "^8.0.0",

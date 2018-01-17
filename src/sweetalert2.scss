@@ -519,6 +519,11 @@ body {
     overflow-y: hidden;
   }
 
+  .swal2-header {
+    display: flex;
+    flex-direction: column;
+  }
+
   .swal2-title {
     color: lighten($swal2-black, 35);
     font-size: 30px;

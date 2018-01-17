@@ -1,6 +1,6 @@
 import defaultParams, { deprecatedParams } from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
-import { colorLuminance, warn, error, warnOnce } from './utils/utils.js'
+import { colorLuminance, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom.js'
 
 let popupParams = Object.assign({}, defaultParams)
@@ -724,14 +724,8 @@ const sweetAlert = (...args) => {
         if (e.target !== container) {
           return
         }
-        if (params.allowOutsideClick) {
-          if (typeof params.allowOutsideClick === 'function') {
-            if (params.allowOutsideClick()) {
-              dismissWith('overlay')
-            }
-          } else {
-            dismissWith('overlay')
-          }
+        if (callIfFunction(params.allowOutsideClick)) {
+          dismissWith('overlay')
         }
       }
     }
@@ -824,7 +818,7 @@ const sweetAlert = (...args) => {
         }
 
       // ESC
-      } else if ((e.key === 'Escape' || e.key === 'Esc') && params.allowEscapeKey === true) {
+      } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(params.allowEscapeKey) === true) {
         dismissWith('esc')
       }
     }
@@ -1135,7 +1129,7 @@ const sweetAlert = (...args) => {
     openPopup(params.animation, params.onBeforeOpen, params.onOpen)
 
     if (!params.toast) {
-      if (!params.allowEnterKey) {
+      if (!callIfFunction(params.allowEnterKey)) {
         if (document.activeElement) {
           document.activeElement.blur()
         }

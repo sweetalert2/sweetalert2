@@ -12,6 +12,7 @@ body {
       '.swal2-toast-shown'
     ) {
       overflow-y: hidden;
+      height: auto; // #781
     }
   }
 }

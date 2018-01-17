@@ -173,8 +173,8 @@ Configuration
 | `timer`                  | `null`                | Auto close timer of the modal. Set in ms (milliseconds). |
 | `animation`              | `true`                | If set to `false`, modal CSS animation will be disabled. |
 | `allowOutsideClick`      | `true`                | If set to `false`, the user can't dismiss the modal by clicking outside it. You can also pass a custom function returning a boolean value, e.g. if you want to disable outside clicks for the loading state of a modal. |
-| `allowEscapeKey`         | `true`                | If set to `false`, the user can't dismiss the modal by pressing the <kbd>Esc</kbd> key. |
-| `allowEnterKey`          | `true`                | If set to `false`, the user can't confirm the modal by pressing the <kbd>Enter</kbd> or <kbd>Space</kbd> keys, unless they manually focus the confirm button. |
+| `allowEscapeKey`         | `true`                | If set to `false`, the user can't dismiss the modal by pressing the <kbd>Esc</kbd> key. You can also pass a custom function returning a boolean value, e.g. if you want to disable the escape key for the loading state of a modal. |
+| `allowEnterKey`          | `true`                | If set to `false`, the user can't confirm the modal by pressing the <kbd>Enter</kbd> or <kbd>Space</kbd> keys, unless they manually focus the confirm button. You can also pass a custom function returning a boolean value. |
 | `showConfirmButton`      | `true`                | If set to `false`, a "Confirm"-button will not be shown. It can be useful when you're using `html` parameter for custom HTML description. |
 | `showCancelButton`       | `false`               | If set to `true`, a "Cancel"-button will be shown, which the user can click on to dismiss the modal. |
 | `confirmButtonText`      | `'OK'`                | Use this to change the text on the "Confirm"-button. |

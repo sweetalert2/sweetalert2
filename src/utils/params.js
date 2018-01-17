@@ -30,6 +30,7 @@ export default {
   showCloseButton: false,
   closeButtonAriaLabel: 'Close this dialog',
   showLoaderOnConfirm: false,
+  inputs: [],
   imageUrl: null,
   imageWidth: null,
   imageHeight: null,

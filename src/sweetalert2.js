@@ -2,6 +2,8 @@ import defaultParams, { deprecatedParams } from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
 import { colorLuminance, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom.js'
+import { build as buildForm } from './utils/form'
+import * as validators from './utils/validators'
 
 let popupParams = Object.assign({}, defaultParams)
 let queue = []
@@ -418,31 +420,12 @@ const sweetAlert = (...args) => {
       params.extraParams = args[0].extraParams
 
       if (params.input === 'email' && params.inputValidator === null) {
-        const inputValidator = (email) => {
-          return new Promise((resolve, reject) => {
-            const emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/
-            if (emailRegex.test(email)) {
-              resolve()
-            } else {
-              reject('Invalid email address')
-            }
-          })
-        }
+        const inputValidator = validators.email
         params.inputValidator = params.expectRejections ? inputValidator : sweetAlert.adaptInputValidator(inputValidator)
       }
 
       if (params.input === 'url' && params.inputValidator === null) {
-        const inputValidator = (url) => {
-          return new Promise((resolve, reject) => {
-            // taken from https://stackoverflow.com/a/3809435/1331425
-            const urlRegex = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/
-            if (urlRegex.test(url)) {
-              resolve()
-            } else {
-              reject('Invalid URL')
-            }
-          })
-        }
+        const inputValidator = validators.url
         params.inputValidator = params.expectRejections ? inputValidator : sweetAlert.adaptInputValidator(inputValidator)
       }
       break
@@ -1001,6 +984,8 @@ const sweetAlert = (...args) => {
 
       dom.hide(inputContainer)
     }
+
+    buildForm(params.inputs)
 
     let populateInputOptions
     switch (params.input) {

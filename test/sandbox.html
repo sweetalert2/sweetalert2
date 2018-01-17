@@ -7,6 +7,67 @@
       title: 'Test modal with input',
       html: 'custom <strong>content</strong>',
       input: 'text',
+      inputs: [
+        {
+          label: 'Text input',
+          placeholder: 'foo bar',
+          type: 'text',
+        },
+        {
+          label: 'Email input',
+          placeholder: 'foo@bar.com',
+          type: 'email',
+        },
+        {
+          label: 'Url input',
+          placeholder: 'http://',
+          type: 'url',
+        },
+        {
+          label: 'Password input',
+          placeholder: 'Password',
+          type: 'password',
+        },
+        {
+          type: 'select',
+          placeholder: 'Select input',
+          label: 'Select input label',
+          options: {
+            1: 'Foo',
+            2: 'Bar',
+          },
+        },
+        {
+          type: 'file',
+          placeholder: 'File input',
+          label: 'File input label',
+        },
+        {
+          type: 'range',
+          label: 'Range input label',
+          config: {
+            min: 8,
+            max: 120,
+            step: 1,
+          }
+        },
+        {
+          type: 'radio',
+          label: 'Radio input label',
+          options: {
+            1: 'Foo',
+            2: 'Bar',
+          }
+        },
+        {
+          type: 'checkbox',
+          label: 'Checkbox input label',
+          options: {
+            1: 'Foo',
+            2: 'Bar',
+          }
+        },
+      ],
       preConfirm: (value) => {
         if (!value) {
           swal.showValidationError('Should not be empty!')

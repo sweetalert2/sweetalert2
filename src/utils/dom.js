@@ -116,6 +116,7 @@ const sweetHTML = `
      </label>
      <textarea class="${swalClasses.textarea}"></textarea>
      <div class="${swalClasses.validationerror}" id="${swalClasses.validationerror}"></div>
+     <div class="${swalClasses['inputs-wrapper']}"></div>
    </div>
    <div class="${swalClasses.actions}">
      <button type="button" class="${swalClasses.confirm}">OK</button>

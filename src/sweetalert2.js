@@ -2,8 +2,9 @@ import defaultParams, { deprecatedParams } from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
 import { colorLuminance, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom.js'
-import { build as buildForm } from './utils/form'
-import * as validators from './utils/validators'
+import { build as buildForm } from './forms/builder'
+import formsApi from './forms/api'
+import * as validators from './forms/validators'
 
 let popupParams = Object.assign({}, defaultParams)
 let queue = []
@@ -396,7 +397,7 @@ const undoIOSfix = () => {
 }
 
 // SweetAlert entry point
-const sweetAlert = (...args) => {
+let sweetAlert = (...args) => {
   // Prevent run in Node env
   if (typeof window === 'undefined') {
     return
@@ -510,14 +511,15 @@ const sweetAlert = (...args) => {
     }
 
     // input autofocus
-    if (params.input) {
-      setTimeout(() => {
-        const input = getInput()
-        if (input) {
-          dom.focusInput(input)
-        }
-      }, 0)
-    }
+    // TODO: Autofocus
+    // if (params.input) {
+    //  setTimeout(() => {
+    //    const input = getInput()
+    //    if (input) {
+    //      dom.focusInput(input)
+    //    }
+    //  }, 0)
+    // }
 
     const confirm = (value) => {
       if (params.showLoaderOnConfirm) {
@@ -949,167 +951,11 @@ const sweetAlert = (...args) => {
     sweetAlert.hideLoading()
     sweetAlert.resetValidationError()
 
-    if (params.input) {
+    if (params.inputs.length) {
       dom.addClass(document.body, swalClasses['has-input'])
     }
 
-    // inputs
-    const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
-    let input
-    for (let i = 0; i < inputTypes.length; i++) {
-      const inputClass = swalClasses[inputTypes[i]]
-      const inputContainer = dom.getChildByClass(content, inputClass)
-      input = getInput(inputTypes[i])
-
-      // set attributes
-      if (input) {
-        for (let j in input.attributes) {
-          if (input.attributes.hasOwnProperty(j)) {
-            const attrName = input.attributes[j].name
-            if (attrName !== 'type' && attrName !== 'value') {
-              input.removeAttribute(attrName)
-            }
-          }
-        }
-        for (let attr in params.inputAttributes) {
-          input.setAttribute(attr, params.inputAttributes[attr])
-        }
-      }
-
-      // set class
-      inputContainer.className = inputClass
-      if (params.inputClass) {
-        dom.addClass(inputContainer, params.inputClass)
-      }
-
-      dom.hide(inputContainer)
-    }
-
     buildForm(params.inputs)
-
-    let populateInputOptions
-    switch (params.input) {
-      case 'text':
-      case 'email':
-      case 'password':
-      case 'number':
-      case 'tel':
-      case 'url':
-        input = dom.getChildByClass(content, swalClasses.input)
-        input.value = params.inputValue
-        input.placeholder = params.inputPlaceholder
-        input.type = params.input
-        dom.show(input)
-        break
-      case 'file':
-        input = dom.getChildByClass(content, swalClasses.file)
-        input.placeholder = params.inputPlaceholder
-        input.type = params.input
-        dom.show(input)
-        break
-      case 'range':
-        const range = dom.getChildByClass(content, swalClasses.range)
-        const rangeInput = range.querySelector('input')
-        const rangeOutput = range.querySelector('output')
-        rangeInput.value = params.inputValue
-        rangeInput.type = params.input
-        rangeOutput.value = params.inputValue
-        dom.show(range)
-        break
-      case 'select':
-        const select = dom.getChildByClass(content, swalClasses.select)
-        select.innerHTML = ''
-        if (params.inputPlaceholder) {
-          const placeholder = document.createElement('option')
-          placeholder.innerHTML = params.inputPlaceholder
-          placeholder.value = ''
-          placeholder.disabled = true
-          placeholder.selected = true
-          select.appendChild(placeholder)
-        }
-        populateInputOptions = (inputOptions) => {
-          for (let optionValue in inputOptions) {
-            const option = document.createElement('option')
-            option.value = optionValue
-            option.innerHTML = inputOptions[optionValue]
-            if (params.inputValue.toString() === optionValue) {
-              option.selected = true
-            }
-            select.appendChild(option)
-          }
-          dom.show(select)
-          select.focus()
-        }
-        break
-      case 'radio':
-        const radio = dom.getChildByClass(content, swalClasses.radio)
-        radio.innerHTML = ''
-        populateInputOptions = (inputOptions) => {
-          for (let radioValue in inputOptions) {
-            const radioInput = document.createElement('input')
-            const radioLabel = document.createElement('label')
-            const radioLabelSpan = document.createElement('span')
-            radioInput.type = 'radio'
-            radioInput.name = swalClasses.radio
-            radioInput.value = radioValue
-            if (params.inputValue.toString() === radioValue) {
-              radioInput.checked = true
-            }
-            radioLabelSpan.innerHTML = inputOptions[radioValue]
-            radioLabel.appendChild(radioInput)
-            radioLabel.appendChild(radioLabelSpan)
-            radioLabel.for = radioInput.id
-            radio.appendChild(radioLabel)
-          }
-          dom.show(radio)
-          const radios = radio.querySelectorAll('input')
-          if (radios.length) {
-            radios[0].focus()
-          }
-        }
-        break
-      case 'checkbox':
-        const checkbox = dom.getChildByClass(content, swalClasses.checkbox)
-        const checkboxInput = getInput('checkbox')
-        checkboxInput.type = 'checkbox'
-        checkboxInput.value = 1
-        checkboxInput.id = swalClasses.checkbox
-        checkboxInput.checked = Boolean(params.inputValue)
-        let label = checkbox.getElementsByTagName('span')
-        if (label.length) {
-          checkbox.removeChild(label[0])
-        }
-        label = document.createElement('span')
-        label.innerHTML = params.inputPlaceholder
-        checkbox.appendChild(label)
-        dom.show(checkbox)
-        break
-      case 'textarea':
-        const textarea = dom.getChildByClass(content, swalClasses.textarea)
-        textarea.value = params.inputValue
-        textarea.placeholder = params.inputPlaceholder
-        dom.show(textarea)
-        break
-      case null:
-        break
-      default:
-        error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`)
-        break
-    }
-
-    if (params.input === 'select' || params.input === 'radio') {
-      if (params.inputOptions instanceof Promise) {
-        sweetAlert.showLoading()
-        params.inputOptions.then((inputOptions) => {
-          sweetAlert.hideLoading()
-          populateInputOptions(inputOptions)
-        })
-      } else if (typeof params.inputOptions === 'object') {
-        populateInputOptions(params.inputOptions)
-      } else {
-        error('Unexpected type of inputOptions! Expected object or Promise, got ' + typeof params.inputOptions)
-      }
-    }
 
     openPopup(params.animation, params.onBeforeOpen, params.onOpen)
 
@@ -1160,12 +1006,12 @@ sweetAlert.queue = (steps) => {
             step(i + 1, callback)
           } else {
             resetQueue()
-            resolve({dismiss: result.dismiss})
+            resolve({ dismiss: result.dismiss })
           }
         })
       } else {
         resetQueue()
-        resolve({value: queueResult})
+        resolve({ value: queueResult })
       }
     })(0)
   })
@@ -1289,6 +1135,7 @@ sweetAlert.showLoading = sweetAlert.enableLoading = () => {
 
 /**
  * Is valid parameter
+ *
  * @param {String} paramName
  */
 sweetAlert.isValidParameter = (paramName) => {
@@ -1297,6 +1144,7 @@ sweetAlert.isValidParameter = (paramName) => {
 
 /**
  * Is deprecated parameter
+ *
  * @param {String} paramName
  */
 sweetAlert.isDeprecatedParameter = (paramName) => {
@@ -1305,11 +1153,12 @@ sweetAlert.isDeprecatedParameter = (paramName) => {
 
 /**
  * Set default params for each popup
+ *
  * @param {Object} userParams
  */
 sweetAlert.setDefaults = (userParams) => {
   if (!userParams || typeof userParams !== 'object') {
-    return error('the argument for setDefaults() is required and has to be a object')
+    return error('the argument for setDefaults() are required and has to be a object')
   }
 
   showWarningsForParams(userParams)
@@ -1321,6 +1170,9 @@ sweetAlert.setDefaults = (userParams) => {
     }
   }
 }
+
+// Register the forms api methods
+Object.assign(sweetAlert, formsApi)
 
 /**
  * Reset default params for each popup

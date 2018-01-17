@@ -1,17 +1,7 @@
-import { swalClasses } from './classes'
-
-export const baseInput = {
-  label: '',
-  placeholder: '',
-  type: '', // text, textarea, select, file, range, checkbox, radio
-  value: '',
-  options: {}, // For select. checkbox, radio
-  config: {}, // Input specific config (currently only for range)
-  validator () {},
-  attributes: {},
-  classes: '',
-  events: {} // Attach custom events to each input (change, keyup, focus, hover)
-}
+import { swalClasses, prefixItem } from '../utils/classes'
+import { error } from '../utils/utils'
+import formsApi from './api'
+import baseInput from './base-input'
 
 /**
  * Build the form using provided inputs
@@ -19,9 +9,11 @@ export const baseInput = {
  * @param inputs
  */
 export const build = (inputs) => {
-  inputs
-    .map((input) => Object.assign({}, baseInput, input))
-    .forEach(addControl)
+  Object.keys(inputs)
+    .forEach((input) => {
+      inputs[input] = Object.assign({}, baseInput, inputs[input])
+      formsApi.addInput(input, inputs[input])
+    })
 }
 
 /**
@@ -43,11 +35,15 @@ export const addInputAttributes = (input, attributes = {}) => {
 /**
  * Create a basic control wrapper for a form element
  *
+ * @param name
+ *
  * @return {HTMLDivElement}
  */
-export const createControlWrapper = () => {
+export const createControlWrapper = (name) => {
   let inputContainer = document.createElement('div')
+
   inputContainer.classList.add(swalClasses['form-control'])
+  inputContainer.classList.add(prefixItem(`input-${name}`))
 
   return inputContainer
 }
@@ -55,24 +51,17 @@ export const createControlWrapper = () => {
 /**
  * Create a label
  *
+ * @param name
  * @param label
  *
  * @return {HTMLLabelElement}
  */
-export const createLabel = (label) => {
+export const createLabel = (name, label) => {
   let element = document.createElement('label')
   element.textContent = label
+  element.for = name
 
   return element
-}
-
-/**
- * Add a single input element to the dom
- *
- * @param control
- */
-export const addFormControlToDom = (control) => {
-  document.getElementsByClassName(swalClasses['inputs-wrapper'])[0].appendChild(control)
 }
 
 /**
@@ -80,12 +69,14 @@ export const addFormControlToDom = (control) => {
  * anything common to all inputs
  *
  * @param tag
+ * @param name
  * @param controlObject
  *
  * @return {HTMLElement}
  */
-export const createBaseControl = (tag, controlObject) => {
+export const createBaseControl = (tag, name, controlObject) => {
   let input = document.createElement(tag)
+  input.name = name
 
   if (!swalClasses[tag] && !swalClasses[controlObject.type]) {
     input.classList.add(swalClasses.input)
@@ -110,12 +101,13 @@ export const createBaseControl = (tag, controlObject) => {
 /**
  * Create an input element
  *
+ * @param name
  * @param {object} controlObject
  *
  * @return {HTMLElement}
  */
-export const createInput = (controlObject) => {
-  let input = createBaseControl('input', controlObject)
+export const createInput = (name, controlObject) => {
+  let input = createBaseControl('input', name, controlObject)
 
   if (controlObject.placeholder) {
     input.placeholder = controlObject.placeholder
@@ -131,11 +123,12 @@ export const createInput = (controlObject) => {
 /**
  * Create a range input element
  *
+ * @param name
  * @param {object} controlObject
  *
  * @return {HTMLElement}
  */
-export const createRange = (controlObject) => {
+export const createRange = (name, controlObject) => {
   let inputContainer = document.createElement('div')
   inputContainer.classList.add(swalClasses.range)
 
@@ -144,6 +137,7 @@ export const createRange = (controlObject) => {
 
   let input = document.createElement('input')
   input.type = controlObject.type
+  input.name = name
   if (typeof controlObject.value !== 'undefined') {
     input.value = controlObject.value
   }
@@ -164,12 +158,13 @@ export const createRange = (controlObject) => {
 /**
  * Create a textarea element
  *
+ * @param name
  * @param controlObject
  *
  * @return {HTMLElement}
  */
-export const createTextarea = (controlObject) => {
-  let input = createBaseControl('textarea', controlObject)
+export const createTextarea = (name, controlObject) => {
+  let input = createBaseControl('textarea', name, controlObject)
 
   if (controlObject.placeholder) {
     input.placeholder = controlObject.placeholder
@@ -183,18 +178,41 @@ export const createTextarea = (controlObject) => {
 }
 
 /**
+ * Resolve all option types as a promise for consistent handling
+ *
+ * @param options
+ *
+ * @return {*}
+ */
+export const resolveOptions = (options) => {
+  let optionsFetch = Promise.resolve({})
+
+  if (options instanceof Promise) {
+    optionsFetch = options
+  } else if (typeof options === 'object') {
+    optionsFetch = Promise.resolve(options)
+  } else {
+    return Promise.reject(`Unexpected type of options for input! Expected object or Promise, got ${typeof options}`)
+  }
+
+  return optionsFetch
+}
+
+/**
  * Create a select element
  *
+ * @param name
  * @param controlObject
  *
  * @return {HTMLElement}
  */
-export const createSelect = (controlObject) => {
-  let input = createBaseControl('select', controlObject)
+export const createSelect = (name, controlObject) => {
+  let input = createBaseControl('select', name, controlObject)
+  let isMultiple = Boolean(controlObject.config && controlObject.config.multiple)
 
   // If placeholder provided, we'll add an
-  // initial unselectabble option to the select
-  if (controlObject.placeholder) {
+  // initial unselectable option to the select
+  if (controlObject.placeholder && !isMultiple) {
     let option = document.createElement('option')
 
     option.textContent = controlObject.placeholder
@@ -204,19 +222,25 @@ export const createSelect = (controlObject) => {
     input.appendChild(option)
   }
 
-  // Add each option to the select
-  for (let option in controlObject.options) {
-    let optionElement = document.createElement('option')
-
-    optionElement.value = option
-    optionElement.textContent = controlObject.options[option]
-
-    input.appendChild(optionElement)
+  if (isMultiple) {
+    input.multiple = isMultiple
   }
 
-  if (typeof controlObject.value !== 'undefined') {
-    input.value = controlObject.value
-  }
+  resolveOptions(controlObject.options).then((options) => {
+    // Add each option to the select
+    for (let option in options) {
+      let optionElement = document.createElement('option')
+
+      optionElement.value = option
+      optionElement.textContent = options[option]
+
+      if (typeof controlObject.value !== 'undefined') {
+        input.selected = option === controlObject.value
+      }
+
+      input.appendChild(optionElement)
+    }
+  }).catch(error)
 
   return input
 }
@@ -224,12 +248,13 @@ export const createSelect = (controlObject) => {
 /**
  * Create a file input element
  *
+ * @param name
  * @param controlObject
  *
  * @return {HTMLElement}
  */
-export const createFile = (controlObject) => {
-  let input = createBaseControl('input', controlObject)
+export const createFile = (name, controlObject) => {
+  let input = createBaseControl('input', name, controlObject)
   input.type = controlObject.type
 
   return input
@@ -238,42 +263,48 @@ export const createFile = (controlObject) => {
 /**
  * Create a radio input element
  *
+ * @param name
  * @param controlObject
  */
-export const createRadio = (controlObject) => {
+export const createRadio = (name, controlObject) => {
   let inputOuterContainer = document.createElement('div')
   inputOuterContainer.classList.add(swalClasses[`${controlObject.type}-input-container`])
 
-  // Add each option to the select
-  for (let option in controlObject.options) {
-    let inputContainer = document.createElement('div')
-    inputContainer.classList.add(swalClasses[`${controlObject.type}-input`])
+  resolveOptions(controlObject.options).then((options) => {
+    // Add each option to the select
+    for (let option in options) {
+      let inputContainer = document.createElement('div')
+      inputContainer.classList.add(swalClasses[`${controlObject.type}-input`])
 
-    let label = createLabel(controlObject.options[option])
+      let label = createLabel(name, options[option])
 
-    let input = createBaseControl('input', controlObject)
-    input.type = controlObject.type
-    input.value = option
+      let input = createBaseControl('input', name, controlObject)
+      input.type = controlObject.type
+      input.value = option
 
-    // Build up the input within the container
-    inputContainer.appendChild(input)
-    inputContainer.appendChild(label)
-    inputOuterContainer.appendChild(inputContainer)
-  }
+      // Build up the input within the container
+      inputContainer.appendChild(input)
+      inputContainer.appendChild(label)
+      inputOuterContainer.appendChild(inputContainer)
+    }
+  })
 
   return inputOuterContainer
 }
 
 /**
- * Add a control to the dom
+ * Create a form control from the provided controlObject
  *
+ * @param name
  * @param controlObject
+ *
+ * @return {*}
  */
-export const addControl = (controlObject) => {
-  let inputContainer = createControlWrapper()
+export const createControl = (name, controlObject) => {
+  let inputContainer = createControlWrapper(name)
 
   if (controlObject.label) {
-    inputContainer.appendChild(createLabel(controlObject.label))
+    inputContainer.appendChild(createLabel(name, controlObject.label))
   }
 
   let control
@@ -284,29 +315,30 @@ export const addControl = (controlObject) => {
     case 'number':
     case 'tel':
     case 'url':
-      control = createInput(controlObject)
+      control = createInput(name, controlObject)
       break
     case 'textarea':
-      control = createTextarea(controlObject)
+      control = createTextarea(name, controlObject)
       break
     case 'select':
-      control = createSelect(controlObject)
+      control = createSelect(name, controlObject)
       break
     case 'file':
-      control = createFile(controlObject)
+      control = createFile(name, controlObject)
       break
     case 'range':
-      control = createRange(controlObject)
+      control = createRange(name, controlObject)
       break
     case 'radio':
     case 'checkbox':
-      control = createRadio(controlObject)
+      control = createRadio(name, controlObject)
       break
     default:
-      console.log('err')
+      error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${controlObject.type}"`)
       return
   }
 
   inputContainer.appendChild(control)
-  addFormControlToDom(inputContainer)
+
+  return inputContainer
 }

@@ -7,67 +7,7 @@
       title: 'Test modal with input',
       html: 'custom <strong>content</strong>',
       input: 'text',
-      inputs: [
-        {
-          label: 'Text input',
-          placeholder: 'foo bar',
-          type: 'text',
-        },
-        {
-          label: 'Email input',
-          placeholder: 'foo@bar.com',
-          type: 'email',
-        },
-        {
-          label: 'Url input',
-          placeholder: 'http://',
-          type: 'url',
-        },
-        {
-          label: 'Password input',
-          placeholder: 'Password',
-          type: 'password',
-        },
-        {
-          type: 'select',
-          placeholder: 'Select input',
-          label: 'Select input label',
-          options: {
-            1: 'Foo',
-            2: 'Bar',
-          },
-        },
-        {
-          type: 'file',
-          placeholder: 'File input',
-          label: 'File input label',
-        },
-        {
-          type: 'range',
-          label: 'Range input label',
-          config: {
-            min: 8,
-            max: 120,
-            step: 1,
-          }
-        },
-        {
-          type: 'radio',
-          label: 'Radio input label',
-          options: {
-            1: 'Foo',
-            2: 'Bar',
-          }
-        },
-        {
-          type: 'checkbox',
-          label: 'Checkbox input label',
-          options: {
-            1: 'Foo',
-            2: 'Bar',
-          }
-        },
-      ],
+      inputs: {},
       preConfirm: (value) => {
         if (!value) {
           swal.showValidationError('Should not be empty!')
@@ -75,6 +15,114 @@
       }
     }).then((result) => {
       console.log(result)
+    })
+    swal.addInput('text', {
+      label: 'Text input',
+      placeholder: 'foo bar',
+      type: 'text',
+    })
+    swal.addInput('email', {
+      label: 'Email input',
+      placeholder: 'foo@bar.com',
+      type: 'email',
+    })
+    swal.addInput('url', {
+      label: 'Url input',
+      placeholder: 'http://',
+      type: 'url',
+    })
+    swal.addInput('password', {
+      label: 'Password input',
+      placeholder: 'Password',
+      type: 'password',
+    })
+    swal.addInput('select', {
+      type: 'select',
+      placeholder: 'Select input',
+      label: 'Select input label',
+      options: {
+        1: 'Foo',
+        2: 'Bar',
+      },
+    })
+    swal.addInput('multiselect', {
+      type: 'select',
+      placeholder: 'Select input',
+      label: 'Multiselect input label',
+      config: {
+        multiple: true,
+      },
+      options: {
+        1: 'Foo',
+        2: 'Bar',
+      },
+    })
+    swal.addInput('ajaxselect', {
+      type: 'select',
+      placeholder: 'Select input',
+      label: 'Ajax select input label',
+      options: new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            ajax_foo: 'Ajax Foo',
+            ajax_bar: 'Ajax Bar',
+          })
+        }, 2000)
+      }),
+    })
+    swal.addInput('file', {
+      type:        'file',
+      placeholder: 'File input',
+      label:       'File input label',
+    })
+    swal.addInput('range', {
+      type: 'range',
+      label: 'Range input label',
+      config: {
+        min: 8,
+        max: 120,
+        step: 1,
+      }
+    })
+    swal.addInput('radio', {
+      type: 'radio',
+      label: 'Radio input label',
+      options: {
+        1: 'Foo',
+        2: 'Bar',
+      }
+    })
+    swal.addInput('ajaxradio', {
+      type: 'radio',
+      label: 'Ajax radio input label',
+      options: new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            ajax_foo: 'Ajax Foo',
+            ajax_bar: 'Ajax Bar',
+          })
+        }, 2000)
+      }),
+    })
+    swal.addInput('checkbox', {
+      type: 'checkbox',
+      label: 'Checkbox input label',
+      options: {
+        1: 'Foo',
+        2: 'Bar',
+      }
+    })
+    swal.addInput('ajaxcheckbox', {
+      type: 'checkbox',
+      label: 'Ajax checkbox input label',
+      options: new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            ajax_foo: 'Ajax Foo',
+            ajax_bar: 'Ajax Bar',
+          })
+        }, 2000)
+      }),
     })
   </script>
 </body>

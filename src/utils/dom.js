@@ -1,4 +1,4 @@
-import { default as sweetAlert } from '../sweetalert2.js'
+// import { default as sweetAlert } from '../sweetalert2.js'
 import { swalClasses, iconTypes } from './classes.js'
 import { uniqueArray, error, warnOnce } from './utils.js'
 
@@ -42,37 +42,15 @@ export const init = (params) => {
   targetElement.appendChild(container)
 
   const popup = getPopup()
-  const content = getContent()
-  const input = getChildByClass(content, swalClasses.input)
-  const file = getChildByClass(content, swalClasses.file)
-  const range = content.querySelector(`.${swalClasses.range} input`)
-  const rangeOutput = content.querySelector(`.${swalClasses.range} output`)
-  const select = getChildByClass(content, swalClasses.select)
-  const checkbox = content.querySelector(`.${swalClasses.checkbox} input`)
-  const textarea = getChildByClass(content, swalClasses.textarea)
 
   // a11y
   popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive')
 
-  const resetValidationError = () => {
-    sweetAlert.isVisible() && sweetAlert.resetValidationError()
-  }
+  // const resetValidationError = () => {
+  //  sweetAlert.isVisible() && sweetAlert.resetValidationError()
+  // }
 
-  input.oninput = resetValidationError
-  file.onchange = resetValidationError
-  select.onchange = resetValidationError
-  checkbox.onchange = resetValidationError
-  textarea.oninput = resetValidationError
-
-  range.oninput = () => {
-    resetValidationError()
-    rangeOutput.value = range.value
-  }
-
-  range.onchange = () => {
-    resetValidationError()
-    range.previousSibling.value = range.value
-  }
+  // TODO: Reset validation on input
 
   return popup
 }
@@ -103,20 +81,8 @@ const sweetHTML = `
    </div>
    <div class="${swalClasses.content}">
      <div id="${swalClasses.content}"></div>
-     <input class="${swalClasses.input}" />
-     <input type="file" class="${swalClasses.file}" />
-     <div class="${swalClasses.range}">
-       <output></output>
-       <input type="range" />
-     </div>
-     <select class="${swalClasses.select}"></select>
-     <div class="${swalClasses.radio}"></div>
-     <label for="${swalClasses.checkbox}" class="${swalClasses.checkbox}">
-       <input type="checkbox" />
-     </label>
-     <textarea class="${swalClasses.textarea}"></textarea>
-     <div class="${swalClasses.validationerror}" id="${swalClasses.validationerror}"></div>
      <div class="${swalClasses['inputs-wrapper']}"></div>
+     <div class="${swalClasses.validationerror}" id="${swalClasses.validationerror}"></div>
    </div>
    <div class="${swalClasses.actions}">
      <button type="button" class="${swalClasses.confirm}">OK</button>
@@ -156,6 +122,15 @@ export const getButtonsWrapper = () => {
 }
 
 export const getActions = () => elementByClass(swalClasses.actions)
+
+export const getInputsWrapper = () => elementByClass(swalClasses['inputs-wrapper'])
+
+export const getInput = (name) => getInputsWrapper().querySelector(`[name=${name}]`)
+
+export const closest = (el, selector) => {
+  while ((el = el.parentElement) && !el.classList.contains(selector));
+  return el
+}
 
 export const getCloseButton = () => elementByClass(swalClasses.close)
 

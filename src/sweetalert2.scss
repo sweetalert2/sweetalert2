@@ -527,7 +527,7 @@ body {
 
   .swal2-title {
     color: lighten($swal2-black, 35);
-    font-size: 30px;
+    font-size: $swal2-title-font-size;
     text-align: center;
     font-weight: 600;
     text-transform: none;
@@ -603,7 +603,7 @@ body {
     box-shadow: none;
     color: $swal2-white;
     cursor: pointer;
-    font-size: 17px;
+    font-size: $swal2-buttons-font-size;
     font-weight: 500;
     margin: 15px 5px 0;
     padding: 10px 32px;
@@ -651,7 +651,7 @@ body {
   }
 
   .swal2-content {
-    font-size: 18px;
+    font-size: $swal2-content-font-size;
     text-align: center;
     font-weight: 300;
     position: relative;
@@ -677,7 +677,7 @@ body {
   .swal2-textarea {
     width: 100%;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: $swal2-input-font-size;
     border-radius: 3px;
     border: 1px solid $swal2-input-border;
     box-shadow: inset 0 1px 1px $swal2-input-box-shadow;
@@ -733,7 +733,7 @@ body {
   }
 
   .swal2-file {
-    font-size: 20px;
+    font-size: $swal2-input-font-size;
   }
 
   .swal2-textarea {
@@ -743,7 +743,7 @@ body {
 
   .swal2-select {
     color: lighten($swal2-black, 33);
-    font-size: inherit;
+    font-size: $swal2-input-font-size;
     padding: 5px 10px;
     min-width: 40%;
     max-width: 100%;
@@ -783,7 +783,7 @@ body {
     overflow: hidden;
     padding: 10px;
     color: lighten($swal2-black, 50);
-    font-size: 16px;
+    font-size: $swal2-validation-font-size;
     font-weight: 300;
     display: none;
 

@@ -592,6 +592,36 @@ QUnit.test('esc key', (assert) => {
     key: 'Escape'
   }))
 })
+
+QUnit.test('allowEscapeKey as a function', (assert) => {
+  const done = assert.async()
+
+  let functionWasCalled = false
+  const allowEscapeKey = () => {
+    functionWasCalled = true
+    return false
+  }
+
+  swal({
+    title: 'allowEscapeKey as a function',
+    allowEscapeKey,
+    animation: false,
+    onOpen: () => {
+      assert.equal(functionWasCalled, false)
+
+      $(document).trigger($.Event('keydown', {
+        key: 'Escape'
+      }))
+
+      setTimeout(() => {
+        assert.equal(functionWasCalled, true)
+        assert.ok(swal.isVisible())
+
+        done()
+      })
+    }
+  })
+})
 QUnit.test('close button', (assert) => {
   const done = assert.async()
 

@@ -69,3 +69,10 @@ export const warnOnce = (message) => {
     warn(message)
   }
 }
+
+/**
+ * If `arg` is a function, call it (with no arguments or context) and return the result.
+ * Otherwise, just pass the value through
+ * @param arg
+ */
+export const callIfFunction = (arg) => typeof arg === 'function' ? arg() : arg

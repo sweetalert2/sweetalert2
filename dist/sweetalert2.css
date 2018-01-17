@@ -1,6 +1,7 @@
 html.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown),
 body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
-  overflow-y: hidden; }
+  overflow-y: hidden;
+  height: auto; }
 
 body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast {
   -webkit-box-orient: vertical;
@@ -399,6 +400,14 @@ body.swal2-no-backdrop .swal2-shown {
     outline: none; }
   .swal2-popup.swal2-loading {
     overflow-y: hidden; }
+  .swal2-popup .swal2-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
   .swal2-popup .swal2-title {
     color: #595959;
     font-size: 30px;

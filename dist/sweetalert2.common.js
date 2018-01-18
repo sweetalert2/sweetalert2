@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.4.0
+ * sweetalert2 v7.4.1
  * Released under the MIT License.
  */
 'use strict';
@@ -151,6 +151,15 @@ var warnOnce = function warnOnce(message) {
     previousWarnOnceMessages.push(message);
     warn(message);
   }
+};
+
+/**
+ * If `arg` is a function, call it (with no arguments or context) and return the result.
+ * Otherwise, just pass the value through
+ * @param arg
+ */
+var callIfFunction = function callIfFunction(arg) {
+  return typeof arg === 'function' ? arg() : arg;
 };
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
@@ -1220,14 +1229,8 @@ var sweetAlert = function sweetAlert() {
         if (e.target !== container) {
           return;
         }
-        if (params.allowOutsideClick) {
-          if (typeof params.allowOutsideClick === 'function') {
-            if (params.allowOutsideClick()) {
-              dismissWith('overlay');
-            }
-          } else {
-            dismissWith('overlay');
-          }
+        if (callIfFunction(params.allowOutsideClick)) {
+          dismissWith('overlay');
         }
       };
     }
@@ -1318,7 +1321,7 @@ var sweetAlert = function sweetAlert() {
         }
 
         // ESC
-      } else if ((e.key === 'Escape' || e.key === 'Esc') && params.allowEscapeKey === true) {
+      } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(params.allowEscapeKey) === true) {
         dismissWith('esc');
       }
     };
@@ -1647,7 +1650,7 @@ var sweetAlert = function sweetAlert() {
     openPopup(params.animation, params.onBeforeOpen, params.onOpen);
 
     if (!params.toast) {
-      if (!params.allowEnterKey) {
+      if (!callIfFunction(params.allowEnterKey)) {
         if (document.activeElement) {
           document.activeElement.blur();
         }
@@ -1875,7 +1878,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.4.0';
+sweetAlert.version = '7.4.1';
 
 sweetAlert.default = sweetAlert;
 

@@ -224,7 +224,7 @@ declare module 'sweetalert2' {
 
     export type SweetAlertDismissalReason = 'cancel' | 'close' | 'overlay' | 'esc' | 'timer';
 
-    export type SweetAlertAllowOutsideClick = () => boolean;
+    export type SweetAlertBooleanFunction = () => boolean;
 
     export interface SweetAlertInputOptions {
         [inputValue: string]: string;
@@ -373,22 +373,25 @@ declare module 'sweetalert2' {
          *
          * @default true
          */
-        allowOutsideClick?: boolean | SweetAlertAllowOutsideClick;
+        allowOutsideClick?: boolean | SweetAlertBooleanFunction;
 
         /**
          * If set to false, the user can't dismiss the modal by pressing the Escape key.
+         * You can also pass a custom function returning a boolean value, e.g. if you want
+         * to disable the escape key for the loading state of a modal.
          *
          * @default true
          */
-        allowEscapeKey?: boolean;
+        allowEscapeKey?: boolean | SweetAlertBooleanFunction;
 
         /**
          * If set to false, the user can't confirm the modal by pressing the Enter or Space keys,
          * unless they manually focus the confirm button.
+         * You can also pass a custom function returning a boolean value.
          *
          * @default true
          */
-        allowEnterKey?: boolean;
+        allowEnterKey?: boolean | SweetAlertBooleanFunction;
 
         /**
          * If set to false, a "Confirm"-button will not be shown.

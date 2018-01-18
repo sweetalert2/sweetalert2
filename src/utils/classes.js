@@ -2,10 +2,16 @@ export const swalPrefix = 'swal2-'
 
 export const prefix = (items) => {
   const result = {}
+
   for (const i in items) {
-    result[items[i]] = swalPrefix + items[i]
+    result[items[i]] = prefixItem(items[i])
   }
+
   return result
+}
+
+export const prefixItem = (item) => {
+  return swalPrefix + item
 }
 
 export const swalClasses = prefix([
@@ -64,7 +70,13 @@ export const swalClasses = prefix([
   'bottom-right',
   'grow-row',
   'grow-column',
-  'grow-fullscreen'
+  'grow-fullscreen',
+  'inputs-wrapper',
+  'form-control',
+  'radio-input-container',
+  'checkbox-input-container',
+  'radio-input',
+  'checkbox-input'
 ])
 
 export const iconTypes = prefix([

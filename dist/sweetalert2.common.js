@@ -36,6 +36,7 @@ var defaultParams = {
   showCloseButton: false,
   closeButtonAriaLabel: 'Close this dialog',
   showLoaderOnConfirm: false,
+  inputs: [],
   imageUrl: null,
   imageWidth: null,
   imageHeight: null,
@@ -77,7 +78,7 @@ var prefix = function prefix(items) {
   return result;
 };
 
-var swalClasses = prefix(['container', 'shown', 'iosfix', 'popup', 'modal', 'no-backdrop', 'toast', 'toast-shown', 'overlay', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'header', 'content', 'actions', 'confirm', 'cancel', 'icon', 'image', 'input', 'has-input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen']);
+var swalClasses = prefix(['container', 'shown', 'iosfix', 'popup', 'modal', 'no-backdrop', 'toast', 'toast-shown', 'overlay', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'header', 'content', 'actions', 'confirm', 'cancel', 'icon', 'image', 'input', 'has-input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen', 'inputs-wrapper', 'form-control', 'radio-input-container', 'checkbox-input-container', 'radio-input', 'checkbox-input']);
 
 var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
@@ -153,6 +154,15 @@ var warnOnce = function warnOnce(message) {
   }
 };
 
+/**
+ * If `arg` is a function, call it (with no arguments or context) and return the result.
+ * Otherwise, just pass the value through
+ * @param arg
+ */
+var callIfFunction = function callIfFunction(arg) {
+  return typeof arg === 'function' ? arg() : arg;
+};
+
 // Remember state in cases where opening and handling a modal will fiddle with it.
 var states = {
   previousActiveElement: null,
@@ -226,7 +236,7 @@ var init = function init(params) {
  * Manipulate DOM
  */
 
-var sweetHTML = ('\n <div role="dialog" aria-modal="true" aria-labelledby="' + swalClasses.title + '" aria-describedby="' + swalClasses.content + '" class="' + swalClasses.popup + '" tabindex="-1">\n   <div class="' + swalClasses.header + '">\n     <ul class="' + swalClasses.progresssteps + '"></ul>\n     <div class="' + swalClasses.icon + ' ' + iconTypes.error + '">\n       <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>\n     </div>\n     <div class="' + swalClasses.icon + ' ' + iconTypes.question + '">?</div>\n     <div class="' + swalClasses.icon + ' ' + iconTypes.warning + '">!</div>\n     <div class="' + swalClasses.icon + ' ' + iconTypes.info + '">i</div>\n     <div class="' + swalClasses.icon + ' ' + iconTypes.success + '">\n       <div class="swal2-success-circular-line-left"></div>\n       <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>\n       <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>\n       <div class="swal2-success-circular-line-right"></div>\n     </div>\n     <img class="' + swalClasses.image + '" />\n     <h2 class="' + swalClasses.title + '" id="' + swalClasses.title + '"></h2>\n     <button type="button" class="' + swalClasses.close + '">\xD7</button>\n   </div>\n   <div class="' + swalClasses.content + '">\n     <div id="' + swalClasses.content + '"></div>\n     <input class="' + swalClasses.input + '" />\n     <input type="file" class="' + swalClasses.file + '" />\n     <div class="' + swalClasses.range + '">\n       <output></output>\n       <input type="range" />\n     </div>\n     <select class="' + swalClasses.select + '"></select>\n     <div class="' + swalClasses.radio + '"></div>\n     <label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">\n       <input type="checkbox" />\n     </label>\n     <textarea class="' + swalClasses.textarea + '"></textarea>\n     <div class="' + swalClasses.validationerror + '" id="' + swalClasses.validationerror + '"></div>\n   </div>\n   <div class="' + swalClasses.actions + '">\n     <button type="button" class="' + swalClasses.confirm + '">OK</button>\n     <button type="button" class="' + swalClasses.cancel + '">Cancel</button>\n   </div>\n </div>\n').replace(/(^|\n)\s*/g, '');
+var sweetHTML = ('\n <div role="dialog" aria-modal="true" aria-labelledby="' + swalClasses.title + '" aria-describedby="' + swalClasses.content + '" class="' + swalClasses.popup + '" tabindex="-1">\n   <div class="' + swalClasses.header + '">\n     <ul class="' + swalClasses.progresssteps + '"></ul>\n     <div class="' + swalClasses.icon + ' ' + iconTypes.error + '">\n       <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>\n     </div>\n     <div class="' + swalClasses.icon + ' ' + iconTypes.question + '">?</div>\n     <div class="' + swalClasses.icon + ' ' + iconTypes.warning + '">!</div>\n     <div class="' + swalClasses.icon + ' ' + iconTypes.info + '">i</div>\n     <div class="' + swalClasses.icon + ' ' + iconTypes.success + '">\n       <div class="swal2-success-circular-line-left"></div>\n       <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>\n       <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>\n       <div class="swal2-success-circular-line-right"></div>\n     </div>\n     <img class="' + swalClasses.image + '" />\n     <h2 class="' + swalClasses.title + '" id="' + swalClasses.title + '"></h2>\n     <button type="button" class="' + swalClasses.close + '">\xD7</button>\n   </div>\n   <div class="' + swalClasses.content + '">\n     <div id="' + swalClasses.content + '"></div>\n     <input class="' + swalClasses.input + '" />\n     <input type="file" class="' + swalClasses.file + '" />\n     <div class="' + swalClasses.range + '">\n       <output></output>\n       <input type="range" />\n     </div>\n     <select class="' + swalClasses.select + '"></select>\n     <div class="' + swalClasses.radio + '"></div>\n     <label for="' + swalClasses.checkbox + '" class="' + swalClasses.checkbox + '">\n       <input type="checkbox" />\n     </label>\n     <textarea class="' + swalClasses.textarea + '"></textarea>\n     <div class="' + swalClasses.validationerror + '" id="' + swalClasses.validationerror + '"></div>\n     <div class="' + swalClasses['inputs-wrapper'] + '"></div>\n   </div>\n   <div class="' + swalClasses.actions + '">\n     <button type="button" class="' + swalClasses.confirm + '">OK</button>\n     <button type="button" class="' + swalClasses.cancel + '">Cancel</button>\n   </div>\n </div>\n').replace(/(^|\n)\s*/g, '');
 
 var getContainer = function getContainer() {
   return document.body.querySelector('.' + swalClasses.container);
@@ -497,6 +507,362 @@ var _extends = Object.assign || function (target) {
   }
 
   return target;
+};
+
+var baseInput = {
+  label: '',
+  placeholder: '',
+  type: '', // text, textarea, select, file, range, checkbox, radio
+  value: '',
+  options: {}, // For select. checkbox, radio
+  config: {}, // Input specific config (currently only for range)
+  validator: function validator() {},
+
+  attributes: {},
+  classes: '',
+  events: {} // Attach custom events to each input (change, keyup, focus, hover)
+
+
+  /**
+   * Build the form using provided inputs
+   *
+   * @param inputs
+   */
+};var build = function build(inputs) {
+  inputs.map(function (input) {
+    return _extends({}, baseInput, input);
+  }).forEach(addControl);
+};
+
+/**
+ * Add all provided attributes to an input
+ *
+ * @param input
+ * @param attributes
+ *
+ * @return {HTMLElement}
+ */
+var addInputAttributes = function addInputAttributes(input) {
+  var attributes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  for (var attr in attributes) {
+    input.setAttribute(attr, attributes[attr]);
+  }
+
+  return input;
+};
+
+/**
+ * Create a basic control wrapper for a form element
+ *
+ * @return {HTMLDivElement}
+ */
+var createControlWrapper = function createControlWrapper() {
+  var inputContainer = document.createElement('div');
+  inputContainer.classList.add(swalClasses['form-control']);
+
+  return inputContainer;
+};
+
+/**
+ * Create a label
+ *
+ * @param label
+ *
+ * @return {HTMLLabelElement}
+ */
+var createLabel = function createLabel(label) {
+  var element = document.createElement('label');
+  element.textContent = label;
+
+  return element;
+};
+
+/**
+ * Add a single input element to the dom
+ *
+ * @param control
+ */
+var addFormControlToDom = function addFormControlToDom(control) {
+  document.getElementsByClassName(swalClasses['inputs-wrapper'])[0].appendChild(control);
+};
+
+/**
+ * Generate a base control element. Here we can attach
+ * anything common to all inputs
+ *
+ * @param tag
+ * @param controlObject
+ *
+ * @return {HTMLElement}
+ */
+var createBaseControl = function createBaseControl(tag, controlObject) {
+  var input = document.createElement(tag);
+
+  if (!swalClasses[tag] && !swalClasses[controlObject.type]) {
+    input.classList.add(swalClasses.input);
+  }
+  if (swalClasses[tag] && !swalClasses[controlObject.type]) {
+    input.classList.add(swalClasses[tag]);
+  }
+  if (swalClasses[controlObject.type]) {
+    input.classList.add(swalClasses[controlObject.type]);
+  }
+  if (controlObject.classes) {
+    controlObject.classes.split(' ').forEach(function (_class) {
+      input.classList.add(_class);
+    });
+  }
+
+  input = addInputAttributes(input, controlObject.attributes);
+
+  return input;
+};
+
+/**
+ * Create an input element
+ *
+ * @param {object} controlObject
+ *
+ * @return {HTMLElement}
+ */
+var createInput = function createInput(controlObject) {
+  var input = createBaseControl('input', controlObject);
+
+  if (controlObject.placeholder) {
+    input.placeholder = controlObject.placeholder;
+  }
+  input.type = controlObject.type;
+  if (typeof controlObject.value !== 'undefined') {
+    input.value = controlObject.value;
+  }
+
+  return input;
+};
+
+/**
+ * Create a range input element
+ *
+ * @param {object} controlObject
+ *
+ * @return {HTMLElement}
+ */
+var createRange = function createRange(controlObject) {
+  var inputContainer = document.createElement('div');
+  inputContainer.classList.add(swalClasses.range);
+
+  var output = document.createElement('output');
+  inputContainer.appendChild(output);
+
+  var input = document.createElement('input');
+  input.type = controlObject.type;
+  if (typeof controlObject.value !== 'undefined') {
+    input.value = controlObject.value;
+  }
+  input.min = controlObject.config.min;
+  input.max = controlObject.config.max;
+  input.step = controlObject.config.step;
+  output.value = input.value;
+
+  input.oninput = function () {
+    output.value = input.value;
+  };
+
+  inputContainer.appendChild(input);
+
+  return inputContainer;
+};
+
+/**
+ * Create a textarea element
+ *
+ * @param controlObject
+ *
+ * @return {HTMLElement}
+ */
+var createTextarea = function createTextarea(controlObject) {
+  var input = createBaseControl('textarea', controlObject);
+
+  if (controlObject.placeholder) {
+    input.placeholder = controlObject.placeholder;
+  }
+  input.type = controlObject.type;
+  if (typeof controlObject.value !== 'undefined') {
+    input.value = controlObject.value;
+  }
+
+  return input;
+};
+
+/**
+ * Create a select element
+ *
+ * @param controlObject
+ *
+ * @return {HTMLElement}
+ */
+var createSelect = function createSelect(controlObject) {
+  var input = createBaseControl('select', controlObject);
+
+  // If placeholder provided, we'll add an
+  // initial unselectabble option to the select
+  if (controlObject.placeholder) {
+    var option = document.createElement('option');
+
+    option.textContent = controlObject.placeholder;
+    option.disabled = true;
+    option.selected = true;
+
+    input.appendChild(option);
+  }
+
+  // Add each option to the select
+  for (var _option in controlObject.options) {
+    var optionElement = document.createElement('option');
+
+    optionElement.value = _option;
+    optionElement.textContent = controlObject.options[_option];
+
+    input.appendChild(optionElement);
+  }
+
+  if (typeof controlObject.value !== 'undefined') {
+    input.value = controlObject.value;
+  }
+
+  return input;
+};
+
+/**
+ * Create a file input element
+ *
+ * @param controlObject
+ *
+ * @return {HTMLElement}
+ */
+var createFile = function createFile(controlObject) {
+  var input = createBaseControl('input', controlObject);
+  input.type = controlObject.type;
+
+  return input;
+};
+
+/**
+ * Create a radio input element
+ *
+ * @param controlObject
+ */
+var createRadio = function createRadio(controlObject) {
+  var inputOuterContainer = document.createElement('div');
+  inputOuterContainer.classList.add(swalClasses[controlObject.type + '-input-container']);
+
+  // Add each option to the select
+  for (var option in controlObject.options) {
+    var inputContainer = document.createElement('div');
+    inputContainer.classList.add(swalClasses[controlObject.type + '-input']);
+
+    var label = createLabel(controlObject.options[option]);
+
+    var input = createBaseControl('input', controlObject);
+    input.type = controlObject.type;
+    input.value = option;
+
+    // Build up the input within the container
+    inputContainer.appendChild(input);
+    inputContainer.appendChild(label);
+    inputOuterContainer.appendChild(inputContainer);
+  }
+
+  return inputOuterContainer;
+};
+
+/**
+ * Add a control to the dom
+ *
+ * @param controlObject
+ */
+var addControl = function addControl(controlObject) {
+  var inputContainer = createControlWrapper();
+
+  if (controlObject.label) {
+    inputContainer.appendChild(createLabel(controlObject.label));
+  }
+
+  var control = void 0;
+  switch (controlObject.type) {
+    case 'text':
+    case 'email':
+    case 'password':
+    case 'number':
+    case 'tel':
+    case 'url':
+      control = createInput(controlObject);
+      break;
+    case 'textarea':
+      control = createTextarea(controlObject);
+      break;
+    case 'select':
+      control = createSelect(controlObject);
+      break;
+    case 'file':
+      control = createFile(controlObject);
+      break;
+    case 'range':
+      control = createRange(controlObject);
+      break;
+    case 'radio':
+    case 'checkbox':
+      control = createRadio(controlObject);
+      break;
+    default:
+      console.log('err');
+      return;
+  }
+
+  inputContainer.appendChild(control);
+  addFormControlToDom(inputContainer);
+};
+
+/**
+ * Perform a basic regex text against a value
+ *
+ * @param value
+ * @param regex
+ * @param errorMessage
+ *
+ * @return {Promise<any>}
+ */
+var regexTest = function regexTest(value, regex, errorMessage) {
+  return new Promise(function (resolve, reject) {
+    if (!regex.test(value)) {
+      return reject(errorMessage);
+    }
+    resolve();
+  });
+};
+
+/**
+ * Validate an email address
+ *
+ * @param value
+ *
+ * @return {Promise<any>}
+ */
+var email = function email(value) {
+  return regexTest(value, /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/, 'Invalid email address');
+};
+
+/**
+ * Validate a url
+ *
+ * @param value
+ *
+ * @return {Promise<any>}
+ */
+var url = function url(value) {
+  return regexTest(value,
+  // taken from https://stackoverflow.com/a/3809435/1331425
+  /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/, 'Invalid URL');
 };
 
 var popupParams = _extends({}, defaultParams);
@@ -915,31 +1281,12 @@ var sweetAlert = function sweetAlert() {
       params.extraParams = args[0].extraParams;
 
       if (params.input === 'email' && params.inputValidator === null) {
-        var inputValidator = function inputValidator(email) {
-          return new Promise(function (resolve, reject) {
-            var emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/;
-            if (emailRegex.test(email)) {
-              resolve();
-            } else {
-              reject('Invalid email address');
-            }
-          });
-        };
+        var inputValidator = email;
         params.inputValidator = params.expectRejections ? inputValidator : sweetAlert.adaptInputValidator(inputValidator);
       }
 
       if (params.input === 'url' && params.inputValidator === null) {
-        var _inputValidator = function _inputValidator(url) {
-          return new Promise(function (resolve, reject) {
-            // taken from https://stackoverflow.com/a/3809435/1331425
-            var urlRegex = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/;
-            if (urlRegex.test(url)) {
-              resolve();
-            } else {
-              reject('Invalid URL');
-            }
-          });
-        };
+        var _inputValidator = url;
         params.inputValidator = params.expectRejections ? _inputValidator : sweetAlert.adaptInputValidator(_inputValidator);
       }
       break;
@@ -1220,14 +1567,8 @@ var sweetAlert = function sweetAlert() {
         if (e.target !== container) {
           return;
         }
-        if (params.allowOutsideClick) {
-          if (typeof params.allowOutsideClick === 'function') {
-            if (params.allowOutsideClick()) {
-              dismissWith('overlay');
-            }
-          } else {
-            dismissWith('overlay');
-          }
+        if (callIfFunction(params.allowOutsideClick)) {
+          dismissWith('overlay');
         }
       };
     }
@@ -1318,7 +1659,7 @@ var sweetAlert = function sweetAlert() {
         }
 
         // ESC
-      } else if ((e.key === 'Escape' || e.key === 'Esc') && params.allowEscapeKey === true) {
+      } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(params.allowEscapeKey) === true) {
         dismissWith('esc');
       }
     };
@@ -1520,6 +1861,8 @@ var sweetAlert = function sweetAlert() {
       hide(inputContainer);
     }
 
+    build(params.inputs);
+
     var populateInputOptions = void 0;
     switch (params.input) {
       case 'text':
@@ -1647,7 +1990,7 @@ var sweetAlert = function sweetAlert() {
     openPopup(params.animation, params.onBeforeOpen, params.onOpen);
 
     if (!params.toast) {
-      if (!params.allowEnterKey) {
+      if (!callIfFunction(params.allowEnterKey)) {
         if (document.activeElement) {
           document.activeElement.blur();
         }

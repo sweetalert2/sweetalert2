@@ -380,6 +380,10 @@ body {
     overflow-y: hidden;
     box-shadow: 0 0 10px $swal2-box-shadow;
 
+    .swal2-header {
+      flex-direction: row;
+    }
+
     .swal2-title {
       max-width: 300px;
       font-size: 16px;
@@ -523,6 +527,7 @@ body {
   .swal2-header {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .swal2-title {

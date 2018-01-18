@@ -321,3 +321,5 @@ Has SweetAlert2 helped you create an amazing application? You can show your supp
 
 - https://www.paypal.me/limonte/5eur
 - https://www.patreon.com/limonte
+
+### [Hall of Donators :trophy:](DONATIONS.md)

@@ -109,7 +109,7 @@ body {
 
 .swal2-popup {
   &.swal2-toast {
-    width: 300px;
+    width: $swal2-toast-width;
     padding: $swal2-toast-padding;
     flex-direction: row;
     align-items: center;
@@ -121,7 +121,6 @@ body {
     }
 
     .swal2-title {
-      max-width: 300px;
       font-size: 16px;
       justify-content: flex-start;
       margin: 0 .6rem;

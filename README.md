@@ -164,7 +164,7 @@ Configuration
 | `toast`                  | `false`               | Whether or not an alert should be treated as a toast notification. This option is normally coupled with the `position` parameter and a timer. Toasts are NEVER autofocused.
 | `target`                 | `'body'`              | The container element for adding modal into. |
 | `input`                  | `null`                | Input field type, can be `'text'`, `'email'`, `'password'`, `'number'`, `'tel'`, `'range'`, `'textarea'`, `'select'`, `'radio'`, `'checkbox'`, `'file'` and `'url'`. |
-| `width`                  | `'500px'`             | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. |
+| `width`                  | `null`                | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. The default width is `32rem`. |
 | `padding`                | `null`                | Modal window padding. The default padding is `1.25rem`. |
 | `background`             | `'#fff'`              | Modal window background (CSS `background` property). |
 | `position`               | `'center'`            | Modal window position, can be `'top'`, `'top-start'`, `'top-end'`, `'center'`, `'center-start'`, `'center-end'`, `'bottom'`, `'bottom-start'`, or `'bottom-end'`. |

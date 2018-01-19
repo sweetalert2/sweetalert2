@@ -56,8 +56,9 @@ const setParameters = (params) => {
   }
 
   // Set popup width
-  let popupWidth = (params.width === defaultParams.width && params.toast) ? 'auto' : params.width
-  popup.style.width = (typeof popupWidth === 'number') ? popupWidth + 'px' : popupWidth
+  if (params.width) {
+    popup.style.width = (typeof params.width === 'number') ? params.width + 'px' : params.width
+  }
 
   // Set popup padding
   if (params.padding) {

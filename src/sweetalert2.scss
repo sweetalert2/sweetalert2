@@ -262,6 +262,7 @@ body {
   overflow-y: auto;
   display: none;
   position: relative;
+  width: $swal2-width;
   max-width: 100%;
 
   &:focus {

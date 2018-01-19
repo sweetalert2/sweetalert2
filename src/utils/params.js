@@ -36,7 +36,7 @@ export default {
   imageAlt: '',
   imageClass: null,
   timer: null,
-  width: 500,
+  width: null,
   padding: null,
   background: '#fff',
   input: null,

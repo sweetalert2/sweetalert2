@@ -255,7 +255,7 @@ body {
   background-color: $swal2-white;
   font-family: $swal2-font;
   padding: $swal2-padding;
-  border-radius: 5px;
+  border-radius: .3125rem;
   box-sizing: border-box;
   justify-content: center;
   overflow-x: hidden;
@@ -489,15 +489,15 @@ body {
   }
 
   .swal2-textarea {
-    height: 108px;
-    padding: 12px;
+    height: 6.75rem;
+    padding: .75rem;
   }
 
   .swal2-select {
     color: lighten($swal2-black, 33);
     font-size: $swal2-input-font-size;
-    padding: 5px 10px;
-    min-width: 40%;
+    padding: .375rem .625rem;
+    min-width: 50%;
     max-width: 100%;
   }
 

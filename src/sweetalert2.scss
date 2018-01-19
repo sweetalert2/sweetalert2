@@ -711,19 +711,19 @@ body {
 
     input,
     output {
-      height: 43px;
-      line-height: 43px;
+      height: 2.625rem;
+      line-height: 2.625rem;
       margin: 20px auto;
       padding: 0;
     }
   }
 
   .swal2-input {
-    height: 43px;
-    padding: 0 12px;
+    height: 2.625rem;
+    padding: 0 .75rem;
 
     &[type='number'] {
-      max-width: 150px;
+      max-width: 10rem;
     }
   }
 

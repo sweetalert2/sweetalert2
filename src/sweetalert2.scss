@@ -23,10 +23,6 @@ body {
       & > .swal2-toast {
         flex-direction: column;
 
-        .swal2-icon {
-          margin: 0 0 15px;
-        }
-
         .swal2-actions {
           flex: 1;
           align-self: stretch;
@@ -365,7 +361,7 @@ body {
   font-family: $swal2-font;
   border-radius: 5px;
   box-sizing: border-box;
-  text-align: center;
+  justify-content: center;
   overflow-x: hidden;
   overflow-y: auto;
   display: none;
@@ -387,19 +383,20 @@ body {
     .swal2-title {
       max-width: 300px;
       font-size: 16px;
-      text-align: left;
+      justify-content: flex-start;
+      margin: 0 .6rem;
     }
 
     .swal2-content {
       font-size: 14px;
-      text-align: left;
+      justify-content: flex-start;
     }
 
     .swal2-icon {
       width: 32px;
       min-width: 32px;
       height: 32px;
-      margin: 0 15px 0 0;
+      margin: 0;
 
       &.swal2-success {
 
@@ -567,7 +564,6 @@ body {
           height: 40px;
           padding: 0;
           margin: 7.5px;
-          vertical-align: top;
           background-color: transparent !important;
           color: transparent;
           cursor: default;
@@ -588,7 +584,6 @@ body {
             display: inline-block;
             content: '';
             margin-left: 5px;
-            vertical-align: -1px;
             height: 15px;
             width: 15px;
             border: 3px solid lighten($swal2-black, 60);
@@ -632,6 +627,7 @@ body {
     width: 38px;
     height: 40px;
     font-size: 36px;
+    justify-content: center;
     line-height: 40px;
     font-family: serif;
     position: absolute;
@@ -657,15 +653,17 @@ body {
 
   .swal2-content {
     font-size: $swal2-content-font-size;
-    text-align: center;
+    justify-content: center;
     font-weight: 300;
-    position: relative;
-    float: none;
     margin: 0;
     padding: 0;
     line-height: normal;
     color: lighten($swal2-black, 33);
     word-wrap: break-word;
+  }
+
+  #swal2-content {
+    text-align: center;
   }
 
   .swal2-input,
@@ -706,14 +704,12 @@ body {
 
   .swal2-range {
     input {
-      float: left;
       width: 80%;
     }
 
     output {
-      float: right;
       width: 20%;
-      font-size: 20px;
+      font-size: $swal2-input-font-size;
       font-weight: 600;
       text-align: center;
     }
@@ -722,7 +718,6 @@ body {
     output {
       height: 43px;
       line-height: 43px;
-      vertical-align: middle;
       margin: 20px auto;
       padding: 0;
     }
@@ -754,31 +749,18 @@ body {
     max-width: 100%;
   }
 
-  .swal2-radio {
-    border: 0;
+  .swal2-radio,
+  .swal2-checkbox {
+    justify-content: center;
+    align-items: center;
 
     label {
-      &:not(:first-child) {
-        margin-left: 20px;
-      }
-    }
-
-    input,
-    span {
-      vertical-align: middle;
+      font-size: $swal2-input-font-size;
+      margin: 0 .6rem;
     }
 
     input {
-      margin: 0 3px 0 0;
-    }
-  }
-
-  .swal2-checkbox {
-    color: lighten($swal2-black, 33);
-
-    input,
-    span {
-      vertical-align: middle;
+      margin: 0 .4rem;
     }
   }
 

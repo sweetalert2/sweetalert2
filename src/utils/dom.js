@@ -106,8 +106,8 @@ const sweetHTML = `
      <input class="${swalClasses.input}" />
      <input type="file" class="${swalClasses.file}" />
      <div class="${swalClasses.range}">
-       <output></output>
        <input type="range" />
+       <output></output>
      </div>
      <select class="${swalClasses.select}"></select>
      <div class="${swalClasses.radio}"></div>
@@ -248,7 +248,7 @@ export const getChildByClass = (elem, className) => {
 
 export const show = (elem, display) => {
   if (!display) {
-    display = (elem === getPopup() || elem === getActions()) ? 'flex' : 'block'
+    display = (elem.id === swalClasses.content) ? 'block' : 'flex'
   }
   elem.style.opacity = ''
   elem.style.display = display

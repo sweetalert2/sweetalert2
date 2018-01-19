@@ -37,7 +37,7 @@ export default {
   imageClass: null,
   timer: null,
   width: 500,
-  padding: 20,
+  padding: '1.25rem',
   background: '#fff',
   input: null,
   inputPlaceholder: '',

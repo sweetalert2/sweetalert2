@@ -443,11 +443,6 @@ body {
       }
     }
 
-    .swal2-validationerror {
-      width: 100%;
-      margin: 5px -20px;
-    }
-
     .swal2-success {
       border-color: $swal2-success;
 
@@ -765,8 +760,9 @@ body {
   }
 
   .swal2-validationerror {
+    align-items: center;
+    justify-content: center;
     background-color: lighten($swal2-black, 94);
-    margin: 0 -20px;
     overflow: hidden;
     padding: 10px;
     color: lighten($swal2-black, 50);

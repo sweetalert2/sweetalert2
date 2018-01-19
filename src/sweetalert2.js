@@ -59,8 +59,11 @@ const setParameters = (params) => {
   let popupWidth = (params.width === defaultParams.width && params.toast) ? 'auto' : params.width
   popup.style.width = (typeof popupWidth === 'number') ? popupWidth + 'px' : popupWidth
 
-  let popupPadding = (params.padding === defaultParams.padding && params.toast) ? 'inherit' : params.padding
-  popup.style.padding = (typeof popupPadding === 'number') ? popupPadding + 'px' : popupPadding
+  // Set popup padding
+  if (params.padding) {
+    popup.style.padding = (typeof params.padding === 'number') ? params.padding + 'px' : params.padding
+  }
+
   popup.style.background = params.background
   const successIconParts = popup.querySelectorAll('[class^=swal2-success-circular-line], .swal2-success-fix')
   for (let i = 0; i < successIconParts.length; i++) {
@@ -921,7 +924,9 @@ const sweetAlert = (...args) => {
     sweetAlert.showValidationError = (error) => {
       const validationError = dom.getValidationError()
       validationError.innerHTML = error
-      validationError.style.margin = `0 -${params.padding}`
+      const popupComputedStyle = window.getComputedStyle(popup)
+      validationError.style.marginLeft = `-${popupComputedStyle.getPropertyValue('padding-left')}`
+      validationError.style.marginRight = `-${popupComputedStyle.getPropertyValue('padding-right')}`
       dom.show(validationError)
 
       const input = getInput()

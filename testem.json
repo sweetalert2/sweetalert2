@@ -11,5 +11,6 @@
     "launch_in_ci": [
       "Chrome",
       "Firefox"
-    ]
+    ],
+    "parallel": 100
 }

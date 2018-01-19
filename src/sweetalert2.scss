@@ -376,11 +376,12 @@ body {
     border: 0;
     margin: 0;
     padding: 0;
-    width: 38px;
-    height: 40px;
-    font-size: 36px;
+    width: $swal2-close-button-size;
+    height: $swal2-close-button-size;
+    // calc is needed for the correct focus outline, w/o calc: https://goo.gl/T3NYRm
+    font-size: calc(#{$swal2-close-button-size} - #{$swal2-close-button-size*.1});
+    line-height: $swal2-close-button-size;
     justify-content: center;
-    line-height: 40px;
     font-family: serif;
     position: absolute;
     top: 5px;

@@ -570,10 +570,12 @@ body {
 .swal2-icon {
   width: 80px;
   height: 80px;
+  font-size: 60px;
+  line-height: 80px;
   border: 4px solid transparent;
   border-radius: 50%;
   margin: 1.25rem auto 1.875rem;
-  padding: 0;
+  justify-content: center;
   position: relative;
   box-sizing: content-box;
   cursor: default;
@@ -584,7 +586,7 @@ body {
 
     .swal2-x-mark {
       position: relative;
-      display: block;
+      flex-grow: 1;
     }
 
     [class^='swal2-x-mark-line'] {
@@ -612,27 +614,18 @@ body {
     font-family: $swal2-font;
     color: $swal2-warning;
     border-color: lighten($swal2-warning, 7);
-    font-size: 60px;
-    line-height: 80px;
-    text-align: center;
   }
 
   &.swal2-info {
     font-family: $swal2-font;
     color: $swal2-info;
     border-color: lighten($swal2-info, 20);
-    font-size: 60px;
-    line-height: 80px;
-    text-align: center;
   }
 
   &.swal2-question {
     font-family: $swal2-font;
     color: $swal2-question;
     border-color: lighten($swal2-question, 20);
-    font-size: 60px;
-    line-height: 80px;
-    text-align: center;
   }
 
   &.swal2-success {

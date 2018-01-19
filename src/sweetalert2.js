@@ -921,6 +921,7 @@ const sweetAlert = (...args) => {
     sweetAlert.showValidationError = (error) => {
       const validationError = dom.getValidationError()
       validationError.innerHTML = error
+      validationError.style.margin = `0 -${params.padding}`
       dom.show(validationError)
 
       const input = getInput()

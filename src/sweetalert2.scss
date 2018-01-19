@@ -521,7 +521,7 @@ body {
     justify-content: center;
     background-color: lighten($swal2-black, 94);
     overflow: hidden;
-    padding: 10px;
+    padding: .625rem;
     color: lighten($swal2-black, 50);
     font-size: $swal2-validation-font-size;
     font-weight: 300;
@@ -530,14 +530,15 @@ body {
     &::before {
       content: '!';
       display: inline-block;
-      width: 24px;
-      height: 24px;
+      width: 1.5rem;
+      height: 1.5rem;
       border-radius: 50%;
       background-color: $swal2-validationerror-background;
       color: $swal2-validationerror-color;
-      line-height: 24px;
+      line-height: 1.5rem;
+      font-weight: 600;
       text-align: center;
-      margin-right: 10px;
+      margin: 0 .625rem;
     }
   }
 }

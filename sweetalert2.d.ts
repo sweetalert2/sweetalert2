@@ -310,14 +310,14 @@ declare module 'sweetalert2' {
         /**
          * Modal window width, including paddings (box-sizing: border-box). Can be in px or %.
          *
-         * @default '500px'
+         * @default null
          */
         width?: number | string;
 
         /**
          * Modal window padding.
          *
-         * @default 20
+         * @default null
          */
         padding?: number;
 
@@ -648,7 +648,7 @@ declare module 'sweetalert2' {
         /**
          * Distance between progress steps.
          *
-         * @default '40px'
+         * @default null
          */
         progressStepsDistance?: string;
 

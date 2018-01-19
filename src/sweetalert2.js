@@ -169,7 +169,9 @@ const setParameters = (params) => {
       if (index !== params.progressSteps.length - 1) {
         let line = document.createElement('li')
         dom.addClass(line, swalClasses.progressline)
-        line.style.width = params.progressStepsDistance
+        if (params.progressStepsDistance) {
+          line.style.width = params.progressStepsDistance
+        }
         progressStepsContainer.appendChild(line)
       }
     })

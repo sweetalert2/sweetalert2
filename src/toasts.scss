@@ -1,0 +1,358 @@
+body {
+  &.swal2-toast-shown {
+    &.swal2-has-input  > .swal2-container {
+      & > .swal2-toast {
+        flex-direction: column;
+
+        .swal2-actions {
+          flex: 1;
+          align-self: stretch;
+          justify-content: flex-end;
+        }
+
+        .swal2-loading {
+          justify-content: center;
+        }
+
+        .swal2-input {
+          height: 32px;
+          font-size: 14px;
+          margin: 5px auto;
+        }
+      }
+    }
+
+    & > .swal2-container {
+      position: fixed;
+      background-color: transparent;
+
+      &.swal2-shown {
+        background-color: transparent;
+      }
+
+      &.swal2-top {
+        top: 0;
+        left: 50%;
+        bottom: auto;
+        right: auto;
+        transform: translateX(-50%);
+      }
+
+      &.swal2-top-end,
+      &.swal2-top-right {
+        top: 0;
+        left: auto;
+        bottom: auto;
+        right: 0;
+      }
+
+      &.swal2-top-start,
+      &.swal2-top-left {
+        top: 0;
+        left: 0;
+        bottom: auto;
+        right: auto;
+      }
+
+      &.swal2-center-start,
+      &.swal2-center-left {
+        top: 50%;
+        left: 0;
+        bottom: auto;
+        right: auto;
+        transform: translateY(-50%);
+      }
+
+      &.swal2-center {
+        top: 50%;
+        left: 50%;
+        bottom: auto;
+        right: auto;
+        transform: translate(-50%, -50%);
+      }
+
+      &.swal2-center-end,
+      &.swal2-center-right {
+        top: 50%;
+        left: auto;
+        bottom: auto;
+        right: 0;
+        transform: translateY(-50%);
+      }
+
+      &.swal2-bottom-start,
+      &.swal2-bottom-left {
+        top: auto;
+        left: 0;
+        bottom: 0;
+        right: auto;
+      }
+
+      &.swal2-bottom {
+        top: auto;
+        left: 50%;
+        bottom: 0;
+        right: auto;
+        transform: translateX(-50%);
+      }
+
+      &.swal2-bottom-end,
+      &.swal2-bottom-right {
+        top: auto;
+        left: auto;
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+}
+
+.swal2-popup {
+  &.swal2-toast {
+    width: 300px;
+    padding: $swal2-toast-padding;
+    flex-direction: row;
+    align-items: center;
+    overflow-y: hidden;
+    box-shadow: 0 0 10px $swal2-box-shadow;
+
+    .swal2-header {
+      flex-direction: row;
+    }
+
+    .swal2-title {
+      max-width: 300px;
+      font-size: 16px;
+      justify-content: flex-start;
+      margin: 0 .6rem;
+    }
+
+    .swal2-close {
+      position: initial;
+    }
+
+    .swal2-content {
+      font-size: 14px;
+      justify-content: flex-start;
+    }
+
+    .swal2-icon {
+      width: 32px;
+      min-width: 32px;
+      height: 32px;
+      margin: 0;
+
+      &.swal2-success {
+
+        .swal2-success-ring {
+          width: 32px;
+          height: 32px;
+        }
+      }
+
+      &.swal2-info,
+      &.swal2-warning,
+      &.swal2-question {
+        font-size: 26px;
+        line-height: 32px;
+      }
+
+      &.swal2-error {
+
+        [class^='swal2-x-mark-line'] {
+          top: 14px;
+          width: 22px;
+
+          &[class$='left'] {
+            left: 5px;
+          }
+
+          &[class$='right'] {
+            right: 5px;
+          }
+        }
+      }
+    }
+
+    .swal2-actions {
+      margin: 0 0 0 5px;
+    }
+
+    .swal2-styled {
+      margin: 0 0 0 5px;
+      padding: 5px 10px;
+
+      &:focus {
+        box-shadow: 0 0 0 1px $swal2-white, 0 0 0 2px $swal2-focus-outline;
+      }
+    }
+
+    .swal2-success {
+      border-color: $swal2-success;
+
+      [class^='swal2-success-circular-line'] { // Emulate moving circular line
+        border-radius: 50%;
+        position: absolute;
+        width: 32px;
+        height: 45px;
+        transform: rotate(45deg);
+
+        &[class$='left'] {
+          border-radius: 64px 0 0 64px;
+          top: -4px;
+          left: -15px;
+
+          transform: rotate(-45deg);
+          transform-origin: 32px 32px;
+        }
+
+        &[class$='right'] {
+          border-radius: 0 64px 64px 0;
+          top: -5px;
+          left: 14px;
+          transform-origin: 0 32px;
+        }
+      }
+
+      .swal2-success-ring {
+        width: 32px;
+        height: 32px;
+      }
+
+      .swal2-success-fix {
+        width: 7px;
+        height: 43px;
+        left: 7px;
+        top: 0;
+      }
+
+      [class^='swal2-success-line'] {
+        height: 5px;
+
+        &[class$='tip'] {
+          width: 12px;
+          left: 3px;
+          top: 18px;
+        }
+
+        &[class$='long'] {
+          width: 22px;
+          right: 3px;
+          top: 15px;
+        }
+      }
+    }
+
+    .swal2-show {
+      animation: showSweetToast .5s;
+    }
+
+    .swal2-hide {
+      animation: hideSweetToast .2s forwards;
+    }
+
+    .swal2-animate-success-line-tip {
+      animation: animate-toast-success-tip .75s;
+    }
+
+    .swal2-animate-success-line-long {
+      animation: animate-toast-success-long .75s;
+    }
+  }
+}
+
+// Animations
+@keyframes showSweetToast {
+  0% {
+    transform: translateY(-10px) rotateZ(2deg);
+    opacity: 0;
+  }
+
+  33% {
+    transform: translateY(0) rotateZ(-2deg);
+    opacity: .5;
+  }
+
+  66% {
+    transform: translateY(5px) rotateZ(2deg);
+    opacity: .7;
+  }
+
+  100% {
+    transform: translateY(0) rotateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes hideSweetToast {
+  0% {
+    opacity: 1;
+  }
+
+  33% {
+    opacity: .5;
+  }
+
+  100% {
+    transform: rotateZ(1deg);
+    opacity: 0;
+  }
+}
+
+@keyframes animate-toast-success-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 9px;
+  }
+
+  54% {
+    width: 0;
+    left: 2px;
+    top: 2px;
+  }
+
+  70% {
+    width: 26px;
+    left: -4px;
+    top: 10px;
+  }
+
+  84% {
+    width: 8px;
+    left: 12px;
+    top: 17px;
+  }
+
+  100% {
+    width: 12px;
+    left: 3px;
+    top: 18px;
+  }
+}
+
+@keyframes animate-toast-success-long {
+  0% {
+    width: 0;
+    right: 22px;
+    top: 26px;
+  }
+
+  65% {
+    width: 0;
+    right: 15px;
+    top: 20px;
+  }
+
+  84% {
+    width: 18px;
+    right: 0;
+    top: 15px;
+  }
+
+  100% {
+    width: 22px;
+    right: 3px;
+    top: 15px;
+  }
+}

@@ -10,17 +10,14 @@ QUnit.test('modal shows up', (assert) => {
 })
 
 QUnit.test('modal width', (assert) => {
-  swal({text: '400px', width: 300})
+  swal({text: '300px', width: 300})
   assert.equal($('.swal2-modal')[0].style.width, '300px')
 
-  swal({text: '500px', width: '400px'})
+  swal({text: '400px', width: '400px'})
   assert.equal($('.swal2-modal')[0].style.width, '400px')
 
   swal({text: '90%', width: '90%'})
   assert.equal($('.swal2-modal')[0].style.width, '90%')
-
-  swal({text: 'default width'})
-  assert.equal($('.swal2-modal')[0].style.width, '500px')
 })
 
 QUnit.test('window keydown handler', (assert) => {

@@ -165,7 +165,7 @@ Configuration
 | `target`                 | `'body'`              | The container element for adding modal into. |
 | `input`                  | `null`                | Input field type, can be `'text'`, `'email'`, `'password'`, `'number'`, `'tel'`, `'range'`, `'textarea'`, `'select'`, `'radio'`, `'checkbox'`, `'file'` and `'url'`. |
 | `width`                  | `'500px'`             | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. |
-| `padding`                | `20`                  | Modal window padding. |
+| `padding`                | `null`                | Modal window padding. The default padding is `1.25rem`. |
 | `background`             | `'#fff'`              | Modal window background (CSS `background` property). |
 | `position`               | `'center'`            | Modal window position, can be `'top'`, `'top-start'`, `'top-end'`, `'center'`, `'center-start'`, `'center-end'`, `'bottom'`, `'bottom-start'`, or `'bottom-end'`. |
 | `grow`                   | `false`               | Paired with window position, sets the direction the modal should grow in, can be set to `'row'`, `'column'`, `'fullscreen'`, or `false`. |

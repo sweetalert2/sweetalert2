@@ -207,7 +207,7 @@ Configuration
 | `inputClass`             | `null`                | A custom CSS class for the input field. |
 | `progressSteps`          | `[]`                  | Progress steps, useful for modal queues, see <a href="https://sweetalert2.github.io/#chaining-modals">usage example</a>. |
 | `currentProgressStep`    | `null`                | Current active progress step. The default is `swal.getQueueStep()`. |
-| `progressStepsDistance`  | `'40px'`              | Distance between progress steps. |
+| `progressStepsDistance`  | `null`                | Distance between progress steps. The default distance is `2.5rem`. |
 | `onBeforeOpen`           | `null`                | Function to run when modal built, but not shown yet. Provides modal DOM element as the first argument. |
 | `onOpen`                 | `null`                | Function to run when modal opens, provides modal DOM element as the first argument. |
 | `onClose`                | `null`                | Function to run when modal closes, provides modal DOM element as the first argument. |

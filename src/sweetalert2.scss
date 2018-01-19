@@ -759,6 +759,7 @@ body {
   .swal2-progressline {
     background: $blue;
     height: .4em;
+    width: $swal2-progress-steps-distance;
     margin: 0 -1px;
     z-index: 10;
   }

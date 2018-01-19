@@ -51,7 +51,7 @@ export default {
   position: 'center',
   progressSteps: [],
   currentProgressStep: null,
-  progressStepsDistance: '40px',
+  progressStepsDistance: null,
   onBeforeOpen: null,
   onOpen: null,
   onClose: null,

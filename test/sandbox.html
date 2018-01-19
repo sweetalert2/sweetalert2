@@ -8,10 +8,15 @@
       html: 'custom <strong>content</strong>',
       input: 'text',
       type: 'success',
+      showCloseButton: true,
+      showCancelButton: true,
       preConfirm: (value) => {
         if (!value) {
           swal.showValidationError('Should not be empty!')
         }
+      },
+      onOpen: (modal) => {
+        console.log(modal)
       }
     }).then((result) => {
       console.log(result)

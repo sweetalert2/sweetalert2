@@ -431,7 +431,7 @@ body {
   .swal2-select,
   .swal2-radio,
   .swal2-checkbox {
-    margin: 1.25em auto;
+    margin: 1em auto;
   }
 
   .swal2-input,
@@ -468,16 +468,16 @@ body {
 
     output {
       width: 20%;
-      font-size: $swal2-input-font-size;
       font-weight: 600;
       text-align: center;
     }
 
     input,
     output {
+      font-size: $swal2-input-font-size;
       height: 2.625em;
       line-height: 2.625em;
-      margin: 1.25em auto;
+      margin: 1em auto;
       padding: 0;
     }
   }

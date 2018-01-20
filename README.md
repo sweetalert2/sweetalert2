@@ -164,8 +164,8 @@ Configuration
 | `toast`                  | `false`               | Whether or not an alert should be treated as a toast notification. This option is normally coupled with the `position` parameter and a timer. Toasts are NEVER autofocused.
 | `target`                 | `'body'`              | The container element for adding modal into. |
 | `input`                  | `null`                | Input field type, can be `'text'`, `'email'`, `'password'`, `'number'`, `'tel'`, `'range'`, `'textarea'`, `'select'`, `'radio'`, `'checkbox'`, `'file'` and `'url'`. |
-| `width`                  | `null`                | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. The default width is `32rem`. |
-| `padding`                | `null`                | Modal window padding. The default padding is `1.25rem`. |
+| `width`                  | `null`                | Modal window width, including paddings (`box-sizing: border-box`). Can be in `px` or `%`. The default width is `32em`. |
+| `padding`                | `null`                | Modal window padding. The default padding is `1.25em`. |
 | `background`             | `'#fff'`              | Modal window background (CSS `background` property). |
 | `position`               | `'center'`            | Modal window position, can be `'top'`, `'top-start'`, `'top-end'`, `'center'`, `'center-start'`, `'center-end'`, `'bottom'`, `'bottom-start'`, or `'bottom-end'`. |
 | `grow`                   | `false`               | Paired with window position, sets the direction the modal should grow in, can be set to `'row'`, `'column'`, `'fullscreen'`, or `false`. |
@@ -207,7 +207,7 @@ Configuration
 | `inputClass`             | `null`                | A custom CSS class for the input field. |
 | `progressSteps`          | `[]`                  | Progress steps, useful for modal queues, see <a href="https://sweetalert2.github.io/#chaining-modals">usage example</a>. |
 | `currentProgressStep`    | `null`                | Current active progress step. The default is `swal.getQueueStep()`. |
-| `progressStepsDistance`  | `null`                | Distance between progress steps. The default distance is `2.5rem`. |
+| `progressStepsDistance`  | `null`                | Distance between progress steps. The default distance is `2.5em`. |
 | `onBeforeOpen`           | `null`                | Function to run when modal built, but not shown yet. Provides modal DOM element as the first argument. |
 | `onOpen`                 | `null`                | Function to run when modal opens, provides modal DOM element as the first argument. |
 | `onClose`                | `null`                | Function to run when modal closes, provides modal DOM element as the first argument. |

@@ -699,7 +699,7 @@ body.swal2-no-backdrop .swal2-shown {
   .swal2-popup .swal2-select,
   .swal2-popup .swal2-radio,
   .swal2-popup .swal2-checkbox {
-    margin: 1.25em auto; }
+    margin: 1em auto; }
   .swal2-popup .swal2-input,
   .swal2-popup .swal2-file,
   .swal2-popup .swal2-textarea {
@@ -748,14 +748,14 @@ body.swal2-no-backdrop .swal2-shown {
     width: 80%; }
   .swal2-popup .swal2-range output {
     width: 20%;
-    font-size: 1.125em;
     font-weight: 600;
     text-align: center; }
   .swal2-popup .swal2-range input,
   .swal2-popup .swal2-range output {
+    font-size: 1.125em;
     height: 2.625em;
     line-height: 2.625em;
-    margin: 1.25em auto;
+    margin: 1em auto;
     padding: 0; }
   .swal2-popup .swal2-input {
     height: 2.625em;

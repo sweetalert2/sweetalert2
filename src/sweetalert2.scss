@@ -254,8 +254,9 @@ body {
   flex-direction: column;
   background-color: $swal2-white;
   font-family: $swal2-font;
+  font-size: $swal2-font-size;
   padding: $swal2-padding;
-  border-radius: .3125rem;
+  border-radius: .3125em;
   box-sizing: border-box;
   justify-content: center;
   overflow-x: hidden;
@@ -310,12 +311,12 @@ body {
       .swal2-styled {
         &.swal2-confirm {
           box-sizing: border-box;
-          border: .25rem solid transparent;
+          border: .25em solid transparent;
           border-color: transparent;
-          width: 2.5rem;
-          height: 2.5rem;
+          width: 2.5em;
+          height: 2.5em;
           padding: 0;
-          margin: .46875rem;
+          margin: .46875em;
           background-color: transparent !important;
           color: transparent;
           cursor: default;
@@ -351,14 +352,14 @@ body {
 
   .swal2-styled {
     border: 0;
-    border-radius: .25rem;
+    border-radius: .25em;
     box-shadow: none;
     color: $swal2-white;
     cursor: pointer;
     font-size: $swal2-buttons-font-size;
     font-weight: 500;
-    margin: 0 .3125rem;
-    padding: .625rem 2rem;
+    margin: 0 .3125em;
+    padding: .625em 2em;
 
     &:focus {
       outline: none;
@@ -367,7 +368,7 @@ body {
   }
 
   .swal2-image {
-    margin: 1.25rem auto;
+    margin: 1.25em auto;
     max-width: 100%;
   }
 
@@ -425,7 +426,7 @@ body {
   .swal2-select,
   .swal2-radio,
   .swal2-checkbox {
-    margin: 1.25rem auto;
+    margin: 1.25em auto;
   }
 
   .swal2-input,
@@ -469,19 +470,19 @@ body {
 
     input,
     output {
-      height: 2.625rem;
-      line-height: 2.625rem;
-      margin: 1.25rem auto;
+      height: 2.625em;
+      line-height: 2.625em;
+      margin: 1.25em auto;
       padding: 0;
     }
   }
 
   .swal2-input {
-    height: 2.625rem;
-    padding: 0 .75rem;
+    height: 2.625em;
+    padding: 0 .75em;
 
     &[type='number'] {
-      max-width: 10rem;
+      max-width: 10em;
     }
   }
 
@@ -490,14 +491,14 @@ body {
   }
 
   .swal2-textarea {
-    height: 6.75rem;
-    padding: .75rem;
+    height: 6.75em;
+    padding: .75em;
   }
 
   .swal2-select {
     color: lighten($swal2-black, 33);
     font-size: $swal2-input-font-size;
-    padding: .375rem .625rem;
+    padding: .375em .625em;
     min-width: 50%;
     max-width: 100%;
   }
@@ -509,11 +510,11 @@ body {
 
     label {
       font-size: $swal2-input-font-size;
-      margin: 0 .6rem;
+      margin: 0 .6em;
     }
 
     input {
-      margin: 0 .4rem;
+      margin: 0 .4em;
     }
   }
 
@@ -522,7 +523,7 @@ body {
     justify-content: center;
     background-color: lighten($swal2-black, 94);
     overflow: hidden;
-    padding: .625rem;
+    padding: .625em;
     color: lighten($swal2-black, 50);
     font-size: $swal2-validation-font-size;
     font-weight: 300;
@@ -531,15 +532,15 @@ body {
     &::before {
       content: '!';
       display: inline-block;
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 1.5em;
+      height: 1.5em;
       border-radius: 50%;
       background-color: $swal2-validationerror-background;
       color: $swal2-validationerror-color;
-      line-height: 1.5rem;
+      line-height: 1.5em;
       font-weight: 600;
       text-align: center;
-      margin: 0 .625rem;
+      margin: 0 .625em;
     }
   }
 }
@@ -571,11 +572,10 @@ body {
 .swal2-icon {
   width: 80px;
   height: 80px;
-  font-size: 60px;
   line-height: 80px;
   border: 4px solid transparent;
   border-radius: 50%;
-  margin: 1.25rem auto 1.875rem;
+  margin: 1.25em auto 1.875em;
   justify-content: center;
   position: relative;
   box-sizing: content-box;
@@ -611,20 +611,25 @@ body {
     }
   }
 
-  &.swal2-warning {
+  &.swal2-warning,
+  &.swal2-info,
+  &.swal2-question {
     font-family: $swal2-font;
+    font-size: 3.75em;
+    margin: .333333em auto .5em;
+  }
+
+  &.swal2-warning {
     color: $swal2-warning;
     border-color: lighten($swal2-warning, 7);
   }
 
   &.swal2-info {
-    font-family: $swal2-font;
     color: $swal2-info;
     border-color: lighten($swal2-info, 20);
   }
 
   &.swal2-question {
-    font-family: $swal2-font;
     color: $swal2-question;
     border-color: lighten($swal2-question, 20);
   }
@@ -719,7 +724,7 @@ body {
 
   font-weight: 600;
   padding: 0;
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.25em;
   align-items: center;
 
   li {

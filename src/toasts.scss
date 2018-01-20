@@ -3,11 +3,13 @@ body {
     &.swal2-has-input  > .swal2-container {
       & > .swal2-toast {
         flex-direction: column;
+        align-items: stretch;
 
         .swal2-actions {
           flex: 1;
           align-self: stretch;
           justify-content: flex-end;
+          height: 2.2em;
         }
 
         .swal2-loading {
@@ -15,9 +17,13 @@ body {
         }
 
         .swal2-input {
-          height: 32px;
-          font-size: 14px;
-          margin: 5px auto;
+          height: 2em;
+          font-size: $swal2-toast-input-font-size;
+          margin: .3125em auto;
+        }
+
+        .swal2-validationerror {
+          font-size: $swal2-toast-validation-font-size;
         }
       }
     }
@@ -121,7 +127,7 @@ body {
     }
 
     .swal2-title {
-      font-size: 16px;
+      font-size: $swal2-toast-title-font-size;
       justify-content: flex-start;
       margin: 0 .6em;
     }
@@ -131,7 +137,7 @@ body {
     }
 
     .swal2-content {
-      font-size: 14px;
+      font-size: $swal2-toast-content-font-size;
       justify-content: flex-start;
     }
 
@@ -174,12 +180,14 @@ body {
     }
 
     .swal2-actions {
-      margin: 0 0 0 5px;
+      margin: 0 .3125em;
+      height: auto;
     }
 
     .swal2-styled {
-      margin: 0 0 0 5px;
-      padding: 5px 10px;
+      margin: 0 .3125em;
+      padding: .3125em .625em;
+      font-size: $swal2-toast-buttons-font-size;
 
       &:focus {
         box-shadow: 0 0 0 1px $swal2-white, 0 0 0 2px $swal2-focus-outline;
@@ -242,11 +250,11 @@ body {
       }
     }
 
-    .swal2-show {
+    &.swal2-show {
       animation: showSweetToast .5s;
     }
 
-    .swal2-hide {
+    &.swal2-hide {
       animation: hideSweetToast .2s forwards;
     }
 

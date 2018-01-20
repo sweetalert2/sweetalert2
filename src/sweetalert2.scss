@@ -367,7 +367,7 @@ body {
     }
 
     &::-moz-focus-inner {
-      border:0;
+      border: 0;
     }
   }
 
@@ -381,11 +381,12 @@ body {
     border: 0;
     margin: 0;
     padding: 0;
-    width: $swal2-close-button-size;
-    height: $swal2-close-button-size;
+    width: 1.2em;
+    min-width: 1.2em;
+    height: 1.2em;
     // calc is needed for the correct focus outline, w/o calc: https://goo.gl/T3NYRm
     font-size: calc(#{$swal2-close-button-size} - #{$swal2-close-button-size*.1});
-    line-height: $swal2-close-button-size;
+    line-height: 1.2em;
     justify-content: center;
     font-family: serif;
     position: absolute;

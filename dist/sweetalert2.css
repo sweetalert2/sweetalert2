@@ -576,9 +576,10 @@ body.swal2-no-backdrop .swal2-shown {
     display: block;
     word-wrap: break-word; }
   .swal2-popup .swal2-actions {
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    height: 4rem;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
@@ -629,7 +630,7 @@ body.swal2-no-backdrop .swal2-shown {
     cursor: pointer;
     font-size: 1.0625rem;
     font-weight: 500;
-    margin: 1rem .3125rem 0;
+    margin: 0 .3125rem;
     padding: .625rem 2rem; }
     .swal2-popup .swal2-styled:focus {
       outline: none;
@@ -935,6 +936,7 @@ body.swal2-no-backdrop .swal2-shown {
 
 .swal2-progresssteps {
   font-weight: 600;
+  padding: 0;
   margin: 0 0 1.25rem;
   -webkit-box-align: center;
       -ms-flex-align: center;

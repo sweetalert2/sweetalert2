@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.5.0
+ * sweetalert2 v7.5.1
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1891,7 +1891,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.5.0';
+sweetAlert.version = '7.5.1';
 
 sweetAlert.default = sweetAlert;
 

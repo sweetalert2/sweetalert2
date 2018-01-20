@@ -365,6 +365,10 @@ body {
       outline: none;
       box-shadow: 0 0 0 2px $swal2-white, 0 0 0 4px $swal2-focus-outline;
     }
+
+    &::-moz-focus-inner {
+      border:0;
+    }
   }
 
   .swal2-image {

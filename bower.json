@@ -34,8 +34,11 @@
     "dist/sweetalert2.css"
   ],
   "keywords": [
+    "sweetalert",
+    "sweetalert2",
     "alert",
-    "modal"
+    "modal",
+    "confirm"
   ],
   "repository": {
     "type": "git",

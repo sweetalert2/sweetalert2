@@ -293,7 +293,8 @@ body {
   }
 
   .swal2-actions {
-    align-items: center;
+    height: $swal2-actions-height;
+    align-items: flex-end;
     justify-content: center;
 
     &:not(.swal2-loading) {
@@ -356,7 +357,7 @@ body {
     cursor: pointer;
     font-size: $swal2-buttons-font-size;
     font-weight: 500;
-    margin: 1rem .3125rem 0;
+    margin: 0 .3125rem;
     padding: .625rem 2rem;
 
     &:focus {

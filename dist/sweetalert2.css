@@ -2,7 +2,10 @@ body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
-          flex-direction: column; }
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch; }
   body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-actions {
     -webkit-box-flex: 1;
         -ms-flex: 1;
@@ -11,15 +14,18 @@ body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast {
         align-self: stretch;
     -webkit-box-pack: end;
         -ms-flex-pack: end;
-            justify-content: flex-end; }
+            justify-content: flex-end;
+    height: 2.2em; }
   body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-loading {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
   body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-input {
-    height: 32px;
-    font-size: 14px;
-    margin: 5px auto; }
+    height: 2em;
+    font-size: 1em;
+    margin: .3125em auto; }
+  body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-validationerror {
+    font-size: 1em; }
 
 body.swal2-toast-shown > .swal2-container {
   position: fixed;
@@ -101,7 +107,7 @@ body.swal2-toast-shown > .swal2-container {
         -ms-flex-direction: row;
             flex-direction: row; }
   .swal2-popup.swal2-toast .swal2-title {
-    font-size: 16px;
+    font-size: 1em;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
@@ -109,7 +115,7 @@ body.swal2-toast-shown > .swal2-container {
   .swal2-popup.swal2-toast .swal2-close {
     position: initial; }
   .swal2-popup.swal2-toast .swal2-content {
-    font-size: 14px;
+    font-size: 0.875em;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start; }
@@ -132,10 +138,12 @@ body.swal2-toast-shown > .swal2-container {
       .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^='swal2-x-mark-line'][class$='right'] {
         right: 5px; }
   .swal2-popup.swal2-toast .swal2-actions {
-    margin: 0 0 0 5px; }
+    margin: 0 .3125em;
+    height: auto; }
   .swal2-popup.swal2-toast .swal2-styled {
-    margin: 0 0 0 5px;
-    padding: 5px 10px; }
+    margin: 0 .3125em;
+    padding: .3125em .625em;
+    font-size: 1em; }
     .swal2-popup.swal2-toast .swal2-styled:focus {
       -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(50, 100, 150, 0.4);
               box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(50, 100, 150, 0.4); }
@@ -180,10 +188,10 @@ body.swal2-toast-shown > .swal2-container {
         width: 22px;
         right: 3px;
         top: 15px; }
-  .swal2-popup.swal2-toast .swal2-show {
+  .swal2-popup.swal2-toast.swal2-show {
     -webkit-animation: showSweetToast .5s;
             animation: showSweetToast .5s; }
-  .swal2-popup.swal2-toast .swal2-hide {
+  .swal2-popup.swal2-toast.swal2-hide {
     -webkit-animation: hideSweetToast .2s forwards;
             animation: hideSweetToast .2s forwards; }
   .swal2-popup.swal2-toast .swal2-animate-success-line-tip {
@@ -637,6 +645,8 @@ body.swal2-no-backdrop .swal2-shown {
       outline: none;
       -webkit-box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, 0.4);
               box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, 0.4); }
+    .swal2-popup .swal2-styled::-moz-focus-inner {
+      border: 0; }
   .swal2-popup .swal2-image {
     margin: 1.25em auto;
     max-width: 100%; }
@@ -645,10 +655,11 @@ body.swal2-no-backdrop .swal2-shown {
     border: 0;
     margin: 0;
     padding: 0;
-    width: 2.5em;
-    height: 2.5em;
+    width: 1.2em;
+    min-width: 1.2em;
+    height: 1.2em;
     font-size: calc(2.5em - 0.25em);
-    line-height: 2.5em;
+    line-height: 1.2em;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;

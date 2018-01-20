@@ -84,7 +84,7 @@ body.swal2-toast-shown > .swal2-container {
 
 .swal2-popup.swal2-toast {
   width: auto;
-  padding: 0.625rem;
+  padding: 0.625em;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -105,7 +105,7 @@ body.swal2-toast-shown > .swal2-container {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
-    margin: 0 .6rem; }
+    margin: 0 .6em; }
   .swal2-popup.swal2-toast .swal2-close {
     position: initial; }
   .swal2-popup.swal2-toast .swal2-content {
@@ -536,8 +536,9 @@ body.swal2-no-backdrop .swal2-shown {
           flex-direction: column;
   background-color: #fff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  padding: 1.25rem;
-  border-radius: .3125rem;
+  font-size: 1rem;
+  padding: 1.25em;
+  border-radius: .3125em;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   -webkit-box-pack: center;
@@ -547,7 +548,7 @@ body.swal2-no-backdrop .swal2-shown {
   overflow-y: auto;
   display: none;
   position: relative;
-  width: 32rem;
+  width: 32em;
   max-width: 100%; }
   .swal2-popup:focus {
     outline: none; }
@@ -566,7 +567,7 @@ body.swal2-no-backdrop .swal2-shown {
             align-items: center; }
   .swal2-popup .swal2-title {
     color: #595959;
-    font-size: 1.875rem;
+    font-size: 1.875em;
     text-align: center;
     font-weight: 600;
     text-transform: none;
@@ -576,7 +577,7 @@ body.swal2-no-backdrop .swal2-shown {
     display: block;
     word-wrap: break-word; }
   .swal2-popup .swal2-actions {
-    height: 4rem;
+    height: 4em;
     -webkit-box-align: end;
         -ms-flex-align: end;
             align-items: flex-end;
@@ -589,12 +590,12 @@ body.swal2-no-backdrop .swal2-shown {
     .swal2-popup .swal2-actions.swal2-loading .swal2-styled.swal2-confirm {
       -webkit-box-sizing: border-box;
               box-sizing: border-box;
-      border: .25rem solid transparent;
+      border: .25em solid transparent;
       border-color: transparent;
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2.5em;
+      height: 2.5em;
       padding: 0;
-      margin: .46875rem;
+      margin: .46875em;
       background-color: transparent !important;
       color: transparent;
       cursor: default;
@@ -623,31 +624,31 @@ body.swal2-no-backdrop .swal2-shown {
               animation: rotate-loading 1.5s linear 0s infinite normal; }
   .swal2-popup .swal2-styled {
     border: 0;
-    border-radius: .25rem;
+    border-radius: .25em;
     -webkit-box-shadow: none;
             box-shadow: none;
     color: #fff;
     cursor: pointer;
-    font-size: 1.0625rem;
+    font-size: 1.0625em;
     font-weight: 500;
-    margin: 0 .3125rem;
-    padding: .625rem 2rem; }
+    margin: 0 .3125em;
+    padding: .625em 2em; }
     .swal2-popup .swal2-styled:focus {
       outline: none;
       -webkit-box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, 0.4);
               box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, 0.4); }
   .swal2-popup .swal2-image {
-    margin: 1.25rem auto;
+    margin: 1.25em auto;
     max-width: 100%; }
   .swal2-popup .swal2-close {
     background: transparent;
     border: 0;
     margin: 0;
     padding: 0;
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: calc(2.5rem - 0.25rem);
-    line-height: 2.5rem;
+    width: 2.5em;
+    height: 2.5em;
+    font-size: calc(2.5em - 0.25em);
+    line-height: 2.5em;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -669,7 +670,7 @@ body.swal2-no-backdrop .swal2-shown {
   .swal2-popup > .swal2-checkbox {
     display: none; }
   .swal2-popup .swal2-content {
-    font-size: 1.125rem;
+    font-size: 1.125em;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -687,14 +688,14 @@ body.swal2-no-backdrop .swal2-shown {
   .swal2-popup .swal2-select,
   .swal2-popup .swal2-radio,
   .swal2-popup .swal2-checkbox {
-    margin: 1.25rem auto; }
+    margin: 1.25em auto; }
   .swal2-popup .swal2-input,
   .swal2-popup .swal2-file,
   .swal2-popup .swal2-textarea {
     width: 100%;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    font-size: 1.125rem;
+    font-size: 1.125em;
     border-radius: 3px;
     border: 1px solid #d9d9d9;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06);
@@ -736,29 +737,29 @@ body.swal2-no-backdrop .swal2-shown {
     width: 80%; }
   .swal2-popup .swal2-range output {
     width: 20%;
-    font-size: 1.125rem;
+    font-size: 1.125em;
     font-weight: 600;
     text-align: center; }
   .swal2-popup .swal2-range input,
   .swal2-popup .swal2-range output {
-    height: 2.625rem;
-    line-height: 2.625rem;
-    margin: 1.25rem auto;
+    height: 2.625em;
+    line-height: 2.625em;
+    margin: 1.25em auto;
     padding: 0; }
   .swal2-popup .swal2-input {
-    height: 2.625rem;
-    padding: 0 .75rem; }
+    height: 2.625em;
+    padding: 0 .75em; }
     .swal2-popup .swal2-input[type='number'] {
-      max-width: 10rem; }
+      max-width: 10em; }
   .swal2-popup .swal2-file {
-    font-size: 1.125rem; }
+    font-size: 1.125em; }
   .swal2-popup .swal2-textarea {
-    height: 6.75rem;
-    padding: .75rem; }
+    height: 6.75em;
+    padding: .75em; }
   .swal2-popup .swal2-select {
     color: #545454;
-    font-size: 1.125rem;
-    padding: .375rem .625rem;
+    font-size: 1.125em;
+    padding: .375em .625em;
     min-width: 50%;
     max-width: 100%; }
   .swal2-popup .swal2-radio,
@@ -771,11 +772,11 @@ body.swal2-no-backdrop .swal2-shown {
             align-items: center; }
     .swal2-popup .swal2-radio label,
     .swal2-popup .swal2-checkbox label {
-      font-size: 1.125rem;
-      margin: 0 .6rem; }
+      font-size: 1.125em;
+      margin: 0 .6em; }
     .swal2-popup .swal2-radio input,
     .swal2-popup .swal2-checkbox input {
-      margin: 0 .4rem; }
+      margin: 0 .4em; }
   .swal2-popup .swal2-validationerror {
     -webkit-box-align: center;
         -ms-flex-align: center;
@@ -785,23 +786,23 @@ body.swal2-no-backdrop .swal2-shown {
             justify-content: center;
     background-color: #f0f0f0;
     overflow: hidden;
-    padding: .625rem;
+    padding: .625em;
     color: gray;
-    font-size: 1rem;
+    font-size: 1em;
     font-weight: 300;
     display: none; }
     .swal2-popup .swal2-validationerror::before {
       content: '!';
       display: inline-block;
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 1.5em;
+      height: 1.5em;
       border-radius: 50%;
       background-color: #ea7d7d;
       color: #fff;
-      line-height: 1.5rem;
+      line-height: 1.5em;
       font-weight: 600;
       text-align: center;
-      margin: 0 .625rem; }
+      margin: 0 .625em; }
 
 @supports (-ms-accelerator: true) {
   .swal2-range input {
@@ -818,11 +819,10 @@ body.swal2-no-backdrop .swal2-shown {
 .swal2-icon {
   width: 80px;
   height: 80px;
-  font-size: 60px;
   line-height: 80px;
   border: 4px solid transparent;
   border-radius: 50%;
-  margin: 1.25rem auto 1.875rem;
+  margin: 1.25em auto 1.875em;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -857,16 +857,17 @@ body.swal2-no-backdrop .swal2-shown {
         -webkit-transform: rotate(-45deg);
                 transform: rotate(-45deg);
         right: 16px; }
-  .swal2-icon.swal2-warning {
+  .swal2-icon.swal2-warning, .swal2-icon.swal2-info, .swal2-icon.swal2-question {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 3.75em;
+    margin: .333333em auto .5em; }
+  .swal2-icon.swal2-warning {
     color: #f8bb86;
     border-color: #facea8; }
   .swal2-icon.swal2-info {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #3fc3ee;
     border-color: #9de0f6; }
   .swal2-icon.swal2-question {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #87adbd;
     border-color: #c9dae1; }
   .swal2-icon.swal2-success {
@@ -937,7 +938,7 @@ body.swal2-no-backdrop .swal2-shown {
 .swal2-progresssteps {
   font-weight: 600;
   padding: 0;
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.25em;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
@@ -966,7 +967,7 @@ body.swal2-no-backdrop .swal2-shown {
   .swal2-progresssteps .swal2-progressline {
     background: #3085d6;
     height: .4em;
-    width: 2.5rem;
+    width: 2.5em;
     margin: 0 -1px;
     z-index: 10; }
 

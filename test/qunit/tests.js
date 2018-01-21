@@ -700,9 +700,9 @@ QUnit.test('on errors in *async* user-defined functions, cleans up and propagate
           assert.notOk(swal.isVisible()) // display is cleaned up
 
           done()
-        }, 60)
+        })
       })
-    }, 60)
+    })
   })
 })
 

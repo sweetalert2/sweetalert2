@@ -20,13 +20,14 @@
     "gulp-clean-css": "^3.9.0",
     "gulp-rename": "latest",
     "gulp-rollup": "latest",
-    "gulp-run": "^1.7.1",
     "gulp-sass": "latest",
     "gulp-sass-lint": "latest",
     "gulp-standard": "^8.0.0",
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.3",
     "gulp-uglify": "latest",
+    "mkdirp": "~0.5.1",
+    "pify": "^3.0.0",
     "rollup": "^0.51.8",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-css-only": "^0.2.0",
@@ -68,9 +69,7 @@
   "scripts": {
     "test": "testem ci",
     "lint-dts": "tslint sweetalert2.d.ts --format verbose",
-    "check-dts": "tsc sweetalert2.d.ts && npm run lint-dts",
-    "assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --assume-unchanged",
-    "no-assume-dist-unchanged": "git ls-files dist | tr '\\n' ' ' | xargs git update-index --no-assume-unchanged"
+    "check-dts": "tsc sweetalert2.d.ts && npm run lint-dts"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
   "license": "MIT"

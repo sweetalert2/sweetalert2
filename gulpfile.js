@@ -8,7 +8,6 @@ const sassLint = require('gulp-sass-lint')
 const ts = require('gulp-typescript')
 const tslint = require('gulp-tslint')
 const browserSync = require('browser-sync').create()
-const run = require('gulp-run')
 
 const pack = require('./package.json')
 const utils = require('./config/utils.js')
@@ -89,8 +88,6 @@ gulp.task('ts-lint', () => {
 gulp.task('default', ['sass', 'ts', 'compress'])
 
 gulp.task('watch', () => {
-  run('npm run assume-dist-unchanged').exec()
-
   browserSync.init({
     port: 8080,
     notify: false,

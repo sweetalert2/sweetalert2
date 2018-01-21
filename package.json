@@ -59,7 +59,8 @@
     "sweetalert",
     "sweetalert2",
     "alert",
-    "prompt"
+    "prompt",
+    "confirm"
   ],
   "engines": {
     "node": ">=0.10.0"

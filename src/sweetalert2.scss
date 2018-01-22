@@ -294,8 +294,8 @@ body {
   }
 
   .swal2-actions {
-    height: $swal2-actions-height;
-    align-items: flex-end;
+    margin-top: 1.25em;
+    align-items: center;
     justify-content: center;
 
     &:not(.swal2-loading) {

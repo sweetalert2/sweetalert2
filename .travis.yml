@@ -10,6 +10,8 @@ addons:
 before_script:
   - gulp
   - bundlesize -f dist/sweetalert2.all.min.js -s 15kB
+  # check for magic numbers
+  - buddy src/*.js
 
 script:
   # unit tests against dist/sweetalert2.js

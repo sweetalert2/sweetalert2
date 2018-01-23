@@ -152,7 +152,7 @@ const setParameters = (params) => {
 
   // Progress steps
   let progressStepsContainer = dom.getProgressSteps()
-  let currentProgressStep = parseInt(params.currentProgressStep === null ? sweetAlert.getQueueStep() : params.currentProgressStep, 10)
+  let currentProgressStep = parseInt(params.currentProgressStep === null ? sweetAlert.getQueueStep() : params.currentProgressStep)
   if (params.progressSteps.length) {
     dom.show(progressStepsContainer)
     dom.empty(progressStepsContainer)
@@ -403,7 +403,7 @@ const iOSfix = () => {
 
 const undoIOSfix = () => {
   if (dom.hasClass(document.body, swalClasses.iosfix)) {
-    const offset = parseInt(document.body.style.top, 10)
+    const offset = parseInt(document.body.style.top)
     dom.removeClass(document.body, swalClasses.iosfix)
     document.body.style.top = ''
     document.body.scrollTop = (offset * -1)

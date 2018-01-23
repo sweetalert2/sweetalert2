@@ -14,6 +14,7 @@
     "babel-plugin-transform-object-assign": "latest",
     "babel-preset-es2015": "latest",
     "browser-sync": "^2.23.3",
+    "buddy.js": "^0.9.3",
     "bundlesize": "^0.15.3",
     "gulp": "latest",
     "gulp-autoprefixer": "^4.1.0",

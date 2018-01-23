@@ -1,6 +1,6 @@
 import defaultParams, { deprecatedParams } from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
-import { colorLuminance, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
+import { warn, error, warnOnce, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom.js'
 
 let popupParams = Object.assign({}, defaultParams)
@@ -273,12 +273,6 @@ const setParameters = (params) => {
   confirmButton.setAttribute('aria-label', params.confirmButtonAriaLabel)
   cancelButton.setAttribute('aria-label', params.cancelButtonAriaLabel)
 
-  // Set buttons to selected background colors
-  if (params.buttonsStyling) {
-    confirmButton.style.backgroundColor = params.confirmButtonColor
-    cancelButton.style.backgroundColor = params.cancelButtonColor
-  }
-
   // Add buttons custom classes
   confirmButton.className = swalClasses.confirm
   dom.addClass(confirmButton, params.confirmButtonClass)
@@ -288,6 +282,19 @@ const setParameters = (params) => {
   // Buttons styling
   if (params.buttonsStyling) {
     dom.addClass([confirmButton, cancelButton], swalClasses.styled)
+
+    // Buttons background colors
+    if (params.confirmButtonColor) {
+      confirmButton.style.backgroundColor = params.confirmButtonColor
+    }
+    if (params.cancelButtonColor) {
+      cancelButton.style.backgroundColor = params.cancelButtonColor
+    }
+
+    // Loading state
+    const confirmButtonBackgroundColor = window.getComputedStyle(confirmButton).getPropertyValue('background-color')
+    confirmButton.style.borderLeftColor = confirmButtonBackgroundColor
+    confirmButton.style.borderRightColor = confirmButtonBackgroundColor
   } else {
     dom.removeClass([confirmButton, cancelButton], swalClasses.styled)
 
@@ -587,34 +594,6 @@ const sweetAlert = (...args) => {
       const targetedCancel = cancelButton && (cancelButton === target || cancelButton.contains(target))
 
       switch (e.type) {
-        case 'mouseover':
-        case 'mouseup':
-          if (params.buttonsStyling) {
-            if (targetedConfirm) {
-              confirmButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1)
-            } else if (targetedCancel) {
-              cancelButton.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.1)
-            }
-          }
-          break
-        case 'mouseout':
-          if (params.buttonsStyling) {
-            if (targetedConfirm) {
-              confirmButton.style.backgroundColor = params.confirmButtonColor
-            } else if (targetedCancel) {
-              cancelButton.style.backgroundColor = params.cancelButtonColor
-            }
-          }
-          break
-        case 'mousedown':
-          if (params.buttonsStyling) {
-            if (targetedConfirm) {
-              confirmButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.2)
-            } else if (targetedCancel) {
-              cancelButton.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.2)
-            }
-          }
-          break
         case 'click':
           // Clicked 'confirm'
           if (targetedConfirm && sweetAlert.isVisible()) {
@@ -838,12 +817,6 @@ const sweetAlert = (...args) => {
       previousWindowKeyDown = window.onkeydown
       windowOnkeydownOverridden = true
       window.onkeydown = handleKeyDown
-    }
-
-    // Loading state
-    if (params.buttonsStyling) {
-      confirmButton.style.borderLeftColor = params.confirmButtonColor
-      confirmButton.style.borderRightColor = params.confirmButtonColor
     }
 
     /**

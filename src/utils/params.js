@@ -38,7 +38,7 @@ export default {
   timer: null,
   width: null,
   padding: null,
-  background: '#fff',
+  background: null,
   input: null,
   inputPlaceholder: '',
   inputValue: '',

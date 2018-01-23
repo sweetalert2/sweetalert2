@@ -585,16 +585,20 @@ body.swal2-no-backdrop .swal2-shown {
     display: block;
     word-wrap: break-word; }
   .swal2-popup .swal2-actions {
-    height: 4em;
-    -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
+    margin-top: 1.25em;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
     .swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled[disabled] {
       opacity: .4;
       cursor: no-drop; }
+    .swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled:hover {
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNikAQAACIAHF/uBd8AAAAASUVORK5CYII="); }
+    .swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled:active {
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiMAYAADwANpiOMBYAAAAASUVORK5CYII="); }
     .swal2-popup .swal2-actions.swal2-loading .swal2-styled.swal2-confirm {
       -webkit-box-sizing: border-box;
               box-sizing: border-box;
@@ -641,6 +645,10 @@ body.swal2-no-backdrop .swal2-shown {
     font-weight: 500;
     margin: 0 .3125em;
     padding: .625em 2em; }
+    .swal2-popup .swal2-styled.swal2-confirm {
+      background-color: #3085d6; }
+    .swal2-popup .swal2-styled.swal2-cancel {
+      background-color: #aaa; }
     .swal2-popup .swal2-styled:focus {
       outline: none;
       -webkit-box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, 0.4);

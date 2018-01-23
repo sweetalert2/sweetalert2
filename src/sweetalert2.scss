@@ -252,7 +252,7 @@ body {
 
 .swal2-popup {
   flex-direction: column;
-  background-color: $swal2-white;
+  background-color: $swal2-background-color;
   font-family: $swal2-font;
   font-size: $swal2-font-size;
   padding: $swal2-padding;
@@ -303,6 +303,16 @@ body {
         &[disabled] {
           opacity: .4;
           cursor: no-drop;
+        }
+
+        &:hover {
+          // darken technique, the black pixel with 0.1 opacity
+          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNikAQAACIAHF/uBd8AAAAASUVORK5CYII=');
+        }
+
+        &:active {
+          // the black pixel with 0.2 opacity
+          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiMAYAADwANpiOMBYAAAAASUVORK5CYII=');
         }
       }
     }
@@ -360,6 +370,14 @@ body {
     font-weight: 500;
     margin: 0 .3125em;
     padding: .625em 2em;
+
+    &.swal2-confirm {
+      background-color: $swal2-confirm-button-color;
+    }
+
+    &.swal2-cancel {
+      background-color: $swal2-cancel-button-color;
+    }
 
     &:focus {
       outline: none;

@@ -11,6 +11,8 @@ $swal2-question:       #87adbd !default;
 
 $swal2-overlay:        rgba($swal2-black, .4) !default;
 
+$swal2-background-color: $swal2-white !default;
+
 $swal2-close-button:               lighten($swal2-black, 80) !default;
 $swal2-close-button-hover:         #d55 !default;
 
@@ -23,6 +25,9 @@ $swal2-validationerror-background: #ea7d7d !default;
 $swal2-validationerror-color:      $swal2-white !default;
 
 $swal2-focus-outline: rgba(50, 100, 150, .4);
+
+$swal2-confirm-button-color: #3085d6 !default;
+$swal2-cancel-button-color: #aaa !default;
 
 $swal2-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $swal2-font-size: 1rem;

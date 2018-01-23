@@ -65,10 +65,14 @@ const setParameters = (params) => {
     popup.style.padding = (typeof params.padding === 'number') ? params.padding + 'px' : params.padding
   }
 
-  popup.style.background = params.background
+  // Set popup background
+  if (params.background) {
+    popup.style.background = params.background
+  }
+  const popupBackgroundColor = window.getComputedStyle(popup).getPropertyValue('background-color')
   const successIconParts = popup.querySelectorAll('[class^=swal2-success-circular-line], .swal2-success-fix')
   for (let i = 0; i < successIconParts.length; i++) {
-    successIconParts[i].style.background = params.background
+    successIconParts[i].style.backgroundColor = popupBackgroundColor
   }
 
   const container = dom.getContainer()

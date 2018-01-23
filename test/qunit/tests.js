@@ -1,3 +1,4 @@
+// TODO: move these files to /test and delete /test/qunit
 /* global $, QUnit, swal */
 
 QUnit.test('version is correct semver', (assert) => {
@@ -512,17 +513,12 @@ QUnit.test('modal vertical offset', (assert) => {
   const done = assert.async(1)
   // create a modal with dynamic-height content
   swal({
-    imageUrl: '/assets/swal2-logo.png',
+    imageUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNikAQAACIAHF/uBd8AAAAASUVORK5CYII=',
     title: 'Title',
     html: '<hr><div style="height: 50px"></div><p>Text content</p>',
     type: 'warning',
     input: 'text',
     animation: false
-  })
-
-  // if we can't load local images, load an external one instead
-  $('.swal2-image').on('error', () => {
-    this.src = 'https://unsplash.it/150/50?random'
   })
 
   // listen for image load
@@ -542,16 +538,19 @@ QUnit.test('target', (assert) => {
   assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
   swal.close()
 
-  swal({title: 'Custom valid target (string)', target: '#qunit'}) // switch targets
-  assert.equal(document.querySelector('#qunit'), document.querySelector('.swal2-container').parentNode)
+  const dummyTargetElement = Object.assign(document.createElement('div'), {id: 'dummy-target'})
+  document.body.appendChild(dummyTargetElement)
+
+  swal({title: 'Custom valid target (string)', target: '#dummy-target'}) // switch targets
+  assert.equal(document.querySelector('.swal2-container').parentNode, dummyTargetElement)
   swal.close()
 
   swal({title: 'Custom invalid target (string)', target: 'lorem_ipsum'}) // switch targets
-  assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
+  assert.equal(document.querySelector('.swal2-container').parentNode, document.body)
   swal.close()
 
-  swal({title: 'Custom valid target (element)', target: $('#qunit')[0]})
-  assert.equal($('#qunit')[0], document.querySelector('.swal2-container').parentNode)
+  swal({title: 'Custom valid target (element)', target: dummyTargetElement})
+  assert.equal(document.querySelector('.swal2-container').parentNode, dummyTargetElement)
   swal.close()
 
   swal({title: 'Custom invalid target (element)', target: true})

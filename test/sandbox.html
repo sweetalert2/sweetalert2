@@ -5,24 +5,24 @@
 <link rel="stylesheet" href="../dist/sweetalert2.css">
 
 <body>
-  <script>
-    swal({
-      title: 'Test modal with input',
-      html: 'custom <strong>content</strong>',
-      input: 'text',
-      type: 'success',
-      showCloseButton: true,
-      showCancelButton: true,
-      preConfirm: function (value) {
-        if (!value) {
-          swal.showValidationError('Should not be empty!')
-        }
-      },
-      onOpen: function (modal) {
-        console.log(modal)
+<script>
+  swal({
+    title: 'Test modal with input',
+    html: 'custom <strong>content</strong>',
+    input: 'text',
+    type: 'success',
+    showCloseButton: true,
+    showCancelButton: true,
+    preConfirm: function (value) {
+      if (!value) {
+        swal.showValidationError('Should not be empty!')
       }
-    }).then(function (result) {
-      console.log(result)
-    })
-  </script>
+    },
+    onOpen: function (modal) {
+      console.log(modal)
+    }
+  }).then(function (result) {
+    console.log(result)
+  })
+</script>
 </body>

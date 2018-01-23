@@ -8,9 +8,9 @@ const sassLint = require('gulp-sass-lint')
 const ts = require('gulp-typescript')
 const tslint = require('gulp-tslint')
 const browserSync = require('browser-sync').create()
-
 const pack = require('./package.json')
 const utils = require('./utils/package-rollup') // TODO: Once this file stabilizes, make this line `const packageRollup = require('./utils/package-rollup')`
+const execute = require('./utils/execute')
 
 gulp.task('compress', ['js-lint', 'commonjs', 'dev', 'production', 'all', 'all.min'])
 
@@ -99,7 +99,17 @@ gulp.task('build', ['sass', 'ts', 'compress', 'css.min'])
 
 gulp.task('default', ['build'])
 
-gulp.task('watch', ['default'], () => {
+gulp.task('watch', ['build'], () => {
+  gulp.watch(['src/**/*.js'], ['dev'])
+
+  gulp.watch(['src/*.scss'], ['sass'])
+
+  gulp.watch(['sweetalert2.d.ts'], ['ts'])
+})
+
+gulp.task('develop', ['develop:sandbox', 'develop:tests'])
+
+gulp.task('develop:sandbox', ['watch'], () => {
   browserSync.init({
     port: 8080,
     notify: false,
@@ -108,17 +118,13 @@ gulp.task('watch', ['default'], () => {
     server: ['./'],
     startPath: 'test/sandbox.html'
   })
-
   gulp.watch([
     'test/sandbox.html',
-    'test/qunit/*.js',
     'dist/sweetalert2.js',
     'dist/sweetalert2.css'
   ]).on('change', browserSync.reload)
+})
 
-  gulp.watch(['src/**/*.js'], ['dev'])
-
-  gulp.watch(['src/*.scss'], ['sass'])
-
-  gulp.watch(['sweetalert2.d.ts'], ['ts'])
+gulp.task('develop:tests', ['watch'], async () => {
+  await execute(`karma start karma.conf.js`)
 })

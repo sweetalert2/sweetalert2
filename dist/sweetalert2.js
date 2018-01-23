@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.6.2
+ * sweetalert2 v7.6.3
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -27,11 +27,11 @@ var defaultParams = {
   preConfirm: null,
   confirmButtonText: 'OK',
   confirmButtonAriaLabel: '',
-  confirmButtonColor: '#3085d6',
+  confirmButtonColor: null,
   confirmButtonClass: null,
   cancelButtonText: 'Cancel',
   cancelButtonAriaLabel: '',
-  cancelButtonColor: '#aaa',
+  cancelButtonColor: null,
   cancelButtonClass: null,
   buttonsStyling: true,
   reverseButtons: false,
@@ -48,7 +48,7 @@ var defaultParams = {
   timer: null,
   width: null,
   padding: null,
-  background: '#fff',
+  background: null,
   input: null,
   inputPlaceholder: '',
   inputValue: '',
@@ -86,28 +86,6 @@ var swalClasses = prefix(['container', 'shown', 'iosfix', 'popup', 'modal', 'no-
 var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
 var consolePrefix = 'SweetAlert2:';
-
-/*
- * Set hover, active and focus-states for buttons (source: http://www.sitepoint.com/javascript-generate-lighter-darker-color)
- */
-var colorLuminance = function colorLuminance(hex, lum) {
-  // Validate hex string
-  hex = String(hex).replace(/[^0-9a-f]/gi, '');
-  if (hex.length < 6) {
-    hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-  }
-  lum = lum || 0;
-
-  // Convert to decimal and change luminosity
-  var rgb = '#';
-  for (var i = 0; i < 3; i++) {
-    var c = parseInt(hex.substr(i * 2, 2), 16);
-    c = Math.round(Math.min(Math.max(0, c + c * lum), 255)).toString(16);
-    rgb += ('00' + c).substr(c.length);
-  }
-
-  return rgb;
-};
 
 /**
  * Filter the unique values into a new array
@@ -575,10 +553,14 @@ var setParameters = function setParameters(params) {
     popup.style.padding = typeof params.padding === 'number' ? params.padding + 'px' : params.padding;
   }
 
-  popup.style.background = params.background;
+  // Set popup background
+  if (params.background) {
+    popup.style.background = params.background;
+  }
+  var popupBackgroundColor = window.getComputedStyle(popup).getPropertyValue('background-color');
   var successIconParts = popup.querySelectorAll('[class^=swal2-success-circular-line], .swal2-success-fix');
   for (var i = 0; i < successIconParts.length; i++) {
-    successIconParts[i].style.background = params.background;
+    successIconParts[i].style.backgroundColor = popupBackgroundColor;
   }
 
   var container = getContainer();
@@ -780,12 +762,6 @@ var setParameters = function setParameters(params) {
   confirmButton.setAttribute('aria-label', params.confirmButtonAriaLabel);
   cancelButton.setAttribute('aria-label', params.cancelButtonAriaLabel);
 
-  // Set buttons to selected background colors
-  if (params.buttonsStyling) {
-    confirmButton.style.backgroundColor = params.confirmButtonColor;
-    cancelButton.style.backgroundColor = params.cancelButtonColor;
-  }
-
   // Add buttons custom classes
   confirmButton.className = swalClasses.confirm;
   addClass(confirmButton, params.confirmButtonClass);
@@ -795,6 +771,19 @@ var setParameters = function setParameters(params) {
   // Buttons styling
   if (params.buttonsStyling) {
     addClass([confirmButton, cancelButton], swalClasses.styled);
+
+    // Buttons background colors
+    if (params.confirmButtonColor) {
+      confirmButton.style.backgroundColor = params.confirmButtonColor;
+    }
+    if (params.cancelButtonColor) {
+      cancelButton.style.backgroundColor = params.cancelButtonColor;
+    }
+
+    // Loading state
+    var confirmButtonBackgroundColor = window.getComputedStyle(confirmButton).getPropertyValue('background-color');
+    confirmButton.style.borderLeftColor = confirmButtonBackgroundColor;
+    confirmButton.style.borderRightColor = confirmButtonBackgroundColor;
   } else {
     removeClass([confirmButton, cancelButton], swalClasses.styled);
 
@@ -1098,34 +1087,6 @@ var sweetAlert = function sweetAlert() {
       var targetedCancel = cancelButton && (cancelButton === target || cancelButton.contains(target));
 
       switch (e.type) {
-        case 'mouseover':
-        case 'mouseup':
-          if (params.buttonsStyling) {
-            if (targetedConfirm) {
-              confirmButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.1);
-            } else if (targetedCancel) {
-              cancelButton.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.1);
-            }
-          }
-          break;
-        case 'mouseout':
-          if (params.buttonsStyling) {
-            if (targetedConfirm) {
-              confirmButton.style.backgroundColor = params.confirmButtonColor;
-            } else if (targetedCancel) {
-              cancelButton.style.backgroundColor = params.cancelButtonColor;
-            }
-          }
-          break;
-        case 'mousedown':
-          if (params.buttonsStyling) {
-            if (targetedConfirm) {
-              confirmButton.style.backgroundColor = colorLuminance(params.confirmButtonColor, -0.2);
-            } else if (targetedCancel) {
-              cancelButton.style.backgroundColor = colorLuminance(params.cancelButtonColor, -0.2);
-            }
-          }
-          break;
         case 'click':
           // Clicked 'confirm'
           if (targetedConfirm && sweetAlert.isVisible()) {
@@ -1345,12 +1306,6 @@ var sweetAlert = function sweetAlert() {
       previousWindowKeyDown = window.onkeydown;
       windowOnkeydownOverridden = true;
       window.onkeydown = handleKeyDown;
-    }
-
-    // Loading state
-    if (params.buttonsStyling) {
-      confirmButton.style.borderLeftColor = params.confirmButtonColor;
-      confirmButton.style.borderRightColor = params.confirmButtonColor;
     }
 
     /**
@@ -1891,7 +1846,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.6.2';
+sweetAlert.version = '7.6.3';
 
 sweetAlert.default = sweetAlert;
 

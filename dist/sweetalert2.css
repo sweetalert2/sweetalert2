@@ -543,7 +543,7 @@ body.swal2-no-backdrop .swal2-shown {
       -ms-flex-direction: column;
           flex-direction: column;
   background-color: #fff;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: inherit;
   font-size: 1rem;
   padding: 1.25em;
   border-radius: .3125em;
@@ -877,7 +877,7 @@ body.swal2-no-backdrop .swal2-shown {
                 transform: rotate(-45deg);
         right: 16px; }
   .swal2-icon.swal2-warning, .swal2-icon.swal2-info, .swal2-icon.swal2-question {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: inherit;
     font-size: 3.75em;
     margin: .333333em auto .5em; }
   .swal2-icon.swal2-warning {

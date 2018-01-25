@@ -15,6 +15,8 @@
     "babel-preset-es2015": "latest",
     "browser-sync": "^2.23.3",
     "bundlesize": "^0.15.3",
+    "event-stream": "^3.3.4",
+    "execa": "^0.9.0",
     "gulp": "latest",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-clean-css": "^3.9.0",
@@ -29,6 +31,7 @@
     "promise-polyfill": "^7.0.2",
     "mkdirp": "~0.5.1",
     "pify": "^3.0.0",
+    "rimraf": "^2.6.2",
     "rollup": "^0.51.8",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-css-only": "^0.2.0",
@@ -75,7 +78,8 @@
     "check": "npm run check:bundlesize && npm run check:tests && npm run check:ts",
     "check:bundlesize": "bundlesize -f dist/sweetalert2.all.min.js -s 15kB",
     "check:tests": "testem ci",
-    "check:ts": "tsc sweetalert2.d.ts"
+    "check:ts": "tsc sweetalert2.d.ts",
+    "release": "node release"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
   "license": "MIT"

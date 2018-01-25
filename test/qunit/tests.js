@@ -40,13 +40,13 @@ QUnit.test('getters', (assert) => {
 
   swal({
     showCancelButton: true,
-    imageUrl: 'image.png',
+    imageUrl: '/assets/swal2-logo.png',
     confirmButtonText: 'Confirm button',
     confirmButtonAriaLabel: 'Confirm button aria-label',
     cancelButtonText: 'Cancel button',
     cancelButtonAriaLabel: 'Cancel button aria-label'
   })
-  assert.ok(swal.getImage().src.indexOf('image.png'))
+  assert.ok(swal.getImage().src.indexOf('/assets/swal2-logo.png'))
   assert.equal(swal.getActions().textContent, 'Confirm buttonCancel button')
   assert.equal(swal.getConfirmButton().innerText, 'Confirm button')
   assert.equal(swal.getCancelButton().innerText, 'Cancel button')
@@ -456,7 +456,7 @@ QUnit.test('focusCancel', (assert) => {
 QUnit.test('image alt text and custom class', (assert) => {
   swal({
     text: 'Custom class is set',
-    imageUrl: 'image.png',
+    imageUrl: '/assets/swal2-logo.png',
     imageAlt: 'Custom icon',
     imageClass: 'image-custom-class'
   })
@@ -465,7 +465,7 @@ QUnit.test('image alt text and custom class', (assert) => {
 
   swal({
     text: 'Custom class isn\'t set',
-    imageUrl: 'image.png'
+    imageUrl: '/assets/swal2-logo.png'
   })
   assert.notOk($('.swal2-image').hasClass('image-custom-class'))
 })
@@ -474,7 +474,7 @@ QUnit.test('modal vertical offset', (assert) => {
   const done = assert.async(1)
   // create a modal with dynamic-height content
   swal({
-    imageUrl: '../assets/swal2-logo.png',
+    imageUrl: '/assets/swal2-logo.png',
     title: 'Title',
     html: '<hr><div style="height: 50px"></div><p>Text content</p>',
     type: 'warning',

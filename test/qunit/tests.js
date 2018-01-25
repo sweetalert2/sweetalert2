@@ -721,3 +721,11 @@ QUnit.test('addition and removal of backdrop', (assert) => {
   assert.notOk(document.body.classList.contains('swal2-no-backdrop'))
   assert.notOk(document.documentElement.classList.contains('swal2-no-backdrop'))
 })
+
+QUnit.test('footer', (assert) => {
+  swal({title: 'Modal with footer', footer: 'I am footer'})
+  assert.ok($('.swal2-footer').is(':visible'))
+
+  swal('Modal w/o footer')
+  assert.notOk($('.swal2-footer').is(':visible'))
+})

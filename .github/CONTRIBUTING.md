@@ -11,9 +11,3 @@ For bug reports, please include:
 JSFiddle template: https://jsfiddle.net/ad3quksn/340/
 
 JSFiddle template for IE11 and other old browsers: https://jsfiddle.net/ad3quksn/341/
-
----
-
-For pull requests:
-
-**Please make sure that `dist/*` files aren't committed.**

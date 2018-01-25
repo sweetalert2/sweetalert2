@@ -166,8 +166,6 @@ If you would like to contribute enhancements or fixes, please do the following:
   - in browser: http://localhost:8080/test/qunit/
   - via CLI: `npm test`
 
-6. Make sure that `dist/*` files aren't committed and create a pull request.
-
 
 Related projects
 -------------------------

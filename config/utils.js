@@ -5,6 +5,10 @@ const banner = require('./banner.js')
 const fs = require('fs')
 const uglify = require('uglify-js')
 const css = require('rollup-plugin-css-only')
+const pify = require('pify')
+const mkdirp = require('mkdirp')
+
+const mkdirpAsync = pify(mkdirp)
 
 const toUpper = (_, c) => {
   return c ? c.toUpperCase() : ''
@@ -26,15 +30,18 @@ const write = (dest, code) => {
 
 const packageRollup = (options) => {
   const moduleId = classify(pack.name)
-  return rollup({
-    input: options.entry || 'src/sweetalert2.js',
-    plugins: [
-      css({ output: false }),
-      babel({
-        exclude: 'node_modules/**'
+  return mkdirpAsync('./dist')
+    .then(() => {
+      return rollup({
+        input: options.entry || 'src/sweetalert2.js',
+        plugins: [
+          css({ output: false }),
+          babel({
+            exclude: 'node_modules/**'
+          })
+        ]
       })
-    ]
-  })
+    })
   .then((bundle) => {
     return bundle.generate({
       format: options.format,

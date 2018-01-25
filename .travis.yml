@@ -7,17 +7,14 @@ addons:
   firefox: latest
   google-chrome: latest
 
-before_script:
-  - gulp
-  - bundlesize -f dist/sweetalert2.all.min.js -s 15kB
-
 script:
-  # unit tests against dist/sweetalert2.js
-  - xvfb-run testem ci --reporter dot
+  # xvfb-run is needed for headless testing with Chrome and Firefox
+  - xvfb-run npm test
 
-  # unit tests against dist/sweetalert2.all.min.js
+after_script:
+  # repeat unit tests against dist/sweetalert2.all.min.js
   - sed -i 's/sweetalert2.js/sweetalert2.all.min.js/g' testem.json
-  - xvfb-run testem ci --reporter dot
+  - xvfb-run npm run check:tests
 
 deploy:
   api_key:

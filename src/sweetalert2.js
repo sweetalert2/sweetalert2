@@ -95,22 +95,13 @@ const setParameters = (params) => {
     dom.addClass([document.documentElement, document.body], swalClasses['no-backdrop'])
   }
 
-  // Content
-  if (params.text || params.html) {
-    if (typeof params.html === 'object') {
-      content.innerHTML = ''
-      if (0 in params.html) {
-        for (let i = 0; i in params.html; i++) {
-          content.appendChild(params.html[i].cloneNode(true))
-        }
-      } else {
-        content.appendChild(params.html.cloneNode(true))
-      }
-    } else if (params.html) {
-      content.innerHTML = params.html
-    } else if (params.text) {
-      content.textContent = params.text
-    }
+  // Content as HTML
+  if (params.html) {
+    dom.parseHtmlToContainer(params.html, content)
+
+  // Content as plain text
+  } else if (params.text) {
+    content.textContent = params.text
     dom.show(content)
   } else {
     dom.hide(content)
@@ -308,23 +299,7 @@ const setParameters = (params) => {
   }
 
   // Footer
-  if (params.footer) {
-    if (typeof params.footer === 'object') {
-      footer.innerHTML = ''
-      if (0 in params.footer) {
-        for (let i = 0; i in params.footer; i++) {
-          content.appendChild(params.footer[i].cloneNode(true))
-        }
-      } else {
-        content.appendChild(params.footer.cloneNode(true))
-      }
-    } else {
-      footer.innerHTML = params.footer
-    }
-    dom.show(footer)
-  } else {
-    dom.hide(footer)
-  }
+  dom.parseHtmlToContainer(params.footer, footer)
 
   // CSS animation
   if (params.animation === true) {

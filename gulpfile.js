@@ -10,7 +10,7 @@ const tslint = require('gulp-tslint')
 const browserSync = require('browser-sync').create()
 
 const pack = require('./package.json')
-const utils = require('./utils/utils.js')
+const utils = require('./utils/package-rollup') // TODO: Once this file stabilizes, make this line `const packageRollup = require('./utils/package-rollup')`
 
 gulp.task('compress', ['js-lint', 'commonjs', 'dev', 'production', 'all', 'all.min'])
 

@@ -95,7 +95,7 @@ gulp.task('ts-lint', () => {
 
 gulp.task('default', ['sass', 'ts', 'compress'])
 
-gulp.task('watch', () => {
+gulp.task('watch', ['default'], () => {
   run('npm run assume-dist-unchanged').exec()
 
   browserSync.init({

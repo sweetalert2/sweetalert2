@@ -82,6 +82,7 @@ const setParameters = (params) => {
   const confirmButton = dom.getConfirmButton()
   const cancelButton = dom.getCancelButton()
   const closeButton = dom.getCloseButton()
+  const footer = dom.getFooter()
 
   // Title
   if (params.titleText) {
@@ -304,6 +305,25 @@ const setParameters = (params) => {
 
     confirmButton.style.backgroundColor = confirmButton.style.borderLeftColor = confirmButton.style.borderRightColor = ''
     cancelButton.style.backgroundColor = cancelButton.style.borderLeftColor = cancelButton.style.borderRightColor = ''
+  }
+
+  // Footer
+  if (params.footer) {
+    if (typeof params.footer === 'object') {
+      footer.innerHTML = ''
+      if (0 in params.footer) {
+        for (let i = 0; i in params.footer; i++) {
+          content.appendChild(params.footer[i].cloneNode(true))
+        }
+      } else {
+        content.appendChild(params.footer.cloneNode(true))
+      }
+    } else {
+      footer.innerHTML = params.footer
+    }
+    dom.show(footer)
+  } else {
+    dom.hide(footer)
   }
 
   // CSS animation

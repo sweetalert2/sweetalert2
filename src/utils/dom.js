@@ -121,6 +121,8 @@ const sweetHTML = `
      <button type="button" class="${swalClasses.confirm}">OK</button>
      <button type="button" class="${swalClasses.cancel}">Cancel</button>
    </div>
+   <div class="${swalClasses.footer}">
+   </div>
  </div>
 `.replace(/(^|\n)\s*/g, '')
 
@@ -155,6 +157,8 @@ export const getButtonsWrapper = () => {
 }
 
 export const getActions = () => elementByClass(swalClasses.actions)
+
+export const getFooter = () => elementByClass(swalClasses.footer)
 
 export const getCloseButton = () => elementByClass(swalClasses.close)
 

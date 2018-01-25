@@ -24,32 +24,32 @@ $swal2-input-box-shadow-focus:     #c4e6f5 !default;
 $swal2-validationerror-background: #ea7d7d !default;
 $swal2-validationerror-color:      $swal2-white !default;
 
-$swal2-focus-outline: rgba(50, 100, 150, .4);
+$swal2-focus-outline: rgba(50, 100, 150, .4) !default;
 
 $swal2-confirm-button-color: #3085d6 !default;
 $swal2-cancel-button-color: #aaa !default;
 
-$swal2-font: inherit;
-$swal2-font-size: 1rem;
+$swal2-font: inherit !default;
+$swal2-font-size: 1rem !default;
 
-$swal2-width: 32em;
-$swal2-toast-width: auto;
+$swal2-width: 32em !default;
+$swal2-toast-width: auto !default;
 
-$swal2-padding: 1.25em;
-$swal2-toast-padding: .625em;
+$swal2-padding: 1.25em !default;
+$swal2-toast-padding: .625em !default;
 
-$swal2-title-font-size: 1.875em;
-$swal2-content-font-size: 1.125em;
-$swal2-input-font-size: 1.125em;
-$swal2-validation-font-size: 1em;
-$swal2-buttons-font-size: 1.0625em;
+$swal2-title-font-size: 1.875em !default;
+$swal2-content-font-size: 1.125em !default;
+$swal2-input-font-size: 1.125em !default;
+$swal2-validation-font-size: 1em !default;
+$swal2-buttons-font-size: 1.0625em !default;
 
-$swal2-toast-title-font-size: 1em;
-$swal2-toast-content-font-size: .875em;
-$swal2-toast-input-font-size: 1em;
-$swal2-toast-validation-font-size: 1em;
-$swal2-toast-buttons-font-size: 1em;
+$swal2-toast-title-font-size: 1em !default;
+$swal2-toast-content-font-size: .875em !default;
+$swal2-toast-input-font-size: 1em !default;
+$swal2-toast-validation-font-size: 1em !default;
+$swal2-toast-buttons-font-size: 1em !default;
 
-$swal2-close-button-size: 2.5em;
+$swal2-close-button-size: 2.5em !default;
 
-$swal2-progress-steps-distance: 2.5em;
+$swal2-progress-steps-distance: 2.5em !default;

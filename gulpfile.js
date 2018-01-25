@@ -10,7 +10,7 @@ const tslint = require('gulp-tslint')
 const browserSync = require('browser-sync').create()
 
 const pack = require('./package.json')
-const utils = require('./config/utils.js')
+const utils = require('./utils/utils.js')
 
 gulp.task('compress', ['js-lint', 'commonjs', 'dev', 'production', 'all', 'all.min'])
 

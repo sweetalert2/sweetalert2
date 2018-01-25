@@ -44,7 +44,8 @@ QUnit.test('getters', (assert) => {
     confirmButtonText: 'Confirm button',
     confirmButtonAriaLabel: 'Confirm button aria-label',
     cancelButtonText: 'Cancel button',
-    cancelButtonAriaLabel: 'Cancel button aria-label'
+    cancelButtonAriaLabel: 'Cancel button aria-label',
+    footer: '<b>Footer</b>'
   })
   assert.ok(swal.getImage().src.indexOf('/assets/swal2-logo.png'))
   assert.equal(swal.getActions().textContent, 'Confirm buttonCancel button')
@@ -52,6 +53,7 @@ QUnit.test('getters', (assert) => {
   assert.equal(swal.getCancelButton().innerText, 'Cancel button')
   assert.equal(swal.getConfirmButton().getAttribute('aria-label'), 'Confirm button aria-label')
   assert.equal(swal.getCancelButton().getAttribute('aria-label'), 'Cancel button aria-label')
+  assert.equal(swal.getFooter().innerHTML, '<b>Footer</b>')
 
   swal({input: 'text'})
   $('.swal2-input').val('input text')

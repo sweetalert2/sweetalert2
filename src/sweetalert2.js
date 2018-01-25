@@ -843,6 +843,7 @@ const sweetAlert = (...args) => {
     sweetAlert.getActions = () => dom.getActions()
     sweetAlert.getConfirmButton = () => dom.getConfirmButton()
     sweetAlert.getCancelButton = () => dom.getCancelButton()
+    sweetAlert.getFooter = () => dom.getFooter()
     sweetAlert.isLoading = () => dom.isLoading()
 
     sweetAlert.enableButtons = () => {

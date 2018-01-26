@@ -225,6 +225,38 @@ QUnit.test('input range', (assert) => {
   assert.equal(input.val(), '5')
 })
 
+QUnit.test('input type "select", inputOptions Map', (assert) => {
+  const inputOptions = new Map([
+    [1, 'Linus Torvalds'],
+    [2, 'Richard Stallman']
+  ])
+  swal({
+    input: 'select',
+    inputOptions
+  })
+  assert.equal($('.swal2-select option').length, 2)
+  assert.equal($('.swal2-select option')[0].innerHTML, 'Linus Torvalds')
+  assert.equal($('.swal2-select option')[0].value, '1')
+  assert.equal($('.swal2-select option')[1].innerHTML, 'Richard Stallman')
+  assert.equal($('.swal2-select option')[1].value, '2')
+})
+
+QUnit.test('input type "radio", inputOptions Map', (assert) => {
+  const inputOptions = new Map([
+    [1, 'Linus Torvalds'],
+    [2, 'Richard Stallman']
+  ])
+  swal({
+    input: 'radio',
+    inputOptions
+  })
+  assert.equal($('.swal2-radio label').length, 2)
+  assert.equal($('.swal2-radio label')[0].textContent, 'Linus Torvalds')
+  assert.equal($('.swal2-radio input')[0].value, '1')
+  assert.equal($('.swal2-radio label')[1].textContent, 'Richard Stallman')
+  assert.equal($('.swal2-radio input')[1].value, '2')
+})
+
 QUnit.test('queue', (assert) => {
   const done = assert.async()
   const steps = ['Step 1', 'Step 2']

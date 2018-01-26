@@ -94,6 +94,11 @@ declare module 'sweetalert2' {
         function getActions(): HTMLElement;
 
         /**
+         * Get the modal footer.
+         */
+        function getFooter(): HTMLElement;
+
+        /**
          * Enable "Confirm" and "Cancel" buttons.
          */
         function enableButtons(): void;
@@ -265,6 +270,13 @@ declare module 'sweetalert2' {
          * @default null
          */
         html?: string | JQuery;
+
+        /**
+         * The footer of the modal, as HTML.
+         *
+         * @default null
+         */
+        footer?: string | JQuery;
 
         /**
          * The type of the modal.

@@ -111,6 +111,7 @@ gulp.task('watch', ['default'], () => {
 
   gulp.watch([
     'test/sandbox.html',
+    'test/qunit/*.js',
     'dist/sweetalert2.all.min.js'
   ]).on('change', browserSync.reload)
 

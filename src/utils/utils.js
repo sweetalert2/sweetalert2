@@ -15,6 +15,22 @@ export const uniqueArray = (arr) => {
 }
 
 /**
+ * Convert object into iterable Map
+ * https://stackoverflow.com/a/36644532/1331425
+ * @param obj
+ */
+export const objectToMap = (obj) => {
+  if (obj instanceof Map) {
+    return obj
+  }
+  const map = new Map()
+  Object.keys(obj).forEach(key => {
+    map.set(key, obj[key])
+  })
+  return map
+}
+
+/**
  * Standardise console warnings
  * @param message
  */

@@ -226,9 +226,7 @@ declare module 'sweetalert2' {
 
     export type SweetAlertBooleanFunction = () => boolean;
 
-    export interface SweetAlertInputOptions {
-        [inputValue: string]: string;
-    }
+    export type SweetAlertInputOptions = Map<string, string> | { [inputValue: string]: string };
 
     export interface SweetAlertInputAttributes {
         [attribute: string]: string;
@@ -706,4 +704,7 @@ interface JQuery {
 }
 
 interface Promise<T> {
+}
+
+interface Map<K, V> {
 }

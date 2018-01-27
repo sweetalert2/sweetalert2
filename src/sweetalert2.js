@@ -1,6 +1,6 @@
 import defaultParams, { deprecatedParams } from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
-import { warn, error, warnOnce, callIfFunction } from './utils/utils.js'
+import { objectToMap, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom.js'
 
 let popupParams = Object.assign({}, defaultParams)
@@ -1029,10 +1029,11 @@ const sweetAlert = (...args) => {
           select.appendChild(placeholder)
         }
         populateInputOptions = (inputOptions) => {
-          for (let optionValue in inputOptions) {
+          inputOptions = objectToMap(inputOptions)
+          for (const [optionValue, optionLabel] of inputOptions) {
             const option = document.createElement('option')
             option.value = optionValue
-            option.innerHTML = inputOptions[optionValue]
+            option.innerHTML = optionLabel
             if (params.inputValue.toString() === optionValue) {
               option.selected = true
             }
@@ -1046,21 +1047,19 @@ const sweetAlert = (...args) => {
         const radio = dom.getChildByClass(content, swalClasses.radio)
         radio.innerHTML = ''
         populateInputOptions = (inputOptions) => {
-          for (let radioValue in inputOptions) {
+          inputOptions = objectToMap(inputOptions)
+          for (const [radioValue, radioLabel] of inputOptions) {
             const radioInput = document.createElement('input')
-            const radioLabel = document.createElement('label')
-            const radioLabelSpan = document.createElement('span')
+            const radioLabelElement = document.createElement('label')
             radioInput.type = 'radio'
             radioInput.name = swalClasses.radio
             radioInput.value = radioValue
-            if (params.inputValue.toString() === radioValue) {
+            if (params.inputValue.toString() === radioValue.toString()) {
               radioInput.checked = true
             }
-            radioLabelSpan.innerHTML = inputOptions[radioValue]
-            radioLabel.appendChild(radioInput)
-            radioLabel.appendChild(radioLabelSpan)
-            radioLabel.for = radioInput.id
-            radio.appendChild(radioLabel)
+            radioLabelElement.innerHTML = radioLabel
+            radioLabelElement.insertBefore(radioInput, radioLabelElement.firstChild)
+            radio.appendChild(radioLabelElement)
           }
           dom.show(radio)
           const radios = radio.querySelectorAll('input')
@@ -1108,7 +1107,7 @@ const sweetAlert = (...args) => {
       } else if (typeof params.inputOptions === 'object') {
         populateInputOptions(params.inputOptions)
       } else {
-        error('Unexpected type of inputOptions! Expected object or Promise, got ' + typeof params.inputOptions)
+        error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + typeof params.inputOptions)
       }
     }
 

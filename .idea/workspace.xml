@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39495e62-32f3-41b2-a3fe-728d654d4d98" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/forms/builder.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/forms/api.js" afterPath="$PROJECT_DIR$/src/forms/api.js" />
+      <change beforePath="$PROJECT_DIR$/src/forms/builder.js" afterPath="$PROJECT_DIR$/src/forms/builder.js" />
       <change beforePath="$PROJECT_DIR$/src/sweetalert2.js" afterPath="$PROJECT_DIR$/src/sweetalert2.js" />
       <change beforePath="$PROJECT_DIR$/src/sweetalert2.scss" afterPath="$PROJECT_DIR$/src/sweetalert2.scss" />
-      <change beforePath="$PROJECT_DIR$/src/utils/classes.js" afterPath="$PROJECT_DIR$/src/utils/classes.js" />
       <change beforePath="$PROJECT_DIR$/src/utils/dom.js" afterPath="$PROJECT_DIR$/src/utils/dom.js" />
-      <change beforePath="$PROJECT_DIR$/src/utils/form.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/utils/validators.js" afterPath="$PROJECT_DIR$/src/forms/validators.js" />
+      <change beforePath="$PROJECT_DIR$/src/utils/params.js" afterPath="$PROJECT_DIR$/src/utils/params.js" />
       <change beforePath="$PROJECT_DIR$/test/sandbox.html" afterPath="$PROJECT_DIR$/test/sandbox.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,40 +26,40 @@
     <fileColor scope="Non-Project Files (Material Oceanic)" color="2E3C43" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="dom.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/dom.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9520">
-              <caret line="0" column="60" lean-forward="true" selection-start-line="0" selection-start-column="60" selection-end-line="0" selection-end-column="60" />
+            <state relative-caret-position="1643">
+              <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
               <folding>
                 <element signature="e#61#114#0" expanded="true" />
-                <marker date="1516222836104" expanded="true" signature="1707:3208" ph="..." />
-                <marker date="1516222836104" expanded="true" signature="1746:2762" ph="..." />
-                <marker date="1516222836104" expanded="true" signature="1856:1999" ph="..." />
-                <marker date="1516222836104" expanded="true" signature="2258:2573" ph="..." />
-                <marker date="1516222836104" expanded="true" signature="2802:3007" ph="..." />
-                <marker date="1516222836104" expanded="true" signature="3047:3200" ph="..." />
+                <marker date="1517011041040" expanded="true" signature="1746:3247" ph="..." />
+                <marker date="1517011041040" expanded="true" signature="1785:2801" ph="..." />
+                <marker date="1517011041040" expanded="true" signature="1895:2038" ph="..." />
+                <marker date="1517011041040" expanded="true" signature="2297:2612" ph="..." />
+                <marker date="1517011041040" expanded="true" signature="2841:3046" ph="..." />
+                <marker date="1517011041040" expanded="true" signature="3086:3239" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".babelrc" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.babelrc">
+      <file leaf-file-name="sweetalert2.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sweetalert2.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="28" />
+            <state relative-caret-position="302">
+              <caret line="685" column="14" lean-forward="false" selection-start-line="685" selection-start-column="9" selection-end-line="685" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
+      <file leaf-file-name="variables.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/variables.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1667">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="279">
+              <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -69,8 +68,8 @@
       <file leaf-file-name="builder.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/forms/builder.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="3" column="36" lean-forward="true" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+            <state relative-caret-position="155">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding>
                 <element signature="e#0#58#0" expanded="true" />
               </folding>
@@ -78,24 +77,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base-input.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/forms/base-input.js">
+      <file leaf-file-name="sandbox.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/sandbox.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="5" column="34" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+            <state relative-caret-position="178">
+              <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="base-input.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/forms/base-input.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="279">
+              <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="api.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/forms/api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1309">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="2356">
+              <caret line="41" column="77" lean-forward="false" selection-start-line="41" selection-start-column="77" selection-end-line="41" selection-end-column="77" />
+              <caret line="62" column="78" lean-forward="false" selection-start-line="62" selection-start-column="78" selection-end-line="62" selection-end-column="78" />
+              <caret line="76" column="76" lean-forward="false" selection-start-line="76" selection-start-column="76" selection-end-line="76" selection-end-column="76" />
               <folding>
-                <element signature="e#0#66#0" expanded="true" />
+                <element signature="e#0#70#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="params.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/params.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-506">
+              <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,32 +124,20 @@
       <file leaf-file-name="validators.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/forms/validators.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="34" column="17" lean-forward="true" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+            <state relative-caret-position="288">
+              <caret line="34" column="17" lean-forward="false" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sweetalert2.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sweetalert2.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sweetalert2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="495" column="0" lean-forward="false" selection-start-line="495" selection-start-column="0" selection-end-line="510" selection-end-column="5" />
+            <state relative-caret-position="589">
+              <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
               <folding>
-                <element signature="e#0#67#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sweetalert2.all.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sweetalert2.all.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#44#0" expanded="true" />
+                <element signature="e#0#75#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,28 +147,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>compress</find>
-      <find>createlabel</find>
-      <find>[nam</find>
-      <find>addcontrol</find>
-      <find>multiple</find>
-      <find>addinput</find>
-      <find>submit</find>
-      <find>confirm(</find>
-      <find>clickconfirm</find>
-      <find>input.on</find>
-      <find>set class</find>
-      <find>createControlWrapper</find>
-      <find>select</find>
-      <find>const swee</find>
-      <find>getinputswr</find>
-      <find>gulpf</find>
-      <find>label</find>
-      <find>..</find>
-      <find>append</find>
-      <find>queu</find>
-      <find>set cl</find>
+      <find>enab</find>
+      <find>classl</find>
+      <find>createel</find>
+      <find>queryselector</find>
+      <find>load</find>
+      <find>.then</find>
+      <find>border</find>
+      <find>name=</find>
+      <find>getcontrolcont</find>
+      <find>prefix(</find>
+      <find>`input-${name}`</find>
+      <find>for-</find>
       <find>getinput</find>
+      <find>getinputswr</find>
+      <find>swa</find>
+      <find>-text</find>
+      <find>enable</find>
+      <find>resolveopt</find>
+      <find>get</find>
+      <find>querySelector</find>
+      <find>disablein</find>
+      <find>loading</find>
+      <find>disableinp</find>
+      <find>should not</find>
+      <find>input</find>
+      <find>formsapi</find>
+      <find>name</find>
+      <find>preConfirm</find>
+      <find>getcontro</find>
+      <find>params =</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -168,18 +185,19 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sweetalert2.scss" />
         <option value="$PROJECT_DIR$/src/utils/classes.js" />
-        <option value="$PROJECT_DIR$/src/utils/dom.js" />
-        <option value="$PROJECT_DIR$/test/sandbox.html" />
         <option value="$PROJECT_DIR$/src/utils/form.js" />
         <option value="$PROJECT_DIR$/src/utils/forms/form.js" />
         <option value="$PROJECT_DIR$/src/utils/forms/builder.js" />
         <option value="$PROJECT_DIR$/src/utils/forms/api.js" />
-        <option value="$PROJECT_DIR$/src/forms/builder.js" />
         <option value="$PROJECT_DIR$/src/forms/base-input.js" />
-        <option value="$PROJECT_DIR$/src/forms/api.js" />
+        <option value="$PROJECT_DIR$/src/sweetalert2.scss" />
+        <option value="$PROJECT_DIR$/src/forms/builder.js" />
+        <option value="$PROJECT_DIR$/src/utils/params.js" />
         <option value="$PROJECT_DIR$/src/sweetalert2.js" />
+        <option value="$PROJECT_DIR$/test/sandbox.html" />
+        <option value="$PROJECT_DIR$/src/utils/dom.js" />
+        <option value="$PROJECT_DIR$/src/forms/api.js" />
       </list>
     </option>
   </component>
@@ -238,7 +256,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -272,8 +289,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -357,23 +375,23 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16369048" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -388,42 +406,88 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/utils/dom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="60" lean-forward="false" selection-start-line="0" selection-start-column="60" selection-end-line="0" selection-end-column="60" />
+          <folding>
+            <element signature="e#61#114#0" expanded="true" />
+            <marker date="1517011041040" expanded="true" signature="1746:3247" ph="..." />
+            <marker date="1517011041040" expanded="true" signature="1785:2801" ph="..." />
+            <marker date="1517011041040" expanded="true" signature="1895:2038" ph="..." />
+            <marker date="1517011041040" expanded="true" signature="2297:2612" ph="..." />
+            <marker date="1517011041040" expanded="true" signature="2841:3046" ph="..." />
+            <marker date="1517011041040" expanded="true" signature="3086:3239" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.babelrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/forms/builder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="3" column="36" lean-forward="false" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/forms/base-input.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/forms/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/forms/validators.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="34" column="17" lean-forward="false" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sweetalert2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15159">
+          <caret line="495" column="0" lean-forward="false" selection-start-line="495" selection-start-column="0" selection-end-line="510" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1550">
+          <caret line="50" column="19" lean-forward="true" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/sandbox.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/params.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1340">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/classes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sweetalert2.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="764" column="0" lean-forward="false" selection-start-line="764" selection-start-column="0" selection-end-line="764" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -436,84 +500,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.babelrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1667">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/forms/builder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="3" column="36" lean-forward="true" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/dom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9520">
-          <caret line="0" column="60" lean-forward="true" selection-start-line="0" selection-start-column="60" selection-end-line="0" selection-end-column="60" />
-          <folding>
-            <element signature="e#61#114#0" expanded="true" />
-            <marker date="1516222836104" expanded="true" signature="1707:3208" ph="..." />
-            <marker date="1516222836104" expanded="true" signature="1746:2762" ph="..." />
-            <marker date="1516222836104" expanded="true" signature="1856:1999" ph="..." />
-            <marker date="1516222836104" expanded="true" signature="2258:2573" ph="..." />
-            <marker date="1516222836104" expanded="true" signature="2802:3007" ph="..." />
-            <marker date="1516222836104" expanded="true" signature="3047:3200" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/forms/validators.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="34" column="17" lean-forward="true" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/forms/base-input.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="5" column="34" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/forms/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1309">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sweetalert2.all.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/utils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
@@ -522,12 +508,140 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="48" column="4" lean-forward="true" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.babelrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="3" column="15" lean-forward="true" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sweetalert2.all.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#44#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/classes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sweetalert2.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="685" column="14" lean-forward="false" selection-start-line="685" selection-start-column="9" selection-end-line="685" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/variables.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/forms/builder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/sandbox.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sweetalert2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="495" column="0" lean-forward="false" selection-start-line="495" selection-start-column="0" selection-end-line="510" selection-end-column="5" />
+        <state relative-caret-position="589">
+          <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
           <folding>
-            <element signature="e#0#67#0" expanded="true" />
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/forms/validators.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="34" column="17" lean-forward="false" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/params.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-506">
+          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/forms/base-input.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/dom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1643">
+          <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+          <folding>
+            <element signature="e#61#114#0" expanded="true" />
+            <marker date="1517011041040" expanded="true" signature="1746:3247" ph="..." />
+            <marker date="1517011041040" expanded="true" signature="1785:2801" ph="..." />
+            <marker date="1517011041040" expanded="true" signature="1895:2038" ph="..." />
+            <marker date="1517011041040" expanded="true" signature="2297:2612" ph="..." />
+            <marker date="1517011041040" expanded="true" signature="2841:3046" ph="..." />
+            <marker date="1517011041040" expanded="true" signature="3086:3239" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/forms/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2356">
+          <caret line="41" column="77" lean-forward="false" selection-start-line="41" selection-start-column="77" selection-end-line="41" selection-end-column="77" />
+          <caret line="62" column="78" lean-forward="false" selection-start-line="62" selection-start-column="78" selection-end-line="62" selection-end-column="78" />
+          <caret line="76" column="76" lean-forward="false" selection-start-line="76" selection-start-column="76" selection-end-line="76" selection-end-column="76" />
+          <folding>
+            <element signature="e#0#70#0" expanded="true" />
           </folding>
         </state>
       </provider>

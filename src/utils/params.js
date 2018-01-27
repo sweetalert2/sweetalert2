@@ -1,4 +1,4 @@
-export default {
+export const defaultParams = {
   title: '',
   titleText: '',
   text: '',
@@ -64,3 +64,5 @@ export const deprecatedParams = [
   'useRejections',
   'expectRejections'
 ]
+
+export default defaultParams

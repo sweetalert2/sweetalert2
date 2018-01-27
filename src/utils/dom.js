@@ -1,6 +1,7 @@
 // import { default as sweetAlert } from '../sweetalert2.js'
 import { swalClasses, iconTypes } from './classes.js'
 import { uniqueArray, error, warnOnce } from './utils.js'
+import { prefixItem } from './classes'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
@@ -123,9 +124,11 @@ export const getButtonsWrapper = () => {
 
 export const getActions = () => elementByClass(swalClasses.actions)
 
-export const getInputsWrapper = () => elementByClass(swalClasses['inputs-wrapper'])
+export const getControlsWrapper = () => elementByClass(swalClasses['inputs-wrapper'])
 
-export const getInput = (name) => getInputsWrapper().querySelector(`[name=${name}]`)
+export const getControl = (name) => getControlsWrapper().querySelector(`[name=${name}]`)
+
+export const getControlWrapper = (name) => getControlsWrapper().querySelector('.' + prefixItem(`input-${name}`))
 
 export const closest = (el, selector) => {
   while ((el = el.parentElement) && !el.classList.contains(selector));
@@ -300,6 +303,19 @@ export const measureScrollbar = () => {
   const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
   document.body.removeChild(scrollDiv)
   return scrollbarWidth
+}
+
+/**
+ * Create an element
+ *
+ * @param selector
+ * @param className
+ */
+export const createEl = (selector, className = false) => {
+  let el = document.createElement(selector)
+  if (className) addClass(el, className)
+
+  return el
 }
 
 /**

@@ -1,4 +1,4 @@
-import defaultParams, { deprecatedParams } from './utils/params.js'
+import params, { defaultParams, deprecatedParams } from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
 import { colorLuminance, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom.js'
@@ -7,6 +7,7 @@ import formsApi from './forms/api'
 import * as validators from './forms/validators'
 
 let popupParams = Object.assign({}, defaultParams)
+
 let queue = []
 
 let previousWindowKeyDown, windowOnkeydownOverridden
@@ -408,7 +409,7 @@ let sweetAlert = (...args) => {
     return false
   }
 
-  let params = Object.assign({}, popupParams)
+  Object.assign(params, popupParams)
 
   switch (typeof args[0]) {
     case 'string':

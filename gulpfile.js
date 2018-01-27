@@ -13,6 +13,9 @@ const run = require('gulp-run')
 const pack = require('./package.json')
 const utils = require('./config/utils.js')
 
+const skipMinification = process.argv.includes('--skip-minification')
+const continueOnLintError = process.argv.includes('--continue-on-lint-error')
+
 gulp.task('compress', ['js-lint', 'commonjs', 'dev', 'production', 'all', 'all.min'])
 
 gulp.task('commonjs', () => {
@@ -30,11 +33,15 @@ gulp.task('dev', () => {
 })
 
 gulp.task('production', () => {
-  return utils.packageRollup({
-    dest: 'dist/' + pack.name + '.min.js',
-    format: 'umd',
-    minify: true
-  })
+  if (skipMinification) {
+    return Promise.resolve()
+  } else {
+    return utils.packageRollup({
+      dest: 'dist/' + pack.name + '.min.js',
+      format: 'umd',
+      minify: true
+    })
+  }
 })
 
 gulp.task('all', ['sass'], () => {
@@ -46,23 +53,29 @@ gulp.task('all', ['sass'], () => {
 })
 
 gulp.task('all.min', ['sass'], () => {
-  return utils.packageRollup({
-    entry: 'src/sweetalert2.all.js',
-    dest: 'dist/' + pack.name + '.all.min.js',
-    format: 'umd',
-    minify: true
-  })
+  if (skipMinification) {
+    return Promise.resolve()
+  } else {
+    return utils.packageRollup({
+      entry: 'src/sweetalert2.all.js',
+      dest: 'dist/' + pack.name + '.all.min.js',
+      format: 'umd',
+      minify: true
+    })
+  }
 })
 
-gulp.task('sass', ['sass-lint'], (cb) => {
-  gulp.src('src/sweetalert2.scss')
+gulp.task('sass', ['sass-lint'], () => {
+  let stream = gulp.src('src/sweetalert2.scss')
     .pipe(sass())
     .pipe(autoprefix())
     .pipe(gulp.dest('dist'))
-    .pipe(cleanCSS())
-    .pipe(rename({extname: '.min.css'}))
-    .pipe(gulp.dest('dist'))
-    .on('end', cb)
+  if (!skipMinification) {
+    stream = stream.pipe(cleanCSS())
+      .pipe(rename({extname: '.min.css'}))
+      .pipe(gulp.dest('dist'))
+  }
+  return stream
 })
 
 gulp.task('ts', ['ts-lint'], () => {
@@ -76,21 +89,26 @@ gulp.task('js-lint', () => {
   return gulp.src(['src/**/*.js', 'test/*.js'])
     .pipe(standard())
     .pipe(standard.reporter('default', {
-      breakOnError: true
+      breakOnError: !continueOnLintError
     }))
 })
 
 gulp.task('sass-lint', () => {
-  return gulp.src(['src/**/*.scss'])
+  let stream = gulp.src(['src/**/*.scss'])
     .pipe(sassLint())
     .pipe(sassLint.format())
-    .pipe(sassLint.failOnError())
+  if (continueOnLintError) {
+    stream = stream.pipe(sassLint.failOnError())
+  }
+  return stream
 })
 
 gulp.task('ts-lint', () => {
   return gulp.src('sweetalert2.d.ts')
     .pipe(tslint({ formatter: 'verbose' }))
-    .pipe(tslint.report())
+    .pipe(tslint.report({
+      emitError: !continueOnLintError
+    }))
 })
 
 gulp.task('build', ['sass', 'ts', 'compress'])

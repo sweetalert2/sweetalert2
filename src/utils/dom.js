@@ -121,6 +121,8 @@ const sweetHTML = `
      <button type="button" class="${swalClasses.confirm}">OK</button>
      <button type="button" class="${swalClasses.cancel}">Cancel</button>
    </div>
+   <div class="${swalClasses.footer}">
+   </div>
  </div>
 `.replace(/(^|\n)\s*/g, '')
 
@@ -156,6 +158,8 @@ export const getButtonsWrapper = () => {
 
 export const getActions = () => elementByClass(swalClasses.actions)
 
+export const getFooter = () => elementByClass(swalClasses.footer)
+
 export const getCloseButton = () => elementByClass(swalClasses.close)
 
 export const getFocusableElements = () => {
@@ -179,6 +183,26 @@ export const getFocusableElements = () => {
   )
 
   return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements))
+}
+
+export const parseHtmlToContainer = (param, target) => {
+  if (!param) {
+    return hide(target)
+  }
+
+  if (typeof param === 'object') {
+    target.innerHTML = ''
+    if (0 in param) {
+      for (let i = 0; i in param; i++) {
+        target.appendChild(param[i].cloneNode(true))
+      }
+    } else {
+      target.appendChild(param.cloneNode(true))
+    }
+  } else if (param) {
+    target.innerHTML = param
+  } else {}
+  show(target)
 }
 
 export const isModal = () => {

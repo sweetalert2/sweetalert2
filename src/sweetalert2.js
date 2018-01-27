@@ -82,6 +82,7 @@ const setParameters = (params) => {
   const confirmButton = dom.getConfirmButton()
   const cancelButton = dom.getCancelButton()
   const closeButton = dom.getCloseButton()
+  const footer = dom.getFooter()
 
   // Title
   if (params.titleText) {
@@ -94,22 +95,13 @@ const setParameters = (params) => {
     dom.addClass([document.documentElement, document.body], swalClasses['no-backdrop'])
   }
 
-  // Content
-  if (params.text || params.html) {
-    if (typeof params.html === 'object') {
-      content.innerHTML = ''
-      if (0 in params.html) {
-        for (let i = 0; i in params.html; i++) {
-          content.appendChild(params.html[i].cloneNode(true))
-        }
-      } else {
-        content.appendChild(params.html.cloneNode(true))
-      }
-    } else if (params.html) {
-      content.innerHTML = params.html
-    } else if (params.text) {
-      content.textContent = params.text
-    }
+  // Content as HTML
+  if (params.html) {
+    dom.parseHtmlToContainer(params.html, content)
+
+  // Content as plain text
+  } else if (params.text) {
+    content.textContent = params.text
     dom.show(content)
   } else {
     dom.hide(content)
@@ -305,6 +297,9 @@ const setParameters = (params) => {
     confirmButton.style.backgroundColor = confirmButton.style.borderLeftColor = confirmButton.style.borderRightColor = ''
     cancelButton.style.backgroundColor = cancelButton.style.borderLeftColor = cancelButton.style.borderRightColor = ''
   }
+
+  // Footer
+  dom.parseHtmlToContainer(params.footer, footer)
 
   // CSS animation
   if (params.animation === true) {
@@ -848,6 +843,7 @@ const sweetAlert = (...args) => {
     sweetAlert.getActions = () => dom.getActions()
     sweetAlert.getConfirmButton = () => dom.getConfirmButton()
     sweetAlert.getCancelButton = () => dom.getCancelButton()
+    sweetAlert.getFooter = () => dom.getFooter()
     sweetAlert.isLoading = () => dom.isLoading()
 
     sweetAlert.enableButtons = () => {

@@ -27,6 +27,7 @@
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.2.3",
     "gulp-uglify": "latest",
+    "promise-polyfill": "^7.0.2",
     "rollup": "^0.51.8",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-css-only": "^0.2.0",

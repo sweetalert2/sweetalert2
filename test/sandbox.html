@@ -1,3 +1,6 @@
+<!-- IE11 compatibility -->
+<script src="/node_modules/promise-polyfill/dist/polyfill.min.js"></script>
+
 <script src="../dist/sweetalert2.js"></script>
 <link rel="stylesheet" href="../dist/sweetalert2.css">
 
@@ -10,15 +13,15 @@
       type: 'success',
       showCloseButton: true,
       showCancelButton: true,
-      preConfirm: (value) => {
+      preConfirm: function (value) {
         if (!value) {
           swal.showValidationError('Should not be empty!')
         }
       },
-      onOpen: (modal) => {
+      onOpen: function (modal) {
         console.log(modal)
       }
-    }).then((result) => {
+    }).then(function (result) {
       console.log(result)
     })
   </script>

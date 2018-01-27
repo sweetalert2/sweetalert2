@@ -3,6 +3,7 @@ export default {
   titleText: '',
   text: '',
   html: '',
+  footer: '',
   type: null,
   toast: false,
   customClass: '',

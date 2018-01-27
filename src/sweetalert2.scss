@@ -389,6 +389,14 @@ body {
     }
   }
 
+  .swal2-footer {
+    font-size: $swal2-footer-font-size;
+    border-top: 1px solid $swal2-footer-border-color;
+    justify-content: center;
+    margin-top: 1.25em;
+    padding-top: 1em;
+  }
+
   .swal2-image {
     margin: 1.25em auto;
     max-width: 100%;

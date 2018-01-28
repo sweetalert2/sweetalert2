@@ -71,4 +71,4 @@ const {version} = require('./package.json')
   await execute(`git checkout "${branchToPublish}"`)
 
   log('OK!')
-})()
+})().catch(console.error)

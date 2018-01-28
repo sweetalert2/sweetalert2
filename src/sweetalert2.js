@@ -8,14 +8,6 @@ let queue = []
 
 let previousWindowKeyDown, windowOnkeydownOverridden
 
-/*
- * Check for the existence of Promise
- * Hopefully to avoid many github issues
- */
-if (typeof Promise === 'undefined') {
-  error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)')
-}
-
 /**
  * Show relevant warnings for given params
  *
@@ -410,6 +402,11 @@ const sweetAlert = (...args) => {
   // Prevent run in Node env
   if (typeof window === 'undefined') {
     return
+  }
+
+  // Check for the existence of Promise
+  if (typeof Promise === 'undefined') {
+    error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)')
   }
 
   if (typeof args[0] === 'undefined') {

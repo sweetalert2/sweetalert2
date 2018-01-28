@@ -8,9 +8,9 @@ For bug reports, please include:
 - expected behavior of the plugin
 - actual behavior
 
-JSFiddle template: https://jsfiddle.net/ad3quksn/340/
+JSFiddle template: https://jsfiddle.net/ad3quksn/349/
 
-JSFiddle template for IE11 and other old browsers: https://jsfiddle.net/ad3quksn/341/
+JSFiddle template for IE11 and other old browsers: https://jsfiddle.net/ad3quksn/350/
 
 ---
 

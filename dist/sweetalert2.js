@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.8.0
+ * sweetalert2 v7.8.1
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1643,7 +1643,7 @@ var sweetAlert = function sweetAlert() {
               var option = document.createElement('option');
               option.value = optionValue;
               option.innerHTML = optionLabel;
-              if (params.inputValue.toString() === optionValue) {
+              if (params.inputValue.toString() === optionValue.toString()) {
                 option.selected = true;
               }
               select.appendChild(option);
@@ -1990,7 +1990,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.8.0';
+sweetAlert.version = '7.8.1';
 
 sweetAlert.default = sweetAlert;
 

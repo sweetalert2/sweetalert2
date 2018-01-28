@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.8.1
+ * sweetalert2 v7.8.2
  * Released under the MIT License.
  */
 'use strict';
@@ -591,14 +591,6 @@ var queue = [];
 var previousWindowKeyDown = void 0;
 var windowOnkeydownOverridden = void 0;
 
-/*
- * Check for the existence of Promise
- * Hopefully to avoid many github issues
- */
-if (typeof Promise === 'undefined') {
-  error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)');
-}
-
 /**
  * Show relevant warnings for given params
  *
@@ -990,6 +982,11 @@ var sweetAlert = function sweetAlert() {
   // Prevent run in Node env
   if (typeof window === 'undefined') {
     return;
+  }
+
+  // Check for the existence of Promise
+  if (typeof Promise === 'undefined') {
+    error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)');
   }
 
   if (typeof args[0] === 'undefined') {
@@ -1986,7 +1983,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.8.1';
+sweetAlert.version = '7.8.2';
 
 sweetAlert.default = sweetAlert;
 

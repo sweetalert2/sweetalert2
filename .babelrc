@@ -5,7 +5,7 @@
       {
         "modules": false
       }
-  ]
+    ]
   ],
   "plugins": [
     "array-includes",

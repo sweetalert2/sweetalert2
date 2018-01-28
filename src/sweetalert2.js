@@ -1030,7 +1030,7 @@ const sweetAlert = (...args) => {
             const option = document.createElement('option')
             option.value = optionValue
             option.innerHTML = optionLabel
-            if (params.inputValue.toString() === optionValue) {
+            if (params.inputValue.toString() === optionValue.toString()) {
               option.selected = true
             }
             select.appendChild(option)

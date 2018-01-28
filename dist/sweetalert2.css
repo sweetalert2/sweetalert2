@@ -655,6 +655,14 @@ body.swal2-no-backdrop .swal2-shown {
               box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, 0.4); }
     .swal2-popup .swal2-styled::-moz-focus-inner {
       border: 0; }
+  .swal2-popup .swal2-footer {
+    font-size: 1em;
+    border-top: 1px solid #eee;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 1.25em;
+    padding-top: 1em; }
   .swal2-popup .swal2-image {
     margin: 1.25em auto;
     max-width: 100%; }

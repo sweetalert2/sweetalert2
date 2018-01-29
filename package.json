@@ -46,6 +46,12 @@
       "dist/"
     ]
   },
+  "greenkeeper": {
+    "ignore": [
+      "gulp-standard",
+      "standard"
+    ]
+  },
   "files": [
     "dist",
     "src",

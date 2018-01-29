@@ -30,6 +30,8 @@
 
 ---
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/sweetalert2/sweetalert2.svg)](https://greenkeeper.io/)
+
 :point_right: **Upgrading from v6.x to v7.x?** [Read the release notes!](https://github.com/sweetalert2/sweetalert2/releases/tag/v7.0.0)
 
 :point_right: **Migrating from [SweetAlert](https://github.com/t4t5/sweetalert)?** [SweetAlert 1.x to SweetAlert2 migration guide](https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2)

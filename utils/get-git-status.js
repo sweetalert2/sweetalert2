@@ -8,9 +8,9 @@ async function getGitStatus () {
   assert.ok(match, 'Unable to determine current branch')
   const currentBranch = match[1]
 
-  const cleanWorkingTree = lines.find(line => line.startsWith('nothing to commit,'))
+  const isCleanWorkingTree = Boolean(lines.find(line => line.startsWith('nothing to commit,')))
 
-  return {currentBranch, cleanWorkingTree}
+  return {currentBranch, isCleanWorkingTree}
 }
 
 module.exports = getGitStatus

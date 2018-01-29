@@ -16,11 +16,11 @@ const {version} = require('./package.json')
 
 ;(async () => {
   log('Doing sanity checks...')
-  const {currentBranch: branchToPublish, cleanWorkingTree} = await getGitStatus()
+  const {currentBranch: branchToPublish, isCleanWorkingTree} = await getGitStatus()
   if (!dryRun) {
     assert.equal(branchToPublish, 'master', 'Must be on master branch')
   }
-  assert.equal(cleanWorkingTree, true, 'Must have clean working tree')
+  assert.equal(isCleanWorkingTree, true, 'Must have clean working tree')
   const gitTags = await getGitTags()
   assert.ok(!gitTags.includes(`v${version}`), 'Must have a unique version in package.json')
 

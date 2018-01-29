@@ -8,7 +8,7 @@ async function getGitStatus () {
   assert.ok(match, 'Unable to determine current branch')
   const currentBranch = match[1]
 
-  const cleanWorkingTree = lines.includes('nothing to commit, working tree clean')
+  const cleanWorkingTree = lines.find(line => line.startsWith('nothing to commit,'))
 
   return {currentBranch, cleanWorkingTree}
 }

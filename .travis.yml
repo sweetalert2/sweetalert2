@@ -7,14 +7,21 @@ addons:
   firefox: latest
   google-chrome: latest
 
+before_install:
+  - yarn global add greenkeeper-lockfile@1
+
+before_script:
+  - greenkeeper-lockfile-update
+
 script:
   # xvfb-run is needed for headless testing with Chrome and Firefox
-  - xvfb-run npm test
+  - xvfb-run yarn test
 
 after_script:
   # repeat unit tests against dist/sweetalert2.all.min.js
   - sed -i 's/sweetalert2.js/sweetalert2.all.min.js/g' testem.json
-  - xvfb-run npm run check:tests
+  - xvfb-run yarn run check:tests
+  - greenkeeper-lockfile-upload
 
 deploy:
   api_key:

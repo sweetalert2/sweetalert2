@@ -8,10 +8,9 @@ const sassLint = require('gulp-sass-lint')
 const ts = require('gulp-typescript')
 const tslint = require('gulp-tslint')
 const browserSync = require('browser-sync').create()
-const run = require('gulp-run')
 
 const pack = require('./package.json')
-const utils = require('./config/utils.js')
+const utils = require('./utils/package-rollup') // TODO: Once this file stabilizes, make this line `const packageRollup = require('./utils/package-rollup')`
 
 gulp.task('compress', ['js-lint', 'commonjs', 'dev', 'production', 'all', 'all.min'])
 
@@ -101,8 +100,6 @@ gulp.task('build', ['sass', 'ts', 'compress', 'css.min'])
 gulp.task('default', ['build'])
 
 gulp.task('watch', ['default'], () => {
-  run('npm run assume-dist-unchanged').exec()
-
   browserSync.init({
     port: 8080,
     notify: false,

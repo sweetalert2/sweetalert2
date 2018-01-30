@@ -302,7 +302,6 @@ body {
       .swal2-styled {
         &[disabled] {
           opacity: .4;
-          cursor: no-drop;
         }
 
         &:hover {
@@ -365,11 +364,14 @@ body {
     border-radius: .25em;
     box-shadow: none;
     color: $swal2-white;
-    cursor: pointer;
     font-size: $swal2-buttons-font-size;
     font-weight: 500;
     margin: 0 .3125em;
     padding: .625em 2em;
+
+    &:not([disabled]) {
+      cursor: pointer;
+    }
 
     &.swal2-confirm {
       background-color: $swal2-confirm-button-color;

@@ -31,8 +31,12 @@ const showWarningsForParams = (params) => {
  * @returns {boolean}
  */
 const setParameters = (params) => {
-  // If a custom element is set, determine if it is valid
-  if ((typeof params.target === 'string' && !document.querySelector(params.target)) || (typeof params.target !== 'string' && !params.target.appendChild)) {
+  // Determine if the custom target element is valid
+  if (
+    !params.target ||
+    (typeof params.target === 'string' && !document.querySelector(params.target)) ||
+    (typeof params.target !== 'string' && !params.target.appendChild)
+  ) {
     warn('Target parameter is not valid, defaulting to "body"')
     params.target = 'body'
   }
@@ -79,7 +83,7 @@ const setParameters = (params) => {
   // Title
   if (params.titleText) {
     title.innerText = params.titleText
-  } else {
+  } else if (params.title) {
     title.innerHTML = params.title.split('\n').join('<br />')
   }
 
@@ -102,6 +106,9 @@ const setParameters = (params) => {
   // Position
   if (params.position in swalClasses) {
     dom.addClass(container, swalClasses[params.position])
+  } else {
+    warn('The "position" parameter is not valid, defaulting to "center"')
+    dom.addClass(container, swalClasses.center)
   }
 
   // Grow
@@ -137,7 +144,7 @@ const setParameters = (params) => {
   // Progress steps
   let progressStepsContainer = dom.getProgressSteps()
   let currentProgressStep = parseInt(params.currentProgressStep === null ? sweetAlert.getQueueStep() : params.currentProgressStep, 10)
-  if (params.progressSteps.length) {
+  if (params.progressSteps && params.progressSteps.length) {
     dom.show(progressStepsContainer)
     dom.empty(progressStepsContainer)
     if (currentProgressStep >= params.progressSteps.length) {

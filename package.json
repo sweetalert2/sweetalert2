@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "7.8.4",
+  "version": "7.8.5",
   "repository": "sweetalert2/sweetalert2",
   "homepage": "https://sweetalert2.github.io/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
@@ -14,7 +14,7 @@
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.23.3",
-    "bundlesize": "^0.15.3",
+    "bundlesize": "^0.16.0",
     "event-stream": "^3.3.4",
     "execa": "^0.9.0",
     "gulp": "^3.9.1",

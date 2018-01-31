@@ -5,12 +5,12 @@ export const consolePrefix = 'SweetAlert2:'
  * @param arr
  */
 export const uniqueArray = (arr) => {
-  var result = []
-  arr.map(i => {
-    if (result.indexOf(i) === -1) {
-      result.push(i)
+  const result = []
+  for (let elem of arr) {
+    if (result.indexOf(elem) === -1) {
+      result.push(elem)
     }
-  })
+  }
   return result
 }
 

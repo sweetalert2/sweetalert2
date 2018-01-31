@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.8.4
+ * sweetalert2 v7.8.5
  * Released under the MIT License.
  */
 'use strict';
@@ -614,8 +614,8 @@ var showWarningsForParams = function showWarningsForParams(params) {
  * @returns {boolean}
  */
 var setParameters = function setParameters(params) {
-  // If a custom element is set, determine if it is valid
-  if (typeof params.target === 'string' && !document.querySelector(params.target) || typeof params.target !== 'string' && !params.target.appendChild) {
+  // Determine if the custom target element is valid
+  if (!params.target || typeof params.target === 'string' && !document.querySelector(params.target) || typeof params.target !== 'string' && !params.target.appendChild) {
     warn('Target parameter is not valid, defaulting to "body"');
     params.target = 'body';
   }
@@ -662,7 +662,7 @@ var setParameters = function setParameters(params) {
   // Title
   if (params.titleText) {
     title.innerText = params.titleText;
-  } else {
+  } else if (params.title) {
     title.innerHTML = params.title.split('\n').join('<br />');
   }
 
@@ -685,6 +685,9 @@ var setParameters = function setParameters(params) {
   // Position
   if (params.position in swalClasses) {
     addClass(container, swalClasses[params.position]);
+  } else {
+    warn('The "position" parameter is not valid, defaulting to "center"');
+    addClass(container, swalClasses.center);
   }
 
   // Grow
@@ -720,7 +723,7 @@ var setParameters = function setParameters(params) {
   // Progress steps
   var progressStepsContainer = getProgressSteps();
   var currentProgressStep = parseInt(params.currentProgressStep === null ? sweetAlert.getQueueStep() : params.currentProgressStep, 10);
-  if (params.progressSteps.length) {
+  if (params.progressSteps && params.progressSteps.length) {
     show(progressStepsContainer);
     empty(progressStepsContainer);
     if (currentProgressStep >= params.progressSteps.length) {
@@ -1983,7 +1986,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.8.4';
+sweetAlert.version = '7.8.5';
 
 sweetAlert.default = sweetAlert;
 

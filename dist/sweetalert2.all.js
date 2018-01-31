@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.8.5
+ * sweetalert2 v7.8.6
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -96,11 +96,33 @@ var consolePrefix = 'SweetAlert2:';
  */
 var uniqueArray = function uniqueArray(arr) {
   var result = [];
-  for (var i in arr) {
-    if (result.indexOf(arr[i]) === -1) {
-      result.push(arr[i]);
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = arr[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var elem = _step.value;
+
+      if (result.indexOf(elem) === -1) {
+        result.push(elem);
+      }
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
     }
   }
+
   return result;
 };
 
@@ -274,10 +296,10 @@ var windowOnkeydownOverridden = void 0;
  */
 var showWarningsForParams = function showWarningsForParams(params) {
   for (var param in params) {
-    if (!sweetAlert$1.isValidParameter(param)) {
+    if (!sweetAlert.isValidParameter(param)) {
       warn('Unknown parameter "' + param + '"');
     }
-    if (sweetAlert$1.isDeprecatedParameter(param)) {
+    if (sweetAlert.isDeprecatedParameter(param)) {
       warnOnce('The parameter "' + param + '" is deprecated and will be removed in the next major release.');
     }
   }
@@ -398,7 +420,7 @@ var setParameters = function setParameters(params) {
 
   // Progress steps
   var progressStepsContainer = getProgressSteps();
-  var currentProgressStep = parseInt(params.currentProgressStep === null ? sweetAlert$1.getQueueStep() : params.currentProgressStep, 10);
+  var currentProgressStep = parseInt(params.currentProgressStep === null ? sweetAlert.getQueueStep() : params.currentProgressStep, 10);
   if (params.progressSteps && params.progressSteps.length) {
     show(progressStepsContainer);
     empty(progressStepsContainer);
@@ -653,7 +675,7 @@ var undoIOSfix = function undoIOSfix() {
 };
 
 // SweetAlert entry point
-var sweetAlert$1 = function sweetAlert() {
+var sweetAlert = function sweetAlert() {
   for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
   }
@@ -1455,14 +1477,14 @@ var sweetAlert$1 = function sweetAlert() {
 /*
  * Global function to determine if swal2 popup is shown
  */
-sweetAlert$1.isVisible = function () {
+sweetAlert.isVisible = function () {
   return !!getPopup();
 };
 
 /*
  * Global function for chaining sweetAlert popups
  */
-sweetAlert$1.queue = function (steps) {
+sweetAlert.queue = function (steps) {
   queue = steps;
   var resetQueue = function resetQueue() {
     queue = [];
@@ -1474,7 +1496,7 @@ sweetAlert$1.queue = function (steps) {
       if (i < queue.length) {
         document.body.setAttribute('data-swal2-queue-step', i);
 
-        sweetAlert$1(queue[i]).then(function (result) {
+        sweetAlert(queue[i]).then(function (result) {
           if (typeof result.value !== 'undefined') {
             queueResult.push(result.value);
             step(i + 1, callback);
@@ -1494,14 +1516,14 @@ sweetAlert$1.queue = function (steps) {
 /*
  * Global function for getting the index of current popup in queue
  */
-sweetAlert$1.getQueueStep = function () {
+sweetAlert.getQueueStep = function () {
   return document.body.getAttribute('data-swal2-queue-step');
 };
 
 /*
  * Global function for inserting a popup to the queue
  */
-sweetAlert$1.insertQueueStep = function (step, index) {
+sweetAlert.insertQueueStep = function (step, index) {
   if (index && index < queue.length) {
     return queue.splice(index, 0, step);
   }
@@ -1511,7 +1533,7 @@ sweetAlert$1.insertQueueStep = function (step, index) {
 /*
  * Global function for deleting a popup from the queue
  */
-sweetAlert$1.deleteQueueStep = function (index) {
+sweetAlert.deleteQueueStep = function (index) {
   if (typeof queue[index] !== 'undefined') {
     queue.splice(index, 1);
   }
@@ -1520,7 +1542,7 @@ sweetAlert$1.deleteQueueStep = function (index) {
 /*
  * Global function to close sweetAlert
  */
-sweetAlert$1.close = sweetAlert$1.closePopup = sweetAlert$1.closeModal = sweetAlert$1.closeToast = function (onComplete) {
+sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.closeToast = function (onComplete) {
   var container = getContainer();
   var popup = getPopup();
   if (!popup) {
@@ -1570,24 +1592,24 @@ sweetAlert$1.close = sweetAlert$1.closePopup = sweetAlert$1.closeModal = sweetAl
 /*
  * Global function to click 'Confirm' button
  */
-sweetAlert$1.clickConfirm = function () {
+sweetAlert.clickConfirm = function () {
   return getConfirmButton().click();
 };
 
 /*
  * Global function to click 'Cancel' button
  */
-sweetAlert$1.clickCancel = function () {
+sweetAlert.clickCancel = function () {
   return getCancelButton().click();
 };
 
 /**
  * Show spinner instead of Confirm button and disable Cancel button
  */
-sweetAlert$1.showLoading = sweetAlert$1.enableLoading = function () {
+sweetAlert.showLoading = sweetAlert.enableLoading = function () {
   var popup = getPopup();
   if (!popup) {
-    sweetAlert$1('');
+    sweetAlert('');
   }
   popup = getPopup();
   var actions = getActions();
@@ -1609,7 +1631,7 @@ sweetAlert$1.showLoading = sweetAlert$1.enableLoading = function () {
  * Is valid parameter
  * @param {String} paramName
  */
-sweetAlert$1.isValidParameter = function (paramName) {
+sweetAlert.isValidParameter = function (paramName) {
   return defaultParams.hasOwnProperty(paramName) || paramName === 'extraParams';
 };
 
@@ -1617,7 +1639,7 @@ sweetAlert$1.isValidParameter = function (paramName) {
  * Is deprecated parameter
  * @param {String} paramName
  */
-sweetAlert$1.isDeprecatedParameter = function (paramName) {
+sweetAlert.isDeprecatedParameter = function (paramName) {
   return deprecatedParams.indexOf(paramName) !== -1;
 };
 
@@ -1625,7 +1647,7 @@ sweetAlert$1.isDeprecatedParameter = function (paramName) {
  * Set default params for each popup
  * @param {Object} userParams
  */
-sweetAlert$1.setDefaults = function (userParams) {
+sweetAlert.setDefaults = function (userParams) {
   if (!userParams || (typeof userParams === 'undefined' ? 'undefined' : _typeof(userParams)) !== 'object') {
     return error('the argument for setDefaults() is required and has to be a object');
   }
@@ -1634,7 +1656,7 @@ sweetAlert$1.setDefaults = function (userParams) {
 
   // assign valid params from userParams to popupParams
   for (var param in userParams) {
-    if (sweetAlert$1.isValidParameter(param)) {
+    if (sweetAlert.isValidParameter(param)) {
       popupParams[param] = userParams[param];
     }
   }
@@ -1643,14 +1665,14 @@ sweetAlert$1.setDefaults = function (userParams) {
 /**
  * Reset default params for each popup
  */
-sweetAlert$1.resetDefaults = function () {
+sweetAlert.resetDefaults = function () {
   popupParams = _extends({}, defaultParams);
 };
 
 /**
  * Adapt a legacy inputValidator for use with expectRejections=false
  */
-sweetAlert$1.adaptInputValidator = function (legacyValidator) {
+sweetAlert.adaptInputValidator = function (legacyValidator) {
   return function adaptedInputValidator(inputValue, extraParams) {
     return legacyValidator.call(this, inputValue, extraParams).then(function () {
       return undefined;
@@ -1660,17 +1682,17 @@ sweetAlert$1.adaptInputValidator = function (legacyValidator) {
   };
 };
 
-sweetAlert$1.noop = function () {};
+sweetAlert.noop = function () {};
 
-sweetAlert$1.version = '7.8.5';
+sweetAlert.version = '7.8.6';
 
-sweetAlert$1.default = sweetAlert$1;
+sweetAlert.default = sweetAlert;
 
 /**
  * Set default params if `window._swalDefaults` is an object
  */
 if (typeof window !== 'undefined' && _typeof(window._swalDefaults) === 'object') {
-  sweetAlert$1.setDefaults(window._swalDefaults);
+  sweetAlert.setDefaults(window._swalDefaults);
 }
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
@@ -1720,7 +1742,7 @@ var init = function init(params) {
   popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive');
 
   var resetValidationError = function resetValidationError() {
-    sweetAlert$1.isVisible() && sweetAlert$1.resetValidationError();
+    sweetAlert.isVisible() && sweetAlert.resetValidationError();
   };
 
   input.oninput = resetValidationError;
@@ -2024,7 +2046,7 @@ var injectCSS = function injectCSS() {
 
 injectCSS(styles);
 
-return sweetAlert$1;
+return sweetAlert;
 
 })));
 if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;

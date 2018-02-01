@@ -288,10 +288,11 @@ declare module 'sweetalert2' {
 
         /**
          * Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop.
+         * A string css color value can be passed to set the backdrop's color.
          *
          * @default true
          */
-        backdrop?: boolean;
+        backdrop?: boolean | string;
 
         /**
          * Whether or not an alert should be treated as a toast notification.

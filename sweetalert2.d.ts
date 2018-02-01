@@ -288,7 +288,7 @@ declare module 'sweetalert2' {
 
         /**
          * Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop.
-         * A string css color value can be passed to set the backdrop's color.
+         * Either a boolean value or a css background value (hex, rgb, rgba, url, etc.)
          *
          * @default true
          */

@@ -831,17 +831,18 @@ QUnit.test('null values', (assert) => {
   assert.ok(swal.isVisible())
 })
 
-QUnit.test('backdrop accepts string css color', (assert) => {
+QUnit.test('backdrop accepts css background param', (assert) => {
+  let backdrop = 'rgb(123, 123, 123)'
   swal({
     title: 'Backdrop test',
     backdrop: false
   })
-  assert.notOk($('.swal2-container')[0].style.backgroundColor)
+  assert.notOk($('.swal2-container')[0].style.background)
 
-  let color = 'rgb(255, 255, 255)'
   swal({
-    title: 'Backdrop color test',
-    backdrop: color
+    title: 'Backdrop url test',
+    backdrop: backdrop
   })
-  assert.ok($('.swal2-container')[0].style.backgroundColor === color)
+  assert.ok($('.swal2-container')[0].style.background.includes(backdrop))
 })
+

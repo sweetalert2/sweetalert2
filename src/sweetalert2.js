@@ -88,7 +88,7 @@ const setParameters = (params) => {
   }
 
   if (params.backdrop && typeof params.backdrop === 'string') {
-    dom.getContainer().style.backgroundColor = params.backdrop
+    dom.getContainer().style.background = params.backdrop
   } else if (!params.backdrop) {
     dom.addClass([document.documentElement, document.body], swalClasses['no-backdrop'])
   }

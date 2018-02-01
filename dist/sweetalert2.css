@@ -414,6 +414,7 @@ body.swal2-no-backdrop .swal2-shown {
   left: 0;
   right: 0;
   bottom: 0;
+  overflow-x: hidden;
   background-color: transparent;
   z-index: 1060; }
   .swal2-container.swal2-top {

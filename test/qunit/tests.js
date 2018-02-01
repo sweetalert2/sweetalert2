@@ -834,13 +834,13 @@ QUnit.test('null values', (assert) => {
 QUnit.test('backdrop accepts css background param', (assert) => {
   let backdrop = 'rgb(123, 123, 123)'
   swal({
-    title: 'Backdrop test',
+    title: 'I have no backdrop',
     backdrop: false
   })
   assert.notOk($('.swal2-container')[0].style.background)
 
   swal({
-    title: 'Backdrop url test',
+    title: 'I have a custom backdrop',
     backdrop: backdrop
   })
   assert.ok($('.swal2-container')[0].style.background.includes(backdrop))

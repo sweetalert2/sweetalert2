@@ -6,9 +6,9 @@ export const consolePrefix = 'SweetAlert2:'
  */
 export const uniqueArray = (arr) => {
   const result = []
-  for (var i in arr) {
-    if (result.indexOf(arr[i]) === -1) {
-      result.push(arr[i])
+  for (let elem of arr) {
+    if (result.indexOf(elem) === -1) {
+      result.push(elem)
     }
   }
   return result

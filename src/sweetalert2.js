@@ -87,7 +87,9 @@ const setParameters = (params) => {
     title.innerHTML = params.title.split('\n').join('<br />')
   }
 
-  if (!params.backdrop) {
+  if (typeof params.backdrop === 'string') {
+    dom.getContainer().style.background = params.backdrop
+  } else if (!params.backdrop) {
     dom.addClass([document.documentElement, document.body], swalClasses['no-backdrop'])
   }
 

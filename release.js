@@ -12,9 +12,8 @@ const writeFile = pify(fs.writeFile)
 
 const dryRun = process.argv.includes('--dry-run')
 
-let semver
-['patch', 'minor', 'major'].forEach(i => { process.argv.includes(i) && (semver = i) })
-assert.ok(semver, 'Must specify the valid semver version: patch | minor | major')
+const semver = process.argv[2]
+assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid semver version: patch | minor | major')
 
 ;(async () => {
   log('Doing sanity checks...')

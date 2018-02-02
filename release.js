@@ -28,6 +28,9 @@ assert.ok(semver, 'Must specify the valid semver version: patch | minor | major'
   await execute(`npm version --no-git-tag-version ${semver}`)
   const {version} = require('./package.json')
 
+  log(`Making a version change commit...`)
+  await execute(`git add package.json && git commit -m "${version}"`)
+
   log('Deleting the dist folder (it will conflict with the next step)...')
   await removeDir('dist')
 

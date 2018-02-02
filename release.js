@@ -69,8 +69,8 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
   if (dryRun) {
     log('Skipping pushing to Github...')
   } else {
-    log('Pushing to Github...')
-    await execute('git push origin dist:dist --tags')
+    log('Pushing to Github both master and dist branches...')
+    await execute('git push origin master:master dist:dist --tags')
   }
 
   log(`Switching back to "${branchToPublish}" (so you can continue to work)...`)

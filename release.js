@@ -3,7 +3,6 @@ const rimraf = require('rimraf')
 const fs = require('fs')
 const assert = require('assert')
 const getGitStatus = require('./utils/get-git-status')
-const getGitTags = require('./utils/get-git-tags')
 const execute = require('./utils/execute')
 
 const log = console.log
@@ -14,6 +13,10 @@ const writeFile = pify(fs.writeFile)
 const dryRun = process.argv.includes('--dry-run')
 const {version} = require('./package.json')
 
+let semver
+['patch', 'minor', 'major'].forEach(i => { process.argv.includes(i) && (semver = i) })
+assert.ok(semver, 'Must specify the valid semver version: patch | minor | major')
+
 ;(async () => {
   log('Doing sanity checks...')
   const {currentBranch: branchToPublish, isCleanWorkingTree} = await getGitStatus()
@@ -21,8 +24,9 @@ const {version} = require('./package.json')
     assert.equal(branchToPublish, 'master', 'Must be on master branch')
   }
   assert.equal(isCleanWorkingTree, true, 'Must have clean working tree')
-  const gitTags = await getGitTags()
-  assert.ok(!gitTags.includes(`v${version}`), 'Must have a unique version in package.json')
+
+  log(`Running npm version ${semver}...`)
+  await execute(`npm version --no-git-tag-version ${semver}`)
 
   log('Deleting the dist folder (it will conflict with the next step)...')
   await removeDir('dist')

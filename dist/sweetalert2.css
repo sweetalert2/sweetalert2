@@ -115,7 +115,7 @@ body.swal2-toast-shown > .swal2-container {
   .swal2-popup.swal2-toast .swal2-close {
     position: initial; }
   .swal2-popup.swal2-toast .swal2-content {
-    font-size: 0.875em;
+    font-size: 1em;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start; }
@@ -166,8 +166,8 @@ body.swal2-toast-shown > .swal2-container {
                 transform-origin: 32px 32px; }
       .swal2-popup.swal2-toast .swal2-success [class^='swal2-success-circular-line'][class$='right'] {
         border-radius: 0 64px 64px 0;
-        top: -5px;
-        left: 14px;
+        top: -4px;
+        left: 15px;
         -webkit-transform-origin: 0 32px;
                 transform-origin: 0 32px; }
     .swal2-popup.swal2-toast .swal2-success .swal2-success-ring {

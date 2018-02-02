@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.8.6
+ * sweetalert2 v7.9.0
  * Released under the MIT License.
  */
 'use strict';
@@ -688,7 +688,9 @@ var setParameters = function setParameters(params) {
     title.innerHTML = params.title.split('\n').join('<br />');
   }
 
-  if (!params.backdrop) {
+  if (typeof params.backdrop === 'string') {
+    getContainer().style.background = params.backdrop;
+  } else if (!params.backdrop) {
     addClass([document.documentElement, document.body], swalClasses['no-backdrop']);
   }
 
@@ -2008,7 +2010,7 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.8.6';
+sweetAlert.version = '7.9.0';
 
 sweetAlert.default = sweetAlert;
 

@@ -11,7 +11,6 @@ const readFile = pify(fs.readFile)
 const writeFile = pify(fs.writeFile)
 
 const dryRun = process.argv.includes('--dry-run')
-const {version} = require('./package.json')
 
 let semver
 ['patch', 'minor', 'major'].forEach(i => { process.argv.includes(i) && (semver = i) })
@@ -27,6 +26,7 @@ assert.ok(semver, 'Must specify the valid semver version: patch | minor | major'
 
   log(`Running npm version ${semver}...`)
   await execute(`npm version --no-git-tag-version ${semver}`)
+  const {version} = require('./package.json')
 
   log('Deleting the dist folder (it will conflict with the next step)...')
   await removeDir('dist')

@@ -11,11 +11,9 @@ const readFile = pify(fs.readFile)
 const writeFile = pify(fs.writeFile)
 
 const dryRun = process.argv.includes('--dry-run')
-const {version} = require('./package.json')
 
-let semver
-['patch', 'minor', 'major'].forEach(i => { process.argv.includes(i) && (semver = i) })
-assert.ok(semver, 'Must specify the valid semver version: patch | minor | major')
+const semver = process.argv[2]
+assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid semver version: patch | minor | major')
 
 ;(async () => {
   log('Doing sanity checks...')
@@ -27,6 +25,10 @@ assert.ok(semver, 'Must specify the valid semver version: patch | minor | major'
 
   log(`Running npm version ${semver}...`)
   await execute(`npm version --no-git-tag-version ${semver}`)
+  const {version} = require('./package.json')
+
+  log(`Making a version change commit...`)
+  await execute(`git add package.json && git commit -m "${version}"`)
 
   log('Deleting the dist folder (it will conflict with the next step)...')
   await removeDir('dist')
@@ -67,8 +69,8 @@ assert.ok(semver, 'Must specify the valid semver version: patch | minor | major'
   if (dryRun) {
     log('Skipping pushing to Github...')
   } else {
-    log('Pushing to Github...')
-    await execute('git push origin dist:dist --tags')
+    log('Pushing to Github both master and dist branches...')
+    await execute('git push origin master:master dist:dist --tags')
   }
 
   log(`Switching back to "${branchToPublish}" (so you can continue to work)...`)

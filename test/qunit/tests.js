@@ -220,7 +220,7 @@ QUnit.test('input checkbox', (assert) => {
 })
 
 QUnit.test('input range', (assert) => {
-  swal({ input: 'range', inputAttributes: {min: 1, max: 10}, inputValue: 5 })
+  swal({input: 'range', inputAttributes: {min: 1, max: 10}, inputValue: 5})
   const input = $('.swal2-range input')
   assert.equal(input.attr('min'), '1')
   assert.equal(input.attr('max'), '10')
@@ -550,11 +550,11 @@ QUnit.test('target', (assert) => {
   assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
   swal.close()
 
-  swal({ title: 'Custom valid target (element)', target: $('#qunit')[0] })
+  swal({title: 'Custom valid target (element)', target: $('#qunit')[0]})
   assert.equal($('#qunit')[0], document.querySelector('.swal2-container').parentNode)
   swal.close()
 
-  swal({ title: 'Custom invalid target (element)', target: true })
+  swal({title: 'Custom invalid target (element)', target: true})
   assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
   swal.close()
   console.warn = warn // Suppress the warnings
@@ -830,3 +830,19 @@ QUnit.test('null values', (assert) => {
   })
   assert.ok(swal.isVisible())
 })
+
+QUnit.test('backdrop accepts css background param', (assert) => {
+  let backdrop = 'rgb(123, 123, 123)'
+  swal({
+    title: 'I have no backdrop',
+    backdrop: false
+  })
+  assert.notOk($('.swal2-container')[0].style.background)
+
+  swal({
+    title: 'I have a custom backdrop',
+    backdrop: backdrop
+  })
+  assert.ok($('.swal2-container')[0].style.background.includes(backdrop))
+})
+

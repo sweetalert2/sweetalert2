@@ -3,7 +3,6 @@ const rimraf = require('rimraf')
 const fs = require('fs')
 const assert = require('assert')
 const getGitStatus = require('./utils/get-git-status')
-const getGitTags = require('./utils/get-git-tags')
 const execute = require('./utils/execute')
 
 const log = console.log
@@ -12,7 +11,9 @@ const readFile = pify(fs.readFile)
 const writeFile = pify(fs.writeFile)
 
 const dryRun = process.argv.includes('--dry-run')
-const {version} = require('./package.json')
+
+const semver = process.argv[2]
+assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid semver version: patch | minor | major')
 
 ;(async () => {
   log('Doing sanity checks...')
@@ -21,8 +22,13 @@ const {version} = require('./package.json')
     assert.equal(branchToPublish, 'master', 'Must be on master branch')
   }
   assert.equal(isCleanWorkingTree, true, 'Must have clean working tree')
-  const gitTags = await getGitTags()
-  assert.ok(!gitTags.includes(`v${version}`), 'Must have a unique version in package.json')
+
+  log(`Running npm version ${semver}...`)
+  await execute(`npm version --no-git-tag-version ${semver}`)
+  const {version} = require('./package.json')
+
+  log(`Making a version change commit...`)
+  await execute(`git add package.json && git commit -m "${version}"`)
 
   log('Deleting the dist folder (it will conflict with the next step)...')
   await removeDir('dist')
@@ -63,8 +69,8 @@ const {version} = require('./package.json')
   if (dryRun) {
     log('Skipping pushing to Github...')
   } else {
-    log('Pushing to Github...')
-    await execute('git push origin dist:dist --tags')
+    log('Pushing to Github both master and dist branches...')
+    await execute('git push origin master:master dist:dist --tags')
   }
 
   log(`Switching back to "${branchToPublish}" (so you can continue to work)...`)

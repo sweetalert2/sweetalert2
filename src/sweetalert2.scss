@@ -306,13 +306,11 @@ body {
         }
 
         &:hover {
-          // darken technique, the black pixel with 0.1 opacity
-          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNikAQAACIAHF/uBd8AAAAASUVORK5CYII=');
+          background-image: linear-gradient($swal2-button-darken-hover, $swal2-button-darken-hover);
         }
 
         &:active {
-          // the black pixel with 0.2 opacity
-          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiMAYAADwANpiOMBYAAAAASUVORK5CYII=');
+          background-image: linear-gradient($swal2-button-darken-active, $swal2-button-darken-active);
         }
       }
     }

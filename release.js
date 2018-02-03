@@ -38,6 +38,7 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
 
   log('Switching to the dist branch...')
   await execute('git checkout dist')
+  await execute('git reset --hard origin/dist')
 
   log('Pulling the latest dist branch from Github...')
   await execute('git pull origin')

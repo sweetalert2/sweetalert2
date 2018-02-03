@@ -29,6 +29,9 @@ $swal2-focus-outline: rgba(50, 100, 150, .4) !default;
 $swal2-confirm-button-color: #3085d6 !default;
 $swal2-cancel-button-color: #aaa !default;
 
+$swal2-button-darken-hover: rgba($swal2-black, .1) !default;
+$swal2-button-darken-active: rgba($swal2-black, .2) !default;
+
 $swal2-footer-border-color: #eee !default;
 
 $swal2-font: inherit !default;

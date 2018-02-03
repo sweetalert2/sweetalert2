@@ -36,6 +36,9 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
   log('Switching to the dist branch...')
   await execute('git checkout dist')
 
+  log('Pulling the latest dist branch from Github...')
+  await execute('git pull origin')
+
   log(`Merging from "${branchToPublish}" branch...`)
   await execute(`git merge ${branchToPublish}`)
 

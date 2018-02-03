@@ -23,6 +23,9 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
   }
   assert.equal(isCleanWorkingTree, true, 'Must have clean working tree')
 
+  log(`Pulling the latest ${branchToPublish} branch from Github...`)
+  await execute('git pull origin')
+
   log(`Running npm version ${semver}...`)
   await execute(`npm version --no-git-tag-version ${semver}`)
   const {version} = require('./package.json')
@@ -35,6 +38,9 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
 
   log('Switching to the dist branch...')
   await execute('git checkout dist')
+
+  log('Pulling the latest dist branch from Github...')
+  await execute('git pull origin')
 
   log(`Merging from "${branchToPublish}" branch...`)
   await execute(`git merge ${branchToPublish}`)

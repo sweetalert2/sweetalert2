@@ -18,8 +18,8 @@ body {
 
         .swal2-input {
           height: 2em;
-          font-size: $swal2-toast-input-font-size;
           margin: .3125em auto;
+          font-size: $swal2-toast-input-font-size;
         }
 
         .swal2-validationerror {
@@ -38,76 +38,76 @@ body {
 
       &.swal2-top {
         top: 0;
-        left: 50%;
-        bottom: auto;
         right: auto;
+        bottom: auto;
+        left: 50%;
         transform: translateX(-50%);
       }
 
       &.swal2-top-end,
       &.swal2-top-right {
         top: 0;
-        left: auto;
-        bottom: auto;
         right: 0;
+        bottom: auto;
+        left: auto;
       }
 
       &.swal2-top-start,
       &.swal2-top-left {
         top: 0;
-        left: 0;
-        bottom: auto;
         right: auto;
+        bottom: auto;
+        left: 0;
       }
 
       &.swal2-center-start,
       &.swal2-center-left {
         top: 50%;
-        left: 0;
-        bottom: auto;
         right: auto;
+        bottom: auto;
+        left: 0;
         transform: translateY(-50%);
       }
 
       &.swal2-center {
         top: 50%;
-        left: 50%;
-        bottom: auto;
         right: auto;
+        bottom: auto;
+        left: 50%;
         transform: translate(-50%, -50%);
       }
 
       &.swal2-center-end,
       &.swal2-center-right {
         top: 50%;
-        left: auto;
-        bottom: auto;
         right: 0;
+        bottom: auto;
+        left: auto;
         transform: translateY(-50%);
       }
 
       &.swal2-bottom-start,
       &.swal2-bottom-left {
         top: auto;
-        left: 0;
-        bottom: 0;
         right: auto;
+        bottom: 0;
+        left: 0;
       }
 
       &.swal2-bottom {
         top: auto;
-        left: 50%;
-        bottom: 0;
         right: auto;
+        bottom: 0;
+        left: 50%;
         transform: translateX(-50%);
       }
 
       &.swal2-bottom-end,
       &.swal2-bottom-right {
         top: auto;
-        left: auto;
-        bottom: 0;
         right: 0;
+        bottom: 0;
+        left: auto;
       }
     }
   }
@@ -115,21 +115,21 @@ body {
 
 .swal2-popup {
   &.swal2-toast {
-    width: $swal2-toast-width;
-    padding: $swal2-toast-padding;
     flex-direction: row;
     align-items: center;
-    overflow-y: hidden;
+    width: $swal2-toast-width;
+    padding: $swal2-toast-padding;
     box-shadow: 0 0 10px $swal2-box-shadow;
+    overflow-y: hidden;
 
     .swal2-header {
       flex-direction: row;
     }
 
     .swal2-title {
-      font-size: $swal2-toast-title-font-size;
       justify-content: flex-start;
       margin: 0 .6em;
+      font-size: $swal2-toast-title-font-size;
     }
 
     .swal2-close {
@@ -137,8 +137,8 @@ body {
     }
 
     .swal2-content {
-      font-size: $swal2-toast-content-font-size;
       justify-content: flex-start;
+      font-size: $swal2-toast-content-font-size;
     }
 
     .swal2-icon {
@@ -180,8 +180,8 @@ body {
     }
 
     .swal2-actions {
-      margin: 0 .3125em;
       height: auto;
+      margin: 0 .3125em;
     }
 
     .swal2-styled {
@@ -198,26 +198,25 @@ body {
       border-color: $swal2-success;
 
       [class^='swal2-success-circular-line'] { // Emulate moving circular line
-        border-radius: 50%;
         position: absolute;
         width: 32px;
         height: 45px;
         transform: rotate(45deg);
+        border-radius: 50%;
 
         &[class$='left'] {
-          border-radius: 64px 0 0 64px;
           top: -4px;
           left: -15px;
-
           transform: rotate(-45deg);
           transform-origin: 32px 32px;
+          border-radius: 64px 0 0 64px;
         }
 
         &[class$='right'] {
-          border-radius: 0 64px 64px 0;
           top: -4px;
           left: 15px;
           transform-origin: 0 32px;
+          border-radius: 0 64px 64px 0;
         }
       }
 
@@ -227,25 +226,25 @@ body {
       }
 
       .swal2-success-fix {
+        top: 0;
+        left: 7px;
         width: 7px;
         height: 43px;
-        left: 7px;
-        top: 0;
       }
 
       [class^='swal2-success-line'] {
         height: 5px;
 
         &[class$='tip'] {
-          width: 12px;
-          left: 3px;
           top: 18px;
+          left: 3px;
+          width: 12px;
         }
 
         &[class$='long'] {
-          width: 22px;
-          right: 3px;
           top: 15px;
+          right: 3px;
+          width: 22px;
         }
       }
     }
@@ -308,58 +307,58 @@ body {
 
 @keyframes animate-toast-success-tip {
   0% {
-    width: 0;
-    left: 1px;
     top: 9px;
+    left: 1px;
+    width: 0;
   }
 
   54% {
-    width: 0;
-    left: 2px;
     top: 2px;
+    left: 2px;
+    width: 0;
   }
 
   70% {
-    width: 26px;
-    left: -4px;
     top: 10px;
+    left: -4px;
+    width: 26px;
   }
 
   84% {
-    width: 8px;
-    left: 12px;
     top: 17px;
+    left: 12px;
+    width: 8px;
   }
 
   100% {
-    width: 12px;
-    left: 3px;
     top: 18px;
+    left: 3px;
+    width: 12px;
   }
 }
 
 @keyframes animate-toast-success-long {
   0% {
-    width: 0;
-    right: 22px;
     top: 26px;
+    right: 22px;
+    width: 0;
   }
 
   65% {
-    width: 0;
-    right: 15px;
     top: 20px;
+    right: 15px;
+    width: 0;
   }
 
   84% {
-    width: 18px;
-    right: 0;
     top: 15px;
+    right: 0;
+    width: 18px;
   }
 
   100% {
-    width: 22px;
-    right: 3px;
     top: 15px;
+    right: 3px;
+    width: 22px;
   }
 }

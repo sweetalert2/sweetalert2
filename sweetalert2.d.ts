@@ -227,7 +227,13 @@ declare module 'sweetalert2' {
         'text' | 'email' | 'password' | 'number' | 'tel' | 'range' | 'textarea' | 'select' | 'radio' | 'checkbox' |
         'file' | 'url' | undefined;
 
-    export type SweetAlertDismissalReason = 'cancel' | 'close' | 'overlay' | 'esc' | 'timer';
+    export enum SweetAlertDismissReason {
+        cancel = 'cancel',
+        backdrop = 'overlay',
+        close = 'close',
+        esc = 'esc',
+        timer = 'timer',
+    }
 
     export type SweetAlertBooleanFunction = () => boolean;
 
@@ -686,7 +692,7 @@ declare module 'sweetalert2' {
 
         /**
          * Determines whether dismissals (outside click, cancel button, close button, Esc key, timer) should
-         * resolve with an object of the format `{ dismiss: SweetAlertDismissalReason }` or reject the promise.
+         * resolve with an object of the format `{ dismiss: SweetAlertDismissReason }` or reject the promise.
          *
          * @default false
          * @deprecated

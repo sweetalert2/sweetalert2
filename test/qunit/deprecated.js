@@ -24,7 +24,7 @@ QUnit.test('cancel button /w useRejections: true', (assert) => {
   }).then(
     () => {},
     (dismiss) => {
-      assert.equal(dismiss, 'cancel')
+      assert.equal(dismiss, swal.DismissReason.cancel)
       done()
     }
   )
@@ -41,7 +41,7 @@ QUnit.test('esc key /w useRejections: true', (assert) => {
   }).then(
     () => {},
     (dismiss) => {
-      assert.equal(dismiss, 'esc')
+      assert.equal(dismiss, swal.DismissReason.esc)
       done()
     }
   )
@@ -60,7 +60,7 @@ QUnit.test('overlay click /w useRejections: true', (assert) => {
   }).then(
     () => {},
     (dismiss) => {
-      assert.equal(dismiss, 'overlay')
+      assert.equal(dismiss, swal.DismissReason.backdrop)
       done()
     }
   )
@@ -79,7 +79,7 @@ QUnit.test('timer /w useRejections: true', (assert) => {
   }).then(
     () => {},
     (dismiss) => {
-      assert.equal(dismiss, 'timer')
+      assert.equal(dismiss, swal.DismissReason.timer)
       done()
     }
   )
@@ -95,7 +95,7 @@ QUnit.test('close button /w useRejections: true', (assert) => {
   }).then(
     () => {},
     (dismiss) => {
-      assert.equal(dismiss, 'close')
+      assert.equal(dismiss, swal.DismissReason.close)
       done()
     }
   )

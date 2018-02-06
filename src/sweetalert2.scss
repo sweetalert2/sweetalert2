@@ -36,7 +36,7 @@ body {
       background-color: transparent;
 
       & > .swal2-modal {
-        box-shadow: 0 0 10px $swal2-overlay;
+        box-shadow: 0 0 10px $swal2-backdrop;
       }
 
       &.swal2-top {
@@ -246,7 +246,7 @@ body {
   }
 
   &.swal2-shown {
-    background-color: $swal2-overlay;
+    background-color: $swal2-backdrop;
   }
 }
 

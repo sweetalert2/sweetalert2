@@ -12,7 +12,7 @@ export const states = {
 export const isNodeEnv = () => typeof window === 'undefined' || typeof document === 'undefined'
 
 /*
- * Add modal + overlay to DOM
+ * Add modal + backdrop to DOM
  */
 export const init = (params) => {
   // Clean up the old popup if it exists

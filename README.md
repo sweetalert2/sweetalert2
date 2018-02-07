@@ -114,8 +114,9 @@ swal({
       'Your imaginary file has been deleted.',
       'success'
     )
-  // result.dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
-  } else if (result.dismiss === 'cancel') {
+  // For more information about handling dismissals please visit
+  // https://sweetalert2.github.io/#handling-dismissals
+  } else if (result.dismiss === swal.DismissReason.cancel) {
     swal(
       'Cancelled',
       'Your imaginary file is safe :)',

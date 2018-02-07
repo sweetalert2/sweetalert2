@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.9.2
+ * sweetalert2 v7.10.0
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -82,7 +82,7 @@ var prefix = function prefix(items) {
   return result;
 };
 
-var swalClasses = prefix(['container', 'shown', 'iosfix', 'popup', 'modal', 'no-backdrop', 'toast', 'toast-shown', 'overlay', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'header', 'content', 'actions', 'confirm', 'cancel', 'footer', 'icon', 'image', 'input', 'has-input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen']);
+var swalClasses = prefix(['container', 'shown', 'iosfix', 'popup', 'modal', 'no-backdrop', 'toast', 'toast-shown', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'header', 'content', 'actions', 'confirm', 'cancel', 'footer', 'icon', 'image', 'input', 'has-input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen']);
 
 var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
@@ -292,7 +292,7 @@ var states = {
 };
 
 /*
- * Add modal + overlay to DOM
+ * Add modal + backdrop to DOM
  */
 var init = function init(params) {
   // Clean up the old popup if it exists
@@ -1252,7 +1252,7 @@ var sweetAlert = function sweetAlert() {
             // Clicked 'cancel'
           } else if (targetedCancel && sweetAlert.isVisible()) {
             sweetAlert.disableButtons();
-            dismissWith('cancel');
+            dismissWith(sweetAlert.DismissReason.cancel);
           }
           break;
         default:
@@ -1269,18 +1269,18 @@ var sweetAlert = function sweetAlert() {
 
     // Closing popup by close button
     getCloseButton().onclick = function () {
-      dismissWith('close');
+      dismissWith(sweetAlert.DismissReason.close);
     };
 
     if (params.toast) {
-      // Closing popup by overlay click
+      // Closing popup by backdrop click
       popup.onclick = function (e) {
         if (e.target !== popup || params.showConfirmButton || params.showCancelButton) {
           return;
         }
         if (params.allowOutsideClick) {
           sweetAlert.closePopup(params.onClose);
-          dismissWith('overlay');
+          dismissWith(sweetAlert.DismissReason.backdrop);
         }
       };
     } else {
@@ -1319,7 +1319,7 @@ var sweetAlert = function sweetAlert() {
           return;
         }
         if (callIfFunction(params.allowOutsideClick)) {
-          dismissWith('overlay');
+          dismissWith(sweetAlert.DismissReason.backdrop);
         }
       };
     }
@@ -1411,7 +1411,7 @@ var sweetAlert = function sweetAlert() {
 
         // ESC
       } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(params.allowEscapeKey) === true) {
-        dismissWith('esc');
+        dismissWith(sweetAlert.DismissReason.esc);
       }
     };
 
@@ -2012,9 +2012,17 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
   };
 };
 
+sweetAlert.DismissReason = Object.freeze({
+  cancel: 'cancel',
+  backdrop: 'overlay',
+  close: 'close',
+  esc: 'esc',
+  timer: 'timer'
+});
+
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.9.2';
+sweetAlert.version = '7.10.0';
 
 sweetAlert.default = sweetAlert;
 

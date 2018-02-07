@@ -14,7 +14,7 @@ QUnit.test('overlay click', (assert) => {
     title: 'Overlay click',
     animation: false
   }).then((result) => {
-    assert.deepEqual(result, {dismiss: 'overlay'})
+    assert.deepEqual(result, {dismiss: swal.DismissReason.backdrop})
     done()
   })
 
@@ -80,7 +80,7 @@ QUnit.test('allowOutsideClick: () => !swal.isLoading()', (assert) => {
     allowOutsideClick: () => !swal.isLoading(),
     animation: false
   }).then((result) => {
-    assert.deepEqual(result, {dismiss: 'overlay'})
+    assert.deepEqual(result, {dismiss: swal.DismissReason.backdrop})
     done()
   })
 

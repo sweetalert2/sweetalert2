@@ -51,11 +51,11 @@ QUnit.test('esc key /w useRejections: true', (assert) => {
   }))
 })
 
-QUnit.test('overlay click /w useRejections: true', (assert) => {
+QUnit.test('backdrop click /w useRejections: true', (assert) => {
   const done = assert.async()
 
   swal({
-    title: 'Overlay click',
+    title: 'Backdrop click',
     useRejections: true
   }).then(
     () => {},

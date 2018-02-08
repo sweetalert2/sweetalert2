@@ -846,3 +846,15 @@ QUnit.test('backdrop accepts css background param', (assert) => {
   assert.ok($('.swal2-container')[0].style.background.includes(backdrop))
 })
 
+QUnit.test('preConfirm return false', (assert) => {
+  swal({
+    preConfirm: () => {
+      return false
+    },
+    animation: false
+  })
+
+  swal.clickConfirm()
+  assert.ok(swal.isVisible())
+})
+

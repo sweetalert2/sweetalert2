@@ -575,7 +575,7 @@ const sweetAlert = (...args) => {
         } else {
           preConfirmPromise.then(
             (preConfirmValue) => {
-              if (dom.isVisible(dom.getValidationError())) {
+              if (dom.isVisible(dom.getValidationError()) || preConfirmValue === false) {
                 sweetAlert.hideLoading()
               } else {
                 succeedWith(preConfirmValue || value)

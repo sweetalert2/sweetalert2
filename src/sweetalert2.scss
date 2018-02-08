@@ -361,10 +361,6 @@ body {
   .swal2-styled {
     margin: 0 .3125em;
     padding: .625em 2em;
-    border: 0;
-    border-radius: .25em;
-    color: $swal2-white;
-    font-size: $swal2-buttons-font-size;
     font-weight: 500;
     box-shadow: none;
 
@@ -373,11 +369,19 @@ body {
     }
 
     &.swal2-confirm {
-      background-color: $swal2-confirm-button-color;
+      border: $swal2-confirm-button-border;
+      border-radius: $swal2-confirm-button-border-radius;
+      background-color: $swal2-confirm-button-background-color;
+      color: $swal2-confirm-button-color;
+      font-size: $swal2-confirm-button-font-size;
     }
 
     &.swal2-cancel {
-      background-color: $swal2-cancel-button-color;
+      border: $swal2-cancel-button-border;
+      border-radius: $swal2-cancel-button-border-radius;
+      background-color: $swal2-cancel-button-background-color;
+      color: $swal2-cancel-button-color;
+      font-size: $swal2-cancel-button-font-size;
     }
 
     &:focus {

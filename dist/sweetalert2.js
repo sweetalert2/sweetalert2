@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.10.0
+ * sweetalert2 v7.11.0
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1181,7 +1181,7 @@ var sweetAlert = function sweetAlert() {
           });
         } else {
           preConfirmPromise.then(function (preConfirmValue) {
-            if (isVisible(getValidationError())) {
+            if (isVisible(getValidationError()) || preConfirmValue === false) {
               sweetAlert.hideLoading();
             } else {
               succeedWith(preConfirmValue || value);
@@ -2022,7 +2022,7 @@ sweetAlert.DismissReason = Object.freeze({
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.10.0';
+sweetAlert.version = '7.11.0';
 
 sweetAlert.default = sweetAlert;
 

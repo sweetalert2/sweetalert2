@@ -286,7 +286,7 @@ body {
     position: relative;
     margin: 0 0 .4em;
     padding: 0;
-    color: lighten($swal2-black, 35);
+    color: $swal2-title-color;
     font-size: $swal2-title-font-size;
     font-weight: 600;
     text-align: center;
@@ -395,6 +395,7 @@ body {
     margin-top: 1.25em;
     padding-top: 1em;
     border-top: 1px solid $swal2-footer-border-color;
+    color: $swal2-footer-color;
     font-size: $swal2-footer-font-size;
   }
 
@@ -441,7 +442,7 @@ body {
     justify-content: center;
     margin: 0;
     padding: 0;
-    color: lighten($swal2-black, 33);
+    color: $swal2-content-color;
     font-size: $swal2-content-font-size;
     font-weight: 300;
     line-height: normal;

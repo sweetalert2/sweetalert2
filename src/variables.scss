@@ -13,6 +13,10 @@ $swal2-backdrop:       rgba($swal2-black, .4) !default;
 
 $swal2-background-color: $swal2-white !default;
 
+$swal2-title-color:    lighten($swal2-black, 35) !default;
+$swal2-content-color:  lighten($swal2-black, 33) !default;
+$swal2-footer-color:   lighten($swal2-black, 33) !default;
+
 $swal2-close-button:               lighten($swal2-black, 80) !default;
 $swal2-close-button-hover:         #d55 !default;
 
@@ -25,9 +29,6 @@ $swal2-validationerror-background: #ea7d7d !default;
 $swal2-validationerror-color:      $swal2-white !default;
 
 $swal2-focus-outline: rgba(50, 100, 150, .4) !default;
-
-$swal2-confirm-button-color: #3085d6 !default;
-$swal2-cancel-button-color: #aaa !default;
 
 $swal2-button-darken-hover: rgba($swal2-black, .1) !default;
 $swal2-button-darken-active: rgba($swal2-black, .2) !default;
@@ -47,7 +48,6 @@ $swal2-title-font-size: 1.875em !default;
 $swal2-content-font-size: 1.125em !default;
 $swal2-input-font-size: 1.125em !default;
 $swal2-validation-font-size: 1em !default;
-$swal2-buttons-font-size: 1.0625em !default;
 $swal2-footer-font-size: 1em !default;
 
 $swal2-toast-title-font-size: 1em !default;
@@ -59,3 +59,17 @@ $swal2-toast-buttons-font-size: 1em !default;
 $swal2-close-button-size: 2.5em !default;
 
 $swal2-progress-steps-distance: 2.5em !default;
+
+// CONFIRM BUTTON
+$swal2-confirm-button-border: 0 !default;
+$swal2-confirm-button-border-radius: .25em !default;
+$swal2-confirm-button-background-color: #3085d6 !default;
+$swal2-confirm-button-color: $swal2-white !default;
+$swal2-confirm-button-font-size: 1.0625em !default;
+
+// CANCEL BUTTON
+$swal2-cancel-button-border: 0 !default;
+$swal2-cancel-button-border-radius: .25em !default;
+$swal2-cancel-button-background-color: #aaa !default;
+$swal2-cancel-button-color: $swal2-white !default;
+$swal2-cancel-button-font-size: 1.0625em !default;

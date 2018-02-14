@@ -286,7 +286,7 @@ body {
     position: relative;
     margin: 0 0 .4em;
     padding: 0;
-    color: lighten($swal2-black, 35);
+    color: $swal2-title-color;
     font-size: $swal2-title-font-size;
     font-weight: 600;
     text-align: center;
@@ -361,10 +361,6 @@ body {
   .swal2-styled {
     margin: 0 .3125em;
     padding: .625em 2em;
-    border: 0;
-    border-radius: .25em;
-    color: $swal2-white;
-    font-size: $swal2-buttons-font-size;
     font-weight: 500;
     box-shadow: none;
 
@@ -373,11 +369,19 @@ body {
     }
 
     &.swal2-confirm {
-      background-color: $swal2-confirm-button-color;
+      border: $swal2-confirm-button-border;
+      border-radius: $swal2-confirm-button-border-radius;
+      background-color: $swal2-confirm-button-background-color;
+      color: $swal2-confirm-button-color;
+      font-size: $swal2-confirm-button-font-size;
     }
 
     &.swal2-cancel {
-      background-color: $swal2-cancel-button-color;
+      border: $swal2-cancel-button-border;
+      border-radius: $swal2-cancel-button-border-radius;
+      background-color: $swal2-cancel-button-background-color;
+      color: $swal2-cancel-button-color;
+      font-size: $swal2-cancel-button-font-size;
     }
 
     &:focus {
@@ -395,6 +399,7 @@ body {
     margin-top: 1.25em;
     padding-top: 1em;
     border-top: 1px solid $swal2-footer-border-color;
+    color: $swal2-footer-color;
     font-size: $swal2-footer-font-size;
   }
 
@@ -441,7 +446,7 @@ body {
     justify-content: center;
     margin: 0;
     padding: 0;
-    color: lighten($swal2-black, 33);
+    color: $swal2-content-color;
     font-size: $swal2-content-font-size;
     font-weight: 300;
     line-height: normal;

@@ -381,7 +381,7 @@ declare module 'sweetalert2' {
          *
          * @default true
          */
-        animation?: boolean;
+        animation?: boolean | SweetAlertBooleanFunction;
 
         /**
          * If set to false, the user can't dismiss the modal by clicking outside it.

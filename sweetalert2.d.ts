@@ -235,13 +235,13 @@ declare module 'sweetalert2' {
         timer = 'timer',
     }
 
-    export type SweetAlertBooleanFunction = () => boolean;
-
     export type SweetAlertInputOptions = Map<string, string> | { [inputValue: string]: string };
 
     export interface SweetAlertInputAttributes {
         [attribute: string]: string;
     }
+
+    type ValueOrThunk<T> = T | (() => T);
 
     export interface SweetAlertOptions {
         /**
@@ -381,7 +381,7 @@ declare module 'sweetalert2' {
          *
          * @default true
          */
-        animation?: boolean | SweetAlertBooleanFunction;
+        animation?: ValueOrThunk<boolean>;
 
         /**
          * If set to false, the user can't dismiss the modal by clicking outside it.
@@ -390,7 +390,7 @@ declare module 'sweetalert2' {
          *
          * @default true
          */
-        allowOutsideClick?: boolean | SweetAlertBooleanFunction;
+        allowOutsideClick?: ValueOrThunk<boolean>;
 
         /**
          * If set to false, the user can't dismiss the modal by pressing the Escape key.
@@ -399,7 +399,7 @@ declare module 'sweetalert2' {
          *
          * @default true
          */
-        allowEscapeKey?: boolean | SweetAlertBooleanFunction;
+        allowEscapeKey?: ValueOrThunk<boolean>;
 
         /**
          * If set to false, the user can't confirm the modal by pressing the Enter or Space keys,
@@ -408,7 +408,7 @@ declare module 'sweetalert2' {
          *
          * @default true
          */
-        allowEnterKey?: boolean | SweetAlertBooleanFunction;
+        allowEnterKey?: ValueOrThunk<boolean>;
 
         /**
          * If set to false, a "Confirm"-button will not be shown.

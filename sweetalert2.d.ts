@@ -237,9 +237,6 @@ declare module 'sweetalert2' {
 
     export type SweetAlertInputOptions = Map<string, string> | { [inputValue: string]: string };
 
-    export interface SweetAlertInputAttributes {
-        [attribute: string]: string;
-    }
 
     type ValueOrThunk<T> = T | (() => T);
 
@@ -625,7 +622,7 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        inputAttributes?: SweetAlertInputAttributes;
+        inputAttributes?: { [attribute: string]: string; };
 
         /**
          * Validator for input field, may be async (Promise-returning) or sync.

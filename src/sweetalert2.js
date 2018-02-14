@@ -121,6 +121,11 @@ const setParameters = (params) => {
     }
   }
 
+  // Animation
+  if (typeof params.animation === 'function') {
+    params.animation = params.animation.call()
+  }
+
   // Close button
   if (params.showCloseButton) {
     closeButton.setAttribute('aria-label', params.closeButtonAriaLabel)

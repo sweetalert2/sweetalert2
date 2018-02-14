@@ -221,12 +221,6 @@ declare module 'sweetalert2' {
         function noop(): void;
     }
 
-    export type SweetAlertType = 'success' | 'error' | 'warning' | 'info' | 'question' | undefined;
-
-    export type SweetAlertInputType =
-        'text' | 'email' | 'password' | 'number' | 'tel' | 'range' | 'textarea' | 'select' | 'radio' | 'checkbox' |
-        'file' | 'url' | undefined;
-
     export enum SweetAlertDismissReason {
         cancel = 'cancel',
         backdrop = 'overlay',
@@ -234,6 +228,8 @@ declare module 'sweetalert2' {
         esc = 'esc',
         timer = 'timer',
     }
+
+    export type SweetAlertType = 'success' | 'error' | 'warning' | 'info' | 'question';
 
     type SyncOrAsync<T> = T | Promise<T>;
 
@@ -318,7 +314,9 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        input?: SweetAlertInputType;
+        input?:
+            'text' | 'email' | 'password' | 'number' | 'tel' | 'range' | 'textarea' | 'select' | 'radio' | 'checkbox' |
+            'file' | 'url';
 
         /**
          * Modal window width, including paddings (box-sizing: border-box). Can be in px or %.

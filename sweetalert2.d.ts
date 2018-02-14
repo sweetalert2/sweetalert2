@@ -235,8 +235,6 @@ declare module 'sweetalert2' {
         timer = 'timer',
     }
 
-    export type SweetAlertInputOptions = Map<string, string> | { [inputValue: string]: string };
-
     type SyncOrAsync<T> = T | Promise<T>;
 
     type ValueOrThunk<T> = T | (() => T);
@@ -599,7 +597,7 @@ declare module 'sweetalert2' {
          * If input parameter is set to "select" or "radio", you can provide options.
          * Object keys will represent options values, object values will represent options text values.
          */
-        inputOptions?: SyncOrAsync<SweetAlertInputOptions>;
+        inputOptions?: SyncOrAsync<Map<string, string> | { [inputValue: string]: string }>;
 
         /**
          * Automatically remove whitespaces from both ends of a result string.

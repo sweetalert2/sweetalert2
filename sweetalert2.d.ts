@@ -237,6 +237,7 @@ declare module 'sweetalert2' {
 
     export type SweetAlertInputOptions = Map<string, string> | { [inputValue: string]: string };
 
+    type SyncOrAsync<T> = T | Promise<T>;
 
     type ValueOrThunk<T> = T | (() => T);
 
@@ -543,7 +544,7 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        preConfirm?: (inputValue: any) => Promise<any | void> | any | void;
+        preConfirm?: (inputValue: any) => SyncOrAsync<any | void>;
 
         /**
          * Add a customized icon for the modal. Should contain a string with the path or URL to the image.
@@ -598,7 +599,7 @@ declare module 'sweetalert2' {
          * If input parameter is set to "select" or "radio", you can provide options.
          * Object keys will represent options values, object values will represent options text values.
          */
-        inputOptions?: SweetAlertInputOptions | Promise<SweetAlertInputOptions>;
+        inputOptions?: SyncOrAsync<SweetAlertInputOptions>;
 
         /**
          * Automatically remove whitespaces from both ends of a result string.
@@ -636,7 +637,7 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        inputValidator?: (inputValue: any) => Promise<string | null> | string | null;
+        inputValidator?: (inputValue: any) => SyncOrAsync<string | null>;
 
         /**
          * A custom CSS class for the input field.

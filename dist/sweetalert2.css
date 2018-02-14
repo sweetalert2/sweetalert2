@@ -639,19 +639,23 @@ body.swal2-no-backdrop .swal2-shown {
   .swal2-popup .swal2-styled {
     margin: 0 .3125em;
     padding: .625em 2em;
-    border: 0;
-    border-radius: .25em;
-    color: #fff;
-    font-size: 1.0625em;
     font-weight: 500;
     -webkit-box-shadow: none;
             box-shadow: none; }
     .swal2-popup .swal2-styled:not([disabled]) {
       cursor: pointer; }
     .swal2-popup .swal2-styled.swal2-confirm {
-      background-color: #3085d6; }
+      border: 0;
+      border-radius: 0.25em;
+      background-color: #3085d6;
+      color: #fff;
+      font-size: 1.0625em; }
     .swal2-popup .swal2-styled.swal2-cancel {
-      background-color: #aaa; }
+      border: 0;
+      border-radius: 0.25em;
+      background-color: #aaa;
+      color: #fff;
+      font-size: 1.0625em; }
     .swal2-popup .swal2-styled:focus {
       outline: none;
       -webkit-box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, 0.4);
@@ -665,6 +669,7 @@ body.swal2-no-backdrop .swal2-shown {
     margin-top: 1.25em;
     padding-top: 1em;
     border-top: 1px solid #eee;
+    color: #545454;
     font-size: 1em; }
   .swal2-popup .swal2-image {
     max-width: 100%;

@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.11.0
+ * sweetalert2 v7.12.0
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -724,6 +724,11 @@ var setParameters = function setParameters(params) {
     if (growClass in swalClasses) {
       addClass(container, swalClasses[growClass]);
     }
+  }
+
+  // Animation
+  if (typeof params.animation === 'function') {
+    params.animation = params.animation.call();
   }
 
   // Close button
@@ -2022,7 +2027,7 @@ sweetAlert.DismissReason = Object.freeze({
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.11.0';
+sweetAlert.version = '7.12.0';
 
 sweetAlert.default = sweetAlert;
 

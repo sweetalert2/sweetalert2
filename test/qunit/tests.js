@@ -858,3 +858,14 @@ QUnit.test('preConfirm return false', (assert) => {
   assert.ok(swal.isVisible())
 })
 
+QUnit.test('animation param evaluates a function', (assert) => {
+  swal({
+    animation: () => false
+  })
+  assert.ok($('.swal2-popup').hasClass('swal2-noanimation'))
+
+  swal({
+    animation: () => true
+  })
+  assert.notOk($('.swal2-popup').hasClass('swal2-noanimation'))
+})

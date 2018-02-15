@@ -117,6 +117,9 @@ body {
   z-index: 1060;
   overflow-x: hidden;
 
+  // sweetalert2/issues/905
+  -webkit-overflow-scrolling: touch;
+
   &.swal2-top {
     align-items: flex-start;
   }

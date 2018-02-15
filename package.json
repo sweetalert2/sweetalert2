@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "7.12.0",
+  "version": "7.12.1",
   "repository": "sweetalert2/sweetalert2",
   "homepage": "https://sweetalert2.github.io/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
@@ -81,7 +81,7 @@
     "fix:lint": "standard --fix",
     "test": "npm run build && npm run check",
     "build": "gulp build",
-    "check": "npm run check:tests && npm run check:ts",
+    "check": "npm run check:bundlesize && npm run check:tests && npm run check:ts",
     "check:bundlesize": "bundlesize -f dist/sweetalert2.all.min.js -s 15kB",
     "check:tests": "testem ci",
     "check:ts": "tsc sweetalert2.d.ts",

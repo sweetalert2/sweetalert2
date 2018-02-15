@@ -20,12 +20,6 @@ body {
 }
 
 body {
-  &.swal2-iosfix {
-    position: fixed;
-    right: 0;
-    left: 0;
-  }
-
   &.swal2-no-backdrop {
 
     .swal2-shown {

@@ -350,14 +350,15 @@ const openPopup = (animation, onBeforeOpen, onComplete) => {
 
   // scrolling is 'hidden' until animation is done, after that 'scroll'
   // 'scroll', not 'auto' because of sweetalert2/issues/905
+  // TODO @limonte: if container.height > body.height, set to 'scroll', else set to 'auto
   container.style.overflowY = 'hidden'
   if (dom.animationEndEvent && !dom.hasClass(popup, swalClasses.noanimation)) {
     popup.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
       popup.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
-      container.style.overflowY = 'scroll'
+      container.style.overflowY = 'auto'
     })
   } else {
-    container.style.overflowY = 'scroll'
+    container.style.overflowY = 'auto'
   }
 
   dom.addClass([document.documentElement, document.body, container], swalClasses.shown)

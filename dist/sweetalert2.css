@@ -416,7 +416,8 @@ body.swal2-no-backdrop .swal2-shown {
   padding: 10px;
   background-color: transparent;
   z-index: 1060;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; }
   .swal2-container.swal2-top {
     -webkit-box-align: start;
         -ms-flex-align: start;

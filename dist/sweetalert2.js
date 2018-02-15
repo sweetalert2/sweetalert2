@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.12.0
+ * sweetalert2 v7.12.1
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -946,15 +946,16 @@ var openPopup = function openPopup(animation, onBeforeOpen, onComplete) {
   }
   show(popup);
 
-  // scrolling is 'hidden' until animation is done, after that 'auto'
+  // scrolling is 'hidden' until animation is done, after that 'scroll'
+  // 'scroll', not 'auto' because of sweetalert2/issues/905
   container.style.overflowY = 'hidden';
   if (animationEndEvent && !hasClass(popup, swalClasses.noanimation)) {
     popup.addEventListener(animationEndEvent, function swalCloseEventFinished() {
       popup.removeEventListener(animationEndEvent, swalCloseEventFinished);
-      container.style.overflowY = 'auto';
+      container.style.overflowY = 'scroll';
     });
   } else {
-    container.style.overflowY = 'auto';
+    container.style.overflowY = 'scroll';
   }
 
   addClass([document.documentElement, document.body, container], swalClasses.shown);
@@ -2027,7 +2028,7 @@ sweetAlert.DismissReason = Object.freeze({
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.12.0';
+sweetAlert.version = '7.12.1';
 
 sweetAlert.default = sweetAlert;
 

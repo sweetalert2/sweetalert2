@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.12.1
+ * sweetalert2 v7.12.2
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -620,14 +620,15 @@ var openPopup = function openPopup(animation, onBeforeOpen, onComplete) {
 
   // scrolling is 'hidden' until animation is done, after that 'scroll'
   // 'scroll', not 'auto' because of sweetalert2/issues/905
+  // TODO @limonte: if container.height > body.height, set to 'scroll', else set to 'auto
   container.style.overflowY = 'hidden';
   if (animationEndEvent && !hasClass(popup, swalClasses.noanimation)) {
     popup.addEventListener(animationEndEvent, function swalCloseEventFinished() {
       popup.removeEventListener(animationEndEvent, swalCloseEventFinished);
-      container.style.overflowY = 'scroll';
+      container.style.overflowY = 'auto';
     });
   } else {
-    container.style.overflowY = 'scroll';
+    container.style.overflowY = 'auto';
   }
 
   addClass([document.documentElement, document.body, container], swalClasses.shown);
@@ -1700,7 +1701,7 @@ sweetAlert.DismissReason = Object.freeze({
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.12.1';
+sweetAlert.version = '7.12.2';
 
 sweetAlert.default = sweetAlert;
 

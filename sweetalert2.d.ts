@@ -221,12 +221,6 @@ declare module 'sweetalert2' {
         function noop(): void;
     }
 
-    export type SweetAlertType = 'success' | 'error' | 'warning' | 'info' | 'question' | undefined;
-
-    export type SweetAlertInputType =
-        'text' | 'email' | 'password' | 'number' | 'tel' | 'range' | 'textarea' | 'select' | 'radio' | 'checkbox' |
-        'file' | 'url' | undefined;
-
     export enum SweetAlertDismissReason {
         cancel = 'cancel',
         backdrop = 'overlay',
@@ -235,13 +229,11 @@ declare module 'sweetalert2' {
         timer = 'timer',
     }
 
-    export type SweetAlertBooleanFunction = () => boolean;
+    export type SweetAlertType = 'success' | 'error' | 'warning' | 'info' | 'question';
 
-    export type SweetAlertInputOptions = Map<string, string> | { [inputValue: string]: string };
+    type SyncOrAsync<T> = T | Promise<T>;
 
-    export interface SweetAlertInputAttributes {
-        [attribute: string]: string;
-    }
+    type ValueOrThunk<T> = T | (() => T);
 
     export interface SweetAlertOptions {
         /**
@@ -322,7 +314,9 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        input?: SweetAlertInputType;
+        input?:
+            'text' | 'email' | 'password' | 'number' | 'tel' | 'range' | 'textarea' | 'select' | 'radio' | 'checkbox' |
+            'file' | 'url';
 
         /**
          * Modal window width, including paddings (box-sizing: border-box). Can be in px or %.
@@ -381,7 +375,7 @@ declare module 'sweetalert2' {
          *
          * @default true
          */
-        animation?: boolean | SweetAlertBooleanFunction;
+        animation?: ValueOrThunk<boolean>;
 
         /**
          * If set to false, the user can't dismiss the modal by clicking outside it.
@@ -390,7 +384,7 @@ declare module 'sweetalert2' {
          *
          * @default true
          */
-        allowOutsideClick?: boolean | SweetAlertBooleanFunction;
+        allowOutsideClick?: ValueOrThunk<boolean>;
 
         /**
          * If set to false, the user can't dismiss the modal by pressing the Escape key.
@@ -399,7 +393,7 @@ declare module 'sweetalert2' {
          *
          * @default true
          */
-        allowEscapeKey?: boolean | SweetAlertBooleanFunction;
+        allowEscapeKey?: ValueOrThunk<boolean>;
 
         /**
          * If set to false, the user can't confirm the modal by pressing the Enter or Space keys,
@@ -408,7 +402,7 @@ declare module 'sweetalert2' {
          *
          * @default true
          */
-        allowEnterKey?: boolean | SweetAlertBooleanFunction;
+        allowEnterKey?: ValueOrThunk<boolean>;
 
         /**
          * If set to false, a "Confirm"-button will not be shown.
@@ -546,7 +540,7 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        preConfirm?: (inputValue: any) => Promise<any | void> | any | void;
+        preConfirm?: (inputValue: any) => SyncOrAsync<any | void>;
 
         /**
          * Add a customized icon for the modal. Should contain a string with the path or URL to the image.
@@ -601,7 +595,7 @@ declare module 'sweetalert2' {
          * If input parameter is set to "select" or "radio", you can provide options.
          * Object keys will represent options values, object values will represent options text values.
          */
-        inputOptions?: SweetAlertInputOptions | Promise<SweetAlertInputOptions>;
+        inputOptions?: SyncOrAsync<Map<string, string> | { [inputValue: string]: string }>;
 
         /**
          * Automatically remove whitespaces from both ends of a result string.
@@ -625,7 +619,7 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        inputAttributes?: SweetAlertInputAttributes;
+        inputAttributes?: { [attribute: string]: string; };
 
         /**
          * Validator for input field, may be async (Promise-returning) or sync.
@@ -639,7 +633,7 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        inputValidator?: (inputValue: any) => Promise<string | null> | string | null;
+        inputValidator?: (inputValue: any) => SyncOrAsync<string | null>;
 
         /**
          * A custom CSS class for the input field.

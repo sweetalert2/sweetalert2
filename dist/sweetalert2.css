@@ -342,11 +342,6 @@ body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
   height: auto;
   overflow-y: hidden; }
 
-body.swal2-iosfix {
-  position: fixed;
-  right: 0;
-  left: 0; }
-
 body.swal2-no-backdrop .swal2-shown {
   top: auto;
   right: auto;

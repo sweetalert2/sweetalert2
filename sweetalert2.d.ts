@@ -26,7 +26,7 @@ declare module 'sweetalert2' {
      * @deprecated
      * swal() overload for legacy alerts that use { useRejections: true }.
      */
-    function swal(settings: SweetAlertOptions & { useRejections: true }): Promise<number>;
+    function swal(settings: SweetAlertOptions & { useRejections: true }): Promise<any>;
 
     /**
      * A namespace inside the default function, containing utility function for controlling the currently-displayed

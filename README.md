@@ -15,6 +15,9 @@
   <a href="https://gitter.im/sweetalert2/Lobby"><img alt="Gitter" src="https://badges.gitter.im/Join%20Chat.svg"></a>
   <a href="https://www.patreon.com/limonte"><img alt="Support me on Patreon" src="http://ionicabizau.github.io/badges/patreon.svg"></a>
   <a href="https://www.paypal.me/limonte/5eur"><img alt="PayPal Donate" src="http://ionicabizau.github.io/badges/paypal.svg"></a>
+  <a href="#backers"><img alt="Backers on Open Collective" src="https://opencollective.com/SweetAlert2/backers/badge.svg"></a>
+  <a href="#sponsors"><img alt="Sponsors on Open Collective" src="https://opencollective.com/SweetAlert2/sponsors/badge.svg"></a>
+ 
 </p>
 
 <p align="center">
@@ -192,3 +195,33 @@ Has SweetAlert2 helped you create an amazing application? You can show your supp
 - https://www.patreon.com/limonte
 
 ### [Hall of Donators :trophy:](DONATIONS.md)
+
+## Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="graphs/contributors"><img src="https://opencollective.com/SweetAlert2/contributors.svg?width=890&button=false" /></a>
+
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/SweetAlert2#backer)]
+
+<a href="https://opencollective.com/SweetAlert2#backers" target="_blank"><img src="https://opencollective.com/SweetAlert2/backers.svg?width=890"></a>
+
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/SweetAlert2#sponsor)]
+
+<a href="https://opencollective.com/SweetAlert2/sponsor/0/website" target="_blank"><img src="https://opencollective.com/SweetAlert2/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/SweetAlert2/sponsor/1/website" target="_blank"><img src="https://opencollective.com/SweetAlert2/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/SweetAlert2/sponsor/2/website" target="_blank"><img src="https://opencollective.com/SweetAlert2/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/SweetAlert2/sponsor/3/website" target="_blank"><img src="https://opencollective.com/SweetAlert2/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/SweetAlert2/sponsor/4/website" target="_blank"><img src="https://opencollective.com/SweetAlert2/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/SweetAlert2/sponsor/5/website" target="_blank"><img src="https://opencollective.com/SweetAlert2/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/SweetAlert2/sponsor/6/website" target="_blank"><img src="https://opencollective.com/SweetAlert2/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/SweetAlert2/sponsor/7/website" target="_blank"><img src="https://opencollective.com/SweetAlert2/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/SweetAlert2/sponsor/8/website" target="_blank"><img src="https://opencollective.com/SweetAlert2/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/SweetAlert2/sponsor/9/website" target="_blank"><img src="https://opencollective.com/SweetAlert2/sponsor/9/avatar.svg"></a>
+
+

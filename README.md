@@ -197,24 +197,27 @@ If you would like to contribute enhancements or fixes, please do the following:
 Donations
 ---------
 
-Has SweetAlert2 helped you create an amazing application? You can show your support by making a donation in one of two ways:
+Has SweetAlert2 helped you create an amazing application? You can show your support by making a donation in one of several ways:
 
-- https://www.paypal.me/limonte/5eur
-- https://www.patreon.com/limonte
+- [Donate via PayPal](https://www.paypal.me/limonte/5eur)
+- [Donate via Patreon](https://www.patreon.com/limonte)
+- [Become a backer on OpenCollective](https://opencollective.com/SweetAlert2#backer)
+- [Become a sponsor on OpenCollective](https://opencollective.com/SweetAlert2#sponsor)
+
 
 ### [Hall of Donators :trophy:](DONATIONS.md)
 
 
 ### Backers
 
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/SweetAlert2#backer)]
+Thank you to all our backers! 🙏
 
 <a href="https://opencollective.com/SweetAlert2#backers" target="_blank"><img src="https://opencollective.com/SweetAlert2/backers.svg?width=890"></a>
 
 
 ### Sponsors
 
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/SweetAlert2#sponsor)]
+If you support this project by becoming a sponsor, your logo will show up here with a link to your website.
 
 <a href="https://opencollective.com/SweetAlert2/sponsor/0/website" target="_blank"><img src="https://opencollective.com/SweetAlert2/sponsor/0/avatar.svg"></a>
 <a href="https://opencollective.com/SweetAlert2/sponsor/1/website" target="_blank"><img src="https://opencollective.com/SweetAlert2/sponsor/1/avatar.svg"></a>

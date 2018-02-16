@@ -85,14 +85,10 @@
     "check:bundlesize": "bundlesize -f dist/sweetalert2.all.min.js -s 15kB",
     "check:tests": "testem ci",
     "check:ts": "tsc sweetalert2.d.ts",
-    "release": "node release",
-    "postinstall": "opencollective postinstall"
+    "release": "node release"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
   "license": "MIT",
-  "dependencies": {
-    "opencollective": "^1.0.3"
-  },
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/SweetAlert2",

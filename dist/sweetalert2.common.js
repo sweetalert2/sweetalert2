@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.12.3
+ * sweetalert2 v7.12.4
  * Released under the MIT License.
  */
 'use strict';
@@ -185,26 +185,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];
@@ -218,26 +198,6 @@ var _extends = Object.assign || function (target) {
 
   return target;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var slicedToArray = function () {
   function sliceIterator(arr, i) {
@@ -601,17 +561,11 @@ var measureScrollbar = function measureScrollbar() {
   return scrollbarWidth;
 };
 
-/**
- * Inject a string of CSS into the page header
- *
- * @param {String} css
- */
-
 var popupParams = _extends({}, defaultParams);
 var queue = [];
 
-var previousWindowKeyDown = void 0;
-var windowOnkeydownOverridden = void 0;
+var previousWindowKeyDown = void 0,
+    windowOnkeydownOverridden = void 0;
 
 /**
  * Show relevant warnings for given params
@@ -801,19 +755,7 @@ var setParameters = function setParameters(params) {
 
     // Animate icon
     if (params.animation) {
-      switch (params.type) {
-        case 'success':
-          addClass(icon, 'swal2-animate-success-icon');
-          addClass(icon.querySelector('.swal2-success-line-tip'), 'swal2-animate-success-line-tip');
-          addClass(icon.querySelector('.swal2-success-line-long'), 'swal2-animate-success-line-long');
-          break;
-        case 'error':
-          addClass(icon, 'swal2-animate-error-icon');
-          addClass(icon.querySelector('.swal2-x-mark'), 'swal2-animate-x-mark');
-          break;
-        default:
-          break;
-      }
+      addClass(icon, 'swal2-animate-' + params.type + '-icon');
     }
   }
 
@@ -2023,7 +1965,7 @@ sweetAlert.DismissReason = Object.freeze({
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.12.3';
+sweetAlert.version = '7.12.4';
 
 sweetAlert.default = sweetAlert;
 

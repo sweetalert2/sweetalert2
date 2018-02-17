@@ -1,0 +1,143 @@
+// Appearance animation
+@keyframes swal2-show {
+  0% {
+    transform: scale(.7);
+  }
+
+  45% {
+    transform: scale(1.05);
+  }
+
+  80% {
+    transform: scale(.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+// Disppearance animation
+@keyframes swal2-hide {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(.5);
+    opacity: 0;
+  }
+}
+
+// Success icon animations
+@keyframes swal2-animate-success-line-tip {
+  0% {
+    top: 19px;
+    left: 1px;
+    width: 0;
+  }
+
+  54% {
+    top: 17px;
+    left: 2px;
+    width: 0;
+  }
+
+  70% {
+    top: 35px;
+    left: -6px;
+    width: 50px;
+  }
+
+  84% {
+    top: 48px;
+    left: 21px;
+    width: 17px;
+  }
+
+  100% {
+    top: 45px;
+    left: 14px;
+    width: 25px;
+  }
+}
+@keyframes swal2-animate-success-line-long {
+  0% {
+    top: 54px;
+    right: 46px;
+    width: 0;
+  }
+
+  65% {
+    top: 54px;
+    right: 46px;
+    width: 0;
+  }
+
+  84% {
+    top: 35px;
+    right: 0;
+    width: 55px;
+  }
+
+  100% {
+    top: 38px;
+    right: 8px;
+    width: 47px;
+  }
+}
+@keyframes swal2-rotate-success-circular-line {
+  0% {
+    transform: rotate(-45deg);
+  }
+
+  5% {
+    transform: rotate(-45deg);
+  }
+
+  12% {
+    transform: rotate(-405deg);
+  }
+
+  100% {
+    transform: rotate(-405deg);
+  }
+}
+
+// Error icon animations
+@keyframes swal2-animate-error-x-mark {
+  0% {
+    margin-top: 26px;
+    transform: scale(.4);
+    opacity: 0;
+  }
+
+  50% {
+    margin-top: 26px;
+    transform: scale(.4);
+    opacity: 0;
+  }
+
+  80% {
+    margin-top: -6px;
+    transform: scale(1.15);
+  }
+
+  100% {
+    margin-top: 0;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes swal2-animate-error-icon {
+  0% {
+    transform: rotateX(100deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}

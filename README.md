@@ -172,7 +172,7 @@ Contributors
 ------------
 
 This project exists thanks to all the people who contribute.
-<a href="graphs/contributors"><img src="https://opencollective.com/SweetAlert2/contributors.svg?width=890&button=false" /></a>
+<a href="https://github.com/sweetalert2/sweetalert2/graphs/contributors"><img src="https://opencollective.com/SweetAlert2/contributors.svg?width=890&button=false" /></a>
 
 
 Contributing

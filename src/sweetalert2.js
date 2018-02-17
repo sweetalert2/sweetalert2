@@ -203,19 +203,7 @@ const setParameters = (params) => {
 
     // Animate icon
     if (params.animation) {
-      switch (params.type) {
-        case 'success':
-          dom.addClass(icon, 'swal2-animate-success-icon')
-          dom.addClass(icon.querySelector('.swal2-success-line-tip'), 'swal2-animate-success-line-tip')
-          dom.addClass(icon.querySelector('.swal2-success-line-long'), 'swal2-animate-success-line-long')
-          break
-        case 'error':
-          dom.addClass(icon, 'swal2-animate-error-icon')
-          dom.addClass(icon.querySelector('.swal2-x-mark'), 'swal2-animate-x-mark')
-          break
-        default:
-          break
-      }
+      dom.addClass(icon, `swal2-animate-${params.type}-icon`)
     }
   }
 

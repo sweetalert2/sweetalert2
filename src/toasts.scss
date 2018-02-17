@@ -257,12 +257,14 @@ body {
       animation: hideSweetToast .2s forwards;
     }
 
-    .swal2-animate-success-line-tip {
-      animation: animate-toast-success-tip .75s;
-    }
+    .swal2-animate-success-icon {
+      .swal2-success-line-tip {
+        animation: animate-toast-success-tip .75s;
+      }
 
-    .swal2-animate-success-line-long {
-      animation: animate-toast-success-long .75s;
+      .swal2-success-line-long {
+        animation: animate-toast-success-long .75s;
+      }
     }
   }
 }

@@ -6,7 +6,7 @@ declare module 'sweetalert2' {
      *   import swal from 'sweetalert2';
      *   swal('The Internet?', 'That thing is still around?', 'question');
      */
-    function swal(title: string, message?: string, type?: SweetAlertType): Promise<any>;
+    function swal(title: string, message?: string, type?: SweetAlertType): Promise<SweetAlertResult>;
 
     /**
      * Function to display a SweetAlert modal, with an object of options, all being optional.
@@ -20,7 +20,13 @@ declare module 'sweetalert2' {
      *     timer: 2000
      *   })
      */
-    function swal(settings: SweetAlertOptions): Promise<any>;
+    function swal(settings: SweetAlertOptions & { useRejections?: false }): Promise<SweetAlertResult>;
+
+    /**
+     * @deprecated
+     * swal() overload for legacy alerts that use { useRejections: true }.
+     */
+    function swal(settings: SweetAlertOptions & { useRejections: true }): Promise<any>;
 
     /**
      * A namespace inside the default function, containing utility function for controlling the currently-displayed
@@ -230,6 +236,11 @@ declare module 'sweetalert2' {
     }
 
     export type SweetAlertType = 'success' | 'error' | 'warning' | 'info' | 'question';
+
+    export interface SweetAlertResult {
+        value?: any;
+        dismiss?: SweetAlertDismissReason;
+    }
 
     type SyncOrAsync<T> = T | Promise<T>;
 
@@ -683,15 +694,6 @@ declare module 'sweetalert2' {
          * @default null
          */
         onClose?: (modalElement: HTMLElement) => void;
-
-        /**
-         * Determines whether dismissals (outside click, cancel button, close button, Esc key, timer) should
-         * resolve with an object of the format `{ dismiss: SweetAlertDismissReason }` or reject the promise.
-         *
-         * @default false
-         * @deprecated
-         */
-        useRejections?: boolean;
 
         /**
          * Determines whether given `inputValidator` and `preConfirm` functions should be expected to to signal

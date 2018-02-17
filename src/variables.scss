@@ -60,6 +60,15 @@ $swal2-close-button-size: 2.5em !default;
 
 $swal2-progress-steps-distance: 2.5em !default;
 
+// ANIMATIONS
+$swal2-show-animation: swal2-show .3s !default;
+$swal2-hide-animation: swal2-hide .15s forwards !default;
+$swal2-success-line-tip-animation: swal2-animate-success-line-tip .75s !default;
+$swal2-success-line-long-animation: swal2-animate-success-line-long .75s !default;
+$swal2-success-circular-line-animation: swal2-rotate-success-circular-line 4.25s ease-in !default;
+$swal2-error-icon-animation: swal2-animate-error-icon .5s !default;
+$swal2-error-x-mark-animation: swal2-animate-error-x-mark .5s !default;
+
 // CONFIRM BUTTON
 $swal2-confirm-button-border: 0 !default;
 $swal2-confirm-button-border-radius: .25em !default;

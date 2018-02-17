@@ -2,6 +2,7 @@
 // github.com/sweetalert2/sweetalert2
 
 @import 'variables';
+@import 'animations';
 @import 'mixins';
 
 @import 'toasts';
@@ -326,7 +327,7 @@ body {
           color: transparent;
           cursor: default;
           box-sizing: border-box;
-          animation: rotate-loading 1.5s linear 0s infinite normal;
+          animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
           user-select: none;
         }
 
@@ -348,7 +349,7 @@ body {
             border-right-color: transparent;
             box-shadow: 1px 1px 1px $swal2-white;
             content: '';
-            animation: rotate-loading 1.5s linear 0s infinite normal;
+            animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
           }
         }
       }
@@ -802,39 +803,8 @@ body {
   -webkit-tap-highlight-color: $swal2-transparent;
 }
 
-// Modal animations
-@keyframes showSweetAlert {
-  0% {
-    transform: scale(.7);
-  }
-
-  45% {
-    transform: scale(1.05);
-  }
-
-  80% {
-    transform: scale(.95);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes hideSweetAlert {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scale(.5);
-    opacity: 0;
-  }
-}
-
 .swal2-show {
-  animation: showSweetAlert .3s;
+  animation: $swal2-show-animation;
 
   &.swal2-noanimation {
     animation: none;
@@ -842,7 +812,7 @@ body {
 }
 
 .swal2-hide {
-  animation: hideSweetAlert .15s forwards;
+  animation: $swal2-hide-animation;
 
   &.swal2-noanimation {
     animation: none;
@@ -860,148 +830,30 @@ body {
 
 
 // Success icon animation
-
-@keyframes animate-success-tip {
-  0% {
-    top: 19px;
-    left: 1px;
-    width: 0;
+.swal2-animate-success-icon {
+  .swal2-success-line-tip {
+    animation: $swal2-success-line-tip-animation;
   }
 
-  54% {
-    top: 17px;
-    left: 2px;
-    width: 0;
+  .swal2-success-line-long {
+    animation: $swal2-success-line-long-animation;
   }
 
-  70% {
-    top: 35px;
-    left: -6px;
-    width: 50px;
-  }
-
-  84% {
-    top: 48px;
-    left: 21px;
-    width: 17px;
-  }
-
-  100% {
-    top: 45px;
-    left: 14px;
-    width: 25px;
+  .swal2-success-circular-line-right {
+    animation: $swal2-success-circular-line-animation;
   }
 }
-
-@keyframes animate-success-long {
-  0% {
-    top: 54px;
-    right: 46px;
-    width: 0;
-  }
-
-  65% {
-    top: 54px;
-    right: 46px;
-    width: 0;
-  }
-
-  84% {
-    top: 35px;
-    right: 0;
-    width: 55px;
-  }
-
-  100% {
-    top: 38px;
-    right: 8px;
-    width: 47px;
-  }
-}
-
-@keyframes rotatePlaceholder {
-  0% {
-    transform: rotate(-45deg);
-  }
-
-  5% {
-    transform: rotate(-45deg);
-  }
-
-  12% {
-    transform: rotate(-405deg);
-  }
-
-  100% {
-    transform: rotate(-405deg);
-  }
-}
-
-.swal2-animate-success-line-tip {
-  animation: animate-success-tip .75s;
-}
-
-.swal2-animate-success-line-long {
-  animation: animate-success-long .75s;
-}
-
-.swal2-success {
-  &.swal2-animate-success-icon {
-    .swal2-success-circular-line-right {
-      animation: rotatePlaceholder 4.25s ease-in;
-    }
-  }
-}
-
 
 // Error icon animation
-
-@keyframes animate-error-icon {
-  0% {
-    transform: rotateX(100deg);
-    opacity: 0;
-  }
-
-  100% {
-    transform: rotateX(0deg);
-    opacity: 1;
-  }
-}
-
 .swal2-animate-error-icon {
-  animation: animate-error-icon .5s;
-}
+  animation: $swal2-error-icon-animation;
 
-@keyframes animate-x-mark {
-  0% {
-    margin-top: 26px;
-    transform: scale(.4);
-    opacity: 0;
-  }
-
-  50% {
-    margin-top: 26px;
-    transform: scale(.4);
-    opacity: 0;
-  }
-
-  80% {
-    margin-top: -6px;
-    transform: scale(1.15);
-  }
-
-  100% {
-    margin-top: 0;
-    transform: scale(1);
-    opacity: 1;
+  .swal2-x-mark {
+    animation: $swal2-error-x-mark-animation;
   }
 }
 
-.swal2-animate-x-mark {
-  animation: animate-x-mark .5s;
-}
-
-@keyframes rotate-loading {
+@keyframes swal2-rotate-loading {
   0% {
     transform: rotate(0deg);
   }

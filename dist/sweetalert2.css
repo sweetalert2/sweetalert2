@@ -947,7 +947,7 @@ body.swal2-no-backdrop .swal2-shown {
     transition: border-color .3s, box-shadow .3s;
     transition: border-color .3s, box-shadow .3s, -webkit-box-shadow .3s;
     border: 1px solid #d9d9d9;
-    border-radius: 3px;
+    border-radius: 0.1875em;
     font-size: 1.125em;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06);
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06);
@@ -1082,7 +1082,8 @@ body.swal2-no-backdrop .swal2-shown {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none; }
+          user-select: none;
+  zoom: normal; }
   .swal2-icon.swal2-error {
     border-color: #f27474; }
     .swal2-icon.swal2-error .swal2-x-mark {

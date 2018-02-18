@@ -22,7 +22,7 @@ $swal2-backdrop: rgba($swal2-black, .4) !default;
 $swal2-icon-margin: 1.25em auto 1.875em !default;
 $swal2-icon-zoom: normal !default;
 $swal2-success: #a5dc86 !default;
-$swal2-success-border: rgba($swal2-success, .2) !default;
+$swal2-success-border: rgba($swal2-success, .3) !default;
 $swal2-error: #f27474 !default;
 $swal2-warning: #f8bb86 !default;
 $swal2-info: #3fc3ee !default;
@@ -55,9 +55,15 @@ $swal2-input-font-size: 1.125em !default;
 $swal2-textarea-height: 6.75em !default;
 
 // VALIDATION ERROR
-$swal2-validationerror-background: #ea7d7d !default;
-$swal2-validationerror-color: $swal2-white !default;
-$swal2-validation-font-size: 1em !default;
+$swal2-validationerror-justify-content: center !default;
+$swal2-validationerror-padding: .625em !default;
+$swal2-validationerror-background: lighten($swal2-black, 94) !default;
+$swal2-validationerror-color: lighten($swal2-black, 40) !default;
+$swal2-validationerror-font-size: 1em !default;
+$swal2-validationerror-font-weight: 300 !default;
+$swal2-validationerror-icon-background: $swal2-error !default;
+$swal2-validationerror-icon-color: $swal2-white !default;
+$swal2-validationerror-icon-zoom: normal !default;
 
 // PROGRESS STEPS
 $swal2-progress-steps-margin: 0 0 1.25em !default;

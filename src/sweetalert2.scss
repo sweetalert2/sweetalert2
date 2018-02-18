@@ -4,7 +4,6 @@
 @import 'variables';
 @import 'animations';
 @import 'mixins';
-
 @import 'toasts';
 
 html,
@@ -282,7 +281,7 @@ body {
   .swal2-title {
     display: block;
     position: relative;
-    margin: 0 0 .4em;
+    margin: $swal2-title-margin;
     padding: 0;
     color: $swal2-title-color;
     font-size: $swal2-title-font-size;
@@ -295,7 +294,7 @@ body {
   .swal2-actions {
     align-items: center;
     justify-content: center;
-    margin-top: 1.25em;
+    margin: $swal2-actions-margin;
 
     &:not(.swal2-loading) {
       .swal2-styled {
@@ -394,7 +393,7 @@ body {
 
   .swal2-footer {
     justify-content: center;
-    margin-top: 1.25em;
+    margin: $swal2-footer-margin;
     padding-top: 1em;
     border-top: 1px solid $swal2-footer-border-color;
     color: $swal2-footer-color;
@@ -403,7 +402,7 @@ body {
 
   .swal2-image {
     max-width: 100%;
-    margin: 1.25em auto;
+    margin: $swal2-image-margin;
   }
 
   .swal2-close {
@@ -609,7 +608,7 @@ body {
   justify-content: center;
   width: 80px;
   height: 80px;
-  margin: 1.25em auto 1.875em;
+  margin: $swal2-icon-margin;
   border: 4px solid transparent;
   border-radius: 50%;
   line-height: 80px;
@@ -749,7 +748,7 @@ body {
   $blue: #3085d6;
 
   align-items: center;
-  margin: 0 0 1.25em;
+  margin: $swal2-progress-steps-margin;
   padding: 0;
   font-weight: 600;
 

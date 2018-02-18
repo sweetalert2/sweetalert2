@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.12.8
+ * sweetalert2 v7.12.9
  * Released under the MIT License.
  */
 'use strict';
@@ -300,7 +300,7 @@ var init = function init(params) {
 
   range.onchange = function () {
     resetValidationError();
-    range.previousSibling.value = range.value;
+    range.nextSibling.value = range.value;
   };
 
   return popup;
@@ -1965,7 +1965,7 @@ sweetAlert.DismissReason = Object.freeze({
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.12.8';
+sweetAlert.version = '7.12.9';
 
 sweetAlert.default = sweetAlert;
 

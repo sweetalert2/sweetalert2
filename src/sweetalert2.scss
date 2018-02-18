@@ -470,7 +470,7 @@ body {
     width: 100%;
     transition: border-color .3s, box-shadow .3s;
     border: 1px solid $swal2-input-border;
-    border-radius: 3px;
+    border-radius: $swal2-input-border-radius;
     font-size: $swal2-input-font-size;
     box-shadow: inset 0 1px 1px $swal2-input-box-shadow;
     box-sizing: border-box;
@@ -616,6 +616,7 @@ body {
   cursor: default;
   box-sizing: content-box;
   user-select: none;
+  zoom: $swal2-icon-zoom;
 
   &.swal2-error {
     border-color: $swal2-error;

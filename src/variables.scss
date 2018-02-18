@@ -19,12 +19,13 @@ $swal2-font-size: 1rem !default;
 $swal2-backdrop: rgba($swal2-black, .4) !default;
 
 // ICONS
-$swal2-success:        #a5dc86 !default;
+$swal2-icon-zoom: normal !default;
+$swal2-success: #a5dc86 !default;
 $swal2-success-border: rgba($swal2-success, .2) !default;
-$swal2-error:          #f27474 !default;
-$swal2-warning:        #f8bb86 !default;
-$swal2-info:           #3fc3ee !default;
-$swal2-question:       #87adbd !default;
+$swal2-error: #f27474 !default;
+$swal2-warning: #f8bb86 !default;
+$swal2-info: #3fc3ee !default;
+$swal2-question: #87adbd !default;
 
 // TITLE
 $swal2-title-color: lighten($swal2-black, 35) !default;
@@ -36,6 +37,7 @@ $swal2-content-font-size: 1.125em !default;
 
 // INPUT
 $swal2-input-border: lighten($swal2-black, 85) !default;
+$swal2-input-border-radius: .1875em !default;
 $swal2-input-border-focus: #b4dbed !default;
 $swal2-input-box-shadow: rgba($swal2-black, .06) !default;
 $swal2-input-box-shadow-focus: #c4e6f5 !default;

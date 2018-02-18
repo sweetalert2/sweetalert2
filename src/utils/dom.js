@@ -71,7 +71,7 @@ export const init = (params) => {
 
   range.onchange = () => {
     resetValidationError()
-    range.previousSibling.value = range.value
+    range.nextSibling.value = range.value
   }
 
   return popup

@@ -1,7 +1,24 @@
 $swal2-white:       #fff !default;
 $swal2-black:       #000 !default;
 $swal2-transparent: rgba($swal2-black, 0) !default;
-$swal2-box-shadow:  #d9d9d9 !default;
+
+// BOX MODEL
+$swal2-width: 32em !default;
+$swal2-padding: 1.25em !default;
+$swal2-border-radius: .3125em !default;
+$swal2-box-shadow: #d9d9d9 !default;
+
+// BACKGROUND
+$swal2-background: $swal2-white !default;
+
+// TYPOGRAPHY
+$swal2-font: inherit !default;
+$swal2-font-size: 1rem !default;
+
+// BACKDROP
+$swal2-backdrop: rgba($swal2-black, .4) !default;
+
+// ICONS
 $swal2-success:        #a5dc86 !default;
 $swal2-success-border: rgba($swal2-success, .2) !default;
 $swal2-error:          #f27474 !default;
@@ -9,56 +26,33 @@ $swal2-warning:        #f8bb86 !default;
 $swal2-info:           #3fc3ee !default;
 $swal2-question:       #87adbd !default;
 
-$swal2-backdrop:       rgba($swal2-black, .4) !default;
-
-$swal2-background-color: $swal2-white !default;
-
-$swal2-title-color:    lighten($swal2-black, 35) !default;
-$swal2-content-color:  lighten($swal2-black, 33) !default;
-$swal2-footer-color:   lighten($swal2-black, 33) !default;
-
-$swal2-close-button:               lighten($swal2-black, 80) !default;
-$swal2-close-button-hover:         #d55 !default;
-
-$swal2-input-border:               lighten($swal2-black, 85) !default;
-$swal2-input-border-focus:         #b4dbed !default;
-$swal2-input-box-shadow:           rgba($swal2-black, .06) !default;
-$swal2-input-box-shadow-focus:     #c4e6f5 !default;
-
-$swal2-validationerror-background: #ea7d7d !default;
-$swal2-validationerror-color:      $swal2-white !default;
-
-$swal2-focus-outline: rgba(50, 100, 150, .4) !default;
-
-$swal2-button-darken-hover: rgba($swal2-black, .1) !default;
-$swal2-button-darken-active: rgba($swal2-black, .2) !default;
-
-$swal2-footer-border-color: #eee !default;
-
-$swal2-font: inherit !default;
-$swal2-font-size: 1rem !default;
-
-$swal2-width: 32em !default;
-$swal2-toast-width: auto !default;
-
-$swal2-padding: 1.25em !default;
-$swal2-toast-padding: .625em !default;
-
+// TITLE
+$swal2-title-color: lighten($swal2-black, 35) !default;
 $swal2-title-font-size: 1.875em !default;
+
+// CONTENT
+$swal2-content-color: lighten($swal2-black, 33) !default;
 $swal2-content-font-size: 1.125em !default;
+
+// INPUT
+$swal2-input-border: lighten($swal2-black, 85) !default;
+$swal2-input-border-focus: #b4dbed !default;
+$swal2-input-box-shadow: rgba($swal2-black, .06) !default;
+$swal2-input-box-shadow-focus: #c4e6f5 !default;
 $swal2-input-font-size: 1.125em !default;
+
+// VALIDATION ERROR
+$swal2-validationerror-background: #ea7d7d !default;
+$swal2-validationerror-color: $swal2-white !default;
 $swal2-validation-font-size: 1em !default;
-$swal2-footer-font-size: 1em !default;
 
-$swal2-toast-title-font-size: 1em !default;
-$swal2-toast-content-font-size: 1em !default;
-$swal2-toast-input-font-size: 1em !default;
-$swal2-toast-validation-font-size: 1em !default;
-$swal2-toast-buttons-font-size: 1em !default;
-
-$swal2-close-button-size: 2.5em !default;
-
+// PROGRESS STEPS
 $swal2-progress-steps-distance: 2.5em !default;
+
+// FOOTER
+$swal2-footer-border-color: #eee !default;
+$swal2-footer-color: lighten($swal2-black, 33) !default;
+$swal2-footer-font-size: 1em !default;
 
 // ANIMATIONS
 $swal2-show-animation: swal2-show .3s !default;
@@ -68,6 +62,11 @@ $swal2-success-line-long-animation: swal2-animate-success-line-long .75s !defaul
 $swal2-success-circular-line-animation: swal2-rotate-success-circular-line 4.25s ease-in !default;
 $swal2-error-icon-animation: swal2-animate-error-icon .5s !default;
 $swal2-error-x-mark-animation: swal2-animate-error-x-mark .5s !default;
+
+// CLOSE BUTTON
+$swal2-close-button-color: lighten($swal2-black, 80) !default;
+$swal2-close-button-hover-color: #d55 !default;
+$swal2-close-button-font-size: 2.5em !default;
 
 // CONFIRM BUTTON
 $swal2-confirm-button-border: 0 !default;
@@ -82,3 +81,17 @@ $swal2-cancel-button-border-radius: .25em !default;
 $swal2-cancel-button-background-color: #aaa !default;
 $swal2-cancel-button-color: $swal2-white !default;
 $swal2-cancel-button-font-size: 1.0625em !default;
+
+// COMMON VARIABLES FOR CONFIRM AND CANCEL BUTTONS
+$swal2-button-darken-hover: rgba($swal2-black, .1) !default;
+$swal2-button-darken-active: rgba($swal2-black, .2) !default;
+$swal2-button-focus-outline: rgba(50, 100, 150, .4) !default;
+
+// TOASTS
+$swal2-toast-width: auto !default;
+$swal2-toast-padding: .625em !default;
+$swal2-toast-title-font-size: 1em !default;
+$swal2-toast-content-font-size: 1em !default;
+$swal2-toast-input-font-size: 1em !default;
+$swal2-toast-validation-font-size: 1em !default;
+$swal2-toast-buttons-font-size: 1em !default;

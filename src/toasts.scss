@@ -190,7 +190,7 @@ body {
       font-size: $swal2-toast-buttons-font-size;
 
       &:focus {
-        box-shadow: 0 0 0 1px $swal2-white, 0 0 0 2px $swal2-focus-outline;
+        box-shadow: 0 0 0 1px $swal2-white, 0 0 0 2px $swal2-button-focus-outline;
       }
     }
 

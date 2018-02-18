@@ -791,7 +791,7 @@ body.swal2-no-backdrop .swal2-shown {
   .swal2-popup .swal2-title {
     display: block;
     position: relative;
-    margin: 0 0 .4em;
+    margin: 0 0 0.4em;
     padding: 0;
     color: #595959;
     font-size: 1.875em;
@@ -806,7 +806,7 @@ body.swal2-no-backdrop .swal2-shown {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    margin-top: 1.25em; }
+    margin: 1.25em auto 0; }
     .swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled[disabled] {
       opacity: .4; }
     .swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled:hover {
@@ -880,7 +880,7 @@ body.swal2-no-backdrop .swal2-shown {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    margin-top: 1.25em;
+    margin: 1.25em auto 0;
     padding-top: 1em;
     border-top: 1px solid #eee;
     color: #545454;
@@ -997,14 +997,14 @@ body.swal2-no-backdrop .swal2-shown {
     line-height: 2.625em; }
   .swal2-popup .swal2-input {
     height: 2.625em;
-    padding: 0 .75em; }
+    padding: 0.75em; }
     .swal2-popup .swal2-input[type='number'] {
       max-width: 10em; }
   .swal2-popup .swal2-file {
     font-size: 1.125em; }
   .swal2-popup .swal2-textarea {
     height: 6.75em;
-    padding: .75em; }
+    padding: 0.75em; }
   .swal2-popup .swal2-select {
     min-width: 50%;
     max-width: 100%;

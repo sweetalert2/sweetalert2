@@ -765,8 +765,8 @@ body.swal2-no-backdrop .swal2-shown {
   width: 32em;
   max-width: 100%;
   padding: 1.25em;
-  border-radius: .3125em;
-  background-color: #fff;
+  border-radius: 0.3125em;
+  background: #fff;
   font-family: inherit;
   font-size: 1rem;
   -webkit-box-sizing: border-box;

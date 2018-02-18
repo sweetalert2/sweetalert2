@@ -19,6 +19,7 @@ $swal2-font-size: 1rem !default;
 $swal2-backdrop: rgba($swal2-black, .4) !default;
 
 // ICONS
+$swal2-icon-margin: 1.25em auto 1.875em !default;
 $swal2-icon-zoom: normal !default;
 $swal2-success: #a5dc86 !default;
 $swal2-success-border: rgba($swal2-success, .2) !default;
@@ -27,7 +28,11 @@ $swal2-warning: #f8bb86 !default;
 $swal2-info: #3fc3ee !default;
 $swal2-question: #87adbd !default;
 
+// IMAGE
+$swal2-image-margin: 1.25em auto !default;
+
 // TITLE
+$swal2-title-margin: 0 0 .4em !default;
 $swal2-title-color: lighten($swal2-black, 35) !default;
 $swal2-title-font-size: 1.875em !default;
 
@@ -36,6 +41,9 @@ $swal2-content-color: lighten($swal2-black, 33) !default;
 $swal2-content-font-size: 1.125em !default;
 
 // INPUT
+$swal2-input-margin: 1em auto !default;
+$swal2-input-height: 2.625em !default;
+$swal2-input-padding: .75em !default;
 $swal2-input-border: lighten($swal2-black, 85) !default;
 $swal2-input-border-radius: .1875em !default;
 $swal2-input-border-focus: #b4dbed !default;
@@ -43,15 +51,20 @@ $swal2-input-box-shadow: rgba($swal2-black, .06) !default;
 $swal2-input-box-shadow-focus: #c4e6f5 !default;
 $swal2-input-font-size: 1.125em !default;
 
+// TEXTAREA SPECIFIC VARIABLES
+$swal2-textarea-height: 6.75em !default;
+
 // VALIDATION ERROR
 $swal2-validationerror-background: #ea7d7d !default;
 $swal2-validationerror-color: $swal2-white !default;
 $swal2-validation-font-size: 1em !default;
 
 // PROGRESS STEPS
+$swal2-progress-steps-margin: 0 0 1.25em !default;
 $swal2-progress-steps-distance: 2.5em !default;
 
 // FOOTER
+$swal2-footer-margin: 1.25em auto 0 !default;
 $swal2-footer-border-color: #eee !default;
 $swal2-footer-color: lighten($swal2-black, 33) !default;
 $swal2-footer-font-size: 1em !default;
@@ -69,6 +82,9 @@ $swal2-error-x-mark-animation: swal2-animate-error-x-mark .5s !default;
 $swal2-close-button-color: lighten($swal2-black, 80) !default;
 $swal2-close-button-hover-color: #d55 !default;
 $swal2-close-button-font-size: 2.5em !default;
+
+// ACTIONS
+$swal2-actions-margin: 1.25em auto 0 !default;
 
 // CONFIRM BUTTON
 $swal2-confirm-button-border: 0 !default;

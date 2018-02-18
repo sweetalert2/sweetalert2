@@ -257,8 +257,8 @@ body {
   width: $swal2-width;
   max-width: 100%;
   padding: $swal2-padding;
-  border-radius: .3125em;
-  background-color: $swal2-background-color;
+  border-radius: $swal2-border-radius;
+  background: $swal2-background;
   font-family: $swal2-font;
   font-size: $swal2-font-size;
   box-sizing: border-box;
@@ -384,7 +384,7 @@ body {
 
     &:focus {
       outline: none;
-      box-shadow: 0 0 0 2px $swal2-white, 0 0 0 4px $swal2-focus-outline;
+      box-shadow: 0 0 0 2px $swal2-white, 0 0 0 4px $swal2-button-focus-outline;
     }
 
     &::-moz-focus-inner {
@@ -419,15 +419,15 @@ body {
     transition: color .1s ease;
     border: 0;
     background: $swal2-transparent;
-    // calc is needed for the correct focus outline, w/o calc: https://goo.gl/T3NYRm
-    color: $swal2-close-button;
+    color: $swal2-close-button-color;
     font-family: serif;
-    font-size: calc(#{$swal2-close-button-size} - #{$swal2-close-button-size*.1});
+    // calc is needed for the correct focus outline, w/o calc: https://goo.gl/T3NYRm
+    font-size: calc(#{$swal2-close-button-font-size} - #{$swal2-close-button-font-size*.1});
     line-height: 1.2em;
     cursor: pointer;
 
     &:hover {
-      color: $swal2-close-button-hover;
+      color: $swal2-close-button-hover-color;
     }
   }
 

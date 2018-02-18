@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.12.7
+ * sweetalert2 v7.12.8
  * Released under the MIT License.
  */
 'use strict';
@@ -1965,7 +1965,7 @@ sweetAlert.DismissReason = Object.freeze({
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.12.7';
+sweetAlert.version = '7.12.8';
 
 sweetAlert.default = sweetAlert;
 

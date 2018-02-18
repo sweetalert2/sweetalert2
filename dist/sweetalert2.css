@@ -1034,9 +1034,9 @@ body.swal2-no-backdrop .swal2-shown {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    padding: .625em;
-    background-color: #f0f0f0;
-    color: gray;
+    padding: 0.625em;
+    background: #f0f0f0;
+    color: #666666;
     font-size: 1em;
     font-weight: 300;
     overflow: hidden; }
@@ -1046,12 +1046,13 @@ body.swal2-no-backdrop .swal2-shown {
       height: 1.5em;
       margin: 0 .625em;
       border-radius: 50%;
-      background-color: #ea7d7d;
+      background-color: #f27474;
       color: #fff;
       font-weight: 600;
       line-height: 1.5em;
       text-align: center;
-      content: '!'; }
+      content: '!';
+      zoom: normal; }
 
 @supports (-ms-accelerator: true) {
   .swal2-range input {
@@ -1151,7 +1152,7 @@ body.swal2-no-backdrop .swal2-shown {
       left: -4px;
       width: 80px;
       height: 80px;
-      border: 4px solid rgba(165, 220, 134, 0.2);
+      border: 4px solid rgba(165, 220, 134, 0.3);
       border-radius: 50%;
       z-index: 2;
       -webkit-box-sizing: content-box;

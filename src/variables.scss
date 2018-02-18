@@ -36,6 +36,7 @@ $swal2-content-color: lighten($swal2-black, 33) !default;
 $swal2-content-font-size: 1.125em !default;
 
 // INPUT
+$swal2-input-margin: 1em auto !default;
 $swal2-input-border: lighten($swal2-black, 85) !default;
 $swal2-input-border-radius: .1875em !default;
 $swal2-input-border-focus: #b4dbed !default;

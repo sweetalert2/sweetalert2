@@ -770,9 +770,7 @@ body.swal2-no-backdrop .swal2-shown {
   font-family: inherit;
   font-size: 1rem;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  overflow-x: hidden;
-  overflow-y: auto; }
+          box-sizing: border-box; }
   .swal2-popup:focus {
     outline: none; }
   .swal2-popup.swal2-loading {

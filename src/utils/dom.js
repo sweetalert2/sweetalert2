@@ -270,12 +270,9 @@ export const getChildByClass = (elem, className) => {
   }
 }
 
-export const show = (elem, display) => {
-  if (!display) {
-    display = (elem.id === swalClasses.content) ? 'block' : 'flex'
-  }
+export const show = (elem) => {
   elem.style.opacity = ''
-  elem.style.display = display
+  elem.style.display = (elem.id === swalClasses.content) ? 'block' : 'flex'
 }
 
 export const hide = (elem) => {

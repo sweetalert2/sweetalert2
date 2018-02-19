@@ -1272,7 +1272,7 @@ sweetAlert.showLoading = sweetAlert.enableLoading = () => {
   const cancelButton = dom.getCancelButton()
 
   dom.show(actions)
-  dom.show(confirmButton, 'inline-block')
+  dom.show(confirmButton)
   dom.addClass([popup, actions], swalClasses.loading)
   confirmButton.disabled = true
   cancelButton.disabled = true

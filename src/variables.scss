@@ -1,6 +1,5 @@
 $swal2-white:       #fff !default;
 $swal2-black:       #000 !default;
-$swal2-transparent: rgba($swal2-black, 0) !default;
 
 // BOX MODEL
 $swal2-width: 32em !default;
@@ -85,6 +84,10 @@ $swal2-error-icon-animation: swal2-animate-error-icon .5s !default;
 $swal2-error-x-mark-animation: swal2-animate-error-x-mark .5s !default;
 
 // CLOSE BUTTON
+$swal2-close-button-gap: 0 !default;
+$swal2-close-button-border: none !default;
+$swal2-close-button-border-radius: 0 !default;
+$swal2-close-button-background: transparent !default;
 $swal2-close-button-color: lighten($swal2-black, 80) !default;
 $swal2-close-button-hover-color: #d55 !default;
 $swal2-close-button-font-size: 2.5em !default;

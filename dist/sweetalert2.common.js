@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.12.9
+ * sweetalert2 v7.12.10
  * Released under the MIT License.
  */
 'use strict';
@@ -478,12 +478,9 @@ var getChildByClass = function getChildByClass(elem, className) {
   }
 };
 
-var show = function show(elem, display) {
-  if (!display) {
-    display = elem.id === swalClasses.content ? 'block' : 'flex';
-  }
+var show = function show(elem) {
   elem.style.opacity = '';
-  elem.style.display = display;
+  elem.style.display = elem.id === swalClasses.content ? 'block' : 'flex';
 };
 
 var hide = function hide(elem) {
@@ -1890,7 +1887,7 @@ sweetAlert.showLoading = sweetAlert.enableLoading = function () {
   var cancelButton = getCancelButton();
 
   show(actions);
-  show(confirmButton, 'inline-block');
+  show(confirmButton);
   addClass([popup, actions], swalClasses.loading);
   confirmButton.disabled = true;
   cancelButton.disabled = true;
@@ -1965,7 +1962,7 @@ sweetAlert.DismissReason = Object.freeze({
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.12.9';
+sweetAlert.version = '7.12.10';
 
 sweetAlert.default = sweetAlert;
 

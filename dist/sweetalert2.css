@@ -890,8 +890,8 @@ body.swal2-no-backdrop .swal2-shown {
     margin: 1.25em auto; }
   .swal2-popup .swal2-close {
     position: absolute;
-    top: 5px;
-    right: 8px;
+    top: 0;
+    right: 0;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -902,7 +902,8 @@ body.swal2-no-backdrop .swal2-shown {
     padding: 0;
     -webkit-transition: color .1s ease;
     transition: color .1s ease;
-    border: 0;
+    border: none;
+    border-radius: 0;
     background: transparent;
     color: #cccccc;
     font-family: serif;
@@ -1241,7 +1242,7 @@ body.swal2-no-backdrop .swal2-shown {
 
 [dir='rtl'] .swal2-close {
   right: auto;
-  left: 8px; }
+  left: 0; }
 
 .swal2-animate-success-icon .swal2-success-line-tip {
   -webkit-animation: swal2-animate-success-line-tip 0.75s;

@@ -261,8 +261,6 @@ body {
   font-family: $swal2-font;
   font-size: $swal2-font-size;
   box-sizing: border-box;
-  overflow-x: hidden;
-  overflow-y: auto;
 
   &:focus {
     outline: none;

@@ -26,7 +26,7 @@
 
 <p align="center">
   <a href="https://sweetalert2.github.io/">
-    <img src="https://raw.github.com/sweetalert2/sweetalert2/master/assets/sweetalert2.gif" width="515"><br>
+    <img src="https://raw.github.com/sweetalert2/sweetalert2/master/assets/sweetalert2.gif" width="562" height="388"><br>
     See SweetAlert2 in action ↗
   </a>
 </p>

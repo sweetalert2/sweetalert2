@@ -1,6 +1,6 @@
 import defaultParams, { deprecatedParams } from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
-import { objectToMap, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
+import { formatInputOptions, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom.js'
 
 let popupParams = Object.assign({}, defaultParams)
@@ -1024,8 +1024,7 @@ const sweetAlert = (...args) => {
           select.appendChild(placeholder)
         }
         populateInputOptions = (inputOptions) => {
-          inputOptions = objectToMap(inputOptions)
-          for (const [optionValue, optionLabel] of inputOptions) {
+          inputOptions.forEach(([optionValue, optionLabel]) => {
             const option = document.createElement('option')
             option.value = optionValue
             option.innerHTML = optionLabel
@@ -1033,7 +1032,7 @@ const sweetAlert = (...args) => {
               option.selected = true
             }
             select.appendChild(option)
-          }
+          })
           dom.show(select)
           select.focus()
         }
@@ -1042,8 +1041,7 @@ const sweetAlert = (...args) => {
         const radio = dom.getChildByClass(content, swalClasses.radio)
         radio.innerHTML = ''
         populateInputOptions = (inputOptions) => {
-          inputOptions = objectToMap(inputOptions)
-          for (const [radioValue, radioLabel] of inputOptions) {
+          inputOptions.forEach(([radioValue, radioLabel]) => {
             const radioInput = document.createElement('input')
             const radioLabelElement = document.createElement('label')
             radioInput.type = 'radio'
@@ -1055,7 +1053,7 @@ const sweetAlert = (...args) => {
             radioLabelElement.innerHTML = radioLabel
             radioLabelElement.insertBefore(radioInput, radioLabelElement.firstChild)
             radio.appendChild(radioLabelElement)
-          }
+          })
           dom.show(radio)
           const radios = radio.querySelectorAll('input')
           if (radios.length) {
@@ -1093,14 +1091,15 @@ const sweetAlert = (...args) => {
     }
 
     if (params.input === 'select' || params.input === 'radio') {
+      const processInputOptions = inputOptions => populateInputOptions(formatInputOptions(inputOptions))
       if (params.inputOptions instanceof Promise) {
         sweetAlert.showLoading()
         params.inputOptions.then((inputOptions) => {
           sweetAlert.hideLoading()
-          populateInputOptions(inputOptions)
+          processInputOptions(inputOptions)
         })
       } else if (typeof params.inputOptions === 'object') {
-        populateInputOptions(params.inputOptions)
+        processInputOptions(params.inputOptions)
       } else {
         error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + typeof params.inputOptions)
       }

@@ -9,6 +9,7 @@
   "types": "sweetalert2.d.ts",
   "devDependencies": {
     "babel-core": "^6.23.1",
+    "babel-loader": "^7.1.2",
     "babel-plugin-array-includes": "^2.0.3",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
@@ -33,10 +34,12 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-firefox-launcher": "^1.1.0",
     "karma-qunit": "^1.2.1",
+    "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "^0.0.32",
+    "karma-webpack": "^2.0.9",
     "mkdirp": "^0.5.1",
     "pify": "^3.0.0",
-    "promise-polyfill": "^7.0.2",
+    "promise-polyfill": "^7.1.0",
     "qunitjs": "^2.4.1",
     "rimraf": "^2.6.2",
     "rollup": "^0.56.1",
@@ -45,7 +48,8 @@
     "standard": "^8.0.0",
     "tslint": "^5.8.0",
     "typescript": "~2.1",
-    "uglify-js": "^3.1.10"
+    "uglify-js": "^3.1.10",
+    "webpack": "^3.11.0"
   },
   "standard": {
     "ignore": [

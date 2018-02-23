@@ -1,5 +1,6 @@
 // TODO: move these files to /test and delete /test/qunit
-/* global $, QUnit, swal */
+/* global QUnit, swal */
+const $ = require('jquery')
 
 QUnit.test('version is correct semver', (assert) => {
   assert.ok(swal.version.match(/\d+\.\d+\.\d+/))
@@ -766,67 +767,12 @@ QUnit.test('footer', (assert) => {
 })
 
 QUnit.test('null values', (assert) => {
-  swal({
-    title: null,
-    titleText: null,
-    text: null,
-    html: null,
-    footer: null,
-    type: null,
-    toast: null,
-    customClass: null,
-    target: null,
-    backdrop: null,
-    animation: null,
-    allowOutsideClick: null,
-    allowEscapeKey: null,
-    allowEnterKey: null,
-    showConfirmButton: null,
-    showCancelButton: null,
-    preConfirm: null,
-    confirmButtonText: null,
-    confirmButtonAriaLabel: null,
-    confirmButtonColor: null,
-    confirmButtonClass: null,
-    cancelButtonText: null,
-    cancelButtonAriaLabel: null,
-    cancelButtonColor: null,
-    cancelButtonClass: null,
-    buttonsStyling: null,
-    reverseButtons: null,
-    focusConfirm: null,
-    focusCancel: null,
-    showCloseButton: null,
-    closeButtonAriaLabel: null,
-    showLoaderOnConfirm: null,
-    imageUrl: null,
-    imageWidth: null,
-    imageHeight: null,
-    imageAlt: null,
-    imageClass: null,
-    timer: null,
-    width: null,
-    padding: null,
-    background: null,
-    input: null,
-    inputPlaceholder: null,
-    inputValue: null,
-    inputOptions: null,
-    inputAutoTrim: null,
-    inputClass: null,
-    inputAttributes: null,
-    inputValidator: null,
-    grow: null,
-    position: null,
-    progressSteps: null,
-    currentProgressStep: null,
-    progressStepsDistance: null,
-    onBeforeOpen: null,
-    onOpen: null,
-    onClose: null,
-    useRejections: null,
-    expectRejections: null
+  const defaultParams = require('../../src/utils/params').default
+  const params = {}
+  Object.keys(defaultParams).forEach(key => {
+    params[key] = null
   })
+  swal(params)
   assert.ok(swal.isVisible())
 })
 

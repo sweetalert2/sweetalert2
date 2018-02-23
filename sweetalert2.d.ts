@@ -228,11 +228,7 @@ declare module 'sweetalert2' {
     }
 
     export enum SweetAlertDismissReason {
-        cancel = 'cancel',
-        backdrop = 'overlay',
-        close = 'close',
-        esc = 'esc',
-        timer = 'timer',
+        cancel, backdrop, close, esc, timer
     }
 
     export type SweetAlertType = 'success' | 'error' | 'warning' | 'info' | 'question';

@@ -6,28 +6,30 @@ export const consolePrefix = 'SweetAlert2:'
  */
 export const uniqueArray = (arr) => {
   const result = []
-  for (let elem of arr) {
-    if (result.indexOf(elem) === -1) {
-      result.push(elem)
+  for (let i = 0; i < arr.length; i++) {
+    if (result.indexOf(arr[i]) === -1) {
+      result.push(arr[i])
     }
   }
   return result
 }
 
 /**
- * Convert object into iterable Map
- * https://stackoverflow.com/a/36644532/1331425
- * @param obj
+ * Converts `inputOptions` into an array of `[value, label]`s
+ * @param inputOptions
  */
-export const objectToMap = (obj) => {
-  if (obj instanceof Map) {
-    return obj
+export const formatInputOptions = (inputOptions) => {
+  const result = []
+  if (inputOptions instanceof Map) {
+    inputOptions.forEach((value, key) => {
+      result.push([key, value])
+    })
+  } else {
+    Object.keys(inputOptions).forEach(key => {
+      result.push([key, inputOptions[key]])
+    })
   }
-  const map = new Map()
-  Object.keys(obj).forEach(key => {
-    map.set(key, obj[key])
-  })
-  return map
+  return result
 }
 
 /**

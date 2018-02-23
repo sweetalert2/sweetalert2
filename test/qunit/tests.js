@@ -230,14 +230,14 @@ QUnit.test('input range', (assert) => {
 })
 
 QUnit.test('input type "select", inputOptions Map', (assert) => {
-  const inputOptions = new Map([
-    [2, 'Richard Stallman'],
-    [1, 'Linus Torvalds']
-  ])
+  const inputOptions = new Map()
+  inputOptions.set(2, 'Richard Stallman')
+  inputOptions.set(1, 'Linus Torvalds')
   swal({
     input: 'select',
     inputOptions,
-    inputValue: 1
+    inputValue: 1,
+    animation: false
   })
   assert.equal($('.swal2-select option').length, 2)
   assert.equal($('.swal2-select option')[0].innerHTML, 'Richard Stallman')
@@ -248,10 +248,9 @@ QUnit.test('input type "select", inputOptions Map', (assert) => {
 })
 
 QUnit.test('input type "radio", inputOptions Map', (assert) => {
-  const inputOptions = new Map([
-    [2, 'Richard Stallman'],
-    [1, 'Linus Torvalds']
-  ])
+  const inputOptions = new Map()
+  inputOptions.set(2, 'Richard Stallman')
+  inputOptions.set(1, 'Linus Torvalds')
   swal({
     input: 'radio',
     inputOptions,

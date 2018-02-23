@@ -225,17 +225,20 @@ declare module 'sweetalert2' {
          * ex. swal(...).catch(swal.noop)
          */
         function noop(): void;
-    }
 
-    export enum SweetAlertDismissReason {
-        cancel, backdrop, close, esc, timer
+        /**
+         * An enum of possible reasons that can explain an alert dismissal.
+         */
+        enum DismissReason {
+            cancel, backdrop, close, esc, timer
+        }
     }
 
     export type SweetAlertType = 'success' | 'error' | 'warning' | 'info' | 'question';
 
     export interface SweetAlertResult {
         value?: any;
-        dismiss?: SweetAlertDismissReason;
+        dismiss?: swal.DismissReason;
     }
 
     type SyncOrAsync<T> = T | Promise<T>;

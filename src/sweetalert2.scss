@@ -279,6 +279,7 @@ body {
   .swal2-title {
     display: block;
     position: relative;
+    max-width: 100%;
     margin: $swal2-title-margin;
     padding: 0;
     color: $swal2-title-color;

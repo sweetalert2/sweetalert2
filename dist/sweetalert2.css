@@ -789,6 +789,7 @@ body.swal2-no-backdrop .swal2-shown {
   .swal2-popup .swal2-title {
     display: block;
     position: relative;
+    max-width: 100%;
     margin: 0 0 0.4em;
     padding: 0;
     color: #595959;

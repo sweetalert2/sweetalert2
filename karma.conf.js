@@ -1,5 +1,6 @@
 module.exports = function (config) {
   config.set({
+    port: 3000,
     frameworks: [
       'qunit'
     ],

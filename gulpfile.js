@@ -112,6 +112,7 @@ gulp.task('develop', ['develop:sandbox', 'develop:tests'])
 gulp.task('develop:sandbox', ['watch'], () => {
   browserSync.init({
     port: 8080,
+    uiPort: 8081,
     notify: false,
     reloadOnRestart: true,
     https: false,

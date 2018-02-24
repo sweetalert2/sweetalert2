@@ -33,6 +33,7 @@
     "karma": "^2.0.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-firefox-launcher": "^1.1.0",
+    "karma-ie-launcher": "^1.0.0",
     "karma-qunit": "^1.2.1",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "^0.0.32",
@@ -94,6 +95,7 @@
     "check": "npm run check:bundlesize && npm run check:tests && npm run check:ts",
     "check:bundlesize": "bundlesize -f dist/sweetalert2.all.min.js -s 15kB",
     "check:tests": "karma start karma.conf.js --single-run --browsers Chrome,Firefox",
+    "check:tests:ie": "karma start karma.conf.js --single-run --browsers IE",
     "check:ts": "tsc sweetalert2.d.ts",
     "release": "node release"
   },

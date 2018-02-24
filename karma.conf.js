@@ -41,7 +41,8 @@ module.exports = function (config) {
       'karma-spec-reporter',
       'karma-sourcemap-loader',
       'karma-chrome-launcher',
-      'karma-firefox-launcher'
+      'karma-firefox-launcher',
+      'karma-ie-launcher'
     ]
   })
 }

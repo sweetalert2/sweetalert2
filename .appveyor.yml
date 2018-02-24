@@ -1,0 +1,36 @@
+# AppVeyor file
+# http://www.appveyor.com/docs/appveyor-yml
+
+# Build version format
+version: "{build}"
+
+# Do not build feature branch with open Pull Requests
+skip_branch_with_pr: true
+
+# Scripts that are called at very beginning, before repo cloning
+init:
+  # Fix line endings on Windows
+  - git config --global core.autocrlf true
+
+# Test against this version of Node.js
+environment:
+  nodejs_version: "8"
+
+build: off
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - npm install
+
+test_script:
+  - npm run build
+  - npm run check:tests:ie
+
+notifications:
+  - provider: Email
+    to:
+      - limon.monte@gmail.com
+    on_build_status_changed: true
+
+# Preserve node_modules between builds
+cache: node_modules -> appveyor.yml,package.json,yarn.lock

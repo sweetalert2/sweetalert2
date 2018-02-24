@@ -31,6 +31,8 @@ notifications:
   - provider: Email
     to:
       - limon.monte@gmail.com
+    on_build_success: false
+    on_build_failure: false
     on_build_status_changed: true
 
 # Preserve node_modules between builds

@@ -899,8 +899,8 @@ body.swal2-no-backdrop .swal2-shown {
     height: 1.2em;
     margin: 0;
     padding: 0;
-    -webkit-transition: color .1s ease;
-    transition: color .1s ease;
+    -webkit-transition: color 0.1s ease-out;
+    transition: color 0.1s ease-out;
     border: none;
     border-radius: 0;
     background: transparent;
@@ -910,7 +910,9 @@ body.swal2-no-backdrop .swal2-shown {
     line-height: 1.2em;
     cursor: pointer; }
     .swal2-popup .swal2-close:hover {
-      color: #d55; }
+      -webkit-transform: none;
+              transform: none;
+      color: #f27474; }
   .swal2-popup > .swal2-input,
   .swal2-popup > .swal2-file,
   .swal2-popup > .swal2-textarea,

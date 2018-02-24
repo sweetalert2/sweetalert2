@@ -1,4 +1,5 @@
-/* global $, QUnit, swal */
+/* global QUnit, swal */
+const $ = require('jquery')
 
 QUnit.test('dialog aria attributes', (assert) => {
   swal('Modal dialog')

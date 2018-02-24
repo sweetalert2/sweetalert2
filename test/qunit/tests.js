@@ -1,4 +1,6 @@
-/* global $, QUnit, swal */
+// TODO: move these files to /test and delete /test/qunit
+/* global QUnit, swal */
+const $ = require('jquery')
 
 QUnit.test('version is correct semver', (assert) => {
   assert.ok(swal.version.match(/\d+\.\d+\.\d+/))
@@ -228,14 +230,14 @@ QUnit.test('input range', (assert) => {
 })
 
 QUnit.test('input type "select", inputOptions Map', (assert) => {
-  const inputOptions = new Map([
-    [2, 'Richard Stallman'],
-    [1, 'Linus Torvalds']
-  ])
+  const inputOptions = new Map()
+  inputOptions.set(2, 'Richard Stallman')
+  inputOptions.set(1, 'Linus Torvalds')
   swal({
     input: 'select',
     inputOptions,
-    inputValue: 1
+    inputValue: 1,
+    animation: false
   })
   assert.equal($('.swal2-select option').length, 2)
   assert.equal($('.swal2-select option')[0].innerHTML, 'Richard Stallman')
@@ -246,10 +248,9 @@ QUnit.test('input type "select", inputOptions Map', (assert) => {
 })
 
 QUnit.test('input type "radio", inputOptions Map', (assert) => {
-  const inputOptions = new Map([
-    [2, 'Richard Stallman'],
-    [1, 'Linus Torvalds']
-  ])
+  const inputOptions = new Map()
+  inputOptions.set(2, 'Richard Stallman')
+  inputOptions.set(1, 'Linus Torvalds')
   swal({
     input: 'radio',
     inputOptions,
@@ -512,17 +513,12 @@ QUnit.test('modal vertical offset', (assert) => {
   const done = assert.async(1)
   // create a modal with dynamic-height content
   swal({
-    imageUrl: '/assets/swal2-logo.png',
+    imageUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNikAQAACIAHF/uBd8AAAAASUVORK5CYII=',
     title: 'Title',
     html: '<hr><div style="height: 50px"></div><p>Text content</p>',
     type: 'warning',
     input: 'text',
     animation: false
-  })
-
-  // if we can't load local images, load an external one instead
-  $('.swal2-image').on('error', () => {
-    this.src = 'https://unsplash.it/150/50?random'
   })
 
   // listen for image load
@@ -542,16 +538,19 @@ QUnit.test('target', (assert) => {
   assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
   swal.close()
 
-  swal({title: 'Custom valid target (string)', target: '#qunit'}) // switch targets
-  assert.equal(document.querySelector('#qunit'), document.querySelector('.swal2-container').parentNode)
+  const dummyTargetElement = Object.assign(document.createElement('div'), {id: 'dummy-target'})
+  document.body.appendChild(dummyTargetElement)
+
+  swal({title: 'Custom valid target (string)', target: '#dummy-target'}) // switch targets
+  assert.equal(document.querySelector('.swal2-container').parentNode, dummyTargetElement)
   swal.close()
 
   swal({title: 'Custom invalid target (string)', target: 'lorem_ipsum'}) // switch targets
-  assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
+  assert.equal(document.querySelector('.swal2-container').parentNode, document.body)
   swal.close()
 
-  swal({title: 'Custom valid target (element)', target: $('#qunit')[0]})
-  assert.equal($('#qunit')[0], document.querySelector('.swal2-container').parentNode)
+  swal({title: 'Custom valid target (element)', target: dummyTargetElement})
+  assert.equal(document.querySelector('.swal2-container').parentNode, dummyTargetElement)
   swal.close()
 
   swal({title: 'Custom invalid target (element)', target: true})
@@ -767,67 +766,12 @@ QUnit.test('footer', (assert) => {
 })
 
 QUnit.test('null values', (assert) => {
-  swal({
-    title: null,
-    titleText: null,
-    text: null,
-    html: null,
-    footer: null,
-    type: null,
-    toast: null,
-    customClass: null,
-    target: null,
-    backdrop: null,
-    animation: null,
-    allowOutsideClick: null,
-    allowEscapeKey: null,
-    allowEnterKey: null,
-    showConfirmButton: null,
-    showCancelButton: null,
-    preConfirm: null,
-    confirmButtonText: null,
-    confirmButtonAriaLabel: null,
-    confirmButtonColor: null,
-    confirmButtonClass: null,
-    cancelButtonText: null,
-    cancelButtonAriaLabel: null,
-    cancelButtonColor: null,
-    cancelButtonClass: null,
-    buttonsStyling: null,
-    reverseButtons: null,
-    focusConfirm: null,
-    focusCancel: null,
-    showCloseButton: null,
-    closeButtonAriaLabel: null,
-    showLoaderOnConfirm: null,
-    imageUrl: null,
-    imageWidth: null,
-    imageHeight: null,
-    imageAlt: null,
-    imageClass: null,
-    timer: null,
-    width: null,
-    padding: null,
-    background: null,
-    input: null,
-    inputPlaceholder: null,
-    inputValue: null,
-    inputOptions: null,
-    inputAutoTrim: null,
-    inputClass: null,
-    inputAttributes: null,
-    inputValidator: null,
-    grow: null,
-    position: null,
-    progressSteps: null,
-    currentProgressStep: null,
-    progressStepsDistance: null,
-    onBeforeOpen: null,
-    onOpen: null,
-    onClose: null,
-    useRejections: null,
-    expectRejections: null
+  const defaultParams = require('../../src/utils/params').default
+  const params = {}
+  Object.keys(defaultParams).forEach(key => {
+    params[key] = null
   })
+  swal(params)
   assert.ok(swal.isVisible())
 })
 

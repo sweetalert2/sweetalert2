@@ -88,7 +88,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "gulp develop",
+    "start": "gulp develop --continue-on-lint-error",
     "fix:lint": "standard --fix",
     "test": "npm run build && npm run check",
     "build": "gulp build",

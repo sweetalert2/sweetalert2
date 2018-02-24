@@ -1,4 +1,5 @@
-/* global $, QUnit, swal */
+/* global QUnit, swal */
+const $ = require('jquery')
 
 const simulateMouseEvent = (x, y, eventType) => {
   var event = $.Event(eventType)

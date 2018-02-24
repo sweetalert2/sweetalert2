@@ -37,7 +37,8 @@ const packageRollup = (options) => {
         plugins: [
           css({ output: false }),
           babel({
-            exclude: 'node_modules/**'
+            exclude: 'node_modules/**',
+            plugins: ['external-helpers']
           })
         ]
       })

@@ -24,7 +24,8 @@ install:
 
 test_script:
   - npm run build
-  - npm run check:tests:ie
+  - npm run check:tests
+  # - npm run check:tests:ie
 
 notifications:
   - provider: Email

@@ -1,4 +1,5 @@
-/* global $, QUnit, swal */
+/* global QUnit, swal */
+const $ = require('jquery')
 
 QUnit.test('confirm button /w useRejections: true', (assert) => {
   const done = assert.async()

@@ -19,7 +19,7 @@ script:
 
 after_script:
   # repeat unit tests against dist/sweetalert2.all.min.js
-  - sed -i 's/sweetalert2.js/sweetalert2.all.min.js/g' testem.json
+  - sed -i 's/sweetalert2.js/sweetalert2.all.min.js/g' karma.conf.js
   - xvfb-run yarn run check:tests
   - greenkeeper-lockfile-upload
 

@@ -3,6 +3,7 @@
     "extends": ["tslint:recommended"],
     "rules": {
       "quotemark": false,
-      "interface-name": false
+      "interface-name": false,
+      "trailing-comma": false
     }
 }

@@ -1,5 +1,6 @@
 /* global QUnit, swal */
 const $ = require('jquery')
+const IE_TIMEOUT = 100
 
 QUnit.test('confirm button /w useRejections: true', (assert) => {
   const done = assert.async()
@@ -196,6 +197,6 @@ QUnit.test('validation error /w expectRejections: true', (assert) => {
       assert.notOk($('.swal2-input').attr('aria-invalid'))
       assert.ok($('.swal2-modal').outerHeight() === initialModalHeight)
       done()
-    })
-  }, 60)
+    }, IE_TIMEOUT)
+  }, IE_TIMEOUT)
 })

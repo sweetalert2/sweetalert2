@@ -608,8 +608,8 @@ body {
 .swal2-icon {
   position: relative;
   justify-content: center;
-  width: 5rem;
-  height: 5rem;
+  width: $swal2-icon-size;
+  height: $swal2-icon-size;
   margin: $swal2-icon-margin;
   border: .25rem solid transparent;
   border-radius: 50%;
@@ -702,8 +702,8 @@ body {
       position: absolute;
       top: -.25rem;
       left: -.25rem;
-      width: 5rem;
-      height: 5rem;
+      width: 100%;
+      height: 100%;
       border: .25rem solid $swal2-success-border;
       border-radius: 50%;
       z-index: 2;

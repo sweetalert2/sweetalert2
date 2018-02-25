@@ -7,7 +7,7 @@ let popupParams = Object.assign({}, defaultParams)
 let queue = []
 
 let previousWindowKeyDown, windowOnkeydownOverridden
-
+let isSweetAlertClosedByEnterKey = false
 /**
  * Show relevant warnings for given params
  *
@@ -463,6 +463,10 @@ const sweetAlert = (...args) => {
       return false
   }
 
+  if (isSweetAlertClosedByEnterKey && params.type !== 'warning') {
+    isSweetAlertClosedByEnterKey = false
+    return false
+  }
   setParameters(params)
 
   const container = dom.getContainer()
@@ -758,6 +762,9 @@ const sweetAlert = (...args) => {
       ]
 
       if (e.key === 'Enter' && !e.isComposing) {
+        if (params.type !== 'warning') {
+          isSweetAlertClosedByEnterKey = true
+        }
         if (e.target === getInput()) {
           if (['textarea', 'file'].includes(params.input)) {
             return // do not submit
@@ -1105,7 +1112,11 @@ const sweetAlert = (...args) => {
       }
     }
 
-    openPopup(params.animation, params.onBeforeOpen, params.onOpen)
+    if (!isSweetAlertClosedByEnterKey) {
+      openPopup(params.animation, params.onBeforeOpen, params.onOpen)
+    } else {
+      isSweetAlertClosedByEnterKey = false
+    }
 
     if (!params.toast) {
       if (!callIfFunction(params.allowEnterKey)) {

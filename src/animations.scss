@@ -33,58 +33,58 @@
 // Success icon animations
 @keyframes swal2-animate-success-line-tip {
   0% {
-    top: 19px;
-    left: 1px;
+    top: 1.1875rem;
+    left: .0625rem;
     width: 0;
   }
 
   54% {
-    top: 17px;
-    left: 2px;
+    top: 1.0625rem;
+    left: .125rem;
     width: 0;
   }
 
   70% {
-    top: 35px;
-    left: -6px;
-    width: 50px;
+    top: 2.1875rem;
+    left: -.375rem;
+    width: 3.125rem;
   }
 
   84% {
-    top: 48px;
-    left: 21px;
-    width: 17px;
+    top: 3rem;
+    left: 1.3125rem;
+    width: 1.0625rem;
   }
 
   100% {
-    top: 45px;
-    left: 14px;
-    width: 25px;
+    top: 2.8125rem;
+    left: .875rem;
+    width: 1.5625rem;
   }
 }
 @keyframes swal2-animate-success-line-long {
   0% {
-    top: 54px;
-    right: 46px;
+    top: 3.375rem;
+    right: 2.875rem;
     width: 0;
   }
 
   65% {
-    top: 54px;
-    right: 46px;
+    top: 3.375rem;
+    right: 2.875rem;
     width: 0;
   }
 
   84% {
-    top: 35px;
+    top: 2.1875rem;
     right: 0;
-    width: 55px;
+    width: 3.4375rem;
   }
 
   100% {
-    top: 38px;
-    right: 8px;
-    width: 47px;
+    top: 2.375rem;
+    right: .5rem;
+    width: 2.9375rem;
   }
 }
 @keyframes swal2-rotate-success-circular-line {
@@ -108,19 +108,19 @@
 // Error icon animations
 @keyframes swal2-animate-error-x-mark {
   0% {
-    margin-top: 26px;
+    margin-top: 1.625rem;
     transform: scale(.4);
     opacity: 0;
   }
 
   50% {
-    margin-top: 26px;
+    margin-top: 1.625rem;
     transform: scale(.4);
     opacity: 0;
   }
 
   80% {
-    margin-top: -6px;
+    margin-top: -.375rem;
     transform: scale(1.15);
   }
 

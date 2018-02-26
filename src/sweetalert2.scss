@@ -613,7 +613,7 @@ body {
   margin: $swal2-icon-margin;
   border: .25rem solid transparent;
   border-radius: 50%;
-  line-height: 5.5rem;
+  line-height: $swal2-icon-size;
   cursor: default;
   box-sizing: content-box;
   user-select: none;
@@ -630,19 +630,19 @@ body {
     [class^='swal2-x-mark-line'] {
       display: block;
       position: absolute;
-      top: 2.3125rem;
-      width: 2.9375rem;
-      height: .3125rem;
-      border-radius: .125rem;
+      top: 2.3125em;
+      width: 2.9375em;
+      height: .3125em;
+      border-radius: .125em;
       background-color: $swal2-error;
 
       &[class$='left'] {
-        left: 1.0625rem;
+        left: 1.0625em;
         transform: rotate(45deg);
       }
 
       &[class$='right'] {
-        right: 1rem;
+        right: 1em;
         transform: rotate(-45deg);
       }
     }
@@ -676,35 +676,35 @@ body {
 
     [class^='swal2-success-circular-line'] { // Emulate moving circular line
       position: absolute;
-      width: 3.75rem;
-      height: 7.5rem;
+      width: 3.75em;
+      height: 7.5em;
       transform: rotate(45deg);
       border-radius: 50%;
 
       &[class$='left'] {
-        top: -.4375rem;
-        left: -2.0635rem;
+        top: -.4375em;
+        left: -2.0635em;
         transform: rotate(-45deg);
-        transform-origin: 3.75rem 3.75rem;
-        border-radius: 7.5rem 0 0 7.5rem;
+        transform-origin: 3.75em 3.75em;
+        border-radius: 7.5em 0 0 7.5em;
       }
 
       &[class$='right'] {
-        top: -.6875rem;
-        left: 1.875rem;
+        top: -.6875em;
+        left: 1.875em;
         transform: rotate(-45deg);
-        transform-origin: 0 3.75rem;
-        border-radius: 0 7.5rem 7.5rem 0;
+        transform-origin: 0 3.75em;
+        border-radius: 0 7.5em 7.5em 0;
       }
     }
 
     .swal2-success-ring { // Ring
       position: absolute;
-      top: -.25rem;
-      left: -.25rem;
+      top: -.25em;
+      left: -.25em;
       width: 100%;
       height: 100%;
-      border: .25rem solid $swal2-success-border;
+      border: .25em solid $swal2-success-border;
       border-radius: 50%;
       z-index: 2;
       box-sizing: content-box;
@@ -712,10 +712,10 @@ body {
 
     .swal2-success-fix { // Hide corners left from animation
       position: absolute;
-      top: .5rem;
-      left: 1.625rem;
-      width: .4375rem;
-      height: 5.625rem;
+      top: .5em;
+      left: 1.625em;
+      width: .4375em;
+      height: 5.625em;
       transform: rotate(-45deg);
       z-index: 1;
     }
@@ -723,22 +723,22 @@ body {
     [class^='swal2-success-line'] {
       display: block;
       position: absolute;
-      height: .3125rem;
-      border-radius: .125rem;
+      height: .3125em;
+      border-radius: .125em;
       background-color: $swal2-success;
       z-index: 2;
 
       &[class$='tip'] {
-        top: 2.875rem;
-        left: .875rem;
-        width: 1.5625rem;
+        top: 2.875em;
+        left: .875em;
+        width: 1.5625em;
         transform: rotate(45deg);
       }
 
       &[class$='long'] {
-        top: 2.375rem;
-        right: .5rem;
-        width: 2.9375rem;
+        top: 2.375em;
+        right: .5em;
+        width: 2.9375em;
         transform: rotate(-45deg);
       }
     }

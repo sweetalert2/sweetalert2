@@ -1,7 +1,7 @@
 // TODO: move these files to /test and delete /test/qunit
 /* global QUnit, swal */
 const $ = require('jquery')
-const IE_TIMEOUT = 100
+import { TIMEOUT } from './helpers.js'
 
 QUnit.test('version is correct semver', (assert) => {
   assert.ok(swal.version.match(/\d+\.\d+\.\d+/))
@@ -175,8 +175,8 @@ QUnit.test('validation error', (assert) => {
       assert.notOk($('.swal2-input').attr('aria-invalid'))
       assert.ok($('.swal2-modal').outerHeight() === initialModalHeight)
       done()
-    }, IE_TIMEOUT)
-  }, IE_TIMEOUT)
+    }, TIMEOUT)
+  }, TIMEOUT)
 })
 
 QUnit.test('built-in email validation', (assert) => {
@@ -295,8 +295,8 @@ QUnit.test('queue', (assert) => {
       swal.clickCancel()
       assert.notOk(swal.isVisible())
       done()
-    }, IE_TIMEOUT)
-  }, IE_TIMEOUT)
+    }, TIMEOUT)
+  }, TIMEOUT)
 })
 
 QUnit.test('dymanic queue', (assert) => {
@@ -349,9 +349,9 @@ QUnit.test('dymanic queue', (assert) => {
         assert.equal(swal.getQueueStep(), null)
         swal.clickConfirm()
         done()
-      }, IE_TIMEOUT)
-    }, IE_TIMEOUT)
-  }, IE_TIMEOUT)
+      }, TIMEOUT)
+    }, TIMEOUT)
+  }, TIMEOUT)
 })
 
 QUnit.test('showLoading and hideLoading', (assert) => {

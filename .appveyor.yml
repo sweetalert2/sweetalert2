@@ -20,12 +20,12 @@ build: off
 
 install:
   - ps: Install-Product node $env:nodejs_version
-  - npm install
+  - yarn
 
 test_script:
-  - npm run build
-  - npm run check:tests
-  # - npm run check:tests:ie
+  - yarn run build
+  - yarn run check:tests
+  - yarn run check:tests:ie
 
 notifications:
   - provider: Email

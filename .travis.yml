@@ -21,6 +21,9 @@ after_script:
   # repeat unit tests against dist/sweetalert2.all.min.js
   - sed -i 's/sweetalert2.js/sweetalert2.all.min.js/g' karma.conf.js
   - xvfb-run yarn run check:tests
+  - if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
+      xvfb-run yarn run check:tests:saucelabs;
+    fi
   - greenkeeper-lockfile-upload
 
 notifications:

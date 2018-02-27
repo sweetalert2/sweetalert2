@@ -12,6 +12,8 @@ const pack = require('./package.json')
 const utils = require('./utils/package-rollup') // TODO: Once this file stabilizes, make this line `const packageRollup = require('./utils/package-rollup')`
 const execute = require('./utils/execute')
 
+const continueOnLintError = process.argv.includes('--continue-on-lint-error')
+
 gulp.task('compress', ['js-lint', 'commonjs', 'dev', 'production', 'all', 'all.min'])
 
 gulp.task('commonjs', () => {
@@ -78,21 +80,26 @@ gulp.task('js-lint', () => {
   return gulp.src(['src/**/*.js', 'test/*.js'])
     .pipe(standard())
     .pipe(standard.reporter('default', {
-      breakOnError: true
+      breakOnError: !continueOnLintError
     }))
 })
 
 gulp.task('sass-lint', () => {
-  return gulp.src(['src/**/*.scss'])
+  let stream = gulp.src(['src/**/*.scss'])
     .pipe(sassLint())
     .pipe(sassLint.format())
-    .pipe(sassLint.failOnError())
+  if (!continueOnLintError) {
+    stream = stream.pipe(sassLint.failOnError())
+  }
+  return stream
 })
 
 gulp.task('ts-lint', () => {
   return gulp.src('sweetalert2.d.ts')
     .pipe(tslint({ formatter: 'verbose' }))
-    .pipe(tslint.report())
+    .pipe(tslint.report({
+      emitError: !continueOnLintError
+    }))
 })
 
 gulp.task('build', ['sass', 'ts', 'compress', 'css.min'])

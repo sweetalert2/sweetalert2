@@ -1,6 +1,7 @@
 // TODO: move these files to /test and delete /test/qunit
 /* global QUnit, swal */
 const $ = require('jquery')
+import { TIMEOUT } from './helpers.js'
 
 QUnit.test('version is correct semver', (assert) => {
   assert.ok(swal.version.match(/\d+\.\d+\.\d+/))
@@ -174,8 +175,8 @@ QUnit.test('validation error', (assert) => {
       assert.notOk($('.swal2-input').attr('aria-invalid'))
       assert.ok($('.swal2-modal').outerHeight() === initialModalHeight)
       done()
-    })
-  }, 60)
+    }, TIMEOUT)
+  }, TIMEOUT)
 })
 
 QUnit.test('built-in email validation', (assert) => {
@@ -294,8 +295,8 @@ QUnit.test('queue', (assert) => {
       swal.clickCancel()
       assert.notOk(swal.isVisible())
       done()
-    })
-  })
+    }, TIMEOUT)
+  }, TIMEOUT)
 })
 
 QUnit.test('dymanic queue', (assert) => {
@@ -348,9 +349,9 @@ QUnit.test('dymanic queue', (assert) => {
         assert.equal(swal.getQueueStep(), null)
         swal.clickConfirm()
         done()
-      })
-    })
-  })
+      }, TIMEOUT)
+    }, TIMEOUT)
+  }, TIMEOUT)
 })
 
 QUnit.test('showLoading and hideLoading', (assert) => {
@@ -812,4 +813,21 @@ QUnit.test('animation param evaluates a function', (assert) => {
     animation: () => true
   })
   assert.notOk($('.swal2-popup').hasClass('swal2-noanimation'))
+})
+
+QUnit.test('Custom content', (assert) => {
+  const done = assert.async()
+  swal({
+    showCancelButton: true,
+    onOpen: () => {
+      swal.getContent().textContent = 'Custom content'
+      swal.clickConfirm()
+    },
+    preConfirm: () => {
+      return 'Some data from custom control'
+    }
+  }).then(result => {
+    assert.ok(result.value)
+    done()
+  })
 })

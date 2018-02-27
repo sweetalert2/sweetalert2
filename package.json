@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "7.12.15",
+  "version": "7.12.16",
   "repository": "sweetalert2/sweetalert2",
   "homepage": "https://sweetalert2.github.io/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
@@ -16,6 +16,7 @@
     "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.23.3",
     "bundlesize": "^0.16.0",
+    "detect-browser": "^2.1.0",
     "event-stream": "^3.3.4",
     "execa": "^0.9.0",
     "gulp": "^3.9.1",
@@ -33,7 +34,9 @@
     "karma": "^2.0.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-firefox-launcher": "^1.1.0",
+    "karma-ie-launcher": "^1.0.0",
     "karma-qunit": "^1.2.1",
+    "karma-sauce-launcher": "^1.2.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "^0.0.32",
     "karma-webpack": "^2.0.9",
@@ -49,7 +52,7 @@
     "tslint": "^5.8.0",
     "typescript": "~2.1",
     "uglify-js": "^3.1.10",
-    "webpack": "^3.11.0"
+    "webpack": "^4.0.0"
   },
   "standard": {
     "ignore": [
@@ -87,13 +90,15 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "gulp develop",
+    "start": "gulp develop --continue-on-lint-error",
     "fix:lint": "standard --fix",
     "test": "npm run build && npm run check",
     "build": "gulp build",
     "check": "npm run check:bundlesize && npm run check:tests && npm run check:ts",
     "check:bundlesize": "bundlesize -f dist/sweetalert2.all.min.js -s 15kB",
     "check:tests": "karma start karma.conf.js --single-run --browsers Chrome,Firefox",
+    "check:tests:ie": "karma start karma.conf.js --single-run --browsers IE",
+    "check:tests:saucelabs": "karma start karma.conf.js --single-run --browsers sauce_safari,sauce_edge,sauce_iphone,sauce_android --captureTimeout 240000 --browserNoActivityTimeout 240000",
     "check:ts": "tsc sweetalert2.d.ts",
     "release": "node release"
   },

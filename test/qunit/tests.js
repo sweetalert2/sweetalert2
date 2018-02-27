@@ -814,3 +814,20 @@ QUnit.test('animation param evaluates a function', (assert) => {
   })
   assert.notOk($('.swal2-popup').hasClass('swal2-noanimation'))
 })
+
+QUnit.test('Custom content', (assert) => {
+  const done = assert.async()
+  swal({
+    showCancelButton: true,
+    onOpen: () => {
+      swal.getContent().textContent = 'Custom content'
+      swal.clickConfirm()
+    },
+    preConfirm: () => {
+      return 'Some data from custom control'
+    }
+  }).then(result => {
+    assert.ok(result.value)
+    done()
+  })
+})

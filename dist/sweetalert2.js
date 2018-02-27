@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.12.15
+ * sweetalert2 v7.12.16
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -1473,7 +1473,9 @@ var sweetAlert = function sweetAlert() {
     // Hide block with validation error
     sweetAlert.resetValidationError = function () {
       var validationError = getValidationError();
-      hide(validationError);
+      if (validationError) {
+        hide(validationError);
+      }
 
       var input = getInput();
       if (input) {
@@ -1911,7 +1913,7 @@ sweetAlert.DismissReason = Object.freeze({
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.12.15';
+sweetAlert.version = '7.12.16';
 
 sweetAlert.default = sweetAlert;
 

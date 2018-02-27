@@ -916,7 +916,9 @@ const sweetAlert = (...args) => {
     // Hide block with validation error
     sweetAlert.resetValidationError = () => {
       const validationError = dom.getValidationError()
-      dom.hide(validationError)
+      if (validationError) {
+        dom.hide(validationError)
+      }
 
       const input = getInput()
       if (input) {

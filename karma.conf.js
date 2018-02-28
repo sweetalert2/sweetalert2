@@ -1,5 +1,11 @@
+const isCi = require('is-ci')
+
+const noLaunch = process.argv.includes('--no-launch')
+const isCron = process.env.TRAVIS_EVENT_TYPE === 'cron'
+const isWindows = process.platform === 'win32'
+
 module.exports = function (config) {
-  var sauceLabsLaunchers = {
+  const sauceLabsLaunchers = {
     sauce_safari: {
       base: 'SauceLabs',
       browserName: 'Safari'
@@ -21,13 +27,27 @@ module.exports = function (config) {
       platformName: 'Android'
     }
   }
-
+  let browsers = []
+  if (!noLaunch) {
+    if (isCi) {
+      if (isCron) {
+        browsers = Object.keys(sauceLabsLaunchers)
+      } else if (isWindows) {
+        browsers = ['Chrome', 'Firefox', 'IE']
+      } else {
+        browsers = ['Chrome', 'Firefox']
+      }
+    } else {
+      browsers = ['Chrome']
+    }
+  }
   config.set({
     port: 3000,
     frameworks: [
       'qunit'
     ],
     customLaunchers: sauceLabsLaunchers,
+    browsers,
     reporters: ['spec', 'saucelabs'],
     preprocessors: {
       'test/qunit/**/*.js': [

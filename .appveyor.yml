@@ -25,7 +25,6 @@ install:
 test_script:
   - yarn run build
   - yarn run check:tests
-  - yarn run check:tests:ie
 
 notifications:
   - provider: Email

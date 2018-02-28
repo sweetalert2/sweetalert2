@@ -1,4 +1,5 @@
-/* global QUnit, swal */
+/* global QUnit */
+const {swal} = require('./helpers')
 const $ = require('jquery')
 import { TIMEOUT } from './helpers.js'
 

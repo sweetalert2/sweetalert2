@@ -1,4 +1,5 @@
-/* global QUnit, swal */
+/* global QUnit */
+const {swal} = require('./helpers')
 const $ = require('jquery')
 
 const simulateMouseEvent = (x, y, eventType) => {

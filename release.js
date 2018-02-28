@@ -45,6 +45,9 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
   log(`Merging from "${branchToPublish}" branch...`)
   await execute(`git merge ${branchToPublish}`)
 
+  log('Installing npm dependencies...')
+  await execute('yarn')
+
   log('Running the build...')
   await execute('npm run build')
 

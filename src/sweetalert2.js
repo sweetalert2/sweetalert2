@@ -834,16 +834,7 @@ const sweetAlert = (...args) => {
       cancelButton.disabled = false
     }
 
-    sweetAlert.getTitle = () => dom.getTitle()
-    sweetAlert.getContent = () => dom.getContent()
     sweetAlert.getInput = () => getInput()
-    sweetAlert.getImage = () => dom.getImage()
-    sweetAlert.getButtonsWrapper = () => dom.getButtonsWrapper()
-    sweetAlert.getActions = () => dom.getActions()
-    sweetAlert.getConfirmButton = () => dom.getConfirmButton()
-    sweetAlert.getCancelButton = () => dom.getCancelButton()
-    sweetAlert.getFooter = () => dom.getFooter()
-    sweetAlert.isLoading = () => dom.isLoading()
 
     sweetAlert.enableButtons = () => {
       confirmButton.disabled = false
@@ -1334,6 +1325,16 @@ sweetAlert.adaptInputValidator = (legacyValidator) => {
       .then(() => undefined, validationError => validationError)
   }
 }
+
+sweetAlert.getTitle = () => dom.getTitle()
+sweetAlert.getContent = () => dom.getContent()
+sweetAlert.getImage = () => dom.getImage()
+sweetAlert.getButtonsWrapper = () => dom.getButtonsWrapper()
+sweetAlert.getActions = () => dom.getActions()
+sweetAlert.getConfirmButton = () => dom.getConfirmButton()
+sweetAlert.getCancelButton = () => dom.getCancelButton()
+sweetAlert.getFooter = () => dom.getFooter()
+sweetAlert.isLoading = () => dom.isLoading()
 
 sweetAlert.DismissReason = Object.freeze({
   cancel: 'cancel',

@@ -1,7 +1,7 @@
 /* global QUnit */
 const {swal, initialSwalPropNames} = require('./helpers')
 
-QUnit.test('properties of `swal` are consistent', async (assert) => {
+QUnit.test('properties of `swal` are consistent', (assert) => {
   const done = assert.async()
   const assertConsistent = postfix => {
     const currentSwalPropNames = Object.keys(swal)
@@ -13,13 +13,14 @@ QUnit.test('properties of `swal` are consistent', async (assert) => {
     assert.deepEqual(missingProps.join(','), '', `missing property names ${postfix}`)
   }
   assertConsistent('before first swal')
-  await swal({
+  swal({
     title: 'test',
     onOpen: () => {
       assertConsistent('after opening first swal')
       swal.clickConfirm()
     }
+  }).then(() => {
+    assertConsistent('after closing first swal')
+    done()
   })
-  assertConsistent('after closing first swal')
-  done()
 })

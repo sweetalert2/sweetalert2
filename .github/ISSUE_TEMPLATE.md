@@ -11,3 +11,10 @@ For bug reports, please include:
 JSFiddle template: https://jsfiddle.net/ad3quksn/462/
 
 JSFiddle template for IE11 and other old browsers: https://jsfiddle.net/ad3quksn/463/
+
+---
+
+Has SweetAlert2 helped you create an amazing application? You can show your support by making a donation in one of several ways:
+- https://www.paypal.me/limonte
+- https://www.patreon.com/limonte
+- https://opencollective.com/sweetalert2

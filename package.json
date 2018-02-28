@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "7.12.16",
+  "version": "7.12.17",
   "repository": "sweetalert2/sweetalert2",
   "homepage": "https://sweetalert2.github.io/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
@@ -20,7 +20,7 @@
     "event-stream": "^3.3.4",
     "execa": "^0.9.0",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.1.0",
+    "gulp-autoprefixer": "^5.0.0",
     "gulp-clean-css": "^3.9.0",
     "gulp-rename": "^1.2.2",
     "gulp-rollup": "^2.16.2",

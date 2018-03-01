@@ -1,5 +1,5 @@
-// TODO: move these files to /test and delete /test/qunit
-/* global QUnit, swal */
+/* global QUnit */
+const {swal} = require('./helpers')
 const $ = require('jquery')
 import { TIMEOUT } from './helpers.js'
 

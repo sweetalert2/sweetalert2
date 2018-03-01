@@ -33,7 +33,7 @@ module.exports = function (config) {
       if (isCron) {
         browsers = Object.keys(sauceLabsLaunchers)
       } else if (isWindows) {
-        browsers = ['Chrome', 'Firefox', 'IE']
+        browsers = ['IE']
       } else {
         browsers = ['Chrome', 'Firefox']
       }

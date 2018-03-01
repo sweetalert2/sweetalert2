@@ -1,138 +1,164 @@
 const gulp = require('gulp')
-const cleanCSS = require('gulp-clean-css')
-const sass = require('gulp-sass')
-const rename = require('gulp-rename')
-const autoprefix = require('gulp-autoprefixer')
-const standard = require('gulp-standard')
-const sassLint = require('gulp-sass-lint')
-const ts = require('gulp-typescript')
-const tslint = require('gulp-tslint')
+const $ = require('gulp-load-plugins')()
+const babel = require('rollup-plugin-babel')
+const json = require('rollup-plugin-json')
+const merge = require('merge2')
 const browserSync = require('browser-sync').create()
-const pack = require('./package.json')
-const utils = require('./utils/package-rollup') // TODO: Once this file stabilizes, make this line `const packageRollup = require('./utils/package-rollup')`
+const pify = require('pify')
+const rimraf = require('rimraf')
+const mkdirp = require('mkdirp')
+const packageJson = require('./package.json')
 const execute = require('./utils/execute')
 
+const banner = `/*!
+* ${packageJson.name} v${packageJson.version}
+* Released under the ${packageJson.license} License.
+*/`
+
+const allScriptFiles = ['**/*.js', '!dist/**', '!node_modules/**']
+const srcScriptFiles = ['src/**/*.js']
+const srcStyleFiles = ['src/**/*.scss']
+const tsFiles = ['sweetalert2.d.ts']
+
 const continueOnLintError = process.argv.includes('--continue-on-lint-error')
+const skipMinification = process.argv.includes('--skip-minification')
+const skipStandalone = process.argv.includes('--skip-standalone')
 
-gulp.task('compress', ['js-lint', 'commonjs', 'dev', 'production', 'all', 'all.min'])
+const removeDir = pify(rimraf)
+const createDir = pify(mkdirp)
 
-gulp.task('commonjs', () => {
-  return utils.packageRollup({
-    dest: 'dist/' + pack.name + '.common.js',
-    format: 'cjs'
-  })
+// ---
+
+gulp.task('clean', async () => {
+  await removeDir('dist')
+  await createDir('dist')
 })
 
-gulp.task('dev', ['js-lint'], () => {
-  return utils.packageRollup({
-    dest: 'dist/' + pack.name + '.js',
-    format: 'umd'
-  })
+gulp.task('build:scripts', () => {
+  return gulp.src(['package.json', ...srcScriptFiles])
+    .pipe($.rollup({
+      plugins: [
+        json(),
+        babel({
+          exclude: 'node_modules/**'
+        })
+      ],
+      input: 'src/sweetalert2.js',
+      output: {
+        format: 'umd',
+        name: 'Sweetalert2',
+        banner: banner,
+        footer: 'if (typeof window !== \'undefined\' && window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;'
+      }
+    }))
+    .pipe(gulp.dest('dist'))
+    .pipe($.if(!skipMinification, $.uglify({
+      output: {
+        preamble: banner
+      }
+    })))
+    .pipe($.if(!skipMinification, $.rename('sweetalert2.min.js')))
+    .pipe($.if(!skipMinification, gulp.dest('dist')))
 })
 
-gulp.task('production', () => {
-  return utils.packageRollup({
-    dest: 'dist/' + pack.name + '.min.js',
-    format: 'umd',
-    minify: true
-  })
-})
-
-gulp.task('all', ['sass'], () => {
-  return utils.packageRollup({
-    entry: 'src/sweetalert2.all.js',
-    dest: 'dist/' + pack.name + '.all.js',
-    format: 'umd'
-  })
-})
-
-gulp.task('all.min', ['sass'], () => {
-  return utils.packageRollup({
-    entry: 'src/sweetalert2.all.js',
-    dest: 'dist/' + pack.name + '.all.min.js',
-    format: 'umd',
-    minify: true
-  })
-})
-
-gulp.task('sass', ['sass-lint'], () => {
+gulp.task('build:styles', () => {
   return gulp.src('src/sweetalert2.scss')
-    .pipe(sass())
-    .pipe(autoprefix())
+    .pipe($.sass())
+    .pipe($.autoprefixer())
     .pipe(gulp.dest('dist'))
+    .pipe($.if(!skipMinification, $.cleanCss()))
+    .pipe($.if(!skipMinification, $.rename('sweetalert2.min.css')))
+    .pipe($.if(!skipMinification, gulp.dest('dist')))
 })
 
-gulp.task('css.min', ['sass'], () => {
-  return gulp.src('dist/sweetalert2.css')
-    .pipe(cleanCSS())
-    .pipe(rename({extname: '.min.css'}))
+/**
+ * Warning: This task depends on dist/sweetalert2.js & dist/sweetalert2.css
+ */
+gulp.task('build:standalone', () => {
+  const prettyJs = gulp.src('dist/sweetalert2.js')
+  const prettyCssAsJs = gulp.src('dist/sweetalert2.css')
+    .pipe($.css2js())
+  const prettyStandalone = merge(prettyJs, prettyCssAsJs)
+    .pipe($.concat('sweetalert2.all.js'))
     .pipe(gulp.dest('dist'))
+  if (skipMinification) {
+    return prettyStandalone
+  } else {
+    const uglyJs = gulp.src('dist/sweetalert2.min.js')
+    const uglyCssAsJs = gulp.src('dist/sweetalert2.min.css')
+      .pipe($.css2js())
+    const uglyStandalone = merge(uglyJs, uglyCssAsJs)
+      .pipe($.concat('sweetalert2.all.min.js'))
+      .pipe(gulp.dest('dist'))
+    return merge([prettyStandalone, uglyStandalone])
+  }
 })
 
-gulp.task('ts', ['ts-lint'], () => {
-  return gulp.src('sweetalert2.d.ts')
-    .pipe(ts())
-})
+gulp.task('build', gulp.series(
+  'clean',
+  gulp.parallel('build:scripts', 'build:styles'),
+  ...(skipStandalone ? [] : ['build:standalone'])
+))
 
-gulp.task('lint', ['js-lint', 'sass-lint', 'ts-lint'])
+gulp.task('default', gulp.parallel('build'))
 
-gulp.task('js-lint', () => {
-  return gulp.src(['src/**/*.js', 'test/*.js'])
-    .pipe(standard())
-    .pipe(standard.reporter('default', {
+// ---
+
+gulp.task('lint:scripts', () => {
+  return gulp.src(allScriptFiles)
+    .pipe($.standard())
+    .pipe($.standard.reporter('default', {
       breakOnError: !continueOnLintError
     }))
 })
 
-gulp.task('sass-lint', () => {
-  let stream = gulp.src(['src/**/*.scss'])
-    .pipe(sassLint())
-    .pipe(sassLint.format())
-  if (!continueOnLintError) {
-    stream = stream.pipe(sassLint.failOnError())
-  }
-  return stream
+gulp.task('lint:styles', () => {
+  return gulp.src(srcStyleFiles)
+    .pipe($.sassLint())
+    .pipe($.sassLint.format())
+    .pipe($.if(!continueOnLintError, $.sassLint.failOnError()))
 })
 
-gulp.task('ts-lint', () => {
-  return gulp.src('sweetalert2.d.ts')
-    .pipe(tslint({ formatter: 'verbose' }))
-    .pipe(tslint.report({
+gulp.task('lint:ts', () => {
+  return gulp.src(tsFiles)
+    .pipe($.typescript())
+    .pipe($.tslint({ formatter: 'verbose' }))
+    .pipe($.tslint.report({
       emitError: !continueOnLintError
     }))
 })
 
-gulp.task('build', ['sass', 'ts', 'compress', 'css.min'])
+gulp.task('lint', gulp.parallel('lint:scripts', 'lint:styles', 'lint:ts'))
 
-gulp.task('default', ['build'])
+// ---
 
-gulp.task('watch', ['build'], () => {
-  gulp.watch(['src/**/*.js'], ['dev'])
-
-  gulp.watch(['src/*.scss'], ['sass'])
-
-  gulp.watch(['sweetalert2.d.ts'], ['ts'])
-})
-
-gulp.task('develop', ['develop:sandbox', 'develop:tests'])
-
-gulp.task('develop:sandbox', ['watch'], () => {
-  browserSync.init({
-    port: 8080,
-    uiPort: 8081,
-    notify: false,
-    reloadOnRestart: true,
-    https: false,
-    server: ['./'],
-    startPath: 'test/sandbox.html'
-  })
-  gulp.watch([
-    'test/sandbox.html',
-    'dist/sweetalert2.js',
-    'dist/sweetalert2.css'
-  ]).on('change', browserSync.reload)
-})
-
-gulp.task('develop:tests', ['watch'], async () => {
-  await execute(`karma start karma.conf.js`)
-})
+gulp.task('develop', gulp.series(
+  gulp.parallel('lint', 'build'),
+  async function watch () {
+    // Does not rebuild standalone files, for speed in active development
+    gulp.watch(srcScriptFiles, gulp.parallel('build:scripts'))
+    gulp.watch(srcStyleFiles, gulp.parallel('build:styles'))
+    gulp.watch(allScriptFiles, gulp.parallel('lint:scripts'))
+    gulp.watch(srcStyleFiles, gulp.parallel('lint:styles'))
+    gulp.watch(tsFiles, gulp.parallel('lint:ts'))
+  },
+  async function sandbox () {
+    browserSync.init({
+      port: 8080,
+      uiPort: 8081,
+      notify: false,
+      reloadOnRestart: true,
+      https: false,
+      server: ['./'],
+      startPath: 'test/sandbox.html'
+    })
+    gulp.watch([
+      'test/sandbox.html',
+      'dist/sweetalert2.js',
+      'dist/sweetalert2.css'
+    ]).on('change', browserSync.reload)
+  },
+  async function tests () {
+    await execute(`karma start karma.conf.js`)
+  }
+))

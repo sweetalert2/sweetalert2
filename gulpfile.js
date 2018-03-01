@@ -134,5 +134,5 @@ gulp.task('develop:sandbox', ['watch'], () => {
 })
 
 gulp.task('develop:tests', ['watch'], async () => {
-  await execute(`karma start karma.conf.js`)
+  await execute(`karma start karma.conf.js --no-launch`)
 })

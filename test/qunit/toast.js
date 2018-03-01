@@ -1,4 +1,5 @@
-/* global QUnit, swal */
+/* global QUnit */
+const {swal} = require('./helpers')
 
 QUnit.test('.swal2-toast-shown', (assert) => {
   swal({toast: true})

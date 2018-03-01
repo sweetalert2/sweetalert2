@@ -5,6 +5,7 @@ import * as dom from './utils/dom.js'
 
 let popupParams = Object.assign({}, defaultParams)
 let queue = []
+let currentContext
 
 let previousWindowKeyDown, windowOnkeydownOverridden
 
@@ -416,7 +417,9 @@ const sweetAlert = (...args) => {
     return false
   }
 
-  let params = Object.assign({}, popupParams)
+  const context = currentContext = {}
+
+  const params = context.params = Object.assign({}, popupParams)
 
   switch (typeof args[0]) {
     case 'string':
@@ -465,8 +468,17 @@ const sweetAlert = (...args) => {
 
   setParameters(params)
 
-  const container = dom.getContainer()
-  const popup = dom.getPopup()
+  const domCache = context.domCache = {
+    popup: dom.getPopup(),
+    container: dom.getContainer(),
+    content: dom.getContent(),
+    actions: dom.getActions(),
+    confirmButton: dom.getConfirmButton(),
+    cancelButton: dom.getCancelButton(),
+    closeButton: dom.getCloseButton(),
+    validationError: dom.getValidationError(),
+    progressSteps: dom.getProgressSteps()
+  }
 
   return new Promise((resolve, reject) => {
     // functions to handle all resolving/rejecting/settling
@@ -493,35 +505,12 @@ const sweetAlert = (...args) => {
 
     // Close on timer
     if (params.timer) {
-      popup.timeout = setTimeout(() => dismissWith('timer'), params.timer)
-    }
-
-    // Get input element by specified type or, if type isn't specified, by params.input
-    const getInput = (inputType) => {
-      inputType = inputType || params.input
-      if (!inputType) {
-        return null
-      }
-      switch (inputType) {
-        case 'select':
-        case 'textarea':
-        case 'file':
-          return dom.getChildByClass(content, swalClasses[inputType])
-        case 'checkbox':
-          return popup.querySelector(`.${swalClasses.checkbox} input`)
-        case 'radio':
-          return popup.querySelector(`.${swalClasses.radio} input:checked`) ||
-            popup.querySelector(`.${swalClasses.radio} input:first-child`)
-        case 'range':
-          return popup.querySelector(`.${swalClasses.range} input`)
-        default:
-          return dom.getChildByClass(content, swalClasses.input)
-      }
+      domCache.popup.timeout = setTimeout(() => dismissWith('timer'), params.timer)
     }
 
     // Get the value of the popup input
     const getInputValue = () => {
-      const input = getInput()
+      const input = sweetAlert.getInput()
       if (!input) {
         return null
       }
@@ -540,7 +529,7 @@ const sweetAlert = (...args) => {
     // input autofocus
     if (params.input) {
       setTimeout(() => {
-        const input = getInput()
+        const input = sweetAlert.getInput()
         if (input) {
           dom.focusInput(input)
         }
@@ -568,7 +557,7 @@ const sweetAlert = (...args) => {
         } else {
           preConfirmPromise.then(
             (preConfirmValue) => {
-              if (dom.isVisible(dom.getValidationError()) || preConfirmValue === false) {
+              if (dom.isVisible(domCache.validationError) || preConfirmValue === false) {
                 sweetAlert.hideLoading()
               } else {
                 succeedWith(preConfirmValue || value)
@@ -586,8 +575,7 @@ const sweetAlert = (...args) => {
     const onButtonEvent = (event) => {
       const e = event || window.event
       const target = e.target || e.srcElement
-      const confirmButton = dom.getConfirmButton()
-      const cancelButton = dom.getCancelButton()
+      const {confirmButton, cancelButton} = domCache
       const targetedConfirm = confirmButton && (confirmButton === target || confirmButton.contains(target))
       const targetedCancel = cancelButton && (cancelButton === target || cancelButton.contains(target))
 
@@ -648,7 +636,7 @@ const sweetAlert = (...args) => {
       }
     }
 
-    const buttons = popup.querySelectorAll('button')
+    const buttons = domCache.popup.querySelectorAll('button')
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].onclick = onButtonEvent
       buttons[i].onmouseover = onButtonEvent
@@ -657,14 +645,14 @@ const sweetAlert = (...args) => {
     }
 
     // Closing popup by close button
-    dom.getCloseButton().onclick = () => {
+    domCache.closeButton.onclick = () => {
       dismissWith(sweetAlert.DismissReason.close)
     }
 
     if (params.toast) {
       // Closing popup by backdrop click
-      popup.onclick = (e) => {
-        if (e.target !== popup || (params.showConfirmButton || params.showCancelButton)) {
+      domCache.popup.onclick = (e) => {
+        if (e.target !== domCache.popup || (params.showConfirmButton || params.showCancelButton)) {
           return
         }
         if (params.allowOutsideClick) {
@@ -677,34 +665,34 @@ const sweetAlert = (...args) => {
 
       // Ignore click events that had mousedown on the popup but mouseup on the container
       // This can happen when the user drags a slider
-      popup.onmousedown = () => {
-        container.onmouseup = function (e) {
-          container.onmouseup = undefined
+      domCache.popup.onmousedown = () => {
+        domCache.container.onmouseup = function (e) {
+          domCache.container.onmouseup = undefined
           // We only check if the mouseup target is the container because usually it doesn't
           // have any other direct children aside of the popup
-          if (e.target === container) {
+          if (e.target === domCache.container) {
             ignoreOutsideClick = true
           }
         }
       }
 
       // Ignore click events that had mousedown on the container but mouseup on the popup
-      container.onmousedown = () => {
-        popup.onmouseup = function (e) {
-          popup.onmouseup = undefined
+      domCache.container.onmousedown = () => {
+        domCache.popup.onmouseup = function (e) {
+          domCache.popup.onmouseup = undefined
           // We also need to check if the mouseup target is a child of the popup
-          if (e.target === popup || popup.contains(e.target)) {
+          if (e.target === domCache.popup || domCache.popup.contains(e.target)) {
             ignoreOutsideClick = true
           }
         }
       }
 
-      container.onclick = (e) => {
+      domCache.container.onclick = (e) => {
         if (ignoreOutsideClick) {
           ignoreOutsideClick = false
           return
         }
-        if (e.target !== container) {
+        if (e.target !== domCache.container) {
           return
         }
         if (callIfFunction(params.allowOutsideClick)) {
@@ -713,16 +701,11 @@ const sweetAlert = (...args) => {
       }
     }
 
-    const content = dom.getContent()
-    const actions = dom.getActions()
-    const confirmButton = dom.getConfirmButton()
-    const cancelButton = dom.getCancelButton()
-
     // Reverse buttons (Confirm on the right side)
     if (params.reverseButtons) {
-      confirmButton.parentNode.insertBefore(cancelButton, confirmButton)
+      domCache.confirmButton.parentNode.insertBefore(domCache.cancelButton, domCache.confirmButton)
     } else {
-      confirmButton.parentNode.insertBefore(confirmButton, cancelButton)
+      domCache.confirmButton.parentNode.insertBefore(domCache.confirmButton, domCache.cancelButton)
     }
 
     // Focus handling
@@ -758,7 +741,7 @@ const sweetAlert = (...args) => {
       ]
 
       if (e.key === 'Enter' && !e.isComposing) {
-        if (e.target === getInput()) {
+        if (e.target === sweetAlert.getInput()) {
           if (['textarea', 'file'].includes(params.input)) {
             return // do not submit
           }
@@ -793,11 +776,11 @@ const sweetAlert = (...args) => {
       // ARROWS - switch focus between buttons
       } else if (arrowKeys.includes(e.key)) {
         // focus Cancel button if Confirm button is currently focused
-        if (document.activeElement === confirmButton && dom.isVisible(cancelButton)) {
-          cancelButton.focus()
+        if (document.activeElement === domCache.confirmButton && dom.isVisible(domCache.cancelButton)) {
+          domCache.cancelButton.focus()
         // and vice versa
-        } else if (document.activeElement === cancelButton && dom.isVisible(confirmButton)) {
-          confirmButton.focus()
+        } else if (document.activeElement === domCache.cancelButton && dom.isVisible(domCache.confirmButton)) {
+          domCache.confirmButton.focus()
         }
 
       // ESC
@@ -817,134 +800,6 @@ const sweetAlert = (...args) => {
       window.onkeydown = handleKeyDown
     }
 
-    /**
-     * Show spinner instead of Confirm button and disable Cancel button
-     */
-    sweetAlert.hideLoading = sweetAlert.disableLoading = () => {
-      if (!params.showConfirmButton) {
-        dom.hide(confirmButton)
-        if (!params.showCancelButton) {
-          dom.hide(dom.getActions())
-        }
-      }
-      dom.removeClass([popup, actions], swalClasses.loading)
-      popup.removeAttribute('aria-busy')
-      popup.removeAttribute('data-loading')
-      confirmButton.disabled = false
-      cancelButton.disabled = false
-    }
-
-    sweetAlert.getTitle = () => dom.getTitle()
-    sweetAlert.getContent = () => dom.getContent()
-    sweetAlert.getInput = () => getInput()
-    sweetAlert.getImage = () => dom.getImage()
-    sweetAlert.getButtonsWrapper = () => dom.getButtonsWrapper()
-    sweetAlert.getActions = () => dom.getActions()
-    sweetAlert.getConfirmButton = () => dom.getConfirmButton()
-    sweetAlert.getCancelButton = () => dom.getCancelButton()
-    sweetAlert.getFooter = () => dom.getFooter()
-    sweetAlert.isLoading = () => dom.isLoading()
-
-    sweetAlert.enableButtons = () => {
-      confirmButton.disabled = false
-      cancelButton.disabled = false
-    }
-
-    sweetAlert.disableButtons = () => {
-      confirmButton.disabled = true
-      cancelButton.disabled = true
-    }
-
-    sweetAlert.enableConfirmButton = () => {
-      confirmButton.disabled = false
-    }
-
-    sweetAlert.disableConfirmButton = () => {
-      confirmButton.disabled = true
-    }
-
-    sweetAlert.enableInput = () => {
-      const input = getInput()
-      if (!input) {
-        return false
-      }
-      if (input.type === 'radio') {
-        const radiosContainer = input.parentNode.parentNode
-        const radios = radiosContainer.querySelectorAll('input')
-        for (let i = 0; i < radios.length; i++) {
-          radios[i].disabled = false
-        }
-      } else {
-        input.disabled = false
-      }
-    }
-
-    sweetAlert.disableInput = () => {
-      const input = getInput()
-      if (!input) {
-        return false
-      }
-      if (input && input.type === 'radio') {
-        const radiosContainer = input.parentNode.parentNode
-        const radios = radiosContainer.querySelectorAll('input')
-        for (let i = 0; i < radios.length; i++) {
-          radios[i].disabled = true
-        }
-      } else {
-        input.disabled = true
-      }
-    }
-
-    // Show block with validation error
-    sweetAlert.showValidationError = (error) => {
-      const validationError = dom.getValidationError()
-      validationError.innerHTML = error
-      const popupComputedStyle = window.getComputedStyle(popup)
-      validationError.style.marginLeft = `-${popupComputedStyle.getPropertyValue('padding-left')}`
-      validationError.style.marginRight = `-${popupComputedStyle.getPropertyValue('padding-right')}`
-      dom.show(validationError)
-
-      const input = getInput()
-      if (input) {
-        input.setAttribute('aria-invalid', true)
-        input.setAttribute('aria-describedBy', swalClasses.validationerror)
-        dom.focusInput(input)
-        dom.addClass(input, swalClasses.inputerror)
-      }
-    }
-
-    // Hide block with validation error
-    sweetAlert.resetValidationError = () => {
-      const validationError = dom.getValidationError()
-      if (validationError) {
-        dom.hide(validationError)
-      }
-
-      const input = getInput()
-      if (input) {
-        input.removeAttribute('aria-invalid')
-        input.removeAttribute('aria-describedBy')
-        dom.removeClass(input, swalClasses.inputerror)
-      }
-    }
-
-    sweetAlert.getProgressSteps = () => {
-      return params.progressSteps
-    }
-
-    sweetAlert.setProgressSteps = (progressSteps) => {
-      params.progressSteps = progressSteps
-      setParameters(params)
-    }
-
-    sweetAlert.showProgressSteps = () => {
-      dom.show(dom.getProgressSteps())
-    }
-
-    sweetAlert.hideProgressSteps = () => {
-      dom.hide(dom.getProgressSteps())
-    }
-
     sweetAlert.enableButtons()
     sweetAlert.hideLoading()
     sweetAlert.resetValidationError()
@@ -958,8 +813,8 @@ const sweetAlert = (...args) => {
     let input
     for (let i = 0; i < inputTypes.length; i++) {
       const inputClass = swalClasses[inputTypes[i]]
-      const inputContainer = dom.getChildByClass(content, inputClass)
-      input = getInput(inputTypes[i])
+      const inputContainer = dom.getChildByClass(domCache.content, inputClass)
+      input = sweetAlert.getInput(inputTypes[i])
 
       // set attributes
       if (input) {
@@ -993,20 +848,20 @@ const sweetAlert = (...args) => {
       case 'number':
       case 'tel':
       case 'url':
-        input = dom.getChildByClass(content, swalClasses.input)
+        input = dom.getChildByClass(domCache.content, swalClasses.input)
         input.value = params.inputValue
         input.placeholder = params.inputPlaceholder
         input.type = params.input
         dom.show(input)
         break
       case 'file':
-        input = dom.getChildByClass(content, swalClasses.file)
+        input = dom.getChildByClass(domCache.content, swalClasses.file)
         input.placeholder = params.inputPlaceholder
         input.type = params.input
         dom.show(input)
         break
       case 'range':
-        const range = dom.getChildByClass(content, swalClasses.range)
+        const range = dom.getChildByClass(domCache.content, swalClasses.range)
         const rangeInput = range.querySelector('input')
         const rangeOutput = range.querySelector('output')
         rangeInput.value = params.inputValue
@@ -1015,7 +870,7 @@ const sweetAlert = (...args) => {
         dom.show(range)
         break
       case 'select':
-        const select = dom.getChildByClass(content, swalClasses.select)
+        const select = dom.getChildByClass(domCache.content, swalClasses.select)
         select.innerHTML = ''
         if (params.inputPlaceholder) {
           const placeholder = document.createElement('option')
@@ -1040,7 +895,7 @@ const sweetAlert = (...args) => {
         }
         break
       case 'radio':
-        const radio = dom.getChildByClass(content, swalClasses.radio)
+        const radio = dom.getChildByClass(domCache.content, swalClasses.radio)
         radio.innerHTML = ''
         populateInputOptions = (inputOptions) => {
           inputOptions.forEach(([radioValue, radioLabel]) => {
@@ -1064,8 +919,8 @@ const sweetAlert = (...args) => {
         }
         break
       case 'checkbox':
-        const checkbox = dom.getChildByClass(content, swalClasses.checkbox)
-        const checkboxInput = getInput('checkbox')
+        const checkbox = dom.getChildByClass(domCache.content, swalClasses.checkbox)
+        const checkboxInput = sweetAlert.getInput('checkbox')
         checkboxInput.type = 'checkbox'
         checkboxInput.value = 1
         checkboxInput.id = swalClasses.checkbox
@@ -1080,7 +935,7 @@ const sweetAlert = (...args) => {
         dom.show(checkbox)
         break
       case 'textarea':
-        const textarea = dom.getChildByClass(content, swalClasses.textarea)
+        const textarea = dom.getChildByClass(domCache.content, swalClasses.textarea)
         textarea.value = params.inputValue
         textarea.placeholder = params.inputPlaceholder
         dom.show(textarea)
@@ -1114,17 +969,17 @@ const sweetAlert = (...args) => {
         if (document.activeElement) {
           document.activeElement.blur()
         }
-      } else if (params.focusCancel && dom.isVisible(cancelButton)) {
-        cancelButton.focus()
-      } else if (params.focusConfirm && dom.isVisible(confirmButton)) {
-        confirmButton.focus()
+      } else if (params.focusCancel && dom.isVisible(domCache.cancelButton)) {
+        domCache.cancelButton.focus()
+      } else if (params.focusConfirm && dom.isVisible(domCache.confirmButton)) {
+        domCache.confirmButton.focus()
       } else {
         setFocus(-1, 1)
       }
     }
 
     // fix scroll
-    dom.getContainer().scrollTop = 0
+    domCache.container.scrollTop = 0
   })
 }
 
@@ -1332,6 +1187,194 @@ sweetAlert.adaptInputValidator = (legacyValidator) => {
   return function adaptedInputValidator (inputValue, extraParams) {
     return legacyValidator.call(this, inputValue, extraParams)
       .then(() => undefined, validationError => validationError)
+  }
+}
+
+sweetAlert.getTitle = () => dom.getTitle()
+sweetAlert.getContent = () => dom.getContent()
+sweetAlert.getImage = () => dom.getImage()
+sweetAlert.getButtonsWrapper = () => dom.getButtonsWrapper()
+sweetAlert.getActions = () => dom.getActions()
+sweetAlert.getConfirmButton = () => dom.getConfirmButton()
+sweetAlert.getCancelButton = () => dom.getCancelButton()
+sweetAlert.getFooter = () => dom.getFooter()
+sweetAlert.isLoading = () => dom.isLoading()
+
+/**
+ * Show spinner instead of Confirm button and disable Cancel button
+ */
+sweetAlert.hideLoading = sweetAlert.disableLoading = () => {
+  if (currentContext) {
+    const {params, domCache} = currentContext
+    if (!params.showConfirmButton) {
+      dom.hide(domCache.confirmButton)
+      if (!params.showCancelButton) {
+        dom.hide(domCache.actions)
+      }
+    }
+    dom.removeClass([domCache.popup, domCache.actions], swalClasses.loading)
+    domCache.popup.removeAttribute('aria-busy')
+    domCache.popup.removeAttribute('data-loading')
+    domCache.confirmButton.disabled = false
+    domCache.cancelButton.disabled = false
+  }
+}
+
+// Get input element by specified type or, if type isn't specified, by params.input
+sweetAlert.getInput = (inputType) => {
+  if (currentContext) {
+    const {params, domCache} = currentContext
+    inputType = inputType || params.input
+    if (!inputType) {
+      return null
+    }
+    switch (inputType) {
+      case 'select':
+      case 'textarea':
+      case 'file':
+        return dom.getChildByClass(domCache.content, swalClasses[inputType])
+      case 'checkbox':
+        return domCache.popup.querySelector(`.${swalClasses.checkbox} input`)
+      case 'radio':
+        return domCache.popup.querySelector(`.${swalClasses.radio} input:checked`) ||
+          domCache.popup.querySelector(`.${swalClasses.radio} input:first-child`)
+      case 'range':
+        return domCache.popup.querySelector(`.${swalClasses.range} input`)
+      default:
+        return dom.getChildByClass(domCache.content, swalClasses.input)
+    }
+  }
+}
+
+sweetAlert.enableButtons = () => {
+  if (currentContext) {
+    const {domCache} = currentContext
+    domCache.confirmButton.disabled = false
+    domCache.cancelButton.disabled = false
+  }
+}
+
+sweetAlert.disableButtons = () => {
+  if (currentContext) {
+    const {domCache} = currentContext
+    domCache.confirmButton.disabled = true
+    domCache.cancelButton.disabled = true
+  }
+}
+
+sweetAlert.enableConfirmButton = () => {
+  if (currentContext) {
+    const {domCache} = currentContext
+    domCache.confirmButton.disabled = false
+  }
+}
+
+sweetAlert.disableConfirmButton = () => {
+  if (currentContext) {
+    const {domCache} = currentContext
+    domCache.confirmButton.disabled = true
+  }
+}
+
+sweetAlert.enableInput = () => {
+  if (currentContext) {
+    const input = sweetAlert.getInput()
+    if (!input) {
+      return false
+    }
+    if (input.type === 'radio') {
+      const radiosContainer = input.parentNode.parentNode
+      const radios = radiosContainer.querySelectorAll('input')
+      for (let i = 0; i < radios.length; i++) {
+        radios[i].disabled = false
+      }
+    } else {
+      input.disabled = false
+    }
+  }
+}
+
+sweetAlert.disableInput = () => {
+  if (currentContext) {
+    const input = sweetAlert.getInput()
+    if (!input) {
+      return false
+    }
+    if (input && input.type === 'radio') {
+      const radiosContainer = input.parentNode.parentNode
+      const radios = radiosContainer.querySelectorAll('input')
+      for (let i = 0; i < radios.length; i++) {
+        radios[i].disabled = true
+      }
+    } else {
+      input.disabled = true
+    }
+  }
+}
+
+// Show block with validation error
+sweetAlert.showValidationError = (error) => {
+  if (currentContext) {
+    const {domCache} = currentContext
+    domCache.validationError.innerHTML = error
+    const popupComputedStyle = window.getComputedStyle(domCache.popup)
+    domCache.validationError.style.marginLeft = `-${popupComputedStyle.getPropertyValue('padding-left')}`
+    domCache.validationError.style.marginRight = `-${popupComputedStyle.getPropertyValue('padding-right')}`
+    dom.show(domCache.validationError)
+
+    const input = sweetAlert.getInput()
+    if (input) {
+      input.setAttribute('aria-invalid', true)
+      input.setAttribute('aria-describedBy', swalClasses.validationerror)
+      dom.focusInput(input)
+      dom.addClass(input, swalClasses.inputerror)
+    }
+  }
+}
+
+// Hide block with validation error
+sweetAlert.resetValidationError = () => {
+  if (currentContext) {
+    const {domCache} = currentContext
+    if (domCache.validationError) {
+      dom.hide(domCache.validationError)
+    }
+
+    const input = sweetAlert.getInput()
+    if (input) {
+      input.removeAttribute('aria-invalid')
+      input.removeAttribute('aria-describedBy')
+      dom.removeClass(input, swalClasses.inputerror)
+    }
+  }
+}
+
+sweetAlert.getProgressSteps = () => {
+  if (currentContext) {
+    const {params} = currentContext
+    return params.progressSteps
+  }
+}
+
+sweetAlert.setProgressSteps = (progressSteps) => {
+  if (currentContext) {
+    const {params} = currentContext
+    params.progressSteps = progressSteps
+    setParameters(params)
+  }
+}
+
+sweetAlert.showProgressSteps = () => {
+  if (currentContext) {
+    const {domCache} = currentContext
+    dom.show(domCache.progressSteps)
+  }
+}
+
+sweetAlert.hideProgressSteps = () => {
+  if (currentContext) {
+    const {domCache} = currentContext
+    dom.hide(domCache.progressSteps)
   }
 }
 

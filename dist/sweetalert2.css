@@ -932,6 +932,7 @@ body.swal2-no-backdrop .swal2-shown {
   margin: 1.25em auto 1.875em;
   border: .25rem solid transparent;
   border-radius: 50%;
+  font-size: 1rem;
   line-height: 5rem;
   cursor: default;
   box-sizing: content-box;

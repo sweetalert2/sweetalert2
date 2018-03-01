@@ -31,13 +31,17 @@ module.exports = function (config) {
   if (!noLaunch) {
     if (isCi) {
       if (isCron) {
+        // Cron on Travis
         browsers = Object.keys(sauceLabsLaunchers)
       } else if (isWindows) {
+        // AppVeyor
         browsers = ['IE']
       } else {
+        // Travis
         browsers = ['Chrome', 'Firefox']
       }
     } else {
+      // Local development
       browsers = ['Chrome']
     }
   }

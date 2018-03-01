@@ -1,5 +1,5 @@
 /*!
- * sweetalert2 v7.12.17
+ * sweetalert2 v7.13.0
  * Released under the MIT License.
  */
 'use strict';
@@ -544,6 +544,7 @@ var measureScrollbar = function measureScrollbar() {
 
 var popupParams = _extends({}, defaultParams);
 var queue = [];
+var currentContext = void 0;
 
 var previousWindowKeyDown = void 0,
     windowOnkeydownOverridden = void 0;
@@ -949,7 +950,9 @@ var sweetAlert = function sweetAlert() {
     return false;
   }
 
-  var params = _extends({}, popupParams);
+  var context = currentContext = {};
+
+  var params = context.params = _extends({}, popupParams);
 
   switch (_typeof(args[0])) {
     case 'string':
@@ -1001,8 +1004,17 @@ var sweetAlert = function sweetAlert() {
 
   setParameters(params);
 
-  var container = getContainer();
-  var popup = getPopup();
+  var domCache = context.domCache = {
+    popup: getPopup(),
+    container: getContainer(),
+    content: getContent(),
+    actions: getActions(),
+    confirmButton: getConfirmButton(),
+    cancelButton: getCancelButton(),
+    closeButton: getCloseButton(),
+    validationError: getValidationError(),
+    progressSteps: getProgressSteps()
+  };
 
   return new Promise(function (resolve, reject) {
     // functions to handle all resolving/rejecting/settling
@@ -1029,36 +1041,14 @@ var sweetAlert = function sweetAlert() {
 
     // Close on timer
     if (params.timer) {
-      popup.timeout = setTimeout(function () {
+      domCache.popup.timeout = setTimeout(function () {
         return dismissWith('timer');
       }, params.timer);
     }
 
-    // Get input element by specified type or, if type isn't specified, by params.input
-    var getInput = function getInput(inputType) {
-      inputType = inputType || params.input;
-      if (!inputType) {
-        return null;
-      }
-      switch (inputType) {
-        case 'select':
-        case 'textarea':
-        case 'file':
-          return getChildByClass(content, swalClasses[inputType]);
-        case 'checkbox':
-          return popup.querySelector('.' + swalClasses.checkbox + ' input');
-        case 'radio':
-          return popup.querySelector('.' + swalClasses.radio + ' input:checked') || popup.querySelector('.' + swalClasses.radio + ' input:first-child');
-        case 'range':
-          return popup.querySelector('.' + swalClasses.range + ' input');
-        default:
-          return getChildByClass(content, swalClasses.input);
-      }
-    };
-
     // Get the value of the popup input
     var getInputValue = function getInputValue() {
-      var input = getInput();
+      var input = sweetAlert.getInput();
       if (!input) {
         return null;
       }
@@ -1077,7 +1067,7 @@ var sweetAlert = function sweetAlert() {
     // input autofocus
     if (params.input) {
       setTimeout(function () {
-        var input = getInput();
+        var input = sweetAlert.getInput();
         if (input) {
           focusInput(input);
         }
@@ -1105,7 +1095,7 @@ var sweetAlert = function sweetAlert() {
           });
         } else {
           preConfirmPromise.then(function (preConfirmValue) {
-            if (isVisible(getValidationError()) || preConfirmValue === false) {
+            if (isVisible(domCache.validationError) || preConfirmValue === false) {
               sweetAlert.hideLoading();
             } else {
               succeedWith(preConfirmValue || value);
@@ -1123,8 +1113,9 @@ var sweetAlert = function sweetAlert() {
     var onButtonEvent = function onButtonEvent(event) {
       var e = event || window.event;
       var target = e.target || e.srcElement;
-      var confirmButton = getConfirmButton();
-      var cancelButton = getCancelButton();
+      var confirmButton = domCache.confirmButton,
+          cancelButton = domCache.cancelButton;
+
       var targetedConfirm = confirmButton && (confirmButton === target || confirmButton.contains(target));
       var targetedCancel = cancelButton && (cancelButton === target || cancelButton.contains(target));
 
@@ -1183,7 +1174,7 @@ var sweetAlert = function sweetAlert() {
       }
     };
 
-    var buttons = popup.querySelectorAll('button');
+    var buttons = domCache.popup.querySelectorAll('button');
     for (var i = 0; i < buttons.length; i++) {
       buttons[i].onclick = onButtonEvent;
       buttons[i].onmouseover = onButtonEvent;
@@ -1192,14 +1183,14 @@ var sweetAlert = function sweetAlert() {
     }
 
     // Closing popup by close button
-    getCloseButton().onclick = function () {
+    domCache.closeButton.onclick = function () {
       dismissWith(sweetAlert.DismissReason.close);
     };
 
     if (params.toast) {
       // Closing popup by backdrop click
-      popup.onclick = function (e) {
-        if (e.target !== popup || params.showConfirmButton || params.showCancelButton) {
+      domCache.popup.onclick = function (e) {
+        if (e.target !== domCache.popup || params.showConfirmButton || params.showCancelButton) {
           return;
         }
         if (params.allowOutsideClick) {
@@ -1212,34 +1203,34 @@ var sweetAlert = function sweetAlert() {
 
       // Ignore click events that had mousedown on the popup but mouseup on the container
       // This can happen when the user drags a slider
-      popup.onmousedown = function () {
-        container.onmouseup = function (e) {
-          container.onmouseup = undefined;
+      domCache.popup.onmousedown = function () {
+        domCache.container.onmouseup = function (e) {
+          domCache.container.onmouseup = undefined;
           // We only check if the mouseup target is the container because usually it doesn't
           // have any other direct children aside of the popup
-          if (e.target === container) {
+          if (e.target === domCache.container) {
             ignoreOutsideClick = true;
           }
         };
       };
 
       // Ignore click events that had mousedown on the container but mouseup on the popup
-      container.onmousedown = function () {
-        popup.onmouseup = function (e) {
-          popup.onmouseup = undefined;
+      domCache.container.onmousedown = function () {
+        domCache.popup.onmouseup = function (e) {
+          domCache.popup.onmouseup = undefined;
           // We also need to check if the mouseup target is a child of the popup
-          if (e.target === popup || popup.contains(e.target)) {
+          if (e.target === domCache.popup || domCache.popup.contains(e.target)) {
             ignoreOutsideClick = true;
           }
         };
       };
 
-      container.onclick = function (e) {
+      domCache.container.onclick = function (e) {
         if (ignoreOutsideClick) {
           ignoreOutsideClick = false;
           return;
         }
-        if (e.target !== container) {
+        if (e.target !== domCache.container) {
           return;
         }
         if (callIfFunction(params.allowOutsideClick)) {
@@ -1248,16 +1239,11 @@ var sweetAlert = function sweetAlert() {
       };
     }
 
-    var content = getContent();
-    var actions = getActions();
-    var confirmButton = getConfirmButton();
-    var cancelButton = getCancelButton();
-
     // Reverse buttons (Confirm on the right side)
     if (params.reverseButtons) {
-      confirmButton.parentNode.insertBefore(cancelButton, confirmButton);
+      domCache.confirmButton.parentNode.insertBefore(domCache.cancelButton, domCache.confirmButton);
     } else {
-      confirmButton.parentNode.insertBefore(confirmButton, cancelButton);
+      domCache.confirmButton.parentNode.insertBefore(domCache.confirmButton, domCache.cancelButton);
     }
 
     // Focus handling
@@ -1291,7 +1277,7 @@ var sweetAlert = function sweetAlert() {
       ];
 
       if (e.key === 'Enter' && !e.isComposing) {
-        if (e.target === getInput()) {
+        if (e.target === sweetAlert.getInput()) {
           if (['textarea', 'file'].indexOf(params.input) !== -1) {
             return; // do not submit
           }
@@ -1326,11 +1312,11 @@ var sweetAlert = function sweetAlert() {
         // ARROWS - switch focus between buttons
       } else if (arrowKeys.indexOf(e.key) !== -1) {
         // focus Cancel button if Confirm button is currently focused
-        if (document.activeElement === confirmButton && isVisible(cancelButton)) {
-          cancelButton.focus();
+        if (document.activeElement === domCache.confirmButton && isVisible(domCache.cancelButton)) {
+          domCache.cancelButton.focus();
           // and vice versa
-        } else if (document.activeElement === cancelButton && isVisible(confirmButton)) {
-          confirmButton.focus();
+        } else if (document.activeElement === domCache.cancelButton && isVisible(domCache.confirmButton)) {
+          domCache.confirmButton.focus();
         }
 
         // ESC
@@ -1350,154 +1336,6 @@ var sweetAlert = function sweetAlert() {
       window.onkeydown = handleKeyDown;
     }
 
-    /**
-     * Show spinner instead of Confirm button and disable Cancel button
-     */
-    sweetAlert.hideLoading = sweetAlert.disableLoading = function () {
-      if (!params.showConfirmButton) {
-        hide(confirmButton);
-        if (!params.showCancelButton) {
-          hide(getActions());
-        }
-      }
-      removeClass([popup, actions], swalClasses.loading);
-      popup.removeAttribute('aria-busy');
-      popup.removeAttribute('data-loading');
-      confirmButton.disabled = false;
-      cancelButton.disabled = false;
-    };
-
-    sweetAlert.getTitle = function () {
-      return getTitle();
-    };
-    sweetAlert.getContent = function () {
-      return getContent();
-    };
-    sweetAlert.getInput = function () {
-      return getInput();
-    };
-    sweetAlert.getImage = function () {
-      return getImage();
-    };
-    sweetAlert.getButtonsWrapper = function () {
-      return getButtonsWrapper();
-    };
-    sweetAlert.getActions = function () {
-      return getActions();
-    };
-    sweetAlert.getConfirmButton = function () {
-      return getConfirmButton();
-    };
-    sweetAlert.getCancelButton = function () {
-      return getCancelButton();
-    };
-    sweetAlert.getFooter = function () {
-      return getFooter();
-    };
-    sweetAlert.isLoading = function () {
-      return isLoading();
-    };
-
-    sweetAlert.enableButtons = function () {
-      confirmButton.disabled = false;
-      cancelButton.disabled = false;
-    };
-
-    sweetAlert.disableButtons = function () {
-      confirmButton.disabled = true;
-      cancelButton.disabled = true;
-    };
-
-    sweetAlert.enableConfirmButton = function () {
-      confirmButton.disabled = false;
-    };
-
-    sweetAlert.disableConfirmButton = function () {
-      confirmButton.disabled = true;
-    };
-
-    sweetAlert.enableInput = function () {
-      var input = getInput();
-      if (!input) {
-        return false;
-      }
-      if (input.type === 'radio') {
-        var radiosContainer = input.parentNode.parentNode;
-        var radios = radiosContainer.querySelectorAll('input');
-        for (var _i4 = 0; _i4 < radios.length; _i4++) {
-          radios[_i4].disabled = false;
-        }
-      } else {
-        input.disabled = false;
-      }
-    };
-
-    sweetAlert.disableInput = function () {
-      var input = getInput();
-      if (!input) {
-        return false;
-      }
-      if (input && input.type === 'radio') {
-        var radiosContainer = input.parentNode.parentNode;
-        var radios = radiosContainer.querySelectorAll('input');
-        for (var _i5 = 0; _i5 < radios.length; _i5++) {
-          radios[_i5].disabled = true;
-        }
-      } else {
-        input.disabled = true;
-      }
-    };
-
-    // Show block with validation error
-    sweetAlert.showValidationError = function (error$$1) {
-      var validationError = getValidationError();
-      validationError.innerHTML = error$$1;
-      var popupComputedStyle = window.getComputedStyle(popup);
-      validationError.style.marginLeft = '-' + popupComputedStyle.getPropertyValue('padding-left');
-      validationError.style.marginRight = '-' + popupComputedStyle.getPropertyValue('padding-right');
-      show(validationError);
-
-      var input = getInput();
-      if (input) {
-        input.setAttribute('aria-invalid', true);
-        input.setAttribute('aria-describedBy', swalClasses.validationerror);
-        focusInput(input);
-        addClass(input, swalClasses.inputerror);
-      }
-    };
-
-    // Hide block with validation error
-    sweetAlert.resetValidationError = function () {
-      var validationError = getValidationError();
-      if (validationError) {
-        hide(validationError);
-      }
-
-      var input = getInput();
-      if (input) {
-        input.removeAttribute('aria-invalid');
-        input.removeAttribute('aria-describedBy');
-        removeClass(input, swalClasses.inputerror);
-      }
-    };
-
-    sweetAlert.getProgressSteps = function () {
-      return params.progressSteps;
-    };
-
-    sweetAlert.setProgressSteps = function (progressSteps) {
-      params.progressSteps = progressSteps;
-      setParameters(params);
-    };
-
-    sweetAlert.showProgressSteps = function () {
-      show(getProgressSteps());
-    };
-
-    sweetAlert.hideProgressSteps = function () {
-      hide(getProgressSteps());
-    };
-
     sweetAlert.enableButtons();
     sweetAlert.hideLoading();
     sweetAlert.resetValidationError();
@@ -1509,10 +1347,10 @@ var sweetAlert = function sweetAlert() {
     // inputs
     var inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea'];
     var input = void 0;
-    for (var _i6 = 0; _i6 < inputTypes.length; _i6++) {
-      var inputClass = swalClasses[inputTypes[_i6]];
-      var inputContainer = getChildByClass(content, inputClass);
-      input = getInput(inputTypes[_i6]);
+    for (var _i4 = 0; _i4 < inputTypes.length; _i4++) {
+      var inputClass = swalClasses[inputTypes[_i4]];
+      var inputContainer = getChildByClass(domCache.content, inputClass);
+      input = sweetAlert.getInput(inputTypes[_i4]);
 
       // set attributes
       if (input) {
@@ -1546,20 +1384,20 @@ var sweetAlert = function sweetAlert() {
       case 'number':
       case 'tel':
       case 'url':
-        input = getChildByClass(content, swalClasses.input);
+        input = getChildByClass(domCache.content, swalClasses.input);
         input.value = params.inputValue;
         input.placeholder = params.inputPlaceholder;
         input.type = params.input;
         show(input);
         break;
       case 'file':
-        input = getChildByClass(content, swalClasses.file);
+        input = getChildByClass(domCache.content, swalClasses.file);
         input.placeholder = params.inputPlaceholder;
         input.type = params.input;
         show(input);
         break;
       case 'range':
-        var range = getChildByClass(content, swalClasses.range);
+        var range = getChildByClass(domCache.content, swalClasses.range);
         var rangeInput = range.querySelector('input');
         var rangeOutput = range.querySelector('output');
         rangeInput.value = params.inputValue;
@@ -1568,7 +1406,7 @@ var sweetAlert = function sweetAlert() {
         show(range);
         break;
       case 'select':
-        var select = getChildByClass(content, swalClasses.select);
+        var select = getChildByClass(domCache.content, swalClasses.select);
         select.innerHTML = '';
         if (params.inputPlaceholder) {
           var placeholder = document.createElement('option');
@@ -1597,7 +1435,7 @@ var sweetAlert = function sweetAlert() {
         };
         break;
       case 'radio':
-        var radio = getChildByClass(content, swalClasses.radio);
+        var radio = getChildByClass(domCache.content, swalClasses.radio);
         radio.innerHTML = '';
         populateInputOptions = function populateInputOptions(inputOptions) {
           inputOptions.forEach(function (_ref3) {
@@ -1625,8 +1463,8 @@ var sweetAlert = function sweetAlert() {
         };
         break;
       case 'checkbox':
-        var checkbox = getChildByClass(content, swalClasses.checkbox);
-        var checkboxInput = getInput('checkbox');
+        var checkbox = getChildByClass(domCache.content, swalClasses.checkbox);
+        var checkboxInput = sweetAlert.getInput('checkbox');
         checkboxInput.type = 'checkbox';
         checkboxInput.value = 1;
         checkboxInput.id = swalClasses.checkbox;
@@ -1641,7 +1479,7 @@ var sweetAlert = function sweetAlert() {
         show(checkbox);
         break;
       case 'textarea':
-        var textarea = getChildByClass(content, swalClasses.textarea);
+        var textarea = getChildByClass(domCache.content, swalClasses.textarea);
         textarea.value = params.inputValue;
         textarea.placeholder = params.inputPlaceholder;
         show(textarea);
@@ -1677,17 +1515,17 @@ var sweetAlert = function sweetAlert() {
         if (document.activeElement) {
           document.activeElement.blur();
         }
-      } else if (params.focusCancel && isVisible(cancelButton)) {
-        cancelButton.focus();
-      } else if (params.focusConfirm && isVisible(confirmButton)) {
-        confirmButton.focus();
+      } else if (params.focusCancel && isVisible(domCache.cancelButton)) {
+        domCache.cancelButton.focus();
+      } else if (params.focusConfirm && isVisible(domCache.confirmButton)) {
+        domCache.confirmButton.focus();
       } else {
         setFocus(-1, 1);
       }
     }
 
     // fix scroll
-    getContainer().scrollTop = 0;
+    domCache.container.scrollTop = 0;
   });
 };
 
@@ -1899,6 +1737,237 @@ sweetAlert.adaptInputValidator = function (legacyValidator) {
   };
 };
 
+sweetAlert.getTitle = function () {
+  return getTitle();
+};
+sweetAlert.getContent = function () {
+  return getContent();
+};
+sweetAlert.getImage = function () {
+  return getImage();
+};
+sweetAlert.getButtonsWrapper = function () {
+  return getButtonsWrapper();
+};
+sweetAlert.getActions = function () {
+  return getActions();
+};
+sweetAlert.getConfirmButton = function () {
+  return getConfirmButton();
+};
+sweetAlert.getCancelButton = function () {
+  return getCancelButton();
+};
+sweetAlert.getFooter = function () {
+  return getFooter();
+};
+sweetAlert.isLoading = function () {
+  return isLoading();
+};
+
+/**
+ * Show spinner instead of Confirm button and disable Cancel button
+ */
+sweetAlert.hideLoading = sweetAlert.disableLoading = function () {
+  if (currentContext) {
+    var _currentContext = currentContext,
+        params = _currentContext.params,
+        domCache = _currentContext.domCache;
+
+    if (!params.showConfirmButton) {
+      hide(domCache.confirmButton);
+      if (!params.showCancelButton) {
+        hide(domCache.actions);
+      }
+    }
+    removeClass([domCache.popup, domCache.actions], swalClasses.loading);
+    domCache.popup.removeAttribute('aria-busy');
+    domCache.popup.removeAttribute('data-loading');
+    domCache.confirmButton.disabled = false;
+    domCache.cancelButton.disabled = false;
+  }
+};
+
+// Get input element by specified type or, if type isn't specified, by params.input
+sweetAlert.getInput = function (inputType) {
+  if (currentContext) {
+    var _currentContext2 = currentContext,
+        params = _currentContext2.params,
+        domCache = _currentContext2.domCache;
+
+    inputType = inputType || params.input;
+    if (!inputType) {
+      return null;
+    }
+    switch (inputType) {
+      case 'select':
+      case 'textarea':
+      case 'file':
+        return getChildByClass(domCache.content, swalClasses[inputType]);
+      case 'checkbox':
+        return domCache.popup.querySelector('.' + swalClasses.checkbox + ' input');
+      case 'radio':
+        return domCache.popup.querySelector('.' + swalClasses.radio + ' input:checked') || domCache.popup.querySelector('.' + swalClasses.radio + ' input:first-child');
+      case 'range':
+        return domCache.popup.querySelector('.' + swalClasses.range + ' input');
+      default:
+        return getChildByClass(domCache.content, swalClasses.input);
+    }
+  }
+};
+
+sweetAlert.enableButtons = function () {
+  if (currentContext) {
+    var _currentContext3 = currentContext,
+        domCache = _currentContext3.domCache;
+
+    domCache.confirmButton.disabled = false;
+    domCache.cancelButton.disabled = false;
+  }
+};
+
+sweetAlert.disableButtons = function () {
+  if (currentContext) {
+    var _currentContext4 = currentContext,
+        domCache = _currentContext4.domCache;
+
+    domCache.confirmButton.disabled = true;
+    domCache.cancelButton.disabled = true;
+  }
+};
+
+sweetAlert.enableConfirmButton = function () {
+  if (currentContext) {
+    var _currentContext5 = currentContext,
+        domCache = _currentContext5.domCache;
+
+    domCache.confirmButton.disabled = false;
+  }
+};
+
+sweetAlert.disableConfirmButton = function () {
+  if (currentContext) {
+    var _currentContext6 = currentContext,
+        domCache = _currentContext6.domCache;
+
+    domCache.confirmButton.disabled = true;
+  }
+};
+
+sweetAlert.enableInput = function () {
+  if (currentContext) {
+    var input = sweetAlert.getInput();
+    if (!input) {
+      return false;
+    }
+    if (input.type === 'radio') {
+      var radiosContainer = input.parentNode.parentNode;
+      var radios = radiosContainer.querySelectorAll('input');
+      for (var i = 0; i < radios.length; i++) {
+        radios[i].disabled = false;
+      }
+    } else {
+      input.disabled = false;
+    }
+  }
+};
+
+sweetAlert.disableInput = function () {
+  if (currentContext) {
+    var input = sweetAlert.getInput();
+    if (!input) {
+      return false;
+    }
+    if (input && input.type === 'radio') {
+      var radiosContainer = input.parentNode.parentNode;
+      var radios = radiosContainer.querySelectorAll('input');
+      for (var i = 0; i < radios.length; i++) {
+        radios[i].disabled = true;
+      }
+    } else {
+      input.disabled = true;
+    }
+  }
+};
+
+// Show block with validation error
+sweetAlert.showValidationError = function (error$$1) {
+  if (currentContext) {
+    var _currentContext7 = currentContext,
+        domCache = _currentContext7.domCache;
+
+    domCache.validationError.innerHTML = error$$1;
+    var popupComputedStyle = window.getComputedStyle(domCache.popup);
+    domCache.validationError.style.marginLeft = '-' + popupComputedStyle.getPropertyValue('padding-left');
+    domCache.validationError.style.marginRight = '-' + popupComputedStyle.getPropertyValue('padding-right');
+    show(domCache.validationError);
+
+    var input = sweetAlert.getInput();
+    if (input) {
+      input.setAttribute('aria-invalid', true);
+      input.setAttribute('aria-describedBy', swalClasses.validationerror);
+      focusInput(input);
+      addClass(input, swalClasses.inputerror);
+    }
+  }
+};
+
+// Hide block with validation error
+sweetAlert.resetValidationError = function () {
+  if (currentContext) {
+    var _currentContext8 = currentContext,
+        domCache = _currentContext8.domCache;
+
+    if (domCache.validationError) {
+      hide(domCache.validationError);
+    }
+
+    var input = sweetAlert.getInput();
+    if (input) {
+      input.removeAttribute('aria-invalid');
+      input.removeAttribute('aria-describedBy');
+      removeClass(input, swalClasses.inputerror);
+    }
+  }
+};
+
+sweetAlert.getProgressSteps = function () {
+  if (currentContext) {
+    var _currentContext9 = currentContext,
+        params = _currentContext9.params;
+
+    return params.progressSteps;
+  }
+};
+
+sweetAlert.setProgressSteps = function (progressSteps) {
+  if (currentContext) {
+    var _currentContext10 = currentContext,
+        params = _currentContext10.params;
+
+    params.progressSteps = progressSteps;
+    setParameters(params);
+  }
+};
+
+sweetAlert.showProgressSteps = function () {
+  if (currentContext) {
+    var _currentContext11 = currentContext,
+        domCache = _currentContext11.domCache;
+
+    show(domCache.progressSteps);
+  }
+};
+
+sweetAlert.hideProgressSteps = function () {
+  if (currentContext) {
+    var _currentContext12 = currentContext,
+        domCache = _currentContext12.domCache;
+
+    hide(domCache.progressSteps);
+  }
+};
+
 sweetAlert.DismissReason = Object.freeze({
   cancel: 'cancel',
   backdrop: 'overlay',
@@ -1909,7 +1978,7 @@ sweetAlert.DismissReason = Object.freeze({
 
 sweetAlert.noop = function () {};
 
-sweetAlert.version = '7.12.17';
+sweetAlert.version = '7.13.0';
 
 sweetAlert.default = sweetAlert;
 

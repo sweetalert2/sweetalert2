@@ -613,6 +613,7 @@ body {
   margin: $swal2-icon-margin;
   border: .25rem solid transparent;
   border-radius: 50%;
+  font-size: 1rem; // TODO remove, #974
   line-height: $swal2-icon-size;
   cursor: default;
   box-sizing: content-box;

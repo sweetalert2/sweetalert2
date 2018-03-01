@@ -14,13 +14,10 @@ before_script:
   - greenkeeper-lockfile-update
 
 script:
-  # xvfb-run is needed for headless testing with Chrome and Firefox
+  # xvfb-run is needed for headless testing with real browsers
   - xvfb-run yarn test
 
 after_script:
-  - if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
-      xvfb-run yarn run check:tests:saucelabs;
-    fi
   - greenkeeper-lockfile-upload
 
 notifications:

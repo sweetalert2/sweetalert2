@@ -159,6 +159,6 @@ gulp.task('develop', gulp.series(
     ]).on('change', browserSync.reload)
   },
   async function tests () {
-    await execute(`karma start karma.conf.js`)
+    await execute(`karma start karma.conf.js --no-launch`)
   }
 ))

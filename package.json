@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "7.13.0",
+  "version": "7.13.1",
   "repository": "sweetalert2/sweetalert2",
   "homepage": "https://sweetalert2.github.io/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
@@ -34,6 +34,7 @@
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^3.0.0",
     "gulp-uglify": "^3.0.0",
+    "is-ci": "^1.1.0",
     "jquery": "^3.3.1",
     "karma": "^2.0.0",
     "karma-chrome-launcher": "^2.2.0",
@@ -102,9 +103,7 @@
     "check": "npm run check:linting && npm run check:bundlesize && npm run check:tests && npm run check:ts",
     "check:linting": "gulp lint",
     "check:bundlesize": "bundlesize -f dist/sweetalert2.all.min.js -s 15kB",
-    "check:tests": "karma start karma.conf.js --single-run --browsers Chrome,Firefox",
-    "check:tests:ie": "karma start karma.conf.js --single-run --browsers IE",
-    "check:tests:saucelabs": "karma start karma.conf.js --single-run --browsers sauce_safari,sauce_edge,sauce_iphone,sauce_android --captureTimeout 240000 --browserNoActivityTimeout 240000",
+    "check:tests": "karma start karma.conf.js --single-run  --captureTimeout 240000 --browserNoActivityTimeout 240000",
     "check:ts": "tsc sweetalert2.d.ts",
     "release": "node release"
   },

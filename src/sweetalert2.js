@@ -2,6 +2,8 @@ import defaultParams, { deprecatedParams } from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
 import { formatInputOptions, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom.js'
+import {fixScrollbar, undoScrollbar} from './utils/scrollbarFix'
+import {iOSfix, undoIOSfix} from './utils/iosFix'
 
 let popupParams = Object.assign({}, defaultParams)
 let queue = []
@@ -358,45 +360,6 @@ const openPopup = (animation, onBeforeOpen, onComplete) => {
     setTimeout(() => {
       onComplete(popup)
     })
-  }
-}
-
-const fixScrollbar = () => {
-  // for queues, do not do this more than once
-  if (dom.states.previousBodyPadding !== null) {
-    return
-  }
-  // if the body has overflow
-  if (document.body.scrollHeight > window.innerHeight) {
-    // add padding so the content doesn't shift after removal of scrollbar
-    dom.states.previousBodyPadding = document.body.style.paddingRight
-    document.body.style.paddingRight = dom.measureScrollbar() + 'px'
-  }
-}
-
-const undoScrollbar = () => {
-  if (dom.states.previousBodyPadding !== null) {
-    document.body.style.paddingRight = dom.states.previousBodyPadding
-    dom.states.previousBodyPadding = null
-  }
-}
-
-// Fix iOS scrolling http://stackoverflow.com/q/39626302/1331425
-const iOSfix = () => {
-  const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
-  if (iOS && !dom.hasClass(document.body, swalClasses.iosfix)) {
-    const offset = document.body.scrollTop
-    document.body.style.top = (offset * -1) + 'px'
-    dom.addClass(document.body, swalClasses.iosfix)
-  }
-}
-
-const undoIOSfix = () => {
-  if (dom.hasClass(document.body, swalClasses.iosfix)) {
-    const offset = parseInt(document.body.style.top, 10)
-    dom.removeClass(document.body, swalClasses.iosfix)
-    document.body.style.top = ''
-    document.body.scrollTop = (offset * -1)
   }
 }
 

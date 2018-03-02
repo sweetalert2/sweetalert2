@@ -3,6 +3,7 @@ import { swalClasses } from './utils/classes.js'
 import { formatInputOptions, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom.js'
 import setParameters from './utils/setParameters.js'
+import { DismissReason } from './utils/DismissReason'
 import {fixScrollbar, undoScrollbar} from './utils/scrollbarFix'
 import {iOSfix, undoIOSfix} from './utils/iosFix'
 import {version} from '../package.json'
@@ -1055,13 +1056,7 @@ sweetAlert.hideProgressSteps = () => {
   }
 }
 
-sweetAlert.DismissReason = Object.freeze({
-  cancel: 'cancel',
-  backdrop: 'overlay',
-  close: 'close',
-  esc: 'esc',
-  timer: 'timer'
-})
+sweetAlert.DismissReason = DismissReason
 
 sweetAlert.noop = () => { }
 

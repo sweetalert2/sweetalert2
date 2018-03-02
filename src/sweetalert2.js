@@ -3,6 +3,7 @@ import { swalClasses } from './utils/classes.js'
 import { formatInputOptions, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom.js'
 import setParameters from './utils/setParameters.js'
+import {version} from '../package.json'
 
 let popupParams = Object.assign({}, defaultParams)
 let queue = []
@@ -1101,7 +1102,7 @@ sweetAlert.DismissReason = Object.freeze({
 
 sweetAlert.noop = () => { }
 
-sweetAlert.version = ''
+sweetAlert.version = version
 
 sweetAlert.default = sweetAlert
 

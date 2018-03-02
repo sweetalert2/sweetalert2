@@ -18,9 +18,6 @@ script:
   - xvfb-run yarn test
 
 after_script:
-  # repeat unit tests against dist/sweetalert2.all.min.js
-  - sed -i 's/sweetalert2.js/sweetalert2.all.min.js/g' karma.conf.js
-  - xvfb-run yarn run check:tests # This is really expensive
   - greenkeeper-lockfile-upload
 
 notifications:

@@ -2,6 +2,7 @@ import defaultParams, { deprecatedParams } from './utils/params.js'
 import { swalClasses, iconTypes } from './utils/classes.js'
 import { formatInputOptions, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom.js'
+import { DismissReason } from './utils/DismissReason'
 
 let popupParams = Object.assign({}, defaultParams)
 let queue = []
@@ -1378,13 +1379,7 @@ sweetAlert.hideProgressSteps = () => {
   }
 }
 
-sweetAlert.DismissReason = Object.freeze({
-  cancel: 'cancel',
-  backdrop: 'overlay',
-  close: 'close',
-  esc: 'esc',
-  timer: 'timer'
-})
+sweetAlert.DismissReason = DismissReason
 
 sweetAlert.noop = () => { }
 

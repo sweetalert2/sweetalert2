@@ -93,13 +93,13 @@ const sweetHTML = `
        <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>
      </div>
      <div class="${swalClasses.icon} ${iconTypes.question}">
-       <span class="swal2-icon-text">?</span>
+       <span class="${swalClasses['icon-text']}">?</span>
       </div>
      <div class="${swalClasses.icon} ${iconTypes.warning}">
-       <span class="swal2-icon-text">!</span>
+       <span class="${swalClasses['icon-text']}">!</span>
       </div>
      <div class="${swalClasses.icon} ${iconTypes.info}">
-       <span class="swal2-icon-text">i</span>
+       <span class="${swalClasses['icon-text']}">i</span>
       </div>
      <div class="${swalClasses.icon} ${iconTypes.success}">
        <div class="swal2-success-circular-line-left"></div>

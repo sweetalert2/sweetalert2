@@ -92,9 +92,15 @@ const sweetHTML = `
      <div class="${swalClasses.icon} ${iconTypes.error}">
        <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>
      </div>
-     <div class="${swalClasses.icon} ${iconTypes.question}">?</div>
-     <div class="${swalClasses.icon} ${iconTypes.warning}">!</div>
-     <div class="${swalClasses.icon} ${iconTypes.info}">i</div>
+     <div class="${swalClasses.icon} ${iconTypes.question}">
+       <span class="${swalClasses['icon-text']}">?</span>
+      </div>
+     <div class="${swalClasses.icon} ${iconTypes.warning}">
+       <span class="${swalClasses['icon-text']}">!</span>
+      </div>
+     <div class="${swalClasses.icon} ${iconTypes.info}">
+       <span class="${swalClasses['icon-text']}">i</span>
+      </div>
      <div class="${swalClasses.icon} ${iconTypes.success}">
        <div class="swal2-success-circular-line-left"></div>
        <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>

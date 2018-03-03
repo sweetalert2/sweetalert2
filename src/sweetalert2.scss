@@ -611,14 +611,17 @@ body {
   width: $swal2-icon-size;
   height: $swal2-icon-size;
   margin: $swal2-icon-margin;
-  border: .25rem solid transparent;
+  border: .25em solid transparent;
   border-radius: 50%;
-  font-size: 1rem; // TODO remove, #974
   line-height: $swal2-icon-size;
   cursor: default;
   box-sizing: content-box;
   user-select: none;
   zoom: $swal2-icon-zoom;
+
+  &-text {
+    font-size: 3.75em;
+  }
 
   &.swal2-error {
     border-color: $swal2-error;
@@ -654,7 +657,6 @@ body {
   &.swal2-question {
     margin: .333333em auto .5em;
     font-family: $swal2-font;
-    font-size: 3.75em;
   }
 
   &.swal2-warning {

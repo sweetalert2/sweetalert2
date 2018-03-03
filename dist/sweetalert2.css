@@ -927,13 +927,12 @@ body.swal2-no-backdrop .swal2-shown {
 .swal2-icon {
   position: relative;
   justify-content: center;
-  width: 5rem;
-  height: 5rem;
+  width: 5em;
+  height: 5em;
   margin: 1.25em auto 1.875em;
-  border: .25rem solid transparent;
+  border: .25em solid transparent;
   border-radius: 50%;
-  font-size: 1rem;
-  line-height: 5rem;
+  line-height: 5em;
   cursor: default;
   box-sizing: content-box;
   -webkit-user-select: none;
@@ -941,6 +940,8 @@ body.swal2-no-backdrop .swal2-shown {
       -ms-user-select: none;
           user-select: none;
   zoom: normal; }
+  .swal2-icon-text {
+    font-size: 3.75em; }
   .swal2-icon.swal2-error {
     border-color: #f27474; }
     .swal2-icon.swal2-error .swal2-x-mark {
@@ -964,8 +965,7 @@ body.swal2-no-backdrop .swal2-shown {
                 transform: rotate(-45deg); }
   .swal2-icon.swal2-warning, .swal2-icon.swal2-info, .swal2-icon.swal2-question {
     margin: .333333em auto .5em;
-    font-family: inherit;
-    font-size: 3.75em; }
+    font-family: inherit; }
   .swal2-icon.swal2-warning {
     border-color: #facea8;
     color: #f8bb86; }

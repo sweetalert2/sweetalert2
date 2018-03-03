@@ -15,7 +15,7 @@ before_script:
 
 script:
   # xvfb-run is needed for headless testing with real browsers
-  - xvfb-run yarn test
+  - travis_retry xvfb-run yarn test
 
 after_script:
   - greenkeeper-lockfile-upload

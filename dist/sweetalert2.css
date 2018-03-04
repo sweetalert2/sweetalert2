@@ -963,9 +963,6 @@ body.swal2-no-backdrop .swal2-shown {
         right: 1em;
         -webkit-transform: rotate(-45deg);
                 transform: rotate(-45deg); }
-  .swal2-icon.swal2-warning, .swal2-icon.swal2-info, .swal2-icon.swal2-question {
-    margin: .333333em auto .5em;
-    font-family: inherit; }
   .swal2-icon.swal2-warning {
     border-color: #facea8;
     color: #f8bb86; }

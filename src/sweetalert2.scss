@@ -652,13 +652,6 @@ body {
     }
   }
 
-  &.swal2-warning,
-  &.swal2-info,
-  &.swal2-question {
-    margin: .333333em auto .5em;
-    font-family: $swal2-font;
-  }
-
   &.swal2-warning {
     border-color: lighten($swal2-warning, 7);
     color: $swal2-warning;

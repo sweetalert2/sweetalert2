@@ -97,53 +97,7 @@ const sweetAlert = (...args) => {
 
   const context = currentContext = {}
 
-  const params = context.params = Object.assign({}, popupParams)
-
-  switch (typeof args[0]) {
-    case 'string':
-      [params.title, params.html, params.type] = args
-      break
-
-    case 'object':
-      showWarningsForParams(args[0])
-      Object.assign(params, args[0])
-      params.extraParams = args[0].extraParams
-
-      if (params.input === 'email' && params.inputValidator === null) {
-        const inputValidator = (email) => {
-          return new Promise((resolve, reject) => {
-            const emailRegex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/
-            if (emailRegex.test(email)) {
-              resolve()
-            } else {
-              reject('Invalid email address')
-            }
-          })
-        }
-        params.inputValidator = params.expectRejections ? inputValidator : sweetAlert.adaptInputValidator(inputValidator)
-      }
-
-      if (params.input === 'url' && params.inputValidator === null) {
-        const inputValidator = (url) => {
-          return new Promise((resolve, reject) => {
-            // taken from https://stackoverflow.com/a/3809435/1331425
-            const urlRegex = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/
-            if (urlRegex.test(url)) {
-              resolve()
-            } else {
-              reject('Invalid URL')
-            }
-          })
-        }
-        params.inputValidator = params.expectRejections ? inputValidator : sweetAlert.adaptInputValidator(inputValidator)
-      }
-      break
-
-    default:
-      error('Unexpected type of argument! Expected "string" or "object", got ' + typeof args[0])
-      return false
-  }
-
+  const params = context.params = Object.assign({}, popupParams, sweetAlert.argsToParams(args))
   setParameters(params)
 
   const domCache = context.domCache = {
@@ -1054,6 +1008,25 @@ sweetAlert.hideProgressSteps = () => {
     const {domCache} = currentContext
     dom.hide(domCache.progressSteps)
   }
+}
+
+sweetAlert.argsToParams = (args) => {
+  const params = {}
+  switch (typeof args[0]) {
+    case 'string':
+      [params.title, params.html, params.type] = args
+      break
+
+    case 'object':
+      showWarningsForParams(args[0])
+      Object.assign(params, args[0])
+      break
+
+    default:
+      error('Unexpected type of argument! Expected "string" or "object", got ' + typeof args[0])
+      return false
+  }
+  return params
 }
 
 sweetAlert.DismissReason = DismissReason

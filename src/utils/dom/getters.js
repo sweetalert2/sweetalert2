@@ -3,7 +3,10 @@ import { uniqueArray, warnOnce } from '../utils'
 
 export const getContainer = () => document.body.querySelector('.' + swalClasses.container)
 
-const elementByClass = (className) => getContainer() ? getContainer().querySelector('.' + className) : null
+const elementByClass = (className) => {
+  const container = getContainer()
+  return container ? container.querySelector('.' + className) : null
+}
 
 export const getPopup = () => getContainer() ? getContainer().querySelector('.' + swalClasses.popup) : null
 

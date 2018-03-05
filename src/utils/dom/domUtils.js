@@ -1,5 +1,4 @@
 import { swalClasses } from '../classes'
-import { isNodeEnv } from '../isNodeEnv'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
@@ -96,28 +95,5 @@ export const resetPrevState = () => {
     if (typeof x !== 'undefined' && typeof y !== 'undefined') { // IE doesn't have scrollX/scrollY support
       window.scrollTo(x, y)
     }
-  }
-}
-
-/**
- * Inject a string of CSS into the page header
- *
- * @param {String} css
- */
-export const injectCSS = (css = '') => {
-  // Prevent run in Node env
-  if (isNodeEnv()) {
-    return false
-  }
-
-  let head = document.head || document.getElementsByTagName('head')[0]
-  let style = document.createElement('style')
-  style.type = 'text/css'
-  head.appendChild(style)
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css
-  } else {
-    style.appendChild(document.createTextNode(css))
   }
 }

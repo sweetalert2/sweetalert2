@@ -1,4 +1,4 @@
-import * as dom from '../utils/dom'
+import * as dom from './dom/index'
 
 export const fixScrollbar = () => {
   // for queues, do not do this more than once

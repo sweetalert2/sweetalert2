@@ -1,7 +1,8 @@
 import { swalClasses, iconTypes } from './classes.js'
 import { warn, error } from './utils.js'
-import * as dom from './dom.js'
+import * as dom from './dom/index'
 import sweetAlert from '../sweetalert2'
+import defaultInputValidators from './defaultInputValidators'
 
 /**
  * Set type, text and actions on popup
@@ -10,6 +11,15 @@ import sweetAlert from '../sweetalert2'
  * @returns {boolean}
  */
 export default function setParameters (params) {
+  // Use default `inputValidator` for supported input types if not provided
+  if (!params.inputValidator) {
+    Object.keys(defaultInputValidators).forEach((key) => {
+      if (params.input === key) {
+        params.inputValidator = params.expectRejections ? defaultInputValidators[key] : sweetAlert.adaptInputValidator(defaultInputValidators[key])
+      }
+    })
+  }
+
   // Determine if the custom target element is valid
   if (
     !params.target ||

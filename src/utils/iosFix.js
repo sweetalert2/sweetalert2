@@ -1,4 +1,4 @@
-import * as dom from '../utils/dom'
+import * as dom from './dom/index'
 import { swalClasses } from '../utils/classes'
 
 // Fix iOS scrolling http://stackoverflow.com/q/39626302/1331425

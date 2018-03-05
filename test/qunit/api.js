@@ -24,3 +24,17 @@ QUnit.test('properties of `swal` are consistent', (assert) => {
     done()
   })
 })
+
+QUnit.test('defaults are applied to undefined arguments in shorthand calls', (assert) => {
+  const done = assert.async()
+  swal.setDefaults({
+    html: 'foo',
+    onOpen: () => {
+      assert.equal(swal.getTitle().textContent, 'bar')
+      assert.equal(swal.getContent().textContent, 'foo')
+      swal.resetDefaults()
+      done()
+    }
+  })
+  swal('bar')
+})

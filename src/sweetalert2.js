@@ -97,23 +97,7 @@ const sweetAlert = (...args) => {
 
   const context = currentContext = {}
 
-  const params = context.params = Object.assign({}, popupParams)
-
-  switch (typeof args[0]) {
-    case 'string':
-      [params.title, params.html, params.type] = args
-      break
-
-    case 'object':
-      showWarningsForParams(args[0])
-      Object.assign(params, args[0])
-      break
-
-    default:
-      error('Unexpected type of argument! Expected "string" or "object", got ' + typeof args[0])
-      return false
-  }
-
+  const params = context.params = Object.assign({}, popupParams, sweetAlert.argsToParams(args))
   setParameters(params)
 
   const domCache = context.domCache = {
@@ -1024,6 +1008,25 @@ sweetAlert.hideProgressSteps = () => {
     const {domCache} = currentContext
     dom.hide(domCache.progressSteps)
   }
+}
+
+sweetAlert.argsToParams = (args) => {
+  const params = {}
+  switch (typeof args[0]) {
+    case 'string':
+      [params.title, params.html, params.type] = args
+      break
+
+    case 'object':
+      showWarningsForParams(args[0])
+      Object.assign(params, args[0])
+      break
+
+    default:
+      error('Unexpected type of argument! Expected "string" or "object", got ' + typeof args[0])
+      return false
+  }
+  return params
 }
 
 sweetAlert.DismissReason = DismissReason

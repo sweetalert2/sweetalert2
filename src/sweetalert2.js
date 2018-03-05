@@ -107,7 +107,6 @@ const sweetAlert = (...args) => {
     case 'object':
       showWarningsForParams(args[0])
       Object.assign(params, args[0])
-      params.extraParams = args[0].extraParams
       break
 
     default:

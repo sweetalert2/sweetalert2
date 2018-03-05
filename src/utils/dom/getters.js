@@ -8,7 +8,7 @@ const elementByClass = (className) => {
   return container ? container.querySelector('.' + className) : null
 }
 
-export const getPopup = () => getContainer() ? getContainer().querySelector('.' + swalClasses.popup) : null
+export const getPopup = () => elementByClass(swalClasses.popup)
 
 export const getIcons = () => {
   const popup = getPopup()

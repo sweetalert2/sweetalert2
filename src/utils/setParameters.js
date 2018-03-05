@@ -10,6 +10,25 @@ import sweetAlert from '../sweetalert2'
  * @returns {boolean}
  */
 export default function setParameters (params) {
+  // Set default `inputValidator` for input types 'email' and 'url' if not defined
+  if (params.input === 'email' && params.inputValidator === null) {
+    const inputValidator = (email) => {
+      return /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(email)
+        ? Promise.resolve()
+        : Promise.reject('Invalid email address')
+    }
+    params.inputValidator = params.expectRejections ? inputValidator : sweetAlert.adaptInputValidator(inputValidator)
+  }
+  if (params.input === 'url' && params.inputValidator === null) {
+    const inputValidator = (url) => {
+      // taken from https://stackoverflow.com/a/3809435/1331425
+      return /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/.test(url)
+        ? Promise.resolve()
+        : Promise.reject('Invalid URL')
+    }
+    params.inputValidator = params.expectRejections ? inputValidator : sweetAlert.adaptInputValidator(inputValidator)
+  }
+
   // Determine if the custom target element is valid
   if (
     !params.target ||

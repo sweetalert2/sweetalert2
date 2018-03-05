@@ -119,7 +119,7 @@ body {
     align-items: center;
     width: $swal2-toast-width;
     padding: $swal2-toast-padding;
-    box-shadow: 0 0 10px $swal2-box-shadow;
+    box-shadow: 0 0 .625em $swal2-box-shadow;
     overflow-y: hidden;
 
     .swal2-header {
@@ -142,38 +142,37 @@ body {
     }
 
     .swal2-icon {
-      width: 32px;
-      min-width: 32px;
-      height: 32px;
+      width: 2em;
+      min-width: 2em;
+      height: 2em;
       margin: 0;
+
+      &-text {
+        font-size: 2em;
+        font-weight: bold;
+        line-height: 1em;
+      }
 
       &.swal2-success {
 
         .swal2-success-ring {
-          width: 32px;
-          height: 32px;
+          width: 2em;
+          height: 2em;
         }
-      }
-
-      &.swal2-info,
-      &.swal2-warning,
-      &.swal2-question {
-        font-size: 26px;
-        line-height: 32px;
       }
 
       &.swal2-error {
 
         [class^='swal2-x-mark-line'] {
-          top: 14px;
-          width: 22px;
+          top: .875em;
+          width: 1.375em;
 
           &[class$='left'] {
-            left: 5px;
+            left: .3125em;
           }
 
           &[class$='right'] {
-            right: 5px;
+            right: .3125em;
           }
         }
       }
@@ -190,7 +189,7 @@ body {
       font-size: $swal2-toast-buttons-font-size;
 
       &:focus {
-        box-shadow: 0 0 0 1px $swal2-white, 0 0 0 2px $swal2-button-focus-outline;
+        box-shadow: 0 0 0 .0625em $swal2-white, 0 0 0 .125em $swal2-button-focus-outline;
       }
     }
 
@@ -199,52 +198,52 @@ body {
 
       [class^='swal2-success-circular-line'] { // Emulate moving circular line
         position: absolute;
-        width: 32px;
-        height: 45px;
+        width: 2em;
+        height: 2.8125em;
         transform: rotate(45deg);
         border-radius: 50%;
 
         &[class$='left'] {
-          top: -4px;
-          left: -15px;
+          top: -.25em;
+          left: -.9375em;
           transform: rotate(-45deg);
-          transform-origin: 32px 32px;
-          border-radius: 64px 0 0 64px;
+          transform-origin: 2em 2em;
+          border-radius: 4em 0 0 4em;
         }
 
         &[class$='right'] {
-          top: -4px;
-          left: 15px;
-          transform-origin: 0 32px;
-          border-radius: 0 64px 64px 0;
+          top: -.25em;
+          left: .9375em;
+          transform-origin: 0 2em;
+          border-radius: 0 4em 4em 0;
         }
       }
 
       .swal2-success-ring {
-        width: 32px;
-        height: 32px;
+        width: 2em;
+        height: 2em;
       }
 
       .swal2-success-fix {
         top: 0;
-        left: 7px;
-        width: 7px;
-        height: 43px;
+        left: .4375em;
+        width: .4375em;
+        height: 2.6875em;
       }
 
       [class^='swal2-success-line'] {
-        height: 5px;
+        height: .3125em;
 
         &[class$='tip'] {
-          top: 18px;
-          left: 3px;
-          width: 12px;
+          top: 1.125em;
+          left: .1875em;
+          width: .75em;
         }
 
         &[class$='long'] {
-          top: 15px;
-          right: 3px;
-          width: 22px;
+          top: .9375em;
+          right: .1875em;
+          width: 1.375em;
         }
       }
     }
@@ -272,7 +271,7 @@ body {
 // Animations
 @keyframes showSweetToast {
   0% {
-    transform: translateY(-10px) rotateZ(2deg);
+    transform: translateY(-.625em) rotateZ(2deg);
     opacity: 0;
   }
 
@@ -282,7 +281,7 @@ body {
   }
 
   66% {
-    transform: translateY(5px) rotateZ(2deg);
+    transform: translateY(.3125em) rotateZ(2deg);
     opacity: .7;
   }
 
@@ -309,58 +308,58 @@ body {
 
 @keyframes animate-toast-success-tip {
   0% {
-    top: 9px;
-    left: 1px;
+    top: .5625em;
+    left: .0625em;
     width: 0;
   }
 
   54% {
-    top: 2px;
-    left: 2px;
+    top: .125em;
+    left: .125em;
     width: 0;
   }
 
   70% {
-    top: 10px;
-    left: -4px;
-    width: 26px;
+    top: .625em;
+    left: -.25em;
+    width: 1.625em;
   }
 
   84% {
-    top: 17px;
-    left: 12px;
-    width: 8px;
+    top: 1.0625em;
+    left: .75em;
+    width: .5em;
   }
 
   100% {
-    top: 18px;
-    left: 3px;
-    width: 12px;
+    top: 1.125em;
+    left: .1875em;
+    width: .75em;
   }
 }
 
 @keyframes animate-toast-success-long {
   0% {
-    top: 26px;
-    right: 22px;
+    top: 1.625em;
+    right: 1.375em;
     width: 0;
   }
 
   65% {
-    top: 20px;
-    right: 15px;
+    top: 1.25em;
+    right: .9375em;
     width: 0;
   }
 
   84% {
-    top: 15px;
+    top: .9375em;
     right: 0;
-    width: 18px;
+    width: 1.125em;
   }
 
   100% {
-    top: 15px;
-    right: 3px;
-    width: 22px;
+    top: .9375em;
+    right: .1875em;
+    width: 1.375em;
   }
 }

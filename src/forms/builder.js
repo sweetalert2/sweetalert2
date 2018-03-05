@@ -124,7 +124,7 @@ export const createBaseControl = (tag, controlObject) => {
  * @return {HTMLElement}
  */
 export const createInput = (controlObject) => {
-  let input = createBaseControl('input', controlObject.name)
+  let input = createBaseControl('input', controlObject)
 
   if (controlObject.placeholder) {
     input.placeholder = controlObject.placeholder

@@ -1,6 +1,6 @@
 import { swalClasses, iconTypes } from './classes.js'
 import { warn, error } from './utils.js'
-import * as dom from './dom.js'
+import * as dom from './dom/index'
 import sweetAlert from '../sweetalert2'
 
 /**

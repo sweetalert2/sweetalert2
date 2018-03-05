@@ -1014,7 +1014,11 @@ sweetAlert.argsToParams = (args) => {
   const params = {}
   switch (typeof args[0]) {
     case 'string':
-      [params.title, params.html, params.type] = args
+      ['title', 'html', 'type'].forEach((name, index) => {
+        if (args[index] !== undefined) {
+          params[name] = args[index]
+        }
+      })
       break
 
     case 'object':

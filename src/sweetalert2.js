@@ -1,7 +1,7 @@
 import defaultParams, { deprecatedParams } from './utils/params.js'
 import { swalClasses } from './utils/classes.js'
 import { formatInputOptions, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
-import * as dom from './utils/dom.js'
+import * as dom from './utils/dom/index'
 import setParameters from './utils/setParameters.js'
 import { DismissReason } from './utils/DismissReason'
 import {fixScrollbar, undoScrollbar} from './utils/scrollbarFix'

@@ -330,7 +330,7 @@ const sweetAlert = (...args) => {
     if (params.toast) {
       // Closing popup by internal click
       domCache.popup.onclick = (e) => {
-        if ((params.showConfirmButton || params.showCancelButton || params.input)) {
+        if ((params.showConfirmButton || params.showCancelButton || params.showCloseButton || params.input)) {
           return
         }
         sweetAlert.closePopup(params.onClose)

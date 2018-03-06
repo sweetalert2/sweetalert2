@@ -100,11 +100,11 @@
     "fix:lint": "standard --fix",
     "test": "npm run build && npm run check",
     "build": "gulp build",
-    "check": "npm run check:linting && npm run check:bundlesize && npm run check:require-in-node && npm run check:tests && npm run check:ts",
+    "check": "npm run check:linting && npm run check:bundlesize && npm run check:require-in-node && npm run check:qunit && npm run check:ts",
     "check:linting": "gulp lint",
     "check:bundlesize": "bundlesize -f dist/sweetalert2.all.min.js -s 15kB",
     "check:require-in-node": "node test/require-in-node",
-    "check:tests": "karma start karma.conf.js --single-run  --captureTimeout 240000 --browserNoActivityTimeout 240000",
+    "check:qunit": "karma start karma.conf.js --single-run  --captureTimeout 240000 --browserNoActivityTimeout 240000",
     "check:ts": "tsc sweetalert2.d.ts",
     "release": "node release"
   },

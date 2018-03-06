@@ -282,15 +282,18 @@ const sweetAlert = (...args) => {
     }
 
     if (params.toast) {
-      // Closing popup by backdrop click
+      // Closing popup by internal click
       domCache.popup.onclick = (e) => {
-        if (e.target !== domCache.popup || (params.showConfirmButton || params.showCancelButton)) {
+        if (
+          params.showConfirmButton ||
+          params.showCancelButton ||
+          params.showCloseButton ||
+          params.input
+        ) {
           return
         }
-        if (params.allowOutsideClick) {
-          sweetAlert.closePopup(params.onClose)
-          dismissWith(sweetAlert.DismissReason.backdrop)
-        }
+        sweetAlert.closePopup(params.onClose)
+        dismissWith(sweetAlert.DismissReason.close)
       }
     } else {
       let ignoreOutsideClick = false

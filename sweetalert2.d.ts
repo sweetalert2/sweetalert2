@@ -221,6 +221,16 @@ declare module 'sweetalert2' {
         function isValidParameter(paramName: string): boolean;
 
         /**
+         * Normalizes the arguments you can give to swal() in an object of type SweetAlertOptions.
+         * ex:
+         *     swal.argsToParams(['title', 'text']); //=> { title: 'title', text: 'text' }
+         *     swal.argsToParams({ title: 'title', text: 'text' }); //=> { title: 'title', text: 'text' }
+         *
+         * @param params The array of arguments to normalize.
+         */
+        function argsToParams(params: SweetAlertArrayOptions | [SweetAlertOptions]): SweetAlertOptions;
+
+        /**
          * An utility function to make SweetAlert rejections silencious (no error in the console when clicking Cancel).
          * ex. swal(...).catch(swal.noop)
          */
@@ -244,6 +254,8 @@ declare module 'sweetalert2' {
     type SyncOrAsync<T> = T | Promise<T>;
 
     type ValueOrThunk<T> = T | (() => T);
+
+    export type SweetAlertArrayOptions = [string] | [string, string] | [string, string, string];
 
     export interface SweetAlertOptions {
         /**

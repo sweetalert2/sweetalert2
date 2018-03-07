@@ -75,9 +75,13 @@ gulp.task('build:styles', () => {
  * Warning: This task depends on dist/sweetalert2.js & dist/sweetalert2.css
  */
 gulp.task('build:standalone', () => {
+  const css2jsOptions = {
+    prefix: 'if (typeof document !== "undefined"){' + $.css2js.defaultOptions.prefix,
+    suffix: $.css2js.defaultOptions.suffix + '}'
+  }
   const prettyJs = gulp.src('dist/sweetalert2.js')
   const prettyCssAsJs = gulp.src('dist/sweetalert2.css')
-    .pipe($.css2js())
+    .pipe($.css2js(css2jsOptions))
   const prettyStandalone = merge(prettyJs, prettyCssAsJs)
     .pipe($.concat('sweetalert2.all.js'))
     .pipe(gulp.dest('dist'))
@@ -86,7 +90,7 @@ gulp.task('build:standalone', () => {
   } else {
     const uglyJs = gulp.src('dist/sweetalert2.min.js')
     const uglyCssAsJs = gulp.src('dist/sweetalert2.min.css')
-      .pipe($.css2js())
+      .pipe($.css2js(css2jsOptions))
     const uglyStandalone = merge(uglyJs, uglyCssAsJs)
       .pipe($.concat('sweetalert2.all.min.js'))
       .pipe(gulp.dest('dist'))

@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.15.0
+* sweetalert2 v7.15.1
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -833,7 +833,7 @@ var undoIOSfix = function undoIOSfix() {
   }
 };
 
-var version = "7.15.0";
+var version = "7.15.1";
 
 var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 

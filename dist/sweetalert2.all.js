@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.15.0
+* sweetalert2 v7.15.1
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -833,7 +833,7 @@ var undoIOSfix = function undoIOSfix() {
   }
 };
 
-var version = "7.15.0";
+var version = "7.15.1";
 
 var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -1943,7 +1943,7 @@ return sweetAlert;
 })));
 if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;
 
-!function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,"@-webkit-keyframes swal2-show {\n" +
+if (typeof document !== "undefined"){!function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,"@-webkit-keyframes swal2-show {\n" +
 "  0% {\n" +
 "    -webkit-transform: scale(0.7);\n" +
 "            transform: scale(0.7); }\n" +
@@ -3070,4 +3070,4 @@ if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = win
 "            transform: rotate(0deg); }\n" +
 "  100% {\n" +
 "    -webkit-transform: rotate(360deg);\n" +
-"            transform: rotate(360deg); } }");
+"            transform: rotate(360deg); } }");}

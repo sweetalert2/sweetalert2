@@ -43,7 +43,7 @@ declare module 'sweetalert2' {
      */
     namespace swal {
         /**
-         * Determine if modal is shown.
+         * Determines if a modal is shown.
          * Be aware that the library returns a trueish or falsy value, not a real boolean.
          */
         function isVisible(): boolean;
@@ -51,6 +51,8 @@ declare module 'sweetalert2' {
         /**
          * If you end up using a lot of the same settings when calling SweetAlert2,
          * you can use setDefaults at the start of your program to set them once and for all!
+         *
+         * @param defaultOptions The default options to set for all modals.
          */
         function setDefaults(defaultOptions: SweetAlertOptions): void;
 
@@ -60,165 +62,190 @@ declare module 'sweetalert2' {
         function resetDefaults(): void;
 
         /**
-         * Close the currently open SweetAlert2 modal programmatically.
+         * Closes the currently open SweetAlert2 modal programmatically.
+         *
+         * @param onComplete An optional callback to be called when the alert has finished closing.
          */
         function close(onComplete?: (modalElement: HTMLElement) => void): void;
 
         /**
-         * Get the modal title.
+         * Gets the modal title.
          */
         function getTitle(): HTMLElement;
 
         /**
-         * Get the modal content.
+         * Gets the modal content.
          */
         function getContent(): HTMLElement;
 
         /**
-         * Get the image.
+         * Gets the image.
          */
         function getImage(): HTMLElement;
 
         /**
-         * Get the "Confirm" button.
+         * Gets the "Confirm" button.
          */
         function getConfirmButton(): HTMLElement;
 
         /**
-         * Get the "Cancel" button.
+         * Gets the "Cancel" button.
          */
         function getCancelButton(): HTMLElement;
 
         /**
-         * Get the buttons wrapper.
+         * Gets the buttons wrapper.
          */
         function getButtonsWrapper(): HTMLElement;
 
         /**
-         * Get actions (buttons) wrapper.
+         * Gets actions (buttons) wrapper.
          */
         function getActions(): HTMLElement;
 
         /**
-         * Get the modal footer.
+         * Gets the modal footer.
          */
         function getFooter(): HTMLElement;
 
         /**
-         * Enable "Confirm" and "Cancel" buttons.
+         * Enables "Confirm" and "Cancel" buttons.
          */
         function enableButtons(): void;
 
         /**
-         * Disable "Confirm" and "Cancel" buttons.
+         * Disables "Confirm" and "Cancel" buttons.
          */
         function disableButtons(): void;
 
         /**
-         * Enable the "Confirm"-button only.
+         * Enables the "Confirm"-button only.
          */
         function enableConfirmButton(): void;
 
         /**
-         * Disable the "Confirm"-button only.
+         * Disables the "Confirm"-button only.
          */
         function disableConfirmButton(): void;
 
         /**
-         * Disable buttons and show loader. This is useful with AJAX requests.
+         * Disables buttons and show loader. This is useful with AJAX requests.
          */
         function showLoading(): void;
 
         /**
-         * Enable buttons and hide loader.
+         * Enables buttons and hide loader.
          */
         function hideLoading(): void;
 
         /**
-         * Determine if modal is in the loading state.
+         * Determines if modal is in the loading state.
          */
         function isLoading(): boolean;
 
         /**
-         * Click the "Confirm"-button programmatically.
+         * Clicks the "Confirm"-button programmatically.
          */
         function clickConfirm(): void;
 
         /**
-         * Click the "Cancel"-button programmatically.
+         * Clicks the "Cancel"-button programmatically.
          */
         function clickCancel(): void;
 
         /**
-         * Show validation error message.
+         * Shows a validation error message.
+         *
+         * @param error The error message.
          */
         function showValidationError(error: string): void;
 
         /**
-         * Hide validation error message.
+         * Hides validation error message.
          */
         function resetValidationError(): void;
 
         /**
-         * Get the input DOM node, this method works with input parameter.
+         * Gets the input DOM node, this method works with input parameter.
          */
         function getInput(): HTMLElement;
 
         /**
-         * Disable input. A disabled input element is unusable and un-clickable.
+         * Disables the modal input. A disabled input element is unusable and un-clickable.
          */
         function disableInput(): void;
 
         /**
-         * Enable input.
+         * Enables the modal input.
          */
         function enableInput(): void;
 
         /**
-         * Provide array of SweetAlert2 parameters to show multiple modals, one modal after another.
+         * Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.
+         *
+         * @param steps The steps' configuration.
          */
         function queue(steps: Array<SweetAlertOptions | string>): Promise<any>;
 
         /**
-         * Get the index of current modal in queue. When there's no active queue, null will be returned.
+         * Gets the index of current modal in queue. When there's no active queue, null will be returned.
          */
         function getQueueStep(): string | null;
 
         /**
-         * Insert a modal to queue, you can specify modal positioning with second parameter.
-         * By default a modal will be added to the end of a queue.
+         * Inserts a modal in the queue.
+         *
+         * @param step  The step configuration (same object as in the swal() call).
+         * @param index The index to insert the step at.
+         *              By default a modal will be added to the end of a queue.
          */
         function insertQueueStep(step: SweetAlertOptions, index?: number): number;
 
         /**
-         * Delete a modal at index from queue.
+         * Deletes the modal at the specified index in the queue.
+         *
+         * @param index The modal index in the queue.
          */
         function deleteQueueStep(index: number): void;
 
         /**
-         * Progress steps getter.
+         * Gets progress steps.
          */
         function getProgressSteps(): string[];
 
         /**
-         * Progress steps setter.
+         * Sets progress steps.
+         *
+         * @param steps The modal steps
          */
         function setProgressSteps(steps: string[]): void;
 
         /**
-         * Show progress steps.
+         * Shows progress steps.
          */
         function showProgressSteps(): void;
 
         /**
-         * Hide progress steps.
+         * Hides progress steps.
          */
         function hideProgressSteps(): void;
 
         /**
-         * Determine if parameter name is valid.
+         * Determines if a given parameter name is valid.
+         *
+         * @param paramName The parameter to check
          */
         function isValidParameter(paramName: string): boolean;
+
+        /**
+         * Normalizes the arguments you can give to swal() in an object of type SweetAlertOptions.
+         * ex:
+         *     swal.argsToParams(['title', 'text']); //=> { title: 'title', text: 'text' }
+         *     swal.argsToParams({ title: 'title', text: 'text' }); //=> { title: 'title', text: 'text' }
+         *
+         * @param params The array of arguments to normalize.
+         */
+        function argsToParams(params: SweetAlertArrayOptions | [SweetAlertOptions]): SweetAlertOptions;
 
         /**
          * An utility function to make SweetAlert rejections silencious (no error in the console when clicking Cancel).
@@ -244,6 +271,8 @@ declare module 'sweetalert2' {
     type SyncOrAsync<T> = T | Promise<T>;
 
     type ValueOrThunk<T> = T | (() => T);
+
+    export type SweetAlertArrayOptions = [string] | [string, string] | [string, string, string];
 
     export interface SweetAlertOptions {
         /**

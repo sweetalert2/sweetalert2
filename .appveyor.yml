@@ -24,7 +24,7 @@ install:
 
 test_script:
   - yarn run build
-  - yarn run check:tests
+  - yarn run check:qunit
 
 notifications:
   - provider: Email

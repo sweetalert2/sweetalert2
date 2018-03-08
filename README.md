@@ -134,9 +134,9 @@ swal({
 Browser compatibility
 ---------------------
 
-| IE11* | Edge | Chrome | Firefox | Safari | Opera | Android Browser* | UC Browser* |
-|-------|------|--------|---------|--------|-------|------------------|-------------|
-|  ✅   |   ✅  |   ✅   |     ✅   |   ✅   |    ✅   |        ✅        |      ✅      |
+ IE11* | Edge | Chrome | Firefox | Safari | Opera | Android Browser* | UC Browser*
+-------|------|--------|---------|--------|-------|------------------|------------
+:heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 \* ES6 Promise polyfill should be included, see [usage example](#usage).
 

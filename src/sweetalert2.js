@@ -115,7 +115,7 @@ const sweetAlert = (...args) => {
   return new Promise((resolve, reject) => {
     // functions to handle all resolving/rejecting/settling
     const succeedWith = (value) => {
-      sweetAlert.closePopup(params.onClose)
+      sweetAlert.closePopup(params.onClose, params.onAfterClose)
       if (params.useRejections) {
         resolve(value)
       } else {
@@ -123,7 +123,7 @@ const sweetAlert = (...args) => {
       }
     }
     const dismissWith = (dismiss) => {
-      sweetAlert.closePopup(params.onClose)
+      sweetAlert.closePopup(params.onClose, params.onAfterClose)
       if (params.useRejections) {
         reject(dismiss)
       } else {
@@ -131,7 +131,7 @@ const sweetAlert = (...args) => {
       }
     }
     const errorWith = (error) => {
-      sweetAlert.closePopup(params.onClose)
+      sweetAlert.closePopup(params.onClose, params.onAfterClose)
       reject(error)
     }
 
@@ -292,7 +292,7 @@ const sweetAlert = (...args) => {
         ) {
           return
         }
-        sweetAlert.closePopup(params.onClose)
+        sweetAlert.closePopup(params.onClose, params.onAfterClose)
         dismissWith(sweetAlert.DismissReason.close)
       }
     } else {
@@ -684,7 +684,7 @@ sweetAlert.deleteQueueStep = (index) => {
 /*
  * Global function to close sweetAlert
  */
-sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.closeToast = (onComplete) => {
+sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.closeToast = (onComplete, onAfterClose) => {
   const container = dom.getContainer()
   const popup = dom.getPopup()
   if (!popup) {
@@ -717,6 +717,10 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
     if (dom.isModal()) {
       undoScrollbar()
       undoIOSfix()
+    }
+
+    if (onAfterClose !== null && typeof onAfterClose === 'function') {
+      onAfterClose()
     }
   }
 

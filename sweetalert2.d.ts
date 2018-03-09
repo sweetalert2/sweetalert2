@@ -710,6 +710,13 @@ declare module 'sweetalert2' {
         onBeforeOpen?: (modalElement: HTMLElement) => void;
 
         /**
+         * Function to run after modal has been disposed.
+         *
+         * @default null
+         */
+        onAfterClose?: () => void;
+
+        /**
          * Function to run when modal opens, provides modal DOM element as the first argument.
          *
          * @default null

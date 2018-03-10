@@ -37,7 +37,7 @@ const showWarningsForParams = (params) => {
  * @param onBeforeOpen
  * @param onComplete
  */
-const openPopup = (animation, onBeforeOpen, onComplete) => {
+const openPopup = (animation, onBeforeOpen, onOpen) => {
   const container = dom.getContainer()
   const popup = dom.getPopup()
 
@@ -71,9 +71,9 @@ const openPopup = (animation, onBeforeOpen, onComplete) => {
     iOSfix()
   }
   dom.states.previousActiveElement = document.activeElement
-  if (onComplete !== null && typeof onComplete === 'function') {
+  if (onOpen !== null && typeof onOpen === 'function') {
     setTimeout(() => {
-      onComplete(popup)
+      onOpen(popup)
     })
   }
 }
@@ -684,7 +684,7 @@ sweetAlert.deleteQueueStep = (index) => {
 /*
  * Global function to close sweetAlert
  */
-sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.closeToast = (onComplete, onAfterClose) => {
+sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.closeToast = (onClose, onAfterClose) => {
   const container = dom.getContainer()
   const popup = dom.getPopup()
   if (!popup) {
@@ -736,9 +736,9 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
     // Otherwise, remove immediately
     removePopupAndResetState()
   }
-  if (onComplete !== null && typeof onComplete === 'function') {
+  if (onClose !== null && typeof onClose === 'function') {
     setTimeout(() => {
-      onComplete(popup)
+      onClose(popup)
     })
   }
 }

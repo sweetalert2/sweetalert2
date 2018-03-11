@@ -97,7 +97,9 @@ const sweetAlert = (...args) => {
 
   const context = currentContext = {}
 
-  const params = context.params = Object.assign({}, popupParams, sweetAlert.argsToParams(args))
+  const userParams = sweetAlert.argsToParams(args)
+  showWarningsForParams(userParams)
+  const params = context.params = Object.assign({}, popupParams, userParams)
   setParameters(params)
 
   const domCache = context.domCache = {
@@ -1025,7 +1027,6 @@ sweetAlert.argsToParams = (args) => {
       break
 
     case 'object':
-      showWarningsForParams(args[0])
       Object.assign(params, args[0])
       break
 

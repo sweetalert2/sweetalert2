@@ -49,7 +49,7 @@
     "mkdirp": "^0.5.1",
     "pify": "^3.0.0",
     "promise-polyfill": "^7.1.0",
-    "qunitjs": "^2.4.1",
+    "qunit": "^2.5.1",
     "rimraf": "^2.6.2",
     "rollup": "^0.56.1",
     "rollup-plugin-babel": "^3.0.2",

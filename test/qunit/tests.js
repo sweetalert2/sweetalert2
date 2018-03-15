@@ -327,28 +327,30 @@ QUnit.test('dymanic queue', (assert) => {
   ]
 
   swal.setDefaults({animation: false})
-  swal.queue(steps).then(() => {
-    swal('All done!')
-  })
-
-  assert.equal($('.swal2-modal h2').text(), 'Step 1')
-  swal.clickConfirm()
-
   setTimeout(() => {
-    assert.equal($('.swal2-modal h2').text(), 'Step 2')
-    assert.equal(swal.getQueueStep(), 1)
+    swal.queue(steps).then(() => {
+      swal('All done!')
+    })
+
+    assert.equal($('.swal2-modal h2').text(), 'Step 1')
     swal.clickConfirm()
 
     setTimeout(() => {
-      assert.equal($('.swal2-modal h2').text(), 'Step 3')
-      assert.equal(swal.getQueueStep(), 2)
+      assert.equal($('.swal2-modal h2').text(), 'Step 2')
+      assert.equal(swal.getQueueStep(), 1)
       swal.clickConfirm()
 
       setTimeout(() => {
-        assert.equal($('.swal2-modal h2').text(), 'All done!')
-        assert.equal(swal.getQueueStep(), null)
+        assert.equal($('.swal2-modal h2').text(), 'Step 3')
+        assert.equal(swal.getQueueStep(), 2)
         swal.clickConfirm()
-        done()
+
+        setTimeout(() => {
+          assert.equal($('.swal2-modal h2').text(), 'All done!')
+          assert.equal(swal.getQueueStep(), null)
+          swal.clickConfirm()
+          done()
+        }, TIMEOUT)
       }, TIMEOUT)
     }, TIMEOUT)
   }, TIMEOUT)

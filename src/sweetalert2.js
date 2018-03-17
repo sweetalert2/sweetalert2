@@ -690,6 +690,11 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
   if (!popup) {
     return
   }
+
+  if (onClose !== null && typeof onClose === 'function') {
+    onClose(popup)
+  }
+
   dom.removeClass(popup, swalClasses.show)
   dom.addClass(popup, swalClasses.hide)
   clearTimeout(popup.timeout)
@@ -720,7 +725,9 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
     }
 
     if (onAfterClose !== null && typeof onAfterClose === 'function') {
-      onAfterClose()
+      setTimeout(() => {
+        onAfterClose()
+      })
     }
   }
 
@@ -735,11 +742,6 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
   } else {
     // Otherwise, remove immediately
     removePopupAndResetState()
-  }
-  if (onClose !== null && typeof onClose === 'function') {
-    setTimeout(() => {
-      onClose(popup)
-    })
   }
 }
 

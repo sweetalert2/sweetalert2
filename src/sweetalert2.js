@@ -97,7 +97,9 @@ const sweetAlert = (...args) => {
 
   const context = currentContext = {}
 
-  const params = context.params = Object.assign({}, popupParams, sweetAlert.argsToParams(args))
+  const userParams = sweetAlert.argsToParams(args)
+  showWarningsForParams(userParams)
+  const params = context.params = Object.assign({}, popupParams, userParams)
   setParameters(params)
 
   const domCache = context.domCache = {
@@ -1025,15 +1027,34 @@ sweetAlert.argsToParams = (args) => {
       break
 
     case 'object':
-      showWarningsForParams(args[0])
       Object.assign(params, args[0])
       break
 
     default:
-      error('Unexpected type of argument! Expected "string" or "object", got ' + typeof args[0])
-      return false
+      throw new TypeError('Unexpected type of argument! Expected "string" or "object", got ' + typeof args[0])
   }
   return params
+}
+
+sweetAlert.plugin = function (plugin) {
+  const parentSwal = this
+  const pluginResult = plugin(parentSwal)
+  const [fn, members] = typeof pluginResult === 'function' ? [pluginResult, {}] : pluginResult
+  const childSwal = (...args) => {
+    const argsToParams = members.argsToParams || parentSwal.argsToParams
+    const params = argsToParams(args)
+    return fn(params)
+  }
+  return Object.assign(childSwal, parentSwal, members)
+}
+
+sweetAlert.mixin = function (mixin) {
+  const parentSwal = this
+  const childSwal = (...args) => {
+    const params = Object.assign({}, mixin, parentSwal.argsToParams(args))
+    return parentSwal(params)
+  }
+  return Object.assign(childSwal, parentSwal)
 }
 
 sweetAlert.DismissReason = DismissReason

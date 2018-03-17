@@ -178,6 +178,8 @@ This project exists thanks to all the people who contribute.
 Contributing
 ------------
 
+![](https://img.shields.io/issuestats/i/github/sweetalert2/sweetalert2.svg) ![](https://img.shields.io/issuestats/p/github/sweetalert2/sweetalert2.svg)
+
 If you would like to contribute enhancements or fixes, please do the following:
 
 1. Fork the `sweetalert2` repository and clone it locally.

@@ -602,12 +602,17 @@ QUnit.test('onBeforeOpen', (assert) => {
 
 QUnit.test('onAfterClose', (assert) => {
   const done = assert.async()
+  let onCloseFinished = false
 
   // create a modal with an onAfterClose callback
   swal({
     title: 'onAfterClose test',
+    onClose: () => {
+      onCloseFinished = true
+    },
     onAfterClose: () => {
-      assert.ok($('.swal2-container').length === 0)
+      assert.ok(onCloseFinished)
+      assert.ok(!$('.swal2-container').length)
       done()
     }
   })
@@ -623,6 +628,7 @@ QUnit.test('onClose', (assert) => {
     title: 'onClose test',
     onClose: (_$modal) => {
       assert.ok($modal.is(_$modal))
+      assert.ok($('.swal2-container').length)
       done()
     }
   })

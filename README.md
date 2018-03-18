@@ -134,9 +134,9 @@ swal({
 Browser compatibility
 ---------------------
 
-| IE11* | Edge | Chrome | Firefox | Safari | Opera | Android Browser* | UC Browser* |
-|-------|------|--------|---------|--------|-------|------------------|-------------|
-|  ✅   |   ✅  |   ✅   |     ✅   |   ✅   |    ✅   |        ✅        |      ✅      |
+ IE11* | Edge | Chrome | Firefox | Safari | Opera | Android Browser* | UC Browser*
+-------|------|--------|---------|--------|-------|------------------|------------
+:heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 \* ES6 Promise polyfill should be included, see [usage example](#usage).
 
@@ -177,6 +177,8 @@ This project exists thanks to all the people who contribute.
 
 Contributing
 ------------
+
+![](https://img.shields.io/issuestats/i/github/sweetalert2/sweetalert2.svg) ![](https://img.shields.io/issuestats/p/github/sweetalert2/sweetalert2.svg)
 
 If you would like to contribute enhancements or fixes, please do the following:
 

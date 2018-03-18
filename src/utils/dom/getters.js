@@ -56,8 +56,9 @@ export const getFocusableElements = () => {
       return 0
     })
 
+  // https://github.com/jkup/focusable/blob/master/index.js
   const otherFocusableElements = Array.prototype.slice.call(
-    getPopup().querySelectorAll('button, input:not([type=hidden]), textarea, select, a, [tabindex="0"]')
+    getPopup().querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable], audio[controls], video[controls]')
   )
 
   return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements))

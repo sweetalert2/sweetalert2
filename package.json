@@ -51,7 +51,7 @@
     "promise-polyfill": "^7.1.0",
     "qunit": "^2.5.1",
     "rimraf": "^2.6.2",
-    "rollup": "^0.56.1",
+    "rollup": "^0.57.1",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-json": "^2.3.0",
     "standard": "^8.0.0",
@@ -105,7 +105,7 @@
     "check:bundlesize": "bundlesize -f dist/sweetalert2.all.min.js -s 15kB",
     "check:require-in-node": "node test/require-in-node",
     "check:qunit": "karma start karma.conf.js --single-run  --captureTimeout 240000 --browserNoActivityTimeout 240000",
-    "check:ts": "tsc sweetalert2.d.ts",
+    "check:ts": "tsc --lib dom,es6 sweetalert2.d.ts",
     "release": "node release"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",

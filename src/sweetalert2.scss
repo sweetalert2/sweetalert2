@@ -367,6 +367,7 @@ body {
     &.swal2-confirm {
       border: $swal2-confirm-button-border;
       border-radius: $swal2-confirm-button-border-radius;
+      background: initial;
       background-color: $swal2-confirm-button-background-color;
       color: $swal2-confirm-button-color;
       font-size: $swal2-confirm-button-font-size;
@@ -375,6 +376,7 @@ body {
     &.swal2-cancel {
       border: $swal2-cancel-button-border;
       border-radius: $swal2-cancel-button-border-radius;
+      background: initial; 
       background-color: $swal2-cancel-button-background-color;
       color: $swal2-cancel-button-color;
       font-size: $swal2-cancel-button-font-size;

@@ -147,7 +147,6 @@ Related projects
 -------------------------
 
 - [ngx-sweetalert2](https://github.com/sweetalert2/ngx-sweetalert2) - Angular 4+ integration
-- [sweetalert2-adonisjs-nuxtjs](https://github.com/sweetalert2/sweetalert2-adonisjs-nuxtjs) - AdonisJS + Nuxt.js demo
 - [sweetalert2-webpack-demo](https://github.com/sweetalert2/sweetalert2-webpack-demo) - webpack demo
 - [sweetalert2-parcel-demo](https://github.com/sweetalert2/sweetalert2-parcel-demo) - overriding SCSS variables demo
 

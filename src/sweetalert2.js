@@ -597,11 +597,11 @@ const sweetAlert = (...args) => {
       } else {
         error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + typeof params.inputOptions)
       }
-    } else if (params.input !== 'checkbox' && params.input !== 'file' && params.input !== 'range' && params.inputValue instanceof Promise) {
+    } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) && params.inputValue instanceof Promise) {
       sweetAlert.showLoading()
       dom.hide(input)
       params.inputValue.then((inputValue) => {
-        input.value = inputValue
+        input.value = inputValue + ''
         dom.show(input)
         sweetAlert.hideLoading()
       })

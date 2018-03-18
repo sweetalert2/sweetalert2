@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.15.1
+* sweetalert2 v7.16.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -341,7 +341,8 @@ var getFocusableElements = function getFocusableElements() {
     return 0;
   });
 
-  var otherFocusableElements = Array.prototype.slice.call(getPopup().querySelectorAll('button, input:not([type=hidden]), textarea, select, a, [tabindex="0"]'));
+  // https://github.com/jkup/focusable/blob/master/index.js
+  var otherFocusableElements = Array.prototype.slice.call(getPopup().querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable], audio[controls], video[controls]'));
 
   return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements));
 };
@@ -833,7 +834,7 @@ var undoIOSfix = function undoIOSfix() {
   }
 };
 
-var version = "7.15.1";
+var version = "7.16.0";
 
 var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -935,7 +936,9 @@ var sweetAlert = function sweetAlert() {
 
   var context = currentContext = {};
 
-  var params = context.params = _extends({}, popupParams, sweetAlert.argsToParams(args));
+  var userParams = sweetAlert.argsToParams(args);
+  showWarningsForParams(userParams);
+  var params = context.params = _extends({}, popupParams, userParams);
   setParameters(params);
 
   var domCache = context.domCache = {
@@ -1912,7 +1915,6 @@ sweetAlert.argsToParams = function (args) {
       break;
 
     case 'object':
-      showWarningsForParams(args[0]);
       _extends(params, args[0]);
       break;
 
@@ -1921,6 +1923,36 @@ sweetAlert.argsToParams = function (args) {
       return false;
   }
   return params;
+};
+
+/**
+ * Returns a wrapped instance of `swal` containing `params` as defaults.
+ * Useful for reusing swal configuration.
+ *
+ * For example:
+ *
+ * Before:
+ * const textPromptOptions = { input: 'text', showCancelButton: true }
+ * const {value: firstName} = await swal({ ...textPromptOptions, title: 'What is your first name?' })
+ * const {value: lastName} = await swal({ ...textPromptOptions, title: 'What is your last name?' })
+ *
+ * After:
+ * const myTextPrompt = swal.mixin({ input: 'text', showCancelButton: true })
+ * const {value: firstName} = await myTextPrompt('What is your first name?')
+ * const {value: lastName} = await myTextPrompt('What is your last name?')
+ *
+ * @param params
+ */
+sweetAlert.mixin = function (params) {
+  var parentSwal = this;
+  var childSwal = function childSwal() {
+    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return parentSwal(_extends({}, params, parentSwal.argsToParams(args)));
+  };
+  return _extends(childSwal, parentSwal);
 };
 
 sweetAlert.DismissReason = DismissReason;
@@ -1943,7 +1975,7 @@ return sweetAlert;
 })));
 if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;
 
-if (typeof document !== "undefined"){!function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,"@-webkit-keyframes swal2-show {\n" +
+"undefined"!=typeof document&&function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,"@-webkit-keyframes swal2-show {\n" +
 "  0% {\n" +
 "    -webkit-transform: scale(0.7);\n" +
 "            transform: scale(0.7); }\n" +
@@ -2685,12 +2717,14 @@ if (typeof document !== "undefined"){!function(e,t){var n=e.createElement("style
 "    .swal2-popup .swal2-styled.swal2-confirm {\n" +
 "      border: 0;\n" +
 "      border-radius: 0.25em;\n" +
+"      background: initial;\n" +
 "      background-color: #3085d6;\n" +
 "      color: #fff;\n" +
 "      font-size: 1.0625em; }\n" +
 "    .swal2-popup .swal2-styled.swal2-cancel {\n" +
 "      border: 0;\n" +
 "      border-radius: 0.25em;\n" +
+"      background: initial;\n" +
 "      background-color: #aaa;\n" +
 "      color: #fff;\n" +
 "      font-size: 1.0625em; }\n" +
@@ -3070,4 +3104,4 @@ if (typeof document !== "undefined"){!function(e,t){var n=e.createElement("style
 "            transform: rotate(0deg); }\n" +
 "  100% {\n" +
 "    -webkit-transform: rotate(360deg);\n" +
-"            transform: rotate(360deg); } }");}
+"            transform: rotate(360deg); } }");

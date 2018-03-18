@@ -740,12 +740,14 @@ body.swal2-no-backdrop .swal2-shown {
     .swal2-popup .swal2-styled.swal2-confirm {
       border: 0;
       border-radius: 0.25em;
+      background: initial;
       background-color: #3085d6;
       color: #fff;
       font-size: 1.0625em; }
     .swal2-popup .swal2-styled.swal2-cancel {
       border: 0;
       border-radius: 0.25em;
+      background: initial;
       background-color: #aaa;
       color: #fff;
       font-size: 1.0625em; }

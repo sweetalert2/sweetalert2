@@ -105,7 +105,7 @@
     "check:bundlesize": "bundlesize -f dist/sweetalert2.all.min.js -s 15kB",
     "check:require-in-node": "node test/require-in-node",
     "check:qunit": "karma start karma.conf.js --single-run  --captureTimeout 240000 --browserNoActivityTimeout 240000",
-    "check:ts": "tsc sweetalert2.d.ts",
+    "check:ts": "tsc --lib dom,es6 sweetalert2.d.ts",
     "release": "node release"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",

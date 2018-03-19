@@ -625,13 +625,6 @@ const sweetAlert = (...args) => {
 Object.assign(sweetAlert, staticMethods)
 
 /*
- * Global function to determine if swal2 popup is shown
- */
-sweetAlert.isVisible = () => {
-  return !!dom.getPopup()
-}
-
-/*
  * Global function for chaining sweetAlert popups
  */
 sweetAlert.queue = (steps) => {
@@ -745,16 +738,6 @@ sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.cl
   }
 }
 
-/*
- * Global function to click 'Confirm' button
- */
-sweetAlert.clickConfirm = () => dom.getConfirmButton().click()
-
-/*
- * Global function to click 'Cancel' button
- */
-sweetAlert.clickCancel = () => dom.getCancelButton().click()
-
 /**
  * Show spinner instead of Confirm button and disable Cancel button
  */
@@ -830,16 +813,6 @@ sweetAlert.adaptInputValidator = (legacyValidator) => {
       .then(() => undefined, validationError => validationError)
   }
 }
-
-sweetAlert.getTitle = () => dom.getTitle()
-sweetAlert.getContent = () => dom.getContent()
-sweetAlert.getImage = () => dom.getImage()
-sweetAlert.getButtonsWrapper = () => dom.getButtonsWrapper()
-sweetAlert.getActions = () => dom.getActions()
-sweetAlert.getConfirmButton = () => dom.getConfirmButton()
-sweetAlert.getCancelButton = () => dom.getCancelButton()
-sweetAlert.getFooter = () => dom.getFooter()
-sweetAlert.isLoading = () => dom.isLoading()
 
 /**
  * Show spinner instead of Confirm button and disable Cancel button

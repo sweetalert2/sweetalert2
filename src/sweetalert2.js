@@ -1,19 +1,17 @@
-import defaultParams, {showWarningsForParams} from './utils/params.js'
+import {showWarningsForParams} from './utils/params.js'
 import { swalClasses } from './utils/classes.js'
 import { formatInputOptions, error, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom/index'
 import setParameters from './utils/setParameters.js'
 import { DismissReason } from './utils/DismissReason'
-import {fixScrollbar, undoScrollbar} from './utils/scrollbarFix'
-import {iOSfix, undoIOSfix} from './utils/iosFix'
+import {fixScrollbar} from './utils/scrollbarFix'
+import {iOSfix} from './utils/iosFix'
 import {version} from '../package.json'
 import * as staticMethods from './staticMethods/index'
 import globalState from './globalState'
 
 let queue = []
 let currentContext
-
-let previousWindowKeyDown, windowOnkeydownOverridden
 
 /**
  * Animations
@@ -411,14 +409,14 @@ const sweetAlert = (...args) => {
       }
     }
 
-    if (params.toast && windowOnkeydownOverridden) {
-      window.onkeydown = previousWindowKeyDown
-      windowOnkeydownOverridden = false
+    if (params.toast && globalState.windowOnkeydownOverridden) {
+      window.onkeydown = globalState.previousWindowKeyDown
+      globalState.windowOnkeydownOverridden = false
     }
 
-    if (!params.toast && !windowOnkeydownOverridden) {
-      previousWindowKeyDown = window.onkeydown
-      windowOnkeydownOverridden = true
+    if (!params.toast && !globalState.windowOnkeydownOverridden) {
+      globalState.previousWindowKeyDown = window.onkeydown
+      globalState.windowOnkeydownOverridden = true
       window.onkeydown = handleKeyDown
     }
 
@@ -661,64 +659,6 @@ sweetAlert.insertQueueStep = (step, index) => {
 sweetAlert.deleteQueueStep = (index) => {
   if (typeof queue[index] !== 'undefined') {
     queue.splice(index, 1)
-  }
-}
-
-/*
- * Global function to close sweetAlert
- */
-sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.closeToast = (onComplete) => {
-  const container = dom.getContainer()
-  const popup = dom.getPopup()
-  if (!popup) {
-    return
-  }
-  dom.removeClass(popup, swalClasses.show)
-  dom.addClass(popup, swalClasses.hide)
-  clearTimeout(popup.timeout)
-
-  if (!dom.isToast()) {
-    dom.resetPrevState()
-    window.onkeydown = previousWindowKeyDown
-    windowOnkeydownOverridden = false
-  }
-
-  const removePopupAndResetState = () => {
-    if (container.parentNode) {
-      container.parentNode.removeChild(container)
-    }
-    dom.removeClass(
-      [document.documentElement, document.body],
-      [
-        swalClasses.shown,
-        swalClasses['no-backdrop'],
-        swalClasses['has-input'],
-        swalClasses['toast-shown']
-      ]
-    )
-
-    if (dom.isModal()) {
-      undoScrollbar()
-      undoIOSfix()
-    }
-  }
-
-  // If animation is supported, animate
-  if (dom.animationEndEvent && !dom.hasClass(popup, swalClasses.noanimation)) {
-    popup.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
-      popup.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
-      if (dom.hasClass(popup, swalClasses.hide)) {
-        removePopupAndResetState()
-      }
-    })
-  } else {
-    // Otherwise, remove immediately
-    removePopupAndResetState()
-  }
-  if (onComplete !== null && typeof onComplete === 'function') {
-    setTimeout(() => {
-      onComplete(popup)
-    })
   }
 }
 

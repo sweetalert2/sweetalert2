@@ -10,7 +10,6 @@ import {version} from '../package.json'
 import * as staticMethods from './staticMethods/index'
 import globalState from './globalState'
 
-let queue = []
 let currentContext
 
 /**
@@ -605,62 +604,6 @@ const sweetAlert = (...args) => {
 
 // Assign static methods from src/staticMethods/*.js
 Object.assign(sweetAlert, staticMethods)
-
-/*
- * Global function for chaining sweetAlert popups
- */
-sweetAlert.queue = (steps) => {
-  queue = steps
-  const resetQueue = () => {
-    queue = []
-    document.body.removeAttribute('data-swal2-queue-step')
-  }
-  let queueResult = []
-  return new Promise((resolve, reject) => {
-    (function step (i, callback) {
-      if (i < queue.length) {
-        document.body.setAttribute('data-swal2-queue-step', i)
-
-        sweetAlert(queue[i]).then((result) => {
-          if (typeof result.value !== 'undefined') {
-            queueResult.push(result.value)
-            step(i + 1, callback)
-          } else {
-            resetQueue()
-            resolve({dismiss: result.dismiss})
-          }
-        })
-      } else {
-        resetQueue()
-        resolve({value: queueResult})
-      }
-    })(0)
-  })
-}
-
-/*
- * Global function for getting the index of current popup in queue
- */
-sweetAlert.getQueueStep = () => document.body.getAttribute('data-swal2-queue-step')
-
-/*
- * Global function for inserting a popup to the queue
- */
-sweetAlert.insertQueueStep = (step, index) => {
-  if (index && index < queue.length) {
-    return queue.splice(index, 0, step)
-  }
-  return queue.push(step)
-}
-
-/*
- * Global function for deleting a popup from the queue
- */
-sweetAlert.deleteQueueStep = (index) => {
-  if (typeof queue[index] !== 'undefined') {
-    queue.splice(index, 1)
-  }
-}
 
 /**
  * Show spinner instead of Confirm button and disable Cancel button

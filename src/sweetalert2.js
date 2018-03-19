@@ -805,16 +805,6 @@ sweetAlert.resetDefaults = () => {
 }
 
 /**
- * Adapt a legacy inputValidator for use with expectRejections=false
- */
-sweetAlert.adaptInputValidator = (legacyValidator) => {
-  return function adaptedInputValidator (inputValue, extraParams) {
-    return legacyValidator.call(this, inputValue, extraParams)
-      .then(() => undefined, validationError => validationError)
-  }
-}
-
-/**
  * Show spinner instead of Confirm button and disable Cancel button
  */
 sweetAlert.hideLoading = sweetAlert.disableLoading = () => {

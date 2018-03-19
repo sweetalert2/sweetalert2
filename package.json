@@ -44,7 +44,7 @@
     "karma-sauce-launcher": "^1.2.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "^0.0.32",
-    "karma-webpack": "^2.0.9",
+    "karma-webpack": "^3.0.0",
     "merge2": "^1.2.1",
     "mkdirp": "^0.5.1",
     "pify": "^3.0.0",

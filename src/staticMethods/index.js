@@ -1,3 +1,4 @@
+export * from './set-reset-defaults'
 export * from './misc'
 export * from './dom'
 export * from './argsToParams'

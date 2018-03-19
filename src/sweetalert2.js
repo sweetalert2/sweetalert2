@@ -8,8 +8,8 @@ import {fixScrollbar, undoScrollbar} from './utils/scrollbarFix'
 import {iOSfix, undoIOSfix} from './utils/iosFix'
 import {version} from '../package.json'
 import * as staticMethods from './staticMethods/index'
+import globalState from './globalState'
 
-let popupParams = Object.assign({}, defaultParams)
 let queue = []
 let currentContext
 
@@ -84,7 +84,7 @@ const sweetAlert = (...args) => {
 
   const userParams = sweetAlert.argsToParams(args)
   showWarningsForParams(userParams)
-  const params = context.params = Object.assign({}, popupParams, userParams)
+  const params = context.params = Object.assign({}, globalState.popupParams, userParams)
   setParameters(params)
 
   const domCache = context.domCache = {
@@ -744,32 +744,6 @@ sweetAlert.showLoading = sweetAlert.enableLoading = () => {
   popup.setAttribute('data-loading', true)
   popup.setAttribute('aria-busy', true)
   popup.focus()
-}
-
-/**
- * Set default params for each popup
- * @param {Object} userParams
- */
-sweetAlert.setDefaults = (userParams) => {
-  if (!userParams || typeof userParams !== 'object') {
-    return error('the argument for setDefaults() is required and has to be a object')
-  }
-
-  showWarningsForParams(userParams)
-
-  // assign valid params from userParams to popupParams
-  for (const param in userParams) {
-    if (sweetAlert.isValidParameter(param)) {
-      popupParams[param] = userParams[param]
-    }
-  }
-}
-
-/**
- * Reset default params for each popup
- */
-sweetAlert.resetDefaults = () => {
-  popupParams = Object.assign({}, defaultParams)
 }
 
 /**

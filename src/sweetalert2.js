@@ -1,6 +1,6 @@
-import defaultParams, { deprecatedParams } from './utils/params.js'
+import defaultParams, {showWarningsForParams} from './utils/params.js'
 import { swalClasses } from './utils/classes.js'
-import { formatInputOptions, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
+import { formatInputOptions, error, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom/index'
 import setParameters from './utils/setParameters.js'
 import { DismissReason } from './utils/DismissReason'
@@ -14,22 +14,6 @@ let queue = []
 let currentContext
 
 let previousWindowKeyDown, windowOnkeydownOverridden
-
-/**
- * Show relevant warnings for given params
- *
- * @param params
- */
-const showWarningsForParams = (params) => {
-  for (const param in params) {
-    if (!sweetAlert.isValidParameter(param)) {
-      warn(`Unknown parameter "${param}"`)
-    }
-    if (sweetAlert.isDeprecatedParameter(param)) {
-      warnOnce(`The parameter "${param}" is deprecated and will be removed in the next major release.`)
-    }
-  }
-}
 
 /**
  * Animations
@@ -760,22 +744,6 @@ sweetAlert.showLoading = sweetAlert.enableLoading = () => {
   popup.setAttribute('data-loading', true)
   popup.setAttribute('aria-busy', true)
   popup.focus()
-}
-
-/**
- * Is valid parameter
- * @param {String} paramName
- */
-sweetAlert.isValidParameter = (paramName) => {
-  return defaultParams.hasOwnProperty(paramName) || paramName === 'extraParams'
-}
-
-/**
- * Is deprecated parameter
- * @param {String} paramName
- */
-sweetAlert.isDeprecatedParameter = (paramName) => {
-  return deprecatedParams.includes(paramName)
 }
 
 /**

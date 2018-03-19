@@ -121,7 +121,7 @@ gulp.task('lint:styles', () => {
 
 gulp.task('lint:ts', () => {
   return gulp.src(tsFiles)
-    .pipe($.typescript())
+    .pipe($.typescript({ lib: ['es6', 'dom'] }))
     .pipe($.tslint({ formatter: 'verbose' }))
     .pipe($.tslint.report({
       emitError: !continueOnLintError

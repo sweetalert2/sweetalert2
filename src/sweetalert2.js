@@ -7,6 +7,7 @@ import { DismissReason } from './utils/DismissReason'
 import {fixScrollbar, undoScrollbar} from './utils/scrollbarFix'
 import {iOSfix, undoIOSfix} from './utils/iosFix'
 import {version} from '../package.json'
+import * as staticMethods from './staticMethods/index'
 
 let popupParams = Object.assign({}, defaultParams)
 let queue = []
@@ -620,6 +621,9 @@ const sweetAlert = (...args) => {
   })
 }
 
+// Assign static methods from src/staticMethods/*.js
+Object.assign(sweetAlert, staticMethods)
+
 /*
  * Global function to determine if swal2 popup is shown
  */
@@ -1013,53 +1017,6 @@ sweetAlert.hideProgressSteps = () => {
     const {domCache} = currentContext
     dom.hide(domCache.progressSteps)
   }
-}
-
-sweetAlert.argsToParams = (args) => {
-  const params = {}
-  switch (typeof args[0]) {
-    case 'string':
-      ['title', 'html', 'type'].forEach((name, index) => {
-        if (args[index] !== undefined) {
-          params[name] = args[index]
-        }
-      })
-      break
-
-    case 'object':
-      Object.assign(params, args[0])
-      break
-
-    default:
-      error('Unexpected type of argument! Expected "string" or "object", got ' + typeof args[0])
-      return false
-  }
-  return params
-}
-
-/**
- * Returns a wrapped instance of `swal` containing `params` as defaults.
- * Useful for reusing swal configuration.
- *
- * For example:
- *
- * Before:
- * const textPromptOptions = { input: 'text', showCancelButton: true }
- * const {value: firstName} = await swal({ ...textPromptOptions, title: 'What is your first name?' })
- * const {value: lastName} = await swal({ ...textPromptOptions, title: 'What is your last name?' })
- *
- * After:
- * const myTextPrompt = swal.mixin({ input: 'text', showCancelButton: true })
- * const {value: firstName} = await myTextPrompt('What is your first name?')
- * const {value: lastName} = await myTextPrompt('What is your last name?')
- *
- * @param params
- */
-sweetAlert.mixin = function (params) {
-  const parentSwal = this
-  const childSwal = (...args) =>
-    parentSwal(Object.assign({}, params, parentSwal.argsToParams(args)))
-  return Object.assign(childSwal, parentSwal)
 }
 
 sweetAlert.DismissReason = DismissReason

@@ -1,3 +1,4 @@
+export * from './showLoading'
 export * from './queue'
 export * from './close'
 export * from './set-reset-defaults'

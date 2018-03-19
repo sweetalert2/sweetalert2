@@ -1,34 +1,16 @@
-import defaultParams, { deprecatedParams } from './utils/params.js'
+import {showWarningsForParams} from './utils/params.js'
 import { swalClasses } from './utils/classes.js'
-import { formatInputOptions, warn, error, warnOnce, callIfFunction } from './utils/utils.js'
+import { formatInputOptions, error, callIfFunction } from './utils/utils.js'
 import * as dom from './utils/dom/index'
 import setParameters from './utils/setParameters.js'
 import { DismissReason } from './utils/DismissReason'
-import {fixScrollbar, undoScrollbar} from './utils/scrollbarFix'
-import {iOSfix, undoIOSfix} from './utils/iosFix'
+import {fixScrollbar} from './utils/scrollbarFix'
+import {iOSfix} from './utils/iosFix'
 import {version} from '../package.json'
+import * as staticMethods from './staticMethods'
+import globalState from './globalState'
 
-let popupParams = Object.assign({}, defaultParams)
-let queue = []
 let currentContext
-
-let previousWindowKeyDown, windowOnkeydownOverridden
-
-/**
- * Show relevant warnings for given params
- *
- * @param params
- */
-const showWarningsForParams = (params) => {
-  for (const param in params) {
-    if (!sweetAlert.isValidParameter(param)) {
-      warn(`Unknown parameter "${param}"`)
-    }
-    if (sweetAlert.isDeprecatedParameter(param)) {
-      warnOnce(`The parameter "${param}" is deprecated and will be removed in the next major release.`)
-    }
-  }
-}
 
 /**
  * Animations
@@ -99,7 +81,7 @@ const sweetAlert = (...args) => {
 
   const userParams = sweetAlert.argsToParams(args)
   showWarningsForParams(userParams)
-  const params = context.params = Object.assign({}, popupParams, userParams)
+  const params = context.params = Object.assign({}, globalState.popupParams, userParams)
   setParameters(params)
 
   const domCache = context.domCache = {
@@ -426,14 +408,14 @@ const sweetAlert = (...args) => {
       }
     }
 
-    if (params.toast && windowOnkeydownOverridden) {
-      window.onkeydown = previousWindowKeyDown
-      windowOnkeydownOverridden = false
+    if (params.toast && globalState.windowOnkeydownOverridden) {
+      window.onkeydown = globalState.previousWindowKeyDown
+      globalState.windowOnkeydownOverridden = false
     }
 
-    if (!params.toast && !windowOnkeydownOverridden) {
-      previousWindowKeyDown = window.onkeydown
-      windowOnkeydownOverridden = true
+    if (!params.toast && !globalState.windowOnkeydownOverridden) {
+      globalState.previousWindowKeyDown = window.onkeydown
+      globalState.windowOnkeydownOverridden = true
       window.onkeydown = handleKeyDown
     }
 
@@ -620,222 +602,8 @@ const sweetAlert = (...args) => {
   })
 }
 
-/*
- * Global function to determine if swal2 popup is shown
- */
-sweetAlert.isVisible = () => {
-  return !!dom.getPopup()
-}
-
-/*
- * Global function for chaining sweetAlert popups
- */
-sweetAlert.queue = (steps) => {
-  queue = steps
-  const resetQueue = () => {
-    queue = []
-    document.body.removeAttribute('data-swal2-queue-step')
-  }
-  let queueResult = []
-  return new Promise((resolve, reject) => {
-    (function step (i, callback) {
-      if (i < queue.length) {
-        document.body.setAttribute('data-swal2-queue-step', i)
-
-        sweetAlert(queue[i]).then((result) => {
-          if (typeof result.value !== 'undefined') {
-            queueResult.push(result.value)
-            step(i + 1, callback)
-          } else {
-            resetQueue()
-            resolve({dismiss: result.dismiss})
-          }
-        })
-      } else {
-        resetQueue()
-        resolve({value: queueResult})
-      }
-    })(0)
-  })
-}
-
-/*
- * Global function for getting the index of current popup in queue
- */
-sweetAlert.getQueueStep = () => document.body.getAttribute('data-swal2-queue-step')
-
-/*
- * Global function for inserting a popup to the queue
- */
-sweetAlert.insertQueueStep = (step, index) => {
-  if (index && index < queue.length) {
-    return queue.splice(index, 0, step)
-  }
-  return queue.push(step)
-}
-
-/*
- * Global function for deleting a popup from the queue
- */
-sweetAlert.deleteQueueStep = (index) => {
-  if (typeof queue[index] !== 'undefined') {
-    queue.splice(index, 1)
-  }
-}
-
-/*
- * Global function to close sweetAlert
- */
-sweetAlert.close = sweetAlert.closePopup = sweetAlert.closeModal = sweetAlert.closeToast = (onComplete) => {
-  const container = dom.getContainer()
-  const popup = dom.getPopup()
-  if (!popup) {
-    return
-  }
-  dom.removeClass(popup, swalClasses.show)
-  dom.addClass(popup, swalClasses.hide)
-  clearTimeout(popup.timeout)
-
-  if (!dom.isToast()) {
-    dom.resetPrevState()
-    window.onkeydown = previousWindowKeyDown
-    windowOnkeydownOverridden = false
-  }
-
-  const removePopupAndResetState = () => {
-    if (container.parentNode) {
-      container.parentNode.removeChild(container)
-    }
-    dom.removeClass(
-      [document.documentElement, document.body],
-      [
-        swalClasses.shown,
-        swalClasses['no-backdrop'],
-        swalClasses['has-input'],
-        swalClasses['toast-shown']
-      ]
-    )
-
-    if (dom.isModal()) {
-      undoScrollbar()
-      undoIOSfix()
-    }
-  }
-
-  // If animation is supported, animate
-  if (dom.animationEndEvent && !dom.hasClass(popup, swalClasses.noanimation)) {
-    popup.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
-      popup.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
-      if (dom.hasClass(popup, swalClasses.hide)) {
-        removePopupAndResetState()
-      }
-    })
-  } else {
-    // Otherwise, remove immediately
-    removePopupAndResetState()
-  }
-  if (onComplete !== null && typeof onComplete === 'function') {
-    setTimeout(() => {
-      onComplete(popup)
-    })
-  }
-}
-
-/*
- * Global function to click 'Confirm' button
- */
-sweetAlert.clickConfirm = () => dom.getConfirmButton().click()
-
-/*
- * Global function to click 'Cancel' button
- */
-sweetAlert.clickCancel = () => dom.getCancelButton().click()
-
-/**
- * Show spinner instead of Confirm button and disable Cancel button
- */
-sweetAlert.showLoading = sweetAlert.enableLoading = () => {
-  let popup = dom.getPopup()
-  if (!popup) {
-    sweetAlert('')
-  }
-  popup = dom.getPopup()
-  const actions = dom.getActions()
-  const confirmButton = dom.getConfirmButton()
-  const cancelButton = dom.getCancelButton()
-
-  dom.show(actions)
-  dom.show(confirmButton)
-  dom.addClass([popup, actions], swalClasses.loading)
-  confirmButton.disabled = true
-  cancelButton.disabled = true
-
-  popup.setAttribute('data-loading', true)
-  popup.setAttribute('aria-busy', true)
-  popup.focus()
-}
-
-/**
- * Is valid parameter
- * @param {String} paramName
- */
-sweetAlert.isValidParameter = (paramName) => {
-  return defaultParams.hasOwnProperty(paramName) || paramName === 'extraParams'
-}
-
-/**
- * Is deprecated parameter
- * @param {String} paramName
- */
-sweetAlert.isDeprecatedParameter = (paramName) => {
-  return deprecatedParams.includes(paramName)
-}
-
-/**
- * Set default params for each popup
- * @param {Object} userParams
- */
-sweetAlert.setDefaults = (userParams) => {
-  if (!userParams || typeof userParams !== 'object') {
-    return error('the argument for setDefaults() is required and has to be a object')
-  }
-
-  showWarningsForParams(userParams)
-
-  // assign valid params from userParams to popupParams
-  for (const param in userParams) {
-    if (sweetAlert.isValidParameter(param)) {
-      popupParams[param] = userParams[param]
-    }
-  }
-}
-
-/**
- * Reset default params for each popup
- */
-sweetAlert.resetDefaults = () => {
-  popupParams = Object.assign({}, defaultParams)
-}
-
-/**
- * Adapt a legacy inputValidator for use with expectRejections=false
- */
-sweetAlert.adaptInputValidator = (legacyValidator) => {
-  return function adaptedInputValidator (inputValue, extraParams) {
-    return legacyValidator.call(this, inputValue, extraParams)
-      .then(() => undefined, validationError => validationError)
-  }
-}
-
-sweetAlert.getTitle = () => dom.getTitle()
-sweetAlert.getContent = () => dom.getContent()
-sweetAlert.getImage = () => dom.getImage()
-sweetAlert.getButtonsWrapper = () => dom.getButtonsWrapper()
-sweetAlert.getActions = () => dom.getActions()
-sweetAlert.getConfirmButton = () => dom.getConfirmButton()
-sweetAlert.getCancelButton = () => dom.getCancelButton()
-sweetAlert.getFooter = () => dom.getFooter()
-sweetAlert.isLoading = () => dom.isLoading()
+// Assign static methods from src/staticMethods/*.js
+Object.assign(sweetAlert, staticMethods)
 
 /**
  * Show spinner instead of Confirm button and disable Cancel button
@@ -1013,53 +781,6 @@ sweetAlert.hideProgressSteps = () => {
     const {domCache} = currentContext
     dom.hide(domCache.progressSteps)
   }
-}
-
-sweetAlert.argsToParams = (args) => {
-  const params = {}
-  switch (typeof args[0]) {
-    case 'string':
-      ['title', 'html', 'type'].forEach((name, index) => {
-        if (args[index] !== undefined) {
-          params[name] = args[index]
-        }
-      })
-      break
-
-    case 'object':
-      Object.assign(params, args[0])
-      break
-
-    default:
-      error('Unexpected type of argument! Expected "string" or "object", got ' + typeof args[0])
-      return false
-  }
-  return params
-}
-
-/**
- * Returns a wrapped instance of `swal` containing `params` as defaults.
- * Useful for reusing swal configuration.
- *
- * For example:
- *
- * Before:
- * const textPromptOptions = { input: 'text', showCancelButton: true }
- * const {value: firstName} = await swal({ ...textPromptOptions, title: 'What is your first name?' })
- * const {value: lastName} = await swal({ ...textPromptOptions, title: 'What is your last name?' })
- *
- * After:
- * const myTextPrompt = swal.mixin({ input: 'text', showCancelButton: true })
- * const {value: firstName} = await myTextPrompt('What is your first name?')
- * const {value: lastName} = await myTextPrompt('What is your last name?')
- *
- * @param params
- */
-sweetAlert.mixin = function (params) {
-  const parentSwal = this
-  const childSwal = (...args) =>
-    parentSwal(Object.assign({}, params, parentSwal.argsToParams(args)))
-  return Object.assign(childSwal, parentSwal)
 }
 
 sweetAlert.DismissReason = DismissReason

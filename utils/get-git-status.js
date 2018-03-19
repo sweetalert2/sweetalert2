@@ -1,16 +1,15 @@
-const execute = require('./execute')
-const assert = require('assert')
+const git = require('git-state')
 
-async function getGitStatus () {
-  const lines = (await execute('git status')).stdout.split(/\r?\n/)
-
-  const match = lines[0].match(/^On branch (\S+)$/)
-  assert.ok(match, 'Unable to determine current branch')
-  const currentBranch = match[1]
-
-  const isCleanWorkingTree = Boolean(lines.find(line => line.startsWith('nothing to commit,')))
-
-  return {currentBranch, isCleanWorkingTree}
+function getGitStatus () {
+  return new Promise((resolve) => {
+    git.check(process.cwd(), (err, result) => {
+      if (err) throw err
+      resolve({
+        currentBranch: result.branch,
+        isCleanWorkingTree: !result.dirty && !result.untracked
+      })
+    })
+  })
 }
 
 module.exports = getGitStatus

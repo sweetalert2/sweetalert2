@@ -7,7 +7,7 @@ import { DismissReason } from './utils/DismissReason'
 import {fixScrollbar} from './utils/scrollbarFix'
 import {iOSfix} from './utils/iosFix'
 import {version} from '../package.json'
-import * as staticMethods from './staticMethods/index'
+import * as staticMethods from './staticMethods'
 import globalState from './globalState'
 
 let currentContext

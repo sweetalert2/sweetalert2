@@ -1,8 +1,3 @@
-export {
-  isValidParameter,
-  isDeprecatedParameter
-} from '../utils/params'
-
 /**
  * Adapt a legacy inputValidator for use with expectRejections=false
  */

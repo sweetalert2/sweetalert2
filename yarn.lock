@@ -77,6 +77,10 @@ adm-zip@~0.4.3:
   version "0.4.7"
   resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.4.7.tgz#8606c2cbf1c426ce8c8ec00174447fd49b6eafc1"
 
+after-all-results@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/after-all-results/-/after-all-results-2.0.0.tgz#6ac2fc202b500f88da8f4f5530cfa100f4c6a2d0"
+
 after@0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/after/-/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
@@ -3205,6 +3209,12 @@ getpass@^0.1.1:
   resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.7.tgz#5eff8e3e684d569ae4cb2b1282604e8ba62149fa"
   dependencies:
     assert-plus "^1.0.0"
+
+git-state@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/git-state/-/git-state-4.0.0.tgz#c6f55127e81a2d9feb405a6ad4f76f97fbb68104"
+  dependencies:
+    after-all-results "^2.0.0"
 
 github-build@^1.2.0:
   version "1.2.0"

@@ -8,6 +8,7 @@ import {fixScrollbar} from './utils/scrollbarFix'
 import {iOSfix} from './utils/iosFix'
 import {version} from '../package.json'
 import * as staticMethods from './staticMethods'
+import * as instanceMethods from './instanceMethods'
 import globalState from './globalState'
 
 let currentContext
@@ -619,183 +620,14 @@ const sweetAlert = (...args) => {
 // Assign static methods from src/staticMethods/*.js
 Object.assign(sweetAlert, staticMethods)
 
-/**
- * Show spinner instead of Confirm button and disable Cancel button
- */
-sweetAlert.hideLoading = sweetAlert.disableLoading = () => {
-  if (currentContext) {
-    const {params, domCache} = currentContext
-    if (!params.showConfirmButton) {
-      dom.hide(domCache.confirmButton)
-      if (!params.showCancelButton) {
-        dom.hide(domCache.actions)
-      }
-    }
-    dom.removeClass([domCache.popup, domCache.actions], swalClasses.loading)
-    domCache.popup.removeAttribute('aria-busy')
-    domCache.popup.removeAttribute('data-loading')
-    domCache.confirmButton.disabled = false
-    domCache.cancelButton.disabled = false
-  }
-}
-
-// Get input element by specified type or, if type isn't specified, by params.input
-sweetAlert.getInput = (inputType) => {
-  if (currentContext) {
-    const {params, domCache} = currentContext
-    inputType = inputType || params.input
-    if (!inputType) {
-      return null
-    }
-    switch (inputType) {
-      case 'select':
-      case 'textarea':
-      case 'file':
-        return dom.getChildByClass(domCache.content, swalClasses[inputType])
-      case 'checkbox':
-        return domCache.popup.querySelector(`.${swalClasses.checkbox} input`)
-      case 'radio':
-        return domCache.popup.querySelector(`.${swalClasses.radio} input:checked`) ||
-          domCache.popup.querySelector(`.${swalClasses.radio} input:first-child`)
-      case 'range':
-        return domCache.popup.querySelector(`.${swalClasses.range} input`)
-      default:
-        return dom.getChildByClass(domCache.content, swalClasses.input)
+// Proxy to instance methods in src/instanceMethods/*.js
+Object.keys(instanceMethods).forEach(key => {
+  sweetAlert[key] = function (...args) {
+    if (currentContext) {
+      return instanceMethods[key].apply(currentContext, args)
     }
   }
-}
-
-sweetAlert.enableButtons = () => {
-  if (currentContext) {
-    const {domCache} = currentContext
-    domCache.confirmButton.disabled = false
-    domCache.cancelButton.disabled = false
-  }
-}
-
-sweetAlert.disableButtons = () => {
-  if (currentContext) {
-    const {domCache} = currentContext
-    domCache.confirmButton.disabled = true
-    domCache.cancelButton.disabled = true
-  }
-}
-
-sweetAlert.enableConfirmButton = () => {
-  if (currentContext) {
-    const {domCache} = currentContext
-    domCache.confirmButton.disabled = false
-  }
-}
-
-sweetAlert.disableConfirmButton = () => {
-  if (currentContext) {
-    const {domCache} = currentContext
-    domCache.confirmButton.disabled = true
-  }
-}
-
-sweetAlert.enableInput = () => {
-  if (currentContext) {
-    const input = sweetAlert.getInput()
-    if (!input) {
-      return false
-    }
-    if (input.type === 'radio') {
-      const radiosContainer = input.parentNode.parentNode
-      const radios = radiosContainer.querySelectorAll('input')
-      for (let i = 0; i < radios.length; i++) {
-        radios[i].disabled = false
-      }
-    } else {
-      input.disabled = false
-    }
-  }
-}
-
-sweetAlert.disableInput = () => {
-  if (currentContext) {
-    const input = sweetAlert.getInput()
-    if (!input) {
-      return false
-    }
-    if (input && input.type === 'radio') {
-      const radiosContainer = input.parentNode.parentNode
-      const radios = radiosContainer.querySelectorAll('input')
-      for (let i = 0; i < radios.length; i++) {
-        radios[i].disabled = true
-      }
-    } else {
-      input.disabled = true
-    }
-  }
-}
-
-// Show block with validation error
-sweetAlert.showValidationError = (error) => {
-  if (currentContext) {
-    const {domCache} = currentContext
-    domCache.validationError.innerHTML = error
-    const popupComputedStyle = window.getComputedStyle(domCache.popup)
-    domCache.validationError.style.marginLeft = `-${popupComputedStyle.getPropertyValue('padding-left')}`
-    domCache.validationError.style.marginRight = `-${popupComputedStyle.getPropertyValue('padding-right')}`
-    dom.show(domCache.validationError)
-
-    const input = sweetAlert.getInput()
-    if (input) {
-      input.setAttribute('aria-invalid', true)
-      input.setAttribute('aria-describedBy', swalClasses.validationerror)
-      dom.focusInput(input)
-      dom.addClass(input, swalClasses.inputerror)
-    }
-  }
-}
-
-// Hide block with validation error
-sweetAlert.resetValidationError = () => {
-  if (currentContext) {
-    const {domCache} = currentContext
-    if (domCache.validationError) {
-      dom.hide(domCache.validationError)
-    }
-
-    const input = sweetAlert.getInput()
-    if (input) {
-      input.removeAttribute('aria-invalid')
-      input.removeAttribute('aria-describedBy')
-      dom.removeClass(input, swalClasses.inputerror)
-    }
-  }
-}
-
-sweetAlert.getProgressSteps = () => {
-  if (currentContext) {
-    const {params} = currentContext
-    return params.progressSteps
-  }
-}
-
-sweetAlert.setProgressSteps = (progressSteps) => {
-  if (currentContext) {
-    const {params} = currentContext
-    params.progressSteps = progressSteps
-    setParameters(params)
-  }
-}
-
-sweetAlert.showProgressSteps = () => {
-  if (currentContext) {
-    const {domCache} = currentContext
-    dom.show(domCache.progressSteps)
-  }
-}
-
-sweetAlert.hideProgressSteps = () => {
-  if (currentContext) {
-    const {domCache} = currentContext
-    dom.hide(domCache.progressSteps)
-  }
-}
+})
 
 sweetAlert.DismissReason = DismissReason
 

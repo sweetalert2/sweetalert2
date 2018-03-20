@@ -833,3 +833,24 @@ QUnit.test('Custom content', (assert) => {
     done()
   })
 })
+
+QUnit.test('inputValue as a Promise', (assert) => {
+  const inputTypes = ['text', 'email', 'number', 'tel', 'textarea']
+  const done = assert.async(inputTypes.length)
+  const value = '1.1 input value'
+  const inputValue = new Promise((resolve, reject) => {
+    resolve('1.1 input value')
+  })
+  for (const input of inputTypes) {
+    swal({
+      input,
+      inputValue,
+      animation: false,
+      onOpen: (modal) => {
+        const inputEl = input === 'textarea' ? modal.querySelector('.swal2-textarea') : modal.querySelector('.swal2-input')
+        assert.equal(inputEl.value, input === 'number' ? parseFloat(value) : value)
+        done()
+      }
+    })
+  }
+})

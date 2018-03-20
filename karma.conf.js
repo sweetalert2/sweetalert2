@@ -38,7 +38,7 @@ module.exports = function (config) {
         browsers = ['IE']
       } else {
         // Travis
-        browsers = ['Chrome', 'Firefox']
+        browsers = ['ChromeHeadless', 'Firefox']
       }
     } else {
       // Local development

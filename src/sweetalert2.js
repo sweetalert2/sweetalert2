@@ -601,7 +601,7 @@ const sweetAlert = (...args) => {
       sweetAlert.showLoading()
       dom.hide(input)
       params.inputValue.then((inputValue) => {
-        input.value = inputValue + ''
+        input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : inputValue + ''
         dom.show(input)
         sweetAlert.hideLoading()
       })

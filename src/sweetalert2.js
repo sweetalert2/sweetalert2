@@ -629,35 +629,6 @@ Object.keys(instanceMethods).forEach(key => {
   }
 })
 
-sweetAlert.getProgressSteps = () => {
-  if (currentContext) {
-    const {params} = currentContext
-    return params.progressSteps
-  }
-}
-
-sweetAlert.setProgressSteps = (progressSteps) => {
-  if (currentContext) {
-    const {params} = currentContext
-    params.progressSteps = progressSteps
-    setParameters(params)
-  }
-}
-
-sweetAlert.showProgressSteps = () => {
-  if (currentContext) {
-    const {domCache} = currentContext
-    dom.show(domCache.progressSteps)
-  }
-}
-
-sweetAlert.hideProgressSteps = () => {
-  if (currentContext) {
-    const {domCache} = currentContext
-    dom.hide(domCache.progressSteps)
-  }
-}
-
 sweetAlert.DismissReason = DismissReason
 
 sweetAlert.noop = () => { }

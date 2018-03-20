@@ -5,7 +5,7 @@ sudo: true
 
 addons:
   firefox: latest
-  google-chrome: latest
+  chrome: stable
 
 before_install:
   - yarn global add greenkeeper-lockfile@1

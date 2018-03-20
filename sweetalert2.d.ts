@@ -628,7 +628,7 @@ declare module 'sweetalert2' {
          *
          * @default ''
          */
-        inputValue?: string;
+        inputValue?: SyncOrAsync<string>;
 
         /**
          * If input parameter is set to "select" or "radio", you can provide options.
@@ -708,6 +708,13 @@ declare module 'sweetalert2' {
          * @default null
          */
         onBeforeOpen?: (modalElement: HTMLElement) => void;
+
+        /**
+         * Function to run after modal has been disposed.
+         *
+         * @default null
+         */
+        onAfterClose?: () => void;
 
         /**
          * Function to run when modal opens, provides modal DOM element as the first argument.

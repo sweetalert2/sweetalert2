@@ -600,6 +600,26 @@ QUnit.test('onBeforeOpen', (assert) => {
   })
 })
 
+QUnit.test('onAfterClose', (assert) => {
+  const done = assert.async()
+  let onCloseFinished = false
+
+  // create a modal with an onAfterClose callback
+  swal({
+    title: 'onAfterClose test',
+    onClose: () => {
+      onCloseFinished = true
+    },
+    onAfterClose: () => {
+      assert.ok(onCloseFinished)
+      assert.ok(!$('.swal2-container').length)
+      done()
+    }
+  })
+
+  $('.swal2-close').click()
+})
+
 QUnit.test('onClose', (assert) => {
   const done = assert.async()
 
@@ -608,6 +628,7 @@ QUnit.test('onClose', (assert) => {
     title: 'onClose test',
     onClose: (_$modal) => {
       assert.ok($modal.is(_$modal))
+      assert.ok($('.swal2-container').length)
       done()
     }
   })
@@ -832,4 +853,25 @@ QUnit.test('Custom content', (assert) => {
     assert.ok(result.value)
     done()
   })
+})
+
+QUnit.test('inputValue as a Promise', (assert) => {
+  const inputTypes = ['text', 'email', 'number', 'tel', 'textarea']
+  const done = assert.async(inputTypes.length)
+  const value = '1.1 input value'
+  const inputValue = new Promise((resolve, reject) => {
+    resolve('1.1 input value')
+  })
+  for (const input of inputTypes) {
+    swal({
+      input,
+      inputValue,
+      animation: false,
+      onOpen: (modal) => {
+        const inputEl = input === 'textarea' ? modal.querySelector('.swal2-textarea') : modal.querySelector('.swal2-input')
+        assert.equal(inputEl.value, input === 'number' ? parseFloat(value) : value)
+        done()
+      }
+    })
+  }
 })

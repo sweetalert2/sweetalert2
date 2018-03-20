@@ -7,12 +7,17 @@ import globalState from '../globalState'
 /*
  * Global function to close sweetAlert
  */
-const close = (onComplete) => {
+const close = (onClose, onAfterClose) => {
   const container = dom.getContainer()
   const popup = dom.getPopup()
   if (!popup) {
     return
   }
+
+  if (onClose !== null && typeof onClose === 'function') {
+    onClose(popup)
+  }
+
   dom.removeClass(popup, swalClasses.show)
   dom.addClass(popup, swalClasses.hide)
   clearTimeout(popup.timeout)
@@ -41,6 +46,12 @@ const close = (onComplete) => {
       undoScrollbar()
       undoIOSfix()
     }
+
+    if (onAfterClose !== null && typeof onAfterClose === 'function') {
+      setTimeout(() => {
+        onAfterClose()
+      })
+    }
   }
 
   // If animation is supported, animate
@@ -54,11 +65,6 @@ const close = (onComplete) => {
   } else {
     // Otherwise, remove immediately
     removePopupAndResetState()
-  }
-  if (onComplete !== null && typeof onComplete === 'function') {
-    setTimeout(() => {
-      onComplete(popup)
-    })
   }
 }
 export {

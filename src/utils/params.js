@@ -56,6 +56,7 @@ const defaultParams = {
   currentProgressStep: null,
   progressStepsDistance: null,
   onBeforeOpen: null,
+  onAfterClose: null,
   onOpen: null,
   onClose: null,
   useRejections: false,

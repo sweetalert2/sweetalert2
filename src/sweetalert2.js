@@ -19,7 +19,7 @@ let currentContext
  * @param onBeforeOpen
  * @param onComplete
  */
-const openPopup = (animation, onBeforeOpen, onComplete) => {
+const openPopup = (animation, onBeforeOpen, onOpen) => {
   const container = dom.getContainer()
   const popup = dom.getPopup()
 
@@ -53,9 +53,9 @@ const openPopup = (animation, onBeforeOpen, onComplete) => {
     iOSfix()
   }
   dom.states.previousActiveElement = document.activeElement
-  if (onComplete !== null && typeof onComplete === 'function') {
+  if (onOpen !== null && typeof onOpen === 'function') {
     setTimeout(() => {
-      onComplete(popup)
+      onOpen(popup)
     })
   }
 }
@@ -99,7 +99,7 @@ const sweetAlert = (...args) => {
   return new Promise((resolve, reject) => {
     // functions to handle all resolving/rejecting/settling
     const succeedWith = (value) => {
-      sweetAlert.closePopup(params.onClose)
+      sweetAlert.closePopup(params.onClose, params.onAfterClose)
       if (params.useRejections) {
         resolve(value)
       } else {
@@ -107,7 +107,7 @@ const sweetAlert = (...args) => {
       }
     }
     const dismissWith = (dismiss) => {
-      sweetAlert.closePopup(params.onClose)
+      sweetAlert.closePopup(params.onClose, params.onAfterClose)
       if (params.useRejections) {
         reject(dismiss)
       } else {
@@ -115,7 +115,7 @@ const sweetAlert = (...args) => {
       }
     }
     const errorWith = (error) => {
-      sweetAlert.closePopup(params.onClose)
+      sweetAlert.closePopup(params.onClose, params.onAfterClose)
       reject(error)
     }
 
@@ -276,7 +276,7 @@ const sweetAlert = (...args) => {
         ) {
           return
         }
-        sweetAlert.closePopup(params.onClose)
+        sweetAlert.closePopup(params.onClose, params.onAfterClose)
         dismissWith(sweetAlert.DismissReason.close)
       }
     } else {

@@ -8,6 +8,7 @@ import {fixScrollbar} from './utils/scrollbarFix'
 import {iOSfix} from './utils/iosFix'
 import {version} from '../package.json'
 import * as staticMethods from './staticMethods'
+import * as instanceMethods from './instanceMethods'
 import globalState from './globalState'
 
 let currentContext
@@ -619,25 +620,14 @@ const sweetAlert = (...args) => {
 // Assign static methods from src/staticMethods/*.js
 Object.assign(sweetAlert, staticMethods)
 
-/**
- * Show spinner instead of Confirm button and disable Cancel button
- */
-sweetAlert.hideLoading = sweetAlert.disableLoading = () => {
-  if (currentContext) {
-    const {params, domCache} = currentContext
-    if (!params.showConfirmButton) {
-      dom.hide(domCache.confirmButton)
-      if (!params.showCancelButton) {
-        dom.hide(domCache.actions)
-      }
+// Proxy to instance methods in src/instanceMethods/*.js
+Object.keys(instanceMethods).forEach(key => {
+  sweetAlert[key] = function (...args) {
+    if (currentContext) {
+      return instanceMethods[key].apply(currentContext, args)
     }
-    dom.removeClass([domCache.popup, domCache.actions], swalClasses.loading)
-    domCache.popup.removeAttribute('aria-busy')
-    domCache.popup.removeAttribute('data-loading')
-    domCache.confirmButton.disabled = false
-    domCache.cancelButton.disabled = false
   }
-}
+})
 
 // Get input element by specified type or, if type isn't specified, by params.input
 sweetAlert.getInput = (inputType) => {

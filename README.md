@@ -81,7 +81,7 @@ import swal from 'sweetalert2'
 const swal = require('sweetalert2')
 ```
 
-Please note that TypeScript is supported, so you don't have to install a third-party declaration file.
+Please note that [TypeScript is well-supported](https://github.com/sweetalert2/sweetalert2/blob/master/sweetalert2.d.ts), so you don't have to install a third-party declaration file.
 
 
 Examples

@@ -61,7 +61,6 @@ module.exports = function (config) {
       ]
     },
     files: [
-      'node_modules/promise-polyfill/dist/polyfill.min.js',
       'node_modules/babel-polyfill/dist/polyfill.js',
       'dist/sweetalert2.css',
       'dist/sweetalert2.js',

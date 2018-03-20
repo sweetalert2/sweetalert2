@@ -628,7 +628,7 @@ declare module 'sweetalert2' {
          *
          * @default ''
          */
-        inputValue?: string;
+        inputValue?: SyncOrAsync<string>;
 
         /**
          * If input parameter is set to "select" or "radio", you can provide options.

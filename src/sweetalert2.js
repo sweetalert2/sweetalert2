@@ -579,6 +579,20 @@ const sweetAlert = (...args) => {
       } else {
         error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + typeof params.inputOptions)
       }
+    } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) && params.inputValue instanceof Promise) {
+      sweetAlert.showLoading()
+      dom.hide(input)
+      params.inputValue.then((inputValue) => {
+        input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : inputValue + ''
+        dom.show(input)
+        sweetAlert.hideLoading()
+      })
+      .catch((err) => {
+        error('Error in inputValue promise: ' + err)
+        input.value = ''
+        dom.show(input)
+        sweetAlert.hideLoading()
+      })
     }
 
     openPopup(params.animation, params.onBeforeOpen, params.onOpen)

@@ -16,9 +16,19 @@
  *
  * @param params
  */
-export const mixin = function (params) {
-  const parentSwal = this
-  const childSwal = (...args) =>
-    parentSwal(Object.assign({}, params, parentSwal.argsToParams(args)))
-  return Object.assign(childSwal, parentSwal)
+export const mixin = function (mixinParams) {
+  const ParentSwal = this
+  function ChildSwal (...args) {
+    if (!(this instanceof ChildSwal)) {
+      return new ChildSwal(...args)
+    }
+    ParentSwal.apply(this, args)
+  }
+  ChildSwal.prototype = Object.create(ParentSwal.prototype)
+  ChildSwal.prototype.constructor = ChildSwal
+  ChildSwal.prototype._main = function (params) {
+    return ParentSwal.prototype._main.call(this, Object.assign({}, mixinParams, params))
+  }
+  Object.assign(ChildSwal, ParentSwal) // static methods
+  return ChildSwal
 }

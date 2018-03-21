@@ -1,12 +1,10 @@
-// Currently, `this` is the private `context` (or `currentContext`) object
-
 import * as dom from '../utils/dom/index'
 import { swalClasses } from '../utils/classes'
 
 // Get input element by specified type or, if type isn't specified, by params.input
 export function getInput (inputType) {
-  const {params, domCache} = this
-  inputType = inputType || params.input
+  const domCache = this._domCache
+  inputType = inputType || this.params.input
   if (!inputType) {
     return null
   }

@@ -11,7 +11,7 @@ import * as staticMethods from './staticMethods'
 import * as instanceMethods from './instanceMethods'
 import globalState from './globalState'
 
-let currentContext
+let currentInstance
 
 /**
  * Animations
@@ -61,8 +61,8 @@ const openPopup = (animation, onBeforeOpen, onOpen) => {
   }
 }
 
-// SweetAlert entry point
-const sweetAlert = (...args) => {
+// SweetAlert constructor
+function SweetAlert (...args) {
   // Prevent run in Node env
   if (typeof window === 'undefined') {
     return
@@ -78,14 +78,23 @@ const sweetAlert = (...args) => {
     return false
   }
 
-  const context = currentContext = {}
+  // handle things when constructor is invoked without the `new` keyword
+  if (!(this instanceof SweetAlert)) {
+    return new SweetAlert(...args)
+  }
 
-  const userParams = sweetAlert.argsToParams(args)
+  currentInstance = this
+
+  // dynamic reference to "the" (not necessarily "this") constructor function
+  const ctor = this.constructor
+
+  const userParams = ctor.argsToParams(args)
   showWarningsForParams(userParams)
-  const params = context.params = Object.assign({}, globalState.popupParams, userParams)
+  const params = this.params = Object.assign({}, globalState.popupParams, userParams)
   setParameters(params)
+  Object.freeze(params)
 
-  const domCache = context.domCache = {
+  const domCache = this._domCache = {
     popup: dom.getPopup(),
     container: dom.getContainer(),
     content: dom.getContent(),
@@ -97,10 +106,10 @@ const sweetAlert = (...args) => {
     progressSteps: dom.getProgressSteps()
   }
 
-  return new Promise((resolve, reject) => {
+  this._promise = new Promise((resolve, reject) => {
     // functions to handle all resolving/rejecting/settling
     const succeedWith = (value) => {
-      sweetAlert.closePopup(params.onClose, params.onAfterClose)
+      ctor.closePopup(params.onClose, params.onAfterClose) // TODO: make closePopup an *instance* method
       if (params.useRejections) {
         resolve(value)
       } else {
@@ -108,7 +117,7 @@ const sweetAlert = (...args) => {
       }
     }
     const dismissWith = (dismiss) => {
-      sweetAlert.closePopup(params.onClose, params.onAfterClose)
+      ctor.closePopup(params.onClose, params.onAfterClose)
       if (params.useRejections) {
         reject(dismiss)
       } else {
@@ -116,7 +125,7 @@ const sweetAlert = (...args) => {
       }
     }
     const errorWith = (error) => {
-      sweetAlert.closePopup(params.onClose, params.onAfterClose)
+      ctor.closePopup(params.onClose, params.onAfterClose)
       reject(error)
     }
 
@@ -127,7 +136,7 @@ const sweetAlert = (...args) => {
 
     // Get the value of the popup input
     const getInputValue = () => {
-      const input = sweetAlert.getInput()
+      const input = this.getInput()
       if (!input) {
         return null
       }
@@ -146,7 +155,7 @@ const sweetAlert = (...args) => {
     // input autofocus
     if (params.input) {
       setTimeout(() => {
-        const input = sweetAlert.getInput()
+        const input = this.getInput()
         if (input) {
           dom.focusInput(input)
         }
@@ -155,19 +164,19 @@ const sweetAlert = (...args) => {
 
     const confirm = (value) => {
       if (params.showLoaderOnConfirm) {
-        sweetAlert.showLoading()
+        ctor.showLoading() // TODO: make showLoading an *instance* method
       }
 
       if (params.preConfirm) {
-        sweetAlert.resetValidationError()
+        this.resetValidationError()
         const preConfirmPromise = Promise.resolve().then(() => params.preConfirm(value, params.extraParams))
         if (params.expectRejections) {
           preConfirmPromise.then(
             (preConfirmValue) => succeedWith(preConfirmValue || value),
             (validationError) => {
-              sweetAlert.hideLoading()
+              this.hideLoading()
               if (validationError) {
-                sweetAlert.showValidationError(validationError)
+                this.showValidationError(validationError)
               }
             }
           )
@@ -175,7 +184,7 @@ const sweetAlert = (...args) => {
           preConfirmPromise.then(
             (preConfirmValue) => {
               if (dom.isVisible(domCache.validationError) || preConfirmValue === false) {
-                sweetAlert.hideLoading()
+                this.hideLoading()
               } else {
                 succeedWith(preConfirmValue || value)
               }
@@ -199,36 +208,36 @@ const sweetAlert = (...args) => {
       switch (e.type) {
         case 'click':
           // Clicked 'confirm'
-          if (targetedConfirm && sweetAlert.isVisible()) {
-            sweetAlert.disableButtons()
+          if (targetedConfirm && ctor.isVisible()) {
+            this.disableButtons()
             if (params.input) {
               const inputValue = getInputValue()
 
               if (params.inputValidator) {
-                sweetAlert.disableInput()
+                this.disableInput()
                 const validationPromise = Promise.resolve().then(() => params.inputValidator(inputValue, params.extraParams))
                 if (params.expectRejections) {
                   validationPromise.then(
                     () => {
-                      sweetAlert.enableButtons()
-                      sweetAlert.enableInput()
+                      this.enableButtons()
+                      this.enableInput()
                       confirm(inputValue)
                     },
                     (validationError) => {
-                      sweetAlert.enableButtons()
-                      sweetAlert.enableInput()
+                      this.enableButtons()
+                      this.enableInput()
                       if (validationError) {
-                        sweetAlert.showValidationError(validationError)
+                        this.showValidationError(validationError)
                       }
                     }
                   )
                 } else {
                   validationPromise.then(
                     (validationError) => {
-                      sweetAlert.enableButtons()
-                      sweetAlert.enableInput()
+                      this.enableButtons()
+                      this.enableInput()
                       if (validationError) {
-                        sweetAlert.showValidationError(validationError)
+                        this.showValidationError(validationError)
                       } else {
                         confirm(inputValue)
                       }
@@ -244,9 +253,9 @@ const sweetAlert = (...args) => {
             }
 
           // Clicked 'cancel'
-          } else if (targetedCancel && sweetAlert.isVisible()) {
-            sweetAlert.disableButtons()
-            dismissWith(sweetAlert.DismissReason.cancel)
+          } else if (targetedCancel && ctor.isVisible()) {
+            this.disableButtons()
+            dismissWith(ctor.DismissReason.cancel)
           }
           break
         default:
@@ -263,7 +272,7 @@ const sweetAlert = (...args) => {
 
     // Closing popup by close button
     domCache.closeButton.onclick = () => {
-      dismissWith(sweetAlert.DismissReason.close)
+      dismissWith(ctor.DismissReason.close)
     }
 
     if (params.toast) {
@@ -277,8 +286,8 @@ const sweetAlert = (...args) => {
         ) {
           return
         }
-        sweetAlert.closePopup(params.onClose, params.onAfterClose)
-        dismissWith(sweetAlert.DismissReason.close)
+        ctor.closePopup(params.onClose, params.onAfterClose)
+        dismissWith(ctor.DismissReason.close)
       }
     } else {
       let ignoreOutsideClick = false
@@ -316,7 +325,7 @@ const sweetAlert = (...args) => {
           return
         }
         if (callIfFunction(params.allowOutsideClick)) {
-          dismissWith(sweetAlert.DismissReason.backdrop)
+          dismissWith(ctor.DismissReason.backdrop)
         }
       }
     }
@@ -361,12 +370,12 @@ const sweetAlert = (...args) => {
       ]
 
       if (e.key === 'Enter' && !e.isComposing) {
-        if (e.target === sweetAlert.getInput()) {
+        if (e.target === this.getInput()) {
           if (['textarea', 'file'].includes(params.input)) {
             return // do not submit
           }
 
-          sweetAlert.clickConfirm()
+          ctor.clickConfirm()
           e.preventDefault()
         }
 
@@ -405,7 +414,7 @@ const sweetAlert = (...args) => {
 
       // ESC
       } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(params.allowEscapeKey) === true) {
-        dismissWith(sweetAlert.DismissReason.esc)
+        dismissWith(ctor.DismissReason.esc)
       }
     }
 
@@ -420,9 +429,9 @@ const sweetAlert = (...args) => {
       window.onkeydown = handleKeyDown
     }
 
-    sweetAlert.enableButtons()
-    sweetAlert.hideLoading()
-    sweetAlert.resetValidationError()
+    this.enableButtons()
+    this.hideLoading()
+    this.resetValidationError()
 
     if (params.input) {
       dom.addClass(document.body, swalClasses['has-input'])
@@ -434,7 +443,7 @@ const sweetAlert = (...args) => {
     for (let i = 0; i < inputTypes.length; i++) {
       const inputClass = swalClasses[inputTypes[i]]
       const inputContainer = dom.getChildByClass(domCache.content, inputClass)
-      input = sweetAlert.getInput(inputTypes[i])
+      input = this.getInput(inputTypes[i])
 
       // set attributes
       if (input) {
@@ -540,7 +549,7 @@ const sweetAlert = (...args) => {
         break
       case 'checkbox':
         const checkbox = dom.getChildByClass(domCache.content, swalClasses.checkbox)
-        const checkboxInput = sweetAlert.getInput('checkbox')
+        const checkboxInput = this.getInput('checkbox')
         checkboxInput.type = 'checkbox'
         checkboxInput.value = 1
         checkboxInput.id = swalClasses.checkbox
@@ -570,9 +579,9 @@ const sweetAlert = (...args) => {
     if (params.input === 'select' || params.input === 'radio') {
       const processInputOptions = inputOptions => populateInputOptions(formatInputOptions(inputOptions))
       if (params.inputOptions instanceof Promise) {
-        sweetAlert.showLoading()
+        ctor.showLoading()
         params.inputOptions.then((inputOptions) => {
-          sweetAlert.hideLoading()
+          this.hideLoading()
           processInputOptions(inputOptions)
         })
       } else if (typeof params.inputOptions === 'object') {
@@ -581,18 +590,18 @@ const sweetAlert = (...args) => {
         error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + typeof params.inputOptions)
       }
     } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) && params.inputValue instanceof Promise) {
-      sweetAlert.showLoading()
+      ctor.showLoading()
       dom.hide(input)
       params.inputValue.then((inputValue) => {
         input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : inputValue + ''
         dom.show(input)
-        sweetAlert.hideLoading()
+        this.hideLoading()
       })
       .catch((err) => {
         error('Error in inputValue promise: ' + err)
         input.value = ''
         dom.show(input)
-        sweetAlert.hideLoading()
+        this.hideLoading()
       })
     }
 
@@ -617,31 +626,45 @@ const sweetAlert = (...args) => {
   })
 }
 
-// Assign static methods from src/staticMethods/*.js
-Object.assign(sweetAlert, staticMethods)
+// `catch` cannot be the name of a module export, so we define our thenable methods here instead
+SweetAlert.prototype.then = function (onFulfilled, onRejected) {
+  return this._promise.then(onFulfilled, onRejected)
+}
+SweetAlert.prototype.catch = function (onRejected) {
+  return this._promise.catch(onRejected)
+}
+SweetAlert.prototype.finally = function (onFinally) {
+  return this._promise.finally(onFinally)
+}
 
-// Proxy to instance methods in src/instanceMethods/*.js
+// Assign instance methods from src/instanceMethods/*.js to prototype
+Object.assign(SweetAlert.prototype, instanceMethods)
+
+// Assign static methods from src/staticMethods/*.js to constructor
+Object.assign(SweetAlert, staticMethods)
+
+// Proxy to instance methods to constructor, for now, for backwards compatibility
 Object.keys(instanceMethods).forEach(key => {
-  sweetAlert[key] = function (...args) {
-    if (currentContext) {
-      return instanceMethods[key].apply(currentContext, args)
+  SweetAlert[key] = function (...args) {
+    if (currentInstance) {
+      return currentInstance[key](...args)
     }
   }
 })
 
-sweetAlert.DismissReason = DismissReason
+SweetAlert.DismissReason = DismissReason
 
-sweetAlert.noop = () => { }
+SweetAlert.noop = () => { }
 
-sweetAlert.version = version
+SweetAlert.version = version
 
-sweetAlert.default = sweetAlert
+SweetAlert.default = SweetAlert
 
 /**
  * Set default params if `window._swalDefaults` is an object
  */
 if (typeof window !== 'undefined' && typeof window._swalDefaults === 'object') {
-  sweetAlert.setDefaults(window._swalDefaults)
+  SweetAlert.setDefaults(window._swalDefaults)
 }
 
-export default sweetAlert
+export default SweetAlert

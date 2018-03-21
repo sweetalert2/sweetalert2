@@ -1,5 +1,6 @@
 /* global QUnit */
 const {swal, initialSwalPropNames} = require('../helpers')
+const Swal = swal
 
 QUnit.test('properties of `swal` are consistent', (assert) => {
   const done = assert.async()
@@ -37,4 +38,16 @@ QUnit.test('defaults are applied to undefined arguments in shorthand calls', (as
     }
   })
   swal('bar')
+})
+
+QUnit.test('instantiation with/without new keyword', (assert) => {
+  assert.ok(Swal('foo') instanceof Swal)
+  assert.ok((new Swal('foo')) instanceof Swal)
+})
+
+QUnit.test('instance properties and methods', (assert) => {
+  const swal = new Swal({ input: 'text', inputValue: 'foo' })
+  assert.equal(swal.params.input, 'text')
+  assert.equal(swal.params.inputValue, 'foo')
+  assert.equal(swal.getInput().value, 'foo')
 })

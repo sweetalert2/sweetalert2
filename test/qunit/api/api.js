@@ -51,3 +51,28 @@ QUnit.test('instance properties and methods', (assert) => {
   assert.equal(swal.params.inputValue, 'foo')
   assert.equal(swal.getInput().value, 'foo')
 })
+
+QUnit.test('extending swal', (assert) => {
+  const done = assert.async()
+  const MySwal = class extends Swal {
+    static argsToParams (args) {
+      assert.deepEqual(args, ['arg'])
+      return { title: 'title' }
+    }
+    _main (params) {
+      assert.deepEqual(params, { title: 'title' })
+      return super._main({
+        input: 'text',
+        inputValue: 'inputValue',
+        onOpen: () => Swal.clickConfirm()
+      }).then(result => {
+        assert.deepEqual(result, { value: 'inputValue' })
+        return 'result'
+      })
+    }
+  }
+  new MySwal('arg').then(result => {
+    assert.equal(result, 'result')
+    done()
+  })
+})

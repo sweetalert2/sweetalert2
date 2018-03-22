@@ -1,7 +1,7 @@
 import {showWarningsForParams} from '../utils/params'
 import * as dom from '../utils/dom/index'
 import { swalClasses } from '../utils/classes'
-import { formatInputOptions, error, callIfFunction } from '../utils/utils'
+import { formatInputOptions, error, callIfFunction, isThenable } from '../utils/utils'
 import setParameters from '../utils/setParameters'
 import globalState from '../globalState'
 import { openPopup } from '../utils/openPopup'
@@ -497,7 +497,7 @@ export function _main (userParams) {
 
     if (params.input === 'select' || params.input === 'radio') {
       const processInputOptions = inputOptions => populateInputOptions(formatInputOptions(inputOptions))
-      if (params.inputOptions instanceof Promise) {
+      if (isThenable(params.inputOptions)) {
         this.constructor.showLoading()
         params.inputOptions.then((inputOptions) => {
           this.hideLoading()
@@ -508,7 +508,7 @@ export function _main (userParams) {
       } else {
         error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + typeof params.inputOptions)
       }
-    } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) && params.inputValue instanceof Promise) {
+    } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) && isThenable(params.inputValue)) {
       this.constructor.showLoading()
       dom.hide(input)
       params.inputValue.then((inputValue) => {

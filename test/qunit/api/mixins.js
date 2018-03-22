@@ -4,20 +4,18 @@ const { Swal } = require('../helpers')
 QUnit.test('basic mixin', (assert) => {
   const done = assert.async()
   const MySwal = Swal.mixin({ title: '1_title' })
-  MySwal({
+  const swal = MySwal.fire({
     onOpen: () => {
       assert.equal(MySwal.getTitle().textContent, '1_title')
       MySwal.clickConfirm()
     }
-  }).then((result) => {
+  })
+  assert.ok(swal instanceof MySwal)
+  assert.ok(swal instanceof Swal)
+  swal.then((result) => {
     assert.deepEqual(result, { value: true })
     done()
   })
-})
-
-QUnit.test('mixins and static properties/methods', (assert) => {
-  const MySwal = Swal.mixin({})
-  assert.deepEqual(Object.assign({}, MySwal), Object.assign({}, Swal))
 })
 
 QUnit.test('mixins and shorthand calls', (assert) => {
@@ -32,5 +30,5 @@ QUnit.test('mixins and shorthand calls', (assert) => {
       done()
     }
   })
-  MySwal('2_title', '2_html')
+  MySwal.fire('2_title', '2_html')
 })

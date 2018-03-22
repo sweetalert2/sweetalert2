@@ -1,34 +1,26 @@
 /**
- * Returns a wrapped instance of `swal` containing `params` as defaults.
- * Useful for reusing swal configuration.
+ * Returns an extended version of `Swal` containing `params` as defaults.
+ * Useful for reusing Swal configuration.
  *
  * For example:
  *
  * Before:
  * const textPromptOptions = { input: 'text', showCancelButton: true }
- * const {value: firstName} = await swal({ ...textPromptOptions, title: 'What is your first name?' })
- * const {value: lastName} = await swal({ ...textPromptOptions, title: 'What is your last name?' })
+ * const {value: firstName} = await Swal({ ...textPromptOptions, title: 'What is your first name?' })
+ * const {value: lastName} = await Swal({ ...textPromptOptions, title: 'What is your last name?' })
  *
  * After:
- * const myTextPrompt = swal.mixin({ input: 'text', showCancelButton: true })
- * const {value: firstName} = await myTextPrompt('What is your first name?')
- * const {value: lastName} = await myTextPrompt('What is your last name?')
+ * const TextPrompt = Swal.mixin({ input: 'text', showCancelButton: true })
+ * const {value: firstName} = await TextPrompt.fire('What is your first name?')
+ * const {value: lastName} = await TextPrompt.fire('What is your last name?')
  *
  * @param params
  */
-export const mixin = function (mixinParams) {
-  const ParentSwal = this
-  function ChildSwal (...args) {
-    if (!(this instanceof ChildSwal)) {
-      return new ChildSwal(...args)
+export function mixin (mixinParams) {
+  const Swal = this
+  return class MixinSwal extends Swal {
+    _main (params) {
+      return super._main(Object.assign({}, mixinParams, params))
     }
-    ParentSwal.apply(this, args)
   }
-  ChildSwal.prototype = Object.create(ParentSwal.prototype)
-  ChildSwal.prototype.constructor = ChildSwal
-  ChildSwal.prototype._main = function (params) {
-    return ParentSwal.prototype._main.call(this, Object.assign({}, mixinParams, params))
-  }
-  Object.assign(ChildSwal, ParentSwal) // static methods
-  return ChildSwal
 }

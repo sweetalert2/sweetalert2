@@ -1,11 +1,10 @@
 /* global QUnit */
-const {swal, initialSwalPropNames} = require('../helpers')
-const Swal = swal
+const {Swal, initialSwalPropNames} = require('../helpers')
 
 QUnit.test('properties of `swal` are consistent', (assert) => {
   const done = assert.async()
   const assertConsistent = postfix => {
-    const currentSwalPropNames = Object.keys(swal)
+    const currentSwalPropNames = Object.keys(Swal)
     const extraPropNames = currentSwalPropNames.filter(key => !initialSwalPropNames.includes(key))
     assert.deepEqual(extraPropNames.length, 0, `# of extra properties ${postfix}`)
     assert.deepEqual(extraPropNames.join(','), '', `extra property names ${postfix}`)
@@ -14,11 +13,11 @@ QUnit.test('properties of `swal` are consistent', (assert) => {
     assert.deepEqual(missingProps.join(','), '', `missing property names ${postfix}`)
   }
   assertConsistent('before first swal')
-  swal({
+  Swal({
     title: 'test',
     onOpen: () => {
       assertConsistent('after opening first swal')
-      swal.clickConfirm()
+      Swal.clickConfirm()
     }
   }).then(() => {
     assertConsistent('after closing first swal')
@@ -28,16 +27,16 @@ QUnit.test('properties of `swal` are consistent', (assert) => {
 
 QUnit.test('defaults are applied to undefined arguments in shorthand calls', (assert) => {
   const done = assert.async()
-  swal.setDefaults({
+  Swal.setDefaults({
     html: 'foo',
     onOpen: () => {
-      assert.equal(swal.getTitle().textContent, 'bar')
-      assert.equal(swal.getContent().textContent, 'foo')
-      swal.resetDefaults()
+      assert.equal(Swal.getTitle().textContent, 'bar')
+      assert.equal(Swal.getContent().textContent, 'foo')
+      Swal.resetDefaults()
       done()
     }
   })
-  swal('bar')
+  Swal('bar')
 })
 
 QUnit.test('ways to instantiate', (assert) => {
@@ -47,7 +46,7 @@ QUnit.test('ways to instantiate', (assert) => {
 })
 
 QUnit.test('instance properties and methods', (assert) => {
-  const swal = new Swal({ input: 'text', inputValue: 'foo' })
+  const swal = Swal({ input: 'text', inputValue: 'foo' })
   assert.equal(swal.params.input, 'text')
   assert.equal(swal.params.inputValue, 'foo')
   assert.equal(swal.getInput().value, 'foo')
@@ -65,7 +64,7 @@ QUnit.test('extending swal', (assert) => {
       return super._main({
         input: 'text',
         inputValue: 'inputValue',
-        onOpen: () => Swal.clickConfirm()
+        onOpen: () => MySwal.clickConfirm()
       }).then(result => {
         assert.deepEqual(result, { value: 'inputValue' })
         return 'result'

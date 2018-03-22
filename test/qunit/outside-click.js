@@ -1,5 +1,5 @@
 /* global QUnit */
-const {swal} = require('./helpers')
+const {Swal} = require('./helpers')
 const $ = require('jquery')
 
 const simulateMouseEvent = (x, y, eventType) => {
@@ -12,11 +12,11 @@ const simulateMouseEvent = (x, y, eventType) => {
 QUnit.test('backdrop click', (assert) => {
   const done = assert.async()
 
-  swal({
+  Swal({
     title: 'Backdrop click',
     animation: false
   }).then((result) => {
-    assert.deepEqual(result, {dismiss: swal.DismissReason.backdrop})
+    assert.deepEqual(result, {dismiss: Swal.DismissReason.backdrop})
     done()
   })
 
@@ -26,7 +26,7 @@ QUnit.test('backdrop click', (assert) => {
 QUnit.test('popup mousedown, backdrop mouseup', (assert) => {
   const done = assert.async()
 
-  swal({
+  Swal({
     title: 'popup mousedown, backdrop mouseup',
     animation: false
   })
@@ -35,7 +35,7 @@ QUnit.test('popup mousedown, backdrop mouseup', (assert) => {
   simulateMouseEvent(window.innerWidth / 2, window.innerHeight / 2, 'mouseup')
 
   setTimeout(() => {
-    assert.ok(swal.isVisible())
+    assert.ok(Swal.isVisible())
     done()
   })
 })
@@ -43,7 +43,7 @@ QUnit.test('popup mousedown, backdrop mouseup', (assert) => {
 QUnit.test('backdrop mousedown, popup mouseup', (assert) => {
   const done = assert.async()
 
-  swal({
+  Swal({
     title: 'backdrop mousedown, popup mouseup',
     animation: false
   })
@@ -52,7 +52,7 @@ QUnit.test('backdrop mousedown, popup mouseup', (assert) => {
   simulateMouseEvent(1, 1, 'mouseup')
 
   setTimeout(() => {
-    assert.ok(swal.isVisible())
+    assert.ok(Swal.isVisible())
     done()
   })
 })
@@ -60,7 +60,7 @@ QUnit.test('backdrop mousedown, popup mouseup', (assert) => {
 QUnit.test('allowOutsideClick: false', (assert) => {
   const done = assert.async()
 
-  swal({
+  Swal({
     title: 'allowOutsideClick: false',
     allowOutsideClick: false,
     animation: false
@@ -69,7 +69,7 @@ QUnit.test('allowOutsideClick: false', (assert) => {
   $('.swal2-container').click()
 
   setTimeout(() => {
-    assert.ok(swal.isVisible())
+    assert.ok(Swal.isVisible())
     done()
   })
 })
@@ -77,22 +77,22 @@ QUnit.test('allowOutsideClick: false', (assert) => {
 QUnit.test('allowOutsideClick: () => !swal.isLoading()', (assert) => {
   const done = assert.async()
 
-  swal({
+  Swal({
     title: 'allowOutsideClick: () => !swal.isLoading()',
-    allowOutsideClick: () => !swal.isLoading(),
+    allowOutsideClick: () => !Swal.isLoading(),
     animation: false
   }).then((result) => {
-    assert.deepEqual(result, {dismiss: swal.DismissReason.backdrop})
+    assert.deepEqual(result, {dismiss: Swal.DismissReason.backdrop})
     done()
   })
 
-  swal.showLoading()
+  Swal.showLoading()
 
   $('.swal2-container').click()
 
   setTimeout(() => {
-    assert.ok(swal.isVisible())
-    swal.hideLoading()
+    assert.ok(Swal.isVisible())
+    Swal.hideLoading()
     $('.swal2-container').click()
   })
 })

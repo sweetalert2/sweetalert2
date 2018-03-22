@@ -1,13 +1,13 @@
 /* global QUnit */
-const { swal } = require('../helpers')
+const { Swal } = require('../helpers')
 
 QUnit.test('basic mixin', (assert) => {
   const done = assert.async()
-  const mySwal = swal.mixin({ title: '1_title' })
-  mySwal({
+  const MySwal = Swal.mixin({ title: '1_title' })
+  MySwal({
     onOpen: () => {
-      assert.equal(mySwal.getTitle().textContent, '1_title')
-      mySwal.clickConfirm()
+      assert.equal(MySwal.getTitle().textContent, '1_title')
+      MySwal.clickConfirm()
     }
   }).then((result) => {
     assert.deepEqual(result, { value: true })
@@ -16,21 +16,21 @@ QUnit.test('basic mixin', (assert) => {
 })
 
 QUnit.test('mixins and static properties/methods', (assert) => {
-  const mySwal = swal.mixin({})
-  assert.deepEqual(Object.assign({}, mySwal), Object.assign({}, swal))
+  const MySwal = Swal.mixin({})
+  assert.deepEqual(Object.assign({}, MySwal), Object.assign({}, Swal))
 })
 
 QUnit.test('mixins and shorthand calls', (assert) => {
   const done = assert.async()
-  const mySwal = swal.mixin({
+  const MySwal = Swal.mixin({
     title: 'no effect',
     html: 'no effect',
     onOpen: () => {
-      assert.equal(mySwal.getTitle().textContent, '2_title')
-      assert.equal(mySwal.getContent().textContent, '2_html')
-      mySwal.clickConfirm()
+      assert.equal(MySwal.getTitle().textContent, '2_title')
+      assert.equal(MySwal.getContent().textContent, '2_html')
+      MySwal.clickConfirm()
       done()
     }
   })
-  mySwal('2_title', '2_html')
+  MySwal('2_title', '2_html')
 })

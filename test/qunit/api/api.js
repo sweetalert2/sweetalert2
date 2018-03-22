@@ -40,9 +40,10 @@ QUnit.test('defaults are applied to undefined arguments in shorthand calls', (as
   swal('bar')
 })
 
-QUnit.test('instantiation with/without new keyword', (assert) => {
-  assert.ok(Swal('foo') instanceof Swal)
+QUnit.test('ways to instantiate', (assert) => {
   assert.ok((new Swal('foo')) instanceof Swal)
+  assert.ok(Swal.fire('foo') instanceof Swal)
+  assert.ok(Swal('foo') instanceof Swal)
 })
 
 QUnit.test('instance properties and methods', (assert) => {
@@ -71,7 +72,7 @@ QUnit.test('extending swal', (assert) => {
       })
     }
   }
-  new MySwal('arg').then(result => {
+  MySwal.fire('arg').then(result => {
     assert.equal(result, 'result')
     done()
   })

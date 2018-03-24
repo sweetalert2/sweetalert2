@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.17.0
+* sweetalert2 v7.18.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -7,6 +7,167 @@
 	typeof define === 'function' && define.amd ? define(factory) :
 	(global.Sweetalert2 = factory());
 }(this, (function () { 'use strict';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
+
+
+
+
+
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+
+
+
+
+
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var get = function get(object, property, receiver) {
+  if (object === null) object = Function.prototype;
+  var desc = Object.getOwnPropertyDescriptor(object, property);
+
+  if (desc === undefined) {
+    var parent = Object.getPrototypeOf(object);
+
+    if (parent === null) {
+      return undefined;
+    } else {
+      return get(parent, property, receiver);
+    }
+  } else if ("value" in desc) {
+    return desc.value;
+  } else {
+    var getter = desc.get;
+
+    if (getter === undefined) {
+      return undefined;
+    }
+
+    return getter.call(receiver);
+  }
+};
+
+var inherits = function (subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+};
+
+
+
+
+
+
+
+
+
+
+
+var possibleConstructorReturn = function (self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+};
+
+
+
+
+
+var slicedToArray = function () {
+  function sliceIterator(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"]) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
+  return function (arr, i) {
+    if (Array.isArray(arr)) {
+      return arr;
+    } else if (Symbol.iterator in Object(arr)) {
+      return sliceIterator(arr, i);
+    } else {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    }
+  };
+}();
 
 var consolePrefix = 'SweetAlert2:';
 
@@ -85,101 +246,53 @@ var callIfFunction = function callIfFunction(arg) {
   return typeof arg === 'function' ? arg() : arg;
 };
 
-var defaultParams = {
-  title: '',
-  titleText: '',
-  text: '',
-  html: '',
-  footer: '',
-  type: null,
-  toast: false,
-  customClass: '',
-  target: 'body',
-  backdrop: true,
-  animation: true,
-  allowOutsideClick: true,
-  allowEscapeKey: true,
-  allowEnterKey: true,
-  showConfirmButton: true,
-  showCancelButton: false,
-  preConfirm: null,
-  confirmButtonText: 'OK',
-  confirmButtonAriaLabel: '',
-  confirmButtonColor: null,
-  confirmButtonClass: null,
-  cancelButtonText: 'Cancel',
-  cancelButtonAriaLabel: '',
-  cancelButtonColor: null,
-  cancelButtonClass: null,
-  buttonsStyling: true,
-  reverseButtons: false,
-  focusConfirm: true,
-  focusCancel: false,
-  showCloseButton: false,
-  closeButtonAriaLabel: 'Close this dialog',
-  showLoaderOnConfirm: false,
-  imageUrl: null,
-  imageWidth: null,
-  imageHeight: null,
-  imageAlt: '',
-  imageClass: null,
-  timer: null,
-  width: null,
-  padding: null,
-  background: null,
-  input: null,
-  inputPlaceholder: '',
-  inputValue: '',
-  inputOptions: {},
-  inputAutoTrim: true,
-  inputClass: null,
-  inputAttributes: {},
-  inputValidator: null,
-  grow: false,
-  position: 'center',
-  progressSteps: [],
-  currentProgressStep: null,
-  progressStepsDistance: null,
-  onBeforeOpen: null,
-  onAfterClose: null,
-  onOpen: null,
-  onClose: null,
-  useRejections: false,
-  expectRejections: false
+var isThenable = function isThenable(arg) {
+  return (typeof arg === 'undefined' ? 'undefined' : _typeof(arg)) === 'object' && typeof arg.then === 'function';
 };
 
-var deprecatedParams = ['useRejections', 'expectRejections'];
+var DismissReason = Object.freeze({
+  cancel: 'cancel',
+  backdrop: 'overlay',
+  close: 'close',
+  esc: 'esc',
+  timer: 'timer'
+});
 
-/**
- * Is valid parameter
- * @param {String} paramName
- */
-var isValidParameter = function isValidParameter(paramName) {
-  return defaultParams.hasOwnProperty(paramName) || paramName === 'extraParams';
-};
+var version = "7.18.0";
 
-/**
- * Is deprecated parameter
- * @param {String} paramName
- */
-var isDeprecatedParameter = function isDeprecatedParameter(paramName) {
-  return deprecatedParams.indexOf(paramName) !== -1;
-};
+var argsToParams = function argsToParams(args) {
+  var params = {};
+  switch (_typeof(args[0])) {
+    case 'string':
+      ['title', 'html', 'type'].forEach(function (name, index) {
+        if (args[index] !== undefined) {
+          params[name] = args[index];
+        }
+      });
+      break;
 
-/**
- * Show relevant warnings for given params
- *
- * @param params
- */
-var showWarningsForParams = function showWarningsForParams(params) {
-  for (var param in params) {
-    if (!isValidParameter(param)) {
-      warn('Unknown parameter "' + param + '"');
-    }
-    if (isDeprecatedParameter(param)) {
-      warnOnce('The parameter "' + param + '" is deprecated and will be removed in the next major release.');
-    }
+    case 'object':
+      _extends(params, args[0]);
+      break;
+
+    default:
+      error('Unexpected type of argument! Expected "string" or "object", got ' + _typeof(args[0]));
+      return false;
   }
+  return params;
+};
+
+/**
+ * Adapt a legacy inputValidator for use with expectRejections=false
+ */
+var adaptInputValidator = function adaptInputValidator(legacyValidator) {
+  return function adaptedInputValidator(inputValue, extraParams) {
+    return legacyValidator.call(this, inputValue, extraParams).then(function () {
+      return undefined;
+    }, function (validationError) {
+      return validationError;
+    });
+  };
 };
 
 var swalPrefix = 'swal2-';
@@ -440,7 +553,7 @@ var init = function init(params) {
   }
 
   var resetValidationError = function resetValidationError() {
-    sweetAlert.isVisible() && sweetAlert.resetValidationError();
+    SweetAlert.isVisible() && SweetAlert.resetValidationError();
   };
 
   input.oninput = resetValidationError;
@@ -461,8 +574,6 @@ var init = function init(params) {
 
   return popup;
 };
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var parseHtmlToContainer = function parseHtmlToContainer(param, target) {
   if (!param) {
@@ -522,6 +633,542 @@ var measureScrollbar = function measureScrollbar() {
   return scrollbarWidth;
 };
 
+var fixScrollbar = function fixScrollbar() {
+  // for queues, do not do this more than once
+  if (states.previousBodyPadding !== null) {
+    return;
+  }
+  // if the body has overflow
+  if (document.body.scrollHeight > window.innerHeight) {
+    // add padding so the content doesn't shift after removal of scrollbar
+    states.previousBodyPadding = document.body.style.paddingRight;
+    document.body.style.paddingRight = measureScrollbar() + 'px';
+  }
+};
+
+var undoScrollbar = function undoScrollbar() {
+  if (states.previousBodyPadding !== null) {
+    document.body.style.paddingRight = states.previousBodyPadding;
+    states.previousBodyPadding = null;
+  }
+};
+
+// Fix iOS scrolling http://stackoverflow.com/q/39626302/1331425
+var iOSfix = function iOSfix() {
+  var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (iOS && !hasClass(document.body, swalClasses.iosfix)) {
+    var offset = document.body.scrollTop;
+    document.body.style.top = offset * -1 + 'px';
+    addClass(document.body, swalClasses.iosfix);
+  }
+};
+
+var undoIOSfix = function undoIOSfix() {
+  if (hasClass(document.body, swalClasses.iosfix)) {
+    var offset = parseInt(document.body.style.top, 10);
+    removeClass(document.body, swalClasses.iosfix);
+    document.body.style.top = '';
+    document.body.scrollTop = offset * -1;
+  }
+};
+
+var defaultParams = {
+  title: '',
+  titleText: '',
+  text: '',
+  html: '',
+  footer: '',
+  type: null,
+  toast: false,
+  customClass: '',
+  target: 'body',
+  backdrop: true,
+  animation: true,
+  allowOutsideClick: true,
+  allowEscapeKey: true,
+  allowEnterKey: true,
+  showConfirmButton: true,
+  showCancelButton: false,
+  preConfirm: null,
+  confirmButtonText: 'OK',
+  confirmButtonAriaLabel: '',
+  confirmButtonColor: null,
+  confirmButtonClass: null,
+  cancelButtonText: 'Cancel',
+  cancelButtonAriaLabel: '',
+  cancelButtonColor: null,
+  cancelButtonClass: null,
+  buttonsStyling: true,
+  reverseButtons: false,
+  focusConfirm: true,
+  focusCancel: false,
+  showCloseButton: false,
+  closeButtonAriaLabel: 'Close this dialog',
+  showLoaderOnConfirm: false,
+  imageUrl: null,
+  imageWidth: null,
+  imageHeight: null,
+  imageAlt: '',
+  imageClass: null,
+  timer: null,
+  width: null,
+  padding: null,
+  background: null,
+  input: null,
+  inputPlaceholder: '',
+  inputValue: '',
+  inputOptions: {},
+  inputAutoTrim: true,
+  inputClass: null,
+  inputAttributes: {},
+  inputValidator: null,
+  grow: false,
+  position: 'center',
+  progressSteps: [],
+  currentProgressStep: null,
+  progressStepsDistance: null,
+  onBeforeOpen: null,
+  onAfterClose: null,
+  onOpen: null,
+  onClose: null,
+  useRejections: false,
+  expectRejections: false
+};
+
+var deprecatedParams = ['useRejections', 'expectRejections'];
+
+/**
+ * Is valid parameter
+ * @param {String} paramName
+ */
+var isValidParameter = function isValidParameter(paramName) {
+  return defaultParams.hasOwnProperty(paramName) || paramName === 'extraParams';
+};
+
+/**
+ * Is deprecated parameter
+ * @param {String} paramName
+ */
+var isDeprecatedParameter = function isDeprecatedParameter(paramName) {
+  return deprecatedParams.indexOf(paramName) !== -1;
+};
+
+/**
+ * Show relevant warnings for given params
+ *
+ * @param params
+ */
+var showWarningsForParams = function showWarningsForParams(params) {
+  for (var param in params) {
+    if (!isValidParameter(param)) {
+      warn('Unknown parameter "' + param + '"');
+    }
+    if (isDeprecatedParameter(param)) {
+      warnOnce('The parameter "' + param + '" is deprecated and will be removed in the next major release.');
+    }
+  }
+};
+
+var globalState = {
+  popupParams: _extends({}, defaultParams)
+};
+
+/*
+ * Global function to close sweetAlert
+ */
+var close = function close(onClose, onAfterClose) {
+  var container = getContainer();
+  var popup = getPopup();
+  if (!popup) {
+    return;
+  }
+
+  if (onClose !== null && typeof onClose === 'function') {
+    onClose(popup);
+  }
+
+  removeClass(popup, swalClasses.show);
+  addClass(popup, swalClasses.hide);
+  clearTimeout(popup.timeout);
+
+  if (!isToast()) {
+    resetPrevState();
+    window.onkeydown = globalState.previousWindowKeyDown;
+    globalState.windowOnkeydownOverridden = false;
+  }
+
+  var removePopupAndResetState = function removePopupAndResetState() {
+    if (container.parentNode) {
+      container.parentNode.removeChild(container);
+    }
+    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['no-backdrop'], swalClasses['has-input'], swalClasses['toast-shown']]);
+
+    if (isModal()) {
+      undoScrollbar();
+      undoIOSfix();
+    }
+
+    if (onAfterClose !== null && typeof onAfterClose === 'function') {
+      setTimeout(function () {
+        onAfterClose();
+      });
+    }
+  };
+
+  // If animation is supported, animate
+  if (animationEndEvent && !hasClass(popup, swalClasses.noanimation)) {
+    popup.addEventListener(animationEndEvent, function swalCloseEventFinished() {
+      popup.removeEventListener(animationEndEvent, swalCloseEventFinished);
+      if (hasClass(popup, swalClasses.hide)) {
+        removePopupAndResetState();
+      }
+    });
+  } else {
+    // Otherwise, remove immediately
+    removePopupAndResetState();
+  }
+};
+
+/*
+ * Global function to determine if swal2 popup is shown
+ */
+var isVisible$1 = function isVisible() {
+  return !!getPopup();
+};
+
+/*
+ * Global function to click 'Confirm' button
+ */
+var clickConfirm = function clickConfirm() {
+  return getConfirmButton().click();
+};
+
+/*
+ * Global function to click 'Cancel' button
+ */
+var clickCancel = function clickCancel() {
+  return getCancelButton().click();
+};
+
+/**
+ * Returns an extended version of `Swal` containing `params` as defaults.
+ * Useful for reusing Swal configuration.
+ *
+ * For example:
+ *
+ * Before:
+ * const textPromptOptions = { input: 'text', showCancelButton: true }
+ * const {value: firstName} = await Swal({ ...textPromptOptions, title: 'What is your first name?' })
+ * const {value: lastName} = await Swal({ ...textPromptOptions, title: 'What is your last name?' })
+ *
+ * After:
+ * const TextPrompt = Swal.mixin({ input: 'text', showCancelButton: true })
+ * const {value: firstName} = await TextPrompt.fire('What is your first name?')
+ * const {value: lastName} = await TextPrompt.fire('What is your last name?')
+ *
+ * @param params
+ */
+function mixin(mixinParams) {
+  var Swal = this;
+  return function (_Swal) {
+    inherits(MixinSwal, _Swal);
+
+    function MixinSwal() {
+      classCallCheck(this, MixinSwal);
+      return possibleConstructorReturn(this, (MixinSwal.__proto__ || Object.getPrototypeOf(MixinSwal)).apply(this, arguments));
+    }
+
+    createClass(MixinSwal, [{
+      key: "_main",
+      value: function _main(params) {
+        return get(MixinSwal.prototype.__proto__ || Object.getPrototypeOf(MixinSwal.prototype), "_main", this).call(this, _extends({}, mixinParams, params));
+      }
+    }]);
+    return MixinSwal;
+  }(Swal);
+}
+
+// private global state for the queue feature
+var currentSteps = [];
+
+/*
+ * Global function for chaining sweetAlert popups
+ */
+var queue = function queue(steps) {
+  var swal = this;
+  currentSteps = steps;
+  var resetQueue = function resetQueue() {
+    currentSteps = [];
+    document.body.removeAttribute('data-swal2-queue-step');
+  };
+  var queueResult = [];
+  return new Promise(function (resolve, reject) {
+    (function step(i, callback) {
+      if (i < currentSteps.length) {
+        document.body.setAttribute('data-swal2-queue-step', i);
+
+        swal(currentSteps[i]).then(function (result) {
+          if (typeof result.value !== 'undefined') {
+            queueResult.push(result.value);
+            step(i + 1, callback);
+          } else {
+            resetQueue();
+            resolve({ dismiss: result.dismiss });
+          }
+        });
+      } else {
+        resetQueue();
+        resolve({ value: queueResult });
+      }
+    })(0);
+  });
+};
+
+/*
+ * Global function for getting the index of current popup in queue
+ */
+var getQueueStep = function getQueueStep() {
+  return document.body.getAttribute('data-swal2-queue-step');
+};
+
+/*
+ * Global function for inserting a popup to the queue
+ */
+var insertQueueStep = function insertQueueStep(step, index) {
+  if (index && index < currentSteps.length) {
+    return currentSteps.splice(index, 0, step);
+  }
+  return currentSteps.push(step);
+};
+
+/*
+ * Global function for deleting a popup from the queue
+ */
+var deleteQueueStep = function deleteQueueStep(index) {
+  if (typeof currentSteps[index] !== 'undefined') {
+    currentSteps.splice(index, 1);
+  }
+};
+
+/**
+ * Set default params for each popup
+ * @param {Object} userParams
+ */
+var setDefaults = function setDefaults(userParams) {
+  if (!userParams || (typeof userParams === 'undefined' ? 'undefined' : _typeof(userParams)) !== 'object') {
+    return error('the argument for setDefaults() is required and has to be a object');
+  }
+
+  showWarningsForParams(userParams);
+
+  // assign valid params from userParams to popupParams
+  for (var param in userParams) {
+    if (isValidParameter(param)) {
+      globalState.popupParams[param] = userParams[param];
+    }
+  }
+};
+
+/**
+ * Reset default params for each popup
+ */
+var resetDefaults = function resetDefaults() {
+  globalState.popupParams = _extends({}, defaultParams);
+};
+
+/**
+ * Show spinner instead of Confirm button and disable Cancel button
+ */
+var showLoading = function showLoading() {
+  var popup = getPopup();
+  if (!popup) {
+    SweetAlert('');
+  }
+  popup = getPopup();
+  var actions = getActions();
+  var confirmButton = getConfirmButton();
+  var cancelButton = getCancelButton();
+
+  show(actions);
+  show(confirmButton);
+  addClass([popup, actions], swalClasses.loading);
+  confirmButton.disabled = true;
+  cancelButton.disabled = true;
+
+  popup.setAttribute('data-loading', true);
+  popup.setAttribute('aria-busy', true);
+  popup.focus();
+};
+
+function fire() {
+  var Swal = this;
+
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return new (Function.prototype.bind.apply(Swal, [null].concat(args)))();
+}
+
+
+
+var staticMethods = Object.freeze({
+	isValidParameter: isValidParameter,
+	isDeprecatedParameter: isDeprecatedParameter,
+	argsToParams: argsToParams,
+	adaptInputValidator: adaptInputValidator,
+	close: close,
+	closePopup: close,
+	closeModal: close,
+	closeToast: close,
+	isVisible: isVisible$1,
+	clickConfirm: clickConfirm,
+	clickCancel: clickCancel,
+	getTitle: getTitle,
+	getContent: getContent,
+	getImage: getImage,
+	getButtonsWrapper: getButtonsWrapper,
+	getActions: getActions,
+	getConfirmButton: getConfirmButton,
+	getCancelButton: getCancelButton,
+	getFooter: getFooter,
+	isLoading: isLoading,
+	mixin: mixin,
+	queue: queue,
+	getQueueStep: getQueueStep,
+	insertQueueStep: insertQueueStep,
+	deleteQueueStep: deleteQueueStep,
+	setDefaults: setDefaults,
+	resetDefaults: resetDefaults,
+	showLoading: showLoading,
+	enableLoading: showLoading,
+	fire: fire
+});
+
+/**
+ * Show spinner instead of Confirm button and disable Cancel button
+ */
+function hideLoading() {
+  var domCache = this._domCache;
+  if (!this.params.showConfirmButton) {
+    hide(domCache.confirmButton);
+    if (!this.params.showCancelButton) {
+      hide(domCache.actions);
+    }
+  }
+  removeClass([domCache.popup, domCache.actions], swalClasses.loading);
+  domCache.popup.removeAttribute('aria-busy');
+  domCache.popup.removeAttribute('data-loading');
+  domCache.confirmButton.disabled = false;
+  domCache.cancelButton.disabled = false;
+}
+
+// Get input element by specified type or, if type isn't specified, by params.input
+function getInput(inputType) {
+  var domCache = this._domCache;
+  inputType = inputType || this.params.input;
+  if (!inputType) {
+    return null;
+  }
+  switch (inputType) {
+    case 'select':
+    case 'textarea':
+    case 'file':
+      return getChildByClass(domCache.content, swalClasses[inputType]);
+    case 'checkbox':
+      return domCache.popup.querySelector('.' + swalClasses.checkbox + ' input');
+    case 'radio':
+      return domCache.popup.querySelector('.' + swalClasses.radio + ' input:checked') || domCache.popup.querySelector('.' + swalClasses.radio + ' input:first-child');
+    case 'range':
+      return domCache.popup.querySelector('.' + swalClasses.range + ' input');
+    default:
+      return getChildByClass(domCache.content, swalClasses.input);
+  }
+}
+
+function enableButtons() {
+  this._domCache.confirmButton.disabled = false;
+  this._domCache.cancelButton.disabled = false;
+}
+
+function disableButtons() {
+  this._domCache.confirmButton.disabled = true;
+  this._domCache.cancelButton.disabled = true;
+}
+
+function enableConfirmButton() {
+  this._domCache.confirmButton.disabled = false;
+}
+
+function disableConfirmButton() {
+  this._domCache.confirmButton.disabled = true;
+}
+
+function enableInput() {
+  var input = this.getInput();
+  if (!input) {
+    return false;
+  }
+  if (input.type === 'radio') {
+    var radiosContainer = input.parentNode.parentNode;
+    var radios = radiosContainer.querySelectorAll('input');
+    for (var i = 0; i < radios.length; i++) {
+      radios[i].disabled = false;
+    }
+  } else {
+    input.disabled = false;
+  }
+}
+
+function disableInput() {
+  var input = this.getInput();
+  if (!input) {
+    return false;
+  }
+  if (input && input.type === 'radio') {
+    var radiosContainer = input.parentNode.parentNode;
+    var radios = radiosContainer.querySelectorAll('input');
+    for (var i = 0; i < radios.length; i++) {
+      radios[i].disabled = true;
+    }
+  } else {
+    input.disabled = true;
+  }
+}
+
+// Show block with validation error
+function showValidationError(error) {
+  var domCache = this._domCache;
+  domCache.validationError.innerHTML = error;
+  var popupComputedStyle = window.getComputedStyle(domCache.popup);
+  domCache.validationError.style.marginLeft = '-' + popupComputedStyle.getPropertyValue('padding-left');
+  domCache.validationError.style.marginRight = '-' + popupComputedStyle.getPropertyValue('padding-right');
+  show(domCache.validationError);
+
+  var input = this.getInput();
+  if (input) {
+    input.setAttribute('aria-invalid', true);
+    input.setAttribute('aria-describedBy', swalClasses.validationerror);
+    focusInput(input);
+    addClass(input, swalClasses.inputerror);
+  }
+}
+
+// Hide block with validation error
+function resetValidationError() {
+  var domCache = this._domCache;
+  if (domCache.validationError) {
+    hide(domCache.validationError);
+  }
+
+  var input = this.getInput();
+  if (input) {
+    input.removeAttribute('aria-invalid');
+    input.removeAttribute('aria-describedBy');
+    removeClass(input, swalClasses.inputerror);
+  }
+}
+
 var defaultInputValidators = {
   email: function email(string) {
     return (/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(string) ? Promise.resolve() : Promise.reject('Invalid email address')
@@ -545,7 +1192,7 @@ function setParameters(params) {
   if (!params.inputValidator) {
     Object.keys(defaultInputValidators).forEach(function (key) {
       if (params.input === key) {
-        params.inputValidator = params.expectRejections ? defaultInputValidators[key] : sweetAlert.adaptInputValidator(defaultInputValidators[key]);
+        params.inputValidator = params.expectRejections ? defaultInputValidators[key] : SweetAlert.adaptInputValidator(defaultInputValidators[key]);
       }
     });
   }
@@ -665,7 +1312,7 @@ function setParameters(params) {
 
   // Progress steps
   var progressStepsContainer = getProgressSteps();
-  var currentProgressStep = parseInt(params.currentProgressStep === null ? sweetAlert.getQueueStep() : params.currentProgressStep, 10);
+  var currentProgressStep = parseInt(params.currentProgressStep === null ? SweetAlert.getQueueStep() : params.currentProgressStep, 10);
   if (params.progressSteps && params.progressSteps.length) {
     show(progressStepsContainer);
     empty(progressStepsContainer);
@@ -820,367 +1467,6 @@ function setParameters(params) {
   }
 }
 
-var DismissReason = Object.freeze({
-  cancel: 'cancel',
-  backdrop: 'overlay',
-  close: 'close',
-  esc: 'esc',
-  timer: 'timer'
-});
-
-var fixScrollbar = function fixScrollbar() {
-  // for queues, do not do this more than once
-  if (states.previousBodyPadding !== null) {
-    return;
-  }
-  // if the body has overflow
-  if (document.body.scrollHeight > window.innerHeight) {
-    // add padding so the content doesn't shift after removal of scrollbar
-    states.previousBodyPadding = document.body.style.paddingRight;
-    document.body.style.paddingRight = measureScrollbar() + 'px';
-  }
-};
-
-var undoScrollbar = function undoScrollbar() {
-  if (states.previousBodyPadding !== null) {
-    document.body.style.paddingRight = states.previousBodyPadding;
-    states.previousBodyPadding = null;
-  }
-};
-
-// Fix iOS scrolling http://stackoverflow.com/q/39626302/1331425
-var iOSfix = function iOSfix() {
-  var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  if (iOS && !hasClass(document.body, swalClasses.iosfix)) {
-    var offset = document.body.scrollTop;
-    document.body.style.top = offset * -1 + 'px';
-    addClass(document.body, swalClasses.iosfix);
-  }
-};
-
-var undoIOSfix = function undoIOSfix() {
-  if (hasClass(document.body, swalClasses.iosfix)) {
-    var offset = parseInt(document.body.style.top, 10);
-    removeClass(document.body, swalClasses.iosfix);
-    document.body.style.top = '';
-    document.body.scrollTop = offset * -1;
-  }
-};
-
-var version = "7.17.0";
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _typeof$1 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var argsToParams = function argsToParams(args) {
-  var params = {};
-  switch (_typeof$1(args[0])) {
-    case 'string':
-      ['title', 'html', 'type'].forEach(function (name, index) {
-        if (args[index] !== undefined) {
-          params[name] = args[index];
-        }
-      });
-      break;
-
-    case 'object':
-      _extends(params, args[0]);
-      break;
-
-    default:
-      error('Unexpected type of argument! Expected "string" or "object", got ' + _typeof$1(args[0]));
-      return false;
-  }
-  return params;
-};
-
-/**
- * Adapt a legacy inputValidator for use with expectRejections=false
- */
-var adaptInputValidator = function adaptInputValidator(legacyValidator) {
-  return function adaptedInputValidator(inputValue, extraParams) {
-    return legacyValidator.call(this, inputValue, extraParams).then(function () {
-      return undefined;
-    }, function (validationError) {
-      return validationError;
-    });
-  };
-};
-
-var _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var globalState = {
-  popupParams: _extends$1({}, defaultParams)
-};
-
-/*
- * Global function to close sweetAlert
- */
-var close = function close(onClose, onAfterClose) {
-  var container = getContainer();
-  var popup = getPopup();
-  if (!popup) {
-    return;
-  }
-
-  if (onClose !== null && typeof onClose === 'function') {
-    onClose(popup);
-  }
-
-  removeClass(popup, swalClasses.show);
-  addClass(popup, swalClasses.hide);
-  clearTimeout(popup.timeout);
-
-  if (!isToast()) {
-    resetPrevState();
-    window.onkeydown = globalState.previousWindowKeyDown;
-    globalState.windowOnkeydownOverridden = false;
-  }
-
-  var removePopupAndResetState = function removePopupAndResetState() {
-    if (container.parentNode) {
-      container.parentNode.removeChild(container);
-    }
-    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['no-backdrop'], swalClasses['has-input'], swalClasses['toast-shown']]);
-
-    if (isModal()) {
-      undoScrollbar();
-      undoIOSfix();
-    }
-
-    if (onAfterClose !== null && typeof onAfterClose === 'function') {
-      setTimeout(function () {
-        onAfterClose();
-      });
-    }
-  };
-
-  // If animation is supported, animate
-  if (animationEndEvent && !hasClass(popup, swalClasses.noanimation)) {
-    popup.addEventListener(animationEndEvent, function swalCloseEventFinished() {
-      popup.removeEventListener(animationEndEvent, swalCloseEventFinished);
-      if (hasClass(popup, swalClasses.hide)) {
-        removePopupAndResetState();
-      }
-    });
-  } else {
-    // Otherwise, remove immediately
-    removePopupAndResetState();
-  }
-};
-
-/*
- * Global function to determine if swal2 popup is shown
- */
-var isVisible$1 = function isVisible() {
-  return !!getPopup();
-};
-
-/*
- * Global function to click 'Confirm' button
- */
-var clickConfirm = function clickConfirm() {
-  return getConfirmButton().click();
-};
-
-/*
- * Global function to click 'Cancel' button
- */
-var clickCancel = function clickCancel() {
-  return getCancelButton().click();
-};
-
-var _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-/**
- * Returns a wrapped instance of `swal` containing `params` as defaults.
- * Useful for reusing swal configuration.
- *
- * For example:
- *
- * Before:
- * const textPromptOptions = { input: 'text', showCancelButton: true }
- * const {value: firstName} = await swal({ ...textPromptOptions, title: 'What is your first name?' })
- * const {value: lastName} = await swal({ ...textPromptOptions, title: 'What is your last name?' })
- *
- * After:
- * const myTextPrompt = swal.mixin({ input: 'text', showCancelButton: true })
- * const {value: firstName} = await myTextPrompt('What is your first name?')
- * const {value: lastName} = await myTextPrompt('What is your last name?')
- *
- * @param params
- */
-var mixin = function mixin(params) {
-  var parentSwal = this;
-  var childSwal = function childSwal() {
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return parentSwal(_extends$2({}, params, parentSwal.argsToParams(args)));
-  };
-  return _extends$2(childSwal, parentSwal);
-};
-
-// private global state for the queue feature
-var currentSteps = [];
-
-/*
- * Global function for chaining sweetAlert popups
- */
-var queue = function queue(steps) {
-  var swal = this;
-  currentSteps = steps;
-  var resetQueue = function resetQueue() {
-    currentSteps = [];
-    document.body.removeAttribute('data-swal2-queue-step');
-  };
-  var queueResult = [];
-  return new Promise(function (resolve, reject) {
-    (function step(i, callback) {
-      if (i < currentSteps.length) {
-        document.body.setAttribute('data-swal2-queue-step', i);
-
-        swal(currentSteps[i]).then(function (result) {
-          if (typeof result.value !== 'undefined') {
-            queueResult.push(result.value);
-            step(i + 1, callback);
-          } else {
-            resetQueue();
-            resolve({ dismiss: result.dismiss });
-          }
-        });
-      } else {
-        resetQueue();
-        resolve({ value: queueResult });
-      }
-    })(0);
-  });
-};
-
-/*
- * Global function for getting the index of current popup in queue
- */
-var getQueueStep = function getQueueStep() {
-  return document.body.getAttribute('data-swal2-queue-step');
-};
-
-/*
- * Global function for inserting a popup to the queue
- */
-var insertQueueStep = function insertQueueStep(step, index) {
-  if (index && index < currentSteps.length) {
-    return currentSteps.splice(index, 0, step);
-  }
-  return currentSteps.push(step);
-};
-
-/*
- * Global function for deleting a popup from the queue
- */
-var deleteQueueStep = function deleteQueueStep(index) {
-  if (typeof currentSteps[index] !== 'undefined') {
-    currentSteps.splice(index, 1);
-  }
-};
-
-var _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _typeof$2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/**
- * Set default params for each popup
- * @param {Object} userParams
- */
-var setDefaults = function setDefaults(userParams) {
-  if (!userParams || (typeof userParams === 'undefined' ? 'undefined' : _typeof$2(userParams)) !== 'object') {
-    return error('the argument for setDefaults() is required and has to be a object');
-  }
-
-  showWarningsForParams(userParams);
-
-  // assign valid params from userParams to popupParams
-  for (var param in userParams) {
-    if (isValidParameter(param)) {
-      globalState.popupParams[param] = userParams[param];
-    }
-  }
-};
-
-/**
- * Reset default params for each popup
- */
-var resetDefaults = function resetDefaults() {
-  globalState.popupParams = _extends$3({}, defaultParams);
-};
-
-/**
- * Show spinner instead of Confirm button and disable Cancel button
- */
-var showLoading = function showLoading() {
-  var popup = getPopup();
-  if (!popup) {
-    sweetAlert('');
-  }
-  popup = getPopup();
-  var actions = getActions();
-  var confirmButton = getConfirmButton();
-  var cancelButton = getCancelButton();
-
-  show(actions);
-  show(confirmButton);
-  addClass([popup, actions], swalClasses.loading);
-  confirmButton.disabled = true;
-  cancelButton.disabled = true;
-
-  popup.setAttribute('data-loading', true);
-  popup.setAttribute('aria-busy', true);
-  popup.focus();
-};
-
-
-
-var staticMethods = Object.freeze({
-	isValidParameter: isValidParameter,
-	isDeprecatedParameter: isDeprecatedParameter,
-	argsToParams: argsToParams,
-	adaptInputValidator: adaptInputValidator,
-	close: close,
-	closePopup: close,
-	closeModal: close,
-	closeToast: close,
-	isVisible: isVisible$1,
-	clickConfirm: clickConfirm,
-	clickCancel: clickCancel,
-	getTitle: getTitle,
-	getContent: getContent,
-	getImage: getImage,
-	getButtonsWrapper: getButtonsWrapper,
-	getActions: getActions,
-	getConfirmButton: getConfirmButton,
-	getCancelButton: getCancelButton,
-	getFooter: getFooter,
-	isLoading: isLoading,
-	mixin: mixin,
-	queue: queue,
-	getQueueStep: getQueueStep,
-	insertQueueStep: insertQueueStep,
-	deleteQueueStep: deleteQueueStep,
-	setDefaults: setDefaults,
-	resetDefaults: resetDefaults,
-	showLoading: showLoading,
-	enableLoading: showLoading
-});
-
-var _typeof$3 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var currentContext = void 0;
-
 /**
  * Animations
  *
@@ -1229,35 +1515,16 @@ var openPopup = function openPopup(animation, onBeforeOpen, onOpen) {
   }
 };
 
-// SweetAlert entry point
-var sweetAlert = function sweetAlert() {
-  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
+function _main(userParams) {
+  var _this = this;
 
-  // Prevent run in Node env
-  if (typeof window === 'undefined') {
-    return;
-  }
-
-  // Check for the existence of Promise
-  if (typeof Promise === 'undefined') {
-    error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)');
-  }
-
-  if (typeof args[0] === 'undefined') {
-    error('SweetAlert2 expects at least 1 attribute!');
-    return false;
-  }
-
-  var context = currentContext = {};
-
-  var userParams = sweetAlert.argsToParams(args);
   showWarningsForParams(userParams);
-  var params = context.params = _extends$4({}, globalState.popupParams, userParams);
-  setParameters(params);
 
-  var domCache = context.domCache = {
+  var params = this.params = _extends({}, globalState.popupParams, userParams);
+  setParameters(params);
+  Object.freeze(params);
+
+  var domCache = this._domCache = {
     popup: getPopup(),
     container: getContainer(),
     content: getContent(),
@@ -1269,10 +1536,12 @@ var sweetAlert = function sweetAlert() {
     progressSteps: getProgressSteps()
   };
 
+  var constructor = this.constructor;
+
   return new Promise(function (resolve, reject) {
     // functions to handle all resolving/rejecting/settling
     var succeedWith = function succeedWith(value) {
-      sweetAlert.closePopup(params.onClose, params.onAfterClose);
+      constructor.closePopup(params.onClose, params.onAfterClose); // TODO: make closePopup an *instance* method
       if (params.useRejections) {
         resolve(value);
       } else {
@@ -1280,7 +1549,7 @@ var sweetAlert = function sweetAlert() {
       }
     };
     var dismissWith = function dismissWith(dismiss) {
-      sweetAlert.closePopup(params.onClose, params.onAfterClose);
+      constructor.closePopup(params.onClose, params.onAfterClose);
       if (params.useRejections) {
         reject(dismiss);
       } else {
@@ -1288,7 +1557,7 @@ var sweetAlert = function sweetAlert() {
       }
     };
     var errorWith = function errorWith(error$$1) {
-      sweetAlert.closePopup(params.onClose, params.onAfterClose);
+      constructor.closePopup(params.onClose, params.onAfterClose);
       reject(error$$1);
     };
 
@@ -1301,7 +1570,7 @@ var sweetAlert = function sweetAlert() {
 
     // Get the value of the popup input
     var getInputValue = function getInputValue() {
-      var input = sweetAlert.getInput();
+      var input = _this.getInput();
       if (!input) {
         return null;
       }
@@ -1320,7 +1589,7 @@ var sweetAlert = function sweetAlert() {
     // input autofocus
     if (params.input) {
       setTimeout(function () {
-        var input = sweetAlert.getInput();
+        var input = _this.getInput();
         if (input) {
           focusInput(input);
         }
@@ -1329,11 +1598,11 @@ var sweetAlert = function sweetAlert() {
 
     var confirm = function confirm(value) {
       if (params.showLoaderOnConfirm) {
-        sweetAlert.showLoading();
+        constructor.showLoading(); // TODO: make showLoading an *instance* method
       }
 
       if (params.preConfirm) {
-        sweetAlert.resetValidationError();
+        _this.resetValidationError();
         var preConfirmPromise = Promise.resolve().then(function () {
           return params.preConfirm(value, params.extraParams);
         });
@@ -1341,15 +1610,15 @@ var sweetAlert = function sweetAlert() {
           preConfirmPromise.then(function (preConfirmValue) {
             return succeedWith(preConfirmValue || value);
           }, function (validationError) {
-            sweetAlert.hideLoading();
+            _this.hideLoading();
             if (validationError) {
-              sweetAlert.showValidationError(validationError);
+              _this.showValidationError(validationError);
             }
           });
         } else {
           preConfirmPromise.then(function (preConfirmValue) {
             if (isVisible(domCache.validationError) || preConfirmValue === false) {
-              sweetAlert.hideLoading();
+              _this.hideLoading();
             } else {
               succeedWith(preConfirmValue || value);
             }
@@ -1375,34 +1644,34 @@ var sweetAlert = function sweetAlert() {
       switch (e.type) {
         case 'click':
           // Clicked 'confirm'
-          if (targetedConfirm && sweetAlert.isVisible()) {
-            sweetAlert.disableButtons();
+          if (targetedConfirm && constructor.isVisible()) {
+            _this.disableButtons();
             if (params.input) {
               var inputValue = getInputValue();
 
               if (params.inputValidator) {
-                sweetAlert.disableInput();
+                _this.disableInput();
                 var validationPromise = Promise.resolve().then(function () {
                   return params.inputValidator(inputValue, params.extraParams);
                 });
                 if (params.expectRejections) {
                   validationPromise.then(function () {
-                    sweetAlert.enableButtons();
-                    sweetAlert.enableInput();
+                    _this.enableButtons();
+                    _this.enableInput();
                     confirm(inputValue);
                   }, function (validationError) {
-                    sweetAlert.enableButtons();
-                    sweetAlert.enableInput();
+                    _this.enableButtons();
+                    _this.enableInput();
                     if (validationError) {
-                      sweetAlert.showValidationError(validationError);
+                      _this.showValidationError(validationError);
                     }
                   });
                 } else {
                   validationPromise.then(function (validationError) {
-                    sweetAlert.enableButtons();
-                    sweetAlert.enableInput();
+                    _this.enableButtons();
+                    _this.enableInput();
                     if (validationError) {
-                      sweetAlert.showValidationError(validationError);
+                      _this.showValidationError(validationError);
                     } else {
                       confirm(inputValue);
                     }
@@ -1418,9 +1687,9 @@ var sweetAlert = function sweetAlert() {
             }
 
             // Clicked 'cancel'
-          } else if (targetedCancel && sweetAlert.isVisible()) {
-            sweetAlert.disableButtons();
-            dismissWith(sweetAlert.DismissReason.cancel);
+          } else if (targetedCancel && constructor.isVisible()) {
+            _this.disableButtons();
+            dismissWith(constructor.DismissReason.cancel);
           }
           break;
         default:
@@ -1437,7 +1706,7 @@ var sweetAlert = function sweetAlert() {
 
     // Closing popup by close button
     domCache.closeButton.onclick = function () {
-      dismissWith(sweetAlert.DismissReason.close);
+      dismissWith(constructor.DismissReason.close);
     };
 
     if (params.toast) {
@@ -1446,8 +1715,8 @@ var sweetAlert = function sweetAlert() {
         if (params.showConfirmButton || params.showCancelButton || params.showCloseButton || params.input) {
           return;
         }
-        sweetAlert.closePopup(params.onClose, params.onAfterClose);
-        dismissWith(sweetAlert.DismissReason.close);
+        constructor.closePopup(params.onClose, params.onAfterClose);
+        dismissWith(constructor.DismissReason.close);
       };
     } else {
       var ignoreOutsideClick = false;
@@ -1485,7 +1754,7 @@ var sweetAlert = function sweetAlert() {
           return;
         }
         if (callIfFunction(params.allowOutsideClick)) {
-          dismissWith(sweetAlert.DismissReason.backdrop);
+          dismissWith(constructor.DismissReason.backdrop);
         }
       };
     }
@@ -1528,12 +1797,12 @@ var sweetAlert = function sweetAlert() {
       ];
 
       if (e.key === 'Enter' && !e.isComposing) {
-        if (e.target === sweetAlert.getInput()) {
+        if (e.target === _this.getInput()) {
           if (['textarea', 'file'].indexOf(params.input) !== -1) {
             return; // do not submit
           }
 
-          sweetAlert.clickConfirm();
+          constructor.clickConfirm();
           e.preventDefault();
         }
 
@@ -1572,7 +1841,7 @@ var sweetAlert = function sweetAlert() {
 
         // ESC
       } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(params.allowEscapeKey) === true) {
-        dismissWith(sweetAlert.DismissReason.esc);
+        dismissWith(constructor.DismissReason.esc);
       }
     };
 
@@ -1587,9 +1856,9 @@ var sweetAlert = function sweetAlert() {
       window.onkeydown = handleKeyDown;
     }
 
-    sweetAlert.enableButtons();
-    sweetAlert.hideLoading();
-    sweetAlert.resetValidationError();
+    _this.enableButtons();
+    _this.hideLoading();
+    _this.resetValidationError();
 
     if (params.input) {
       addClass(document.body, swalClasses['has-input']);
@@ -1601,7 +1870,7 @@ var sweetAlert = function sweetAlert() {
     for (var _i3 = 0; _i3 < inputTypes.length; _i3++) {
       var inputClass = swalClasses[inputTypes[_i3]];
       var inputContainer = getChildByClass(domCache.content, inputClass);
-      input = sweetAlert.getInput(inputTypes[_i3]);
+      input = _this.getInput(inputTypes[_i3]);
 
       // set attributes
       if (input) {
@@ -1669,7 +1938,7 @@ var sweetAlert = function sweetAlert() {
         }
         populateInputOptions = function populateInputOptions(inputOptions) {
           inputOptions.forEach(function (_ref) {
-            var _ref2 = _slicedToArray(_ref, 2),
+            var _ref2 = slicedToArray(_ref, 2),
                 optionValue = _ref2[0],
                 optionLabel = _ref2[1];
 
@@ -1690,7 +1959,7 @@ var sweetAlert = function sweetAlert() {
         radio.innerHTML = '';
         populateInputOptions = function populateInputOptions(inputOptions) {
           inputOptions.forEach(function (_ref3) {
-            var _ref4 = _slicedToArray(_ref3, 2),
+            var _ref4 = slicedToArray(_ref3, 2),
                 radioValue = _ref4[0],
                 radioLabel = _ref4[1];
 
@@ -1715,7 +1984,7 @@ var sweetAlert = function sweetAlert() {
         break;
       case 'checkbox':
         var checkbox = getChildByClass(domCache.content, swalClasses.checkbox);
-        var checkboxInput = sweetAlert.getInput('checkbox');
+        var checkboxInput = _this.getInput('checkbox');
         checkboxInput.type = 'checkbox';
         checkboxInput.value = 1;
         checkboxInput.id = swalClasses.checkbox;
@@ -1746,29 +2015,29 @@ var sweetAlert = function sweetAlert() {
       var processInputOptions = function processInputOptions(inputOptions) {
         return populateInputOptions(formatInputOptions(inputOptions));
       };
-      if (params.inputOptions instanceof Promise) {
-        sweetAlert.showLoading();
+      if (isThenable(params.inputOptions)) {
+        constructor.showLoading();
         params.inputOptions.then(function (inputOptions) {
-          sweetAlert.hideLoading();
+          _this.hideLoading();
           processInputOptions(inputOptions);
         });
-      } else if (_typeof$3(params.inputOptions) === 'object') {
+      } else if (_typeof(params.inputOptions) === 'object') {
         processInputOptions(params.inputOptions);
       } else {
-        error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + _typeof$3(params.inputOptions));
+        error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + _typeof(params.inputOptions));
       }
-    } else if (['text', 'email', 'number', 'tel', 'textarea'].indexOf(params.input) !== -1 && params.inputValue instanceof Promise) {
-      sweetAlert.showLoading();
+    } else if (['text', 'email', 'number', 'tel', 'textarea'].indexOf(params.input) !== -1 && isThenable(params.inputValue)) {
+      constructor.showLoading();
       hide(input);
       params.inputValue.then(function (inputValue) {
         input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : inputValue + '';
         show(input);
-        sweetAlert.hideLoading();
+        _this.hideLoading();
       }).catch(function (err) {
         error('Error in inputValue promise: ' + err);
         input.value = '';
         show(input);
-        sweetAlert.hideLoading();
+        _this.hideLoading();
       });
     }
 
@@ -1791,233 +2060,105 @@ var sweetAlert = function sweetAlert() {
     // fix scroll
     domCache.container.scrollTop = 0;
   });
+}
+
+
+
+var instanceMethods = Object.freeze({
+	hideLoading: hideLoading,
+	disableLoading: hideLoading,
+	getInput: getInput,
+	enableButtons: enableButtons,
+	disableButtons: disableButtons,
+	enableConfirmButton: enableConfirmButton,
+	disableConfirmButton: disableConfirmButton,
+	enableInput: enableInput,
+	disableInput: disableInput,
+	showValidationError: showValidationError,
+	resetValidationError: resetValidationError,
+	_main: _main
+});
+
+var currentInstance = void 0;
+
+// SweetAlert constructor
+function SweetAlert() {
+  // Prevent run in Node env
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  // Check for the existence of Promise
+  if (typeof Promise === 'undefined') {
+    error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)');
+  }
+
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  if (typeof args[0] === 'undefined') {
+    error('SweetAlert2 expects at least 1 attribute!');
+    return false;
+  }
+
+  // handle things when constructor is invoked without the `new` keyword
+  if (!(this instanceof SweetAlert)) {
+    return new (Function.prototype.bind.apply(SweetAlert, [null].concat(args)))();
+  }
+
+  currentInstance = this;
+
+  this._promise = this._main(this.constructor.argsToParams(args));
+}
+
+// `catch` cannot be the name of a module export, so we define our thenable methods here instead
+SweetAlert.prototype.then = function (onFulfilled, onRejected) {
+  return this._promise.then(onFulfilled, onRejected);
+};
+SweetAlert.prototype.catch = function (onRejected) {
+  return this._promise.catch(onRejected);
+};
+SweetAlert.prototype.finally = function (onFinally) {
+  return this._promise.finally(onFinally);
 };
 
-// Assign static methods from src/staticMethods/*.js
-_extends$4(sweetAlert, staticMethods);
+// Assign instance methods from src/instanceMethods/*.js to prototype
+_extends(SweetAlert.prototype, instanceMethods);
 
-/**
- * Show spinner instead of Confirm button and disable Cancel button
- */
-sweetAlert.hideLoading = sweetAlert.disableLoading = function () {
-  if (currentContext) {
-    var _currentContext = currentContext,
-        params = _currentContext.params,
-        domCache = _currentContext.domCache;
+// Assign static methods from src/staticMethods/*.js to constructor
+_extends(SweetAlert, staticMethods);
 
-    if (!params.showConfirmButton) {
-      hide(domCache.confirmButton);
-      if (!params.showCancelButton) {
-        hide(domCache.actions);
-      }
+// Proxy to instance methods to constructor, for now, for backwards compatibility
+Object.keys(instanceMethods).forEach(function (key) {
+  SweetAlert[key] = function () {
+    if (currentInstance) {
+      var _currentInstance;
+
+      return (_currentInstance = currentInstance)[key].apply(_currentInstance, arguments);
     }
-    removeClass([domCache.popup, domCache.actions], swalClasses.loading);
-    domCache.popup.removeAttribute('aria-busy');
-    domCache.popup.removeAttribute('data-loading');
-    domCache.confirmButton.disabled = false;
-    domCache.cancelButton.disabled = false;
-  }
-};
+  };
+});
 
-// Get input element by specified type or, if type isn't specified, by params.input
-sweetAlert.getInput = function (inputType) {
-  if (currentContext) {
-    var _currentContext2 = currentContext,
-        params = _currentContext2.params,
-        domCache = _currentContext2.domCache;
+SweetAlert.DismissReason = DismissReason;
 
-    inputType = inputType || params.input;
-    if (!inputType) {
-      return null;
-    }
-    switch (inputType) {
-      case 'select':
-      case 'textarea':
-      case 'file':
-        return getChildByClass(domCache.content, swalClasses[inputType]);
-      case 'checkbox':
-        return domCache.popup.querySelector('.' + swalClasses.checkbox + ' input');
-      case 'radio':
-        return domCache.popup.querySelector('.' + swalClasses.radio + ' input:checked') || domCache.popup.querySelector('.' + swalClasses.radio + ' input:first-child');
-      case 'range':
-        return domCache.popup.querySelector('.' + swalClasses.range + ' input');
-      default:
-        return getChildByClass(domCache.content, swalClasses.input);
-    }
-  }
-};
+SweetAlert.noop = function () {};
 
-sweetAlert.enableButtons = function () {
-  if (currentContext) {
-    var _currentContext3 = currentContext,
-        domCache = _currentContext3.domCache;
+SweetAlert.version = version;
 
-    domCache.confirmButton.disabled = false;
-    domCache.cancelButton.disabled = false;
-  }
-};
-
-sweetAlert.disableButtons = function () {
-  if (currentContext) {
-    var _currentContext4 = currentContext,
-        domCache = _currentContext4.domCache;
-
-    domCache.confirmButton.disabled = true;
-    domCache.cancelButton.disabled = true;
-  }
-};
-
-sweetAlert.enableConfirmButton = function () {
-  if (currentContext) {
-    var _currentContext5 = currentContext,
-        domCache = _currentContext5.domCache;
-
-    domCache.confirmButton.disabled = false;
-  }
-};
-
-sweetAlert.disableConfirmButton = function () {
-  if (currentContext) {
-    var _currentContext6 = currentContext,
-        domCache = _currentContext6.domCache;
-
-    domCache.confirmButton.disabled = true;
-  }
-};
-
-sweetAlert.enableInput = function () {
-  if (currentContext) {
-    var input = sweetAlert.getInput();
-    if (!input) {
-      return false;
-    }
-    if (input.type === 'radio') {
-      var radiosContainer = input.parentNode.parentNode;
-      var radios = radiosContainer.querySelectorAll('input');
-      for (var i = 0; i < radios.length; i++) {
-        radios[i].disabled = false;
-      }
-    } else {
-      input.disabled = false;
-    }
-  }
-};
-
-sweetAlert.disableInput = function () {
-  if (currentContext) {
-    var input = sweetAlert.getInput();
-    if (!input) {
-      return false;
-    }
-    if (input && input.type === 'radio') {
-      var radiosContainer = input.parentNode.parentNode;
-      var radios = radiosContainer.querySelectorAll('input');
-      for (var i = 0; i < radios.length; i++) {
-        radios[i].disabled = true;
-      }
-    } else {
-      input.disabled = true;
-    }
-  }
-};
-
-// Show block with validation error
-sweetAlert.showValidationError = function (error$$1) {
-  if (currentContext) {
-    var _currentContext7 = currentContext,
-        domCache = _currentContext7.domCache;
-
-    domCache.validationError.innerHTML = error$$1;
-    var popupComputedStyle = window.getComputedStyle(domCache.popup);
-    domCache.validationError.style.marginLeft = '-' + popupComputedStyle.getPropertyValue('padding-left');
-    domCache.validationError.style.marginRight = '-' + popupComputedStyle.getPropertyValue('padding-right');
-    show(domCache.validationError);
-
-    var input = sweetAlert.getInput();
-    if (input) {
-      input.setAttribute('aria-invalid', true);
-      input.setAttribute('aria-describedBy', swalClasses.validationerror);
-      focusInput(input);
-      addClass(input, swalClasses.inputerror);
-    }
-  }
-};
-
-// Hide block with validation error
-sweetAlert.resetValidationError = function () {
-  if (currentContext) {
-    var _currentContext8 = currentContext,
-        domCache = _currentContext8.domCache;
-
-    if (domCache.validationError) {
-      hide(domCache.validationError);
-    }
-
-    var input = sweetAlert.getInput();
-    if (input) {
-      input.removeAttribute('aria-invalid');
-      input.removeAttribute('aria-describedBy');
-      removeClass(input, swalClasses.inputerror);
-    }
-  }
-};
-
-sweetAlert.getProgressSteps = function () {
-  if (currentContext) {
-    var _currentContext9 = currentContext,
-        params = _currentContext9.params;
-
-    return params.progressSteps;
-  }
-};
-
-sweetAlert.setProgressSteps = function (progressSteps) {
-  if (currentContext) {
-    var _currentContext10 = currentContext,
-        params = _currentContext10.params;
-
-    params.progressSteps = progressSteps;
-    setParameters(params);
-  }
-};
-
-sweetAlert.showProgressSteps = function () {
-  if (currentContext) {
-    var _currentContext11 = currentContext,
-        domCache = _currentContext11.domCache;
-
-    show(domCache.progressSteps);
-  }
-};
-
-sweetAlert.hideProgressSteps = function () {
-  if (currentContext) {
-    var _currentContext12 = currentContext,
-        domCache = _currentContext12.domCache;
-
-    hide(domCache.progressSteps);
-  }
-};
-
-sweetAlert.DismissReason = DismissReason;
-
-sweetAlert.noop = function () {};
-
-sweetAlert.version = version;
-
-sweetAlert.default = sweetAlert;
+SweetAlert.default = SweetAlert;
 
 /**
  * Set default params if `window._swalDefaults` is an object
  */
-if (typeof window !== 'undefined' && _typeof$3(window._swalDefaults) === 'object') {
-  sweetAlert.setDefaults(window._swalDefaults);
+if (typeof window !== 'undefined' && _typeof(window._swalDefaults) === 'object') {
+  SweetAlert.setDefaults(window._swalDefaults);
 }
 
-return sweetAlert;
+return SweetAlert;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
 
 "undefined"!=typeof document&&function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,"@-webkit-keyframes swal2-show {\n" +
 "  0% {\n" +

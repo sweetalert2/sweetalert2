@@ -25,10 +25,12 @@ export function _main (userParams) {
     progressSteps: dom.getProgressSteps()
   }
 
+  const constructor = this.constructor
+
   return new Promise((resolve, reject) => {
     // functions to handle all resolving/rejecting/settling
     const succeedWith = (value) => {
-      this.constructor.closePopup(params.onClose, params.onAfterClose) // TODO: make closePopup an *instance* method
+      constructor.closePopup(params.onClose, params.onAfterClose) // TODO: make closePopup an *instance* method
       if (params.useRejections) {
         resolve(value)
       } else {
@@ -36,7 +38,7 @@ export function _main (userParams) {
       }
     }
     const dismissWith = (dismiss) => {
-      this.constructor.closePopup(params.onClose, params.onAfterClose)
+      constructor.closePopup(params.onClose, params.onAfterClose)
       if (params.useRejections) {
         reject(dismiss)
       } else {
@@ -44,7 +46,7 @@ export function _main (userParams) {
       }
     }
     const errorWith = (error) => {
-      this.constructor.closePopup(params.onClose, params.onAfterClose)
+      constructor.closePopup(params.onClose, params.onAfterClose)
       reject(error)
     }
 
@@ -83,7 +85,7 @@ export function _main (userParams) {
 
     const confirm = (value) => {
       if (params.showLoaderOnConfirm) {
-        this.constructor.showLoading() // TODO: make showLoading an *instance* method
+        constructor.showLoading() // TODO: make showLoading an *instance* method
       }
 
       if (params.preConfirm) {
@@ -127,7 +129,7 @@ export function _main (userParams) {
       switch (e.type) {
         case 'click':
           // Clicked 'confirm'
-          if (targetedConfirm && this.constructor.isVisible()) {
+          if (targetedConfirm && constructor.isVisible()) {
             this.disableButtons()
             if (params.input) {
               const inputValue = getInputValue()
@@ -172,9 +174,9 @@ export function _main (userParams) {
             }
 
             // Clicked 'cancel'
-          } else if (targetedCancel && this.constructor.isVisible()) {
+          } else if (targetedCancel && constructor.isVisible()) {
             this.disableButtons()
-            dismissWith(this.constructor.DismissReason.cancel)
+            dismissWith(constructor.DismissReason.cancel)
           }
           break
         default:
@@ -191,7 +193,7 @@ export function _main (userParams) {
 
     // Closing popup by close button
     domCache.closeButton.onclick = () => {
-      dismissWith(this.constructor.DismissReason.close)
+      dismissWith(constructor.DismissReason.close)
     }
 
     if (params.toast) {
@@ -205,8 +207,8 @@ export function _main (userParams) {
         ) {
           return
         }
-        this.constructor.closePopup(params.onClose, params.onAfterClose)
-        dismissWith(this.constructor.DismissReason.close)
+        constructor.closePopup(params.onClose, params.onAfterClose)
+        dismissWith(constructor.DismissReason.close)
       }
     } else {
       let ignoreOutsideClick = false
@@ -244,7 +246,7 @@ export function _main (userParams) {
           return
         }
         if (callIfFunction(params.allowOutsideClick)) {
-          dismissWith(this.constructor.DismissReason.backdrop)
+          dismissWith(constructor.DismissReason.backdrop)
         }
       }
     }
@@ -294,7 +296,7 @@ export function _main (userParams) {
             return // do not submit
           }
 
-          this.constructor.clickConfirm()
+          constructor.clickConfirm()
           e.preventDefault()
         }
 
@@ -333,7 +335,7 @@ export function _main (userParams) {
 
         // ESC
       } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(params.allowEscapeKey) === true) {
-        dismissWith(this.constructor.DismissReason.esc)
+        dismissWith(constructor.DismissReason.esc)
       }
     }
 
@@ -498,7 +500,7 @@ export function _main (userParams) {
     if (params.input === 'select' || params.input === 'radio') {
       const processInputOptions = inputOptions => populateInputOptions(formatInputOptions(inputOptions))
       if (isThenable(params.inputOptions)) {
-        this.constructor.showLoading()
+        constructor.showLoading()
         params.inputOptions.then((inputOptions) => {
           this.hideLoading()
           processInputOptions(inputOptions)
@@ -509,7 +511,7 @@ export function _main (userParams) {
         error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + typeof params.inputOptions)
       }
     } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) && isThenable(params.inputValue)) {
-      this.constructor.showLoading()
+      constructor.showLoading()
       dom.hide(input)
       params.inputValue.then((inputValue) => {
         input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : inputValue + ''

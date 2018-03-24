@@ -1,4 +1,3 @@
-require('babel-polyfill')
 const isCi = require('is-ci')
 
 const noLaunch = process.argv.includes('--no-launch')
@@ -29,11 +28,13 @@ module.exports = function (config) {
     }
   }
   let browsers = []
+  let retryLimit = 2
   if (!noLaunch) {
     if (isCi) {
       if (isCron) {
         // Cron on Travis
         browsers = Object.keys(sauceLabsLaunchers)
+        retryLimit = 42 // Trying stuff until it works, #1037
       } else if (isWindows) {
         // AppVeyor
         browsers = ['IE']
@@ -53,6 +54,7 @@ module.exports = function (config) {
     ],
     customLaunchers: sauceLabsLaunchers,
     browsers,
+    retryLimit,
     reporters: ['spec', 'saucelabs'],
     preprocessors: {
       'test/qunit/**/*.js': [
@@ -61,7 +63,7 @@ module.exports = function (config) {
       ]
     },
     files: [
-      'node_modules/babel-polyfill/dist/polyfill.js',
+      'node_modules/promise-polyfill/dist/polyfill.min.js',
       'dist/sweetalert2.css',
       'dist/sweetalert2.js',
       'test/qunit/**/*.js'

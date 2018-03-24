@@ -3,19 +3,17 @@
   "homepage": "https://sweetalert2.github.io/",
   "authors": [
     "Limon Monte <limon.monte@gmail.com> (https://limonte.github.io)",
-    "Morgan Touverey-Quilling <mtouverey@alembic-dev.com> (https://github.com/toverux)",
-    "Johan Fagerberg (https://github.com/birjolaxew)",
-    "Sam Turrell <sam@samturrell.co.uk> (https://github.com/samturrell)",
-    "Joseph Schultz (https://github.com/acupajoe)",
     "Matthew Francis Brunetti (https://github.com/zenflow)",
-    "Patrick H. Lauke (https://github.com/patrickhlauke)"
+    "Morgan Touverey-Quilling <mtouverey@alembic-dev.com> (https://github.com/toverux)",
+    "Joseph Schultz (https://github.com/acupajoe)",
+    "Sam Turrell <sam@samturrell.co.uk> (https://github.com/samturrell)",
+    "Johan Fagerberg (https://github.com/birjolaxew)"
   ],
   "ignore": [
     "assets",
-    "config",
     "test",
-    "testem.json",
-    "tslint.json",
+    "utils",
+    ".appveyor.yml",
     ".babelrc",
     ".editorconfig",
     ".gitignore",
@@ -23,7 +21,10 @@
     ".travis.yml",
     ".github",
     "gulpfile.js",
+    "karma.conf.js",
     "package.json",
+    "release.js",
+    "tslint.json",
     "yarn.lock",
     "DONATIONS.md"
   ],

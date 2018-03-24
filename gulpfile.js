@@ -40,7 +40,10 @@ gulp.task('build:scripts', () => {
       plugins: [
         json(),
         babel({
-          exclude: 'node_modules/**'
+          exclude: 'node_modules/**',
+          plugins: [
+            'external-helpers'
+          ]
         })
       ],
       input: 'src/sweetalert2.js',
@@ -48,7 +51,10 @@ gulp.task('build:scripts', () => {
         format: 'umd',
         name: 'Sweetalert2',
         banner: banner,
-        footer: 'if (typeof window !== \'undefined\' && window.Sweetalert2) window.sweetAlert = window.swal = window.Sweetalert2;'
+        footer: `\
+if (typeof window !== 'undefined' && window.Sweetalert2){\
+  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2\
+}`
       }
     }))
     .pipe(gulp.dest('dist'))

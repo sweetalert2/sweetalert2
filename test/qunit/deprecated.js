@@ -1,12 +1,12 @@
 /* global QUnit */
-const {swal} = require('./helpers')
+const {Swal} = require('./helpers')
 const $ = require('jquery')
 import { TIMEOUT } from './helpers.js'
 
 QUnit.test('confirm button /w useRejections: true', (assert) => {
   const done = assert.async()
 
-  swal({
+  Swal({
     title: 'Confirm me',
     useRejections: true,
     animation: false
@@ -15,36 +15,36 @@ QUnit.test('confirm button /w useRejections: true', (assert) => {
     done()
   })
 
-  swal.clickConfirm()
+  Swal.clickConfirm()
 })
 
 QUnit.test('cancel button /w useRejections: true', (assert) => {
   const done = assert.async()
 
-  swal({
+  Swal({
     title: 'Cancel me',
     useRejections: true
   }).then(
     () => {},
     (dismiss) => {
-      assert.equal(dismiss, swal.DismissReason.cancel)
+      assert.equal(dismiss, Swal.DismissReason.cancel)
       done()
     }
   )
 
-  swal.clickCancel()
+  Swal.clickCancel()
 })
 
 QUnit.test('esc key /w useRejections: true', (assert) => {
   const done = assert.async()
 
-  swal({
+  Swal({
     title: 'Esc me',
     useRejections: true
   }).then(
     () => {},
     (dismiss) => {
-      assert.equal(dismiss, swal.DismissReason.esc)
+      assert.equal(dismiss, Swal.DismissReason.esc)
       done()
     }
   )
@@ -57,13 +57,13 @@ QUnit.test('esc key /w useRejections: true', (assert) => {
 QUnit.test('backdrop click /w useRejections: true', (assert) => {
   const done = assert.async()
 
-  swal({
+  Swal({
     title: 'Backdrop click',
     useRejections: true
   }).then(
     () => {},
     (dismiss) => {
-      assert.equal(dismiss, swal.DismissReason.backdrop)
+      assert.equal(dismiss, Swal.DismissReason.backdrop)
       done()
     }
   )
@@ -74,7 +74,7 @@ QUnit.test('backdrop click /w useRejections: true', (assert) => {
 QUnit.test('timer /w useRejections: true', (assert) => {
   const done = assert.async()
 
-  swal({
+  Swal({
     title: 'Timer test',
     timer: 10,
     animation: false,
@@ -82,7 +82,7 @@ QUnit.test('timer /w useRejections: true', (assert) => {
   }).then(
     () => {},
     (dismiss) => {
-      assert.equal(dismiss, swal.DismissReason.timer)
+      assert.equal(dismiss, Swal.DismissReason.timer)
       done()
     }
   )
@@ -91,14 +91,14 @@ QUnit.test('timer /w useRejections: true', (assert) => {
 QUnit.test('close button /w useRejections: true', (assert) => {
   const done = assert.async()
 
-  swal({
+  Swal({
     title: 'Close button test',
     showCloseButton: true,
     useRejections: true
   }).then(
     () => {},
     (dismiss) => {
-      assert.equal(dismiss, swal.DismissReason.close)
+      assert.equal(dismiss, Swal.DismissReason.close)
       done()
     }
   )
@@ -112,7 +112,7 @@ QUnit.test('input text /w useRejections: true', (assert) => {
   const done = assert.async()
 
   const string = 'Live for yourself'
-  swal({
+  Swal({
     input: 'text',
     useRejections: true
   }).then((result) => {
@@ -121,14 +121,14 @@ QUnit.test('input text /w useRejections: true', (assert) => {
   })
 
   $('.swal2-input').val(string)
-  swal.clickConfirm()
+  Swal.clickConfirm()
 })
 
 QUnit.test('built-in email validation /w useRejections: true', (assert) => {
   const done = assert.async()
 
   var validEmailAddress = 'team+support+a.b@example.com'
-  swal({
+  Swal({
     input: 'email',
     useRejections: true
   }).then((result) => {
@@ -137,14 +137,14 @@ QUnit.test('built-in email validation /w useRejections: true', (assert) => {
   })
 
   $('.swal2-input').val(validEmailAddress)
-  swal.clickConfirm()
+  Swal.clickConfirm()
 })
 
 QUnit.test('input select /w useRejections: true', (assert) => {
   const done = assert.async()
 
   const selected = 'dos'
-  swal({
+  Swal({
     input: 'select',
     inputOptions: {uno: 1, dos: 2},
     useRejections: true
@@ -154,13 +154,13 @@ QUnit.test('input select /w useRejections: true', (assert) => {
   })
 
   $('.swal2-select').val(selected)
-  swal.clickConfirm()
+  Swal.clickConfirm()
 })
 
 QUnit.test('input checkbox /w useRejections: true', (assert) => {
   const done = assert.async()
 
-  swal({
+  Swal({
     input: 'checkbox',
     inputAttributes: {
       name: 'test-checkbox'
@@ -174,19 +174,19 @@ QUnit.test('input checkbox /w useRejections: true', (assert) => {
 
   const checkbox = $('.swal2-checkbox input')
   checkbox.prop('checked', true)
-  swal.clickConfirm()
+  Swal.clickConfirm()
 })
 
 QUnit.test('validation error /w expectRejections: true', (assert) => {
   const done = assert.async()
   const inputValidator = (value) => !value ? Promise.reject('no falsy values') : Promise.resolve()
 
-  swal({input: 'text', animation: false, inputValidator, expectRejections: true})
+  Swal({input: 'text', animation: false, inputValidator, expectRejections: true})
   assert.ok($('.swal2-validationerror').is(':hidden'))
   setTimeout(() => {
     const initialModalHeight = $('.swal2-modal').outerHeight()
 
-    swal.clickConfirm()
+    Swal.clickConfirm()
     setTimeout(() => {
       assert.ok($('.swal2-validationerror').is(':visible'))
       assert.equal($('.swal2-validationerror').text(), 'no falsy values')

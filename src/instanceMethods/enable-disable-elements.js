@@ -1,27 +1,23 @@
-// Currently, `this` is the private `context` (or `currentContext`) object
-
-import { getInput } from './getInput'
-
 export function enableButtons () {
-  this.domCache.confirmButton.disabled = false
-  this.domCache.cancelButton.disabled = false
+  this._domCache.confirmButton.disabled = false
+  this._domCache.cancelButton.disabled = false
 }
 
 export function disableButtons () {
-  this.domCache.confirmButton.disabled = true
-  this.domCache.cancelButton.disabled = true
+  this._domCache.confirmButton.disabled = true
+  this._domCache.cancelButton.disabled = true
 }
 
 export function enableConfirmButton () {
-  this.domCache.confirmButton.disabled = false
+  this._domCache.confirmButton.disabled = false
 }
 
 export function disableConfirmButton () {
-  this.domCache.confirmButton.disabled = true
+  this._domCache.confirmButton.disabled = true
 }
 
 export function enableInput () {
-  const input = getInput.call(this)
+  const input = this.getInput()
   if (!input) {
     return false
   }
@@ -37,7 +33,7 @@ export function enableInput () {
 }
 
 export function disableInput () {
-  const input = getInput.call(this)
+  const input = this.getInput()
   if (!input) {
     return false
   }

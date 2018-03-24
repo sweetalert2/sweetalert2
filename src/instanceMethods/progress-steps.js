@@ -1,5 +1,3 @@
-// Currently, `this` is the private `context` (or `currentContext`) object
-
 import setParameters from '../utils/setParameters'
 import * as dom from '../utils/dom/index'
 
@@ -13,9 +11,9 @@ export function setProgressSteps (progressSteps) {
 }
 
 export function showProgressSteps () {
-  dom.show(this.domCache.progressSteps)
+  dom.show(this._domCache.progressSteps)
 }
 
 export function hideProgressSteps () {
-  dom.hide(this.domCache.progressSteps)
+  dom.hide(this._domCache.progressSteps)
 }

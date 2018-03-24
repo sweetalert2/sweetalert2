@@ -75,10 +75,10 @@ Or:
 
 ```js
 // ES6 Modules or TypeScript
-import swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 
 // CommonJS
-const swal = require('sweetalert2')
+const Swal = require('sweetalert2')
 ```
 
 Please note that [TypeScript is well-supported](https://github.com/sweetalert2/sweetalert2/blob/master/sweetalert2.d.ts), so you don't have to install a third-party declaration file.
@@ -90,19 +90,19 @@ Examples
 The most basic message:
 
 ```js
-swal('Hello world!')
+Swal('Hello world!')
 ```
 
 A message signaling an error:
 
 ```js
-swal('Oops...', 'Something went wrong!', 'error')
+Swal('Oops...', 'Something went wrong!', 'error')
 ```
 
 Handling the result of SweetAlert2 modal:
 
 ```js
-swal({
+Swal({
   title: 'Are you sure?',
   text: 'You will not be able to recover this imaginary file!',
   type: 'warning',
@@ -111,15 +111,15 @@ swal({
   cancelButtonText: 'No, keep it'
 }).then((result) => {
   if (result.value) {
-    swal(
+    Swal(
       'Deleted!',
       'Your imaginary file has been deleted.',
       'success'
     )
   // For more information about handling dismissals please visit
   // https://sweetalert2.github.io/#handling-dismissals
-  } else if (result.dismiss === swal.DismissReason.cancel) {
-    swal(
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    Swal(
       'Cancelled',
       'Your imaginary file is safe :)',
       'error'

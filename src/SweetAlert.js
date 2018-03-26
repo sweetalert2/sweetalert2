@@ -60,11 +60,4 @@ SweetAlert.noop = () => { }
 
 SweetAlert.version = version
 
-/**
- * Set default params if `window._swalDefaults` is an object
- */
-if (typeof window !== 'undefined' && typeof window._swalDefaults === 'object') {
-  SweetAlert.setDefaults(window._swalDefaults)
-}
-
 export default SweetAlert

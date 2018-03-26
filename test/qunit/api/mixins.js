@@ -4,7 +4,7 @@ const { Swal } = require('../helpers')
 QUnit.test('basic mixin', (assert) => {
   const done = assert.async()
   const MySwal = Swal.mixin({ title: '1_title' })
-  const swal = MySwal.fire({
+  const swal = MySwal({
     onOpen: () => {
       assert.equal(MySwal.getTitle().textContent, '1_title')
       MySwal.clickConfirm()
@@ -30,5 +30,5 @@ QUnit.test('mixins and shorthand calls', (assert) => {
       done()
     }
   })
-  MySwal.fire('2_title', '2_html')
+  MySwal('2_title', '2_html')
 })

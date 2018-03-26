@@ -1,3 +1,5 @@
+import { withNoNewKeyword } from '../extensions'
+
 /**
  * Returns an extended version of `Swal` containing `params` as defaults.
  * Useful for reusing Swal configuration.
@@ -14,13 +16,15 @@
  * const {value: firstName} = await TextPrompt.fire('What is your first name?')
  * const {value: lastName} = await TextPrompt.fire('What is your last name?')
  *
- * @param params
+ * @param mixinParams
  */
 export function mixin (mixinParams) {
   const Swal = this
-  return class MixinSwal extends Swal {
-    _main (params) {
-      return super._main(Object.assign({}, mixinParams, params))
+  return withNoNewKeyword(
+    class MixinSwal extends Swal {
+      _main (params) {
+        return super._main(Object.assign({}, mixinParams, params))
+      }
     }
-  }
+  )
 }

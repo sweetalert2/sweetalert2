@@ -1,4 +1,7 @@
 import SweetAlert from './SweetAlert'
-import { withNoNewKeyword } from './extensions'
+import { withGlobalDefaults, withNoNewKeyword } from './extensions'
 
-export default withNoNewKeyword(SweetAlert)
+const Swal = withNoNewKeyword(withGlobalDefaults(SweetAlert))
+Swal.default = Swal
+
+export default Swal

@@ -1,4 +1,4 @@
-import {showWarningsForParams} from '../utils/params'
+import defaultParams, {showWarningsForParams} from '../utils/params'
 import * as dom from '../utils/dom/index'
 import { swalClasses } from '../utils/classes'
 import { formatInputOptions, error, callIfFunction, isThenable } from '../utils/utils'
@@ -9,7 +9,7 @@ import { openPopup } from '../utils/openPopup'
 export function _main (userParams) {
   showWarningsForParams(userParams)
 
-  const params = this.params = Object.assign({}, globalState.popupParams, userParams)
+  const params = this.params = Object.assign({}, defaultParams, userParams)
   setParameters(params)
   Object.freeze(params)
 

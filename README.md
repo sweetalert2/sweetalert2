@@ -61,7 +61,7 @@ Usage
 <script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
 
 <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7.1.0/dist/promise.min.js"></script>
 ```
 
 You can also include the stylesheet separately if desired:
@@ -75,13 +75,13 @@ Or:
 
 ```js
 // ES6 Modules or TypeScript
-import swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 
 // CommonJS
-const swal = require('sweetalert2')
+const Swal = require('sweetalert2')
 ```
 
-Please note that TypeScript is supported, so you don't have to install a third-party declaration file.
+Please note that [TypeScript is well-supported](https://github.com/sweetalert2/sweetalert2/blob/master/sweetalert2.d.ts), so you don't have to install a third-party declaration file.
 
 
 Examples
@@ -90,19 +90,19 @@ Examples
 The most basic message:
 
 ```js
-swal('Hello world!')
+Swal('Hello world!')
 ```
 
 A message signaling an error:
 
 ```js
-swal('Oops...', 'Something went wrong!', 'error')
+Swal('Oops...', 'Something went wrong!', 'error')
 ```
 
 Handling the result of SweetAlert2 modal:
 
 ```js
-swal({
+Swal({
   title: 'Are you sure?',
   text: 'You will not be able to recover this imaginary file!',
   type: 'warning',
@@ -111,15 +111,15 @@ swal({
   cancelButtonText: 'No, keep it'
 }).then((result) => {
   if (result.value) {
-    swal(
+    Swal(
       'Deleted!',
       'Your imaginary file has been deleted.',
       'success'
     )
   // For more information about handling dismissals please visit
   // https://sweetalert2.github.io/#handling-dismissals
-  } else if (result.dismiss === swal.DismissReason.cancel) {
-    swal(
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    Swal(
       'Cancelled',
       'Your imaginary file is safe :)',
       'error'
@@ -134,9 +134,9 @@ swal({
 Browser compatibility
 ---------------------
 
-| IE11* | Edge | Chrome | Firefox | Safari | Opera | Android Browser* | UC Browser* |
-|-------|------|--------|---------|--------|-------|------------------|-------------|
-|  ✅   |   ✅  |   ✅   |     ✅   |   ✅   |    ✅   |        ✅        |      ✅      |
+ IE11* | Edge | Chrome | Firefox | Safari | Opera | Android Browser* | UC Browser*
+-------|------|--------|---------|--------|-------|------------------|------------
+:heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 \* ES6 Promise polyfill should be included, see [usage example](#usage).
 
@@ -148,7 +148,6 @@ Related projects
 
 - [ngx-sweetalert2](https://github.com/sweetalert2/ngx-sweetalert2) - Angular 4+ integration
 - [sweetalert2-react-content](https://github.com/sweetalert2/sweetalert2-react-content) - React integration
-- [sweetalert2-adonisjs-nuxtjs](https://github.com/sweetalert2/sweetalert2-adonisjs-nuxtjs) - AdonisJS + Nuxt.js demo
 - [sweetalert2-webpack-demo](https://github.com/sweetalert2/sweetalert2-webpack-demo) - webpack demo
 - [sweetalert2-parcel-demo](https://github.com/sweetalert2/sweetalert2-parcel-demo) - overriding SCSS variables demo
 
@@ -163,9 +162,9 @@ Related community projects
 Collaborators
 -------------
 
-| [![](https://avatars1.githubusercontent.com/u/1343250?v=4&s=80)](https://github.com/toverux) | [![](https://avatars2.githubusercontent.com/u/4542461?v=4&s=80)](https://github.com/birjolaxew) | [![](https://avatars1.githubusercontent.com/u/5918348?v=4&s=80)](https://github.com/samturrell) | [![](https://avatars3.githubusercontent.com/u/9093699?v=4&s=80)](https://github.com/acupajoe) | [![](https://avatars3.githubusercontent.com/u/3198597?v=4&s=80)](https://github.com/zenflow) | [![](https://avatars2.githubusercontent.com/u/895831?v=4&s=80)](https://github.com/patrickhlauke) |
-|-|-|-|-|-|-|
-| [@toverux](https://github.com/toverux) | [@birjolaxew](https://github.com/birjolaxew) | [@samturrell](https://github.com/samturrell) | [@acupajoe](https://github.com/acupajoe) | [@zenflow](https://github.com/zenflow) | [@patrickhlauke](https://github.com/patrickhlauke) |
+[![](https://avatars3.githubusercontent.com/u/3198597?v=4&s=80)](https://github.com/zenflow) | [![](https://avatars1.githubusercontent.com/u/1343250?v=4&s=80)](https://github.com/toverux) | [![](https://avatars3.githubusercontent.com/u/9093699?v=4&s=80)](https://github.com/acupajoe) | [![](https://avatars1.githubusercontent.com/u/5918348?v=4&s=80)](https://github.com/samturrell) | [![](https://avatars2.githubusercontent.com/u/4542461?v=4&s=80)](https://github.com/birjolaxew)
+-|-|-|-|-
+[@zenflow](https://github.com/zenflow) | [@toverux](https://github.com/toverux) | [@acupajoe](https://github.com/acupajoe) | [@samturrell](https://github.com/samturrell) | [@birjolaxew](https://github.com/birjolaxew)
 
 
 Contributors
@@ -177,6 +176,8 @@ This project exists thanks to all the people who contribute.
 
 Contributing
 ------------
+
+[![](https://img.shields.io/issuestats/i/github/sweetalert2/sweetalert2.svg)](https://github.com/sweetalert2/sweetalert2/issues) [![](https://img.shields.io/issuestats/p/github/sweetalert2/sweetalert2.svg)](https://github.com/sweetalert2/sweetalert2/pulls)
 
 If you would like to contribute enhancements or fixes, please do the following:
 

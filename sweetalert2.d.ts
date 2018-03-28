@@ -628,7 +628,7 @@ declare module 'sweetalert2' {
          *
          * @default ''
          */
-        inputValue?: any;
+        inputValue?: SyncOrAsync<string>;
 
         /**
          * If input parameter is set to "select" or "radio", you can provide options.
@@ -672,7 +672,7 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        inputValidator?: (inputValue: any) => SyncOrAsync<string | null>;
+        inputValidator?: (inputValue: string) => SyncOrAsync<string | null>;
 
         /**
          * A custom CSS class for the input field.
@@ -708,6 +708,13 @@ declare module 'sweetalert2' {
          * @default null
          */
         onBeforeOpen?: (modalElement: HTMLElement) => void;
+
+        /**
+         * Function to run after modal has been disposed.
+         *
+         * @default null
+         */
+        onAfterClose?: () => void;
 
         /**
          * Function to run when modal opens, provides modal DOM element as the first argument.

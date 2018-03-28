@@ -28,17 +28,19 @@ module.exports = function (config) {
     }
   }
   let browsers = []
+  let retryLimit = 2
   if (!noLaunch) {
     if (isCi) {
       if (isCron) {
         // Cron on Travis
         browsers = Object.keys(sauceLabsLaunchers)
+        retryLimit = 42 // Trying stuff until it works, #1037
       } else if (isWindows) {
         // AppVeyor
         browsers = ['IE']
       } else {
         // Travis
-        browsers = ['Chrome', 'Firefox']
+        browsers = ['ChromeHeadless', 'Firefox']
       }
     } else {
       // Local development
@@ -52,6 +54,7 @@ module.exports = function (config) {
     ],
     customLaunchers: sauceLabsLaunchers,
     browsers,
+    retryLimit,
     reporters: ['spec', 'saucelabs'],
     preprocessors: {
       'test/qunit/**/*.js': [

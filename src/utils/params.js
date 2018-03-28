@@ -1,4 +1,6 @@
-export default {
+import { warn, warnOnce } from '../utils/utils'
+
+const defaultParams = {
   title: '',
   titleText: '',
   text: '',
@@ -54,6 +56,7 @@ export default {
   currentProgressStep: null,
   progressStepsDistance: null,
   onBeforeOpen: null,
+  onAfterClose: null,
   onOpen: null,
   onClose: null,
   useRejections: false,
@@ -64,3 +67,37 @@ export const deprecatedParams = [
   'useRejections',
   'expectRejections'
 ]
+
+/**
+ * Is valid parameter
+ * @param {String} paramName
+ */
+export const isValidParameter = (paramName) => {
+  return defaultParams.hasOwnProperty(paramName) || paramName === 'extraParams'
+}
+
+/**
+ * Is deprecated parameter
+ * @param {String} paramName
+ */
+export const isDeprecatedParameter = (paramName) => {
+  return deprecatedParams.includes(paramName)
+}
+
+/**
+ * Show relevant warnings for given params
+ *
+ * @param params
+ */
+export const showWarningsForParams = (params) => {
+  for (const param in params) {
+    if (!isValidParameter(param)) {
+      warn(`Unknown parameter "${param}"`)
+    }
+    if (isDeprecatedParameter(param)) {
+      warnOnce(`The parameter "${param}" is deprecated and will be removed in the next major release.`)
+    }
+  }
+}
+
+export default defaultParams

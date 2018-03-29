@@ -46,8 +46,10 @@ QUnit.test('ways to instantiate', (assert) => {
 })
 
 QUnit.test('instance properties and methods', (assert) => {
-  const swal = Swal({ input: 'text', inputValue: 'foo' })
-  assert.deepEqual(Object.keys(swal), [])
+  const params = { input: 'text', inputValue: 'foo' }
+  const swal = Swal(params)
+  assert.deepEqual(Object.keys(swal), ['params'])
+  assert.deepEqual(swal.params, params)
   assert.equal(swal.getInput().value, 'foo')
 })
 

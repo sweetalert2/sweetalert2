@@ -26,7 +26,17 @@ function SweetAlert (...args) {
 
   currentInstance = this
 
-  const promise = this._main(this.constructor.argsToParams(args))
+  const outerParams = Object.freeze(this.constructor.argsToParams(args))
+
+  Object.defineProperties(this, {
+    params: {
+      value: outerParams,
+      writable: false,
+      enumerable: true
+    }
+  })
+
+  const promise = this._main(this.params)
   privateProps.promise.set(this, promise)
 }
 

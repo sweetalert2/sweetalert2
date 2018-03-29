@@ -1,19 +1,24 @@
 import setParameters from '../utils/setParameters'
 import * as dom from '../utils/dom/index'
+import privateProps from '../privateProps'
 
 export function getProgressSteps () {
-  return this.params.progressSteps
+  const innerParams = privateProps.innerParams.get(this)
+  return innerParams.progressSteps
 }
 
 export function setProgressSteps (progressSteps) {
-  this.params.progressSteps = progressSteps
-  setParameters(this.params)
+  const innerParams = privateProps.innerParams.get(this)
+  innerParams.progressSteps = progressSteps
+  setParameters(innerParams)
 }
 
 export function showProgressSteps () {
-  dom.show(this._domCache.progressSteps)
+  const domCache = privateProps.domCache.get(this)
+  dom.show(domCache.progressSteps)
 }
 
 export function hideProgressSteps () {
-  dom.hide(this._domCache.progressSteps)
+  const domCache = privateProps.domCache.get(this)
+  dom.hide(domCache.progressSteps)
 }

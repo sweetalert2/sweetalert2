@@ -1,10 +1,12 @@
 import * as dom from '../utils/dom/index'
 import { swalClasses } from '../utils/classes'
+import privateProps from '../privateProps'
 
 // Get input element by specified type or, if type isn't specified, by params.input
 export function getInput (inputType) {
-  const domCache = this._domCache
-  inputType = inputType || this.params.input
+  const innerParams = privateProps.innerParams.get(this)
+  const domCache = privateProps.domCache.get(this)
+  inputType = inputType || innerParams.input
   if (!inputType) {
     return null
   }

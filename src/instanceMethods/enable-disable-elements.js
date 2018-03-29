@@ -1,19 +1,25 @@
+import privateProps from '../privateProps'
+
 export function enableButtons () {
-  this._domCache.confirmButton.disabled = false
-  this._domCache.cancelButton.disabled = false
+  const domCache = privateProps.domCache.get(this)
+  domCache.confirmButton.disabled = false
+  domCache.cancelButton.disabled = false
 }
 
 export function disableButtons () {
-  this._domCache.confirmButton.disabled = true
-  this._domCache.cancelButton.disabled = true
+  const domCache = privateProps.domCache.get(this)
+  domCache.confirmButton.disabled = true
+  domCache.cancelButton.disabled = true
 }
 
 export function enableConfirmButton () {
-  this._domCache.confirmButton.disabled = false
+  const domCache = privateProps.domCache.get(this)
+  domCache.confirmButton.disabled = false
 }
 
 export function disableConfirmButton () {
-  this._domCache.confirmButton.disabled = true
+  const domCache = privateProps.domCache.get(this)
+  domCache.confirmButton.disabled = true
 }
 
 export function enableInput () {

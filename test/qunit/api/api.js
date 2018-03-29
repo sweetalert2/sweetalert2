@@ -1,7 +1,7 @@
 /* global QUnit */
 const {Swal, initialSwalPropNames} = require('../helpers')
 
-QUnit.test('properties of `swal` are consistent', (assert) => {
+QUnit.test('properties of `Swal` class are consistent', (assert) => {
   const done = assert.async()
   const assertConsistent = postfix => {
     const currentSwalPropNames = Object.keys(Swal)
@@ -47,8 +47,7 @@ QUnit.test('ways to instantiate', (assert) => {
 
 QUnit.test('instance properties and methods', (assert) => {
   const swal = Swal({ input: 'text', inputValue: 'foo' })
-  assert.equal(swal.params.input, 'text')
-  assert.equal(swal.params.inputValue, 'foo')
+  assert.deepEqual(Object.keys(swal), [])
   assert.equal(swal.getInput().value, 'foo')
 })
 

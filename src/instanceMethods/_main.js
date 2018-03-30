@@ -7,6 +7,7 @@ import globalState from '../globalState'
 import { openPopup } from '../utils/openPopup'
 import privateProps from '../privateProps'
 
+// TODO: test todo bot
 export function _main (userParams) {
   showWarningsForParams(userParams)
 

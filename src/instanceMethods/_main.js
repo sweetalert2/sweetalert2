@@ -8,6 +8,7 @@ import { openPopup } from '../utils/openPopup'
 import privateProps from '../privateProps'
 
 // TODO: test todo bot
+// TODO: second test of todo bot
 export function _main (userParams) {
   showWarningsForParams(userParams)
 

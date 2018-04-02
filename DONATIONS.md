@@ -12,6 +12,8 @@ We would like to thank everyone who contributed to this library. If you find our
 
 # Donors
 
+- **Mustafa Khader** (5 USD)
+
 - **Quentin Le Doledec** (5 EUR)
 
 - **[Cassiano Montanari](https://github.com/cassianomon)** (10 BRL)

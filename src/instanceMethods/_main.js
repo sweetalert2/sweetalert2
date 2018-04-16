@@ -401,6 +401,9 @@ export function _main (userParams) {
       case 'number':
       case 'tel':
       case 'url':
+      case 'date':
+      case 'datetime': // datetime-local is preferred 
+      case 'datetime-local':
         input = dom.getChildByClass(domCache.content, swalClasses.input)
         input.value = innerParams.inputValue
         input.placeholder = innerParams.inputPlaceholder

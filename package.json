@@ -52,7 +52,7 @@
     "promise-polyfill": "^7.1.0",
     "qunit": "^2.5.1",
     "rimraf": "^2.6.2",
-    "rollup": "^0.57.1",
+    "rollup": "^0.58.0",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-json": "^2.3.0",
     "standard": "^8.0.0",

@@ -25,7 +25,7 @@
 
 <p align="center">
   <a href="https://sweetalert2.github.io/">
-    <img src="https://raw.github.com/sweetalert2/sweetalert2/master/assets/sweetalert2.gif" width="562" height="388"><br>
+    <img src="https://raw.github.com/sweetalert2/sweetalert2/master/assets/sweetalert2.gif" width="562"><br>
     See SweetAlert2 in action ↗
   </a>
 </p>
@@ -147,6 +147,7 @@ Related projects
 -------------------------
 
 - [ngx-sweetalert2](https://github.com/sweetalert2/ngx-sweetalert2) - Angular 4+ integration
+- [sweetalert2-react-content](https://github.com/sweetalert2/sweetalert2-react-content) - React integration
 - [sweetalert2-webpack-demo](https://github.com/sweetalert2/sweetalert2-webpack-demo) - webpack demo
 - [sweetalert2-parcel-demo](https://github.com/sweetalert2/sweetalert2-parcel-demo) - overriding SCSS variables demo
 
@@ -156,7 +157,6 @@ Related community projects
 
 - [avil13/vue-sweetalert2](https://github.com/avil13/vue-sweetalert2) - Vue.js wrapper
 - [softon/sweetalert](https://github.com/softon/sweetalert) - Laravel 5 Package
-- [alex-shamshurin/sweetalert2-react](https://github.com/alex-shamshurin/sweetalert2-react) - React component
 
 
 Collaborators

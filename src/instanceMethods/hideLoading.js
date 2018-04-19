@@ -1,14 +1,16 @@
 import * as dom from '../utils/dom/index'
 import { swalClasses } from '../utils/classes'
+import privateProps from '../privateProps'
 
 /**
  * Show spinner instead of Confirm button and disable Cancel button
  */
 function hideLoading () {
-  const domCache = this._domCache
-  if (!this.params.showConfirmButton) {
+  const innerParams = privateProps.innerParams.get(this)
+  const domCache = privateProps.domCache.get(this)
+  if (!innerParams.showConfirmButton) {
     dom.hide(domCache.confirmButton)
-    if (!this.params.showCancelButton) {
+    if (!innerParams.showCancelButton) {
       dom.hide(domCache.actions)
     }
   }

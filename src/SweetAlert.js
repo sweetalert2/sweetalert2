@@ -3,6 +3,7 @@ import { DismissReason } from './utils/DismissReason'
 import {version} from '../package.json'
 import * as staticMethods from './staticMethods'
 import * as instanceMethods from './instanceMethods'
+import privateProps from './privateProps'
 
 let currentInstance
 
@@ -25,18 +26,32 @@ function SweetAlert (...args) {
 
   currentInstance = this
 
-  this._promise = this._main(this.constructor.argsToParams(args))
+  const outerParams = Object.freeze(this.constructor.argsToParams(args))
+
+  Object.defineProperties(this, {
+    params: {
+      value: outerParams,
+      writable: false,
+      enumerable: true
+    }
+  })
+
+  const promise = this._main(this.params)
+  privateProps.promise.set(this, promise)
 }
 
 // `catch` cannot be the name of a module export, so we define our thenable methods here instead
 SweetAlert.prototype.then = function (onFulfilled, onRejected) {
-  return this._promise.then(onFulfilled, onRejected)
+  const promise = privateProps.promise.get(this)
+  return promise.then(onFulfilled, onRejected)
 }
 SweetAlert.prototype.catch = function (onRejected) {
-  return this._promise.catch(onRejected)
+  const promise = privateProps.promise.get(this)
+  return promise.catch(onRejected)
 }
 SweetAlert.prototype.finally = function (onFinally) {
-  return this._promise.finally(onFinally)
+  const promise = privateProps.promise.get(this)
+  return promise.finally(onFinally)
 }
 
 // Assign instance methods from src/instanceMethods/*.js to prototype
@@ -59,14 +74,5 @@ SweetAlert.DismissReason = DismissReason
 SweetAlert.noop = () => { }
 
 SweetAlert.version = version
-
-SweetAlert.default = SweetAlert
-
-/**
- * Set default params if `window._swalDefaults` is an object
- */
-if (typeof window !== 'undefined' && typeof window._swalDefaults === 'object') {
-  SweetAlert.setDefaults(window._swalDefaults)
-}
 
 export default SweetAlert

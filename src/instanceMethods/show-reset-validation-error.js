@@ -1,9 +1,10 @@
 import * as dom from '../utils/dom/index'
 import { swalClasses } from '../utils/classes'
+import privateProps from '../privateProps'
 
 // Show block with validation error
 export function showValidationError (error) {
-  const domCache = this._domCache
+  const domCache = privateProps.domCache.get(this)
   domCache.validationError.innerHTML = error
   const popupComputedStyle = window.getComputedStyle(domCache.popup)
   domCache.validationError.style.marginLeft = `-${popupComputedStyle.getPropertyValue('padding-left')}`
@@ -21,7 +22,7 @@ export function showValidationError (error) {
 
 // Hide block with validation error
 export function resetValidationError () {
-  const domCache = this._domCache
+  const domCache = privateProps.domCache.get(this)
   if (domCache.validationError) {
     dom.hide(domCache.validationError)
   }

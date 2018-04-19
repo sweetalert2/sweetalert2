@@ -1,19 +1,21 @@
-import {showWarningsForParams} from '../utils/params'
+import defaultParams, {showWarningsForParams} from '../utils/params'
 import * as dom from '../utils/dom/index'
 import { swalClasses } from '../utils/classes'
 import { formatInputOptions, error, callIfFunction, isThenable } from '../utils/utils'
 import setParameters from '../utils/setParameters'
 import globalState from '../globalState'
 import { openPopup } from '../utils/openPopup'
+import privateProps from '../privateProps'
 
 export function _main (userParams) {
   showWarningsForParams(userParams)
 
-  const params = this.params = Object.assign({}, globalState.popupParams, userParams)
-  setParameters(params)
-  Object.freeze(params)
+  const innerParams = Object.assign({}, defaultParams, userParams)
+  setParameters(innerParams)
+  Object.freeze(innerParams)
+  privateProps.innerParams.set(this, innerParams)
 
-  const domCache = this._domCache = {
+  const domCache = {
     popup: dom.getPopup(),
     container: dom.getContainer(),
     content: dom.getContent(),
@@ -24,35 +26,36 @@ export function _main (userParams) {
     validationError: dom.getValidationError(),
     progressSteps: dom.getProgressSteps()
   }
+  privateProps.domCache.set(this, domCache)
 
   const constructor = this.constructor
 
   return new Promise((resolve, reject) => {
     // functions to handle all resolving/rejecting/settling
     const succeedWith = (value) => {
-      constructor.closePopup(params.onClose, params.onAfterClose) // TODO: make closePopup an *instance* method
-      if (params.useRejections) {
+      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose) // TODO: make closePopup an *instance* method
+      if (innerParams.useRejections) {
         resolve(value)
       } else {
         resolve({value})
       }
     }
     const dismissWith = (dismiss) => {
-      constructor.closePopup(params.onClose, params.onAfterClose)
-      if (params.useRejections) {
+      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose)
+      if (innerParams.useRejections) {
         reject(dismiss)
       } else {
         resolve({dismiss})
       }
     }
     const errorWith = (error) => {
-      constructor.closePopup(params.onClose, params.onAfterClose)
+      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose)
       reject(error)
     }
 
     // Close on timer
-    if (params.timer) {
-      domCache.popup.timeout = setTimeout(() => dismissWith('timer'), params.timer)
+    if (innerParams.timer) {
+      domCache.popup.timeout = setTimeout(() => dismissWith('timer'), innerParams.timer)
     }
 
     // Get the value of the popup input
@@ -61,7 +64,7 @@ export function _main (userParams) {
       if (!input) {
         return null
       }
-      switch (params.input) {
+      switch (innerParams.input) {
         case 'checkbox':
           return input.checked ? 1 : 0
         case 'radio':
@@ -69,12 +72,12 @@ export function _main (userParams) {
         case 'file':
           return input.files.length ? input.files[0] : null
         default:
-          return params.inputAutoTrim ? input.value.trim() : input.value
+          return innerParams.inputAutoTrim ? input.value.trim() : input.value
       }
     }
 
     // input autofocus
-    if (params.input) {
+    if (innerParams.input) {
       setTimeout(() => {
         const input = this.getInput()
         if (input) {
@@ -84,14 +87,14 @@ export function _main (userParams) {
     }
 
     const confirm = (value) => {
-      if (params.showLoaderOnConfirm) {
+      if (innerParams.showLoaderOnConfirm) {
         constructor.showLoading() // TODO: make showLoading an *instance* method
       }
 
-      if (params.preConfirm) {
+      if (innerParams.preConfirm) {
         this.resetValidationError()
-        const preConfirmPromise = Promise.resolve().then(() => params.preConfirm(value, params.extraParams))
-        if (params.expectRejections) {
+        const preConfirmPromise = Promise.resolve().then(() => innerParams.preConfirm(value, innerParams.extraParams))
+        if (innerParams.expectRejections) {
           preConfirmPromise.then(
             (preConfirmValue) => succeedWith(preConfirmValue || value),
             (validationError) => {
@@ -131,13 +134,13 @@ export function _main (userParams) {
           // Clicked 'confirm'
           if (targetedConfirm && constructor.isVisible()) {
             this.disableButtons()
-            if (params.input) {
+            if (innerParams.input) {
               const inputValue = getInputValue()
 
-              if (params.inputValidator) {
+              if (innerParams.inputValidator) {
                 this.disableInput()
-                const validationPromise = Promise.resolve().then(() => params.inputValidator(inputValue, params.extraParams))
-                if (params.expectRejections) {
+                const validationPromise = Promise.resolve().then(() => innerParams.inputValidator(inputValue, innerParams.extraParams))
+                if (innerParams.expectRejections) {
                   validationPromise.then(
                     () => {
                       this.enableButtons()
@@ -196,18 +199,18 @@ export function _main (userParams) {
       dismissWith(constructor.DismissReason.close)
     }
 
-    if (params.toast) {
+    if (innerParams.toast) {
       // Closing popup by internal click
       domCache.popup.onclick = (e) => {
         if (
-          params.showConfirmButton ||
-          params.showCancelButton ||
-          params.showCloseButton ||
-          params.input
+          innerParams.showConfirmButton ||
+          innerParams.showCancelButton ||
+          innerParams.showCloseButton ||
+          innerParams.input
         ) {
           return
         }
-        constructor.closePopup(params.onClose, params.onAfterClose)
+        constructor.closePopup(innerParams.onClose, innerParams.onAfterClose)
         dismissWith(constructor.DismissReason.close)
       }
     } else {
@@ -245,14 +248,14 @@ export function _main (userParams) {
         if (e.target !== domCache.container) {
           return
         }
-        if (callIfFunction(params.allowOutsideClick)) {
+        if (callIfFunction(innerParams.allowOutsideClick)) {
           dismissWith(constructor.DismissReason.backdrop)
         }
       }
     }
 
     // Reverse buttons (Confirm on the right side)
-    if (params.reverseButtons) {
+    if (innerParams.reverseButtons) {
       domCache.confirmButton.parentNode.insertBefore(domCache.cancelButton, domCache.confirmButton)
     } else {
       domCache.confirmButton.parentNode.insertBefore(domCache.confirmButton, domCache.cancelButton)
@@ -260,7 +263,7 @@ export function _main (userParams) {
 
     // Focus handling
     const setFocus = (index, increment) => {
-      const focusableElements = dom.getFocusableElements(params.focusCancel)
+      const focusableElements = dom.getFocusableElements(innerParams.focusCancel)
       // search for visible elements and select the next possible match
       for (let i = 0; i < focusableElements.length; i++) {
         index = index + increment
@@ -292,7 +295,7 @@ export function _main (userParams) {
 
       if (e.key === 'Enter' && !e.isComposing) {
         if (e.target === this.getInput()) {
-          if (['textarea', 'file'].includes(params.input)) {
+          if (['textarea', 'file'].includes(innerParams.input)) {
             return // do not submit
           }
 
@@ -304,7 +307,7 @@ export function _main (userParams) {
       } else if (e.key === 'Tab') {
         const targetElement = e.target || e.srcElement
 
-        const focusableElements = dom.getFocusableElements(params.focusCancel)
+        const focusableElements = dom.getFocusableElements(innerParams.focusCancel)
         let btnIndex = -1 // Find the button - note, this is a nodelist, not an array.
         for (let i = 0; i < focusableElements.length; i++) {
           if (targetElement === focusableElements[i]) {
@@ -334,17 +337,17 @@ export function _main (userParams) {
         }
 
         // ESC
-      } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(params.allowEscapeKey) === true) {
+      } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(innerParams.allowEscapeKey) === true) {
         dismissWith(constructor.DismissReason.esc)
       }
     }
 
-    if (params.toast && globalState.windowOnkeydownOverridden) {
+    if (innerParams.toast && globalState.windowOnkeydownOverridden) {
       window.onkeydown = globalState.previousWindowKeyDown
       globalState.windowOnkeydownOverridden = false
     }
 
-    if (!params.toast && !globalState.windowOnkeydownOverridden) {
+    if (!innerParams.toast && !globalState.windowOnkeydownOverridden) {
       globalState.previousWindowKeyDown = window.onkeydown
       globalState.windowOnkeydownOverridden = true
       window.onkeydown = handleKeyDown
@@ -354,7 +357,7 @@ export function _main (userParams) {
     this.hideLoading()
     this.resetValidationError()
 
-    if (params.input) {
+    if (innerParams.input) {
       dom.addClass(document.body, swalClasses['has-input'])
     }
 
@@ -376,22 +379,22 @@ export function _main (userParams) {
             }
           }
         }
-        for (let attr in params.inputAttributes) {
-          input.setAttribute(attr, params.inputAttributes[attr])
+        for (let attr in innerParams.inputAttributes) {
+          input.setAttribute(attr, innerParams.inputAttributes[attr])
         }
       }
 
       // set class
       inputContainer.className = inputClass
-      if (params.inputClass) {
-        dom.addClass(inputContainer, params.inputClass)
+      if (innerParams.inputClass) {
+        dom.addClass(inputContainer, innerParams.inputClass)
       }
 
       dom.hide(inputContainer)
     }
 
     let populateInputOptions
-    switch (params.input) {
+    switch (innerParams.input) {
       case 'text':
       case 'email':
       case 'password':
@@ -399,32 +402,32 @@ export function _main (userParams) {
       case 'tel':
       case 'url':
         input = dom.getChildByClass(domCache.content, swalClasses.input)
-        input.value = params.inputValue
-        input.placeholder = params.inputPlaceholder
-        input.type = params.input
+        input.value = innerParams.inputValue
+        input.placeholder = innerParams.inputPlaceholder
+        input.type = innerParams.input
         dom.show(input)
         break
       case 'file':
         input = dom.getChildByClass(domCache.content, swalClasses.file)
-        input.placeholder = params.inputPlaceholder
-        input.type = params.input
+        input.placeholder = innerParams.inputPlaceholder
+        input.type = innerParams.input
         dom.show(input)
         break
       case 'range':
         const range = dom.getChildByClass(domCache.content, swalClasses.range)
         const rangeInput = range.querySelector('input')
         const rangeOutput = range.querySelector('output')
-        rangeInput.value = params.inputValue
-        rangeInput.type = params.input
-        rangeOutput.value = params.inputValue
+        rangeInput.value = innerParams.inputValue
+        rangeInput.type = innerParams.input
+        rangeOutput.value = innerParams.inputValue
         dom.show(range)
         break
       case 'select':
         const select = dom.getChildByClass(domCache.content, swalClasses.select)
         select.innerHTML = ''
-        if (params.inputPlaceholder) {
+        if (innerParams.inputPlaceholder) {
           const placeholder = document.createElement('option')
-          placeholder.innerHTML = params.inputPlaceholder
+          placeholder.innerHTML = innerParams.inputPlaceholder
           placeholder.value = ''
           placeholder.disabled = true
           placeholder.selected = true
@@ -435,7 +438,7 @@ export function _main (userParams) {
             const option = document.createElement('option')
             option.value = optionValue
             option.innerHTML = optionLabel
-            if (params.inputValue.toString() === optionValue.toString()) {
+            if (innerParams.inputValue.toString() === optionValue.toString()) {
               option.selected = true
             }
             select.appendChild(option)
@@ -454,7 +457,7 @@ export function _main (userParams) {
             radioInput.type = 'radio'
             radioInput.name = swalClasses.radio
             radioInput.value = radioValue
-            if (params.inputValue.toString() === radioValue.toString()) {
+            if (innerParams.inputValue.toString() === radioValue.toString()) {
               radioInput.checked = true
             }
             radioLabelElement.innerHTML = radioLabel
@@ -474,47 +477,47 @@ export function _main (userParams) {
         checkboxInput.type = 'checkbox'
         checkboxInput.value = 1
         checkboxInput.id = swalClasses.checkbox
-        checkboxInput.checked = Boolean(params.inputValue)
+        checkboxInput.checked = Boolean(innerParams.inputValue)
         let label = checkbox.getElementsByTagName('span')
         if (label.length) {
           checkbox.removeChild(label[0])
         }
         label = document.createElement('span')
-        label.innerHTML = params.inputPlaceholder
+        label.innerHTML = innerParams.inputPlaceholder
         checkbox.appendChild(label)
         dom.show(checkbox)
         break
       case 'textarea':
         const textarea = dom.getChildByClass(domCache.content, swalClasses.textarea)
-        textarea.value = params.inputValue
-        textarea.placeholder = params.inputPlaceholder
+        textarea.value = innerParams.inputValue
+        textarea.placeholder = innerParams.inputPlaceholder
         dom.show(textarea)
         break
       case null:
         break
       default:
-        error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`)
+        error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${innerParams.input}"`)
         break
     }
 
-    if (params.input === 'select' || params.input === 'radio') {
+    if (innerParams.input === 'select' || innerParams.input === 'radio') {
       const processInputOptions = inputOptions => populateInputOptions(formatInputOptions(inputOptions))
-      if (isThenable(params.inputOptions)) {
+      if (isThenable(innerParams.inputOptions)) {
         constructor.showLoading()
-        params.inputOptions.then((inputOptions) => {
+        innerParams.inputOptions.then((inputOptions) => {
           this.hideLoading()
           processInputOptions(inputOptions)
         })
-      } else if (typeof params.inputOptions === 'object') {
-        processInputOptions(params.inputOptions)
+      } else if (typeof innerParams.inputOptions === 'object') {
+        processInputOptions(innerParams.inputOptions)
       } else {
-        error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + typeof params.inputOptions)
+        error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + typeof innerParams.inputOptions)
       }
-    } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) && isThenable(params.inputValue)) {
+    } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(innerParams.input) && isThenable(innerParams.inputValue)) {
       constructor.showLoading()
       dom.hide(input)
-      params.inputValue.then((inputValue) => {
-        input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : inputValue + ''
+      innerParams.inputValue.then((inputValue) => {
+        input.value = innerParams.input === 'number' ? parseFloat(inputValue) || 0 : inputValue + ''
         dom.show(input)
         this.hideLoading()
       })
@@ -526,16 +529,16 @@ export function _main (userParams) {
         })
     }
 
-    openPopup(params.animation, params.onBeforeOpen, params.onOpen)
+    openPopup(innerParams.animation, innerParams.onBeforeOpen, innerParams.onOpen)
 
-    if (!params.toast) {
-      if (!callIfFunction(params.allowEnterKey)) {
+    if (!innerParams.toast) {
+      if (!callIfFunction(innerParams.allowEnterKey)) {
         if (document.activeElement) {
           document.activeElement.blur()
         }
-      } else if (params.focusCancel && dom.isVisible(domCache.cancelButton)) {
+      } else if (innerParams.focusCancel && dom.isVisible(domCache.cancelButton)) {
         domCache.cancelButton.focus()
-      } else if (params.focusConfirm && dom.isVisible(domCache.confirmButton)) {
+      } else if (innerParams.focusConfirm && dom.isVisible(domCache.confirmButton)) {
         domCache.confirmButton.focus()
       } else {
         setFocus(-1, 1)

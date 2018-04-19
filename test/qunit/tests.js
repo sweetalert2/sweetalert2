@@ -23,6 +23,11 @@ QUnit.test('modal width', (assert) => {
   assert.equal($('.swal2-modal')[0].style.width, '90%')
 })
 
+QUnit.test('custom class', (assert) => {
+  Swal({customClass: 'custom-class'})
+  assert.ok(Swal.getPopup().classList.contains('custom-class'))
+})
+
 QUnit.test('window keydown handler', (assert) => {
   Swal('hi')
   assert.ok(window.onkeydown)

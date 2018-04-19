@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.18.0
+* sweetalert2 v7.19.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.18.0";
+var version = "7.19.0";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -553,7 +553,7 @@ var init = function init(params) {
   }
 
   var resetValidationError = function resetValidationError() {
-    SweetAlert.isVisible() && SweetAlert.resetValidationError();
+    Swal.isVisible() && Swal.resetValidationError();
   };
 
   input.oninput = resetValidationError;
@@ -672,6 +672,106 @@ var undoIOSfix = function undoIOSfix() {
   }
 };
 
+var globalState = {};
+
+/*
+ * Global function to close sweetAlert
+ */
+var close = function close(onClose, onAfterClose) {
+  var container = getContainer();
+  var popup = getPopup();
+  if (!popup) {
+    return;
+  }
+
+  if (onClose !== null && typeof onClose === 'function') {
+    onClose(popup);
+  }
+
+  removeClass(popup, swalClasses.show);
+  addClass(popup, swalClasses.hide);
+  clearTimeout(popup.timeout);
+
+  if (!isToast()) {
+    resetPrevState();
+    window.onkeydown = globalState.previousWindowKeyDown;
+    globalState.windowOnkeydownOverridden = false;
+  }
+
+  var removePopupAndResetState = function removePopupAndResetState() {
+    if (container.parentNode) {
+      container.parentNode.removeChild(container);
+    }
+    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['no-backdrop'], swalClasses['has-input'], swalClasses['toast-shown']]);
+
+    if (isModal()) {
+      undoScrollbar();
+      undoIOSfix();
+    }
+
+    if (onAfterClose !== null && typeof onAfterClose === 'function') {
+      setTimeout(function () {
+        onAfterClose();
+      });
+    }
+  };
+
+  // If animation is supported, animate
+  if (animationEndEvent && !hasClass(popup, swalClasses.noanimation)) {
+    popup.addEventListener(animationEndEvent, function swalCloseEventFinished() {
+      popup.removeEventListener(animationEndEvent, swalCloseEventFinished);
+      if (hasClass(popup, swalClasses.hide)) {
+        removePopupAndResetState();
+      }
+    });
+  } else {
+    // Otherwise, remove immediately
+    removePopupAndResetState();
+  }
+};
+
+/*
+ * Global function to determine if swal2 popup is shown
+ */
+var isVisible$1 = function isVisible() {
+  return !!getPopup();
+};
+
+/*
+ * Global function to click 'Confirm' button
+ */
+var clickConfirm = function clickConfirm() {
+  return getConfirmButton().click();
+};
+
+/*
+ * Global function to click 'Cancel' button
+ */
+var clickCancel = function clickCancel() {
+  return getCancelButton().click();
+};
+
+/**
+ * Extends a Swal class making it able to be instantiated without the `new` keyword (and thus without `Swal.fire`)
+ * @param ParentSwal
+ * @returns {NoNewKeywordSwal}
+ */
+function withNoNewKeyword(ParentSwal) {
+  var NoNewKeywordSwal = function NoNewKeywordSwal() {
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    if (!(this instanceof NoNewKeywordSwal)) {
+      return new (Function.prototype.bind.apply(NoNewKeywordSwal, [null].concat(args)))();
+    }
+    Object.getPrototypeOf(NoNewKeywordSwal).apply(this, args);
+  };
+  NoNewKeywordSwal.prototype = _extends(Object.create(ParentSwal.prototype), { constructor: NoNewKeywordSwal });
+  Object.setPrototypeOf(NoNewKeywordSwal, ParentSwal);
+  return NoNewKeywordSwal;
+}
+
 var defaultParams = {
   title: '',
   titleText: '',
@@ -769,86 +869,57 @@ var showWarningsForParams = function showWarningsForParams(params) {
   }
 };
 
-var globalState = {
-  popupParams: _extends({}, defaultParams)
-};
+var deprecationWarning = '"setDefaults" & "resetDefaults" methods are deprecated in favor of "mixin" method and will be removed in the next major release. For new projects, use "mixin". For past projects already using "setDefaults", support will be provided through an additional package.';
+var defaults$1 = {};
 
-/*
- * Global function to close sweetAlert
- */
-var close = function close(onClose, onAfterClose) {
-  var container = getContainer();
-  var popup = getPopup();
-  if (!popup) {
-    return;
-  }
+function withGlobalDefaults(ParentSwal) {
+  var SwalWithGlobalDefaults = function (_ParentSwal) {
+    inherits(SwalWithGlobalDefaults, _ParentSwal);
 
-  if (onClose !== null && typeof onClose === 'function') {
-    onClose(popup);
-  }
-
-  removeClass(popup, swalClasses.show);
-  addClass(popup, swalClasses.hide);
-  clearTimeout(popup.timeout);
-
-  if (!isToast()) {
-    resetPrevState();
-    window.onkeydown = globalState.previousWindowKeyDown;
-    globalState.windowOnkeydownOverridden = false;
-  }
-
-  var removePopupAndResetState = function removePopupAndResetState() {
-    if (container.parentNode) {
-      container.parentNode.removeChild(container);
-    }
-    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['no-backdrop'], swalClasses['has-input'], swalClasses['toast-shown']]);
-
-    if (isModal()) {
-      undoScrollbar();
-      undoIOSfix();
+    function SwalWithGlobalDefaults() {
+      classCallCheck(this, SwalWithGlobalDefaults);
+      return possibleConstructorReturn(this, (SwalWithGlobalDefaults.__proto__ || Object.getPrototypeOf(SwalWithGlobalDefaults)).apply(this, arguments));
     }
 
-    if (onAfterClose !== null && typeof onAfterClose === 'function') {
-      setTimeout(function () {
-        onAfterClose();
-      });
-    }
-  };
-
-  // If animation is supported, animate
-  if (animationEndEvent && !hasClass(popup, swalClasses.noanimation)) {
-    popup.addEventListener(animationEndEvent, function swalCloseEventFinished() {
-      popup.removeEventListener(animationEndEvent, swalCloseEventFinished);
-      if (hasClass(popup, swalClasses.hide)) {
-        removePopupAndResetState();
+    createClass(SwalWithGlobalDefaults, [{
+      key: '_main',
+      value: function _main(params) {
+        return get(SwalWithGlobalDefaults.prototype.__proto__ || Object.getPrototypeOf(SwalWithGlobalDefaults.prototype), '_main', this).call(this, _extends({}, defaults$1, params));
       }
-    });
-  } else {
-    // Otherwise, remove immediately
-    removePopupAndResetState();
+    }], [{
+      key: 'setDefaults',
+      value: function setDefaults(params) {
+        warnOnce(deprecationWarning);
+        if (!params || (typeof params === 'undefined' ? 'undefined' : _typeof(params)) !== 'object') {
+          throw new TypeError('SweetAlert2: The argument for setDefaults() is required and has to be a object');
+        }
+        showWarningsForParams(params);
+        // assign valid params from `params` to `defaults`
+        Object.keys(params).forEach(function (param) {
+          if (ParentSwal.isValidParameter(param)) {
+            defaults$1[param] = params[param];
+          }
+        });
+      }
+    }, {
+      key: 'resetDefaults',
+      value: function resetDefaults() {
+        warnOnce(deprecationWarning);
+        defaults$1 = {};
+      }
+    }]);
+    return SwalWithGlobalDefaults;
+  }(ParentSwal);
+
+  // Set default params if `window._swalDefaults` is an object
+
+
+  if (typeof window !== 'undefined' && _typeof(window._swalDefaults) === 'object') {
+    SwalWithGlobalDefaults.setDefaults(window._swalDefaults);
   }
-};
 
-/*
- * Global function to determine if swal2 popup is shown
- */
-var isVisible$1 = function isVisible() {
-  return !!getPopup();
-};
-
-/*
- * Global function to click 'Confirm' button
- */
-var clickConfirm = function clickConfirm() {
-  return getConfirmButton().click();
-};
-
-/*
- * Global function to click 'Cancel' button
- */
-var clickCancel = function clickCancel() {
-  return getCancelButton().click();
-};
+  return SwalWithGlobalDefaults;
+}
 
 /**
  * Returns an extended version of `Swal` containing `params` as defaults.
@@ -863,14 +934,14 @@ var clickCancel = function clickCancel() {
  *
  * After:
  * const TextPrompt = Swal.mixin({ input: 'text', showCancelButton: true })
- * const {value: firstName} = await TextPrompt.fire('What is your first name?')
- * const {value: lastName} = await TextPrompt.fire('What is your last name?')
+ * const {value: firstName} = await TextPrompt('What is your first name?')
+ * const {value: lastName} = await TextPrompt('What is your last name?')
  *
- * @param params
+ * @param mixinParams
  */
 function mixin(mixinParams) {
   var Swal = this;
-  return function (_Swal) {
+  return withNoNewKeyword(function (_Swal) {
     inherits(MixinSwal, _Swal);
 
     function MixinSwal() {
@@ -879,13 +950,13 @@ function mixin(mixinParams) {
     }
 
     createClass(MixinSwal, [{
-      key: "_main",
+      key: '_main',
       value: function _main(params) {
-        return get(MixinSwal.prototype.__proto__ || Object.getPrototypeOf(MixinSwal.prototype), "_main", this).call(this, _extends({}, mixinParams, params));
+        return get(MixinSwal.prototype.__proto__ || Object.getPrototypeOf(MixinSwal.prototype), '_main', this).call(this, _extends({}, mixinParams, params));
       }
     }]);
     return MixinSwal;
-  }(Swal);
+  }(Swal));
 }
 
 // private global state for the queue feature
@@ -951,38 +1022,12 @@ var deleteQueueStep = function deleteQueueStep(index) {
 };
 
 /**
- * Set default params for each popup
- * @param {Object} userParams
- */
-var setDefaults = function setDefaults(userParams) {
-  if (!userParams || (typeof userParams === 'undefined' ? 'undefined' : _typeof(userParams)) !== 'object') {
-    return error('the argument for setDefaults() is required and has to be a object');
-  }
-
-  showWarningsForParams(userParams);
-
-  // assign valid params from userParams to popupParams
-  for (var param in userParams) {
-    if (isValidParameter(param)) {
-      globalState.popupParams[param] = userParams[param];
-    }
-  }
-};
-
-/**
- * Reset default params for each popup
- */
-var resetDefaults = function resetDefaults() {
-  globalState.popupParams = _extends({}, defaultParams);
-};
-
-/**
  * Show spinner instead of Confirm button and disable Cancel button
  */
 var showLoading = function showLoading() {
   var popup = getPopup();
   if (!popup) {
-    SweetAlert('');
+    Swal('');
   }
   popup = getPopup();
   var actions = getActions();
@@ -1024,6 +1069,7 @@ var staticMethods = Object.freeze({
 	isVisible: isVisible$1,
 	clickConfirm: clickConfirm,
 	clickCancel: clickCancel,
+	getPopup: getPopup,
 	getTitle: getTitle,
 	getContent: getContent,
 	getImage: getImage,
@@ -1038,21 +1084,35 @@ var staticMethods = Object.freeze({
 	getQueueStep: getQueueStep,
 	insertQueueStep: insertQueueStep,
 	deleteQueueStep: deleteQueueStep,
-	setDefaults: setDefaults,
-	resetDefaults: resetDefaults,
 	showLoading: showLoading,
 	enableLoading: showLoading,
 	fire: fire
 });
 
 /**
+ * This module containts `WeakMap`s for each effectively-"private  property" that a `swal` has.
+ * For example, to set the private property "foo" of `this` to "bar", you can `privateProps.foo.set(this, 'bar')`
+ * This is the approach that Babel will probably take to implement private methods/fields
+ *   https://github.com/tc39/proposal-private-methods
+ *   https://github.com/babel/babel/pull/7555
+ * Once we have the changes from that PR in Babel, and our core class fits reasonable in *one module*
+ *   then we can use that language feature.
+ */
+var privateProps = {
+  promise: new WeakMap(),
+  innerParams: new WeakMap(),
+  domCache: new WeakMap()
+};
+
+/**
  * Show spinner instead of Confirm button and disable Cancel button
  */
 function hideLoading() {
-  var domCache = this._domCache;
-  if (!this.params.showConfirmButton) {
+  var innerParams = privateProps.innerParams.get(this);
+  var domCache = privateProps.domCache.get(this);
+  if (!innerParams.showConfirmButton) {
     hide(domCache.confirmButton);
-    if (!this.params.showCancelButton) {
+    if (!innerParams.showCancelButton) {
       hide(domCache.actions);
     }
   }
@@ -1065,8 +1125,9 @@ function hideLoading() {
 
 // Get input element by specified type or, if type isn't specified, by params.input
 function getInput(inputType) {
-  var domCache = this._domCache;
-  inputType = inputType || this.params.input;
+  var innerParams = privateProps.innerParams.get(this);
+  var domCache = privateProps.domCache.get(this);
+  inputType = inputType || innerParams.input;
   if (!inputType) {
     return null;
   }
@@ -1087,21 +1148,25 @@ function getInput(inputType) {
 }
 
 function enableButtons() {
-  this._domCache.confirmButton.disabled = false;
-  this._domCache.cancelButton.disabled = false;
+  var domCache = privateProps.domCache.get(this);
+  domCache.confirmButton.disabled = false;
+  domCache.cancelButton.disabled = false;
 }
 
 function disableButtons() {
-  this._domCache.confirmButton.disabled = true;
-  this._domCache.cancelButton.disabled = true;
+  var domCache = privateProps.domCache.get(this);
+  domCache.confirmButton.disabled = true;
+  domCache.cancelButton.disabled = true;
 }
 
 function enableConfirmButton() {
-  this._domCache.confirmButton.disabled = false;
+  var domCache = privateProps.domCache.get(this);
+  domCache.confirmButton.disabled = false;
 }
 
 function disableConfirmButton() {
-  this._domCache.confirmButton.disabled = true;
+  var domCache = privateProps.domCache.get(this);
+  domCache.confirmButton.disabled = true;
 }
 
 function enableInput() {
@@ -1138,7 +1203,7 @@ function disableInput() {
 
 // Show block with validation error
 function showValidationError(error) {
-  var domCache = this._domCache;
+  var domCache = privateProps.domCache.get(this);
   domCache.validationError.innerHTML = error;
   var popupComputedStyle = window.getComputedStyle(domCache.popup);
   domCache.validationError.style.marginLeft = '-' + popupComputedStyle.getPropertyValue('padding-left');
@@ -1156,7 +1221,7 @@ function showValidationError(error) {
 
 // Hide block with validation error
 function resetValidationError() {
-  var domCache = this._domCache;
+  var domCache = privateProps.domCache.get(this);
   if (domCache.validationError) {
     hide(domCache.validationError);
   }
@@ -1192,7 +1257,7 @@ function setParameters(params) {
   if (!params.inputValidator) {
     Object.keys(defaultInputValidators).forEach(function (key) {
       if (params.input === key) {
-        params.inputValidator = params.expectRejections ? defaultInputValidators[key] : SweetAlert.adaptInputValidator(defaultInputValidators[key]);
+        params.inputValidator = params.expectRejections ? defaultInputValidators[key] : Swal.adaptInputValidator(defaultInputValidators[key]);
       }
     });
   }
@@ -1312,7 +1377,7 @@ function setParameters(params) {
 
   // Progress steps
   var progressStepsContainer = getProgressSteps();
-  var currentProgressStep = parseInt(params.currentProgressStep === null ? SweetAlert.getQueueStep() : params.currentProgressStep, 10);
+  var currentProgressStep = parseInt(params.currentProgressStep === null ? Swal.getQueueStep() : params.currentProgressStep, 10);
   if (params.progressSteps && params.progressSteps.length) {
     show(progressStepsContainer);
     empty(progressStepsContainer);
@@ -1520,11 +1585,12 @@ function _main(userParams) {
 
   showWarningsForParams(userParams);
 
-  var params = this.params = _extends({}, globalState.popupParams, userParams);
-  setParameters(params);
-  Object.freeze(params);
+  var innerParams = _extends({}, defaultParams, userParams);
+  setParameters(innerParams);
+  Object.freeze(innerParams);
+  privateProps.innerParams.set(this, innerParams);
 
-  var domCache = this._domCache = {
+  var domCache = {
     popup: getPopup(),
     container: getContainer(),
     content: getContent(),
@@ -1535,37 +1601,38 @@ function _main(userParams) {
     validationError: getValidationError(),
     progressSteps: getProgressSteps()
   };
+  privateProps.domCache.set(this, domCache);
 
   var constructor = this.constructor;
 
   return new Promise(function (resolve, reject) {
     // functions to handle all resolving/rejecting/settling
     var succeedWith = function succeedWith(value) {
-      constructor.closePopup(params.onClose, params.onAfterClose); // TODO: make closePopup an *instance* method
-      if (params.useRejections) {
+      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose); // TODO: make closePopup an *instance* method
+      if (innerParams.useRejections) {
         resolve(value);
       } else {
         resolve({ value: value });
       }
     };
     var dismissWith = function dismissWith(dismiss) {
-      constructor.closePopup(params.onClose, params.onAfterClose);
-      if (params.useRejections) {
+      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose);
+      if (innerParams.useRejections) {
         reject(dismiss);
       } else {
         resolve({ dismiss: dismiss });
       }
     };
     var errorWith = function errorWith(error$$1) {
-      constructor.closePopup(params.onClose, params.onAfterClose);
+      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose);
       reject(error$$1);
     };
 
     // Close on timer
-    if (params.timer) {
+    if (innerParams.timer) {
       domCache.popup.timeout = setTimeout(function () {
         return dismissWith('timer');
-      }, params.timer);
+      }, innerParams.timer);
     }
 
     // Get the value of the popup input
@@ -1574,7 +1641,7 @@ function _main(userParams) {
       if (!input) {
         return null;
       }
-      switch (params.input) {
+      switch (innerParams.input) {
         case 'checkbox':
           return input.checked ? 1 : 0;
         case 'radio':
@@ -1582,12 +1649,12 @@ function _main(userParams) {
         case 'file':
           return input.files.length ? input.files[0] : null;
         default:
-          return params.inputAutoTrim ? input.value.trim() : input.value;
+          return innerParams.inputAutoTrim ? input.value.trim() : input.value;
       }
     };
 
     // input autofocus
-    if (params.input) {
+    if (innerParams.input) {
       setTimeout(function () {
         var input = _this.getInput();
         if (input) {
@@ -1597,16 +1664,16 @@ function _main(userParams) {
     }
 
     var confirm = function confirm(value) {
-      if (params.showLoaderOnConfirm) {
+      if (innerParams.showLoaderOnConfirm) {
         constructor.showLoading(); // TODO: make showLoading an *instance* method
       }
 
-      if (params.preConfirm) {
+      if (innerParams.preConfirm) {
         _this.resetValidationError();
         var preConfirmPromise = Promise.resolve().then(function () {
-          return params.preConfirm(value, params.extraParams);
+          return innerParams.preConfirm(value, innerParams.extraParams);
         });
-        if (params.expectRejections) {
+        if (innerParams.expectRejections) {
           preConfirmPromise.then(function (preConfirmValue) {
             return succeedWith(preConfirmValue || value);
           }, function (validationError) {
@@ -1646,15 +1713,15 @@ function _main(userParams) {
           // Clicked 'confirm'
           if (targetedConfirm && constructor.isVisible()) {
             _this.disableButtons();
-            if (params.input) {
+            if (innerParams.input) {
               var inputValue = getInputValue();
 
-              if (params.inputValidator) {
+              if (innerParams.inputValidator) {
                 _this.disableInput();
                 var validationPromise = Promise.resolve().then(function () {
-                  return params.inputValidator(inputValue, params.extraParams);
+                  return innerParams.inputValidator(inputValue, innerParams.extraParams);
                 });
-                if (params.expectRejections) {
+                if (innerParams.expectRejections) {
                   validationPromise.then(function () {
                     _this.enableButtons();
                     _this.enableInput();
@@ -1709,13 +1776,13 @@ function _main(userParams) {
       dismissWith(constructor.DismissReason.close);
     };
 
-    if (params.toast) {
+    if (innerParams.toast) {
       // Closing popup by internal click
       domCache.popup.onclick = function (e) {
-        if (params.showConfirmButton || params.showCancelButton || params.showCloseButton || params.input) {
+        if (innerParams.showConfirmButton || innerParams.showCancelButton || innerParams.showCloseButton || innerParams.input) {
           return;
         }
-        constructor.closePopup(params.onClose, params.onAfterClose);
+        constructor.closePopup(innerParams.onClose, innerParams.onAfterClose);
         dismissWith(constructor.DismissReason.close);
       };
     } else {
@@ -1753,14 +1820,14 @@ function _main(userParams) {
         if (e.target !== domCache.container) {
           return;
         }
-        if (callIfFunction(params.allowOutsideClick)) {
+        if (callIfFunction(innerParams.allowOutsideClick)) {
           dismissWith(constructor.DismissReason.backdrop);
         }
       };
     }
 
     // Reverse buttons (Confirm on the right side)
-    if (params.reverseButtons) {
+    if (innerParams.reverseButtons) {
       domCache.confirmButton.parentNode.insertBefore(domCache.cancelButton, domCache.confirmButton);
     } else {
       domCache.confirmButton.parentNode.insertBefore(domCache.confirmButton, domCache.cancelButton);
@@ -1768,7 +1835,7 @@ function _main(userParams) {
 
     // Focus handling
     var setFocus = function setFocus(index, increment) {
-      var focusableElements = getFocusableElements(params.focusCancel);
+      var focusableElements = getFocusableElements(innerParams.focusCancel);
       // search for visible elements and select the next possible match
       for (var _i = 0; _i < focusableElements.length; _i++) {
         index = index + increment;
@@ -1798,7 +1865,7 @@ function _main(userParams) {
 
       if (e.key === 'Enter' && !e.isComposing) {
         if (e.target === _this.getInput()) {
-          if (['textarea', 'file'].indexOf(params.input) !== -1) {
+          if (['textarea', 'file'].indexOf(innerParams.input) !== -1) {
             return; // do not submit
           }
 
@@ -1810,7 +1877,7 @@ function _main(userParams) {
       } else if (e.key === 'Tab') {
         var targetElement = e.target || e.srcElement;
 
-        var focusableElements = getFocusableElements(params.focusCancel);
+        var focusableElements = getFocusableElements(innerParams.focusCancel);
         var btnIndex = -1; // Find the button - note, this is a nodelist, not an array.
         for (var _i2 = 0; _i2 < focusableElements.length; _i2++) {
           if (targetElement === focusableElements[_i2]) {
@@ -1840,17 +1907,17 @@ function _main(userParams) {
         }
 
         // ESC
-      } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(params.allowEscapeKey) === true) {
+      } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(innerParams.allowEscapeKey) === true) {
         dismissWith(constructor.DismissReason.esc);
       }
     };
 
-    if (params.toast && globalState.windowOnkeydownOverridden) {
+    if (innerParams.toast && globalState.windowOnkeydownOverridden) {
       window.onkeydown = globalState.previousWindowKeyDown;
       globalState.windowOnkeydownOverridden = false;
     }
 
-    if (!params.toast && !globalState.windowOnkeydownOverridden) {
+    if (!innerParams.toast && !globalState.windowOnkeydownOverridden) {
       globalState.previousWindowKeyDown = window.onkeydown;
       globalState.windowOnkeydownOverridden = true;
       window.onkeydown = handleKeyDown;
@@ -1860,7 +1927,7 @@ function _main(userParams) {
     _this.hideLoading();
     _this.resetValidationError();
 
-    if (params.input) {
+    if (innerParams.input) {
       addClass(document.body, swalClasses['has-input']);
     }
 
@@ -1882,22 +1949,22 @@ function _main(userParams) {
             }
           }
         }
-        for (var attr in params.inputAttributes) {
-          input.setAttribute(attr, params.inputAttributes[attr]);
+        for (var attr in innerParams.inputAttributes) {
+          input.setAttribute(attr, innerParams.inputAttributes[attr]);
         }
       }
 
       // set class
       inputContainer.className = inputClass;
-      if (params.inputClass) {
-        addClass(inputContainer, params.inputClass);
+      if (innerParams.inputClass) {
+        addClass(inputContainer, innerParams.inputClass);
       }
 
       hide(inputContainer);
     }
 
     var populateInputOptions = void 0;
-    switch (params.input) {
+    switch (innerParams.input) {
       case 'text':
       case 'email':
       case 'password':
@@ -1905,32 +1972,32 @@ function _main(userParams) {
       case 'tel':
       case 'url':
         input = getChildByClass(domCache.content, swalClasses.input);
-        input.value = params.inputValue;
-        input.placeholder = params.inputPlaceholder;
-        input.type = params.input;
+        input.value = innerParams.inputValue;
+        input.placeholder = innerParams.inputPlaceholder;
+        input.type = innerParams.input;
         show(input);
         break;
       case 'file':
         input = getChildByClass(domCache.content, swalClasses.file);
-        input.placeholder = params.inputPlaceholder;
-        input.type = params.input;
+        input.placeholder = innerParams.inputPlaceholder;
+        input.type = innerParams.input;
         show(input);
         break;
       case 'range':
         var range = getChildByClass(domCache.content, swalClasses.range);
         var rangeInput = range.querySelector('input');
         var rangeOutput = range.querySelector('output');
-        rangeInput.value = params.inputValue;
-        rangeInput.type = params.input;
-        rangeOutput.value = params.inputValue;
+        rangeInput.value = innerParams.inputValue;
+        rangeInput.type = innerParams.input;
+        rangeOutput.value = innerParams.inputValue;
         show(range);
         break;
       case 'select':
         var select = getChildByClass(domCache.content, swalClasses.select);
         select.innerHTML = '';
-        if (params.inputPlaceholder) {
+        if (innerParams.inputPlaceholder) {
           var placeholder = document.createElement('option');
-          placeholder.innerHTML = params.inputPlaceholder;
+          placeholder.innerHTML = innerParams.inputPlaceholder;
           placeholder.value = '';
           placeholder.disabled = true;
           placeholder.selected = true;
@@ -1945,7 +2012,7 @@ function _main(userParams) {
             var option = document.createElement('option');
             option.value = optionValue;
             option.innerHTML = optionLabel;
-            if (params.inputValue.toString() === optionValue.toString()) {
+            if (innerParams.inputValue.toString() === optionValue.toString()) {
               option.selected = true;
             }
             select.appendChild(option);
@@ -1968,7 +2035,7 @@ function _main(userParams) {
             radioInput.type = 'radio';
             radioInput.name = swalClasses.radio;
             radioInput.value = radioValue;
-            if (params.inputValue.toString() === radioValue.toString()) {
+            if (innerParams.inputValue.toString() === radioValue.toString()) {
               radioInput.checked = true;
             }
             radioLabelElement.innerHTML = radioLabel;
@@ -1988,49 +2055,49 @@ function _main(userParams) {
         checkboxInput.type = 'checkbox';
         checkboxInput.value = 1;
         checkboxInput.id = swalClasses.checkbox;
-        checkboxInput.checked = Boolean(params.inputValue);
+        checkboxInput.checked = Boolean(innerParams.inputValue);
         var label = checkbox.getElementsByTagName('span');
         if (label.length) {
           checkbox.removeChild(label[0]);
         }
         label = document.createElement('span');
-        label.innerHTML = params.inputPlaceholder;
+        label.innerHTML = innerParams.inputPlaceholder;
         checkbox.appendChild(label);
         show(checkbox);
         break;
       case 'textarea':
         var textarea = getChildByClass(domCache.content, swalClasses.textarea);
-        textarea.value = params.inputValue;
-        textarea.placeholder = params.inputPlaceholder;
+        textarea.value = innerParams.inputValue;
+        textarea.placeholder = innerParams.inputPlaceholder;
         show(textarea);
         break;
       case null:
         break;
       default:
-        error('Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "' + params.input + '"');
+        error('Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "' + innerParams.input + '"');
         break;
     }
 
-    if (params.input === 'select' || params.input === 'radio') {
+    if (innerParams.input === 'select' || innerParams.input === 'radio') {
       var processInputOptions = function processInputOptions(inputOptions) {
         return populateInputOptions(formatInputOptions(inputOptions));
       };
-      if (isThenable(params.inputOptions)) {
+      if (isThenable(innerParams.inputOptions)) {
         constructor.showLoading();
-        params.inputOptions.then(function (inputOptions) {
+        innerParams.inputOptions.then(function (inputOptions) {
           _this.hideLoading();
           processInputOptions(inputOptions);
         });
-      } else if (_typeof(params.inputOptions) === 'object') {
-        processInputOptions(params.inputOptions);
+      } else if (_typeof(innerParams.inputOptions) === 'object') {
+        processInputOptions(innerParams.inputOptions);
       } else {
-        error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + _typeof(params.inputOptions));
+        error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + _typeof(innerParams.inputOptions));
       }
-    } else if (['text', 'email', 'number', 'tel', 'textarea'].indexOf(params.input) !== -1 && isThenable(params.inputValue)) {
+    } else if (['text', 'email', 'number', 'tel', 'textarea'].indexOf(innerParams.input) !== -1 && isThenable(innerParams.inputValue)) {
       constructor.showLoading();
       hide(input);
-      params.inputValue.then(function (inputValue) {
-        input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : inputValue + '';
+      innerParams.inputValue.then(function (inputValue) {
+        input.value = innerParams.input === 'number' ? parseFloat(inputValue) || 0 : inputValue + '';
         show(input);
         _this.hideLoading();
       }).catch(function (err) {
@@ -2041,16 +2108,16 @@ function _main(userParams) {
       });
     }
 
-    openPopup(params.animation, params.onBeforeOpen, params.onOpen);
+    openPopup(innerParams.animation, innerParams.onBeforeOpen, innerParams.onOpen);
 
-    if (!params.toast) {
-      if (!callIfFunction(params.allowEnterKey)) {
+    if (!innerParams.toast) {
+      if (!callIfFunction(innerParams.allowEnterKey)) {
         if (document.activeElement) {
           document.activeElement.blur();
         }
-      } else if (params.focusCancel && isVisible(domCache.cancelButton)) {
+      } else if (innerParams.focusCancel && isVisible(domCache.cancelButton)) {
         domCache.cancelButton.focus();
-      } else if (params.focusConfirm && isVisible(domCache.confirmButton)) {
+      } else if (innerParams.focusConfirm && isVisible(domCache.confirmButton)) {
         domCache.confirmButton.focus();
       } else {
         setFocus(-1, 1);
@@ -2102,25 +2169,34 @@ function SweetAlert() {
     return false;
   }
 
-  // handle things when constructor is invoked without the `new` keyword
-  if (!(this instanceof SweetAlert)) {
-    return new (Function.prototype.bind.apply(SweetAlert, [null].concat(args)))();
-  }
-
   currentInstance = this;
 
-  this._promise = this._main(this.constructor.argsToParams(args));
+  var outerParams = Object.freeze(this.constructor.argsToParams(args));
+
+  Object.defineProperties(this, {
+    params: {
+      value: outerParams,
+      writable: false,
+      enumerable: true
+    }
+  });
+
+  var promise = this._main(this.params);
+  privateProps.promise.set(this, promise);
 }
 
 // `catch` cannot be the name of a module export, so we define our thenable methods here instead
 SweetAlert.prototype.then = function (onFulfilled, onRejected) {
-  return this._promise.then(onFulfilled, onRejected);
+  var promise = privateProps.promise.get(this);
+  return promise.then(onFulfilled, onRejected);
 };
 SweetAlert.prototype.catch = function (onRejected) {
-  return this._promise.catch(onRejected);
+  var promise = privateProps.promise.get(this);
+  return promise.catch(onRejected);
 };
 SweetAlert.prototype.finally = function (onFinally) {
-  return this._promise.finally(onFinally);
+  var promise = privateProps.promise.get(this);
+  return promise.finally(onFinally);
 };
 
 // Assign instance methods from src/instanceMethods/*.js to prototype
@@ -2146,16 +2222,10 @@ SweetAlert.noop = function () {};
 
 SweetAlert.version = version;
 
-SweetAlert.default = SweetAlert;
+var Swal = withNoNewKeyword(withGlobalDefaults(SweetAlert));
+Swal.default = Swal;
 
-/**
- * Set default params if `window._swalDefaults` is an object
- */
-if (typeof window !== 'undefined' && _typeof(window._swalDefaults) === 'object') {
-  SweetAlert.setDefaults(window._swalDefaults);
-}
-
-return SweetAlert;
+return Swal;
 
 })));
 if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}

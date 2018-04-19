@@ -7,6 +7,13 @@ import globalState from '../globalState'
 import { openPopup } from '../utils/openPopup'
 import privateProps from '../privateProps'
 
+// HTML5 supported input types.
+// ** omitted button, hidden and submit **
+const INPUT_TYPES = [
+  'checkbox', 'color', 'date', 'datetime', 'datetime-local', 'email', 'file', 'image', 'month', 
+  'number', 'password', 'radio', 'range', 'reset', 'search', 'tel', 'text', 'time', 'url', 'week'
+];
+
 export function _main (userParams) {
   showWarningsForParams(userParams)
 
@@ -395,18 +402,6 @@ export function _main (userParams) {
 
     let populateInputOptions
     switch (innerParams.input) {
-      case 'text':
-      case 'email':
-      case 'password':
-      case 'number':
-      case 'tel':
-      case 'url':
-        input = dom.getChildByClass(domCache.content, swalClasses.input)
-        input.value = innerParams.inputValue
-        input.placeholder = innerParams.inputPlaceholder
-        input.type = innerParams.input
-        dom.show(input)
-        break
       case 'file':
         input = dom.getChildByClass(domCache.content, swalClasses.file)
         input.placeholder = innerParams.inputPlaceholder
@@ -496,7 +491,14 @@ export function _main (userParams) {
       case null:
         break
       default:
-        error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${innerParams.input}"`)
+        if (!INPUT_TYPES.includes(innerParams.input)) {
+          error(`Unexpected type of input! Expected ${ INPUT_TYPES.join(', ')}, got "${innerParams.input}"`)
+        }
+        input = dom.getChildByClass(domCache.content, swalClasses.input)
+        input.value = innerParams.inputValue
+        input.placeholder = innerParams.inputPlaceholder
+        input.type = innerParams.input
+        dom.show(input)        
         break
     }
 

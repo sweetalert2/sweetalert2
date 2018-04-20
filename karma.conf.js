@@ -3,6 +3,7 @@ const isCi = require('is-ci')
 const noLaunch = process.argv.includes('--no-launch')
 const isCron = process.env.TRAVIS_EVENT_TYPE === 'cron'
 const isWindows = process.platform === 'win32'
+const testMinified = process.argv.includes('--minified')
 
 module.exports = function (config) {
   const sauceLabsLaunchers = {
@@ -28,6 +29,23 @@ module.exports = function (config) {
     }
   }
   let browsers = []
+
+  let files
+  if (testMinified) {
+    files = [
+      'dist/sweetalert2.all.min.js'
+    ]
+  } else {
+    files = [
+      'dist/sweetalert2.css',
+      'dist/sweetalert2.js'
+    ]
+  }
+  files = files.concat([
+    'node_modules/promise-polyfill/dist/polyfill.min.js',
+    'test/qunit/**/*.js'
+  ])
+
   let retryLimit = 2
   if (!noLaunch) {
     if (isCi) {
@@ -62,12 +80,7 @@ module.exports = function (config) {
         'sourcemap'
       ]
     },
-    files: [
-      'node_modules/promise-polyfill/dist/polyfill.min.js',
-      'dist/sweetalert2.css',
-      'dist/sweetalert2.js',
-      'test/qunit/**/*.js'
-    ],
+    files,
     webpack: {
       devtool: 'inline-source-map',
       module: {

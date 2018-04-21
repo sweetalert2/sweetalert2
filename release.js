@@ -43,7 +43,7 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
   await execute('git pull origin')
 
   log(`Merging from "${branchToPublish}" branch...`)
-  await execute(`git merge ${branchToPublish}`)
+  await execute(`git merge --strategy-option=theirs ${branchToPublish}`)
 
   log('Installing npm dependencies...')
   await execute('yarn')

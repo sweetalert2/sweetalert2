@@ -12,6 +12,10 @@ We would like to thank everyone who contributed to this library. If you find our
 
 # Donors
 
+- **[Jan Fässler](https://github.com/faessler)** (30 EUR)
+
+    > Nice work! 👾
+
 - **Mustafa Khader** (5 USD)
 
 - **Quentin Le Doledec** (5 EUR)

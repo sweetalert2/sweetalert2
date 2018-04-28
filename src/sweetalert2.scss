@@ -411,10 +411,8 @@ body {
     top: $swal2-close-button-gap;
     right: $swal2-close-button-gap;
     justify-content: center;
-    width: 1.2em;
-    min-width: 1.2em;
-    height: 1.2em;
-    margin: 0;
+    width: $swal2-close-button-width;
+    height: $swal2-close-button-height;
     padding: 0;
     transition: $swal2-close-button-transition;
     border: $swal2-close-button-border;
@@ -422,10 +420,10 @@ body {
     background: $swal2-close-button-background;
     color: $swal2-close-button-color;
     font-family: serif;
-    // calc is needed for the correct focus outline, w/o calc: https://goo.gl/T3NYRm
-    font-size: calc(#{$swal2-close-button-font-size} - #{$swal2-close-button-font-size*.1});
-    line-height: 1.2em;
+    font-size: $swal2-close-button-font-size;
+    line-height: 1.2;
     cursor: pointer;
+    overflow: hidden;
 
     &:hover {
       transform: $swal2-close-button-hover-transform;
@@ -583,6 +581,7 @@ body {
   }
 }
 
+// Microsoft Edge
 @supports (-ms-accelerator: true) {
   .swal2-range {
     input {
@@ -595,6 +594,7 @@ body {
   }
 }
 
+// IE11
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .swal2-range {
     input {
@@ -603,6 +603,15 @@ body {
 
     output {
       display: none;
+    }
+  }
+}
+
+// Firefox
+@-moz-document url-prefix() {
+  .swal2-close {
+    &:focus {
+      outline: 2px solid $swal2-button-focus-outline;
     }
   }
 }

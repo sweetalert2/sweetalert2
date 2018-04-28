@@ -2,7 +2,7 @@ const gulp = require('gulp')
 const $ = require('gulp-load-plugins')()
 const babel = require('rollup-plugin-babel')
 const json = require('rollup-plugin-json')
-const minify = require('rollup-plugin-babel-minify')
+const minify = require('gulp-babel-minify')
 const merge = require('merge2')
 const browserSync = require('browser-sync').create()
 const pify = require('pify')
@@ -36,27 +36,17 @@ gulp.task('clean', async () => {
 })
 
 gulp.task('build:scripts', () => {
-  const rollupPlugins = [
-    json(),
-    babel({
-      exclude: 'node_modules/**',
-      plugins: [
-        'external-helpers'
-      ]
-    })
-  ]
-  if (!skipMinification) {
-    rollupPlugins.push(
-      minify({
-        banner,
-        bannerNewLine: true,
-        comments: false
-      })
-    )
-  }
   return gulp.src(['package.json', ...srcScriptFiles])
     .pipe($.rollup({
-      plugins: rollupPlugins,
+      plugins: [
+        json(),
+        babel({
+          exclude: 'node_modules/**',
+          plugins: [
+            'external-helpers'
+          ]
+        })
+      ],
       input: 'src/sweetalert2.js',
       output: {
         format: 'umd',
@@ -69,6 +59,11 @@ if (typeof window !== 'undefined' && window.Sweetalert2){\
       }
     }))
     .pipe(gulp.dest('dist'))
+    .pipe($.if(!skipMinification, minify({
+      mangle: {
+        keepClassName: true
+      }
+    })))
     .pipe($.if(!skipMinification, $.rename('sweetalert2.min.js')))
     .pipe($.if(!skipMinification, gulp.dest('dist')))
 })

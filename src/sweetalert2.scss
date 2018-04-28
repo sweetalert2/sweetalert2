@@ -421,7 +421,7 @@ body {
     color: $swal2-close-button-color;
     font-family: serif;
     font-size: $swal2-close-button-font-size;
-    line-height: 100%;
+    line-height: 1.2;
     overflow: hidden;
     cursor: pointer;
 
@@ -581,6 +581,7 @@ body {
   }
 }
 
+// Microsoft Edge
 @supports (-ms-accelerator: true) {
   .swal2-range {
     input {
@@ -593,6 +594,7 @@ body {
   }
 }
 
+// IE11
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .swal2-range {
     input {
@@ -601,6 +603,15 @@ body {
 
     output {
       display: none;
+    }
+  }
+}
+
+// Firefox
+@-moz-document url-prefix() {
+  .swal2-close {
+    &:focus {
+      outline: 2px solid $swal2-button-focus-outline;
     }
   }
 }

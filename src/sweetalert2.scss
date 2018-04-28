@@ -422,8 +422,8 @@ body {
     font-family: serif;
     font-size: $swal2-close-button-font-size;
     line-height: 1.2;
-    overflow: hidden;
     cursor: pointer;
+    overflow: hidden;
 
     &:hover {
       transform: $swal2-close-button-hover-transform;

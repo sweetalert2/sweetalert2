@@ -772,9 +772,7 @@ body.swal2-no-backdrop .swal2-shown {
     right: 0;
     justify-content: center;
     width: 1.2em;
-    min-width: 1.2em;
     height: 1.2em;
-    margin: 0;
     padding: 0;
     transition: color 0.1s ease-out;
     border: none;
@@ -782,9 +780,10 @@ body.swal2-no-backdrop .swal2-shown {
     background: transparent;
     color: #cccccc;
     font-family: serif;
-    font-size: calc(2.5em - 0.25em);
-    line-height: 1.2em;
-    cursor: pointer; }
+    font-size: 2.5em;
+    line-height: 1.2;
+    cursor: pointer;
+    overflow: hidden; }
     .swal2-popup .swal2-close:hover {
       -webkit-transform: none;
               transform: none;
@@ -926,6 +925,10 @@ body.swal2-no-backdrop .swal2-shown {
     width: 100% !important; }
   .swal2-range output {
     display: none; } }
+
+@-moz-document url-prefix() {
+  .swal2-close:focus {
+    outline: 2px solid rgba(50, 100, 150, 0.4); } }
 
 .swal2-icon {
   position: relative;

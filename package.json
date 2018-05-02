@@ -104,8 +104,8 @@
     "check:linting": "gulp lint",
     "check:bundlesize": "bundlesize -f dist/sweetalert2.all.min.js -s 15kB",
     "check:require-in-node": "node test/require-in-node",
-    "check:qunit": "karma start karma.conf.js --single-run  --captureTimeout 240000 --browserNoActivityTimeout 240000",
-    "check:qunit:minified": "karma start karma.conf.js --single-run --minified --captureTimeout 240000 --browserNoActivityTimeout 240000",
+    "check:qunit": "karma start karma.conf.js --single-run  --captureTimeout 360000 --browserNoActivityTimeout 360000",
+    "check:qunit:minified": "karma start karma.conf.js --single-run --minified --captureTimeout 360000 --browserNoActivityTimeout 360000",
     "check:ts": "tsc --lib dom,es6 sweetalert2.d.ts",
     "release": "node release"
   },

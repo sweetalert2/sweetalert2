@@ -1,7 +1,14 @@
 const { detect } = require('detect-browser')
 
 const browser = detect()
-export const TIMEOUT = browser.name === 'ie' ? 100 : 0
+
+export let TIMEOUT = 0
+
+if (browser.name === 'ie') {
+  TIMEOUT = 100
+} else if (browser.os === 'Android OS') {
+  TIMEOUT = 500
+}
 
 // We *only* access `Swal` through this module, so that we can be sure `initialSwalPropNames` is set properly
 export const initialSwalPropNames = Object.keys(global.Swal)

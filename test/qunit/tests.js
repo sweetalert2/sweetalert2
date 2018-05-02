@@ -235,40 +235,42 @@ QUnit.test('input range', (assert) => {
   assert.equal(input.val(), '5')
 })
 
-QUnit.test('input type "select", inputOptions Map', (assert) => {
-  const inputOptions = new Map()
-  inputOptions.set(2, 'Richard Stallman')
-  inputOptions.set(1, 'Linus Torvalds')
-  Swal({
-    input: 'select',
-    inputOptions,
-    inputValue: 1,
-    animation: false
+if (typeof Map !== 'undefined') { // There's no Map in Adroid 4.4 - skip tests
+  QUnit.test('input type "select", inputOptions Map', (assert) => {
+    const inputOptions = new Map()
+    inputOptions.set(2, 'Richard Stallman')
+    inputOptions.set(1, 'Linus Torvalds')
+    Swal({
+      input: 'select',
+      inputOptions,
+      inputValue: 1,
+      animation: false
+    })
+    assert.equal($('.swal2-select option').length, 2)
+    assert.equal($('.swal2-select option')[0].innerHTML, 'Richard Stallman')
+    assert.equal($('.swal2-select option')[0].value, '2')
+    assert.equal($('.swal2-select option')[1].innerHTML, 'Linus Torvalds')
+    assert.equal($('.swal2-select option')[1].value, '1')
+    assert.equal($('.swal2-select option')[1].selected, true)
   })
-  assert.equal($('.swal2-select option').length, 2)
-  assert.equal($('.swal2-select option')[0].innerHTML, 'Richard Stallman')
-  assert.equal($('.swal2-select option')[0].value, '2')
-  assert.equal($('.swal2-select option')[1].innerHTML, 'Linus Torvalds')
-  assert.equal($('.swal2-select option')[1].value, '1')
-  assert.equal($('.swal2-select option')[1].selected, true)
-})
 
-QUnit.test('input type "radio", inputOptions Map', (assert) => {
-  const inputOptions = new Map()
-  inputOptions.set(2, 'Richard Stallman')
-  inputOptions.set(1, 'Linus Torvalds')
-  Swal({
-    input: 'radio',
-    inputOptions,
-    inputValue: 1
+  QUnit.test('input type "radio", inputOptions Map', (assert) => {
+    const inputOptions = new Map()
+    inputOptions.set(2, 'Richard Stallman')
+    inputOptions.set(1, 'Linus Torvalds')
+    Swal({
+      input: 'radio',
+      inputOptions,
+      inputValue: 1
+    })
+    assert.equal($('.swal2-radio label').length, 2)
+    assert.equal($('.swal2-radio label')[0].textContent, 'Richard Stallman')
+    assert.equal($('.swal2-radio input')[0].value, '2')
+    assert.equal($('.swal2-radio label')[1].textContent, 'Linus Torvalds')
+    assert.equal($('.swal2-radio input')[1].value, '1')
+    assert.equal($('.swal2-radio input')[1].checked, true)
   })
-  assert.equal($('.swal2-radio label').length, 2)
-  assert.equal($('.swal2-radio label')[0].textContent, 'Richard Stallman')
-  assert.equal($('.swal2-radio input')[0].value, '2')
-  assert.equal($('.swal2-radio label')[1].textContent, 'Linus Torvalds')
-  assert.equal($('.swal2-radio input')[1].value, '1')
-  assert.equal($('.swal2-radio input')[1].checked, true)
-})
+}
 
 QUnit.test('queue', (assert) => {
   const done = assert.async()

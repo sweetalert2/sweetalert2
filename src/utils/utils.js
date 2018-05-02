@@ -20,7 +20,7 @@ export const uniqueArray = (arr) => {
  */
 export const formatInputOptions = (inputOptions) => {
   const result = []
-  if (inputOptions instanceof Map) {
+  if (typeof Map !== 'undefined' && inputOptions instanceof Map) {
     inputOptions.forEach((value, key) => {
       result.push([key, value])
     })

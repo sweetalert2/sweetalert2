@@ -20,7 +20,14 @@ module.exports = function (config) {
       browserName: 'Safari',
       deviceName: 'iPhone 7 Simulator'
     },
-    sauce_android: {
+    sauce_android_kitkat: {
+      base: 'SauceLabs',
+      deviceName: 'Android Emulator',
+      browserName: 'Browser',
+      platformVersion: '4.4',
+      platformName: 'Android'
+    },
+    sauce_android_marshmallow: {
       base: 'SauceLabs',
       deviceName: 'Android Emulator',
       browserName: 'Chrome',

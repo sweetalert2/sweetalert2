@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.19.2
+* sweetalert2 v7.19.3
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -191,7 +191,7 @@ var uniqueArray = function uniqueArray(arr) {
  */
 var formatInputOptions = function formatInputOptions(inputOptions) {
   var result = [];
-  if (inputOptions instanceof Map) {
+  if (typeof Map !== 'undefined' && inputOptions instanceof Map) {
     inputOptions.forEach(function (value, key) {
       result.push([key, value]);
     });
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.19.2";
+var version = "7.19.3";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -768,7 +768,14 @@ function withNoNewKeyword(ParentSwal) {
     Object.getPrototypeOf(NoNewKeywordSwal).apply(this, args);
   };
   NoNewKeywordSwal.prototype = _extends(Object.create(ParentSwal.prototype), { constructor: NoNewKeywordSwal });
-  Object.setPrototypeOf(NoNewKeywordSwal, ParentSwal);
+
+  if (typeof Object.setPrototypeOf === 'function') {
+    Object.setPrototypeOf(NoNewKeywordSwal, ParentSwal);
+  } else {
+    // Android 4.4
+    // eslint-disable-next-line
+    NoNewKeywordSwal.__proto__ = ParentSwal;
+  }
   return NoNewKeywordSwal;
 }
 
@@ -1098,6 +1105,40 @@ var staticMethods = Object.freeze({
  * Once we have the changes from that PR in Babel, and our core class fits reasonable in *one module*
  *   then we can use that language feature.
  */
+
+// WeakMap polyfill, needed for Android 4.4
+// Related issue: https://github.com/sweetalert2/sweetalert2/issues/1071
+if (typeof window !== 'undefined' && typeof window.WeakMap !== 'function') {
+  // https://github.com/Riim/symbol-polyfill/blob/master/index.js
+  var idCounter = 0;
+  window.Symbol = function _Symbol(key) {
+    return '__' + key + '_' + Math.floor(Math.random() * 1e9) + '_' + ++idCounter + '__';
+  };
+  Symbol.iterator = Symbol('Symbol.iterator');
+
+  // http://webreflection.blogspot.fi/2015/04/a-weakmap-polyfill-in-20-lines-of-code.html
+  window.WeakMap = function (s, dP, hOP) {
+    function WeakMap() {
+      dP(this, s, { value: Symbol('WeakMap') });
+    }
+    WeakMap.prototype = {
+      'delete': function del(o) {
+        delete o[this[s]];
+      },
+      get: function get(o) {
+        return o[this[s]];
+      },
+      has: function has(o) {
+        return hOP.call(o, this[s]);
+      },
+      set: function set(o, v) {
+        dP(o, this[s], { configurable: true, value: v });
+      }
+    };
+    return WeakMap;
+  }(Symbol('WeakMap'), Object.defineProperty, {}.hasOwnProperty);
+}
+
 var privateProps = {
   promise: new WeakMap(),
   innerParams: new WeakMap(),

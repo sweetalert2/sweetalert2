@@ -14,6 +14,13 @@ export function withNoNewKeyword (ParentSwal) {
     Object.create(ParentSwal.prototype),
     { constructor: NoNewKeywordSwal }
   )
-  Object.setPrototypeOf(NoNewKeywordSwal, ParentSwal)
+
+  if (typeof Object.setPrototypeOf === 'function') {
+    Object.setPrototypeOf(NoNewKeywordSwal, ParentSwal)
+  } else {
+    // Android 4.4
+    // eslint-disable-next-line
+    NoNewKeywordSwal.__proto__ = ParentSwal
+  }
   return NoNewKeywordSwal
 }

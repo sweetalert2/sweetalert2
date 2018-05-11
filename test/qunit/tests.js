@@ -159,6 +159,25 @@ QUnit.test('input text', (assert) => {
   Swal.clickConfirm()
 })
 
+QUnit.test('validation message', (assert) => {
+  const done = assert.async()
+  Swal({
+    input: 'email',
+    extraParams: {
+      validationMessage: 'Adresse e-mail invalide'
+    }
+  })
+
+  $('.swal2-input').val('invalid-email')
+  Swal.clickConfirm()
+
+  setTimeout(() => {
+    assert.ok($('.swal2-validationerror').is(':visible'))
+    assert.equal($('.swal2-validationerror').text(), 'Adresse e-mail invalide')
+    done()
+  }, TIMEOUT)
+})
+
 QUnit.test('validation error', (assert) => {
   const done = assert.async()
   const inputValidator = (value) => Promise.resolve(!value && 'no falsy values')

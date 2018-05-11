@@ -91,7 +91,9 @@ export const resetPrevState = () => {
   if (states.previousActiveElement && states.previousActiveElement.focus) {
     let x = window.scrollX
     let y = window.scrollY
-    states.previousActiveElement.focus()
+    setTimeout(() => { // issues/900
+      states.previousActiveElement.focus && states.previousActiveElement.focus()
+    }, 100)
     if (typeof x !== 'undefined' && typeof y !== 'undefined') { // IE doesn't have scrollX/scrollY support
       window.scrollTo(x, y)
     }

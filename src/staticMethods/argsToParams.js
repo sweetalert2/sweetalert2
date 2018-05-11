@@ -5,8 +5,14 @@ export const argsToParams = (args) => {
   switch (typeof args[0]) {
     case 'string':
       ['title', 'html', 'type'].forEach((name, index) => {
-        if (args[index] !== undefined) {
-          params[name] = args[index]
+        switch (typeof args[index]) {
+          case 'string':
+            params[name] = args[index]
+            break
+          case 'undefined':
+            break
+          default:
+            error(`Unexpected type of ${name}! Expected "string", got ${typeof args[index]}`)
         }
       })
       break
@@ -16,7 +22,7 @@ export const argsToParams = (args) => {
       break
 
     default:
-      error('Unexpected type of argument! Expected "string" or "object", got ' + typeof args[0])
+      error(`Unexpected type of argument! Expected "string" or "object", got ${typeof args[0]}`)
       return false
   }
   return params

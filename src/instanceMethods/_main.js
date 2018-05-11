@@ -511,7 +511,7 @@ export function _main (userParams) {
       } else if (typeof innerParams.inputOptions === 'object') {
         processInputOptions(innerParams.inputOptions)
       } else {
-        error('Unexpected type of inputOptions! Expected object, Map or Promise, got ' + typeof innerParams.inputOptions)
+        error(`Unexpected type of inputOptions! Expected object, Map or Promise, got ${typeof innerParams.inputOptions}`)
       }
     } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(innerParams.input) && isThenable(innerParams.inputValue)) {
       constructor.showLoading()

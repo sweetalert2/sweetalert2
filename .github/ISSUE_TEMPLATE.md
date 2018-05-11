@@ -1,3 +1,8 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+⚠⚠⚠ PLEASE CAREFULLY READ AND FOLLOW THE ISSUE TEMPLATE BELOW ⚠⚠⚠
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 If your issue is focused more on 'how do I do this?' rather than 'this is a broken functionality', then either ask on our Gitter https://gitter.im/sweetalert2/lobby or submit it to StackOverflow https://stackoverflow.com/questions/ask instead of GitHub, and make sure you add the sweetalert2 tag to the question.
 
 ---

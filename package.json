@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "7.19.3",
+  "version": "7.20.0",
   "repository": "sweetalert2/sweetalert2",
   "homepage": "https://sweetalert2.github.io/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
@@ -55,6 +55,7 @@
     "rollup": "^0.58.0",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-json": "^2.3.0",
+    "sinon": "^5.0.7",
     "standard": "^8.0.0",
     "tslint": "^5.8.0",
     "typescript": "~2.1",

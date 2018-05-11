@@ -11,7 +11,7 @@
   <a href="https://ci.appveyor.com/project/limonte/sweetalert2/branch/master"><img alt="Build Status: Windows" src="https://ci.appveyor.com/api/projects/status/paqdtx0snu53w5c1/branch/master?svg=true"></a>
   <a href="https://www.npmjs.com/package/sweetalert2"><img alt="Version" src="https://img.shields.io/npm/v/sweetalert2.svg"></a>
   <a href="https://www.jsdelivr.com/package/npm/sweetalert2"><img alt="jsdelivr" src="https://data.jsdelivr.com/v1/package/npm/sweetalert2/badge?style=rounded"></a>
-  <a href="https://checkgzipcompression.com/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsweetalert2%2Fsweetalert2%2Fdist%2Fdist%2Fsweetalert2.all.min.js"><img alt="gzip size" src="http://img.badgesize.io/sweetalert2/sweetalert2/dist/dist/sweetalert2.all.min.js.svg?compression=gzip"></a>
+  <a href="https://bundlephobia.com/result?p=sweetalert2"><img alt="gzip size" src="http://img.badgesize.io/sweetalert2/sweetalert2/dist/dist/sweetalert2.all.min.js.svg?compression=gzip"></a>
   <a href="https://www.patreon.com/limonte"><img alt="Support me on Patreon" src="http://ionicabizau.github.io/badges/patreon.svg"></a>
   <a href="https://www.paypal.me/limonte/5eur"><img alt="PayPal Donate" src="http://ionicabizau.github.io/badges/paypal.svg"></a>
   <a href="#backers"><img alt="Backers on Open Collective" src="https://opencollective.com/SweetAlert2/backers/badge.svg"></a>

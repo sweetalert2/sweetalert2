@@ -1,6 +1,7 @@
 /* global QUnit */
 const {Swal} = require('./helpers')
 const $ = require('jquery')
+const sinon = require('sinon')
 import { TIMEOUT } from './helpers.js'
 
 QUnit.test('version is correct semver', (assert) => {
@@ -10,6 +11,14 @@ QUnit.test('version is correct semver', (assert) => {
 QUnit.test('modal shows up', (assert) => {
   Swal('Hello world!')
   assert.ok(Swal.isVisible())
+})
+
+QUnit.test('should throw console error about unexpected params', (assert) => {
+  const _consoleError = console.error
+  const spy = sinon.spy(console, 'error')
+  Swal('Hello world!', {type: 'success'})
+  console.error = _consoleError
+  assert.ok(spy.calledWith('SweetAlert2: Unexpected type of html! Expected "string", got object'))
 })
 
 QUnit.test('modal width', (assert) => {
@@ -146,6 +155,14 @@ QUnit.test('set and reset defaults', (assert) => {
   Swal.clickCancel()
 })
 
+QUnit.test('should throw console error about unexpected input type', (assert) => {
+  const _consoleError = console.error
+  const spy = sinon.spy(console, 'error')
+  Swal({input: 'invalid-input-type'})
+  console.error = _consoleError
+  assert.ok(spy.calledWith('SweetAlert2: Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "invalid-input-type"'))
+})
+
 QUnit.test('input text', (assert) => {
   const done = assert.async()
 
@@ -157,6 +174,25 @@ QUnit.test('input text', (assert) => {
 
   $('.swal2-input').val(string)
   Swal.clickConfirm()
+})
+
+QUnit.test('validation message', (assert) => {
+  const done = assert.async()
+  Swal({
+    input: 'email',
+    extraParams: {
+      validationMessage: 'Adresse e-mail invalide'
+    }
+  })
+
+  $('.swal2-input').val('invalid-email')
+  Swal.clickConfirm()
+
+  setTimeout(() => {
+    assert.ok($('.swal2-validationerror').is(':visible'))
+    assert.equal($('.swal2-validationerror').text(), 'Adresse e-mail invalide')
+    done()
+  }, TIMEOUT)
 })
 
 QUnit.test('validation error', (assert) => {
@@ -211,6 +247,14 @@ QUnit.test('input select', (assert) => {
 
   $('.swal2-select').val(selected)
   Swal.clickConfirm()
+})
+
+QUnit.test('should throw console error about unexpected type of InputOptions', (assert) => {
+  const _consoleError = console.error
+  const spy = sinon.spy(console, 'error')
+  Swal({input: 'select', inputOptions: 'invalid-input-options'})
+  console.error = _consoleError
+  assert.ok(spy.calledWith('SweetAlert2: Unexpected type of inputOptions! Expected object, Map or Promise, got string'))
 })
 
 QUnit.test('input checkbox', (assert) => {

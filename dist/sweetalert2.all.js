@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.19.3
+* sweetalert2 v7.20.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,15 +258,21 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.19.3";
+var version = "7.20.0";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
   switch (_typeof(args[0])) {
     case 'string':
       ['title', 'html', 'type'].forEach(function (name, index) {
-        if (args[index] !== undefined) {
-          params[name] = args[index];
+        switch (_typeof(args[index])) {
+          case 'string':
+            params[name] = args[index];
+            break;
+          case 'undefined':
+            break;
+          default:
+            error('Unexpected type of ' + name + '! Expected "string", got ' + _typeof(args[index]));
         }
       });
       break;
@@ -402,7 +408,10 @@ var resetPrevState = function resetPrevState() {
   if (states.previousActiveElement && states.previousActiveElement.focus) {
     var x = window.scrollX;
     var y = window.scrollY;
-    states.previousActiveElement.focus();
+    setTimeout(function () {
+      // issues/900
+      states.previousActiveElement.focus && states.previousActiveElement.focus();
+    }, 100);
     if (typeof x !== 'undefined' && typeof y !== 'undefined') {
       // IE doesn't have scrollX/scrollY support
       window.scrollTo(x, y);
@@ -1276,13 +1285,13 @@ function resetValidationError() {
 }
 
 var defaultInputValidators = {
-  email: function email(string) {
-    return (/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(string) ? Promise.resolve() : Promise.reject('Invalid email address')
+  email: function email(string, extraParams) {
+    return (/^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(string) ? Promise.resolve() : Promise.reject(extraParams.validationMessage || 'Invalid email address')
     );
   },
-  url: function url(string) {
+  url: function url(string, extraParams) {
     // taken from https://stackoverflow.com/a/3809435/1331425
-    return (/^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/.test(string) ? Promise.resolve() : Promise.reject('Invalid URL')
+    return (/^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/.test(string) ? Promise.resolve() : Promise.reject(extraParams.validationMessage || 'Invalid URL')
     );
   }
 };

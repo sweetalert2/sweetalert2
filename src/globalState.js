@@ -2,13 +2,15 @@ const globalState = {}
 
 export default globalState
 
-// Reset previous window keydown handler and focued element
-export const resetActiveElement = () => {
+// Restore previous active (focused) element
+export const restoreActiveElement = () => {
   if (globalState.previousActiveElement && globalState.previousActiveElement.focus) {
-    let x = window.scrollX
-    let y = window.scrollY
+    const previousActiveElement = globalState.previousActiveElement
+    globalState.previousActiveElement = null
+    const x = window.scrollX
+    const y = window.scrollY
     setTimeout(() => {
-      globalState.previousActiveElement.focus && globalState.previousActiveElement.focus()
+      previousActiveElement.focus && previousActiveElement.focus()
     }, 100) // issues/900
     if (typeof x !== 'undefined' && typeof y !== 'undefined') { // IE doesn't have scrollX/scrollY support
       window.scrollTo(x, y)

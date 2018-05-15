@@ -2,6 +2,7 @@ import * as dom from './dom/index'
 import { swalClasses } from './classes'
 import { fixScrollbar } from './scrollbarFix'
 import { iOSfix } from './iosFix'
+import globalState from '../globalState'
 
 /**
  * Animations
@@ -43,7 +44,9 @@ export const openPopup = (animation, onBeforeOpen, onOpen) => {
     fixScrollbar()
     iOSfix()
   }
-  dom.states.previousActiveElement = document.activeElement
+  if (!globalState.previousActiveElement) {
+    globalState.previousActiveElement = document.activeElement
+  }
   if (onOpen !== null && typeof onOpen === 'function') {
     setTimeout(() => {
       onOpen(popup)

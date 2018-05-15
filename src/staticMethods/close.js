@@ -2,7 +2,7 @@ import {undoScrollbar} from '../utils/scrollbarFix'
 import {undoIOSfix} from '../utils/iosFix'
 import * as dom from '../utils/dom/index'
 import { swalClasses } from '../utils/classes.js'
-import globalState from '../globalState'
+import globalState, { resetActiveElement } from '../globalState'
 
 /*
  * Global function to close sweetAlert
@@ -23,7 +23,7 @@ const close = (onClose, onAfterClose) => {
   clearTimeout(popup.timeout)
 
   if (!dom.isToast()) {
-    dom.resetPrevState()
+    resetActiveElement()
     window.onkeydown = globalState.previousWindowKeyDown
     globalState.windowOnkeydownOverridden = false
   }

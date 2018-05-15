@@ -2,6 +2,24 @@
 const {Swal} = require('./helpers')
 const $ = require('jquery')
 
+QUnit.test('previous active element', (assert) => {
+  const done = assert.async()
+
+  const button = document.createElement('button')
+  button.innerText = 'I am focused'
+  document.body.appendChild(button)
+  button.focus()
+
+  Swal({ text: 'swal 1', animation: false })
+  Swal({ text: 'swal 2', animation: false })
+  Swal.clickConfirm()
+
+  setTimeout(() => {
+    assert.ok(document.activeElement === button)
+    done()
+  }, 100) // issues/900
+})
+
 QUnit.test('dialog aria attributes', (assert) => {
   Swal('Modal dialog')
   assert.equal($('.swal2-modal').attr('role'), 'dialog')

@@ -2,7 +2,6 @@ import { swalClasses } from '../classes'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
-  previousActiveElement: null,
   previousBodyPadding: null
 }
 
@@ -83,19 +82,5 @@ export const removeStyleProperty = (elem, property) => {
     elem.style.removeProperty(property)
   } else {
     elem.style.removeAttribute(property)
-  }
-}
-
-// Reset previous window keydown handler and focued element
-export const resetPrevState = () => {
-  if (states.previousActiveElement && states.previousActiveElement.focus) {
-    let x = window.scrollX
-    let y = window.scrollY
-    setTimeout(() => { // issues/900
-      states.previousActiveElement.focus && states.previousActiveElement.focus()
-    }, 100)
-    if (typeof x !== 'undefined' && typeof y !== 'undefined') { // IE doesn't have scrollX/scrollY support
-      window.scrollTo(x, y)
-    }
   }
 }

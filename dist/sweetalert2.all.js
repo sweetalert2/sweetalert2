@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.20.2
+* sweetalert2 v7.20.3
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.20.2";
+var version = "7.20.3";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -666,13 +666,15 @@ var undoIOSfix = function undoIOSfix() {
 
 var globalState = {};
 
-// Reset previous window keydown handler and focued element
-var resetActiveElement = function resetActiveElement() {
+// Restore previous active (focused) element
+var restoreActiveElement = function restoreActiveElement() {
   if (globalState.previousActiveElement && globalState.previousActiveElement.focus) {
+    var previousActiveElement = globalState.previousActiveElement;
+    globalState.previousActiveElement = null;
     var x = window.scrollX;
     var y = window.scrollY;
     setTimeout(function () {
-      globalState.previousActiveElement.focus && globalState.previousActiveElement.focus();
+      previousActiveElement.focus && previousActiveElement.focus();
     }, 100); // issues/900
     if (typeof x !== 'undefined' && typeof y !== 'undefined') {
       // IE doesn't have scrollX/scrollY support
@@ -699,13 +701,13 @@ var close = function close(onClose, onAfterClose) {
   addClass(popup, swalClasses.hide);
   clearTimeout(popup.timeout);
 
-  if (!isToast()) {
-    resetActiveElement();
-    window.onkeydown = globalState.previousWindowKeyDown;
-    globalState.windowOnkeydownOverridden = false;
-  }
-
   var removePopupAndResetState = function removePopupAndResetState() {
+    if (!isToast()) {
+      restoreActiveElement();
+      window.onkeydown = globalState.previousWindowKeyDown;
+      globalState.windowOnkeydownOverridden = false;
+    }
+
     if (container.parentNode) {
       container.parentNode.removeChild(container);
     }

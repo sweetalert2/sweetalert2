@@ -20,7 +20,7 @@ QUnit.test('confirm button /w useRejections: true', (assert) => {
 QUnit.test('cancel button /w useRejections: true', (assert) => {
   const done = assert.async()
 
-  Swal({
+  SwalWithoutAnimation({
     title: 'Cancel me',
     useRejections: true
   }).then(

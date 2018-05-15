@@ -38,13 +38,13 @@ QUnit.test('custom class', (assert) => {
 })
 
 QUnit.test('window keydown handler', (assert) => {
-  Swal('hi')
+  SwalWithoutAnimation('hi')
   assert.ok(window.onkeydown)
   Swal.close()
   assert.equal(window.onkeydown, null)
 
-  Swal('first call')
-  Swal('second call')
+  SwalWithoutAnimation('first call')
+  SwalWithoutAnimation('second call')
   assert.ok(window.onkeydown)
   Swal.close()
   assert.equal(window.onkeydown, null)

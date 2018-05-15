@@ -16,6 +16,7 @@ QUnit.test('previous active element', (assert) => {
 
   setTimeout(() => {
     assert.ok(document.activeElement === button)
+    document.body.removeChild(button)
     done()
   }, 100) // issues/900
 })

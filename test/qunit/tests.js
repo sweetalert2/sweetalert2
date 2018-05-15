@@ -508,21 +508,27 @@ QUnit.test('default focus', (assert) => {
   const done = assert.async()
 
   SwalWithoutAnimation('Modal with the Confirm button only')
-  assert.ok(document.activeElement === $('.swal2-confirm')[0])
+  assert.ok(document.activeElement === document.querySelector('.swal2-confirm'))
 
   SwalWithoutAnimation({
     text: 'Modal with two buttons',
     showCancelButton: true
   })
-  assert.ok(document.activeElement === $('.swal2-confirm')[0])
+  assert.ok(document.activeElement === document.querySelector('.swal2-confirm'))
+
+  SwalWithoutAnimation({
+    text: 'Modal with no focusable elements in it',
+    showConfirmButton: false
+  })
+  assert.ok(document.activeElement === document.querySelector('.swal2-modal'))
 
   SwalWithoutAnimation({
     text: 'Modal with an input',
-    input: 'text'
-  })
-  setTimeout(() => {
-    assert.ok(document.activeElement === $('.swal2-input')[0])
-    done()
+    input: 'text',
+    onOpen: () => {
+      assert.ok(document.activeElement === document.querySelector('.swal2-input'))
+      done()
+    }
   })
 })
 

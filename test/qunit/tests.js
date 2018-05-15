@@ -1,5 +1,5 @@
 /* global QUnit */
-const {Swal} = require('./helpers')
+const {Swal, SwalWithoutAnimation} = require('./helpers')
 const $ = require('jquery')
 const sinon = require('sinon')
 import { TIMEOUT } from './helpers.js'
@@ -215,7 +215,7 @@ QUnit.test('validation error', (assert) => {
   const done = assert.async()
   const inputValidator = (value) => Promise.resolve(!value && 'no falsy values')
 
-  Swal({input: 'text', animation: false, inputValidator})
+  SwalWithoutAnimation({input: 'text', inputValidator})
   assert.ok($('.swal2-validationerror').is(':hidden'))
   setTimeout(() => {
     const initialModalHeight = $('.swal2-modal').outerHeight()
@@ -300,11 +300,10 @@ if (typeof Map !== 'undefined') { // There's no Map in Adroid 4.4 - skip tests
     const inputOptions = new Map()
     inputOptions.set(2, 'Richard Stallman')
     inputOptions.set(1, 'Linus Torvalds')
-    Swal({
+    SwalWithoutAnimation({
       input: 'select',
       inputOptions,
-      inputValue: 1,
-      animation: false
+      inputValue: 1
     })
     assert.equal($('.swal2-select option').length, 2)
     assert.equal($('.swal2-select option')[0].innerHTML, 'Richard Stallman')
@@ -508,16 +507,16 @@ QUnit.test('disable/enable input', (assert) => {
 QUnit.test('default focus', (assert) => {
   const done = assert.async()
 
-  Swal('Modal with the Confirm button only')
+  SwalWithoutAnimation('Modal with the Confirm button only')
   assert.ok(document.activeElement === $('.swal2-confirm')[0])
 
-  Swal({
+  SwalWithoutAnimation({
     text: 'Modal with two buttons',
     showCancelButton: true
   })
   assert.ok(document.activeElement === $('.swal2-confirm')[0])
 
-  Swal({
+  SwalWithoutAnimation({
     text: 'Modal with an input',
     input: 'text'
   })
@@ -582,13 +581,12 @@ QUnit.test('image alt text and custom class', (assert) => {
 QUnit.test('modal vertical offset', (assert) => {
   const done = assert.async(1)
   // create a modal with dynamic-height content
-  Swal({
+  SwalWithoutAnimation({
     imageUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNikAQAACIAHF/uBd8AAAAASUVORK5CYII=',
     title: 'Title',
     html: '<hr><div style="height: 50px"></div><p>Text content</p>',
     type: 'warning',
-    input: 'text',
-    animation: false
+    input: 'text'
   })
 
   // listen for image load
@@ -727,10 +725,9 @@ QUnit.test('allowEscapeKey as a function', (assert) => {
     return false
   }
 
-  Swal({
+  SwalWithoutAnimation({
     title: 'allowEscapeKey as a function',
     allowEscapeKey,
-    animation: false,
     onOpen: () => {
       assert.equal(functionWasCalled, false)
 
@@ -778,10 +775,9 @@ QUnit.test('cancel button', (assert) => {
 QUnit.test('timer', (assert) => {
   const done = assert.async()
 
-  Swal({
+  SwalWithoutAnimation({
     title: 'Timer test',
-    timer: 10,
-    animation: false
+    timer: 10
   }).then((result) => {
     assert.deepEqual(result, {dismiss: Swal.DismissReason.timer})
     done()
@@ -882,11 +878,10 @@ QUnit.test('backdrop accepts css background param', (assert) => {
 })
 
 QUnit.test('preConfirm return false', (assert) => {
-  Swal({
+  SwalWithoutAnimation({
     preConfirm: () => {
       return false
-    },
-    animation: false
+    }
   })
 
   Swal.clickConfirm()
@@ -930,10 +925,9 @@ QUnit.test('inputValue as a Promise', (assert) => {
     resolve('1.1 input value')
   })
   inputTypes.forEach(input => {
-    Swal({
+    SwalWithoutAnimation({
       input,
       inputValue,
-      animation: false,
       onOpen: (modal) => {
         setTimeout(() => {
           const inputEl = input === 'textarea' ? modal.querySelector('.swal2-textarea') : modal.querySelector('.swal2-input')

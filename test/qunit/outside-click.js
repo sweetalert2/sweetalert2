@@ -1,5 +1,5 @@
 /* global QUnit */
-const {Swal} = require('./helpers')
+const {Swal, SwalWithoutAnimation} = require('./helpers')
 const $ = require('jquery')
 
 const simulateMouseEvent = (x, y, eventType) => {
@@ -12,10 +12,7 @@ const simulateMouseEvent = (x, y, eventType) => {
 QUnit.test('backdrop click', (assert) => {
   const done = assert.async()
 
-  Swal({
-    title: 'Backdrop click',
-    animation: false
-  }).then((result) => {
+  SwalWithoutAnimation('Backdrop click').then((result) => {
     assert.deepEqual(result, {dismiss: Swal.DismissReason.backdrop})
     done()
   })
@@ -26,10 +23,7 @@ QUnit.test('backdrop click', (assert) => {
 QUnit.test('popup mousedown, backdrop mouseup', (assert) => {
   const done = assert.async()
 
-  Swal({
-    title: 'popup mousedown, backdrop mouseup',
-    animation: false
-  })
+  Swal('popup mousedown, backdrop mouseup')
 
   simulateMouseEvent(1, 1, 'mousedown')
   simulateMouseEvent(window.innerWidth / 2, window.innerHeight / 2, 'mouseup')
@@ -43,10 +37,7 @@ QUnit.test('popup mousedown, backdrop mouseup', (assert) => {
 QUnit.test('backdrop mousedown, popup mouseup', (assert) => {
   const done = assert.async()
 
-  Swal({
-    title: 'backdrop mousedown, popup mouseup',
-    animation: false
-  })
+  SwalWithoutAnimation('backdrop mousedown, popup mouseup')
 
   simulateMouseEvent(window.innerWidth / 2, window.innerHeight / 2, 'mousedown')
   simulateMouseEvent(1, 1, 'mouseup')
@@ -60,10 +51,9 @@ QUnit.test('backdrop mousedown, popup mouseup', (assert) => {
 QUnit.test('allowOutsideClick: false', (assert) => {
   const done = assert.async()
 
-  Swal({
+  SwalWithoutAnimation({
     title: 'allowOutsideClick: false',
-    allowOutsideClick: false,
-    animation: false
+    allowOutsideClick: false
   })
 
   $('.swal2-container').click()
@@ -77,10 +67,9 @@ QUnit.test('allowOutsideClick: false', (assert) => {
 QUnit.test('allowOutsideClick: () => !swal.isLoading()', (assert) => {
   const done = assert.async()
 
-  Swal({
+  SwalWithoutAnimation({
     title: 'allowOutsideClick: () => !swal.isLoading()',
-    allowOutsideClick: () => !Swal.isLoading(),
-    animation: false
+    allowOutsideClick: () => !Swal.isLoading()
   }).then((result) => {
     assert.deepEqual(result, {dismiss: Swal.DismissReason.backdrop})
     done()

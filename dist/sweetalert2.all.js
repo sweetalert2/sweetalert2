@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.20.3
+* sweetalert2 v7.20.4
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.20.3";
+var version = "7.20.4";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -1907,6 +1907,8 @@ function _main(userParams) {
           return el.focus();
         }
       }
+      // no visible focusable elements, focus the popup
+      domCache.popup.focus();
     };
 
     var handleKeyDown = function handleKeyDown(event) {
@@ -3187,6 +3189,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "    .swal2-popup .swal2-validationerror::before {\n" +
 "      display: inline-block;\n" +
 "      width: 1.5em;\n" +
+"      min-width: 1.5em;\n" +
 "      height: 1.5em;\n" +
 "      margin: 0 .625em;\n" +
 "      border-radius: 50%;\n" +

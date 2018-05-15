@@ -903,6 +903,7 @@ body.swal2-no-backdrop .swal2-shown {
     .swal2-popup .swal2-validationerror::before {
       display: inline-block;
       width: 1.5em;
+      min-width: 1.5em;
       height: 1.5em;
       margin: 0 .625em;
       border-radius: 50%;

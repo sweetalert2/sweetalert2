@@ -77,6 +77,9 @@ module.exports = function (config) {
     frameworks: [
       'qunit'
     ],
+    qunit: {
+      reorder: false
+    },
     customLaunchers: sauceLabsLaunchers,
     browsers,
     retryLimit,

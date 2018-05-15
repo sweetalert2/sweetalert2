@@ -1,15 +1,14 @@
 /* global QUnit */
-const {Swal} = require('./helpers')
+const {Swal, SwalWithoutAnimation} = require('./helpers')
 const $ = require('jquery')
 import { TIMEOUT } from './helpers.js'
 
 QUnit.test('confirm button /w useRejections: true', (assert) => {
   const done = assert.async()
 
-  Swal({
+  SwalWithoutAnimation({
     title: 'Confirm me',
-    useRejections: true,
-    animation: false
+    useRejections: true
   }).then((result) => {
     assert.equal(result, true)
     done()
@@ -74,10 +73,9 @@ QUnit.test('backdrop click /w useRejections: true', (assert) => {
 QUnit.test('timer /w useRejections: true', (assert) => {
   const done = assert.async()
 
-  Swal({
+  SwalWithoutAnimation({
     title: 'Timer test',
     timer: 10,
-    animation: false,
     useRejections: true
   }).then(
     () => {},
@@ -181,7 +179,7 @@ QUnit.test('validation error /w expectRejections: true', (assert) => {
   const done = assert.async()
   const inputValidator = (value) => !value ? Promise.reject('no falsy values') : Promise.resolve()
 
-  Swal({input: 'text', animation: false, inputValidator, expectRejections: true})
+  SwalWithoutAnimation({input: 'text', inputValidator, expectRejections: true})
   assert.ok($('.swal2-validationerror').is(':hidden'))
   setTimeout(() => {
     const initialModalHeight = $('.swal2-modal').outerHeight()

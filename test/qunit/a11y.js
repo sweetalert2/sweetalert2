@@ -1,5 +1,5 @@
 /* global QUnit */
-const {Swal} = require('./helpers')
+const {Swal, SwalWithoutAnimation} = require('./helpers')
 const $ = require('jquery')
 
 QUnit.test('previous active element', (assert) => {
@@ -10,8 +10,8 @@ QUnit.test('previous active element', (assert) => {
   document.body.appendChild(button)
   button.focus()
 
-  Swal({ text: 'swal 1', animation: false })
-  Swal({ text: 'swal 2', animation: false })
+  SwalWithoutAnimation('swal 1')
+  SwalWithoutAnimation('swal 2')
   Swal.clickConfirm()
 
   setTimeout(() => {

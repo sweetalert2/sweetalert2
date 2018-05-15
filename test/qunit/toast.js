@@ -1,5 +1,5 @@
 /* global QUnit */
-const {Swal} = require('./helpers')
+const {Swal, SwalWithoutAnimation} = require('./helpers')
 const $ = require('jquery')
 
 QUnit.test('.swal2-toast-shown', (assert) => {
@@ -27,9 +27,8 @@ QUnit.test('should not overrie window.onkeydown', (assert) => {
 QUnit.test('toast click closes when no buttons or input are specified', (assert) => {
   const done = assert.async()
 
-  Swal({
+  SwalWithoutAnimation({
     title: 'toast click close',
-    animation: false,
     toast: true,
     showConfirmButton: false
   }).then((result) => {
@@ -43,9 +42,8 @@ QUnit.test('toast click closes when no buttons or input are specified', (assert)
 QUnit.test('toast click does not close if cancel button is present', (assert) => {
   const done = assert.async()
 
-  Swal({
+  SwalWithoutAnimation({
     title: 'toast no close with button present',
-    animation: false,
     toast: true,
     showConfirmButton: false,
     showCancelButton: true
@@ -62,9 +60,8 @@ QUnit.test('toast click does not close if cancel button is present', (assert) =>
 QUnit.test('toast click does not close if input option is specified', (assert) => {
   const done = assert.async()
 
-  Swal({
+  SwalWithoutAnimation({
     title: 'toast no close with input present',
-    animation: false,
     toast: true,
     showConfirmButton: false,
     showCancelButton: false,

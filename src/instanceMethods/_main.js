@@ -283,6 +283,8 @@ export function _main (userParams) {
           return el.focus()
         }
       }
+      // no visible focusable elements, focus the popup
+      domCache.popup.focus()
     }
 
     const handleKeyDown = (event) => {

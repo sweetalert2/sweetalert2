@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.20.4
+* sweetalert2 v7.20.5
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.20.4";
+var version = "7.20.5";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -699,7 +699,6 @@ var close = function close(onClose, onAfterClose) {
 
   removeClass(popup, swalClasses.show);
   addClass(popup, swalClasses.hide);
-  clearTimeout(popup.timeout);
 
   var removePopupAndResetState = function removePopupAndResetState() {
     if (!isToast()) {
@@ -1642,6 +1641,9 @@ function _main(userParams) {
   Object.freeze(innerParams);
   privateProps.innerParams.set(this, innerParams);
 
+  // clear the previous timer
+  clearTimeout(globalState.timeout);
+
   var domCache = {
     popup: getPopup(),
     container: getContainer(),
@@ -1682,7 +1684,7 @@ function _main(userParams) {
 
     // Close on timer
     if (innerParams.timer) {
-      domCache.popup.timeout = setTimeout(function () {
+      globalState.timeout = setTimeout(function () {
         return dismissWith('timer');
       }, innerParams.timer);
     }
@@ -1918,7 +1920,7 @@ function _main(userParams) {
       ];
 
       if (e.key === 'Enter' && !e.isComposing) {
-        if (e.target === _this.getInput()) {
+        if (e.target.outerHTML === _this.getInput().outerHTML) {
           if (['textarea', 'file'].indexOf(innerParams.input) !== -1) {
             return; // do not submit
           }

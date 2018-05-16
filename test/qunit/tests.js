@@ -337,29 +337,28 @@ QUnit.test('queue', (assert) => {
 
   assert.equal(Swal.getQueueStep(), null)
 
-  Swal.setDefaults({animation: false})
-  Swal.queue(steps).then(() => {
-    Swal('All done!')
+  SwalWithoutAnimation.queue(steps).then(() => {
+    SwalWithoutAnimation('All done!')
   })
 
   assert.equal($('.swal2-modal h2').text(), 'Step 1')
   assert.equal(Swal.getQueueStep(), 0)
-  Swal.clickConfirm()
+  SwalWithoutAnimation.clickConfirm()
 
   setTimeout(() => {
     assert.equal($('.swal2-modal h2').text(), 'Step 2')
     assert.equal(Swal.getQueueStep(), 1)
-    Swal.clickConfirm()
+    SwalWithoutAnimation.clickConfirm()
 
     setTimeout(() => {
       assert.equal($('.swal2-modal h2').text(), 'All done!')
-      assert.equal(Swal.getQueueStep(), null)
-      Swal.clickConfirm()
+      assert.equal(SwalWithoutAnimation.getQueueStep(), null)
+      SwalWithoutAnimation.clickConfirm()
 
       // test queue is cancelled on first step, other steps shouldn't be shown
-      Swal.queue(steps)
-      Swal.clickCancel()
-      assert.notOk(Swal.isVisible())
+      SwalWithoutAnimation.queue(steps)
+      SwalWithoutAnimation.clickCancel()
+      assert.notOk(SwalWithoutAnimation.isVisible())
       done()
     }, TIMEOUT)
   }, TIMEOUT)

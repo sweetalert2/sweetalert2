@@ -790,27 +790,27 @@ QUnit.test('timer', (assert) => {
   })
 })
 
-QUnit.test('miltiple timers, one after another', (assert) => {
+QUnit.test('multiple timers, one after another', (assert) => {
   const done = assert.async()
 
   SwalWithoutAnimation({
     title: 'First timer, 100ms',
-    timer: 100,
+    timer: 100 * TIMEOUT,
     onOpen: () => {
       SwalWithoutAnimation({
         title: 'Second timer with 200ms timer',
-        timer: 200,
+        timer: 200 * TIMEOUT,
         onOpen: () => {
           // second swal should be visible after 150ms
           setTimeout(() => {
             assert.ok(Swal.isVisible())
-          }, 150)
+          }, 150 * TIMEOUT)
 
           // but hidden after 200ms
           setTimeout(() => {
             assert.notOk(Swal.isVisible())
             done()
-          }, 200)
+          }, 200 * TIMEOUT)
         }
       })
     }

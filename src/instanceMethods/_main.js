@@ -15,6 +15,9 @@ export function _main (userParams) {
   Object.freeze(innerParams)
   privateProps.innerParams.set(this, innerParams)
 
+  // clear the previous timer
+  clearTimeout(globalState.timeout)
+
   const domCache = {
     popup: dom.getPopup(),
     container: dom.getContainer(),
@@ -55,7 +58,7 @@ export function _main (userParams) {
 
     // Close on timer
     if (innerParams.timer) {
-      domCache.popup.timeout = setTimeout(() => dismissWith('timer'), innerParams.timer)
+      globalState.timeout = setTimeout(() => dismissWith('timer'), innerParams.timer)
     }
 
     // Get the value of the popup input

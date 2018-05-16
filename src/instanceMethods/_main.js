@@ -299,7 +299,7 @@ export function _main (userParams) {
       ]
 
       if (e.key === 'Enter' && !e.isComposing) {
-        if (e.target === this.getInput()) {
+        if (e.target.outerHTML === this.getInput().outerHTML) {
           if (['textarea', 'file'].includes(innerParams.input)) {
             return // do not submit
           }

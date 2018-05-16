@@ -20,7 +20,6 @@ const close = (onClose, onAfterClose) => {
 
   dom.removeClass(popup, swalClasses.show)
   dom.addClass(popup, swalClasses.hide)
-  clearTimeout(popup.timeout)
 
   const removePopupAndResetState = () => {
     if (!dom.isToast()) {

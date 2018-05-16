@@ -2,7 +2,7 @@ const { detect } = require('detect-browser')
 
 const browser = detect()
 
-export let TIMEOUT = 0
+export let TIMEOUT = 1
 
 if (browser.name === 'ie') {
   TIMEOUT = 100

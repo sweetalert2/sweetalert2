@@ -778,6 +778,7 @@ QUnit.test('cancel button', (assert) => {
 
   Swal.clickCancel()
 })
+
 QUnit.test('timer', (assert) => {
   const done = assert.async()
 
@@ -789,6 +790,34 @@ QUnit.test('timer', (assert) => {
     done()
   })
 })
+
+QUnit.test('miltiple timers, one after another', (assert) => {
+  const done = assert.async()
+
+  SwalWithoutAnimation({
+    title: 'First timer, 100ms',
+    timer: 100,
+    onOpen: () => {
+      SwalWithoutAnimation({
+        title: 'Second timer with 200ms timer',
+        timer: 200,
+        onOpen: () => {
+          // second swal should be visible after 150ms
+          setTimeout(() => {
+            assert.ok(Swal.isVisible())
+          }, 150)
+
+          // but hidden after 200ms
+          setTimeout(() => {
+            assert.notOk(Swal.isVisible())
+            done()
+          }, 200)
+        }
+      })
+    }
+  })
+})
+
 QUnit.test('confirm button', (assert) => {
   const done = assert.async()
   Swal({

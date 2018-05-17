@@ -8,8 +8,8 @@ export const fixScrollbar = () => {
   // if the body has overflow
   if (document.body.scrollHeight > window.innerHeight) {
     // add padding so the content doesn't shift after removal of scrollbar
-    dom.states.previousBodyPadding = document.body.style.paddingRight
-    document.body.style.paddingRight = dom.measureScrollbar() + 'px'
+    dom.states.previousBodyPadding = parseInt(window.getComputedStyle(document.body).getPropertyValue('padding-right'))
+    document.body.style.paddingRight = (dom.states.previousBodyPadding + dom.measureScrollbar()) + 'px'
   }
 }
 

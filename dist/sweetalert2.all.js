@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.20.5
+* sweetalert2 v7.20.6
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.20.5";
+var version = "7.20.6";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -633,8 +633,8 @@ var fixScrollbar = function fixScrollbar() {
   // if the body has overflow
   if (document.body.scrollHeight > window.innerHeight) {
     // add padding so the content doesn't shift after removal of scrollbar
-    states.previousBodyPadding = document.body.style.paddingRight;
-    document.body.style.paddingRight = measureScrollbar() + 'px';
+    states.previousBodyPadding = parseInt(window.getComputedStyle(document.body).getPropertyValue('padding-right'));
+    document.body.style.paddingRight = states.previousBodyPadding + measureScrollbar() + 'px';
   }
 };
 

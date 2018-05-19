@@ -16,7 +16,7 @@ if (typeof window !== 'undefined' && typeof window.WeakMap !== 'function') {
   window.Symbol = function Symbol (key) {
     return '__' + key + '_' + Math.floor(Math.random() * 1e9) + '_' + (++idCounter) + '__'
   }
-  Symbol.iterator = Symbol('Symbol.iterator')
+  window.Symbol.iterator = Symbol('Symbol.iterator');
 
   // http://webreflection.blogspot.fi/2015/04/a-weakmap-polyfill-in-20-lines-of-code.html
   window.WeakMap = (function (s, dP, hOP) {

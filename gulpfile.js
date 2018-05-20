@@ -10,6 +10,7 @@ const rimraf = require('rimraf')
 const mkdirp = require('mkdirp')
 const packageJson = require('./package.json')
 const execute = require('./utils/execute')
+const log = require('fancy-log')
 
 const banner = `/*!
 * ${packageJson.name} v${packageJson.version}
@@ -21,7 +22,7 @@ const srcScriptFiles = ['src/**/*.js']
 const srcStyleFiles = ['src/**/*.scss']
 const tsFiles = ['sweetalert2.d.ts']
 
-const continueOnLintError = process.argv.includes('--continue-on-lint-error')
+const continueOnError = process.argv.includes('--continue-on-error')
 const skipMinification = process.argv.includes('--skip-minification')
 const skipStandalone = process.argv.includes('--skip-standalone')
 
@@ -58,6 +59,13 @@ if (typeof window !== 'undefined' && window.Sweetalert2){\
 }`
       }
     }))
+    .on('error', (error) => {
+      if (continueOnError) {
+        log(error)
+      } else {
+        throw error
+      }
+    })
     .pipe(gulp.dest('dist'))
     .pipe($.if(!skipMinification, minify({
       mangle: {
@@ -115,7 +123,7 @@ gulp.task('lint:scripts', () => {
   return gulp.src(allScriptFiles)
     .pipe($.standard())
     .pipe($.standard.reporter('default', {
-      breakOnError: !continueOnLintError
+      breakOnError: !continueOnError
     }))
 })
 
@@ -123,7 +131,7 @@ gulp.task('lint:styles', () => {
   return gulp.src(srcStyleFiles)
     .pipe($.sassLint())
     .pipe($.sassLint.format())
-    .pipe($.if(!continueOnLintError, $.sassLint.failOnError()))
+    .pipe($.if(!continueOnError, $.sassLint.failOnError()))
 })
 
 gulp.task('lint:ts', () => {
@@ -131,7 +139,7 @@ gulp.task('lint:ts', () => {
     .pipe($.typescript({ lib: ['es6', 'dom'] }))
     .pipe($.tslint({ formatter: 'verbose' }))
     .pipe($.tslint.report({
-      emitError: !continueOnLintError
+      emitError: !continueOnError
     }))
 })
 

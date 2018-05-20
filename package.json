@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "7.20.6",
+  "version": "7.20.7",
   "repository": "sweetalert2/sweetalert2",
   "homepage": "https://sweetalert2.github.io/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
@@ -96,7 +96,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "gulp develop --continue-on-lint-error --skip-minification --skip-standalone",
+    "start": "gulp develop --continue-on-error --skip-minification --skip-standalone",
     "fix:lint": "standard --fix",
     "test": "npm run build && npm run check",
     "build": "gulp build",

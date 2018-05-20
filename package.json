@@ -96,7 +96,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "gulp develop --continue-on-lint-error --skip-minification --skip-standalone",
+    "start": "gulp develop --continue-on-error --skip-minification --skip-standalone",
     "fix:lint": "standard --fix",
     "test": "npm run build && npm run check",
     "build": "gulp build",

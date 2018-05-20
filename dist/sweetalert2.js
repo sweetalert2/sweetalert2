@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.20.6
+* sweetalert2 v7.20.7
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.20.6";
+var version = "7.20.7";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -1920,7 +1920,7 @@ function _main(userParams) {
       ];
 
       if (e.key === 'Enter' && !e.isComposing) {
-        if (e.target.outerHTML === _this.getInput().outerHTML) {
+        if (e.target && _this.getInput() && e.target.outerHTML === _this.getInput().outerHTML) {
           if (['textarea', 'file'].indexOf(innerParams.input) !== -1) {
             return; // do not submit
           }

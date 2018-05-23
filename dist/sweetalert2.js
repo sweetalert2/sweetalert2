@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.20.7
+* sweetalert2 v7.20.8
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.20.7";
+var version = "7.20.8";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -703,8 +703,8 @@ var close = function close(onClose, onAfterClose) {
   var removePopupAndResetState = function removePopupAndResetState() {
     if (!isToast()) {
       restoreActiveElement();
-      window.onkeydown = globalState.previousWindowKeyDown;
-      globalState.windowOnkeydownOverridden = false;
+      window.removeEventListener('keydown', globalState.keydownHandler, { capture: true });
+      globalState.keydownHandlerAdded = false;
     }
 
     if (container.parentNode) {
@@ -1913,8 +1913,8 @@ function _main(userParams) {
       domCache.popup.focus();
     };
 
-    var handleKeyDown = function handleKeyDown(event) {
-      var e = event || window.event;
+    var keydownHandler = function keydownHandler(e, innerParams) {
+      e.stopPropagation();
 
       var arrowKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Left', 'Right', 'Up', 'Down' // IE11
       ];
@@ -1968,15 +1968,17 @@ function _main(userParams) {
       }
     };
 
-    if (innerParams.toast && globalState.windowOnkeydownOverridden) {
-      window.onkeydown = globalState.previousWindowKeyDown;
-      globalState.windowOnkeydownOverridden = false;
+    if (globalState.keydownHandlerAdded) {
+      window.removeEventListener('keydown', globalState.keydownHandler, { capture: true });
+      globalState.keydownHandlerAdded = false;
     }
 
-    if (!innerParams.toast && !globalState.windowOnkeydownOverridden) {
-      globalState.previousWindowKeyDown = window.onkeydown;
-      globalState.windowOnkeydownOverridden = true;
-      window.onkeydown = handleKeyDown;
+    if (!innerParams.toast) {
+      globalState.keydownHandler = function (e) {
+        return keydownHandler(e, innerParams);
+      };
+      window.addEventListener('keydown', globalState.keydownHandler, { capture: true });
+      globalState.keydownHandlerAdded = true;
     }
 
     _this.enableButtons();

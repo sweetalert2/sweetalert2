@@ -24,8 +24,8 @@ const close = (onClose, onAfterClose) => {
   const removePopupAndResetState = () => {
     if (!dom.isToast()) {
       restoreActiveElement()
-      window.onkeydown = globalState.previousWindowKeyDown
-      globalState.windowOnkeydownOverridden = false
+      window.removeEventListener('keydown', globalState.keydownHandler, {capture: true})
+      globalState.keydownHandlerAdded = false
     }
 
     if (container.parentNode) {

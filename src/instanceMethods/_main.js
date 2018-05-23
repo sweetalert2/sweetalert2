@@ -290,8 +290,8 @@ export function _main (userParams) {
       domCache.popup.focus()
     }
 
-    const handleKeyDown = (event) => {
-      const e = event || window.event
+    const keydownHandler = (e, innerParams) => {
+      e.stopPropagation()
 
       const arrowKeys = [
         'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
@@ -347,15 +347,15 @@ export function _main (userParams) {
       }
     }
 
-    if (innerParams.toast && globalState.windowOnkeydownOverridden) {
-      window.onkeydown = globalState.previousWindowKeyDown
-      globalState.windowOnkeydownOverridden = false
+    if (globalState.keydownHandlerAdded) {
+      window.removeEventListener('keydown', globalState.keydownHandler, {capture: true})
+      globalState.keydownHandlerAdded = false
     }
 
-    if (!innerParams.toast && !globalState.windowOnkeydownOverridden) {
-      globalState.previousWindowKeyDown = window.onkeydown
-      globalState.windowOnkeydownOverridden = true
-      window.onkeydown = handleKeyDown
+    if (!innerParams.toast) {
+      globalState.keydownHandler = (e) => keydownHandler(e, innerParams)
+      window.addEventListener('keydown', globalState.keydownHandler, {capture: true})
+      globalState.keydownHandlerAdded = true
     }
 
     this.enableButtons()

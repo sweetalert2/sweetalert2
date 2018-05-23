@@ -2,7 +2,7 @@
 const {Swal, SwalWithoutAnimation} = require('./helpers')
 const $ = require('jquery')
 const sinon = require('sinon')
-import { TIMEOUT } from './helpers.js'
+import { triggerEscape, TIMEOUT } from './helpers.js'
 
 QUnit.test('version is correct semver', (assert) => {
   assert.ok(Swal.version.match(/\d+\.\d+\.\d+/))
@@ -35,19 +35,6 @@ QUnit.test('modal width', (assert) => {
 QUnit.test('custom class', (assert) => {
   Swal({customClass: 'custom-class'})
   assert.ok(Swal.getPopup().classList.contains('custom-class'))
-})
-
-QUnit.test('window keydown handler', (assert) => {
-  SwalWithoutAnimation('hi')
-  assert.ok(window.onkeydown)
-  Swal.close()
-  assert.equal(window.onkeydown, null)
-
-  SwalWithoutAnimation('first call')
-  SwalWithoutAnimation('second call')
-  assert.ok(window.onkeydown)
-  Swal.close()
-  assert.equal(window.onkeydown, null)
 })
 
 QUnit.test('getters', (assert) => {
@@ -706,39 +693,38 @@ QUnit.test('onClose', (assert) => {
   const $modal = $('.swal2-modal')
   $('.swal2-close').click()
 })
+
 QUnit.test('esc key', (assert) => {
   const done = assert.async()
 
-  Swal({
-    title: 'Esc me'
+  document.body.addEventListener('keydown', (e) => {
+    throw new Error('Should not propagate keydown event to body!')
+  })
+
+  SwalWithoutAnimation({
+    title: 'Esc me',
+    onOpen: triggerEscape
   }).then((result) => {
     assert.deepEqual(result, {dismiss: Swal.DismissReason.esc})
     done()
   })
-
-  $(document).trigger($.Event('keydown', {
-    key: 'Escape'
-  }))
 })
 
 QUnit.test('allowEscapeKey as a function', (assert) => {
   const done = assert.async()
 
   let functionWasCalled = false
-  const allowEscapeKey = () => {
-    functionWasCalled = true
-    return false
-  }
 
   SwalWithoutAnimation({
     title: 'allowEscapeKey as a function',
-    allowEscapeKey,
-    onOpen: () => {
+    allowEscapeKey: () => {
+      functionWasCalled = true
+      return false
+    },
+    onOpen: (popup) => {
       assert.equal(functionWasCalled, false)
 
-      $(document).trigger($.Event('keydown', {
-        key: 'Escape'
-      }))
+      triggerEscape()
 
       setTimeout(() => {
         assert.equal(functionWasCalled, true)
@@ -749,6 +735,7 @@ QUnit.test('allowEscapeKey as a function', (assert) => {
     }
   })
 })
+
 QUnit.test('close button', (assert) => {
   const done = assert.async()
 

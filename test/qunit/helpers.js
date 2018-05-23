@@ -14,3 +14,10 @@ if (browser.name === 'ie') {
 export const initialSwalPropNames = Object.keys(global.Swal)
 export const Swal = global.Swal
 export const SwalWithoutAnimation = Swal.mixin({animation: false})
+
+export const triggerEscape = () => {
+  const e = document.createEvent('HTMLEvents')
+  e.key = 'Escape'
+  e.initEvent('keydown', false, true)
+  document.body.dispatchEvent(e)
+}

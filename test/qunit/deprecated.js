@@ -1,7 +1,7 @@
 /* global QUnit */
 const {Swal, SwalWithoutAnimation} = require('./helpers')
 const $ = require('jquery')
-import { TIMEOUT } from './helpers.js'
+import { triggerEscape, TIMEOUT } from './helpers.js'
 
 QUnit.test('confirm button /w useRejections: true', (assert) => {
   const done = assert.async()
@@ -37,7 +37,7 @@ QUnit.test('cancel button /w useRejections: true', (assert) => {
 QUnit.test('esc key /w useRejections: true', (assert) => {
   const done = assert.async()
 
-  Swal({
+  SwalWithoutAnimation({
     title: 'Esc me',
     useRejections: true
   }).then(
@@ -48,9 +48,7 @@ QUnit.test('esc key /w useRejections: true', (assert) => {
     }
   )
 
-  $(document).trigger($.Event('keydown', {
-    key: 'Escape'
-  }))
+  triggerEscape()
 })
 
 QUnit.test('backdrop click /w useRejections: true', (assert) => {

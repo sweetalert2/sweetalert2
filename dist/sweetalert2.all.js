@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.20.8
+* sweetalert2 v7.20.9
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.20.8";
+var version = "7.20.9";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -544,8 +544,12 @@ var init = function init(params) {
     popup.setAttribute('aria-modal', 'true');
   }
 
-  var resetValidationError = function resetValidationError() {
-    Swal.isVisible() && Swal.resetValidationError();
+  var oldInputVal = void 0; // IE11 workaround, see #1109 for details
+  var resetValidationError = function resetValidationError(e) {
+    if (Swal.isVisible() && oldInputVal !== e.target.value) {
+      Swal.resetValidationError();
+    }
+    oldInputVal = e.target.value;
   };
 
   input.oninput = resetValidationError;
@@ -2822,7 +2826,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "\n" +
 "html.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown),\n" +
 "body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {\n" +
-"  height: auto;\n" +
+"  height: auto !important;\n" +
 "  overflow-y: hidden; }\n" +
 "\n" +
 "body.swal2-no-backdrop .swal2-shown {\n" +

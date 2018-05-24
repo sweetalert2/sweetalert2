@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.20.8
+* sweetalert2 v7.20.9
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.20.8";
+var version = "7.20.9";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -544,8 +544,12 @@ var init = function init(params) {
     popup.setAttribute('aria-modal', 'true');
   }
 
-  var resetValidationError = function resetValidationError() {
-    Swal.isVisible() && Swal.resetValidationError();
+  var oldInputVal = void 0; // IE11 workaround, see #1109 for details
+  var resetValidationError = function resetValidationError(e) {
+    if (Swal.isVisible() && oldInputVal !== e.target.value) {
+      Swal.resetValidationError();
+    }
+    oldInputVal = e.target.value;
   };
 
   input.oninput = resetValidationError;

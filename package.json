@@ -110,10 +110,5 @@
     "release": "node release"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
-  "license": "MIT",
-  "collective": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/SweetAlert2",
-    "logo": "https://opencollective.com/SweetAlert2/logo.txt"
-  }
+  "license": "MIT"
 }

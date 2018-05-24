@@ -103,8 +103,12 @@ export const init = (params) => {
     popup.setAttribute('aria-modal', 'true')
   }
 
-  const resetValidationError = () => {
-    sweetAlert.isVisible() && sweetAlert.resetValidationError()
+  let oldInputVal // IE11 workaround, see #1109 for details
+  const resetValidationError = (e) => {
+    if (sweetAlert.isVisible() && oldInputVal !== e.target.value) {
+      sweetAlert.resetValidationError()
+    }
+    oldInputVal = e.target.value
   }
 
   input.oninput = resetValidationError

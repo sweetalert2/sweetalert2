@@ -5,21 +5,19 @@ import { iOSfix } from './iosFix'
 import globalState from '../globalState'
 
 /**
- * Animations
+ * Open popup, add necessary classes and styles, fix scrollbar
  *
- * @param animation
- * @param onBeforeOpen
- * @param onComplete
+ * @param {Array} params
  */
-export const openPopup = (animation, onBeforeOpen, onOpen) => {
+export const openPopup = (params) => {
   const container = dom.getContainer()
   const popup = dom.getPopup()
 
-  if (onBeforeOpen !== null && typeof onBeforeOpen === 'function') {
-    onBeforeOpen(popup)
+  if (params.onBeforeOpen !== null && typeof params.onBeforeOpen === 'function') {
+    params.onBeforeOpen(popup)
   }
 
-  if (animation) {
+  if (params.animation) {
     dom.addClass(popup, swalClasses.show)
     dom.addClass(container, swalClasses.fade)
     dom.removeClass(popup, swalClasses.hide)
@@ -40,6 +38,10 @@ export const openPopup = (animation, onBeforeOpen, onOpen) => {
   }
 
   dom.addClass([document.documentElement, document.body, container], swalClasses.shown)
+  if (params.heightAuto && params.backdrop && !params.toast) {
+    dom.addClass([document.documentElement, document.body], swalClasses['height-auto'])
+  }
+
   if (dom.isModal()) {
     fixScrollbar()
     iOSfix()
@@ -47,9 +49,9 @@ export const openPopup = (animation, onBeforeOpen, onOpen) => {
   if (!globalState.previousActiveElement) {
     globalState.previousActiveElement = document.activeElement
   }
-  if (onOpen !== null && typeof onOpen === 'function') {
+  if (params.onOpen !== null && typeof params.onOpen === 'function') {
     setTimeout(() => {
-      onOpen(popup)
+      params.onOpen(popup)
     })
   }
 }

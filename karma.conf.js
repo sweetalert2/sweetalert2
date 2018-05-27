@@ -18,7 +18,9 @@ module.exports = function (config) {
     sauce_iphone: {
       base: 'SauceLabs',
       browserName: 'Safari',
-      deviceName: 'iPhone 7 Simulator'
+      deviceName: 'iPhone 7 Simulator',
+      platformName: 'iOS',
+      platformVersion: '11.2'
     },
     sauce_android_kitkat: {
       base: 'SauceLabs',
@@ -118,6 +120,8 @@ module.exports = function (config) {
       'karma-firefox-launcher',
       'karma-ie-launcher',
       'karma-sauce-launcher'
-    ]
+    ],
+    captureTimeout: 360000,
+    browserNoActivityTimeout: 360000
   })
 }

@@ -534,7 +534,7 @@ export function _main (userParams) {
         })
     }
 
-    openPopup(innerParams.animation, innerParams.onBeforeOpen, innerParams.onOpen)
+    openPopup(innerParams)
 
     if (!innerParams.toast) {
       if (!callIfFunction(innerParams.allowEnterKey)) {

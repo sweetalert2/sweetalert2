@@ -35,6 +35,7 @@ const close = (onClose, onAfterClose) => {
       [document.documentElement, document.body],
       [
         swalClasses.shown,
+        swalClasses['height-auto'],
         swalClasses['no-backdrop'],
         swalClasses['has-input'],
         swalClasses['toast-shown']

@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.20.10
+* sweetalert2 v7.21.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.20.10";
+var version = "7.21.0";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -311,7 +311,7 @@ var prefix = function prefix(items) {
   return result;
 };
 
-var swalClasses = prefix(['container', 'shown', 'iosfix', 'popup', 'modal', 'no-backdrop', 'toast', 'toast-shown', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'header', 'content', 'actions', 'confirm', 'cancel', 'footer', 'icon', 'icon-text', 'image', 'input', 'has-input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen']);
+var swalClasses = prefix(['container', 'shown', 'height-auto', 'iosfix', 'popup', 'modal', 'no-backdrop', 'toast', 'toast-shown', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'header', 'content', 'actions', 'confirm', 'cancel', 'footer', 'icon', 'icon-text', 'image', 'input', 'has-input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen']);
 
 var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
@@ -714,7 +714,7 @@ var close = function close(onClose, onAfterClose) {
     if (container.parentNode) {
       container.parentNode.removeChild(container);
     }
-    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['no-backdrop'], swalClasses['has-input'], swalClasses['toast-shown']]);
+    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['height-auto'], swalClasses['no-backdrop'], swalClasses['has-input'], swalClasses['toast-shown']]);
 
     if (isModal()) {
       undoScrollbar();
@@ -803,6 +803,7 @@ var defaultParams = {
   target: 'body',
   backdrop: true,
   animation: true,
+  heightAuto: true,
   allowOutsideClick: true,
   allowEscapeKey: true,
   allowEnterKey: true,
@@ -1586,21 +1587,19 @@ function setParameters(params) {
 }
 
 /**
- * Animations
+ * Open popup, add necessary classes and styles, fix scrollbar
  *
- * @param animation
- * @param onBeforeOpen
- * @param onComplete
+ * @param {Array} params
  */
-var openPopup = function openPopup(animation, onBeforeOpen, onOpen) {
+var openPopup = function openPopup(params) {
   var container = getContainer();
   var popup = getPopup();
 
-  if (onBeforeOpen !== null && typeof onBeforeOpen === 'function') {
-    onBeforeOpen(popup);
+  if (params.onBeforeOpen !== null && typeof params.onBeforeOpen === 'function') {
+    params.onBeforeOpen(popup);
   }
 
-  if (animation) {
+  if (params.animation) {
     addClass(popup, swalClasses.show);
     addClass(container, swalClasses.fade);
     removeClass(popup, swalClasses.hide);
@@ -1621,6 +1620,10 @@ var openPopup = function openPopup(animation, onBeforeOpen, onOpen) {
   }
 
   addClass([document.documentElement, document.body, container], swalClasses.shown);
+  if (params.heightAuto && params.backdrop && !params.toast) {
+    addClass([document.documentElement, document.body], swalClasses['height-auto']);
+  }
+
   if (isModal()) {
     fixScrollbar();
     iOSfix();
@@ -1628,9 +1631,9 @@ var openPopup = function openPopup(animation, onBeforeOpen, onOpen) {
   if (!globalState.previousActiveElement) {
     globalState.previousActiveElement = document.activeElement;
   }
-  if (onOpen !== null && typeof onOpen === 'function') {
+  if (params.onOpen !== null && typeof params.onOpen === 'function') {
     setTimeout(function () {
-      onOpen(popup);
+      params.onOpen(popup);
     });
   }
 };
@@ -2170,7 +2173,7 @@ function _main(userParams) {
       });
     }
 
-    openPopup(innerParams.animation, innerParams.onBeforeOpen, innerParams.onOpen);
+    openPopup(innerParams);
 
     if (!innerParams.toast) {
       if (!callIfFunction(innerParams.allowEnterKey)) {
@@ -2826,8 +2829,11 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "\n" +
 "html.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown),\n" +
 "body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {\n" +
-"  height: auto !important;\n" +
 "  overflow-y: hidden; }\n" +
+"\n" +
+"html.swal2-height-auto,\n" +
+"body.swal2-height-auto {\n" +
+"  height: auto !important; }\n" +
 "\n" +
 "body.swal2-no-backdrop .swal2-shown {\n" +
 "  top: auto;\n" +

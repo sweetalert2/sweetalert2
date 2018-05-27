@@ -13,9 +13,12 @@ body {
       '.swal2-no-backdrop',
       '.swal2-toast-shown'
     ) {
-      height: auto !important; // #781 #1107
       overflow-y: hidden;
     }
+  }
+
+  &.swal2-height-auto {
+    height: auto !important; // #781 #1107
   }
 }
 

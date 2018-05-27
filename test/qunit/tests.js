@@ -32,6 +32,23 @@ QUnit.test('modal width', (assert) => {
   assert.equal($('.swal2-modal')[0].style.width, '90%')
 })
 
+QUnit.test('heightAuto', (assert) => {
+  Swal('I should set .swal2-height-auto class to html and body')
+  assert.ok(document.documentElement.classList.contains('swal2-height-auto'))
+
+  Swal({
+    title: 'I am modeless and should not set .swal2-height-auto',
+    backdrop: false
+  })
+  assert.ok(document.documentElement.classList.contains('swal2-height-auto'))
+
+  Swal({
+    title: 'I am toast and should not set .swal2-height-auto',
+    toast: true
+  })
+  assert.ok(document.documentElement.classList.contains('swal2-height-auto'))
+})
+
 QUnit.test('custom class', (assert) => {
   Swal({customClass: 'custom-class'})
   assert.ok(Swal.getPopup().classList.contains('custom-class'))

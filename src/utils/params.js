@@ -12,6 +12,7 @@ const defaultParams = {
   target: 'body',
   backdrop: true,
   animation: true,
+  heightAuto: true,
   allowOutsideClick: true,
   allowEscapeKey: true,
   allowEnterKey: true,

@@ -11,6 +11,7 @@ export const prefix = (items) => {
 export const swalClasses = prefix([
   'container',
   'shown',
+  'height-auto',
   'iosfix',
   'popup',
   'modal',

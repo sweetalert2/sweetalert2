@@ -6,7 +6,6 @@
 @import 'mixins';
 @import 'toasts';
 
-html,
 body {
   &.swal2-shown {
     @include not(
@@ -20,11 +19,8 @@ body {
   &.swal2-height-auto {
     height: auto !important; // #781 #1107
   }
-}
 
-body {
   &.swal2-no-backdrop {
-
     .swal2-shown {
       top: auto;
       right: auto;

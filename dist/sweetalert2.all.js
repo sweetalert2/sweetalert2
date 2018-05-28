@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.21.0
+* sweetalert2 v7.21.1
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.21.0";
+var version = "7.21.1";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -2827,11 +2827,9 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "    right: .1875em;\n" +
 "    width: 1.375em; } }\n" +
 "\n" +
-"html.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown),\n" +
 "body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {\n" +
 "  overflow-y: hidden; }\n" +
 "\n" +
-"html.swal2-height-auto,\n" +
 "body.swal2-height-auto {\n" +
 "  height: auto !important; }\n" +
 "\n" +

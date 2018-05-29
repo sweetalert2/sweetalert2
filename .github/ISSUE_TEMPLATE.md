@@ -7,13 +7,13 @@ If your issue is focused more on 'how do I do this?' rather than 'this is a brok
 
 For bug reports, please include:
 
-- a jsfiddle in order for us to be able to reproduce the issue
+- a JS Bin in order for us to be able to reproduce the issue
 - expected behavior of the plugin
 - actual behavior
 
-JSFiddle template: https://jsfiddle.net/ad3quksn/663/
+JS Bin template: https://jsbin.com/gutesej/edit?html,js,output
 
-JSFiddle template for IE11 and other old browsers: https://jsfiddle.net/ad3quksn/860/
+JS Bin template for IE11 and other old browsers: https://jsbin.com/hirinit/edit?html,js,output
 
 ---
 

@@ -1,6 +1,7 @@
 import defaultParams, {showWarningsForParams} from '../utils/params'
 import * as dom from '../utils/dom/index'
 import { swalClasses } from '../utils/classes'
+import Timer from '../utils/Timer'
 import { formatInputOptions, error, callIfFunction, isThenable } from '../utils/utils'
 import setParameters from '../utils/setParameters'
 import globalState from '../globalState'
@@ -16,7 +17,10 @@ export function _main (userParams) {
   privateProps.innerParams.set(this, innerParams)
 
   // clear the previous timer
-  clearTimeout(globalState.timeout)
+  if (globalState.timeout) {
+    globalState.timeout.stop()
+    delete globalState.timeout
+  }
 
   const domCache = {
     popup: dom.getPopup(),
@@ -58,7 +62,10 @@ export function _main (userParams) {
 
     // Close on timer
     if (innerParams.timer) {
-      globalState.timeout = setTimeout(() => dismissWith('timer'), innerParams.timer)
+      globalState.timeout = new Timer(() => {
+        dismissWith('timer')
+        delete globalState.timeout
+      }, innerParams.timer)
     }
 
     // Get the value of the popup input

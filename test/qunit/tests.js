@@ -821,6 +821,20 @@ QUnit.test('multiple timers, one after another', (assert) => {
   })
 })
 
+QUnit.test('getTimerLeft()', (assert) => {
+  const done = assert.async()
+
+  SwalWithoutAnimation('swal without timer')
+  assert.equal(Swal.getTimerLeft(), undefined)
+  SwalWithoutAnimation({title: 'swal with 100ms timer', timer: 20 * TIMEOUT})
+  assert.ok(Swal.getTimerLeft() < 20 * TIMEOUT)
+  assert.ok(Swal.getTimerLeft() > 0)
+  setTimeout(() => {
+    assert.equal(Swal.getTimerLeft(), undefined)
+    done()
+  }, 20 * TIMEOUT)
+})
+
 QUnit.test('confirm button', (assert) => {
   const done = assert.async()
   Swal({

@@ -117,13 +117,13 @@ export const init = (params) => {
   checkbox.onchange = resetValidationError
   textarea.oninput = resetValidationError
 
-  range.oninput = () => {
-    resetValidationError()
+  range.oninput = (e) => {
+    resetValidationError(e)
     rangeOutput.value = range.value
   }
 
-  range.onchange = () => {
-    resetValidationError()
+  range.onchange = (e) => {
+    resetValidationError(e)
     range.nextSibling.value = range.value
   }
 

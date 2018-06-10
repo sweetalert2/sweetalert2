@@ -14,6 +14,10 @@ We would like to thank everyone who contributed to this library. If you find our
 
 # Donors
 
+- **Jan Philip Steimel** (10 EUR)
+
+    > thank you!
+
 - **[Jan Fässler](https://github.com/faessler)** (30 EUR)
 
     > Nice work! 👾

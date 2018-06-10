@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.22.1
+* sweetalert2 v7.22.2
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.22.1";
+var version = "7.22.2";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -673,12 +673,11 @@ var globalState = {};
 // Restore previous active (focused) element
 var restoreActiveElement = function restoreActiveElement() {
   if (globalState.previousActiveElement && globalState.previousActiveElement.focus) {
-    var previousActiveElement = globalState.previousActiveElement;
-    globalState.previousActiveElement = null;
     var x = window.scrollX;
     var y = window.scrollY;
     globalState.restoreFocusTimeout = setTimeout(function () {
-      previousActiveElement.focus && previousActiveElement.focus();
+      globalState.previousActiveElement.focus();
+      globalState.previousActiveElement = null;
     }, 100); // issues/900
     if (typeof x !== 'undefined' && typeof y !== 'undefined') {
       // IE doesn't have scrollX/scrollY support

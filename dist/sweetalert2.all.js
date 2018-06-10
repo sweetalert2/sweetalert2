@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.22.0
+* sweetalert2 v7.22.1
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.22.0";
+var version = "7.22.1";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -677,7 +677,7 @@ var restoreActiveElement = function restoreActiveElement() {
     globalState.previousActiveElement = null;
     var x = window.scrollX;
     var y = window.scrollY;
-    setTimeout(function () {
+    globalState.restoreFocusTimeout = setTimeout(function () {
       previousActiveElement.focus && previousActiveElement.focus();
     }, 100); // issues/900
     if (typeof x !== 'undefined' && typeof y !== 'undefined') {
@@ -1689,6 +1689,9 @@ function _main(userParams) {
     globalState.timeout.stop();
     delete globalState.timeout;
   }
+
+  // clear the restore focus timeout
+  clearTimeout(globalState.restoreFocusTimeout);
 
   var domCache = {
     popup: getPopup(),

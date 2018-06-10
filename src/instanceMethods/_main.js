@@ -22,6 +22,9 @@ export function _main (userParams) {
     delete globalState.timeout
   }
 
+  // clear the restore focus timeout
+  clearTimeout(globalState.restoreFocusTimeout)
+
   const domCache = {
     popup: dom.getPopup(),
     container: dom.getContainer(),

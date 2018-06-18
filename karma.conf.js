@@ -64,7 +64,6 @@ module.exports = function (config) {
     'test/qunit/**/*.js'
   ])
 
-  let retryLimit = 2
   if (!noLaunch) {
     // Cron on Travis or check:qunit --sauce
     if (isSauce) {
@@ -73,7 +72,6 @@ module.exports = function (config) {
         process.exit(1)
       }
       browsers = Object.keys(sauceLabsLaunchers)
-      retryLimit = 42 // Trying stuff until it works, #1037
     } else if (isCi) {
       // AppVeyor
       if (isWindows) {
@@ -97,7 +95,6 @@ module.exports = function (config) {
     },
     customLaunchers: sauceLabsLaunchers,
     browsers,
-    retryLimit,
     reporters: ['spec', 'saucelabs'],
     preprocessors: {
       'test/qunit/**/*.js': [

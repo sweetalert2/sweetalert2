@@ -778,20 +778,6 @@ QUnit.test('timer', (assert) => {
   })
 })
 
-QUnit.test('getTimerLeft()', (assert) => {
-  const done = assert.async()
-
-  SwalWithoutAnimation('swal without timer')
-  assert.equal(Swal.getTimerLeft(), undefined)
-  SwalWithoutAnimation({title: 'swal with 100ms timer', timer: 20})
-  assert.ok(Swal.getTimerLeft() < 20)
-  assert.ok(Swal.getTimerLeft() > 0)
-  setTimeout(() => {
-    assert.equal(Swal.getTimerLeft(), undefined)
-    done()
-  }, 20)
-})
-
 QUnit.test('confirm button', (assert) => {
   const done = assert.async()
   Swal({

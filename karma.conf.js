@@ -4,16 +4,25 @@ const noLaunch = process.argv.includes('--no-launch')
 const isCron = process.env.TRAVIS_EVENT_TYPE === 'cron'
 const isWindows = process.platform === 'win32'
 const testMinified = process.argv.includes('--minified')
+const isSauce = (isCi && isCron) || process.argv.includes('--sauce')
 
 module.exports = function (config) {
   const sauceLabsLaunchers = {
     sauce_safari: {
       base: 'SauceLabs',
-      browserName: 'Safari'
+      browserName: 'Safari',
+      version: '9.0',
+      platform: 'OS X 10.11'
     },
-    sauce_edge: {
+    sauce_edge_15: {
       base: 'SauceLabs',
-      browserName: 'MicrosoftEdge'
+      browserName: 'MicrosoftEdge',
+      version: '15.15063'
+    },
+    sauce_edge_17: {
+      base: 'SauceLabs',
+      browserName: 'MicrosoftEdge',
+      version: '17.17134'
     },
     sauce_iphone: {
       base: 'SauceLabs',
@@ -57,16 +66,20 @@ module.exports = function (config) {
 
   let retryLimit = 2
   if (!noLaunch) {
-    if (isCi) {
-      if (isCron) {
-        // Cron on Travis
-        browsers = Object.keys(sauceLabsLaunchers)
-        retryLimit = 42 // Trying stuff until it works, #1037
-      } else if (isWindows) {
-        // AppVeyor
+    // Cron on Travis or check:qunit --sauce
+    if (isSauce) {
+      if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
+        console.error('SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables must be set')
+        process.exit(1)
+      }
+      browsers = Object.keys(sauceLabsLaunchers)
+      retryLimit = 42 // Trying stuff until it works, #1037
+    } else if (isCi) {
+      // AppVeyor
+      if (isWindows) {
         browsers = ['IE']
+      // Travis
       } else {
-        // Travis
         browsers = ['ChromeHeadless', 'Firefox']
       }
     } else {

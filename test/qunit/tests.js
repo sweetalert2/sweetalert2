@@ -180,22 +180,6 @@ QUnit.test('input text', (assert) => {
   Swal.clickConfirm()
 })
 
-QUnit.test('default validation message', (assert) => {
-  const done = assert.async()
-  Swal({
-    input: 'email'
-  })
-
-  $('.swal2-input').val('invalid-email')
-  Swal.clickConfirm()
-
-  setTimeout(() => {
-    assert.ok($('.swal2-validationerror').is(':visible'))
-    assert.equal($('.swal2-validationerror').text(), 'Invalid email address')
-    done()
-  }, TIMEOUT)
-})
-
 QUnit.test('custom validation message', (assert) => {
   const done = assert.async()
   Swal({
@@ -794,45 +778,18 @@ QUnit.test('timer', (assert) => {
   })
 })
 
-QUnit.test('multiple timers, one after another', (assert) => {
-  const done = assert.async()
-
-  SwalWithoutAnimation({
-    title: 'First timer, 100ms',
-    timer: 100 * TIMEOUT,
-    onOpen: () => {
-      SwalWithoutAnimation({
-        title: 'Second timer with 300ms timer',
-        timer: 300 * TIMEOUT,
-        onOpen: () => {
-          // second swal should be visible after 200ms
-          setTimeout(() => {
-            assert.ok(Swal.isVisible())
-          }, 200 * TIMEOUT)
-
-          // but hidden after 300ms
-          setTimeout(() => {
-            assert.notOk(Swal.isVisible())
-            done()
-          }, 300 * TIMEOUT)
-        }
-      })
-    }
-  })
-})
-
 QUnit.test('getTimerLeft()', (assert) => {
   const done = assert.async()
 
   SwalWithoutAnimation('swal without timer')
   assert.equal(Swal.getTimerLeft(), undefined)
-  SwalWithoutAnimation({title: 'swal with 100ms timer', timer: 20 * TIMEOUT})
-  assert.ok(Swal.getTimerLeft() < 20 * TIMEOUT)
+  SwalWithoutAnimation({title: 'swal with 100ms timer', timer: 20})
+  assert.ok(Swal.getTimerLeft() < 20)
   assert.ok(Swal.getTimerLeft() > 0)
   setTimeout(() => {
     assert.equal(Swal.getTimerLeft(), undefined)
     done()
-  }, 20 * TIMEOUT)
+  }, 20)
 })
 
 QUnit.test('confirm button', (assert) => {

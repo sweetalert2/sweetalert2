@@ -4,10 +4,8 @@ const browser = detect()
 
 export let TIMEOUT = 1
 
-if (browser.name === 'ie') {
+if (browser.name === 'ie' || browser.os === 'Android OS') {
   TIMEOUT = 100
-} else if (browser.os === 'Android OS') {
-  TIMEOUT = 500
 }
 
 // We *only* access `Swal` through this module, so that we can be sure `initialSwalPropNames` is set properly

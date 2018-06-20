@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.22.2
+* sweetalert2 v7.23.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.22.2";
+var version = "7.23.0";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -672,17 +672,17 @@ var globalState = {};
 
 // Restore previous active (focused) element
 var restoreActiveElement = function restoreActiveElement() {
-  if (globalState.previousActiveElement && globalState.previousActiveElement.focus) {
-    var x = window.scrollX;
-    var y = window.scrollY;
-    globalState.restoreFocusTimeout = setTimeout(function () {
+  var x = window.scrollX;
+  var y = window.scrollY;
+  globalState.restoreFocusTimeout = setTimeout(function () {
+    if (globalState.previousActiveElement && globalState.previousActiveElement.focus) {
       globalState.previousActiveElement.focus();
       globalState.previousActiveElement = null;
-    }, 100); // issues/900
-    if (typeof x !== 'undefined' && typeof y !== 'undefined') {
-      // IE doesn't have scrollX/scrollY support
-      window.scrollTo(x, y);
     }
+  }, 100); // issues/900
+  if (typeof x !== 'undefined' && typeof y !== 'undefined') {
+    // IE doesn't have scrollX/scrollY support
+    window.scrollTo(x, y);
   }
 };
 
@@ -816,6 +816,7 @@ var defaultParams = {
   allowOutsideClick: true,
   allowEscapeKey: true,
   allowEnterKey: true,
+  stopKeydownPropagation: true,
   showConfirmButton: true,
   showCancelButton: false,
   preConfirm: null,
@@ -1963,7 +1964,9 @@ function _main(userParams) {
     };
 
     var keydownHandler = function keydownHandler(e, innerParams) {
-      e.stopPropagation();
+      if (innerParams.stopKeydownPropagation) {
+        e.stopPropagation();
+      }
 
       var arrowKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Left', 'Right', 'Up', 'Down' // IE11
       ];

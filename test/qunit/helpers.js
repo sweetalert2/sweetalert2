@@ -19,5 +19,5 @@ export const triggerEscape = () => {
   const e = document.createEvent('HTMLEvents')
   e.key = 'Escape'
   e.initEvent('keydown', false, true)
-  document.body.dispatchEvent(e)
+  Swal.getPopup().dispatchEvent(e)
 }

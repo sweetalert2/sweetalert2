@@ -17,6 +17,7 @@ const defaultParams = {
   allowEscapeKey: true,
   allowEnterKey: true,
   stopKeydownPropagation: true,
+  keydownListenerCapture: false,
   showConfirmButton: true,
   showCancelButton: false,
   preConfirm: null,

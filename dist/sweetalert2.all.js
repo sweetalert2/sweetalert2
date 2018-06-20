@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.23.0
+* sweetalert2 v7.23.1
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.23.0";
+var version = "7.23.1";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -1131,11 +1131,13 @@ var staticMethods = Object.freeze({
 // Related issue: https://github.com/sweetalert2/sweetalert2/issues/1071
 if (typeof window !== 'undefined' && typeof window.WeakMap !== 'function') {
   // https://github.com/Riim/symbol-polyfill/blob/master/index.js
-  var idCounter = 0;
-  window.Symbol = function _Symbol(key) {
-    return '__' + key + '_' + Math.floor(Math.random() * 1e9) + '_' + ++idCounter + '__';
-  };
-  Symbol.iterator = Symbol('Symbol.iterator');
+  if (!window.Symbol) {
+    var idCounter = 0;
+    window.Symbol = function _Symbol(key) {
+      return '__' + key + '_' + Math.floor(Math.random() * 1e9) + '_' + ++idCounter + '__';
+    };
+    window.Symbol.iterator = window.Symbol('Symbol.iterator');
+  }
 
   // http://webreflection.blogspot.fi/2015/04/a-weakmap-polyfill-in-20-lines-of-code.html
   window.WeakMap = function (s, dP, hOP) {

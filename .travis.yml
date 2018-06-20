@@ -7,18 +7,9 @@ addons:
   firefox: latest
   chrome: stable
 
-before_install:
-  - yarn global add greenkeeper-lockfile@1
-
-before_script:
-  - greenkeeper-lockfile-update
-
 script:
   # xvfb-run is needed for headless testing with real browsers
   - xvfb-run yarn test
-
-after_script:
-  - greenkeeper-lockfile-upload
 
 notifications:
   email:

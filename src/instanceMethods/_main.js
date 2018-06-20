@@ -301,7 +301,9 @@ export function _main (userParams) {
     }
 
     const keydownHandler = (e, innerParams) => {
-      e.stopPropagation()
+      if (innerParams.stopKeydownPropagation) {
+        e.stopPropagation()
+      }
 
       const arrowKeys = [
         'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',

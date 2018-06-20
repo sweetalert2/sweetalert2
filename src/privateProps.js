@@ -12,11 +12,13 @@
 // Related issue: https://github.com/sweetalert2/sweetalert2/issues/1071
 if (typeof window !== 'undefined' && typeof window.WeakMap !== 'function') {
   // https://github.com/Riim/symbol-polyfill/blob/master/index.js
-  let idCounter = 0
-  window.Symbol = function Symbol (key) {
-    return '__' + key + '_' + Math.floor(Math.random() * 1e9) + '_' + (++idCounter) + '__'
+  if (!window.Symbol) {
+    let idCounter = 0
+    window.Symbol = function Symbol (key) {
+      return '__' + key + '_' + Math.floor(Math.random() * 1e9) + '_' + (++idCounter) + '__'
+    }
+    window.Symbol.iterator = window.Symbol('Symbol.iterator')
   }
-  Symbol.iterator = Symbol('Symbol.iterator')
 
   // http://webreflection.blogspot.fi/2015/04/a-weakmap-polyfill-in-20-lines-of-code.html
   window.WeakMap = (function (s, dP, hOP) {

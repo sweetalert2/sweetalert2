@@ -1,5 +1,5 @@
 /* global QUnit */
-const {Swal, SwalWithoutAnimation} = require('./helpers')
+const {Swal, SwalWithoutAnimation, TIMEOUT} = require('./helpers')
 const $ = require('jquery')
 
 const simulateMouseEvent = (x, y, eventType) => {
@@ -83,5 +83,5 @@ QUnit.test('allowOutsideClick: () => !swal.isLoading()', (assert) => {
     assert.ok(Swal.isVisible())
     Swal.hideLoading()
     $('.swal2-container').click()
-  })
+  }, TIMEOUT)
 })

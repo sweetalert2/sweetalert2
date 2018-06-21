@@ -24,7 +24,7 @@ const close = (onClose, onAfterClose) => {
   const removePopupAndResetState = () => {
     if (!dom.isToast()) {
       restoreActiveElement()
-      window.removeEventListener('keydown', globalState.keydownHandler, {capture: true})
+      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {capture: globalState.keydownListenerCapture})
       globalState.keydownHandlerAdded = false
     }
 

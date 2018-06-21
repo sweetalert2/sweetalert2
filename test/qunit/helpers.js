@@ -18,6 +18,10 @@ export const SwalWithoutAnimation = Swal.mixin({animation: false})
 export const triggerEscape = () => {
   const e = document.createEvent('HTMLEvents')
   e.key = 'Escape'
-  e.initEvent('keydown', false, true)
-  document.body.dispatchEvent(e)
+  e.initEvent(
+    'keydown',
+    true, // bubbles
+    true  // cancelable
+  )
+  Swal.getPopup().dispatchEvent(e)
 }

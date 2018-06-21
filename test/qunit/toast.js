@@ -19,11 +19,6 @@ QUnit.test('.swal2-has-input', (assert) => {
   })
 })
 
-QUnit.test('should not overrie window.onkeydown', (assert) => {
-  Swal({toast: true})
-  assert.equal(null, window.onkeydown)
-})
-
 QUnit.test('toast click closes when no buttons or input are specified', (assert) => {
   const done = assert.async()
 

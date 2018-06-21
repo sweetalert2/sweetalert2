@@ -360,13 +360,15 @@ export function _main (userParams) {
     }
 
     if (globalState.keydownHandlerAdded) {
-      window.removeEventListener('keydown', globalState.keydownHandler, {capture: true})
+      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {capture: globalState.keydownListenerCapture})
       globalState.keydownHandlerAdded = false
     }
 
     if (!innerParams.toast) {
       globalState.keydownHandler = (e) => keydownHandler(e, innerParams)
-      window.addEventListener('keydown', globalState.keydownHandler, {capture: true})
+      globalState.keydownTarget = innerParams.keydownListenerCapture ? window : domCache.popup
+      globalState.keydownListenerCapture = innerParams.keydownListenerCapture
+      globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, {capture: globalState.keydownListenerCapture})
       globalState.keydownHandlerAdded = true
     }
 

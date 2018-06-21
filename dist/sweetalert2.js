@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.23.1
+* sweetalert2 v7.24.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.23.1";
+var version = "7.24.0";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -706,7 +706,7 @@ var close = function close(onClose, onAfterClose) {
   var removePopupAndResetState = function removePopupAndResetState() {
     if (!isToast()) {
       restoreActiveElement();
-      window.removeEventListener('keydown', globalState.keydownHandler, { capture: true });
+      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture });
       globalState.keydownHandlerAdded = false;
     }
 
@@ -817,6 +817,7 @@ var defaultParams = {
   allowEscapeKey: true,
   allowEnterKey: true,
   stopKeydownPropagation: true,
+  keydownListenerCapture: false,
   showConfirmButton: true,
   showCancelButton: false,
   preConfirm: null,
@@ -2023,7 +2024,7 @@ function _main(userParams) {
     };
 
     if (globalState.keydownHandlerAdded) {
-      window.removeEventListener('keydown', globalState.keydownHandler, { capture: true });
+      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture });
       globalState.keydownHandlerAdded = false;
     }
 
@@ -2031,7 +2032,9 @@ function _main(userParams) {
       globalState.keydownHandler = function (e) {
         return keydownHandler(e, innerParams);
       };
-      window.addEventListener('keydown', globalState.keydownHandler, { capture: true });
+      globalState.keydownTarget = innerParams.keydownListenerCapture ? window : domCache.popup;
+      globalState.keydownListenerCapture = innerParams.keydownListenerCapture;
+      globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture });
       globalState.keydownHandlerAdded = true;
     }
 

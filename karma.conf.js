@@ -8,12 +8,6 @@ const isSauce = (isCi && isCron) || process.argv.includes('--sauce')
 
 module.exports = function (config) {
   const sauceLabsLaunchers = {
-    sauce_safari: {
-      base: 'SauceLabs',
-      browserName: 'Safari',
-      version: '9.0',
-      platform: 'OS X 10.11'
-    },
     sauce_edge_15: {
       base: 'SauceLabs',
       browserName: 'MicrosoftEdge',

@@ -1,7 +1,7 @@
 /* global QUnit */
 const {Swal, SwalWithoutAnimation} = require('./helpers')
 const $ = require('jquery')
-import { triggerEscape, TIMEOUT } from './helpers.js'
+import { triggerEscape } from './helpers.js'
 
 QUnit.test('confirm button /w useRejections: true', (assert) => {
   const done = assert.async()
@@ -171,29 +171,4 @@ QUnit.test('input checkbox /w useRejections: true', (assert) => {
   const checkbox = $('.swal2-checkbox input')
   checkbox.prop('checked', true)
   Swal.clickConfirm()
-})
-
-QUnit.test('validation error /w expectRejections: true', (assert) => {
-  const done = assert.async()
-  const inputValidator = (value) => !value ? Promise.reject('no falsy values') : Promise.resolve()
-
-  SwalWithoutAnimation({input: 'text', inputValidator, expectRejections: true})
-  assert.ok($('.swal2-validationerror').is(':hidden'))
-  setTimeout(() => {
-    const initialModalHeight = $('.swal2-modal').outerHeight()
-
-    Swal.clickConfirm()
-    setTimeout(() => {
-      assert.ok($('.swal2-validationerror').is(':visible'))
-      assert.equal($('.swal2-validationerror').text(), 'no falsy values')
-      assert.ok($('.swal2-input').attr('aria-invalid'))
-      assert.ok($('.swal2-modal').outerHeight() > initialModalHeight)
-
-      $('.swal2-input').val('blah-blah').trigger('input')
-      assert.ok($('.swal2-validationerror').is(':hidden'))
-      assert.notOk($('.swal2-input').attr('aria-invalid'))
-      assert.ok($('.swal2-modal').outerHeight() === initialModalHeight)
-      done()
-    }, TIMEOUT)
-  }, TIMEOUT)
 })

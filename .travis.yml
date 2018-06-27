@@ -9,7 +9,13 @@ addons:
 
 script:
   # xvfb-run is needed for headless testing with real browsers
-  - xvfb-run yarn test
+  - if [[ "$TRAVIS_EVENT_TYPE" != "cron"  ]]; then
+      xvfb-run yarn test;
+    fi;
+
+  - if [[ "$TRAVIS_EVENT_TYPE" = "cron"  ]]; then
+      travis_retry yarn test:sauce;
+    fi;
 
 notifications:
   email:

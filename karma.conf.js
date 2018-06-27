@@ -1,10 +1,9 @@
 const isCi = require('is-ci')
 
 const noLaunch = process.argv.includes('--no-launch')
-const isCron = process.env.TRAVIS_EVENT_TYPE === 'cron'
 const isWindows = process.platform === 'win32'
 const testMinified = process.argv.includes('--minified')
-const isSauce = (isCi && isCron) || process.argv.includes('--sauce')
+const isSauce = process.argv.includes('--sauce')
 
 module.exports = function (config) {
   const sauceLabsLaunchers = {

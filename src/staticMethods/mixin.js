@@ -19,9 +19,8 @@ import { withNoNewKeyword } from '../enhancers'
  * @param mixinParams
  */
 export function mixin (mixinParams) {
-  const Swal = this
   return withNoNewKeyword(
-    class MixinSwal extends Swal {
+    class MixinSwal extends this {
       _main (params) {
         return super._main(Object.assign({}, mixinParams, params))
       }

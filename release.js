@@ -85,5 +85,8 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
   log(`Switching back to "${branchToPublish}" (so you can continue to work)...`)
   await execute(`git checkout "${branchToPublish}"`)
 
+  log(`Purge jsdelivr cache...`)
+  await execute(`curl https://purge.jsdelivr.net/npm/sweetalert2`)
+
   log('OK!')
 })().catch(console.error)

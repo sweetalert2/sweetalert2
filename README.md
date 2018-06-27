@@ -48,7 +48,7 @@ Or:
 bower install --save sweetalert2
 ```
 
-Or download from CDN: [unpkg.com/sweetalert2](https://unpkg.com/sweetalert2) | [jsdelivr.net/npm/sweetalert2](https://cdn.jsdelivr.net/npm/sweetalert2)
+Or download from CDN: [jsdelivr.net/npm/sweetalert2](https://cdn.jsdelivr.net/npm/sweetalert2)
 
 
 Usage
@@ -58,7 +58,7 @@ Usage
 <script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
 
 <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
-<script src="https://unpkg.com/promise-polyfill"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 ```
 
 You can also include the stylesheet separately if desired:

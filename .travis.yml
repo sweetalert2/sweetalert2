@@ -14,7 +14,8 @@ script:
     fi;
 
   - if [[ "$TRAVIS_EVENT_TYPE" = "cron"  ]]; then
-      travis_retry yarn test:sauce;
+      travis_retry yarn test:sauce &&
+      yarn check:third-party;
     fi;
 
 notifications:

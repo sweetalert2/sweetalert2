@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "7.24.3",
+  "version": "7.24.4",
   "repository": "sweetalert2/sweetalert2",
   "homepage": "https://sweetalert2.github.io/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
@@ -111,6 +111,10 @@
     "check:qunit:sauce": "karma start karma.conf.js --single-run --sauce",
     "check:qunit:minified:sauce": "karma start karma.conf.js --single-run --minified --sauce",
     "check:ts": "tsc --lib dom,es6 sweetalert2.d.ts",
+    "check:third-party": "npm run check:unpkg && npm run check:jsdelivr",
+    "check:wappalyzer": "curl 'https://api.wappalyzer.com/lookup-basic/v1/?url=https%3A%2F%2Fsweetalert2.github.io' 2>&1 | grep --quiet 'SweetAlert2'",
+    "check:unpkg": "curl --location 'https://unpkg.com/sweetalert2' 2>&1 | grep --quiet 'window.Swal'",
+    "check:jsdelivr": "curl --location 'https://cdn.jsdelivr.net/npm/sweetalert2' 2>&1 | grep --quiet 'window.Swal'",
     "release": "node release"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",

@@ -46,7 +46,7 @@ export const openPopup = (params) => {
     fixScrollbar()
     iOSfix()
   }
-  if (!globalState.previousActiveElement) {
+  if (!dom.isToast() && !globalState.previousActiveElement) {
     globalState.previousActiveElement = document.activeElement
   }
   if (params.onOpen !== null && typeof params.onOpen === 'function') {

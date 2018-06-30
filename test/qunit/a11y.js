@@ -1,5 +1,6 @@
 /* global QUnit */
 const {Swal, SwalWithoutAnimation} = require('./helpers')
+const {RESTORE_FOCUS_TIMEOUT} = require('../../src/constants')
 const $ = require('jquery')
 
 QUnit.test('previous active element', (assert) => {
@@ -18,7 +19,7 @@ QUnit.test('previous active element', (assert) => {
     assert.ok(document.activeElement === button)
     document.body.removeChild(button)
     done()
-  }, 100) // issues/900
+  }, RESTORE_FOCUS_TIMEOUT)
 })
 
 QUnit.test('dialog aria attributes', (assert) => {

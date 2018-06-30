@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.24.3";
+var version = "7.24.4";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -668,6 +668,8 @@ var undoIOSfix = function undoIOSfix() {
   }
 };
 
+var RESTORE_FOCUS_TIMEOUT = 100;
+
 var globalState = {};
 
 // Restore previous active (focused) element
@@ -679,7 +681,7 @@ var restoreActiveElement = function restoreActiveElement() {
       globalState.previousActiveElement.focus();
       globalState.previousActiveElement = null;
     }
-  }, 100); // issues/900
+  }, RESTORE_FOCUS_TIMEOUT); // issues/900
   if (typeof x !== 'undefined' && typeof y !== 'undefined') {
     // IE doesn't have scrollX/scrollY support
     window.scrollTo(x, y);
@@ -1667,7 +1669,7 @@ var openPopup = function openPopup(params) {
     fixScrollbar();
     iOSfix();
   }
-  if (!globalState.previousActiveElement) {
+  if (!isToast() && !globalState.previousActiveElement) {
     globalState.previousActiveElement = document.activeElement;
   }
   if (params.onOpen !== null && typeof params.onOpen === 'function') {

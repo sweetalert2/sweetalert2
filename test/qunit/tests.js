@@ -472,34 +472,6 @@ QUnit.test('disable/enable input', (assert) => {
   })
 })
 
-QUnit.test('default focus', (assert) => {
-  const done = assert.async()
-
-  SwalWithoutAnimation('Modal with the Confirm button only')
-  assert.ok(document.activeElement === document.querySelector('.swal2-confirm'))
-
-  SwalWithoutAnimation({
-    text: 'Modal with two buttons',
-    showCancelButton: true
-  })
-  assert.ok(document.activeElement === document.querySelector('.swal2-confirm'))
-
-  SwalWithoutAnimation({
-    text: 'Modal with no focusable elements in it',
-    showConfirmButton: false
-  })
-  assert.ok(document.activeElement === document.querySelector('.swal2-modal'))
-
-  SwalWithoutAnimation({
-    text: 'Modal with an input',
-    input: 'text',
-    onOpen: () => {
-      assert.ok(document.activeElement === document.querySelector('.swal2-input'))
-      done()
-    }
-  })
-})
-
 QUnit.test('reversed buttons', (assert) => {
   Swal({
     text: 'Modal with reversed buttons',
@@ -509,30 +481,6 @@ QUnit.test('reversed buttons', (assert) => {
 
   Swal('Modal with buttons')
   assert.ok($('.swal2-cancel').index() - $('.swal2-confirm').index() === 1)
-})
-
-QUnit.test('focusConfirm', (assert) => {
-  Swal({
-    showCancelButton: true
-  })
-  assert.ok(document.activeElement === $('.swal2-confirm')[0])
-
-  const anchor = $('<a href>link</a>')
-  Swal({
-    html: anchor,
-    showCancelButton: true,
-    focusConfirm: false
-  })
-  assert.ok(document.activeElement.outerHTML === anchor[0].outerHTML)
-})
-
-QUnit.test('focusCancel', (assert) => {
-  Swal({
-    text: 'Modal with Cancel button focused',
-    showCancelButton: true,
-    focusCancel: true
-  })
-  assert.ok(document.activeElement === $('.swal2-cancel')[0])
 })
 
 QUnit.test('image alt text and custom class', (assert) => {

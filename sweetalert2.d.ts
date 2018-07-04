@@ -57,6 +57,18 @@ declare module 'sweetalert2' {
         function setDefaults(defaultOptions: SweetAlertOptions): void;
 
         /**
+         * Updates popup options. A popup will be reinitialized and all user changes
+         * (e.g. input values) will be lost.
+         * See the SweetAlertOptions interface for the list of accepted fields and values.
+         *
+         * ex.
+         *   swal.update({
+         *     title: 'I am the new title!'
+         *   })
+         */
+        function update(newSettings: SweetAlertOptions): void;
+
+        /**
          * Resets settings to their default value.
          */
         function resetDefaults(): void;

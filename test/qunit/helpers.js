@@ -2,6 +2,8 @@ const { detect } = require('detect-browser')
 
 const browser = detect()
 
+export const $ = document.querySelector.bind(document)
+
 export let TIMEOUT = 1
 
 if (browser.name === 'ie') {

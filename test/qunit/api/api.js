@@ -1,5 +1,5 @@
 /* global QUnit */
-const {Swal, initialSwalPropNames} = require('../helpers')
+const {$, Swal, SwalWithoutAnimation, initialSwalPropNames} = require('../helpers')
 
 QUnit.test('properties of `Swal` class are consistent', (assert) => {
   const done = assert.async()
@@ -43,6 +43,14 @@ QUnit.test('ways to instantiate', (assert) => {
   assert.ok((new Swal('foo')) instanceof Swal)
   assert.ok(Swal.fire('foo') instanceof Swal)
   assert.ok(Swal('foo') instanceof Swal)
+})
+
+QUnit.test('update params', (assert) => {
+  SwalWithoutAnimation('Old title', 'Old content')
+  SwalWithoutAnimation.update({title: 'Updated title'})
+  SwalWithoutAnimation.update({html: 'Updated content'})
+  assert.equal($('.swal2-title').textContent, 'Updated title')
+  assert.equal($('#swal2-content').textContent, 'Updated content')
 })
 
 QUnit.test('instance properties and methods', (assert) => {

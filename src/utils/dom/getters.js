@@ -12,7 +12,7 @@ export const getPopup = () => elementByClass(swalClasses.popup)
 
 export const getIcons = () => {
   const popup = getPopup()
-  return popup.querySelectorAll('.' + swalClasses.icon)
+  return Array.prototype.slice.call(popup.querySelectorAll('.' + swalClasses.icon))
 }
 
 export const getTitle = () => elementByClass(swalClasses.title)

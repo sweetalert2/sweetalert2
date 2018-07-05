@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.24.3
+* sweetalert2 v7.25.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.24.4";
+var version = "7.25.0";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -417,7 +417,7 @@ var getPopup = function getPopup() {
 
 var getIcons = function getIcons() {
   var popup = getPopup();
-  return popup.querySelectorAll('.' + swalClasses.icon);
+  return Array.prototype.slice.call(popup.querySelectorAll('.' + swalClasses.icon));
 };
 
 var getTitle = function getTitle() {
@@ -1102,6 +1102,7 @@ var staticMethods = Object.freeze({
 	getTitle: getTitle,
 	getContent: getContent,
 	getImage: getImage,
+	getIcons: getIcons,
 	getButtonsWrapper: getButtonsWrapper,
 	getActions: getActions,
 	getConfirmButton: getConfirmButton,

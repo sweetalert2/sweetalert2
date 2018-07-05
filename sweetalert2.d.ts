@@ -84,6 +84,12 @@ declare module 'sweetalert2' {
         function getImage(): HTMLElement;
 
         /**
+         * Gets all icons. The current visible icon will have `style="display: flex"`,
+         * all other will be hidden by `style="display: none"`.
+         */
+        function getIcons(): NodeListOf<HTMLElement>;
+
+        /**
          * Gets the "Confirm" button.
          */
         function getConfirmButton(): HTMLElement;

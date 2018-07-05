@@ -1,12 +1,12 @@
 /* global QUnit */
-const {Swal, SwalWithoutAnimation, TIMEOUT} = require('./helpers')
-const $ = require('jquery')
+const {$, Swal, SwalWithoutAnimation, dispatchCustomEvent, TIMEOUT} = require('./helpers')
 
 const simulateMouseEvent = (x, y, eventType) => {
-  var event = $.Event(eventType)
-  event.clientX = x
-  event.clientY = y
-  $(document.elementFromPoint(x, y)).trigger(event)
+  dispatchCustomEvent(
+    document.elementFromPoint(x, y),
+    eventType,
+    {clientX: x, clientY: y}
+  )
 }
 
 QUnit.test('backdrop click', (assert) => {

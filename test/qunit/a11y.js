@@ -16,7 +16,7 @@ QUnit.test('previous active element', (assert) => {
   Swal.clickConfirm()
 
   setTimeout(() => {
-    assert.ok(document.activeElement === button)
+    assert.equal(document.activeElement, button)
     document.body.removeChild(button)
     done()
   }, RESTORE_FOCUS_TIMEOUT)

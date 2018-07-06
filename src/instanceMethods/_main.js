@@ -538,12 +538,14 @@ export function _main (userParams) {
       innerParams.inputValue.then((inputValue) => {
         input.value = innerParams.input === 'number' ? parseFloat(inputValue) || 0 : inputValue + ''
         dom.show(input)
+        input.focus()
         this.hideLoading()
       })
         .catch((err) => {
           error('Error in inputValue promise: ' + err)
           input.value = ''
           dom.show(input)
+          input.focus()
           this.hideLoading()
         })
     }

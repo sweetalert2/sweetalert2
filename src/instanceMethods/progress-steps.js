@@ -1,4 +1,3 @@
-import setParameters from '../utils/setParameters'
 import * as dom from '../utils/dom/index'
 import privateProps from '../privateProps'
 
@@ -9,8 +8,9 @@ export function getProgressSteps () {
 
 export function setProgressSteps (progressSteps) {
   const innerParams = privateProps.innerParams.get(this)
-  innerParams.progressSteps = progressSteps
-  setParameters(innerParams)
+  const updatedParams = Object.assign({}, innerParams, { progressSteps })
+  privateProps.innerParams.set(this, updatedParams)
+  dom.renderProgressSteps(updatedParams)
 }
 
 export function showProgressSteps () {

@@ -82,14 +82,14 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
     await execute('git push origin master:master dist:dist --tags')
   }
 
-  log(`Switching back to "${branchToPublish}" (so you can continue to work)...`)
-  await execute(`git checkout "${branchToPublish}"`)
-
   log(`Purge jsdelivr cache...`)
   const distFiles = fs.readdirSync('dist')
   for (const distFile of distFiles) {
     await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2@latest/dist/${distFile} > /dev/null`, {skipLogging: true})
   }
+
+  log(`Switching back to "${branchToPublish}" (so you can continue to work)...`)
+  await execute(`git checkout "${branchToPublish}"`)
 
   log('OK!')
 })().catch(console.error)

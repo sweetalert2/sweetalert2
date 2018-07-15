@@ -43,12 +43,20 @@ declare module 'sweetalert2' {
      */
     namespace swal {
         /**
+         * Reuse configuration by creating a swal instance.
+         *
+         * @param options the default options to set for this instance.
+         */
+        function mixin(options?: SweetAlertOptions): typeof swal;
+
+        /**
          * Determines if a modal is shown.
          * Be aware that the library returns a trueish or falsy value, not a real boolean.
          */
         function isVisible(): boolean;
 
         /**
+         * @deprecated
          * If you end up using a lot of the same settings when calling SweetAlert2,
          * you can use setDefaults at the start of your program to set them once and for all!
          *
@@ -57,6 +65,7 @@ declare module 'sweetalert2' {
         function setDefaults(defaultOptions: SweetAlertOptions): void;
 
         /**
+         * @deprecated
          * Resets settings to their default value.
          */
         function resetDefaults(): void;
@@ -421,6 +430,14 @@ declare module 'sweetalert2' {
          * @default true
          */
         animation?: ValueOrThunk<boolean>;
+
+        /**
+         * By default, SweetAlert2 sets html's and body's CSS height to auto !important.
+         * If this behavior isn't compatible with your project's layout, set heightAuto to false.
+         *
+         * @default true
+         */
+        heightAuto?: boolean;
 
         /**
          * If set to false, the user can't dismiss the modal by clicking outside it.

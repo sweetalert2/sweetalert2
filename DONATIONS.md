@@ -14,6 +14,10 @@ We would like to thank everyone who contributed to this library. If you find our
 
 # Donors
 
+- **[Unique-P GmbH](https://www.unique-p.ch/)** (100 CHF)
+
+    > Great work guys! Awesome library, very helpful!
+
 - **Jan Philip Steimel** (10 EUR)
 
     > thank you!

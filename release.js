@@ -86,7 +86,10 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
   await execute(`git checkout "${branchToPublish}"`)
 
   log(`Purge jsdelivr cache...`)
-  await execute(`curl https://purge.jsdelivr.net/npm/sweetalert2`)
+  const distFiles = fs.readdirSync('dist')
+  for (const distFile of distFiles) {
+    await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2@latest/dist/${distFile} > /dev/null`, {skipLogging: true})
+  }
 
   log('OK!')
 })().catch(console.error)

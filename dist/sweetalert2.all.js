@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.25.3
+* sweetalert2 v7.25.4
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -186,9 +186,17 @@ var uniqueArray = function uniqueArray(arr) {
 };
 
 /**
- * Converts `inputOptions` into an array of `[value, label]`s
- * @param inputOptions
+ * Convert NodeList to Array
+ * @param nodeList
  */
+var toArray$1 = function toArray$$1(nodeList) {
+  return Array.prototype.slice.call(nodeList);
+};
+
+/**
+* Converts `inputOptions` into an array of `[value, label]`s
+* @param inputOptions
+*/
 var formatInputOptions = function formatInputOptions(inputOptions) {
   var result = [];
   if (typeof Map !== 'undefined' && inputOptions instanceof Map) {
@@ -258,7 +266,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.25.3";
+var version = "7.25.4";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -417,7 +425,7 @@ var getPopup = function getPopup() {
 
 var getIcons = function getIcons() {
   var popup = getPopup();
-  return Array.prototype.slice.call(popup.querySelectorAll('.' + swalClasses.icon));
+  return toArray$1(popup.querySelectorAll('.' + swalClasses.icon));
 };
 
 var getTitle = function getTitle() {
@@ -466,7 +474,7 @@ var getCloseButton = function getCloseButton() {
 };
 
 var getFocusableElements = function getFocusableElements() {
-  var focusableElementsWithTabindex = Array.prototype.slice.call(getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])'))
+  var focusableElementsWithTabindex = toArray$1(getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])'))
   // sort according to tabindex
   .sort(function (a, b) {
     a = parseInt(a.getAttribute('tabindex'));
@@ -480,7 +488,7 @@ var getFocusableElements = function getFocusableElements() {
   });
 
   // https://github.com/jkup/focusable/blob/master/index.js
-  var otherFocusableElements = Array.prototype.slice.call(getPopup().querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable], audio[controls], video[controls]'));
+  var otherFocusableElements = toArray$1(getPopup().querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable], audio[controls], video[controls]'));
 
   return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements));
 };
@@ -1460,7 +1468,10 @@ function setParameters(params) {
   if (params.titleText) {
     title.innerText = params.titleText;
   } else if (params.title) {
-    title.innerHTML = params.title.split('\n').join('<br />');
+    if (typeof params.title === 'string') {
+      params.title = params.title.split('\n').join('<br />');
+    }
+    parseHtmlToContainer(params.title, title);
   }
 
   if (typeof params.backdrop === 'string') {
@@ -1918,7 +1929,6 @@ function _main(userParams) {
         if (innerParams.showConfirmButton || innerParams.showCancelButton || innerParams.showCloseButton || innerParams.input) {
           return;
         }
-        constructor.closePopup(innerParams.onClose, innerParams.onAfterClose);
         dismissWith(constructor.DismissReason.close);
       };
     } else {

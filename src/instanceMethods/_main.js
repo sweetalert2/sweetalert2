@@ -375,8 +375,8 @@ export function _main (userParams) {
     this.hideLoading()
     this.resetValidationError()
 
-    if (innerParams.input) {
-      dom.addClass(document.body, swalClasses['has-input'])
+    if (innerParams.input || innerParams.footer || innerParams.showCloseButton) {
+      dom.addClass(document.body, swalClasses['toast-column'])
     }
 
     // inputs

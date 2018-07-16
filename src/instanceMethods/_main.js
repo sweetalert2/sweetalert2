@@ -223,7 +223,6 @@ export function _main (userParams) {
         ) {
           return
         }
-        constructor.closePopup(innerParams.onClose, innerParams.onAfterClose)
         dismissWith(constructor.DismissReason.close)
       }
     } else {

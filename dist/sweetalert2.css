@@ -216,21 +216,20 @@
             transform: rotateX(0deg);
     opacity: 1; } }
 
-body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast {
+body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast {
   flex-direction: column;
   align-items: stretch; }
-  body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-actions {
+  body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast .swal2-actions {
     flex: 1;
     align-self: stretch;
-    justify-content: flex-end;
     height: 2.2em; }
-  body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-loading {
+  body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast .swal2-loading {
     justify-content: center; }
-  body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-input {
+  body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast .swal2-input {
     height: 2em;
     margin: .3125em auto;
     font-size: 1em; }
-  body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-validationerror {
+  body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast .swal2-validationerror {
     font-size: 1em; }
 
 body.swal2-toast-shown > .swal2-container {
@@ -307,8 +306,15 @@ body.swal2-toast-shown > .swal2-container {
     justify-content: flex-start;
     margin: 0 .6em;
     font-size: 1em; }
+  .swal2-popup.swal2-toast .swal2-footer {
+    margin: 0.5em 0 0;
+    padding: 0.5em 0 0;
+    font-size: 0.8em; }
   .swal2-popup.swal2-toast .swal2-close {
-    position: initial; }
+    position: initial;
+    width: 0.8em;
+    height: 0.8em;
+    line-height: 0.8; }
   .swal2-popup.swal2-toast .swal2-content {
     justify-content: flex-start;
     font-size: 1em; }
@@ -333,7 +339,7 @@ body.swal2-toast-shown > .swal2-container {
         right: .3125em; }
   .swal2-popup.swal2-toast .swal2-actions {
     height: auto;
-    margin: 0 .3125em; }
+    margin: .3125em .3125em 0; }
   .swal2-popup.swal2-toast .swal2-styled {
     margin: 0 .3125em;
     padding: .3125em .625em;
@@ -760,7 +766,7 @@ body.swal2-no-backdrop .swal2-shown {
   .swal2-popup .swal2-footer {
     justify-content: center;
     margin: 1.25em 0 0;
-    padding-top: 1em;
+    padding: 1em 0 0;
     border-top: 1px solid #eee;
     color: #545454;
     font-size: 1em; }

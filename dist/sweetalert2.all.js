@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.25.4
+* sweetalert2 v7.25.5
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -266,7 +266,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.25.4";
+var version = "7.25.5";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -319,7 +319,7 @@ var prefix = function prefix(items) {
   return result;
 };
 
-var swalClasses = prefix(['container', 'shown', 'height-auto', 'iosfix', 'popup', 'modal', 'no-backdrop', 'toast', 'toast-shown', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'header', 'content', 'actions', 'confirm', 'cancel', 'footer', 'icon', 'icon-text', 'image', 'input', 'has-input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen']);
+var swalClasses = prefix(['container', 'shown', 'height-auto', 'iosfix', 'popup', 'modal', 'no-backdrop', 'toast', 'toast-shown', 'toast-column', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'header', 'content', 'actions', 'confirm', 'cancel', 'footer', 'icon', 'icon-text', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen']);
 
 var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
@@ -520,7 +520,7 @@ var init = function init(params) {
   var c = getContainer();
   if (c) {
     c.parentNode.removeChild(c);
-    removeClass([document.documentElement, document.body], [swalClasses['no-backdrop'], swalClasses['has-input'], swalClasses['toast-shown']]);
+    removeClass([document.documentElement, document.body], [swalClasses['no-backdrop'], swalClasses['toast-shown'], swalClasses['has-column']]);
   }
 
   if (isNodeEnv()) {
@@ -754,7 +754,7 @@ var close = function close(onClose, onAfterClose) {
     if (container.parentNode) {
       container.parentNode.removeChild(container);
     }
-    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['height-auto'], swalClasses['no-backdrop'], swalClasses['has-input'], swalClasses['toast-shown']]);
+    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['height-auto'], swalClasses['no-backdrop'], swalClasses['toast-shown'], swalClasses['toast-column']]);
 
     if (isModal()) {
       undoScrollbar();
@@ -2081,8 +2081,8 @@ function _main(userParams) {
     _this.hideLoading();
     _this.resetValidationError();
 
-    if (innerParams.input) {
-      addClass(document.body, swalClasses['has-input']);
+    if (innerParams.input || innerParams.footer || innerParams.showCloseButton) {
+      addClass(document.body, swalClasses['toast-column']);
     }
 
     // inputs
@@ -2608,21 +2608,20 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "            transform: rotateX(0deg);\n" +
 "    opacity: 1; } }\n" +
 "\n" +
-"body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast {\n" +
+"body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast {\n" +
 "  flex-direction: column;\n" +
 "  align-items: stretch; }\n" +
-"  body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-actions {\n" +
+"  body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast .swal2-actions {\n" +
 "    flex: 1;\n" +
 "    align-self: stretch;\n" +
-"    justify-content: flex-end;\n" +
 "    height: 2.2em; }\n" +
-"  body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-loading {\n" +
+"  body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast .swal2-loading {\n" +
 "    justify-content: center; }\n" +
-"  body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-input {\n" +
+"  body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast .swal2-input {\n" +
 "    height: 2em;\n" +
 "    margin: .3125em auto;\n" +
 "    font-size: 1em; }\n" +
-"  body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-validationerror {\n" +
+"  body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast .swal2-validationerror {\n" +
 "    font-size: 1em; }\n" +
 "\n" +
 "body.swal2-toast-shown > .swal2-container {\n" +
@@ -2699,8 +2698,15 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "    justify-content: flex-start;\n" +
 "    margin: 0 .6em;\n" +
 "    font-size: 1em; }\n" +
+"  .swal2-popup.swal2-toast .swal2-footer {\n" +
+"    margin: 0.5em 0 0;\n" +
+"    padding: 0.5em 0 0;\n" +
+"    font-size: 0.8em; }\n" +
 "  .swal2-popup.swal2-toast .swal2-close {\n" +
-"    position: initial; }\n" +
+"    position: initial;\n" +
+"    width: 0.8em;\n" +
+"    height: 0.8em;\n" +
+"    line-height: 0.8; }\n" +
 "  .swal2-popup.swal2-toast .swal2-content {\n" +
 "    justify-content: flex-start;\n" +
 "    font-size: 1em; }\n" +
@@ -2725,7 +2731,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "        right: .3125em; }\n" +
 "  .swal2-popup.swal2-toast .swal2-actions {\n" +
 "    height: auto;\n" +
-"    margin: 0 .3125em; }\n" +
+"    margin: .3125em .3125em 0; }\n" +
 "  .swal2-popup.swal2-toast .swal2-styled {\n" +
 "    margin: 0 .3125em;\n" +
 "    padding: .3125em .625em;\n" +
@@ -3152,7 +3158,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "  .swal2-popup .swal2-footer {\n" +
 "    justify-content: center;\n" +
 "    margin: 1.25em 0 0;\n" +
-"    padding-top: 1em;\n" +
+"    padding: 1em 0 0;\n" +
 "    border-top: 1px solid #eee;\n" +
 "    color: #545454;\n" +
 "    font-size: 1em; }\n" +

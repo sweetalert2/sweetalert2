@@ -1,6 +1,5 @@
 /* global QUnit */
-const {Swal, SwalWithoutAnimation} = require('./helpers')
-const $ = require('jquery')
+const {$, Swal, SwalWithoutAnimation} = require('./helpers')
 
 QUnit.test('default focus', (assert) => {
   const done = assert.async()
@@ -34,15 +33,17 @@ QUnit.test('focusConfirm', (assert) => {
   Swal({
     showCancelButton: true
   })
-  assert.equal(document.activeElement, $('.swal2-confirm')[0])
+  assert.equal(document.activeElement, $('.swal2-confirm'))
 
-  const anchor = $('<a href>link</a>')
+  const anchor = document.createElement('a')
+  anchor.innerText = 'link'
+  anchor.href = ''
   Swal({
     html: anchor,
     showCancelButton: true,
     focusConfirm: false
   })
-  assert.equal(document.activeElement.outerHTML, anchor[0].outerHTML)
+  assert.equal(document.activeElement.outerHTML, anchor.outerHTML)
 })
 
 QUnit.test('focusCancel', (assert) => {
@@ -51,7 +52,7 @@ QUnit.test('focusCancel', (assert) => {
     showCancelButton: true,
     focusCancel: true
   })
-  assert.equal(document.activeElement, $('.swal2-cancel')[0])
+  assert.equal(document.activeElement, $('.swal2-cancel'))
 })
 
 // TODO(@limonte): this test needs to be revisited

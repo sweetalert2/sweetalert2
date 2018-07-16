@@ -73,7 +73,10 @@ export default function setParameters (params) {
   if (params.titleText) {
     title.innerText = params.titleText
   } else if (params.title) {
-    title.innerHTML = params.title.split('\n').join('<br />')
+    if (typeof params.title === 'string') {
+      params.title = params.title.split('\n').join('<br />')
+    }
+    dom.parseHtmlToContainer(params.title, title)
   }
 
   if (typeof params.backdrop === 'string') {

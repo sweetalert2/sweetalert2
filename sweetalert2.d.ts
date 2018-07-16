@@ -597,7 +597,10 @@ declare module 'sweetalert2' {
          *      '<input id="swal-input1" class="swal2-input">' +
          *      '<input id="swal-input2" class="swal2-input">',
          *    focusConfirm: false,
-         *    preConfirm: () => [$('#swal-input1').val(), $('#swal-input2').val()]
+         *    preConfirm: () => [
+         *      document.querySelector('#swal-input1').value,
+         *      document.querySelector('#swal-input2').value
+         *    ]
          *  }).then(result => swal(JSON.stringify(result));
          *
          * @default null

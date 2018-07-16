@@ -1,7 +1,5 @@
 /* global QUnit */
-const {Swal, SwalWithoutAnimation} = require('./helpers')
-const $ = require('jquery')
-import { triggerEscape } from './helpers.js'
+const {$, Swal, SwalWithoutAnimation, triggerEscape, isVisible} = require('./helpers')
 
 QUnit.test('confirm button /w useRejections: true', (assert) => {
   const done = assert.async()
@@ -99,9 +97,9 @@ QUnit.test('close button /w useRejections: true', (assert) => {
     }
   )
 
-  const $closeButton = $('.swal2-close')
-  assert.ok($closeButton.is(':visible'))
-  $closeButton.click()
+  const closeButton = $('.swal2-close')
+  assert.ok(isVisible(closeButton))
+  closeButton.click()
 })
 
 QUnit.test('input text /w useRejections: true', (assert) => {
@@ -116,7 +114,7 @@ QUnit.test('input text /w useRejections: true', (assert) => {
     done()
   })
 
-  $('.swal2-input').val(string)
+  $('.swal2-input').value = string
   Swal.clickConfirm()
 })
 
@@ -132,7 +130,7 @@ QUnit.test('built-in email validation /w useRejections: true', (assert) => {
     done()
   })
 
-  $('.swal2-input').val(validEmailAddress)
+  $('.swal2-input').value = validEmailAddress
   Swal.clickConfirm()
 })
 
@@ -149,7 +147,7 @@ QUnit.test('input select /w useRejections: true', (assert) => {
     done()
   })
 
-  $('.swal2-select').val(selected)
+  $('.swal2-select').value = selected
   Swal.clickConfirm()
 })
 
@@ -163,12 +161,12 @@ QUnit.test('input checkbox /w useRejections: true', (assert) => {
     },
     useRejections: true
   }).then((result) => {
-    assert.equal(checkbox.attr('name'), 'test-checkbox')
+    assert.equal(checkbox.getAttribute('name'), 'test-checkbox')
     assert.equal(result, '1')
     done()
   })
 
   const checkbox = $('.swal2-checkbox input')
-  checkbox.prop('checked', true)
+  checkbox.checked = true
   Swal.clickConfirm()
 })

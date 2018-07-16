@@ -1,6 +1,5 @@
 /* global QUnit */
-const {Swal, SwalWithoutAnimation} = require('./helpers')
-const $ = require('jquery')
+const {$, Swal, SwalWithoutAnimation} = require('./helpers')
 
 QUnit.test('.swal2-toast-shown', (assert) => {
   Swal({toast: true})

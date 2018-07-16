@@ -16,6 +16,7 @@
     "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.23.3",
     "bundlesize": "^0.17.0",
+    "custom-event-polyfill": "^0.3.0",
     "detect-browser": "^2.1.0",
     "event-stream": "^3.3.4",
     "execa": "^0.10.0",

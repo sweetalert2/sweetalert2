@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.25.5
+* sweetalert2 v7.25.4
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -266,7 +266,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.25.5";
+var version = "7.25.6";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -319,7 +319,7 @@ var prefix = function prefix(items) {
   return result;
 };
 
-var swalClasses = prefix(['container', 'shown', 'height-auto', 'iosfix', 'popup', 'modal', 'no-backdrop', 'toast', 'toast-shown', 'toast-column', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'header', 'content', 'actions', 'confirm', 'cancel', 'footer', 'icon', 'icon-text', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen']);
+var swalClasses = prefix(['container', 'shown', 'height-auto', 'iosfix', 'popup', 'modal', 'no-backdrop', 'toast', 'toast-shown', 'toast-column', 'fade', 'show', 'hide', 'noanimation', 'close', 'title', 'header', 'content', 'actions', 'confirm', 'cancel', 'footer', 'icon', 'icon-text', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'label', 'textarea', 'inputerror', 'validationerror', 'progresssteps', 'activeprogressstep', 'progresscircle', 'progressline', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen']);
 
 var iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
 
@@ -2192,8 +2192,11 @@ function _main(userParams) {
             if (innerParams.inputValue.toString() === radioValue.toString()) {
               radioInput.checked = true;
             }
-            radioLabelElement.innerHTML = radioLabel;
-            radioLabelElement.insertBefore(radioInput, radioLabelElement.firstChild);
+            var label = document.createElement('span');
+            label.innerHTML = radioLabel;
+            label.className = swalClasses.label;
+            radioLabelElement.appendChild(radioInput);
+            radioLabelElement.appendChild(label);
             radio.appendChild(radioLabelElement);
           });
           show(radio);
@@ -2215,6 +2218,7 @@ function _main(userParams) {
           checkbox.removeChild(label[0]);
         }
         label = document.createElement('span');
+        label.className = swalClasses.label;
         label.innerHTML = innerParams.inputPlaceholder;
         checkbox.appendChild(label);
         show(checkbox);

@@ -478,8 +478,11 @@ export function _main (userParams) {
             if (innerParams.inputValue.toString() === radioValue.toString()) {
               radioInput.checked = true
             }
-            radioLabelElement.innerHTML = radioLabel
-            radioLabelElement.insertBefore(radioInput, radioLabelElement.firstChild)
+            const label = document.createElement('span')
+            label.innerHTML = radioLabel
+            label.className = swalClasses.label
+            radioLabelElement.appendChild(radioInput)
+            radioLabelElement.appendChild(label)
             radio.appendChild(radioLabelElement)
           })
           dom.show(radio)
@@ -501,6 +504,7 @@ export function _main (userParams) {
           checkbox.removeChild(label[0])
         }
         label = document.createElement('span')
+        label.className = swalClasses.label
         label.innerHTML = innerParams.inputPlaceholder
         checkbox.appendChild(label)
         dom.show(checkbox)

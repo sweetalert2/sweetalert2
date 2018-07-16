@@ -15,6 +15,12 @@ export const uniqueArray = (arr) => {
 }
 
 /**
+ * Convert NodeList to Array
+ * @param nodeList
+ */
+export const toArray = (nodeList) => Array.prototype.slice.call(nodeList)
+
+  /**
  * Converts `inputOptions` into an array of `[value, label]`s
  * @param inputOptions
  */

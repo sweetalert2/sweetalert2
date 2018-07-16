@@ -1,5 +1,5 @@
 import { swalClasses } from '../classes'
-import { uniqueArray, warnOnce } from '../utils'
+import { uniqueArray, warnOnce, toArray } from '../utils'
 
 export const getContainer = () => document.body.querySelector('.' + swalClasses.container)
 
@@ -12,7 +12,7 @@ export const getPopup = () => elementByClass(swalClasses.popup)
 
 export const getIcons = () => {
   const popup = getPopup()
-  return Array.prototype.slice.call(popup.querySelectorAll('.' + swalClasses.icon))
+  return toArray(popup.querySelectorAll('.' + swalClasses.icon))
 }
 
 export const getTitle = () => elementByClass(swalClasses.title)
@@ -41,7 +41,7 @@ export const getFooter = () => elementByClass(swalClasses.footer)
 export const getCloseButton = () => elementByClass(swalClasses.close)
 
 export const getFocusableElements = () => {
-  const focusableElementsWithTabindex = Array.prototype.slice.call(
+  const focusableElementsWithTabindex = toArray(
     getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')
   )
   // sort according to tabindex
@@ -57,7 +57,7 @@ export const getFocusableElements = () => {
     })
 
   // https://github.com/jkup/focusable/blob/master/index.js
-  const otherFocusableElements = Array.prototype.slice.call(
+  const otherFocusableElements = toArray(
     getPopup().querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable], audio[controls], video[controls]')
   )
 

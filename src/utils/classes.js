@@ -40,6 +40,7 @@ export const swalClasses = prefix([
   'select',
   'radio',
   'checkbox',
+  'label',
   'textarea',
   'inputerror',
   'validationerror',

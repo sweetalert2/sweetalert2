@@ -37,8 +37,8 @@ const close = (onClose, onAfterClose) => {
         swalClasses.shown,
         swalClasses['height-auto'],
         swalClasses['no-backdrop'],
-        swalClasses['has-input'],
-        swalClasses['toast-shown']
+        swalClasses['toast-shown'],
+        swalClasses['toast-column']
       ]
     )
 

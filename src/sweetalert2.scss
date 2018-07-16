@@ -394,7 +394,7 @@ body {
   .swal2-footer {
     justify-content: center;
     margin: $swal2-footer-margin;
-    padding-top: 1em;
+    padding: $swal2-footer-padding;
     border-top: 1px solid $swal2-footer-border-color;
     color: $swal2-footer-color;
     font-size: $swal2-footer-font-size;
@@ -420,7 +420,7 @@ body {
     color: $swal2-close-button-color;
     font-family: serif;
     font-size: $swal2-close-button-font-size;
-    line-height: 1.2;
+    line-height: $swal2-close-button-line-height;
     cursor: pointer;
     overflow: hidden;
 

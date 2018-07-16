@@ -71,6 +71,7 @@ $swal2-progress-steps-distance: 2.5em !default;
 
 // FOOTER
 $swal2-footer-margin: 1.25em 0 0 !default;
+$swal2-footer-padding: 1em 0 0 !default;
 $swal2-footer-border-color: #eee !default;
 $swal2-footer-color: lighten($swal2-black, 33) !default;
 $swal2-footer-font-size: 1em !default;
@@ -87,6 +88,7 @@ $swal2-error-x-mark-animation: swal2-animate-error-x-mark .5s !default;
 // CLOSE BUTTON
 $swal2-close-button-width: 1.2em !default;
 $swal2-close-button-height: 1.2em !default;
+$swal2-close-button-line-height: 1.2 !default;
 $swal2-close-button-position: absolute !default;
 $swal2-close-button-gap: 0 !default;
 $swal2-close-button-transition: color .1s ease-out !default;
@@ -123,6 +125,9 @@ $swal2-button-darken-active: rgba($swal2-black, .2) !default;
 $swal2-button-focus-outline: rgba(50, 100, 150, .4) !default;
 
 // TOASTS
+$swal2-toast-close-button-width: .8em !default;
+$swal2-toast-close-button-height: .8em !default;
+$swal2-toast-close-button-line-height: .8 !default;
 $swal2-toast-width: auto !default;
 $swal2-toast-padding: .625em !default;
 $swal2-toast-title-font-size: 1em !default;
@@ -130,3 +135,6 @@ $swal2-toast-content-font-size: 1em !default;
 $swal2-toast-input-font-size: 1em !default;
 $swal2-toast-validation-font-size: 1em !default;
 $swal2-toast-buttons-font-size: 1em !default;
+$swal2-toast-footer-margin: .5em 0 0 !default;
+$swal2-toast-footer-padding: .5em 0 0 !default;
+$swal2-toast-footer-font-size: .8em !default;

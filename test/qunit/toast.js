@@ -10,12 +10,22 @@ QUnit.test('.swal2-toast-shown', (assert) => {
   assert.notOk(document.documentElement.classList.contains('swal2-toast-shown'))
 })
 
-QUnit.test('.swal2-has-input', (assert) => {
+QUnit.test('.swal2-toast-column if input', (assert) => {
   var inputs = ['text', 'email', 'password', 'number', 'tel', 'range', 'textarea', 'select', 'radio', 'checkbox', 'file', 'url']
   inputs.forEach((input) => {
-    Swal({input: input})
-    assert.ok(document.body.classList.contains('swal2-has-input'), input)
+    SwalWithoutAnimation({input: input})
+    assert.ok(document.body.classList.contains('swal2-toast-column'))
   })
+})
+
+QUnit.test('.swal2-toast-column if footer', (assert) => {
+  SwalWithoutAnimation({footer: 'footer'})
+  assert.ok(document.body.classList.contains('swal2-toast-column'))
+})
+
+QUnit.test('.swal2-toast-column if close button', (assert) => {
+  SwalWithoutAnimation({showCloseButton: true})
+  assert.ok(document.body.classList.contains('swal2-toast-column'))
 })
 
 QUnit.test('toast click closes when no buttons or input are specified', (assert) => {

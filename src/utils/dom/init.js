@@ -68,8 +68,8 @@ export const init = (params) => {
       [document.documentElement, document.body],
       [
         swalClasses['no-backdrop'],
-        swalClasses['has-input'],
-        swalClasses['toast-shown']
+        swalClasses['toast-shown'],
+        swalClasses['has-column']
       ]
     )
   }

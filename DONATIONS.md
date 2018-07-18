@@ -3,7 +3,7 @@ We would like to thank everyone who contributed to this library. If you find our
 
 # Patrons
 
-- **[Malik Nazimanov](https://www.patreon.com/lantos)** ($1 per month)
+- **[Malik Nazimanov](https://www.patreon.com/lantos)** ($5 per month)
 
 - **[Olli Murto](https://www.patreon.com/user/?u=9095640)** ($1 per month)
 

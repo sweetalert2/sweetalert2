@@ -12,7 +12,7 @@ export const queue = function (steps) {
     document.body.removeAttribute('data-swal2-queue-step')
   }
   let queueResult = []
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     (function step (i, callback) {
       if (i < currentSteps.length) {
         document.body.setAttribute('data-swal2-queue-step', i)

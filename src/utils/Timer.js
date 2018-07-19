@@ -1,7 +1,7 @@
 export default class Timer {
   constructor (callback, delay) {
-    var id, started, running
-    var remaining = delay
+    let id, started, running
+    let remaining = delay
     this.start = function () {
       running = true
       started = new Date()

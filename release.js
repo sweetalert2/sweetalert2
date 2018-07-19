@@ -5,7 +5,7 @@ const assert = require('assert')
 const getGitStatus = require('./utils/get-git-status')
 const execute = require('./utils/execute')
 
-const log = console.log
+const log = console.log // eslint-disable-line
 const removeDir = pify(rimraf)
 const readFile = pify(fs.readFile)
 const writeFile = pify(fs.writeFile)

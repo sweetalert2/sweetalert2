@@ -209,7 +209,7 @@ QUnit.test('validation error', (assert) => {
 QUnit.test('built-in email validation', (assert) => {
   const done = assert.async()
 
-  var validEmailAddress = 'team+support+a.b@example.com'
+  const validEmailAddress = 'team+support+a.b@example.com'
   Swal({input: 'email'}).then((result) => {
     assert.equal(result.value, validEmailAddress)
     done()
@@ -629,7 +629,7 @@ QUnit.test('onClose', (assert) => {
 QUnit.test('esc key', (assert) => {
   const done = assert.async()
 
-  document.body.addEventListener('keydown', (e) => {
+  document.body.addEventListener('keydown', () => {
     throw new Error('Should not propagate keydown event to body!')
   })
 
@@ -653,7 +653,7 @@ QUnit.test('allowEscapeKey as a function', (assert) => {
       functionWasCalled = true
       return false
     },
-    onOpen: (popup) => {
+    onOpen: () => {
       assert.equal(functionWasCalled, false)
 
       triggerEscape()
@@ -847,7 +847,7 @@ QUnit.test('inputValue as a Promise', (assert) => {
   const inputTypes = ['text', 'email', 'number', 'tel', 'textarea']
   const done = assert.async(inputTypes.length)
   const value = '1.1 input value'
-  const inputValue = new Promise((resolve, reject) => {
+  const inputValue = new Promise((resolve) => {
     resolve('1.1 input value')
   })
   inputTypes.forEach(input => {

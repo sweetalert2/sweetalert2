@@ -1,6 +1,6 @@
 language: node_js
 dist: trusty
-node_js: 8.9
+node_js: 8.11
 sudo: true
 
 addons:

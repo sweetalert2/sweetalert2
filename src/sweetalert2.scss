@@ -292,6 +292,7 @@ body {
   .swal2-actions {
     align-items: center;
     justify-content: center;
+    width: 100%;
     margin: $swal2-actions-margin;
 
     &:not(.swal2-loading) {
@@ -351,6 +352,13 @@ body {
         }
       }
     }
+
+    .swal2-timer-tip {
+      bottom: -20px;
+      color: $swal2-grey;
+      font-size: .75em;
+    }
+
   }
 
   .swal2-styled {

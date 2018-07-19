@@ -121,7 +121,7 @@ QUnit.test('input text /w useRejections: true', (assert) => {
 QUnit.test('built-in email validation /w useRejections: true', (assert) => {
   const done = assert.async()
 
-  var validEmailAddress = 'team+support+a.b@example.com'
+  const validEmailAddress = 'team+support+a.b@example.com'
   Swal({
     input: 'email',
     useRejections: true

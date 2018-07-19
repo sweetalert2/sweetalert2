@@ -16,6 +16,6 @@ export const parseHtmlToContainer = (param, target) => {
     }
   } else if (param) {
     target.innerHTML = param
-  } else {}
+  }
   show(target)
 }

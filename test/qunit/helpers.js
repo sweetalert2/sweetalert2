@@ -23,7 +23,7 @@ export const Swal = global.Swal
 export const SwalWithoutAnimation = Swal.mixin({animation: false})
 
 export const dispatchCustomEvent = (elem, eventName, eventDetail = {}) => {
-  var event = new CustomEvent(eventName, {bubbles: true, cancelable: true, detail: eventDetail})
+  const event = new CustomEvent(eventName, {bubbles: true, cancelable: true, detail: eventDetail})
   elem.dispatchEvent(event)
 }
 

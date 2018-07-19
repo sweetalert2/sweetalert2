@@ -42,6 +42,7 @@ const defaultParams = {
   imageAlt: '',
   imageClass: null,
   timer: null,
+  timerFormat: '',
   width: null,
   padding: null,
   background: null,

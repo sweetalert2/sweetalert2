@@ -36,6 +36,8 @@ export const getButtonsWrapper = () => {
 
 export const getActions = () => elementByClass(swalClasses.actions)
 
+export const getTimerTip = () => elementByClass(swalClasses['timer-tip'])
+
 export const getFooter = () => elementByClass(swalClasses.footer)
 
 export const getCloseButton = () => elementByClass(swalClasses.close)

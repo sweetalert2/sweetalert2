@@ -68,7 +68,7 @@ export function _main (userParams) {
       globalState.timeout = new Timer(() => {
         dismissWith('timer')
         delete globalState.timeout
-      }, innerParams.timer)
+      }, innerParams.timer, innerParams.timerFormat)
     }
 
     // Get the value of the popup input

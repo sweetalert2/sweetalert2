@@ -214,7 +214,7 @@ export function _main (userParams) {
 
     if (innerParams.toast) {
       // Closing popup by internal click
-      domCache.popup.onclick = (e) => {
+      domCache.popup.onclick = () => {
         if (
           innerParams.showConfirmButton ||
           innerParams.showCancelButton ||
@@ -418,20 +418,22 @@ export function _main (userParams) {
       case 'password':
       case 'number':
       case 'tel':
-      case 'url':
+      case 'url': {
         input = dom.getChildByClass(domCache.content, swalClasses.input)
         input.value = innerParams.inputValue
         input.placeholder = innerParams.inputPlaceholder
         input.type = innerParams.input
         dom.show(input)
         break
-      case 'file':
+      }
+      case 'file': {
         input = dom.getChildByClass(domCache.content, swalClasses.file)
         input.placeholder = innerParams.inputPlaceholder
         input.type = innerParams.input
         dom.show(input)
         break
-      case 'range':
+      }
+      case 'range': {
         const range = dom.getChildByClass(domCache.content, swalClasses.range)
         const rangeInput = range.querySelector('input')
         const rangeOutput = range.querySelector('output')
@@ -440,7 +442,8 @@ export function _main (userParams) {
         rangeOutput.value = innerParams.inputValue
         dom.show(range)
         break
-      case 'select':
+      }
+      case 'select': {
         const select = dom.getChildByClass(domCache.content, swalClasses.select)
         select.innerHTML = ''
         if (innerParams.inputPlaceholder) {
@@ -465,7 +468,8 @@ export function _main (userParams) {
           select.focus()
         }
         break
-      case 'radio':
+      }
+      case 'radio': {
         const radio = dom.getChildByClass(domCache.content, swalClasses.radio)
         radio.innerHTML = ''
         populateInputOptions = (inputOptions) => {
@@ -492,7 +496,8 @@ export function _main (userParams) {
           }
         }
         break
-      case 'checkbox':
+      }
+      case 'checkbox': {
         const checkbox = dom.getChildByClass(domCache.content, swalClasses.checkbox)
         const checkboxInput = this.getInput('checkbox')
         checkboxInput.type = 'checkbox'
@@ -509,14 +514,17 @@ export function _main (userParams) {
         checkbox.appendChild(label)
         dom.show(checkbox)
         break
-      case 'textarea':
+      }
+      case 'textarea': {
         const textarea = dom.getChildByClass(domCache.content, swalClasses.textarea)
         textarea.value = innerParams.inputValue
         textarea.placeholder = innerParams.inputPlaceholder
         dom.show(textarea)
         break
-      case null:
+      }
+      case null: {
         break
+      }
       default:
         error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${innerParams.input}"`)
         break

@@ -1,5 +1,7 @@
 const gulp = require('gulp')
+const gutil = require('gulp-util')
 const $ = require('gulp-load-plugins')()
+const eslint = require('gulp-eslint')
 const babel = require('rollup-plugin-babel')
 const json = require('rollup-plugin-json')
 const merge = require('merge2')
@@ -116,10 +118,9 @@ gulp.task('default', gulp.parallel('build'))
 
 gulp.task('lint:scripts', () => {
   return gulp.src(allScriptFiles)
-    .pipe($.standard())
-    .pipe($.standard.reporter('default', {
-      breakOnError: !continueOnError
-    }))
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(continueOnError ? gutil.noop() : eslint.failAfterError())
 })
 
 gulp.task('lint:styles', () => {

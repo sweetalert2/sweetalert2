@@ -20,7 +20,7 @@ function SweetAlert (...args) {
   }
 
   if (typeof args[0] === 'undefined') {
-    error('SweetAlert2 expects at least 1 attribute!')
+    error('At least 1 argument is expected!')
     return false
   }
 

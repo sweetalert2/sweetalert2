@@ -12,6 +12,14 @@ QUnit.test('modal shows up', (assert) => {
   assert.ok(Swal.isVisible())
 })
 
+QUnit.test('should throw console error about missing argumnets', (assert) => {
+  const _consoleError = console.error
+  const spy = sinon.spy(console, 'error')
+  Swal()
+  console.error = _consoleError
+  assert.ok(spy.calledWith('SweetAlert2: At least 1 argument is expected!'))
+})
+
 QUnit.test('should throw console error about unexpected params', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')

@@ -6,11 +6,13 @@ export {
   getContent,
   getImage,
   getIcons,
+  getCloseButton,
   getButtonsWrapper,
   getActions,
   getConfirmButton,
   getCancelButton,
   getFooter,
+  getFocusableElements,
   isLoading
 } from '../utils/dom/index'
 

@@ -289,11 +289,7 @@ export function _main (userParams) {
           index = focusableElements.length - 1
         }
 
-        // determine if element is visible
-        const el = focusableElements[index]
-        if (dom.isVisible(el)) {
-          return el.focus()
-        }
+        return focusableElements[index].focus()
       }
       // no visible focusable elements, focus the popup
       domCache.popup.focus()

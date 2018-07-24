@@ -1,5 +1,6 @@
 import { swalClasses } from '../classes'
 import { uniqueArray, warnOnce, toArray } from '../utils'
+import { isVisible } from './domUtils'
 
 export const getContainer = () => document.body.querySelector('.' + swalClasses.container)
 
@@ -61,7 +62,7 @@ export const getFocusableElements = () => {
     getPopup().querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable], audio[controls], video[controls]')
   )
 
-  return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements))
+  return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements)).filter(el => isVisible(el))
 }
 
 export const isModal = () => {

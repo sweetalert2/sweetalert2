@@ -1,5 +1,5 @@
 /* global QUnit */
-const {$, Swal, SwalWithoutAnimation, triggerEscape, isVisible, isHidden, TIMEOUT} = require('./helpers')
+const {$, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible, isHidden, TIMEOUT} = require('./helpers')
 const { toArray } = require('../../src/utils/utils')
 const sinon = require('sinon')
 
@@ -643,7 +643,7 @@ QUnit.test('esc key', (assert) => {
 
   SwalWithoutAnimation({
     title: 'Esc me',
-    onOpen: triggerEscape
+    onOpen: () => triggerKeydownEvent(Swal.getPopup(), 'Escape')
   }).then((result) => {
     assert.deepEqual(result, {dismiss: Swal.DismissReason.esc})
     done()
@@ -664,7 +664,7 @@ QUnit.test('allowEscapeKey as a function', (assert) => {
     onOpen: () => {
       assert.equal(functionWasCalled, false)
 
-      triggerEscape()
+      triggerKeydownEvent(Swal.getPopup(), 'Escape')
 
       setTimeout(() => {
         assert.equal(functionWasCalled, true)

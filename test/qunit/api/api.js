@@ -1,4 +1,3 @@
-/* global QUnit */
 const {Swal, initialSwalPropNames} = require('../helpers')
 
 QUnit.test('properties of `Swal` class are consistent', (assert) => {

@@ -1,4 +1,3 @@
-/* global QUnit */
 const {$, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible} = require('./helpers')
 
 QUnit.test('confirm button /w useRejections: true', (assert) => {

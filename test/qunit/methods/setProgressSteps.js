@@ -1,4 +1,3 @@
-/* global QUnit */
 import { Swal } from '../helpers.js'
 
 QUnit.test('setProgressSteps() method', (assert) => {

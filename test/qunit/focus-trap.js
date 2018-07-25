@@ -1,4 +1,3 @@
-/* global QUnit */
 const {Swal, triggerKeydownEvent} = require('./helpers')
 
 QUnit.test('focus trap forward', (assert) => {

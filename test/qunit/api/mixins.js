@@ -1,4 +1,3 @@
-/* global QUnit */
 const { Swal } = require('../helpers')
 
 QUnit.test('basic mixin', (assert) => {

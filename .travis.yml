@@ -23,4 +23,4 @@ notifications:
     on_success: never
 
 after_success:
-  - "cat ${TRAVIS_BUILD_DIR}/coverage/report-lcov/lcov.info | coveralls"
+  - cat ./coverage/lcov.info | coveralls

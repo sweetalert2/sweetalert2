@@ -1,4 +1,3 @@
-/* global QUnit */
 const {$, Swal, SwalWithoutAnimation} = require('./helpers')
 
 QUnit.test('default focus', (assert) => {

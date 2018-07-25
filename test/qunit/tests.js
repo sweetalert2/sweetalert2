@@ -1,4 +1,3 @@
-/* global QUnit */
 const {$, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible, isHidden, TIMEOUT} = require('./helpers')
 const { toArray } = require('../../src/utils/utils')
 const { measureScrollbar } = require('../../src/utils/dom/measureScrollbar')
@@ -31,7 +30,7 @@ QUnit.test('should throw console error about unexpected params', (assert) => {
 
 QUnit.test('the vertical scrollbar should be hidden and the according padding-right should be set', (assert) => {
   const talltDiv = document.createElement('div')
-  talltDiv.innerHTML = '<div>lorem ipsum</div>'.repeat(100)
+  talltDiv.innerHTML = Array(100).join('<div>lorem ipsum</div>')
   document.body.appendChild(talltDiv)
   document.body.style.paddingRight = '30px'
 

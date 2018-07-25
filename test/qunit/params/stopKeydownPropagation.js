@@ -1,4 +1,3 @@
-/* global QUnit */
 import { triggerKeydownEvent, SwalWithoutAnimation } from '../helpers.js'
 
 QUnit.test('stopKeydownPropagation', (assert) => {

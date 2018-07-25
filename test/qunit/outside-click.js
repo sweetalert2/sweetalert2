@@ -1,4 +1,3 @@
-/* global QUnit */
 const {$, Swal, SwalWithoutAnimation, dispatchCustomEvent, TIMEOUT} = require('./helpers')
 
 const simulateMouseEvent = (x, y, eventType) => {

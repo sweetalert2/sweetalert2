@@ -2,6 +2,8 @@ import * as dom from './dom/index'
 import { swalClasses } from '../utils/classes'
 
 // Fix iOS scrolling http://stackoverflow.com/q/39626302/1331425
+
+/* istanbul ignore next */
 export const iOSfix = () => {
   const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
   if (iOS && !dom.hasClass(document.body, swalClasses.iosfix)) {
@@ -11,6 +13,7 @@ export const iOSfix = () => {
   }
 }
 
+/* istanbul ignore next */
 export const undoIOSfix = () => {
   if (dom.hasClass(document.body, swalClasses.iosfix)) {
     const offset = parseInt(document.body.style.top, 10)

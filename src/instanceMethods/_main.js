@@ -320,7 +320,7 @@ export function _main (userParams) {
         const targetElement = e.target || e.srcElement
 
         const focusableElements = dom.getFocusableElements(innerParams.focusCancel)
-        let btnIndex = -1 // Find the button - note, this is a nodelist, not an array.
+        let btnIndex = -1
         for (let i = 0; i < focusableElements.length; i++) {
           if (targetElement === focusableElements[i]) {
             btnIndex = i

@@ -1,5 +1,5 @@
 /* global QUnit */
-const {$, Swal, SwalWithoutAnimation, triggerEscape, isVisible} = require('./helpers')
+const {$, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible} = require('./helpers')
 
 QUnit.test('confirm button /w useRejections: true', (assert) => {
   const done = assert.async()
@@ -46,7 +46,7 @@ QUnit.test('esc key /w useRejections: true', (assert) => {
     }
   )
 
-  triggerEscape()
+  triggerKeydownEvent(Swal.getPopup(), 'Escape')
 })
 
 QUnit.test('backdrop click /w useRejections: true', (assert) => {

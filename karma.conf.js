@@ -70,13 +70,13 @@ module.exports = function (config) {
     } else if (isCi) {
       // AppVeyor
       if (isWindows) {
-        browsers = ['IE']
-      // Travis
-      } else {
-        browsers = ['ChromeHeadless', 'Firefox']
+        browsers = ['IE', 'ChromeHeadless', 'Firefox']
         if (!testMinified) {
           reporters.push('coverage')
         }
+      // Travis
+      } else {
+        browsers = ['ChromeHeadless', 'Firefox']
       }
     } else {
       // Local development

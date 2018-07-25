@@ -1,6 +1,7 @@
 /* global QUnit */
 const {$, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible, isHidden, TIMEOUT} = require('./helpers')
 const { toArray } = require('../../src/utils/utils')
+const { measureScrollbar } = require('../../src/utils/dom/measureScrollbar')
 const sinon = require('sinon')
 
 QUnit.test('version is correct semver', (assert) => {
@@ -27,6 +28,23 @@ QUnit.test('should throw console error about unexpected params', (assert) => {
   console.error = _consoleError
   assert.ok(spy.calledWith('SweetAlert2: Unexpected type of html! Expected "string", got object'))
 })
+
+QUnit.test('the vertical scrollbar should be hidden and the according padding-right should be set', (assert) => {
+  const talltDiv = document.createElement('div')
+  talltDiv.innerHTML = '<div>lorem ipsum</div>'.repeat(100)
+  document.body.appendChild(talltDiv)
+  document.body.style.paddingRight = '30px'
+
+  const scrollbarWidth = measureScrollbar()
+
+  Swal('The body has visible scrollbar, I will hide it and adjust padding-right on body')
+
+  const bodyStyles = window.getComputedStyle(document.body);
+
+  assert.equal(bodyStyles.paddingRight, (scrollbarWidth + 30) + 'px')
+  assert.equal(bodyStyles.overflowY, 'hidden')
+})
+
 
 QUnit.test('modal width', (assert) => {
   Swal({text: '300px', width: 300})

@@ -27,13 +27,16 @@ export const dispatchCustomEvent = (elem, eventName, eventDetail = {}) => {
   elem.dispatchEvent(event)
 }
 
-export const triggerEscape = () => {
+export const triggerKeydownEvent = (target, key, params = {}) => {
   const e = document.createEvent('HTMLEvents')
-  e.key = 'Escape'
+  e.key = key
   e.initEvent(
     'keydown',
     true, // bubbles
     true  // cancelable
   )
-  Swal.getPopup().dispatchEvent(e)
+  for (const param in params) {
+    e[param] = params[param]
+  }
+  target.dispatchEvent(e)
 }

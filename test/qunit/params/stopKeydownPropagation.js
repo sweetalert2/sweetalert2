@@ -1,5 +1,5 @@
 /* global QUnit */
-import { triggerEscape, SwalWithoutAnimation } from '../helpers.js'
+import { triggerKeydownEvent, SwalWithoutAnimation } from '../helpers.js'
 
 QUnit.test('stopKeydownPropagation', (assert) => {
   const done = assert.async()
@@ -11,7 +11,7 @@ QUnit.test('stopKeydownPropagation', (assert) => {
 
   SwalWithoutAnimation({
     title: 'Esc me and I will propagate keydown',
-    onOpen: triggerEscape,
+    onOpen: () => triggerKeydownEvent(SwalWithoutAnimation.getPopup(), 'Escape'),
     stopKeydownPropagation: false
   })
 })

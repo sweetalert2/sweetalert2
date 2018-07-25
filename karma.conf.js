@@ -71,12 +71,12 @@ module.exports = function (config) {
       // AppVeyor
       if (isWindows) {
         browsers = ['IE', 'ChromeHeadless', 'Firefox']
-      // Travis
-      } else {
-        browsers = ['ChromeHeadless', 'Firefox']
         if (!testMinified) {
           reporters.push('coverage')
         }
+      // Travis
+      } else {
+        browsers = ['ChromeHeadless', 'Firefox']
       }
     } else {
       // Local development

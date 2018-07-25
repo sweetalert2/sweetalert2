@@ -14,7 +14,12 @@ init:
 
 # Test against this version of Node.js
 environment:
-  nodejs_version: "8"
+  nodejs_version: "8.11"
+  SAUCE_USERNAME:
+    secure: urRYP9EQoRpDVcREo1HoNA==
+  SAUCE_ACCESS_KEY:
+    secure: 34SrDTIXrCWkakMDBCSyEGCWUStBJcbimW0gGnWF7I3zMXRwbetSZO9bHTmT98H2
+  COVERALLS_REPO_TOKEN: "VC97qTfg9RO9TCP7Gqyq8oTlDjvBG8RIC"
 
 build: off
 
@@ -22,9 +27,20 @@ install:
   - ps: Install-Product node $env:nodejs_version
   - yarn
 
+before_test:
+
 test_script:
-  - yarn run build
-  - yarn run check:qunit
+  - if "%APPVEYOR_SCHEDULED_BUILD%" == "True" (
+      yarn test:sauce &&
+      yarn check:third-party
+    ) else (
+      yarn test
+    )
+
+on_success:
+  - yarn coveralls
+  - 7z a -tzip coverage.zip coverage
+  - curl --silent --upload-file coverage.zip https://transfer.sh/coverage.zip
 
 notifications:
   - provider: Email
@@ -35,4 +51,4 @@ notifications:
     on_build_status_changed: true
 
 # Preserve node_modules between builds
-cache: node_modules -> appveyor.yml,package.json,yarn.lock
+cache: node_modules -> yarn.lock

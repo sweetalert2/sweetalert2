@@ -44,7 +44,6 @@ QUnit.test('the vertical scrollbar should be hidden and the according padding-ri
   assert.equal(bodyStyles.overflowY, 'hidden')
 })
 
-
 QUnit.test('modal width', (assert) => {
   Swal({text: '300px', width: 300})
   assert.equal($('.swal2-modal').style.width, '300px')
@@ -178,27 +177,6 @@ QUnit.test('set and reset defaults', (assert) => {
   Swal.clickCancel()
 })
 
-QUnit.test('should throw console error about unexpected input type', (assert) => {
-  const _consoleError = console.error
-  const spy = sinon.spy(console, 'error')
-  Swal({input: 'invalid-input-type'})
-  console.error = _consoleError
-  assert.ok(spy.calledWith('SweetAlert2: Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "invalid-input-type"'))
-})
-
-QUnit.test('input text', (assert) => {
-  const done = assert.async()
-
-  const string = 'Live for yourself'
-  Swal({input: 'text'}).then((result) => {
-    assert.equal(result.value, string)
-    done()
-  })
-
-  $('.swal2-input').value = string
-  Swal.clickConfirm()
-})
-
 QUnit.test('validation error', (assert) => {
   const done = assert.async()
   const inputValidator = (value) => Promise.resolve(!value && 'no falsy values')
@@ -231,35 +209,6 @@ QUnit.test('validation error', (assert) => {
   }, TIMEOUT)
 })
 
-QUnit.test('built-in email validation', (assert) => {
-  const done = assert.async()
-
-  const validEmailAddress = 'team+support+a.b@example.com'
-  Swal({input: 'email'}).then((result) => {
-    assert.equal(result.value, validEmailAddress)
-    done()
-  })
-
-  $('.swal2-input').value = validEmailAddress
-  Swal.clickConfirm()
-})
-
-QUnit.test('input select', (assert) => {
-  const done = assert.async()
-
-  const selected = 'dos'
-  Swal({
-    input: 'select',
-    inputOptions: {uno: 1, dos: 2}
-  }).then((result) => {
-    assert.equal(result.value, selected)
-    done()
-  })
-
-  $('.swal2-select').value = selected
-  Swal.clickConfirm()
-})
-
 QUnit.test('should throw console error about unexpected type of InputOptions', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')
@@ -267,64 +216,6 @@ QUnit.test('should throw console error about unexpected type of InputOptions', (
   console.error = _consoleError
   assert.ok(spy.calledWith('SweetAlert2: Unexpected type of inputOptions! Expected object, Map or Promise, got string'))
 })
-
-QUnit.test('input checkbox', (assert) => {
-  const done = assert.async()
-
-  Swal({input: 'checkbox', inputAttributes: {name: 'test-checkbox'}}).then((result) => {
-    assert.equal(checkbox.getAttribute('name'), 'test-checkbox')
-    assert.equal(result.value, '1')
-    done()
-  })
-
-  const checkbox = $('.swal2-checkbox input')
-  checkbox.checked = true
-  Swal.clickConfirm()
-})
-
-QUnit.test('input range', (assert) => {
-  Swal({input: 'range', inputAttributes: {min: 1, max: 10}, inputValue: 5})
-  const input = $('.swal2-range input')
-  assert.equal(input.getAttribute('min'), '1')
-  assert.equal(input.getAttribute('max'), '10')
-  assert.equal(input.value, '5')
-})
-
-if (typeof Map !== 'undefined') { // There's no Map in Adroid 4.4 - skip tests
-  QUnit.test('input type "select", inputOptions Map', (assert) => {
-    const inputOptions = new Map()
-    inputOptions.set(2, 'Richard Stallman')
-    inputOptions.set(1, 'Linus Torvalds')
-    SwalWithoutAnimation({
-      input: 'select',
-      inputOptions,
-      inputValue: 1
-    })
-    assert.equal($('.swal2-select').querySelectorAll('option').length, 2)
-    assert.equal($('.swal2-select option:nth-child(1)').innerHTML, 'Richard Stallman')
-    assert.equal($('.swal2-select option:nth-child(1)').value, '2')
-    assert.equal($('.swal2-select option:nth-child(2)').innerHTML, 'Linus Torvalds')
-    assert.equal($('.swal2-select option:nth-child(2)').value, '1')
-    assert.equal($('.swal2-select option:nth-child(2)').selected, true)
-  })
-
-  QUnit.test('input type "radio", inputOptions Map', (assert) => {
-    const inputOptions = new Map()
-    inputOptions.set(2, 'Richard Stallman')
-    inputOptions.set(1, 'Linus Torvalds')
-    Swal({
-      input: 'radio',
-      inputOptions,
-      inputValue: 1
-    })
-    assert.equal($('.swal2-radio').querySelectorAll('label').length, 2)
-    assert.equal($('.swal2-radio label:nth-child(1)').textContent, 'Richard Stallman')
-    assert.equal($('.swal2-radio label:nth-child(1) input').value, '2')
-    assert.equal($('.swal2-radio label:nth-child(2)').textContent, 'Linus Torvalds')
-    assert.equal($('.swal2-radio label:nth-child(2) input').value, '1')
-    assert.equal($('.swal2-radio label:nth-child(2) input').checked, true)
-  })
-}
 
 QUnit.test('queue', (assert) => {
   const done = assert.async()
@@ -455,19 +346,6 @@ QUnit.test('disable/enable buttons', (assert) => {
 
   Swal.enableConfirmButton()
   assert.notOk($('.swal2-confirm').disabled)
-})
-
-QUnit.test('input radio', (assert) => {
-  Swal({
-    input: 'radio',
-    inputOptions: {
-      'one': 'one',
-      'two': 'two'
-    }
-  })
-
-  assert.equal($('.swal2-radio').querySelectorAll('label').length, 2)
-  assert.equal($('.swal2-radio').querySelectorAll('input[type="radio"]').length, 2)
 })
 
 QUnit.test('disable/enable input', (assert) => {

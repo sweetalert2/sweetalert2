@@ -12,7 +12,15 @@ QUnit.test('modal shows up', (assert) => {
   assert.ok(Swal.isVisible())
 })
 
-QUnit.test('should throw console error about missing argumnets', (assert) => {
+QUnit.test('should throw console error about invalid argument', (assert) => {
+  const _consoleError = console.error
+  const spy = sinon.spy(console, 'error')
+  Swal(10)
+  console.error = _consoleError
+  assert.ok(spy.calledWith('SweetAlert2: Unexpected type of argument! Expected "string" or "object", got "number"'))
+})
+
+QUnit.test('should throw console error about missing arguments', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')
   Swal()
@@ -700,6 +708,20 @@ QUnit.test('footer', (assert) => {
 
   Swal('Modal w/o footer')
   assert.ok(isHidden($('.swal2-footer')))
+})
+
+QUnit.test('visual apperarance', (assert) => {
+  Swal({
+    padding: '2em',
+    background: 'red',
+    confirmButtonColor: 'green',
+    cancelButtonColor: 'blue'
+  })
+
+  assert.equal(Swal.getPopup().style.padding, '2em')
+  assert.equal(window.getComputedStyle(Swal.getPopup()).backgroundColor, 'rgb(255, 0, 0)')
+  assert.equal(Swal.getConfirmButton().style.backgroundColor, 'green')
+  assert.equal(Swal.getCancelButton().style.backgroundColor, 'blue')
 })
 
 QUnit.test('null values', (assert) => {

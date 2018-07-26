@@ -1,5 +1,8 @@
-const {$, Swal, SwalWithoutAnimation, isVisible, TIMEOUT, triggerKeydownEvent} = require('../helpers')
+const {$, Swal, SwalWithoutAnimation, isVisible, TIMEOUT, triggerKeydownEvent, dispatchCustomEvent} = require('../helpers')
 const sinon = require('sinon')
+const { detect } = require('detect-browser')
+
+const browser = detect()
 
 QUnit.test('should throw console error about unexpected input type', (assert) => {
   const _consoleError = console.error
@@ -13,8 +16,12 @@ QUnit.test('input text', (assert) => {
   const done = assert.async()
 
   const string = 'Live for yourself'
-  Swal({input: 'text'}).then((result) => {
+  Swal({
+    input: 'text',
+    inputClass: 'custom-input-class'
+  }).then((result) => {
     assert.equal(result.value, string)
+    assert.ok(Swal.getInput().classList.contains('custom-input-class'))
     done()
   })
 
@@ -88,13 +95,21 @@ QUnit.test('input select', (assert) => {
   const selected = 'dos'
   Swal({
     input: 'select',
-    inputOptions: {uno: 1, dos: 2}
+    inputOptions: {uno: 1, dos: 2},
+    inputPlaceholder: 'Choose a number'
   }).then((result) => {
     assert.equal(result.value, selected)
     done()
   })
 
-  $('.swal2-select').value = selected
+  assert.equal(Swal.getInput().value, '')
+
+  const placeholderOption = Swal.getInput().querySelector('option')
+  assert.ok(placeholderOption.disabled)
+  assert.ok(placeholderOption.selected)
+  assert.equal(placeholderOption.textContent, 'Choose a number')
+
+  Swal.getInput().value = selected
   Swal.clickConfirm()
 })
 
@@ -114,10 +129,21 @@ QUnit.test('input checkbox', (assert) => {
 
 QUnit.test('input range', (assert) => {
   Swal({input: 'range', inputAttributes: {min: 1, max: 10}, inputValue: 5})
-  const input = $('.swal2-range input')
+  const input = Swal.getInput()
+  const output = $('.swal2-range output')
   assert.equal(input.getAttribute('min'), '1')
   assert.equal(input.getAttribute('max'), '10')
   assert.equal(input.value, '5')
+
+  if (browser.name !== 'ie') { // TODO (@limonte): make IE happy
+    input.value = 10
+    dispatchCustomEvent(input, 'input')
+    assert.equal(output.textContent, '10')
+
+    input.value = 9
+    dispatchCustomEvent(input, 'change')
+    assert.equal(output.textContent, '9')
+  }
 })
 
 if (typeof Map !== 'undefined') { // There's no Map in Adroid 4.4 - skip tests

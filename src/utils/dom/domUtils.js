@@ -6,10 +6,7 @@ export const states = {
 }
 
 export const hasClass = (elem, className) => {
-  if (elem.classList) {
-    return elem.classList.contains(className)
-  }
-  return false
+  return elem.classList.contains(className)
 }
 
 export const focusInput = (input) => {
@@ -68,11 +65,6 @@ export const hide = (elem) => {
   elem.style.display = 'none'
 }
 
-export const empty = (elem) => {
-  while (elem.firstChild) {
-    elem.removeChild(elem.firstChild)
-  }
-}
 
 // borrowed from jquery $(elem).is(':visible') implementation
 export const isVisible = (elem) => elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length)

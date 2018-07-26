@@ -22,8 +22,7 @@ export const argsToParams = (args) => {
       break
 
     default:
-      error(`Unexpected type of argument! Expected "string" or "object", got ${typeof args[0]}`)
-      return false
+      error(`Unexpected type of argument! Expected "string" or "object", got "${typeof args[0]}"`)
   }
   return params
 }

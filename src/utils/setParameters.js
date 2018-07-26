@@ -1,5 +1,5 @@
-import { swalClasses, iconTypes } from './classes.js'
-import { warn, error } from './utils.js'
+import { swalClasses } from './classes.js'
+import { warn } from './utils.js'
 import * as dom from './dom/index'
 import sweetAlert from '../sweetalert2'
 import defaultInputValidators from './defaultInputValidators'
@@ -144,30 +144,7 @@ export default function setParameters (params) {
   dom.renderProgressSteps(params)
 
   // Icon
-  const icons = dom.getIcons()
-  for (let i = 0; i < icons.length; i++) {
-    dom.hide(icons[i])
-  }
-  if (params.type) {
-    let validType = false
-    for (let iconType in iconTypes) {
-      if (params.type === iconType) {
-        validType = true
-        break
-      }
-    }
-    if (!validType) {
-      error(`Unknown alert type: ${params.type}`)
-      return false
-    }
-    const icon = popup.querySelector(`.${swalClasses.icon}.${iconTypes[params.type]}`)
-    dom.show(icon)
-
-    // Animate icon
-    if (params.animation) {
-      dom.addClass(icon, `swal2-animate-${params.type}-icon`)
-    }
-  }
+  dom.renderIcon(params)
 
   // Custom image
   const image = dom.getImage()

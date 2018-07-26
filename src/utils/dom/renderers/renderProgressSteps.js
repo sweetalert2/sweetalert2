@@ -8,7 +8,7 @@ export const renderProgressSteps = (params) => {
   let currentProgressStep = parseInt(params.currentProgressStep === null ? sweetAlert.getQueueStep() : params.currentProgressStep, 10)
   if (params.progressSteps && params.progressSteps.length) {
     dom.show(progressStepsContainer)
-    dom.empty(progressStepsContainer)
+    progressStepsContainer.innerHTML = ''
     if (currentProgressStep >= params.progressSteps.length) {
       warn(
         'Invalid currentProgressStep parameter, it should be less than progressSteps.length ' +

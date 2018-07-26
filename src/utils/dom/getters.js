@@ -30,6 +30,8 @@ export const getConfirmButton = () => elementByClass(swalClasses.confirm)
 
 export const getCancelButton = () => elementByClass(swalClasses.cancel)
 
+/* @deprecated */
+/* istanbul ignore next */
 export const getButtonsWrapper = () => {
   warnOnce(`swal.getButtonsWrapper() is deprecated and will be removed in the next major release, use swal.getActions() instead`)
   return elementByClass(swalClasses.actions)

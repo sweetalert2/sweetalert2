@@ -697,7 +697,8 @@ body.swal2-no-backdrop .swal2-shown {
   .swal2-popup .swal2-actions {
     align-items: center;
     justify-content: center;
-    margin: 1.25em auto 0; }
+    margin: 1.25em auto 0;
+    z-index: 1; }
     .swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled[disabled] {
       opacity: .4; }
     .swal2-popup .swal2-actions:not(.swal2-loading) .swal2-styled:hover {
@@ -810,6 +811,7 @@ body.swal2-no-backdrop .swal2-shown {
     font-size: 1.125em;
     font-weight: 300;
     line-height: normal;
+    z-index: 1;
     word-wrap: break-word; }
   .swal2-popup #swal2-content {
     text-align: center; }

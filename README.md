@@ -78,6 +78,14 @@ import Swal from 'sweetalert2'
 const Swal = require('sweetalert2')
 ```
 
+It's possible to import JS and CSS separately, e.g. if you need to customize styles:
+
+```js
+import swal from 'sweetalert2/dist/sweetalert2.js'
+
+import 'sweetalert2/src/sweetalert2.scss'
+```
+
 Please note that [TypeScript is well-supported](https://github.com/sweetalert2/sweetalert2/blob/master/sweetalert2.d.ts), so you don't have to install a third-party declaration file.
 
 

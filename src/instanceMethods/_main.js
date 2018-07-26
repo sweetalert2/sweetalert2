@@ -451,7 +451,9 @@ export function _main (userParams) {
           select.appendChild(placeholder)
         }
         populateInputOptions = (inputOptions) => {
-          inputOptions.forEach(([optionValue, optionLabel]) => {
+          inputOptions.forEach(inputOption => {
+            const optionValue = inputOption[0]
+            const optionLabel = inputOption[1]
             const option = document.createElement('option')
             option.value = optionValue
             option.innerHTML = optionLabel
@@ -469,7 +471,9 @@ export function _main (userParams) {
         const radio = dom.getChildByClass(domCache.content, swalClasses.radio)
         radio.innerHTML = ''
         populateInputOptions = (inputOptions) => {
-          inputOptions.forEach(([radioValue, radioLabel]) => {
+          inputOptions.forEach(inputOption => {
+            const radioValue = inputOption[0]
+            const radioLabel = inputOption[1]
             const radioInput = document.createElement('input')
             const radioLabelElement = document.createElement('label')
             radioInput.type = 'radio'

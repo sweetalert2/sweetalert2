@@ -1,5 +1,6 @@
 // https://github.com/Riim/symbol-polyfill/blob/master/index.js
 
+/* istanbul ignore next */
 export default typeof Symbol === 'function' ? Symbol : (() => {
   let idCounter = 0
   function Symbol (key) {

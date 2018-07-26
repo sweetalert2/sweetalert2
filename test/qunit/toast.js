@@ -1,4 +1,3 @@
-/* global QUnit */
 const {$, Swal, SwalWithoutAnimation} = require('./helpers')
 
 QUnit.test('.swal2-toast-shown', (assert) => {
@@ -11,7 +10,7 @@ QUnit.test('.swal2-toast-shown', (assert) => {
 })
 
 QUnit.test('.swal2-toast-column if input', (assert) => {
-  var inputs = ['text', 'email', 'password', 'number', 'tel', 'range', 'textarea', 'select', 'radio', 'checkbox', 'file', 'url']
+  const inputs = ['text', 'email', 'password', 'number', 'tel', 'range', 'textarea', 'select', 'radio', 'checkbox', 'file', 'url']
   inputs.forEach((input) => {
     SwalWithoutAnimation({input: input})
     assert.ok(document.body.classList.contains('swal2-toast-column'))

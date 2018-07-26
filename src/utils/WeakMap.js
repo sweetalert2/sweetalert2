@@ -4,6 +4,7 @@
 
 import Symbol from './Symbol'
 
+/* istanbul ignore next */
 export default typeof WeakMap === 'function' ? WeakMap : ((s, dP, hOP) => {
   function WeakMap () {
     dP(this, s, {value: Symbol('WeakMap')})

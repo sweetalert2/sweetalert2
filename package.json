@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "7.25.6",
+  "version": "7.26.0",
   "repository": "sweetalert2/sweetalert2",
   "homepage": "https://sweetalert2.github.io/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
@@ -16,8 +16,10 @@
     "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.23.3",
     "bundlesize": "^0.17.0",
+    "coveralls": "^3.0.2",
     "custom-event-polyfill": "^0.3.0",
     "detect-browser": "^2.1.0",
+    "eslint": "^5.1.0",
     "event-stream": "^3.3.4",
     "execa": "^0.10.0",
     "git-state": "^4.0.0",
@@ -26,13 +28,13 @@
     "gulp-clean-css": "^3.9.0",
     "gulp-concat": "^2.6.1",
     "gulp-css2js": "^1.1.2",
+    "gulp-eslint": "^5.0.0",
     "gulp-if": "^2.0.2",
     "gulp-load-plugins": "^1.5.0",
     "gulp-rename": "^1.2.2",
     "gulp-rollup": "^2.16.2",
     "gulp-sass": "^4.0.0",
     "gulp-sass-lint": "^1.3.4",
-    "gulp-standard": "^8.0.0",
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^4.0.2",
     "gulp-uglify": "^3.0.0",
@@ -40,6 +42,7 @@
     "jquery": "^3.3.1",
     "karma": "^2.0.0",
     "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.2",
     "karma-firefox-launcher": "^1.1.0",
     "karma-ie-launcher": "^1.0.0",
     "karma-qunit": "^2.0.0",
@@ -57,21 +60,9 @@
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-json": "^2.3.0",
     "sinon": "^5.0.7",
-    "standard": "^8.0.0",
     "tslint": "^5.8.0",
-    "typescript": "~2.1",
+    "typescript": "^2.1.0",
     "webpack": "^4.0.0"
-  },
-  "standard": {
-    "ignore": [
-      "dist/"
-    ]
-  },
-  "greenkeeper": {
-    "ignore": [
-      "gulp-standard",
-      "standard"
-    ]
   },
   "files": [
     "dist",
@@ -98,13 +89,13 @@
   },
   "scripts": {
     "start": "gulp develop --continue-on-error --skip-minification --skip-standalone",
-    "fix:lint": "standard --fix",
+    "fix:lint": "eslint --fix .",
     "test": "npm run build && npm run check",
     "test:sauce": "npm run build && npm run check:sauce",
     "build": "gulp build",
-    "check": "npm run check:linting && npm run check:bundlesize && npm run check:require-in-node && npm run check:qunit && npm run check:qunit:minified && npm run check:ts",
+    "check": "npm run check:lint && npm run check:bundlesize && npm run check:require-in-node && npm run check:qunit && npm run check:qunit:minified && npm run check:ts",
     "check:sauce": "npm run check:qunit:sauce && npm run check:qunit:minified:sauce",
-    "check:linting": "gulp lint",
+    "check:lint": "gulp lint",
     "check:bundlesize": "bundlesize -f dist/sweetalert2.all.min.js -s 15kB",
     "check:require-in-node": "node test/require-in-node",
     "check:qunit": "karma start karma.conf.js --single-run",

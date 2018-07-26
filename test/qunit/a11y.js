@@ -1,4 +1,3 @@
-/* global QUnit */
 const {$, Swal, SwalWithoutAnimation} = require('./helpers')
 const {RESTORE_FOCUS_TIMEOUT} = require('../../src/constants')
 

@@ -57,6 +57,8 @@ module.exports = function (config) {
     'test/qunit/**/*.js'
   ])
 
+  const reporters = ['spec', 'saucelabs']
+
   if (!noLaunch) {
     // Cron on Travis or check:qunit --sauce
     if (isSauce) {
@@ -72,10 +74,14 @@ module.exports = function (config) {
       // Travis
       } else {
         browsers = ['ChromeHeadless', 'Firefox']
+        if (!testMinified) {
+          reporters.push('coverage')
+        }
       }
     } else {
       // Local development
       browsers = ['Chrome']
+      reporters.push('coverage')
     }
   }
   config.set({
@@ -88,11 +94,21 @@ module.exports = function (config) {
     },
     customLaunchers: sauceLabsLaunchers,
     browsers,
-    reporters: ['spec', 'saucelabs'],
+    reporters,
     preprocessors: {
       'test/qunit/**/*.js': [
         'webpack',
         'sourcemap'
+      ],
+      'dist/*.js': [
+        'coverage'
+      ]
+    },
+    coverageReporter: {
+      dir: 'coverage',
+      reporters: [
+        { type: 'html', subdir: '.' },
+        { type: 'lcov', subdir: '.' }
       ]
     },
     files,
@@ -115,6 +131,7 @@ module.exports = function (config) {
       stats: 'errors-only'
     },
     plugins: [
+      'karma-coverage',
       'karma-webpack',
       'karma-qunit',
       'karma-spec-reporter',

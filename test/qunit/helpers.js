@@ -23,17 +23,20 @@ export const Swal = global.Swal
 export const SwalWithoutAnimation = Swal.mixin({animation: false})
 
 export const dispatchCustomEvent = (elem, eventName, eventDetail = {}) => {
-  var event = new CustomEvent(eventName, {bubbles: true, cancelable: true, detail: eventDetail})
+  const event = new CustomEvent(eventName, {bubbles: true, cancelable: true, detail: eventDetail})
   elem.dispatchEvent(event)
 }
 
-export const triggerEscape = () => {
+export const triggerKeydownEvent = (target, key, params = {}) => {
   const e = document.createEvent('HTMLEvents')
-  e.key = 'Escape'
+  e.key = key
   e.initEvent(
     'keydown',
     true, // bubbles
     true  // cancelable
   )
-  Swal.getPopup().dispatchEvent(e)
+  for (const param in params) {
+    e[param] = params[param]
+  }
+  target.dispatchEvent(e)
 }

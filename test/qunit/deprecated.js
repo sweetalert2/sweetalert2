@@ -1,5 +1,4 @@
-/* global QUnit */
-const {$, Swal, SwalWithoutAnimation, triggerEscape, isVisible} = require('./helpers')
+const {$, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible} = require('./helpers')
 
 QUnit.test('confirm button /w useRejections: true', (assert) => {
   const done = assert.async()
@@ -46,7 +45,7 @@ QUnit.test('esc key /w useRejections: true', (assert) => {
     }
   )
 
-  triggerEscape()
+  triggerKeydownEvent(Swal.getPopup(), 'Escape')
 })
 
 QUnit.test('backdrop click /w useRejections: true', (assert) => {
@@ -121,7 +120,7 @@ QUnit.test('input text /w useRejections: true', (assert) => {
 QUnit.test('built-in email validation /w useRejections: true', (assert) => {
   const done = assert.async()
 
-  var validEmailAddress = 'team+support+a.b@example.com'
+  const validEmailAddress = 'team+support+a.b@example.com'
   Swal({
     input: 'email',
     useRejections: true

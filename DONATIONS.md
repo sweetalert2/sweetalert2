@@ -3,7 +3,9 @@ We would like to thank everyone who contributed to this library. If you find our
 
 # Patrons
 
-- **[Malik Nazimanov](https://www.patreon.com/lantos)** ($1 per month)
+- **[Priyankar Bhowmik](https://www.patreon.com/pkb)** ($1 per month)
+
+- **[Malik Nazimanov](https://www.patreon.com/lantos)** ($5 per month)
 
 - **[Olli Murto](https://www.patreon.com/user/?u=9095640)** ($1 per month)
 
@@ -13,6 +15,10 @@ We would like to thank everyone who contributed to this library. If you find our
 
 
 # Donors
+
+- **Gautier Dele** (5 EUR)
+
+    > Keep going, awesome job!
 
 - **[Unique-P GmbH](https://www.unique-p.ch/)** (100 CHF)
 

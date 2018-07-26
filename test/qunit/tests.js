@@ -1,6 +1,6 @@
-/* global QUnit */
-const {$, Swal, SwalWithoutAnimation, triggerEscape, isVisible, isHidden, TIMEOUT} = require('./helpers')
+const {$, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible, isHidden, TIMEOUT} = require('./helpers')
 const { toArray } = require('../../src/utils/utils')
+const { measureScrollbar } = require('../../src/utils/dom/measureScrollbar')
 const sinon = require('sinon')
 
 QUnit.test('version is correct semver', (assert) => {
@@ -12,12 +12,36 @@ QUnit.test('modal shows up', (assert) => {
   assert.ok(Swal.isVisible())
 })
 
+QUnit.test('should throw console error about missing argumnets', (assert) => {
+  const _consoleError = console.error
+  const spy = sinon.spy(console, 'error')
+  Swal()
+  console.error = _consoleError
+  assert.ok(spy.calledWith('SweetAlert2: At least 1 argument is expected!'))
+})
+
 QUnit.test('should throw console error about unexpected params', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')
   Swal('Hello world!', {type: 'success'})
   console.error = _consoleError
   assert.ok(spy.calledWith('SweetAlert2: Unexpected type of html! Expected "string", got object'))
+})
+
+QUnit.test('the vertical scrollbar should be hidden and the according padding-right should be set', (assert) => {
+  const talltDiv = document.createElement('div')
+  talltDiv.innerHTML = Array(100).join('<div>lorem ipsum</div>')
+  document.body.appendChild(talltDiv)
+  document.body.style.paddingRight = '30px'
+
+  const scrollbarWidth = measureScrollbar()
+
+  Swal('The body has visible scrollbar, I will hide it and adjust padding-right on body')
+
+  const bodyStyles = window.getComputedStyle(document.body);
+
+  assert.equal(bodyStyles.paddingRight, (scrollbarWidth + 30) + 'px')
+  assert.equal(bodyStyles.overflowY, 'hidden')
 })
 
 QUnit.test('modal width', (assert) => {
@@ -153,27 +177,6 @@ QUnit.test('set and reset defaults', (assert) => {
   Swal.clickCancel()
 })
 
-QUnit.test('should throw console error about unexpected input type', (assert) => {
-  const _consoleError = console.error
-  const spy = sinon.spy(console, 'error')
-  Swal({input: 'invalid-input-type'})
-  console.error = _consoleError
-  assert.ok(spy.calledWith('SweetAlert2: Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "invalid-input-type"'))
-})
-
-QUnit.test('input text', (assert) => {
-  const done = assert.async()
-
-  const string = 'Live for yourself'
-  Swal({input: 'text'}).then((result) => {
-    assert.equal(result.value, string)
-    done()
-  })
-
-  $('.swal2-input').value = string
-  Swal.clickConfirm()
-})
-
 QUnit.test('validation error', (assert) => {
   const done = assert.async()
   const inputValidator = (value) => Promise.resolve(!value && 'no falsy values')
@@ -206,35 +209,6 @@ QUnit.test('validation error', (assert) => {
   }, TIMEOUT)
 })
 
-QUnit.test('built-in email validation', (assert) => {
-  const done = assert.async()
-
-  var validEmailAddress = 'team+support+a.b@example.com'
-  Swal({input: 'email'}).then((result) => {
-    assert.equal(result.value, validEmailAddress)
-    done()
-  })
-
-  $('.swal2-input').value = validEmailAddress
-  Swal.clickConfirm()
-})
-
-QUnit.test('input select', (assert) => {
-  const done = assert.async()
-
-  const selected = 'dos'
-  Swal({
-    input: 'select',
-    inputOptions: {uno: 1, dos: 2}
-  }).then((result) => {
-    assert.equal(result.value, selected)
-    done()
-  })
-
-  $('.swal2-select').value = selected
-  Swal.clickConfirm()
-})
-
 QUnit.test('should throw console error about unexpected type of InputOptions', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')
@@ -242,64 +216,6 @@ QUnit.test('should throw console error about unexpected type of InputOptions', (
   console.error = _consoleError
   assert.ok(spy.calledWith('SweetAlert2: Unexpected type of inputOptions! Expected object, Map or Promise, got string'))
 })
-
-QUnit.test('input checkbox', (assert) => {
-  const done = assert.async()
-
-  Swal({input: 'checkbox', inputAttributes: {name: 'test-checkbox'}}).then((result) => {
-    assert.equal(checkbox.getAttribute('name'), 'test-checkbox')
-    assert.equal(result.value, '1')
-    done()
-  })
-
-  const checkbox = $('.swal2-checkbox input')
-  checkbox.checked = true
-  Swal.clickConfirm()
-})
-
-QUnit.test('input range', (assert) => {
-  Swal({input: 'range', inputAttributes: {min: 1, max: 10}, inputValue: 5})
-  const input = $('.swal2-range input')
-  assert.equal(input.getAttribute('min'), '1')
-  assert.equal(input.getAttribute('max'), '10')
-  assert.equal(input.value, '5')
-})
-
-if (typeof Map !== 'undefined') { // There's no Map in Adroid 4.4 - skip tests
-  QUnit.test('input type "select", inputOptions Map', (assert) => {
-    const inputOptions = new Map()
-    inputOptions.set(2, 'Richard Stallman')
-    inputOptions.set(1, 'Linus Torvalds')
-    SwalWithoutAnimation({
-      input: 'select',
-      inputOptions,
-      inputValue: 1
-    })
-    assert.equal($('.swal2-select').querySelectorAll('option').length, 2)
-    assert.equal($('.swal2-select option:nth-child(1)').innerHTML, 'Richard Stallman')
-    assert.equal($('.swal2-select option:nth-child(1)').value, '2')
-    assert.equal($('.swal2-select option:nth-child(2)').innerHTML, 'Linus Torvalds')
-    assert.equal($('.swal2-select option:nth-child(2)').value, '1')
-    assert.equal($('.swal2-select option:nth-child(2)').selected, true)
-  })
-
-  QUnit.test('input type "radio", inputOptions Map', (assert) => {
-    const inputOptions = new Map()
-    inputOptions.set(2, 'Richard Stallman')
-    inputOptions.set(1, 'Linus Torvalds')
-    Swal({
-      input: 'radio',
-      inputOptions,
-      inputValue: 1
-    })
-    assert.equal($('.swal2-radio').querySelectorAll('label').length, 2)
-    assert.equal($('.swal2-radio label:nth-child(1)').textContent, 'Richard Stallman')
-    assert.equal($('.swal2-radio label:nth-child(1) input').value, '2')
-    assert.equal($('.swal2-radio label:nth-child(2)').textContent, 'Linus Torvalds')
-    assert.equal($('.swal2-radio label:nth-child(2) input').value, '1')
-    assert.equal($('.swal2-radio label:nth-child(2) input').checked, true)
-  })
-}
 
 QUnit.test('queue', (assert) => {
   const done = assert.async()
@@ -430,19 +346,6 @@ QUnit.test('disable/enable buttons', (assert) => {
 
   Swal.enableConfirmButton()
   assert.notOk($('.swal2-confirm').disabled)
-})
-
-QUnit.test('input radio', (assert) => {
-  Swal({
-    input: 'radio',
-    inputOptions: {
-      'one': 'one',
-      'two': 'two'
-    }
-  })
-
-  assert.equal($('.swal2-radio').querySelectorAll('label').length, 2)
-  assert.equal($('.swal2-radio').querySelectorAll('input[type="radio"]').length, 2)
 })
 
 QUnit.test('disable/enable input', (assert) => {
@@ -629,13 +532,13 @@ QUnit.test('onClose', (assert) => {
 QUnit.test('esc key', (assert) => {
   const done = assert.async()
 
-  document.body.addEventListener('keydown', (e) => {
+  document.body.addEventListener('keydown', () => {
     throw new Error('Should not propagate keydown event to body!')
   })
 
   SwalWithoutAnimation({
     title: 'Esc me',
-    onOpen: triggerEscape
+    onOpen: () => triggerKeydownEvent(Swal.getPopup(), 'Escape')
   }).then((result) => {
     assert.deepEqual(result, {dismiss: Swal.DismissReason.esc})
     done()
@@ -653,10 +556,10 @@ QUnit.test('allowEscapeKey as a function', (assert) => {
       functionWasCalled = true
       return false
     },
-    onOpen: (popup) => {
+    onOpen: () => {
       assert.equal(functionWasCalled, false)
 
-      triggerEscape()
+      triggerKeydownEvent(Swal.getPopup(), 'Escape')
 
       setTimeout(() => {
         assert.equal(functionWasCalled, true)
@@ -847,7 +750,7 @@ QUnit.test('inputValue as a Promise', (assert) => {
   const inputTypes = ['text', 'email', 'number', 'tel', 'textarea']
   const done = assert.async(inputTypes.length)
   const value = '1.1 input value'
-  const inputValue = new Promise((resolve, reject) => {
+  const inputValue = new Promise((resolve) => {
     resolve('1.1 input value')
   })
   inputTypes.forEach(input => {

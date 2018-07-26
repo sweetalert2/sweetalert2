@@ -93,10 +93,15 @@ declare module 'sweetalert2' {
         function getImage(): HTMLElement;
 
         /**
+         * Gets the close button.
+         */
+        function getCloseButton(): HTMLElement;
+
+        /**
          * Gets all icons. The current visible icon will have `style="display: flex"`,
          * all other will be hidden by `style="display: none"`.
          */
-        function getIcons(): NodeListOf<HTMLElement>;
+        function getIcons(): Array<HTMLElement>;
 
         /**
          * Gets the "Confirm" button.
@@ -122,6 +127,11 @@ declare module 'sweetalert2' {
          * Gets the modal footer.
          */
         function getFooter(): HTMLElement;
+
+        /**
+         * Gets all focusable elements in the popup.
+         */
+        function getFocusableElements(): Array<HTMLElement>;
 
         /**
          * Enables "Confirm" and "Cancel" buttons.

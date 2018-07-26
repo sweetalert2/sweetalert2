@@ -22,6 +22,24 @@ QUnit.test('input text', (assert) => {
   Swal.clickConfirm()
 })
 
+QUnit.test('input textarea', (assert) => {
+  const done = assert.async()
+
+  Swal({
+    input: 'textarea',
+    inputAutoTrim: false
+  }).then((result) => {
+    assert.equal(result.value, 'hola!')
+    done()
+  })
+
+  // Enter should not submit but put a newline to the textarea
+  triggerKeydownEvent(Swal.getInput(), 'Enter')
+
+  Swal.getInput().value = 'hola!'
+  Swal.clickConfirm()
+})
+
 QUnit.test('input email + built-in email validation', (assert) => {
   const done = assert.async()
 

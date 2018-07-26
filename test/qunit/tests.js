@@ -20,12 +20,29 @@ QUnit.test('should throw console error about missing argumnets', (assert) => {
   assert.ok(spy.calledWith('SweetAlert2: At least 1 argument is expected!'))
 })
 
+QUnit.test('should throw console warning about invalid params', (assert) => {
+  const _consoleWarn = console.warn
+  const spy = sinon.spy(console, 'warn')
+  Swal({invalidParam: 'oops'})
+  console.warn = _consoleWarn
+  assert.ok(spy.calledWith('SweetAlert2: Unknown parameter "invalidParam"'))
+})
+
 QUnit.test('should throw console error about unexpected params', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')
   Swal('Hello world!', {type: 'success'})
   console.error = _consoleError
   assert.ok(spy.calledWith('SweetAlert2: Unexpected type of html! Expected "string", got object'))
+})
+
+QUnit.test('should show the popup with OK button in case of empty object passed as an argument', (assert) => {
+  Swal({})
+  assert.ok(isVisible(Swal.getConfirmButton()))
+  assert.ok(isHidden(Swal.getCancelButton()))
+  assert.equal(Swal.getTitle().textContent, '')
+  assert.equal(Swal.getContent().textContent, '')
+  assert.ok(isHidden(Swal.getFooter()))
 })
 
 QUnit.test('the vertical scrollbar should be hidden and the according padding-right should be set', (assert) => {
@@ -349,6 +366,10 @@ QUnit.test('disable/enable buttons', (assert) => {
 })
 
 QUnit.test('disable/enable input', (assert) => {
+  Swal('(disable/enable)Input should not fail if there is no input')
+  Swal.disableInput()
+  Swal.enableInput()
+
   Swal({
     input: 'text'
   })

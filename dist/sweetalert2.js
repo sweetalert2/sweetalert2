@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.25.4
+* sweetalert2 v7.26.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -266,7 +266,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.25.6";
+var version = "7.26.0";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -488,9 +488,13 @@ var getFocusableElements = function getFocusableElements() {
   });
 
   // https://github.com/jkup/focusable/blob/master/index.js
-  var otherFocusableElements = toArray$1(getPopup().querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable], audio[controls], video[controls]'));
+  var otherFocusableElements = toArray$1(getPopup().querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable], audio[controls], video[controls]')).filter(function (el) {
+    return el.getAttribute('tabindex') !== '-1';
+  });
 
-  return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements));
+  return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements)).filter(function (el) {
+    return isVisible(el);
+  });
 };
 
 var isModal = function isModal() {
@@ -595,7 +599,7 @@ var parseHtmlToContainer = function parseHtmlToContainer(param, target) {
     }
   } else if (param) {
     target.innerHTML = param;
-  } else {}
+  }
   show(target);
 };
 
@@ -689,6 +693,8 @@ var undoScrollbar = function undoScrollbar() {
 };
 
 // Fix iOS scrolling http://stackoverflow.com/q/39626302/1331425
+
+/* istanbul ignore next */
 var iOSfix = function iOSfix() {
   var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
   if (iOS && !hasClass(document.body, swalClasses.iosfix)) {
@@ -698,6 +704,7 @@ var iOSfix = function iOSfix() {
   }
 };
 
+/* istanbul ignore next */
 var undoIOSfix = function undoIOSfix() {
   if (hasClass(document.body, swalClasses.iosfix)) {
     var offset = parseInt(document.body.style.top, 10);
@@ -1044,7 +1051,7 @@ var queue = function queue(steps) {
     document.body.removeAttribute('data-swal2-queue-step');
   };
   var queueResult = [];
-  return new Promise(function (resolve, reject) {
+  return new Promise(function (resolve) {
     (function step(i, callback) {
       if (i < currentSteps.length) {
         document.body.setAttribute('data-swal2-queue-step', i);
@@ -1142,11 +1149,13 @@ var staticMethods = Object.freeze({
 	getContent: getContent,
 	getImage: getImage,
 	getIcons: getIcons,
+	getCloseButton: getCloseButton,
 	getButtonsWrapper: getButtonsWrapper,
 	getActions: getActions,
 	getConfirmButton: getConfirmButton,
 	getCancelButton: getCancelButton,
 	getFooter: getFooter,
+	getFocusableElements: getFocusableElements,
 	isLoading: isLoading,
 	fire: fire,
 	mixin: mixin,
@@ -1161,6 +1170,7 @@ var staticMethods = Object.freeze({
 
 // https://github.com/Riim/symbol-polyfill/blob/master/index.js
 
+/* istanbul ignore next */
 var _Symbol = typeof Symbol === 'function' ? Symbol : function () {
   var idCounter = 0;
   function _Symbol(key) {
@@ -1174,6 +1184,7 @@ var _Symbol = typeof Symbol === 'function' ? Symbol : function () {
 // Related issue: https://github.com/sweetalert2/sweetalert2/issues/1071
 // http://webreflection.blogspot.fi/2015/04/a-weakmap-polyfill-in-20-lines-of-code.html
 
+/* istanbul ignore next */
 var WeakMap$1 = typeof WeakMap === 'function' ? WeakMap : function (s, dP, hOP) {
   function WeakMap() {
     dP(this, s, { value: _Symbol('WeakMap') });
@@ -1366,7 +1377,9 @@ function hideProgressSteps() {
 var Timer = function Timer(callback, delay) {
   classCallCheck(this, Timer);
 
-  var id, started, running;
+  var id = void 0,
+      started = void 0,
+      running = void 0;
   var remaining = delay;
   this.start = function () {
     running = true;
@@ -1925,7 +1938,7 @@ function _main(userParams) {
 
     if (innerParams.toast) {
       // Closing popup by internal click
-      domCache.popup.onclick = function (e) {
+      domCache.popup.onclick = function () {
         if (innerParams.showConfirmButton || innerParams.showCancelButton || innerParams.showCloseButton || innerParams.input) {
           return;
         }
@@ -1995,11 +2008,7 @@ function _main(userParams) {
           index = focusableElements.length - 1;
         }
 
-        // determine if element is visible
-        var el = focusableElements[index];
-        if (isVisible(el)) {
-          return el.focus();
-        }
+        return focusableElements[index].focus();
       }
       // no visible focusable elements, focus the popup
       domCache.popup.focus();
@@ -2028,7 +2037,7 @@ function _main(userParams) {
         var targetElement = e.target || e.srcElement;
 
         var focusableElements = getFocusableElements(innerParams.focusCancel);
-        var btnIndex = -1; // Find the button - note, this is a nodelist, not an array.
+        var btnIndex = -1;
         for (var _i2 = 0; _i2 < focusableElements.length; _i2++) {
           if (targetElement === focusableElements[_i2]) {
             btnIndex = _i2;
@@ -2125,112 +2134,128 @@ function _main(userParams) {
       case 'number':
       case 'tel':
       case 'url':
-        input = getChildByClass(domCache.content, swalClasses.input);
-        input.value = innerParams.inputValue;
-        input.placeholder = innerParams.inputPlaceholder;
-        input.type = innerParams.input;
-        show(input);
-        break;
+        {
+          input = getChildByClass(domCache.content, swalClasses.input);
+          input.value = innerParams.inputValue;
+          input.placeholder = innerParams.inputPlaceholder;
+          input.type = innerParams.input;
+          show(input);
+          break;
+        }
       case 'file':
-        input = getChildByClass(domCache.content, swalClasses.file);
-        input.placeholder = innerParams.inputPlaceholder;
-        input.type = innerParams.input;
-        show(input);
-        break;
+        {
+          input = getChildByClass(domCache.content, swalClasses.file);
+          input.placeholder = innerParams.inputPlaceholder;
+          input.type = innerParams.input;
+          show(input);
+          break;
+        }
       case 'range':
-        var range = getChildByClass(domCache.content, swalClasses.range);
-        var rangeInput = range.querySelector('input');
-        var rangeOutput = range.querySelector('output');
-        rangeInput.value = innerParams.inputValue;
-        rangeInput.type = innerParams.input;
-        rangeOutput.value = innerParams.inputValue;
-        show(range);
-        break;
+        {
+          var range = getChildByClass(domCache.content, swalClasses.range);
+          var rangeInput = range.querySelector('input');
+          var rangeOutput = range.querySelector('output');
+          rangeInput.value = innerParams.inputValue;
+          rangeInput.type = innerParams.input;
+          rangeOutput.value = innerParams.inputValue;
+          show(range);
+          break;
+        }
       case 'select':
-        var select = getChildByClass(domCache.content, swalClasses.select);
-        select.innerHTML = '';
-        if (innerParams.inputPlaceholder) {
-          var placeholder = document.createElement('option');
-          placeholder.innerHTML = innerParams.inputPlaceholder;
-          placeholder.value = '';
-          placeholder.disabled = true;
-          placeholder.selected = true;
-          select.appendChild(placeholder);
-        }
-        populateInputOptions = function populateInputOptions(inputOptions) {
-          inputOptions.forEach(function (_ref) {
-            var _ref2 = slicedToArray(_ref, 2),
-                optionValue = _ref2[0],
-                optionLabel = _ref2[1];
-
-            var option = document.createElement('option');
-            option.value = optionValue;
-            option.innerHTML = optionLabel;
-            if (innerParams.inputValue.toString() === optionValue.toString()) {
-              option.selected = true;
-            }
-            select.appendChild(option);
-          });
-          show(select);
-          select.focus();
-        };
-        break;
-      case 'radio':
-        var radio = getChildByClass(domCache.content, swalClasses.radio);
-        radio.innerHTML = '';
-        populateInputOptions = function populateInputOptions(inputOptions) {
-          inputOptions.forEach(function (_ref3) {
-            var _ref4 = slicedToArray(_ref3, 2),
-                radioValue = _ref4[0],
-                radioLabel = _ref4[1];
-
-            var radioInput = document.createElement('input');
-            var radioLabelElement = document.createElement('label');
-            radioInput.type = 'radio';
-            radioInput.name = swalClasses.radio;
-            radioInput.value = radioValue;
-            if (innerParams.inputValue.toString() === radioValue.toString()) {
-              radioInput.checked = true;
-            }
-            var label = document.createElement('span');
-            label.innerHTML = radioLabel;
-            label.className = swalClasses.label;
-            radioLabelElement.appendChild(radioInput);
-            radioLabelElement.appendChild(label);
-            radio.appendChild(radioLabelElement);
-          });
-          show(radio);
-          var radios = radio.querySelectorAll('input');
-          if (radios.length) {
-            radios[0].focus();
+        {
+          var select = getChildByClass(domCache.content, swalClasses.select);
+          select.innerHTML = '';
+          if (innerParams.inputPlaceholder) {
+            var placeholder = document.createElement('option');
+            placeholder.innerHTML = innerParams.inputPlaceholder;
+            placeholder.value = '';
+            placeholder.disabled = true;
+            placeholder.selected = true;
+            select.appendChild(placeholder);
           }
-        };
-        break;
-      case 'checkbox':
-        var checkbox = getChildByClass(domCache.content, swalClasses.checkbox);
-        var checkboxInput = _this.getInput('checkbox');
-        checkboxInput.type = 'checkbox';
-        checkboxInput.value = 1;
-        checkboxInput.id = swalClasses.checkbox;
-        checkboxInput.checked = Boolean(innerParams.inputValue);
-        var label = checkbox.getElementsByTagName('span');
-        if (label.length) {
-          checkbox.removeChild(label[0]);
+          populateInputOptions = function populateInputOptions(inputOptions) {
+            inputOptions.forEach(function (_ref) {
+              var _ref2 = slicedToArray(_ref, 2),
+                  optionValue = _ref2[0],
+                  optionLabel = _ref2[1];
+
+              var option = document.createElement('option');
+              option.value = optionValue;
+              option.innerHTML = optionLabel;
+              if (innerParams.inputValue.toString() === optionValue.toString()) {
+                option.selected = true;
+              }
+              select.appendChild(option);
+            });
+            show(select);
+            select.focus();
+          };
+          break;
         }
-        label = document.createElement('span');
-        label.className = swalClasses.label;
-        label.innerHTML = innerParams.inputPlaceholder;
-        checkbox.appendChild(label);
-        show(checkbox);
-        break;
+      case 'radio':
+        {
+          var radio = getChildByClass(domCache.content, swalClasses.radio);
+          radio.innerHTML = '';
+          populateInputOptions = function populateInputOptions(inputOptions) {
+            inputOptions.forEach(function (_ref3) {
+              var _ref4 = slicedToArray(_ref3, 2),
+                  radioValue = _ref4[0],
+                  radioLabel = _ref4[1];
+
+              var radioInput = document.createElement('input');
+              var radioLabelElement = document.createElement('label');
+              radioInput.type = 'radio';
+              radioInput.name = swalClasses.radio;
+              radioInput.value = radioValue;
+              if (innerParams.inputValue.toString() === radioValue.toString()) {
+                radioInput.checked = true;
+              }
+              var label = document.createElement('span');
+              label.innerHTML = radioLabel;
+              label.className = swalClasses.label;
+              radioLabelElement.appendChild(radioInput);
+              radioLabelElement.appendChild(label);
+              radio.appendChild(radioLabelElement);
+            });
+            show(radio);
+            var radios = radio.querySelectorAll('input');
+            if (radios.length) {
+              radios[0].focus();
+            }
+          };
+          break;
+        }
+      case 'checkbox':
+        {
+          var checkbox = getChildByClass(domCache.content, swalClasses.checkbox);
+          var checkboxInput = _this.getInput('checkbox');
+          checkboxInput.type = 'checkbox';
+          checkboxInput.value = 1;
+          checkboxInput.id = swalClasses.checkbox;
+          checkboxInput.checked = Boolean(innerParams.inputValue);
+          var label = checkbox.getElementsByTagName('span');
+          if (label.length) {
+            checkbox.removeChild(label[0]);
+          }
+          label = document.createElement('span');
+          label.className = swalClasses.label;
+          label.innerHTML = innerParams.inputPlaceholder;
+          checkbox.appendChild(label);
+          show(checkbox);
+          break;
+        }
       case 'textarea':
-        var textarea = getChildByClass(domCache.content, swalClasses.textarea);
-        textarea.value = innerParams.inputValue;
-        textarea.placeholder = innerParams.inputPlaceholder;
-        show(textarea);
-        break;
+        {
+          var textarea = getChildByClass(domCache.content, swalClasses.textarea);
+          textarea.value = innerParams.inputValue;
+          textarea.placeholder = innerParams.inputPlaceholder;
+          show(textarea);
+          break;
+        }
       case null:
-        break;
+        {
+          break;
+        }
       default:
         error('Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "' + innerParams.input + '"');
         break;
@@ -2329,7 +2354,7 @@ function SweetAlert() {
   }
 
   if (typeof args[0] === 'undefined') {
-    error('SweetAlert2 expects at least 1 attribute!');
+    error('At least 1 argument is expected!');
     return false;
   }
 

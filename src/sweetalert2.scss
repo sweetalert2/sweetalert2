@@ -293,6 +293,7 @@ body {
     align-items: center;
     justify-content: center;
     margin: $swal2-actions-margin;
+    z-index: 1; // prevent sucess icon overlapping buttons
 
     &:not(.swal2-loading) {
       .swal2-styled {
@@ -447,6 +448,7 @@ body {
     font-size: $swal2-content-font-size;
     font-weight: 300;
     line-height: normal;
+    z-index: 1; // prevent sucess icon overlapping the content
     word-wrap: break-word;
   }
 

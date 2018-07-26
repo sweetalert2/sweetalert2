@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.26.0
+* sweetalert2 v7.26.1
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -127,48 +127,6 @@ var possibleConstructorReturn = function (self, call) {
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
 
-
-
-
-
-var slicedToArray = function () {
-  function sliceIterator(arr, i) {
-    var _arr = [];
-    var _n = true;
-    var _d = false;
-    var _e = undefined;
-
-    try {
-      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-        _arr.push(_s.value);
-
-        if (i && _arr.length === i) break;
-      }
-    } catch (err) {
-      _d = true;
-      _e = err;
-    } finally {
-      try {
-        if (!_n && _i["return"]) _i["return"]();
-      } finally {
-        if (_d) throw _e;
-      }
-    }
-
-    return _arr;
-  }
-
-  return function (arr, i) {
-    if (Array.isArray(arr)) {
-      return arr;
-    } else if (Symbol.iterator in Object(arr)) {
-      return sliceIterator(arr, i);
-    } else {
-      throw new TypeError("Invalid attempt to destructure non-iterable instance");
-    }
-  };
-}();
-
 var consolePrefix = 'SweetAlert2:';
 
 /**
@@ -266,7 +224,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.26.0";
+var version = "7.26.1";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -2174,11 +2132,9 @@ function _main(userParams) {
             select.appendChild(placeholder);
           }
           populateInputOptions = function populateInputOptions(inputOptions) {
-            inputOptions.forEach(function (_ref) {
-              var _ref2 = slicedToArray(_ref, 2),
-                  optionValue = _ref2[0],
-                  optionLabel = _ref2[1];
-
+            inputOptions.forEach(function (inputOption) {
+              var optionValue = inputOption[0];
+              var optionLabel = inputOption[1];
               var option = document.createElement('option');
               option.value = optionValue;
               option.innerHTML = optionLabel;
@@ -2197,11 +2153,9 @@ function _main(userParams) {
           var radio = getChildByClass(domCache.content, swalClasses.radio);
           radio.innerHTML = '';
           populateInputOptions = function populateInputOptions(inputOptions) {
-            inputOptions.forEach(function (_ref3) {
-              var _ref4 = slicedToArray(_ref3, 2),
-                  radioValue = _ref4[0],
-                  radioLabel = _ref4[1];
-
+            inputOptions.forEach(function (inputOption) {
+              var radioValue = inputOption[0];
+              var radioLabel = inputOption[1];
               var radioInput = document.createElement('input');
               var radioLabelElement = document.createElement('label');
               radioInput.type = 'radio';

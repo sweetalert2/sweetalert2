@@ -5,4 +5,4 @@ export * from './instanceMethods/enable-disable-elements.js'
 export * from './instanceMethods/show-reset-validation-error.js'
 export * from './instanceMethods/progress-steps.js'
 export * from './instanceMethods/_main.js'
-
+export * from './instanceMethods/update.js'

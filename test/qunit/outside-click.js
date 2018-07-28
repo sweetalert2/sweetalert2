@@ -1,4 +1,5 @@
 const {$, Swal, SwalWithoutAnimation, dispatchCustomEvent, TIMEOUT} = require('./helpers')
+const sinon = require('sinon')
 
 const simulateMouseEvent = (x, y, eventType) => {
   dispatchCustomEvent(
@@ -83,4 +84,18 @@ QUnit.test('allowOutsideClick: () => !swal.isLoading()', (assert) => {
     Swal.hideLoading()
     $('.swal2-container').click()
   }, TIMEOUT)
+})
+
+QUnit.test('allowOutsideClick: should throw console warning for popups without backdrop', (assert) => {
+  const _consoleWarn = console.warn
+  const spy = sinon.spy(console, 'warn')
+
+  SwalWithoutAnimation({
+    title: 'allowOutsideClick is not compatible with modeless popups',
+    allowOutsideClick: true,
+    backdrop: false
+  })
+
+  console.warn = _consoleWarn
+  assert.ok(spy.calledWith('SweetAlert2: "allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`'))
 })

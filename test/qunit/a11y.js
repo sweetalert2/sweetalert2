@@ -20,6 +20,18 @@ QUnit.test('previous active element', (assert) => {
   }, RESTORE_FOCUS_TIMEOUT)
 })
 
+QUnit.test('should focus body in there is not previuos active element', (assert) => {
+  const done = assert.async()
+
+  SwalWithoutAnimation('I was called programmatically and will focus body after closing')
+  Swal.clickConfirm()
+
+  setTimeout(() => {
+    assert.equal(document.activeElement, document.body)
+    done()
+  }, RESTORE_FOCUS_TIMEOUT)
+})
+
 QUnit.test('dialog aria attributes', (assert) => {
   Swal('Modal dialog')
   assert.equal($('.swal2-modal').getAttribute('role'), 'dialog')

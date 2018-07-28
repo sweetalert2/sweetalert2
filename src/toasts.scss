@@ -126,6 +126,7 @@ body {
     }
 
     .swal2-title {
+      flex-grow: 1;
       justify-content: flex-start;
       margin: 0 .6em;
       font-size: $swal2-toast-title-font-size;

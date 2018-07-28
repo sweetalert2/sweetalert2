@@ -129,32 +129,8 @@ export default function setParameters (params) {
   // Icon
   dom.renderIcon(params)
 
-  // Custom image
-  const image = dom.getImage()
-  if (params.imageUrl) {
-    image.setAttribute('src', params.imageUrl)
-    image.setAttribute('alt', params.imageAlt)
-    dom.show(image)
-
-    if (params.imageWidth) {
-      image.setAttribute('width', params.imageWidth)
-    } else {
-      image.removeAttribute('width')
-    }
-
-    if (params.imageHeight) {
-      image.setAttribute('height', params.imageHeight)
-    } else {
-      image.removeAttribute('height')
-    }
-
-    image.className = swalClasses.image
-    if (params.imageClass) {
-      dom.addClass(image, params.imageClass)
-    }
-  } else {
-    dom.hide(image)
-  }
+  // Image
+  dom.renderImage(params)
 
   // Cancel button
   if (params.showCancelButton) {

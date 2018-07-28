@@ -12,6 +12,8 @@ export const restoreActiveElement = () => {
     if (globalState.previousActiveElement && globalState.previousActiveElement.focus) {
       globalState.previousActiveElement.focus()
       globalState.previousActiveElement = null
+    } else if (document.body) {
+      document.body.focus()
     }
   }, RESTORE_FOCUS_TIMEOUT) // issues/900
   if (typeof x !== 'undefined' && typeof y !== 'undefined') { // IE doesn't have scrollX/scrollY support

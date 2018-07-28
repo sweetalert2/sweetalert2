@@ -1,6 +1,7 @@
 import * as dom from '../utils/dom/index'
 
 export {
+  getContainer,
   getPopup,
   getTitle,
   getContent,

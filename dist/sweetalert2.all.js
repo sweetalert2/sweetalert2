@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.26.4
+* sweetalert2 v7.26.5
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -224,7 +224,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.26.4";
+var version = "7.26.5";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -2610,78 +2610,77 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "            transform: rotateX(0deg);\n" +
 "    opacity: 1; } }\n" +
 "\n" +
-"body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast {\n" +
-"  flex-direction: column;\n" +
-"  align-items: stretch; }\n" +
-"  body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast .swal2-actions {\n" +
-"    flex: 1;\n" +
-"    align-self: stretch;\n" +
-"    height: 2.2em; }\n" +
-"  body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast .swal2-loading {\n" +
-"    justify-content: center; }\n" +
-"  body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast .swal2-input {\n" +
-"    height: 2em;\n" +
-"    margin: .3125em auto;\n" +
-"    font-size: 1em; }\n" +
-"  body.swal2-toast-shown.swal2-toast-column > .swal2-container > .swal2-toast .swal2-validationerror {\n" +
-"    font-size: 1em; }\n" +
-"\n" +
-"body.swal2-toast-shown > .swal2-container {\n" +
+"body.swal2-toast-column .swal2-container {\n" +
 "  position: fixed;\n" +
 "  background-color: transparent; }\n" +
-"  body.swal2-toast-shown > .swal2-container.swal2-shown {\n" +
+"  body.swal2-toast-column .swal2-container > .swal2-toast {\n" +
+"    flex-direction: column;\n" +
+"    align-items: stretch; }\n" +
+"    body.swal2-toast-column .swal2-container > .swal2-toast .swal2-actions {\n" +
+"      flex: 1;\n" +
+"      align-self: stretch;\n" +
+"      height: 2.2em; }\n" +
+"    body.swal2-toast-column .swal2-container > .swal2-toast .swal2-loading {\n" +
+"      justify-content: center; }\n" +
+"    body.swal2-toast-column .swal2-container > .swal2-toast .swal2-input {\n" +
+"      height: 2em;\n" +
+"      margin: .3125em auto;\n" +
+"      font-size: 1em; }\n" +
+"    body.swal2-toast-column .swal2-container > .swal2-toast .swal2-validationerror {\n" +
+"      font-size: 1em; }\n" +
+"  body.swal2-toast-column .swal2-container.swal2-shown {\n" +
 "    background-color: transparent; }\n" +
-"  body.swal2-toast-shown > .swal2-container.swal2-top {\n" +
+"  body.swal2-toast-column .swal2-container.swal2-top {\n" +
 "    top: 0;\n" +
 "    right: auto;\n" +
 "    bottom: auto;\n" +
 "    left: 50%;\n" +
 "    -webkit-transform: translateX(-50%);\n" +
 "            transform: translateX(-50%); }\n" +
-"  body.swal2-toast-shown > .swal2-container.swal2-top-end, body.swal2-toast-shown > .swal2-container.swal2-top-right {\n" +
+"  body.swal2-toast-column .swal2-container.swal2-top-end, body.swal2-toast-column .swal2-container.swal2-top-right {\n" +
 "    top: 0;\n" +
 "    right: 0;\n" +
 "    bottom: auto;\n" +
 "    left: auto; }\n" +
-"  body.swal2-toast-shown > .swal2-container.swal2-top-start, body.swal2-toast-shown > .swal2-container.swal2-top-left {\n" +
+"  body.swal2-toast-column .swal2-container.swal2-top-start, body.swal2-toast-column .swal2-container.swal2-top-left {\n" +
 "    top: 0;\n" +
 "    right: auto;\n" +
 "    bottom: auto;\n" +
 "    left: 0; }\n" +
-"  body.swal2-toast-shown > .swal2-container.swal2-center-start, body.swal2-toast-shown > .swal2-container.swal2-center-left {\n" +
+"  body.swal2-toast-column .swal2-container.swal2-center-start, body.swal2-toast-column .swal2-container.swal2-center-left {\n" +
 "    top: 50%;\n" +
 "    right: auto;\n" +
 "    bottom: auto;\n" +
 "    left: 0;\n" +
 "    -webkit-transform: translateY(-50%);\n" +
 "            transform: translateY(-50%); }\n" +
-"  body.swal2-toast-shown > .swal2-container.swal2-center {\n" +
+"  body.swal2-toast-column .swal2-container.swal2-center {\n" +
 "    top: 50%;\n" +
 "    right: auto;\n" +
 "    bottom: auto;\n" +
 "    left: 50%;\n" +
 "    -webkit-transform: translate(-50%, -50%);\n" +
 "            transform: translate(-50%, -50%); }\n" +
-"  body.swal2-toast-shown > .swal2-container.swal2-center-end, body.swal2-toast-shown > .swal2-container.swal2-center-right {\n" +
+"  body.swal2-toast-column .swal2-container.swal2-center-end, body.swal2-toast-column .swal2-container.swal2-center-right {\n" +
 "    top: 50%;\n" +
 "    right: 0;\n" +
 "    bottom: auto;\n" +
 "    left: auto;\n" +
 "    -webkit-transform: translateY(-50%);\n" +
 "            transform: translateY(-50%); }\n" +
-"  body.swal2-toast-shown > .swal2-container.swal2-bottom-start, body.swal2-toast-shown > .swal2-container.swal2-bottom-left {\n" +
+"  body.swal2-toast-column .swal2-container.swal2-bottom-start, body.swal2-toast-column .swal2-container.swal2-bottom-left {\n" +
 "    top: auto;\n" +
 "    right: auto;\n" +
 "    bottom: 0;\n" +
 "    left: 0; }\n" +
-"  body.swal2-toast-shown > .swal2-container.swal2-bottom {\n" +
+"  body.swal2-toast-column .swal2-container.swal2-bottom {\n" +
 "    top: auto;\n" +
 "    right: auto;\n" +
 "    bottom: 0;\n" +
 "    left: 50%;\n" +
 "    -webkit-transform: translateX(-50%);\n" +
 "            transform: translateX(-50%); }\n" +
-"  body.swal2-toast-shown > .swal2-container.swal2-bottom-end, body.swal2-toast-shown > .swal2-container.swal2-bottom-right {\n" +
+"  body.swal2-toast-column .swal2-container.swal2-bottom-end, body.swal2-toast-column .swal2-container.swal2-bottom-right {\n" +
 "    top: auto;\n" +
 "    right: 0;\n" +
 "    bottom: 0;\n" +

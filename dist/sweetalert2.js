@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.26.2
+* sweetalert2 v7.26.4
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -224,7 +224,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.26.3";
+var version = "7.26.4";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -818,6 +818,8 @@ var restoreActiveElement = function restoreActiveElement() {
     if (globalState.previousActiveElement && globalState.previousActiveElement.focus) {
       globalState.previousActiveElement.focus();
       globalState.previousActiveElement = null;
+    } else if (document.body) {
+      document.body.focus();
     }
   }, RESTORE_FOCUS_TIMEOUT); // issues/900
   if (typeof x !== 'undefined' && typeof y !== 'undefined') {
@@ -1017,6 +1019,15 @@ var isValidParameter = function isValidParameter(paramName) {
 };
 
 /**
+ * Is valid parameter for toasts
+ * @param {String} paramName
+ */
+var isValidToastParameter = function isValidToastParameter(paramName) {
+  var incompatibleParams = ['allowOutsideClick', 'allowEnterKey', 'backdrop', 'focusConfirm', 'focusCancel', 'heightAuto', 'keydownListenerCapture'];
+  return incompatibleParams.indexOf(paramName) === -1;
+};
+
+/**
  * Is deprecated parameter
  * @param {String} paramName
  */
@@ -1033,6 +1044,9 @@ var showWarningsForParams = function showWarningsForParams(params) {
   for (var param in params) {
     if (!isValidParameter(param)) {
       warn('Unknown parameter "' + param + '"');
+    }
+    if (params.toast && !isValidToastParameter(param)) {
+      warn('The parameter "' + param + '" is incompatible with toasts');
     }
     if (isDeprecatedParameter(param)) {
       warnOnce('The parameter "' + param + '" is deprecated and will be removed in the next major release.');
@@ -1573,6 +1587,9 @@ function setParameters(params) {
   } else if (!params.backdrop) {
     addClass([document.documentElement, document.body], swalClasses['no-backdrop']);
   }
+  if (!params.backdrop && params.allowOutsideClick) {
+    warn('"allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`');
+  }
 
   // Position
   if (params.position in swalClasses) {
@@ -1826,9 +1843,8 @@ function _main(userParams) {
     };
 
     // Mouse interactions
-    var onButtonEvent = function onButtonEvent(event) {
-      var e = event || window.event;
-      var target = e.target || e.srcElement;
+    var onButtonEvent = function onButtonEvent(e) {
+      var target = e.target;
       var confirmButton = domCache.confirmButton,
           cancelButton = domCache.cancelButton;
 
@@ -2001,7 +2017,7 @@ function _main(userParams) {
 
         // TAB
       } else if (e.key === 'Tab') {
-        var targetElement = e.target || e.srcElement;
+        var targetElement = e.target;
 
         var focusableElements = getFocusableElements(innerParams.focusCancel);
         var btnIndex = -1;

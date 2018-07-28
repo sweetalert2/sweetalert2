@@ -61,7 +61,6 @@ export default function setParameters (params) {
   }
 
   const container = dom.getContainer()
-  const content = dom.getContent().querySelector('#' + swalClasses.content)
   const actions = dom.getActions()
   const confirmButton = dom.getConfirmButton()
   const cancelButton = dom.getCancelButton()
@@ -71,22 +70,14 @@ export default function setParameters (params) {
   // Title
   dom.renderTitle(params)
 
+  // Content
+  dom.renderContent(params)
+
+  // Backdrop
   if (typeof params.backdrop === 'string') {
     dom.getContainer().style.background = params.backdrop
   } else if (!params.backdrop) {
     dom.addClass([document.documentElement, document.body], swalClasses['no-backdrop'])
-  }
-
-  // Content as HTML
-  if (params.html) {
-    dom.parseHtmlToContainer(params.html, content)
-
-    // Content as plain text
-  } else if (params.text) {
-    content.textContent = params.text
-    dom.show(content)
-  } else {
-    dom.hide(content)
   }
 
   // Position

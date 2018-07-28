@@ -225,7 +225,9 @@ body {
     '.swal2-bottom-start',
     '.swal2-bottom-end',
     '.swal2-bottom-left',
-    '.swal2-bottom-right') {
+    '.swal2-bottom-right',
+    '.swal2-grow-fullscreen'
+  ) {
     & > .swal2-modal {
       margin: auto;
     }

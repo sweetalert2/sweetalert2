@@ -70,7 +70,7 @@ module.exports = function (config) {
     } else if (isCi) {
       // AppVeyor
       if (isWindows) {
-        browsers = ['IE']
+        browsers = ['IE', 'ChromeHeadless', 'Firefox']
       // Travis
       } else {
         browsers = ['ChromeHeadless', 'Firefox']

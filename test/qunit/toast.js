@@ -26,19 +26,28 @@ QUnit.test('should throw console warnings for incompatible parameters', (assert)
 QUnit.test('.swal2-toast-column if input', (assert) => {
   const inputs = ['text', 'email', 'password', 'number', 'tel', 'range', 'textarea', 'select', 'radio', 'checkbox', 'file', 'url']
   inputs.forEach((input) => {
-    SwalWithoutAnimation({input: input})
+    SwalWithoutAnimation({toast: true, input: input})
     assert.ok(document.body.classList.contains('swal2-toast-column'))
+
+    SwalWithoutAnimation({input: input})
+    assert.notOk(document.body.classList.contains('swal2-toast-column'))
   })
 })
 
 QUnit.test('.swal2-toast-column if footer', (assert) => {
-  SwalWithoutAnimation({footer: 'footer'})
+  SwalWithoutAnimation({toast: true, footer: 'footer'})
   assert.ok(document.body.classList.contains('swal2-toast-column'))
+
+  SwalWithoutAnimation({footer: 'footer'})
+  assert.notOk(document.body.classList.contains('swal2-toast-column'))
 })
 
 QUnit.test('.swal2-toast-column if close button', (assert) => {
-  SwalWithoutAnimation({showCloseButton: true})
+  SwalWithoutAnimation({toast: true, showCloseButton: true})
   assert.ok(document.body.classList.contains('swal2-toast-column'))
+
+  SwalWithoutAnimation({showCloseButton: true})
+  assert.notOk(document.body.classList.contains('swal2-toast-column'))
 })
 
 QUnit.test('toast click closes when no buttons or input are specified', (assert) => {

@@ -370,8 +370,10 @@ export function _main (userParams) {
     this.hideLoading()
     this.resetValidationError()
 
-    if (innerParams.input || innerParams.footer || innerParams.showCloseButton) {
+    if (innerParams.toast && (innerParams.input || innerParams.footer || innerParams.showCloseButton)) {
       dom.addClass(document.body, swalClasses['toast-column'])
+    } else {
+      dom.removeClass(document.body, swalClasses['toast-column'])
     }
 
     // inputs

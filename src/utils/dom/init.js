@@ -43,6 +43,7 @@ const sweetHTML = `
      <div class="${swalClasses.radio}"></div>
      <label for="${swalClasses.checkbox}" class="${swalClasses.checkbox}">
        <input type="checkbox" />
+       <span class="${swalClasses.label}"></span>
      </label>
      <textarea class="${swalClasses.textarea}"></textarea>
      <div class="${swalClasses.validationerror}" id="${swalClasses.validationerror}"></div>

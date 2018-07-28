@@ -504,14 +504,8 @@ export function _main (userParams) {
         checkboxInput.value = 1
         checkboxInput.id = swalClasses.checkbox
         checkboxInput.checked = Boolean(innerParams.inputValue)
-        let label = checkbox.getElementsByTagName('span')
-        if (label.length) {
-          checkbox.removeChild(label[0])
-        }
-        label = document.createElement('span')
-        label.className = swalClasses.label
+        let label = checkbox.querySelector('span')
         label.innerHTML = innerParams.inputPlaceholder
-        checkbox.appendChild(label)
         dom.show(checkbox)
         break
       }

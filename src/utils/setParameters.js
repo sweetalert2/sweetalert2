@@ -76,6 +76,9 @@ export default function setParameters (params) {
   } else if (!params.backdrop) {
     dom.addClass([document.documentElement, document.body], swalClasses['no-backdrop'])
   }
+  if (!params.backdrop && params.allowOutsideClick) {
+    warn('"allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`')
+  }
 
   // Position
   if (params.position in swalClasses) {

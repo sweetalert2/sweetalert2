@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.26.5
+* sweetalert2 v7.26.6
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -224,7 +224,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.26.5";
+var version = "7.26.6";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -2073,8 +2073,10 @@ function _main(userParams) {
     _this.hideLoading();
     _this.resetValidationError();
 
-    if (innerParams.input || innerParams.footer || innerParams.showCloseButton) {
+    if (innerParams.toast && (innerParams.input || innerParams.footer || innerParams.showCloseButton)) {
       addClass(document.body, swalClasses['toast-column']);
+    } else {
+      removeClass(document.body, swalClasses['toast-column']);
     }
 
     // inputs

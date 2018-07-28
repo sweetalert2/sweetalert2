@@ -1,4 +1,5 @@
 const {$, Swal, SwalWithoutAnimation} = require('./helpers')
+const sinon = require('sinon')
 
 QUnit.test('.swal2-toast-shown', (assert) => {
   Swal({toast: true})
@@ -7,6 +8,19 @@ QUnit.test('.swal2-toast-shown', (assert) => {
   Swal({toast: false})
   assert.notOk(document.body.classList.contains('swal2-toast-shown'))
   assert.notOk(document.documentElement.classList.contains('swal2-toast-shown'))
+})
+
+QUnit.test('should throw console warnings for incompatible parameters', (assert) => {
+  const _consoleWarn = console.warn
+  const spy = sinon.spy(console, 'warn')
+
+  SwalWithoutAnimation({
+    allowOutsideClick: true,
+    toast: true
+  })
+  assert.ok(spy.calledWith('SweetAlert2: The parameter "allowOutsideClick" is incompatible with toasts'))
+
+  console.warn = _consoleWarn
 })
 
 QUnit.test('.swal2-toast-column if input', (assert) => {

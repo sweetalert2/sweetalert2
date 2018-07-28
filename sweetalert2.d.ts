@@ -477,6 +477,23 @@ declare module 'sweetalert2' {
         allowEnterKey?: ValueOrThunk<boolean>;
 
         /**
+         * If set to false, SweetAlert2 will allow keydown events propagation to the document.
+         *
+         * @default true
+         */
+        stopKeydownPropagation?: boolean;
+
+        /**
+         * Useful for those who are using SweetAlert2 along with Bootstrap modals.
+         * By default keydownListenerCapture is false which means when a user hits Esc,
+         * both SweetAlert2 and Bootstrap modals will be closed.
+         * Set keydownListenerCapture to true to fix that behavior.
+         *
+         * @default false
+         */
+        keydownListenerCapture?: boolean;
+
+        /**
          * If set to false, a "Confirm"-button will not be shown.
          * It can be useful when you're using custom HTML description.
          *

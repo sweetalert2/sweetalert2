@@ -61,40 +61,20 @@ export default function setParameters (params) {
   }
 
   const container = dom.getContainer()
-  const title = dom.getTitle()
-  const content = dom.getContent().querySelector('#' + swalClasses.content)
-  const actions = dom.getActions()
-  const confirmButton = dom.getConfirmButton()
-  const cancelButton = dom.getCancelButton()
   const closeButton = dom.getCloseButton()
   const footer = dom.getFooter()
 
   // Title
-  if (params.titleText) {
-    title.innerText = params.titleText
-  } else if (params.title) {
-    if (typeof params.title === 'string') {
-      params.title = params.title.split('\n').join('<br />')
-    }
-    dom.parseHtmlToContainer(params.title, title)
-  }
+  dom.renderTitle(params)
 
+  // Content
+  dom.renderContent(params)
+
+  // Backdrop
   if (typeof params.backdrop === 'string') {
     dom.getContainer().style.background = params.backdrop
   } else if (!params.backdrop) {
     dom.addClass([document.documentElement, document.body], swalClasses['no-backdrop'])
-  }
-
-  // Content as HTML
-  if (params.html) {
-    dom.parseHtmlToContainer(params.html, content)
-
-    // Content as plain text
-  } else if (params.text) {
-    content.textContent = params.text
-    dom.show(content)
-  } else {
-    dom.hide(content)
   }
 
   // Position
@@ -146,90 +126,11 @@ export default function setParameters (params) {
   // Icon
   dom.renderIcon(params)
 
-  // Custom image
-  const image = dom.getImage()
-  if (params.imageUrl) {
-    image.setAttribute('src', params.imageUrl)
-    image.setAttribute('alt', params.imageAlt)
-    dom.show(image)
+  // Image
+  dom.renderImage(params)
 
-    if (params.imageWidth) {
-      image.setAttribute('width', params.imageWidth)
-    } else {
-      image.removeAttribute('width')
-    }
-
-    if (params.imageHeight) {
-      image.setAttribute('height', params.imageHeight)
-    } else {
-      image.removeAttribute('height')
-    }
-
-    image.className = swalClasses.image
-    if (params.imageClass) {
-      dom.addClass(image, params.imageClass)
-    }
-  } else {
-    dom.hide(image)
-  }
-
-  // Cancel button
-  if (params.showCancelButton) {
-    cancelButton.style.display = 'inline-block'
-  } else {
-    dom.hide(cancelButton)
-  }
-
-  // Confirm button
-  if (params.showConfirmButton) {
-    dom.removeStyleProperty(confirmButton, 'display')
-  } else {
-    dom.hide(confirmButton)
-  }
-
-  // Actions (buttons) wrapper
-  if (!params.showConfirmButton && !params.showCancelButton) {
-    dom.hide(actions)
-  } else {
-    dom.show(actions)
-  }
-
-  // Edit text on confirm and cancel buttons
-  confirmButton.innerHTML = params.confirmButtonText
-  cancelButton.innerHTML = params.cancelButtonText
-
-  // ARIA labels for confirm and cancel buttons
-  confirmButton.setAttribute('aria-label', params.confirmButtonAriaLabel)
-  cancelButton.setAttribute('aria-label', params.cancelButtonAriaLabel)
-
-  // Add buttons custom classes
-  confirmButton.className = swalClasses.confirm
-  dom.addClass(confirmButton, params.confirmButtonClass)
-  cancelButton.className = swalClasses.cancel
-  dom.addClass(cancelButton, params.cancelButtonClass)
-
-  // Buttons styling
-  if (params.buttonsStyling) {
-    dom.addClass([confirmButton, cancelButton], swalClasses.styled)
-
-    // Buttons background colors
-    if (params.confirmButtonColor) {
-      confirmButton.style.backgroundColor = params.confirmButtonColor
-    }
-    if (params.cancelButtonColor) {
-      cancelButton.style.backgroundColor = params.cancelButtonColor
-    }
-
-    // Loading state
-    const confirmButtonBackgroundColor = window.getComputedStyle(confirmButton).getPropertyValue('background-color')
-    confirmButton.style.borderLeftColor = confirmButtonBackgroundColor
-    confirmButton.style.borderRightColor = confirmButtonBackgroundColor
-  } else {
-    dom.removeClass([confirmButton, cancelButton], swalClasses.styled)
-
-    confirmButton.style.backgroundColor = confirmButton.style.borderLeftColor = confirmButton.style.borderRightColor = ''
-    cancelButton.style.backgroundColor = cancelButton.style.borderLeftColor = cancelButton.style.borderRightColor = ''
-  }
+  // Actions (buttons)
+  dom.renderActions(params)
 
   // Footer
   dom.parseHtmlToContainer(params.footer, footer)

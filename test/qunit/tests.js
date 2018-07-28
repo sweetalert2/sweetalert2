@@ -67,6 +67,8 @@ QUnit.test('the vertical scrollbar should be hidden and the according padding-ri
 
   assert.equal(bodyStyles.paddingRight, (scrollbarWidth + 30) + 'px')
   assert.equal(bodyStyles.overflowY, 'hidden')
+
+  document.body.removeChild(talltDiv)
 })
 
 QUnit.test('modal width', (assert) => {

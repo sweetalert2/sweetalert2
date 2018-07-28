@@ -224,7 +224,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.26.6";
+var version = "7.26.7";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -1250,6 +1250,7 @@ var staticMethods = Object.freeze({
 	isVisible: isVisible$1,
 	clickConfirm: clickConfirm,
 	clickCancel: clickCancel,
+	getContainer: getContainer,
 	getPopup: getPopup,
 	getTitle: getTitle,
 	getContent: getContent,

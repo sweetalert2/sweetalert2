@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.26.6
+* sweetalert2 v7.26.7
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -224,7 +224,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.26.6";
+var version = "7.26.7";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -1250,6 +1250,7 @@ var staticMethods = Object.freeze({
 	isVisible: isVisible$1,
 	clickConfirm: clickConfirm,
 	clickCancel: clickCancel,
+	getContainer: getContainer,
 	getPopup: getPopup,
 	getTitle: getTitle,
 	getContent: getContent,
@@ -3047,7 +3048,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "      flex: 1;\n" +
 "      align-content: center;\n" +
 "      justify-content: center; }\n" +
-"  .swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right) > .swal2-modal {\n" +
+"  .swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen) > .swal2-modal {\n" +
 "    margin: auto; }\n" +
 "  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {\n" +
 "    .swal2-container .swal2-modal {\n" +

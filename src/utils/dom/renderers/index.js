@@ -1,3 +1,4 @@
+export * from './renderActions'
 export * from './renderContent'
 export * from './renderIcon'
 export * from './renderImage'

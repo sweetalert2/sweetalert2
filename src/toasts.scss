@@ -1,6 +1,9 @@
 body {
-  &.swal2-toast-shown {
-    &.swal2-toast-column  > .swal2-container {
+  &.swal2-toast-column {
+    .swal2-container {
+      position: fixed;
+      background-color: transparent;
+
       & > .swal2-toast {
         flex-direction: column;
         align-items: stretch;
@@ -25,11 +28,6 @@ body {
           font-size: $swal2-toast-validation-font-size;
         }
       }
-    }
-
-    & > .swal2-container {
-      position: fixed;
-      background-color: transparent;
 
       &.swal2-shown {
         background-color: transparent;

@@ -6,7 +6,7 @@ QUnit.test('getTimerLeft() method', (assert) => {
   })
   const timerLeft = Swal.getTimerLeft()
   assert.ok(timerLeft > 0)
-  assert.ok(timerLeft < 1000)
+  assert.ok(timerLeft <= 1000)
 })
 
 QUnit.test('getTimerLeft() should return null if popup does not have timer', (assert) => {

@@ -303,6 +303,7 @@ body.swal2-toast-shown > .swal2-container {
   .swal2-popup.swal2-toast .swal2-header {
     flex-direction: row; }
   .swal2-popup.swal2-toast .swal2-title {
+    flex-grow: 1;
     justify-content: flex-start;
     margin: 0 .6em;
     font-size: 1em; }

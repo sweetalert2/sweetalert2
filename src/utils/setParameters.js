@@ -61,7 +61,6 @@ export default function setParameters (params) {
   }
 
   const container = dom.getContainer()
-  const title = dom.getTitle()
   const content = dom.getContent().querySelector('#' + swalClasses.content)
   const actions = dom.getActions()
   const confirmButton = dom.getConfirmButton()
@@ -70,14 +69,7 @@ export default function setParameters (params) {
   const footer = dom.getFooter()
 
   // Title
-  if (params.titleText) {
-    title.innerText = params.titleText
-  } else if (params.title) {
-    if (typeof params.title === 'string') {
-      params.title = params.title.split('\n').join('<br />')
-    }
-    dom.parseHtmlToContainer(params.title, title)
-  }
+  dom.renderTitle(params)
 
   if (typeof params.backdrop === 'string') {
     dom.getContainer().style.background = params.backdrop

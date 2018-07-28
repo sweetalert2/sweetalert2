@@ -135,9 +135,8 @@ export function _main (userParams) {
     }
 
     // Mouse interactions
-    const onButtonEvent = (event) => {
-      const e = event || window.event
-      const target = e.target || e.srcElement
+    const onButtonEvent = (e) => {
+      const target = e.target
       const {confirmButton, cancelButton} = domCache
       const targetedConfirm = confirmButton && (confirmButton === target || confirmButton.contains(target))
       const targetedCancel = cancelButton && (cancelButton === target || cancelButton.contains(target))
@@ -317,7 +316,7 @@ export function _main (userParams) {
 
         // TAB
       } else if (e.key === 'Tab') {
-        const targetElement = e.target || e.srcElement
+        const targetElement = e.target
 
         const focusableElements = dom.getFocusableElements(innerParams.focusCancel)
         let btnIndex = -1

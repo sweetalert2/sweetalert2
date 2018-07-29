@@ -1,4 +1,4 @@
-const {$, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible, isHidden, TIMEOUT} = require('./helpers')
+const { $, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible, isHidden, TIMEOUT } = require('./helpers')
 const { toArray } = require('../../src/utils/utils')
 const { measureScrollbar } = require('../../src/utils/dom/measureScrollbar')
 const sinon = require('sinon')
@@ -31,7 +31,7 @@ QUnit.test('should throw console error about missing arguments', (assert) => {
 QUnit.test('should throw console warning about invalid params', (assert) => {
   const _consoleWarn = console.warn
   const spy = sinon.spy(console, 'warn')
-  Swal({invalidParam: 'oops'})
+  Swal({ invalidParam: 'oops' })
   console.warn = _consoleWarn
   assert.ok(spy.calledWith('SweetAlert2: Unknown parameter "invalidParam"'))
 })
@@ -39,7 +39,7 @@ QUnit.test('should throw console warning about invalid params', (assert) => {
 QUnit.test('should throw console error about unexpected params', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')
-  Swal('Hello world!', {type: 'success'})
+  Swal('Hello world!', { type: 'success' })
   console.error = _consoleError
   assert.ok(spy.calledWith('SweetAlert2: Unexpected type of html! Expected "string", got object'))
 })
@@ -72,13 +72,13 @@ QUnit.test('the vertical scrollbar should be hidden and the according padding-ri
 })
 
 QUnit.test('modal width', (assert) => {
-  Swal({text: '300px', width: 300})
+  Swal({ text: '300px', width: 300 })
   assert.equal($('.swal2-modal').style.width, '300px')
 
-  Swal({text: '400px', width: '400px'})
+  Swal({ text: '400px', width: '400px' })
   assert.equal($('.swal2-modal').style.width, '400px')
 
-  Swal({text: '90%', width: '90%'})
+  Swal({ text: '90%', width: '90%' })
   assert.equal($('.swal2-modal').style.width, '90%')
 })
 
@@ -100,7 +100,7 @@ QUnit.test('heightAuto', (assert) => {
 })
 
 QUnit.test('custom class', (assert) => {
-  Swal({customClass: 'custom-class'})
+  Swal({ customClass: 'custom-class' })
   assert.ok(Swal.getPopup().classList.contains('custom-class'))
 })
 
@@ -126,7 +126,7 @@ QUnit.test('getters', (assert) => {
   assert.equal(Swal.getCancelButton().getAttribute('aria-label'), 'Cancel button aria-label')
   assert.equal(Swal.getFooter().innerHTML, '<b>Footer</b>')
 
-  Swal({input: 'text'})
+  Swal({ input: 'text' })
   $('.swal2-input').value = 'input text'
   assert.equal(Swal.getInput().value, 'input text')
 
@@ -191,7 +191,7 @@ QUnit.test('JS element as html param', (assert) => {
 })
 
 QUnit.test('set and reset defaults', (assert) => {
-  Swal.setDefaults({confirmButtonText: 'Next >', showCancelButton: true})
+  Swal.setDefaults({ confirmButtonText: 'Next >', showCancelButton: true })
   Swal('Modal with changed defaults')
   assert.equal($('.swal2-confirm').textContent, 'Next >')
   assert.ok(isVisible($('.swal2-cancel')))
@@ -208,7 +208,7 @@ QUnit.test('validation error', (assert) => {
   const done = assert.async()
   const inputValidator = (value) => Promise.resolve(!value && 'no falsy values')
 
-  SwalWithoutAnimation({input: 'text', inputValidator})
+  SwalWithoutAnimation({ input: 'text', inputValidator })
   assert.ok(isHidden($('.swal2-validationerror')))
   setTimeout(() => {
     const initialModalHeight = $('.swal2-modal').offsetHeight
@@ -239,7 +239,7 @@ QUnit.test('validation error', (assert) => {
 QUnit.test('should throw console error about unexpected type of InputOptions', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')
-  Swal({input: 'select', inputOptions: 'invalid-input-options'})
+  Swal({ input: 'select', inputOptions: 'invalid-input-options' })
   console.error = _consoleError
   assert.ok(spy.calledWith('SweetAlert2: Unexpected type of inputOptions! Expected object, Map or Promise, got string'))
 })
@@ -304,7 +304,7 @@ QUnit.test('dymanic queue', (assert) => {
     }
   ]
 
-  Swal.setDefaults({animation: false})
+  Swal.setDefaults({ animation: false })
   setTimeout(() => {
     Swal.queue(steps).then(() => {
       Swal('All done!')
@@ -464,22 +464,22 @@ QUnit.test('target', (assert) => {
   assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
   Swal.close()
 
-  const dummyTargetElement = Object.assign(document.createElement('div'), {id: 'dummy-target'})
+  const dummyTargetElement = Object.assign(document.createElement('div'), { id: 'dummy-target' })
   document.body.appendChild(dummyTargetElement)
 
-  Swal({title: 'Custom valid target (string)', target: '#dummy-target'}) // switch targets
+  Swal({ title: 'Custom valid target (string)', target: '#dummy-target' }) // switch targets
   assert.equal(document.querySelector('.swal2-container').parentNode, dummyTargetElement)
   Swal.close()
 
-  Swal({title: 'Custom invalid target (string)', target: 'lorem_ipsum'}) // switch targets
+  Swal({ title: 'Custom invalid target (string)', target: 'lorem_ipsum' }) // switch targets
   assert.equal(document.querySelector('.swal2-container').parentNode, document.body)
   Swal.close()
 
-  Swal({title: 'Custom valid target (element)', target: dummyTargetElement})
+  Swal({ title: 'Custom valid target (element)', target: dummyTargetElement })
   assert.equal(document.querySelector('.swal2-container').parentNode, dummyTargetElement)
   Swal.close()
 
-  Swal({title: 'Custom invalid target (element)', target: true})
+  Swal({ title: 'Custom invalid target (element)', target: true })
   assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
   Swal.close()
   console.warn = warn // Suppress the warnings
@@ -571,7 +571,7 @@ QUnit.test('esc key', (assert) => {
     title: 'Esc me',
     onOpen: () => triggerKeydownEvent(Swal.getPopup(), 'Escape')
   }).then((result) => {
-    assert.deepEqual(result, {dismiss: Swal.DismissReason.esc})
+    assert.deepEqual(result, { dismiss: Swal.DismissReason.esc })
     done()
   })
 })
@@ -609,7 +609,7 @@ QUnit.test('close button', (assert) => {
     title: 'Close button test',
     showCloseButton: true
   }).then((result) => {
-    assert.deepEqual(result, {dismiss: Swal.DismissReason.close})
+    assert.deepEqual(result, { dismiss: Swal.DismissReason.close })
     done()
   })
 
@@ -624,7 +624,7 @@ QUnit.test('cancel button', (assert) => {
   Swal({
     title: 'Cancel me'
   }).then((result) => {
-    assert.deepEqual(result, {dismiss: Swal.DismissReason.cancel})
+    assert.deepEqual(result, { dismiss: Swal.DismissReason.cancel })
     done()
   })
 
@@ -638,7 +638,7 @@ QUnit.test('timer', (assert) => {
     title: 'Timer test',
     timer: 10
   }).then((result) => {
-    assert.deepEqual(result, {dismiss: Swal.DismissReason.timer})
+    assert.deepEqual(result, { dismiss: Swal.DismissReason.timer })
     done()
   })
 })
@@ -652,7 +652,7 @@ QUnit.test('confirm button', (assert) => {
       'two': 'two'
     }
   }).then((result) => {
-    assert.deepEqual(result, {value: 'two'})
+    assert.deepEqual(result, { value: 'two' })
     done()
   })
   $('.swal2-radio').querySelector('input[value="two"]').checked = true
@@ -668,7 +668,7 @@ QUnit.test('on errors in *async* user-defined functions, cleans up and propagate
   }
 
   // inputValidator
-  const rejectedPromise = Swal({input: 'text', expectRejections: false, inputValidator: erroringFunction})
+  const rejectedPromise = Swal({ input: 'text', expectRejections: false, inputValidator: erroringFunction })
   Swal.clickConfirm()
   rejectedPromise.catch((error) => {
     assert.equal(error, expectedError) // error is bubbled up back to user code
@@ -676,7 +676,7 @@ QUnit.test('on errors in *async* user-defined functions, cleans up and propagate
       assert.notOk(Swal.isVisible()) // display is cleaned up
 
       // preConfirm
-      const rejectedPromise = Swal({expectRejections: false, preConfirm: erroringFunction})
+      const rejectedPromise = Swal({ expectRejections: false, preConfirm: erroringFunction })
       Swal.clickConfirm()
       rejectedPromise.catch((error) => {
         assert.equal(error, expectedError) // error is bubbled up back to user code
@@ -696,16 +696,16 @@ QUnit.test('params validation', (assert) => {
 })
 
 QUnit.test('addition and removal of backdrop', (assert) => {
-  Swal({backdrop: false})
+  Swal({ backdrop: false })
   assert.ok(document.body.classList.contains('swal2-no-backdrop'))
   assert.ok(document.documentElement.classList.contains('swal2-no-backdrop'))
-  Swal({title: 'test'})
+  Swal({ title: 'test' })
   assert.notOk(document.body.classList.contains('swal2-no-backdrop'))
   assert.notOk(document.documentElement.classList.contains('swal2-no-backdrop'))
 })
 
 QUnit.test('footer', (assert) => {
-  Swal({title: 'Modal with footer', footer: 'I am footer'})
+  Swal({ title: 'Modal with footer', footer: 'I am footer' })
   assert.ok(isVisible($('.swal2-footer')))
 
   Swal('Modal w/o footer')

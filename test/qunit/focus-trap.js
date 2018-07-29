@@ -1,4 +1,4 @@
-const {Swal, triggerKeydownEvent} = require('./helpers')
+const { Swal, triggerKeydownEvent } = require('./helpers')
 const { detect } = require('detect-browser')
 
 const browser = detect()
@@ -32,13 +32,13 @@ QUnit.test('focus trap backward', (assert) => {
     showCloseButton: true,
     onOpen: () => {
       assert.equal(document.activeElement, Swal.getInput())
-      triggerKeydownEvent(document.activeElement, 'Tab', {shiftKey: true})
+      triggerKeydownEvent(document.activeElement, 'Tab', { shiftKey: true })
       assert.equal(document.activeElement, Swal.getCloseButton())
-      triggerKeydownEvent(document.activeElement, 'Tab', {shiftKey: true})
+      triggerKeydownEvent(document.activeElement, 'Tab', { shiftKey: true })
       assert.equal(document.activeElement, Swal.getCancelButton())
-      triggerKeydownEvent(document.activeElement, 'Tab', {shiftKey: true})
+      triggerKeydownEvent(document.activeElement, 'Tab', { shiftKey: true })
       assert.equal(document.activeElement, Swal.getConfirmButton())
-      triggerKeydownEvent(document.activeElement, 'Tab', {shiftKey: true})
+      triggerKeydownEvent(document.activeElement, 'Tab', { shiftKey: true })
       assert.equal(document.activeElement, Swal.getInput())
       done()
     }

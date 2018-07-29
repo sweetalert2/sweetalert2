@@ -7,7 +7,7 @@ import Symbol from './Symbol'
 /* istanbul ignore next */
 export default typeof WeakMap === 'function' ? WeakMap : ((s, dP, hOP) => {
   function WeakMap () {
-    dP(this, s, {value: Symbol('WeakMap')})
+    dP(this, s, { value: Symbol('WeakMap') })
   }
   WeakMap.prototype = {
     'delete': function del (o) {
@@ -20,7 +20,7 @@ export default typeof WeakMap === 'function' ? WeakMap : ((s, dP, hOP) => {
       return hOP.call(o, this[s])
     },
     set: function set (o, v) {
-      dP(o, this[s], {configurable: true, value: v})
+      dP(o, this[s], { configurable: true, value: v })
     }
   }
   return WeakMap

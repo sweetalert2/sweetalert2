@@ -1,4 +1,4 @@
-const {$, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible} = require('./helpers')
+const { $, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible } = require('./helpers')
 
 QUnit.test('confirm button /w useRejections: true', (assert) => {
   const done = assert.async()
@@ -139,7 +139,7 @@ QUnit.test('input select /w useRejections: true', (assert) => {
   const selected = 'dos'
   Swal({
     input: 'select',
-    inputOptions: {uno: 1, dos: 2},
+    inputOptions: { uno: 1, dos: 2 },
     useRejections: true
   }).then((result) => {
     assert.equal(result, selected)

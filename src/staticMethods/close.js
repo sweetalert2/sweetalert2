@@ -1,5 +1,5 @@
-import {undoScrollbar} from '../utils/scrollbarFix'
-import {undoIOSfix} from '../utils/iosFix'
+import { undoScrollbar } from '../utils/scrollbarFix'
+import { undoIOSfix } from '../utils/iosFix'
 import * as dom from '../utils/dom/index'
 import { swalClasses } from '../utils/classes.js'
 import globalState, { restoreActiveElement } from '../globalState'
@@ -24,7 +24,7 @@ const close = (onClose, onAfterClose) => {
   const removePopupAndResetState = () => {
     if (!dom.isToast()) {
       restoreActiveElement()
-      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {capture: globalState.keydownListenerCapture})
+      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
       globalState.keydownHandlerAdded = false
     }
 

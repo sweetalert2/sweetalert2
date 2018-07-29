@@ -1,4 +1,4 @@
-const {Swal} = require('../helpers')
+const { Swal } = require('../helpers')
 
 QUnit.test('grow row', (assert) => {
   Swal({

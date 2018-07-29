@@ -1,5 +1,5 @@
-const {$, Swal, SwalWithoutAnimation} = require('./helpers')
-const {RESTORE_FOCUS_TIMEOUT} = require('../../src/constants')
+const { $, Swal, SwalWithoutAnimation } = require('./helpers')
+const { RESTORE_FOCUS_TIMEOUT } = require('../../src/constants')
 
 QUnit.test('previous active element', (assert) => {
   const done = assert.async()
@@ -40,7 +40,7 @@ QUnit.test('dialog aria attributes', (assert) => {
 })
 
 QUnit.test('toast aria attributes', (assert) => {
-  Swal({title: 'Toast', toast: true})
+  Swal({ title: 'Toast', toast: true })
   assert.equal($('.swal2-toast').getAttribute('role'), 'alert')
   assert.equal($('.swal2-toast').getAttribute('aria-live'), 'polite')
   assert.notOk($('.swal2-toast').getAttribute('aria-modal'))

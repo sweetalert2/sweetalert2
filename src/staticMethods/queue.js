@@ -23,12 +23,12 @@ export const queue = function (steps) {
             step(i + 1, callback)
           } else {
             resetQueue()
-            resolve({dismiss: result.dismiss})
+            resolve({ dismiss: result.dismiss })
           }
         })
       } else {
         resetQueue()
-        resolve({value: queueResult})
+        resolve({ value: queueResult })
       }
     })(0)
   })

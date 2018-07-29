@@ -1,4 +1,4 @@
-const {$, Swal} = require('./helpers')
+const { $, Swal } = require('./helpers')
 const jQuery = require('jquery')
 
 QUnit.test('jQuery elements as params', (assert) => {

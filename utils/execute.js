@@ -1,7 +1,7 @@
 const execa = require('execa')
 const es = require('event-stream')
 
-module.exports = function execute (command, {skipLogging} = {}) {
+module.exports = function execute (command, { skipLogging } = {}) {
   const proc = execa.shell(command)
 
   if (!skipLogging) {

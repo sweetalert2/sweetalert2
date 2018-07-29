@@ -1,6 +1,6 @@
 import { error } from './utils/utils.js'
 import { DismissReason } from './utils/DismissReason'
-import {version} from '../package.json'
+import { version } from '../package.json'
 import * as staticMethods from './staticMethods'
 import * as instanceMethods from './instanceMethods'
 import privateProps from './privateProps'

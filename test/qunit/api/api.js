@@ -1,4 +1,4 @@
-const {Swal, initialSwalPropNames} = require('../helpers')
+const { Swal, initialSwalPropNames } = require('../helpers')
 
 QUnit.test('properties of `Swal` class are consistent', (assert) => {
   const done = assert.async()

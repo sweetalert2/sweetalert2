@@ -1,4 +1,4 @@
-const {$, Swal, SwalWithoutAnimation, isVisible, TIMEOUT, triggerKeydownEvent, dispatchCustomEvent} = require('../helpers')
+const { $, Swal, SwalWithoutAnimation, isVisible, TIMEOUT, triggerKeydownEvent, dispatchCustomEvent } = require('../helpers')
 const sinon = require('sinon')
 const { detect } = require('detect-browser')
 
@@ -7,7 +7,7 @@ const browser = detect()
 QUnit.test('should throw console error about unexpected input type', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')
-  Swal({input: 'invalid-input-type'})
+  Swal({ input: 'invalid-input-type' })
   console.error = _consoleError
   assert.ok(spy.calledWith('SweetAlert2: Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "invalid-input-type"'))
 })
@@ -52,7 +52,7 @@ QUnit.test('input email + built-in email validation', (assert) => {
 
   const invalidEmailAddress = 'blah-blah@zzz'
   const validEmailAddress = 'team+support+a.b@example.com'
-  SwalWithoutAnimation({input: 'email'}).then((result) => {
+  SwalWithoutAnimation({ input: 'email' }).then((result) => {
     assert.equal(result.value, validEmailAddress)
     done()
   })
@@ -73,7 +73,7 @@ QUnit.test('input url + built-in url validation', (assert) => {
 
   const invalidUrl = 'sweetalert2.github.io'
   const validUrl = 'https://sweetalert2.github.io/'
-  SwalWithoutAnimation({input: 'url'}).then((result) => {
+  SwalWithoutAnimation({ input: 'url' }).then((result) => {
     assert.equal(result.value, validUrl)
     done()
   })
@@ -95,7 +95,7 @@ QUnit.test('input select', (assert) => {
   const selected = 'dos'
   Swal({
     input: 'select',
-    inputOptions: {uno: 1, dos: 2},
+    inputOptions: { uno: 1, dos: 2 },
     inputPlaceholder: 'Choose a number'
   }).then((result) => {
     assert.equal(result.value, selected)
@@ -116,7 +116,7 @@ QUnit.test('input select', (assert) => {
 QUnit.test('input checkbox', (assert) => {
   const done = assert.async()
 
-  Swal({input: 'checkbox', inputAttributes: {name: 'test-checkbox'}}).then((result) => {
+  Swal({ input: 'checkbox', inputAttributes: { name: 'test-checkbox' } }).then((result) => {
     assert.equal(checkbox.getAttribute('name'), 'test-checkbox')
     assert.equal(result.value, '1')
     done()
@@ -128,7 +128,7 @@ QUnit.test('input checkbox', (assert) => {
 })
 
 QUnit.test('input range', (assert) => {
-  Swal({input: 'range', inputAttributes: {min: 1, max: 10}, inputValue: 5})
+  Swal({ input: 'range', inputAttributes: { min: 1, max: 10 }, inputValue: 5 })
   const input = Swal.getInput()
   const output = $('.swal2-range output')
   assert.equal(input.getAttribute('min'), '1')

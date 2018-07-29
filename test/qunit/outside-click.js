@@ -1,11 +1,11 @@
-const {$, Swal, SwalWithoutAnimation, dispatchCustomEvent, TIMEOUT} = require('./helpers')
+const { $, Swal, SwalWithoutAnimation, dispatchCustomEvent, TIMEOUT } = require('./helpers')
 const sinon = require('sinon')
 
 const simulateMouseEvent = (x, y, eventType) => {
   dispatchCustomEvent(
     document.elementFromPoint(x, y),
     eventType,
-    {clientX: x, clientY: y}
+    { clientX: x, clientY: y }
   )
 }
 
@@ -13,7 +13,7 @@ QUnit.test('backdrop click', (assert) => {
   const done = assert.async()
 
   SwalWithoutAnimation('Backdrop click').then((result) => {
-    assert.deepEqual(result, {dismiss: Swal.DismissReason.backdrop})
+    assert.deepEqual(result, { dismiss: Swal.DismissReason.backdrop })
     done()
   })
 
@@ -71,7 +71,7 @@ QUnit.test('allowOutsideClick: () => !swal.isLoading()', (assert) => {
     title: 'allowOutsideClick: () => !swal.isLoading()',
     allowOutsideClick: () => !Swal.isLoading()
   }).then((result) => {
-    assert.deepEqual(result, {dismiss: Swal.DismissReason.backdrop})
+    assert.deepEqual(result, { dismiss: Swal.DismissReason.backdrop })
     done()
   })
 

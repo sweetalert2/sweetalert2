@@ -1,5 +1,5 @@
 import { warnOnce } from '../utils/utils'
-import {showWarningsForParams} from '../utils/params'
+import { showWarningsForParams } from '../utils/params'
 
 const deprecationWarning = `\
 "setDefaults" & "resetDefaults" methods are deprecated in favor of "mixin" method and will be removed in the next major release. \

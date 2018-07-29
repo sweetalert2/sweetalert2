@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.26.7
+* sweetalert2 v7.26.9
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -224,7 +224,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.26.8";
+var version = "7.26.9";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -814,6 +814,10 @@ var undoIOSfix = function undoIOSfix() {
 var setAriaHidden = function setAriaHidden() {
   var bodyChildren = toArray$1(document.body.children);
   bodyChildren.forEach(function (el) {
+    if (el === getContainer() || el.contains(getContainer())) {
+      return;
+    }
+
     if (el.hasAttribute('aria-hidden')) {
       el.setAttribute('data-previous-aria-hidden', el.getAttribute('aria-hidden'));
     }

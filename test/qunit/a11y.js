@@ -48,6 +48,16 @@ QUnit.test('should set aria-hidden="true" to all body children if modal', (asser
   assert.equal(divAriaHiddenFalse.getAttribute('aria-hidden'), 'false')
 })
 
+QUnit.test('should not set aria-hidden="true" on the custom container (target)', (assert) => {
+  const div = document.createElement('div')
+  document.body.appendChild(div)
+
+  SwalWithoutAnimation({
+    target: div
+  })
+  assert.notOk(div.hasAttribute('aria-hidden'))
+})
+
 QUnit.test('should not set aria-hidden="true" when `backdrop: false`', (assert) => {
   const div = document.createElement('div')
   document.body.appendChild(div)

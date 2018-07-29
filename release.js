@@ -17,7 +17,7 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
 
 ;(async () => {
   log('Doing sanity checks...')
-  const {currentBranch: branchToPublish, isCleanWorkingTree} = await getGitStatus()
+  const { currentBranch: branchToPublish, isCleanWorkingTree } = await getGitStatus()
   if (!dryRun) {
     assert.equal(branchToPublish, 'master', 'Must be on master branch')
   }
@@ -28,7 +28,7 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
 
   log(`Running npm version ${semver}...`)
   await execute(`npm version --no-git-tag-version ${semver}`)
-  const {version} = require('./package.json')
+  const { version } = require('./package.json')
 
   log(`Making a version change commit...`)
   await execute(`git add package.json && git commit -m "${version}"`)
@@ -85,7 +85,7 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
   log(`Purge jsdelivr cache...`)
   const distFiles = fs.readdirSync('dist')
   for (const distFile of distFiles) {
-    await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2@latest/dist/${distFile} > /dev/null`, {skipLogging: true})
+    await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2@latest/dist/${distFile} > /dev/null`, { skipLogging: true })
   }
 
   log(`Switching back to "${branchToPublish}" (so you can continue to work)...`)

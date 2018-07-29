@@ -1,5 +1,5 @@
-const {$, Swal, SwalWithoutAnimation} = require('./helpers')
-const {RESTORE_FOCUS_TIMEOUT} = require('../../src/constants')
+const { $, Swal, SwalWithoutAnimation } = require('./helpers')
+const { RESTORE_FOCUS_TIMEOUT } = require('../../src/constants')
 
 QUnit.test('previous active element', (assert) => {
   const done = assert.async()
@@ -32,6 +32,42 @@ QUnit.test('should focus body in there is not previuos active element', (assert)
   }, RESTORE_FOCUS_TIMEOUT)
 })
 
+QUnit.test('should set aria-hidden="true" to all body children if modal', (assert) => {
+  const div = document.createElement('div')
+  const divAriaHiddenFalse = document.createElement('div')
+  divAriaHiddenFalse.setAttribute('aria-hidden', 'false')
+  document.body.appendChild(div)
+  document.body.appendChild(divAriaHiddenFalse)
+
+  SwalWithoutAnimation({})
+  assert.equal(div.getAttribute('aria-hidden'), 'true')
+  assert.equal(divAriaHiddenFalse.getAttribute('aria-hidden'), 'true')
+
+  Swal.close()
+  assert.notOk(div.hasAttribute('aria-hidden'))
+  assert.equal(divAriaHiddenFalse.getAttribute('aria-hidden'), 'false')
+})
+
+QUnit.test('should not set aria-hidden="true" when `backdrop: false`', (assert) => {
+  const div = document.createElement('div')
+  document.body.appendChild(div)
+
+  SwalWithoutAnimation({
+    backdrop: false
+  })
+  assert.notOk(div.hasAttribute('aria-hidden'))
+})
+
+QUnit.test('should not set aria-hidden="true" when `toast: true`', (assert) => {
+  const div = document.createElement('div')
+  document.body.appendChild(div)
+
+  SwalWithoutAnimation({
+    toast: true
+  })
+  assert.notOk(div.hasAttribute('aria-hidden'))
+})
+
 QUnit.test('dialog aria attributes', (assert) => {
   Swal('Modal dialog')
   assert.equal($('.swal2-modal').getAttribute('role'), 'dialog')
@@ -40,7 +76,7 @@ QUnit.test('dialog aria attributes', (assert) => {
 })
 
 QUnit.test('toast aria attributes', (assert) => {
-  Swal({title: 'Toast', toast: true})
+  Swal({ title: 'Toast', toast: true })
   assert.equal($('.swal2-toast').getAttribute('role'), 'alert')
   assert.equal($('.swal2-toast').getAttribute('aria-live'), 'polite')
   assert.notOk($('.swal2-toast').getAttribute('aria-modal'))

@@ -1,4 +1,4 @@
-import defaultParams, {showWarningsForParams} from '../utils/params'
+import defaultParams, { showWarningsForParams } from '../utils/params'
 import * as dom from '../utils/dom/index'
 import { swalClasses } from '../utils/classes'
 import Timer from '../utils/Timer'
@@ -47,7 +47,7 @@ export function _main (userParams) {
       if (innerParams.useRejections) {
         resolve(value)
       } else {
-        resolve({value})
+        resolve({ value })
       }
     }
     const dismissWith = (dismiss) => {
@@ -55,7 +55,7 @@ export function _main (userParams) {
       if (innerParams.useRejections) {
         reject(dismiss)
       } else {
-        resolve({dismiss})
+        resolve({ dismiss })
       }
     }
     const errorWith = (error) => {
@@ -137,7 +137,7 @@ export function _main (userParams) {
     // Mouse interactions
     const onButtonEvent = (e) => {
       const target = e.target
-      const {confirmButton, cancelButton} = domCache
+      const { confirmButton, cancelButton } = domCache
       const targetedConfirm = confirmButton && (confirmButton === target || confirmButton.contains(target))
       const targetedCancel = cancelButton && (cancelButton === target || cancelButton.contains(target))
 
@@ -354,7 +354,7 @@ export function _main (userParams) {
     }
 
     if (globalState.keydownHandlerAdded) {
-      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {capture: globalState.keydownListenerCapture})
+      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
       globalState.keydownHandlerAdded = false
     }
 
@@ -362,7 +362,7 @@ export function _main (userParams) {
       globalState.keydownHandler = (e) => keydownHandler(e, innerParams)
       globalState.keydownTarget = innerParams.keydownListenerCapture ? window : domCache.popup
       globalState.keydownListenerCapture = innerParams.keydownListenerCapture
-      globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, {capture: globalState.keydownListenerCapture})
+      globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
       globalState.keydownHandlerAdded = true
     }
 

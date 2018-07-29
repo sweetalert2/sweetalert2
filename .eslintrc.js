@@ -11,9 +11,10 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    'quotes': ['error', 'single', { allowTemplateLiterals: true }],
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
-    'no-var': ['error']
+    'no-var': ['error'],
+    'object-curly-spacing': ['error', 'always'],
+    'quotes': ['error', 'single', { allowTemplateLiterals: true }]
   },
   globals: {
     'QUnit': false

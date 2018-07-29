@@ -1,3 +1,4 @@
+import { getContainer } from './dom/getters'
 import { toArray } from './utils'
 
 // From https://developer.paciellogroup.com/blog/2018/06/the-current-state-of-modal-dialog-accessibility/
@@ -8,6 +9,10 @@ import { toArray } from './utils'
 export const setAriaHidden = () => {
   const bodyChildren = toArray(document.body.children)
   bodyChildren.forEach(el => {
+    if (el === getContainer() || el.contains(getContainer())) {
+      return
+    }
+
     if (el.hasAttribute('aria-hidden') ) {
       el.setAttribute('data-previous-aria-hidden', el.getAttribute('aria-hidden'))
     }

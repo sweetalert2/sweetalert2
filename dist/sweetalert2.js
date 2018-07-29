@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.26.6
+* sweetalert2 v7.26.7
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -224,7 +224,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.26.7";
+var version = "7.26.8";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -448,7 +448,7 @@ var getFocusableElements = function getFocusableElements() {
 };
 
 var isModal = function isModal() {
-  return !document.body.classList.contains(swalClasses['toast-shown']);
+  return !isToast() && !document.body.classList.contains(swalClasses['no-backdrop']);
 };
 
 var isToast = function isToast() {
@@ -806,6 +806,33 @@ var undoIOSfix = function undoIOSfix() {
   }
 };
 
+// From https://developer.paciellogroup.com/blog/2018/06/the-current-state-of-modal-dialog-accessibility/
+// Adding aria-hidden="true" to elements outside of the active modal dialog ensures that
+// elements not within the active modal dialog will not be surfaced if a user opens a screen
+// reader’s list of elements (headings, form controls, landmarks, etc.) in the document.
+
+var setAriaHidden = function setAriaHidden() {
+  var bodyChildren = toArray$1(document.body.children);
+  bodyChildren.forEach(function (el) {
+    if (el.hasAttribute('aria-hidden')) {
+      el.setAttribute('data-previous-aria-hidden', el.getAttribute('aria-hidden'));
+    }
+    el.setAttribute('aria-hidden', 'true');
+  });
+};
+
+var unsetAriaHidden = function unsetAriaHidden() {
+  var bodyChildren = toArray$1(document.body.children);
+  bodyChildren.forEach(function (el) {
+    if (el.hasAttribute('data-previous-aria-hidden')) {
+      el.setAttribute('aria-hidden', el.getAttribute('data-previous-aria-hidden'));
+      el.removeAttribute('data-previous-aria-hidden');
+    } else {
+      el.removeAttribute('aria-hidden');
+    }
+  });
+};
+
 var RESTORE_FOCUS_TIMEOUT = 100;
 
 var globalState = {};
@@ -860,6 +887,7 @@ var close = function close(onClose, onAfterClose) {
     if (isModal()) {
       undoScrollbar();
       undoIOSfix();
+      unsetAriaHidden();
     }
 
     if (onAfterClose !== null && typeof onAfterClose === 'function') {
@@ -1704,6 +1732,7 @@ var openPopup = function openPopup(params) {
   if (isModal()) {
     fixScrollbar();
     iOSfix();
+    setAriaHidden();
   }
   if (!isToast() && !globalState.previousActiveElement) {
     globalState.previousActiveElement = document.activeElement;

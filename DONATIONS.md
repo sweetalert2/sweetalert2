@@ -16,7 +16,7 @@ We would like to thank everyone who contributed to this library. If you find our
 
 # Donors
 
-- **Gautier Dele** (5 EUR)
+- **[Gautier Dele](https://github.com/GautierDele)** (5 EUR)
 
     > Keep going, awesome job!
 

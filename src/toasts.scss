@@ -1,33 +1,8 @@
 body {
-  &.swal2-toast-column {
+  &.swal2-toast-shown {
     .swal2-container {
       position: fixed;
       background-color: transparent;
-
-      & > .swal2-toast {
-        flex-direction: column;
-        align-items: stretch;
-
-        .swal2-actions {
-          flex: 1;
-          align-self: stretch;
-          height: 2.2em;
-        }
-
-        .swal2-loading {
-          justify-content: center;
-        }
-
-        .swal2-input {
-          height: 2em;
-          margin: .3125em auto;
-          font-size: $swal2-toast-input-font-size;
-        }
-
-        .swal2-validationerror {
-          font-size: $swal2-toast-validation-font-size;
-        }
-      }
 
       &.swal2-shown {
         background-color: transparent;
@@ -108,6 +83,35 @@ body {
       }
     }
   }
+
+  &.swal2-toast-column {
+    .swal2-toast {
+      flex-direction: column;
+      align-items: stretch;
+
+      .swal2-actions {
+        flex: 1;
+        align-self: stretch;
+        height: 2.2em;
+        margin-top: .3125em;
+      }
+
+      .swal2-loading {
+        justify-content: center;
+      }
+
+      .swal2-input {
+        height: 2em;
+        margin: .3125em auto;
+        font-size: $swal2-toast-input-font-size;
+      }
+
+      .swal2-validationerror {
+        font-size: $swal2-toast-validation-font-size;
+      }
+    }
+  }
+
 }
 
 .swal2-popup {
@@ -187,7 +191,7 @@ body {
 
     .swal2-actions {
       height: auto;
-      margin: .3125em .3125em 0;
+      margin: 0 .3125em;
     }
 
     .swal2-styled {

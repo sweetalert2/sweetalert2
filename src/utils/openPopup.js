@@ -22,7 +22,10 @@ export const openPopup = (params) => {
     dom.addClass(popup, swalClasses.show)
     dom.addClass(container, swalClasses.fade)
     dom.removeClass(popup, swalClasses.hide)
-  } else {
+  } else if (params.animateInClass || params.animateOutClass) {
+    dom.addClass(popup, 'animated')
+    dom.removeClass(popup, swalClasses.fade)
+  } else{
     dom.removeClass(popup, swalClasses.fade)
   }
   dom.show(popup)

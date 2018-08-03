@@ -123,6 +123,10 @@ export default function setParameters (params) {
     dom.addClass(popup, params.customClass)
   }
 
+  if (params.animateInClass) {
+    dom.addClass(popup, params.animateInClass)
+  }
+
   // Progress steps
   dom.renderProgressSteps(params)
 

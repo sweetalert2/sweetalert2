@@ -8,7 +8,7 @@ import globalState, { restoreActiveElement } from '../globalState'
 /*
  * Global function to close sweetAlert
  */
-const close = (onClose, onAfterClose) => {
+const close = (onClose, onAfterClose, params) => {
   const container = dom.getContainer()
   const popup = dom.getPopup()
   if (!popup) {
@@ -19,8 +19,14 @@ const close = (onClose, onAfterClose) => {
     onClose(popup)
   }
 
-  dom.removeClass(popup, swalClasses.show)
-  dom.addClass(popup, swalClasses.hide)
+  // Custom Animate Class
+    if(!params.animation) {
+        dom.removeClass(popup, params.animateInClass);
+        dom.addClass(popup, params.animateOutClass);
+    } else {
+      dom.removeClass(popup, swalClasses.show)
+      dom.addClass(popup, swalClasses.hide)
+  }
 
   const removePopupAndResetState = () => {
     if (!dom.isToast()) {
@@ -57,7 +63,12 @@ const close = (onClose, onAfterClose) => {
   }
 
   // If animation is supported, animate
-  if (dom.animationEndEvent && !dom.hasClass(popup, swalClasses.noanimation)) {
+  if (dom.animationEndEvent && params.animateOutClass && dom.hasClass(popup, swalClasses.noanimation)) {
+      popup.addEventListener(dom.animationEndEvent, function swalCloseEventFinished() {
+          popup.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
+          removePopupAndResetState()
+      })
+  } else if (dom.animationEndEvent && !dom.hasClass(popup, swalClasses.noanimation)) {
     popup.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
       popup.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
       if (dom.hasClass(popup, swalClasses.hide)) {

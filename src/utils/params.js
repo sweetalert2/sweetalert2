@@ -9,6 +9,8 @@ const defaultParams = {
   type: null,
   toast: false,
   customClass: '',
+  animateInClass: '',
+  animateOutClass: '',
   target: 'body',
   backdrop: true,
   animation: true,

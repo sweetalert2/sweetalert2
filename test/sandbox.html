@@ -4,33 +4,46 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+  <!-- or -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
   <!-- IE11 compatibility -->
   <script src="/node_modules/promise-polyfill/dist/polyfill.min.js"></script>
 
   <script src="../dist/sweetalert2.js"></script>
   <link rel="stylesheet" href="../dist/sweetalert2.css">
+  <button onclick="openSwal()">Open swal</button>
 </head>
 
 <body>
 <script>
-  Swal({
-    title: 'Test modal with input',
-    html: 'custom <strong>content</strong>',
-    input: 'text',
-    type: 'success',
-    showCloseButton: true,
-    showCancelButton: true,
-    preConfirm: function (value) {
-      if (!value) {
-        Swal.showValidationError('Should not be empty!')
-      }
-    },
-    onOpen: function (modal) {
-      console.log(modal)
-    }
-  }).then(function (result) {
-    console.log(result)
-  })
+  function openSwal() {
+      Swal({
+          title: 'Test modal with input',
+          html: 'custom <strong>content</strong>',
+          input: 'text',
+          type: 'success',
+          showCloseButton: true,
+          showCancelButton: true,
+          animation: false,
+          customClass: 'faster',
+          animateInClass: 'zoomIn',
+          animateOutClass: 'zoomOut',
+          preConfirm: function (value) {
+              if (!value) {
+                  Swal.showValidationError('Should not be empty!')
+              }
+          },
+          onOpen: function (modal) {
+              console.log(modal)
+          }
+      }).then(function (result) {
+          console.log(result)
+      })
+  }
 </script>
 </body>
 </html>

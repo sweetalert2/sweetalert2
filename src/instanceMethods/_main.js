@@ -43,7 +43,7 @@ export function _main (userParams) {
   return new Promise((resolve, reject) => {
     // functions to handle all resolving/rejecting/settling
     const succeedWith = (value) => {
-      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose) // TODO: make closePopup an *instance* method
+      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose, userParams) // TODO: make closePopup an *instance* method
       if (innerParams.useRejections) {
         resolve(value)
       } else {
@@ -51,7 +51,7 @@ export function _main (userParams) {
       }
     }
     const dismissWith = (dismiss) => {
-      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose)
+      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose, userParams)
       if (innerParams.useRejections) {
         reject(dismiss)
       } else {
@@ -59,7 +59,7 @@ export function _main (userParams) {
       }
     }
     const errorWith = (error) => {
-      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose)
+      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose, userParams)
       reject(error)
     }
 

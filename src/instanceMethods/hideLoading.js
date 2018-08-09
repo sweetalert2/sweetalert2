@@ -3,7 +3,7 @@ import { swalClasses } from '../utils/classes'
 import privateProps from '../privateProps'
 
 /**
- * Show spinner instead of Confirm button and disable Cancel button
+ * Enables buttons and hide loader.
  */
 function hideLoading () {
   const innerParams = privateProps.innerParams.get(this)

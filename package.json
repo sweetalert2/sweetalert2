@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "7.26.10",
+  "version": "7.26.11",
   "repository": "sweetalert2/sweetalert2",
   "homepage": "https://sweetalert2.github.io/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
@@ -49,7 +49,7 @@
     "karma-sauce-launcher": "^1.2.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "^0.0.32",
-    "karma-webpack": "^4.0.0-beta.0",
+    "karma-webpack": "^3.0.0",
     "merge2": "^1.2.1",
     "mkdirp": "^0.5.1",
     "pify": "^3.0.0",
@@ -62,7 +62,7 @@
     "sinon": "^5.0.7",
     "tslint": "^5.8.0",
     "typescript": "^2.1.0",
-    "webpack": "^4.0.0"
+    "webpack": "^3.0.0"
   },
   "files": [
     "dist",

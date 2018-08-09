@@ -80,7 +80,7 @@ module.exports = function (config) {
       }
     } else {
       // Local development
-      browsers = ['Chrome']
+      browsers = ['ChromeHeadless']
       reporters.push('coverage')
     }
   }

@@ -206,6 +206,12 @@ declare module 'sweetalert2' {
         function enableInput(): void;
 
         /**
+         * If `timer` parameter is set, returns number os milliseconds of timer remained.
+         * Otherwise, returns null.
+         */
+        function getTimerLeft(): number | null;
+
+        /**
          * Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.
          *
          * @param steps The steps' configuration.

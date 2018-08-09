@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.26.10
+* sweetalert2 v7.26.11
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -224,7 +224,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.26.10";
+var version = "7.26.11";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -1262,7 +1262,8 @@ var showLoading = function showLoading() {
 };
 
 /**
- * Show spinner instead of Confirm button and disable Cancel button
+ * If `timer` parameter is set, returns number os milliseconds of timer remained.
+ * Otherwise, returns null.
  */
 var getTimerLeft = function getTimerLeft() {
   return globalState.timeout && globalState.timeout.getTimerLeft();
@@ -1362,7 +1363,7 @@ var privateProps = {
 };
 
 /**
- * Show spinner instead of Confirm button and disable Cancel button
+ * Enables buttons and hide loader.
  */
 function hideLoading() {
   var innerParams = privateProps.innerParams.get(this);

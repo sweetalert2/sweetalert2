@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.26.11
+* sweetalert2 v7.26.12
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -224,12 +224,16 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.26.11";
+var version = "7.26.12";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
   switch (_typeof(args[0])) {
-    case 'string':
+    case 'object':
+      _extends(params, args[0]);
+      break;
+
+    default:
       ['title', 'html', 'type'].forEach(function (name, index) {
         switch (_typeof(args[index])) {
           case 'string':
@@ -241,14 +245,6 @@ var argsToParams = function argsToParams(args) {
             error('Unexpected type of ' + name + '! Expected "string", got ' + _typeof(args[index]));
         }
       });
-      break;
-
-    case 'object':
-      _extends(params, args[0]);
-      break;
-
-    default:
-      error('Unexpected type of argument! Expected "string" or "object", got "' + _typeof(args[0]) + '"');
   }
   return params;
 };
@@ -2363,7 +2359,7 @@ function SweetAlert() {
     args[_key] = arguments[_key];
   }
 
-  if (typeof args[0] === 'undefined') {
+  if (args.length === 0) {
     error('At least 1 argument is expected!');
     return false;
   }

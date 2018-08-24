@@ -19,7 +19,7 @@ function SweetAlert (...args) {
     error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)')
   }
 
-  if (typeof args[0] === 'undefined') {
+  if (args.length === 0) {
     error('At least 1 argument is expected!')
     return false
   }

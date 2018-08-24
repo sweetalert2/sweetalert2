@@ -12,14 +12,6 @@ QUnit.test('modal shows up', (assert) => {
   assert.ok(Swal.isVisible())
 })
 
-QUnit.test('should throw console error about invalid argument', (assert) => {
-  const _consoleError = console.error
-  const spy = sinon.spy(console, 'error')
-  Swal(10)
-  console.error = _consoleError
-  assert.ok(spy.calledWith('SweetAlert2: Unexpected type of argument! Expected "string" or "object", got "number"'))
-})
-
 QUnit.test('should throw console error about missing arguments', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')
@@ -42,6 +34,14 @@ QUnit.test('should throw console error about unexpected params', (assert) => {
   Swal('Hello world!', { type: 'success' })
   console.error = _consoleError
   assert.ok(spy.calledWith('SweetAlert2: Unexpected type of html! Expected "string", got object'))
+})
+
+QUnit.test('should not throw console error about undefined params and treat them as empty strings', (assert) => {
+  const _consoleError = console.error
+  const spy = sinon.spy(console, 'error')
+  Swal(undefined, 'Hello world!', undefined)
+  console.error = _consoleError
+  assert.ok(spy.notCalled)
 })
 
 QUnit.test('should show the popup with OK button in case of empty object passed as an argument', (assert) => {

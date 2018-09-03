@@ -876,7 +876,7 @@ body.swal2-no-backdrop .swal2-shown {
     line-height: 2.625em; }
   .swal2-popup .swal2-input {
     height: 2.625em;
-    padding: 0.75em; }
+    padding: 0 0.75em; }
     .swal2-popup .swal2-input[type='number'] {
       max-width: 10em; }
   .swal2-popup .swal2-file {

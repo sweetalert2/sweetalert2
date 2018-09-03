@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.26.12
+* sweetalert2 v7.26.13
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -224,7 +224,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.26.12";
+var version = "7.26.13";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -1038,21 +1038,14 @@ var defaultParams = {
 
 var deprecatedParams = ['useRejections', 'expectRejections'];
 
+var toastIncompatibleParams = ['allowOutsideClick', 'allowEnterKey', 'backdrop', 'focusConfirm', 'focusCancel', 'heightAuto', 'keydownListenerCapture'];
+
 /**
  * Is valid parameter
  * @param {String} paramName
  */
 var isValidParameter = function isValidParameter(paramName) {
   return defaultParams.hasOwnProperty(paramName) || paramName === 'extraParams';
-};
-
-/**
- * Is valid parameter for toasts
- * @param {String} paramName
- */
-var isValidToastParameter = function isValidToastParameter(paramName) {
-  var incompatibleParams = ['allowOutsideClick', 'allowEnterKey', 'backdrop', 'focusConfirm', 'focusCancel', 'heightAuto', 'keydownListenerCapture'];
-  return incompatibleParams.indexOf(paramName) === -1;
 };
 
 /**
@@ -1073,7 +1066,7 @@ var showWarningsForParams = function showWarningsForParams(params) {
     if (!isValidParameter(param)) {
       warn('Unknown parameter "' + param + '"');
     }
-    if (params.toast && !isValidToastParameter(param)) {
+    if (params.toast && toastIncompatibleParams.indexOf(param) !== -1) {
       warn('The parameter "' + param + '" is incompatible with toasts');
     }
     if (isDeprecatedParameter(param)) {
@@ -3303,7 +3296,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "    line-height: 2.625em; }\n" +
 "  .swal2-popup .swal2-input {\n" +
 "    height: 2.625em;\n" +
-"    padding: 0.75em; }\n" +
+"    padding: 0 0.75em; }\n" +
 "    .swal2-popup .swal2-input[type='number'] {\n" +
 "      max-width: 10em; }\n" +
 "  .swal2-popup .swal2-file {\n" +

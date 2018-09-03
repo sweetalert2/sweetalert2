@@ -16,6 +16,8 @@ We would like to thank everyone who contributed to this library. If you find our
 
 # Donors
 
+- **Patrik Kernstock** (10 EUR)
+
 - **[Marco Franke](https://github.com/Disane87)** (5 EUR)
 
     > Thank you for this great development! Really love it! Discovered it years ago for a private projects and now we use this in our application at work :-)

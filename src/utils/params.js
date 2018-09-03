@@ -71,29 +71,22 @@ export const deprecatedParams = [
   'expectRejections'
 ]
 
+const toastIncompatibleParams = [
+  'allowOutsideClick',
+  'allowEnterKey',
+  'backdrop',
+  'focusConfirm',
+  'focusCancel',
+  'heightAuto',
+  'keydownListenerCapture'
+]
+
 /**
  * Is valid parameter
  * @param {String} paramName
  */
 export const isValidParameter = (paramName) => {
   return defaultParams.hasOwnProperty(paramName) || paramName === 'extraParams'
-}
-
-/**
- * Is valid parameter for toasts
- * @param {String} paramName
- */
-export const isValidToastParameter = (paramName) => {
-  const incompatibleParams = [
-    'allowOutsideClick',
-    'allowEnterKey',
-    'backdrop',
-    'focusConfirm',
-    'focusCancel',
-    'heightAuto',
-    'keydownListenerCapture'
-  ]
-  return incompatibleParams.indexOf(paramName) === -1
 }
 
 /**
@@ -114,7 +107,7 @@ export const showWarningsForParams = (params) => {
     if (!isValidParameter(param)) {
       warn(`Unknown parameter "${param}"`)
     }
-    if (params.toast && !isValidToastParameter(param)) {
+    if (params.toast && toastIncompatibleParams.includes(param)) {
       warn(`The parameter "${param}" is incompatible with toasts`)
     }
     if (isDeprecatedParameter(param)) {

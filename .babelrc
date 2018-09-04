@@ -1,7 +1,7 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
         "modules": false
       }
@@ -9,6 +9,6 @@
   ],
   "plugins": [
     "array-includes",
-    "transform-object-assign"
+    "@babel/plugin-transform-object-assign"
   ]
 }

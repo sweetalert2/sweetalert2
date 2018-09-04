@@ -1,5 +1,5 @@
 const { $, Swal, SwalWithoutAnimation, isVisible, TIMEOUT, triggerKeydownEvent, dispatchCustomEvent } = require('../helpers')
-const sinon = require('sinon')
+const sinon = require('sinon/pkg/sinon')
 const { detect } = require('detect-browser')
 
 const browser = detect()

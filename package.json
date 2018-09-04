@@ -21,7 +21,7 @@
     "detect-browser": "^3.0.0",
     "eslint": "^5.1.0",
     "event-stream": "^3.3.4",
-    "execa": "^0.10.0",
+    "execa": "^1.0.0",
     "git-state": "^4.0.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^5.0.0",

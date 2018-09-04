@@ -85,7 +85,7 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
   log(`Purge jsdelivr cache...`)
   const distFiles = fs.readdirSync('dist')
   for (const distFile of distFiles) {
-    await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2@latest/dist/${distFile} > /dev/null`, { skipLogging: true })
+    await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2@latest/dist/${distFile}`, { skipLogging: true })
   }
 
   log(`Switching back to "${branchToPublish}" (so you can continue to work)...`)

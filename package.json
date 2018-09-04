@@ -53,7 +53,7 @@
     "merge2": "^1.2.1",
     "mkdirp": "^0.5.1",
     "pify": "^4.0.0",
-    "promise-polyfill": "^7.1.0",
+    "promise-polyfill": "^8.1.0",
     "qunit": "^2.5.1",
     "rimraf": "^2.6.2",
     "rollup": "^0.58.0",

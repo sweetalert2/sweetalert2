@@ -1,5 +1,5 @@
 const { $, Swal, SwalWithoutAnimation } = require('./helpers')
-const sinon = require('sinon')
+const sinon = require('sinon/pkg/sinon')
 
 QUnit.test('.swal2-toast-shown', (assert) => {
   Swal({ toast: true })

@@ -1,5 +1,5 @@
 const { $, Swal, SwalWithoutAnimation, dispatchCustomEvent, TIMEOUT } = require('./helpers')
-const sinon = require('sinon')
+const sinon = require('sinon/pkg/sinon')
 
 const simulateMouseEvent = (x, y, eventType) => {
   dispatchCustomEvent(

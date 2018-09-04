@@ -17,7 +17,7 @@
     "browser-sync": "^2.23.3",
     "bundlesize": "^0.17.0",
     "coveralls": "^3.0.2",
-    "custom-event-polyfill": "^0.3.0",
+    "custom-event-polyfill": "^1.0.6",
     "detect-browser": "^3.0.0",
     "eslint": "^5.1.0",
     "event-stream": "^3.3.4",

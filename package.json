@@ -60,7 +60,7 @@
     "rollup-plugin-json": "^3.0.0",
     "sinon": "^6.1.5",
     "tslint": "^5.8.0",
-    "typescript": "^2.1.0",
+    "typescript": "^3.0.3",
     "webpack": "^4.17.2"
   },
   "files": [

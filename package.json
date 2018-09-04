@@ -61,7 +61,7 @@
     "sinon": "^6.1.5",
     "tslint": "^5.8.0",
     "typescript": "^2.1.0",
-    "webpack": "^3.0.0"
+    "webpack": "^4.17.2"
   },
   "files": [
     "dist",

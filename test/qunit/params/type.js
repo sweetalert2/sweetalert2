@@ -1,5 +1,5 @@
 const { Swal, isVisible, isHidden } = require('../helpers')
-const sinon = require('sinon')
+const sinon = require('sinon/pkg/sinon')
 
 QUnit.test('should throw console error about invalid type', (assert) => {
   const _consoleError = console.error

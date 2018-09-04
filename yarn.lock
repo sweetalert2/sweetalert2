@@ -1985,9 +1985,9 @@ destroy@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
 
-detect-browser@^2.1.0:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/detect-browser/-/detect-browser-2.5.1.tgz#141d1580fb901156576a0a992ac319c4b2148f8b"
+detect-browser@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/detect-browser/-/detect-browser-3.0.0.tgz#3fc232002c56d427410a9e1ac3b3e8c3a80bb848"
 
 detect-file@^0.1.0:
   version "0.1.0"

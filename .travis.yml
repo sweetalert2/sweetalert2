@@ -7,6 +7,10 @@ addons:
   firefox: latest
   chrome: stable
 
+# The preinstalled yarn is outdated
+before_install:
+  - npm i -g yarn
+
 script:
   # xvfb-run is needed for headless testing with real browsers
   - if [[ "$TRAVIS_EVENT_TYPE" != "cron"  ]]; then
@@ -23,7 +27,11 @@ notifications:
     on_success: never
 
 after_success:
-  - yarn release
+  # update the dist branch to trigger the "release" task
+  - if [[ "$TRAVIS_BRANCH" = "master" ]]; then
+      node update-dist.js;
+    fi;
+  - yarn release;
   - cat ./coverage/lcov.info | coveralls
   - zip -r coverage.zip coverage
   - curl --upload-file ./coverage.zip https://transfer.sh/coverage.zip

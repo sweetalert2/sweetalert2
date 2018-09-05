@@ -23,6 +23,7 @@ notifications:
     on_success: never
 
 after_success:
+  - yarn release
   - cat ./coverage/lcov.info | coveralls
   - zip -r coverage.zip coverage
   - curl --upload-file ./coverage.zip https://transfer.sh/coverage.zip

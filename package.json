@@ -11,6 +11,8 @@
     "@babel/core": "^7.0.0",
     "@babel/plugin-transform-object-assign": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
+    "@semantic-release/changelog": "^3.0.0",
+    "@semantic-release/exec": "^3.1.2",
     "babel-loader": "^8.0.0",
     "babel-plugin-array-includes": "^2.0.3",
     "browser-sync": "^2.23.3",
@@ -58,6 +60,7 @@
     "rollup": "^0.65.0",
     "rollup-plugin-babel": "^4.0.1",
     "rollup-plugin-json": "^3.0.0",
+    "semantic-release": "^15.9.12",
     "sinon": "^6.1.5",
     "tslint": "^5.8.0",
     "typescript": "^3.0.3",
@@ -106,7 +109,7 @@
     "check:wappalyzer": "curl 'https://api.wappalyzer.com/lookup-basic/v1/?url=https%3A%2F%2Fsweetalert2.github.io' 2>&1 | grep --quiet 'SweetAlert2'",
     "check:unpkg": "curl --location 'https://unpkg.com/sweetalert2' 2>&1 | grep --quiet 'window.Swal'",
     "check:jsdelivr": "curl --location 'https://cdn.jsdelivr.net/npm/sweetalert2' 2>&1 | grep --quiet 'window.Swal'",
-    "release": "node release"
+    "release": "semantic-release"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
   "license": "MIT"

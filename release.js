@@ -2,6 +2,8 @@ const pify = require('pify')
 const rimraf = require('rimraf')
 const fs = require('fs')
 const assert = require('assert')
+const isCi = require('is-ci')
+const semver = require('semver')
 const getGitStatus = require('./utils/get-git-status')
 const execute = require('./utils/execute')
 
@@ -12,8 +14,8 @@ const writeFile = pify(fs.writeFile)
 
 const dryRun = process.argv.includes('--dry-run')
 
-const semver = process.argv[2]
-assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid semver version: patch | minor | major')
+const version = semver.clean(process.argv[2])
+assert.ok(semver.valid(version), 'Must specify the valid semver version, e.g. 1.2.3')
 
 ;(async () => {
   log('Doing sanity checks...')
@@ -26,9 +28,8 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
   log(`Pulling the latest ${branchToPublish} branch from Github...`)
   await execute('git pull origin')
 
-  log(`Running npm version ${semver}...`)
-  await execute(`npm version --no-git-tag-version ${semver}`)
-  const { version } = require('./package.json')
+  log(`Running npm version ${version}...`)
+  await execute(`npm version --no-git-tag-version ${version}`)
 
   log(`Making a version change commit...`)
   await execute(`git add package.json && git commit -m "${version}"`)
@@ -79,6 +80,11 @@ assert.ok(['patch', 'minor', 'major'].includes(semver), 'Must specify the valid 
     log('Skipping pushing to Github...')
   } else {
     log('Pushing to Github both master and dist branches...')
+    if (isCi) {
+      await execute('git config --global user.email "travis@travis-ci.org"')
+      await execute('git config --global user.name "Travis CI"')
+      await execute(`git remote set-url origin https://${process.env.GH_TOKEN}@github.com/sweetalert2/sweetalert2.git`)
+    }
     await execute('git push origin master:master dist:dist --tags')
   }
 

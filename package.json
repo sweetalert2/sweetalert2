@@ -12,7 +12,7 @@
     "@babel/plugin-transform-object-assign": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@semantic-release/changelog": "^3.0.0",
-    "@semantic-release/exec": "^3.1.2",
+    "@semantic-release/git": "^7.0.3",
     "babel-loader": "^8.0.0",
     "babel-plugin-array-includes": "^2.0.3",
     "browser-sync": "^2.23.3",

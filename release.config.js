@@ -19,4 +19,11 @@ module.exports = {
     '@semantic-release/npm',
     '@semantic-release/github',
   ],
+  success: [
+    '@semantic-release/github',
+    {
+      'path': '@semantic-release/exec',
+      'cmd': 'node tools/cherry-pick-release-to-master'
+    },
+  ]
 }

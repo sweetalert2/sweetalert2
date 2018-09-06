@@ -1,7 +1,6 @@
 module.exports = {
   debug: true,
   branch: 'dist',
-  dryRun: true,
   verifyConditions: [
     '@semantic-release/changelog',
     '@semantic-release/npm',

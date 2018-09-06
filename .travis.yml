@@ -13,11 +13,11 @@ before_install:
 
 script:
   # xvfb-run is needed for headless testing with real browsers
-  - if [[ "$TRAVIS_EVENT_TYPE" != "cron"  ]]; then
+  - if [[ "$TRAVIS_EVENT_TYPE" != "cron" && "$TRAVIS_BRANCH" != "dist" ]]; then
       xvfb-run yarn test;
     fi;
 
-  - if [[ "$TRAVIS_EVENT_TYPE" = "cron"  ]]; then
+  - if [[ "$TRAVIS_EVENT_TYPE" = "cron" ]]; then
       travis_retry yarn test:sauce &&
       yarn check:third-party;
     fi;

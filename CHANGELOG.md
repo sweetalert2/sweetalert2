@@ -1,3 +1,10 @@
+## [7.26.26](https://github.com/sweetalert2/sweetalert2/compare/v7.26.25...v7.26.26) (2018-09-06)
+
+
+### Bug Fixes
+
+* **release:** remove --unshallow from fetch ([8f18115](https://github.com/sweetalert2/sweetalert2/commit/8f18115))
+
 ## [7.26.25](https://github.com/sweetalert2/sweetalert2/compare/v7.26.24...v7.26.25) (2018-09-06)
 
 

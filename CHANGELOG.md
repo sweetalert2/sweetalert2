@@ -1,3 +1,10 @@
+## [7.26.21](https://github.com/sweetalert2/sweetalert2/compare/v7.26.20...v7.26.21) (2018-09-06)
+
+
+### Bug Fixes
+
+* **release:** fix resetting branch before building ([a8ee33a](https://github.com/sweetalert2/sweetalert2/commit/a8ee33a))
+
 ## [7.26.20](https://github.com/sweetalert2/sweetalert2/compare/v7.26.19...v7.26.20) (2018-09-06)
 
 

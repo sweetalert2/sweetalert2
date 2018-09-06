@@ -1,3 +1,11 @@
+## [7.26.22](https://github.com/sweetalert2/sweetalert2/compare/v7.26.21...v7.26.22) (2018-09-06)
+
+
+### Bug Fixes
+
+* **semantic-release:** move build-dist to prepare ([bf3e963](https://github.com/sweetalert2/sweetalert2/commit/bf3e963))
+* **travis:** do not run tests for dist branch ([a3ef072](https://github.com/sweetalert2/sweetalert2/commit/a3ef072))
+
 ## [7.26.21](https://github.com/sweetalert2/sweetalert2/compare/v7.26.20...v7.26.21) (2018-09-06)
 
 

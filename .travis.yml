@@ -29,7 +29,7 @@ notifications:
 after_success:
   # update the dist branch to trigger the "release" task
   - if [[ "$TRAVIS_BRANCH" = "master" ]]; then
-      node merge-to-dist.js;
+      node tools/merge-master-into-dist;
     fi;
   - yarn release;
   - cat ./coverage/lcov.info | coveralls

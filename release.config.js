@@ -1,7 +1,6 @@
 module.exports = {
   debug: true,
   branch: 'dist',
-  dryRun: true,
   verifyConditions: [
     '@semantic-release/changelog',
     '@semantic-release/npm',
@@ -13,6 +12,10 @@ module.exports = {
     '@semantic-release/git',
   ],
   publish: [
+    {
+      'path': '@semantic-release/exec',
+      'cmd': 'node build-dist ${nextRelease.version}'
+    },
     '@semantic-release/npm',
     '@semantic-release/github',
   ],

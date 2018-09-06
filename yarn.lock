@@ -572,6 +572,16 @@
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@semantic-release/error/-/error-2.2.0.tgz#ee9d5a09c9969eade1ec864776aeda5c5cddbbf0"
 
+"@semantic-release/exec@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@semantic-release/exec/-/exec-3.1.2.tgz#4ed89e5422d02aca9b86fbfd318d230cd29b7065"
+  dependencies:
+    "@semantic-release/error" "^2.1.0"
+    debug "^3.1.0"
+    execa "^1.0.0"
+    lodash "^4.17.4"
+    parse-json "^4.0.0"
+
 "@semantic-release/git@^7.0.3":
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/@semantic-release/git/-/git-7.0.3.tgz#758ffbb0156e236f1d731c5d36e2bbf46a8098f2"

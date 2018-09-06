@@ -1,3 +1,10 @@
+## [7.26.23](https://github.com/sweetalert2/sweetalert2/compare/v7.26.22...v7.26.23) (2018-09-06)
+
+
+### Bug Fixes
+
+* **release:** re-enable running tests before making release ([16cb2b6](https://github.com/sweetalert2/sweetalert2/commit/16cb2b6))
+
 ## [7.26.22](https://github.com/sweetalert2/sweetalert2/compare/v7.26.21...v7.26.22) (2018-09-06)
 
 

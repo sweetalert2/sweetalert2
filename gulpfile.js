@@ -43,10 +43,7 @@ gulp.task('build:scripts', () => {
       plugins: [
         json(),
         babel({
-          exclude: 'node_modules/**',
-          plugins: [
-            'external-helpers'
-          ]
+          exclude: 'node_modules/**'
         })
       ],
       input: 'src/sweetalert2.js',

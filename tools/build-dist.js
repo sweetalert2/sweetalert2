@@ -22,7 +22,7 @@ const version = process.argv[2]
   await execute('yarn build')
 
   log('Committing the dist dir...')
-  await execute(`git add --force dist/ && git commit -m "chore: add dist for ${version}"`)
+  await execute(`git add --force dist/ && git commit -m "chore: add dist for ${version} [skip ci]"`)
 
   await pushBranch('dist')
 

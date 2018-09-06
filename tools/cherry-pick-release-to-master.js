@@ -13,7 +13,7 @@ const log = console.log // eslint-disable-line
     // https://stackoverflow.com/a/47441734
     log('Allow access to other branches...')
     await execute('git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*')
-    await execute('git fetch --unshallow --tags')
+    await execute('git fetch --tags')
   }
 
   log('Switching to the master branch...')

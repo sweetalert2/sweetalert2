@@ -16,11 +16,11 @@ const log = console.log // eslint-disable-line
     await execute('git fetch --unshallow --tags')
   }
 
-  log('Switching to the dist branch...')
-  await execute('git checkout -B dist origin/dist')
-  await execute('git merge --strategy-option=theirs master --no-ff')
+  log('Switching to the master branch...')
+  await execute('git checkout -B master origin/master')
+  await execute('git cherry-pick dist')
 
-  await pushBranch('dist')
+  await pushBranch('master')
 
   log('OK!')
 })().catch(console.error)

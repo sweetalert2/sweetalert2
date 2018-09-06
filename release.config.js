@@ -14,7 +14,7 @@ module.exports = {
   publish: [
     {
       'path': '@semantic-release/exec',
-      'cmd': 'node build-dist ${nextRelease.version}'
+      'cmd': 'node tools/build-dist ${nextRelease.version}'
     },
     '@semantic-release/npm',
     '@semantic-release/github',

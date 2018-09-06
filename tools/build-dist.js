@@ -9,12 +9,11 @@ const removeDir = pify(rimraf)
 const version = process.argv[2]
 
 ;(async () => {
-  log('Resetting the current branch...')
-  await execute('git fetch')
-  await execute('git checkout .')
+  log('Switching to the dist branch...')
+  await execute('git checkout -B dist origin/dist')
 
-  log(`Pulling the latest dist branch from Github...`)
-  await execute('git pull origin --rebase')
+  log('Resetting the branch...')
+  await execute('git checkout .')
 
   log('Deleting the current dist folder...')
   await removeDir('dist')

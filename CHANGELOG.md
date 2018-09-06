@@ -1,3 +1,10 @@
+## [7.26.19](https://github.com/sweetalert2/sweetalert2/compare/v7.26.18...v7.26.19) (2018-09-06)
+
+
+### Bug Fixes
+
+* **release:** cherry-pick the release commit to master on success ([6830e3d](https://github.com/sweetalert2/sweetalert2/commit/6830e3d))
+
 ## [7.26.18](https://github.com/sweetalert2/sweetalert2/compare/v7.26.17...v7.26.18) (2018-09-06)
 
 

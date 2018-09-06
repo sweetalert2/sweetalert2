@@ -1,3 +1,11 @@
+## [7.26.18](https://github.com/sweetalert2/sweetalert2/compare/v7.26.17...v7.26.18) (2018-09-06)
+
+
+### Bug Fixes
+
+* **release:** cherry-pick the release commit to master on success ([a8a2ae8](https://github.com/sweetalert2/sweetalert2/commit/a8a2ae8))
+* **release:** use --squash for merging master into dist ([d45a7f6](https://github.com/sweetalert2/sweetalert2/commit/d45a7f6))
+
 ## [7.26.17](https://github.com/sweetalert2/sweetalert2/compare/v7.26.16...v7.26.17) (2018-09-06)
 
 

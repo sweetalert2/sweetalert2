@@ -9,9 +9,6 @@ const removeDir = pify(rimraf)
 const version = process.argv[2]
 
 ;(async () => {
-  log(`Pulling the latest dist branch from Github...`)
-  await execute('git pull origin')
-
   log('Deleting the current dist folder...')
   await removeDir('dist')
 
@@ -20,6 +17,9 @@ const version = process.argv[2]
 
   log('Committing the dist dir...')
   await execute(`git add --force dist/ && git commit -m "chore: add dist for ${version}"`)
+
+  log(`Pulling the latest dist branch from Github...`)
+  await execute('git pull origin')
 
   await pushBranch('dist')
 

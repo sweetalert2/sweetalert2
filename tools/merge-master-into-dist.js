@@ -18,7 +18,8 @@ const log = console.log // eslint-disable-line
 
   log('Switching to the dist branch...')
   await execute('git checkout -B dist origin/dist')
-  await execute('git merge --strategy-option=theirs master --no-ff')
+  await execute('git merge --strategy-option=theirs master --squash')
+  await execute(`git commit -m "Merge branch 'master' into dist"`)
 
   await pushBranch('dist')
 

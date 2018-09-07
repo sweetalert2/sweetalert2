@@ -23,11 +23,11 @@ module.exports = {
     '@semantic-release/github',
     {
       'path': '@semantic-release/exec',
-      'cmd': 'node tools/cherry-pick-release-to-master'
+      'cmd': 'node tools/purge-jsdelivr'
     },
     {
       'path': '@semantic-release/exec',
-      'cmd': 'node tools/purge-jsdelivr'
+      'cmd': 'node tools/cherry-pick-release-to-master'
     },
   ]
 }

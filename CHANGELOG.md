@@ -1,3 +1,10 @@
+## [7.26.28](https://github.com/sweetalert2/sweetalert2/compare/v7.26.27...v7.26.28) (2018-09-07)
+
+
+### Bug Fixes
+
+* **release:** purge jsdelivr before switching to master ([#1215](https://github.com/sweetalert2/sweetalert2/issues/1215)) ([4b5c55d](https://github.com/sweetalert2/sweetalert2/commit/4b5c55d))
+
 ## [7.26.27](https://github.com/sweetalert2/sweetalert2/compare/v7.26.26...v7.26.27) (2018-09-07)
 
 

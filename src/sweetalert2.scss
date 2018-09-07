@@ -100,7 +100,7 @@ body {
   bottom: 0;
   left: 0;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 10px;
 
@@ -130,7 +130,7 @@ body {
   }
 
   &.swal2-center {
-    align-items: center;
+    align-items: flex-start;
   }
 
   &.swal2-center-start,

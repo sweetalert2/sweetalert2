@@ -1,3 +1,10 @@
+## [7.26.27](https://github.com/sweetalert2/sweetalert2/compare/v7.26.26...v7.26.27) (2018-09-07)
+
+
+### Bug Fixes
+
+* **release:** purge jsdelivr cache after releasing a new version ([#1214](https://github.com/sweetalert2/sweetalert2/issues/1214)) ([6229c1f](https://github.com/sweetalert2/sweetalert2/commit/6229c1f))
+
 ## [7.26.26](https://github.com/sweetalert2/sweetalert2/compare/v7.26.25...v7.26.26) (2018-09-06)
 
 

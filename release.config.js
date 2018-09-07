@@ -25,5 +25,9 @@ module.exports = {
       'path': '@semantic-release/exec',
       'cmd': 'node tools/cherry-pick-release-to-master'
     },
+    {
+      'path': '@semantic-release/exec',
+      'cmd': 'node tools/purge-jsdelivr'
+    },
   ]
 }

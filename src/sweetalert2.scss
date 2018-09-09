@@ -361,6 +361,9 @@ body {
     padding: .625em 2em;
     font-weight: 500;
     box-shadow: none;
+    @media all and (max-width: 390px) {
+      padding: .625em 1.5em;
+    }
 
     &:not([disabled]) {
       cursor: pointer;

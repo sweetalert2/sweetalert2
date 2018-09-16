@@ -292,6 +292,7 @@ body {
   }
 
   .swal2-actions {
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     margin: $swal2-actions-margin;
@@ -357,7 +358,7 @@ body {
   }
 
   .swal2-styled {
-    margin: 0 .3125em;
+    margin: .3125em;
     padding: .625em 2em;
     font-weight: 500;
     box-shadow: none;

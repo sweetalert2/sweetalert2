@@ -1,3 +1,10 @@
+## [7.26.29](https://github.com/sweetalert2/sweetalert2/compare/v7.26.28...v7.26.29) (2018-09-16)
+
+
+### Bug Fixes
+
+* **styles:** wrap buttons (fix [#1201](https://github.com/sweetalert2/sweetalert2/issues/1201)) ([f4364e7](https://github.com/sweetalert2/sweetalert2/commit/f4364e7))
+
 ## [7.26.28](https://github.com/sweetalert2/sweetalert2/compare/v7.26.27...v7.26.28) (2018-09-07)
 
 

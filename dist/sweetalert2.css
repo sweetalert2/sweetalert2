@@ -697,6 +697,7 @@ body.swal2-no-backdrop .swal2-shown {
     text-transform: none;
     word-wrap: break-word; }
   .swal2-popup .swal2-actions {
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     margin: 1.25em auto 0;
@@ -741,7 +742,7 @@ body.swal2-no-backdrop .swal2-shown {
       -webkit-animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
               animation: swal2-rotate-loading 1.5s linear 0s infinite normal; }
   .swal2-popup .swal2-styled {
-    margin: 0 .3125em;
+    margin: .3125em;
     padding: .625em 2em;
     font-weight: 500;
     box-shadow: none; }

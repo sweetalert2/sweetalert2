@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.26.27
+* sweetalert2 v7.26.28
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -269,7 +269,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.26.27";
+var version = "7.26.28";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -3255,6 +3255,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "    text-transform: none;\n" +
 "    word-wrap: break-word; }\n" +
 "  .swal2-popup .swal2-actions {\n" +
+"    flex-wrap: wrap;\n" +
 "    align-items: center;\n" +
 "    justify-content: center;\n" +
 "    margin: 1.25em auto 0;\n" +
@@ -3299,7 +3300,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "      -webkit-animation: swal2-rotate-loading 1.5s linear 0s infinite normal;\n" +
 "              animation: swal2-rotate-loading 1.5s linear 0s infinite normal; }\n" +
 "  .swal2-popup .swal2-styled {\n" +
-"    margin: 0 .3125em;\n" +
+"    margin: .3125em;\n" +
 "    padding: .625em 2em;\n" +
 "    font-weight: 500;\n" +
 "    box-shadow: none; }\n" +

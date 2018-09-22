@@ -1,3 +1,10 @@
+# [7.27.0](https://github.com/sweetalert2/sweetalert2/compare/v7.26.29...v7.27.0) (2018-09-22)
+
+
+### Features
+
+* **styles:** add [@media](https://github.com/media) print styles ([#1223](https://github.com/sweetalert2/sweetalert2/issues/1223)) ([1432e84](https://github.com/sweetalert2/sweetalert2/commit/1432e84))
+
 ## [7.26.29](https://github.com/sweetalert2/sweetalert2/compare/v7.26.28...v7.26.29) (2018-09-16)
 
 

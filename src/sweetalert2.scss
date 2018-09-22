@@ -876,3 +876,24 @@ body {
     transform: rotate(360deg);
   }
 }
+
+@media print {
+  body {
+    &.swal2-shown {
+      @include not(
+        '.swal2-no-backdrop',
+        '.swal2-toast-shown'
+      ) {
+        overflow-y: scroll !important;
+
+        > [aria-hidden='true'] {
+          display: none;
+        }
+
+        .swal2-container {
+          position: initial !important;
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.26.28
+* sweetalert2 v7.26.29
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -269,7 +269,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.26.28";
+var version = "7.26.29";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -335,7 +335,7 @@ var focusInput = function focusInput(input) {
   input.focus(); // place cursor at end of text in text input
 
   if (input.type !== 'file') {
-    // http://stackoverflow.com/a/2345915/1331425
+    // http://stackoverflow.com/a/2345915
     var val = input.value;
     input.value = '';
     input.value = val;
@@ -1617,7 +1617,7 @@ var defaultInputValidators = {
     return /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(string) ? Promise.resolve() : Promise.reject(extraParams && extraParams.validationMessage ? extraParams.validationMessage : 'Invalid email address');
   },
   url: function url(string, extraParams) {
-    // taken from https://stackoverflow.com/a/3809435/1331425
+    // taken from https://stackoverflow.com/a/3809435
     return /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/.test(string) ? Promise.resolve() : Promise.reject(extraParams && extraParams.validationMessage ? extraParams.validationMessage : 'Invalid URL');
   }
 };
@@ -3701,4 +3701,12 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "            transform: rotate(0deg); }\n" +
 "  100% {\n" +
 "    -webkit-transform: rotate(360deg);\n" +
-"            transform: rotate(360deg); } }");
+"            transform: rotate(360deg); } }\n" +
+"\n" +
+"@media print {\n" +
+"  body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {\n" +
+"    overflow-y: scroll !important; }\n" +
+"    body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) > [aria-hidden='true'] {\n" +
+"      display: none; }\n" +
+"    body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container {\n" +
+"      position: initial !important; } }");

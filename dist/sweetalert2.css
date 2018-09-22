@@ -1144,3 +1144,11 @@ body.swal2-no-backdrop .swal2-shown {
   100% {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg); } }
+
+@media print {
+  body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+    overflow-y: scroll !important; }
+    body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) > [aria-hidden='true'] {
+      display: none; }
+    body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container {
+      position: initial !important; } }

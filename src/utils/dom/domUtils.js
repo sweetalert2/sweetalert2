@@ -14,7 +14,7 @@ export const focusInput = (input) => {
 
   // place cursor at end of text in text input
   if (input.type !== 'file') {
-    // http://stackoverflow.com/a/2345915/1331425
+    // http://stackoverflow.com/a/2345915
     const val = input.value
     input.value = ''
     input.value = val

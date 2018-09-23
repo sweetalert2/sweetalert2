@@ -3,11 +3,19 @@ const execute = require('../utils/execute')
 const pushBranch = require('./push-branch')
 
 const log = console.log // eslint-disable-line
+const error = console.error // eslint-disable-line
 
 ;(async () => {
   log('Resetting the current branch...')
   await execute('git fetch')
   await execute('git checkout .')
+
+  log('Ensuring the latest commit is the release commit...')
+  const { stdout: lastCommitMessage } = await execute('git log -1 --pretty=%B')
+  if (!lastCommitMessage.includes('chore(release): ')) {
+    error('The latest commit does not seem to be the release commit, aborting cherry-picking.')
+    return false
+  }
 
   if (isCi) {
     // https://stackoverflow.com/a/47441734

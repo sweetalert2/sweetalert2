@@ -2,6 +2,7 @@ import { isNodeEnv } from '../isNodeEnv'
 
 export const animationEndEvent = (() => {
   // Prevent run in Node env
+  /* istanbul ignore if */
   if (isNodeEnv()) {
     return false
   }

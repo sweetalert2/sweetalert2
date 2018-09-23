@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.27.0
+* sweetalert2 v7.28.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -258,7 +258,7 @@ var callIfFunction = function callIfFunction(arg) {
   return typeof arg === 'function' ? arg() : arg;
 };
 var isThenable = function isThenable(arg) {
-  return _typeof(arg) === 'object' && typeof arg.then === 'function';
+  return arg && _typeof(arg) === 'object' && typeof arg.then === 'function';
 };
 
 var DismissReason = Object.freeze({
@@ -269,7 +269,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.27.0";
+var version = "7.28.0";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -386,13 +386,6 @@ var hide = function hide(elem) {
 
 var isVisible = function isVisible(elem) {
   return elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
-};
-var removeStyleProperty = function removeStyleProperty(elem, property) {
-  if (elem.style.removeProperty) {
-    elem.style.removeProperty(property);
-  } else {
-    elem.style.removeAttribute(property);
-  }
 };
 
 var getContainer = function getContainer() {
@@ -643,7 +636,7 @@ var renderActions = function renderActions(params) {
 
 
   if (params.showConfirmButton) {
-    removeStyleProperty(confirmButton, 'display');
+    confirmButton.style.removeProperty('display');
   } else {
     hide(confirmButton);
   } // Edit text on confirm and cancel buttons
@@ -1567,10 +1560,14 @@ function resetValidationMessage() {
   }
 } // @deprecated
 
+/* istanbul ignore next */
+
 function resetValidationError() {
   warnOnce("Swal.resetValidationError() is deprecated and will be removed in the next major release, use Swal.resetValidationMessage() instead");
   resetValidationMessage.bind(this)();
 } // @deprecated
+
+/* istanbul ignore next */
 
 function showValidationError(error$$1) {
   warnOnce("Swal.showValidationError() is deprecated and will be removed in the next major release, use Swal.showValidationMessage() instead");
@@ -2287,7 +2284,13 @@ function _main(userParams) {
       case 'url':
         {
           input = getChildByClass(domCache.content, swalClasses.input);
-          input.value = innerParams.inputValue;
+
+          if (typeof innerParams.inputValue === 'string' || typeof innerParams.inputValue === 'number') {
+            input.value = innerParams.inputValue;
+          } else {
+            warn("Unexpected type of inputValue! Expected \"string\" or \"number\", got \"".concat(_typeof(innerParams.inputValue), "\""));
+          }
+
           input.placeholder = innerParams.inputPlaceholder;
           input.type = innerParams.input;
           show(input);
@@ -2506,9 +2509,13 @@ var currentInstance; // SweetAlert constructor
 
 function SweetAlert() {
   // Prevent run in Node env
+
+  /* istanbul ignore if */
   if (typeof window === 'undefined') {
     return;
   } // Check for the existence of Promise
+
+  /* istanbul ignore if */
 
 
   if (typeof Promise === 'undefined') {
@@ -2572,6 +2579,7 @@ Object.keys(instanceMethods).forEach(function (key) {
   };
 });
 SweetAlert.DismissReason = DismissReason;
+/* istanbul ignore next */
 
 SweetAlert.noop = function () {};
 

@@ -1,3 +1,10 @@
+## [7.28.1](https://github.com/sweetalert2/sweetalert2/compare/v7.28.0...v7.28.1) (2018-09-23)
+
+
+### Bug Fixes
+
+* **inputValue:** warn about invalid inputValue ([#1228](https://github.com/sweetalert2/sweetalert2/issues/1228)) ([8adebd0](https://github.com/sweetalert2/sweetalert2/commit/8adebd0))
+
 # [7.28.0](https://github.com/sweetalert2/sweetalert2/compare/v7.27.0...v7.28.0) (2018-09-23)
 
 

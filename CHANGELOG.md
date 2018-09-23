@@ -1,3 +1,12 @@
+# [7.28.0](https://github.com/sweetalert2/sweetalert2/compare/v7.27.0...v7.28.0) (2018-09-23)
+
+
+### Features
+
+* **getters:** expose .getValidationMessage() ([3780165](https://github.com/sweetalert2/sweetalert2/commit/3780165))
+* **params:** add validationMessage ([73e0413](https://github.com/sweetalert2/sweetalert2/commit/73e0413))
+* **params:** deprecate extraParams ([1224200](https://github.com/sweetalert2/sweetalert2/commit/1224200))
+
 # [7.27.0](https://github.com/sweetalert2/sweetalert2/compare/v7.26.29...v7.27.0) (2018-09-22)
 
 

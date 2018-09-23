@@ -68,11 +68,3 @@ export const hide = (elem) => {
 
 // borrowed from jquery $(elem).is(':visible') implementation
 export const isVisible = (elem) => elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length)
-
-export const removeStyleProperty = (elem, property) => {
-  if (elem.style.removeProperty) {
-    elem.style.removeProperty(property)
-  } else {
-    elem.style.removeAttribute(property)
-  }
-}

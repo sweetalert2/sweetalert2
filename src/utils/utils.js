@@ -79,4 +79,4 @@ export const warnOnce = (message) => {
  */
 export const callIfFunction = (arg) => typeof arg === 'function' ? arg() : arg
 
-export const isThenable = (arg) => typeof arg === 'object' && typeof arg.then === 'function'
+export const isThenable = (arg) => arg && typeof arg === 'object' && typeof arg.then === 'function'

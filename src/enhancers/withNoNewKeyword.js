@@ -19,6 +19,7 @@ export function withNoNewKeyword (ParentSwal) {
     Object.setPrototypeOf(NoNewKeywordSwal, ParentSwal)
   } else {
     // Android 4.4
+    /* istanbul ignore next */
     // eslint-disable-next-line
     NoNewKeywordSwal.__proto__ = ParentSwal
   }

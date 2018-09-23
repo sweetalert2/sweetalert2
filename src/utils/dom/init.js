@@ -75,6 +75,7 @@ export const init = (params) => {
     )
   }
 
+  /* istanbul ignore if */
   if (isNodeEnv()) {
     error('SweetAlert2 requires document to initialize')
     return

@@ -2,7 +2,7 @@ import defaultParams, { showWarningsForParams } from '../utils/params'
 import * as dom from '../utils/dom/index'
 import { swalClasses } from '../utils/classes'
 import Timer from '../utils/Timer'
-import { formatInputOptions, error, callIfFunction, isThenable } from '../utils/utils'
+import { formatInputOptions, error, warn, callIfFunction, isThenable } from '../utils/utils'
 import setParameters from '../utils/setParameters'
 import globalState from '../globalState'
 import { openPopup } from '../utils/openPopup'
@@ -417,7 +417,11 @@ export function _main (userParams) {
       case 'tel':
       case 'url': {
         input = dom.getChildByClass(domCache.content, swalClasses.input)
-        input.value = innerParams.inputValue
+        if (typeof innerParams.inputValue === 'string' || typeof innerParams.inputValue === 'number') {
+          input.value = innerParams.inputValue
+        } else {
+          warn(`Unexpected type of inputValue! Expected "string" or "number", got "${typeof innerParams.inputValue}"`)
+        }
         input.placeholder = innerParams.inputPlaceholder
         input.type = innerParams.input
         dom.show(input)

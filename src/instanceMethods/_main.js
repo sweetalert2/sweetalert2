@@ -33,7 +33,7 @@ export function _main (userParams) {
     confirmButton: dom.getConfirmButton(),
     cancelButton: dom.getCancelButton(),
     closeButton: dom.getCloseButton(),
-    validationError: dom.getValidationError(),
+    validationMessage: dom.getValidationMessage(),
     progressSteps: dom.getProgressSteps()
   }
   privateProps.domCache.set(this, domCache)
@@ -105,22 +105,22 @@ export function _main (userParams) {
       }
 
       if (innerParams.preConfirm) {
-        this.resetValidationError()
+        this.resetValidationMessage()
         const preConfirmPromise = Promise.resolve().then(() => innerParams.preConfirm(value, innerParams.extraParams))
         if (innerParams.expectRejections) {
           preConfirmPromise.then(
             (preConfirmValue) => succeedWith(preConfirmValue || value),
-            (validationError) => {
+            (validationMessage) => {
               this.hideLoading()
-              if (validationError) {
-                this.showValidationError(validationError)
+              if (validationMessage) {
+                this.showValidationMessage(validationMessage)
               }
             }
           )
         } else {
           preConfirmPromise.then(
             (preConfirmValue) => {
-              if (dom.isVisible(domCache.validationError) || preConfirmValue === false) {
+              if (dom.isVisible(domCache.validationMessage) || preConfirmValue === false) {
                 this.hideLoading()
               } else {
                 succeedWith(preConfirmValue || value)
@@ -159,21 +159,21 @@ export function _main (userParams) {
                       this.enableInput()
                       confirm(inputValue)
                     },
-                    (validationError) => {
+                    (validationMessage) => {
                       this.enableButtons()
                       this.enableInput()
-                      if (validationError) {
-                        this.showValidationError(validationError)
+                      if (validationMessage) {
+                        this.showValidationMessage(validationMessage)
                       }
                     }
                   )
                 } else {
                   validationPromise.then(
-                    (validationError) => {
+                    (validationMessage) => {
                       this.enableButtons()
                       this.enableInput()
-                      if (validationError) {
-                        this.showValidationError(validationError)
+                      if (validationMessage) {
+                        this.showValidationMessage(validationMessage)
                       } else {
                         confirm(inputValue)
                       }
@@ -368,7 +368,7 @@ export function _main (userParams) {
 
     this.enableButtons()
     this.hideLoading()
-    this.resetValidationError()
+    this.resetValidationMessage()
 
     if (innerParams.toast && (innerParams.input || innerParams.footer || innerParams.showCloseButton)) {
       dom.addClass(document.body, swalClasses['toast-column'])

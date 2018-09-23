@@ -204,19 +204,19 @@ QUnit.test('set and reset defaults', (assert) => {
   Swal.clickCancel()
 })
 
-QUnit.test('validation error', (assert) => {
+QUnit.test('validation message', (assert) => {
   const done = assert.async()
   const inputValidator = (value) => Promise.resolve(!value && 'no falsy values')
 
   SwalWithoutAnimation({ input: 'text', inputValidator })
-  assert.ok(isHidden(Swal.getValidationError()))
+  assert.ok(isHidden(Swal.getValidationMessage()))
   setTimeout(() => {
     const initialModalHeight = $('.swal2-modal').offsetHeight
 
     Swal.clickConfirm()
     setTimeout(() => {
-      assert.ok(isVisible(Swal.getValidationError()))
-      assert.equal(Swal.getValidationError().textContent, 'no falsy values')
+      assert.ok(isVisible(Swal.getValidationMessage()))
+      assert.equal(Swal.getValidationMessage().textContent, 'no falsy values')
       assert.ok($('.swal2-input').getAttribute('aria-invalid'))
       assert.ok($('.swal2-modal').offsetHeight > initialModalHeight)
 
@@ -228,7 +228,7 @@ QUnit.test('validation error', (assert) => {
       event.initEvent('input', true, true)
       $('.swal2-input').dispatchEvent(event)
 
-      assert.ok(isHidden(Swal.getValidationError()))
+      assert.ok(isHidden(Swal.getValidationMessage()))
       assert.notOk($('.swal2-input').getAttribute('aria-invalid'))
       assert.ok($('.swal2-modal').offsetHeight === initialModalHeight)
       done()

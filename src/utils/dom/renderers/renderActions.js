@@ -22,7 +22,7 @@ export const renderActions = (params) => {
 
   // Confirm button
   if (params.showConfirmButton) {
-    dom.removeStyleProperty(confirmButton, 'display')
+    confirmButton.style.removeProperty('display')
   } else {
     dom.hide(confirmButton)
   }

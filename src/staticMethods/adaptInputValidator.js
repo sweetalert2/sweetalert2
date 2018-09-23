@@ -4,6 +4,6 @@
 export const adaptInputValidator = (legacyValidator) => {
   return function adaptedInputValidator (inputValue, extraParams) {
     return legacyValidator.call(this, inputValue, extraParams)
-      .then(() => undefined, validationError => validationError)
+      .then(() => undefined, validationMessage => validationMessage)
   }
 }

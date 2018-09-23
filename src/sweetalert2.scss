@@ -557,15 +557,15 @@ body {
     }
   }
 
-  .swal2-validationerror {
+  .swal2-validation-message {
     display: none;
     align-items: center;
-    justify-content: $swal2-validationerror-justify-content;
-    padding: $swal2-validationerror-padding;
-    background: $swal2-validationerror-background;
-    color: $swal2-validationerror-color;
-    font-size: $swal2-validationerror-font-size;
-    font-weight: $swal2-validationerror-font-weight;
+    justify-content: $swal2-validation-message-justify-content;
+    padding: $swal2-validation-message-padding;
+    background: $swal2-validation-message-background;
+    color: $swal2-validation-message-color;
+    font-size: $swal2-validation-message-font-size;
+    font-weight: $swal2-validation-message-font-weight;
     overflow: hidden;
 
     &::before {
@@ -575,13 +575,13 @@ body {
       height: 1.5em;
       margin: 0 .625em;
       border-radius: 50%;
-      background-color: $swal2-validationerror-icon-background;
-      color: $swal2-validationerror-icon-color;
+      background-color: $swal2-validation-message-icon-background;
+      color: $swal2-validation-message-icon-color;
       font-weight: 600;
       line-height: 1.5em;
       text-align: center;
       content: '!';
-      zoom: $swal2-validationerror-icon-zoom;
+      zoom: $swal2-validation-message-icon-zoom;
     }
   }
 }

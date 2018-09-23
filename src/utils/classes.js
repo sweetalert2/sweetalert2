@@ -43,7 +43,7 @@ export const swalClasses = prefix([
   'label',
   'textarea',
   'inputerror',
-  'validationerror',
+  'validation-message',
   'progresssteps',
   'activeprogressstep',
   'progresscircle',

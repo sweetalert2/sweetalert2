@@ -734,6 +734,19 @@ declare module 'sweetalert2' {
         inputValidator?: (inputValue: string) => SyncOrAsync<string | null>;
 
         /**
+         * A custom validation message for default validators (email, url).
+         *
+         * ex.
+         *   swal({
+         *     input: 'email',
+         *     validationMesage: 'Adresse e-mail invalide'
+         *   })
+         *
+         * @default null
+         */
+        validationMesage?: string;
+
+        /**
          * A custom CSS class for the input field.
          *
          * @default null

@@ -10,11 +10,13 @@ let currentInstance
 // SweetAlert constructor
 function SweetAlert (...args) {
   // Prevent run in Node env
+  /* istanbul ignore if */
   if (typeof window === 'undefined') {
     return
   }
 
   // Check for the existence of Promise
+  /* istanbul ignore if */
   if (typeof Promise === 'undefined') {
     error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)')
   }
@@ -71,6 +73,7 @@ Object.keys(instanceMethods).forEach(key => {
 
 SweetAlert.DismissReason = DismissReason
 
+/* istanbul ignore next */
 SweetAlert.noop = () => { }
 
 SweetAlert.version = version

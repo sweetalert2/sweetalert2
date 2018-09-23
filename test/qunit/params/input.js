@@ -60,8 +60,8 @@ QUnit.test('input email + built-in email validation', (assert) => {
   Swal.getInput().value = invalidEmailAddress
   Swal.clickConfirm()
   setTimeout(() => {
-    assert.ok(isVisible($('.swal2-validationerror')))
-    assert.ok($('.swal2-validationerror').textContent.indexOf('Invalid email address') !== -1)
+    assert.ok(isVisible(Swal.getValidationMessage()))
+    assert.ok(Swal.getValidationMessage().textContent.indexOf('Invalid email address') !== -1)
 
     Swal.getInput().value = validEmailAddress
     triggerKeydownEvent(Swal.getInput(), 'Enter')
@@ -81,8 +81,8 @@ QUnit.test('input url + built-in url validation', (assert) => {
   Swal.getInput().value = invalidUrl
   Swal.clickConfirm()
   setTimeout(() => {
-    assert.ok(isVisible($('.swal2-validationerror')))
-    assert.ok($('.swal2-validationerror').textContent.indexOf('Invalid URL') !== -1)
+    assert.ok(isVisible(Swal.getValidationMessage()))
+    assert.ok(Swal.getValidationMessage().textContent.indexOf('Invalid URL') !== -1)
 
     Swal.getInput().value = validUrl
     triggerKeydownEvent(Swal.getInput(), 'Enter')

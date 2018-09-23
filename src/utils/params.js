@@ -53,6 +53,7 @@ const defaultParams = {
   inputClass: null,
   inputAttributes: {},
   inputValidator: null,
+  validationMessage: null,
   grow: false,
   position: 'center',
   progressSteps: [],
@@ -68,7 +69,8 @@ const defaultParams = {
 
 export const deprecatedParams = [
   'useRejections',
-  'expectRejections'
+  'expectRejections',
+  'extraParams'
 ]
 
 const toastIncompatibleParams = [

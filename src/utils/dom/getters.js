@@ -24,7 +24,7 @@ export const getImage = () => elementByClass(swalClasses.image)
 
 export const getProgressSteps = () => elementByClass(swalClasses.progresssteps)
 
-export const getValidationError = () => elementByClass(swalClasses.validationerror)
+export const getValidationMessage = () => elementByClass(swalClasses['validation-message'])
 
 export const getConfirmButton = () => elementByClass(swalClasses.confirm)
 

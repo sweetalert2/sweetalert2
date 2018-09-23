@@ -182,13 +182,28 @@ declare module 'sweetalert2' {
          * Shows a validation error message.
          *
          * @param error The error message.
+         * @deprecated
          */
         function showValidationError(error: string): void;
 
         /**
          * Hides validation error message.
+         *
+         * @deprecated
          */
         function resetValidationError(): void;
+
+        /**
+         * Shows a validation message.
+         *
+         * @param validationMessage The validation message.
+         */
+        function showValidationMessage(validationMessage: string): void;
+
+        /**
+         * Hides validation message.
+         */
+        function resetValidationMessage(): void;
 
         /**
          * Gets the input DOM node, this method works with input parameter.
@@ -204,6 +219,11 @@ declare module 'sweetalert2' {
          * Enables the modal input.
          */
         function enableInput(): void;
+
+        /**
+         * Gets the validation message container.
+         */
+        function getValidationMessage(): HTMLElement;
 
         /**
          * If `timer` parameter is set, returns number os milliseconds of timer remained.
@@ -734,6 +754,19 @@ declare module 'sweetalert2' {
         inputValidator?: (inputValue: string) => SyncOrAsync<string | null>;
 
         /**
+         * A custom validation message for default validators (email, url).
+         *
+         * ex.
+         *   swal({
+         *     input: 'email',
+         *     validationMesage: 'Adresse e-mail invalide'
+         *   })
+         *
+         * @default null
+         */
+        validationMesage?: string;
+
+        /**
          * A custom CSS class for the input field.
          *
          * @default null
@@ -791,7 +824,7 @@ declare module 'sweetalert2' {
 
         /**
          * Determines whether given `inputValidator` and `preConfirm` functions should be expected to to signal
-         * validation errors by rejecting, or by their respective means (see documentation for each option).
+         * validation message by rejecting, or by their respective means (see documentation for each option).
          *
          * @default false
          * @deprecated

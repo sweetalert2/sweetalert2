@@ -68,7 +68,8 @@ const defaultParams = {
 
 export const deprecatedParams = [
   'useRejections',
-  'expectRejections'
+  'expectRejections',
+  'extraParams'
 ]
 
 const toastIncompatibleParams = [

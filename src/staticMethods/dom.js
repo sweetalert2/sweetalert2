@@ -14,6 +14,7 @@ export {
   getCancelButton,
   getFooter,
   getFocusableElements,
+  getValidationMessage,
   isLoading
 } from '../utils/dom/index'
 

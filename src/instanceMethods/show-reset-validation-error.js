@@ -37,12 +37,14 @@ export function resetValidationMessage () {
 }
 
 // @deprecated
+/* istanbul ignore next */
 export function resetValidationError() {
   warnOnce(`Swal.resetValidationError() is deprecated and will be removed in the next major release, use Swal.resetValidationMessage() instead`)
   resetValidationMessage.bind(this)()
 }
 
 // @deprecated
+/* istanbul ignore next */
 export function showValidationError(error) {
   warnOnce(`Swal.showValidationError() is deprecated and will be removed in the next major release, use Swal.showValidationMessage() instead`)
   showValidationMessage.bind(this)(error)

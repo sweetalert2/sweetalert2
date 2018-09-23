@@ -291,7 +291,7 @@ body.swal2-toast-column .swal2-toast {
     height: 2em;
     margin: .3125em auto;
     font-size: 1em; }
-  body.swal2-toast-column .swal2-toast .swal2-validationerror {
+  body.swal2-toast-column .swal2-toast .swal2-validation-message {
     font-size: 1em; }
 
 .swal2-popup.swal2-toast {
@@ -902,7 +902,7 @@ body.swal2-no-backdrop .swal2-shown {
     .swal2-popup .swal2-radio input,
     .swal2-popup .swal2-checkbox input {
       margin: 0 .4em; }
-  .swal2-popup .swal2-validationerror {
+  .swal2-popup .swal2-validation-message {
     display: none;
     align-items: center;
     justify-content: center;
@@ -912,7 +912,7 @@ body.swal2-no-backdrop .swal2-shown {
     font-size: 1em;
     font-weight: 300;
     overflow: hidden; }
-    .swal2-popup .swal2-validationerror::before {
+    .swal2-popup .swal2-validation-message::before {
       display: inline-block;
       width: 1.5em;
       min-width: 1.5em;

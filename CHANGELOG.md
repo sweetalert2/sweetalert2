@@ -1,3 +1,10 @@
+## [7.28.2](https://github.com/sweetalert2/sweetalert2/compare/v7.28.1...v7.28.2) (2018-09-24)
+
+
+### Bug Fixes
+
+* **styles:** revert breaking changes in SASS variables ([#1229](https://github.com/sweetalert2/sweetalert2/issues/1229)) ([7d9f9d1](https://github.com/sweetalert2/sweetalert2/commit/7d9f9d1))
+
 ## [7.28.1](https://github.com/sweetalert2/sweetalert2/compare/v7.28.0...v7.28.1) (2018-09-23)
 
 

@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.28.0
+* sweetalert2 v7.28.1
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -269,7 +269,7 @@ var DismissReason = Object.freeze({
   timer: 'timer'
 });
 
-var version = "7.28.0";
+var version = "7.28.1";
 
 var argsToParams = function argsToParams(args) {
   var params = {};

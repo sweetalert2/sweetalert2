@@ -3,6 +3,8 @@ We would like to thank everyone who contributed to this library. If you find our
 
 # Patrons
 
+- **[Ilia Motornyi](https://www.patreon.com/elmot)** ($2 per month)
+
 - **[Priyankar Bhowmik](https://www.patreon.com/pkb)** ($1 per month)
 
 - **[Malik Nazimanov](https://www.patreon.com/lantos)** ($5 per month)

@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.28.2
+* sweetalert2 v7.28.4
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -268,8 +268,6 @@ var DismissReason = Object.freeze({
   esc: 'esc',
   timer: 'timer'
 });
-
-var version = "7.28.2";
 
 var argsToParams = function argsToParams(args) {
   var params = {};
@@ -2593,12 +2591,10 @@ SweetAlert.DismissReason = DismissReason;
 
 SweetAlert.noop = function () {};
 
-SweetAlert.version = version;
-
 var Swal = withNoNewKeyword(withGlobalDefaults(SweetAlert));
 Swal.default = Swal;
 
 return Swal;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.28.4';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}

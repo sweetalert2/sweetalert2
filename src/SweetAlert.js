@@ -1,6 +1,5 @@
 import { error } from './utils/utils.js'
 import { DismissReason } from './utils/DismissReason'
-import { version } from '../package.json'
 import * as staticMethods from './staticMethods'
 import * as instanceMethods from './instanceMethods'
 import privateProps from './privateProps'
@@ -75,7 +74,5 @@ SweetAlert.DismissReason = DismissReason
 
 /* istanbul ignore next */
 SweetAlert.noop = () => { }
-
-SweetAlert.version = version
 
 export default SweetAlert

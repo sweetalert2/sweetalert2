@@ -9,7 +9,7 @@ module.exports = {
   prepare: [
     {
       'path': '@semantic-release/exec',
-      'cmd': 'node tools/build-dist ${nextRelease.version}'
+      'cmd': 'VERSION=${nextRelease.version} node tools/build-dist'
     },
     '@semantic-release/changelog',
     '@semantic-release/npm',

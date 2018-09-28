@@ -9,6 +9,7 @@ const log = console.log // eslint-disable-line
   for (const distFile of distFiles) {
     log(` - ${distFile}`)
     await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2@latest/dist/${distFile}`, { skipLogging: true })
+    await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2@7/dist/${distFile}`, { skipLogging: true })
   }
 
   log('OK!')

@@ -1,3 +1,10 @@
+## [7.28.3](https://github.com/sweetalert2/sweetalert2/compare/v7.28.2...v7.28.3) (2018-09-28)
+
+
+### Bug Fixes
+
+* **api:** call onAfterClose after previousActiveElement is focused ([#1233](https://github.com/sweetalert2/sweetalert2/issues/1233)) ([68c83ed](https://github.com/sweetalert2/sweetalert2/commit/68c83ed))
+
 ## [7.28.2](https://github.com/sweetalert2/sweetalert2/compare/v7.28.1...v7.28.2) (2018-09-24)
 
 

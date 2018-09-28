@@ -6,7 +6,7 @@ const pushBranch = require('./push-branch')
 const log = console.log // eslint-disable-line
 const removeDir = pify(rimraf)
 
-const version = process.argv[2]
+const version = process.env.VERSION
 
 ;(async () => {
   log('Switching to the dist branch...')

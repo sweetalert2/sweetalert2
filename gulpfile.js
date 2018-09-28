@@ -12,9 +12,10 @@ const mkdirp = require('mkdirp')
 const packageJson = require('./package.json')
 const execute = require('./utils/execute')
 const log = require('fancy-log')
+const version = process.env.VERSION || packageJson.version
 
 const banner = `/*!
-* ${packageJson.name} v${packageJson.version}
+* ${packageJson.name} v${version}
 * Released under the ${packageJson.license} License.
 */`
 
@@ -53,6 +54,7 @@ gulp.task('build:scripts', () => {
         banner: banner,
         footer: `\
 if (typeof window !== 'undefined' && window.Sweetalert2){\
+  window.Sweetalert2.version = '${version}';\
   window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2\
 }`
       }

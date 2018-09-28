@@ -1,3 +1,10 @@
+## [7.28.4](https://github.com/sweetalert2/sweetalert2/compare/v7.28.3...v7.28.4) (2018-09-28)
+
+
+### Bug Fixes
+
+* **release:** fix version in dist files ([#1235](https://github.com/sweetalert2/sweetalert2/issues/1235)) ([14eea6f](https://github.com/sweetalert2/sweetalert2/commit/14eea6f))
+
 ## [7.28.3](https://github.com/sweetalert2/sweetalert2/compare/v7.28.2...v7.28.3) (2018-09-28)
 
 

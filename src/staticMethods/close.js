@@ -24,9 +24,11 @@ const close = (onClose, onAfterClose) => {
 
   const removePopupAndResetState = () => {
     if (!dom.isToast()) {
-      restoreActiveElement()
+      restoreActiveElement().then(() => triggerOnAfterClose(onAfterClose))
       globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
       globalState.keydownHandlerAdded = false
+    } else {
+      triggerOnAfterClose(onAfterClose)
     }
 
     if (container.parentNode) {
@@ -48,12 +50,6 @@ const close = (onClose, onAfterClose) => {
       undoIOSfix()
       unsetAriaHidden()
     }
-
-    if (onAfterClose !== null && typeof onAfterClose === 'function') {
-      setTimeout(() => {
-        onAfterClose()
-      })
-    }
   }
 
   // If animation is supported, animate
@@ -69,6 +65,15 @@ const close = (onClose, onAfterClose) => {
     removePopupAndResetState()
   }
 }
+
+const triggerOnAfterClose = (onAfterClose) => {
+  if (onAfterClose !== null && typeof onAfterClose === 'function') {
+    setTimeout(() => {
+      onAfterClose()
+    })
+  }
+}
+
 export {
   close,
   close as closePopup,

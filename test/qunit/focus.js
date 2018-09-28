@@ -86,10 +86,8 @@ QUnit.test('focusCancel', (assert) => {
 //       text: 'I should trap focus inside myself and restore previousActiveElement when I\'m closed',
 //       timer: 1,
 //       onAfterClose: () => {
-//         setTimeout(() => {
-//           assert.equal(document.activeElement, buttonModal)
-//           done()
-//         }, RESTORE_FOCUS_TIMEOUT)
+//         assert.equal(document.activeElement, buttonModal)
+//         done()
 //       }
 //     })
 //   })

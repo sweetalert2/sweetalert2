@@ -3,6 +3,8 @@ We would like to thank everyone who contributed to this library. If you find our
 
 # Patrons
 
+- **[Idiot Wind Podcast](https://www.patreon.com/idiotwind)** ($1 per month)
+
 - **[Ilia Motornyi](https://www.patreon.com/elmot)** ($2 per month)
 
 - **[Priyankar Bhowmik](https://www.patreon.com/pkb)** ($1 per month)

@@ -1,3 +1,9 @@
+---
+name: Bug report
+about: Something not working as expected
+
+---
+
 ⚠⚠⚠ If your issue is focused more on 'how do I do this?' rather than 'this is a broken functionality', then submit it to StackOverflow https://stackoverflow.com/questions/ask instead of GitHub, and make sure you add the `sweetalert2` tag to the question.
 
 ## Current behavior

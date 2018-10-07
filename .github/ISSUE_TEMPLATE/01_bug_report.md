@@ -18,9 +18,8 @@ about: Something not working as expected
 
 <!-- If possible, please provide a working example in order for us to be able to reproduce the issue -->
 
-The template: [https://fantasy-word.glitch.me/](https://fantasy-word.glitch.me/), click "Remix on Glitch" to edit it:
+The template: https://fantasy-word.glitch.me/ click "Remix on Glitch" to edit it.
 
-<img src="https://user-images.githubusercontent.com/6059356/46581537-0036a180-ca43-11e8-8d00-9ed5c6feea56.png" width="200">
 
 ---
 

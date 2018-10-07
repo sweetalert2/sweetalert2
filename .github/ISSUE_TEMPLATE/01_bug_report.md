@@ -18,7 +18,7 @@ about: Something not working as expected
 
 <!-- If possible, please provide a working example in order for us to be able to reproduce the issue -->
 
-The template: https://fantasy-word.glitch.me/ click "Remix on Glitch" to edit it.
+<!-- The template: https://fantasy-word.glitch.me/ click "Remix on Glitch" to edit it. -->
 
 
 ---

@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Wouldn’t it be nice if semantic-release could ...
+about: Wouldn’t it be nice if SweetAlert2 could ...
 
 ---
 

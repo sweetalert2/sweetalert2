@@ -34,6 +34,6 @@ after_success:
   - yarn release;
   - if [[ "$TRAVIS_BRANCH" != "dist" ]]; then
       cat ./coverage/lcov.info | coveralls;
+      zip -r coverage.zip coverage;
+      curl --upload-file ./coverage.zip https://transfer.sh/coverage.zip;
     fi;
-  - zip -r coverage.zip coverage
-  - curl --upload-file ./coverage.zip https://transfer.sh/coverage.zip

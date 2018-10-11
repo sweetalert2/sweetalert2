@@ -20,9 +20,9 @@ module.exports = function (config) {
     sauce_iphone: {
       base: 'SauceLabs',
       browserName: 'Safari',
-      deviceName: 'iPhone 7 Simulator',
+      deviceName: 'iPhone XS Simulator',
       platformName: 'iOS',
-      platformVersion: '11.2'
+      platformVersion: '12.0'
     },
     sauce_android_kitkat: {
       base: 'SauceLabs',

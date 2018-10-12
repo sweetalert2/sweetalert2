@@ -7,6 +7,12 @@ addons:
   firefox: latest
   chrome: stable
 
+# limit the Travis 'build on push' feature to master and dist branches only
+branches:
+  only:
+   - master
+   - dist
+
 # The preinstalled yarn is outdated
 before_install:
   - npm i -g yarn

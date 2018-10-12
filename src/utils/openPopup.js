@@ -47,6 +47,11 @@ export const openPopup = (params) => {
     fixScrollbar()
     iOSfix()
     setAriaHidden()
+
+    // sweetalert2/issues/1247
+    setTimeout(() => {
+      container.scrollTop = 0
+    })
   }
   if (!dom.isToast() && !globalState.previousActiveElement) {
     globalState.previousActiveElement = document.activeElement

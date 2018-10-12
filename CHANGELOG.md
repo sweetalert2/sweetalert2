@@ -1,3 +1,10 @@
+## [7.28.5](https://github.com/sweetalert2/sweetalert2/compare/v7.28.4...v7.28.5) (2018-10-12)
+
+
+### Bug Fixes
+
+* scroll container to the top on open ([#1248](https://github.com/sweetalert2/sweetalert2/issues/1248)) ([369922f](https://github.com/sweetalert2/sweetalert2/commit/369922f))
+
 ## [7.28.4](https://github.com/sweetalert2/sweetalert2/compare/v7.28.3...v7.28.4) (2018-09-28)
 
 

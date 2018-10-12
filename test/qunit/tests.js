@@ -12,6 +12,21 @@ QUnit.test('modal shows up', (assert) => {
   assert.ok(Swal.isVisible())
 })
 
+QUnit.test('modal scrolled to top on open', (assert) => {
+  const done = assert.async()
+  Swal({
+    imageUrl: 'https://placeholder.pics/svg/300x1500',
+    imageHeight: 1500,
+    imageAlt: 'A tall image',
+    onOpen: () => {
+      setTimeout(() => {
+        assert.equal(Swal.getContainer().scrollTop, 0)
+        done()
+      })
+    }
+  })
+})
+
 QUnit.test('should throw console error about missing arguments', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')

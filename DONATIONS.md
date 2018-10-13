@@ -1,7 +1,39 @@
 We would like to thank everyone who contributed to this library. If you find our library useful and wish to support as well, you can do so [through Patreon](https://www.patreon.com/limonte) or directly [through PayPal](https://www.paypal.me/limonte/5eur). Your contribution will be greatly appreciated!
 
 
-# Patrons
+# Backers
+
+- **[SheetJS LLC](https://sheetjs.com/)** (100 USD)
+    > Great Work with SweetAlert2!
+
+- **[Unique-P GmbH](https://www.unique-p.ch/)** (100 CHF)
+    > Great work guys! Awesome library, very helpful!
+
+
+# Supporters
+
+- **[Jan Fässler](https://github.com/faessler)** (30 EUR)
+    > Nice work! 👾
+
+- **Danny Lankar** (25 USD)
+    > You should be selling this product. Love it, thank you!
+
+- **[VEI Hosting](http://www.veihosting.com/)** (20 USD)
+
+- **Daniel Seuffer** (10 EUR)
+    > Thx for this very sweet alert!! And the continuous support. :-)
+
+- **Morgan Touverey** (10 EUR)
+    > From [@toverux](github.com/toverux) with love!
+
+- **Jan Philip Steimel** (10 EUR)
+    > thank you!
+
+- **Patrik Kernstock** (10 EUR)
+
+
+
+# Patrons (via [Patreon](https://www.patreon.com/limonte))
 
 - **[Idiot Wind Podcast](https://www.patreon.com/idiotwind)** ($1 per month)
 
@@ -20,27 +52,17 @@ We would like to thank everyone who contributed to this library. If you find our
 
 # Donors
 
-- **Patrik Kernstock** (10 EUR)
-
 - **[Marco Franke](https://github.com/Disane87)** (5 EUR)
 
     > Thank you for this great development! Really love it! Discovered it years ago for a private projects and now we use this in our application at work :-)
 
+- **Legoman99573** (0,20 EUR)
+
+    > I dont have much, but I can say that SweetAlert2 is badass and have used it. Here is what I still have left in my paypal balance. Like to see more features in the future to play with.
+
 - **[Gautier Dele](https://github.com/GautierDele)** (5 EUR)
 
     > Keep going, awesome job!
-
-- **[Unique-P GmbH](https://www.unique-p.ch/)** (100 CHF)
-
-    > Great work guys! Awesome library, very helpful!
-
-- **Jan Philip Steimel** (10 EUR)
-
-    > thank you!
-
-- **[Jan Fässler](https://github.com/faessler)** (30 EUR)
-
-    > Nice work! 👾
 
 - **Mustafa Khader** (5 USD)
 
@@ -48,29 +70,11 @@ We would like to thank everyone who contributed to this library. If you find our
 
 - **[Cassiano Montanari](https://github.com/cassianomon)** (10 BRL)
 
-- **[VEI Hosting](http://www.veihosting.com/)** (20 USD)
-
-- **Daniel Seuffer** (10 EUR)
-
-    > Thx for this very sweet alert!! And the continuous support. :-)
-
-- **Legoman99573** (0,20 EUR)
-
-    > I dont have much, but I can say that SweetAlert2 is badass and have used it. Here is what I still have left in my paypal balance. Like to see more features in the future to play with.
-
 - **Munsifali Rashid** (5 USD)
-
-- **Danny Lankar** (25 USD)
-
-    > You should be selling this product. Love it, thank you!
 
 - **Mapcom Internet Technologies** (10 AUD)
 
 - **Pawel Terebinski** (5 EUR)
-
-- **Morgan Touverey** (10 EUR)
-
-    > From [@toverux](github.com/toverux) with love!
 
 - **Singdavid Srun** (2 EUR)
 

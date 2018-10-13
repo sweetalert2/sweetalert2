@@ -191,6 +191,13 @@ If you would like to contribute enhancements or fixes, please do the following:
  - Serves unit tests @ http://localhost:3000
  - Re-lints, re-builds, re-loads and re-tests as necessary when files change
 
+Backers
+-------
+
+[![](https://avatars0.githubusercontent.com/u/5826089?v=4&s=80)](https://sheetjs.com/) | [![](https://avatars2.githubusercontent.com/u/12075795?v=4&s=80)](https://www.unique-p.ch)
+-|-
+[SheetJS LLC](https://sheetjs.com/) | [Unique-P GmbH](https://www.unique-p.ch)
+
 Donations
 ---------
 

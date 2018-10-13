@@ -173,13 +173,6 @@ Collaborators
 [@zenflow](https://github.com/zenflow) | [@toverux](https://github.com/toverux) | [@acupajoe](https://github.com/acupajoe) | [@samturrell](https://github.com/samturrell) | [@birjolaxew](https://github.com/birjolaxew)
 
 
-Contributors
-------------
-
-This project exists thanks to all the people who contribute.
-<a href="https://github.com/sweetalert2/sweetalert2/graphs/contributors"><img src="https://opencollective.com/SweetAlert2/contributors.svg?width=890&button=false" /></a>
-
-
 Contributing
 ------------
 

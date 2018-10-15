@@ -49,7 +49,7 @@ Or:
 bower install --save sweetalert2
 ```
 
-Or download from CDN: [jsdelivr.net/npm/sweetalert2](https://cdn.jsdelivr.net/npm/sweetalert2)
+Or download from CDN: [jsdelivr.com/package/npm/sweetalert2](https://www.jsdelivr.com/package/npm/sweetalert2)
 
 
 Usage

@@ -12,6 +12,7 @@ branches:
   only:
    - master
    - dist
+   - /^greenkeeper/.*$/
 
 # The preinstalled yarn is outdated
 before_install:

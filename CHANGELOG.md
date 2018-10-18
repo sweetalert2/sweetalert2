@@ -1,3 +1,10 @@
+## [7.28.6](https://github.com/sweetalert2/sweetalert2/compare/v7.28.5...v7.28.6) (2018-10-18)
+
+
+### Bug Fixes
+
+* **styles:** body 'overflow-y: hidden' -> 'overflow: hidden' ([#1254](https://github.com/sweetalert2/sweetalert2/issues/1254)) ([1b3d505](https://github.com/sweetalert2/sweetalert2/commit/1b3d505))
+
 ## [7.28.5](https://github.com/sweetalert2/sweetalert2/compare/v7.28.4...v7.28.5) (2018-10-12)
 
 

@@ -38,6 +38,11 @@ export default function setParameters (params) {
     params.target = 'body'
   }
 
+  // Animation
+  if (typeof params.animation === 'function') {
+    params.animation = params.animation.call()
+  }
+
   let popup
   const oldPopup = dom.getPopup()
   let targetElement = typeof params.target === 'string' ? document.querySelector(params.target) : params.target
@@ -102,11 +107,6 @@ export default function setParameters (params) {
     if (growClass in swalClasses) {
       dom.addClass(container, swalClasses[growClass])
     }
-  }
-
-  // Animation
-  if (typeof params.animation === 'function') {
-    params.animation = params.animation.call()
   }
 
   // Close button

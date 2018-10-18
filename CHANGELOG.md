@@ -1,3 +1,10 @@
+## [7.28.7](https://github.com/sweetalert2/sweetalert2/compare/v7.28.6...v7.28.7) (2018-10-18)
+
+
+### Bug Fixes
+
+* **animation:** detect animation before initialization ([#1255](https://github.com/sweetalert2/sweetalert2/issues/1255)) ([7e9cf38](https://github.com/sweetalert2/sweetalert2/commit/7e9cf38))
+
 ## [7.28.6](https://github.com/sweetalert2/sweetalert2/compare/v7.28.5...v7.28.6) (2018-10-18)
 
 

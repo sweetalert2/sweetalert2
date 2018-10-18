@@ -12,7 +12,7 @@ body {
       '.swal2-no-backdrop',
       '.swal2-toast-shown'
     ) {
-      overflow-y: hidden;
+      overflow: hidden; // not overflow-y because of Sarari, #1253
     }
   }
 

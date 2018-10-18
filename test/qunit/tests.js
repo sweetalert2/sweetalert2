@@ -81,7 +81,7 @@ QUnit.test('the vertical scrollbar should be hidden and the according padding-ri
   const bodyStyles = window.getComputedStyle(document.body);
 
   assert.equal(bodyStyles.paddingRight, (scrollbarWidth + 30) + 'px')
-  assert.equal(bodyStyles.overflowY, 'hidden')
+  assert.equal(bodyStyles.overflow, 'hidden')
 
   document.body.removeChild(talltDiv)
 })

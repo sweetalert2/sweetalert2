@@ -194,7 +194,7 @@ If you would like to contribute enhancements or fixes, please do the following:
 Backers
 -------
 
-[![](https://avatars0.githubusercontent.com/u/5826089?v=4&s=80)](https://sheetjs.com/) | [![](https://avatars2.githubusercontent.com/u/12075795?v=4&s=80)](https://www.unique-p.ch)
+[![](https://avatars0.githubusercontent.com/u/5826089?v=4&s=80)](https://sheetjs.com/) | [![](https://avatars2.githubusercontent.com/u/12075795?v=4&s=80)](https://www.unique-p.ch) [![Greenkeeper badge](https://badges.greenkeeper.io/sweetalert2/sweetalert2.svg)](https://greenkeeper.io/)
 -|-
 [SheetJS LLC](https://sheetjs.com/) | [Unique-P GmbH](https://www.unique-p.ch)
 

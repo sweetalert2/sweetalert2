@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.28.5
+* sweetalert2 v7.28.6
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -2601,4 +2601,4 @@ Swal.default = Swal;
 return Swal;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.28.5';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.28.6';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}

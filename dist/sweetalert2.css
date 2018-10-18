@@ -539,7 +539,7 @@ body.swal2-toast-column .swal2-toast {
     width: 1.375em; } }
 
 body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
-  overflow-y: hidden; }
+  overflow: hidden; }
 
 body.swal2-height-auto {
   height: auto !important; }

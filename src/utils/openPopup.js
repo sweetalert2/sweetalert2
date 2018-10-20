@@ -26,6 +26,7 @@ export const openPopup = (params) => {
     dom.removeClass(popup, swalClasses.fade)
   }
   dom.show(popup)
+  if (popup.offsetTop < 0 ) { popup.parentElement.style.alignItems = 'flex-start' }
 
   // scrolling is 'hidden' until animation is done, after that 'auto'
   container.style.overflowY = 'hidden'

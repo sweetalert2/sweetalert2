@@ -1,5 +1,6 @@
 import { undoScrollbar } from '../utils/scrollbarFix'
 import { undoIOSfix } from '../utils/iosFix'
+import { undoIEfix } from '../utils/ieFix'
 import { unsetAriaHidden } from '../utils/aria'
 import * as dom from '../utils/dom/index'
 import { swalClasses } from '../utils/classes.js'
@@ -48,6 +49,7 @@ const close = (onClose, onAfterClose) => {
     if (dom.isModal()) {
       undoScrollbar()
       undoIOSfix()
+      undoIEfix()
       unsetAriaHidden()
     }
   }

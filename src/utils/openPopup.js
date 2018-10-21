@@ -2,6 +2,7 @@ import * as dom from './dom/index'
 import { swalClasses } from './classes'
 import { fixScrollbar } from './scrollbarFix'
 import { iOSfix } from './iosFix'
+import { IEfix } from './ieFix'
 import { setAriaHidden } from './aria'
 import globalState from '../globalState'
 
@@ -26,7 +27,6 @@ export const openPopup = (params) => {
     dom.removeClass(popup, swalClasses.fade)
   }
   dom.show(popup)
-  if (popup.offsetTop < 0 ) { popup.parentElement.style.alignItems = 'flex-start' }
 
   // scrolling is 'hidden' until animation is done, after that 'auto'
   container.style.overflowY = 'hidden'
@@ -47,6 +47,7 @@ export const openPopup = (params) => {
   if (dom.isModal()) {
     fixScrollbar()
     iOSfix()
+    IEfix()
     setAriaHidden()
 
     // sweetalert2/issues/1247

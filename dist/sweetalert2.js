@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.28.7
+* sweetalert2 v7.28.8
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -832,6 +832,39 @@ var undoIOSfix = function undoIOSfix() {
   }
 };
 
+var isIE11 = function isIE11() {
+  return !!window.MSInputMethodContext && !!document.documentMode;
+}; // Fix IE11 centering sweetalert2/issues/933
+
+/* istanbul ignore next */
+
+
+var fixVerticalPositionIE = function fixVerticalPositionIE() {
+  var container = getContainer();
+  var popup = getPopup();
+  container.style.removeProperty('align-items');
+
+  if (popup.offsetTop < 0) {
+    container.style.alignItems = 'flex-start';
+  }
+};
+/* istanbul ignore next */
+
+
+var IEfix = function IEfix() {
+  if (typeof window !== 'undefined' && isIE11()) {
+    fixVerticalPositionIE();
+    window.addEventListener('resize', fixVerticalPositionIE);
+  }
+};
+/* istanbul ignore next */
+
+var undoIEfix = function undoIEfix() {
+  if (typeof window !== 'undefined' && isIE11()) {
+    window.removeEventListener('resize', fixVerticalPositionIE);
+  }
+};
+
 // Adding aria-hidden="true" to elements outside of the active modal dialog ensures that
 // elements not within the active modal dialog will not be surfaced if a user opens a screen
 // reader’s list of elements (headings, form controls, landmarks, etc.) in the document.
@@ -928,6 +961,7 @@ var close = function close(onClose, onAfterClose) {
     if (isModal()) {
       undoScrollbar();
       undoIOSfix();
+      undoIEfix();
       unsetAriaHidden();
     }
   }; // If animation is supported, animate
@@ -1839,6 +1873,7 @@ var openPopup = function openPopup(params) {
   if (isModal()) {
     fixScrollbar();
     iOSfix();
+    IEfix();
     setAriaHidden(); // sweetalert2/issues/1247
 
     setTimeout(function () {
@@ -2601,4 +2636,4 @@ Swal.default = Swal;
 return Swal;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.28.7';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.28.8';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}

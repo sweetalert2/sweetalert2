@@ -1,3 +1,10 @@
+## [7.28.8](https://github.com/sweetalert2/sweetalert2/compare/v7.28.7...v7.28.8) (2018-10-21)
+
+
+### Bug Fixes
+
+* add resize handlers for IE11 vertical alignment fix ([ba1d4cf](https://github.com/sweetalert2/sweetalert2/commit/ba1d4cf))
+
 ## [7.28.7](https://github.com/sweetalert2/sweetalert2/compare/v7.28.6...v7.28.7) (2018-10-18)
 
 

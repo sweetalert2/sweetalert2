@@ -2,6 +2,7 @@ import * as dom from './dom/index'
 import { swalClasses } from './classes'
 import { fixScrollbar } from './scrollbarFix'
 import { iOSfix } from './iosFix'
+import { IEfix } from './ieFix'
 import { setAriaHidden } from './aria'
 import globalState from '../globalState'
 
@@ -46,6 +47,7 @@ export const openPopup = (params) => {
   if (dom.isModal()) {
     fixScrollbar()
     iOSfix()
+    IEfix()
     setAriaHidden()
 
     // sweetalert2/issues/1247

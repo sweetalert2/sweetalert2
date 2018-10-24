@@ -1,3 +1,10 @@
+## [7.28.9](https://github.com/sweetalert2/sweetalert2/compare/v7.28.8...v7.28.9) (2018-10-24)
+
+
+### Bug Fixes
+
+* **typings:** validationMesage typo ([3e9dbd5](https://github.com/sweetalert2/sweetalert2/commit/3e9dbd5))
+
 ## [7.28.8](https://github.com/sweetalert2/sweetalert2/compare/v7.28.7...v7.28.8) (2018-10-21)
 
 

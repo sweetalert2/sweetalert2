@@ -759,12 +759,12 @@ declare module 'sweetalert2' {
          * ex.
          *   swal({
          *     input: 'email',
-         *     validationMesage: 'Adresse e-mail invalide'
+         *     validationMessage: 'Adresse e-mail invalide'
          *   })
          *
          * @default null
          */
-        validationMesage?: string;
+        validationMessage?: string;
 
         /**
          * A custom CSS class for the input field.

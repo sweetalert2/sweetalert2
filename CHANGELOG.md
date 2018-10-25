@@ -1,3 +1,10 @@
+## [7.28.10](https://github.com/sweetalert2/sweetalert2/compare/v7.28.9...v7.28.10) (2018-10-25)
+
+
+### Bug Fixes
+
+* **sarafi:** add preventDefault() in esc key handling ([#1264](https://github.com/sweetalert2/sweetalert2/issues/1264)) ([8a5c40f](https://github.com/sweetalert2/sweetalert2/commit/8a5c40f))
+
 ## [7.28.9](https://github.com/sweetalert2/sweetalert2/compare/v7.28.8...v7.28.9) (2018-10-24)
 
 

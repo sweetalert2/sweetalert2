@@ -349,6 +349,7 @@ export function _main (userParams) {
 
         // ESC
       } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(innerParams.allowEscapeKey) === true) {
+        e.preventDefault()
         dismissWith(constructor.DismissReason.esc)
       }
     }

@@ -87,7 +87,7 @@ gulp.task('build:styles', () => {
  */
 gulp.task('build:standalone', () => {
   const prettyJs = gulp.src('dist/sweetalert2.js')
-  const prettyCssAsJs = gulp.src('dist/sweetalert2.css')
+  const prettyCssAsJs = gulp.src('dist/sweetalert2.min.css')
     .pipe($.css2js())
   const prettyStandalone = merge(prettyJs, prettyCssAsJs)
     .pipe($.concat('sweetalert2.all.js'))

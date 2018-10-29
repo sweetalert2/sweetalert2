@@ -1,3 +1,10 @@
+## [7.28.11](https://github.com/sweetalert2/sweetalert2/compare/v7.28.10...v7.28.11) (2018-10-29)
+
+
+### Bug Fixes
+
+* **build:** use `.min.css` for `.all.js` to prevent the string concatenation ([#1268](https://github.com/sweetalert2/sweetalert2/issues/1268)) ([f18b4bc](https://github.com/sweetalert2/sweetalert2/commit/f18b4bc))
+
 ## [7.28.10](https://github.com/sweetalert2/sweetalert2/compare/v7.28.9...v7.28.10) (2018-10-25)
 
 

@@ -14,6 +14,8 @@ We would like to thank everyone who contributed to this library. If you find our
 
 - **[Jan Fässler](https://github.com/faessler)** (30 EUR)
     > Nice work! 👾
+    
+- **Ventsislav Radev** (23 EUR)
 
 - **Danny Lankar** (25 USD)
     > You should be selling this product. Love it, thank you!

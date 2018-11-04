@@ -379,6 +379,11 @@ export function _main (userParams) {
 
     // inputs
     const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
+    const setInputPlaceholder = (input) => {
+      if (!input.placeholder || innerParams.inputPlaceholder) {
+        input.placeholder = innerParams.inputPlaceholder
+      }
+    }
     let input
     for (let i = 0; i < inputTypes.length; i++) {
       const inputClass = swalClasses[inputTypes[i]]
@@ -423,14 +428,14 @@ export function _main (userParams) {
         } else {
           warn(`Unexpected type of inputValue! Expected "string" or "number", got "${typeof innerParams.inputValue}"`)
         }
-        input.placeholder = innerParams.inputPlaceholder
+        setInputPlaceholder(input)
         input.type = innerParams.input
         dom.show(input)
         break
       }
       case 'file': {
         input = dom.getChildByClass(domCache.content, swalClasses.file)
-        input.placeholder = innerParams.inputPlaceholder
+        setInputPlaceholder(input)
         input.type = innerParams.input
         dom.show(input)
         break
@@ -518,7 +523,7 @@ export function _main (userParams) {
       case 'textarea': {
         const textarea = dom.getChildByClass(domCache.content, swalClasses.textarea)
         textarea.value = innerParams.inputValue
-        textarea.placeholder = innerParams.inputPlaceholder
+        setInputPlaceholder(textarea)
         dom.show(textarea)
         break
       }

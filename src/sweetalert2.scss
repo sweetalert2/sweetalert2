@@ -835,13 +835,12 @@ body {
 
 
 // Right-to-left support
-[dir='rtl'] {
+.swal2-rtl {
   .swal2-close {
-    right: auto;
-    left: $swal2-close-button-gap;
+     right: auto;
+     left: $swal2-close-button-gap;
   }
 }
-
 
 // Success icon animation
 .swal2-animate-success-icon {

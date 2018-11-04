@@ -409,6 +409,11 @@ export function _main (userParams) {
       dom.hide(inputContainer)
     }
 
+    // RTL
+    if (window.getComputedStyle(document.body).direction === 'rtl') {
+      dom.addClass(dom.getContainer(), swalClasses['rtl'])
+    }
+
     let populateInputOptions
     switch (innerParams.input) {
       case 'text':

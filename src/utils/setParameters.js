@@ -1,8 +1,6 @@
 import { swalClasses } from './classes.js'
 import { warn } from './utils.js'
 import * as dom from './dom/index'
-import sweetAlert from '../sweetalert2'
-import defaultInputValidators from './defaultInputValidators'
 
 /**
  * Set type, text and actions on popup
@@ -11,15 +9,6 @@ import defaultInputValidators from './defaultInputValidators'
  * @returns {boolean}
  */
 export default function setParameters (params) {
-  // Use default `inputValidator` for supported input types if not provided
-  if (!params.inputValidator) {
-    Object.keys(defaultInputValidators).forEach((key) => {
-      if (params.input === key) {
-        params.inputValidator = params.expectRejections ? defaultInputValidators[key] : sweetAlert.adaptInputValidator(defaultInputValidators[key])
-      }
-    })
-  }
-
   // params.extraParams is @deprecated
   if (params.validationMessage) {
     if (typeof params.extraParams !== 'object') {

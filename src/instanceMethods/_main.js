@@ -7,6 +7,7 @@ import setParameters from '../utils/setParameters'
 import globalState from '../globalState'
 import { openPopup } from '../utils/openPopup'
 import privateProps from '../privateProps'
+import defaultValidationMessages from '../utils/defaultValidationMessages'
 
 export function _main (userParams) {
   showWarningsForParams(userParams)
@@ -181,6 +182,12 @@ export function _main (userParams) {
                     error => errorWith(error)
                   )
                 }
+              } else if (!this.getInput().checkValidity()) {
+                this.enableButtons()
+                this.showValidationMessage(
+                  innerParams.validationMessage ||
+                  defaultValidationMessages[innerParams.input]
+                )
               } else {
                 confirm(inputValue)
               }

@@ -6,7 +6,7 @@ import privateProps from '../privateProps'
 // Show block with validation message
 export function showValidationMessage (error) {
   const domCache = privateProps.domCache.get(this)
-  domCache.validationMessage.innerHTML = error
+  domCache.validationMessage.innerHTML = error || ''
   const popupComputedStyle = window.getComputedStyle(domCache.popup)
   domCache.validationMessage.style.marginLeft = `-${popupComputedStyle.getPropertyValue('padding-left')}`
   domCache.validationMessage.style.marginRight = `-${popupComputedStyle.getPropertyValue('padding-right')}`

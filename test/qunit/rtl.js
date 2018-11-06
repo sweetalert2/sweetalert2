@@ -11,3 +11,19 @@ QUnit.test('container should have .swal2-rtl in case of <body style="direction: 
   SwalWithoutAnimation('hi')
   assert.ok(Swal.getContainer().classList.contains('swal2-rtl'))
 })
+
+QUnit.test('container should have .swal2-rtl in case of <div dir="rtl">', (assert) => {
+  const targetDiv = document.createElement('div')
+  document.body.appendChild(targetDiv)
+  targetDiv.setAttribute('dir', 'rtl')
+  SwalWithoutAnimation({ target: targetDiv })
+  assert.ok(Swal.getContainer().classList.contains('swal2-rtl'))
+})
+
+QUnit.test('container should have .swal2-rtl in case of <div style="direction: rtl">', (assert) => {
+  const targetDiv = document.createElement('div')
+  document.body.appendChild(targetDiv)
+  targetDiv.style.direction = 'rtl'
+  SwalWithoutAnimation({ target: targetDiv })
+  assert.ok(Swal.getContainer().classList.contains('swal2-rtl'))
+})

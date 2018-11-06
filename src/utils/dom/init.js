@@ -1,6 +1,6 @@
 import { swalClasses, iconTypes } from '../classes'
 import { getContainer, getPopup, getContent } from './getters'
-import { removeClass, getChildByClass } from './domUtils'
+import { addClass, removeClass, getChildByClass } from './domUtils'
 import { isNodeEnv } from '../isNodeEnv'
 import { error } from '../utils'
 import sweetAlert from '../../sweetalert2'
@@ -103,6 +103,11 @@ export const init = (params) => {
   popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive')
   if (!params.toast) {
     popup.setAttribute('aria-modal', 'true')
+  }
+
+  // RTL
+  if (window.getComputedStyle(targetElement).direction === 'rtl') {
+    addClass(getContainer(), swalClasses.rtl)
   }
 
   let oldInputVal // IE11 workaround, see #1109 for details

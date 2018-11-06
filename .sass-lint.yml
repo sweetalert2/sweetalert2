@@ -1,6 +1,10 @@
 rules:
+  indentation:
+    - 2
+    -
+      size: 2
   nesting-depth:
-    - 1
+    - 2
     - max-depth: 4
   no-duplicate-properties: 0
   no-ids: 0
@@ -9,5 +13,5 @@ rules:
   no-url-protocols: 0
   no-vendor-prefixes: 0
   property-sort-order:
-    - 1
+    - 2
     - order: smacss

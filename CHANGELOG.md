@@ -1,3 +1,10 @@
+## [7.28.12](https://github.com/sweetalert2/sweetalert2/compare/v7.28.11...v7.28.12) (2018-11-06)
+
+
+### Bug Fixes
+
+* **direction:** Support for CSS direction property ([#1275](https://github.com/sweetalert2/sweetalert2/issues/1275)) ([a12fefb](https://github.com/sweetalert2/sweetalert2/commit/a12fefb)), closes [#1262](https://github.com/sweetalert2/sweetalert2/issues/1262)
+
 ## [7.28.11](https://github.com/sweetalert2/sweetalert2/compare/v7.28.10...v7.28.11) (2018-10-29)
 
 

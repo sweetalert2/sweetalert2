@@ -1106,7 +1106,7 @@ body.swal2-no-backdrop .swal2-shown {
     -webkit-animation: none;
             animation: none; }
 
-[dir='rtl'] .swal2-close {
+.swal2-rtl .swal2-close {
   right: auto;
   left: 0; }
 

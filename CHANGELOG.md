@@ -1,3 +1,10 @@
+## [7.28.13](https://github.com/sweetalert2/sweetalert2/compare/v7.28.12...v7.28.13) (2018-11-08)
+
+
+### Bug Fixes
+
+* allow inputAttributes.placeholder ([#1279](https://github.com/sweetalert2/sweetalert2/issues/1279)) ([7ec7291](https://github.com/sweetalert2/sweetalert2/commit/7ec7291))
+
 ## [7.28.12](https://github.com/sweetalert2/sweetalert2/compare/v7.28.11...v7.28.12) (2018-11-06)
 
 

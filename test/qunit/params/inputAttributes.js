@@ -1,51 +1,50 @@
 const { Swal } = require('../helpers')
 
 QUnit.test('inputAttributes: input text w/ placeholder', (assert) => {
-    const done = assert.async()
-  
-    Swal({
-      input: 'text',
-      inputAttributes: {
-        placeholder: 'placeholder text',
-      }, 
-    })
-  
-    assert.equal(Swal.getInput().value, '')
-    assert.equal(Swal.getInput().placeholder, 'placeholder text')
-  
-    done()
+  const done = assert.async()
+
+  Swal({
+    input: 'text',
+    inputAttributes: {
+      placeholder: 'placeholder text',
+    },
   })
-  
-  
-  QUnit.test('inputAttributes: input file w/ placeholder', (assert) => {
-    const done = assert.async()
-  
-    Swal({
-      input: 'file',
-      inputAttributes: {
-        placeholder: 'placeholder text',
-      }, 
-    })
-  
-    assert.equal(Swal.getInput().value, '')
-    assert.equal(Swal.getInput().placeholder, 'placeholder text')
-  
-    done()
+
+  assert.equal(Swal.getInput().value, '')
+  assert.equal(Swal.getInput().placeholder, 'placeholder text')
+
+  done()
+})
+
+
+QUnit.test('inputAttributes: input file w/ placeholder', (assert) => {
+  const done = assert.async()
+
+  Swal({
+    input: 'file',
+    inputAttributes: {
+      placeholder: 'placeholder text',
+    },
   })
-  
-  QUnit.test('inputAttributes: input textarea w/ placeholder', (assert) => {
-    const done = assert.async()
-  
-    Swal({
-      input: 'textarea',
-      inputAttributes: {
-        placeholder: 'Provide your input here',
-      }, 
-    })
-  
-    assert.equal(Swal.getInput().value, '')
-    assert.equal(Swal.getInput().placeholder, 'Provide your input here')
-  
-    done()
+
+  assert.equal(Swal.getInput().value, '')
+  assert.equal(Swal.getInput().placeholder, 'placeholder text')
+
+  done()
+})
+
+QUnit.test('inputAttributes: input textarea w/ placeholder', (assert) => {
+  const done = assert.async()
+
+  Swal({
+    input: 'textarea',
+    inputAttributes: {
+      placeholder: 'Provide your input here',
+    },
   })
-  
+
+  assert.equal(Swal.getInput().value, '')
+  assert.equal(Swal.getInput().placeholder, 'Provide your input here')
+
+  done()
+})

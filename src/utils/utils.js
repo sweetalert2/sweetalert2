@@ -20,7 +20,7 @@ export const uniqueArray = (arr) => {
  */
 export const toArray = (nodeList) => Array.prototype.slice.call(nodeList)
 
-  /**
+/**
  * Converts `inputOptions` into an array of `[value, label]`s
  * @param inputOptions
  */

@@ -11,6 +11,7 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
+    'indent': ['error', 2, { SwitchCase: 1 }],
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
     'no-var': ['error'],
     'object-curly-spacing': ['error', 'always'],

@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.28.13
+* sweetalert2 v7.29.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -2094,6 +2094,10 @@ function _main(userParams) {
                     return errorWith(error$$1);
                   });
                 }
+              } else if (!_this.getInput().checkValidity()) {
+                _this.enableButtons();
+
+                _this.showValidationMessage(innerParams.validationMessage);
               } else {
                 confirm(inputValue);
               }
@@ -2649,4 +2653,4 @@ Swal.default = Swal;
 return Swal;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.28.13';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.29.0';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}

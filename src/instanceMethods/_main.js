@@ -181,6 +181,9 @@ export function _main (userParams) {
                     error => errorWith(error)
                   )
                 }
+              } else if (!this.getInput().checkValidity()) {
+                this.enableButtons()
+                this.showValidationMessage(innerParams.validationMessage)
               } else {
                 confirm(inputValue)
               }

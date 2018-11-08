@@ -1,3 +1,10 @@
+# [7.29.0](https://github.com/sweetalert2/sweetalert2/compare/v7.28.13...v7.29.0) (2018-11-08)
+
+
+### Features
+
+* **input:** add .checkValidity() support ([#1284](https://github.com/sweetalert2/sweetalert2/issues/1284)) ([361d2bd](https://github.com/sweetalert2/sweetalert2/commit/361d2bd))
+
 ## [7.28.13](https://github.com/sweetalert2/sweetalert2/compare/v7.28.12...v7.28.13) (2018-11-08)
 
 

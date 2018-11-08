@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.28.12
+* sweetalert2 v7.28.13
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -195,9 +195,9 @@ var toArray = function toArray(nodeList) {
   return Array.prototype.slice.call(nodeList);
 };
 /**
-* Converts `inputOptions` into an array of `[value, label]`s
-* @param inputOptions
-*/
+ * Converts `inputOptions` into an array of `[value, label]`s
+ * @param inputOptions
+ */
 
 var formatInputOptions = function formatInputOptions(inputOptions) {
   var result = [];
@@ -2293,6 +2293,13 @@ function _main(userParams) {
 
 
     var inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea'];
+
+    var setInputPlaceholder = function setInputPlaceholder(input) {
+      if (!input.placeholder || innerParams.inputPlaceholder) {
+        input.placeholder = innerParams.inputPlaceholder;
+      }
+    };
+
     var input;
 
     for (var _i3 = 0; _i3 < inputTypes.length; _i3++) {
@@ -2344,7 +2351,7 @@ function _main(userParams) {
             warn("Unexpected type of inputValue! Expected \"string\" or \"number\", got \"".concat(_typeof(innerParams.inputValue), "\""));
           }
 
-          input.placeholder = innerParams.inputPlaceholder;
+          setInputPlaceholder(input);
           input.type = innerParams.input;
           show(input);
           break;
@@ -2353,7 +2360,7 @@ function _main(userParams) {
       case 'file':
         {
           input = getChildByClass(domCache.content, swalClasses.file);
-          input.placeholder = innerParams.inputPlaceholder;
+          setInputPlaceholder(input);
           input.type = innerParams.input;
           show(input);
           break;
@@ -2463,7 +2470,7 @@ function _main(userParams) {
         {
           var textarea = getChildByClass(domCache.content, swalClasses.textarea);
           textarea.value = innerParams.inputValue;
-          textarea.placeholder = innerParams.inputPlaceholder;
+          setInputPlaceholder(textarea);
           show(textarea);
           break;
         }
@@ -2642,4 +2649,4 @@ Swal.default = Swal;
 return Swal;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.28.12';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.28.13';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}

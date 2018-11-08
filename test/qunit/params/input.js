@@ -113,6 +113,20 @@ QUnit.test('input select', (assert) => {
   Swal.clickConfirm()
 })
 
+QUnit.test('input text w/ inputPlaceholder as configuration', (assert) => {
+  const done = assert.async()
+
+  Swal({
+    input: 'text',
+    inputPlaceholder: 'placeholder text'
+  })
+
+  assert.equal(Swal.getInput().value, '')
+  assert.equal(Swal.getInput().placeholder, 'placeholder text')
+
+  done()
+})
+
 QUnit.test('input checkbox', (assert) => {
   const done = assert.async()
 

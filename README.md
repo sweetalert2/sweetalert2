@@ -156,6 +156,7 @@ Related projects
 - [sweetalert2-react-content](https://github.com/sweetalert2/sweetalert2-react-content) - React integration
 - [sweetalert2-webpack-demo](https://github.com/sweetalert2/sweetalert2-webpack-demo) - webpack demo
 - [sweetalert2-parcel-demo](https://github.com/sweetalert2/sweetalert2-parcel-demo) - overriding SCSS variables demo
+- [sweetalert2-php-builder](https://github.com/varunsridharan/sweetalert2-php) - Build SweatAlert2 Code Via PHP And Convert To JS
 
 
 Related community projects

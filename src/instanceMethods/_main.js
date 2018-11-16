@@ -573,7 +573,7 @@ export function _main (userParams) {
 
     if (!innerParams.toast) {
       if (!callIfFunction(innerParams.allowEnterKey)) {
-        if (document.activeElement) {
+        if (document.activeElement && typeof document.activeElement.blur === 'function') {
           document.activeElement.blur()
         }
       } else if (innerParams.focusCancel && dom.isVisible(domCache.cancelButton)) {

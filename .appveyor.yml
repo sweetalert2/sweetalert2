@@ -12,9 +12,9 @@ init:
   # Fix line endings on Windows
   - git config --global core.autocrlf true
 
-# Test against this version of Node.js
+# Test against the LTS version of Node.js
 environment:
-  nodejs_version: "8"
+  nodejs_version: "10"
 
 build: off
 
@@ -33,6 +33,3 @@ notifications:
     on_build_success: false
     on_build_failure: false
     on_build_status_changed: true
-
-# Preserve node_modules between builds
-cache: node_modules -> appveyor.yml,package.json,yarn.lock

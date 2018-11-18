@@ -404,6 +404,7 @@ export function _main (userParams) {
           }
         }
         for (let attr in innerParams.inputAttributes) {
+          if (['range'].includes(inputTypes[i]) && attr === 'placeholder') { break }
           input.setAttribute(attr, innerParams.inputAttributes[attr])
         }
       }

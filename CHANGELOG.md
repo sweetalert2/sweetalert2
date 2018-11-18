@@ -1,3 +1,10 @@
+## [7.29.1](https://github.com/sweetalert2/sweetalert2/compare/v7.29.0...v7.29.1) (2018-11-18)
+
+
+### Bug Fixes
+
+* avoid Edge from crashing ([#1299](https://github.com/sweetalert2/sweetalert2/issues/1299)) ([69965e0](https://github.com/sweetalert2/sweetalert2/commit/69965e0))
+
 # [7.29.0](https://github.com/sweetalert2/sweetalert2/compare/v7.28.13...v7.29.0) (2018-11-08)
 
 

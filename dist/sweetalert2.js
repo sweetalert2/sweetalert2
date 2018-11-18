@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.29.0
+* sweetalert2 v7.29.1
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -2323,6 +2323,12 @@ function _main(userParams) {
         }
 
         for (var attr in innerParams.inputAttributes) {
+          // Do not set a placeholder for <input type="range">
+          // it'll crash Edge, #1298
+          if (inputTypes[_i3] === 'range' && attr === 'placeholder') {
+            continue;
+          }
+
           input.setAttribute(attr, innerParams.inputAttributes[attr]);
         }
       } // set class
@@ -2529,7 +2535,7 @@ function _main(userParams) {
 
     if (!innerParams.toast) {
       if (!callIfFunction(innerParams.allowEnterKey)) {
-        if (document.activeElement) {
+        if (document.activeElement && typeof document.activeElement.blur === 'function') {
           document.activeElement.blur();
         }
       } else if (innerParams.focusCancel && isVisible(domCache.cancelButton)) {
@@ -2653,4 +2659,4 @@ Swal.default = Swal;
 return Swal;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.29.0';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.29.1';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}

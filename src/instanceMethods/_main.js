@@ -404,6 +404,12 @@ export function _main (userParams) {
           }
         }
         for (let attr in innerParams.inputAttributes) {
+          // Do not set a placeholder for <input type="range">
+          // it'll crash Edge, #1298
+          if (inputTypes[i] === 'range' && attr === 'placeholder') {
+            continue
+          }
+
           input.setAttribute(attr, innerParams.inputAttributes[attr])
         }
       }

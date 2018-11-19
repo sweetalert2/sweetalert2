@@ -38,7 +38,7 @@ after_success:
       node tools/merge-master-into-dist;
     fi;
   - yarn release;
-  - if [[ "$TRAVIS_BRANCH" != "dist" ]]; then
+  - if [[ "$TRAVIS_BRANCH" != "dist" && "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
       cat ./coverage/lcov.info | coveralls;
       zip -r coverage.zip coverage;
       curl --upload-file ./coverage.zip https://transfer.sh/coverage.zip;

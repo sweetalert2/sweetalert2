@@ -1,7 +1,22 @@
 
 const Stream = require('stream').Stream
-const split = require('split') // dominictarr package
+const { Duplex } = require('stream')
 const map = require('map-stream') //dominictarr package
+
+function split () {
+  const stream = new Duplex({
+    write (chunk, encoding, callback) {
+      this.buffer = (this.buffer || '') + chunk.toString()
+      if (/\r?\n/.test(chunk.toString())) {
+        this.push(this.buffer.split(/\r?\n/)[0])
+        this.buffer = this.buffer.split(/\r?\n/)[1] || ''
+      }
+      callback()
+    },
+    read () {}
+  })
+  return stream
+}
 
 function merge (/*streams...*/) {
   var toMerge = [].slice.call(arguments)
@@ -30,7 +45,7 @@ function merge (/*streams...*/) {
       stream.emit('end')
     })
   }
-  
+
   stream.write = function (data) {
     this.emit('data', data)
   }

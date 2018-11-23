@@ -3,7 +3,6 @@ const streamArray = require('./stream-array')
 
 module.exports = function execute (command, { skipLogging } = {}) {
   const proc = execa.shell(command)
-  console.log('running execute....')
   if (!skipLogging) {
     const formatLine = (line, label) => `    (pid:${proc.pid})\t[${label}]\t${line}\n`
     const formatStream = (stream, label) => stream

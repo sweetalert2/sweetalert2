@@ -8,8 +8,11 @@ function split () {
     write (chunk, encoding, callback) {
       this.buffer = (this.buffer || '') + chunk.toString()
       if (/\r?\n/.test(chunk.toString())) {
-        this.push(this.buffer.split(/\r?\n/)[0])
-        this.buffer = this.buffer.split(/\r?\n/)[1] || ''
+        let splitChunks = this.buffer.split(/\r?\n/)
+        for (let i = 0; i < splitChunks.length - 1; i++) {
+          this.push(splitChunks[i])
+        }        
+        this.buffer = splitChunks[splitChunks.length -1]
       }
       callback()
     },

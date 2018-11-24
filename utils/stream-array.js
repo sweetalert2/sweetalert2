@@ -1,8 +1,7 @@
 
-const Stream = require('stream').Stream
-const { Duplex } = require('stream')
+const { Stream, Duplex } = require('stream')
 
-function map (mapfn) {
+module.exports.map = function (mapfn) {
   const stream = new Duplex({
     write (chunk, encoding, callback) {
       this.push(mapfn(chunk))
@@ -13,7 +12,7 @@ function map (mapfn) {
   return stream
 }
 
-function split () {
+module.exports.split = function () {
   const stream = new Duplex({
     write (chunk, encoding, callback) {
       this.buffer = (this.buffer || '') + chunk.toString()
@@ -31,13 +30,12 @@ function split () {
   return stream
 }
 
-function merge (/*streams...*/) {
+module.exports.merge = function (/*streams...*/) {
   let toMerge = [].slice.call(arguments)
   if (toMerge.length === 1 && (toMerge[0] instanceof Array)) {
     toMerge = toMerge[0] //handle array as arguments object
   }
   let stream = new Stream()
-  stream.setMaxListeners(0) // allow adding more than 11 streams
   let endCount = 0
   stream.writable = stream.readable = true
 
@@ -68,10 +66,4 @@ function merge (/*streams...*/) {
     })
   }
   return stream
-}
-
-module.exports = {
-  split: split,
-  map: map,
-  merge: merge
 }

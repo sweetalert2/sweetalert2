@@ -1,5 +1,5 @@
 
-const { Stream, Duplex } = require('stream')
+const { Duplex } = require('stream')
 
 module.exports.map = function (mapfn) {
   const stream = new Duplex({

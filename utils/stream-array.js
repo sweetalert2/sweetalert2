@@ -30,40 +30,21 @@ module.exports.split = function () {
   return stream
 }
 
-module.exports.merge = function (/*streams...*/) {
+module.exports.merge = function (/* streams... */) {
   let toMerge = [].slice.call(arguments)
-  if (toMerge.length === 1 && (toMerge[0] instanceof Array)) {
-    toMerge = toMerge[0] //handle array as arguments object
-  }
-  let stream = new Stream()
-  let endCount = 0
-  stream.writable = stream.readable = true
 
+  const stream = new Duplex({
+    write (chunk, encoding, callback) {
+      this.push(chunk) 
+      callback() 
+    }, 
+    read() {}
+  })
+  
   if (toMerge.length) {
     toMerge.forEach(function (e) {
       e.pipe(stream, { end: false })
-      let ended = false
-      e.on('end', function () {
-        if(ended) return
-        ended = true
-        endCount ++
-        if(endCount == toMerge.length)
-          stream.emit('end')
-      })
     })
-  } else {
-    process.nextTick(function () {
-      stream.emit('end')
-    })
-  }
-
-  stream.write = function (data) {
-    this.emit('data', data)
-  }
-  stream.destroy = function () {
-    toMerge.forEach(function (e) {
-      if(e.destroy) e.destroy()
-    })
-  }
+  } 
   return stream
 }

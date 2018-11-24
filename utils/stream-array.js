@@ -1,7 +1,17 @@
 
 const Stream = require('stream').Stream
 const { Duplex } = require('stream')
-const map = require('map-stream') //dominictarr package
+
+function map (mapfn) {
+  const stream = new Duplex({
+    write (chunk, encoding, callback) {
+      this.push(mapfn(chunk))
+      callback()
+    },
+    read () {}
+  })
+  return stream
+}
 
 function split () {
   const stream = new Duplex({

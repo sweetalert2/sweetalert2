@@ -1,3 +1,10 @@
+## [7.29.2](https://github.com/sweetalert2/sweetalert2/compare/v7.29.1...v7.29.2) (2018-11-26)
+
+
+### Bug Fixes
+
+* **validators:** support long top level domain names in URL validator ([#1307](https://github.com/sweetalert2/sweetalert2/issues/1307)) ([3263217](https://github.com/sweetalert2/sweetalert2/commit/3263217))
+
 ## [7.29.1](https://github.com/sweetalert2/sweetalert2/compare/v7.29.0...v7.29.1) (2018-11-18)
 
 

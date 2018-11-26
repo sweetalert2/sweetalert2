@@ -22,7 +22,6 @@
     "custom-event-polyfill": "^1.0.6",
     "detect-browser": "^3.0.0",
     "eslint": "^5.9.0",
-    "event-stream": "3.3.4",
     "execa": "^1.0.0",
     "git-state": "^4.0.0",
     "gulp": "^4.0.0",

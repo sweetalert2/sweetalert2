@@ -1,5 +1,6 @@
 const { Swal, isVisible, TIMEOUT } = require('./helpers')
 const { detect } = require('detect-browser')
+import defaultInputValidators from '../../src/utils/defaultInputValidators'
 
 const browser = detect()
 
@@ -33,3 +34,20 @@ if (browser.name === 'chrome' && browser.version === '30.0.0') {
     }, TIMEOUT)
   })
 }
+
+QUnit.test('default URL validator', (assert) => {
+  const done = assert.async(3)
+
+  defaultInputValidators.url('https://google.com').then(() => {
+    done()
+  })
+
+  defaultInputValidators.url('http://foo.localhost/').then(() => {
+    done()
+  })
+
+  defaultInputValidators.url('invalid url').catch(data => {
+    assert.equal(data, 'Invalid URL')
+    done()
+  })
+})

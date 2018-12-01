@@ -70,10 +70,10 @@ module.exports = function (config) {
     } else if (isCi) {
       // AppVeyor
       if (isWindows) {
-        browsers = ['IE', 'ChromeHeadless', 'Firefox']
+        browsers = ['IE', 'ChromeHeadless', 'FirefoxHeadless']
       // Travis
       } else {
-        browsers = ['ChromeHeadless', 'Firefox']
+        browsers = ['ChromeHeadless', 'FirefoxHeadless']
         if (!testMinified) {
           reporters.push('coverage')
         }

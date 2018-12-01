@@ -841,11 +841,6 @@ adm-zip@~0.4.3:
   resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.4.11.tgz#2aa54c84c4b01a9d0fb89bb11982a51f13e3d62a"
   integrity sha512-L8vcjDTCOIJk7wFvmlEUN7AsSb8T+2JrdP7KINBjzr24TJ5Mwj590sLu3BC7zNZowvJWa/JtPmD8eJCzdtDWjA==
 
-after-all-results@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/after-all-results/-/after-all-results-2.0.0.tgz#6ac2fc202b500f88da8f4f5530cfa100f4c6a2d0"
-  integrity sha1-asL8ICtQD4jaj09VMM+hAPTGotA=
-
 after@0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/after/-/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
@@ -3617,13 +3612,6 @@ getpass@^0.1.1:
   integrity sha1-Xv+OPmhNVprkyysSgmBOi6YhSfo=
   dependencies:
     assert-plus "^1.0.0"
-
-git-state@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/git-state/-/git-state-4.1.0.tgz#23c3a34b99b87ddb34527c741711498b92fb8e0a"
-  integrity sha512-IZ1BCOr33BJNyoDMli9UTetLzYPDv26SQwvicybA7W6ojFtXiPmN39Vb0eEUAkiAFt4P2L64dj5LEHAxjVh9XA==
-  dependencies:
-    after-all-results "^2.0.0"
 
 glob-base@^0.3.0:
   version "0.3.0"

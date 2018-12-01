@@ -22,9 +22,8 @@ install:
   - bundlesize -f dist/sweetalert2.all.min.js -s 16kB
 
 script:
-  # xvfb-run is needed for headless testing with real browsers
   - if [[ "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
-      xvfb-run yarn check;
+      yarn run check;
     fi;
 
   - if [[ "$TRAVIS_EVENT_TYPE" = "cron" ]]; then
@@ -41,10 +40,14 @@ after_success:
   - if [[ "$TRAVIS_BRANCH" = "master" ]]; then
       node tools/merge-master-into-dist;
     fi;
+
+  # run automated release process with semantic-release
   - if [[ "$TRAVIS_BRANCH" = "dist" ]]; then
       yarn global add semantic-release@15 @semantic-release/changelog@3 @semantic-release/exec@3 @semantic-release/git@7;
       semantic-release;
     fi;
+
+  # report coverage to coveralls.io and upload to transfer.sh
   - if [[ "$TRAVIS_BRANCH" != "dist" && "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
       cat ./coverage/lcov.info | coveralls;
       zip -r coverage.zip coverage;

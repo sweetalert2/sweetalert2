@@ -31,7 +31,7 @@ module.exports = function (config) {
       platformVersion: '4.4',
       platformName: 'Android'
     },
-    android_marshmallow: {
+    android_latest: {
       base: 'SauceLabs',
       deviceName: 'Android Emulator',
       browserName: 'Chrome',

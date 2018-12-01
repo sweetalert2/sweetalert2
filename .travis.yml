@@ -18,7 +18,7 @@ install:
   - yarn build
 
   # bundlesize
-  - yarn global add bundlesize
+  - yarn global add bundlesize@^0.17.0
   - bundlesize -f dist/sweetalert2.all.min.js -s 16kB
 
 script:
@@ -41,7 +41,10 @@ after_success:
   - if [[ "$TRAVIS_BRANCH" = "master" ]]; then
       node tools/merge-master-into-dist;
     fi;
-  - yarn release;
+  - if [[ "$TRAVIS_BRANCH" = "dist" ]]; then
+      yarn global add semantic-release@15 @semantic-release/changelog@3 @semantic-release/exec@3 @semantic-release/git@7;
+      semantic-release;
+    fi;
   - if [[ "$TRAVIS_BRANCH" != "dist" && "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
       cat ./coverage/lcov.info | coveralls;
       zip -r coverage.zip coverage;

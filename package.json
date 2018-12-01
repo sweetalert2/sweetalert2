@@ -19,7 +19,6 @@
     "detect-browser": "^3.0.0",
     "eslint": "^5.9.0",
     "execa": "^1.0.0",
-    "git-state": "^4.0.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-clean-css": "^3.9.0",

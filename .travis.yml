@@ -13,18 +13,22 @@ branches:
    - master
    - dist
 
-# The preinstalled yarn is outdated
-before_install:
-  - npm i -g yarn
+install:
+  - yarn install
+  - yarn build
+
+  # bundlesize
+  - yarn global add bundlesize
+  - bundlesize -f dist/sweetalert2.all.min.js -s 16kB
 
 script:
   # xvfb-run is needed for headless testing with real browsers
   - if [[ "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
-      xvfb-run yarn test;
+      xvfb-run yarn check;
     fi;
 
   - if [[ "$TRAVIS_EVENT_TYPE" = "cron" ]]; then
-      travis_retry yarn test:sauce &&
+      travis_retry yarn check:sauce &&
       yarn check:third-party;
     fi;
 

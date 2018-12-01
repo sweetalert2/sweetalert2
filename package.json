@@ -14,7 +14,6 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-array-includes": "^2.0.3",
     "browser-sync": "^2.26.3",
-    "coveralls": "^3.0.2",
     "custom-event-polyfill": "^1.0.6",
     "detect-browser": "^3.0.0",
     "eslint": "^5.9.0",

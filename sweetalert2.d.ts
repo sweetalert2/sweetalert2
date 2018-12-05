@@ -227,9 +227,15 @@ declare module 'sweetalert2' {
 
         /**
          * If `timer` parameter is set, returns number os milliseconds of timer remained.
-         * Otherwise, returns null.
+         * Otherwise, returns undefined.
          */
-        function getTimerLeft(): number | null;
+        function getTimerLeft(): number | undefined;
+
+        /**
+         * Stop timer manually. Returns number os milliseconds of timer remained.
+         * Otherwise, returns undefined.
+         */
+        function stopTimer(): number | undefined;
 
         /**
          * Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.

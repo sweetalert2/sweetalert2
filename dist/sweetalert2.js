@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.29.2
+* sweetalert2 v7.30.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -1359,11 +1359,19 @@ var showLoading = function showLoading() {
 
 /**
  * If `timer` parameter is set, returns number os milliseconds of timer remained.
- * Otherwise, returns null.
+ * Otherwise, returns undefined.
  */
 
 var getTimerLeft = function getTimerLeft() {
   return globalState.timeout && globalState.timeout.getTimerLeft();
+};
+/**
+ * Stop timer manually. Returns number os milliseconds of timer remained.
+ * Otherwise, returns undefined.
+ */
+
+var stopTimer = function stopTimer() {
+  return globalState.timeout && globalState.timeout.stop();
 };
 
 
@@ -1403,7 +1411,8 @@ var staticMethods = Object.freeze({
 	deleteQueueStep: deleteQueueStep,
 	showLoading: showLoading,
 	enableLoading: showLoading,
-	getTimerLeft: getTimerLeft
+	getTimerLeft: getTimerLeft,
+	stopTimer: stopTimer
 });
 
 // https://github.com/Riim/symbol-polyfill/blob/master/index.js
@@ -1660,6 +1669,7 @@ var Timer = function Timer(callback, delay) {
     running = false;
     clearTimeout(id);
     remaining -= new Date() - started;
+    return remaining;
   };
 
   this.getTimerLeft = function () {
@@ -2659,4 +2669,4 @@ Swal.default = Swal;
 return Swal;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.29.2';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.30.0';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}

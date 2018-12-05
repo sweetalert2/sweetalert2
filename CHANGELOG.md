@@ -1,3 +1,10 @@
+# [7.30.0](https://github.com/sweetalert2/sweetalert2/compare/v7.29.2...v7.30.0) (2018-12-05)
+
+
+### Features
+
+* **api:** add .stopTimer() ([#1322](https://github.com/sweetalert2/sweetalert2/issues/1322)) ([654caf2](https://github.com/sweetalert2/sweetalert2/commit/654caf2))
+
 ## [7.29.2](https://github.com/sweetalert2/sweetalert2/compare/v7.29.1...v7.29.2) (2018-11-26)
 
 

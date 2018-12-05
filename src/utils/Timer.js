@@ -11,6 +11,7 @@ export default class Timer {
       running = false
       clearTimeout(id)
       remaining -= new Date() - started
+      return remaining
     }
     this.getTimerLeft = function () {
       if (running) {

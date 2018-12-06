@@ -1,19 +1,21 @@
 import { Swal, SwalWithoutAnimation, TIMEOUT } from '../helpers.js'
 
-QUnit.test('stopTimer() method', (assert) => {
+QUnit.test('increaseTimer() method', (assert) => {
   const done = assert.async()
 
   SwalWithoutAnimation({
     timer: 5 * TIMEOUT
   })
 
-  setTimeout(() => {
-    assert.ok(Swal.stopTimer() > 0)
-  }, 3 * TIMEOUT)
+  assert.ok(Swal.increaseTimer(4 * TIMEOUT) > 0)
 
   setTimeout(() => {
     assert.ok(Swal.isVisible())
-    done()
   }, 7 * TIMEOUT)
+
+  setTimeout(() => {
+    assert.notOk(Swal.isVisible())
+    done()
+  }, 10 * TIMEOUT)
 })
 

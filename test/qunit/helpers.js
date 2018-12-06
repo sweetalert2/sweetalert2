@@ -11,7 +11,7 @@ export const isHidden = (elem) => !isVisible(elem)
 
 export let TIMEOUT = 50
 
-if (browser.name === 'ie') {
+if (browser.name === 'ie' || browser.name === 'firefox') {
   TIMEOUT = 100
 } else if (browser.os === 'Android OS') {
   TIMEOUT = 500

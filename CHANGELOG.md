@@ -1,3 +1,10 @@
+# [7.31.0](https://github.com/sweetalert2/sweetalert2/compare/v7.30.0...v7.31.0) (2018-12-06)
+
+
+### Features
+
+* **api:** add .resumeTimer(), .toggleTimer(), .increaseTimer() ([#1325](https://github.com/sweetalert2/sweetalert2/issues/1325)) ([77649ee](https://github.com/sweetalert2/sweetalert2/commit/77649ee))
+
 # [7.30.0](https://github.com/sweetalert2/sweetalert2/compare/v7.29.2...v7.30.0) (2018-12-05)
 
 

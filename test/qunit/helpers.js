@@ -9,7 +9,7 @@ export const $ = document.querySelector.bind(document)
 export const isVisible = (elem) => elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length)
 export const isHidden = (elem) => !isVisible(elem)
 
-export let TIMEOUT = 1
+export let TIMEOUT = 50
 
 if (browser.name === 'ie') {
   TIMEOUT = 100

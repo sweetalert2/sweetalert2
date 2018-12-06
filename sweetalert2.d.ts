@@ -226,16 +226,36 @@ declare module 'sweetalert2' {
         function getValidationMessage(): HTMLElement;
 
         /**
-         * If `timer` parameter is set, returns number os milliseconds of timer remained.
+         * If `timer` parameter is set, returns number of milliseconds of timer remained.
          * Otherwise, returns undefined.
          */
         function getTimerLeft(): number | undefined;
 
         /**
-         * Stop timer manually. Returns number os milliseconds of timer remained.
-         * Otherwise, returns undefined.
+         * Stop timer. Returns number of milliseconds of timer remained.
+         * If `timer` parameter isn't set, returns undefined.
          */
         function stopTimer(): number | undefined;
+
+        /**
+         * Resume timer. Returns number of milliseconds of timer remained.
+         * If `timer` parameter isn't set, returns undefined.
+         */
+        function resumeTimer(): number | undefined;
+
+        /**
+         * Toggle timer. Returns number of milliseconds of timer remained.
+         * If `timer` parameter isn't set, returns undefined.
+         */
+        function toggleTimer(): number | undefined;
+
+        /**
+         * Increase timer. Returns number of milliseconds of an updated timer.
+         * If `timer` parameter isn't set, returns undefined.
+         *
+         * @param n The number of milliseconds to add to the currect timer
+         */
+        function increaseTimer(n: number): number | undefined;
 
         /**
          * Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.

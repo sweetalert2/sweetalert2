@@ -17,3 +17,18 @@ QUnit.test('stopTimer() method', (assert) => {
   }, 7 * TIMEOUT)
 })
 
+QUnit.test('stopTimer() method called twice', (assert) => {
+  const done = assert.async()
+
+  SwalWithoutAnimation({
+    timer: 500
+  })
+
+  const remainingTime = Swal.stopTimer()
+
+  setTimeout(() => {
+    assert.equal(Swal.stopTimer(), remainingTime)
+    done()
+  }, 1 * TIMEOUT)
+})
+

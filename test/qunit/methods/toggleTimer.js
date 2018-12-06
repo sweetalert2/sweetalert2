@@ -17,6 +17,6 @@ QUnit.test('toggleTimer() method', (assert) => {
   setTimeout(() => {
     assert.notOk(Swal.isVisible())
     done()
-  }, 15 * TIMEOUT)
+  }, 20 * TIMEOUT)
 })
 

@@ -381,7 +381,7 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        html?: string | JQuery;
+        html?: string | HTMLElement | JQuery;
 
         /**
          * The footer of the modal, as HTML.

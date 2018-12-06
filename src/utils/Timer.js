@@ -4,23 +4,33 @@ export default class Timer {
     this.running = false
 
     this.start = function () {
-      this.running = true
-      started = new Date()
-      id = setTimeout(callback, remaining)
+      if (!this.running) {
+        this.running = true
+        started = new Date()
+        id = setTimeout(callback, remaining)
+      }
       return remaining
     }
 
     this.stop = function () {
-      this.running = false
-      clearTimeout(id)
-      remaining -= new Date() - started
+      if (this.running) {
+        this.running = false
+        clearTimeout(id)
+        remaining -= new Date() - started
+      }
       return remaining
     }
 
     this.increase = function (n) {
-      this.stop()
+      const running = this.running
+      if (running) {
+        this.stop()
+      }
       remaining += n
-      return this.start()
+      if (running) {
+        this.start()
+      }
+      return remaining
     }
 
     this.getTimerLeft = function () {

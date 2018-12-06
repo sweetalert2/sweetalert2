@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.30.0
+* sweetalert2 v7.31.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -1358,7 +1358,7 @@ var showLoading = function showLoading() {
 };
 
 /**
- * If `timer` parameter is set, returns number os milliseconds of timer remained.
+ * If `timer` parameter is set, returns number of milliseconds of timer remained.
  * Otherwise, returns undefined.
  */
 
@@ -1366,12 +1366,37 @@ var getTimerLeft = function getTimerLeft() {
   return globalState.timeout && globalState.timeout.getTimerLeft();
 };
 /**
- * Stop timer manually. Returns number os milliseconds of timer remained.
- * Otherwise, returns undefined.
+ * Stop timer. Returns number of milliseconds of timer remained.
+ * If `timer` parameter isn't set, returns undefined.
  */
 
 var stopTimer = function stopTimer() {
   return globalState.timeout && globalState.timeout.stop();
+};
+/**
+ * Resume timer. Returns number of milliseconds of timer remained.
+ * If `timer` parameter isn't set, returns undefined.
+ */
+
+var resumeTimer = function resumeTimer() {
+  return globalState.timeout && globalState.timeout.start();
+};
+/**
+ * Resume timer. Returns number of milliseconds of timer remained.
+ * If `timer` parameter isn't set, returns undefined.
+ */
+
+var toggleTimer = function toggleTimer() {
+  var timer = globalState.timeout;
+  return timer && (timer.running ? timer.stop() : timer.start());
+};
+/**
+ * Increase timer. Returns number of milliseconds of an updated timer.
+ * If `timer` parameter isn't set, returns undefined.
+ */
+
+var increaseTimer = function increaseTimer(n) {
+  return globalState.timeout && globalState.timeout.increase(n);
 };
 
 
@@ -1412,7 +1437,10 @@ var staticMethods = Object.freeze({
 	showLoading: showLoading,
 	enableLoading: showLoading,
 	getTimerLeft: getTimerLeft,
-	stopTimer: stopTimer
+	stopTimer: stopTimer,
+	resumeTimer: resumeTimer,
+	toggleTimer: toggleTimer,
+	increaseTimer: increaseTimer
 });
 
 // https://github.com/Riim/symbol-polyfill/blob/master/index.js
@@ -1656,24 +1684,33 @@ function hideProgressSteps() {
 var Timer = function Timer(callback, delay) {
   _classCallCheck(this, Timer);
 
-  var id, started, running;
-  var remaining = delay;
+  var id,
+      started,
+      remaining = delay;
+  this.running = false;
 
   this.start = function () {
-    running = true;
+    this.running = true;
     started = new Date();
     id = setTimeout(callback, remaining);
+    return remaining;
   };
 
   this.stop = function () {
-    running = false;
+    this.running = false;
     clearTimeout(id);
     remaining -= new Date() - started;
     return remaining;
   };
 
+  this.increase = function (n) {
+    this.stop();
+    remaining += n;
+    return this.start();
+  };
+
   this.getTimerLeft = function () {
-    if (running) {
+    if (this.running) {
       this.stop();
       this.start();
     }
@@ -2669,4 +2706,4 @@ Swal.default = Swal;
 return Swal;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.30.0';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.31.0';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}

@@ -21,6 +21,11 @@ install:
   - yarn global add bundlesize@^0.17.0
   - bundlesize -f dist/sweetalert2.all.min.js -s 16kB
 
+  # prevent adding devDependencies with a shitload of subdependencies
+  - if [ `yarn list | wc -l` -gt 4000 ]; then
+      exit 1;
+    fi
+
 script:
   - if [[ "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
       yarn run check;

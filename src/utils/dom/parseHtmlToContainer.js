@@ -5,7 +5,11 @@ export const parseHtmlToContainer = (param, target) => {
     return hide(target)
   }
 
-  if (typeof param === 'object') {
+  // DOM element
+  if (param instanceof HTMLElement) {
+    target.appendChild(param)
+  // JQuery element(s)
+  } else if (typeof param === 'object') {
     target.innerHTML = ''
     if (0 in param) {
       for (let i = 0; i in param; i++) {

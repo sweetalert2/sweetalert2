@@ -19,3 +19,20 @@ QUnit.test('increaseTimer() method', (assert) => {
   }, 10 * TIMEOUT)
 })
 
+QUnit.test('increaseTimer() after stopTimer()', (assert) => {
+  const done = assert.async()
+
+  SwalWithoutAnimation({
+    timer: 5 * TIMEOUT
+  })
+
+  const remainingTime = Swal.stopTimer()
+
+  Swal.increaseTimer(10)
+
+  setTimeout(() => {
+    assert.equal(Swal.getTimerLeft(), remainingTime + 10)
+    done()
+  }, 1 * TIMEOUT)
+})
+

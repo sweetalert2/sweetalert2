@@ -12,7 +12,7 @@ QUnit.test('resumeTimer() method', (assert) => {
   setTimeout(() => {
     assert.ok(Swal.isVisible())
     Swal.resumeTimer()
-  }, 7 * TIMEOUT)
+  }, 6 * TIMEOUT)
 
   setTimeout(() => {
     assert.notOk(Swal.isVisible())
@@ -20,3 +20,20 @@ QUnit.test('resumeTimer() method', (assert) => {
   }, 15 * TIMEOUT)
 })
 
+QUnit.test('resumeTimer() method called twice', (assert) => {
+  const done = assert.async()
+
+  SwalWithoutAnimation({
+    timer: 5 * TIMEOUT
+  })
+
+  Swal.resumeTimer()
+  Swal.resumeTimer()
+
+  Swal.stopTimer()
+
+  setTimeout(() => {
+    assert.ok(Swal.isVisible())
+    done()
+  }, 10 * TIMEOUT)
+})

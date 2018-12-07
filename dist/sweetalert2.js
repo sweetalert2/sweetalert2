@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.31.0
+* sweetalert2 v7.31.1
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -557,9 +557,12 @@ var init = function init(params) {
 var parseHtmlToContainer = function parseHtmlToContainer(param, target) {
   if (!param) {
     return hide(target);
-  }
+  } // DOM element
 
-  if (_typeof(param) === 'object') {
+
+  if (param instanceof HTMLElement) {
+    target.appendChild(param); // JQuery element(s)
+  } else if (_typeof(param) === 'object') {
     target.innerHTML = '';
 
     if (0 in param) {
@@ -1690,23 +1693,39 @@ var Timer = function Timer(callback, delay) {
   this.running = false;
 
   this.start = function () {
-    this.running = true;
-    started = new Date();
-    id = setTimeout(callback, remaining);
+    if (!this.running) {
+      this.running = true;
+      started = new Date();
+      id = setTimeout(callback, remaining);
+    }
+
     return remaining;
   };
 
   this.stop = function () {
-    this.running = false;
-    clearTimeout(id);
-    remaining -= new Date() - started;
+    if (this.running) {
+      this.running = false;
+      clearTimeout(id);
+      remaining -= new Date() - started;
+    }
+
     return remaining;
   };
 
   this.increase = function (n) {
-    this.stop();
+    var running = this.running;
+
+    if (running) {
+      this.stop();
+    }
+
     remaining += n;
-    return this.start();
+
+    if (running) {
+      this.start();
+    }
+
+    return remaining;
   };
 
   this.getTimerLeft = function () {
@@ -2706,4 +2725,4 @@ Swal.default = Swal;
 return Swal;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.31.0';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.31.1';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}

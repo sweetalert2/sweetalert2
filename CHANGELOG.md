@@ -1,3 +1,11 @@
+## [7.31.1](https://github.com/sweetalert2/sweetalert2/compare/v7.31.0...v7.31.1) (2018-12-07)
+
+
+### Bug Fixes
+
+* check this.running in timer methods ([#1327](https://github.com/sweetalert2/sweetalert2/issues/1327)) ([418b8d3](https://github.com/sweetalert2/sweetalert2/commit/418b8d3))
+* support HTMLElement for setting title/html/footer ([#1328](https://github.com/sweetalert2/sweetalert2/issues/1328)) ([6f35e48](https://github.com/sweetalert2/sweetalert2/commit/6f35e48))
+
 # [7.31.0](https://github.com/sweetalert2/sweetalert2/compare/v7.30.0...v7.31.0) (2018-12-06)
 
 

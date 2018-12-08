@@ -41,7 +41,7 @@ export default class Timer {
       return remaining
     }
 
-    this.getTimerRunningStatus = function () {
+    this.isRunning = function () {
       return this.running
     }
 

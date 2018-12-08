@@ -45,6 +45,6 @@ export const increaseTimer = (n) => {
  * Retun boolean with status of timer. Returned value is true (timer running)
  * or false (timer paused). If `timer` parameter isn't set, returns undefined
  */
-export const getTimerRunningStatus = () => {
-  return globalState.timeout && globalState.timeout.getTimerRunningStatus()
+export const isTimerRunning = () => {
+  return globalState.timeout && globalState.timeout.isRunning()
 }

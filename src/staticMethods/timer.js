@@ -40,3 +40,12 @@ export const toggleTimer = () => {
 export const increaseTimer = (n) => {
   return globalState.timeout && globalState.timeout.increase(n)
 }
+
+/**
+ * Check if timer is running. Returns true if timer is running
+ * or false if timer is paused or stopped.
+ * If `timer` parameter isn't set, returns undefined
+ */
+export const isTimerRunning = () => {
+  return globalState.timeout && globalState.timeout.isRunning()
+}

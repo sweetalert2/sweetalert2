@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.31.1
+* sweetalert2 v7.32.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -1401,6 +1401,15 @@ var toggleTimer = function toggleTimer() {
 var increaseTimer = function increaseTimer(n) {
   return globalState.timeout && globalState.timeout.increase(n);
 };
+/**
+ * Check if timer is running. Returns true if timer is running
+ * or false if timer is paused or stopped.
+ * If `timer` parameter isn't set, returns undefined
+ */
+
+var isTimerRunning = function isTimerRunning() {
+  return globalState.timeout && globalState.timeout.isRunning();
+};
 
 
 
@@ -1443,7 +1452,8 @@ var staticMethods = Object.freeze({
 	stopTimer: stopTimer,
 	resumeTimer: resumeTimer,
 	toggleTimer: toggleTimer,
-	increaseTimer: increaseTimer
+	increaseTimer: increaseTimer,
+	isTimerRunning: isTimerRunning
 });
 
 // https://github.com/Riim/symbol-polyfill/blob/master/index.js
@@ -1735,6 +1745,10 @@ var Timer = function Timer(callback, delay) {
     }
 
     return remaining;
+  };
+
+  this.isRunning = function () {
+    return this.running;
   };
 
   this.start();
@@ -2725,4 +2739,4 @@ Swal.default = Swal;
 return Swal;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.31.1';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.32.0';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}

@@ -41,6 +41,10 @@ export default class Timer {
       return remaining
     }
 
+    this.isRunning = function () {
+      return this.running
+    }
+
     this.start()
   }
 }

@@ -17,7 +17,7 @@ labels:
 
 <!-- If possible, please provide a working example in order for us to be able to reproduce the issue -->
 
-<!-- The template: https://sweetalert2.glitch.me/ - Click "Remix on Glitch" to edit it. -->
+<!-- The template: https://sweetalert2.glitch.me/ - Check https://github.com/sweetalert2/sweetalert2/wiki/How-to-provide-live-example-for-issue for instructions -->
 
 ---
 

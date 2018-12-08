@@ -250,6 +250,13 @@ declare module 'sweetalert2' {
         function toggleTimer(): number | undefined;
 
         /**
+         * Check if timer is running. Returns true if timer is running, 
+         * and false is timer is paused / stopped. 
+         * If `timer` parameter isn't set, returns undefined.
+         */
+        function isTimerRunning(): boolean | undefined;
+
+        /**
          * Increase timer. Returns number of milliseconds of an updated timer.
          * If `timer` parameter isn't set, returns undefined.
          *

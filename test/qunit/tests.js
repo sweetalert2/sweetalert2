@@ -59,6 +59,16 @@ QUnit.test('should not throw console error about undefined params and treat them
   assert.ok(spy.notCalled)
 })
 
+QUnit.test('should not throw console error when <svg> tags are present (#1289)', (assert) => {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+  document.body.appendChild(svg)
+  const _consoleError = console.error
+  const spy = sinon.spy(console, 'error')
+  Swal({})
+  console.error = _consoleError
+  assert.ok(spy.notCalled)
+})
+
 QUnit.test('should show the popup with OK button in case of empty object passed as an argument', (assert) => {
   Swal({})
   assert.ok(isVisible(Swal.getConfirmButton()))

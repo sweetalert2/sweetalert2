@@ -1,29 +1,29 @@
-import { Swal, SwalWithoutAnimation, TIMEOUT } from '../helpers.js'
+import { Swal, SwalWithoutAnimation } from '../helpers.js'
 
 QUnit.test('increaseTimer() method', (assert) => {
   const done = assert.async()
 
   SwalWithoutAnimation({
-    timer: 5 * TIMEOUT
+    timer: 500
   })
 
-  assert.ok(Swal.increaseTimer(4 * TIMEOUT) > 0)
+  assert.ok(Swal.increaseTimer(400) > 0)
 
   setTimeout(() => {
     assert.ok(Swal.isVisible())
-  }, 7 * TIMEOUT)
+  }, 700)
 
   setTimeout(() => {
     assert.notOk(Swal.isVisible())
     done()
-  }, 10 * TIMEOUT)
+  }, 1000)
 })
 
 QUnit.test('increaseTimer() after stopTimer()', (assert) => {
   const done = assert.async()
 
   SwalWithoutAnimation({
-    timer: 5 * TIMEOUT
+    timer: 500
   })
 
   const remainingTime = Swal.stopTimer()
@@ -33,6 +33,6 @@ QUnit.test('increaseTimer() after stopTimer()', (assert) => {
   setTimeout(() => {
     assert.equal(Swal.getTimerLeft(), remainingTime + 10)
     done()
-  }, 1 * TIMEOUT)
+  }, 100)
 })
 

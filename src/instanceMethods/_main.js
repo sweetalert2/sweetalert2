@@ -2,7 +2,7 @@ import defaultParams, { showWarningsForParams } from '../utils/params'
 import * as dom from '../utils/dom/index'
 import { swalClasses } from '../utils/classes'
 import Timer from '../utils/Timer'
-import { formatInputOptions, error, warn, callIfFunction, isThenable } from '../utils/utils'
+import { formatInputOptions, error, warn, callIfFunction, isPromise } from '../utils/utils'
 import setParameters from '../utils/setParameters'
 import globalState from '../globalState'
 import { openPopup } from '../utils/openPopup'
@@ -434,8 +434,8 @@ export function _main (userParams) {
         input = dom.getChildByClass(domCache.content, swalClasses.input)
         if (typeof innerParams.inputValue === 'string' || typeof innerParams.inputValue === 'number') {
           input.value = innerParams.inputValue
-        } else {
-          warn(`Unexpected type of inputValue! Expected "string" or "number", got "${typeof innerParams.inputValue}"`)
+        } else if (!isPromise(innerParams.inputValue)) {
+          warn(`Unexpected type of inputValue! Expected "string", "number" or "Promise", got "${typeof innerParams.inputValue}"`)
         }
         setInputPlaceholder(input)
         input.type = innerParams.input
@@ -546,7 +546,7 @@ export function _main (userParams) {
 
     if (innerParams.input === 'select' || innerParams.input === 'radio') {
       const processInputOptions = inputOptions => populateInputOptions(formatInputOptions(inputOptions))
-      if (isThenable(innerParams.inputOptions)) {
+      if (isPromise(innerParams.inputOptions)) {
         constructor.showLoading()
         innerParams.inputOptions.then((inputOptions) => {
           this.hideLoading()
@@ -557,7 +557,7 @@ export function _main (userParams) {
       } else {
         error(`Unexpected type of inputOptions! Expected object, Map or Promise, got ${typeof innerParams.inputOptions}`)
       }
-    } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(innerParams.input) && isThenable(innerParams.inputValue)) {
+    } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(innerParams.input) && isPromise(innerParams.inputValue)) {
       constructor.showLoading()
       dom.hide(input)
       innerParams.inputValue.then((inputValue) => {

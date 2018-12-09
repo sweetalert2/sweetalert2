@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.32.1
+* sweetalert2 v7.32.2
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -257,8 +257,8 @@ var warnOnce = function warnOnce(message) {
 var callIfFunction = function callIfFunction(arg) {
   return typeof arg === 'function' ? arg() : arg;
 };
-var isThenable = function isThenable(arg) {
-  return arg && _typeof(arg) === 'object' && typeof arg.then === 'function';
+var isPromise = function isPromise(arg) {
+  return arg && Promise.resolve(arg) === arg;
 };
 
 var DismissReason = Object.freeze({
@@ -2442,8 +2442,8 @@ function _main(userParams) {
 
           if (typeof innerParams.inputValue === 'string' || typeof innerParams.inputValue === 'number') {
             input.value = innerParams.inputValue;
-          } else {
-            warn("Unexpected type of inputValue! Expected \"string\" or \"number\", got \"".concat(_typeof(innerParams.inputValue), "\""));
+          } else if (!isPromise(innerParams.inputValue)) {
+            warn("Unexpected type of inputValue! Expected \"string\", \"number\" or \"Promise\", got \"".concat(_typeof(innerParams.inputValue), "\""));
           }
 
           setInputPlaceholder(input);
@@ -2585,7 +2585,7 @@ function _main(userParams) {
         return populateInputOptions(formatInputOptions(inputOptions));
       };
 
-      if (isThenable(innerParams.inputOptions)) {
+      if (isPromise(innerParams.inputOptions)) {
         constructor.showLoading();
         innerParams.inputOptions.then(function (inputOptions) {
           _this.hideLoading();
@@ -2597,7 +2597,7 @@ function _main(userParams) {
       } else {
         error("Unexpected type of inputOptions! Expected object, Map or Promise, got ".concat(_typeof(innerParams.inputOptions)));
       }
-    } else if (['text', 'email', 'number', 'tel', 'textarea'].indexOf(innerParams.input) !== -1 && isThenable(innerParams.inputValue)) {
+    } else if (['text', 'email', 'number', 'tel', 'textarea'].indexOf(innerParams.input) !== -1 && isPromise(innerParams.inputValue)) {
       constructor.showLoading();
       hide(input);
       innerParams.inputValue.then(function (inputValue) {
@@ -2744,4 +2744,4 @@ Swal.default = Swal;
 return Swal;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.32.1';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.32.2';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}

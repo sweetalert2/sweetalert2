@@ -7,6 +7,9 @@ QUnit.test('inputValue number', (assert) => {
 })
 
 QUnit.test('inputValue as a Promise', (assert) => {
+  const _consoleWarn = console.warn
+  const spy = sinon.spy(console, 'warn')
+
   const inputTypes = ['text', 'email', 'number', 'tel', 'textarea']
   const done = assert.async(inputTypes.length)
   const value = '1.1 input value'
@@ -26,6 +29,9 @@ QUnit.test('inputValue as a Promise', (assert) => {
       }
     })
   })
+
+  console.warn = _consoleWarn
+  assert.ok(spy.notCalled)
 })
 
 QUnit.test('should throw console warning about unexpected type of inputValue', (assert) => {
@@ -33,5 +39,5 @@ QUnit.test('should throw console warning about unexpected type of inputValue', (
   const spy = sinon.spy(console, 'warn')
   Swal({ input: 'text', inputValue: undefined })
   console.warn = _consoleWarn
-  assert.ok(spy.calledWith('SweetAlert2: Unexpected type of inputValue! Expected "string" or "number", got "undefined"'))
+  assert.ok(spy.calledWith('SweetAlert2: Unexpected type of inputValue! Expected "string", "number" or "Promise", got "undefined"'))
 })

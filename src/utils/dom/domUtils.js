@@ -65,6 +65,11 @@ export const hide = (elem) => {
   elem.style.display = 'none'
 }
 
-
 // borrowed from jquery $(elem).is(':visible') implementation
 export const isVisible = (elem) => elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length)
+
+export const contains = (haystack, needle) => {
+  if (typeof haystack.contains === 'function') {
+    return haystack.contains(needle)
+  }
+}

@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.32.0
+* sweetalert2 v7.32.1
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -384,6 +384,11 @@ var hide = function hide(elem) {
 
 var isVisible = function isVisible(elem) {
   return elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
+};
+var contains = function contains(haystack, needle) {
+  if (typeof haystack.contains === 'function') {
+    return haystack.contains(needle);
+  }
 };
 
 var getContainer = function getContainer() {
@@ -880,7 +885,7 @@ var undoIEfix = function undoIEfix() {
 var setAriaHidden = function setAriaHidden() {
   var bodyChildren = toArray(document.body.children);
   bodyChildren.forEach(function (el) {
-    if (el === getContainer() || el.contains(getContainer())) {
+    if (el === getContainer() || contains(el, getContainer())) {
       return;
     }
 
@@ -2739,4 +2744,4 @@ Swal.default = Swal;
 return Swal;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.32.0';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.32.1';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}

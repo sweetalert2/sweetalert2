@@ -4,7 +4,16 @@
   </a>
 </p>
 
-<br>
+<p align="center">
+  A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement for JavaScript's popup boxes. Zero dependencies.
+</p>
+
+<p align="center">
+  <a href="https://sweetalert2.github.io/">
+    <img src="https://raw.github.com/sweetalert2/sweetalert2/master/assets/sweetalert2.gif" width="562"><br>
+    See SweetAlert2 in action ↗
+  </a>
+</p>
 
 <p align="center">
   <a href="https://travis-ci.org/sweetalert2/sweetalert2"><img alt="Build Status: Linux" src="https://travis-ci.org/sweetalert2/sweetalert2.svg?branch=master"></a>
@@ -15,17 +24,6 @@
   <a href="https://www.jsdelivr.com/package/npm/sweetalert2"><img alt="jsdelivr" src="https://data.jsdelivr.com/v1/package/npm/sweetalert2/badge?style=rounded"></a>
   <a href="https://www.patreon.com/limonte"><img alt="Support me on Patreon" src="http://ionicabizau.github.io/badges/patreon.svg"></a>
   <a href="https://www.paypal.me/limonte/5eur"><img alt="PayPal Donate" src="http://ionicabizau.github.io/badges/paypal.svg"></a>
-</p>
-
-<p align="center">
-  A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement for JavaScript's popup boxes. Zero dependencies.
-</p>
-
-<p align="center">
-  <a href="https://sweetalert2.github.io/">
-    <img src="https://raw.github.com/sweetalert2/sweetalert2/master/assets/sweetalert2.gif" width="562"><br>
-    See SweetAlert2 in action ↗
-  </a>
 </p>
 
 ---

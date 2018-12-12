@@ -91,6 +91,10 @@ body {
   }
 }
 
+.swal2-positioned-wrapper {
+  position: relative;
+}
+
 .swal2-container {
   // centering
   display: flex;

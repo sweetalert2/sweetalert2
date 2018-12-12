@@ -86,7 +86,17 @@ export const init = (params) => {
   container.innerHTML = sweetHTML
 
   let targetElement = typeof params.target === 'string' ? document.querySelector(params.target) : params.target
-  targetElement.appendChild(container)
+  if (targetElement !== document.body && targetElement.style.position === '') {
+    /* If the target is not the body, we need to create a
+     * 'positioned' element (i.e. an element with position
+     * different than 'static') */
+    let containerWrapper = document.createElement('div')
+    containerWrapper.className = swalClasses['positioned-wrapper']
+    containerWrapper.appendChild(container)
+    targetElement.appendChild(containerWrapper)
+  } else {
+    targetElement.appendChild(container)
+  }
 
   const popup = getPopup()
   const content = getContent()

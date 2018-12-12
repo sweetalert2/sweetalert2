@@ -101,6 +101,8 @@ export default function setParameters (params) {
     dom.addClass(container, swalClasses.center)
   }
 
+  if (params.target) { dom.addClass(container, swalClasses['with-target']) }
+
   // Grow
   if (params.grow && typeof params.grow === 'string') {
     let growClass = 'grow-' + params.grow

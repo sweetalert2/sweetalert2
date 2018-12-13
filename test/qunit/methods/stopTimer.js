@@ -9,12 +9,12 @@ QUnit.test('stopTimer() method', (assert) => {
 
   setTimeout(() => {
     assert.ok(Swal.stopTimer() > 0)
-  }, 300)
+  }, 250)
 
   setTimeout(() => {
     assert.ok(Swal.isVisible())
     done()
-  }, 700)
+  }, 750)
 })
 
 QUnit.test('stopTimer() method called twice', (assert) => {

@@ -1,3 +1,10 @@
+# [7.32.0](https://github.com/sweetalert2/sweetalert2/compare/v7.31.1...v7.32.0) (2018-12-08)
+
+
+### Features
+
+* **api:** add .isTimerRunning() ([#1330](https://github.com/sweetalert2/sweetalert2/issues/1330)) ([0624e7a](https://github.com/sweetalert2/sweetalert2/commit/0624e7a))
+
 ## [7.31.1](https://github.com/sweetalert2/sweetalert2/compare/v7.31.0...v7.31.1) (2018-12-07)
 
 

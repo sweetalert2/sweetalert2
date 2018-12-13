@@ -1,3 +1,10 @@
+## [7.32.2](https://github.com/sweetalert2/sweetalert2/compare/v7.32.1...v7.32.2) (2018-12-09)
+
+
+### Bug Fixes
+
+* do not throw warnings when inputValue is a promise ([#1333](https://github.com/sweetalert2/sweetalert2/issues/1333)) ([3607b72](https://github.com/sweetalert2/sweetalert2/commit/3607b72))
+
 ## [7.32.1](https://github.com/sweetalert2/sweetalert2/compare/v7.32.0...v7.32.1) (2018-12-09)
 
 

@@ -4,6 +4,7 @@
   </a>
 </p>
 
+
 <p align="center">
   A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement for JavaScript's popup boxes. Zero dependencies.
 </p>

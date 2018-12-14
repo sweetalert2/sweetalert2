@@ -3,6 +3,8 @@ import { uniqueArray, warnOnce, toArray } from '../utils'
 import { isVisible } from './domUtils'
 
 export const getContainer = () => document.body.querySelector('.' + swalClasses.container)
+ß
+export const getWrapper = () => document.body.querySelector('.' + swalClasses['positioned-wrapper'])
 
 const elementByClass = (className) => {
   const container = getContainer()

@@ -1,5 +1,5 @@
 import { swalClasses, iconTypes } from '../classes'
-import { getContainer, getPopup, getContent } from './getters'
+import { getContainer, getPopup, getContent, getWrapper } from './getters'
 import { addClass, removeClass, getChildByClass } from './domUtils'
 import { isNodeEnv } from '../isNodeEnv'
 import { error } from '../utils'
@@ -64,7 +64,13 @@ export const init = (params) => {
   // Clean up the old popup if it exists
   const c = getContainer()
   if (c) {
-    c.parentNode.removeChild(c)
+    const w = getWrapper()
+    if (w) {
+      w.parentNode.removeChild(w)
+    } else {
+      c.parentNode.removeChild(c)
+    }
+
     removeClass(
       [document.documentElement, document.body],
       [
@@ -90,7 +96,7 @@ export const init = (params) => {
     /* If the target is not the body, we need to create a
      * 'positioned' element (i.e. an element with position
      * different than 'static') */
-    let containerWrapper = document.createElement('div')
+    const containerWrapper = document.createElement('div')
     containerWrapper.className = swalClasses['positioned-wrapper']
     containerWrapper.appendChild(container)
     targetElement.appendChild(containerWrapper)

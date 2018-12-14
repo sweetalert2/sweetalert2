@@ -12,6 +12,8 @@ import globalState, { restoreActiveElement } from '../globalState'
 const close = (onClose, onAfterClose) => {
   const container = dom.getContainer()
   const popup = dom.getPopup()
+  const wrapper = dom.getWrapper()
+
   if (!popup) {
     return
   }
@@ -35,6 +37,11 @@ const close = (onClose, onAfterClose) => {
     if (container.parentNode) {
       container.parentNode.removeChild(container)
     }
+
+    if (wrapper) {
+      wrapper.parentNode.removeChild(wrapper)
+    }
+
     dom.removeClass(
       [document.documentElement, document.body],
       [

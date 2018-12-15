@@ -32,6 +32,22 @@ QUnit.test('target', (assert) => {
   console.warn = warn // Suppress the warnings
 })
 
+QUnit.test('target with position', (assert) => {
+  const warn = console.warn // Suppress the warnings
+  console.warn = () => true // Suppress the warnings
+
+  const dummyTargetElement = Object.assign(document.createElement('div'), { id: 'dummy-target' })
+  dummyTargetElement.setAttribute('style', 'position: absolute;')
+  document.body.appendChild(dummyTargetElement)
+
+  Swal({ title: 'Custom valid target (string)', target: '#dummy-target' }) // switch targets
+  assert.equal(document.querySelector('.swal2-container').parentNode, dummyTargetElement)
+  Swal.close()
+
+  dummyTargetElement.parentNode.removeChild(dummyTargetElement) // Remove target element before next test
+  console.warn = warn // Suppress the warnings
+})
+
 QUnit.test('target positioning: bottom-end', (assert) => {
   const warn = console.warn // Suppress the warnings
   console.warn = () => true // Suppress the warnings

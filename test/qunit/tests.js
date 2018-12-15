@@ -27,14 +27,6 @@ QUnit.test('modal scrolled to top on open', (assert) => {
   })
 })
 
-QUnit.test('should throw console error about missing arguments', (assert) => {
-  const _consoleError = console.error
-  const spy = sinon.spy(console, 'error')
-  Swal()
-  console.error = _consoleError
-  assert.ok(spy.calledWith('SweetAlert2: At least 1 argument is expected!'))
-})
-
 QUnit.test('should throw console warning about invalid params', (assert) => {
   const _consoleWarn = console.warn
   const spy = sinon.spy(console, 'warn')

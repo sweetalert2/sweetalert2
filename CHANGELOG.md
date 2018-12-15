@@ -1,3 +1,11 @@
+## [7.32.4](https://github.com/sweetalert2/sweetalert2/compare/v7.32.3...v7.32.4) (2018-12-15)
+
+
+### Bug Fixes
+
+* remove excessive args check ([#1344](https://github.com/sweetalert2/sweetalert2/issues/1344)) ([d302584](https://github.com/sweetalert2/sweetalert2/commit/d302584))
+* trigger release ([f70362c](https://github.com/sweetalert2/sweetalert2/commit/f70362c))
+
 ## [7.32.3](https://github.com/sweetalert2/sweetalert2/compare/v7.32.2...v7.32.3) (2018-12-15)
 
 

@@ -20,6 +20,8 @@ We would like to thank everyone who contributed to this library. If you find our
 - **Danny Lankar** (25 USD)
     > You should be selling this product. Love it, thank you!
 
+- **Alex Frei** (20 EUR)
+
 - **[VEI Hosting](http://www.veihosting.com/)** (20 USD)
 
 - **Daniel Seuffer** (10 EUR)

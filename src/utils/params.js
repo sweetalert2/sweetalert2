@@ -64,7 +64,8 @@ const defaultParams = {
   onOpen: null,
   onClose: null,
   useRejections: false,
-  expectRejections: false
+  expectRejections: false,
+  customContainerClass: ''
 }
 
 export const deprecatedParams = [

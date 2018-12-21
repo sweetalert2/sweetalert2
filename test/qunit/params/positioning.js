@@ -68,7 +68,7 @@ QUnit.test('Modal positions', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', position: position })
     let swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
-    assert.ok(checkPosition.check(position, swalRect), 'Failed test position: ' + position)
+    assert.ok(checkPosition.check(position, swalRect), `Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
     Swal.close()
   })
 
@@ -84,7 +84,7 @@ QUnit.test('Toast positions', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', toast: 'true', position: position })
     let swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
-    assert.ok(checkPosition.check(position, swalRect), 'Failed test position: ' + position)
+    assert.ok(checkPosition.check(position, swalRect), `Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
     Swal.close()
   })
 
@@ -113,7 +113,7 @@ QUnit.test('Modal positions with target', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', target: '#dummy-target', customContainerClass: 'position-absolute', position: position })
     let swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
-    assert.ok(checkPosition.check(position, swalRect), 'Failed test position: ' + position)
+    assert.ok(checkPosition.check(position, swalRect), `Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
     Swal.close()
   })
 
@@ -141,7 +141,7 @@ QUnit.test('Toast positions with target', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', target: '#dummy-target', customContainerClass: 'position-absolute', toast: 'true', position: position })
     let swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
-    assert.ok(checkPosition.check(position, swalRect), 'Failed test position: ' + position)
+    assert.ok(checkPosition.check(position, swalRect), `Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
     Swal.close()
   })
 

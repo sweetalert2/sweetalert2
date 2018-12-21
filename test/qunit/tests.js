@@ -121,6 +121,11 @@ QUnit.test('custom class', (assert) => {
   assert.ok(Swal.getPopup().classList.contains('custom-class'))
 })
 
+QUnit.test('custom container class', (assert) => {
+  Swal({ customContainerClass: 'custom-class' })
+  assert.ok(Swal.getContainer().classList.contains('custom-class'))
+})
+
 QUnit.test('getters', (assert) => {
   Swal('Title', 'Content')
   assert.equal(Swal.getTitle().innerText, 'Title')

@@ -9,6 +9,7 @@ const defaultParams = {
   type: null,
   toast: false,
   customClass: '',
+  customContainerClass: '',
   target: 'body',
   backdrop: true,
   animation: true,
@@ -64,8 +65,7 @@ const defaultParams = {
   onOpen: null,
   onClose: null,
   useRejections: false,
-  expectRejections: false,
-  customContainerClass: ''
+  expectRejections: false
 }
 
 export const deprecatedParams = [

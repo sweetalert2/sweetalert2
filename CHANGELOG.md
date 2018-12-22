@@ -1,3 +1,10 @@
+# [7.33.0](https://github.com/sweetalert2/sweetalert2/compare/v7.32.4...v7.33.0) (2018-12-22)
+
+
+### Features
+
+* **API:** add customContainerClass for specifying custom container class ([#1347](https://github.com/sweetalert2/sweetalert2/issues/1347)) ([c5ef1aa](https://github.com/sweetalert2/sweetalert2/commit/c5ef1aa))
+
 ## [7.32.4](https://github.com/sweetalert2/sweetalert2/compare/v7.32.3...v7.32.4) (2018-12-15)
 
 

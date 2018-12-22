@@ -131,7 +131,7 @@ export default function setParameters (params) {
     dom.addClass(popup, params.customClass)
   }
 
-  if (params.customContainerClass && typeof params.customContainerClass === 'string') {
+  if (params.customContainerClass) {
     dom.addClass(container, params.customContainerClass)
   }
 

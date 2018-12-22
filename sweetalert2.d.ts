@@ -250,8 +250,8 @@ declare module 'sweetalert2' {
         function toggleTimer(): number | undefined;
 
         /**
-         * Check if timer is running. Returns true if timer is running, 
-         * and false is timer is paused / stopped. 
+         * Check if timer is running. Returns true if timer is running,
+         * and false is timer is paused / stopped.
          * If `timer` parameter isn't set, returns undefined.
          */
         function isTimerRunning(): boolean | undefined;
@@ -482,9 +482,16 @@ declare module 'sweetalert2' {
         /**
          * A custom CSS class for the modal.
          *
-         * @default null
+         * @default ''
          */
         customClass?: string;
+
+        /**
+         * A custom CSS class for the container.
+         *
+         * @default ''
+         */
+        customContainerClass?: string;
 
         /**
          * Auto close timer of the modal. Set in ms (milliseconds).

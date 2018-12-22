@@ -131,6 +131,10 @@ export default function setParameters (params) {
     dom.addClass(popup, params.customClass)
   }
 
+  if (params.customContainerClass) {
+    dom.addClass(container, params.customContainerClass)
+  }
+
   // Progress steps
   dom.renderProgressSteps(params)
 

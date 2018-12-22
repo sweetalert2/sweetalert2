@@ -21,7 +21,7 @@ class PositionChecker {
   }
 
   isTop (clientRect) {
-    return clientRect.top === this._containerTop + this._offset
+    return (Math.abs(clientRect.top - (this._containerTop + this._offset)) < 1)
   }
 
   isCenter (clientRect) {
@@ -30,11 +30,11 @@ class PositionChecker {
   }
 
   isBottom (clientRect) {
-    return clientRect.bottom === this._containerBottom - this._offset
+    return (Math.abs(clientRect.bottom - (this._containerBottom - this._offset)) < 1)
   }
 
   isLeft (clientRect) {
-    return clientRect.left === this._containerLeft + this._offset
+    return (Math.abs(clientRect.left - (this._containerLeft + this._offset)) < 1)
   }
 
   isMiddle (clientRect) {
@@ -43,7 +43,7 @@ class PositionChecker {
   }
 
   isRight (clientRect) {
-    return clientRect.right === this._containerRight - this._offset
+    return (Math.abs(clientRect.right - (this._containerRight - this._offset)) < 1)
   }
 
   check (pos, clientRect) {
@@ -68,8 +68,7 @@ QUnit.test('Modal positions', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', position: position })
     let swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
-    console.log(`Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
-    assert.ok(checkPosition.check(position, swalRect), `Failed test position on "${navigator.userAgent}": ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width}) - (${window.innerHeight} ${window.innerWidth})`)
+    assert.ok(checkPosition.check(position, swalRect), `Failed modal position on "${navigator.userAgent}": ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width}) - (${window.innerHeight} ${window.innerWidth})`)
     Swal.close()
   })
 
@@ -85,7 +84,7 @@ QUnit.test('Toast positions', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', toast: 'true', position: position })
     let swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
-    assert.ok(checkPosition.check(position, swalRect), `Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
+    assert.ok(checkPosition.check(position, swalRect), `Failed toast position: on "${navigator.userAgent}": ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
     Swal.close()
   })
 
@@ -114,7 +113,7 @@ QUnit.test('Modal positions with target', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', target: '#dummy-target', customContainerClass: 'position-absolute', position: position })
     let swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
-    assert.ok(checkPosition.check(position, swalRect), `Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width}) - (${window.innerHeight} ${window.innerWidth})`)
+    assert.ok(checkPosition.check(position, swalRect), `Failed modal position with target on "${navigator.userAgent}": ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width}) - (${window.innerHeight} ${window.innerWidth})`)
     Swal.close()
   })
 
@@ -142,7 +141,7 @@ QUnit.test('Toast positions with target', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', target: '#dummy-target', customContainerClass: 'position-absolute', toast: 'true', position: position })
     let swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
-    assert.ok(checkPosition.check(position, swalRect), `Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
+    assert.ok(checkPosition.check(position, swalRect), `Failed toast position with target on "${navigator.userAgent}": ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
     Swal.close()
   })
 

@@ -68,7 +68,7 @@ QUnit.test('Modal positions', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', position: position })
     let swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
-    assert.ok(checkPosition.check(position, swalRect), `Failed modal position on "${navigator.userAgent}": ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width}) - (${window.innerHeight} ${window.innerWidth})`)
+    assert.ok(checkPosition.check(position, swalRect), `Failed modal position on "${navigator.userAgent}": ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})\n Window: (${window.innerHeight} ${window.innerWidth})`)
     Swal.close()
   })
 
@@ -84,7 +84,7 @@ QUnit.test('Toast positions', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', toast: 'true', position: position })
     let swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
-    assert.ok(checkPosition.check(position, swalRect), `Failed toast position: on "${navigator.userAgent}": ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
+    assert.ok(checkPosition.check(position, swalRect), `Failed toast position: on "${navigator.userAgent}": ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})\n Window: (${window.innerHeight} ${window.innerWidth})`)
     Swal.close()
   })
 
@@ -113,7 +113,7 @@ QUnit.test('Modal positions with target', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', target: '#dummy-target', customContainerClass: 'position-absolute', position: position })
     let swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
-    assert.ok(checkPosition.check(position, swalRect), `Failed modal position with target on "${navigator.userAgent}": ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width}) - (${window.innerHeight} ${window.innerWidth})`)
+    assert.ok(checkPosition.check(position, swalRect), `Failed modal position with target on "${navigator.userAgent}": ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})`)
     Swal.close()
   })
 
@@ -141,7 +141,7 @@ QUnit.test('Toast positions with target', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', target: '#dummy-target', customContainerClass: 'position-absolute', toast: 'true', position: position })
     let swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
-    assert.ok(checkPosition.check(position, swalRect), `Failed toast position with target on "${navigator.userAgent}": ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
+    assert.ok(checkPosition.check(position, swalRect), `Failed toast position with target on "${navigator.userAgent}": ${position}\n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})`)
     Swal.close()
   })
 

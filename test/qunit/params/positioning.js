@@ -25,7 +25,7 @@ class PositionChecker {
   }
 
   isCenter (clientRect) {
-    let rectCenter = clientRect.top + (clientRect.height / 2)
+    let rectCenter = Math.round(clientRect.top + (clientRect.height / 2))
     return rectCenter === this._containerCenter
   }
 
@@ -38,7 +38,7 @@ class PositionChecker {
   }
 
   isMiddle (clientRect) {
-    let clientMiddle = clientRect.left + (clientRect.width / 2)
+    let clientMiddle = Math.round(clientRect.left + (clientRect.width / 2))
     return clientMiddle === this._containerMiddle
   }
 

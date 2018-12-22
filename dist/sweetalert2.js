@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v7.32.4
+* sweetalert2 v7.33.0
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -1078,6 +1078,7 @@ var defaultParams = {
   type: null,
   toast: false,
   customClass: '',
+  customContainerClass: '',
   target: 'body',
   backdrop: true,
   animation: true,
@@ -1894,6 +1895,10 @@ function setParameters(params) {
 
   if (params.customClass) {
     addClass(popup, params.customClass);
+  }
+
+  if (params.customContainerClass) {
+    addClass(container, params.customContainerClass);
   } // Progress steps
 
 
@@ -2740,4 +2745,4 @@ Swal.default = Swal;
 return Swal;
 
 })));
-if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.32.4';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}
+if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.version = '7.33.0';  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2}

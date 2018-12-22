@@ -217,7 +217,6 @@
     opacity: 1; } }
 
 body.swal2-toast-shown .swal2-container {
-  position: fixed;
   background-color: transparent; }
   body.swal2-toast-shown .swal2-container.swal2-shown {
     background-color: transparent; }

@@ -25,8 +25,8 @@ class PositionChecker {
   }
 
   isCenter (clientRect) {
-    let rectCenter = Math.round(clientRect.top + (clientRect.height / 2))
-    return rectCenter === Math.round(this._containerCenter)
+    let rectCenter = clientRect.top + (clientRect.height / 2)
+    return (Math.abs(rectCenter - this._containerCenter) < 1)
   }
 
   isBottom (clientRect) {
@@ -38,8 +38,8 @@ class PositionChecker {
   }
 
   isMiddle (clientRect) {
-    let clientMiddle = Math.round(clientRect.left + (clientRect.width / 2))
-    return clientMiddle === Math.round(this._containerMiddle)
+    let clientMiddle = clientRect.left + (clientRect.width / 2)
+    return (Math.abs(clientMiddle - this._containerMiddle) < 1)
   }
 
   isRight (clientRect) {
@@ -68,8 +68,8 @@ QUnit.test('Modal positions', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', position: position })
     let swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
-    // console.log(`Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
-    assert.ok(checkPosition.check(position, swalRect), `Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width}) - (${window.innerHeight} ${window.innerWidth})`)
+    console.log(`Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
+    assert.ok(checkPosition.check(position, swalRect), `Failed test position on "${navigator.userAgent}": ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width}) - (${window.innerHeight} ${window.innerWidth})`)
     Swal.close()
   })
 

@@ -1,3 +1,10 @@
+## [7.33.1](https://github.com/sweetalert2/sweetalert2/compare/v7.33.0...v7.33.1) (2018-12-22)
+
+
+### Bug Fixes
+
+* **d.ts:** add customContainerClass definition ([#1351](https://github.com/sweetalert2/sweetalert2/issues/1351)) ([c5f11e7](https://github.com/sweetalert2/sweetalert2/commit/c5f11e7))
+
 # [7.33.0](https://github.com/sweetalert2/sweetalert2/compare/v7.32.4...v7.33.0) (2018-12-22)
 
 

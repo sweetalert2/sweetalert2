@@ -11,6 +11,8 @@ module.exports = function (config) {
       base: 'SauceLabs',
       browserName: 'Safari',
       version: 'latest',
+      // TODO(@limonte): remove this line, the current latest 10.14 doesn't work (#1349)
+      platform: 'macOS 10.13'
     },
     edge: {
       base: 'SauceLabs',

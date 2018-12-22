@@ -68,7 +68,8 @@ QUnit.test('Modal positions', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', position: position })
     let swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
-    assert.ok(checkPosition.check(position, swalRect), `Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
+    // console.log(`Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
+    assert.ok(checkPosition.check(position, swalRect), `Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width}) - (${window.innerHeight} ${window.innerWidth})`)
     Swal.close()
   })
 
@@ -113,7 +114,7 @@ QUnit.test('Modal positions with target', (assert) => {
   allowedPostions.forEach(position => {
     Swal({ animation: 'false', target: '#dummy-target', customContainerClass: 'position-absolute', position: position })
     let swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
-    assert.ok(checkPosition.check(position, swalRect), `Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})`)
+    assert.ok(checkPosition.check(position, swalRect), `Failed test position: ${position} (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width}) - (${window.innerHeight} ${window.innerWidth})`)
     Swal.close()
   })
 

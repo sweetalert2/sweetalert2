@@ -605,14 +605,14 @@ declare module 'sweetalert2' {
         /**
          * A custom CSS class for the "Confirm"-button.
          *
-         * @default null
+         * @default ''
          */
         confirmButtonClass?: string;
 
         /**
          * A custom CSS class for the "Cancel"-button.
          *
-         * @default null
+         * @default ''
          */
         cancelButtonClass?: string;
 
@@ -731,7 +731,7 @@ declare module 'sweetalert2' {
         /**
          * A custom CSS class for the customized icon.
          *
-         * @default null
+         * @default ''
          */
         imageClass?: string;
 
@@ -809,7 +809,7 @@ declare module 'sweetalert2' {
         /**
          * A custom CSS class for the input field.
          *
-         * @default null
+         * @default ''
          */
         inputClass?: string;
 

@@ -35,7 +35,7 @@ module.exports = function (config) {
     },
     android_latest: {
       base: 'SauceLabs',
-      deviceName: 'Android Emulator',
+      deviceName: 'Android GoogleAPI Emulator',
       browserName: 'Chrome',
       platformName: 'Android',
       platformVersion: 'latest'

@@ -35,6 +35,8 @@ We would like to thank everyone who contributed to this library. If you find our
 
 - **Patrik Kernstock** (10 EUR)
 
+- **Jeff Keith** (10 EUR)
+    > SweetAlert2 saved me tons of time.
 
 
 # Patrons (via [Patreon](https://www.patreon.com/limonte))

@@ -77,8 +77,12 @@
     "sweetalert",
     "sweetalert2",
     "alert",
+    "modal",
+    "popup",
     "prompt",
-    "confirm"
+    "confirm",
+    "toast",
+    "accessible"
   ],
   "engines": {
     "node": ">=0.10.0"

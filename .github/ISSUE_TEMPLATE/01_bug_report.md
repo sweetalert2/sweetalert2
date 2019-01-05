@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Something not working as expected
-labels: 
+labels:
 
 ---
 
@@ -21,6 +21,5 @@ labels:
 
 ---
 
-Has SweetAlert2 helped you create an amazing application? You can show your support by making a donation in one of several ways:
+Has SweetAlert2 helped you create an amazing application? You can show your support by making a donation:
 - https://www.paypal.me/limonte
-- https://www.patreon.com/limonte

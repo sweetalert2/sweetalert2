@@ -2359,10 +2359,10 @@ destroy@~1.0.4:
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
   integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
 
-detect-browser@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/detect-browser/-/detect-browser-3.0.1.tgz#39beead014347a8a2be1f3c4cb30a0aef2127c44"
-  integrity sha512-L6b76EfUxnoxGHM5Vz7nrshQPIbOHtitDWpGufrp5srQdJrEYi1xpUVZeFbfssWAJvUWo/iDIVlz8hOP4Z8OCw==
+detect-browser@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/detect-browser/-/detect-browser-4.0.1.tgz#2697633aba55874d6e6766a8824026761b025d97"
+  integrity sha512-hikv4whlOLjCANCcuf3o5af7yNy9bBEhVQR6iSmNtrnpgCKl3Bz5QmRue1/k+F9WDa5unu+t/6Bmax5HnGbKHg==
 
 detect-file@^0.1.0:
   version "0.1.0"

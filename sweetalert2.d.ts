@@ -93,11 +93,6 @@ declare module 'sweetalert2' {
         function getCancelButton(): HTMLElement;
 
         /**
-         * Gets the buttons wrapper.
-         */
-        function getButtonsWrapper(): HTMLElement;
-
-        /**
          * Gets actions (buttons) wrapper.
          */
         function getActions(): HTMLElement;

@@ -1,6 +1,6 @@
 export const DismissReason = Object.freeze({
   cancel: 'cancel',
-  backdrop: 'overlay',
+  backdrop: 'backdrop',
   close: 'close',
   esc: 'esc',
   timer: 'timer'

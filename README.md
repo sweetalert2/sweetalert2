@@ -56,7 +56,7 @@ Usage
 ```html
 <script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
 
-<!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
+<!-- Include a polyfill for ES6 Promises (optional) for IE11 and UC Browser support -->
 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
 ```
 
@@ -138,9 +138,9 @@ Swal({
 Browser compatibility
 ---------------------
 
- IE11* | Edge | Chrome | Firefox | Safari | Opera | Android Browser* | UC Browser*
--------|------|--------|---------|--------|-------|------------------|------------
-:heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+ IE11* | Edge | Chrome | Firefox | Safari | Opera | UC Browser*
+-------|------|--------|---------|--------|-------|-------------
+:heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 \* ES6 Promise polyfill should be included, see [usage example](#usage).
 

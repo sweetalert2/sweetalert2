@@ -173,21 +173,6 @@ declare module 'sweetalert2' {
         function clickCancel(): void;
 
         /**
-         * Shows a validation error message.
-         *
-         * @param error The error message.
-         * @deprecated
-         */
-        function showValidationError(error: string): void;
-
-        /**
-         * Hides validation error message.
-         *
-         * @deprecated
-         */
-        function resetValidationError(): void;
-
-        /**
          * Shows a validation message.
          *
          * @param validationMessage The validation message.

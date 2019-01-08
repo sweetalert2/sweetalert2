@@ -1,5 +1,4 @@
 export * from './staticMethods/argsToParams'
-export * from './staticMethods/adaptInputValidator'
 export * from './staticMethods/close'
 export * from './staticMethods/dom'
 export * from './staticMethods/fire'

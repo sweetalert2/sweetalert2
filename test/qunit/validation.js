@@ -37,7 +37,7 @@ QUnit.test('default URL validator', (assert) => {
     done()
   })
 
-  defaultInputValidators.url('invalid url').catch(data => {
+  defaultInputValidators.url('invalid url').then(data => {
     assert.equal(data, 'Invalid URL')
     done()
   })

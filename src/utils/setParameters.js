@@ -1,7 +1,6 @@
 import { swalClasses } from './classes.js'
 import { warn } from './utils.js'
 import * as dom from './dom/index'
-import sweetAlert from '../sweetalert2'
 import defaultInputValidators from './defaultInputValidators'
 
 /**
@@ -15,7 +14,7 @@ export default function setParameters (params) {
   if (!params.inputValidator) {
     Object.keys(defaultInputValidators).forEach((key) => {
       if (params.input === key) {
-        params.inputValidator = sweetAlert.adaptInputValidator(defaultInputValidators[key])
+        params.inputValidator = defaultInputValidators[key]
       }
     })
   }

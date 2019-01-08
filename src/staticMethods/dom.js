@@ -8,7 +8,6 @@ export {
   getImage,
   getIcons,
   getCloseButton,
-  getButtonsWrapper,
   getActions,
   getConfirmButton,
   getCancelButton,

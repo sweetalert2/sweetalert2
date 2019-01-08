@@ -212,20 +212,6 @@ QUnit.test('JS element as html param', (assert) => {
   assert.equal($('#swal2-content').innerHTML, '<p>js element</p>')
 })
 
-QUnit.test('set and reset defaults', (assert) => {
-  Swal.setDefaults({ confirmButtonText: 'Next >', showCancelButton: true })
-  Swal('Modal with changed defaults')
-  assert.equal($('.swal2-confirm').textContent, 'Next >')
-  assert.ok(isVisible($('.swal2-cancel')))
-
-  Swal.resetDefaults()
-  Swal('Modal after resetting defaults')
-  assert.equal($('.swal2-confirm').textContent, 'OK')
-  assert.ok(isHidden($('.swal2-cancel')))
-
-  Swal.clickCancel()
-})
-
 QUnit.test('validation message', (assert) => {
   const done = assert.async()
   const inputValidator = (value) => Promise.resolve(!value && 'no falsy values')
@@ -326,9 +312,8 @@ QUnit.test('dymanic queue', (assert) => {
     }
   ]
 
-  Swal.setDefaults({ animation: false })
   setTimeout(() => {
-    Swal.queue(steps).then(() => {
+    SwalWithoutAnimation.queue(steps).then(() => {
       Swal('All done!')
     })
 
@@ -690,7 +675,7 @@ QUnit.test('on errors in *async* user-defined functions, cleans up and propagate
   }
 
   // inputValidator
-  const rejectedPromise = Swal({ input: 'text', inputValidator: erroringFunction })
+  const rejectedPromise = SwalWithoutAnimation({ input: 'text', inputValidator: erroringFunction })
   Swal.clickConfirm()
   rejectedPromise.catch((error) => {
     assert.equal(error, expectedError) // error is bubbled up back to user code
@@ -698,7 +683,7 @@ QUnit.test('on errors in *async* user-defined functions, cleans up and propagate
       assert.notOk(Swal.isVisible()) // display is cleaned up
 
       // preConfirm
-      const rejectedPromise = Swal({ preConfirm: erroringFunction })
+      const rejectedPromise = SwalWithoutAnimation({ preConfirm: erroringFunction })
       Swal.clickConfirm()
       rejectedPromise.catch((error) => {
         assert.equal(error, expectedError) // error is bubbled up back to user code

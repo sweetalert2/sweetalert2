@@ -50,21 +50,6 @@ declare module 'sweetalert2' {
         function isVisible(): boolean;
 
         /**
-         * @deprecated
-         * If you end up using a lot of the same settings when calling SweetAlert2,
-         * you can use setDefaults at the start of your program to set them once and for all!
-         *
-         * @param defaultOptions The default options to set for all modals.
-         */
-        function setDefaults(defaultOptions: SweetAlertOptions): void;
-
-        /**
-         * @deprecated
-         * Resets settings to their default value.
-         */
-        function resetDefaults(): void;
-
-        /**
          * Closes the currently open SweetAlert2 modal programmatically.
          *
          * @param onComplete An optional callback to be called when the alert has finished closing.

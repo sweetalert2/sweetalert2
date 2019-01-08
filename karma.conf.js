@@ -26,14 +26,7 @@ module.exports = function (config) {
       platformName: 'iOS',
       platformVersion: 'latest'
     },
-    android_kitkat: {
-      base: 'SauceLabs',
-      deviceName: 'Android Emulator',
-      browserName: 'Browser',
-      platformVersion: '4.4',
-      platformName: 'Android'
-    },
-    android_latest: {
+    android: {
       base: 'SauceLabs',
       deviceName: 'Android GoogleAPI Emulator',
       browserName: 'Chrome',

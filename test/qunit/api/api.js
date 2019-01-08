@@ -24,20 +24,6 @@ QUnit.test('properties of `Swal` class are consistent', (assert) => {
   })
 })
 
-QUnit.test('defaults are applied to undefined arguments in shorthand calls', (assert) => {
-  const done = assert.async()
-  Swal.setDefaults({
-    html: 'foo',
-    onOpen: () => {
-      assert.equal(Swal.getTitle().textContent, 'bar')
-      assert.equal(Swal.getContent().textContent, 'foo')
-      Swal.resetDefaults()
-      done()
-    }
-  })
-  Swal('bar')
-})
-
 QUnit.test('ways to instantiate', (assert) => {
   assert.ok((new Swal('foo')) instanceof Swal)
   assert.ok(Swal.fire('foo') instanceof Swal)

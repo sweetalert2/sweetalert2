@@ -19,7 +19,7 @@ install:
 
   # bundlesize
   - yarn global add bundlesize@^0.17.0
-  - bundlesize -f dist/sweetalert2.all.min.js -s 16kB
+  - bundlesize -f dist/sweetalert2.all.min.js -s 15kB
 
   # prevent adding devDependencies with a shitload of subdependencies
   - if [ `yarn list | wc -l` -gt 4000 ]; then

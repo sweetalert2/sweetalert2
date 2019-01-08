@@ -8,8 +8,6 @@
  *   then we can use that language feature.
  */
 
-import WeakMap from './utils/WeakMap'
-
 export default {
   promise: new WeakMap(),
   innerParams: new WeakMap(),

@@ -44,19 +44,11 @@ export function _main (userParams) {
     // functions to handle all resolving/rejecting/settling
     const succeedWith = (value) => {
       constructor.closePopup(innerParams.onClose, innerParams.onAfterClose) // TODO: make closePopup an *instance* method
-      if (innerParams.useRejections) {
-        resolve(value)
-      } else {
-        resolve({ value })
-      }
+      resolve({ value })
     }
     const dismissWith = (dismiss) => {
       constructor.closePopup(innerParams.onClose, innerParams.onAfterClose)
-      if (innerParams.useRejections) {
-        reject(dismiss)
-      } else {
-        resolve({ dismiss })
-      }
+      resolve({ dismiss })
     }
     const errorWith = (error) => {
       constructor.closePopup(innerParams.onClose, innerParams.onAfterClose)
@@ -107,28 +99,16 @@ export function _main (userParams) {
       if (innerParams.preConfirm) {
         this.resetValidationMessage()
         const preConfirmPromise = Promise.resolve().then(() => innerParams.preConfirm(value, innerParams.extraParams))
-        if (innerParams.expectRejections) {
-          preConfirmPromise.then(
-            (preConfirmValue) => succeedWith(preConfirmValue || value),
-            (validationMessage) => {
+        preConfirmPromise.then(
+          (preConfirmValue) => {
+            if (dom.isVisible(domCache.validationMessage) || preConfirmValue === false) {
               this.hideLoading()
-              if (validationMessage) {
-                this.showValidationMessage(validationMessage)
-              }
+            } else {
+              succeedWith(preConfirmValue || value)
             }
-          )
-        } else {
-          preConfirmPromise.then(
-            (preConfirmValue) => {
-              if (dom.isVisible(domCache.validationMessage) || preConfirmValue === false) {
-                this.hideLoading()
-              } else {
-                succeedWith(preConfirmValue || value)
-              }
-            },
-            (error) => errorWith(error)
-          )
-        }
+          },
+          (error) => errorWith(error)
+        )
       } else {
         succeedWith(value)
       }
@@ -152,35 +132,18 @@ export function _main (userParams) {
               if (innerParams.inputValidator) {
                 this.disableInput()
                 const validationPromise = Promise.resolve().then(() => innerParams.inputValidator(inputValue, innerParams.extraParams))
-                if (innerParams.expectRejections) {
-                  validationPromise.then(
-                    () => {
-                      this.enableButtons()
-                      this.enableInput()
+                validationPromise.then(
+                  (validationMessage) => {
+                    this.enableButtons()
+                    this.enableInput()
+                    if (validationMessage) {
+                      this.showValidationMessage(validationMessage)
+                    } else {
                       confirm(inputValue)
-                    },
-                    (validationMessage) => {
-                      this.enableButtons()
-                      this.enableInput()
-                      if (validationMessage) {
-                        this.showValidationMessage(validationMessage)
-                      }
                     }
-                  )
-                } else {
-                  validationPromise.then(
-                    (validationMessage) => {
-                      this.enableButtons()
-                      this.enableInput()
-                      if (validationMessage) {
-                        this.showValidationMessage(validationMessage)
-                      } else {
-                        confirm(inputValue)
-                      }
-                    },
-                    error => errorWith(error)
-                  )
-                }
+                  },
+                  error => errorWith(error)
+                )
               } else if (!this.getInput().checkValidity()) {
                 this.enableButtons()
                 this.showValidationMessage(innerParams.validationMessage)

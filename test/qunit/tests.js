@@ -690,7 +690,7 @@ QUnit.test('on errors in *async* user-defined functions, cleans up and propagate
   }
 
   // inputValidator
-  const rejectedPromise = Swal({ input: 'text', expectRejections: false, inputValidator: erroringFunction })
+  const rejectedPromise = Swal({ input: 'text', inputValidator: erroringFunction })
   Swal.clickConfirm()
   rejectedPromise.catch((error) => {
     assert.equal(error, expectedError) // error is bubbled up back to user code
@@ -698,7 +698,7 @@ QUnit.test('on errors in *async* user-defined functions, cleans up and propagate
       assert.notOk(Swal.isVisible()) // display is cleaned up
 
       // preConfirm
-      const rejectedPromise = Swal({ expectRejections: false, preConfirm: erroringFunction })
+      const rejectedPromise = Swal({ preConfirm: erroringFunction })
       Swal.clickConfirm()
       rejectedPromise.catch((error) => {
         assert.equal(error, expectedError) // error is bubbled up back to user code

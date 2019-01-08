@@ -66,9 +66,7 @@ const defaultParams = {
   onClose: null
 }
 
-export const deprecatedParams = [
-  'extraParams'
-]
+export const deprecatedParams = []
 
 const toastIncompatibleParams = [
   'allowOutsideClick',
@@ -85,7 +83,7 @@ const toastIncompatibleParams = [
  * @param {String} paramName
  */
 export const isValidParameter = (paramName) => {
-  return defaultParams.hasOwnProperty(paramName) || paramName === 'extraParams'
+  return defaultParams.hasOwnProperty(paramName)
 }
 
 /**

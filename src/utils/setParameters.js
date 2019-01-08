@@ -15,7 +15,7 @@ export default function setParameters (params) {
   if (!params.inputValidator) {
     Object.keys(defaultInputValidators).forEach((key) => {
       if (params.input === key) {
-        params.inputValidator = sweetAlert.adaptInputValidator(defaultInputValidators[key])
+        params.inputValidator = defaultInputValidators[key]
       }
     })
   }

@@ -63,14 +63,10 @@ const defaultParams = {
   onBeforeOpen: null,
   onAfterClose: null,
   onOpen: null,
-  onClose: null,
-  useRejections: false,
-  expectRejections: false
+  onClose: null
 }
 
 export const deprecatedParams = [
-  'useRejections',
-  'expectRejections',
   'extraParams'
 ]
 

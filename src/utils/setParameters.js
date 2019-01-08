@@ -20,14 +20,6 @@ export default function setParameters (params) {
     })
   }
 
-  // params.extraParams is @deprecated
-  if (params.validationMessage) {
-    if (typeof params.extraParams !== 'object') {
-      params.extraParams = {}
-    }
-    params.extraParams.validationMessage = params.validationMessage
-  }
-
   // Determine if the custom target element is valid
   if (
     !params.target ||

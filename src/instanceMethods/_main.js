@@ -98,7 +98,7 @@ export function _main (userParams) {
 
       if (innerParams.preConfirm) {
         this.resetValidationMessage()
-        const preConfirmPromise = Promise.resolve().then(() => innerParams.preConfirm(value, innerParams.extraParams))
+        const preConfirmPromise = Promise.resolve().then(() => innerParams.preConfirm(value, innerParams.validationMessage))
         preConfirmPromise.then(
           (preConfirmValue) => {
             if (dom.isVisible(domCache.validationMessage) || preConfirmValue === false) {
@@ -131,7 +131,7 @@ export function _main (userParams) {
 
               if (innerParams.inputValidator) {
                 this.disableInput()
-                const validationPromise = Promise.resolve().then(() => innerParams.inputValidator(inputValue, innerParams.extraParams))
+                const validationPromise = Promise.resolve().then(() => innerParams.inputValidator(inputValue, innerParams.validationMessage))
                 validationPromise.then(
                   (validationMessage) => {
                     this.enableButtons()

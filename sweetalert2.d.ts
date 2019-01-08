@@ -20,13 +20,7 @@ declare module 'sweetalert2' {
      *     timer: 2000
      *   })
      */
-    function swal(settings: SweetAlertOptions & { useRejections?: false }): Promise<SweetAlertResult>;
-
-    /**
-     * @deprecated
-     * swal() overload for legacy alerts that use { useRejections: true }.
-     */
-    function swal(settings: SweetAlertOptions & { useRejections: true }): Promise<any>;
+    function swal(settings: SweetAlertOptions): Promise<SweetAlertResult>;
 
     /**
      * A namespace inside the default function, containing utility function for controlling the currently-displayed
@@ -861,15 +855,6 @@ declare module 'sweetalert2' {
          * @default null
          */
         onClose?: (modalElement: HTMLElement) => void;
-
-        /**
-         * Determines whether given `inputValidator` and `preConfirm` functions should be expected to to signal
-         * validation message by rejecting, or by their respective means (see documentation for each option).
-         *
-         * @default false
-         * @deprecated
-         */
-        expectRejections?: boolean;
     }
 
     export default swal;

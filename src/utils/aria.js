@@ -1,6 +1,6 @@
-import { getContainer } from './dom/getters'
-import { contains } from './dom/domUtils'
-import { toArray } from './utils'
+import { getContainer } from './dom/getters.js'
+import { contains } from './dom/domUtils.js'
+import { toArray } from './utils.js'
 
 // From https://developer.paciellogroup.com/blog/2018/06/the-current-state-of-modal-dialog-accessibility/
 // Adding aria-hidden="true" to elements outside of the active modal dialog ensures that

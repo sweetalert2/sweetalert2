@@ -1,4 +1,4 @@
-import privateProps from '../privateProps'
+import privateProps from '../privateProps.js'
 
 export function enableButtons () {
   const domCache = privateProps.domCache.get(this)

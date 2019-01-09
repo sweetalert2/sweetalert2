@@ -1,6 +1,6 @@
-import * as dom from '../utils/dom/index'
-import { swalClasses } from '../utils/classes'
-import privateProps from '../privateProps'
+import * as dom from '../utils/dom/index.js'
+import { swalClasses } from '../utils/classes.js'
+import privateProps from '../privateProps.js'
 
 // Get input element by specified type or, if type isn't specified, by params.input
 export function getInput (inputType) {

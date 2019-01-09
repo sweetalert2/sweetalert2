@@ -1,12 +1,12 @@
-export * from './staticMethods/argsToParams'
-export * from './staticMethods/close'
-export * from './staticMethods/dom'
-export * from './staticMethods/fire'
-export * from './staticMethods/mixin'
-export * from './staticMethods/queue'
-export * from './staticMethods/showLoading'
-export * from './staticMethods/timer'
+export * from './staticMethods/argsToParams.js'
+export * from './staticMethods/close.js'
+export * from './staticMethods/dom.js'
+export * from './staticMethods/fire.js'
+export * from './staticMethods/mixin.js'
+export * from './staticMethods/queue.js'
+export * from './staticMethods/showLoading.js'
+export * from './staticMethods/timer.js'
 export {
   isValidParameter,
   isDeprecatedParameter
-} from './utils/params'
+} from './utils/params.js'

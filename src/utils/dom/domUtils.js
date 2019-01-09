@@ -1,4 +1,4 @@
-import { swalClasses } from '../classes'
+import { swalClasses } from '../classes.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {

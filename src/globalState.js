@@ -1,4 +1,4 @@
-import { RESTORE_FOCUS_TIMEOUT } from './constants'
+import { RESTORE_FOCUS_TIMEOUT } from './constants.js'
 
 const globalState = {}
 

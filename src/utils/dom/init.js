@@ -1,9 +1,9 @@
-import { swalClasses, iconTypes } from '../classes'
-import { getContainer, getPopup, getContent } from './getters'
-import { addClass, removeClass, getChildByClass } from './domUtils'
-import { isNodeEnv } from '../isNodeEnv'
-import { error } from '../utils'
-import sweetAlert from '../../sweetalert2'
+import { swalClasses, iconTypes } from '../classes.js'
+import { getContainer, getPopup, getContent } from './getters.js'
+import { addClass, removeClass, getChildByClass } from './domUtils.js'
+import { isNodeEnv } from '../isNodeEnv.js'
+import { error } from '../utils.js'
+import sweetAlert from '../../sweetalert2.js'
 
 const sweetHTML = `
  <div aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses.content}" class="${swalClasses.popup}" tabindex="-1">

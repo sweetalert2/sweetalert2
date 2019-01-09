@@ -1,10 +1,10 @@
-import { undoScrollbar } from '../utils/scrollbarFix'
-import { undoIOSfix } from '../utils/iosFix'
-import { undoIEfix } from '../utils/ieFix'
-import { unsetAriaHidden } from '../utils/aria'
-import * as dom from '../utils/dom/index'
+import { undoScrollbar } from '../utils/scrollbarFix.js'
+import { undoIOSfix } from '../utils/iosFix.js'
+import { undoIEfix } from '../utils/ieFix.js'
+import { unsetAriaHidden } from '../utils/aria.js'
+import * as dom from '../utils/dom/index.js'
 import { swalClasses } from '../utils/classes.js'
-import globalState, { restoreActiveElement } from '../globalState'
+import globalState, { restoreActiveElement } from '../globalState.js'
 
 /*
  * Global function to close sweetAlert

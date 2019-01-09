@@ -1,4 +1,4 @@
-import { withNoNewKeyword } from '../enhancers'
+import { withNoNewKeyword } from '../enhancers.js'
 
 /**
  * Returns an extended version of `Swal` containing `params` as defaults.

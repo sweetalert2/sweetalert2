@@ -1,5 +1,5 @@
-import * as dom from '../utils/dom/index'
-import privateProps from '../privateProps'
+import * as dom from '../utils/dom/index.js'
+import privateProps from '../privateProps.js'
 
 export function getProgressSteps () {
   const innerParams = privateProps.innerParams.get(this)

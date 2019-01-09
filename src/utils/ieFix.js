@@ -1,4 +1,4 @@
-import * as dom from './dom/index'
+import * as dom from './dom/index.js'
 
 // https://stackoverflow.com/a/21825207
 const isIE11 = () => !!window.MSInputMethodContext && !!document.documentMode

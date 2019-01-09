@@ -1,7 +1,7 @@
 import { swalClasses } from '../../classes.js'
 import { warn } from '../../utils.js'
-import * as dom from '../../dom/index'
-import sweetAlert from '../../../sweetalert2'
+import * as dom from '../../dom/index.js'
+import sweetAlert from '../../../sweetalert2.js'
 
 export const renderProgressSteps = (params) => {
   let progressStepsContainer = dom.getProgressSteps()

@@ -1,8 +1,8 @@
 import { error } from './utils/utils.js'
-import { DismissReason } from './utils/DismissReason'
-import * as staticMethods from './staticMethods'
-import * as instanceMethods from './instanceMethods'
-import privateProps from './privateProps'
+import { DismissReason } from './utils/DismissReason.js'
+import * as staticMethods from './staticMethods.js'
+import * as instanceMethods from './instanceMethods.js'
+import privateProps from './privateProps.js'
 
 let currentInstance
 

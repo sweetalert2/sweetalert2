@@ -1,10 +1,10 @@
-import * as dom from './dom/index'
-import { swalClasses } from './classes'
-import { fixScrollbar } from './scrollbarFix'
-import { iOSfix } from './iosFix'
-import { IEfix } from './ieFix'
-import { setAriaHidden } from './aria'
-import globalState from '../globalState'
+import * as dom from './dom/index.js'
+import { swalClasses } from './classes.js'
+import { fixScrollbar } from './scrollbarFix.js'
+import { iOSfix } from './iosFix.js'
+import { IEfix } from './ieFix.js'
+import { setAriaHidden } from './aria.js'
+import globalState from '../globalState.js'
 
 /**
  * Open popup, add necessary classes and styles, fix scrollbar

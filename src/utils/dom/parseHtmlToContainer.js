@@ -1,4 +1,4 @@
-import { show, hide } from './domUtils'
+import { show, hide } from './domUtils.js'
 
 export const parseHtmlToContainer = (param, target) => {
   if (!param) {

@@ -1,12 +1,12 @@
-import defaultParams, { showWarningsForParams } from '../utils/params'
-import * as dom from '../utils/dom/index'
-import { swalClasses } from '../utils/classes'
-import Timer from '../utils/Timer'
-import { formatInputOptions, error, warn, callIfFunction, isPromise } from '../utils/utils'
-import setParameters from '../utils/setParameters'
-import globalState from '../globalState'
-import { openPopup } from '../utils/openPopup'
-import privateProps from '../privateProps'
+import defaultParams, { showWarningsForParams } from '../utils/params.js'
+import * as dom from '../utils/dom/index.js'
+import { swalClasses } from '../utils/classes.js'
+import Timer from '../utils/Timer.js'
+import { formatInputOptions, error, warn, callIfFunction, isPromise } from '../utils/utils.js'
+import setParameters from '../utils/setParameters.js'
+import globalState from '../globalState.js'
+import { openPopup } from '../utils/openPopup.js'
+import privateProps from '../privateProps.js'
 
 export function _main (userParams) {
   showWarningsForParams(userParams)

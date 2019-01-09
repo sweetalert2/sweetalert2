@@ -1,7 +1,7 @@
 import { swalClasses } from './classes.js'
 import { warn } from './utils.js'
-import * as dom from './dom/index'
-import defaultInputValidators from './defaultInputValidators'
+import * as dom from './dom/index.js'
+import defaultInputValidators from './defaultInputValidators.js'
 
 /**
  * Set type, text and actions on popup

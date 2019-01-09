@@ -1,4 +1,4 @@
-import * as dom from '../utils/dom/index'
+import * as dom from '../utils/dom/index.js'
 
 export {
   getContainer,
@@ -15,7 +15,7 @@ export {
   getFocusableElements,
   getValidationMessage,
   isLoading
-} from '../utils/dom/index'
+} from '../utils/dom/index.js'
 
 /*
  * Global function to determine if swal2 popup is shown

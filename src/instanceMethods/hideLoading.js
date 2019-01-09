@@ -1,6 +1,6 @@
-import * as dom from '../utils/dom/index'
-import { swalClasses } from '../utils/classes'
-import privateProps from '../privateProps'
+import * as dom from '../utils/dom/index.js'
+import { swalClasses } from '../utils/classes.js'
+import privateProps from '../privateProps.js'
 
 /**
  * Enables buttons and hide loader.

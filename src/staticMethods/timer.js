@@ -1,4 +1,4 @@
-import globalState from '../globalState'
+import globalState from '../globalState.js'
 
 /**
  * If `timer` parameter is set, returns number of milliseconds of timer remained.

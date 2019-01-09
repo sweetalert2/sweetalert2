@@ -1,4 +1,4 @@
-import { warn, warnOnce } from '../utils/utils'
+import { warn, warnOnce } from '../utils/utils.js'
 
 const defaultParams = {
   title: '',

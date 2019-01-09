@@ -1,2 +1,2 @@
-export * from './enhancers/withNoNewKeyword'
-export * from './enhancers/withGlobalDefaults'
+export * from './enhancers/withNoNewKeyword.js'
+export * from './enhancers/withGlobalDefaults.js'

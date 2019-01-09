@@ -1,6 +1,6 @@
-import * as dom from '../utils/dom/index'
-import sweetAlert from '../sweetalert2'
-import { swalClasses } from '../utils/classes'
+import * as dom from '../utils/dom/index.js'
+import sweetAlert from '../sweetalert2.js'
+import { swalClasses } from '../utils/classes.js'
 
 /**
  * Show spinner instead of Confirm button and disable Cancel button

@@ -291,12 +291,6 @@ declare module 'sweetalert2' {
         function argsToParams(params: SweetAlertArrayOptions | [SweetAlertOptions]): SweetAlertOptions;
 
         /**
-         * An utility function to make SweetAlert rejections silencious (no error in the console when clicking Cancel).
-         * ex. swal(...).catch(swal.noop)
-         */
-        function noop(): void;
-
-        /**
          * An enum of possible reasons that can explain an alert dismissal.
          */
         enum DismissReason {

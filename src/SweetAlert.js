@@ -67,7 +67,4 @@ Object.keys(instanceMethods).forEach(key => {
 
 SweetAlert.DismissReason = DismissReason
 
-/* istanbul ignore next */
-SweetAlert.noop = () => { }
-
 export default SweetAlert

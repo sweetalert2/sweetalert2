@@ -3,7 +3,7 @@ const { Swal, SwalWithoutAnimation, isVisible, TIMEOUT } = require('../helpers')
 QUnit.test('input: email + validationMessage', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     input: 'email',
     validationMessage: 'custom email validation message'
   })
@@ -18,7 +18,7 @@ QUnit.test('input: email + validationMessage', (assert) => {
 QUnit.test('input: url + validationMessage', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     input: 'url',
     validationMessage: 'custom url validation message'
   })

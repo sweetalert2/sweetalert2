@@ -2,10 +2,10 @@ const { $, Swal, SwalWithoutAnimation } = require('./helpers')
 const sinon = require('sinon/pkg/sinon')
 
 QUnit.test('.swal2-toast-shown', (assert) => {
-  Swal({ toast: true })
+  Swal.fire({ toast: true })
   assert.ok(document.body.classList.contains('swal2-toast-shown'))
   assert.ok(document.documentElement.classList.contains('swal2-toast-shown'))
-  Swal({ toast: false })
+  Swal.fire({ toast: false })
   assert.notOk(document.body.classList.contains('swal2-toast-shown'))
   assert.notOk(document.documentElement.classList.contains('swal2-toast-shown'))
 })
@@ -14,7 +14,7 @@ QUnit.test('should throw console warnings for incompatible parameters', (assert)
   const _consoleWarn = console.warn
   const spy = sinon.spy(console, 'warn')
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     allowOutsideClick: true,
     toast: true
   })
@@ -26,34 +26,34 @@ QUnit.test('should throw console warnings for incompatible parameters', (assert)
 QUnit.test('.swal2-toast-column if input', (assert) => {
   const inputs = ['text', 'email', 'password', 'number', 'tel', 'range', 'textarea', 'select', 'radio', 'checkbox', 'file', 'url']
   inputs.forEach((input) => {
-    SwalWithoutAnimation({ toast: true, input: input })
+    SwalWithoutAnimation.fire({ toast: true, input: input })
     assert.ok(document.body.classList.contains('swal2-toast-column'))
 
-    SwalWithoutAnimation({ input: input })
+    SwalWithoutAnimation.fire({ input: input })
     assert.notOk(document.body.classList.contains('swal2-toast-column'))
   })
 })
 
 QUnit.test('.swal2-toast-column if footer', (assert) => {
-  SwalWithoutAnimation({ toast: true, footer: 'footer' })
+  SwalWithoutAnimation.fire({ toast: true, footer: 'footer' })
   assert.ok(document.body.classList.contains('swal2-toast-column'))
 
-  SwalWithoutAnimation({ footer: 'footer' })
+  SwalWithoutAnimation.fire({ footer: 'footer' })
   assert.notOk(document.body.classList.contains('swal2-toast-column'))
 })
 
 QUnit.test('.swal2-toast-column if close button', (assert) => {
-  SwalWithoutAnimation({ toast: true, showCloseButton: true })
+  SwalWithoutAnimation.fire({ toast: true, showCloseButton: true })
   assert.ok(document.body.classList.contains('swal2-toast-column'))
 
-  SwalWithoutAnimation({ showCloseButton: true })
+  SwalWithoutAnimation.fire({ showCloseButton: true })
   assert.notOk(document.body.classList.contains('swal2-toast-column'))
 })
 
 QUnit.test('toast click closes when no buttons or input are specified', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     title: 'toast click close',
     toast: true,
     showConfirmButton: false
@@ -68,7 +68,7 @@ QUnit.test('toast click closes when no buttons or input are specified', (assert)
 QUnit.test('toast click does not close if cancel button is present', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     title: 'toast no close with button present',
     toast: true,
     showConfirmButton: false,
@@ -86,7 +86,7 @@ QUnit.test('toast click does not close if cancel button is present', (assert) =>
 QUnit.test('toast click does not close if input option is specified', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     title: 'toast no close with input present',
     toast: true,
     showConfirmButton: false,

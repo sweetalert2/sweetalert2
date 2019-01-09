@@ -12,7 +12,7 @@ const simulateMouseEvent = (x, y, eventType) => {
 QUnit.test('backdrop click', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation('Backdrop click').then((result) => {
+  SwalWithoutAnimation.fire('Backdrop click').then((result) => {
     assert.deepEqual(result, { dismiss: Swal.DismissReason.backdrop })
     done()
   })
@@ -23,7 +23,7 @@ QUnit.test('backdrop click', (assert) => {
 QUnit.test('popup mousedown, backdrop mouseup', (assert) => {
   const done = assert.async()
 
-  Swal('popup mousedown, backdrop mouseup')
+  Swal.fire('popup mousedown, backdrop mouseup')
 
   simulateMouseEvent(1, 1, 'mousedown')
   simulateMouseEvent(window.innerWidth / 2, window.innerHeight / 2, 'mouseup')
@@ -37,7 +37,7 @@ QUnit.test('popup mousedown, backdrop mouseup', (assert) => {
 QUnit.test('backdrop mousedown, popup mouseup', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation('backdrop mousedown, popup mouseup')
+  SwalWithoutAnimation.fire('backdrop mousedown, popup mouseup')
 
   simulateMouseEvent(window.innerWidth / 2, window.innerHeight / 2, 'mousedown')
   simulateMouseEvent(1, 1, 'mouseup')
@@ -51,7 +51,7 @@ QUnit.test('backdrop mousedown, popup mouseup', (assert) => {
 QUnit.test('allowOutsideClick: false', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     title: 'allowOutsideClick: false',
     allowOutsideClick: false
   })
@@ -67,7 +67,7 @@ QUnit.test('allowOutsideClick: false', (assert) => {
 QUnit.test('allowOutsideClick: () => !swal.isLoading()', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     title: 'allowOutsideClick: () => !swal.isLoading()',
     allowOutsideClick: () => !Swal.isLoading()
   }).then((result) => {
@@ -90,7 +90,7 @@ QUnit.test('allowOutsideClick: should throw console warning for popups without b
   const _consoleWarn = console.warn
   const spy = sinon.spy(console, 'warn')
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     title: 'allowOutsideClick is not compatible with modeless popups',
     allowOutsideClick: true,
     backdrop: false

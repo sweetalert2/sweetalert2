@@ -1,47 +1,47 @@
 declare module 'sweetalert2' {
     /**
-     * Shorthand function to display a simple SweetAlert modal.
-     *
-     * ex.
-     *   import swal from 'sweetalert2';
-     *   swal('The Internet?', 'That thing is still around?', 'question');
-     */
-    function swal(title: string, message?: string, type?: SweetAlertType): Promise<SweetAlertResult>;
-
-    /**
-     * Function to display a SweetAlert modal, with an object of options, all being optional.
-     * See the SweetAlertOptions interface for the list of accepted fields and values.
-     *
-     * ex.
-     *   import swal from 'sweetalert2';
-     *   swal({
-     *     title: 'Auto close alert!',
-     *     text: 'I will close in 2 seconds.',
-     *     timer: 2000
-     *   })
-     */
-    function swal(settings: SweetAlertOptions): Promise<SweetAlertResult>;
-
-    /**
      * A namespace inside the default function, containing utility function for controlling the currently-displayed
      * modal.
      *
      * ex.
-     *   import swal from 'sweetalert2';
+     *   import Swal from 'sweetalert2';
      *
-     *   swal('Hey user!', 'I don\'t like you.', 'warning');
+     *   Swal.fire('Hey user!', 'I don\'t like you.', 'warning');
      *
-     *   if(swal.isVisible()) { // instant regret
-     *     swal.close();
+     *   if(Swal.isVisible()) { // instant regret
+     *     Swal.close();
      *   }
      */
-    namespace swal {
+    namespace Swal {
         /**
-         * Reuse configuration by creating a swal instance.
+         * Function to display a simple SweetAlert2 modal.
+         *
+         * ex.
+         *   import Swal from 'sweetalert2';
+         *   Swal.fire('The Internet?', 'That thing is still around?', 'question');
+         */
+        function fire(title: string, message?: string, type?: SweetAlertType): Promise<SweetAlertResult>;
+
+        /**
+         * Function to display a SweetAlert2 modal, with an object of options, all being optional.
+         * See the SweetAlertOptions interface for the list of accepted fields and values.
+         *
+         * ex.
+         *   import Swal from 'sweetalert2';
+         *   Swal.fire({
+         *     title: 'Auto close alert!',
+         *     text: 'I will close in 2 seconds.',
+         *     timer: 2000
+         *   })
+         */
+        function fire(settings: SweetAlertOptions): Promise<SweetAlertResult>;
+
+        /**
+         * Reuse configuration by creating a Swal instance.
          *
          * @param options the default options to set for this instance.
          */
-        function mixin(options?: SweetAlertOptions): typeof swal;
+        function mixin(options?: SweetAlertOptions): typeof Swal;
 
         /**
          * Determines if a modal is shown.
@@ -238,7 +238,7 @@ declare module 'sweetalert2' {
         /**
          * Inserts a modal in the queue.
          *
-         * @param step  The step configuration (same object as in the swal() call).
+         * @param step  The step configuration (same object as in the Swal.fire() call).
          * @param index The index to insert the step at.
          *              By default a modal will be added to the end of a queue.
          */
@@ -281,10 +281,10 @@ declare module 'sweetalert2' {
         function isValidParameter(paramName: string): boolean;
 
         /**
-         * Normalizes the arguments you can give to swal() in an object of type SweetAlertOptions.
+         * Normalizes the arguments you can give to Swal.fire() in an object of type SweetAlertOptions.
          * ex:
-         *     swal.argsToParams(['title', 'text']); //=> { title: 'title', text: 'text' }
-         *     swal.argsToParams({ title: 'title', text: 'text' }); //=> { title: 'title', text: 'text' }
+         *     Swal.argsToParams(['title', 'text']); //=> { title: 'title', text: 'text' }
+         *     Swal.argsToParams({ title: 'title', text: 'text' }); //=> { title: 'title', text: 'text' }
          *
          * @param params The array of arguments to normalize.
          */
@@ -302,7 +302,7 @@ declare module 'sweetalert2' {
 
     export interface SweetAlertResult {
         value?: any;
-        dismiss?: swal.DismissReason;
+        dismiss?: Swal.DismissReason;
     }
 
     type SyncOrAsync<T> = T | Promise<T>;
@@ -584,7 +584,7 @@ declare module 'sweetalert2' {
         cancelButtonAriaLabel?: string;
 
         /**
-         * Whether to apply the default swal2 styling to buttons.
+         * Whether to apply the default SweetAlert2 styling to buttons.
          * If you want to use your own classes (e.g. Bootstrap classes) set this parameter to false.
          *
          * @default true
@@ -637,7 +637,7 @@ declare module 'sweetalert2' {
          * Function to execute before confirm, may be async (Promise-returning) or sync.
          *
          * ex.
-         *   swal({
+         *   Swal.fire({
          *    title: 'Multiple inputs',
          *    html:
          *      '<input id="swal-input1" class="swal2-input">' +
@@ -647,7 +647,7 @@ declare module 'sweetalert2' {
          *      document.querySelector('#swal-input1').value,
          *      document.querySelector('#swal-input2').value
          *    ]
-         *  }).then(result => swal(JSON.stringify(result));
+         *  }).then(result => Swal.fire(JSON.stringify(result));
          *
          * @default null
          */
@@ -720,7 +720,7 @@ declare module 'sweetalert2' {
          * HTML input attributes (e.g. min, max, step, accept...), that are added to the input field.
          *
          * ex.
-         *   swal({
+         *   Swal.fire({
          *     title: 'Select a file',
          *     input: 'file',
          *     inputAttributes: {
@@ -736,7 +736,7 @@ declare module 'sweetalert2' {
          * Validator for input field, may be async (Promise-returning) or sync.
          *
          * ex.
-         *   swal({
+         *   Swal.fire({
          *     title: 'Select color',
          *     input: 'radio',
          *     inputValidator: result => !result && 'You need to select something!'
@@ -750,7 +750,7 @@ declare module 'sweetalert2' {
          * A custom validation message for default validators (email, url).
          *
          * ex.
-         *   swal({
+         *   Swal.fire({
          *     input: 'email',
          *     validationMessage: 'Adresse e-mail invalide'
          *   })
@@ -776,7 +776,7 @@ declare module 'sweetalert2' {
         /**
          * Current active progress step.
          *
-         * @default swal.getQueueStep()
+         * @default Swal.getQueueStep()
          */
         currentProgressStep?: string;
 
@@ -816,7 +816,7 @@ declare module 'sweetalert2' {
         onClose?: (modalElement: HTMLElement) => void;
     }
 
-    export default swal;
+    export default Swal;
 }
 
 /**

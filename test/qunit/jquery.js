@@ -2,7 +2,7 @@ const { $, Swal } = require('./helpers')
 const jQuery = require('jquery')
 
 QUnit.test('jQuery elements as params', (assert) => {
-  Swal({
+  Swal.fire({
     title: jQuery('<h1>jQuery title</h1>'),
     html: jQuery('<p>jQuery content</p>'),
     footer: jQuery('<footer>jQuery footer</footer>')

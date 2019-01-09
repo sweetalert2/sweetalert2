@@ -9,8 +9,8 @@ QUnit.test('previous active element', (assert) => {
   document.body.appendChild(button)
   button.focus()
 
-  SwalWithoutAnimation('swal 1')
-  SwalWithoutAnimation('swal 2')
+  SwalWithoutAnimation.fire('swal 1')
+  SwalWithoutAnimation.fire('swal 2')
   Swal.clickConfirm()
 
   setTimeout(() => {
@@ -23,7 +23,7 @@ QUnit.test('previous active element', (assert) => {
 QUnit.test('should focus body in there is not previuos active element', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation('I was called programmatically and will focus body after closing')
+  SwalWithoutAnimation.fire('I was called programmatically and will focus body after closing')
   Swal.clickConfirm()
 
   setTimeout(() => {
@@ -39,7 +39,7 @@ QUnit.test('should set aria-hidden="true" to all body children if modal', (asser
   document.body.appendChild(div)
   document.body.appendChild(divAriaHiddenFalse)
 
-  SwalWithoutAnimation({})
+  SwalWithoutAnimation.fire({})
   assert.equal(div.getAttribute('aria-hidden'), 'true')
   assert.equal(divAriaHiddenFalse.getAttribute('aria-hidden'), 'true')
 
@@ -52,7 +52,7 @@ QUnit.test('should not set aria-hidden="true" on the custom container (target)',
   const div = document.createElement('div')
   document.body.appendChild(div)
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     target: div
   })
   assert.notOk(div.hasAttribute('aria-hidden'))
@@ -62,7 +62,7 @@ QUnit.test('should not set aria-hidden="true" when `backdrop: false`', (assert) 
   const div = document.createElement('div')
   document.body.appendChild(div)
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     backdrop: false
   })
   assert.notOk(div.hasAttribute('aria-hidden'))
@@ -72,21 +72,21 @@ QUnit.test('should not set aria-hidden="true" when `toast: true`', (assert) => {
   const div = document.createElement('div')
   document.body.appendChild(div)
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     toast: true
   })
   assert.notOk(div.hasAttribute('aria-hidden'))
 })
 
 QUnit.test('dialog aria attributes', (assert) => {
-  Swal('Modal dialog')
+  Swal.fire('Modal dialog')
   assert.equal($('.swal2-modal').getAttribute('role'), 'dialog')
   assert.equal($('.swal2-modal').getAttribute('aria-live'), 'assertive')
   assert.equal($('.swal2-modal').getAttribute('aria-modal'), 'true')
 })
 
 QUnit.test('toast aria attributes', (assert) => {
-  Swal({ title: 'Toast', toast: true })
+  Swal.fire({ title: 'Toast', toast: true })
   assert.equal($('.swal2-toast').getAttribute('role'), 'alert')
   assert.equal($('.swal2-toast').getAttribute('aria-live'), 'polite')
   assert.notOk($('.swal2-toast').getAttribute('aria-modal'))

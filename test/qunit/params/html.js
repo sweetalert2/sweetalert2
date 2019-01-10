@@ -7,7 +7,7 @@ QUnit.test('HTMLElement as html', (assert) => {
   div.appendChild(document.createElement('input'))
   form.appendChild(div)
 
-  Swal({
+  Swal.fire({
     html: form
   })
   assert.equal($('#swal2-content').innerHTML, '<form><div><label></label><input></div></form>')

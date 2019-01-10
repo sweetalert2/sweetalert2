@@ -3,7 +3,7 @@ import { Swal, SwalWithoutAnimation } from '../helpers.js'
 QUnit.test('isTimerRunning() method', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     timer: 200
   })
 

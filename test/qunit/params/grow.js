@@ -1,7 +1,7 @@
 const { Swal } = require('../helpers')
 
 QUnit.test('grow row', (assert) => {
-  Swal({
+  Swal.fire({
     grow: 'row'
   })
   const containerStyles = window.getComputedStyle(Swal.getContainer())
@@ -12,7 +12,7 @@ QUnit.test('grow row', (assert) => {
 })
 
 QUnit.test('grow column', (assert) => {
-  Swal({
+  Swal.fire({
     grow: 'column'
   })
   const containerStyles = window.getComputedStyle(Swal.getContainer())
@@ -23,7 +23,7 @@ QUnit.test('grow column', (assert) => {
 })
 
 QUnit.test('grow fullscreen', (assert) => {
-  Swal({
+  Swal.fire({
     grow: 'fullscreen'
   })
   const containerStyles = window.getComputedStyle(Swal.getContainer())

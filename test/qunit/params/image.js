@@ -1,7 +1,7 @@
 const { Swal } = require('../helpers')
 
 QUnit.test('imageUrl, imageWidth, imageHeight', (assert) => {
-  Swal({
+  Swal.fire({
     imageUrl: 'https://sweetalert2.github.io/images/swal2-logo.png',
     imageWidth: 498,
     imageHeight: 84

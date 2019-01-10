@@ -4,7 +4,7 @@ const sinon = require('sinon/pkg/sinon')
 QUnit.test('should throw console error about invalid type', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')
-  Swal({
+  Swal.fire({
     type: 'invalid-type'
   })
   console.error = _consoleError

@@ -1,7 +1,7 @@
 import { Swal } from '../helpers.js'
 
 QUnit.test('getFocusableElements() method', (assert) => {
-  Swal({
+  Swal.fire({
     input: 'text',
     html: `
       <button tabindex="-1"> tabindex -1 </button>

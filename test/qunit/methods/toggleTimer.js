@@ -3,7 +3,7 @@ import { Swal, SwalWithoutAnimation } from '../helpers.js'
 QUnit.test('toggleTimer() method', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     timer: 500
   })
 

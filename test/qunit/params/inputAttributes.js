@@ -3,7 +3,7 @@ const { Swal } = require('../helpers')
 QUnit.test('inputAttributes: input text w/ placeholder', (assert) => {
   const done = assert.async()
 
-  Swal({
+  Swal.fire({
     input: 'text',
     inputAttributes: {
       placeholder: 'placeholder text',
@@ -20,7 +20,7 @@ QUnit.test('inputAttributes: input text w/ placeholder', (assert) => {
 QUnit.test('inputAttributes: input file w/ placeholder', (assert) => {
   const done = assert.async()
 
-  Swal({
+  Swal.fire({
     input: 'file',
     inputAttributes: {
       placeholder: 'placeholder text',
@@ -36,7 +36,7 @@ QUnit.test('inputAttributes: input file w/ placeholder', (assert) => {
 QUnit.test('inputAttributes: input textarea w/ placeholder', (assert) => {
   const done = assert.async()
 
-  Swal({
+  Swal.fire({
     input: 'textarea',
     inputAttributes: {
       placeholder: 'Provide your input here',

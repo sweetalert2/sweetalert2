@@ -48,7 +48,7 @@ after_success:
 
   # run automated release process with semantic-release
   #- if [[ "$TRAVIS_BRANCH" = "dist" ]]; then
-  #    yarn global add semantic-release@15 @semantic-release/changelog@3 @semantic-release/exec@3 @semantic-release/git@7;
+  #    yarn global add semantic-release@16.0.0-beta.16 @semantic-release/changelog@3 @semantic-release/exec@3 @semantic-release/git@7;
   #    semantic-release;
   #  fi;
 

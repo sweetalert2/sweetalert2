@@ -1,6 +1,6 @@
 module.exports = {
   debug: true,
-  branch: 'dist',
+  dryRun: true, // TODO(@limonte): remove when ready for re-enabling automated releasing
   verifyConditions: [
     '@semantic-release/changelog',
     '@semantic-release/npm',
@@ -24,10 +24,6 @@ module.exports = {
     {
       'path': '@semantic-release/exec',
       'cmd': 'node tools/purge-jsdelivr'
-    },
-    {
-      'path': '@semantic-release/exec',
-      'cmd': 'node tools/cherry-pick-release-to-master'
     },
   ]
 }

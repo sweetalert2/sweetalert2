@@ -2,7 +2,7 @@ const { Swal, SwalWithoutAnimation, TIMEOUT } = require('../helpers')
 const sinon = require('sinon/pkg/sinon')
 
 QUnit.test('inputValue number', (assert) => {
-  Swal({ input: 'text', inputValue: 333 })
+  Swal.fire({ input: 'text', inputValue: 333 })
   assert.ok(Swal.getInput().value, '333')
 })
 
@@ -17,7 +17,7 @@ QUnit.test('inputValue as a Promise', (assert) => {
     resolve('1.1 input value')
   })
   inputTypes.forEach(input => {
-    SwalWithoutAnimation({
+    SwalWithoutAnimation.fire({
       input,
       inputValue,
       onOpen: (modal) => {
@@ -37,7 +37,7 @@ QUnit.test('inputValue as a Promise', (assert) => {
 QUnit.test('should throw console warning about unexpected type of inputValue', (assert) => {
   const _consoleWarn = console.warn
   const spy = sinon.spy(console, 'warn')
-  Swal({ input: 'text', inputValue: undefined })
+  Swal.fire({ input: 'text', inputValue: undefined })
   console.warn = _consoleWarn
   assert.ok(spy.calledWith('SweetAlert2: Unexpected type of inputValue! Expected "string", "number" or "Promise", got "undefined"'))
 })

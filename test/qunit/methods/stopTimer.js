@@ -3,7 +3,7 @@ import { Swal, SwalWithoutAnimation } from '../helpers.js'
 QUnit.test('stopTimer() method', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     timer: 500
   })
 
@@ -20,7 +20,7 @@ QUnit.test('stopTimer() method', (assert) => {
 QUnit.test('stopTimer() method called twice', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     timer: 500
   })
 

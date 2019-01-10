@@ -5,7 +5,7 @@ let currentSteps = []
  * Global function for chaining sweetAlert popups
  */
 export const queue = function (steps) {
-  const swal = this
+  const Swal = this
   currentSteps = steps
   const resetQueue = () => {
     currentSteps = []
@@ -17,7 +17,7 @@ export const queue = function (steps) {
       if (i < currentSteps.length) {
         document.body.setAttribute('data-swal2-queue-step', i)
 
-        swal(currentSteps[i]).then((result) => {
+        Swal.fire(currentSteps[i]).then((result) => {
           if (typeof result.value !== 'undefined') {
             queueResult.push(result.value)
             step(i + 1, callback)

@@ -16,8 +16,8 @@ QUnit.test('dynamic animation', (assert) => {
   });
 
   expectedVisible = false
-  customAnimationSwal('1')
+  customAnimationSwal.fire('1')
 
   expectedVisible = true
-  customAnimationSwal('2')
+  customAnimationSwal.fire('2')
 })

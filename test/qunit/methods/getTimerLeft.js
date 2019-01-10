@@ -1,7 +1,7 @@
 import { Swal } from '../helpers.js'
 
 QUnit.test('getTimerLeft() method', (assert) => {
-  Swal({
+  Swal.fire({
     timer: 1000
   })
   const timerLeft = Swal.getTimerLeft()
@@ -10,10 +10,10 @@ QUnit.test('getTimerLeft() method', (assert) => {
 })
 
 QUnit.test('getTimerLeft() should return null if popup does not have timer', (assert) => {
-  Swal({
+  Swal.fire({
     timer: 1000
   })
-  Swal('I do not have timer, I should reset timer')
+  Swal.fire('I do not have timer, I should reset timer')
 
   const timerLeft = Swal.getTimerLeft()
   assert.equal(timerLeft, null)

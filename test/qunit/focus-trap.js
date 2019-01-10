@@ -1,7 +1,4 @@
-const { Swal, triggerKeydownEvent } = require('./helpers')
-const { detect } = require('detect-browser')
-
-const browser = detect()
+const { Swal, triggerKeydownEvent, isIE } = require('./helpers')
 
 QUnit.test('focus trap forward', (assert) => {
   const done = assert.async()
@@ -50,9 +47,9 @@ QUnit.test('arrow keys', (assert) => {
   Swal.fire({
     showCancelButton: true,
     onOpen: () => {
-      triggerKeydownEvent(document.activeElement, browser.name === 'ie' ? 'Right' : 'ArrowRight')
+      triggerKeydownEvent(document.activeElement, isIE ? 'Right' : 'ArrowRight')
       assert.equal(document.activeElement, Swal.getCancelButton())
-      triggerKeydownEvent(document.activeElement, browser.name === 'ie' ? 'Left' : 'ArrowLeft')
+      triggerKeydownEvent(document.activeElement, isIE ? 'Left' : 'ArrowLeft')
       assert.equal(document.activeElement, Swal.getConfirmButton())
       done()
     }

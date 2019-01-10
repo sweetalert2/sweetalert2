@@ -1,8 +1,5 @@
-const { $, Swal, SwalWithoutAnimation, isVisible, TIMEOUT, triggerKeydownEvent, dispatchCustomEvent } = require('../helpers')
+const { $, Swal, SwalWithoutAnimation, isVisible, TIMEOUT, triggerKeydownEvent, dispatchCustomEvent, isIE } = require('../helpers')
 const sinon = require('sinon/pkg/sinon')
-const { detect } = require('detect-browser')
-
-const browser = detect()
 
 QUnit.test('should throw console error about unexpected input type', (assert) => {
   const _consoleError = console.error
@@ -149,7 +146,7 @@ QUnit.test('input range', (assert) => {
   assert.equal(input.getAttribute('max'), '10')
   assert.equal(input.value, '5')
 
-  if (browser.name !== 'ie') { // TODO (@limonte): make IE happy
+  if (!isIE) { // TODO (@limonte): make IE happy
     input.value = 10
     dispatchCustomEvent(input, 'input')
     assert.equal(output.textContent, '10')
@@ -160,41 +157,39 @@ QUnit.test('input range', (assert) => {
   }
 })
 
-if (typeof Map !== 'undefined') { // There's no Map in Adroid 4.4 - skip tests
-  QUnit.test('input type "select", inputOptions Map', (assert) => {
-    const inputOptions = new Map()
-    inputOptions.set(2, 'Richard Stallman')
-    inputOptions.set(1, 'Linus Torvalds')
-    SwalWithoutAnimation.fire({
-      input: 'select',
-      inputOptions,
-      inputValue: 1
-    })
-    assert.equal($('.swal2-select').querySelectorAll('option').length, 2)
-    assert.equal($('.swal2-select option:nth-child(1)').innerHTML, 'Richard Stallman')
-    assert.equal($('.swal2-select option:nth-child(1)').value, '2')
-    assert.equal($('.swal2-select option:nth-child(2)').innerHTML, 'Linus Torvalds')
-    assert.equal($('.swal2-select option:nth-child(2)').value, '1')
-    assert.equal($('.swal2-select option:nth-child(2)').selected, true)
+QUnit.test('input type "select", inputOptions Map', (assert) => {
+  const inputOptions = new Map()
+  inputOptions.set(2, 'Richard Stallman')
+  inputOptions.set(1, 'Linus Torvalds')
+  SwalWithoutAnimation.fire({
+    input: 'select',
+    inputOptions,
+    inputValue: 1
   })
+  assert.equal($('.swal2-select').querySelectorAll('option').length, 2)
+  assert.equal($('.swal2-select option:nth-child(1)').innerHTML, 'Richard Stallman')
+  assert.equal($('.swal2-select option:nth-child(1)').value, '2')
+  assert.equal($('.swal2-select option:nth-child(2)').innerHTML, 'Linus Torvalds')
+  assert.equal($('.swal2-select option:nth-child(2)').value, '1')
+  assert.equal($('.swal2-select option:nth-child(2)').selected, true)
+})
 
-  QUnit.test('input type "radio", inputOptions Map', (assert) => {
-    const inputOptions = new Map()
-    inputOptions.set(2, 'Richard Stallman')
-    inputOptions.set(1, 'Linus Torvalds')
-    Swal.fire({
-      input: 'radio',
-      inputOptions,
-      inputValue: 1
-    })
-    assert.equal($('.swal2-radio').querySelectorAll('label').length, 2)
-    assert.equal($('.swal2-radio label:nth-child(1)').textContent, 'Richard Stallman')
-    assert.equal($('.swal2-radio label:nth-child(1) input').value, '2')
-    assert.equal($('.swal2-radio label:nth-child(2)').textContent, 'Linus Torvalds')
-    assert.equal($('.swal2-radio label:nth-child(2) input').value, '1')
-    assert.equal($('.swal2-radio label:nth-child(2) input').checked, true)
+QUnit.test('input type "radio", inputOptions Map', (assert) => {
+  const inputOptions = new Map()
+  inputOptions.set(2, 'Richard Stallman')
+  inputOptions.set(1, 'Linus Torvalds')
+  Swal.fire({
+    input: 'radio',
+    inputOptions,
+    inputValue: 1
   })
-}
+  assert.equal($('.swal2-radio').querySelectorAll('label').length, 2)
+  assert.equal($('.swal2-radio label:nth-child(1)').textContent, 'Richard Stallman')
+  assert.equal($('.swal2-radio label:nth-child(1) input').value, '2')
+  assert.equal($('.swal2-radio label:nth-child(2)').textContent, 'Linus Torvalds')
+  assert.equal($('.swal2-radio label:nth-child(2) input').value, '1')
+  assert.equal($('.swal2-radio label:nth-child(2) input').checked, true)
+})
 
 QUnit.test('input radio', (assert) => {
   Swal.fire({

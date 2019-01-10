@@ -1,17 +1,16 @@
 /* global CustomEvent */
 require('custom-event-polyfill') // for IE11
-const { detect } = require('detect-browser')
-
-const browser = detect()
 
 export const $ = document.querySelector.bind(document)
+
+export const isIE = window.navigator.userAgent.indexOf('Trident/') > 0
 
 export const isVisible = (elem) => elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length)
 export const isHidden = (elem) => !isVisible(elem)
 
 export let TIMEOUT = 1
 
-if (browser.name === 'ie') {
+if (isIE) {
   TIMEOUT = 100
 }
 

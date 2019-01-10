@@ -4,7 +4,7 @@ import defaultInputValidators from '../../src/utils/defaultInputValidators.js'
 QUnit.test('input.checkValidity()', (assert) => {
   const done = assert.async()
 
-  Swal({
+  Swal.fire({
     input: 'tel',
     inputAttributes: {
       pattern: '[0-9]{3}-[0-9]{3}-[0-9]{4}'

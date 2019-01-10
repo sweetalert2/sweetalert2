@@ -1,7 +1,7 @@
 import { $, Swal, isHidden, isVisible } from '../helpers.js'
 
 QUnit.test('showProgressSteps() method', (assert) => {
-  Swal({
+  Swal.fire({
     pregressSteps: ['1', '2', '3'],
   })
 

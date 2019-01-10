@@ -80,7 +80,7 @@ const Swal = require('sweetalert2')
 It's possible to import JS and CSS separately, e.g. if you need to customize styles:
 
 ```js
-import swal from 'sweetalert2/dist/sweetalert2.js'
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 import 'sweetalert2/src/sweetalert2.scss'
 ```
@@ -94,19 +94,19 @@ Examples
 The most basic message:
 
 ```js
-Swal('Hello world!')
+Swal.fire('Hello world!')
 ```
 
 A message signaling an error:
 
 ```js
-Swal('Oops...', 'Something went wrong!', 'error')
+Swal.fire('Oops...', 'Something went wrong!', 'error')
 ```
 
 Handling the result of SweetAlert2 modal:
 
 ```js
-Swal({
+Swal.fire({
   title: 'Are you sure?',
   text: 'You will not be able to recover this imaginary file!',
   type: 'warning',
@@ -115,7 +115,7 @@ Swal({
   cancelButtonText: 'No, keep it'
 }).then((result) => {
   if (result.value) {
-    Swal(
+    Swal.fire(
       'Deleted!',
       'Your imaginary file has been deleted.',
       'success'
@@ -123,7 +123,7 @@ Swal({
   // For more information about handling dismissals please visit
   // https://sweetalert2.github.io/#handling-dismissals
   } else if (result.dismiss === Swal.DismissReason.cancel) {
-    Swal(
+    Swal.fire(
       'Cancelled',
       'Your imaginary file is safe :)',
       'error'

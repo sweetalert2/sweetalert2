@@ -3,22 +3,22 @@ const { $, Swal, SwalWithoutAnimation } = require('./helpers')
 QUnit.test('default focus', (assert) => {
   const done = assert.async()
 
-  SwalWithoutAnimation('Modal with the Confirm button only')
+  SwalWithoutAnimation.fire('Modal with the Confirm button only')
   assert.equal(document.activeElement, document.querySelector('.swal2-confirm'))
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     text: 'Modal with two buttons',
     showCancelButton: true
   })
   assert.equal(document.activeElement, document.querySelector('.swal2-confirm'))
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     text: 'Modal with no focusable elements in it',
     showConfirmButton: false
   })
   assert.equal(document.activeElement, document.querySelector('.swal2-modal'))
 
-  SwalWithoutAnimation({
+  SwalWithoutAnimation.fire({
     text: 'Modal with an input',
     input: 'text',
     onOpen: () => {
@@ -29,7 +29,7 @@ QUnit.test('default focus', (assert) => {
 })
 
 QUnit.test('focusConfirm', (assert) => {
-  Swal({
+  Swal.fire({
     showCancelButton: true
   })
   assert.equal(document.activeElement, $('.swal2-confirm'))
@@ -37,7 +37,7 @@ QUnit.test('focusConfirm', (assert) => {
   const anchor = document.createElement('a')
   anchor.innerText = 'link'
   anchor.href = ''
-  Swal({
+  Swal.fire({
     html: anchor,
     showCancelButton: true,
     focusConfirm: false
@@ -46,7 +46,7 @@ QUnit.test('focusConfirm', (assert) => {
 })
 
 QUnit.test('focusCancel', (assert) => {
-  Swal({
+  Swal.fire({
     text: 'Modal with Cancel button focused',
     showCancelButton: true,
     focusCancel: true
@@ -70,7 +70,7 @@ QUnit.test('focusCancel', (assert) => {
 //   document.body.appendChild(buttonModal)
 
 //   buttonToast.addEventListener('click', () => {
-//     SwalWithoutAnimation({
+//     SwalWithoutAnimation.fire({
 //       text: 'I should not touch previousActiveElement',
 //       toast: true,
 //       timer: 1,
@@ -82,7 +82,7 @@ QUnit.test('focusCancel', (assert) => {
 //   })
 
 //   buttonModal.addEventListener('click', () => {
-//     SwalWithoutAnimation({
+//     SwalWithoutAnimation.fire({
 //       text: 'I should trap focus inside myself and restore previousActiveElement when I\'m closed',
 //       timer: 1,
 //       onAfterClose: () => {

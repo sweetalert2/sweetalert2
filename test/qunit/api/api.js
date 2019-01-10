@@ -12,7 +12,7 @@ QUnit.test('properties of `Swal` class are consistent', (assert) => {
     assert.deepEqual(missingProps.join(','), '', `missing property names ${postfix}`)
   }
   assertConsistent('before first swal')
-  Swal({
+  Swal.fire({
     title: 'test',
     onOpen: () => {
       assertConsistent('after opening first swal')
@@ -27,12 +27,11 @@ QUnit.test('properties of `Swal` class are consistent', (assert) => {
 QUnit.test('ways to instantiate', (assert) => {
   assert.ok((new Swal('foo')) instanceof Swal)
   assert.ok(Swal.fire('foo') instanceof Swal)
-  assert.ok(Swal('foo') instanceof Swal)
 })
 
 QUnit.test('instance properties and methods', (assert) => {
   const params = { input: 'text', inputValue: 'foo' }
-  const swal = Swal(params)
+  const swal = Swal.fire(params)
   assert.deepEqual(Object.keys(swal), ['params'])
   assert.deepEqual(swal.params, params)
   assert.equal(swal.getInput().value, 'foo')

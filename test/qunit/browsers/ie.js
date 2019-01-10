@@ -1,6 +1,4 @@
-const { Swal, SwalWithoutAnimation } = require('../helpers')
-
-const isIE11 = !!window.MSInputMethodContext && !!document.documentMode
+const { Swal, SwalWithoutAnimation, isIE } = require('../helpers')
 
 QUnit.test('tall modal', (assert) => {
   SwalWithoutAnimation.fire({
@@ -8,7 +6,7 @@ QUnit.test('tall modal', (assert) => {
     imageHeight: 1500
   })
 
-  if (isIE11) {
+  if (isIE) {
     assert.equal(Swal.getContainer().style.alignItems, 'flex-start')
   } else {
     assert.equal(Swal.getContainer().style.alignItems, '')

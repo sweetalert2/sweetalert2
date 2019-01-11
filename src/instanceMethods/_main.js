@@ -43,11 +43,12 @@ export function _main (userParams) {
   return new Promise((resolve) => {
     // functions to handle all closings/dismissals
     const succeedWith = (value) => {
-      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose) // TODO: make closePopup an *instance* method
+      this.closePopup()
       resolve({ value })
     }
     const dismissWith = (dismiss) => {
-      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose)
+      // constructor.closePopup()
+      this.closePopup()
       resolve({ dismiss })
     }
 

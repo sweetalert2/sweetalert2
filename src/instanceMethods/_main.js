@@ -47,7 +47,6 @@ export function _main (userParams) {
       resolve({ value })
     }
     const dismissWith = (dismiss) => {
-      // constructor.closePopup()
       this.closePopup()
       resolve({ dismiss })
     }

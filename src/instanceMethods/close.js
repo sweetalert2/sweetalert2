@@ -82,5 +82,7 @@ const triggerOnAfterClose = (onAfterClose) => {
 }
 
 export {
-  close as closePopup
+  close as closePopup,
+  close as closeModal,
+  close as closeToast
 }

@@ -14,6 +14,7 @@ export function close () {
   const container = dom.getContainer()
   const popup = dom.getPopup()
   const innerParams = privateProps.innerParams.get(this)
+  const innerFunctions = privateProps.innerFunctions.get(this)
   const onClose = innerParams.onClose
   const onAfterClose = innerParams.onAfterClose
 
@@ -71,6 +72,7 @@ export function close () {
     // Otherwise, remove immediately
     removePopupAndResetState()
   }
+  innerFunctions.swalPromiseResolve({})
 }
 
 const triggerOnAfterClose = (onAfterClose) => {

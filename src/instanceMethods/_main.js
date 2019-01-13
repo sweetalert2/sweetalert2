@@ -51,6 +51,12 @@ export function _main (userParams) {
       resolve({ dismiss })
     }
 
+    const innerFunctions = {
+      swalPromiseResolve: resolve,
+      swalPromiseReject: reject
+    }
+    privateProps.innerFunctions.set(this, innerFunctions)
+
     // Close on timer
     if (innerParams.timer) {
       globalState.timeout = new Timer(() => {

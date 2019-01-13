@@ -11,5 +11,6 @@
 export default {
   promise: new WeakMap(),
   innerParams: new WeakMap(),
-  domCache: new WeakMap()
+  domCache: new WeakMap(),
+  innerFunctions: new WeakMap()
 }

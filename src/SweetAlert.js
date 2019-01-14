@@ -37,13 +37,9 @@ function SweetAlert (...args) {
 }
 
 // `catch` cannot be the name of a module export, so we define our thenable methods here instead
-SweetAlert.prototype.then = function (onFulfilled, onRejected) {
+SweetAlert.prototype.then = function (onFulfilled) {
   const promise = privateProps.promise.get(this)
-  return promise.then(onFulfilled, onRejected)
-}
-SweetAlert.prototype.catch = function (onRejected) {
-  const promise = privateProps.promise.get(this)
-  return promise.catch(onRejected)
+  return promise.then(onFulfilled)
 }
 SweetAlert.prototype.finally = function (onFinally) {
   const promise = privateProps.promise.get(this)

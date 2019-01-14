@@ -6,15 +6,15 @@ import * as dom from '../utils/dom/index.js'
 import { swalClasses } from '../utils/classes.js'
 import globalState, { restoreActiveElement } from '../globalState.js'
 import privateProps from '../privateProps.js'
-
+import privateMethods from '../privateMethods.js'
 /*
  * Instance method to close sweetAlert
  */
-export function close () {
+export function close (resolveValue, rejectValue) {
   const container = dom.getContainer()
   const popup = dom.getPopup()
   const innerParams = privateProps.innerParams.get(this)
-  const innerFunctions = privateProps.innerFunctions.get(this)
+  const swalPromise = privateMethods.swalPromise.get(this)
   const onClose = innerParams.onClose
   const onAfterClose = innerParams.onAfterClose
 
@@ -72,7 +72,15 @@ export function close () {
     // Otherwise, remove immediately
     removePopupAndResetState()
   }
-  innerFunctions.swalPromiseResolve({})
+
+  // Resolve / reject Swal promise
+  if (resolveValue) {
+    swalPromise.resolve(resolveValue)
+  } else if (rejectValue) {
+    swalPromise.reject(rejectValue)
+  } else {
+    swalPromise.resolve({})
+  }
 }
 
 const triggerOnAfterClose = (onAfterClose) => {

@@ -13,6 +13,20 @@ QUnit.test('close() method', (assert) => {
   done()
 })
 
+QUnit.test('close() resolves to empty object', (assert) => {
+  const done = assert.async()
+
+  // create a modal with an onAfterClose callback
+  Swal.fire({
+    title: 'Swal.close() test'
+  }).then(result => {
+    assert.deepEqual(result, {})
+    done()
+  })
+
+  Swal.close()
+})
+
 QUnit.test('onClose using close() method', (assert) => {
   const done = assert.async()
   let onCloseCalled = false

@@ -1,4 +1,4 @@
-We would like to thank everyone who contributed to this library. If you find our library useful and wish to support as well, you can do so [through Patreon](https://www.patreon.com/limonte) or directly [through PayPal](https://www.paypal.me/limonte/5eur). Your contribution will be greatly appreciated!
+We would like to thank everyone who contributed to this library. If you find our library useful and wish to support as well, you can do so [through PayPal](https://www.paypal.me/limonte/5eur). Your contribution will be greatly appreciated!
 
 
 # Backers
@@ -14,7 +14,7 @@ We would like to thank everyone who contributed to this library. If you find our
 
 - **[Jan Fässler](https://github.com/faessler)** (30 EUR)
     > Nice work! 👾
-    
+
 - **Ventsislav Radev** (23 EUR)
 
 - **Danny Lankar** (25 USD)
@@ -37,23 +37,6 @@ We would like to thank everyone who contributed to this library. If you find our
 
 - **Jeff Keith** (10 EUR)
     > SweetAlert2 saved me tons of time.
-
-
-# Patrons (via [Patreon](https://www.patreon.com/limonte))
-
-- **[Idiot Wind Podcast](https://www.patreon.com/idiotwind)** ($1 per month)
-
-- **[Ilia Motornyi](https://www.patreon.com/elmot)** ($2 per month)
-
-- **[Priyankar Bhowmik](https://www.patreon.com/pkb)** ($1 per month)
-
-- **[Malik Nazimanov](https://www.patreon.com/lantos)** ($5 per month)
-
-- **[Olli Murto](https://www.patreon.com/user/?u=9095640)** ($1 per month)
-
-- **[Samuel Georges](https://www.patreon.com/daftspunk)**, the creator of [October CMS](https://github.com/octobercms/october) ($1 per month)
-
-- **[Albert Møller Nielsen](https://www.patreon.com/user?u=4221410)** ($1 per month)
 
 
 # Donors

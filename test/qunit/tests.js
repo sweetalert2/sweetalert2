@@ -666,37 +666,6 @@ QUnit.test('confirm button', (assert) => {
   Swal.clickConfirm()
 })
 
-QUnit.test('on errors in *async* user-defined functions, cleans up and propagates the error', (assert) => {
-  const done = assert.async()
-
-  const expectedError = new Error('my bad')
-  const erroringFunction = () => {
-    return Promise.reject(expectedError)
-  }
-
-  // inputValidator
-  const rejectedPromise = SwalWithoutAnimation.fire({ input: 'text', inputValidator: erroringFunction })
-  Swal.clickConfirm()
-  rejectedPromise.catch((error) => {
-    assert.equal(error, expectedError) // error is bubbled up back to user code
-    setTimeout(() => {
-      assert.notOk(Swal.isVisible()) // display is cleaned up
-
-      // preConfirm
-      const rejectedPromise = SwalWithoutAnimation.fire({ preConfirm: erroringFunction })
-      Swal.clickConfirm()
-      rejectedPromise.catch((error) => {
-        assert.equal(error, expectedError) // error is bubbled up back to user code
-        setTimeout(() => {
-          assert.notOk(Swal.isVisible()) // display is cleaned up
-
-          done()
-        })
-      })
-    })
-  })
-})
-
 QUnit.test('params validation', (assert) => {
   assert.ok(Swal.isValidParameter('title'))
   assert.notOk(Swal.isValidParameter('foobar'))

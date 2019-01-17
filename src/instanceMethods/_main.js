@@ -40,8 +40,8 @@ export function _main (userParams) {
 
   const constructor = this.constructor
 
-  return new Promise((resolve, reject) => {
-    // functions to handle all resolving/rejecting/settling
+  return new Promise((resolve) => {
+    // functions to handle all closings/dismissals
     const succeedWith = (value) => {
       constructor.closePopup(innerParams.onClose, innerParams.onAfterClose) // TODO: make closePopup an *instance* method
       resolve({ value })
@@ -49,10 +49,6 @@ export function _main (userParams) {
     const dismissWith = (dismiss) => {
       constructor.closePopup(innerParams.onClose, innerParams.onAfterClose)
       resolve({ dismiss })
-    }
-    const errorWith = (error) => {
-      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose)
-      reject(error)
     }
 
     // Close on timer
@@ -106,8 +102,7 @@ export function _main (userParams) {
             } else {
               succeedWith(preConfirmValue || value)
             }
-          },
-          (error) => errorWith(error)
+          }
         )
       } else {
         succeedWith(value)
@@ -141,8 +136,7 @@ export function _main (userParams) {
                     } else {
                       confirm(inputValue)
                     }
-                  },
-                  error => errorWith(error)
+                  }
                 )
               } else if (!this.getInput().checkValidity()) {
                 this.enableButtons()

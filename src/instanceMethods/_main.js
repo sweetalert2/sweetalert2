@@ -50,11 +50,7 @@ export function _main (userParams) {
       this.closePopup({ dismiss })
     }
 
-    const swalPromise = {
-      'resolve': resolve,
-      'reject': reject
-    }
-    privateMethods.swalPromise.set(this, swalPromise)
+    privateMethods.swalPromiseResolve.set(this, resolve)
 
     // Close on timer
     if (innerParams.timer) {

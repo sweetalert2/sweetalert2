@@ -10,11 +10,11 @@ import privateMethods from '../privateMethods.js'
 /*
  * Instance method to close sweetAlert
  */
-export function close (resolveValue, rejectValue) {
+export function close (resolveValue) {
   const container = dom.getContainer()
   const popup = dom.getPopup()
   const innerParams = privateProps.innerParams.get(this)
-  const swalPromise = privateMethods.swalPromise.get(this)
+  const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this)
   const onClose = innerParams.onClose
   const onAfterClose = innerParams.onAfterClose
 
@@ -73,14 +73,8 @@ export function close (resolveValue, rejectValue) {
     removePopupAndResetState()
   }
 
-  // Resolve / reject Swal promise
-  if (resolveValue) {
-    swalPromise.resolve(resolveValue)
-  } else if (rejectValue) {
-    swalPromise.reject(rejectValue)
-  } else {
-    swalPromise.resolve({})
-  }
+  // Resolve Swal promise
+  swalPromiseResolve(resolveValue || {})
 }
 
 const triggerOnAfterClose = (onAfterClose) => {

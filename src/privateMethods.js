@@ -9,6 +9,6 @@
  */
 
 export default {
-  swalPromise: new WeakMap()
+  swalPromiseResolve: new WeakMap()
 }
 

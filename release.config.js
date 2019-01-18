@@ -1,6 +1,5 @@
 module.exports = {
   debug: true,
-  dryRun: true, // TODO(@limonte): remove when ready for re-enabling automated releasing
   verifyConditions: [
     '@semantic-release/changelog',
     '@semantic-release/npm',

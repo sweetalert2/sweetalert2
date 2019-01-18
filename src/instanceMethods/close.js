@@ -5,13 +5,19 @@ import { unsetAriaHidden } from '../utils/aria.js'
 import * as dom from '../utils/dom/index.js'
 import { swalClasses } from '../utils/classes.js'
 import globalState, { restoreActiveElement } from '../globalState.js'
-
+import privateProps from '../privateProps.js'
+import privateMethods from '../privateMethods.js'
 /*
- * Global function to close sweetAlert
+ * Instance method to close sweetAlert
  */
-const close = (onClose, onAfterClose) => {
+export function close (resolveValue) {
   const container = dom.getContainer()
   const popup = dom.getPopup()
+  const innerParams = privateProps.innerParams.get(this)
+  const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this)
+  const onClose = innerParams.onClose
+  const onAfterClose = innerParams.onAfterClose
+
   if (!popup) {
     return
   }
@@ -66,6 +72,9 @@ const close = (onClose, onAfterClose) => {
     // Otherwise, remove immediately
     removePopupAndResetState()
   }
+
+  // Resolve Swal promise
+  swalPromiseResolve(resolveValue || {})
 }
 
 const triggerOnAfterClose = (onAfterClose) => {
@@ -77,7 +86,6 @@ const triggerOnAfterClose = (onAfterClose) => {
 }
 
 export {
-  close,
   close as closePopup,
   close as closeModal,
   close as closeToast

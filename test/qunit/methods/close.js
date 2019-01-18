@@ -3,7 +3,6 @@ const { Swal } = require('../helpers')
 QUnit.test('close() method', (assert) => {
   const done = assert.async()
 
-  // create a modal with an onAfterClose callback
   Swal.fire({
     title: 'Swal.close() test'
   })
@@ -16,7 +15,6 @@ QUnit.test('close() method', (assert) => {
 QUnit.test('close() resolves to empty object', (assert) => {
   const done = assert.async()
 
-  // create a modal with an onAfterClose callback
   Swal.fire({
     title: 'Swal.close() test'
   }).then(result => {
@@ -31,9 +29,8 @@ QUnit.test('onClose using close() method', (assert) => {
   const done = assert.async()
   let onCloseCalled = false
 
-  // create a modal with an onAfterClose callback
   Swal.fire({
-    title: 'Swal.close() test',
+    title: 'onClose test',
     onClose: () => {
       // Here we test only that onClose is called
       // For more exahustive test on onClose see tests.js
@@ -49,7 +46,6 @@ QUnit.test('onClose using close() method', (assert) => {
 QUnit.test('onAfterClose using close() method', (assert) => {
   const done = assert.async()
 
-  // create a modal with an onAfterClose callback
   Swal.fire({
     title: 'onAfterClose test',
     animation: false,

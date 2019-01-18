@@ -7,5 +7,6 @@ export * from './staticMethods/showLoading.js'
 export * from './staticMethods/timer.js'
 export {
   isValidParameter,
+  isUpdatableParameter,
   isDeprecatedParameter
 } from './utils/params.js'

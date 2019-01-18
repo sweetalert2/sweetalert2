@@ -50,6 +50,17 @@ declare module 'sweetalert2' {
         function isVisible(): boolean;
 
         /**
+         * Updates popup options.
+         * See the SweetAlertOptions interface for the list of accepted fields and values.
+         *
+         * ex.
+         *   swal.update({
+         *     type: 'error'
+         *   })
+         */
+        function update(newSettings: SweetAlertOptions): void;
+
+        /**
          * Closes the currently open SweetAlert2 modal programmatically.
          *
          * @param onComplete An optional callback to be called when the alert has finished closing.
@@ -279,6 +290,13 @@ declare module 'sweetalert2' {
          * @param paramName The parameter to check
          */
         function isValidParameter(paramName: string): boolean;
+
+        /**
+         * Determines if a given parameter name is valid for Swal.update() method.
+         *
+         * @param paramName The parameter to check
+         */
+        function isUpdatableParameter(paramName: string): boolean;
 
         /**
          * Normalizes the arguments you can give to Swal.fire() in an object of type SweetAlertOptions.

@@ -41,19 +41,14 @@ notifications:
     on_success: never
 
 after_success:
-  # update the dist branch to trigger the "release" task
-  #- if [[ "$TRAVIS_BRANCH" = "master" ]]; then
-  #    node tools/merge-master-into-dist;
-  #  fi;
-
   # run automated release process with semantic-release
-  #- if [[ "$TRAVIS_BRANCH" = "dist" ]]; then
-  #    yarn global add semantic-release@16.0.0-beta.16 @semantic-release/changelog@3 @semantic-release/exec@3 @semantic-release/git@7;
-  #    semantic-release;
-  #  fi;
+  - if [[ "$TRAVIS_BRANCH" = "master" ]]; then
+      yarn global add semantic-release@16.0.0-beta.17 @semantic-release/changelog@3 @semantic-release/exec@3 @semantic-release/git@7;
+      semantic-release;
+    fi;
 
   # report coverage to coveralls.io and upload to transfer.sh
-  - if [[ "$TRAVIS_BRANCH" != "dist" && "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
+  - if [[ "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
       yarn global add coveralls@3;
       cat ./coverage/lcov.info | coveralls;
       zip -r coverage.zip coverage;

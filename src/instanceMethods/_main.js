@@ -7,6 +7,7 @@ import setParameters from '../utils/setParameters.js'
 import globalState from '../globalState.js'
 import { openPopup } from '../utils/openPopup.js'
 import privateProps from '../privateProps.js'
+import privateMethods from '../privateMethods.js'
 
 export function _main (userParams) {
   showWarningsForParams(userParams)
@@ -43,13 +44,13 @@ export function _main (userParams) {
   return new Promise((resolve) => {
     // functions to handle all closings/dismissals
     const succeedWith = (value) => {
-      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose) // TODO: make closePopup an *instance* method
-      resolve({ value })
+      this.closePopup({ value })
     }
     const dismissWith = (dismiss) => {
-      constructor.closePopup(innerParams.onClose, innerParams.onAfterClose)
-      resolve({ dismiss })
+      this.closePopup({ dismiss })
     }
+
+    privateMethods.swalPromiseResolve.set(this, resolve)
 
     // Close on timer
     if (innerParams.timer) {

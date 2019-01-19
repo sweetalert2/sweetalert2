@@ -1,7 +1,7 @@
-import * as dom from '../../src/utils/dom/index'
-import { warn } from '../../src/utils/utils'
-import sweetAlert from '../sweetalert2'
-import privateProps from '../privateProps'
+import * as dom from '../../src/utils/dom/index.js'
+import { warn } from '../../src/utils/utils.js'
+import sweetAlert from '../sweetalert2.js'
+import privateProps from '../privateProps.js'
 
 /**
  * Updates popup options.

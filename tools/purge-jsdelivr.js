@@ -8,6 +8,8 @@ const log = console.log // eslint-disable-line
 
   log(' - @latest')
   await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2@latest`, { skipLogging: true })
+  log(' - @8')
+  await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2@8`, { skipLogging: true })
   log(' - @7')
   await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2@7`, { skipLogging: true })
 

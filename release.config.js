@@ -1,5 +1,6 @@
 module.exports = {
   debug: true,
+  branch: 'master',
   verifyConditions: [
     '@semantic-release/changelog',
     '@semantic-release/npm',

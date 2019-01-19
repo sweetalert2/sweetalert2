@@ -1,3 +1,10 @@
+## [8.0.1](https://github.com/sweetalert2/sweetalert2/compare/v8.0.0...v8.0.1) (2019-01-19)
+
+
+### Bug Fixes
+
+* use .js in imports to support ES modules ([0e3e89e](https://github.com/sweetalert2/sweetalert2/commit/0e3e89e))
+
 # [8.0.0](https://github.com/sweetalert2/sweetalert2/compare/v7.33.1...v8.0.0) (2019-01-19)
 
 

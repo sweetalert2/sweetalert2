@@ -41,7 +41,12 @@ Installation
 npm install --save sweetalert2
 ```
 
-Or download from CDN: [jsdelivr.com/package/npm/sweetalert2](https://www.jsdelivr.com/package/npm/sweetalert2)
+Or grab from [jsdelivr CDN](https://www.jsdelivr.com/package/npm/sweetalert2)
+:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+```
 
 
 Usage

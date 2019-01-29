@@ -1,5 +1,5 @@
 import * as dom from '../utils/dom/index.js'
-import sweetAlert from '../sweetalert2.js'
+import Swal from '../sweetalert2.js'
 import { swalClasses } from '../utils/classes.js'
 
 /**
@@ -8,7 +8,7 @@ import { swalClasses } from '../utils/classes.js'
 const showLoading = () => {
   let popup = dom.getPopup()
   if (!popup) {
-    sweetAlert('')
+    Swal.fire('')
   }
   popup = dom.getPopup()
   const actions = dom.getActions()

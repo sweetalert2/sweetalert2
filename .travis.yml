@@ -11,7 +11,6 @@ addons:
 branches:
   only:
    - master
-   - dist
 
 install:
   - yarn install
@@ -49,8 +48,7 @@ after_success:
 
   # report coverage to coveralls.io and upload to transfer.sh
   - if [[ "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
-      yarn global add coveralls@3;
-      cat ./coverage/lcov.info | coveralls;
-      zip -r coverage.zip coverage;
-      curl --upload-file ./coverage.zip https://transfer.sh/coverage.zip;
+      yarn global add coveralls@3 surge &&
+      cat ./coverage/lcov.info | coveralls &&
+      surge coverage sweetalert2-coverage.surge.sh;
     fi;

@@ -1,3 +1,10 @@
+## [8.0.3](https://github.com/sweetalert2/sweetalert2/compare/v8.0.2...v8.0.3) (2019-01-29)
+
+
+### Bug Fixes
+
+* **api:** showLoading() should open a new popup ([#1394](https://github.com/sweetalert2/sweetalert2/issues/1394)) ([38823ff](https://github.com/sweetalert2/sweetalert2/commit/38823ff))
+
 ## [8.0.2](https://github.com/sweetalert2/sweetalert2/compare/v8.0.1...v8.0.2) (2019-01-28)
 
 

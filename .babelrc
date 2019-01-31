@@ -9,6 +9,8 @@
   ],
   "plugins": [
     "array-includes",
-    "@babel/plugin-transform-object-assign"
+    "@babel/plugin-transform-object-assign", 
+    "@babel/plugin-proposal-private-methods", 
+    "@babel/plugin-proposal-class-properties"
   ]
 }

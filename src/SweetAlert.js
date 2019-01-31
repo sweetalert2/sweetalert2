@@ -15,6 +15,18 @@ import globalState from './globalState.js'
 import { openPopup } from './utils/openPopup.js'
 import privateMethods from './privateMethods.js'
 
+// Import for close
+import { undoScrollbar } from './utils/scrollbarFix.js'
+import { undoIOSfix } from './utils/iosFix.js'
+import { undoIEfix } from './utils/ieFix.js'
+import { unsetAriaHidden } from './utils/aria.js'
+// import * as dom from '../utils/dom/index.js'
+// import { swalClasses } from '../utils/classes.js'
+// import globalState, { restoreActiveElement } from '../globalState.js'
+import { restoreActiveElement } from './globalState.js'
+//import privateProps from '../privateProps.js'
+// import privateMethods from '../privateMethods.js'
+
 let currentInstance
 
 // SweetAlert class
@@ -47,6 +59,9 @@ class SweetAlert {
     const promise = this.#main(this.params)
     privateProps.promise.set(this, promise)
   }
+
+  // Private method re-assigned in #main
+  #swalPromiseResolve
 
   #main (userParams) {
     showWarningsForParams(userParams)
@@ -83,13 +98,13 @@ class SweetAlert {
     return new Promise((resolve) => {
       // functions to handle all closings/dismissals
       const succeedWith = (value) => {
-        this.closePopup({ value })
+        this.close({ value })
       }
       const dismissWith = (dismiss) => {
-        this.closePopup({ dismiss })
+        this.close({ dismiss })
       }
-  
-      privateMethods.swalPromiseResolve.set(this, resolve)
+
+      this.#swalPromiseResolve = resolve
   
       // Close on timer
       if (innerParams.timer) {
@@ -593,13 +608,86 @@ class SweetAlert {
     })
   }
 
+  close (resolveValue) {
+    const container = dom.getContainer()
+    const popup = dom.getPopup()
+    const innerParams = privateProps.innerParams.get(this)
+    const onClose = innerParams.onClose
+    const onAfterClose = innerParams.onAfterClose
+  
+    if (!popup) {
+      return
+    }
+  
+    if (onClose !== null && typeof onClose === 'function') {
+      onClose(popup)
+    }
+  
+    dom.removeClass(popup, swalClasses.show)
+    dom.addClass(popup, swalClasses.hide)
+  
+    const removePopupAndResetState = () => {
+      if (!dom.isToast()) {
+        restoreActiveElement().then(() => this.#triggerOnAfterClose(onAfterClose))
+        globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
+        globalState.keydownHandlerAdded = false
+      } else {
+        this.#triggerOnAfterClose(onAfterClose)
+      }
+  
+      if (container.parentNode) {
+        container.parentNode.removeChild(container)
+      }
+      dom.removeClass(
+        [document.documentElement, document.body],
+        [
+          swalClasses.shown,
+          swalClasses['height-auto'],
+          swalClasses['no-backdrop'],
+          swalClasses['toast-shown'],
+          swalClasses['toast-column']
+        ]
+      )
+  
+      if (dom.isModal()) {
+        undoScrollbar()
+        undoIOSfix()
+        undoIEfix()
+        unsetAriaHidden()
+      }
+    }
+  
+    // If animation is supported, animate
+    if (dom.animationEndEvent && !dom.hasClass(popup, swalClasses.noanimation)) {
+      popup.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
+        popup.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
+        if (dom.hasClass(popup, swalClasses.hide)) {
+          removePopupAndResetState()
+        }
+      })
+    } else {
+      // Otherwise, remove immediately
+      removePopupAndResetState()
+    }
+  
+    // Resolve Swal promise
+    this.#swalPromiseResolve(resolveValue || {})
+  }
+
+  #triggerOnAfterClose (onAfterClose) {
+    if (onAfterClose !== null && typeof onAfterClose === 'function') {
+      setTimeout(() => {
+        onAfterClose()
+      })
+    }
+  }
 }
 
 // `catch` cannot be the name of a module export, so we define our thenable methods here instead
-// SweetAlert.prototype.then = function (onFulfilled) {
-//   const promise = privateProps.promise.get(this)
-//   return promise.then(onFulfilled)
-// }
+SweetAlert.prototype.then = function (onFulfilled) {
+  const promise = privateProps.promise.get(this)
+  return promise.then(onFulfilled)
+}
 SweetAlert.prototype.finally = function (onFinally) {
   const promise = privateProps.promise.get(this)
   return promise.finally(onFinally)
@@ -619,6 +707,10 @@ Object.keys(instanceMethods).forEach(key => {
     }
   }
 })
+
+SweetAlert["close"] = function (...args) {
+  return currentInstance["close"](...args)
+}
 
 SweetAlert.DismissReason = DismissReason
 

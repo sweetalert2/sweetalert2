@@ -41,6 +41,10 @@ We would like to thank everyone who contributed to this library. If you find our
 
 # Donors
 
+- **[Michalis Tzikas](https://www.webhoster.gr)** (5 EUR)
+
+    > Thank you very much for your great work
+
 - **[Marco Franke](https://github.com/Disane87)** (5 EUR)
 
     > Thank you for this great development! Really love it! Discovered it years ago for a private projects and now we use this in our application at work :-)

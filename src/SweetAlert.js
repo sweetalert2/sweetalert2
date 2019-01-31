@@ -56,14 +56,14 @@ class SweetAlert {
       }
     })
 
-    const promise = this.#main(this.params)
+    const promise = this._main(this.params)
     privateProps.promise.set(this, promise)
   }
 
   // Private method re-assigned in #main
   #swalPromiseResolve
 
-  #main (userParams) {
+  _main (userParams) {
     showWarningsForParams(userParams)
 
     const innerParams = Object.assign({}, defaultParams, userParams)

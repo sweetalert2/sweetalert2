@@ -1,6 +1,7 @@
 const pify = require('pify')
 const rimraf = require('rimraf')
 const execute = require('../utils/execute')
+const replaceInFile = require('replace-in-file')
 
 const log = console.log // eslint-disable-line
 const removeDir = pify(rimraf)
@@ -11,6 +12,16 @@ const removeDir = pify(rimraf)
 
   log('Deleting the current dist folder...')
   await removeDir('dist')
+
+  // the command has been called by semantic-release, bump version in src/SweetAlert.js before building dist
+  if (process.env.VERSION) {
+    log('Updating the version in src/SweetAlert.js...')
+    await replaceInFile({
+      files: 'src/SweetAlert.js',
+      from: /\.version = '.*?'/,
+      to: `.version = '${process.env.VERSION}'`,
+    })
+  }
 
   log('Running the build...')
   await execute('yarn build')

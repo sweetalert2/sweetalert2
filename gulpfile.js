@@ -54,7 +54,6 @@ gulp.task('build:scripts', () => {
         banner: banner,
         footer: `\
 if (typeof window !== 'undefined' && window.Sweetalert2){\
-  window.Sweetalert2.version = '${version}';\
   window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2\
 }`
       }

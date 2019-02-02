@@ -1,3 +1,10 @@
+## [8.0.5](https://github.com/sweetalert2/sweetalert2/compare/v8.0.4...v8.0.5) (2019-02-02)
+
+
+### Bug Fixes
+
+* **build-dist:** git add src/SweetAlert.js, connected to [#1401](https://github.com/sweetalert2/sweetalert2/issues/1401) ([d024119](https://github.com/sweetalert2/sweetalert2/commit/d024119))
+
 ## [8.0.4](https://github.com/sweetalert2/sweetalert2/compare/v8.0.3...v8.0.4) (2019-02-02)
 
 

@@ -1,3 +1,10 @@
+## [8.0.4](https://github.com/sweetalert2/sweetalert2/compare/v8.0.3...v8.0.4) (2019-02-02)
+
+
+### Bug Fixes
+
+* add Swal.version to src/SweetAlert.js ([#1401](https://github.com/sweetalert2/sweetalert2/issues/1401)) ([d4c19a3](https://github.com/sweetalert2/sweetalert2/commit/d4c19a3))
+
 ## [8.0.3](https://github.com/sweetalert2/sweetalert2/compare/v8.0.2...v8.0.3) (2019-01-29)
 
 

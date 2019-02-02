@@ -21,6 +21,7 @@ const removeDir = pify(rimraf)
       from: /\.version = '.*?'/,
       to: `.version = '${process.env.VERSION}'`,
     })
+    await execute('git add src/SweetAlert.js')
   }
 
   log('Running the build...')

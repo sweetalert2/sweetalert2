@@ -13,7 +13,6 @@ import { formatInputOptions, error, warn, callIfFunction, isPromise } from './ut
 import setParameters from './utils/setParameters.js'
 import globalState from './globalState.js'
 import { openPopup } from './utils/openPopup.js'
-import privateMethods from './privateMethods.js'
 
 // Import for close
 import { undoScrollbar } from './utils/scrollbarFix.js'
@@ -61,7 +60,8 @@ class SweetAlert {
   }
 
   // Private method re-assigned in #main
-  #swalPromiseResolve
+  #swalPromiseResolve 
+
 
   _main (userParams) {
     showWarningsForParams(userParams)
@@ -104,7 +104,7 @@ class SweetAlert {
         this.close({ dismiss })
       }
 
-      this.#swalPromiseResolve = resolve
+      this.#swalPromiseResolve = resolve /* eslint-disable-line */
   
       // Close on timer
       if (innerParams.timer) {
@@ -608,6 +608,14 @@ class SweetAlert {
     })
   }
 
+  #triggerOnAfterClose = function (onAfterClose) {
+    if (onAfterClose !== null && typeof onAfterClose === 'function') {
+      setTimeout(() => {
+        onAfterClose()
+      })
+    }
+  }
+
   close (resolveValue) {
     const container = dom.getContainer()
     const popup = dom.getPopup()
@@ -628,11 +636,11 @@ class SweetAlert {
   
     const removePopupAndResetState = () => {
       if (!dom.isToast()) {
-        restoreActiveElement().then(() => this.#triggerOnAfterClose(onAfterClose))
+        restoreActiveElement().then(() => this.#triggerOnAfterClose(onAfterClose)) 
         globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
         globalState.keydownHandlerAdded = false
       } else {
-        this.#triggerOnAfterClose(onAfterClose)
+        this.#triggerOnAfterClose(onAfterClose) 
       }
   
       if (container.parentNode) {
@@ -671,16 +679,9 @@ class SweetAlert {
     }
   
     // Resolve Swal promise
-    this.#swalPromiseResolve(resolveValue || {})
+    this.#swalPromiseResolve(resolveValue || {}) 
   }
 
-  #triggerOnAfterClose (onAfterClose) {
-    if (onAfterClose !== null && typeof onAfterClose === 'function') {
-      setTimeout(() => {
-        onAfterClose()
-      })
-    }
-  }
 }
 
 // `catch` cannot be the name of a module export, so we define our thenable methods here instead
@@ -708,8 +709,8 @@ Object.keys(instanceMethods).forEach(key => {
   }
 })
 
-SweetAlert["close"] = function (...args) {
-  return currentInstance["close"](...args)
+SweetAlert['close'] = function (...args) {
+  return currentInstance['close'](...args)
 }
 
 SweetAlert.DismissReason = DismissReason

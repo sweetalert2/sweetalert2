@@ -1,3 +1,10 @@
+## [8.0.6](https://github.com/sweetalert2/sweetalert2/compare/v8.0.5...v8.0.6) (2019-02-05)
+
+
+### Bug Fixes
+
+* **api:** falsy values in preConfirm ([#1403](https://github.com/sweetalert2/sweetalert2/issues/1403)) ([f6e1a30](https://github.com/sweetalert2/sweetalert2/commit/f6e1a30))
+
 ## [8.0.5](https://github.com/sweetalert2/sweetalert2/compare/v8.0.4...v8.0.5) (2019-02-02)
 
 

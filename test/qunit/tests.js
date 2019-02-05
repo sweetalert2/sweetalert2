@@ -767,17 +767,17 @@ QUnit.test('Custom content', (assert) => {
   })
 })
 
-QUnit.test('preConfirm returns undefined', (assert) => {
+QUnit.test('preConfirm returns 0', (assert) => {
   const done = assert.async()
   SwalWithoutAnimation.fire({
     onOpen: () => {
       Swal.clickConfirm()
     },
     preConfirm: () => {
-      return undefined
+      return 0
     }
   }).then(result => {
-    assert.ok(result.value)
+    assert.equal(result.value, 0)
     done()
   })
 })

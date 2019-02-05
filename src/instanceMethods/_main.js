@@ -101,7 +101,7 @@ export function _main (userParams) {
             if (dom.isVisible(domCache.validationMessage) || preConfirmValue === false) {
               this.hideLoading()
             } else {
-              succeedWith(preConfirmValue || value)
+              succeedWith(typeof (preConfirmValue) === 'undefined' ? value : preConfirmValue)
             }
           }
         )

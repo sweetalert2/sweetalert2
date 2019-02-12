@@ -1,3 +1,10 @@
+## [8.0.7](https://github.com/sweetalert2/sweetalert2/compare/v8.0.6...v8.0.7) (2019-02-12)
+
+
+### Bug Fixes
+
+* restore correct padding when scrollbar is present ([#1410](https://github.com/sweetalert2/sweetalert2/issues/1410)) ([f73f1d7](https://github.com/sweetalert2/sweetalert2/commit/f73f1d7))
+
 ## [8.0.6](https://github.com/sweetalert2/sweetalert2/compare/v8.0.5...v8.0.6) (2019-02-05)
 
 

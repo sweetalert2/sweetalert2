@@ -15,7 +15,7 @@ export const fixScrollbar = () => {
 
 export const undoScrollbar = () => {
   if (dom.states.previousBodyPadding !== null) {
-    document.body.style.paddingRight = dom.states.previousBodyPadding
+    document.body.style.paddingRight = dom.states.previousBodyPadding + 'px'
     dom.states.previousBodyPadding = null
   }
 }

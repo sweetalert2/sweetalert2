@@ -78,14 +78,18 @@ QUnit.test('the vertical scrollbar should be hidden and the according padding-ri
 
   const scrollbarWidth = measureScrollbar()
 
-  Swal.fire('The body has visible scrollbar, I will hide it and adjust padding-right on body')
-
-  const bodyStyles = window.getComputedStyle(document.body);
+  Swal.fire({
+    title: 'The body has visible scrollbar, I will hide it and adjust padding-right on body',
+    onAfterClose: () => {
+      assert.equal(bodyStyles.paddingRight, '30px')
+      document.body.removeChild(talltDiv)
+    }
+  })
+  const bodyStyles = window.getComputedStyle(document.body)
 
   assert.equal(bodyStyles.paddingRight, (scrollbarWidth + 30) + 'px')
   assert.equal(bodyStyles.overflow, 'hidden')
-
-  document.body.removeChild(talltDiv)
+  Swal.clickConfirm()
 })
 
 QUnit.test('modal width', (assert) => {

@@ -476,6 +476,7 @@ body {
     transition: border-color .3s, box-shadow .3s;
     border: 1px solid $swal2-input-border;
     border-radius: $swal2-input-border-radius;
+    background-color: $swal2-input-background-color;
     font-size: $swal2-input-font-size;
     box-shadow: inset 0 1px 1px $swal2-input-box-shadow;
     box-sizing: border-box;
@@ -512,6 +513,7 @@ body {
       height: $swal2-input-height;
       margin: $swal2-input-margin;
       padding: 0;
+      background-color: $swal2-input-background-color;
       font-size: $swal2-input-font-size;
       line-height: $swal2-input-height;
     }
@@ -527,6 +529,7 @@ body {
   }
 
   .swal2-file {
+    background-color: $swal2-input-background-color;
     font-size: $swal2-input-font-size;
   }
 
@@ -539,6 +542,7 @@ body {
     min-width: 50%;
     max-width: 100%;
     padding: .375em .625em;
+    background-color: $swal2-input-background-color;
     color: lighten($swal2-black, 33);
     font-size: $swal2-input-font-size;
   }
@@ -550,11 +554,16 @@ body {
 
     label {
       margin: 0 .6em;
+      background-color: $swal2-input-background-color;
       font-size: $swal2-input-font-size;
     }
 
     input {
       margin: 0 .4em;
+    }
+
+    .swal2-label {
+      background-color: $swal2-input-background-color;
     }
   }
 

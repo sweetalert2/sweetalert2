@@ -476,7 +476,7 @@ body {
     transition: border-color .3s, box-shadow .3s;
     border: 1px solid $swal2-input-border;
     border-radius: $swal2-input-border-radius;
-    background-color: $swal2-input-background-color;
+    background: $swal2-input-background;
     font-size: $swal2-input-font-size;
     box-shadow: inset 0 1px 1px $swal2-input-box-shadow;
     box-sizing: border-box;
@@ -499,7 +499,7 @@ body {
 
   .swal2-range {
     margin: $swal2-input-margin;
-    background-color: $swal2-input-background-color;
+    background: $swal2-input-background;
 
     input {
       width: 80%;
@@ -530,7 +530,7 @@ body {
   }
 
   .swal2-file {
-    background-color: $swal2-input-background-color;
+    background: $swal2-input-background;
     font-size: $swal2-input-font-size;
   }
 
@@ -543,7 +543,7 @@ body {
     min-width: 50%;
     max-width: 100%;
     padding: .375em .625em;
-    background-color: $swal2-input-background-color;
+    background: $swal2-input-background;
     color: lighten($swal2-black, 33);
     font-size: $swal2-input-font-size;
   }
@@ -552,7 +552,7 @@ body {
   .swal2-checkbox {
     align-items: center;
     justify-content: center;
-    background-color: $swal2-input-background-color;
+    background: $swal2-input-background;
 
     label {
       margin: 0 .6em;

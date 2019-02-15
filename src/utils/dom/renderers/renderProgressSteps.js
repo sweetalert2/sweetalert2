@@ -17,15 +17,15 @@ export const renderProgressSteps = (params) => {
     }
     params.progressSteps.forEach((step, index) => {
       let circle = document.createElement('li')
-      dom.addClass(circle, swalClasses.progresscircle)
+      dom.addClass(circle, swalClasses['progress-step-circle'])
       circle.innerHTML = step
       if (index === currentProgressStep) {
-        dom.addClass(circle, swalClasses.activeprogressstep)
+        dom.addClass(circle, swalClasses['active-progress-step'])
       }
       progressStepsContainer.appendChild(circle)
       if (index !== params.progressSteps.length - 1) {
         let line = document.createElement('li')
-        dom.addClass(line, swalClasses.progressline)
+        dom.addClass(line, swalClasses['progress-step-line'])
         if (params.progressStepsDistance) {
           line.style.width = params.progressStepsDistance
         }

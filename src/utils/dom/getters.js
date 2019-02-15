@@ -22,7 +22,7 @@ export const getContent = () => elementByClass(swalClasses.content)
 
 export const getImage = () => elementByClass(swalClasses.image)
 
-export const getProgressSteps = () => elementByClass(swalClasses.progresssteps)
+export const getProgressSteps = () => elementByClass(swalClasses['progress-steps'])
 
 export const getValidationMessage = () => elementByClass(swalClasses['validation-message'])
 

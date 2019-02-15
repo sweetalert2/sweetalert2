@@ -498,6 +498,9 @@ body {
   }
 
   .swal2-range {
+    margin: $swal2-input-margin;
+    background-color: $swal2-input-background-color;
+
     input {
       width: 80%;
     }
@@ -511,9 +514,7 @@ body {
     input,
     output {
       height: $swal2-input-height;
-      margin: $swal2-input-margin;
       padding: 0;
-      background-color: $swal2-input-background-color;
       font-size: $swal2-input-font-size;
       line-height: $swal2-input-height;
     }
@@ -551,19 +552,15 @@ body {
   .swal2-checkbox {
     align-items: center;
     justify-content: center;
+    background-color: $swal2-input-background-color;
 
     label {
       margin: 0 .6em;
-      background-color: $swal2-input-background-color;
       font-size: $swal2-input-font-size;
     }
 
     input {
       margin: 0 .4em;
-    }
-
-    .swal2-label {
-      background-color: $swal2-input-background-color;
     }
   }
 

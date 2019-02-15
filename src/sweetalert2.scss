@@ -779,7 +779,7 @@ body {
     width: 2em;
     height: 2em;
     border-radius: 2em;
-    background: $swal2-progress-steps-active-step-color;
+    background: $swal2-progress-steps-active-step-background;
     color: $swal2-white;
     line-height: 2em;
     text-align: center;
@@ -794,14 +794,14 @@ body {
     }
 
     &.swal2-activeprogressstep {
-      background: $swal2-progress-steps-active-step-color;
+      background: $swal2-progress-steps-active-step-background;
 
       ~ .swal2-progresscircle {
-        background: $swal2-progress-steps-inactive-step-color;
+        background: $swal2-progress-steps-background;
       }
 
       ~ .swal2-progressline {
-        background: $swal2-progress-steps-inactive-step-color;
+        background: $swal2-progress-steps-background;
       }
     }
   }
@@ -810,7 +810,7 @@ body {
     width: $swal2-progress-steps-distance;
     height: .4em;
     margin: 0 -1px;
-    background: $swal2-progress-steps-active-step-color;
+    background: $swal2-progress-steps-active-step-background;
     z-index: 10;
   }
 }

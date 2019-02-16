@@ -832,6 +832,13 @@ declare module 'sweetalert2' {
          * @default null
          */
         onClose?: (modalElement: HTMLElement) => void;
+        
+        /**
+         * Set to false to disable body padding adjustment when scrollbar is present. 
+         *
+         * @default false
+         */
+        scrollbarPadding?: boolean;
     }
 
     export default Swal;

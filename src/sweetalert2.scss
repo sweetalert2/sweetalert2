@@ -786,14 +786,6 @@ body {
     text-align: center;
     z-index: 20;
 
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-
     &.swal2-active-progress-step {
       background: $swal2-progress-steps-active-step-background;
 

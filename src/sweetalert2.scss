@@ -776,7 +776,7 @@ body {
     position: relative;
   }
 
-  .swal2-progress-step-circle {
+  .swal2-progress-step {
     width: $swal2-progress-steps-step-width;
     height: $swal2-progress-steps-step-height;
     border-radius: $swal2-progress-steps-step-border-radius;
@@ -797,7 +797,7 @@ body {
     &.swal2-active-progress-step {
       background: $swal2-progress-steps-active-step-background;
 
-      ~ .swal2-progress-step-circle {
+      ~ .swal2-progress-step {
         background: $swal2-progress-steps-step-background;
         color: $swal2-progress-steps-step-color;
       }

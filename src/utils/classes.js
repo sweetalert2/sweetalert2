@@ -46,7 +46,7 @@ export const swalClasses = prefix([
   'validation-message',
   'progress-steps',
   'active-progress-step',
-  'progress-step-circle',
+  'progress-step',
   'progress-step-line',
   'loading',
   'styled',

@@ -8,7 +8,7 @@ import sweetAlert from '../../sweetalert2.js'
 const sweetHTML = `
  <div aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses.content}" class="${swalClasses.popup}" tabindex="-1">
    <div class="${swalClasses.header}">
-     <ul class="${swalClasses.progresssteps}"></ul>
+     <ul class="${swalClasses['progress-steps']}"></ul>
      <div class="${swalClasses.icon} ${iconTypes.error}">
        <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>
      </div>

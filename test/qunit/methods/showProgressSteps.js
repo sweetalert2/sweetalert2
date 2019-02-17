@@ -6,8 +6,8 @@ QUnit.test('showProgressSteps() method', (assert) => {
   })
 
   Swal.hideProgressSteps()
-  assert.ok(isHidden($('.swal2-progresssteps')))
+  assert.ok(isHidden($('.swal2-progress-steps')))
 
   Swal.showProgressSteps()
-  assert.ok(isVisible($('.swal2-progresssteps')))
+  assert.ok(isVisible($('.swal2-progress-steps')))
 })

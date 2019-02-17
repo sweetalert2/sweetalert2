@@ -836,7 +836,7 @@ declare module 'sweetalert2' {
         /**
          * Set to false to disable body padding adjustment when scrollbar is present. 
          *
-         * @default false
+         * @default true
          */
         scrollbarPadding?: boolean;
     }

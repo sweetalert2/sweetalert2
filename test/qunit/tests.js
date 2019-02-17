@@ -92,6 +92,25 @@ QUnit.test('the vertical scrollbar should be hidden and the according padding-ri
   Swal.clickConfirm()
 })
 
+QUnit.test('scrollbarPadding disabled', (assert) => {
+  const talltDiv = document.createElement('div')
+  talltDiv.innerHTML = Array(100).join('<div>lorem ipsum</div>')
+  document.body.appendChild(talltDiv)
+  document.body.style.paddingRight = '30px'
+
+  Swal.fire({
+    title: 'Padding right adjustment disabled',
+    scrollbarPadding: false,
+    onAfterClose: () => {
+      document.body.removeChild(talltDiv)
+    }
+  })
+
+  const bodyStyles = window.getComputedStyle(document.body)
+  assert.equal(bodyStyles.paddingRight, '30px')
+  Swal.clickConfirm()
+})
+
 QUnit.test('modal width', (assert) => {
   Swal.fire({ text: '300px', width: 300 })
   assert.equal($('.swal2-modal').style.width, '300px')

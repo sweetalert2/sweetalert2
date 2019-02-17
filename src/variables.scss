@@ -50,6 +50,7 @@ $swal2-input-border-focus: #b4dbed !default;
 $swal2-input-box-shadow: rgba($swal2-black, .06) !default;
 $swal2-input-box-shadow-focus: #c4e6f5 !default;
 $swal2-input-font-size: 1.125em !default;
+$swal2-input-background: inherit !default;
 
 // TEXTAREA SPECIFIC VARIABLES
 $swal2-textarea-height: 6.75em !default;
@@ -67,8 +68,18 @@ $swal2-validation-message-icon-color: $swal2-white !default;
 $swal2-validation-message-icon-zoom: normal !default;
 
 // PROGRESS STEPS
+$swal2-progress-steps-background: inherit !default;
 $swal2-progress-steps-margin: 0 0 1.25em !default;
+$swal2-progress-steps-padding: 0 !default;
+$swal2-progress-steps-font-weight: 600 !default;
 $swal2-progress-steps-distance: 2.5em !default;
+$swal2-progress-steps-width: 2em;
+$swal2-progress-steps-height: 2em;
+$swal2-progress-steps-border-radius: 2em;
+$swal2-progress-steps-background: #add8e6 !default;
+$swal2-progress-steps-color: $swal2-white !default;
+$swal2-progress-steps-active-step-background: #3085d6 !default;
+$swal2-progress-steps-active-step-color: $swal2-white !default;
 
 // FOOTER
 $swal2-footer-margin: 1.25em 0 0 !default;

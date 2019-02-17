@@ -1,3 +1,10 @@
+# [8.2.0](https://github.com/sweetalert2/sweetalert2/compare/v8.1.0...v8.2.0) (2019-02-17)
+
+
+### Features
+
+* **api:** add `scrollbarPadding` param ([#1414](https://github.com/sweetalert2/sweetalert2/issues/1414)) ([d095937](https://github.com/sweetalert2/sweetalert2/commit/d095937))
+
 # [8.1.0](https://github.com/sweetalert2/sweetalert2/compare/v8.0.7...v8.1.0) (2019-02-17)
 
 

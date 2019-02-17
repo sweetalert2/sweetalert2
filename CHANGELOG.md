@@ -1,3 +1,10 @@
+# [8.1.0](https://github.com/sweetalert2/sweetalert2/compare/v8.0.7...v8.1.0) (2019-02-17)
+
+
+### Features
+
+* add new SCSS variables for input and progress steps ([#1411](https://github.com/sweetalert2/sweetalert2/issues/1411)) ([5be77b6](https://github.com/sweetalert2/sweetalert2/commit/5be77b6))
+
 ## [8.0.7](https://github.com/sweetalert2/sweetalert2/compare/v8.0.6...v8.0.7) (2019-02-12)
 
 

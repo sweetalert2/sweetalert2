@@ -63,7 +63,8 @@ const defaultParams = {
   onBeforeOpen: null,
   onAfterClose: null,
   onOpen: null,
-  onClose: null
+  onClose: null,
+  scrollbarPadding: true
 }
 
 export const deprecatedParams = []

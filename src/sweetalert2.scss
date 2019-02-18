@@ -161,6 +161,14 @@ body {
     justify-content: flex-end;
   }
 
+  &.swal2-bottom > :first-child,
+  &.swal2-bottom-start > :first-child,
+  &.swal2-bottom-left > :first-child,
+  &.swal2-bottom-end > :first-child,
+  &.swal2-bottom-right > :first-child {
+    margin-top: auto;
+  }
+
   &.swal2-grow-fullscreen > .swal2-modal {
     display: flex !important;
     flex: 1;

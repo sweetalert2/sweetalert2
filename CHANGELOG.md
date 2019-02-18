@@ -1,3 +1,10 @@
+## [8.2.1](https://github.com/sweetalert2/sweetalert2/compare/v8.2.0...v8.2.1) (2019-02-18)
+
+
+### Bug Fixes
+
+* model cut of by bottom positioning ([#1417](https://github.com/sweetalert2/sweetalert2/issues/1417)) ([8b0e5dd](https://github.com/sweetalert2/sweetalert2/commit/8b0e5dd))
+
 # [8.2.0](https://github.com/sweetalert2/sweetalert2/compare/v8.1.0...v8.2.0) (2019-02-17)
 
 

@@ -4,9 +4,13 @@ import { isVisible } from './domUtils.js'
 
 export const getContainer = () => document.body.querySelector('.' + swalClasses.container)
 
-const elementByClass = (className) => {
+const elementBySelector = (selectorString) => {
   const container = getContainer()
-  return container ? container.querySelector('.' + className) : null
+  return container ? container.querySelector(selectorString) : null
+}
+
+const elementByClass = (className) => {
+  return elementBySelector('.' + className)
 }
 
 export const getPopup = () => elementByClass(swalClasses.popup)
@@ -26,9 +30,9 @@ export const getProgressSteps = () => elementByClass(swalClasses['progress-steps
 
 export const getValidationMessage = () => elementByClass(swalClasses['validation-message'])
 
-export const getConfirmButton = () => elementByClass(swalClasses.confirm)
+export const getConfirmButton = () => elementBySelector('.' + swalClasses.actions + ' .' + swalClasses.confirm)
 
-export const getCancelButton = () => elementByClass(swalClasses.cancel)
+export const getCancelButton = () => elementBySelector('.' + swalClasses.actions + ' .' + swalClasses.cancel)
 
 export const getActions = () => elementByClass(swalClasses.actions)
 

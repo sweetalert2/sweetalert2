@@ -1,3 +1,10 @@
+## [8.2.2](https://github.com/sweetalert2/sweetalert2/compare/v8.2.1...v8.2.2) (2019-02-20)
+
+
+### Bug Fixes
+
+* crash if swal2 action buttons classes are applied to elements in html prop ([#1420](https://github.com/sweetalert2/sweetalert2/issues/1420)) ([a21ef6b](https://github.com/sweetalert2/sweetalert2/commit/a21ef6b))
+
 ## [8.2.1](https://github.com/sweetalert2/sweetalert2/compare/v8.2.0...v8.2.1) (2019-02-18)
 
 

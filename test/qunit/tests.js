@@ -809,7 +809,6 @@ QUnit.test('Model shows with swal2 classes used in html', (assert) => {
   Swal.fire({
     html: '<span class="swal2-cancel"></span>'
   })
-  assert.ok(Swal.getContent().querySelector('.swal2-cancel'))
-  assert.ok(Swal.getActions().querySelector('.swal2-cancel'))
+  assert.ok(Swal.getPopup().classList.contains('swal2-show'))
   Swal.close()
 })

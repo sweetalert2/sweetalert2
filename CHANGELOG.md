@@ -1,3 +1,10 @@
+## [8.2.3](https://github.com/sweetalert2/sweetalert2/compare/v8.2.2...v8.2.3) (2019-02-21)
+
+
+### Bug Fixes
+
+* Swal.isVisible() ([#1423](https://github.com/sweetalert2/sweetalert2/issues/1423)) ([97b6bd4](https://github.com/sweetalert2/sweetalert2/commit/97b6bd4))
+
 ## [8.2.2](https://github.com/sweetalert2/sweetalert2/compare/v8.2.1...v8.2.2) (2019-02-20)
 
 

@@ -21,7 +21,13 @@ export {
  * Global function to determine if SweetAlert2 popup is shown
  */
 export const isVisible = () => {
-  return !!dom.getPopup()
+  let isVisible = false
+  const swalPopup = dom.getPopup()
+  if (swalPopup) {
+    const swalPopupComputedStyle = window.getComputedStyle(swalPopup)
+    isVisible = !(swalPopupComputedStyle.display === 'none' || swalPopupComputedStyle.visibility === 'hidden' || swalPopupComputedStyle.opacity === '0')
+  }
+  return isVisible
 }
 
 /*

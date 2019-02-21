@@ -1,4 +1,5 @@
 import * as dom from '../utils/dom/index.js'
+import * as domUtils from '../utils/dom/domUtils.js'
 
 export {
   getContainer,
@@ -21,7 +22,7 @@ export {
  * Global function to determine if SweetAlert2 popup is shown
  */
 export const isVisible = () => {
-  return !!dom.getPopup()
+  return domUtils.isVisible(dom.getPopup())
 }
 
 /*

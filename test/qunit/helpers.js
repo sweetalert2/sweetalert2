@@ -5,7 +5,8 @@ export const $ = document.querySelector.bind(document)
 
 export const isIE = window.navigator.userAgent.indexOf('Trident/') > 0
 
-export const isVisible = (elem) => elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length)
+export const { isVisible } = require('../../src/utils/dom/domUtils.js')
+
 export const isHidden = (elem) => !isVisible(elem)
 
 export let TIMEOUT = 1

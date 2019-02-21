@@ -535,6 +535,7 @@ QUnit.test('onBeforeOpen', (assert) => {
   Swal.fire({
     title: 'onBeforeOpen test',
     onBeforeOpen: (modal) => {
+      assert.notOk(Swal.isVisible())
       assert.equal($('.swal2-modal'), modal)
     }
   })

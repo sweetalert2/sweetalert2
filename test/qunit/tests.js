@@ -812,3 +812,13 @@ QUnit.test('Model shows with swal2 classes used in html', (assert) => {
   assert.ok(Swal.getPopup().classList.contains('swal2-show'))
   Swal.close()
 })
+
+QUnit.test('isVisible() should return false in onBeforeOpen', (assert) => {
+  Swal.fire({
+    title: 'Simple swal',
+    onBeforeOpen: () => {
+      assert.notOk(Swal.isVisible())
+    }
+  })
+  Swal.clickConfirm()
+})

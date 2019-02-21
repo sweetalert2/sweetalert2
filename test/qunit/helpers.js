@@ -5,7 +5,10 @@ export const $ = document.querySelector.bind(document)
 
 export const isIE = window.navigator.userAgent.indexOf('Trident/') > 0
 
-export const isVisible = (elem) => elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length)
+export const isVisible = (elem) => {
+  const computedStyle = window.getComputedStyle(elem)
+  return !(computedStyle.display === 'none' || computedStyle.visibility === 'hidden' || computedStyle.opacity === '0')
+}
 export const isHidden = (elem) => !isVisible(elem)
 
 export let TIMEOUT = 1

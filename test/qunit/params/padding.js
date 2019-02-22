@@ -1,22 +1,43 @@
 const { Swal } = require('../helpers')
 
-QUnit.test('padding = 0', (assert) => {
+QUnit.test('padding should allow 0', (assert) => {
   Swal.fire({
     padding: 0,
   })
   assert.equal(Swal.getPopup().style.padding, '0px')
 })
 
-QUnit.test('padding as a number', (assert) => {
+QUnit.test('padding should allow a number', (assert) => {
   Swal.fire({
     padding: 15,
   })
   assert.equal(Swal.getPopup().style.padding, '15px')
 })
 
-QUnit.test('padding as a string', (assert) => {
+QUnit.test('padding should allow a string', (assert) => {
   Swal.fire({
     padding: '2rem',
   })
   assert.equal(Swal.getPopup().style.padding, '2rem')
+})
+
+QUnit.test('padding should NOT allow an object', (assert) => {
+  Swal.fire({
+    padding: {},
+  })
+  assert.equal(Swal.getPopup().style.padding, '');
+})
+
+QUnit.test('padding should NOT allow an array', (assert) => {
+  Swal.fire({
+    padding: [],
+  })
+  assert.equal(Swal.getPopup().style.padding, '');
+})
+
+QUnit.test('padding should NOT allow `true`', (assert) => {
+  Swal.fire({
+    padding: true,
+  })
+  assert.equal(Swal.getPopup().style.padding, '');
 })

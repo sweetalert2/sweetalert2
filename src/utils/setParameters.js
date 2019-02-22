@@ -50,8 +50,11 @@ export default function setParameters (params) {
   }
 
   // Set popup padding
-  if (params.padding === 0 || params.padding) {
-    popup.style.padding = (typeof params.padding === 'number') ? params.padding + 'px' : params.padding
+  let isPaddingNumber = (typeof params.padding === 'number');
+  if (isPaddingNumber || typeof params.padding === 'string') {
+    popup.style.padding = isPaddingNumber ? params.padding + 'px' : params.padding
+  } else if (params.padding) {
+    warn('"padding" parameter requires either a `string` or `number`')
   }
 
   // Set popup background

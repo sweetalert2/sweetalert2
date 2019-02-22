@@ -14,6 +14,9 @@ Your contribution will be greatly appreciated!
 - **[SheetJS LLC](https://sheetjs.com/)** (100 USD)
     > Great Work with SweetAlert2!
 
+- **[STC (NSFW)](http://sextoycollective.com/)** (100 USD)
+    > Love this! Thanks for making the Internet a prettier place.
+
 - **[Unique-P GmbH](https://www.unique-p.ch/)** (100 CHF)
     > Great work guys! Awesome library, very helpful!
 

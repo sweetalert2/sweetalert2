@@ -50,7 +50,7 @@ export default function setParameters (params) {
   }
 
   // Set popup padding
-  if (params.padding) {
+  if (params.padding === 0 || params.padding) {
     popup.style.padding = (typeof params.padding === 'number') ? params.padding + 'px' : params.padding
   }
 

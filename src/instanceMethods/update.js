@@ -14,7 +14,7 @@ export function update (params) {
     if (sweetAlert.isUpdatableParameter(param)) {
       validUpdatableParams[param] = params[param]
     } else {
-      warn(`Invalid parameter to update: "${param}". Updatable params are listed here: TODO (@limonte) add link`)
+      warn(`Invalid parameter to update: "${param}". Updatable params are listed here: https://github.com/sweetalert2/sweetalert2/blob/master/src/utils/params.js`)
     }
   })
 

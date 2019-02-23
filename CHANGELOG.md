@@ -1,3 +1,10 @@
+## [8.2.4](https://github.com/sweetalert2/sweetalert2/compare/v8.2.3...v8.2.4) (2019-02-23)
+
+
+### Bug Fixes
+
+* padding 0 ([#1424](https://github.com/sweetalert2/sweetalert2/issues/1424)) ([f1a2259](https://github.com/sweetalert2/sweetalert2/commit/f1a2259))
+
 ## [8.2.3](https://github.com/sweetalert2/sweetalert2/compare/v8.2.2...v8.2.3) (2019-02-21)
 
 

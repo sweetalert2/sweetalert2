@@ -424,7 +424,7 @@ declare module 'sweetalert2' {
          *
          * @default null
          */
-        padding?: number;
+        padding?: number | string;
 
         /**
          * Modal window background (CSS background property).

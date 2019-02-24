@@ -4,6 +4,7 @@ const noLaunch = process.argv.includes('--no-launch')
 const isWindows = process.platform === 'win32'
 const testMinified = process.argv.includes('--minified')
 const isSauce = process.argv.includes('--sauce')
+const isNetlify = process.argv.includes('--netlify')
 
 module.exports = function (config) {
   const sauceLabsLaunchers = {
@@ -62,6 +63,11 @@ module.exports = function (config) {
         process.exit(1)
       }
       browsers = Object.keys(sauceLabsLaunchers)
+    // Netlify
+    } else if (isNetlify) {
+      process.env.CHROME_BIN = require('puppeteer').executablePath()
+      browsers = ['ChromeHeadless']
+      reporters.push('coverage')
     } else if (isCi) {
       // AppVeyor
       if (isWindows) {

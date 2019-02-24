@@ -46,13 +46,8 @@ after_success:
       semantic-release;
     fi;
 
-  # report coverage to coveralls.io and deploy to surge.sh
-  # https://github.com/travis-ci/travis-ci/issues/6652#issuecomment-255597049
-  # '/' symbols must be replaced, https://stackoverflow.com/a/13210909
+  # report coverage to coveralls.io
   - if [[ "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
-      yarn global add coveralls@3 surge &&
-      cat ./coverage/lcov.info | coveralls &&
-      BRANCH_NAME=${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH} &&
-      BRANCH_NAME=${BRANCH_NAME//\//-} &&
-      surge coverage "sweetalert2-coverage-${BRANCH_NAME}.surge.sh";
+      yarn global add coveralls@3 &&
+      cat ./coverage/lcov.info | coveralls;
     fi;

@@ -1,0 +1,13 @@
+{
+  "extends": "stylelint-config-standard",
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "declaration-empty-line-before": null,
+    "number-leading-zero": null,
+    "no-descending-specificity": null,
+    "scss/no-duplicate-dollar-variables": true
+  }
+}

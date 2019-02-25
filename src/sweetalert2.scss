@@ -256,7 +256,6 @@ body {
   }
 }
 
-
 .swal2-popup {
   display: none;
   position: relative;
@@ -817,7 +816,6 @@ body {
   }
 }
 
-
 // github.com/sweetalert2/sweetalert2/issues/268
 [class^='swal2'] {
   -webkit-tap-highlight-color: transparent;
@@ -839,7 +837,6 @@ body {
   }
 }
 
-
 // Right-to-left support
 .swal2-rtl {
   .swal2-close {
@@ -847,7 +844,6 @@ body {
     left: $swal2-close-button-gap;
   }
 }
-
 
 // Success icon animation
 .swal2-animate-success-icon {

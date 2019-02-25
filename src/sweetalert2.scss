@@ -797,12 +797,12 @@ body {
       background: $swal2-progress-steps-active-step-background;
 
       ~ .swal2-progress-step {
-        background: $swal2-progress-steps-background;
+        background: $swal2-progress-steps-step-background;
         color: $swal2-progress-steps-color;
       }
 
       ~ .swal2-progress-step-line {
-        background: $swal2-progress-steps-background;
+        background: $swal2-progress-steps-step-background;
       }
     }
   }

@@ -1,3 +1,10 @@
+## [8.2.6](https://github.com/sweetalert2/sweetalert2/compare/v8.2.5...v8.2.6) (2019-02-26)
+
+
+### Bug Fixes
+
+* inactive step background ([#1428](https://github.com/sweetalert2/sweetalert2/issues/1428)) ([2f7701c](https://github.com/sweetalert2/sweetalert2/commit/2f7701c))
+
 ## [8.2.5](https://github.com/sweetalert2/sweetalert2/compare/v8.2.4...v8.2.5) (2019-02-26)
 
 

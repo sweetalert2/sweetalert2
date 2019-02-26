@@ -29,7 +29,7 @@ const sweetHTML = `
      </div>
      <img class="${swalClasses.image}" />
      <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
-     <button type="button" class="${swalClasses.close}">×</button>
+     <button type="button" class="${swalClasses.close}">&times;</button>
    </div>
    <div class="${swalClasses.content}">
      <div id="${swalClasses.content}"></div>

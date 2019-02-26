@@ -1,3 +1,10 @@
+## [8.2.5](https://github.com/sweetalert2/sweetalert2/compare/v8.2.4...v8.2.5) (2019-02-26)
+
+
+### Bug Fixes
+
+* make close button friendly for non-UTF encodings × -> &times; ([#1431](https://github.com/sweetalert2/sweetalert2/issues/1431)) ([b2006c3](https://github.com/sweetalert2/sweetalert2/commit/b2006c3))
+
 ## [8.2.4](https://github.com/sweetalert2/sweetalert2/compare/v8.2.3...v8.2.4) (2019-02-23)
 
 

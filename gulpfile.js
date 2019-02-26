@@ -2,6 +2,7 @@ const gulp = require('gulp')
 const gutil = require('gulp-util')
 const $ = require('gulp-load-plugins')()
 const eslint = require('gulp-eslint')
+const stylelint = require('gulp-stylelint');
 const babel = require('rollup-plugin-babel')
 const json = require('rollup-plugin-json')
 const merge = require('merge2')
@@ -123,9 +124,12 @@ gulp.task('lint:scripts', () => {
 
 gulp.task('lint:styles', () => {
   return gulp.src(srcStyleFiles)
-    .pipe($.sassLint())
-    .pipe($.sassLint.format())
-    .pipe($.if(!continueOnError, $.sassLint.failOnError()))
+    .pipe(stylelint({
+      failAfterError: !continueOnError,
+      reporters: [
+        { formatter: 'string', console: true }
+      ]
+    }))
 })
 
 gulp.task('lint:ts', () => {

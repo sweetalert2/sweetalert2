@@ -11,8 +11,9 @@
   }
 
   $not-output: '';
+
   @each $not in $ignor-list {
-    $not-output: $not-output + ':not(#{$not})';
+    $not-output: $not-output + ':not(#{$not})'; /* stylelint-disable-line scss/no-duplicate-dollar-variables */
   }
 
   &#{$not-output} {

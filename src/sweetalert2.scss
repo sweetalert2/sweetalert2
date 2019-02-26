@@ -784,25 +784,25 @@ body {
   }
 
   .swal2-progress-step {
-    width: $swal2-progress-steps-width;
-    height: $swal2-progress-steps-height;
-    border-radius: $swal2-progress-steps-border-radius;
-    background: $swal2-progress-steps-active-step-background;
-    color: $swal2-progress-steps-active-step-color;
-    line-height: $swal2-progress-steps-height;
+    width: $swal2-progress-step-width;
+    height: $swal2-progress-step-height;
+    border-radius: $swal2-progress-step-border-radius;
+    background: $swal2-active-step-background;
+    color: $swal2-active-step-color;
+    line-height: $swal2-progress-step-height;
     text-align: center;
     z-index: 20;
 
     &.swal2-active-progress-step {
-      background: $swal2-progress-steps-active-step-background;
+      background: $swal2-active-step-background;
 
       ~ .swal2-progress-step {
-        background: $swal2-progress-steps-background;
-        color: $swal2-progress-steps-color;
+        background: $swal2-progress-step-background;
+        color: $swal2-progress-step-color;
       }
 
       ~ .swal2-progress-step-line {
-        background: $swal2-progress-steps-background;
+        background: $swal2-progress-step-background;
       }
     }
   }
@@ -811,7 +811,7 @@ body {
     width: $swal2-progress-steps-distance;
     height: .4em;
     margin: 0 -1px;
-    background: $swal2-progress-steps-active-step-background;
+    background: $swal2-active-step-background;
     z-index: 10;
   }
 }

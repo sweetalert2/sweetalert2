@@ -5030,10 +5030,10 @@ karma-ie-launcher@^1.0.0:
   dependencies:
     lodash "^4.6.1"
 
-karma-qunit@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/karma-qunit/-/karma-qunit-2.1.0.tgz#135ee8f6ceb68d6a08b2c151e9302ef615090e65"
-  integrity sha512-QFt2msjpFNx1ZqB1EcD7rXaFRa3P+kLrgm6uRDYV/1MO7qGMxnTDgsFB1KyAKCpMreOmB5MMpEm5sX52j4c0aw==
+karma-qunit@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/karma-qunit/-/karma-qunit-3.0.0.tgz#e98a3698b855df97b21cbd5c0a4973d516ec5a69"
+  integrity sha512-Ic3kLAN+vTujsjJyqNwlkon0J6lniiRF/XwzjOcTs4we24Wglil8HDQkTt0J3rD2OnMQGtdkWogUYwfBKgiYDw==
 
 karma-sauce-launcher@^2.0.2:
   version "2.0.2"

@@ -2,18 +2,16 @@ const gulp = require('gulp')
 const gutil = require('gulp-util')
 const $ = require('gulp-load-plugins')()
 const eslint = require('gulp-eslint')
-const stylelint = require('gulp-stylelint');
+const stylelint = require('gulp-stylelint')
 const babel = require('rollup-plugin-babel')
 const json = require('rollup-plugin-json')
 const merge = require('merge2')
 const browserSync = require('browser-sync').create()
-const pify = require('pify')
-const rimraf = require('rimraf')
-const mkdirp = require('mkdirp')
 const packageJson = require('./package.json')
 const execute = require('./utils/execute')
 const log = require('fancy-log')
 const version = process.env.VERSION || packageJson.version
+const fsPromises = require('fs').promises
 
 const banner = `/*!
 * ${packageJson.name} v${version}
@@ -29,14 +27,19 @@ const continueOnError = process.argv.includes('--continue-on-error')
 const skipMinification = process.argv.includes('--skip-minification')
 const skipStandalone = process.argv.includes('--skip-standalone')
 
-const removeDir = pify(rimraf)
-const createDir = pify(mkdirp)
-
 // ---
 
-gulp.task('clean', async () => {
-  await removeDir('dist')
-  await createDir('dist')
+gulp.task('clean', () => {
+  return fsPromises.readdir('dist')
+    .then(fileList => {
+      if (fileList.length > 0) {
+        let unlinkPromises = []
+        fileList.forEach(fileName => {
+          unlinkPromises.push(fsPromises.unlink(`dist/${fileName}`))
+        })
+        return Promise.all(unlinkPromises)
+      }
+    })
 })
 
 gulp.task('build:scripts', () => {

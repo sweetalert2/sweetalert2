@@ -39,6 +39,8 @@ gulp.task('clean', () => {
         })
         return Promise.all(unlinkPromises)
       }
+    }).catch(error => {
+      if (error.code !== 'ENOENT') { return Promise.reject(error) }
     })
 })
 

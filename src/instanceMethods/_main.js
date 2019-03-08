@@ -120,7 +120,7 @@ export function _main (userParams) {
       switch (e.type) {
         case 'click':
           // Clicked 'confirm'
-          if (targetedConfirm && constructor.isVisible()) {
+          if (targetedConfirm) {
             this.disableButtons()
             if (innerParams.input) {
               const inputValue = getInputValue()
@@ -149,8 +149,8 @@ export function _main (userParams) {
               confirm(true)
             }
 
-            // Clicked 'cancel'
-          } else if (targetedCancel && constructor.isVisible()) {
+          // Clicked 'cancel'
+          } else if (targetedCancel) {
             this.disableButtons()
             dismissWith(constructor.DismissReason.cancel)
           }

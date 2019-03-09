@@ -139,11 +139,6 @@ QUnit.test('heightAuto', (assert) => {
   assert.ok(document.documentElement.classList.contains('swal2-height-auto'))
 })
 
-QUnit.test('custom class', (assert) => {
-  Swal.fire({ customClass: 'custom-class' })
-  assert.ok(Swal.getPopup().classList.contains('custom-class'))
-})
-
 QUnit.test('custom container class', (assert) => {
   Swal.fire({ customContainerClass: 'custom-class' })
   assert.ok(Swal.getContainer().classList.contains('custom-class'))

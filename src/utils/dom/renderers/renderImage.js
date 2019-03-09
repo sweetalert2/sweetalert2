@@ -25,6 +25,9 @@ export const renderImage = (params) => {
     if (params.imageClass) {
       dom.addClass(image, params.imageClass)
     }
+    if (params.customClass) {
+      dom.addClass(image, params.customClass.image)
+    }
   } else {
     dom.hide(image)
   }

@@ -377,6 +377,9 @@ export function _main (userParams) {
       if (innerParams.inputClass) {
         dom.addClass(inputContainer, innerParams.inputClass)
       }
+      if (innerParams.customClass) {
+        dom.addClass(inputContainer, innerParams.customClass.input)
+      }
 
       dom.hide(inputContainer)
     }

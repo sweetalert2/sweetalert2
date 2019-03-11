@@ -38,8 +38,14 @@ export const renderActions = (params) => {
   // Add buttons custom classes
   confirmButton.className = swalClasses.confirm
   dom.addClass(confirmButton, params.confirmButtonClass)
+  if (params.customClass) {
+    dom.addClass(confirmButton, params.customClass.confirmButton)
+  }
   cancelButton.className = swalClasses.cancel
   dom.addClass(cancelButton, params.cancelButtonClass)
+  if (params.customClass) {
+    dom.addClass(cancelButton, params.customClass.cancelButton)
+  }
 
   // Buttons styling
   if (params.buttonsStyling) {

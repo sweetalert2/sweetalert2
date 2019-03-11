@@ -36,6 +36,8 @@ export const getCancelButton = () => elementBySelector('.' + swalClasses.actions
 
 export const getActions = () => elementByClass(swalClasses.actions)
 
+export const getHeader = () => elementByClass(swalClasses.header)
+
 export const getFooter = () => elementByClass(swalClasses.footer)
 
 export const getCloseButton = () => elementByClass(swalClasses.close)

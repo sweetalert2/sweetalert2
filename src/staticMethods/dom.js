@@ -12,6 +12,7 @@ export {
   getActions,
   getConfirmButton,
   getCancelButton,
+  getHeader,
   getFooter,
   getFocusableElements,
   getValidationMessage,

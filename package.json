@@ -95,6 +95,7 @@
     "check:sauce": "npm run check:qunit:sauce && npm run check:qunit:minified:sauce",
     "check:lint": "gulp lint",
     "check:require-in-node": "node test/require-in-node",
+    "check:jest": "jest --ci",
     "check:qunit": "karma start karma.conf.js --single-run",
     "check:qunit:minified": "karma start karma.conf.js --single-run --minified",
     "check:qunit:sauce": "karma start karma.conf.js --single-run --sauce",

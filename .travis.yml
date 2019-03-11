@@ -27,7 +27,9 @@ install:
 
 script:
   - if [[ "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
-      yarn run check;
+      yarn run check &&
+      yarn add --dev jest &&
+      yarn run check:jest;
     fi;
 
   - if [[ "$TRAVIS_EVENT_TYPE" = "cron" ]]; then

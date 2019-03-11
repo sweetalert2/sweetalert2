@@ -1,3 +1,15 @@
+# [8.3.0](https://github.com/sweetalert2/sweetalert2/compare/v8.2.6...v8.3.0) (2019-03-11)
+
+
+### Bug Fixes
+
+* remove excessive isVisible check for buttons, support Jest testing enviroment ([#1439](https://github.com/sweetalert2/sweetalert2/issues/1439)) ([42ef213](https://github.com/sweetalert2/sweetalert2/commit/42ef213))
+
+
+### Features
+
+* **api:** allow adding custom classes to header, content, footer, etc. ([#1441](https://github.com/sweetalert2/sweetalert2/issues/1441)) ([4381bae](https://github.com/sweetalert2/sweetalert2/commit/4381bae))
+
 ## [8.2.6](https://github.com/sweetalert2/sweetalert2/compare/v8.2.5...v8.2.6) (2019-02-26)
 
 

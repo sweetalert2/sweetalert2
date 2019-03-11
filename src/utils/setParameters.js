@@ -66,6 +66,10 @@ export default function setParameters (params) {
 
   const container = dom.getContainer()
   const closeButton = dom.getCloseButton()
+  const header = dom.getHeader()
+  const title = dom.getTitle()
+  const content = dom.getContent()
+  const actions = dom.getActions()
   const footer = dom.getFooter()
 
   // Title
@@ -117,9 +121,16 @@ export default function setParameters (params) {
     dom.addClass(popup, swalClasses.modal)
   }
 
-  // Custom Class
+  // Custom classes
   if (params.customClass) {
-    dom.addClass(popup, params.customClass)
+    dom.addClass(container, params.customClass.container)
+    dom.addClass(popup, typeof params.customClass === 'string' ? params.customClass : params.customClass.popup)
+    dom.addClass(header, params.customClass.header)
+    dom.addClass(title, params.customClass.title)
+    dom.addClass(closeButton, params.customClass.closeButton)
+    dom.addClass(content, params.customClass.content)
+    dom.addClass(actions, params.customClass.actions)
+    dom.addClass(footer, params.customClass.footer)
   }
 
   if (params.customContainerClass) {

@@ -649,7 +649,10 @@ body {
   user-select: none;
   zoom: $swal2-icon-zoom;
 
-  &-text {
+  &::before {
+    display: flex;
+    align-items: center;
+    height: 92%;
     font-size: 3.75em;
   }
 
@@ -685,16 +688,28 @@ body {
   &.swal2-warning {
     border-color: lighten($swal2-warning, 7);
     color: $swal2-warning;
+
+    &::before {
+      content: '!';
+    }
   }
 
   &.swal2-info {
     border-color: lighten($swal2-info, 20);
     color: $swal2-info;
+
+    &::before {
+      content: 'i';
+    }
   }
 
   &.swal2-question {
     border-color: lighten($swal2-question, 20);
     color: $swal2-question;
+
+    &::before {
+      content: '?';
+    }
   }
 
   &.swal2-success {

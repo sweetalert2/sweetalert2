@@ -329,6 +329,7 @@ declare module 'sweetalert2' {
         header?: string;
         title?: string;
         closeButton?: string;
+        icon?: string;
         image?: string;
         content?: string;
         input?: string;
@@ -478,6 +479,7 @@ declare module 'sweetalert2' {
          *       header: 'header-class',
          *       title: 'title-class',
          *       closeButton: 'close-button-class',
+         *       icon: 'icon-class',
          *       image: 'image-class',
          *       content: 'content-class',
          *       input: 'input-class',

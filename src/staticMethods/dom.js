@@ -7,6 +7,7 @@ export {
   getTitle,
   getContent,
   getImage,
+  getIcon,
   getIcons,
   getCloseButton,
   getActions,

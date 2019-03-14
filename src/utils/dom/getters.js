@@ -20,6 +20,11 @@ export const getIcons = () => {
   return toArray(popup.querySelectorAll('.' + swalClasses.icon))
 }
 
+export const getIcon = () => {
+  const visibleIcon = getIcons().filter(icon => isVisible(icon))
+  return visibleIcon.length ? visibleIcon[0] : null
+}
+
 export const getTitle = () => elementByClass(swalClasses.title)
 
 export const getContent = () => elementByClass(swalClasses.content)

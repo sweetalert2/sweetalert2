@@ -1,4 +1,4 @@
-const { Swal, SwalWithoutAnimation, isVisible } = require('../helpers')
+const { $, Swal, SwalWithoutAnimation, isVisible } = require('../helpers')
 
 QUnit.test('update() method', (assert) => {
   SwalWithoutAnimation.fire()
@@ -16,7 +16,8 @@ QUnit.test('update() method', (assert) => {
   assert.equal(Swal.getTitle().textContent, 'New title')
   assert.equal(Swal.getContent().textContent, 'New content')
 
-  assert.ok(isVisible(Swal.getIcons().filter(icon => icon.classList.contains('swal2-success'))[0]))
+  assert.ok(isVisible(Swal.getIcon()))
+  assert.equal(Swal.getIcon(), $('.swal2-success'))
 
   assert.ok(isVisible(Swal.getImage()))
   assert.ok(Swal.getImage().src.indexOf('/assets/swal2-logo.png') > 0)

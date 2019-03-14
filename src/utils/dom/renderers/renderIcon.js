@@ -13,6 +13,11 @@ export const renderIcon = (params) => {
       const icon = sweetAlert.getPopup().querySelector(`.${swalClasses.icon}.${iconTypes[params.type]}`)
       dom.show(icon)
 
+      // Custom class
+      if (params.customClass) {
+        dom.addClass(icon, params.customClass.icon)
+      }
+
       // Animate icon
       if (params.animation) {
         dom.addClass(icon, `swal2-animate-${params.type}-icon`)

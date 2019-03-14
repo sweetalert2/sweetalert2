@@ -156,10 +156,15 @@ body {
       height: 2em;
       margin: 0;
 
-      &-text {
+      &::before {
+        display: flex;
+        align-items: center;
         font-size: 2em;
         font-weight: bold;
-        line-height: 1em;
+
+        @include ie {
+          font-size: .25em;
+        }
       }
 
       &.swal2-success {

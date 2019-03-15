@@ -1,3 +1,10 @@
+# [8.5.0](https://github.com/sweetalert2/sweetalert2/compare/v8.4.0...v8.5.0) (2019-03-15)
+
+
+### Features
+
+* **styles:** add .swal2-arabic-question-mark ([#1448](https://github.com/sweetalert2/sweetalert2/issues/1448)) ([e57ce7f](https://github.com/sweetalert2/sweetalert2/commit/e57ce7f))
+
 # [8.4.0](https://github.com/sweetalert2/sweetalert2/compare/v8.3.0...v8.4.0) (2019-03-15)
 
 

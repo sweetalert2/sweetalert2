@@ -710,6 +710,10 @@ body {
     &::before {
       content: '?';
     }
+
+    &.swal2-arabic-question-mark::before {
+      content: '؟';
+    }
   }
 
   &.swal2-success {

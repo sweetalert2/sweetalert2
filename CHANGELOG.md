@@ -1,3 +1,11 @@
+# [8.4.0](https://github.com/sweetalert2/sweetalert2/compare/v8.3.0...v8.4.0) (2019-03-15)
+
+
+### Features
+
+* add customClass.icon, simplify icons markup ([ba4a485](https://github.com/sweetalert2/sweetalert2/commit/ba4a485))
+* add Swal.getIcon() ([acc42a0](https://github.com/sweetalert2/sweetalert2/commit/acc42a0))
+
 # [8.3.0](https://github.com/sweetalert2/sweetalert2/compare/v8.2.6...v8.3.0) (2019-03-11)
 
 

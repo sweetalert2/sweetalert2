@@ -1,29 +1,12 @@
 import privateProps from '../privateProps.js'
 
-export function enableButtons () {
-  const domCache = privateProps.domCache.get(this)
-  domCache.confirmButton.disabled = false
-  domCache.cancelButton.disabled = false
+function setButtonsDisabled (buttons, disabled) {
+  buttons.forEach(button => {
+    button.disabled = disabled
+  })
 }
 
-export function disableButtons () {
-  const domCache = privateProps.domCache.get(this)
-  domCache.confirmButton.disabled = true
-  domCache.cancelButton.disabled = true
-}
-
-export function enableConfirmButton () {
-  const domCache = privateProps.domCache.get(this)
-  domCache.confirmButton.disabled = false
-}
-
-export function disableConfirmButton () {
-  const domCache = privateProps.domCache.get(this)
-  domCache.confirmButton.disabled = true
-}
-
-export function enableInput () {
-  const input = this.getInput()
+function setInputDisabled (input, disabled) {
   if (!input) {
     return false
   }
@@ -31,25 +14,37 @@ export function enableInput () {
     const radiosContainer = input.parentNode.parentNode
     const radios = radiosContainer.querySelectorAll('input')
     for (let i = 0; i < radios.length; i++) {
-      radios[i].disabled = false
+      radios[i].disabled = disabled
     }
   } else {
-    input.disabled = false
+    input.disabled = disabled
   }
 }
 
+export function enableButtons () {
+  const domCache = privateProps.domCache.get(this)
+  setButtonsDisabled([domCache.confirmButton, domCache.cancelButton], false)
+}
+
+export function disableButtons () {
+  const domCache = privateProps.domCache.get(this)
+  setButtonsDisabled([domCache.confirmButton, domCache.cancelButton], true)
+}
+
+export function enableConfirmButton () {
+  const domCache = privateProps.domCache.get(this)
+  setButtonsDisabled([domCache.confirmButton], false)
+}
+
+export function disableConfirmButton () {
+  const domCache = privateProps.domCache.get(this)
+  setButtonsDisabled([domCache.confirmButton], true)
+}
+
+export function enableInput () {
+  setInputDisabled(this.getInput(), false)
+}
+
 export function disableInput () {
-  const input = this.getInput()
-  if (!input) {
-    return false
-  }
-  if (input && input.type === 'radio') {
-    const radiosContainer = input.parentNode.parentNode
-    const radios = radiosContainer.querySelectorAll('input')
-    for (let i = 0; i < radios.length; i++) {
-      radios[i].disabled = true
-    }
-  } else {
-    input.disabled = true
-  }
+  setInputDisabled(this.getInput(), true)
 }

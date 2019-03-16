@@ -42,9 +42,9 @@ export function disableConfirmButton () {
 }
 
 export function enableInput () {
-  setInputDisabled(this.getInput(), false)
+  return setInputDisabled(this.getInput(), false)
 }
 
 export function disableInput () {
-  setInputDisabled(this.getInput(), true)
+  return setInputDisabled(this.getInput(), true)
 }

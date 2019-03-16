@@ -44,15 +44,13 @@ export default function setParameters (params) {
     popup = oldPopup || dom.init(params)
   }
 
-  // Set popup width
-  if (params.width) {
-    popup.style.width = (typeof params.width === 'number') ? params.width + 'px' : params.width
-  }
-
-  // Set popup padding
-  if (params.padding !== null) {
-    popup.style.padding = (typeof params.padding === 'number') ? params.padding + 'px' : params.padding
-  }
+  // Set popup width and padding
+  ['width', 'padding'].forEach(param => {
+    const paramValue = params[param]
+    if (paramValue !== null) {
+      popup.style[param] = (typeof paramValue === 'number') ? paramValue + 'px' : paramValue
+    }
+  })
 
   // Set popup background
   if (params.background) {

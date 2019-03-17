@@ -1,8 +1,9 @@
 import privateProps from '../privateProps.js'
 
-function setButtonsDisabled (buttons, disabled) {
+function setButtonsDisabled (instance, buttons, disabled) {
+  const domCache = privateProps.domCache.get(instance)
   buttons.forEach(button => {
-    button.disabled = disabled
+    domCache[button].disabled = disabled
   })
 }
 
@@ -22,23 +23,19 @@ function setInputDisabled (input, disabled) {
 }
 
 export function enableButtons () {
-  const domCache = privateProps.domCache.get(this)
-  setButtonsDisabled([domCache.confirmButton, domCache.cancelButton], false)
+  setButtonsDisabled(this, ['confirmButton', 'cancelButton'], false)
 }
 
 export function disableButtons () {
-  const domCache = privateProps.domCache.get(this)
-  setButtonsDisabled([domCache.confirmButton, domCache.cancelButton], true)
+  setButtonsDisabled(this, ['confirmButton', 'cancelButton'], true)
 }
 
 export function enableConfirmButton () {
-  const domCache = privateProps.domCache.get(this)
-  setButtonsDisabled([domCache.confirmButton], false)
+  setButtonsDisabled(this, ['confirmButton'], false)
 }
 
 export function disableConfirmButton () {
-  const domCache = privateProps.domCache.get(this)
-  setButtonsDisabled([domCache.confirmButton], true)
+  setButtonsDisabled(this, ['confirmButton'], true)
 }
 
 export function enableInput () {

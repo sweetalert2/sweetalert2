@@ -49,7 +49,7 @@
     "replace-in-file": "^3.4.3",
     "rollup": "^1.1.2",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-json": "^3.0.0",
+    "rollup-plugin-json": "^4.0.0",
     "sinon": "^7.2.3",
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0",

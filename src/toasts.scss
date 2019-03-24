@@ -118,8 +118,8 @@ body {
     align-items: center;
     width: $swal2-toast-width;
     padding: $swal2-toast-padding;
-    box-shadow: 0 0 .625em $swal2-box-shadow;
     overflow-y: hidden;
+    box-shadow: 0 0 .625em $swal2-box-shadow;
 
     .swal2-header {
       flex-direction: row;

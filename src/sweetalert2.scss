@@ -26,6 +26,7 @@ body {
       right: auto;
       bottom: auto;
       left: auto;
+      max-width: calc(100% - #{$swal2-container-padding} * 2);
       background-color: transparent;
 
       & > .swal2-modal {
@@ -102,7 +103,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: $swal2-container-padding;
 
   // backdrop
   background-color: transparent;

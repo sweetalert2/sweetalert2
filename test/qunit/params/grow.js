@@ -7,7 +7,7 @@ QUnit.test('grow row', (assert) => {
   const containerStyles = window.getComputedStyle(Swal.getContainer())
   assert.equal(
     Swal.getPopup().clientWidth,
-    Swal.getContainer().clientWidth - parseInt(containerStyles.paddingLeft) - parseInt(containerStyles.paddingRight)
+    parseInt(Swal.getContainer().clientWidth - parseFloat(containerStyles.paddingLeft) - parseFloat(containerStyles.paddingRight))
   )
 })
 
@@ -18,7 +18,7 @@ QUnit.test('grow column', (assert) => {
   const containerStyles = window.getComputedStyle(Swal.getContainer())
   assert.equal(
     Swal.getPopup().clientHeight,
-    Swal.getContainer().clientHeight - parseInt(containerStyles.paddingTop) - parseInt(containerStyles.paddingBottom)
+    parseInt(Swal.getContainer().clientHeight - parseFloat(containerStyles.paddingTop) - parseFloat(containerStyles.paddingBottom))
   )
 })
 
@@ -30,11 +30,11 @@ QUnit.test('grow fullscreen', (assert) => {
 
   assert.equal(
     Swal.getPopup().clientWidth,
-    Swal.getContainer().clientWidth - parseInt(containerStyles.paddingLeft) - parseInt(containerStyles.paddingRight)
+    parseInt(Swal.getContainer().clientWidth - parseFloat(containerStyles.paddingLeft) - parseFloat(containerStyles.paddingRight))
   )
 
   assert.equal(
     Swal.getPopup().clientHeight,
-    Swal.getContainer().clientHeight - parseInt(containerStyles.paddingTop) - parseInt(containerStyles.paddingBottom)
+    parseInt(Swal.getContainer().clientHeight - parseFloat(containerStyles.paddingTop) - parseFloat(containerStyles.paddingBottom))
   )
 })

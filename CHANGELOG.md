@@ -1,3 +1,10 @@
+# [8.6.0](https://github.com/sweetalert2/sweetalert2/compare/v8.5.0...v8.6.0) (2019-03-24)
+
+
+### Features
+
+* **sass-variables:** add $swal2-container-padding ([#1463](https://github.com/sweetalert2/sweetalert2/issues/1463)) ([d448794](https://github.com/sweetalert2/sweetalert2/commit/d448794))
+
 # [8.5.0](https://github.com/sweetalert2/sweetalert2/compare/v8.4.0...v8.5.0) (2019-03-15)
 
 

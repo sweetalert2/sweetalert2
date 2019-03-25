@@ -482,34 +482,6 @@ QUnit.test('modal vertical offset', (assert) => {
   })
 })
 
-QUnit.test('target', (assert) => {
-  const warn = console.warn // Suppress the warnings
-  console.warn = () => true // Suppress the warnings
-  Swal.fire('Default target')
-  assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
-  Swal.close()
-
-  const dummyTargetElement = Object.assign(document.createElement('div'), { id: 'dummy-target' })
-  document.body.appendChild(dummyTargetElement)
-
-  Swal.fire({ title: 'Custom valid target (string)', target: '#dummy-target' }) // switch targets
-  assert.equal(document.querySelector('.swal2-container').parentNode, dummyTargetElement)
-  Swal.close()
-
-  Swal.fire({ title: 'Custom invalid target (string)', target: 'lorem_ipsum' }) // switch targets
-  assert.equal(document.querySelector('.swal2-container').parentNode, document.body)
-  Swal.close()
-
-  Swal.fire({ title: 'Custom valid target (element)', target: dummyTargetElement })
-  assert.equal(document.querySelector('.swal2-container').parentNode, dummyTargetElement)
-  Swal.close()
-
-  Swal.fire({ title: 'Custom invalid target (element)', target: true })
-  assert.equal(document.body, document.querySelector('.swal2-container').parentNode)
-  Swal.close()
-  console.warn = warn // Suppress the warnings
-})
-
 QUnit.test('onOpen', (assert) => {
   const done = assert.async()
 
@@ -716,18 +688,18 @@ QUnit.test('null values', (assert) => {
 })
 
 QUnit.test('backdrop accepts css background param', (assert) => {
-  let backdrop = 'rgb(123, 123, 123)'
   Swal.fire({
     title: 'I have no backdrop',
     backdrop: false
   })
   assert.notOk($('.swal2-container').style.background)
 
+  let backdrop = 'rgb(123, 123, 123)'
   Swal.fire({
     title: 'I have a custom backdrop',
     backdrop: backdrop
   })
-  assert.ok($('.swal2-container').style.background.includes(backdrop))
+  assert.ok(Swal.getContainer().style.background.includes(backdrop))
 })
 
 QUnit.test('preConfirm return false', (assert) => {

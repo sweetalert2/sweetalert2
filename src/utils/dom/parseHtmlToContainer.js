@@ -1,10 +1,4 @@
-import { show, hide } from './domUtils.js'
-
 export const parseHtmlToContainer = (param, target) => {
-  if (!param) {
-    return hide(target)
-  }
-
   // DOM element
   if (param instanceof HTMLElement) {
     target.appendChild(param)
@@ -21,5 +15,4 @@ export const parseHtmlToContainer = (param, target) => {
   } else if (param) {
     target.innerHTML = param
   }
-  show(target)
 }

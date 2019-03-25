@@ -1,4 +1,5 @@
 import * as dom from '../utils/dom/index.js'
+import { renderProgressSteps } from '../utils/dom/renderers/renderProgressSteps'
 import privateProps from '../privateProps.js'
 
 export function getProgressSteps () {
@@ -10,7 +11,7 @@ export function setProgressSteps (progressSteps) {
   const innerParams = privateProps.innerParams.get(this)
   const updatedParams = Object.assign({}, innerParams, { progressSteps })
   privateProps.innerParams.set(this, updatedParams)
-  dom.renderProgressSteps(updatedParams)
+  renderProgressSteps(updatedParams)
 }
 
 export function showProgressSteps () {

@@ -1,7 +1,6 @@
 import { swalClasses, iconTypes } from '../../classes.js'
 import { error } from '../../utils.js'
 import * as dom from '../../dom/index.js'
-import sweetAlert from '../../../sweetalert2.js'
 
 export const renderIcon = (params) => {
   const icons = dom.getIcons()
@@ -16,13 +15,11 @@ export const renderIcon = (params) => {
   adjustSuccessIconBackgoundColor()
 
   if (Object.keys(iconTypes).indexOf(params.type) !== -1) {
-    const icon = sweetAlert.getPopup().querySelector(`.${swalClasses.icon}.${iconTypes[params.type]}`)
+    const icon = dom.getPopup().querySelector(`.${swalClasses.icon}.${iconTypes[params.type]}`)
     dom.show(icon)
 
     // Custom class
-    if (params.customClass) {
-      dom.addClass(icon, params.customClass.icon)
-    }
+    dom.applyCustomClass(icon, params.customClass, 'icon')
 
     // Animate icon
     if (params.animation) {

@@ -14,9 +14,7 @@ export const renderActions = (params) => {
   }
 
   // Custom class
-  if (params.customClass) {
-    dom.addClass(actions, params.customClass.actions)
-  }
+  dom.applyCustomClass(actions, params.customClass, 'actions')
 
   // Confirm button
   dom.toggle(confirmButton, params.showConfirmButton, 'inline-block')

@@ -9,7 +9,7 @@ export const { isVisible } = require('../../src/utils/dom/domUtils.js')
 
 export const isHidden = (elem) => !isVisible(elem)
 
-export let TIMEOUT = 1
+export let TIMEOUT = 10
 
 if (isIE) {
   TIMEOUT = 100

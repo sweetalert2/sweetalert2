@@ -26,6 +26,9 @@ Your contribution will be greatly appreciated!
 - **[Jan Fässler](https://github.com/faessler)** (30 EUR)
     > Nice work! 👾
 
+- **[Tom at FlowCrypt](http://flowcrypt.com)** (30 USD worth of BTC and ETH)
+    > Thanks for the awesome work!
+
 - **Ventsislav Radev** (23 EUR)
 
 - **Danny Lankar** (25 USD)

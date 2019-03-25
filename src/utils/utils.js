@@ -15,6 +15,12 @@ export const uniqueArray = (arr) => {
 }
 
 /**
+ * Returns the array ob object values (Object.values isn't supported in IE11)
+ * @param obj
+ */
+export const objectValues = (obj) => Object.keys(obj).map(key => obj[key])
+
+/**
  * Convert NodeList to Array
  * @param nodeList
  */

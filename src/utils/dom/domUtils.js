@@ -1,5 +1,3 @@
-import { swalClasses } from '../classes.js'
-
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
   previousBodyPadding: null
@@ -55,14 +53,18 @@ export const getChildByClass = (elem, className) => {
   }
 }
 
-export const show = (elem) => {
+export const show = (elem, display = 'flex') => {
   elem.style.opacity = ''
-  elem.style.display = (elem.id === swalClasses.content) ? 'block' : 'flex'
+  elem.style.display = display
 }
 
 export const hide = (elem) => {
   elem.style.opacity = ''
   elem.style.display = 'none'
+}
+
+export const toggle = (elem, condition, display) => {
+  condition ? show(elem, display) : hide(elem)
 }
 
 // borrowed from jquery $(elem).is(':visible') implementation

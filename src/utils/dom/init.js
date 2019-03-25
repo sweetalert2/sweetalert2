@@ -55,10 +55,10 @@ const sweetHTML = `
  * Add modal + backdrop to DOM
  */
 export const init = (params) => {
-  // Clean up the old popup if it exists
-  const c = getContainer()
-  if (c) {
-    c.parentNode.removeChild(c)
+  // Clean up the old popup container if it exists
+  const oldContainer = getContainer()
+  if (oldContainer) {
+    oldContainer.parentNode.removeChild(oldContainer)
     removeClass(
       [document.documentElement, document.body],
       [

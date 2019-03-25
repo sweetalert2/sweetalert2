@@ -72,7 +72,7 @@ QUnit.test('Modal positions', (assert) => {
     Swal.close()
   })
 
-  console.warn = warn //  Re-enable warnings
+  console.warn = warn // Re-enable warnings
 })
 
 QUnit.test('Toast positions', (assert) => {
@@ -88,7 +88,7 @@ QUnit.test('Toast positions', (assert) => {
     Swal.close()
   })
 
-  console.warn = warn //  Re-enable warnings
+  console.warn = warn // Re-enable warnings
 })
 
 QUnit.test('Modal positions with target', (assert) => {

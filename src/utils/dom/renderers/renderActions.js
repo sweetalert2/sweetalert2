@@ -13,19 +13,16 @@ export const renderActions = (params) => {
     dom.show(actions)
   }
 
-  // Cancel button
-  if (params.showCancelButton) {
-    cancelButton.style.display = 'inline-block'
-  } else {
-    dom.hide(cancelButton)
+  // Custom class
+  if (params.customClass) {
+    dom.addClass(actions, params.customClass.actions)
   }
 
   // Confirm button
-  if (params.showConfirmButton) {
-    confirmButton.style.removeProperty('display')
-  } else {
-    dom.hide(confirmButton)
-  }
+  dom.toggle(confirmButton, params.showConfirmButton, 'inline-block')
+
+  // Cancel button
+  dom.toggle(cancelButton, params.showCancelButton, 'inline-block')
 
   // Edit text on confirm and cancel buttons
   confirmButton.innerHTML = params.confirmButtonText

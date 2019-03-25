@@ -4,7 +4,7 @@ import sweetAlert from '../sweetalert2.js'
 import privateProps from '../privateProps.js'
 
 /**
- * Updates popup options.
+ * Updates popup parameters.
  */
 export function update (params) {
   const validUpdatableParams = {}
@@ -21,24 +21,7 @@ export function update (params) {
   const innerParams = privateProps.innerParams.get(this)
   const updatedParams = Object.assign({}, innerParams, validUpdatableParams)
 
-  // Actions
-  dom.renderActions(updatedParams)
-
-  // Content
-  dom.renderContent(updatedParams)
-
-  // Icon
-  dom.renderIcon(updatedParams)
-
-  // Image
-  dom.renderImage(updatedParams)
-
-  // Progress steps
-  dom.renderProgressSteps(updatedParams)
-
-  // Title
-  dom.renderTitle(updatedParams)
-
+  dom.render(updatedParams)
 
   privateProps.innerParams.set(this, updatedParams)
 }

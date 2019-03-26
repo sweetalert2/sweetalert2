@@ -1,10 +1,13 @@
-const isCI = require('is-ci')
+const ci = require('ci-info')
 
 const noLaunch = process.argv.includes('--no-launch')
-const isWindows = process.platform === 'win32'
 const testMinified = process.argv.includes('--minified')
 const isSauce = process.argv.includes('--sauce')
 const isNetlify = process.argv.includes('--netlify')
+
+if (isNetlify) {
+  process.env.CHROME_BIN = require('puppeteer').executablePath()
+}
 
 const webpackConfig = {
   devtool: 'inline-source-map',
@@ -111,35 +114,30 @@ function getBrowsers () {
     return []
   }
 
+  let browsers = ['ChromeHeadless']
+
   // Cron on Travis or check:qunit --sauce
   if (isSauce) {
     checkSauceCredentials()
-    return Object.keys(sauceLabsLaunchers)
-
-  // Netlify
-  } else if (isNetlify) {
-    process.env.CHROME_BIN = require('puppeteer').executablePath()
-    return ['ChromeHeadless']
+    browsers = Object.keys(sauceLabsLaunchers)
 
   // AppVeyor
-  } else if (isCI && isWindows) {
-    return ['IE', 'ChromeHeadless', 'FirefoxHeadless']
+  } else if (ci.APPVEYOR) {
+    browsers = ['IE', 'ChromeHeadless', 'FirefoxHeadless']
 
   // Travis
-  } else if (isCI) {
-    return ['ChromeHeadless', 'FirefoxHeadless']
-
-  // Local development
-  } else {
-    return ['ChromeHeadless']
+  } else if (ci.TRAVIS) {
+    browsers = ['ChromeHeadless', 'FirefoxHeadless']
   }
+
+  return browsers
 }
 
 function getReporters () {
   const reporters = ['spec', 'saucelabs']
 
   // Travis
-  if (isCI && !isWindows && !testMinified) {
+  if (ci.TRAVIS && !testMinified) {
     reporters.push('coverage')
   }
 

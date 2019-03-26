@@ -1,3 +1,6 @@
+import { swalClasses, iconTypes } from '../classes.js'
+import { toArray, objectValues } from '../utils.js';
+
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
   previousBodyPadding: null
@@ -5,6 +8,40 @@ export const states = {
 
 export const hasClass = (elem, className) => {
   return elem.classList.contains(className)
+}
+
+export const applyCustomClass = (elem, customClass, className) => {
+  // Clean up previous custom classes
+  toArray(elem.classList).forEach(className => {
+    if (!objectValues(swalClasses).includes(className) && !objectValues(iconTypes).includes(className)) {
+      elem.classList.remove(className)
+    }
+  })
+
+  if (customClass && customClass[className]) {
+    addClass(elem, customClass[className])
+  }
+}
+
+export function getInput (content, inputType) {
+  if (!inputType) {
+    return null
+  }
+  switch (inputType) {
+    case 'select':
+    case 'textarea':
+    case 'file':
+      return getChildByClass(content, swalClasses[inputType])
+    case 'checkbox':
+      return content.querySelector(`.${swalClasses.checkbox} input`)
+    case 'radio':
+      return content.querySelector(`.${swalClasses.radio} input:checked`) ||
+        content.querySelector(`.${swalClasses.radio} input:first-child`)
+    case 'range':
+      return content.querySelector(`.${swalClasses.range} input`)
+    default:
+      return getChildByClass(content, swalClasses.input)
+  }
 }
 
 export const focusInput = (input) => {

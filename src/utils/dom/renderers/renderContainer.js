@@ -1,5 +1,5 @@
 import { swalClasses } from '../../classes.js'
-import { objectValues, warn, toArray } from '../../utils.js'
+import { warn } from '../../utils.js'
 import * as dom from '../../dom/index.js'
 
 export const renderContainer = (params) => {
@@ -35,17 +35,8 @@ export const renderContainer = (params) => {
     }
   }
 
-  // Clean up previous custom classes
-  toArray(container.classList).forEach(className => {
-    if (!objectValues(swalClasses).includes(className)) {
-      container.classList.remove(className)
-    }
-  })
-
   // Custom class
-  if (params.customClass) {
-    dom.addClass(container, params.customClass.container)
-  }
+  dom.applyCustomClass(container, params.customClass, 'container')
   if (params.customContainerClass) { // @deprecated
     dom.addClass(container, params.customContainerClass)
   }

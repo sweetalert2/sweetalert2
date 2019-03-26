@@ -10,7 +10,5 @@ export const renderFooter = (params) => {
   }
 
   // Custom class
-  if (params.customClass) {
-    dom.addClass(footer, params.customClass.footer)
-  }
+  dom.applyCustomClass(footer, params.customClass, 'footer')
 }

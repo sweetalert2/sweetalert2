@@ -9,26 +9,32 @@ QUnit.test('inputValue number', (assert) => {
 QUnit.test('inputValue as a Promise', (assert) => {
   const _consoleWarn = console.warn
   const spy = sinon.spy(console, 'warn')
+  const done = assert.async()
 
   const inputTypes = ['text', 'email', 'number', 'tel', 'textarea']
-  const done = assert.async(inputTypes.length)
   const value = '1.1 input value'
   const inputValue = new Promise((resolve) => {
     resolve('1.1 input value')
   })
-  inputTypes.forEach(input => {
+
+  function showPopupWithInput () {
+    const input = inputTypes.pop()
     SwalWithoutAnimation.fire({
       input,
       inputValue,
-      onOpen: (modal) => {
+      onOpen: () => {
         setTimeout(() => {
-          const inputEl = input === 'textarea' ? modal.querySelector('.swal2-textarea') : modal.querySelector('.swal2-input')
-          assert.equal(inputEl.value, input === 'number' ? parseFloat(value) : value)
-          done()
+          assert.equal(Swal.getInput().value, input === 'number' ? parseFloat(value) : value)
+          if (inputTypes.length) {
+            showPopupWithInput()
+          } else {
+            done()
+          }
         }, TIMEOUT)
       }
     })
-  })
+  }
+  showPopupWithInput()
 
   console.warn = _consoleWarn
   assert.ok(spy.notCalled)

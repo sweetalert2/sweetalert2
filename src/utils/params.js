@@ -99,6 +99,7 @@ export const isValidParameter = (paramName) => {
  */
 export const isUpdatableParameter = (paramName) => {
   return [
+    'customClass',
     'title',
     'titleText',
     'text',

@@ -43,6 +43,11 @@ export default function setParameters (params) {
     params.target = 'body'
   }
 
+  // Replace newlines with <br> in title
+  if (typeof params.title === 'string') {
+    params.title = params.title.split('\n').join('<br />');
+  }
+
   const oldPopup = dom.getPopup()
   let targetElement = typeof params.target === 'string' ? document.querySelector(params.target) : params.target
   if (
@@ -52,7 +57,5 @@ export default function setParameters (params) {
   ) {
     dom.init(params)
   }
-
-  dom.render(params)
 }
 

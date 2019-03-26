@@ -2,12 +2,13 @@ import defaultParams, { showWarningsForParams } from '../utils/params.js'
 import * as dom from '../utils/dom/index.js'
 import { swalClasses } from '../utils/classes.js'
 import Timer from '../utils/Timer.js'
-import { formatInputOptions, error, warn, callIfFunction, isPromise } from '../utils/utils.js'
+import { formatInputOptions, error, callIfFunction, isPromise } from '../utils/utils.js'
 import setParameters from '../utils/setParameters.js'
 import globalState from '../globalState.js'
 import { openPopup } from '../utils/openPopup.js'
 import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
+import { populateInputOptions } from '../utils/dom/inputUtils.js';
 
 export function _main (userParams) {
   showWarningsForParams(userParams)
@@ -38,6 +39,8 @@ export function _main (userParams) {
     progressSteps: dom.getProgressSteps()
   }
   privateProps.domCache.set(this, domCache)
+
+  dom.render(innerParams)
 
   const constructor = this.constructor
 
@@ -338,175 +341,9 @@ export function _main (userParams) {
       dom.removeClass(document.body, swalClasses['toast-column'])
     }
 
-    // inputs
-    const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
-    const setInputPlaceholder = (input) => {
-      if (!input.placeholder || innerParams.inputPlaceholder) {
-        input.placeholder = innerParams.inputPlaceholder
-      }
-    }
-    let input
-    for (let i = 0; i < inputTypes.length; i++) {
-      const inputClass = swalClasses[inputTypes[i]]
-      const inputContainer = dom.getChildByClass(domCache.content, inputClass)
-      input = this.getInput(inputTypes[i])
-
-      // set attributes
-      if (input) {
-        for (let j in input.attributes) {
-          if (input.attributes.hasOwnProperty(j)) {
-            const attrName = input.attributes[j].name
-            if (attrName !== 'type' && attrName !== 'value') {
-              input.removeAttribute(attrName)
-            }
-          }
-        }
-        for (let attr in innerParams.inputAttributes) {
-          // Do not set a placeholder for <input type="range">
-          // it'll crash Edge, #1298
-          if (inputTypes[i] === 'range' && attr === 'placeholder') {
-            continue
-          }
-
-          input.setAttribute(attr, innerParams.inputAttributes[attr])
-        }
-      }
-
-      // set class
-      inputContainer.className = inputClass
-      if (innerParams.inputClass) {
-        dom.addClass(inputContainer, innerParams.inputClass)
-      }
-      if (innerParams.customClass) {
-        dom.addClass(inputContainer, innerParams.customClass.input)
-      }
-
-      dom.hide(inputContainer)
-    }
-
-    let populateInputOptions
-    switch (innerParams.input) {
-      case 'text':
-      case 'email':
-      case 'password':
-      case 'number':
-      case 'tel':
-      case 'url': {
-        input = dom.getChildByClass(domCache.content, swalClasses.input)
-        if (typeof innerParams.inputValue === 'string' || typeof innerParams.inputValue === 'number') {
-          input.value = innerParams.inputValue
-        } else if (!isPromise(innerParams.inputValue)) {
-          warn(`Unexpected type of inputValue! Expected "string", "number" or "Promise", got "${typeof innerParams.inputValue}"`)
-        }
-        setInputPlaceholder(input)
-        input.type = innerParams.input
-        dom.show(input)
-        break
-      }
-      case 'file': {
-        input = dom.getChildByClass(domCache.content, swalClasses.file)
-        setInputPlaceholder(input)
-        input.type = innerParams.input
-        dom.show(input)
-        break
-      }
-      case 'range': {
-        const range = dom.getChildByClass(domCache.content, swalClasses.range)
-        const rangeInput = range.querySelector('input')
-        const rangeOutput = range.querySelector('output')
-        rangeInput.value = innerParams.inputValue
-        rangeInput.type = innerParams.input
-        rangeOutput.value = innerParams.inputValue
-        dom.show(range)
-        break
-      }
-      case 'select': {
-        const select = dom.getChildByClass(domCache.content, swalClasses.select)
-        select.innerHTML = ''
-        if (innerParams.inputPlaceholder) {
-          const placeholder = document.createElement('option')
-          placeholder.innerHTML = innerParams.inputPlaceholder
-          placeholder.value = ''
-          placeholder.disabled = true
-          placeholder.selected = true
-          select.appendChild(placeholder)
-        }
-        populateInputOptions = (inputOptions) => {
-          inputOptions.forEach(inputOption => {
-            const optionValue = inputOption[0]
-            const optionLabel = inputOption[1]
-            const option = document.createElement('option')
-            option.value = optionValue
-            option.innerHTML = optionLabel
-            if (innerParams.inputValue.toString() === optionValue.toString()) {
-              option.selected = true
-            }
-            select.appendChild(option)
-          })
-          dom.show(select)
-          select.focus()
-        }
-        break
-      }
-      case 'radio': {
-        const radio = dom.getChildByClass(domCache.content, swalClasses.radio)
-        radio.innerHTML = ''
-        populateInputOptions = (inputOptions) => {
-          inputOptions.forEach(inputOption => {
-            const radioValue = inputOption[0]
-            const radioLabel = inputOption[1]
-            const radioInput = document.createElement('input')
-            const radioLabelElement = document.createElement('label')
-            radioInput.type = 'radio'
-            radioInput.name = swalClasses.radio
-            radioInput.value = radioValue
-            if (innerParams.inputValue.toString() === radioValue.toString()) {
-              radioInput.checked = true
-            }
-            const label = document.createElement('span')
-            label.innerHTML = radioLabel
-            label.className = swalClasses.label
-            radioLabelElement.appendChild(radioInput)
-            radioLabelElement.appendChild(label)
-            radio.appendChild(radioLabelElement)
-          })
-          dom.show(radio)
-          const radios = radio.querySelectorAll('input')
-          if (radios.length) {
-            radios[0].focus()
-          }
-        }
-        break
-      }
-      case 'checkbox': {
-        const checkbox = dom.getChildByClass(domCache.content, swalClasses.checkbox)
-        const checkboxInput = this.getInput('checkbox')
-        checkboxInput.type = 'checkbox'
-        checkboxInput.value = 1
-        checkboxInput.id = swalClasses.checkbox
-        checkboxInput.checked = Boolean(innerParams.inputValue)
-        let label = checkbox.querySelector('span')
-        label.innerHTML = innerParams.inputPlaceholder
-        dom.show(checkbox)
-        break
-      }
-      case 'textarea': {
-        const textarea = dom.getChildByClass(domCache.content, swalClasses.textarea)
-        textarea.value = innerParams.inputValue
-        setInputPlaceholder(textarea)
-        dom.show(textarea)
-        break
-      }
-      case null: {
-        break
-      }
-      default:
-        error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${innerParams.input}"`)
-        break
-    }
-
     if (innerParams.input === 'select' || innerParams.input === 'radio') {
-      const processInputOptions = inputOptions => populateInputOptions(formatInputOptions(inputOptions))
+      const content = dom.getContent()
+      const processInputOptions = (inputOptions) => populateInputOptions[innerParams.input](content, formatInputOptions(inputOptions), innerParams)
       if (isPromise(innerParams.inputOptions)) {
         constructor.showLoading()
         innerParams.inputOptions.then((inputOptions) => {
@@ -519,6 +356,7 @@ export function _main (userParams) {
         error(`Unexpected type of inputOptions! Expected object, Map or Promise, got ${typeof innerParams.inputOptions}`)
       }
     } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(innerParams.input) && isPromise(innerParams.inputValue)) {
+      const input = constructor.getInput()
       constructor.showLoading()
       dom.hide(input)
       innerParams.inputValue.then((inputValue) => {

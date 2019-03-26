@@ -27,8 +27,9 @@ export const renderPopup = (params) => {
   }
 
   // Custom class
-  if (params.customClass) {
-    dom.addClass(popup, typeof params.customClass === 'string' ? params.customClass : params.customClass.popup)
+  dom.applyCustomClass(popup, params.customClass, 'popup')
+  if (typeof params.customClass === 'string') {
+    dom.addClass(popup, params.customClass)
   }
 
   // CSS animation

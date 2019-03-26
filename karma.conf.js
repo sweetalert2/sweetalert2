@@ -1,4 +1,4 @@
-const isCi = require('is-ci')
+const isCI = require('is-ci')
 
 const noLaunch = process.argv.includes('--no-launch')
 const isWindows = process.platform === 'win32'
@@ -6,37 +6,74 @@ const testMinified = process.argv.includes('--minified')
 const isSauce = process.argv.includes('--sauce')
 const isNetlify = process.argv.includes('--netlify')
 
-module.exports = function (config) {
-  const sauceLabsLaunchers = {
-    safari: {
-      base: 'SauceLabs',
-      browserName: 'Safari',
-      version: 'latest',
-      // TODO(@limonte): remove this line, the current latest 10.14 doesn't work (#1349)
-      platform: 'macOS 10.13'
-    },
-    edge: {
-      base: 'SauceLabs',
-      browserName: 'MicrosoftEdge',
-      version: 'latest'
-    },
-    iphone: {
-      base: 'SauceLabs',
-      browserName: 'Safari',
-      deviceName: 'iPhone Simulator',
-      platformName: 'iOS',
-      platformVersion: 'latest'
-    },
-    android: {
-      base: 'SauceLabs',
-      deviceName: 'Android GoogleAPI Emulator',
-      browserName: 'Chrome',
-      platformName: 'Android',
-      platformVersion: 'latest'
-    }
+const webpackConfig = {
+  devtool: 'inline-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|dist)/,
+        use: {
+          loader: 'babel-loader',
+          options: {/* babel options */}
+        }
+      }
+    ]
   }
-  let browsers = []
+}
 
+const karmaPlugins = [
+  'karma-coverage',
+  'karma-webpack',
+  'karma-qunit',
+  'karma-spec-reporter',
+  'karma-sourcemap-loader',
+  'karma-chrome-launcher',
+  'karma-firefox-launcher',
+  'karma-ie-launcher',
+  'karma-sauce-launcher'
+]
+
+const preprocessors = {
+  'test/qunit/**/*.js': [
+    'webpack',
+    'sourcemap'
+  ],
+  'dist/*.js': [
+    'coverage'
+  ]
+}
+
+const sauceLabsLaunchers = {
+  safari: {
+    base: 'SauceLabs',
+    browserName: 'Safari',
+    version: 'latest',
+    // TODO(@limonte): remove this line, the current latest 10.14 doesn't work (#1349)
+    platform: 'macOS 10.13'
+  },
+  edge: {
+    base: 'SauceLabs',
+    browserName: 'MicrosoftEdge',
+    version: 'latest'
+  },
+  iphone: {
+    base: 'SauceLabs',
+    browserName: 'Safari',
+    deviceName: 'iPhone Simulator',
+    platformName: 'iOS',
+    platformVersion: 'latest'
+  },
+  android: {
+    base: 'SauceLabs',
+    deviceName: 'Android GoogleAPI Emulator',
+    browserName: 'Chrome',
+    platformName: 'Android',
+    platformVersion: 'latest'
+  }
+}
+
+function getFiles () {
   let files
   if (testMinified) {
     files = [
@@ -48,43 +85,61 @@ module.exports = function (config) {
       'dist/sweetalert2.js'
     ]
   }
-  files = files.concat([
+  return files.concat([
     'node_modules/promise-polyfill/dist/polyfill.min.js',
     'test/qunit/**/*.js'
   ])
+}
 
+function getBrowsers () {
+  if (noLaunch) {
+    return []
+  }
+
+  let browsers = []
+  // Cron on Travis or check:qunit --sauce
+  if (isSauce) {
+    if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
+      console.error('SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables must be set')
+      process.exit(1)
+    }
+    browsers = Object.keys(sauceLabsLaunchers)
+
+  // Netlify
+  } else if (isNetlify) {
+    process.env.CHROME_BIN = require('puppeteer').executablePath()
+    browsers = ['ChromeHeadless']
+
+  // CI
+  } else if (isCI) {
+    // AppVeyor
+    if (isWindows) {
+      browsers = ['IE', 'ChromeHeadless', 'FirefoxHeadless']
+    // Travis
+    } else {
+      browsers = ['ChromeHeadless', 'FirefoxHeadless']
+    }
+
+  // Local development
+  } else {
+    browsers = ['ChromeHeadless']
+  }
+
+  return browsers
+}
+
+function getReporters () {
   const reporters = ['spec', 'saucelabs']
 
-  if (!noLaunch) {
-    // Cron on Travis or check:qunit --sauce
-    if (isSauce) {
-      if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
-        console.error('SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables must be set')
-        process.exit(1)
-      }
-      browsers = Object.keys(sauceLabsLaunchers)
-    // Netlify
-    } else if (isNetlify) {
-      process.env.CHROME_BIN = require('puppeteer').executablePath()
-      browsers = ['ChromeHeadless']
-      reporters.push('coverage')
-    } else if (isCi) {
-      // AppVeyor
-      if (isWindows) {
-        browsers = ['IE', 'ChromeHeadless', 'FirefoxHeadless']
-      // Travis
-      } else {
-        browsers = ['ChromeHeadless', 'FirefoxHeadless']
-        if (!testMinified) {
-          reporters.push('coverage')
-        }
-      }
-    } else {
-      // Local development
-      browsers = ['ChromeHeadless']
-      reporters.push('coverage')
-    }
+  // Travis
+  if (isCI && !isWindows && !testMinified) {
+    reporters.push('coverage')
   }
+
+  return reporters
+}
+
+module.exports = function (config) {
   config.set({
     port: 3000,
     frameworks: [
@@ -94,17 +149,10 @@ module.exports = function (config) {
       reorder: false
     },
     customLaunchers: sauceLabsLaunchers,
-    browsers,
-    reporters,
-    preprocessors: {
-      'test/qunit/**/*.js': [
-        'webpack',
-        'sourcemap'
-      ],
-      'dist/*.js': [
-        'coverage'
-      ]
-    },
+    files: getFiles(),
+    browsers: getBrowsers(),
+    reporters: getReporters(),
+    preprocessors,
     coverageReporter: {
       dir: 'coverage',
       reporters: [
@@ -112,36 +160,11 @@ module.exports = function (config) {
         { type: 'lcov', subdir: '.' }
       ]
     },
-    files,
-    webpack: {
-      devtool: 'inline-source-map',
-      module: {
-        rules: [
-          {
-            test: /\.js$/,
-            exclude: /(node_modules|dist)/,
-            use: {
-              loader: 'babel-loader',
-              options: {/* babel options */}
-            }
-          }
-        ]
-      }
-    },
+    webpack: webpackConfig,
     webpackMiddleware: {
       stats: 'errors-only'
     },
-    plugins: [
-      'karma-coverage',
-      'karma-webpack',
-      'karma-qunit',
-      'karma-spec-reporter',
-      'karma-sourcemap-loader',
-      'karma-chrome-launcher',
-      'karma-firefox-launcher',
-      'karma-ie-launcher',
-      'karma-sauce-launcher'
-    ],
+    plugins: karmaPlugins,
     captureTimeout: 360000,
     browserNoActivityTimeout: 360000
   })

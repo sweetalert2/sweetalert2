@@ -51,39 +51,26 @@ const sweetHTML = `
  </div>
 `.replace(/(^|\n)\s*/g, '')
 
-/*
- * Add modal + backdrop to DOM
- */
-export const init = (params) => {
-  // Clean up the old popup container if it exists
+function resetOldContainer () {
   const oldContainer = getContainer()
-  if (oldContainer) {
-    oldContainer.parentNode.removeChild(oldContainer)
-    removeClass(
-      [document.documentElement, document.body],
-      [
-        swalClasses['no-backdrop'],
-        swalClasses['toast-shown'],
-        swalClasses['has-column']
-      ]
-    )
-  }
-
-  /* istanbul ignore if */
-  if (isNodeEnv()) {
-    error('SweetAlert2 requires document to initialize')
+  if (!oldContainer) {
     return
   }
 
-  const container = document.createElement('div')
-  container.className = swalClasses.container
-  container.innerHTML = sweetHTML
+  oldContainer.parentNode.removeChild(oldContainer)
+  removeClass(
+    [document.documentElement, document.body],
+    [
+      swalClasses['no-backdrop'],
+      swalClasses['toast-shown'],
+      swalClasses['has-column']
+    ]
+  )
+}
 
-  let targetElement = typeof params.target === 'string' ? document.querySelector(params.target) : params.target
-  targetElement.appendChild(container)
-
-  const popup = getPopup()
+function addInputChangeListeners () {
   const content = getContent()
+
   const input = getChildByClass(content, swalClasses.input)
   const file = getChildByClass(content, swalClasses.file)
   const range = content.querySelector(`.${swalClasses.range} input`)
@@ -91,18 +78,6 @@ export const init = (params) => {
   const select = getChildByClass(content, swalClasses.select)
   const checkbox = content.querySelector(`.${swalClasses.checkbox} input`)
   const textarea = getChildByClass(content, swalClasses.textarea)
-
-  // a11y
-  popup.setAttribute('role', params.toast ? 'alert' : 'dialog')
-  popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive')
-  if (!params.toast) {
-    popup.setAttribute('aria-modal', 'true')
-  }
-
-  // RTL
-  if (window.getComputedStyle(targetElement).direction === 'rtl') {
-    addClass(getContainer(), swalClasses.rtl)
-  }
 
   let oldInputVal // IE11 workaround, see #1109 for details
   const resetValidationMessage = (e) => {
@@ -127,6 +102,43 @@ export const init = (params) => {
     resetValidationMessage(e)
     range.nextSibling.value = range.value
   }
+}
+
+/*
+ * Add modal + backdrop to DOM
+ */
+export const init = (params) => {
+  // Clean up the old popup container if it exists
+  resetOldContainer()
+
+  /* istanbul ignore if */
+  if (isNodeEnv()) {
+    error('SweetAlert2 requires document to initialize')
+    return
+  }
+
+  const container = document.createElement('div')
+  container.className = swalClasses.container
+  container.innerHTML = sweetHTML
+
+  let targetElement = typeof params.target === 'string' ? document.querySelector(params.target) : params.target
+  targetElement.appendChild(container)
+
+  const popup = getPopup()
+
+  // a11y
+  popup.setAttribute('role', params.toast ? 'alert' : 'dialog')
+  popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive')
+  if (!params.toast) {
+    popup.setAttribute('aria-modal', 'true')
+  }
+
+  // RTL
+  if (window.getComputedStyle(targetElement).direction === 'rtl') {
+    addClass(getContainer(), swalClasses.rtl)
+  }
+
+  addInputChangeListeners()
 
   return popup
 }

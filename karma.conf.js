@@ -44,6 +44,14 @@ const preprocessors = {
   ]
 }
 
+const coverageReporter = {
+  dir: 'coverage',
+  reporters: [
+    { type: 'html', subdir: '.' },
+    { type: 'lcov', subdir: '.' }
+  ]
+}
+
 const sauceLabsLaunchers = {
   safari: {
     base: 'SauceLabs',
@@ -73,6 +81,13 @@ const sauceLabsLaunchers = {
   }
 }
 
+function checkSauceCredentials() {
+  if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
+    console.error('SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables must be set')
+    process.exit(1)
+  }
+}
+
 function getFiles () {
   let files
   if (testMinified) {
@@ -96,36 +111,28 @@ function getBrowsers () {
     return []
   }
 
-  let browsers = []
   // Cron on Travis or check:qunit --sauce
   if (isSauce) {
-    if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
-      console.error('SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables must be set')
-      process.exit(1)
-    }
-    browsers = Object.keys(sauceLabsLaunchers)
+    checkSauceCredentials()
+    return Object.keys(sauceLabsLaunchers)
 
   // Netlify
   } else if (isNetlify) {
     process.env.CHROME_BIN = require('puppeteer').executablePath()
-    browsers = ['ChromeHeadless']
+    return ['ChromeHeadless']
 
-  // CI
+  // AppVeyor
+  } else if (isCI && isWindows) {
+    return ['IE', 'ChromeHeadless', 'FirefoxHeadless']
+
+  // Travis
   } else if (isCI) {
-    // AppVeyor
-    if (isWindows) {
-      browsers = ['IE', 'ChromeHeadless', 'FirefoxHeadless']
-    // Travis
-    } else {
-      browsers = ['ChromeHeadless', 'FirefoxHeadless']
-    }
+    return ['ChromeHeadless', 'FirefoxHeadless']
 
   // Local development
   } else {
-    browsers = ['ChromeHeadless']
+    return ['ChromeHeadless']
   }
-
-  return browsers
 }
 
 function getReporters () {
@@ -142,29 +149,24 @@ function getReporters () {
 module.exports = function (config) {
   config.set({
     port: 3000,
-    frameworks: [
-      'qunit'
-    ],
-    qunit: {
-      reorder: false
-    },
+    plugins: karmaPlugins,
+
+    frameworks: ['qunit'],
+    qunit: { reorder: false },
+
     customLaunchers: sauceLabsLaunchers,
+
     files: getFiles(),
     browsers: getBrowsers(),
     reporters: getReporters(),
     preprocessors,
-    coverageReporter: {
-      dir: 'coverage',
-      reporters: [
-        { type: 'html', subdir: '.' },
-        { type: 'lcov', subdir: '.' }
-      ]
-    },
+    coverageReporter,
+
     webpack: webpackConfig,
     webpackMiddleware: {
       stats: 'errors-only'
     },
-    plugins: karmaPlugins,
+
     captureTimeout: 360000,
     browserNoActivityTimeout: 360000
   })

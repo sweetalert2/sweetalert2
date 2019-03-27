@@ -1,4 +1,4 @@
-import { warn, warnOnce } from '../utils/utils.js'
+import { warn, warnAboutDepreation } from '../utils/utils.js'
 
 const defaultParams = {
   title: '',
@@ -149,7 +149,7 @@ export const showWarningsForParams = (params) => {
       warn(`The parameter "${param}" is incompatible with toasts`)
     }
     if (isDeprecatedParameter(param)) {
-      warnOnce(`The parameter "${param}" is deprecated and will be removed in the next major release. Please use "${isDeprecatedParameter(param)}" instead.`)
+      warnAboutDepreation(param, isDeprecatedParameter(param))
     }
   }
 }

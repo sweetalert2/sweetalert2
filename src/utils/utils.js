@@ -79,6 +79,13 @@ export const warnOnce = (message) => {
 }
 
 /**
+ * Show a one-time console warning about deprecated params/methods
+ */
+export const warnAboutDepreation = (deprecatedParam, useInstead) => {
+  warnOnce(`"${deprecatedParam}" is deprecated and will be removed in the next major release. Please use "${useInstead}" instead.`)
+}
+
+/**
  * If `arg` is a function, call it (with no arguments or context) and return the result.
  * Otherwise, just pass the value through
  * @param arg

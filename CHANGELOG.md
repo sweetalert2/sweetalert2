@@ -1,3 +1,10 @@
+## [8.7.1](https://github.com/sweetalert2/sweetalert2/compare/v8.7.0...v8.7.1) (2019-03-30)
+
+
+### Bug Fixes
+
+* update internal params in Swal.update() ([#1505](https://github.com/sweetalert2/sweetalert2/issues/1505)) ([e81d840](https://github.com/sweetalert2/sweetalert2/commit/e81d840))
+
 # [8.7.0](https://github.com/sweetalert2/sweetalert2/compare/v8.6.0...v8.7.0) (2019-03-26)
 
 

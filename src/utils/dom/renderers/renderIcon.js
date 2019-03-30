@@ -3,10 +3,7 @@ import { error } from '../../utils.js'
 import * as dom from '../../dom/index.js'
 
 export const renderIcon = (params) => {
-  const icons = dom.getIcons()
-  for (let i = 0; i < icons.length; i++) {
-    dom.hide(icons[i])
-  }
+  hideAllIcons()
 
   if (!params.type) {
     return
@@ -30,8 +27,15 @@ export const renderIcon = (params) => {
   }
 }
 
+const hideAllIcons = () => {
+  const icons = dom.getIcons()
+  for (let i = 0; i < icons.length; i++) {
+    dom.hide(icons[i])
+  }
+}
+
 // Adjust success icon background color to match the popup background color
-function adjustSuccessIconBackgoundColor () {
+const adjustSuccessIconBackgoundColor = () => {
   const popup = dom.getPopup()
   const popupBackgroundColor = window.getComputedStyle(popup).getPropertyValue('background-color')
   const successIconParts = popup.querySelectorAll('[class^=swal2-success-circular-line], .swal2-success-fix')

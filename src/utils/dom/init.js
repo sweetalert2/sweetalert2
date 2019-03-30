@@ -51,7 +51,7 @@ const sweetHTML = `
  </div>
 `.replace(/(^|\n)\s*/g, '')
 
-function resetOldContainer () {
+const resetOldContainer = () => {
   const oldContainer = getContainer()
   if (!oldContainer) {
     return
@@ -68,7 +68,15 @@ function resetOldContainer () {
   )
 }
 
-function addInputChangeListeners () {
+let oldInputVal // IE11 workaround, see #1109 for details
+const resetValidationMessage = (e) => {
+  if (sweetAlert.isVisible() && oldInputVal !== e.target.value) {
+    sweetAlert.resetValidationMessage()
+  }
+  oldInputVal = e.target.value
+}
+
+const addInputChangeListeners = () => {
   const content = getContent()
 
   const input = getChildByClass(content, swalClasses.input)
@@ -78,14 +86,6 @@ function addInputChangeListeners () {
   const select = getChildByClass(content, swalClasses.select)
   const checkbox = content.querySelector(`.${swalClasses.checkbox} input`)
   const textarea = getChildByClass(content, swalClasses.textarea)
-
-  let oldInputVal // IE11 workaround, see #1109 for details
-  const resetValidationMessage = (e) => {
-    if (sweetAlert.isVisible() && oldInputVal !== e.target.value) {
-      sweetAlert.resetValidationMessage()
-    }
-    oldInputVal = e.target.value
-  }
 
   input.oninput = resetValidationMessage
   file.onchange = resetValidationMessage
@@ -101,6 +101,24 @@ function addInputChangeListeners () {
   range.onchange = (e) => {
     resetValidationMessage(e)
     range.nextSibling.value = range.value
+  }
+}
+
+const getTarget = (target) => typeof target === 'string' ? document.querySelector(target) : target
+
+const setupAccessibility = (params) => {
+  const popup = getPopup()
+
+  popup.setAttribute('role', params.toast ? 'alert' : 'dialog')
+  popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive')
+  if (!params.toast) {
+    popup.setAttribute('aria-modal', 'true')
+  }
+}
+
+const setupRTL = (targetElement) => {
+  if (window.getComputedStyle(targetElement).direction === 'rtl') {
+    addClass(getContainer(), swalClasses.rtl)
   }
 }
 
@@ -121,24 +139,10 @@ export const init = (params) => {
   container.className = swalClasses.container
   container.innerHTML = sweetHTML
 
-  let targetElement = typeof params.target === 'string' ? document.querySelector(params.target) : params.target
+  const targetElement = getTarget(params.target)
   targetElement.appendChild(container)
 
-  const popup = getPopup()
-
-  // a11y
-  popup.setAttribute('role', params.toast ? 'alert' : 'dialog')
-  popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive')
-  if (!params.toast) {
-    popup.setAttribute('aria-modal', 'true')
-  }
-
-  // RTL
-  if (window.getComputedStyle(targetElement).direction === 'rtl') {
-    addClass(getContainer(), swalClasses.rtl)
-  }
-
+  setupAccessibility(params)
+  setupRTL(targetElement)
   addInputChangeListeners()
-
-  return popup
 }

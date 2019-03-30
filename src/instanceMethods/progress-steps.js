@@ -14,12 +14,8 @@ export function setProgressSteps (progressSteps) {
   renderProgressSteps(updatedParams)
 }
 
-export function showProgressSteps () {
-  const domCache = privateProps.domCache.get(this)
-  dom.show(domCache.progressSteps)
-}
+const getDomCacheProgressSteps = (instance) => privateProps.domCache.get(instance).progressSteps
 
-export function hideProgressSteps () {
-  const domCache = privateProps.domCache.get(this)
-  dom.hide(domCache.progressSteps)
-}
+export const showProgressSteps = () => dom.hide(getDomCacheProgressSteps(this))
+
+export const hideProgressSteps = () => dom.hide(getDomCacheProgressSteps(this))

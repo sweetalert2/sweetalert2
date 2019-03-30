@@ -108,3 +108,10 @@ QUnit.test('isUpdatableParameter() method', (assert) => {
   assert.ok(Swal.isUpdatableParameter('title'))
   assert.notOk(Swal.isUpdatableParameter('preConfirm'))
 })
+
+QUnit.test('should update instance\'s params', (assert) => {
+  const swal = Swal.fire({ type: 'error' })
+  assert.equal(swal.params.type, 'error')
+  swal.update({ type: 'warning' })
+  assert.equal(swal.params.type, 'warning')
+})

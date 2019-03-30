@@ -24,4 +24,11 @@ export function update (params) {
   dom.render(updatedParams)
 
   privateProps.innerParams.set(this, updatedParams)
+  Object.defineProperties(this, {
+    params: {
+      value: Object.assign({}, this.params, params),
+      writable: false,
+      enumerable: true
+    }
+  })
 }

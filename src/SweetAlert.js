@@ -28,7 +28,8 @@ function SweetAlert (...args) {
     params: {
       value: outerParams,
       writable: false,
-      enumerable: true
+      enumerable: true,
+      configurable: true
     }
   })
 

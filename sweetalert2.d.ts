@@ -270,11 +270,13 @@ declare module 'sweetalert2' {
         function deleteQueueStep(index: number): void;
 
         /**
+         * @deprecated
          * Gets progress steps.
          */
         function getProgressSteps(): string[];
 
         /**
+         * @deprecated
          * Sets progress steps.
          *
          * @param steps The modal steps

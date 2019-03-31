@@ -90,6 +90,14 @@ export const getChildByClass = (elem, className) => {
   }
 }
 
+export const applyNumericalStyle = (elem, property, value) => {
+  if (value || parseInt(value) === 0) {
+    elem.style[property] = (typeof value === 'number') ? value + 'px' : value
+  } else {
+    elem.style.removeProperty(property)
+  }
+}
+
 export const show = (elem, display = 'flex') => {
   elem.style.opacity = ''
   elem.style.display = display

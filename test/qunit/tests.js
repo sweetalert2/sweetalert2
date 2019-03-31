@@ -444,23 +444,6 @@ QUnit.test('reversed buttons', (assert) => {
   assert.equal($('.swal2-cancel').previousSibling, $('.swal2-confirm'))
 })
 
-QUnit.test('image alt text and custom class', (assert) => {
-  Swal.fire({
-    text: 'Custom class is set',
-    imageUrl: '/assets/swal2-logo.png',
-    imageAlt: 'Custom icon',
-    imageClass: 'image-custom-class'
-  })
-  assert.ok($('.swal2-image').classList.contains('image-custom-class'))
-  assert.equal($('.swal2-image').getAttribute('alt'), 'Custom icon')
-
-  Swal.fire({
-    text: 'Custom class isn\'t set',
-    imageUrl: '/assets/swal2-logo.png'
-  })
-  assert.notOk($('.swal2-image').classList.contains('image-custom-class'))
-})
-
 QUnit.test('modal vertical offset', (assert) => {
   const done = assert.async(1)
   // create a modal with dynamic-height content

@@ -4,31 +4,24 @@ import * as dom from '../../dom/index.js'
 export const renderImage = (params) => {
   const image = dom.getImage()
 
-  if (params.imageUrl) {
-    image.setAttribute('src', params.imageUrl)
-    image.setAttribute('alt', params.imageAlt)
-    dom.show(image)
+  if (!params.imageUrl) {
+    return dom.hide(image)
+  }
 
-    if (params.imageWidth) {
-      image.setAttribute('width', params.imageWidth)
-    } else {
-      image.removeAttribute('width')
-    }
+  dom.show(image)
 
-    if (params.imageHeight) {
-      image.setAttribute('height', params.imageHeight)
-    } else {
-      image.removeAttribute('height')
-    }
+  // Src, alt
+  image.setAttribute('src', params.imageUrl)
+  image.setAttribute('alt', params.imageAlt)
 
-    image.className = swalClasses.image
-    if (params.imageClass) {
-      dom.addClass(image, params.imageClass)
-    }
-    if (params.customClass) {
-      dom.addClass(image, params.customClass.image)
-    }
-  } else {
-    dom.hide(image)
+  // Width, height
+  dom.applyNumericalStyle(image, 'width', params.imageWidth)
+  dom.applyNumericalStyle(image, 'height', params.imageHeight)
+
+  // Class
+  image.className = swalClasses.image
+  dom.applyCustomClass(image, params.customClass, 'image')
+  if (params.imageClass) {
+    dom.addClass(image, params.imageClass)
   }
 }

@@ -1,3 +1,10 @@
+# [8.8.0](https://github.com/sweetalert2/sweetalert2/compare/v8.7.1...v8.8.0) (2019-03-31)
+
+
+### Features
+
+* allow image size to be set in any CSS units ([#1510](https://github.com/sweetalert2/sweetalert2/issues/1510)) ([9d74299](https://github.com/sweetalert2/sweetalert2/commit/9d74299))
+
 ## [8.7.1](https://github.com/sweetalert2/sweetalert2/compare/v8.7.0...v8.7.1) (2019-03-30)
 
 

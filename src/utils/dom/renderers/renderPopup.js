@@ -2,15 +2,13 @@ import { swalClasses } from '../../classes.js'
 import * as dom from '../../dom/index.js'
 
 export const renderPopup = (params) => {
-  const popup = dom.getPopup();
+  const popup = dom.getPopup()
 
-  // Width and Padding
-  ['width', 'padding'].forEach(param => {
-    const paramValue = params[param]
-    if (paramValue !== null) {
-      popup.style[param] = (typeof paramValue === 'number') ? paramValue + 'px' : paramValue
-    }
-  })
+  // Width
+  dom.applyNumericalStyle(popup, 'width', params.width)
+
+  // Padding
+  dom.applyNumericalStyle(popup, 'padding', params.padding)
 
   // Background
   if (params.background) {

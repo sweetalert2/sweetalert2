@@ -31,9 +31,5 @@ export const renderPopup = (params) => {
   }
 
   // CSS animation
-  if (params.animation) {
-    dom.removeClass(popup, swalClasses.noanimation)
-  } else {
-    dom.addClass(popup, swalClasses.noanimation)
-  }
+  dom.toggleClass(popup, swalClasses.noanimation, !params.animation)
 }

@@ -56,7 +56,7 @@ export const focusInput = (input) => {
   }
 }
 
-const addOrRemoveClass = (target, classList, add) => {
+export const toggleClass = (target, classList, condition) => {
   if (!target || !classList) {
     return
   }
@@ -66,20 +66,20 @@ const addOrRemoveClass = (target, classList, add) => {
   classList.forEach((className) => {
     if (target.forEach) {
       target.forEach((elem) => {
-        add ? elem.classList.add(className) : elem.classList.remove(className)
+        condition ? elem.classList.add(className) : elem.classList.remove(className)
       })
     } else {
-      add ? target.classList.add(className) : target.classList.remove(className)
+      condition ? target.classList.add(className) : target.classList.remove(className)
     }
   })
 }
 
 export const addClass = (target, classList) => {
-  addOrRemoveClass(target, classList, true)
+  toggleClass(target, classList, true)
 }
 
 export const removeClass = (target, classList) => {
-  addOrRemoveClass(target, classList, false)
+  toggleClass(target, classList, false)
 }
 
 export const getChildByClass = (elem, className) => {

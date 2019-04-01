@@ -10,6 +10,38 @@ import privateMethods from '../privateMethods.js'
 /*
  * Instance method to close sweetAlert
  */
+
+function removePopupAndResetState (container, onAfterClose) {
+  if (!dom.isToast()) {
+    restoreActiveElement().then(() => triggerOnAfterClose(onAfterClose))
+    globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
+    globalState.keydownHandlerAdded = false
+  } else {
+    triggerOnAfterClose(onAfterClose)
+  }
+
+  if (container.parentNode) {
+    container.parentNode.removeChild(container)
+  }
+  dom.removeClass(
+    [document.documentElement, document.body],
+    [
+      swalClasses.shown,
+      swalClasses['height-auto'],
+      swalClasses['no-backdrop'],
+      swalClasses['toast-shown'],
+      swalClasses['toast-column']
+    ]
+  )
+
+  if (dom.isModal()) {
+    undoScrollbar()
+    undoIOSfix()
+    undoIEfix()
+    unsetAriaHidden()
+  }
+}
+
 export function close (resolveValue) {
   const container = dom.getContainer()
   const popup = dom.getPopup()
@@ -29,48 +61,17 @@ export function close (resolveValue) {
   dom.removeClass(popup, swalClasses.show)
   dom.addClass(popup, swalClasses.hide)
 
-  const removePopupAndResetState = () => {
-    if (!dom.isToast()) {
-      restoreActiveElement().then(() => triggerOnAfterClose(onAfterClose))
-      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
-      globalState.keydownHandlerAdded = false
-    } else {
-      triggerOnAfterClose(onAfterClose)
-    }
-
-    if (container.parentNode) {
-      container.parentNode.removeChild(container)
-    }
-    dom.removeClass(
-      [document.documentElement, document.body],
-      [
-        swalClasses.shown,
-        swalClasses['height-auto'],
-        swalClasses['no-backdrop'],
-        swalClasses['toast-shown'],
-        swalClasses['toast-column']
-      ]
-    )
-
-    if (dom.isModal()) {
-      undoScrollbar()
-      undoIOSfix()
-      undoIEfix()
-      unsetAriaHidden()
-    }
-  }
-
   // If animation is supported, animate
   if (dom.animationEndEvent && !dom.hasClass(popup, swalClasses.noanimation)) {
     popup.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
       popup.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
       if (dom.hasClass(popup, swalClasses.hide)) {
-        removePopupAndResetState()
+        removePopupAndResetState(container, onAfterClose)
       }
     })
   } else {
     // Otherwise, remove immediately
-    removePopupAndResetState()
+    removePopupAndResetState(container, onAfterClose)
   }
 
   // Resolve Swal promise

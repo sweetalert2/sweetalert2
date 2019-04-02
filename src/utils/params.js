@@ -135,6 +135,24 @@ export const isDeprecatedParameter = (paramName) => {
   return deprecatedParams[paramName]
 }
 
+const checkIfParamIsValid = (param) => {
+  if (!isValidParameter(param)) {
+    warn(`Unknown parameter "${param}"`)
+  }
+}
+
+const checkIfToastParamIsValid = (param) => {
+  if (toastIncompatibleParams.includes(param)) {
+    warn(`The parameter "${param}" is incompatible with toasts`)
+  }
+}
+
+const checkIfParamIsDeprecated = (param) => {
+  if (isDeprecatedParameter(param)) {
+    warnAboutDepreation(param, isDeprecatedParameter(param))
+  }
+}
+
 /**
  * Show relevant warnings for given params
  *
@@ -142,15 +160,13 @@ export const isDeprecatedParameter = (paramName) => {
  */
 export const showWarningsForParams = (params) => {
   for (const param in params) {
-    if (!isValidParameter(param)) {
-      warn(`Unknown parameter "${param}"`)
+    checkIfParamIsValid(param)
+
+    if (params.toast) {
+      checkIfToastParamIsValid(param)
     }
-    if (params.toast && toastIncompatibleParams.includes(param)) {
-      warn(`The parameter "${param}" is incompatible with toasts`)
-    }
-    if (isDeprecatedParameter(param)) {
-      warnAboutDepreation(param, isDeprecatedParameter(param))
-    }
+
+    checkIfParamIsDeprecated()
   }
 }
 

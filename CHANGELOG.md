@@ -1,3 +1,10 @@
+## [8.8.1](https://github.com/sweetalert2/sweetalert2/compare/v8.8.0...v8.8.1) (2019-04-02)
+
+
+### Bug Fixes
+
+* do not re-render icon if  isn't provided or the same as before ([#1518](https://github.com/sweetalert2/sweetalert2/issues/1518)) ([f7613af](https://github.com/sweetalert2/sweetalert2/commit/f7613af))
+
 # [8.8.0](https://github.com/sweetalert2/sweetalert2/compare/v8.7.1...v8.8.0) (2019-03-31)
 
 

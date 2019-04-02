@@ -4,7 +4,7 @@ import { isVisible } from './domUtils.js'
 
 export const getContainer = () => document.body.querySelector('.' + swalClasses.container)
 
-const elementBySelector = (selectorString) => {
+export const elementBySelector = (selectorString) => {
   const container = getContainer()
   return container ? container.querySelector(selectorString) : null
 }

@@ -42,6 +42,13 @@ function removePopupAndResetState (container, onAfterClose) {
   }
 }
 
+function swalCloseEventFinished (popup, container, onAfterClose) {
+  popup.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
+  if (dom.hasClass(popup, swalClasses.hide)) {
+    removePopupAndResetState(container, onAfterClose)
+  }
+}
+
 export function close (resolveValue) {
   const container = dom.getContainer()
   const popup = dom.getPopup()
@@ -63,12 +70,7 @@ export function close (resolveValue) {
 
   // If animation is supported, animate
   if (dom.animationEndEvent && !dom.hasClass(popup, swalClasses.noanimation)) {
-    popup.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
-      popup.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
-      if (dom.hasClass(popup, swalClasses.hide)) {
-        removePopupAndResetState(container, onAfterClose)
-      }
-    })
+    popup.addEventListener(dom.animationEndEvent, swalCloseEventFinished.bind(null, popup, container, onAfterClose))
   } else {
     // Otherwise, remove immediately
     removePopupAndResetState(container, onAfterClose)

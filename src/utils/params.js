@@ -67,6 +67,34 @@ const defaultParams = {
   scrollbarPadding: true
 }
 
+const updatableParams = [
+  'title',
+  'titleText',
+  'text',
+  'html',
+  'type',
+  'customClass',
+  'showConfirmButton',
+  'showCancelButton',
+  'confirmButtonText',
+  'confirmButtonAriaLabel',
+  'confirmButtonColor',
+  'confirmButtonClass',
+  'cancelButtonText',
+  'cancelButtonAriaLabel',
+  'cancelButtonColor',
+  'cancelButtonClass',
+  'buttonsStyling',
+  'reverseButtons',
+  'imageUrl',
+  'imageWidth',
+  'imageHeigth',
+  'imageAlt',
+  'imageClass',
+  'progressSteps',
+  'currentProgressStep'
+]
+
 export const deprecatedParams = {
   customContainerClass: 'customClass',
   confirmButtonClass: 'customClass',
@@ -98,33 +126,7 @@ export const isValidParameter = (paramName) => {
  * @param {String} paramName
  */
 export const isUpdatableParameter = (paramName) => {
-  return [
-    'customClass',
-    'title',
-    'titleText',
-    'text',
-    'html',
-    'type',
-    'showConfirmButton',
-    'showCancelButton',
-    'confirmButtonText',
-    'confirmButtonAriaLabel',
-    'confirmButtonColor',
-    'confirmButtonClass',
-    'cancelButtonText',
-    'cancelButtonAriaLabel',
-    'cancelButtonColor',
-    'cancelButtonClass',
-    'buttonsStyling',
-    'reverseButtons',
-    'imageUrl',
-    'imageWidth',
-    'imageHeigth',
-    'imageAlt',
-    'imageClass',
-    'progressSteps',
-    'currentProgressStep'
-  ].indexOf(paramName) !== -1
+  return updatableParams.indexOf(paramName) !== -1
 }
 
 /**

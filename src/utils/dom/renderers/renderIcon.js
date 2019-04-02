@@ -3,6 +3,14 @@ import { error } from '../../utils.js'
 import * as dom from '../../dom/index.js'
 
 export const renderIcon = (params) => {
+  // if the icon with the given type already rendered,
+  // apply the custom class without re-rendering the icon
+  const currentIcon = dom.getIcon()
+  if (currentIcon && currentIcon.classList.contains(iconTypes[params.type])) {
+    dom.applyCustomClass(currentIcon, params.customClass, 'icon')
+    return
+  }
+
   hideAllIcons()
 
   if (!params.type) {
@@ -12,16 +20,14 @@ export const renderIcon = (params) => {
   adjustSuccessIconBackgoundColor()
 
   if (Object.keys(iconTypes).indexOf(params.type) !== -1) {
-    const icon = dom.getPopup().querySelector(`.${swalClasses.icon}.${iconTypes[params.type]}`)
+    const icon = dom.elementBySelector(`.${swalClasses.icon}.${iconTypes[params.type]}`)
     dom.show(icon)
 
     // Custom class
     dom.applyCustomClass(icon, params.customClass, 'icon')
 
     // Animate icon
-    if (params.animation) {
-      dom.addClass(icon, `swal2-animate-${params.type}-icon`)
-    }
+    dom.toggleClass(icon, `swal2-animate-${params.type}-icon`, params.animation)
   } else {
     error(`Unknown type! Expected "success", "error", "warning", "info" or "question", got "${params.type}"`)
   }

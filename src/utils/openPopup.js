@@ -6,6 +6,11 @@ import { IEfix } from './ieFix.js'
 import { setAriaHidden } from './aria.js'
 import globalState from '../globalState.js'
 
+function swalOpenAnimationFinished (popup, container) {
+  popup.removeEventListener(dom.animationEndEvent, swalOpenAnimationFinished)
+  container.style.overflowY = 'auto'
+}
+
 /**
  * Open popup, add necessary classes and styles, fix scrollbar
  *
@@ -22,19 +27,13 @@ export const openPopup = (params) => {
   if (params.animation) {
     dom.addClass(popup, swalClasses.show)
     dom.addClass(container, swalClasses.fade)
-    dom.removeClass(popup, swalClasses.hide)
-  } else {
-    dom.removeClass(popup, swalClasses.fade)
   }
   dom.show(popup)
 
   // scrolling is 'hidden' until animation is done, after that 'auto'
-  container.style.overflowY = 'hidden'
   if (dom.animationEndEvent && !dom.hasClass(popup, swalClasses.noanimation)) {
-    popup.addEventListener(dom.animationEndEvent, function swalCloseEventFinished () {
-      popup.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
-      container.style.overflowY = 'auto'
-    })
+    container.style.overflowY = 'hidden'
+    popup.addEventListener(dom.animationEndEvent, swalOpenAnimationFinished.bind(null, popup, container))
   } else {
     container.style.overflowY = 'auto'
   }

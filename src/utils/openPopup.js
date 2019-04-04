@@ -27,9 +27,6 @@ export const openPopup = (params) => {
   if (params.animation) {
     dom.addClass(popup, swalClasses.show)
     dom.addClass(container, swalClasses.fade)
-    dom.removeClass(popup, swalClasses.hide)
-  } else {
-    dom.removeClass(popup, swalClasses.fade)
   }
   dom.show(popup)
 

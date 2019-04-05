@@ -1,6 +1,34 @@
 import { swalClasses } from '../../classes.js'
 import * as dom from '../../dom/index.js'
 
+function handleButtonsStyling (confirmButton, cancelButton, params) {
+  dom.addClass([confirmButton, cancelButton], swalClasses.styled)
+
+  // Buttons background colors
+  if (params.confirmButtonColor) {
+    confirmButton.style.backgroundColor = params.confirmButtonColor
+  }
+  if (params.cancelButtonColor) {
+    cancelButton.style.backgroundColor = params.cancelButtonColor
+  }
+
+  // Loading state
+  const confirmButtonBackgroundColor = window.getComputedStyle(confirmButton).getPropertyValue('background-color')
+  confirmButton.style.borderLeftColor = confirmButtonBackgroundColor
+  confirmButton.style.borderRightColor = confirmButtonBackgroundColor
+}
+
+function renderButton (button, options) {
+  dom.toggle(button, options.showButton, 'inline-block')
+  button.innerHTML = options.buttonText // Set caption text
+  button.setAttribute('aria-label', options.buttonAriaLabel) // ARIA label
+
+  // Add buttons custom classes
+  button.className = options.className
+  dom.applyCustomClass(button, options.customClass, options.customClassName)
+  dom.addClass(button, options.buttonClass)
+}
+
 export const renderActions = (params) => {
   const actions = dom.getActions()
   const confirmButton = dom.getConfirmButton()
@@ -16,47 +44,35 @@ export const renderActions = (params) => {
   // Custom class
   dom.applyCustomClass(actions, params.customClass, 'actions')
 
-  // Confirm button
-  dom.toggle(confirmButton, params.showConfirmButton, 'inline-block')
+  // Render confirm button
+  renderButton(confirmButton,
+    {
+      showButton: params.showConfirmButton,
+      buttonText: params.confirmButtonText,
+      buttonAriaLabel: params.confirmButtonAriaLabel,
+      className: swalClasses.confirm,
+      customClass: params.customClass,
+      customClassName: 'confirmButton',
+      buttonClass: params.confirmButtonClass
+    }
+  )
+  // render Cancel Button
+  renderButton(cancelButton,
+    {
+      showButton: params.showCancelButton,
+      buttonText: params.cancelButtonText,
+      buttonAriaLabel: params.cancelButtonAriaLabel,
+      className: swalClasses.cancel,
+      customClass: params.customClass,
+      customClassName: 'cancelButton',
+      buttonClass: params.cancelButtonClass
+    }
+  )
 
-  // Cancel button
-  dom.toggle(cancelButton, params.showCancelButton, 'inline-block')
-
-  // Edit text on confirm and cancel buttons
-  confirmButton.innerHTML = params.confirmButtonText
-  cancelButton.innerHTML = params.cancelButtonText
-
-  // ARIA labels for confirm and cancel buttons
-  confirmButton.setAttribute('aria-label', params.confirmButtonAriaLabel)
-  cancelButton.setAttribute('aria-label', params.cancelButtonAriaLabel)
-
-  // Add buttons custom classes
-  confirmButton.className = swalClasses.confirm
-  dom.applyCustomClass(confirmButton, params.customClass, 'confirmButton')
-  dom.addClass(confirmButton, params.confirmButtonClass)
-  cancelButton.className = swalClasses.cancel
-  dom.applyCustomClass(cancelButton, params.customClass, 'cancelButton')
-  dom.addClass(cancelButton, params.cancelButtonClass)
-
-  // Buttons styling
   if (params.buttonsStyling) {
-    dom.addClass([confirmButton, cancelButton], swalClasses.styled)
-
-    // Buttons background colors
-    if (params.confirmButtonColor) {
-      confirmButton.style.backgroundColor = params.confirmButtonColor
-    }
-    if (params.cancelButtonColor) {
-      cancelButton.style.backgroundColor = params.cancelButtonColor
-    }
-
-    // Loading state
-    const confirmButtonBackgroundColor = window.getComputedStyle(confirmButton).getPropertyValue('background-color')
-    confirmButton.style.borderLeftColor = confirmButtonBackgroundColor
-    confirmButton.style.borderRightColor = confirmButtonBackgroundColor
+    handleButtonsStyling(confirmButton, cancelButton, params)
   } else {
     dom.removeClass([confirmButton, cancelButton], swalClasses.styled)
-
     confirmButton.style.backgroundColor = confirmButton.style.borderLeftColor = confirmButton.style.borderRightColor = ''
     cancelButton.style.backgroundColor = cancelButton.style.borderLeftColor = cancelButton.style.borderRightColor = ''
   }

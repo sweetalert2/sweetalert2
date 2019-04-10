@@ -18,7 +18,7 @@ function handleButtonsStyling (confirmButton, cancelButton, params) {
   confirmButton.style.borderRightColor = confirmButtonBackgroundColor
 }
 
-function renderButton (button, { showButton, buttonText, buttonAriaLabel, className, customClass, customClassName, buttonClass }) {
+function renderButton (button, showButton, buttonText, buttonAriaLabel, className, customClass, customClassName, buttonClass) {
   dom.toggle(button, showButton, 'inline-block')
   button.innerHTML = buttonText // Set caption text
   button.setAttribute('aria-label', buttonAriaLabel) // ARIA label
@@ -45,29 +45,9 @@ export const renderActions = (params) => {
   dom.applyCustomClass(actions, params.customClass, 'actions')
 
   // Render confirm button
-  renderButton(confirmButton,
-    {
-      showButton: params.showConfirmButton,
-      buttonText: params.confirmButtonText,
-      buttonAriaLabel: params.confirmButtonAriaLabel,
-      className: swalClasses.confirm,
-      customClass: params.customClass,
-      customClassName: 'confirmButton',
-      buttonClass: params.confirmButtonClass
-    }
-  )
+  renderButton(confirmButton, params.showConfirmButton, params.confirmButtonText, params.confirmButtonAriaLabel, swalClasses.confirm, params.customClass, 'confirmButton', params.confirmButtonClass)
   // render Cancel Button
-  renderButton(cancelButton,
-    {
-      showButton: params.showCancelButton,
-      buttonText: params.cancelButtonText,
-      buttonAriaLabel: params.cancelButtonAriaLabel,
-      className: swalClasses.cancel,
-      customClass: params.customClass,
-      customClassName: 'cancelButton',
-      buttonClass: params.cancelButtonClass
-    }
-  )
+  renderButton(cancelButton, params.showCancelButton, params.cancelButtonText, params.cancelButtonAriaLabel, swalClasses.cancel, params.customClass, 'cancelButton', params.cancelButtonClass)
 
   if (params.buttonsStyling) {
     handleButtonsStyling(confirmButton, cancelButton, params)

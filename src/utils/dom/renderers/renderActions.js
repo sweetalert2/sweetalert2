@@ -18,15 +18,15 @@ function handleButtonsStyling (confirmButton, cancelButton, params) {
   confirmButton.style.borderRightColor = confirmButtonBackgroundColor
 }
 
-function renderButton (button, options) {
-  dom.toggle(button, options.showButton, 'inline-block')
-  button.innerHTML = options.buttonText // Set caption text
-  button.setAttribute('aria-label', options.buttonAriaLabel) // ARIA label
+function renderButton (button, { showButton, buttonText, buttonAriaLabel, className, customClass, customClassName, buttonClass }) {
+  dom.toggle(button, showButton, 'inline-block')
+  button.innerHTML = buttonText // Set caption text
+  button.setAttribute('aria-label', buttonAriaLabel) // ARIA label
 
   // Add buttons custom classes
-  button.className = options.className
-  dom.applyCustomClass(button, options.customClass, options.customClassName)
-  dom.addClass(button, options.buttonClass)
+  button.className = className
+  dom.applyCustomClass(button, customClass, customClassName)
+  dom.addClass(button, buttonClass)
 }
 
 export const renderActions = (params) => {

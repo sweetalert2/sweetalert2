@@ -1,3 +1,10 @@
+## [8.8.3](https://github.com/sweetalert2/sweetalert2/compare/v8.8.2...v8.8.3) (2019-04-10)
+
+
+### Bug Fixes
+
+* **d.ts:** add missing HTMLElement to target param ([2ea9d80](https://github.com/sweetalert2/sweetalert2/commit/2ea9d80))
+
 ## [8.8.2](https://github.com/sweetalert2/sweetalert2/compare/v8.8.1...v8.8.2) (2019-04-10)
 
 

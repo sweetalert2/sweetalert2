@@ -277,326 +277,325 @@ body {
   &.swal2-loading {
     overflow-y: hidden;
   }
+}
 
-  .swal2-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.swal2-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.swal2-title {
+  position: relative;
+  max-width: 100%;
+  margin: $swal2-title-margin;
+  padding: 0;
+  color: $swal2-title-color;
+  font-size: $swal2-title-font-size;
+  font-weight: 600;
+  text-align: center;
+  text-transform: none;
+  word-wrap: break-word;
+}
+
+.swal2-actions {
+  z-index: 1; // prevent sucess icon overlapping buttons
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: $swal2-actions-margin;
+
+  &:not(.swal2-loading) {
+    .swal2-styled {
+      &[disabled] {
+        opacity: .4;
+      }
+
+      &:hover {
+        background-image: linear-gradient($swal2-button-darken-hover, $swal2-button-darken-hover);
+      }
+
+      &:active {
+        background-image: linear-gradient($swal2-button-darken-active, $swal2-button-darken-active);
+      }
+    }
   }
 
-  .swal2-title {
-    display: block;
-    position: relative;
-    max-width: 100%;
-    margin: $swal2-title-margin;
-    padding: 0;
-    color: $swal2-title-color;
-    font-size: $swal2-title-font-size;
+  &.swal2-loading {
+    .swal2-styled {
+      &.swal2-confirm {
+        box-sizing: border-box;
+        width: 2.5em;
+        height: 2.5em;
+        margin: .46875em;
+        padding: 0;
+        animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
+        border: .25em solid transparent;
+        border-radius: 100%;
+        border-color: transparent;
+        background-color: transparent !important;
+        color: transparent;
+        cursor: default;
+        user-select: none;
+      }
+
+      &.swal2-cancel {
+        margin-right: 30px;
+        margin-left: 30px;
+      }
+    }
+
+    :not(.swal2-styled) {
+      &.swal2-confirm {
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 15px;
+          height: 15px;
+          margin-left: 5px;
+          animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
+          border: 3px solid lighten($swal2-black, 60);
+          border-radius: 50%;
+          border-right-color: transparent;
+          box-shadow: 1px 1px 1px $swal2-white;
+        }
+      }
+    }
+  }
+}
+
+.swal2-styled {
+  margin: .3125em;
+  padding: .625em 2em;
+  box-shadow: none;
+  font-weight: 500;
+
+  &:not([disabled]) {
+    cursor: pointer;
+  }
+
+  &.swal2-confirm {
+    border: $swal2-confirm-button-border;
+    border-radius: $swal2-confirm-button-border-radius;
+    background: initial;
+    background-color: $swal2-confirm-button-background-color;
+    color: $swal2-confirm-button-color;
+    font-size: $swal2-confirm-button-font-size;
+  }
+
+  &.swal2-cancel {
+    border: $swal2-cancel-button-border;
+    border-radius: $swal2-cancel-button-border-radius;
+    background: initial;
+    background-color: $swal2-cancel-button-background-color;
+    color: $swal2-cancel-button-color;
+    font-size: $swal2-cancel-button-font-size;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $swal2-white, 0 0 0 4px $swal2-button-focus-outline;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+.swal2-footer {
+  justify-content: center;
+  margin: $swal2-footer-margin;
+  padding: $swal2-footer-padding;
+  border-top: 1px solid $swal2-footer-border-color;
+  color: $swal2-footer-color;
+  font-size: $swal2-footer-font-size;
+}
+
+.swal2-image {
+  max-width: 100%;
+  margin: $swal2-image-margin;
+}
+
+.swal2-close {
+  position: $swal2-close-button-position;
+  top: $swal2-close-button-gap;
+  right: $swal2-close-button-gap;
+  justify-content: center;
+  width: $swal2-close-button-width;
+  height: $swal2-close-button-height;
+  padding: 0;
+  overflow: hidden;
+  transition: $swal2-close-button-transition;
+  border: $swal2-close-button-border;
+  border-radius: $swal2-close-button-border-radius;
+  outline: $swal2-close-button-outline;
+  background: $swal2-close-button-background;
+  color: $swal2-close-button-color;
+  font-family: serif;
+  font-size: $swal2-close-button-font-size;
+  line-height: $swal2-close-button-line-height;
+  cursor: pointer;
+
+  &:hover {
+    transform: $swal2-close-button-hover-transform;
+    color: $swal2-close-button-hover-color;
+  }
+}
+
+> .swal2-input,
+> .swal2-file,
+> .swal2-textarea,
+> .swal2-select,
+> .swal2-radio,
+> .swal2-checkbox {
+  display: none;
+}
+
+.swal2-content {
+  z-index: 1; // prevent sucess icon overlapping the content
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  color: $swal2-content-color;
+  font-size: $swal2-content-font-size;
+  font-weight: 300;
+  line-height: normal;
+  word-wrap: break-word;
+}
+
+#swal2-content {
+  text-align: center;
+}
+
+.swal2-input,
+.swal2-file,
+.swal2-textarea,
+.swal2-select,
+.swal2-radio,
+.swal2-checkbox {
+  margin: $swal2-input-margin;
+}
+
+.swal2-input,
+.swal2-file,
+.swal2-textarea {
+  box-sizing: border-box;
+  width: 100%;
+  transition: border-color .3s, box-shadow .3s;
+  border: 1px solid $swal2-input-border;
+  border-radius: $swal2-input-border-radius;
+  background: $swal2-input-background;
+  box-shadow: inset 0 1px 1px $swal2-input-box-shadow;
+  font-size: $swal2-input-font-size;
+
+  &.swal2-inputerror {
+    border-color: $swal2-error !important;
+    box-shadow: 0 0 2px $swal2-error !important;
+  }
+
+  &:focus {
+    border: 1px solid $swal2-input-border-focus;
+    outline: none;
+    box-shadow: 0 0 3px $swal2-input-box-shadow-focus;
+  }
+
+  &::placeholder {
+    color: lighten($swal2-black, 80);
+  }
+}
+
+.swal2-range {
+  margin: $swal2-input-margin;
+  background: $swal2-input-background;
+
+  input {
+    width: 80%;
+  }
+
+  output {
+    width: 20%;
     font-weight: 600;
     text-align: center;
-    text-transform: none;
-    word-wrap: break-word;
   }
 
-  .swal2-actions {
-    z-index: 1; // prevent sucess icon overlapping buttons
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin: $swal2-actions-margin;
-
-    &:not(.swal2-loading) {
-      .swal2-styled {
-        &[disabled] {
-          opacity: .4;
-        }
-
-        &:hover {
-          background-image: linear-gradient($swal2-button-darken-hover, $swal2-button-darken-hover);
-        }
-
-        &:active {
-          background-image: linear-gradient($swal2-button-darken-active, $swal2-button-darken-active);
-        }
-      }
-    }
-
-    &.swal2-loading {
-      .swal2-styled {
-        &.swal2-confirm {
-          box-sizing: border-box;
-          width: 2.5em;
-          height: 2.5em;
-          margin: .46875em;
-          padding: 0;
-          animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
-          border: .25em solid transparent;
-          border-radius: 100%;
-          border-color: transparent;
-          background-color: transparent !important;
-          color: transparent;
-          cursor: default;
-          user-select: none;
-        }
-
-        &.swal2-cancel {
-          margin-right: 30px;
-          margin-left: 30px;
-        }
-      }
-
-      :not(.swal2-styled) {
-        &.swal2-confirm {
-          &::after {
-            content: '';
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            margin-left: 5px;
-            animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
-            border: 3px solid lighten($swal2-black, 60);
-            border-radius: 50%;
-            border-right-color: transparent;
-            box-shadow: 1px 1px 1px $swal2-white;
-          }
-        }
-      }
-    }
-  }
-
-  .swal2-styled {
-    margin: .3125em;
-    padding: .625em 2em;
-    box-shadow: none;
-    font-weight: 500;
-
-    &:not([disabled]) {
-      cursor: pointer;
-    }
-
-    &.swal2-confirm {
-      border: $swal2-confirm-button-border;
-      border-radius: $swal2-confirm-button-border-radius;
-      background: initial;
-      background-color: $swal2-confirm-button-background-color;
-      color: $swal2-confirm-button-color;
-      font-size: $swal2-confirm-button-font-size;
-    }
-
-    &.swal2-cancel {
-      border: $swal2-cancel-button-border;
-      border-radius: $swal2-cancel-button-border-radius;
-      background: initial;
-      background-color: $swal2-cancel-button-background-color;
-      color: $swal2-cancel-button-color;
-      font-size: $swal2-cancel-button-font-size;
-    }
-
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 0 2px $swal2-white, 0 0 0 4px $swal2-button-focus-outline;
-    }
-
-    &::-moz-focus-inner {
-      border: 0;
-    }
-  }
-
-  .swal2-footer {
-    justify-content: center;
-    margin: $swal2-footer-margin;
-    padding: $swal2-footer-padding;
-    border-top: 1px solid $swal2-footer-border-color;
-    color: $swal2-footer-color;
-    font-size: $swal2-footer-font-size;
-  }
-
-  .swal2-image {
-    max-width: 100%;
-    margin: $swal2-image-margin;
-  }
-
-  .swal2-close {
-    position: $swal2-close-button-position;
-    top: $swal2-close-button-gap;
-    right: $swal2-close-button-gap;
-    justify-content: center;
-    width: $swal2-close-button-width;
-    height: $swal2-close-button-height;
-    padding: 0;
-    overflow: hidden;
-    transition: $swal2-close-button-transition;
-    border: $swal2-close-button-border;
-    border-radius: $swal2-close-button-border-radius;
-    outline: $swal2-close-button-outline;
-    background: $swal2-close-button-background;
-    color: $swal2-close-button-color;
-    font-family: serif;
-    font-size: $swal2-close-button-font-size;
-    line-height: $swal2-close-button-line-height;
-    cursor: pointer;
-
-    &:hover {
-      transform: $swal2-close-button-hover-transform;
-      color: $swal2-close-button-hover-color;
-    }
-  }
-
-  > .swal2-input,
-  > .swal2-file,
-  > .swal2-textarea,
-  > .swal2-select,
-  > .swal2-radio,
-  > .swal2-checkbox {
-    display: none;
-  }
-
-  .swal2-content {
-    z-index: 1; // prevent sucess icon overlapping the content
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    color: $swal2-content-color;
-    font-size: $swal2-content-font-size;
-    font-weight: 300;
-    line-height: normal;
-    word-wrap: break-word;
-  }
-
-  #swal2-content {
-    text-align: center;
-  }
-
-  .swal2-input,
-  .swal2-file,
-  .swal2-textarea,
-  .swal2-select,
-  .swal2-radio,
-  .swal2-checkbox {
-    margin: $swal2-input-margin;
-  }
-
-  .swal2-input,
-  .swal2-file,
-  .swal2-textarea {
-    box-sizing: border-box;
-    width: 100%;
-    transition: border-color .3s, box-shadow .3s;
-    border: 1px solid $swal2-input-border;
-    border-radius: $swal2-input-border-radius;
-    background: $swal2-input-background;
-    box-shadow: inset 0 1px 1px $swal2-input-box-shadow;
-    font-size: $swal2-input-font-size;
-
-    &.swal2-inputerror {
-      border-color: $swal2-error !important;
-      box-shadow: 0 0 2px $swal2-error !important;
-    }
-
-    &:focus {
-      border: 1px solid $swal2-input-border-focus;
-      outline: none;
-      box-shadow: 0 0 3px $swal2-input-box-shadow-focus;
-    }
-
-    &::placeholder {
-      color: lighten($swal2-black, 80);
-    }
-  }
-
-  .swal2-range {
-    margin: $swal2-input-margin;
-    background: $swal2-input-background;
-
-    input {
-      width: 80%;
-    }
-
-    output {
-      width: 20%;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    input,
-    output {
-      height: $swal2-input-height;
-      padding: 0;
-      font-size: $swal2-input-font-size;
-      line-height: $swal2-input-height;
-    }
-  }
-
-  .swal2-input {
+  input,
+  output {
     height: $swal2-input-height;
-    padding: $swal2-input-padding;
-
-    &[type='number'] {
-      max-width: 10em;
-    }
+    padding: 0;
+    font-size: $swal2-input-font-size;
+    line-height: $swal2-input-height;
   }
+}
 
-  .swal2-file {
-    background: $swal2-input-background;
+.swal2-input {
+  height: $swal2-input-height;
+  padding: $swal2-input-padding;
+
+  &[type='number'] {
+    max-width: 10em;
+  }
+}
+
+.swal2-file {
+  background: $swal2-input-background;
+  font-size: $swal2-input-font-size;
+}
+
+.swal2-textarea {
+  height: $swal2-textarea-height;
+  padding: $swal2-textarea-padding;
+}
+
+.swal2-select {
+  min-width: 50%;
+  max-width: 100%;
+  padding: .375em .625em;
+  background: $swal2-input-background;
+  color: lighten($swal2-black, 33);
+  font-size: $swal2-input-font-size;
+}
+
+.swal2-radio,
+.swal2-checkbox {
+  align-items: center;
+  justify-content: center;
+  background: $swal2-input-background;
+
+  label {
+    margin: 0 .6em;
     font-size: $swal2-input-font-size;
   }
 
-  .swal2-textarea {
-    height: $swal2-textarea-height;
-    padding: $swal2-textarea-padding;
+  input {
+    margin: 0 .4em;
   }
+}
 
-  .swal2-select {
-    min-width: 50%;
-    max-width: 100%;
-    padding: .375em .625em;
-    background: $swal2-input-background;
-    color: lighten($swal2-black, 33);
-    font-size: $swal2-input-font-size;
-  }
+.swal2-validation-message {
+  display: none;
+  align-items: center;
+  justify-content: $swal2-validation-message-justify-content;
+  padding: $swal2-validation-message-padding;
+  overflow: hidden;
+  background: $swal2-validation-message-background;
+  color: $swal2-validation-message-color;
+  font-size: $swal2-validation-message-font-size;
+  font-weight: $swal2-validation-message-font-weight;
 
-  .swal2-radio,
-  .swal2-checkbox {
-    align-items: center;
-    justify-content: center;
-    background: $swal2-input-background;
-
-    label {
-      margin: 0 .6em;
-      font-size: $swal2-input-font-size;
-    }
-
-    input {
-      margin: 0 .4em;
-    }
-  }
-
-  .swal2-validation-message {
-    display: none;
-    align-items: center;
-    justify-content: $swal2-validation-message-justify-content;
-    padding: $swal2-validation-message-padding;
-    overflow: hidden;
-    background: $swal2-validation-message-background;
-    color: $swal2-validation-message-color;
-    font-size: $swal2-validation-message-font-size;
-    font-weight: $swal2-validation-message-font-weight;
-
-    &::before {
-      content: '!';
-      display: inline-block;
-      width: 1.5em;
-      min-width: 1.5em;
-      height: 1.5em;
-      margin: 0 .625em;
-      zoom: $swal2-validation-message-icon-zoom;
-      border-radius: 50%;
-      background-color: $swal2-validation-message-icon-background;
-      color: $swal2-validation-message-icon-color;
-      font-weight: 600;
-      line-height: 1.5em;
-      text-align: center;
-    }
+  &::before {
+    content: '!';
+    display: inline-block;
+    width: 1.5em;
+    min-width: 1.5em;
+    height: 1.5em;
+    margin: 0 .625em;
+    zoom: $swal2-validation-message-icon-zoom;
+    border-radius: 50%;
+    background-color: $swal2-validation-message-icon-background;
+    color: $swal2-validation-message-icon-color;
+    font-weight: 600;
+    line-height: 1.5em;
+    text-align: center;
   }
 }
 

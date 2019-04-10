@@ -425,7 +425,7 @@ declare module 'sweetalert2' {
          *
          * @default 'body'
          */
-        target?: string;
+        target?: string | HTMLElement;
 
         /**
          * Input field type, can be text, email, password, number, tel, range, textarea, select, radio, checkbox, file

@@ -1,3 +1,10 @@
+## [8.8.2](https://github.com/sweetalert2/sweetalert2/compare/v8.8.1...v8.8.2) (2019-04-10)
+
+
+### Bug Fixes
+
+* remove unnecessary nesting in styles ([#1526](https://github.com/sweetalert2/sweetalert2/issues/1526)) ([848cf9f](https://github.com/sweetalert2/sweetalert2/commit/848cf9f))
+
 ## [8.8.1](https://github.com/sweetalert2/sweetalert2/compare/v8.8.0...v8.8.1) (2019-04-02)
 
 

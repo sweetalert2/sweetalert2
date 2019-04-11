@@ -11,6 +11,8 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
+    'brace-style': ['error', '1tbs'],
+    'curly': ['error', 'all'],
     'indent': ['error', 2, { SwitchCase: 1 }],
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
     'no-var': ['error'],

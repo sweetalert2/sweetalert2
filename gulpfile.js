@@ -182,3 +182,8 @@ gulp.task('develop', gulp.series(
     await execute(`karma start karma.conf.js --no-launch`)
   }
 ))
+
+gulp.task('install-git-client-hooks', () => {
+  return gulp.src('.githooks/*')
+    .pipe(gulp.dest('.git/hooks/'))
+})

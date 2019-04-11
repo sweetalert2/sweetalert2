@@ -57,13 +57,9 @@ export function close (resolveValue) {
   const onClose = innerParams.onClose
   const onAfterClose = innerParams.onAfterClose
 
-  if (!popup) {
-    return
-  }
+  if (!popup) return
 
-  if (onClose !== null && typeof onClose === 'function') {
-    onClose(popup)
-  }
+  onClose !== null && typeof onClose === 'function' && onClose(popup)
 
   dom.removeClass(popup, swalClasses.show)
   dom.addClass(popup, swalClasses.hide)
@@ -81,11 +77,7 @@ export function close (resolveValue) {
 }
 
 const triggerOnAfterClose = (onAfterClose) => {
-  if (onAfterClose !== null && typeof onAfterClose === 'function') {
-    setTimeout(() => {
-      onAfterClose()
-    })
-  }
+  onAfterClose !== null && typeof onAfterClose === 'function' && setTimeout(() => { onAfterClose() })
 }
 
 export {

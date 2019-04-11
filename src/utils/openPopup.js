@@ -44,7 +44,9 @@ export const openPopup = (params) => {
   }
 
   if (dom.isModal()) {
-    if (params.scrollbarPadding) { fixScrollbar() }
+    if (params.scrollbarPadding) {
+      fixScrollbar()
+    }
     iOSfix()
     IEfix()
     setAriaHidden()

@@ -11,6 +11,9 @@ Your contribution will be greatly appreciated!
 
 # Backers
 
+- **[PriceListo](https://www.pricelisto.com/)** (130 USD worth of BTC)
+    > Love using SweetAlert2! Our JS popups finally look great and are super fun to use.
+
 - **[SheetJS LLC](https://sheetjs.com/)** (100 USD)
     > Great Work with SweetAlert2!
 

@@ -55,6 +55,10 @@ Your contribution will be greatly appreciated!
 
 # Donors
 
+- **David Barber** (5 USD)
+
+    > Thanks for SWAL love it!
+
 - **[Michalis Tzikas](https://www.webhoster.gr)** (5 EUR)
 
     > Thank you very much for your great work

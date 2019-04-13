@@ -16,23 +16,22 @@ export const renderInput = (instance, params) => {
     setAttributes(inputTypes[i], params.inputAttributes)
 
     // set class
-    inputContainer.className = inputClass
-    if (params.inputClass) {
-      dom.addClass(inputContainer, params.inputClass)
-    }
-    if (params.customClass) {
-      dom.addClass(inputContainer, params.customClass.input)
-    }
+    setClass(inputContainer, inputClass, params)
 
     rerender && dom.hide(inputContainer)
   }
 
-  if (params.input) {
-    if (!renderInputType[params.input]) {
-      return error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`)
-    }
+  if (!params.input) {
+    return
+  }
+
+  if (!renderInputType[params.input]) {
+    return error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`)
+  }
+
+  if (rerender) {
     const input = renderInputType[params.input](params)
-    rerender && dom.show(input)
+    dom.show(input)
   }
 }
 
@@ -61,6 +60,16 @@ const setAttributes = (inputType, inputAttributes) => {
     }
 
     input.setAttribute(attr, inputAttributes[attr])
+  }
+}
+
+const setClass = (inputContainer, inputClass, params) => {
+  inputContainer.className = inputClass
+  if (params.inputClass) {
+    dom.addClass(inputContainer, params.inputClass)
+  }
+  if (params.customClass) {
+    dom.addClass(inputContainer, params.customClass.input)
   }
 }
 

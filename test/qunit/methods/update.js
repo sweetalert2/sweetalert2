@@ -115,3 +115,17 @@ QUnit.test('should update instance\'s params', (assert) => {
   swal.update({ type: 'warning' })
   assert.equal(swal.params.type, 'warning')
 })
+
+QUnit.test('should not affect input', (assert) => {
+  Swal.fire({
+    input: 'select',
+    inputOptions: {
+      uno: 'uno',
+      dos: 'dos',
+      tres: 'tres'
+    }
+  })
+  Swal.getInput().value = 'dos'
+  Swal.update({ html: 'hi' })
+  assert.equal(Swal.getInput().value, 'dos')
+})

@@ -27,24 +27,6 @@ export const objectValues = (obj) => Object.keys(obj).map(key => obj[key])
 export const toArray = (nodeList) => Array.prototype.slice.call(nodeList)
 
 /**
- * Converts `inputOptions` into an array of `[value, label]`s
- * @param inputOptions
- */
-export const formatInputOptions = (inputOptions) => {
-  const result = []
-  if (typeof Map !== 'undefined' && inputOptions instanceof Map) {
-    inputOptions.forEach((value, key) => {
-      result.push([key, value])
-    })
-  } else {
-    Object.keys(inputOptions).forEach(key => {
-      result.push([key, inputOptions[key]])
-    })
-  }
-  return result
-}
-
-/**
  * Standardise console warnings
  * @param message
  */

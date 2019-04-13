@@ -2,13 +2,13 @@ import defaultParams, { showWarningsForParams } from '../utils/params.js'
 import * as dom from '../utils/dom/index.js'
 import { swalClasses } from '../utils/classes.js'
 import Timer from '../utils/Timer.js'
-import { formatInputOptions, error, callIfFunction, isPromise } from '../utils/utils.js'
+import { callIfFunction, isPromise } from '../utils/utils.js'
 import setParameters from '../utils/setParameters.js'
 import globalState from '../globalState.js'
 import { openPopup } from '../utils/openPopup.js'
 import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
-import { populateInputOptions } from '../utils/dom/inputUtils.js';
+import { handleInputOptions, handleInputValue } from '../utils/dom/inputUtils.js';
 
 export function _main (userParams) {
   showWarningsForParams(userParams)
@@ -342,37 +342,11 @@ export function _main (userParams) {
       dom.removeClass(document.body, swalClasses['toast-column'])
     }
 
+    // inputOptions, inputValue
     if (innerParams.input === 'select' || innerParams.input === 'radio') {
-      const content = dom.getContent()
-      const processInputOptions = (inputOptions) => populateInputOptions[innerParams.input](content, formatInputOptions(inputOptions), innerParams)
-      if (isPromise(innerParams.inputOptions)) {
-        constructor.showLoading()
-        innerParams.inputOptions.then((inputOptions) => {
-          this.hideLoading()
-          processInputOptions(inputOptions)
-        })
-      } else if (typeof innerParams.inputOptions === 'object') {
-        processInputOptions(innerParams.inputOptions)
-      } else {
-        error(`Unexpected type of inputOptions! Expected object, Map or Promise, got ${typeof innerParams.inputOptions}`)
-      }
+      handleInputOptions(this, innerParams)
     } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(innerParams.input) && isPromise(innerParams.inputValue)) {
-      const input = constructor.getInput()
-      constructor.showLoading()
-      dom.hide(input)
-      innerParams.inputValue.then((inputValue) => {
-        input.value = innerParams.input === 'number' ? parseFloat(inputValue) || 0 : inputValue + ''
-        dom.show(input)
-        input.focus()
-        this.hideLoading()
-      })
-        .catch((err) => {
-          error('Error in inputValue promise: ' + err)
-          input.value = ''
-          dom.show(input)
-          input.focus()
-          this.hideLoading()
-        })
+      handleInputValue(this, innerParams)
     }
 
     openPopup(innerParams)

@@ -2,7 +2,7 @@ import { swalClasses } from '../../classes.js'
 import * as dom from '../../dom/index.js'
 import { renderInput } from './renderInput.js';
 
-export const renderContent = (params) => {
+export const renderContent = (instance, params) => {
   const content = dom.getContent().querySelector('#' + swalClasses.content)
 
   // Content as HTML
@@ -20,7 +20,7 @@ export const renderContent = (params) => {
     dom.hide(content)
   }
 
-  renderInput(params)
+  renderInput(instance, params)
 
   // Custom class
   dom.applyCustomClass(dom.getContent(), params.customClass, 'content')

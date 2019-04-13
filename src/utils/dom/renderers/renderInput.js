@@ -5,7 +5,7 @@ import privateProps from '../../../privateProps.js'
 
 export const renderInput = (instance, params) => {
   const innerParams = privateProps.innerParams.get(instance)
-  const rerender = !innerParams || params.type !== innerParams.type
+  const rerender = !innerParams || params.input !== innerParams.input
   const content = dom.getContent()
   const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
   for (let i = 0; i < inputTypes.length; i++) {
@@ -38,7 +38,7 @@ export const renderInput = (instance, params) => {
 const removeAttributes = (input) => {
   for (let i = 0; i < input.attributes.length; i++) {
     const attrName = input.attributes[i].name
-    if (attrName !== 'type' && attrName !== 'value') {
+    if (!['type', 'value', 'style'].includes(attrName)) {
       input.removeAttribute(attrName)
     }
   }

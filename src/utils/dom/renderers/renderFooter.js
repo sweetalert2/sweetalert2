@@ -1,6 +1,6 @@
 import * as dom from '../../dom/index.js'
 
-export const renderFooter = (params) => {
+export const renderFooter = (instance, params) => {
   const footer = dom.getFooter()
 
   dom.toggle(footer, params.footer)

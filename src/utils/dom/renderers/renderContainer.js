@@ -28,7 +28,7 @@ function handleGrowParam (container, grow) {
   }
 }
 
-export const renderContainer = (params) => {
+export const renderContainer = (instance, params) => {
   const container = dom.getContainer()
 
   if (!container) {

@@ -1,7 +1,7 @@
 import { swalClasses } from '../../classes.js'
 import * as dom from '../../dom/index.js'
 
-export const renderPopup = (params) => {
+export const renderPopup = (instance, params) => {
   const popup = dom.getPopup()
 
   // Width

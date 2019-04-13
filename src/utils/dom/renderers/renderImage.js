@@ -1,7 +1,7 @@
 import { swalClasses } from '../../classes.js'
 import * as dom from '../../dom/index.js'
 
-export const renderImage = (params) => {
+export const renderImage = (instance, params) => {
   const image = dom.getImage()
 
   if (!params.imageUrl) {

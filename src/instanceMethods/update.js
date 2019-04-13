@@ -21,7 +21,7 @@ export function update (params) {
   const innerParams = privateProps.innerParams.get(this)
   const updatedParams = Object.assign({}, innerParams, validUpdatableParams)
 
-  dom.render(updatedParams)
+  dom.render(this, updatedParams)
 
   privateProps.innerParams.set(this, updatedParams)
   Object.defineProperties(this, {

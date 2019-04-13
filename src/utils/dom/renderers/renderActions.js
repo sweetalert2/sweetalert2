@@ -29,7 +29,7 @@ function renderButton (button, buttonType, params) {
   dom.addClass(button, params[buttonType + 'ButtonClass'])
 }
 
-export const renderActions = (params) => {
+export const renderActions = (instance, params) => {
   const actions = dom.getActions()
   const confirmButton = dom.getConfirmButton()
   const cancelButton = dom.getCancelButton()

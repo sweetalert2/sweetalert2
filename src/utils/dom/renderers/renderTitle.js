@@ -1,6 +1,6 @@
 import * as dom from '../../dom/index.js'
 
-export const renderTitle = (params) => {
+export const renderTitle = (instance, params) => {
   const title = dom.getTitle()
 
   dom.toggle(title, params.title || params.titleText)

@@ -1,6 +1,6 @@
 import * as dom from '../../dom/index.js'
 
-export const renderCloseButton = (params) => {
+export const renderCloseButton = (instance, params) => {
   const closeButton = dom.getCloseButton()
 
   // Custom class

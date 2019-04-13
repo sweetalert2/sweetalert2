@@ -5,24 +5,24 @@ import { renderImage } from './renderImage'
 import { renderProgressSteps } from './renderProgressSteps'
 import { renderTitle } from './renderTitle'
 
-export const renderHeader = (params) => {
+export const renderHeader = (instance, params) => {
   const header = dom.getHeader()
 
   // Custom class
   dom.applyCustomClass(header, params.customClass, 'header')
 
   // Progress steps
-  renderProgressSteps(params)
+  renderProgressSteps(instance, params)
 
   // Icon
-  renderIcon(params)
+  renderIcon(instance, params)
 
   // Image
-  renderImage(params)
+  renderImage(instance, params)
 
   // Title
-  renderTitle(params)
+  renderTitle(instance, params)
 
   // Close button
-  renderCloseButton(params)
+  renderCloseButton(instance, params)
 }

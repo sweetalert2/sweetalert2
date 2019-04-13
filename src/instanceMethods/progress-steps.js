@@ -13,8 +13,8 @@ export function setProgressSteps (progressSteps) {
   warnAboutDepreation('Swal.setProgressSteps()', 'Swal.update()')
   const innerParams = privateProps.innerParams.get(this)
   const updatedParams = Object.assign({}, innerParams, { progressSteps })
+  renderProgressSteps(this, updatedParams)
   privateProps.innerParams.set(this, updatedParams)
-  renderProgressSteps(updatedParams)
 }
 
 export function showProgressSteps () {

@@ -2,7 +2,7 @@ import { swalClasses } from '../../classes.js'
 import { warn, error, isPromise } from '../../utils.js'
 import * as dom from '../../dom/index.js'
 
-export const renderInput = (params) => {
+export const renderInput = (instance, params) => {
   const content = dom.getContent()
   const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
   const setInputPlaceholder = (input) => {

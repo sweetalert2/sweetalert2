@@ -16,7 +16,6 @@ export function _main (userParams) {
   const innerParams = Object.assign({}, defaultParams, userParams)
   setParameters(innerParams)
   Object.freeze(innerParams)
-  privateProps.innerParams.set(this, innerParams)
 
   // clear the previous timer
   if (globalState.timeout) {
@@ -40,7 +39,9 @@ export function _main (userParams) {
   }
   privateProps.domCache.set(this, domCache)
 
-  dom.render(innerParams)
+  dom.render(this, innerParams)
+
+  privateProps.innerParams.set(this, innerParams)
 
   const constructor = this.constructor
 

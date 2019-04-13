@@ -1,13 +1,15 @@
 import { swalClasses, iconTypes } from '../../classes.js'
 import { error } from '../../utils.js'
 import * as dom from '../../dom/index.js'
+import privateProps from '../../../privateProps.js'
 
-export const renderIcon = (params) => {
+export const renderIcon = (instance, params) => {
+  const innerParams = privateProps.innerParams.get(instance)
+
   // if the icon with the given type already rendered,
   // apply the custom class without re-rendering the icon
-  const currentIcon = dom.getIcon()
-  if (currentIcon && currentIcon.classList.contains(iconTypes[params.type])) {
-    dom.applyCustomClass(currentIcon, params.customClass, 'icon')
+  if (innerParams && params.type === innerParams.type && dom.getIcon()) {
+    dom.applyCustomClass(dom.getIcon(), params.customClass, 'icon')
     return
   }
 

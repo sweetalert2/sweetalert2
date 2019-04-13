@@ -1,3 +1,10 @@
+## [8.8.4](https://github.com/sweetalert2/sweetalert2/compare/v8.8.3...v8.8.4) (2019-04-13)
+
+
+### Bug Fixes
+
+* do not rerender input on update ([#1543](https://github.com/sweetalert2/sweetalert2/issues/1543)) ([2649c34](https://github.com/sweetalert2/sweetalert2/commit/2649c34))
+
 ## [8.8.3](https://github.com/sweetalert2/sweetalert2/compare/v8.8.2...v8.8.3) (2019-04-10)
 
 

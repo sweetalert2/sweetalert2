@@ -12,17 +12,21 @@ module.exports.map = function (mapfn) {
   return stream
 }
 
+function splitBuffer (stream) {
+  if (/\r?\n/.test(stream.buffer.toString())) {
+    let splitChunks = stream.buffer.split(/\r?\n/)
+    for (let i = 0; i < splitChunks.length - 1; i++) {
+      stream.push(splitChunks[i])
+    }
+    stream.buffer = splitChunks[splitChunks.length - 1]
+  }
+}
+
 module.exports.split = function () {
   const stream = new Duplex({
     write (chunk, encoding, callback) {
       this.buffer = (this.buffer || '') + chunk.toString()
-      if (/\r?\n/.test(chunk.toString())) {
-        let splitChunks = this.buffer.split(/\r?\n/)
-        for (let i = 0; i < splitChunks.length - 1; i++) {
-          this.push(splitChunks[i])
-        }        
-        this.buffer = splitChunks[splitChunks.length -1]
-      }
+      splitBuffer(this)
       callback()
     },
     read () {}
@@ -35,16 +39,16 @@ module.exports.merge = function (/* streams... */) {
 
   const stream = new Duplex({
     write (chunk, encoding, callback) {
-      this.push(chunk) 
-      callback() 
-    }, 
-    read() {}
+      this.push(chunk)
+      callback()
+    },
+    read () {}
   })
-  
+
   if (toMerge.length) {
     toMerge.forEach(function (e) {
       e.pipe(stream, { end: false })
     })
-  } 
+  }
   return stream
 }

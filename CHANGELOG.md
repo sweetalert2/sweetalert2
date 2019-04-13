@@ -1,3 +1,10 @@
+## [8.8.5](https://github.com/sweetalert2/sweetalert2/compare/v8.8.4...v8.8.5) (2019-04-13)
+
+
+### Bug Fixes
+
+* do not repove style attribute from inputs ([#1545](https://github.com/sweetalert2/sweetalert2/issues/1545)) ([cf44531](https://github.com/sweetalert2/sweetalert2/commit/cf44531))
+
 ## [8.8.4](https://github.com/sweetalert2/sweetalert2/compare/v8.8.3...v8.8.4) (2019-04-13)
 
 

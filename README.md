@@ -19,6 +19,7 @@
   <a href="https://travis-ci.org/sweetalert2/sweetalert2"><img alt="Build Status: Linux" src="https://travis-ci.org/sweetalert2/sweetalert2.svg?branch=master"></a>
   <a href="https://ci.appveyor.com/project/limonte/sweetalert2/branch/master"><img alt="Build Status: Windows" src="https://ci.appveyor.com/api/projects/status/paqdtx0snu53w5c1/branch/master?svg=true"></a>
   <a href="https://coveralls.io/github/sweetalert2/sweetalert2?branch=master"><img src="https://coveralls.io/repos/github/sweetalert2/sweetalert2/badge.svg?branch=master&" alt="Coverage Status"></a>
+  <a href="https://codeclimate.com/github/sweetalert2/sweetalert2/maintainability"><img src="https://api.codeclimate.com/v1/badges/eba34bb80477933854d4/maintainability" /></a>
   <a href="https://www.npmjs.com/package/sweetalert2"><img alt="Version" src="https://img.shields.io/npm/v/sweetalert2.svg"></a>
   <a href="https://www.jsdelivr.com/package/npm/sweetalert2"><img alt="jsdelivr" src="https://data.jsdelivr.com/v1/package/npm/sweetalert2/badge?style=rounded"></a>
   <a href="https://www.paypal.me/limonte/5eur"><img alt="PayPal Donate" src="http://ionicabizau.github.io/badges/paypal.svg"></a>

@@ -15,6 +15,7 @@
     "browser-sync": "^2.26.3",
     "ci-info": "^2.0.0",
     "custom-event-polyfill": "^1.0.6",
+    "del": "^4.1.0",
     "eslint": "^5.12.1",
     "execa": "^1.0.0",
     "gulp": "^4.0.0",
@@ -57,6 +58,7 @@
     "stylelint-scss": "^3.5.4",
     "tslint": "^5.12.1",
     "typescript": "^3.2.4",
+    "vinyl-paths": "^2.1.0",
     "webpack": "^4.29.0"
   },
   "files": [
@@ -105,7 +107,9 @@
     "check:third-party": "npm run check:unpkg && npm run check:jsdelivr && npm run check:wappalyzer",
     "check:wappalyzer": "curl 'https://api.wappalyzer.com/lookup-basic/v1/?url=https%3A%2F%2Fsweetalert2.github.io' 2>&1 | grep --quiet 'SweetAlert2'",
     "check:unpkg": "curl --location 'https://unpkg.com/sweetalert2' 2>&1 | grep --quiet 'window.Swal'",
-    "check:jsdelivr": "curl --location 'https://cdn.jsdelivr.net/npm/sweetalert2' 2>&1 | grep --quiet 'window.Swal'"
+    "check:jsdelivr": "curl --location 'https://cdn.jsdelivr.net/npm/sweetalert2' 2>&1 | grep --quiet 'window.Swal'",
+    "postinstall": "gulp install-git-client-hooks",
+    "uninstall-git-client-hooks": "gulp uninstall-git-client-hooks"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
   "license": "MIT"

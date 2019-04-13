@@ -51,7 +51,7 @@
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-json": "^4.0.0",
     "sinon": "^7.2.3",
-    "stylelint": "^9.10.1",
+    "stylelint": "^10.0.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-order": "^2.1.0",
     "stylelint-scss": "^3.5.4",

@@ -1,5 +1,5 @@
 const gulp = require('gulp')
-const gutil = require('gulp-util')
+const noop = require('gulp-noop')
 const $ = require('gulp-load-plugins')()
 const eslint = require('gulp-eslint')
 const stylelint = require('gulp-stylelint')
@@ -115,7 +115,7 @@ gulp.task('lint:scripts', () => {
   return gulp.src(allScriptFiles)
     .pipe(eslint())
     .pipe(eslint.format())
-    .pipe(continueOnError ? gutil.noop() : eslint.failAfterError())
+    .pipe(continueOnError ? noop() : eslint.failAfterError())
 })
 
 gulp.task('lint:styles', () => {

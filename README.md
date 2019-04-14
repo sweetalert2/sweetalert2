@@ -193,9 +193,9 @@ If you would like to contribute enhancements or fixes, please do the following:
 Backers
 -------
 
-[<img src="https://sweetalert2.github.io/images/backers/PriceListo.png" width="80">](https://www.pricelisto.com/) | [![](https://avatars0.githubusercontent.com/u/5826089?v=4&s=80)](https://sheetjs.com/) | [![](https://avatars2.githubusercontent.com/u/12075795?v=4&s=80)](https://www.unique-p.ch) | [<img src="https://sweetalert2.github.io/images/backers/sextoycollective.jpg" width="80">](https://sextoycollective.com/)
--|-|-|-
-[PriceListo](https://www.pricelisto.com/) | [SheetJS LLC](https://sheetjs.com/) | [Unique-P GmbH](https://www.unique-p.ch) | [STC (NSFW)](https://sextoycollective.com/)
+[<img src="https://sweetalert2.github.io/images/backers/PriceListo.png" width="80">](https://www.pricelisto.com/) | [![](https://avatars0.githubusercontent.com/u/5826089?v=4&s=80)](https://sheetjs.com/) | [![](https://avatars2.githubusercontent.com/u/12075795?v=4&s=80)](https://www.unique-p.ch) | [<img src="https://sweetalert2.github.io/images/backers/sextoycollective.jpg" width="80">](https://sextoycollective.com/) | [<img src="https://sweetalert2.github.io/images/plus.png" width="80">](DONATIONS.md#backers)
+-|-|-|-|-
+[PriceListo](https://www.pricelisto.com/) | [SheetJS LLC](https://sheetjs.com/) | [Unique-P GmbH](https://www.unique-p.ch) | [STC (NSFW)](https://sextoycollective.com/) | [Become a backer](DONATIONS.md#backers)
 
 Donations
 ---------

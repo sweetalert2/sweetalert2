@@ -11,6 +11,8 @@ Your contribution will be greatly appreciated!
 
 # Backers
 
+Backer is a company or a person who donated 100 USD or more. Backers are listed here, in [README](https://github.com/sweetalert2/sweetalert2#backers), and in [SweetAlert2's official homepage](https://sweetalert2.github.io/#backers) (55K unique visitors per month). All backers have priority support via GitHub issues.
+
 - **[PriceListo](https://www.pricelisto.com/)** (130 USD worth of BTC)
     > Love using SweetAlert2! Our JS popups finally look great and are super fun to use.
 

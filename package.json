@@ -26,6 +26,7 @@
     "gulp-eslint": "^5.0.0",
     "gulp-if": "^2.0.2",
     "gulp-load-plugins": "^1.5.0",
+    "gulp-noop": "^1.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-rollup": "^2.16.2",
     "gulp-sass": "^4.0.2",

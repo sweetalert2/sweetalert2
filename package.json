@@ -30,7 +30,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-rollup": "^2.16.2",
     "gulp-sass": "^4.0.2",
-    "gulp-stylelint": "^8.0.0",
+    "gulp-stylelint": "^9.0.0",
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "^5.0.0",
     "gulp-uglify": "^3.0.0",

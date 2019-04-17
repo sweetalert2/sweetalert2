@@ -158,7 +158,7 @@ Related community projects
 -------------------------
 
 - [avil13/vue-sweetalert2](https://github.com/avil13/vue-sweetalert2) - Vue.js wrapper
-- [softon/sweetalert](https://github.com/softon/sweetalert) - Laravel 5 Package
+- [realrashid/sweet-alert](https://github.com/realrashid/sweet-alert) - Laravel 5 Package
 
 
 Collaborators

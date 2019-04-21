@@ -10,9 +10,8 @@ const browserSync = require('browser-sync').create()
 const packageJson = require('./package.json')
 const execute = require('./utils/execute')
 const log = require('fancy-log')
-const del = require('del')
-const vinylPaths = require('vinyl-paths')
 const version = process.env.VERSION || packageJson.version
+const fsPromises = require('fs').promises
 
 const banner = `/*!
 * ${packageJson.name} v${version}
@@ -31,8 +30,20 @@ const skipStandalone = process.argv.includes('--skip-standalone')
 // ---
 
 gulp.task('clean', () => {
-  return gulp.src('dist/*')
-    .pipe(vinylPaths(del))
+  return fsPromises.readdir('dist')
+    .then(fileList => {
+      if (fileList.length > 0) {
+        let unlinkPromises = []
+        fileList.forEach(fileName => {
+          unlinkPromises.push(fsPromises.unlink(`dist/${fileName}`))
+        })
+        return Promise.all(unlinkPromises)
+      }
+    }).catch(error => {
+      if (error.code !== 'ENOENT') {
+        return Promise.reject(error)
+      }
+    })
 })
 
 gulp.task('build:scripts', () => {
@@ -171,13 +182,3 @@ gulp.task('develop', gulp.series(
     await execute(`karma start karma.conf.js --no-launch`)
   }
 ))
-
-gulp.task('install-git-client-hooks', () => {
-  return gulp.src('.githooks/*')
-    .pipe(gulp.dest('.git/hooks/'))
-})
-
-gulp.task('uninstall-git-client-hooks', () => {
-  return gulp.src('.git/hooks/*')
-    .pipe(vinylPaths(del))
-})

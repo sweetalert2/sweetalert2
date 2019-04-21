@@ -1,9 +1,9 @@
-import { renderActions } from './renderActions'
-import { renderContainer } from './renderContainer'
-import { renderContent } from './renderContent'
-import { renderFooter } from './renderFooter'
-import { renderHeader } from './renderHeader'
-import { renderPopup } from './renderPopup'
+import { renderActions } from './renderActions.js'
+import { renderContainer } from './renderContainer.js'
+import { renderContent } from './renderContent.js'
+import { renderFooter } from './renderFooter.js'
+import { renderHeader } from './renderHeader.js'
+import { renderPopup } from './renderPopup.js'
 
 export const render = (instance, params) => {
   renderPopup(instance, params)

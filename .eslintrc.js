@@ -6,6 +6,9 @@ module.exports = {
     es6: true
   },
   extends: 'eslint:recommended',
+  plugins: [
+    'import'
+  ],
   parserOptions: {
     ecmaVersion: 8,
     sourceType: 'module'
@@ -13,6 +16,7 @@ module.exports = {
   rules: {
     'brace-style': ['error', '1tbs'],
     'curly': ['error', 'all'],
+    'import/extensions': ['error', 'always'],
     'indent': ['error', 2, { SwitchCase: 1 }],
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
     'no-var': ['error'],

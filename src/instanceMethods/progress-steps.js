@@ -1,5 +1,5 @@
 import * as dom from '../utils/dom/index.js'
-import { renderProgressSteps } from '../utils/dom/renderers/renderProgressSteps'
+import { renderProgressSteps } from '../utils/dom/renderers/renderProgressSteps.js'
 import privateProps from '../privateProps.js'
 import { warnAboutDepreation } from '../utils/utils.js';
 

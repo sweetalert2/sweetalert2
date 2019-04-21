@@ -1,3 +1,10 @@
+## [8.8.6](https://github.com/sweetalert2/sweetalert2/compare/v8.8.5...v8.8.6) (2019-04-21)
+
+
+### Bug Fixes
+
+* force extensions for import statements ([fa94cec](https://github.com/sweetalert2/sweetalert2/commit/fa94cec))
+
 ## [8.8.5](https://github.com/sweetalert2/sweetalert2/compare/v8.8.4...v8.8.5) (2019-04-13)
 
 

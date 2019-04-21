@@ -6979,10 +6979,10 @@ replace-homedir@^1.0.0:
     is-absolute "^1.0.0"
     remove-trailing-separator "^1.1.0"
 
-replace-in-file@^3.4.3:
-  version "3.4.4"
-  resolved "https://registry.yarnpkg.com/replace-in-file/-/replace-in-file-3.4.4.tgz#2c2b95a493dc4f6161c2bcd29a661be16d03d323"
-  integrity sha512-ehq0dFsxSpfPiPLBU5kli38Ud8bZL0CQKG8WQVbvhmyilXaMJ8y4LtDZs/K3MD8C0+rHbsfW8c9r2bUEy0B/6Q==
+replace-in-file@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/replace-in-file/-/replace-in-file-4.0.0.tgz#824c04b453f8eaa617aa47f133e99dcbc8b19368"
+  integrity sha512-qbKJSOYMVSRzd10d0dOsGZoKQFMV17c2Vns9HH64pAYuPQO4xyDvwUOro2wYOk4kkerooTKbPSD6ETSdlHspuQ==
   dependencies:
     chalk "^2.4.2"
     glob "^7.1.3"

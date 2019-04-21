@@ -1,3 +1,10 @@
+## [8.8.7](https://github.com/sweetalert2/sweetalert2/compare/v8.8.6...v8.8.7) (2019-04-21)
+
+
+### Bug Fixes
+
+* revert "chore(tools): git hooks for running linters before commit ([#1537](https://github.com/sweetalert2/sweetalert2/issues/1537))" ([#1559](https://github.com/sweetalert2/sweetalert2/issues/1559)) ([d22b234](https://github.com/sweetalert2/sweetalert2/commit/d22b234))
+
 ## [8.8.6](https://github.com/sweetalert2/sweetalert2/compare/v8.8.5...v8.8.6) (2019-04-21)
 
 

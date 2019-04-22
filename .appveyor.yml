@@ -20,11 +20,15 @@ build: off
 
 install:
   - ps: Install-Product node $env:nodejs_version
-  - yarn
+  - npm i
 
 test_script:
-  - yarn run build
-  - yarn run check:qunit
+  - npm run build
+  - npm run check:qunit
+
+after_test:
+  - npm uninstall browser-sync # TODO(@limonte): https://github.com/BrowserSync/browser-sync/issues/1681
+  - npm audit # run audit to prevent adding vulnerable dependencies
 
 notifications:
   - provider: Email

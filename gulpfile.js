@@ -1,6 +1,15 @@
 const gulp = require('gulp')
 const noop = require('gulp-noop')
-const $ = require('gulp-load-plugins')()
+const rollup = require('gulp-rollup')
+const gulpif = require('gulp-if')
+const uglify = require('gulp-uglify')
+const rename = require('gulp-rename')
+const css2js = require('gulp-css2js')
+const concat = require('gulp-concat')
+const autoprefixer = require('gulp-autoprefixer')
+const cleanCss = require('gulp-clean-css')
+const typescript = require('gulp-typescript')
+const tslint = require('gulp-tslint')
 const eslint = require('gulp-eslint')
 const stylelint = require('gulp-stylelint')
 const babel = require('rollup-plugin-babel')
@@ -53,7 +62,7 @@ gulp.task('clean', () => {
 
 gulp.task('build:scripts', () => {
   return gulp.src(['package.json', ...srcScriptFiles])
-    .pipe($.rollup({
+    .pipe(rollup({
       plugins: [
         json(),
         babel({
@@ -79,9 +88,9 @@ if (typeof window !== 'undefined' && window.Sweetalert2){\
       }
     })
     .pipe(gulp.dest('dist'))
-    .pipe($.if(!skipMinification, $.uglify()))
-    .pipe($.if(!skipMinification, $.rename('sweetalert2.min.js')))
-    .pipe($.if(!skipMinification, gulp.dest('dist')))
+    .pipe(gulpif(!skipMinification, uglify()))
+    .pipe(gulpif(!skipMinification, rename('sweetalert2.min.js')))
+    .pipe(gulpif(!skipMinification, gulp.dest('dist')))
 })
 
 gulp.task('build:styles', () => {
@@ -89,11 +98,11 @@ gulp.task('build:styles', () => {
   fs.writeFileSync('dist/sweetalert2.css', result.css)
 
   return gulp.src('dist/sweetalert2.css')
-    .pipe($.autoprefixer())
+    .pipe(autoprefixer())
     .pipe(gulp.dest('dist'))
-    .pipe($.if(!skipMinification, $.cleanCss()))
-    .pipe($.if(!skipMinification, $.rename('sweetalert2.min.css')))
-    .pipe($.if(!skipMinification, gulp.dest('dist')))
+    .pipe(gulpif(!skipMinification, cleanCss()))
+    .pipe(gulpif(!skipMinification, rename('sweetalert2.min.css')))
+    .pipe(gulpif(!skipMinification, gulp.dest('dist')))
 })
 
 /**
@@ -102,18 +111,18 @@ gulp.task('build:styles', () => {
 gulp.task('build:standalone', () => {
   const prettyJs = gulp.src('dist/sweetalert2.js')
   const prettyCssAsJs = gulp.src('dist/sweetalert2.min.css')
-    .pipe($.css2js())
+    .pipe(css2js())
   const prettyStandalone = merge(prettyJs, prettyCssAsJs)
-    .pipe($.concat('sweetalert2.all.js'))
+    .pipe(concat('sweetalert2.all.js'))
     .pipe(gulp.dest('dist'))
   if (skipMinification) {
     return prettyStandalone
   } else {
     const uglyJs = gulp.src('dist/sweetalert2.min.js')
     const uglyCssAsJs = gulp.src('dist/sweetalert2.min.css')
-      .pipe($.css2js())
+      .pipe(css2js())
     const uglyStandalone = merge(uglyJs, uglyCssAsJs)
-      .pipe($.concat('sweetalert2.all.min.js'))
+      .pipe(concat('sweetalert2.all.min.js'))
       .pipe(gulp.dest('dist'))
     return merge([prettyStandalone, uglyStandalone])
   }
@@ -148,9 +157,9 @@ gulp.task('lint:styles', () => {
 
 gulp.task('lint:ts', () => {
   return gulp.src(tsFiles)
-    .pipe($.typescript({ lib: ['es6', 'dom'] }))
-    .pipe($.tslint({ formatter: 'verbose' }))
-    .pipe($.tslint.report({
+    .pipe(typescript({ lib: ['es6', 'dom'] }))
+    .pipe(tslint({ formatter: 'verbose' }))
+    .pipe(tslint.report({
       emitError: !continueOnError
     }))
 })

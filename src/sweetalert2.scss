@@ -486,6 +486,7 @@ body {
   border-radius: $swal2-input-border-radius;
   background: $swal2-input-background;
   box-shadow: inset 0 1px 1px $swal2-input-box-shadow;
+  color: $swal2-input-color;
   font-size: $swal2-input-font-size;
 
   &.swal2-inputerror {
@@ -514,6 +515,7 @@ body {
 
   output {
     width: 20%;
+    color: $swal2-input-color;
     font-weight: 600;
     text-align: center;
   }
@@ -551,7 +553,7 @@ body {
   max-width: 100%;
   padding: .375em .625em;
   background: $swal2-input-background;
-  color: lighten($swal2-black, 33);
+  color: $swal2-input-color;
   font-size: $swal2-input-font-size;
 }
 
@@ -560,6 +562,7 @@ body {
   align-items: center;
   justify-content: center;
   background: $swal2-input-background;
+  color: $swal2-input-color;
 
   label {
     margin: 0 .6em;

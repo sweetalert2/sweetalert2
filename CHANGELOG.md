@@ -1,3 +1,10 @@
+# [8.9.0](https://github.com/sweetalert2/sweetalert2/compare/v8.8.7...v8.9.0) (2019-04-28)
+
+
+### Features
+
+* **sass:** add $swal2-input-color ([#1563](https://github.com/sweetalert2/sweetalert2/issues/1563)) ([cbe02de](https://github.com/sweetalert2/sweetalert2/commit/cbe02de))
+
 ## [8.8.7](https://github.com/sweetalert2/sweetalert2/compare/v8.8.6...v8.8.7) (2019-04-21)
 
 

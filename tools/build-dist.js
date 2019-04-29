@@ -1,6 +1,6 @@
 const pify = require('pify')
 const rimraf = require('rimraf')
-const execute = require('../utils/execute')
+const execute = require('@sweetalert2/execute')
 const replaceInFile = require('replace-in-file')
 
 const log = console.log // eslint-disable-line

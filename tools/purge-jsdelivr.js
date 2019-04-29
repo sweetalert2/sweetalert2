@@ -1,4 +1,4 @@
-const execute = require('../utils/execute')
+const execute = require('@sweetalert2/execute')
 const fs = require('fs')
 
 const log = console.log // eslint-disable-line

@@ -36,7 +36,7 @@
 Installation
 ------------
 
-```bash
+```sh
 npm install --save sweetalert2
 ```
 

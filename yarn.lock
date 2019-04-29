@@ -667,6 +667,13 @@
   resolved "https://registry.yarnpkg.com/@sinonjs/text-encoding/-/text-encoding-0.7.1.tgz#8da5c6530915653f3a1f38fd5f101d8c3f8079c5"
   integrity sha512-+iTbntw2IZPb/anVDbypzfQa+ay64MW0Zo8aJ8gZPWMMK6/OubMVb6lUPMagqjOPnmtauXnFCACVl3O7ogjeqQ==
 
+"@sweetalert2/execute@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@sweetalert2/execute/-/execute-1.0.0.tgz#53bfb82a42612e6f2b47ad7ee30df3745bf976b0"
+  integrity sha512-zhJP+xWeChm9AX6oxPnPyCVNckUy7MBfhoIbb0UnbkPegra/Y0WCGzsb12p9iO7qmhpka4yLsn7p8D8SS0+4/A==
+  dependencies:
+    execa "^1.0.0"
+
 "@types/estree@0.0.39":
   version "0.0.39"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"

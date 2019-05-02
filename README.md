@@ -26,6 +26,15 @@
 
 ---
 
+:raised_hands: :raised_hands: :raised_hands: Help wanted!
+---------------------------------------------------------
+
+We just started the [`sweetalert2-themes`](https://github.com/sweetalert2/sweetalert2-themes) project, for now 2 themes are available: [`dark`](https://github.com/sweetalert2/sweetalert2-themes/tree/master/dark) and [`embed-iframe`](https://github.com/sweetalert2/sweetalert2-themes/tree/master/embed-iframe). Please help us with [other themes](https://github.com/sweetalert2/sweetalert2-themes/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22), I would be happy to donate some :moneybag: for all active contributors. The quick-start contributing guide is [here](#contributing). 
+
+Thank you :heart:
+
+---
+
 :point_right: **Upgrading from v7.x to v8.x?** [Read the release notes!](https://github.com/sweetalert2/sweetalert2/releases/tag/v8.0.0)
 <br>If you're upgrading from v6.x, please [upgrade from v6 to v7](https://github.com/sweetalert2/sweetalert2/releases/tag/v7.0.0) first!
 

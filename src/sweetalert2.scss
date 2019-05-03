@@ -248,7 +248,7 @@ body {
   }
 
   &.swal2-fade {
-    transition: background-color .1s;
+    transition: $swal2-backdrop-transition;
   }
 
   &.swal2-shown {
@@ -480,12 +480,12 @@ body {
 .swal2-file,
 .swal2-textarea {
   box-sizing: border-box;
-  width: 100%;
-  transition: border-color .3s, box-shadow .3s;
-  border: 1px solid $swal2-input-border;
+  width: $swal2-input-width;
+  transition: $swal2-input-transition;
+  border: $swal2-input-border;
   border-radius: $swal2-input-border-radius;
   background: $swal2-input-background;
-  box-shadow: inset 0 1px 1px $swal2-input-box-shadow;
+  box-shadow: $swal2-input-box-shadow;
   color: $swal2-input-color;
   font-size: $swal2-input-font-size;
 
@@ -495,9 +495,9 @@ body {
   }
 
   &:focus {
-    border: 1px solid $swal2-input-border-focus;
+    border: $swal2-input-border-focus;
     outline: none;
-    box-shadow: 0 0 3px $swal2-input-box-shadow-focus;
+    box-shadow: $swal2-input-box-shadow-focus;
   }
 
   &::placeholder {

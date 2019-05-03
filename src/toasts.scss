@@ -119,7 +119,7 @@ body {
     width: $swal2-toast-width;
     padding: $swal2-toast-padding;
     overflow-y: hidden;
-    box-shadow: 0 0 .625em $swal2-box-shadow;
+    box-shadow: $swal2-toast-box-shadow;
 
     .swal2-header {
       flex-direction: row;
@@ -128,7 +128,7 @@ body {
     .swal2-title {
       flex-grow: 1;
       justify-content: flex-start;
-      margin: 0 .6em;
+      margin: $swal2-toast-title-margin;
       font-size: $swal2-toast-title-font-size;
     }
 
@@ -261,27 +261,27 @@ body {
     }
 
     &.swal2-show {
-      animation: showSweetToast .5s;
+      animation: $swal2-toast-show-animation;
     }
 
     &.swal2-hide {
-      animation: hideSweetToast .2s forwards;
+      animation: $swal2-toast-hide-animation;
     }
 
     .swal2-animate-success-icon {
       .swal2-success-line-tip {
-        animation: animate-toast-success-tip .75s;
+        animation: $swal2-toast-success-line-tip-animation;
       }
 
       .swal2-success-line-long {
-        animation: animate-toast-success-long .75s;
+        animation: $swal2-toast-success-line-long-animation;
       }
     }
   }
 }
 
 // Animations
-@keyframes showSweetToast {
+@keyframes swal2-toast-show {
   0% {
     transform: translateY(-.625em) rotateZ(2deg);
     opacity: 0;
@@ -303,7 +303,7 @@ body {
   }
 }
 
-@keyframes hideSweetToast {
+@keyframes swal2-toast-hide {
   0% {
     opacity: 1;
   }
@@ -318,7 +318,7 @@ body {
   }
 }
 
-@keyframes animate-toast-success-tip {
+@keyframes swal2-toast-animate-success-line-tip {
   0% {
     top: .5625em;
     left: .0625em;
@@ -350,7 +350,7 @@ body {
   }
 }
 
-@keyframes animate-toast-success-long {
+@keyframes swal2-toast-animate-success-line-long {
   0% {
     top: 1.625em;
     right: 1.375em;

@@ -27,6 +27,17 @@ function removePopupAndResetState (container, onAfterClose) {
   if (container.parentNode) {
     container.parentNode.removeChild(container)
   }
+  removeBodyClasses()
+
+  if (dom.isModal()) {
+    undoScrollbar()
+    undoIOSfix()
+    undoIEfix()
+    unsetAriaHidden()
+  }
+}
+
+function removeBodyClasses () {
   dom.removeClass(
     [document.documentElement, document.body],
     [
@@ -37,13 +48,6 @@ function removePopupAndResetState (container, onAfterClose) {
       swalClasses['toast-column']
     ]
   )
-
-  if (dom.isModal()) {
-    undoScrollbar()
-    undoIOSfix()
-    undoIEfix()
-    unsetAriaHidden()
-  }
 }
 
 function swalCloseEventFinished (popup, container, onAfterClose) {

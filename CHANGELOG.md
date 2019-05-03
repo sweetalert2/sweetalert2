@@ -1,3 +1,10 @@
+# [8.10.0](https://github.com/sweetalert2/sweetalert2/compare/v8.9.0...v8.10.0) (2019-05-03)
+
+
+### Features
+
+* **sass:** add variables for toast, input and backdrop ([#1571](https://github.com/sweetalert2/sweetalert2/issues/1571)) ([feab788](https://github.com/sweetalert2/sweetalert2/commit/feab788))
+
 # [8.9.0](https://github.com/sweetalert2/sweetalert2/compare/v8.8.7...v8.9.0) (2019-04-28)
 
 

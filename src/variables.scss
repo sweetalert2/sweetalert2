@@ -145,11 +145,18 @@ $swal2-button-darken-active: rgba($swal2-black, .2) !default;
 $swal2-button-focus-outline: rgba(50, 100, 150, .4) !default;
 
 // TOASTS
+$swal2-toast-show-animation: swal2-toast-show .5s !default;
+$swal2-toast-hide-animation: swal2-toast-hide .2s forwards !default;
+$swal2-toast-success-line-tip-animation: swal2-toast-animate-success-line-tip .75s !default;
+$swal2-toast-success-line-long-animation: swal2-toast-animate-success-line-long .75s !default;
+$swal2-toast-border: none !default;
+$swal2-toast-box-shadow: 0 0 .625em #d9d9d9 !default;
 $swal2-toast-close-button-width: .8em !default;
 $swal2-toast-close-button-height: .8em !default;
 $swal2-toast-close-button-line-height: .8 !default;
 $swal2-toast-width: auto !default;
 $swal2-toast-padding: .625em !default;
+$swal2-toast-title-margin: 0 .6em !default;
 $swal2-toast-title-font-size: 1em !default;
 $swal2-toast-content-font-size: 1em !default;
 $swal2-toast-input-font-size: 1em !default;

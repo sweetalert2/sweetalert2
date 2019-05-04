@@ -27,7 +27,11 @@ test_script:
   - npm run check:qunit
 
 after_test:
-  - npm audit # run audit to prevent adding vulnerable dependencies
+  # run audit to prevent adding vulnerable dependencies
+  - ps: |
+      if ($env:APPVEYOR_SCHEDULED_BUILD -eq 'True') {
+        npm audit
+      }
 
 notifications:
   - provider: Email

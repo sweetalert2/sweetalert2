@@ -1,3 +1,10 @@
+## [8.10.1](https://github.com/sweetalert2/sweetalert2/compare/v8.10.0...v8.10.1) (2019-05-06)
+
+
+### Bug Fixes
+
+* improve checking when popup is animated ([#1576](https://github.com/sweetalert2/sweetalert2/issues/1576)) ([9b82c5a](https://github.com/sweetalert2/sweetalert2/commit/9b82c5a))
+
 # [8.10.0](https://github.com/sweetalert2/sweetalert2/compare/v8.9.0...v8.10.0) (2019-05-03)
 
 

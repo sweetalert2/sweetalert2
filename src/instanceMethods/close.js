@@ -20,9 +20,24 @@ function removePopupAndResetState (container, onAfterClose) {
     triggerOnAfterClose(onAfterClose)
   }
 
+  // Unset globalState props so GC will dispose globalState (#1569)
+  delete globalState.keydownHandler
+  delete globalState.keydownTarget
+
   if (container.parentNode) {
     container.parentNode.removeChild(container)
   }
+  removeBodyClasses()
+
+  if (dom.isModal()) {
+    undoScrollbar()
+    undoIOSfix()
+    undoIEfix()
+    unsetAriaHidden()
+  }
+}
+
+function removeBodyClasses () {
   dom.removeClass(
     [document.documentElement, document.body],
     [
@@ -33,13 +48,6 @@ function removePopupAndResetState (container, onAfterClose) {
       swalClasses['toast-column']
     ]
   )
-
-  if (dom.isModal()) {
-    undoScrollbar()
-    undoIOSfix()
-    undoIEfix()
-    unsetAriaHidden()
-  }
 }
 
 function swalCloseEventFinished (popup, container, onAfterClose) {
@@ -47,6 +55,10 @@ function swalCloseEventFinished (popup, container, onAfterClose) {
   if (dom.hasClass(popup, swalClasses.hide)) {
     removePopupAndResetState(container, onAfterClose)
   }
+
+  // Unset WeakMaps so GC will be able to dispose them (#1569)
+  unsetWeakMaps(privateProps)
+  unsetWeakMaps(privateMethods)
 }
 
 export function close (resolveValue) {
@@ -78,6 +90,15 @@ export function close (resolveValue) {
 
   // Resolve Swal promise
   swalPromiseResolve(resolveValue || {})
+
+  // Unset this.params so GC will dispose it (#1569)
+  delete this.params
+}
+
+const unsetWeakMaps = (obj) => {
+  for (const i in obj) {
+    obj[i] = new WeakMap()
+  }
 }
 
 const triggerOnAfterClose = (onAfterClose) => {

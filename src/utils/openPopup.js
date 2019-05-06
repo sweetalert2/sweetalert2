@@ -31,7 +31,7 @@ export const openPopup = (params) => {
   dom.show(popup)
 
   // scrolling is 'hidden' until animation is done, after that 'auto'
-  if (dom.animationEndEvent && !dom.hasClass(popup, swalClasses.noanimation)) {
+  if (dom.animationEndEvent && dom.hasCssAnimation(popup)) {
     container.style.overflowY = 'hidden'
     popup.addEventListener(dom.animationEndEvent, swalOpenAnimationFinished.bind(null, popup, container))
   } else {

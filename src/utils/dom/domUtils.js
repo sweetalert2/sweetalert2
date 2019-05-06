@@ -115,6 +115,16 @@ export const toggle = (elem, condition, display) => {
 // borrowed from jquery $(elem).is(':visible') implementation
 export const isVisible = (elem) => !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
 
+// borrowed from https://stackoverflow.com/a/46352119
+export const hasCssAnimation = (elem) => {
+  const style = window.getComputedStyle(elem)
+
+  const animDuration = parseFloat(style.getPropertyValue('animation-duration') || '0')
+  const transDuration = parseFloat(style.getPropertyValue('transition-duration') || '0')
+
+  return animDuration > 0 || transDuration > 0
+}
+
 export const contains = (haystack, needle) => {
   if (typeof haystack.contains === 'function') {
     return haystack.contains(needle)

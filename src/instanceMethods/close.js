@@ -69,7 +69,7 @@ export function close (resolveValue) {
   dom.addClass(popup, swalClasses.hide)
 
   // If animation is supported, animate
-  if (dom.animationEndEvent && !dom.hasClass(popup, swalClasses.noanimation)) {
+  if (dom.animationEndEvent && dom.hasCssAnimation(popup)) {
     popup.addEventListener(dom.animationEndEvent, swalCloseEventFinished.bind(null, popup, container, onAfterClose))
   } else {
     // Otherwise, remove immediately

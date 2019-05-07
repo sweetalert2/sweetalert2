@@ -1,4 +1,4 @@
-const { $, Swal, SwalWithoutAnimation, dispatchCustomEvent, TIMEOUT } = require('./helpers')
+const { Swal, SwalWithoutAnimation, dispatchCustomEvent, TIMEOUT } = require('./helpers')
 const sinon = require('sinon/pkg/sinon')
 
 const simulateMouseEvent = (x, y, eventType) => {
@@ -17,7 +17,25 @@ QUnit.test('backdrop click', (assert) => {
     done()
   })
 
-  $('.swal2-container').click()
+  Swal.getContainer().click()
+})
+
+QUnit.test('double backdrop click', (assert) => {
+  const done = assert.async()
+  const onAfterClose = sinon.fake()
+
+  Swal.fire({
+    title: 'onAfterClose should be triggered once',
+    onAfterClose
+  })
+
+  Swal.getContainer().click()
+  Swal.getContainer().click()
+
+  setTimeout(() => {
+    assert.ok(onAfterClose.calledOnce)
+    done()
+  }, 500)
 })
 
 QUnit.test('popup mousedown, backdrop mouseup', (assert) => {
@@ -56,7 +74,7 @@ QUnit.test('allowOutsideClick: false', (assert) => {
     allowOutsideClick: false
   })
 
-  $('.swal2-container').click()
+  Swal.getContainer().click()
 
   setTimeout(() => {
     assert.ok(Swal.isVisible())
@@ -77,12 +95,12 @@ QUnit.test('allowOutsideClick: () => !swal.isLoading()', (assert) => {
 
   Swal.showLoading()
 
-  $('.swal2-container').click()
+  Swal.getContainer().click()
 
   setTimeout(() => {
     assert.ok(Swal.isVisible())
     Swal.hideLoading()
-    $('.swal2-container').click()
+    Swal.getContainer().click()
   }, TIMEOUT)
 })
 

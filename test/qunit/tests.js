@@ -516,7 +516,7 @@ QUnit.test('onAfterClose', (assert) => {
     },
     onAfterClose: () => {
       assert.ok(onCloseFinished)
-      assert.notOk($('.swal2-container'))
+      assert.notOk(Swal.getContainer())
       done()
     }
   })
@@ -532,7 +532,7 @@ QUnit.test('onClose', (assert) => {
     title: 'onClose test',
     onClose: (_modal) => {
       assert.ok(modal, _modal)
-      assert.ok($('.swal2-container'))
+      assert.ok(Swal.getContainer())
       done()
     }
   })
@@ -675,7 +675,7 @@ QUnit.test('backdrop accepts css background param', (assert) => {
     title: 'I have no backdrop',
     backdrop: false
   })
-  assert.notOk($('.swal2-container').style.background)
+  assert.notOk(Swal.getContainer().style.background)
 
   let backdrop = 'rgb(123, 123, 123)'
   Swal.fire({

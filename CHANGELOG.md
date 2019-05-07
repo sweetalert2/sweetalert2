@@ -1,3 +1,11 @@
+## [8.10.2](https://github.com/sweetalert2/sweetalert2/compare/v8.10.1...v8.10.2) (2019-05-07)
+
+
+### Bug Fixes
+
+* double-click on backdrop should close popup once ([#1579](https://github.com/sweetalert2/sweetalert2/issues/1579)) ([78d2d2a](https://github.com/sweetalert2/sweetalert2/commit/78d2d2a))
+* unset props after closing a popup so GC will dispose them ([#1570](https://github.com/sweetalert2/sweetalert2/issues/1570)) ([81c0a0d](https://github.com/sweetalert2/sweetalert2/commit/81c0a0d))
+
 ## [8.10.1](https://github.com/sweetalert2/sweetalert2/compare/v8.10.0...v8.10.1) (2019-05-06)
 
 

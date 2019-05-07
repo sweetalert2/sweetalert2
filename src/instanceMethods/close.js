@@ -69,7 +69,7 @@ export function close (resolveValue) {
   const onClose = innerParams.onClose
   const onAfterClose = innerParams.onAfterClose
 
-  if (!popup) {
+  if (!popup || dom.hasClass(popup, swalClasses.hide)) {
     return
   }
 

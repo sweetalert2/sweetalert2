@@ -319,7 +319,7 @@ export function _main (userParams) {
       }
     }
 
-    if (globalState.keydownHandlerAdded) {
+    if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
       globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
       globalState.keydownHandlerAdded = false
     }

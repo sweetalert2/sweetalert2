@@ -206,8 +206,8 @@ Backers
 -|-|-|-|-
 [PriceListo](https://www.pricelisto.com/) | [SheetJS LLC](https://sheetjs.com/) | [Unique-P GmbH](https://www.unique-p.ch) | [STC (NSFW)](https://sextoycollective.com/) | [Become a backer](DONATIONS.md#backers)
 
-Donations
----------
+Support and Donations
+---------------------
 
 Has SweetAlert2 helped you create an amazing application? You can show your support by making a donation:
 
@@ -217,5 +217,6 @@ Has SweetAlert2 helped you create an amazing application? You can show your supp
 - Bitcoin Cash: `qqxs402qszgwuue00gwxw996lzhpa8up2unqm0y46g`
 - Stellar: `GBRS5KGFJO4OBUGW3TRQBIVXTM5YDS53DOSHGA3LKVE2YXKVKNVDONBP`
 
+Or give the new Brave Browser a try with our referral link: https://brave.com/swe698
 
 ### [Hall of Donators :trophy:](DONATIONS.md)

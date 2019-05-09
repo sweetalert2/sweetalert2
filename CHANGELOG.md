@@ -1,3 +1,10 @@
+## [8.10.3](https://github.com/sweetalert2/sweetalert2/compare/v8.10.2...v8.10.3) (2019-05-09)
+
+
+### Bug Fixes
+
+* improve the awareness of users to support awesomeness ([982a612](https://github.com/sweetalert2/sweetalert2/commit/982a612))
+
 ## [8.10.2](https://github.com/sweetalert2/sweetalert2/compare/v8.10.1...v8.10.2) (2019-05-07)
 
 

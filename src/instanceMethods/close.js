@@ -73,10 +73,6 @@ export function close (resolveValue) {
     return
   }
 
-  if (onClose !== null && typeof onClose === 'function') {
-    onClose(popup)
-  }
-
   dom.removeClass(popup, swalClasses.show)
   dom.addClass(popup, swalClasses.hide)
 
@@ -86,6 +82,10 @@ export function close (resolveValue) {
   } else {
     // Otherwise, remove immediately
     removePopupAndResetState(container, onAfterClose)
+  }
+
+  if (onClose !== null && typeof onClose === 'function') {
+    onClose(popup)
   }
 
   // Resolve Swal promise

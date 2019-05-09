@@ -1,3 +1,10 @@
+## [8.10.4](https://github.com/sweetalert2/sweetalert2/compare/v8.10.3...v8.10.4) (2019-05-09)
+
+
+### Bug Fixes
+
+* call Swal.fire() inside onClose() ([#1582](https://github.com/sweetalert2/sweetalert2/issues/1582)) ([9a02500](https://github.com/sweetalert2/sweetalert2/commit/9a02500))
+
 ## [8.10.3](https://github.com/sweetalert2/sweetalert2/compare/v8.10.2...v8.10.3) (2019-05-09)
 
 

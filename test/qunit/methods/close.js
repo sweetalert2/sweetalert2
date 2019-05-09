@@ -1,4 +1,4 @@
-const { Swal } = require('../helpers')
+const { Swal, SwalWithoutAnimation } = require('../helpers')
 
 QUnit.test('close() method', (assert) => {
   Swal.fire({
@@ -12,9 +12,7 @@ QUnit.test('close() method', (assert) => {
 QUnit.test('close() resolves to empty object', (assert) => {
   const done = assert.async()
 
-  Swal.fire({
-    title: 'Swal.close() test'
-  }).then(result => {
+  Swal.fire().then(result => {
     assert.deepEqual(result, {})
     done()
   })
@@ -26,7 +24,6 @@ QUnit.test('onClose using close() method', (assert) => {
   const done = assert.async()
 
   Swal.fire({
-    title: 'onClose test',
     onClose: () => {
       assert.ok(Swal.isVisible())
       done()
@@ -39,11 +36,24 @@ QUnit.test('onClose using close() method', (assert) => {
 QUnit.test('onAfterClose using close() method', (assert) => {
   const done = assert.async()
 
-  Swal.fire({
-    title: 'onAfterClose test',
-    animation: false,
+  SwalWithoutAnimation.fire({
     onAfterClose: () => {
       assert.notOk(Swal.isVisible())
+      done()
+    }
+  })
+
+  Swal.close()
+})
+
+QUnit.test('Swal.fire() inside onClose', (assert) => {
+  const done = assert.async()
+
+  SwalWithoutAnimation.fire({
+    onClose: () => {
+      assert.notOk(Swal.isVisible())
+      SwalWithoutAnimation.fire()
+      assert.ok(Swal.isVisible())
       done()
     }
   })

@@ -439,6 +439,7 @@ body {
 
   &:hover {
     transform: $swal2-close-button-hover-transform;
+    background: $swal2-close-button-hover-background;
     color: $swal2-close-button-hover-color;
   }
 }

@@ -302,6 +302,7 @@ body {
 @keyframes swal2-toast-hide {
   100% {
     transform: rotateZ(1deg);
+    opacity: 0;
   }
 }
 

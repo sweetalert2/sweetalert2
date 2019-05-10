@@ -1,3 +1,11 @@
+## [8.10.6](https://github.com/sweetalert2/sweetalert2/compare/v8.10.5...v8.10.6) (2019-05-10)
+
+
+### Bug Fixes
+
+* **sass:** add $swal2-close-button-hover-background ([c209d1b](https://github.com/sweetalert2/sweetalert2/commit/c209d1b))
+* **styling:** revert opacity on toast hide animation ([1bb5a56](https://github.com/sweetalert2/sweetalert2/commit/1bb5a56))
+
 ## [8.10.5](https://github.com/sweetalert2/sweetalert2/compare/v8.10.4...v8.10.5) (2019-05-10)
 
 

@@ -1,3 +1,10 @@
+## [8.10.5](https://github.com/sweetalert2/sweetalert2/compare/v8.10.4...v8.10.5) (2019-05-10)
+
+
+### Bug Fixes
+
+* remove opacity from toast show/hide animations ([#1584](https://github.com/sweetalert2/sweetalert2/issues/1584)) ([469bcc5](https://github.com/sweetalert2/sweetalert2/commit/469bcc5))
+
 ## [8.10.4](https://github.com/sweetalert2/sweetalert2/compare/v8.10.3...v8.10.4) (2019-05-09)
 
 

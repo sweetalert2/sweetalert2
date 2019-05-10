@@ -210,14 +210,14 @@ body {
 
       [class^='swal2-success-circular-line'] { // Emulate moving circular line
         position: absolute;
-        width: 2em;
-        height: 2.8125em;
+        width: 1.6em;
+        height: 3em;
         transform: rotate(45deg);
         border-radius: 50%;
 
         &[class$='left'] {
-          top: -.25em;
-          left: -.9375em;
+          top: -.8em;
+          left: -.5em;
           transform: rotate(-45deg);
           transform-origin: 2em 2em;
           border-radius: 4em 0 0 4em;
@@ -226,7 +226,7 @@ body {
         &[class$='right'] {
           top: -.25em;
           left: .9375em;
-          transform-origin: 0 2em;
+          transform-origin: 0 1.5em;
           border-radius: 0 4em 4em 0;
         }
       }
@@ -284,37 +284,24 @@ body {
 @keyframes swal2-toast-show {
   0% {
     transform: translateY(-.625em) rotateZ(2deg);
-    opacity: 0;
   }
 
   33% {
     transform: translateY(0) rotateZ(-2deg);
-    opacity: .5;
   }
 
   66% {
     transform: translateY(.3125em) rotateZ(2deg);
-    opacity: .7;
   }
 
   100% {
     transform: translateY(0) rotateZ(0);
-    opacity: 1;
   }
 }
 
 @keyframes swal2-toast-hide {
-  0% {
-    opacity: 1;
-  }
-
-  33% {
-    opacity: .5;
-  }
-
   100% {
     transform: rotateZ(1deg);
-    opacity: 0;
   }
 }
 

@@ -39,6 +39,8 @@ Backer is a company or a person who donated 100 USD or more. Backers are listed 
 - **Danny Lankar** (25 USD)
     > You should be selling this product. Love it, thank you!
 
+- **Johnny Lockhart** (25 USD)
+
 - **Alex Frei** (20 EUR)
 
 - **[VEI Hosting](http://www.veihosting.com/)** (20 USD)

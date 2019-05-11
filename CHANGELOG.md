@@ -1,3 +1,10 @@
+## [8.10.7](https://github.com/sweetalert2/sweetalert2/compare/v8.10.6...v8.10.7) (2019-05-11)
+
+
+### Bug Fixes
+
+* pass isToast to removePopupAndResetState() ([#1585](https://github.com/sweetalert2/sweetalert2/issues/1585)) ([53f1047](https://github.com/sweetalert2/sweetalert2/commit/53f1047))
+
 ## [8.10.6](https://github.com/sweetalert2/sweetalert2/compare/v8.10.5...v8.10.6) (2019-05-10)
 
 

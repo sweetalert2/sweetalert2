@@ -11,13 +11,13 @@ import privateMethods from '../privateMethods.js'
  * Instance method to close sweetAlert
  */
 
-function removePopupAndResetState (container, onAfterClose) {
-  if (!dom.isToast()) {
+function removePopupAndResetState (container, isToast, onAfterClose) {
+  if (isToast) {
+    triggerOnAfterClose(onAfterClose)
+  } else {
     restoreActiveElement().then(() => triggerOnAfterClose(onAfterClose))
     globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
     globalState.keydownHandlerAdded = false
-  } else {
-    triggerOnAfterClose(onAfterClose)
   }
 
   // Unset globalState props so GC will dispose globalState (#1569)
@@ -50,10 +50,10 @@ function removeBodyClasses () {
   )
 }
 
-function swalCloseEventFinished (popup, container, onAfterClose) {
+function swalCloseEventFinished (popup, container, isToast, onAfterClose) {
   popup.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
   if (dom.hasClass(popup, swalClasses.hide)) {
-    removePopupAndResetState(container, onAfterClose)
+    removePopupAndResetState(container, isToast, onAfterClose)
   }
 
   // Unset WeakMaps so GC will be able to dispose them (#1569)
@@ -78,10 +78,10 @@ export function close (resolveValue) {
 
   // If animation is supported, animate
   if (dom.animationEndEvent && dom.hasCssAnimation(popup)) {
-    popup.addEventListener(dom.animationEndEvent, swalCloseEventFinished.bind(null, popup, container, onAfterClose))
+    popup.addEventListener(dom.animationEndEvent, swalCloseEventFinished.bind(null, popup, container, dom.isToast(), onAfterClose))
   } else {
     // Otherwise, remove immediately
-    removePopupAndResetState(container, onAfterClose)
+    removePopupAndResetState(container, dom.isToast(), onAfterClose)
   }
 
   if (onClose !== null && typeof onClose === 'function') {

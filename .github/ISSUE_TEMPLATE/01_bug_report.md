@@ -13,11 +13,16 @@ labels:
 
 <!-- Describe what the desired behavior would be. -->
 
-## Live demo
+## Live demo <!-- !!! THIS SECTION IS REQUIRED !!! -->
 
-<!-- If possible, please provide a working example in order for us to be able to reproduce the issue -->
-
-<!-- The template: https://sweetalert2.glitch.me/ - Check https://github.com/sweetalert2/sweetalert2/wiki/How-to-provide-live-example-for-issue for instructions -->
+<!--
+Provide a working example in order for us to be able to reproduce the issue.  
+ISSUE-REPORTS WITHOUT A LIVE DEMO OR A WORKING EXAMPLE WILL BE CLOSED!
+-->
+<!-- 
+The live demo template: https://sweetalert2.glitch.me/
+Instructions: https://github.com/sweetalert2/sweetalert2/wiki/How-to-provide-live-example-for-issue 
+-->
 
 ---
 

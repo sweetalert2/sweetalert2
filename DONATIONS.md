@@ -1,6 +1,6 @@
 We would like to thank everyone who contributed to this library. If you find our library useful and wish to support as well, you can do so by making a donation:
 
-- PayPal: https://www.paypal.me/limonte
+- [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TKTWHJGUWLR7E)
 - Bitcoin: `12BxefvPMtHePgfPRDL1SaZYSG4GwQmWoP`
 - Ether: `0x36e2b10666e2c0dc343901895ba3697b5d3214d1`
 - Bitcoin Cash: `qqxs402qszgwuue00gwxw996lzhpa8up2unqm0y46g`

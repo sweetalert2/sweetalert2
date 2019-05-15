@@ -305,6 +305,7 @@ body {
   align-items: center;
   justify-content: $swal2-actions-justify;
   margin: $swal2-actions-margin;
+  width: 100%;
 
   &:not(.swal2-loading) {
     .swal2-styled {

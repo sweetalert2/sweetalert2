@@ -303,7 +303,7 @@ body {
   z-index: 1; // prevent sucess icon overlapping buttons
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: $swal2-actions-justify;
   margin: $swal2-actions-margin;
 
   &:not(.swal2-loading) {

@@ -1,3 +1,10 @@
+## [8.11.1](https://github.com/sweetalert2/sweetalert2/compare/v8.11.0...v8.11.1) (2019-05-16)
+
+
+### Bug Fixes
+
+* **sass:** Add !default to swal2-actions-justify-content ([#1593](https://github.com/sweetalert2/sweetalert2/issues/1593)) ([5062187](https://github.com/sweetalert2/sweetalert2/commit/5062187))
+
 # [8.11.0](https://github.com/sweetalert2/sweetalert2/compare/v8.10.7...v8.11.0) (2019-05-16)
 
 

@@ -304,8 +304,8 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: $swal2-actions-justify;
-  margin: $swal2-actions-margin;
   width: 100%;
+  margin: $swal2-actions-margin;
 
   &:not(.swal2-loading) {
     .swal2-styled {

@@ -1,3 +1,15 @@
+# [8.11.0](https://github.com/sweetalert2/sweetalert2/compare/v8.10.7...v8.11.0) (2019-05-16)
+
+
+### Bug Fixes
+
+* do not access innerParams in close() if there's no popup ([86e16f9](https://github.com/sweetalert2/sweetalert2/commit/86e16f9))
+
+
+### Features
+
+* **sass:** add $swal2-actions-justify-content variable to control buttons justification ([#1592](https://github.com/sweetalert2/sweetalert2/issues/1592)) ([c0fcab8](https://github.com/sweetalert2/sweetalert2/commit/c0fcab8))
+
 ## [8.10.7](https://github.com/sweetalert2/sweetalert2/compare/v8.10.6...v8.10.7) (2019-05-11)
 
 

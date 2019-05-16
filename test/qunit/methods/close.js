@@ -60,3 +60,17 @@ QUnit.test('Swal.fire() inside onClose', (assert) => {
 
   Swal.close()
 })
+
+QUnit.test('Swal.close() inside onAfterClose', (assert) => {
+  const done = assert.async()
+
+  Swal.fire({
+    onAfterClose: () => {
+      Swal.close()
+      assert.notOk(Swal.isVisible())
+      done()
+    }
+  })
+
+  Swal.close()
+})

@@ -64,14 +64,15 @@ function swalCloseEventFinished (popup, container, isToast, onAfterClose) {
 export function close (resolveValue) {
   const container = dom.getContainer()
   const popup = dom.getPopup()
-  const innerParams = privateProps.innerParams.get(this)
-  const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this)
-  const onClose = innerParams.onClose
-  const onAfterClose = innerParams.onAfterClose
 
   if (!popup || dom.hasClass(popup, swalClasses.hide)) {
     return
   }
+
+  const innerParams = privateProps.innerParams.get(this)
+  const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this)
+  const onClose = innerParams.onClose
+  const onAfterClose = innerParams.onAfterClose
 
   dom.removeClass(popup, swalClasses.show)
   dom.addClass(popup, swalClasses.hide)

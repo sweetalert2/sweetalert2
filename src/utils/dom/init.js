@@ -68,12 +68,16 @@ const resetOldContainer = () => {
   )
 }
 
-let oldInputVal // IE11 workaround, see #1109 for details
+let oldInputVal = {}// IE11 workaround, see #1109 for details
 const resetValidationMessage = (e) => {
-  if (sweetAlert.isVisible() && oldInputVal !== e.target.value) {
+  if (sweetAlert.isVisible() && oldInputVal.data !== e.target.value) {
     sweetAlert.resetValidationMessage()
   }
-  oldInputVal = e.target.value
+  // fix checkbox, see #1594 for details. This allow to keep track of the checkbox state in "step" mode
+  oldInputVal.data = e.target.value
+  if(e.target.type === 'checkbox') {
+    oldInputVal.checked = !!e.target.checked
+  }
 }
 
 const addInputChangeListeners = () => {

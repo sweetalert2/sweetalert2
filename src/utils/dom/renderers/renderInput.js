@@ -139,9 +139,11 @@ renderInputType.checkbox = (params) => {
   const checkbox = dom.getChildByClass(dom.getContent(), swalClasses.checkbox)
   const checkboxInput = dom.getInput(dom.getContent(), 'checkbox')
   checkboxInput.type = 'checkbox'
-  checkboxInput.value = 1
+  // if inputValue is set, use it, if not set to 1.
+  checkboxInput.value = params.inputValue ? params.inputValue : 1
   checkboxInput.id = swalClasses.checkbox
-  checkboxInput.checked = Boolean(params.inputValue)
+  // if the inputValue is a string, check the value of the attributes, if not use inputValue.
+  checkboxInput.checked = (typeof params.inputValue === 'string') ? params.inputAttributes.checked : Boolean(params.inputValue)
   let label = checkbox.querySelector('span')
   label.innerHTML = params.inputPlaceholder
   return checkbox

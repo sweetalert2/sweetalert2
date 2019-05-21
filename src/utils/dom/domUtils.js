@@ -115,6 +115,8 @@ export const toggle = (elem, condition, display) => {
 // borrowed from jquery $(elem).is(':visible') implementation
 export const isVisible = (elem) => !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
 
+export const isScrollable = (elem) => !!(elem.scrollHeight > elem.clientHeight)
+
 // borrowed from https://stackoverflow.com/a/46352119
 export const hasCssAnimation = (elem) => {
   const style = window.getComputedStyle(elem)

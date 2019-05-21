@@ -10,6 +10,22 @@ export const iOSfix = () => {
     const offset = document.body.scrollTop
     document.body.style.top = (offset * -1) + 'px'
     dom.addClass(document.body, swalClasses.iosfix)
+    lockBodyScroll()
+  }
+}
+
+const lockBodyScroll = () => { // #1246
+  let preventTouchMove
+  dom.getContainer().ontouchstart = (e) => {
+    preventTouchMove =
+      e.target === dom.getContainer() ||
+      !(dom.isScrollable(dom.getContainer()))
+  }
+  dom.getContainer().ontouchmove = (e) => {
+    if (preventTouchMove) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
   }
 }
 

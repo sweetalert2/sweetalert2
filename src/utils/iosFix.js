@@ -15,13 +15,14 @@ export const iOSfix = () => {
 }
 
 const lockBodyScroll = () => { // #1246
+  const container = dom.getContainer()
   let preventTouchMove
-  dom.getContainer().ontouchstart = (e) => {
+  container.ontouchstart = (e) => {
     preventTouchMove =
-      e.target === dom.getContainer() ||
-      !(dom.isScrollable(dom.getContainer()))
+      e.target === container ||
+      !(dom.isScrollable(container))
   }
-  dom.getContainer().ontouchmove = (e) => {
+  container.ontouchmove = (e) => {
     if (preventTouchMove) {
       e.preventDefault()
       e.stopPropagation()

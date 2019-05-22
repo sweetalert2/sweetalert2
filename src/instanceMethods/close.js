@@ -51,6 +51,12 @@ function removeBodyClasses () {
 }
 
 function swalCloseEventFinished (popup, container, isToast, onAfterClose) {
+  // TODO(@limonte): for some reason swalCloseEventFinished is triggered twice sometimes
+  // avoid double-executing
+  if (!globalState.keydownTarget) {
+    return
+  }
+
   popup.removeEventListener(dom.animationEndEvent, swalCloseEventFinished)
   if (dom.hasClass(popup, swalClasses.hide)) {
     removePopupAndResetState(container, isToast, onAfterClose)

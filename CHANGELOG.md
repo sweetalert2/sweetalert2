@@ -1,3 +1,10 @@
+## [8.11.2](https://github.com/sweetalert2/sweetalert2/compare/v8.11.1...v8.11.2) (2019-05-22)
+
+
+### Bug Fixes
+
+* aviod double-executing of swalCloseEventFinished ([3874ba9](https://github.com/sweetalert2/sweetalert2/commit/3874ba9))
+
 ## [8.11.1](https://github.com/sweetalert2/sweetalert2/compare/v8.11.0...v8.11.1) (2019-05-16)
 
 

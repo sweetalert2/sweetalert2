@@ -1,3 +1,10 @@
+## [8.11.3](https://github.com/sweetalert2/sweetalert2/compare/v8.11.2...v8.11.3) (2019-05-22)
+
+
+### Bug Fixes
+
+* **iOS:** disable body scroll when modal is shown ([#1596](https://github.com/sweetalert2/sweetalert2/issues/1596)) ([409be8f](https://github.com/sweetalert2/sweetalert2/commit/409be8f))
+
 ## [8.11.2](https://github.com/sweetalert2/sweetalert2/compare/v8.11.1...v8.11.2) (2019-05-22)
 
 

@@ -139,7 +139,7 @@ body {
     }
 
     .swal2-close {
-      position: initial;
+      position: static;
       width: $swal2-toast-close-button-width;
       height: $swal2-toast-close-button-height;
       line-height: $swal2-toast-close-button-line-height;
@@ -191,6 +191,7 @@ body {
     }
 
     .swal2-actions {
+      flex-basis: auto !important;
       height: auto;
       margin: 0 .3125em;
     }

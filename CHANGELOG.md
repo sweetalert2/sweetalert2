@@ -1,3 +1,10 @@
+## [8.11.4](https://github.com/sweetalert2/sweetalert2/compare/v8.11.3...v8.11.4) (2019-05-22)
+
+
+### Bug Fixes
+
+* ie11 toast styles ([#1598](https://github.com/sweetalert2/sweetalert2/issues/1598)) ([bb415c1](https://github.com/sweetalert2/sweetalert2/commit/bb415c1))
+
 ## [8.11.3](https://github.com/sweetalert2/sweetalert2/compare/v8.11.2...v8.11.3) (2019-05-22)
 
 

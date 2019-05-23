@@ -1,3 +1,10 @@
+## [8.11.5](https://github.com/sweetalert2/sweetalert2/compare/v8.11.4...v8.11.5) (2019-05-23)
+
+
+### Bug Fixes
+
+* revert 'module' field, add 'browser' field to package.json ([#1599](https://github.com/sweetalert2/sweetalert2/issues/1599)) ([4fe56fb](https://github.com/sweetalert2/sweetalert2/commit/4fe56fb))
+
 ## [8.11.4](https://github.com/sweetalert2/sweetalert2/compare/v8.11.3...v8.11.4) (2019-05-22)
 
 

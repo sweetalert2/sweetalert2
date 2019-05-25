@@ -1,3 +1,10 @@
+## [8.11.6](https://github.com/sweetalert2/sweetalert2/compare/v8.11.5...v8.11.6) (2019-05-25)
+
+
+### Bug Fixes
+
+* run swalCloseEventFinished only for animations on popup ([#1601](https://github.com/sweetalert2/sweetalert2/issues/1601)) ([78920dc](https://github.com/sweetalert2/sweetalert2/commit/78920dc))
+
 ## [8.11.5](https://github.com/sweetalert2/sweetalert2/compare/v8.11.4...v8.11.5) (2019-05-23)
 
 

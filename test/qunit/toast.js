@@ -97,3 +97,18 @@ QUnit.test('toast click does not close if input option is specified', (assert) =
     done()
   })
 })
+
+QUnit.test('Body classes are removed after closing toats', (assert) => {
+  const done = assert.async()
+
+  Toast.fire({
+    onOpen: () => {
+      Toast.close()
+    },
+    onAfterClose: () => {
+      assert.notOk(document.body.classList.contains('swal2-shown'))
+      assert.notOk(document.body.classList.contains('swal2-toast-shown'))
+      done()
+    }
+  })
+})

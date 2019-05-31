@@ -1,3 +1,10 @@
+## [8.11.7](https://github.com/sweetalert2/sweetalert2/compare/v8.11.6...v8.11.7) (2019-05-31)
+
+
+### Bug Fixes
+
+* **iOS:** do not prevent touchmove for inputs ([#1605](https://github.com/sweetalert2/sweetalert2/issues/1605)) ([69d57e3](https://github.com/sweetalert2/sweetalert2/commit/69d57e3))
+
 ## [8.11.6](https://github.com/sweetalert2/sweetalert2/compare/v8.11.5...v8.11.6) (2019-05-25)
 
 

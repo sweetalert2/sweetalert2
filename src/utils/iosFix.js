@@ -20,7 +20,10 @@ const lockBodyScroll = () => { // #1246
   container.ontouchstart = (e) => {
     preventTouchMove =
       e.target === container ||
-      !(dom.isScrollable(container))
+      (
+        !dom.isScrollable(container) &&
+        e.target.tagName !== 'INPUT' // #1603
+      )
   }
   container.ontouchmove = (e) => {
     if (preventTouchMove) {

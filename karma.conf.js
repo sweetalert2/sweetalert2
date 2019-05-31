@@ -77,7 +77,7 @@ const sauceLabsLaunchers = {
   },
   android: {
     base: 'SauceLabs',
-    deviceName: 'Android GoogleAPI Emulator',
+    deviceName: 'Android Emulator',
     browserName: 'Chrome',
     platformName: 'Android',
     platformVersion: 'latest'

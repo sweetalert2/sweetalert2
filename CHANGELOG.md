@@ -335,6 +335,7 @@
 
 # [8.0.0](https://github.com/sweetalert2/sweetalert2/compare/v7.33.1...v8.0.0) (2019-01-19)
 
+Detailed summury on the [release page](https://github.com/sweetalert2/sweetalert2/releases/tag/v8.0.0).
 
 * BREAKING CHANGE: Change the main call method: swal() -> Swal.fire() (#1438)
 * BREAKING CHANGE: remove getButtonsWrapper() ([c93b5e3](https://github.com/sweetalert2/sweetalert2/commit/c93b5e3))

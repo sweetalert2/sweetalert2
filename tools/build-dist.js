@@ -27,5 +27,10 @@ const removeDir = pify(rimraf)
   log('Running the build...')
   await execute('yarn build')
 
+  // add the "dist" folder before making GitHub release, so it'll be included as per request in #1606
+  if (process.env.VERSION) {
+    await execute('git add -f dist')
+  }
+
   log('OK!')
 })().catch(console.error)

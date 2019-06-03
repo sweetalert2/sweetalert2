@@ -335,7 +335,9 @@
 
 # [8.0.0](https://github.com/sweetalert2/sweetalert2/compare/v7.33.1...v8.0.0) (2019-01-19)
 
+Detailed summury on the [release page](https://github.com/sweetalert2/sweetalert2/releases/tag/v8.0.0).
 
+* BREAKING CHANGE: Change the main call method: swal() -> Swal.fire() (#1438)
 * BREAKING CHANGE: remove getButtonsWrapper() ([c93b5e3](https://github.com/sweetalert2/sweetalert2/commit/c93b5e3))
 * BREAKING CHANGE: close() as instance method (#1379) ([2519c17](https://github.com/sweetalert2/sweetalert2/commit/2519c17)), closes [#1379](https://github.com/sweetalert2/sweetalert2/issues/1379)
 * BREAKING CHANGE: replace deprecated `jsnext:main` with `module` in package.json (#1378) ([1785905](https://github.com/sweetalert2/sweetalert2/commit/1785905)), closes [#1378](https://github.com/sweetalert2/sweetalert2/issues/1378)
@@ -359,6 +361,7 @@
 
 ### BREAKING CHANGES
 
+* swal() -> Swal.fire() (#1438)
 * close() as instance method (#1379)
 * drop Android 4.4 support (#1359)
 * replace deprecated `jsnext:main` with `module` in package.json (#1378)

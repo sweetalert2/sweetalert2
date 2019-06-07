@@ -44,7 +44,7 @@
     "karma-sauce-launcher": "^2.0.2",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "^0.0.32",
-    "karma-webpack": "^4.0.0-rc.5",
+    "karma-webpack": "^4.0.0",
     "merge2": "^1.2.3",
     "promise-polyfill": "^8.1.0",
     "qunit": "^2.8.0",

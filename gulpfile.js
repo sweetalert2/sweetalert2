@@ -75,8 +75,8 @@ gulp.task('build:scripts', () => {
         name: 'Sweetalert2',
         banner: banner,
         footer: `\
-if (typeof window !== 'undefined' && window.Sweetalert2){\
-  window.swal = window.sweetAlert = window.Swal = window.SweetAlert = window.Sweetalert2\
+if (typeof this !== 'undefined' && this.Sweetalert2){\
+  this.swal = this.sweetAlert = this.Swal = this.SweetAlert = this.Sweetalert2\
 }`
       }
     }))

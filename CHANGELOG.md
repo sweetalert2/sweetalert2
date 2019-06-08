@@ -1,3 +1,10 @@
+# [8.12.0](https://github.com/sweetalert2/sweetalert2/compare/v8.11.7...v8.12.0) (2019-06-08)
+
+
+### Features
+
+* **dist:** use this instead of window to support Firefox extensions ([#1615](https://github.com/sweetalert2/sweetalert2/issues/1615)) ([9996bcf](https://github.com/sweetalert2/sweetalert2/commit/9996bcf))
+
 ## [8.11.7](https://github.com/sweetalert2/sweetalert2/compare/v8.11.6...v8.11.7) (2019-05-31)
 
 

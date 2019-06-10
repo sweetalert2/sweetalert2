@@ -1,3 +1,10 @@
+## [8.12.1](https://github.com/sweetalert2/sweetalert2/compare/v8.12.0...v8.12.1) (2019-06-10)
+
+
+### Bug Fixes
+
+* add z-index to the close button to prevent its overlapping by the content ([#1618](https://github.com/sweetalert2/sweetalert2/issues/1618)) ([ad07176](https://github.com/sweetalert2/sweetalert2/commit/ad07176))
+
 # [8.12.0](https://github.com/sweetalert2/sweetalert2/compare/v8.11.7...v8.12.0) (2019-06-08)
 
 

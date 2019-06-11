@@ -15,7 +15,7 @@
     "@sweetalert2/execute": "^1.0.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-array-includes": "^2.0.3",
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.26.7",
     "ci-info": "^2.0.0",
     "custom-event-polyfill": "^1.0.6",
     "eslint": "^5.12.1",

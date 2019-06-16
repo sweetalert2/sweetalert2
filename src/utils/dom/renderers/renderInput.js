@@ -19,7 +19,9 @@ export const renderInput = (instance, params) => {
     // set class
     setClass(inputContainer, inputClass, params)
 
-    rerender && dom.hide(inputContainer)
+    if(rerender){
+      hideContainer(inputContainer)
+    }
   })
 
   if (!params.input) {
@@ -35,6 +37,10 @@ export const renderInput = (instance, params) => {
     dom.show(input)
   }
 }
+
+const hideContainer = (container) => {
+  dom.hide(container)
+};
 
 const removeAttributes = (input) => {
   for (let i = 0; i < input.attributes.length; i++) {

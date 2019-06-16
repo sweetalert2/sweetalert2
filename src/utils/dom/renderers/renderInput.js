@@ -3,11 +3,13 @@ import { warn, error, isPromise } from '../../utils.js'
 import * as dom from '../../dom/index.js'
 import privateProps from '../../../privateProps.js'
 
+const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
+
 export const renderInput = (instance, params) => {
+  const content = dom.getContent()
   const innerParams = privateProps.innerParams.get(instance)
   const rerender = !innerParams || params.input !== innerParams.input
-  const content = dom.getContent()
-  const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
+  const hasInputOnParams = params.input != undefined
 
   inputTypes.forEach( (inputType) => {
     const inputClass = swalClasses[inputType]
@@ -24,18 +26,18 @@ export const renderInput = (instance, params) => {
     }
   })
 
-  if (!params.input) {
-    return
+  if (hasInputOnParams && rerender) {
+    showInput(params);
   }
+}
 
+const showInput = (params) => {  
   if (!renderInputType[params.input]) {
     return error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`)
   }
-
-  if (rerender) {
-    const input = renderInputType[params.input](params)
-    dom.show(input)
-  }
+  
+  const input = renderInputType[params.input](params)
+  dom.show(input)
 }
 
 const hideContainer = (container) => {

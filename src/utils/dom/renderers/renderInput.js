@@ -27,7 +27,7 @@ export const renderInput = (instance, params) => {
   })
 
   if (hasInputOnParams && rerender) {
-    showInput(params);
+    showInput(params)
   }
 }
 
@@ -42,7 +42,7 @@ const showInput = (params) => {
 
 const hideContainer = (container) => {
   dom.hide(container)
-};
+}
 
 const removeAttributes = (input) => {
   for (let i = 0; i < input.attributes.length; i++) {

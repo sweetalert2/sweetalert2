@@ -8,18 +8,19 @@ export const renderInput = (instance, params) => {
   const rerender = !innerParams || params.input !== innerParams.input
   const content = dom.getContent()
   const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
-  for (let i = 0; i < inputTypes.length; i++) {
-    const inputClass = swalClasses[inputTypes[i]]
-    const inputContainer = dom.getChildByClass(content, inputClass)
 
+  inputTypes.forEach( (inputType) => {
+    const inputClass = swalClasses[inputType]
+    const inputContainer = dom.getChildByClass(content, inputClass)
+    
     // set attributes
-    setAttributes(inputTypes[i], params.inputAttributes)
+    setAttributes(inputType, params.inputAttributes)
 
     // set class
     setClass(inputContainer, inputClass, params)
 
     rerender && dom.hide(inputContainer)
-  }
+  })
 
   if (!params.input) {
     return

@@ -9,7 +9,6 @@ export const renderInput = (instance, params) => {
   const content = dom.getContent()
   const innerParams = privateProps.innerParams.get(instance)
   const rerender = !innerParams || params.input !== innerParams.input
-  const hasInputOnParams = params.input != undefined
 
   inputTypes.forEach( (inputType) => {
     const inputClass = swalClasses[inputType]
@@ -22,11 +21,11 @@ export const renderInput = (instance, params) => {
     setClass(inputContainer, inputClass, params)
 
     if(rerender){
-      hideContainer(inputContainer)
+      dom.hide(inputContainer)
     }
   })
 
-  if (hasInputOnParams && rerender) {
+  if (params.input && rerender) {
     showInput(params)
   }
 }
@@ -38,10 +37,6 @@ const showInput = (params) => {
   
   const input = renderInputType[params.input](params)
   dom.show(input)
-}
-
-const hideContainer = (container) => {
-  dom.hide(container)
 }
 
 const removeAttributes = (input) => {

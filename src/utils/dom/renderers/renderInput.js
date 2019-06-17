@@ -3,36 +3,40 @@ import { warn, error, isPromise } from '../../utils.js'
 import * as dom from '../../dom/index.js'
 import privateProps from '../../../privateProps.js'
 
+const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
+
 export const renderInput = (instance, params) => {
+  const content = dom.getContent()
   const innerParams = privateProps.innerParams.get(instance)
   const rerender = !innerParams || params.input !== innerParams.input
-  const content = dom.getContent()
-  const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
-  for (let i = 0; i < inputTypes.length; i++) {
-    const inputClass = swalClasses[inputTypes[i]]
-    const inputContainer = dom.getChildByClass(content, inputClass)
 
+  inputTypes.forEach( (inputType) => {
+    const inputClass = swalClasses[inputType]
+    const inputContainer = dom.getChildByClass(content, inputClass)
+    
     // set attributes
-    setAttributes(inputTypes[i], params.inputAttributes)
+    setAttributes(inputType, params.inputAttributes)
 
     // set class
     setClass(inputContainer, inputClass, params)
 
-    rerender && dom.hide(inputContainer)
-  }
+    if(rerender){
+      dom.hide(inputContainer)
+    }
+  })
 
-  if (!params.input) {
-    return
+  if (params.input && rerender) {
+    showInput(params)
   }
+}
 
+const showInput = (params) => {  
   if (!renderInputType[params.input]) {
     return error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`)
   }
-
-  if (rerender) {
-    const input = renderInputType[params.input](params)
-    dom.show(input)
-  }
+  
+  const input = renderInputType[params.input](params)
+  dom.show(input)
 }
 
 const removeAttributes = (input) => {

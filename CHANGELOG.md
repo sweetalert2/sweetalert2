@@ -1,3 +1,10 @@
+## [8.12.2](https://github.com/sweetalert2/sweetalert2/compare/v8.12.1...v8.12.2) (2019-06-20)
+
+
+### Bug Fixes
+
+* remove styles for #swal2-content ([#1624](https://github.com/sweetalert2/sweetalert2/issues/1624)) ([7b01573](https://github.com/sweetalert2/sweetalert2/commit/7b01573)), closes [#swal2](https://github.com/sweetalert2/sweetalert2/issues/swal2)
+
 ## [8.12.1](https://github.com/sweetalert2/sweetalert2/compare/v8.12.0...v8.12.1) (2019-06-10)
 
 

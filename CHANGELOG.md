@@ -1,3 +1,10 @@
+# [8.13.0](https://github.com/sweetalert2/sweetalert2/compare/v8.12.2...v8.13.0) (2019-06-21)
+
+
+### Features
+
+* add $swal2-icon-font-family SCSS variable ([#1628](https://github.com/sweetalert2/sweetalert2/issues/1628)) ([3f7aaa8](https://github.com/sweetalert2/sweetalert2/commit/3f7aaa8))
+
 ## [8.12.2](https://github.com/sweetalert2/sweetalert2/compare/v8.12.1...v8.12.2) (2019-06-20)
 
 

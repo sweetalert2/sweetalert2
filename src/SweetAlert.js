@@ -37,14 +37,17 @@ function SweetAlert (...args) {
   privateProps.promise.set(this, promise)
 }
 
+function promiseThen (obj, onEvent) {
+  const promise = privateProps.promise.get(obj)
+  return promise.then(onEvent)
+}
+
 // `catch` cannot be the name of a module export, so we define our thenable methods here instead
 SweetAlert.prototype.then = function (onFulfilled) {
-  const promise = privateProps.promise.get(this)
-  return promise.then(onFulfilled)
+  return promiseThen(this, onFulfilled)
 }
 SweetAlert.prototype.finally = function (onFinally) {
-  const promise = privateProps.promise.get(this)
-  return promise.finally(onFinally)
+  return promiseThen(this, onFinally)
 }
 
 // Assign instance methods from src/instanceMethods/*.js to prototype

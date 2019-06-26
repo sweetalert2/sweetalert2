@@ -54,14 +54,5 @@ export default function setParameters (params) {
   if (typeof params.title === 'string') {
     params.title = params.title.split('\n').join('<br />')
   }
-
-  const oldPopup = dom.getPopup()
-  let targetElement = (typeof params.target === 'string') ? document.querySelector(params.target) : params.target
-  if (
-    !oldPopup ||
-    // If the model target has changed, refresh the popup
-    (oldPopup && targetElement && oldPopup.parentNode !== targetElement.parentNode)
-  ) {
-    dom.init(params)
-  }
+  dom.init(params)
 }

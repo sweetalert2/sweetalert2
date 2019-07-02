@@ -93,14 +93,14 @@ const handlePopupAnimation = ({ popup, innerParams : { onAfterClose } }) => {
   const animationIsSupported = dom.animationEndEvent && dom.hasCssAnimation(popup);
 
   if (animationIsSupported) {
-    animate({ popup, container, onAfterClose })
+    animatePopup({ popup, container, onAfterClose })
   } else {
     // Otherwise, remove immediately
     removePopupAndResetState(container, dom.isToast(), onAfterClose)
   }
 }
 
-const animate = ({ popup, container, onAfterClose }) => {
+const animatePopup = ({ popup, container, onAfterClose }) => {
   popup.addEventListener(dom.animationEndEvent, function (e) {
     if (e.target === popup) {
       swalCloseEventFinished(popup, container, dom.isToast(), onAfterClose)

@@ -70,11 +70,9 @@ export function close (resolveValue) {
 
   const innerParams = privateProps.innerParams.get(this)
   const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this)
-  const onClose = innerParams.onClose
-  const onAfterClose = innerParams.onAfterClose
+  const { onClose, onAfterClose } = innerParams
 
-  dom.removeClass(popup, swalClasses.show)
-  dom.addClass(popup, swalClasses.hide)
+  replacePopupClass({ popup })
 
   // If animation is supported, animate
   if (dom.animationEndEvent && dom.hasCssAnimation(popup)) {
@@ -97,6 +95,11 @@ export function close (resolveValue) {
 
   // Unset this.params so GC will dispose it (#1569)
   delete this.params
+}
+
+const replacePopupClass = ({ popup }) => {
+  dom.removeClass(popup, swalClasses.show)
+  dom.addClass(popup, swalClasses.hide)
 }
 
 const unsetWeakMaps = (obj) => {

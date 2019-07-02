@@ -1,4 +1,3 @@
-/* global CustomEvent */
 require('custom-event-polyfill') // for IE11
 
 export const $ = document.querySelector.bind(document)

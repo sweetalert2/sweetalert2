@@ -14,7 +14,7 @@ export const animationEndEvent = (() => {
     'animation': 'animationend'
   }
   for (const i in transEndEventNames) {
-    if (transEndEventNames.hasOwnProperty(i) && typeof testEl.style[i] !== 'undefined') {
+    if (Object.prototype.hasOwnProperty.call(transEndEventNames, i) && typeof testEl.style[i] !== 'undefined') {
       return transEndEventNames[i]
     }
   }

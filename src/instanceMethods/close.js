@@ -61,26 +61,24 @@ function swalCloseEventFinished (popup, container, isToast, onAfterClose) {
 }
 
 export function close (resolveValue) {
+  
+    const innerParams = privateProps.innerParams.get(this)
+    const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this)
   const container = dom.getContainer()
   const popup = dom.getPopup()
 
   if (!popup || dom.hasClass(popup, swalClasses.hide)) {
     return
   }
-
-  const innerParams = privateProps.innerParams.get(this)
-  const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this)
   const { onClose, onAfterClose } = innerParams
 
   replacePopupClass({ popup })
 
   // If animation is supported, animate
-  if (dom.animationEndEvent && dom.hasCssAnimation(popup)) {
-    popup.addEventListener(dom.animationEndEvent, function (e) {
-      if (e.target === popup) {
-        swalCloseEventFinished(popup, container, dom.isToast(), onAfterClose)
-      }
-    })
+  const animationIsSupported = dom.animationEndEvent && dom.hasCssAnimation(popup);
+
+  if (animationIsSupported) {
+    animate({ popup, container, onAfterClose })
   } else {
     // Otherwise, remove immediately
     removePopupAndResetState(container, dom.isToast(), onAfterClose)
@@ -95,6 +93,14 @@ export function close (resolveValue) {
 
   // Unset this.params so GC will dispose it (#1569)
   delete this.params
+}
+
+const animate = ({ popup, container, onAfterClose }) => {
+  popup.addEventListener(dom.animationEndEvent, function (e) {
+    if (e.target === popup) {
+      swalCloseEventFinished(popup, container, dom.isToast(), onAfterClose)
+    }
+  })
 }
 
 const replacePopupClass = ({ popup }) => {

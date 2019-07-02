@@ -88,7 +88,6 @@ export function close (resolveValue) {
 }
 
 const handlePopupAnimation = ({ popup, innerParams : { onAfterClose } }) => {
-
   const container = dom.getContainer()
   // If animation is supported, animate
   const animationIsSupported = dom.animationEndEvent && dom.hasCssAnimation(popup);

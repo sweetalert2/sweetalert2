@@ -118,7 +118,7 @@ const toastIncompatibleParams = [
  * @param {String} paramName
  */
 export const isValidParameter = (paramName) => {
-  return defaultParams.hasOwnProperty(paramName)
+  return Object.prototype.hasOwnProperty.call(defaultParams, paramName)
 }
 
 /**

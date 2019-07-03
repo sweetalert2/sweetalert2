@@ -13,6 +13,7 @@
     "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
     "@sweetalert2/execute": "^1.0.0",
+    "@sweetalert2/stylelint-config": "^1.0.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-array-includes": "^2.0.3",
     "browser-sync": "^2.26.3",
@@ -55,9 +56,6 @@
     "sass": "^1.22.1",
     "sinon": "^7.2.3",
     "stylelint": "^10.0.0",
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-order": "^3.0.0",
-    "stylelint-scss": "^3.5.4",
     "tslint": "^5.12.1",
     "typescript": "^3.2.4",
     "webpack": "^4.29.0"

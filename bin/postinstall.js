@@ -10,9 +10,11 @@ if (!process.env.SUPPRESS_SUPPORT) {
 
   console.log( // eslint-disable-line
     ANSI_GREEN +
-    'Has SweetAlert2 helped you create amazing applications?\n' +
-    'You can show your' + ANSI_YELLOW + ' <3 ' + ANSI_GREEN + 'and support by making a donation:\n' +
-    ANSI_WHITE + ' > ' +
+    '\n' +
+    '              Has SweetAlert2 helped you create amazing applications?\n' +
+    '              You can show your' + ANSI_YELLOW + ' <3 ' + ANSI_GREEN + 'and support by making a donation:\n' +
+    '\n' +
+    ANSI_WHITE + '              > ' +
     ANSI_BLUE + ANSI_BOLD + 'https://sweetalert2.github.io/#donations\n' +
     ANSI_RESET
   )

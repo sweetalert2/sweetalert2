@@ -26,7 +26,7 @@
     "gulp-clean-css": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-css2js": "^1.1.2",
-    "gulp-eslint": "^5.0.0",
+    "gulp-eslint": "^6.0.0",
     "gulp-if": "^2.0.2",
     "gulp-noop": "^1.0.0",
     "gulp-rename": "^1.2.2",

@@ -51,9 +51,11 @@ QUnit.test('should throw console error when inputValue as a Promise rejects', (a
       reject('input promise rejected')
     }),
     onOpen: () => {
-      console.error = _consoleError
-      assert.ok(spy.calledWith('SweetAlert2: Error in inputValue promise: input promise rejected'))
-      done()
+      setTimeout(() => {
+        console.error = _consoleError
+        assert.ok(spy.calledWith('SweetAlert2: Error in inputValue promise: input promise rejected'))
+        done()
+      }, TIMEOUT)
     }
   })
 })

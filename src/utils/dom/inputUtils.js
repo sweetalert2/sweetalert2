@@ -34,7 +34,7 @@ export const handleInputValue = (instance, params) => {
       input.value = ''
       dom.show(input)
       input.focus()
-      this.hideLoading()
+      instance.hideLoading()
     })
 }
 

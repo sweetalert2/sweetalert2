@@ -40,6 +40,24 @@ QUnit.test('inputValue as a Promise', (assert) => {
   assert.ok(spy.notCalled)
 })
 
+QUnit.test('should throw console error when inputValue as a Promise rejects', (assert) => {
+  const _consoleError = console.error
+  const spy = sinon.spy(console, 'error')
+  const done = assert.async()
+
+  SwalWithoutAnimation.fire({
+    input: 'text',
+    inputValue: new Promise((resolve, reject) => {
+      reject('input promise rejected')
+    }),
+    onOpen: () => {
+      console.error = _consoleError
+      assert.ok(spy.calledWith('SweetAlert2: Error in inputValue promise: input promise rejected'))
+      done()
+    }
+  })
+})
+
 QUnit.test('should throw console warning about unexpected type of inputValue', (assert) => {
   const _consoleWarn = console.warn
   const spy = sinon.spy(console, 'warn')

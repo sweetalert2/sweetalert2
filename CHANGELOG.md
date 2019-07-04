@@ -1,3 +1,10 @@
+## [8.13.1](https://github.com/sweetalert2/sweetalert2/compare/v8.13.0...v8.13.1) (2019-07-04)
+
+
+### Bug Fixes
+
+* inputValue as a promise (reject case) ([544c0c1](https://github.com/sweetalert2/sweetalert2/commit/544c0c1))
+
 # [8.13.0](https://github.com/sweetalert2/sweetalert2/compare/v8.12.2...v8.13.0) (2019-06-21)
 
 

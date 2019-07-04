@@ -70,11 +70,12 @@ export function close (resolveValue) {
 
   const innerParams = privateProps.innerParams.get(this)
   const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this)
-  const { onClose } = innerParams
+  const { onClose, onAfterClose } = innerParams
 
-  replacePopupClass({ popup })
+  dom.removeClass(popup, swalClasses.show)
+  dom.addClass(popup, swalClasses.hide)
 
-  handlePopupAnimation({ popup, innerParams })
+  handlePopupAnimation({ popup, onAfterClose })
 
   if (onClose !== null && typeof onClose === 'function') {
     onClose(popup)
@@ -87,7 +88,7 @@ export function close (resolveValue) {
   delete this.params
 }
 
-const handlePopupAnimation = ({ popup, innerParams : { onAfterClose } }) => {
+const handlePopupAnimation = ({ popup,  onAfterClose }) => {
   const container = dom.getContainer()
   // If animation is supported, animate
   const animationIsSupported = dom.animationEndEvent && dom.hasCssAnimation(popup);
@@ -106,11 +107,6 @@ const animatePopup = ({ popup, container, onAfterClose }) => {
       swalCloseEventFinished(popup, container, dom.isToast(), onAfterClose)
     }
   })
-}
-
-const replacePopupClass = ({ popup }) => {
-  dom.removeClass(popup, swalClasses.show)
-  dom.addClass(popup, swalClasses.hide)
 }
 
 const unsetWeakMaps = (obj) => {

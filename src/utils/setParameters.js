@@ -1,9 +1,6 @@
 import { warn, callIfFunction } from './utils.js'
 import * as dom from './dom/index.js'
 import defaultInputValidators from './defaultInputValidators.js'
-const loaderOnConfirmMessage = 'showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' +
-                                'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' +
-                                'https://sweetalert2.github.io/#ajax-request'
 
 function setDefaultInputValidators (params) {
   // Use default `inputValidator` for supported input types if not provided
@@ -39,7 +36,11 @@ export default function setParameters (params) {
 
   // showLoaderOnConfirm && preConfirm
   if (params.showLoaderOnConfirm && !params.preConfirm) {
-    warn(loaderOnConfirmMessage)
+    warn(
+      'showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' +
+      'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' +
+      'https://sweetalert2.github.io/#ajax-request'
+    )
   }
 
   // params.animation will be actually used in renderPopup.js
@@ -54,5 +55,6 @@ export default function setParameters (params) {
   if (typeof params.title === 'string') {
     params.title = params.title.split('\n').join('<br />')
   }
+
   dom.init(params)
 }

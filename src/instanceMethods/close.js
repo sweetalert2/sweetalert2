@@ -61,7 +61,7 @@ function swalCloseEventFinished (popup, container, isToast, onAfterClose) {
 }
 
 export function close (resolveValue) {
-  const container = dom.getContainer()
+  
   const popup = dom.getPopup()
 
   if (!popup || dom.hasClass(popup, swalClasses.hide)) {
@@ -70,23 +70,12 @@ export function close (resolveValue) {
 
   const innerParams = privateProps.innerParams.get(this)
   const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this)
-  const onClose = innerParams.onClose
-  const onAfterClose = innerParams.onAfterClose
+  const { onClose, onAfterClose } = innerParams
 
   dom.removeClass(popup, swalClasses.show)
   dom.addClass(popup, swalClasses.hide)
 
-  // If animation is supported, animate
-  if (dom.animationEndEvent && dom.hasCssAnimation(popup)) {
-    popup.addEventListener(dom.animationEndEvent, function (e) {
-      if (e.target === popup) {
-        swalCloseEventFinished(popup, container, dom.isToast(), onAfterClose)
-      }
-    })
-  } else {
-    // Otherwise, remove immediately
-    removePopupAndResetState(container, dom.isToast(), onAfterClose)
-  }
+  handlePopupAnimation( popup, onAfterClose )
 
   if (onClose !== null && typeof onClose === 'function') {
     onClose(popup)
@@ -97,6 +86,27 @@ export function close (resolveValue) {
 
   // Unset this.params so GC will dispose it (#1569)
   delete this.params
+}
+
+const handlePopupAnimation = ( popup,  onAfterClose ) => {
+  const container = dom.getContainer()
+  // If animation is supported, animate
+  const animationIsSupported = dom.animationEndEvent && dom.hasCssAnimation(popup);
+
+  if (animationIsSupported) {
+    animatePopup( popup, container, onAfterClose )
+  } else {
+    // Otherwise, remove immediately
+    removePopupAndResetState(container, dom.isToast(), onAfterClose)
+  }
+}
+
+const animatePopup = ( popup, container, onAfterClose ) => {
+  popup.addEventListener(dom.animationEndEvent, function (e) {
+    if (e.target === popup) {
+      swalCloseEventFinished(popup, container, dom.isToast(), onAfterClose)
+    }
+  })
 }
 
 const unsetWeakMaps = (obj) => {

@@ -17,6 +17,7 @@ module.exports = {
     'comma-dangle': 0,
     'import/extensions': ['error', 'always'],
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+    'no-prototype-builtins': ['error'],
     'no-var': ['error'],
     'prefer-const': ['error'],
   }

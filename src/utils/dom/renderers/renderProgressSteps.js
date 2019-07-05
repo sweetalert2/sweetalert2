@@ -11,7 +11,7 @@ const createStepElement = (step) => {
 }
 
 const createLineElement = (params) => {
-  let lineEl = document.createElement('li')
+  const lineEl = document.createElement('li')
   dom.addClass(lineEl, swalClasses['progress-step-line'])
   if (params.progressStepsDistance) {
     lineEl.style.width = params.progressStepsDistance
@@ -20,7 +20,7 @@ const createLineElement = (params) => {
 }
 
 export const renderProgressSteps = (instance, params) => {
-  let progressStepsContainer = dom.getProgressSteps()
+  const progressStepsContainer = dom.getProgressSteps()
   if (!params.progressSteps || params.progressSteps.length === 0) {
     return dom.hide(progressStepsContainer)
   }

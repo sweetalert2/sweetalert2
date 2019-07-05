@@ -47,7 +47,7 @@ gulp.task('clean', () => {
   return fs.promises.readdir('dist')
     .then(fileList => {
       if (fileList.length > 0) {
-        let unlinkPromises = []
+        const unlinkPromises = []
         fileList.forEach(fileName => {
           unlinkPromises.push(fs.promises.unlink(`dist/${fileName}`))
         })

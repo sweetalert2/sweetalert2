@@ -18,5 +18,6 @@ module.exports = {
     'import/extensions': ['error', 'always'],
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
     'no-var': ['error'],
+    'prefer-const': ['error'],
   }
 }

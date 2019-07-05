@@ -25,7 +25,7 @@ class PositionChecker {
   }
 
   isCenter (clientRect) {
-    let rectCenter = clientRect.top + (clientRect.height / 2)
+    const rectCenter = clientRect.top + (clientRect.height / 2)
     return (Math.abs(rectCenter - this._containerCenter) < 1)
   }
 
@@ -38,7 +38,7 @@ class PositionChecker {
   }
 
   isMiddle (clientRect) {
-    let clientMiddle = clientRect.left + (clientRect.width / 2)
+    const clientMiddle = clientRect.left + (clientRect.width / 2)
     return (Math.abs(clientMiddle - this._containerMiddle) < 1)
   }
 
@@ -47,8 +47,8 @@ class PositionChecker {
   }
 
   check (pos, clientRect) {
-    let verPos = pos.split('-')[0]
-    let horPos = pos.split('-')[1] || 'middle'
+    const verPos = pos.split('-')[0]
+    const horPos = pos.split('-')[1] || 'middle'
     return this._checkFunctions[verPos](clientRect) && this._checkFunctions[horPos](clientRect)
   }
 }
@@ -67,7 +67,7 @@ QUnit.test('Modal positions', (assert) => {
 
   allowedPostions.forEach(position => {
     SwalWithoutAnimation.fire({ position: position })
-    let swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
+    const swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
     assert.ok(checkPosition.check(position, swalRect), `Failed modal position on "${navigator.userAgent}": ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})\n Window: (${window.innerHeight} ${window.innerWidth})`)
     Swal.close()
   })
@@ -83,7 +83,7 @@ QUnit.test('Toast positions', (assert) => {
 
   allowedPostions.forEach(position => {
     SwalWithoutAnimation.fire({ toast: 'true', position: position })
-    let swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
+    const swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
     assert.ok(checkPosition.check(position, swalRect), `Failed toast position: on "${navigator.userAgent}": ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})\n Window: (${window.innerHeight} ${window.innerWidth})`)
     Swal.close()
   })
@@ -112,7 +112,7 @@ QUnit.test('Modal positions with target', (assert) => {
 
   allowedPostions.forEach(position => {
     SwalWithoutAnimation.fire({ target: '#dummy-target', customClass: { container: 'position-absolute' }, position: position })
-    let swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
+    const swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
     assert.ok(checkPosition.check(position, swalRect), `Failed modal position with target on "${navigator.userAgent}": ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})`)
     Swal.close()
   })
@@ -140,7 +140,7 @@ QUnit.test('Toast positions with target', (assert) => {
 
   allowedPostions.forEach(position => {
     SwalWithoutAnimation.fire({ target: '#dummy-target', customClass: { container: 'position-absolute' }, toast: 'true', position: position })
-    let swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
+    const swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
     assert.ok(checkPosition.check(position, swalRect), `Failed toast position with target on "${navigator.userAgent}": ${position}\n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})`)
     Swal.close()
   })

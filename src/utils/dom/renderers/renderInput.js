@@ -56,7 +56,7 @@ const setAttributes = (inputType, inputAttributes) => {
 
   removeAttributes(input)
 
-  for (let attr in inputAttributes) {
+  for (const attr in inputAttributes) {
     // Do not set a placeholder for <input type="range">
     // it'll crash Edge, #1298
     if (inputType === 'range' && attr === 'placeholder') {
@@ -146,7 +146,7 @@ renderInputType.checkbox = (params) => {
   checkboxInput.value = 1
   checkboxInput.id = swalClasses.checkbox
   checkboxInput.checked = Boolean(params.inputValue)
-  let label = checkbox.querySelector('span')
+  const label = checkbox.querySelector('span')
   label.innerHTML = params.inputPlaceholder
   return checkbox
 }

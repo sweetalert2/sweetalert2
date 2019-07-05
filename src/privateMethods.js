@@ -11,4 +11,3 @@
 export default {
   swalPromiseResolve: new WeakMap()
 }
-

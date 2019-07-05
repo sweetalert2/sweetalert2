@@ -20,7 +20,7 @@ export const renderInput = (instance, params) => {
     // set class
     setClass(inputContainer, inputClass, params)
 
-    if(rerender){
+    if (rerender) {
       dom.hide(inputContainer)
     }
   })

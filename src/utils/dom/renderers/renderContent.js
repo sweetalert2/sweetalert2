@@ -1,6 +1,6 @@
 import { swalClasses } from '../../classes.js'
 import * as dom from '../../dom/index.js'
-import { renderInput } from './renderInput.js';
+import { renderInput } from './renderInput.js'
 
 export const renderContent = (instance, params) => {
   const content = dom.getContent().querySelector('#' + swalClasses.content)

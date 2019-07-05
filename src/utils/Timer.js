@@ -7,7 +7,7 @@ export default class Timer {
     this.start()
   }
 
-  start() {
+  start () {
     if (!this.running) {
       this.running = true
       this.started = new Date()
@@ -16,7 +16,7 @@ export default class Timer {
     return this.remaining
   }
 
-  stop() {
+  stop () {
     if (this.running) {
       this.running = false
       clearTimeout(this.id)
@@ -25,7 +25,7 @@ export default class Timer {
     return this.remaining
   }
 
-  increase(n) {
+  increase (n) {
     const running = this.running
     if (running) {
       this.stop()
@@ -37,7 +37,7 @@ export default class Timer {
     return this.remaining
   }
 
-  getTimerLeft() {
+  getTimerLeft () {
     if (this.running) {
       this.stop()
       this.start()
@@ -45,7 +45,7 @@ export default class Timer {
     return this.remaining
   }
 
-  isRunning() {
+  isRunning () {
     return this.running
   }
 }

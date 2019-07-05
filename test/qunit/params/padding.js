@@ -25,26 +25,26 @@ QUnit.test('padding should be empty with undefined', (assert) => {
   Swal.fire({
     padding: undefined,
   })
-  assert.equal(Swal.getPopup().style.padding, '');
+  assert.equal(Swal.getPopup().style.padding, '')
 })
 
 QUnit.test('padding should be empty with an object', (assert) => {
   Swal.fire({
     padding: {},
   })
-  assert.equal(Swal.getPopup().style.padding, '');
+  assert.equal(Swal.getPopup().style.padding, '')
 })
 
 QUnit.test('padding should be empty with an array', (assert) => {
   Swal.fire({
     padding: [],
   })
-  assert.equal(Swal.getPopup().style.padding, '');
+  assert.equal(Swal.getPopup().style.padding, '')
 })
 
 QUnit.test('padding should be empty with `true`', (assert) => {
   Swal.fire({
     padding: true,
   })
-  assert.equal(Swal.getPopup().style.padding, '');
+  assert.equal(Swal.getPopup().style.padding, '')
 })

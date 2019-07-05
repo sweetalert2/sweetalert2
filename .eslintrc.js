@@ -5,7 +5,7 @@ module.exports = {
     commonjs: true,
     es6: true
   },
-  extends: 'eslint:recommended',
+  extends: 'standard',
   plugins: [
     'import'
   ],
@@ -14,14 +14,9 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    'brace-style': ['error', '1tbs'],
-    'curly': ['error', 'all'],
+    'comma-dangle': 0,
     'import/extensions': ['error', 'always'],
-    'indent': ['error', 2, { SwitchCase: 1 }],
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
     'no-var': ['error'],
-    'object-curly-spacing': ['error', 'always'],
-    'quotes': ['error', 'single', { allowTemplateLiterals: true }],
-    'space-in-parens': ['error', 'never']
   }
 }

@@ -14,7 +14,7 @@ export const setAriaHidden = () => {
       return
     }
 
-    if (el.hasAttribute('aria-hidden') ) {
+    if (el.hasAttribute('aria-hidden')) {
       el.setAttribute('data-previous-aria-hidden', el.getAttribute('aria-hidden'))
     }
     el.setAttribute('aria-hidden', 'true')
@@ -24,7 +24,7 @@ export const setAriaHidden = () => {
 export const unsetAriaHidden = () => {
   const bodyChildren = toArray(document.body.children)
   bodyChildren.forEach(el => {
-    if (el.hasAttribute('data-previous-aria-hidden') ) {
+    if (el.hasAttribute('data-previous-aria-hidden')) {
       el.setAttribute('aria-hidden', el.getAttribute('data-previous-aria-hidden'))
       el.removeAttribute('data-previous-aria-hidden')
     } else {

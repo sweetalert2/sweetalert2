@@ -21,6 +21,7 @@ module.exports = {
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
     'no-var': ['error'],
     'object-curly-spacing': ['error', 'always'],
-    'quotes': ['error', 'single', { allowTemplateLiterals: true }]
+    'quotes': ['error', 'single', { allowTemplateLiterals: true }],
+    'space-in-parens': ['error', 'never']
   }
 }

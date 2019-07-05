@@ -674,14 +674,14 @@
   dependencies:
     execa "^2.0.0"
 
-"@sweetalert2/stylelint-config@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@sweetalert2/stylelint-config/-/stylelint-config-1.1.0.tgz#07d86e164016c85e637475cd49b60ecf2852dc79"
-  integrity sha512-6K57p2NSp4amH/G5wM5nehtrGrJOJLlHvdu2K1bRzT8Ooz2VmDCDAB6iaGxmwUxBogx/MLxBs8KmLsqOtXBM0A==
+"@sweetalert2/stylelint-config@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@sweetalert2/stylelint-config/-/stylelint-config-1.1.2.tgz#5633b7d07040899bcc6d2901bcfa123c9bdd99f1"
+  integrity sha512-/RUEp69sPg7Ty10TFwwTGVTgfbJrVlHZu8yVujembfMFk+P5vmTWKo5LBjvDvSoXzDKJbkG/6DWOBqzMj07SRQ==
   dependencies:
     stylelint-config-property-sort-order-smacss "^5.0.0"
     stylelint-config-standard "^18.3.0"
-    stylelint-csstree-validator "^1.4.0"
+    stylelint-csstree-validator "^1.4.1"
     stylelint-scss "^3.9.0"
 
 "@types/estree@0.0.39":
@@ -7545,10 +7545,10 @@ stylelint-config-standard@^18.3.0:
   dependencies:
     stylelint-config-recommended "^2.2.0"
 
-stylelint-csstree-validator@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/stylelint-csstree-validator/-/stylelint-csstree-validator-1.4.0.tgz#f660350c300d98565540c48748a3f23e075e15ca"
-  integrity sha512-7XiJT4cvn77dyT+Dr9uc9w22UB+gdQ0UUNc6DG9ler5isnavsYRTuf0wsmvwGWym/WorDNv2yAIBOfG1gOS57g==
+stylelint-csstree-validator@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/stylelint-csstree-validator/-/stylelint-csstree-validator-1.4.1.tgz#263ce772039d621ce2a2a2dd4e1c28a7c3f42648"
+  integrity sha512-c6ChYcoxmBOub/jzv3bCAyEP3p8ymez7af3xn93fv5H2BP5uVZ3tcNS++dVn4nQEZOssRXwcu8iHFy31gEQXNw==
   dependencies:
     css-tree "1.0.0-alpha.30"
 

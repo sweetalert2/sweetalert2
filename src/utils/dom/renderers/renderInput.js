@@ -10,10 +10,10 @@ export const renderInput = (instance, params) => {
   const innerParams = privateProps.innerParams.get(instance)
   const rerender = !innerParams || params.input !== innerParams.input
 
-  inputTypes.forEach( (inputType) => {
+  inputTypes.forEach((inputType) => {
     const inputClass = swalClasses[inputType]
     const inputContainer = dom.getChildByClass(content, inputClass)
-    
+
     // set attributes
     setAttributes(inputType, params.inputAttributes)
 
@@ -30,11 +30,11 @@ export const renderInput = (instance, params) => {
   }
 }
 
-const showInput = (params) => {  
+const showInput = (params) => {
   if (!renderInputType[params.input]) {
     return error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`)
   }
-  
+
   const input = renderInputType[params.input](params)
   dom.show(input)
 }

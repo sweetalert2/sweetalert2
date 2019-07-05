@@ -10,7 +10,7 @@ const fixVerticalPositionIE = () => {
   const popup = dom.getPopup()
 
   container.style.removeProperty('align-items')
-  if (popup.offsetTop < 0 ) {
+  if (popup.offsetTop < 0) {
     container.style.alignItems = 'flex-start'
   }
 }

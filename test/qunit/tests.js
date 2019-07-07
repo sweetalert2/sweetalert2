@@ -113,6 +113,31 @@ QUnit.test('scrollbarPadding disabled', (assert) => {
   Swal.clickConfirm()
 })
 
+QUnit.test('the vertical scrollbar should be restored before a toast is fired after a modal', (assert) => {
+  const done = assert.async()
+  const talltDiv = document.createElement('div')
+  talltDiv.innerHTML = Array(100).join('<div>lorem ipsum</div>')
+  document.body.appendChild(talltDiv)
+  document.body.style.paddingRight = '30px'
+
+  Swal.fire({
+    title: 'The body has visible scrollbar, I will hide it and adjust padding-right on body'
+  }).then(() => {
+    Swal.fire({
+      text: 'Body padding-right should be restored',
+      toast: true,
+      onOpen: () => {
+        assert.equal(bodyStyles.paddingRight, '30px')
+        document.body.removeChild(talltDiv)
+        done()
+      }
+    })
+  })
+
+  const bodyStyles = window.getComputedStyle(document.body)
+  Swal.clickConfirm()
+})
+
 QUnit.test('modal width', (assert) => {
   Swal.fire({ text: '300px', width: 300 })
   assert.equal($('.swal2-modal').style.width, '300px')

@@ -7,6 +7,8 @@ import { swalClasses } from '../utils/classes.js'
 import globalState, { restoreActiveElement } from '../globalState.js'
 import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
+import { DISPOSE_SWAL_TIMEOUT } from '../constants.js'
+
 /*
  * Instance method to close sweetAlert
  */
@@ -19,10 +21,6 @@ function removePopupAndResetState (container, isToast, onAfterClose) {
     globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
     globalState.keydownHandlerAdded = false
   }
-
-  // Unset globalState props so GC will dispose globalState (#1569)
-  delete globalState.keydownHandler
-  delete globalState.keydownTarget
 
   if (container.parentNode) {
     container.parentNode.removeChild(container)
@@ -50,6 +48,17 @@ function removeBodyClasses () {
   )
 }
 
+function disposeSwal () {
+  // Unset this.params so GC will dispose it (#1569)
+  delete this.params
+  // Unset globalState props so GC will dispose globalState (#1569)
+  delete globalState.keydownHandler
+  delete globalState.keydownTarget
+  // Unset WeakMaps so GC will be able to dispose them (#1569)
+  unsetWeakMaps(privateProps)
+  unsetWeakMaps(privateMethods)
+}
+
 export function close (resolveValue) {
   const popup = dom.getPopup()
 
@@ -73,8 +82,7 @@ export function close (resolveValue) {
   // Resolve Swal promise
   swalPromiseResolve(resolveValue || {})
 
-  // Unset this.params so GC will dispose it (#1569)
-  delete this.params
+  globalState.deferDisposalTimer = setTimeout(disposeSwal.bind(this), DISPOSE_SWAL_TIMEOUT)
 }
 
 const handlePopupAnimation = (popup, onAfterClose) => {

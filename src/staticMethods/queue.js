@@ -14,7 +14,7 @@ export const queue = function (steps) {
     resolve(value)
   }
 
-  let queueResult = []
+  const queueResult = []
   return new Promise((resolve) => {
     (function step (i, callback) {
       if (i < currentSteps.length) {

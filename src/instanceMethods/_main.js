@@ -8,7 +8,7 @@ import globalState from '../globalState.js'
 import { openPopup } from '../utils/openPopup.js'
 import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
-import { handleInputOptions, handleInputValue } from '../utils/dom/inputUtils.js';
+import { handleInputOptions, handleInputValue } from '../utils/dom/inputUtils.js'
 
 export function _main (userParams) {
   showWarningsForParams(userParams)

@@ -35,4 +35,3 @@ QUnit.test('increaseTimer() after stopTimer()', (assert) => {
     done()
   }, 100)
 })
-

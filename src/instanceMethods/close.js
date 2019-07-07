@@ -61,7 +61,6 @@ function swalCloseEventFinished (popup, container, isToast, onAfterClose) {
 }
 
 export function close (resolveValue) {
-
   const popup = dom.getPopup()
 
   if (!popup || dom.hasClass(popup, swalClasses.hide)) {
@@ -88,10 +87,10 @@ export function close (resolveValue) {
   delete this.params
 }
 
-const handlePopupAnimation = (popup,  onAfterClose) => {
+const handlePopupAnimation = (popup, onAfterClose) => {
   const container = dom.getContainer()
   // If animation is supported, animate
-  const animationIsSupported = dom.animationEndEvent && dom.hasCssAnimation(popup);
+  const animationIsSupported = dom.animationEndEvent && dom.hasCssAnimation(popup)
 
   if (animationIsSupported) {
     animatePopup(popup, container, onAfterClose)

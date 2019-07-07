@@ -16,7 +16,7 @@ QUnit.test('clickConfirm() should click the confirm button', (assert) => {
   Swal.clickConfirm()
 })
 
-QUnit.test('clickConfirm() should not fail if a popup is not visible' , (assert) => {
+QUnit.test('clickConfirm() should not fail if a popup is not visible', (assert) => {
   SwalWithoutAnimation.fire()
   Swal.close()
   assert.notOk(Swal.isVisible())

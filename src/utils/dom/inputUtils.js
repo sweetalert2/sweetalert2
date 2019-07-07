@@ -1,8 +1,8 @@
 import * as dom from './index.js'
 import { swalClasses } from '../classes.js'
 import { getChildByClass } from './domUtils.js'
-import { error, isPromise } from '../utils.js';
-import { showLoading } from '../../staticMethods/showLoading.js';
+import { error, isPromise } from '../utils.js'
+import { showLoading } from '../../staticMethods/showLoading.js'
 
 export const handleInputOptions = (instance, params) => {
   const content = dom.getContent()

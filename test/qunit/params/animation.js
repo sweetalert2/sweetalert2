@@ -13,7 +13,7 @@ QUnit.test('dynamic animation', (assert) => {
       done()
       return !isVisible
     }
-  });
+  })
 
   expectedVisible = false
   customAnimationSwal.fire('1')

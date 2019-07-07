@@ -21,7 +21,7 @@ function handlePositionParam (container, position) {
 
 function handleGrowParam (container, grow) {
   if (grow && typeof grow === 'string') {
-    let growClass = 'grow-' + grow
+    const growClass = 'grow-' + grow
     if (growClass in swalClasses) {
       dom.addClass(container, swalClasses[growClass])
     }

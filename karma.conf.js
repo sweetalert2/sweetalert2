@@ -84,7 +84,7 @@ const sauceLabsLaunchers = {
   }
 }
 
-function checkSauceCredentials() {
+function checkSauceCredentials () {
   if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
     console.error('SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables must be set')
     process.exit(1)

@@ -1,7 +1,7 @@
 import * as dom from '../utils/dom/index.js'
 import { renderProgressSteps } from '../utils/dom/renderers/renderProgressSteps.js'
 import privateProps from '../privateProps.js'
-import { warnAboutDepreation } from '../utils/utils.js';
+import { warnAboutDepreation } from '../utils/utils.js'
 
 export function getProgressSteps () {
   warnAboutDepreation('Swal.getProgressSteps()', `const swalInstance = Swal.fire({progressSteps: ['1', '2', '3']}); const progressSteps = swalInstance.params.progressSteps`)

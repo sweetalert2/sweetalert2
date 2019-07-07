@@ -19,4 +19,3 @@ QUnit.test('toggleTimer() method', (assert) => {
     done()
   }, 2000)
 })
-

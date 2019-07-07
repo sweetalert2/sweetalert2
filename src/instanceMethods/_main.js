@@ -17,7 +17,7 @@ export function _main (userParams) {
   if (globalState.swalClosing) {
     delete globalState.swalClosing
     globalState.swalCloseEventFinishedCallback()
-    delete globalState.swalCloseEventFinishedCallback()
+    delete globalState.swalCloseEventFinishedCallback
   }
 
   // Check if there is a swal disposal defer timer

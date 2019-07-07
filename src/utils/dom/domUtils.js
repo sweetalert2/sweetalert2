@@ -1,5 +1,5 @@
 import { swalClasses, iconTypes } from '../classes.js'
-import { toArray, objectValues } from '../utils.js';
+import { toArray, objectValues } from '../utils.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {

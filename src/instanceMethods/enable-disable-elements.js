@@ -1,5 +1,5 @@
 import privateProps from '../privateProps.js'
-import { warnAboutDepreation } from '../utils/utils.js';
+import { warnAboutDepreation } from '../utils/utils.js'
 
 function setButtonsDisabled (instance, buttons, disabled) {
   const domCache = privateProps.domCache.get(instance)

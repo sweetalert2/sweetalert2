@@ -9,7 +9,7 @@ module.exports = {
   prepare: [
     {
       'path': '@semantic-release/exec',
-      'cmd': 'VERSION=${nextRelease.version} node tools/build-dist'
+      'cmd': 'VERSION=${nextRelease.version} node tools/build-dist' // eslint-disable-line no-template-curly-in-string
     },
     '@semantic-release/changelog',
     '@semantic-release/npm',

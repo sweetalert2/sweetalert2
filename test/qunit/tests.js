@@ -677,10 +677,10 @@ QUnit.test('backdrop accepts css background param', (assert) => {
   })
   assert.notOk(Swal.getContainer().style.background)
 
-  let backdrop = 'rgb(123, 123, 123)'
+  const backdrop = 'rgb(123, 123, 123)'
   Swal.fire({
     title: 'I have a custom backdrop',
-    backdrop: backdrop
+    backdrop
   })
   assert.ok(Swal.getContainer().style.background.includes(backdrop))
 })

@@ -30,7 +30,7 @@ export const triggerKeydownEvent = (target, key, params = {}) => {
   e.initEvent(
     'keydown',
     true, // bubbles
-    true  // cancelable
+    true // cancelable
   )
   for (const param in params) {
     e[param] = params[param]

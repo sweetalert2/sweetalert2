@@ -1,5 +1,5 @@
-const { Swal, isVisible, TIMEOUT } = require('./helpers')
 import defaultInputValidators from '../../src/utils/defaultInputValidators.js'
+const { Swal, isVisible, TIMEOUT } = require('./helpers')
 
 QUnit.test('input.checkValidity()', (assert) => {
   const done = assert.async()

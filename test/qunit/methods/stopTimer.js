@@ -31,4 +31,3 @@ QUnit.test('stopTimer() method called twice', (assert) => {
     done()
   }, 100)
 })
-

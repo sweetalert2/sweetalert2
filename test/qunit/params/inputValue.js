@@ -48,12 +48,12 @@ QUnit.test('should throw console error when inputValue as a Promise rejects', (a
   SwalWithoutAnimation.fire({
     input: 'text',
     inputValue: new Promise((resolve, reject) => {
-      reject('input promise rejected')
+      reject(new Error('input promise rejected'))
     }),
     onOpen: () => {
       setTimeout(() => {
         console.error = _consoleError
-        assert.ok(spy.calledWith('SweetAlert2: Error in inputValue promise: input promise rejected'))
+        assert.ok(spy.calledWith('SweetAlert2: Error in inputValue promise: Error: input promise rejected'))
         done()
       }, TIMEOUT)
     }

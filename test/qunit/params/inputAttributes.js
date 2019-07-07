@@ -16,7 +16,6 @@ QUnit.test('inputAttributes: input text w/ placeholder', (assert) => {
   done()
 })
 
-
 QUnit.test('inputAttributes: input file w/ placeholder', (assert) => {
   const done = assert.async()
 

@@ -102,11 +102,11 @@ const animatePopup = (popup, container, onAfterClose) => {
   globalState.swalClosing = true
   globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(null, container, dom.isToast(), onAfterClose)
   popup.addEventListener(dom.animationEndEvent, function (e) {
-    delete globalState.swalClosing
-    if (e.target === popup) {
+    if (e.target === popup && globalState.swalClosing) {
+      delete globalState.swalClosing
       globalState.swalCloseEventFinishedCallback()
+      delete globalState.swalCloseEventFinishedCallback
     }
-    delete globalState.swalCloseEventFinishedCallback
   })
 }
 

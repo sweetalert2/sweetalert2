@@ -1,3 +1,10 @@
+## [8.13.3](https://github.com/sweetalert2/sweetalert2/compare/v8.13.2...v8.13.3) (2019-07-08)
+
+
+### Bug Fixes
+
+* Move `globalState` variables delete statements in closing callback ([#1647](https://github.com/sweetalert2/sweetalert2/issues/1647)) ([e5ded53](https://github.com/sweetalert2/sweetalert2/commit/e5ded53))
+
 ## [8.13.2](https://github.com/sweetalert2/sweetalert2/compare/v8.13.1...v8.13.2) (2019-07-08)
 
 

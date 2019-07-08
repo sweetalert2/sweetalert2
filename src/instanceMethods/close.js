@@ -105,8 +105,8 @@ const animatePopup = (popup, container, onAfterClose) => {
     delete globalState.swalClosing
     if (e.target === popup) {
       globalState.swalCloseEventFinishedCallback()
+      delete globalState.swalCloseEventFinishedCallback
     }
-    delete globalState.swalCloseEventFinishedCallback
   })
 }
 

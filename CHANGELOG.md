@@ -1,3 +1,10 @@
+## [8.13.2](https://github.com/sweetalert2/sweetalert2/compare/v8.13.1...v8.13.2) (2019-07-08)
+
+
+### Bug Fixes
+
+* change closing sequence to detect a closing swal ([#1645](https://github.com/sweetalert2/sweetalert2/issues/1645)) ([9a8e802](https://github.com/sweetalert2/sweetalert2/commit/9a8e802))
+
 ## [8.13.1](https://github.com/sweetalert2/sweetalert2/compare/v8.13.0...v8.13.1) (2019-07-04)
 
 

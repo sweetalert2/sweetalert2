@@ -71,6 +71,7 @@ QUnit.test('should show the popup with OK button in case of empty object passed 
 })
 
 QUnit.test('the vertical scrollbar should be hidden and the according padding-right should be set', (assert) => {
+  const done = assert.async()
   const talltDiv = document.createElement('div')
   talltDiv.innerHTML = Array(100).join('<div>lorem ipsum</div>')
   document.body.appendChild(talltDiv)
@@ -83,6 +84,7 @@ QUnit.test('the vertical scrollbar should be hidden and the according padding-ri
     onAfterClose: () => {
       assert.equal(bodyStyles.paddingRight, '30px')
       document.body.removeChild(talltDiv)
+      done()
     }
   })
   const bodyStyles = window.getComputedStyle(document.body)
@@ -108,6 +110,31 @@ QUnit.test('scrollbarPadding disabled', (assert) => {
 
   const bodyStyles = window.getComputedStyle(document.body)
   assert.equal(bodyStyles.paddingRight, '30px')
+  Swal.clickConfirm()
+})
+
+QUnit.test('the vertical scrollbar should be restored before a toast is fired after a modal', (assert) => {
+  const done = assert.async()
+  const talltDiv = document.createElement('div')
+  talltDiv.innerHTML = Array(100).join('<div>lorem ipsum</div>')
+  document.body.appendChild(talltDiv)
+  document.body.style.paddingRight = '30px'
+
+  Swal.fire({
+    title: 'The body has visible scrollbar, I will hide it and adjust padding-right on body'
+  }).then(() => {
+    Swal.fire({
+      text: 'Body padding-right should be restored',
+      toast: true,
+      onOpen: () => {
+        assert.equal(bodyStyles.paddingRight, '30px')
+        document.body.removeChild(talltDiv)
+        done()
+      }
+    })
+  })
+
+  const bodyStyles = window.getComputedStyle(document.body)
   Swal.clickConfirm()
 })
 

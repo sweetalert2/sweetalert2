@@ -13,6 +13,19 @@ import { handleInputOptions, handleInputValue } from '../utils/dom/inputUtils.js
 export function _main (userParams) {
   showWarningsForParams(userParams)
 
+  // Check if there is another Swal closing
+  if (globalState.swalClosing) {
+    delete globalState.swalClosing
+    globalState.swalCloseEventFinishedCallback()
+    delete globalState.swalCloseEventFinishedCallback
+  }
+
+  // Check if there is a swal disposal defer timer
+  if (globalState.deferDisposalTimer) {
+    clearTimeout(globalState.deferDisposalTimer)
+    delete globalState.deferDisposalTimer
+  }
+
   const innerParams = Object.assign({}, defaultParams, userParams)
   setParameters(innerParams)
   Object.freeze(innerParams)

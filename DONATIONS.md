@@ -48,6 +48,9 @@ Backer is a company or a person who donated 100 USD or more. Backers are listed 
 
 - **[VEI Hosting](http://www.veihosting.com/)** (20 USD)
 
+- **Denis Veg** (10 EUR)
+    > Thank you for all your amazing work on SWAL!
+
 - **Daniel Seuffer** (10 EUR)
     > Thx for this very sweet alert!! And the continuous support. :-)
 

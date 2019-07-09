@@ -1,3 +1,10 @@
+## [8.13.4](https://github.com/sweetalert2/sweetalert2/compare/v8.13.3...v8.13.4) (2019-07-09)
+
+
+### Bug Fixes
+
+* perform removeBodyClasses() as the very last step ([#1651](https://github.com/sweetalert2/sweetalert2/issues/1651)) ([624ccc9](https://github.com/sweetalert2/sweetalert2/commit/624ccc9))
+
 ## [8.13.3](https://github.com/sweetalert2/sweetalert2/compare/v8.13.2...v8.13.3) (2019-07-08)
 
 

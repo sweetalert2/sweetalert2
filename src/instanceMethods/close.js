@@ -25,7 +25,6 @@ function removePopupAndResetState (container, isToast, onAfterClose) {
   if (container.parentNode) {
     container.parentNode.removeChild(container)
   }
-  removeBodyClasses()
 
   if (dom.isModal()) {
     undoScrollbar()
@@ -33,6 +32,8 @@ function removePopupAndResetState (container, isToast, onAfterClose) {
     undoIEfix()
     unsetAriaHidden()
   }
+
+  removeBodyClasses()
 }
 
 function removeBodyClasses () {

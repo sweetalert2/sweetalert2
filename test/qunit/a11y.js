@@ -69,13 +69,23 @@ QUnit.test('should not set aria-hidden="true" when `backdrop: false`', (assert) 
 })
 
 QUnit.test('should not set aria-hidden="true" when `toast: true`', (assert) => {
+  const done = assert.async()
+
   const div = document.createElement('div')
   document.body.appendChild(div)
+  const divAriaHiddenTrue = document.createElement('div')
+  divAriaHiddenTrue.setAttribute('aria-hidden', 'true')
+  document.body.appendChild(divAriaHiddenTrue)
 
   SwalWithoutAnimation.fire({
-    toast: true
+    toast: true,
+    onAfterClose: () => {
+      assert.equal(divAriaHiddenTrue.getAttribute('aria-hidden'), 'true')
+      done()
+    }
   })
   assert.notOk(div.hasAttribute('aria-hidden'))
+  Swal.close()
 })
 
 QUnit.test('dialog aria attributes', (assert) => {

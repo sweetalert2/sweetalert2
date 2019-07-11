@@ -1,2 +1,1 @@
 export const RESTORE_FOCUS_TIMEOUT = 100
-export const DISPOSE_SWAL_TIMEOUT = 36000

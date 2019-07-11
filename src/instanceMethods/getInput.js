@@ -5,5 +5,8 @@ import privateProps from '../privateProps.js'
 export function getInput (instance) {
   const innerParams = privateProps.innerParams.get(instance || this)
   const domCache = privateProps.domCache.get(instance || this)
+  if (!domCache) {
+    return null
+  }
   return dom.getInput(domCache.content, innerParams.input)
 }

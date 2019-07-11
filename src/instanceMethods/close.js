@@ -71,25 +71,26 @@ export function close (resolveValue) {
     return
   }
   const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this)
-  const { onClose, onAfterClose } = innerParams
 
   dom.removeClass(popup, swalClasses.show)
   dom.addClass(popup, swalClasses.hide)
 
-  handlePopupAnimation(this, popup, onAfterClose)
-
-  if (onClose !== null && typeof onClose === 'function') {
-    onClose(popup)
-  }
+  handlePopupAnimation(this, popup, innerParams)
 
   // Resolve Swal promise
   swalPromiseResolve(resolveValue || {})
 }
 
-const handlePopupAnimation = (instance, popup, onAfterClose) => {
+const handlePopupAnimation = (instance, popup, innerParams) => {
   const container = dom.getContainer()
   // If animation is supported, animate
   const animationIsSupported = dom.animationEndEvent && dom.hasCssAnimation(popup)
+
+  const { onClose, onAfterClose } = innerParams
+
+  if (onClose !== null && typeof onClose === 'function') {
+    onClose(popup)
+  }
 
   if (animationIsSupported) {
     animatePopup(instance, popup, container, onAfterClose)

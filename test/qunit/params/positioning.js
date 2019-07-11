@@ -11,12 +11,12 @@ class PositionChecker {
     this._containerRight = (container === window) ? window.innerWidth : container.offsetLeft + container.clientWidth
 
     this._checkFunctions = {
-      'top': this.isTop.bind(this),
-      'center': this.isCenter.bind(this),
-      'bottom': this.isBottom.bind(this),
-      'left': this.isLeft.bind(this),
-      'middle': this.isMiddle.bind(this),
-      'right': this.isRight.bind(this)
+      top: this.isTop.bind(this),
+      center: this.isCenter.bind(this),
+      bottom: this.isBottom.bind(this),
+      left: this.isLeft.bind(this),
+      middle: this.isMiddle.bind(this),
+      right: this.isRight.bind(this)
     }
   }
 

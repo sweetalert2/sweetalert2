@@ -200,8 +200,8 @@ QUnit.test('getters', (assert) => {
   Swal.fire({
     input: 'radio',
     inputOptions: {
-      'one': 'one',
-      'two': 'two'
+      one: 'one',
+      two: 'two'
     }
   })
   $('.swal2-radio input[value="two"]').setAttribute('checked', true)
@@ -444,8 +444,8 @@ QUnit.test('disable/enable input', (assert) => {
   Swal.fire({
     input: 'radio',
     inputOptions: {
-      'one': 'one',
-      'two': 'two'
+      one: 'one',
+      two: 'two'
     }
   })
 

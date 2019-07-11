@@ -195,8 +195,8 @@ QUnit.test('input radio', (assert) => {
   Swal.fire({
     input: 'radio',
     inputOptions: {
-      'one': 'one',
-      'two': 'two'
+      one: 'one',
+      two: 'two'
     }
   })
 

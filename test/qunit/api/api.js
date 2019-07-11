@@ -44,6 +44,7 @@ QUnit.test('extending swal', (assert) => {
       assert.deepEqual(args, ['arg'])
       return { title: 'title' }
     }
+
     _main (params) {
       assert.deepEqual(params, { title: 'title' })
       return super._main({

@@ -203,3 +203,17 @@ QUnit.test('input radio', (assert) => {
   assert.equal($('.swal2-radio').querySelectorAll('label').length, 2)
   assert.equal($('.swal2-radio').querySelectorAll('input[type="radio"]').length, 2)
 })
+
+QUnit.test('Swal.getInput() should return null when a popup is disposed', (assert) => {
+  const done = assert.async()
+
+  SwalWithoutAnimation.fire({
+    input: 'text',
+  }).then(() => {
+    setTimeout(() => {
+      assert.equal(Swal.getInput(), null)
+      done()
+    }, TIMEOUT)
+  })
+  Swal.close()
+})

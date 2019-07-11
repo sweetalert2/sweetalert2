@@ -5,8 +5,8 @@ QUnit.test('clickConfirm() should click the confirm button', (assert) => {
   Swal.fire({
     input: 'radio',
     inputOptions: {
-      'one': 'one',
-      'two': 'two'
+      one: 'one',
+      two: 'two'
     }
   }).then((result) => {
     assert.deepEqual(result, { value: 'two' })

@@ -14,9 +14,9 @@ import privateMethods from '../privateMethods.js'
 
 function removePopupAndResetState (instance, container, isToast, onAfterClose) {
   if (isToast) {
-    triggerOnAfterClose(onAfterClose)
+    triggerOnAfterCloseAndDispose(instance, onAfterClose)
   } else {
-    restoreActiveElement().then(() => triggerOnAfterClose(onAfterClose))
+    restoreActiveElement().then(() => triggerOnAfterCloseAndDispose(instance, onAfterClose))
     globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
     globalState.keydownHandlerAdded = false
   }
@@ -33,8 +33,6 @@ function removePopupAndResetState (instance, container, isToast, onAfterClose) {
   }
 
   removeBodyClasses()
-
-  disposeSwal(instance)
 }
 
 function removeBodyClasses () {
@@ -69,6 +67,9 @@ export function close (resolveValue) {
   }
 
   const innerParams = privateProps.innerParams.get(this)
+  if (!innerParams) {
+    return
+  }
   const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this)
   const { onClose, onAfterClose } = innerParams
 
@@ -116,12 +117,13 @@ const unsetWeakMaps = (obj) => {
   }
 }
 
-const triggerOnAfterClose = (onAfterClose) => {
-  if (onAfterClose !== null && typeof onAfterClose === 'function') {
-    setTimeout(() => {
+const triggerOnAfterCloseAndDispose = (instance, onAfterClose) => {
+  setTimeout(() => {
+    if (onAfterClose !== null && typeof onAfterClose === 'function') {
       onAfterClose()
-    })
-  }
+    }
+    disposeSwal(instance)
+  })
 }
 
 export {

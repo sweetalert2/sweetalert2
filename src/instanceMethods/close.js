@@ -123,7 +123,9 @@ const triggerOnAfterCloseAndDispose = (instance, onAfterClose) => {
     if (onAfterClose !== null && typeof onAfterClose === 'function') {
       onAfterClose()
     }
-    disposeSwal(instance)
+    if (!dom.getPopup()) {
+      disposeSwal(instance)
+    }
   })
 }
 

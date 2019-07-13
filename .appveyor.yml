@@ -20,7 +20,7 @@ build: off
 
 install:
   - ps: Install-Product node $env:nodejs_version
-  - npm i
+  - appveyor-retry npm i
 
 test_script:
   - npm run build

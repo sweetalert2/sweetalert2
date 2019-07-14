@@ -1,3 +1,10 @@
+## [8.13.5](https://github.com/sweetalert2/sweetalert2/compare/v8.13.4...v8.13.5) (2019-07-14)
+
+
+### Bug Fixes
+
+* set .swal2-actions' width to auto, fix [#1662](https://github.com/sweetalert2/sweetalert2/issues/1662) ([5acef36](https://github.com/sweetalert2/sweetalert2/commit/5acef36))
+
 ## [8.13.4](https://github.com/sweetalert2/sweetalert2/compare/v8.13.3...v8.13.4) (2019-07-09)
 
 

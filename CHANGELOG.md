@@ -1,3 +1,10 @@
+## [8.13.6](https://github.com/sweetalert2/sweetalert2/compare/v8.13.5...v8.13.6) (2019-07-15)
+
+
+### Bug Fixes
+
+* get rid of DISPOSE_SWAL_TIMEOUT ([#1655](https://github.com/sweetalert2/sweetalert2/issues/1655)) ([fec6c13](https://github.com/sweetalert2/sweetalert2/commit/fec6c13))
+
 ## [8.13.5](https://github.com/sweetalert2/sweetalert2/compare/v8.13.4...v8.13.5) (2019-07-14)
 
 

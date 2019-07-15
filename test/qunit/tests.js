@@ -568,6 +568,27 @@ QUnit.test('onClose', (assert) => {
   $('.swal2-close').click()
 })
 
+QUnit.test('Swal.fire() in onClose', (assert) => {
+  const done = assert.async()
+
+  Swal.fire({
+    title: 'onClose test',
+    onClose: () => {
+      Swal.fire({
+        text: 'OnClose',
+        input: 'text',
+        inputClass: 'on-close-swal'
+      })
+    }
+  }).then(() => {
+    assert.ok(Swal.isVisible())
+    assert.ok(Swal.getInput().classList.contains('on-close-swal'))
+    done()
+  })
+
+  Swal.clickConfirm()
+})
+
 QUnit.test('esc key', (assert) => {
   const done = assert.async()
 

@@ -14,8 +14,7 @@ export function _main (userParams) {
   showWarningsForParams(userParams)
 
   // Check if there is another Swal closing
-  if (globalState.swalClosing) {
-    delete globalState.swalClosing
+  if (dom.getPopup() && globalState.swalCloseEventFinishedCallback) {
     globalState.swalCloseEventFinishedCallback()
     delete globalState.swalCloseEventFinishedCallback
   }

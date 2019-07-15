@@ -46,15 +46,20 @@ QUnit.test('onAfterClose using close() method', (assert) => {
   Swal.close()
 })
 
-QUnit.test('Swal.fire() inside onClose', (assert) => {
+QUnit.test('Swal.fire() inside onAfterClose', (assert) => {
   const done = assert.async()
 
   SwalWithoutAnimation.fire({
-    onClose: () => {
+    onAfterClose: () => {
       assert.notOk(Swal.isVisible())
-      SwalWithoutAnimation.fire()
+      SwalWithoutAnimation.fire({
+        input: 'text',
+        onOpen: () => {
+          assert.notDeepEqual(Swal.getInput(), null)
+          done()
+        }
+      })
       assert.ok(Swal.isVisible())
-      done()
     }
   })
 

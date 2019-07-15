@@ -203,3 +203,30 @@ QUnit.test('input radio', (assert) => {
   assert.equal($('.swal2-radio').querySelectorAll('label').length, 2)
   assert.equal($('.swal2-radio').querySelectorAll('input[type="radio"]').length, 2)
 })
+
+QUnit.test('Swal.getInput() should be available in .then()', (assert) => {
+  const done = assert.async()
+
+  SwalWithoutAnimation.fire({
+    input: 'text',
+  }).then(() => {
+    assert.ok(Swal.getInput())
+    done()
+  })
+  Swal.close()
+})
+
+QUnit.test('Swal.getInput() should return null when a popup is disposed', (assert) => {
+  const done = assert.async()
+
+  SwalWithoutAnimation.fire({
+    input: 'text',
+    onAfterClose: () => {
+      setTimeout(() => {
+        assert.notOk(Swal.getInput())
+        done()
+      }, TIMEOUT)
+    }
+  })
+  Swal.close()
+})

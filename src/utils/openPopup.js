@@ -24,13 +24,13 @@ export const openPopup = (params) => {
     params.onBeforeOpen(popup)
   }
 
-  addClasses({ container, popup })(params)
+  addClasses(container, popup, params)
 
   // scrolling is 'hidden' until animation is done, after that 'auto'
-  setScrollingVisibility({ container, popup })
+  setScrollingVisibility(container, popup)
 
   if (dom.isModal()) {
-    fixScrollContainer(container)(params.scrollbarPadding)
+    fixScrollContainer(container, params.scrollbarPadding)
   }
 
   if (!dom.isToast() && !globalState.previousActiveElement) {
@@ -41,7 +41,7 @@ export const openPopup = (params) => {
   }
 }
 
-const setScrollingVisibility = ({ container, popup }) => {
+const setScrollingVisibility = (container, popup) => {
   if (dom.animationEndEvent && dom.hasCssAnimation(popup)) {
     container.style.overflowY = 'hidden'
     popup.addEventListener(dom.animationEndEvent, swalOpenAnimationFinished.bind(null, popup, container))
@@ -50,7 +50,7 @@ const setScrollingVisibility = ({ container, popup }) => {
   }
 }
 
-const fixScrollContainer = (container) => (scrollbarPadding) => {
+const fixScrollContainer = (container, scrollbarPadding) => {
   iOSfix()
   IEfix()
   setAriaHidden()
@@ -65,7 +65,7 @@ const fixScrollContainer = (container) => (scrollbarPadding) => {
   })
 }
 
-const addClasses = ({ container, popup }) => (params) => {
+const addClasses = (container, popup, params) => {
   if (params.animation) {
     dom.addClass(popup, swalClasses.show)
     dom.addClass(container, swalClasses.fade)

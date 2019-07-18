@@ -687,6 +687,13 @@ declare module 'sweetalert2' {
         showCloseButton?: boolean;
 
         /**
+         * Use this to change the content of the close button.
+         *
+         * @default '&times;'
+         */
+        closeButtonHtml?: string;
+
+        /**
          * Use this to change the `aria-label` for the close button.
          *
          * @default 'Close this dialog'

@@ -35,6 +35,7 @@ const defaultParams = {
   focusConfirm: true,
   focusCancel: false,
   showCloseButton: false,
+  closeButtonHtml: '&times;',
   closeButtonAriaLabel: 'Close this dialog',
   showLoaderOnConfirm: false,
   imageUrl: null,

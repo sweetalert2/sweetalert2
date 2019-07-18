@@ -1,3 +1,10 @@
+# [8.14.0](https://github.com/sweetalert2/sweetalert2/compare/v8.13.6...v8.14.0) (2019-07-18)
+
+
+### Features
+
+* add closeButtonHtml param ([#1668](https://github.com/sweetalert2/sweetalert2/issues/1668)) ([7f5d662](https://github.com/sweetalert2/sweetalert2/commit/7f5d662))
+
 ## [8.13.6](https://github.com/sweetalert2/sweetalert2/compare/v8.13.5...v8.13.6) (2019-07-15)
 
 

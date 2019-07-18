@@ -647,6 +647,18 @@ QUnit.test('close button', (assert) => {
   assert.equal(closeButton.getAttribute('aria-label'), 'Close this dialog')
   closeButton.click()
 })
+
+QUnit.test('close button customization', (assert) => {
+  Swal.fire({
+    title: 'Customized Close button test',
+    showCloseButton: true,
+    closeButtonHtml: 'c'
+  })
+
+  const closeButton = $('.swal2-close')
+  assert.equal(closeButton.innerHTML, 'c')
+})
+
 QUnit.test('cancel button', (assert) => {
   const done = assert.async()
 

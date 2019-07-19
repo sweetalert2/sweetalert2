@@ -19,11 +19,15 @@ export const renderIcon = (instance, params) => {
     return
   }
 
-  adjustSuccessIconBackgoundColor()
-
   if (Object.keys(iconTypes).indexOf(params.type) !== -1) {
     const icon = dom.elementBySelector(`.${swalClasses.icon}.${iconTypes[params.type]}`)
+
     dom.show(icon)
+
+    // Custom or default content
+    setContent(icon, params)
+
+    adjustSuccessIconBackgoundColor()
 
     // Custom class
     dom.applyCustomClass(icon, params.customClass, 'icon')
@@ -51,3 +55,34 @@ const adjustSuccessIconBackgoundColor = () => {
     successIconParts[i].style.backgroundColor = popupBackgroundColor
   }
 }
+
+const setContent = (icon, params) => {
+  icon.innerHTML = ''
+
+  if (params.iconHtml) {
+    icon.innerHTML = iconContent(params.iconHtml)
+  } else if (params.type === 'success') {
+    icon.innerHTML = `
+      <div class="swal2-success-circular-line-left"></div>
+      <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
+      <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>
+      <div class="swal2-success-circular-line-right"></div>
+    `
+  } else if (params.type === 'error') {
+    icon.innerHTML = `
+      <span class="swal2-x-mark">
+        <span class="swal2-x-mark-line-left"></span>
+        <span class="swal2-x-mark-line-right"></span>
+      </span>
+    `
+  } else {
+    const defaultIconHtml = {
+      question: '?',
+      warning: '!',
+      info: 'i'
+    }
+    icon.innerHTML = iconContent(defaultIconHtml[params.type])
+  }
+}
+
+const iconContent = (content) => `<div class="${swalClasses['icon-content']}">${content}</div>`

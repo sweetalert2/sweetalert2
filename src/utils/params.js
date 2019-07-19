@@ -6,7 +6,8 @@ const defaultParams = {
   text: '',
   html: '',
   footer: '',
-  type: null,
+  type: null, // todo: deprecate in favor of 'icon'
+  iconHtml: null,
   toast: false,
   customClass: '',
   customContainerClass: '',

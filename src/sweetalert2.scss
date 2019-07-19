@@ -653,15 +653,15 @@ body {
   cursor: default;
   user-select: none;
 
-  &::before {
+  .swal2-icon-content {
     display: flex;
     align-items: center;
-    height: 92%;
     font-size: 3.75em;
   }
 
   &.swal2-error {
     border-color: $swal2-error;
+    color: $swal2-error;
 
     .swal2-x-mark {
       position: relative;
@@ -692,36 +692,21 @@ body {
   &.swal2-warning {
     border-color: lighten($swal2-warning, 7);
     color: $swal2-warning;
-
-    &::before {
-      content: '!';
-    }
   }
 
   &.swal2-info {
     border-color: lighten($swal2-info, 20);
     color: $swal2-info;
-
-    &::before {
-      content: 'i';
-    }
   }
 
   &.swal2-question {
     border-color: lighten($swal2-question, 20);
     color: $swal2-question;
-
-    &::before {
-      content: '?';
-    }
-
-    &.swal2-arabic-question-mark::before {
-      content: '؟';
-    }
   }
 
   &.swal2-success {
     border-color: $swal2-success;
+    color: $swal2-success;
 
     [class^='swal2-success-circular-line'] { // Emulate moving circular line
       position: absolute;

@@ -9,6 +9,7 @@ import { openPopup } from '../utils/openPopup.js'
 import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
 import { handleInputOptions, handleInputValue } from '../utils/dom/inputUtils.js'
+import { handleConfirmButtonClick, handleCancelButtonClick } from './buttons-handlers.js'
 
 export function _main (userParams) {
   showWarningsForParams(userParams)
@@ -59,9 +60,6 @@ export function _main (userParams) {
 
   return new Promise((resolve) => {
     // functions to handle all closings/dismissals
-    const succeedWith = (value) => {
-      this.closePopup({ value })
-    }
     const dismissWith = (dismiss) => {
       this.closePopup({ dismiss })
     }
@@ -76,24 +74,6 @@ export function _main (userParams) {
       }, innerParams.timer)
     }
 
-    // Get the value of the popup input
-    const getInputValue = () => {
-      const input = this.getInput()
-      if (!input) {
-        return null
-      }
-      switch (innerParams.input) {
-        case 'checkbox':
-          return input.checked ? 1 : 0
-        case 'radio':
-          return input.checked ? input.value : null
-        case 'file':
-          return input.files.length ? input.files[0] : null
-        default:
-          return innerParams.inputAutoTrim ? input.value.trim() : input.value
-      }
-    }
-
     // input autofocus
     if (innerParams.input) {
       setTimeout(() => {
@@ -104,83 +84,14 @@ export function _main (userParams) {
       }, 0)
     }
 
-    const confirm = (value) => {
-      if (innerParams.showLoaderOnConfirm) {
-        constructor.showLoading() // TODO: make showLoading an *instance* method
-      }
-
-      if (innerParams.preConfirm) {
-        this.resetValidationMessage()
-        const preConfirmPromise = Promise.resolve().then(() => innerParams.preConfirm(value, innerParams.validationMessage))
-        preConfirmPromise.then(
-          (preConfirmValue) => {
-            if (dom.isVisible(domCache.validationMessage) || preConfirmValue === false) {
-              this.hideLoading()
-            } else {
-              succeedWith(typeof (preConfirmValue) === 'undefined' ? value : preConfirmValue)
-            }
-          }
-        )
-      } else {
-        succeedWith(value)
-      }
+    // Click 'confirm' button
+    domCache.confirmButton.onclick = () => {
+      handleConfirmButtonClick(this, innerParams)
     }
 
-    // Mouse interactions
-    const onButtonEvent = (e) => {
-      const target = e.target
-      const { confirmButton, cancelButton } = domCache
-      const targetedConfirm = confirmButton && (confirmButton === target || confirmButton.contains(target))
-      const targetedCancel = cancelButton && (cancelButton === target || cancelButton.contains(target))
-
-      switch (e.type) {
-        case 'click':
-          // Clicked 'confirm'
-          if (targetedConfirm) {
-            this.disableButtons()
-            if (innerParams.input) {
-              const inputValue = getInputValue()
-
-              if (innerParams.inputValidator) {
-                this.disableInput()
-                const validationPromise = Promise.resolve().then(() => innerParams.inputValidator(inputValue, innerParams.validationMessage))
-                validationPromise.then(
-                  (validationMessage) => {
-                    this.enableButtons()
-                    this.enableInput()
-                    if (validationMessage) {
-                      this.showValidationMessage(validationMessage)
-                    } else {
-                      confirm(inputValue)
-                    }
-                  }
-                )
-              } else if (!this.getInput().checkValidity()) {
-                this.enableButtons()
-                this.showValidationMessage(innerParams.validationMessage)
-              } else {
-                confirm(inputValue)
-              }
-            } else {
-              confirm(true)
-            }
-
-          // Clicked 'cancel'
-          } else if (targetedCancel) {
-            this.disableButtons()
-            dismissWith(constructor.DismissReason.cancel)
-          }
-          break
-        default:
-      }
-    }
-
-    const buttons = domCache.popup.querySelectorAll('button')
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].onclick = onButtonEvent
-      buttons[i].onmouseover = onButtonEvent
-      buttons[i].onmouseout = onButtonEvent
-      buttons[i].onmousedown = onButtonEvent
+    // Click 'cancel' button
+    domCache.cancelButton.onclick = () => {
+      handleCancelButtonClick(this, dismissWith)
     }
 
     // Closing popup by close button

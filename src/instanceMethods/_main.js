@@ -67,16 +67,6 @@ const swalPromise = (instance, domCache, innerParams) => {
       }, innerParams.timer)
     }
 
-    // input autofocus
-    if (innerParams.input) {
-      setTimeout(() => {
-        const input = instance.getInput()
-        if (input) {
-          dom.focusInput(input)
-        }
-      }, 0)
-    }
-
     // Click 'confirm' button
     domCache.confirmButton.onclick = () => {
       handleConfirmButtonClick(instance, innerParams)

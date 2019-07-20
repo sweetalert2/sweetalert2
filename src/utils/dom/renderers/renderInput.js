@@ -37,6 +37,11 @@ const showInput = (params) => {
 
   const input = renderInputType[params.input](params)
   dom.show(input)
+
+  // input autofocus
+  setTimeout(() => {
+    dom.focusInput(input)
+  }, 0)
 }
 
 const removeAttributes = (input) => {

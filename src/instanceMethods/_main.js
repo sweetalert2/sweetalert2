@@ -10,6 +10,7 @@ import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
 import { handleInputOptions, handleInputValue } from '../utils/dom/inputUtils.js'
 import { handleConfirmButtonClick, handleCancelButtonClick } from './buttons-handlers.js'
+import { addKeydownHandler, setFocus } from './keydown-handler.js'
 
 export function _main (userParams) {
   showWarningsForParams(userParams)
@@ -160,100 +161,7 @@ export function _main (userParams) {
       domCache.confirmButton.parentNode.insertBefore(domCache.confirmButton, domCache.cancelButton)
     }
 
-    // Focus handling
-    const setFocus = (index, increment) => {
-      const focusableElements = dom.getFocusableElements(innerParams.focusCancel)
-      // search for visible elements and select the next possible match
-      for (let i = 0; i < focusableElements.length; i++) {
-        index = index + increment
-
-        // rollover to first item
-        if (index === focusableElements.length) {
-          index = 0
-
-          // go to last item
-        } else if (index === -1) {
-          index = focusableElements.length - 1
-        }
-
-        return focusableElements[index].focus()
-      }
-      // no visible focusable elements, focus the popup
-      domCache.popup.focus()
-    }
-
-    const keydownHandler = (e, innerParams) => {
-      if (innerParams.stopKeydownPropagation) {
-        e.stopPropagation()
-      }
-
-      const arrowKeys = [
-        'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
-        'Left', 'Right', 'Up', 'Down' // IE11
-      ]
-
-      if (e.key === 'Enter' && !e.isComposing) {
-        if (e.target && this.getInput() && e.target.outerHTML === this.getInput().outerHTML) {
-          if (['textarea', 'file'].includes(innerParams.input)) {
-            return // do not submit
-          }
-
-          constructor.clickConfirm()
-          e.preventDefault()
-        }
-
-        // TAB
-      } else if (e.key === 'Tab') {
-        const targetElement = e.target
-
-        const focusableElements = dom.getFocusableElements(innerParams.focusCancel)
-        let btnIndex = -1
-        for (let i = 0; i < focusableElements.length; i++) {
-          if (targetElement === focusableElements[i]) {
-            btnIndex = i
-            break
-          }
-        }
-
-        if (!e.shiftKey) {
-          // Cycle to the next button
-          setFocus(btnIndex, 1)
-        } else {
-          // Cycle to the prev button
-          setFocus(btnIndex, -1)
-        }
-        e.stopPropagation()
-        e.preventDefault()
-
-        // ARROWS - switch focus between buttons
-      } else if (arrowKeys.includes(e.key)) {
-        // focus Cancel button if Confirm button is currently focused
-        if (document.activeElement === domCache.confirmButton && dom.isVisible(domCache.cancelButton)) {
-          domCache.cancelButton.focus()
-          // and vice versa
-        } else if (document.activeElement === domCache.cancelButton && dom.isVisible(domCache.confirmButton)) {
-          domCache.confirmButton.focus()
-        }
-
-        // ESC
-      } else if ((e.key === 'Escape' || e.key === 'Esc') && callIfFunction(innerParams.allowEscapeKey) === true) {
-        e.preventDefault()
-        dismissWith(constructor.DismissReason.esc)
-      }
-    }
-
-    if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
-      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
-      globalState.keydownHandlerAdded = false
-    }
-
-    if (!innerParams.toast) {
-      globalState.keydownHandler = (e) => keydownHandler(e, innerParams)
-      globalState.keydownTarget = innerParams.keydownListenerCapture ? window : domCache.popup
-      globalState.keydownListenerCapture = innerParams.keydownListenerCapture
-      globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
-      globalState.keydownHandlerAdded = true
-    }
+    addKeydownHandler(this, globalState, innerParams, dismissWith)
 
     this.enableButtons()
     this.hideLoading()
@@ -284,7 +192,7 @@ export function _main (userParams) {
       } else if (innerParams.focusConfirm && dom.isVisible(domCache.confirmButton)) {
         domCache.confirmButton.focus()
       } else {
-        setFocus(-1, 1)
+        setFocus(innerParams, -1, 1)
       }
     }
 

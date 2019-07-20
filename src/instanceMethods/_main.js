@@ -59,7 +59,7 @@ export function _main (userParams) {
 
   const constructor = this.constructor
 
-  return new Promise((resolve) => {
+  return new Promise((resolve) => { // eslint-disable-line complexity
     // functions to handle all closings/dismissals
     const dismissWith = (dismiss) => {
       this.closePopup({ dismiss })

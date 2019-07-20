@@ -15,6 +15,7 @@ module.exports = {
   },
   rules: {
     'comma-dangle': 0,
+    'complexity': ['error', { max: 10 }],
     'import/extensions': ['error', 'always'],
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
     'no-prototype-builtins': ['error'],

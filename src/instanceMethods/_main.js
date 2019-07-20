@@ -85,11 +85,6 @@ const swalPromise = (instance, domCache, innerParams) => {
 
     handlePopupClick(domCache, innerParams, dismissWith)
 
-    // Reverse buttons (Confirm on the right side)
-    if (innerParams.reverseButtons) {
-      domCache.confirmButton.parentNode.insertBefore(domCache.cancelButton, domCache.confirmButton)
-    }
-
     addKeydownHandler(instance, globalState, innerParams, dismissWith)
 
     if (innerParams.toast && (innerParams.input || innerParams.footer || innerParams.showCloseButton)) {

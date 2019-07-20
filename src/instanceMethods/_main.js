@@ -68,20 +68,10 @@ const swalPromise = (instance, domCache, innerParams) => {
       }, innerParams.timer)
     }
 
-    // Click 'confirm' button
-    domCache.confirmButton.onclick = () => {
-      handleConfirmButtonClick(instance, innerParams)
-    }
+    domCache.confirmButton.onclick = () => handleConfirmButtonClick(instance, innerParams)
+    domCache.cancelButton.onclick = () => handleCancelButtonClick(instance, dismissWith)
 
-    // Click 'cancel' button
-    domCache.cancelButton.onclick = () => {
-      handleCancelButtonClick(instance, dismissWith)
-    }
-
-    // Closing popup by close button
-    domCache.closeButton.onclick = () => {
-      dismissWith(DismissReason.close)
-    }
+    domCache.closeButton.onclick = () => dismissWith(DismissReason.close)
 
     handlePopupClick(domCache, innerParams, dismissWith)
 
@@ -97,19 +87,7 @@ const swalPromise = (instance, domCache, innerParams) => {
 
     openPopup(innerParams)
 
-    if (!innerParams.toast) {
-      if (!callIfFunction(innerParams.allowEnterKey)) {
-        if (document.activeElement && typeof document.activeElement.blur === 'function') {
-          document.activeElement.blur()
-        }
-      } else if (innerParams.focusCancel && dom.isVisible(domCache.cancelButton)) {
-        domCache.cancelButton.focus()
-      } else if (innerParams.focusConfirm && dom.isVisible(domCache.confirmButton)) {
-        domCache.confirmButton.focus()
-      } else {
-        setFocus(innerParams, -1, 1)
-      }
-    }
+    initFocus(domCache, innerParams)
 
     // Scroll container to top on open (#1247)
     domCache.container.scrollTop = 0
@@ -131,4 +109,30 @@ const populateDomCache = (instance) => {
   privateProps.domCache.set(instance, domCache)
 
   return domCache
+}
+
+const initFocus = (domCache, innerParams) => {
+  if (innerParams.toast) {
+    return
+  }
+
+  if (!callIfFunction(innerParams.allowEnterKey)) {
+    return blurActiveElement()
+  }
+
+  if (innerParams.focusCancel && dom.isVisible(domCache.cancelButton)) {
+    return domCache.cancelButton.focus()
+  }
+
+  if (innerParams.focusConfirm && dom.isVisible(domCache.confirmButton)) {
+    return domCache.confirmButton.focus()
+  }
+
+  setFocus(innerParams, -1, 1)
+}
+
+const blurActiveElement = () => {
+  if (document.activeElement && typeof document.activeElement.blur === 'function') {
+    document.activeElement.blur()
+  }
 }

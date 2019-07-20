@@ -2,13 +2,13 @@ import defaultParams, { showWarningsForParams } from '../utils/params.js'
 import * as dom from '../utils/dom/index.js'
 import { swalClasses } from '../utils/classes.js'
 import Timer from '../utils/Timer.js'
-import { callIfFunction, isPromise } from '../utils/utils.js'
+import { callIfFunction } from '../utils/utils.js'
 import setParameters from '../utils/setParameters.js'
 import globalState from '../globalState.js'
 import { openPopup } from '../utils/openPopup.js'
 import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
-import { handleInputOptions, handleInputValue } from '../utils/dom/inputUtils.js'
+import { handleInputOptionsAndValue } from '../utils/dom/inputUtils.js'
 import { handleConfirmButtonClick, handleCancelButtonClick } from './buttons-handlers.js'
 import { addKeydownHandler, setFocus } from './keydown-handler.js'
 import { handlePopupClick } from './popup-click-handler.js'
@@ -93,12 +93,7 @@ const swalPromise = (instance, domCache, innerParams) => {
       dom.removeClass(document.body, swalClasses['toast-column'])
     }
 
-    // inputOptions, inputValue
-    if (innerParams.input === 'select' || innerParams.input === 'radio') {
-      handleInputOptions(instance, innerParams)
-    } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(innerParams.input) && isPromise(innerParams.inputValue)) {
-      handleInputValue(instance, innerParams)
-    }
+    handleInputOptionsAndValue(instance, innerParams)
 
     openPopup(innerParams)
 

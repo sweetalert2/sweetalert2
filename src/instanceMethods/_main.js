@@ -40,18 +40,7 @@ export function _main (userParams) {
   // clear the restore focus timeout
   clearTimeout(globalState.restoreFocusTimeout)
 
-  const domCache = {
-    popup: dom.getPopup(),
-    container: dom.getContainer(),
-    content: dom.getContent(),
-    actions: dom.getActions(),
-    confirmButton: dom.getConfirmButton(),
-    cancelButton: dom.getCancelButton(),
-    closeButton: dom.getCloseButton(),
-    validationMessage: dom.getValidationMessage(),
-    progressSteps: dom.getProgressSteps()
-  }
-  privateProps.domCache.set(this, domCache)
+  const domCache = populateDomCache(this)
 
   dom.render(this, innerParams)
 
@@ -199,4 +188,21 @@ export function _main (userParams) {
     // fix scroll
     domCache.container.scrollTop = 0
   })
+}
+
+const populateDomCache = (instance) => {
+  const domCache = {
+    popup: dom.getPopup(),
+    container: dom.getContainer(),
+    content: dom.getContent(),
+    actions: dom.getActions(),
+    confirmButton: dom.getConfirmButton(),
+    cancelButton: dom.getCancelButton(),
+    closeButton: dom.getCloseButton(),
+    validationMessage: dom.getValidationMessage(),
+    progressSteps: dom.getProgressSteps()
+  }
+  privateProps.domCache.set(instance, domCache)
+
+  return domCache
 }

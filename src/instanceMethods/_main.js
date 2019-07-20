@@ -11,6 +11,7 @@ import privateMethods from '../privateMethods.js'
 import { handleInputOptions, handleInputValue } from '../utils/dom/inputUtils.js'
 import { handleConfirmButtonClick, handleCancelButtonClick } from './buttons-handlers.js'
 import { addKeydownHandler, setFocus } from './keydown-handler.js'
+import { DismissReason } from '../utils/DismissReason.js'
 
 export function _main (userParams) {
   showWarningsForParams(userParams)
@@ -46,15 +47,17 @@ export function _main (userParams) {
 
   privateProps.innerParams.set(this, innerParams)
 
-  const constructor = this.constructor
+  return swalPromise(this, domCache, innerParams)
+}
 
+const swalPromise = (instance, domCache, innerParams) => {
   return new Promise((resolve) => { // eslint-disable-line complexity
     // functions to handle all closings/dismissals
     const dismissWith = (dismiss) => {
-      this.closePopup({ dismiss })
+      instance.closePopup({ dismiss })
     }
 
-    privateMethods.swalPromiseResolve.set(this, resolve)
+    privateMethods.swalPromiseResolve.set(instance, resolve)
 
     // Close on timer
     if (innerParams.timer) {
@@ -67,7 +70,7 @@ export function _main (userParams) {
     // input autofocus
     if (innerParams.input) {
       setTimeout(() => {
-        const input = this.getInput()
+        const input = instance.getInput()
         if (input) {
           dom.focusInput(input)
         }
@@ -76,17 +79,17 @@ export function _main (userParams) {
 
     // Click 'confirm' button
     domCache.confirmButton.onclick = () => {
-      handleConfirmButtonClick(this, innerParams)
+      handleConfirmButtonClick(instance, innerParams)
     }
 
     // Click 'cancel' button
     domCache.cancelButton.onclick = () => {
-      handleCancelButtonClick(this, dismissWith)
+      handleCancelButtonClick(instance, dismissWith)
     }
 
     // Closing popup by close button
     domCache.closeButton.onclick = () => {
-      dismissWith(constructor.DismissReason.close)
+      dismissWith(DismissReason.close)
     }
 
     if (innerParams.toast) {
@@ -100,7 +103,7 @@ export function _main (userParams) {
         ) {
           return
         }
-        dismissWith(constructor.DismissReason.close)
+        dismissWith(DismissReason.close)
       }
     } else {
       let ignoreOutsideClick = false
@@ -138,7 +141,7 @@ export function _main (userParams) {
           return
         }
         if (callIfFunction(innerParams.allowOutsideClick)) {
-          dismissWith(constructor.DismissReason.backdrop)
+          dismissWith(DismissReason.backdrop)
         }
       }
     }
@@ -150,11 +153,11 @@ export function _main (userParams) {
       domCache.confirmButton.parentNode.insertBefore(domCache.confirmButton, domCache.cancelButton)
     }
 
-    addKeydownHandler(this, globalState, innerParams, dismissWith)
+    addKeydownHandler(instance, globalState, innerParams, dismissWith)
 
-    this.enableButtons()
-    this.hideLoading()
-    this.resetValidationMessage()
+    instance.enableButtons()
+    instance.hideLoading()
+    instance.resetValidationMessage()
 
     if (innerParams.toast && (innerParams.input || innerParams.footer || innerParams.showCloseButton)) {
       dom.addClass(document.body, swalClasses['toast-column'])
@@ -164,9 +167,9 @@ export function _main (userParams) {
 
     // inputOptions, inputValue
     if (innerParams.input === 'select' || innerParams.input === 'radio') {
-      handleInputOptions(this, innerParams)
+      handleInputOptions(instance, innerParams)
     } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(innerParams.input) && isPromise(innerParams.inputValue)) {
-      handleInputValue(this, innerParams)
+      handleInputValue(instance, innerParams)
     }
 
     openPopup(innerParams)

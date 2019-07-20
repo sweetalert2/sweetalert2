@@ -149,15 +149,9 @@ const swalPromise = (instance, domCache, innerParams) => {
     // Reverse buttons (Confirm on the right side)
     if (innerParams.reverseButtons) {
       domCache.confirmButton.parentNode.insertBefore(domCache.cancelButton, domCache.confirmButton)
-    } else {
-      domCache.confirmButton.parentNode.insertBefore(domCache.confirmButton, domCache.cancelButton)
     }
 
     addKeydownHandler(instance, globalState, innerParams, dismissWith)
-
-    instance.enableButtons()
-    instance.hideLoading()
-    instance.resetValidationMessage()
 
     if (innerParams.toast && (innerParams.input || innerParams.footer || innerParams.showCloseButton)) {
       dom.addClass(document.body, swalClasses['toast-column'])
@@ -188,7 +182,7 @@ const swalPromise = (instance, domCache, innerParams) => {
       }
     }
 
-    // fix scroll
+    // Scroll container to top on open (#1247)
     domCache.container.scrollTop = 0
   })
 }

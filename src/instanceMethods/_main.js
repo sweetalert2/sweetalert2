@@ -60,13 +60,7 @@ const swalPromise = (instance, domCache, innerParams) => {
 
     privateMethods.swalPromiseResolve.set(instance, resolve)
 
-    // Close on timer
-    if (innerParams.timer) {
-      globalState.timeout = new Timer(() => {
-        dismissWith('timer')
-        delete globalState.timeout
-      }, innerParams.timer)
-    }
+    setupTimer(globalState, innerParams, dismissWith)
 
     domCache.confirmButton.onclick = () => handleConfirmButtonClick(instance, innerParams)
     domCache.cancelButton.onclick = () => handleCancelButtonClick(instance, dismissWith)
@@ -109,6 +103,15 @@ const populateDomCache = (instance) => {
   privateProps.domCache.set(instance, domCache)
 
   return domCache
+}
+
+const setupTimer = (globalState, innerParams, dismissWith) => {
+  if (innerParams.timer) {
+    globalState.timeout = new Timer(() => {
+      dismissWith('timer')
+      delete globalState.timeout
+    }, innerParams.timer)
+  }
 }
 
 const initFocus = (domCache, innerParams) => {

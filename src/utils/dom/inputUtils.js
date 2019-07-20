@@ -4,7 +4,15 @@ import { getChildByClass } from './domUtils.js'
 import { error, isPromise } from '../utils.js'
 import { showLoading } from '../../staticMethods/showLoading.js'
 
-export const handleInputOptions = (instance, params) => {
+export const handleInputOptionsAndValue = (instance, params) => {
+  if (params.input === 'select' || params.input === 'radio') {
+    handleInputOptions(instance, params)
+  } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) && isPromise(params.inputValue)) {
+    handleInputValue(instance, params)
+  }
+}
+
+const handleInputOptions = (instance, params) => {
   const content = dom.getContent()
   const processInputOptions = (inputOptions) => populateInputOptions[params.input](content, formatInputOptions(inputOptions), params)
   if (isPromise(params.inputOptions)) {
@@ -20,7 +28,7 @@ export const handleInputOptions = (instance, params) => {
   }
 }
 
-export const handleInputValue = (instance, params) => {
+const handleInputValue = (instance, params) => {
   const input = instance.getInput()
   dom.hide(input)
   params.inputValue.then((inputValue) => {

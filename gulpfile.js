@@ -8,8 +8,6 @@ const css2js = require('gulp-css2js')
 const concat = require('gulp-concat')
 const autoprefixer = require('gulp-autoprefixer')
 const cleanCss = require('gulp-clean-css')
-const typescript = require('gulp-typescript')
-const tslint = require('gulp-tslint')
 const eslint = require('gulp-eslint')
 const stylelint = require('gulp-stylelint')
 const babel = require('rollup-plugin-babel')
@@ -28,10 +26,9 @@ const banner = `/*!
 * Released under the ${packageJson.license} License.
 */`
 
-const allScriptFiles = ['**/*.js', '!dist/**', '!node_modules/**']
+const allScriptFiles = ['**/*.js', 'sweetalert2.d.ts', '!dist/**', '!node_modules/**']
 const srcScriptFiles = ['src/**/*.js']
 const srcStyleFiles = ['src/**/*.scss']
-const tsFiles = ['sweetalert2.d.ts']
 
 const continueOnError = process.argv.includes('--continue-on-error')
 const skipMinification = process.argv.includes('--skip-minification')
@@ -155,16 +152,7 @@ gulp.task('lint:styles', () => {
     }))
 })
 
-gulp.task('lint:ts', () => {
-  return gulp.src(tsFiles)
-    .pipe(typescript({ lib: ['es6', 'dom'] }))
-    .pipe(tslint({ formatter: 'verbose' }))
-    .pipe(tslint.report({
-      emitError: !continueOnError
-    }))
-})
-
-gulp.task('lint', gulp.parallel('lint:scripts', 'lint:styles', 'lint:ts'))
+gulp.task('lint', gulp.parallel('lint:scripts', 'lint:styles'))
 
 // ---
 
@@ -176,7 +164,6 @@ gulp.task('develop', gulp.series(
     gulp.watch(srcStyleFiles, gulp.parallel('build:styles'))
     gulp.watch(allScriptFiles, gulp.parallel('lint:scripts'))
     gulp.watch(srcStyleFiles, gulp.parallel('lint:styles'))
-    gulp.watch(tsFiles, gulp.parallel('lint:ts'))
   },
   async function sandbox () {
     browserSync.init({

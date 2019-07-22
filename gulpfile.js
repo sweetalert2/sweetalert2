@@ -1,5 +1,4 @@
 const gulp = require('gulp')
-const noop = require('gulp-noop')
 const rollup = require('gulp-rollup')
 const gulpif = require('gulp-if')
 const uglify = require('gulp-uglify')
@@ -8,8 +7,6 @@ const css2js = require('gulp-css2js')
 const concat = require('gulp-concat')
 const autoprefixer = require('gulp-autoprefixer')
 const cleanCss = require('gulp-clean-css')
-const eslint = require('gulp-eslint')
-const stylelint = require('gulp-stylelint')
 const babel = require('rollup-plugin-babel')
 const json = require('rollup-plugin-json')
 const merge = require('merge2')
@@ -26,7 +23,6 @@ const banner = `/*!
 * Released under the ${packageJson.license} License.
 */`
 
-const allScriptFiles = ['**/*.js', 'sweetalert2.d.ts', '!dist/**', '!node_modules/**']
 const srcScriptFiles = ['src/**/*.js']
 const srcStyleFiles = ['src/**/*.scss']
 
@@ -135,35 +131,12 @@ gulp.task('default', gulp.parallel('build'))
 
 // ---
 
-gulp.task('lint:scripts', () => {
-  return gulp.src(allScriptFiles)
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(continueOnError ? noop() : eslint.failAfterError())
-})
-
-gulp.task('lint:styles', () => {
-  return gulp.src(srcStyleFiles)
-    .pipe(stylelint({
-      failAfterError: !continueOnError,
-      reporters: [
-        { formatter: 'string', console: true }
-      ]
-    }))
-})
-
-gulp.task('lint', gulp.parallel('lint:scripts', 'lint:styles'))
-
-// ---
-
 gulp.task('develop', gulp.series(
-  gulp.parallel('lint', 'build'),
+  'build',
   async function watch () {
     // Does not rebuild standalone files, for speed in active development
     gulp.watch(srcScriptFiles, gulp.parallel('build:scripts'))
     gulp.watch(srcStyleFiles, gulp.parallel('build:styles'))
-    gulp.watch(allScriptFiles, gulp.parallel('lint:scripts'))
-    gulp.watch(srcStyleFiles, gulp.parallel('lint:styles'))
   },
   async function sandbox () {
     browserSync.init({

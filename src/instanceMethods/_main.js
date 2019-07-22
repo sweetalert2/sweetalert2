@@ -52,7 +52,7 @@ export function _main (userParams) {
 }
 
 const swalPromise = (instance, domCache, innerParams) => {
-  return new Promise((resolve) => { // eslint-disable-line complexity
+  return new Promise((resolve) => {
     // functions to handle all closings/dismissals
     const dismissWith = (dismiss) => {
       instance.closePopup({ dismiss })

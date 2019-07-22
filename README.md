@@ -193,11 +193,10 @@ If you would like to contribute enhancements or fixes, please do the following:
 3. When in the SweetAlert2 directory, run `npm install` or `yarn install` to install dependencies.
 
 4. To begin active development, run `npm start` or `yarn start`. This does several things for you:
- - Lints your code
  - Builds the `dist` folder
  - Serves sandbox.html @ http://localhost:8080/ (browser-sync ui:  http://localhost:8081/)
  - Serves unit tests @ http://localhost:3000
- - Re-lints, re-builds, re-loads and re-tests as necessary when files change
+ - Re-builds, re-loads and re-tests as necessary when files change
 
 Backers
 -------

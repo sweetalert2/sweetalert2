@@ -198,6 +198,12 @@ If you would like to contribute enhancements or fixes, please do the following:
  - Serves unit tests @ http://localhost:3000
  - Re-builds, re-loads and re-tests as necessary when files change
 
+Big Thanks
+----------
+
+- [Serena Verni (@serenaperora)](https://github.com/serenaperora) for creating the amazing project logo
+- [Sauce Labs](https://saucelabs.com/) for providing the reliable cross-browser testing platform
+
 Backers
 -------
 

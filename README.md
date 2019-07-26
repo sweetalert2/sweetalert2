@@ -201,7 +201,7 @@ If you would like to contribute enhancements or fixes, please do the following:
 Big Thanks
 ----------
 
-- [Serena Verni (@serenaperora)](https://github.com/serenaperora) for creating the amazing project logo
+- [Serena Verni (@serenaperora)](https://serena.verni.xyz) for creating the amazing project logo
 - [Sauce Labs](https://saucelabs.com/) for providing the reliable cross-browser testing platform
 
 Backers

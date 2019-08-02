@@ -20,7 +20,7 @@ declare module 'sweetalert2' {
      *   import Swal from 'sweetalert2';
      *   Swal.fire('The Internet?', 'That thing is still around?', 'question');
      */
-    function fire(title: string, message?: string, type?: SweetAlertType): Promise<SweetAlertResult>;
+    function fire(title?: string, message?: string, type?: SweetAlertType): Promise<SweetAlertResult>;
 
     /**
      * Function to display a SweetAlert2 modal, with an object of options, all being optional.
@@ -900,6 +900,18 @@ declare module 'sweetalert2' {
   }
 
   export default Swal
+}
+
+declare module 'sweetalert2/*/sweetalert2.js' {
+  export * from 'sweetalert2'
+  // "export *" does not matches the default export, so do it explicitly.
+  export { default } from 'sweetalert2' // eslint-disable-line
+}
+
+declare module 'sweetalert2/*/sweetalert2.all.js' {
+  export * from 'sweetalert2'
+  // "export *" does not matches the default export, so do it explicitly.
+  export { default } from 'sweetalert2' // eslint-disable-line
 }
 
 /**

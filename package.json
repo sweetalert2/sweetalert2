@@ -103,7 +103,7 @@
     "check:qunit:minified": "karma start karma.conf.js --single-run --minified",
     "check:qunit:sauce": "karma start karma.conf.js --single-run --sauce",
     "check:qunit:minified:sauce": "karma start karma.conf.js --single-run --minified --sauce",
-    "check:ts": "tsc --lib dom,es6 test/ts/simple-usage.ts sweetalert2.d.ts && tsc --lib dom,es6 test/ts/dist-sweetalert2.ts sweetalert2.d.ts && tsc --lib dom,es6 test/ts/src-sweetalert2.ts sweetalert2.d.ts",
+    "check:ts": "tsc --lib dom,es6 --noEmit test/ts/simple-usage.ts sweetalert2.d.ts && tsc --lib dom,es6 --noEmit test/ts/dist-sweetalert2.ts sweetalert2.d.ts && tsc --lib dom,es6 --noEmit test/ts/src-sweetalert2.ts sweetalert2.d.ts",
     "check:third-party": "npm run check:unpkg && npm run check:jsdelivr && npm run check:wappalyzer",
     "check:wappalyzer": "curl 'https://api.wappalyzer.com/lookup-basic/v1/?url=https%3A%2F%2Fsweetalert2.github.io' 2>&1 | grep --quiet 'SweetAlert2'",
     "check:unpkg": "curl --location 'https://unpkg.com/sweetalert2' 2>&1 | grep --quiet 'this.Swal'",

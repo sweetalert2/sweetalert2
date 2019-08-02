@@ -1,3 +1,10 @@
+# [8.15.0](https://github.com/sweetalert2/sweetalert2/compare/v8.14.1...v8.15.0) (2019-08-02)
+
+
+### Features
+
+* **sass:** add variables for .swal2-actions ([3fc4c0c](https://github.com/sweetalert2/sweetalert2/commit/3fc4c0c))
+
 ## [8.14.1](https://github.com/sweetalert2/sweetalert2/compare/v8.14.0...v8.14.1) (2019-08-02)
 
 

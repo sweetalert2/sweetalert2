@@ -1,3 +1,10 @@
+## [8.14.1](https://github.com/sweetalert2/sweetalert2/compare/v8.14.0...v8.14.1) (2019-08-02)
+
+
+### Bug Fixes
+
+* **types:** support sweetalert2 modules from dist and src folders ([#1693](https://github.com/sweetalert2/sweetalert2/issues/1693)) ([ca1cbe9](https://github.com/sweetalert2/sweetalert2/commit/ca1cbe9))
+
 # [8.14.0](https://github.com/sweetalert2/sweetalert2/compare/v8.13.6...v8.14.0) (2019-07-18)
 
 

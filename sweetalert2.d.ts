@@ -20,7 +20,7 @@ declare module 'sweetalert2' {
      *   import Swal from 'sweetalert2';
      *   Swal.fire('The Internet?', 'That thing is still around?', 'question');
      */
-    function fire(title: string, message?: string, type?: SweetAlertType): Promise<SweetAlertResult>;
+    function fire(title?: string, message?: string, type?: SweetAlertType): Promise<SweetAlertResult>;
 
     /**
      * Function to display a SweetAlert2 modal, with an object of options, all being optional.

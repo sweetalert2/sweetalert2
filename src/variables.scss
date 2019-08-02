@@ -125,7 +125,10 @@ $swal2-close-button-hover-color: $swal2-error !default;
 $swal2-close-button-hover-background: transparent !default;
 
 // ACTIONS
+$swal2-actions-flex-wrap: wrap !default;
+$swal2-actions-align-items: center !default;
 $swal2-actions-justify-content: center !default;
+$swal2-actions-width: 100% !default;
 $swal2-actions-margin: 1.25em auto 0 !default;
 
 // CONFIRM BUTTON

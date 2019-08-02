@@ -300,11 +300,12 @@ body {
 }
 
 .swal2-actions {
-  z-index: 1; // prevent sucess icon overlapping buttons
-  flex-wrap: wrap;
-  align-items: center;
+  display: flex;
+  z-index: 1; // prevent sucess icon from overlapping buttons
+  flex-wrap: $swal2-actions-flex-wrap;
+  align-items: $swal2-actions-align-items;
   justify-content: $swal2-actions-justify-content;
-  width: 100%;
+  width: $swal2-actions-width;
   margin: $swal2-actions-margin;
 
   &:not(.swal2-loading) {

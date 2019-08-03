@@ -1,3 +1,10 @@
+## [8.15.1](https://github.com/sweetalert2/sweetalert2/compare/v8.15.0...v8.15.1) (2019-08-03)
+
+
+### Bug Fixes
+
+* **types:** add missing getPopup() definition ([f4374a7](https://github.com/sweetalert2/sweetalert2/commit/f4374a7))
+
 # [8.15.0](https://github.com/sweetalert2/sweetalert2/compare/v8.14.1...v8.15.0) (2019-08-02)
 
 

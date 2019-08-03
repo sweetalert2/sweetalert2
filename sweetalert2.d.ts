@@ -68,6 +68,11 @@ declare module 'sweetalert2' {
     function close(onComplete?: (modalElement: HTMLElement) => void): void;
 
     /**
+     * Gets the popup.
+     */
+    function getPopup(): HTMLElement;
+
+    /**
      * Gets the modal title.
      */
     function getTitle(): HTMLElement;

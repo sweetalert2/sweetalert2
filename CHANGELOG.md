@@ -1,3 +1,10 @@
+## [8.15.2](https://github.com/sweetalert2/sweetalert2/compare/v8.15.1...v8.15.2) (2019-08-05)
+
+
+### Bug Fixes
+
+* apply buttons classes even if both of them are hidden ([#1697](https://github.com/sweetalert2/sweetalert2/issues/1697)) ([a90f139](https://github.com/sweetalert2/sweetalert2/commit/a90f139))
+
 ## [8.15.1](https://github.com/sweetalert2/sweetalert2/compare/v8.15.0...v8.15.1) (2019-08-03)
 
 

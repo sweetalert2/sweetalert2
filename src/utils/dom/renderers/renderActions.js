@@ -8,7 +8,7 @@ export const renderActions = (instance, params) => {
 
   // Actions (buttons) wrapper
   if (!params.showConfirmButton && !params.showCancelButton) {
-    return dom.hide(actions)
+    dom.hide(actions)
   }
 
   // Custom class

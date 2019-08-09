@@ -160,5 +160,22 @@ renderInputType.textarea = (params) => {
   const textarea = dom.getChildByClass(dom.getContent(), swalClasses.textarea)
   textarea.value = params.inputValue
   setInputPlaceholder(textarea, params)
+
+  if ('MutationObserver' in window) { // #1699
+    const initialPopupWidth = parseInt(window.getComputedStyle(dom.getPopup()).width)
+    const popupPadding = parseInt(window.getComputedStyle(dom.getPopup()).paddingLeft) + parseInt(window.getComputedStyle(dom.getPopup()).paddingRight)
+    const outputsize = () => {
+      const contentWidth = textarea.offsetWidth + popupPadding
+      if (contentWidth > initialPopupWidth) {
+        dom.getPopup().style.width = contentWidth + 'px'
+      } else {
+        dom.getPopup().style.width = null
+      }
+    }
+    new MutationObserver(outputsize).observe(textarea, {
+      attributes: true, attributeFilter: ['style']
+    })
+  }
+
   return textarea
 }

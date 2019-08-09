@@ -1,3 +1,10 @@
+## [8.15.3](https://github.com/sweetalert2/sweetalert2/compare/v8.15.2...v8.15.3) (2019-08-09)
+
+
+### Bug Fixes
+
+* expand/shrink popup accordingly to textarea width ([#1702](https://github.com/sweetalert2/sweetalert2/issues/1702)) ([93f59dc](https://github.com/sweetalert2/sweetalert2/commit/93f59dc))
+
 ## [8.15.2](https://github.com/sweetalert2/sweetalert2/compare/v8.15.1...v8.15.2) (2019-08-05)
 
 

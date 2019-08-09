@@ -230,3 +230,20 @@ QUnit.test('Swal.getInput() should return null when a popup is disposed', (asser
   })
   Swal.close()
 })
+
+QUnit.test('popup should expand and shrink accordingly to textarea width', (assert) => {
+  const done = assert.async()
+  SwalWithoutAnimation.fire({
+    input: 'textarea',
+  })
+  Swal.getInput().style.width = '600px'
+  setTimeout(() => {
+    assert.equal(Swal.getPopup().style.width, '640px')
+
+    Swal.getInput().style.width = '100px'
+    setTimeout(() => {
+      assert.equal(Swal.getPopup().style.width, '')
+      done()
+    })
+  })
+})

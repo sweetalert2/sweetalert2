@@ -13,6 +13,9 @@ Your contribution will be greatly appreciated!
 
 Backer is a company or a person who donated 100 USD or more. Backers are listed here, in [README](https://github.com/sweetalert2/sweetalert2#backers), and in [SweetAlert2's official homepage](https://sweetalert2.github.io/#backers) (65K+ unique visitors per month). All backers have priority support via GitHub issues.
 
+- **[FlowCrypt](http://flowcrypt.com)** (200 EUR + 30 USD worth of BTC and ETH)
+    > Thanks for the awesome work!
+
 - **[STED](https://sextoyeducation.com/)** (116 EUR)
     > Extremely useful. Thanks SweetAlert2!
 
@@ -33,9 +36,6 @@ Backer is a company or a person who donated 100 USD or more. Backers are listed 
 
 - **[Jan Fässler](https://github.com/faessler)** (30 EUR)
     > Nice work! 👾
-
-- **[Tom at FlowCrypt](http://flowcrypt.com)** (30 USD worth of BTC and ETH)
-    > Thanks for the awesome work!
 
 - **Ventsislav Radev** (23 EUR)
 

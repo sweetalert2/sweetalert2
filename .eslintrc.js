@@ -18,7 +18,9 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
+    '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/indent': ['error', 2],
+    '@typescript-eslint/no-this-alias': 0,
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/no-empty-interface': 0,

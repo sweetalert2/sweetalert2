@@ -458,15 +458,15 @@ body {
 
 .swal2-content {
   z-index: 1; // prevent sucess icon overlapping the content
-  justify-content: center;
-  margin: 0;
-  padding: 0;
+  justify-content: $swal2-content-justify-content;
+  margin: $swal2-content-margin;
+  padding: $swal2-content-pading;
   color: $swal2-content-color;
   font-size: $swal2-content-font-size;
-  font-weight: 300;
-  line-height: normal;
-  text-align: center;
-  word-wrap: break-word;
+  font-weight: $swal2-content-font-weight;
+  line-height: $swal2-content-line-height;
+  text-align: $swal2-content-text-align;
+  word-wrap: $swal2-content-word-wrap;
 }
 
 .swal2-input,

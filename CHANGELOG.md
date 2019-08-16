@@ -1,3 +1,10 @@
+# [8.16.0](https://github.com/sweetalert2/sweetalert2/compare/v8.15.3...v8.16.0) (2019-08-16)
+
+
+### Features
+
+* **sass:** add variables for .swal2-content ([c50185a](https://github.com/sweetalert2/sweetalert2/commit/c50185a))
+
 ## [8.15.3](https://github.com/sweetalert2/sweetalert2/compare/v8.15.2...v8.15.3) (2019-08-09)
 
 

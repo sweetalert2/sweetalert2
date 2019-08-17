@@ -47,6 +47,24 @@ export const getFooter = () => elementByClass(swalClasses.footer)
 
 export const getCloseButton = () => elementByClass(swalClasses.close)
 
+// https://github.com/jkup/focusable/blob/master/index.js
+const focusable = `
+  a[href],
+  area[href],
+  input:not([disabled]),
+  select:not([disabled]),
+  textarea:not([disabled]),
+  button:not([disabled]),
+  iframe,
+  object,
+  embed,
+  [tabindex="0"],
+  [contenteditable],
+  audio[controls],
+  video[controls],
+  summary
+`
+
 export const getFocusableElements = () => {
   const focusableElementsWithTabindex = toArray(
     getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')
@@ -63,9 +81,8 @@ export const getFocusableElements = () => {
       return 0
     })
 
-  // https://github.com/jkup/focusable/blob/master/index.js
   const otherFocusableElements = toArray(
-    getPopup().querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable], audio[controls], video[controls]')
+    getPopup().querySelectorAll(focusable)
   ).filter(el => el.getAttribute('tabindex') !== '-1')
 
   return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements)).filter(el => isVisible(el))

@@ -16,6 +16,14 @@ if (!process.env.SUPPRESS_SUPPORT) {
     '\n' +
     ANSI_WHITE + '              > ' +
     ANSI_BLUE + ANSI_BOLD + 'https://sweetalert2.github.io/#donations\n' +
+    ANSI_YELLOW +
+    '\n' +
+    '              Also, the author of SweetAlert2 (@limonte) is looking for\n' +
+    '              short-term working contracts in front-end, preferably OSS.\n' +
+    '\n' +
+    ANSI_WHITE + '              > ' +
+    ANSI_BLUE + ANSI_BOLD + 'https://github.com/limonte' +
+    '\n' +
     ANSI_RESET
   )
 }

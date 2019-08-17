@@ -1,3 +1,10 @@
+## [8.16.1](https://github.com/sweetalert2/sweetalert2/compare/v8.16.0...v8.16.1) (2019-08-17)
+
+
+### Bug Fixes
+
+* add <summary> to focusable elements ([#1709](https://github.com/sweetalert2/sweetalert2/issues/1709)) ([47a8023](https://github.com/sweetalert2/sweetalert2/commit/47a8023))
+
 # [8.16.0](https://github.com/sweetalert2/sweetalert2/compare/v8.15.3...v8.16.0) (2019-08-16)
 
 

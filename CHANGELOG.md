@@ -1,3 +1,10 @@
+## [8.16.2](https://github.com/sweetalert2/sweetalert2/compare/v8.16.1...v8.16.2) (2019-08-18)
+
+
+### Bug Fixes
+
+* **types:** Swal.close() now takes the value to resolve with, not a callback ([8def219](https://github.com/sweetalert2/sweetalert2/commit/8def219))
+
 ## [8.16.1](https://github.com/sweetalert2/sweetalert2/compare/v8.16.0...v8.16.1) (2019-08-17)
 
 

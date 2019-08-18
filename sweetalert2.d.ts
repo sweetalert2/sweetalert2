@@ -63,9 +63,10 @@ declare module 'sweetalert2' {
     /**
      * Closes the currently open SweetAlert2 modal programmatically.
      *
-     * @param onComplete An optional callback to be called when the alert has finished closing.
+     * @param result The promise originally returned by {@link Swal.fire} will be resolved with this value.
+     *               If no object is given, the promise is resolved with an empty ({}) {@link SweetAlertResult} object.
      */
-    function close(onComplete?: (modalElement: HTMLElement) => void): void;
+    function close(result?: SweetAlertResult): void;
 
     /**
      * Gets the popup.

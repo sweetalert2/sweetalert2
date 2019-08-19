@@ -50,6 +50,8 @@ Backer is a company or a person who donated 100 USD or more. Backers are listed 
 
 - **Emil Kristensen** (15 EUR)
 
+- **Ivan Zamecnik** (10 EUR)
+
 - **Denis Veg** (10 EUR)
     > Thank you for all your amazing work on SWAL!
 

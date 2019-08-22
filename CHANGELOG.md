@@ -1,3 +1,10 @@
+## [8.16.3](https://github.com/sweetalert2/sweetalert2/compare/v8.16.2...v8.16.3) (2019-08-22)
+
+
+### Bug Fixes
+
+* remove invalid selector (fix [#1575](https://github.com/sweetalert2/sweetalert2/issues/1575)) ([9986d6f](https://github.com/sweetalert2/sweetalert2/commit/9986d6f))
+
 ## [8.16.2](https://github.com/sweetalert2/sweetalert2/compare/v8.16.1...v8.16.2) (2019-08-18)
 
 

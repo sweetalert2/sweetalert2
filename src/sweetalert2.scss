@@ -447,15 +447,6 @@ body {
   }
 }
 
-> .swal2-input,
-> .swal2-file,
-> .swal2-textarea,
-> .swal2-select,
-> .swal2-radio,
-> .swal2-checkbox {
-  display: none;
-}
-
 .swal2-content {
   z-index: 1; // prevent sucess icon overlapping the content
   justify-content: $swal2-content-justify-content;

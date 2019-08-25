@@ -26,15 +26,6 @@
 
 ---
 
-:raised_hands: :raised_hands: :raised_hands: Help wanted!
----------------------------------------------------------
-
-We just started the [`sweetalert2-themes`](https://github.com/sweetalert2/sweetalert2-themes) project, for now 3 themes are available: [`dark`](https://github.com/sweetalert2/sweetalert2-themes/tree/master/dark), [`minimal`](https://github.com/sweetalert2/sweetalert2-themes/tree/master/minimal), and [`borderless`](https://github.com/sweetalert2/sweetalert2-themes/tree/master/borderless). Please help us with [other themes](https://github.com/sweetalert2/sweetalert2-themes/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22), I would be happy to donate some :moneybag: for all active contributors. The quick-start contributing guide is [here](#contributing).
-
-Thank you :heart:
-
----
-
 :point_right: **Upgrading from v7.x to v8.x?** [Read the release notes!](https://github.com/sweetalert2/sweetalert2/releases/tag/v8.0.0)
 <br>If you're upgrading from v6.x, please [upgrade from v6 to v7](https://github.com/sweetalert2/sweetalert2/releases/tag/v7.0.0) first!
 
@@ -154,6 +145,17 @@ Browser compatibility
 Note that SweetAlert2 **does not** and **will not** provide support or functionality of any kind on IE10 and lower.
 
 
+
+Themes ([`sweetalert2-themes ↗`](https://github.com/sweetalert2/sweetalert2-themes))
+------
+
+- [`Dark`](https://github.com/sweetalert2/sweetalert2-themes/tree/master/dark)
+- [`Minimal`](https://github.com/sweetalert2/sweetalert2-themes/tree/master/minimal)
+- [`Borderless`](https://github.com/sweetalert2/sweetalert2-themes/tree/master/borderless)
+- [`Bootstrap 4`](https://github.com/sweetalert2/sweetalert2-themes/tree/master/bootstrap-4)
+- [`Default`](https://github.com/sweetalert2/sweetalert2-themes/tree/master/default)
+
+
 Related projects
 -------------------------
 
@@ -221,7 +223,5 @@ Has SweetAlert2 helped you create an amazing application? You can show your supp
 - Ether: `0x36e2b10666e2c0dc343901895ba3697b5d3214d1`
 - Bitcoin Cash: `qqxs402qszgwuue00gwxw996lzhpa8up2unqm0y46g`
 - Stellar: `GBRS5KGFJO4OBUGW3TRQBIVXTM5YDS53DOSHGA3LKVE2YXKVKNVDONBP`
-
-Or give a try **Revolut - the best digital bank 💰** - with our referral link: http://revolut.com/referral/vladimh4x!G10D21 (you'll get 10 € with this referral link 🤑). A free Revolut card has no monthly fees and provides awesome exchange rates abroad.
 
 ### [Hall of Donators :trophy:](DONATIONS.md)

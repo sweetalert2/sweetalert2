@@ -33,13 +33,13 @@ export function disableButtons () {
 
 // @deprecated
 export function enableConfirmButton () {
-  warnAboutDepreation('Swal.disableConfirmButton()', `Swal.getConfirmButton().removeAttribute('disabled')`)
+  warnAboutDepreation('Swal.enableConfirmButton()', `Swal.getConfirmButton().removeAttribute('disabled')`)
   setButtonsDisabled(this, ['confirmButton'], false)
 }
 
 // @deprecated
 export function disableConfirmButton () {
-  warnAboutDepreation('Swal.enableConfirmButton()', `Swal.getConfirmButton().setAttribute('disabled', '')`)
+  warnAboutDepreation('Swal.disableConfirmButton()', `Swal.getConfirmButton().setAttribute('disabled', '')`)
   setButtonsDisabled(this, ['confirmButton'], true)
 }
 

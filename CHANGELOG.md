@@ -1,3 +1,10 @@
+## [8.16.4](https://github.com/sweetalert2/sweetalert2/compare/v8.16.3...v8.16.4) (2019-08-30)
+
+
+### Bug Fixes
+
+* swap enable/disable deprecation warnings ([#1727](https://github.com/sweetalert2/sweetalert2/issues/1727)) ([d557a1e](https://github.com/sweetalert2/sweetalert2/commit/d557a1e))
+
 ## [8.16.3](https://github.com/sweetalert2/sweetalert2/compare/v8.16.2...v8.16.3) (2019-08-22)
 
 

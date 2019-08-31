@@ -20,7 +20,7 @@ declare module 'sweetalert2' {
      *   import Swal from 'sweetalert2';
      *   Swal.fire('The Internet?', 'That thing is still around?', 'question');
      */
-    function fire(title?: string, message?: string, type?: SweetAlertType): Promise<SweetAlertResult>;
+    function fire(...options: SweetAlertArrayOptions): Promise<SweetAlertResult>;
 
     /**
      * Function to display a SweetAlert2 modal, with an object of options, all being optional.
@@ -34,7 +34,7 @@ declare module 'sweetalert2' {
      *     timer: 2000
      *   })
      */
-    function fire(settings: SweetAlertOptions): Promise<SweetAlertResult>;
+    function fire(options: SweetAlertOptions): Promise<SweetAlertResult>;
 
     /**
      * Reuse configuration by creating a Swal instance.
@@ -58,7 +58,7 @@ declare module 'sweetalert2' {
      *     type: 'error'
      *   })
      */
-    function update(newSettings: SweetAlertOptions): void;
+    function update(options: SweetAlertOptions): void;
 
     /**
      * Closes the currently open SweetAlert2 modal programmatically.
@@ -358,7 +358,7 @@ declare module 'sweetalert2' {
 
   type ValueOrThunk<T> = T | (() => T);
 
-  export type SweetAlertArrayOptions = [string] | [string, string] | [string, string, string];
+  export type SweetAlertArrayOptions = [string, string?, SweetAlertType?];
 
   export interface SweetAlertOptions {
     /**

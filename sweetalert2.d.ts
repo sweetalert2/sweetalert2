@@ -252,7 +252,7 @@ declare module 'sweetalert2' {
      *
      * @param steps The steps' configuration.
      */
-    function queue(steps: (SweetAlertOptions | string)[]): Promise<any>;
+    function queue(steps: Array<SweetAlertOptions | string>): Promise<any>;
 
     /**
      * Gets the index of current modal in queue. When there's no active queue, null will be returned.
@@ -731,7 +731,7 @@ declare module 'sweetalert2' {
      *
      * @default null
      */
-    preConfirm?: (inputValue: any) => SyncOrAsync<any | void>;
+    preConfirm?(inputValue: any): SyncOrAsync<any | void>;
 
     /**
      * Add a customized icon for the modal. Should contain a string with the path or URL to the image.
@@ -825,7 +825,7 @@ declare module 'sweetalert2' {
      *
      * @default null
      */
-    inputValidator?: (inputValue: string) => SyncOrAsync<string | null>;
+    inputValidator?(inputValue: string): SyncOrAsync<string | null>;
 
     /**
      * A custom validation message for default validators (email, url).
@@ -874,28 +874,37 @@ declare module 'sweetalert2' {
      *
      * @default null
      */
-    onBeforeOpen?: (modalElement: HTMLElement) => void;
-
-    /**
-     * Function to run after modal has been disposed.
-     *
-     * @default null
-     */
-    onAfterClose?: () => void;
+    onBeforeOpen?(modalElement: HTMLElement): void;
 
     /**
      * Function to run when modal opens, provides modal DOM element as the first argument.
      *
      * @default null
      */
-    onOpen?: (modalElement: HTMLElement) => void;
+    onOpen?(modalElement: HTMLElement): void;
+
+    /**
+     * Function to run after modal DOM has been updated.
+     * Typically, this will happen after Swal.fire() or Swal.update().
+     * If you want to perform changes in the modal's DOM, that survive Swal.update(), onRender is a good place for that.
+     *
+     * @default null
+     */
+    onRender?(modalElement: HTMLElement): void;
 
     /**
      * Function to run when modal closes, provides modal DOM element as the first argument.
      *
      * @default null
      */
-    onClose?: (modalElement: HTMLElement) => void;
+    onClose?(modalElement: HTMLElement): void;
+
+    /**
+     * Function to run after modal has been disposed.
+     *
+     * @default null
+     */
+    onAfterClose?(): void;
 
     /**
      * Set to false to disable body padding adjustment when scrollbar is present.

@@ -531,6 +531,28 @@ QUnit.test('onBeforeOpen', (assert) => {
   })
 })
 
+QUnit.test('onRender', (assert) => {
+  const onRender = sinon.fake()
+
+  // create a modal with an onRender callback
+  // the onRender hook should be called once here
+  Swal.fire({
+    title: 'onRender test',
+    onRender
+  })
+
+  assert.ok(onRender.calledOnce)
+
+  // update the modal, causing a new render
+  // the onRender hook should be called once again
+  Swal.update({})
+
+  assert.ok(onRender.calledTwice)
+
+  // the modal element must always be passed to the onRender hook
+  assert.ok(onRender.alwaysCalledWithExactly($('.swal2-modal')))
+})
+
 QUnit.test('onAfterClose', (assert) => {
   const done = assert.async()
   let onCloseFinished = false

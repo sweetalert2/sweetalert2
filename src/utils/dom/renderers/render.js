@@ -1,4 +1,4 @@
-import { getPopup } from '../getters';
+import { getPopup } from '../getters.js'
 import { renderActions } from './renderActions.js'
 import { renderContainer } from './renderContainer.js'
 import { renderContent } from './renderContent.js'

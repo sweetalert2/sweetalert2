@@ -1,3 +1,11 @@
+## [8.17.1](https://github.com/sweetalert2/sweetalert2/compare/v8.17.0...v8.17.1) (2019-08-31)
+
+
+### Bug Fixes
+
+* **types:** first element of SweetAlertArrayOptions is also optional ([b30baf8](https://github.com/sweetalert2/sweetalert2/commit/b30baf8))
+* **types:** more precise SweetAlertArrayOptions type and minor syntax improvement ([e0225e7](https://github.com/sweetalert2/sweetalert2/commit/e0225e7))
+
 # [8.17.0](https://github.com/sweetalert2/sweetalert2/compare/v8.16.4...v8.17.0) (2019-08-31)
 
 

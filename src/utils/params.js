@@ -62,9 +62,10 @@ const defaultParams = {
   currentProgressStep: null,
   progressStepsDistance: null,
   onBeforeOpen: null,
-  onAfterClose: null,
   onOpen: null,
+  onRender: null,
   onClose: null,
+  onAfterClose: null,
   scrollbarPadding: true
 }
 

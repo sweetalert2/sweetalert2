@@ -358,7 +358,7 @@ declare module 'sweetalert2' {
 
   type ValueOrThunk<T> = T | (() => T);
 
-  export type SweetAlertArrayOptions = [string, string?, SweetAlertType?];
+  export type SweetAlertArrayOptions = [string?, string?, SweetAlertType?];
 
   export interface SweetAlertOptions {
     /**

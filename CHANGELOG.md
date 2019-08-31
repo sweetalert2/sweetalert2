@@ -1,3 +1,10 @@
+# [8.17.0](https://github.com/sweetalert2/sweetalert2/compare/v8.16.4...v8.17.0) (2019-08-31)
+
+
+### Features
+
+* add onRender lifecycle hook ([#1729](https://github.com/sweetalert2/sweetalert2/issues/1729)) ([bdcc35c](https://github.com/sweetalert2/sweetalert2/commit/bdcc35c))
+
 ## [8.16.4](https://github.com/sweetalert2/sweetalert2/compare/v8.16.3...v8.16.4) (2019-08-30)
 
 

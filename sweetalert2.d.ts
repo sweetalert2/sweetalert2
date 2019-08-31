@@ -877,13 +877,6 @@ declare module 'sweetalert2' {
     onBeforeOpen?: (modalElement: HTMLElement) => void;
 
     /**
-     * Function to run after modal has been disposed.
-     *
-     * @default null
-     */
-    onAfterClose?: () => void;
-
-    /**
      * Function to run when modal opens, provides modal DOM element as the first argument.
      *
      * @default null
@@ -891,11 +884,27 @@ declare module 'sweetalert2' {
     onOpen?: (modalElement: HTMLElement) => void;
 
     /**
+     * Function to run after modal DOM has been updated.
+     * Typically, this will happen after Swal.fire() or Swal.update().
+     * If you want to perform changes in the modal's DOM, that survive Swal.update(), onRender is a good place for that.
+     *
+     * @default null
+     */
+    onRender?: (modalElement: HTMLElement) => void;
+
+    /**
      * Function to run when modal closes, provides modal DOM element as the first argument.
      *
      * @default null
      */
     onClose?: (modalElement: HTMLElement) => void;
+
+    /**
+     * Function to run after modal has been disposed.
+     *
+     * @default null
+     */
+    onAfterClose?: () => void;
 
     /**
      * Set to false to disable body padding adjustment when scrollbar is present.

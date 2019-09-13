@@ -5,9 +5,10 @@
 @import 'animations';
 @import 'mixins';
 @import 'toasts';
-@import 'core';
 @import 'body';
+@import 'core';
 
 body {
   @include body();
+  @include toasts-body();
 }

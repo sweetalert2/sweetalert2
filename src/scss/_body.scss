@@ -1,6 +1,6 @@
 @import 'toasts-body';
 
-@mixin body() {
+@mixin sweetalert2-body() {
     &.swal2-shown {
         @include not('.swal2-no-backdrop',
             '.swal2-toast-shown'

@@ -93,7 +93,7 @@
   "scripts": {
     "start": "gulp develop --continue-on-error --skip-minification --skip-standalone",
     "test": "npm run build && npm run check",
-    "lint": "stylelint src; eslint src test tools bin *.js *.ts",
+    "lint": "stylelint src && eslint src test tools bin *.js *.ts",
     "build": "gulp build",
     "check": "npm run lint && npm run check:require-in-node && npm run check:qunit && npm run check:qunit:minified && npm run check:ts",
     "check:sauce": "npm run check:qunit:sauce && npm run check:qunit:minified:sauce",

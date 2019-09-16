@@ -1,3 +1,10 @@
+## [8.17.3](https://github.com/sweetalert2/sweetalert2/compare/v8.17.2...v8.17.3) (2019-09-16)
+
+
+### Bug Fixes
+
+* move variables.scss back ([#1739](https://github.com/sweetalert2/sweetalert2/issues/1739)) ([540702a](https://github.com/sweetalert2/sweetalert2/commit/540702a)), closes [#1734](https://github.com/sweetalert2/sweetalert2/issues/1734)
+
 ## [8.17.2](https://github.com/sweetalert2/sweetalert2/compare/v8.17.1...v8.17.2) (2019-09-16)
 
 

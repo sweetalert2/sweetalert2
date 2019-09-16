@@ -1,0 +1,113 @@
+@mixin sweetalert2-toasts-body() {
+  &.swal2-toast-shown {
+    .swal2-container {
+      background-color: transparent;
+
+      &.swal2-shown {
+        background-color: transparent;
+      }
+
+      &.swal2-top {
+        top: 0;
+        right: auto;
+        bottom: auto;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &.swal2-top-end,
+      &.swal2-top-right {
+        top: 0;
+        right: 0;
+        bottom: auto;
+        left: auto;
+      }
+
+      &.swal2-top-start,
+      &.swal2-top-left {
+        top: 0;
+        right: auto;
+        bottom: auto;
+        left: 0;
+      }
+
+      &.swal2-center-start,
+      &.swal2-center-left {
+        top: 50%;
+        right: auto;
+        bottom: auto;
+        left: 0;
+        transform: translateY(-50%);
+      }
+
+      &.swal2-center {
+        top: 50%;
+        right: auto;
+        bottom: auto;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &.swal2-center-end,
+      &.swal2-center-right {
+        top: 50%;
+        right: 0;
+        bottom: auto;
+        left: auto;
+        transform: translateY(-50%);
+      }
+
+      &.swal2-bottom-start,
+      &.swal2-bottom-left {
+        top: auto;
+        right: auto;
+        bottom: 0;
+        left: 0;
+      }
+
+      &.swal2-bottom {
+        top: auto;
+        right: auto;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &.swal2-bottom-end,
+      &.swal2-bottom-right {
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: auto;
+      }
+    }
+  }
+
+  &.swal2-toast-column {
+    .swal2-toast {
+      flex-direction: column;
+      align-items: stretch;
+
+      .swal2-actions {
+        flex: 1;
+        align-self: stretch;
+        height: 2.2em;
+        margin-top: .3125em;
+      }
+
+      .swal2-loading {
+        justify-content: center;
+      }
+
+      .swal2-input {
+        height: 2em;
+        margin: .3125em auto;
+        font-size: $swal2-toast-input-font-size;
+      }
+
+      .swal2-validation-message {
+        font-size: $swal2-toast-validation-font-size;
+      }
+    }
+  }
+}

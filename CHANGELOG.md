@@ -1,3 +1,10 @@
+## [8.17.2](https://github.com/sweetalert2/sweetalert2/compare/v8.17.1...v8.17.2) (2019-09-16)
+
+
+### Bug Fixes
+
+* split SCSS into smaller pieces for easier theming ([#1734](https://github.com/sweetalert2/sweetalert2/issues/1734)) ([c21d615](https://github.com/sweetalert2/sweetalert2/commit/c21d615))
+
 ## [8.17.1](https://github.com/sweetalert2/sweetalert2/compare/v8.17.0...v8.17.1) (2019-08-31)
 
 

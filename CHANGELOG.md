@@ -1,3 +1,10 @@
+## [8.17.4](https://github.com/sweetalert2/sweetalert2/compare/v8.17.3...v8.17.4) (2019-09-17)
+
+
+### Bug Fixes
+
+* **types:** title and footer can be of HTMLElement and JQuery types ([b00065f](https://github.com/sweetalert2/sweetalert2/commit/b00065f))
+
 ## [8.17.3](https://github.com/sweetalert2/sweetalert2/compare/v8.17.2...v8.17.3) (2019-09-16)
 
 

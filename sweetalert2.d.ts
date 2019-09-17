@@ -367,7 +367,7 @@ declare module 'sweetalert2' {
      *
      * @default null
      */
-    title?: string;
+    title?: string | HTMLElement | JQuery;
 
     /**
      * The title of the modal, as text. Useful to avoid HTML injection.
@@ -397,7 +397,7 @@ declare module 'sweetalert2' {
      *
      * @default null
      */
-    footer?: string | JQuery;
+    footer?: string | HTMLElement | JQuery;
 
     /**
      * The type of the modal.

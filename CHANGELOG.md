@@ -1,3 +1,10 @@
+## [8.17.5](https://github.com/sweetalert2/sweetalert2/compare/v8.17.4...v8.17.5) (2019-09-19)
+
+
+### Bug Fixes
+
+* remove superfluous arguments ([#1742](https://github.com/sweetalert2/sweetalert2/issues/1742)) ([96d8429](https://github.com/sweetalert2/sweetalert2/commit/96d8429))
+
 ## [8.17.4](https://github.com/sweetalert2/sweetalert2/compare/v8.17.3...v8.17.4) (2019-09-17)
 
 

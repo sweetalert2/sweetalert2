@@ -1,5 +1,5 @@
 import { swalClasses, iconTypes } from '../classes.js'
-import { toArray, objectValues } from '../utils.js'
+import { toArray, objectValues, warn } from '../utils.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
@@ -10,15 +10,22 @@ export const hasClass = (elem, className) => {
   return elem.classList.contains(className)
 }
 
-export const applyCustomClass = (elem, customClass, className) => {
-  // Clean up previous custom classes
+const removeCustomClasses = (elem) => {
   toArray(elem.classList).forEach(className => {
     if (!objectValues(swalClasses).includes(className) && !objectValues(iconTypes).includes(className)) {
       elem.classList.remove(className)
     }
   })
+}
+
+export const applyCustomClass = (elem, customClass, className) => {
+  removeCustomClasses(elem)
 
   if (customClass && customClass[className]) {
+    if (typeof customClass[className] !== 'string' && !customClass[className].forEach) {
+      return warn(`Invalid type of customClass.${className}! Expected string or iterable object, got "${typeof customClass[className]}"`)
+    }
+
     addClass(elem, customClass[className])
   }
 }

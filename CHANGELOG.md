@@ -1,3 +1,10 @@
+## [8.17.6](https://github.com/sweetalert2/sweetalert2/compare/v8.17.5...v8.17.6) (2019-09-19)
+
+
+### Bug Fixes
+
+* throw warning about unexpected type of customClass ([#1743](https://github.com/sweetalert2/sweetalert2/issues/1743)) ([102bd03](https://github.com/sweetalert2/sweetalert2/commit/102bd03))
+
 ## [8.17.5](https://github.com/sweetalert2/sweetalert2/compare/v8.17.4...v8.17.5) (2019-09-19)
 
 

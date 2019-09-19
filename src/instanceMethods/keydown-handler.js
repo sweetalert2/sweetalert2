@@ -20,7 +20,7 @@ export const addKeydownHandler = (instance, globalState, innerParams, dismissWit
 
 // Focus handling
 export const setFocus = (innerParams, index, increment) => {
-  const focusableElements = dom.getFocusableElements(innerParams.focusCancel)
+  const focusableElements = dom.getFocusableElements()
   // search for visible elements and select the next possible match
   for (let i = 0; i < focusableElements.length; i++) {
     index = index + increment
@@ -92,7 +92,7 @@ const handleEnter = (instance, e, innerParams) => {
 const handleTab = (e, innerParams) => {
   const targetElement = e.target
 
-  const focusableElements = dom.getFocusableElements(innerParams.focusCancel)
+  const focusableElements = dom.getFocusableElements()
   let btnIndex = -1
   for (let i = 0; i < focusableElements.length; i++) {
     if (targetElement === focusableElements[i]) {

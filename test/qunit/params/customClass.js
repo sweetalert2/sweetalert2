@@ -1,4 +1,5 @@
 const { Swal } = require('../helpers')
+const sinon = require('sinon/pkg/sinon')
 
 QUnit.test('customClass as a string', (assert) => {
   Swal.fire({ customClass: 'custom-class' })
@@ -49,4 +50,18 @@ QUnit.test('customClass as an object with the only one key', (assert) => {
     }
   })
   assert.ok(Swal.getTitle().classList.contains('title-class'))
+})
+
+QUnit.test('should throw console warning about unexpected type of customClass', (assert) => {
+  const _consoleWarn = console.warn
+  const spy = sinon.spy(console, 'warn')
+  Swal.fire({
+    customClass: {
+      title: {},
+      popup: 14,
+    }
+  })
+  console.warn = _consoleWarn
+  assert.ok(spy.calledWith('SweetAlert2: Invalid type of customClass.title! Expected string or iterable object, got "object"'))
+  assert.ok(spy.calledWith('SweetAlert2: Invalid type of customClass.popup! Expected string or iterable object, got "number"'))
 })

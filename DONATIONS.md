@@ -22,6 +22,8 @@ Backer is a company or a person who donated 100 USD or more. Backers are listed 
 - **[PriceListo](https://www.pricelisto.com/)** (130 USD worth of BTC)
     > Love using SweetAlert2! Our JS popups finally look great and are super fun to use.
 
+- **[LoveLoxy](https://loveloxy.com/)** (105 USD)
+
 - **[SheetJS LLC](https://sheetjs.com/)** (100 USD)
     > Great Work with SweetAlert2!
 

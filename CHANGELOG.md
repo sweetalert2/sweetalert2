@@ -1,3 +1,10 @@
+# [8.18.0](https://github.com/sweetalert2/sweetalert2/compare/v8.17.6...v8.18.0) (2019-09-30)
+
+
+### Features
+
+* **scss:** add $swal2-close-button-font-family and $swal2-button-focus-background-color variables ([#1753](https://github.com/sweetalert2/sweetalert2/issues/1753)) ([bc1da42](https://github.com/sweetalert2/sweetalert2/commit/bc1da42))
+
 ## [8.17.6](https://github.com/sweetalert2/sweetalert2/compare/v8.17.5...v8.17.6) (2019-09-19)
 
 

@@ -3,11 +3,9 @@
     <img src="/assets/swal2-logo.png" alt="SweetAlert2">
   </a>
 </p>
-
 <p align="center">
   A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement for JavaScript's popup boxes. Zero dependencies.
 </p>
-
 <p align="center">
   <a href="https://sweetalert2.github.io/">
     <img src="https://raw.github.com/sweetalert2/sweetalert2/master/assets/sweetalert2.gif" width="562"><br>
@@ -50,7 +48,6 @@ Or grab from [jsdelivr CDN](https://www.jsdelivr.com/package/npm/sweetalert2)
 
 Usage
 -----
-
 ```html
 <script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
 

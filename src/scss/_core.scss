@@ -302,6 +302,7 @@
   &:focus {
     outline: none;
     box-shadow: 0 0 0 2px $swal2-white, 0 0 0 4px $swal2-button-focus-outline;
+    background-color: $swal2-button-focus-background-color;
   }
 
   &::-moz-focus-inner {
@@ -341,7 +342,7 @@
   outline: $swal2-close-button-outline;
   background: $swal2-close-button-background;
   color: $swal2-close-button-color;
-  font-family: serif;
+  font-family: $swal2-close-button-font-family;
   font-size: $swal2-close-button-font-size;
   line-height: $swal2-close-button-line-height;
   cursor: pointer;

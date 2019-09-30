@@ -124,6 +124,7 @@ $swal2-close-button-border-radius: 0 !default;
 $swal2-close-button-outline: initial !default;
 $swal2-close-button-background: transparent !default;
 $swal2-close-button-color: lighten($swal2-black, 80) !default;
+$swal2-close-button-font-family: serif !default;
 $swal2-close-button-font-size: 2.5em !default;
 
 // CLOSE BUTTON:HOVER
@@ -156,6 +157,7 @@ $swal2-cancel-button-font-size: 1.0625em !default;
 $swal2-button-darken-hover: rgba($swal2-black, .1) !default;
 $swal2-button-darken-active: rgba($swal2-black, .2) !default;
 $swal2-button-focus-outline: rgba(50, 100, 150, .4) !default;
+$swal2-button-focus-background-color: null !default;
 
 // TOASTS
 $swal2-toast-show-animation: swal2-toast-show .5s !default;

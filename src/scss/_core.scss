@@ -301,8 +301,8 @@
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px $swal2-white, 0 0 0 4px $swal2-button-focus-outline;
     background-color: $swal2-button-focus-background-color;
+    box-shadow: 0 0 0 2px $swal2-white, 0 0 0 4px $swal2-button-focus-outline;
   }
 
   &::-moz-focus-inner {

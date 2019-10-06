@@ -75,6 +75,16 @@ import Swal from 'sweetalert2'
 const Swal = require('sweetalert2')
 ```
 
+Or with JS modules:
+
+```html
+<link rel="stylesheet" href="sweetalert2/dist/sweetalert2.css">
+
+<script type="module">
+  import Swal from 'sweetalert2/src/sweetalert2.js'
+</script>
+```
+
 It's possible to import JS and CSS separately, e.g. if you need to customize styles:
 
 ```js

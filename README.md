@@ -180,6 +180,7 @@ Related community projects
 
 - [avil13/vue-sweetalert2](https://github.com/avil13/vue-sweetalert2) - Vue.js wrapper
 - [realrashid/sweet-alert](https://github.com/realrashid/sweet-alert) - Laravel 5 Package
+- [Basaingeal/Razor.SweetAlert2](https://github.com/Basaingeal/Razor.SweetAlert2) - Blazor Wrapper
 
 
 Collaborators

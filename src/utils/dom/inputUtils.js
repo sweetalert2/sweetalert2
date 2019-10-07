@@ -12,6 +12,29 @@ export const handleInputOptionsAndValue = (instance, params) => {
   }
 }
 
+export const getInputValue = (instance, innerParams) => {
+  const input = instance.getInput()
+  if (!input) {
+    return null
+  }
+  switch (innerParams.input) {
+    case 'checkbox':
+      return getCheckboxValue(input)
+    case 'radio':
+      return getRadioValue(input)
+    case 'file':
+      return getFileValue(input)
+    default:
+      return innerParams.inputAutoTrim ? input.value.trim() : input.value
+  }
+}
+
+const getCheckboxValue = (input) => input.checked ? 1 : 0
+
+const getRadioValue = (input) => input.checked ? input.value : null
+
+const getFileValue = (input) => input.files.length ? (input.getAttribute('multiple') !== null ? input.files : input.files[0]) : null
+
 const handleInputOptions = (instance, params) => {
   const content = dom.getContent()
   const processInputOptions = (inputOptions) => populateInputOptions[params.input](content, formatInputOptions(inputOptions), params)

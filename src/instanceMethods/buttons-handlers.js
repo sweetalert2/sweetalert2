@@ -88,4 +88,10 @@ const getInputValue = (instance, innerParams) => {
 const getCheckboxValue = (input) => input.checked ? 1 : 0
 
 const getRadioValue = (input) => input.checked ? input.value : null
-const getFileValue = (input) => input.getAttribute('multiple') ? (input.files.length ? input.files : null) : (input.files.length ? input.files[0] : null)
+const getFileValue = (input) => {
+  if (input.getAttribute('multiple')) {
+    return input.files.length ? input.files : null
+  } else {
+    return input.files.length ? input.files[0] : null
+  }
+}

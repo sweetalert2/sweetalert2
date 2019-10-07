@@ -1,3 +1,10 @@
+## [8.18.1](https://github.com/sweetalert2/sweetalert2/compare/v8.18.0...v8.18.1) (2019-10-07)
+
+
+### Bug Fixes
+
+* get file result for multiple file type input ([#1759](https://github.com/sweetalert2/sweetalert2/issues/1759)) ([cf00614](https://github.com/sweetalert2/sweetalert2/commit/cf00614))
+
 # [8.18.0](https://github.com/sweetalert2/sweetalert2/compare/v8.17.6...v8.18.0) (2019-09-30)
 
 

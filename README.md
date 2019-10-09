@@ -229,6 +229,7 @@ Support and Donations
 
 Has SweetAlert2 helped you create an amazing application? You can show your support by making a donation:
 
+- [GitHub Sponsors :heart:](https://github.com/users/limonte/sponsorship)
 - [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TKTWHJGUWLR7E)
 - Bitcoin: `16Z7RvFv7PsV3XzFvchYwPnRfw9KeLTZQJ`
 - Ether: `0x192096161eB2273f12b1cB4E31aBB09Bfc03a7F3`

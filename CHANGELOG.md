@@ -1,3 +1,10 @@
+## [8.18.3](https://github.com/sweetalert2/sweetalert2/compare/v8.18.2...v8.18.3) (2019-10-09)
+
+
+### Bug Fixes
+
+* apply customClass only to visible input ([#1767](https://github.com/sweetalert2/sweetalert2/issues/1767)) ([98de5fb](https://github.com/sweetalert2/sweetalert2/commit/98de5fb009923d1885a2bb437deed7746820e058))
+
 ## [8.18.2](https://github.com/sweetalert2/sweetalert2/compare/v8.18.1...v8.18.2) (2019-10-09)
 
 

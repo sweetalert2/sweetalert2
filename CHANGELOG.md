@@ -1,3 +1,10 @@
+## [8.18.2](https://github.com/sweetalert2/sweetalert2/compare/v8.18.1...v8.18.2) (2019-10-09)
+
+
+### Bug Fixes
+
+* **types:** getInput() returns HTMLInputElement ([#1766](https://github.com/sweetalert2/sweetalert2/issues/1766)) ([c9916da](https://github.com/sweetalert2/sweetalert2/commit/c9916da081c1dfdc48e02422b3af12aef306586d))
+
 ## [8.18.1](https://github.com/sweetalert2/sweetalert2/compare/v8.18.0...v8.18.1) (2019-10-07)
 
 

@@ -1,4 +1,4 @@
-const { Swal } = require('../helpers')
+const { $, Swal } = require('../helpers')
 const sinon = require('sinon/pkg/sinon')
 
 QUnit.test('customClass as a string', (assert) => {
@@ -40,6 +40,17 @@ QUnit.test('customClass as an object', (assert) => {
   assert.ok(Swal.getConfirmButton().classList.contains('confirm-button-class'))
   assert.ok(Swal.getCancelButton().classList.contains('cancel-button-class'))
   assert.ok(Swal.getFooter().classList.contains('footer-class'))
+})
+
+QUnit.test('only visible input has custom class', (assert) => {
+  Swal.fire({
+    input: 'checkbox',
+    customClass: {
+      input: 'input-class',
+    }
+  })
+  assert.ok($('.swal2-checkbox').classList.contains('input-class'))
+  assert.notOk($('.swal2-input').classList.contains('input-class'))
 })
 
 QUnit.test('customClass as an object with the only one key', (assert) => {

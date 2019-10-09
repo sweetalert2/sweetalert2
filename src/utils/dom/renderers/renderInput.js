@@ -18,15 +18,19 @@ export const renderInput = (instance, params) => {
     setAttributes(inputType, params.inputAttributes)
 
     // set class
-    setClass(inputContainer, inputClass, params)
+    inputContainer.className = inputClass
 
     if (rerender) {
       dom.hide(inputContainer)
     }
   })
 
-  if (params.input && rerender) {
-    showInput(params)
+  if (params.input) {
+    if (rerender) {
+      showInput(params)
+    }
+    // set custom class
+    setCustomClass(params)
   }
 }
 
@@ -35,7 +39,8 @@ const showInput = (params) => {
     return error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`)
   }
 
-  const input = renderInputType[params.input](params)
+  const inputContainer = getInputContainer(params.input)
+  const input = renderInputType[params.input](inputContainer, params)
   dom.show(input)
 
   // input autofocus
@@ -72,8 +77,8 @@ const setAttributes = (inputType, inputAttributes) => {
   }
 }
 
-const setClass = (inputContainer, inputClass, params) => {
-  inputContainer.className = inputClass
+const setCustomClass = (params) => {
+  const inputContainer = getInputContainer(params.input)
   if (params.inputClass) {
     dom.addClass(inputContainer, params.inputClass)
   }
@@ -88,6 +93,11 @@ const setInputPlaceholder = (input, params) => {
   }
 }
 
+const getInputContainer = (inputType) => {
+  const inputClass = swalClasses[inputType] ? swalClasses[inputType] : swalClasses.input
+  return dom.getChildByClass(dom.getContent(), inputClass)
+}
+
 const renderInputType = {}
 
 renderInputType.text =
@@ -95,8 +105,7 @@ renderInputType.email =
 renderInputType.password =
 renderInputType.number =
 renderInputType.tel =
-renderInputType.url = (params) => {
-  const input = dom.getChildByClass(dom.getContent(), swalClasses.input)
+renderInputType.url = (input, params) => {
   if (typeof params.inputValue === 'string' || typeof params.inputValue === 'number') {
     input.value = params.inputValue
   } else if (!isPromise(params.inputValue)) {
@@ -107,15 +116,12 @@ renderInputType.url = (params) => {
   return input
 }
 
-renderInputType.file = (params) => {
-  const input = dom.getChildByClass(dom.getContent(), swalClasses.file)
+renderInputType.file = (input, params) => {
   setInputPlaceholder(input, params)
-  input.type = params.input
   return input
 }
 
-renderInputType.range = (params) => {
-  const range = dom.getChildByClass(dom.getContent(), swalClasses.range)
+renderInputType.range = (range, params) => {
   const rangeInput = range.querySelector('input')
   const rangeOutput = range.querySelector('output')
   rangeInput.value = params.inputValue
@@ -124,8 +130,7 @@ renderInputType.range = (params) => {
   return range
 }
 
-renderInputType.select = (params) => {
-  const select = dom.getChildByClass(dom.getContent(), swalClasses.select)
+renderInputType.select = (select, params) => {
   select.innerHTML = ''
   if (params.inputPlaceholder) {
     const placeholder = document.createElement('option')
@@ -138,26 +143,22 @@ renderInputType.select = (params) => {
   return select
 }
 
-renderInputType.radio = () => {
-  const radio = dom.getChildByClass(dom.getContent(), swalClasses.radio)
+renderInputType.radio = (radio) => {
   radio.innerHTML = ''
   return radio
 }
 
-renderInputType.checkbox = (params) => {
-  const checkbox = dom.getChildByClass(dom.getContent(), swalClasses.checkbox)
-  const checkboxInput = dom.getInput(dom.getContent(), 'checkbox')
-  checkboxInput.type = 'checkbox'
-  checkboxInput.value = 1
-  checkboxInput.id = swalClasses.checkbox
-  checkboxInput.checked = Boolean(params.inputValue)
-  const label = checkbox.querySelector('span')
+renderInputType.checkbox = (checkboxContainer, params) => {
+  const checkbox = dom.getInput(dom.getContent(), 'checkbox')
+  checkbox.value = 1
+  checkbox.id = swalClasses.checkbox
+  checkbox.checked = Boolean(params.inputValue)
+  const label = checkboxContainer.querySelector('span')
   label.innerHTML = params.inputPlaceholder
-  return checkbox
+  return checkboxContainer
 }
 
-renderInputType.textarea = (params) => {
-  const textarea = dom.getChildByClass(dom.getContent(), swalClasses.textarea)
+renderInputType.textarea = (textarea, params) => {
   textarea.value = params.inputValue
   setInputPlaceholder(textarea, params)
 

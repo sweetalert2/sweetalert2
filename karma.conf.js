@@ -1,5 +1,3 @@
-const ci = require('ci-info')
-
 const noLaunch = process.argv.includes('--no-launch')
 const testMinified = process.argv.includes('--minified')
 const isSauce = process.argv.includes('--sauce')
@@ -122,11 +120,11 @@ function getBrowsers () {
     browsers = Object.keys(sauceLabsLaunchers)
 
   // AppVeyor
-  } else if (ci.APPVEYOR) {
+  } else if (process.env.APPVEYOR) {
     browsers = ['IE', 'ChromeHeadless', 'FirefoxHeadless']
 
   // Travis
-  } else if (ci.TRAVIS) {
+  } else if (process.env.TRAVIS) {
     browsers = ['ChromeHeadless', 'FirefoxHeadless']
   }
 
@@ -137,7 +135,7 @@ function getReporters () {
   const reporters = ['spec', 'saucelabs']
 
   // Travis
-  if (ci.TRAVIS && !testMinified) {
+  if (process.env.TRAVIS && !testMinified) {
     reporters.push('coverage')
   }
 

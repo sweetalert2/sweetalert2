@@ -19,7 +19,6 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-array-includes": "^2.0.3",
     "browser-sync": "^2.26.3",
-    "ci-info": "^2.0.0",
     "custom-event-polyfill": "^1.0.6",
     "eslint": "^6.0.0",
     "eslint-config-standard": "^14.0.0",

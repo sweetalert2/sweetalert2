@@ -86,9 +86,6 @@
     "toast",
     "accessible"
   ],
-  "engines": {
-    "node": ">=0.10.0"
-  },
   "scripts": {
     "start": "gulp develop --continue-on-error --skip-minification --skip-standalone",
     "test": "npm run build && npm run check",

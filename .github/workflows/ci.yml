@@ -1,0 +1,23 @@
+name: Run linters and tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Install npm dependencies
+      run: yarn install
+
+    - name: Build
+      run: yarn build
+
+    - name: Run checks
+      run: yarn run check

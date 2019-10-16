@@ -24,7 +24,7 @@ install:
 
 test_script:
   - npm run build
-  - npm run check:qunit
+  - npm run test
 
 after_test:
   # run audit to prevent adding vulnerable dependencies

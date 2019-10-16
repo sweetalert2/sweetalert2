@@ -19,8 +19,17 @@ jobs:
     - name: Build
       run: yarn build
 
-    - name: Run checks
-      run: yarn run check
+    - name: Run linters
+      run: yarn lint
+
+    - name: Run tests
+      run: yarn test
+
+    - name: Check TypeScript
+      run: |
+        tsc --lib dom,es6 --noEmit test/ts/simple-usage.ts sweetalert2.d.ts
+        tsc --lib dom,es6 --noEmit test/ts/dist-sweetalert2.ts sweetalert2.d.ts
+        tsc --lib dom,es6 --noEmit test/ts/src-sweetalert2.ts sweetalert2.d.ts
 
     - name: Run automated release process with semantic-release
       env:

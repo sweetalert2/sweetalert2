@@ -26,16 +26,7 @@ install:
     fi
 
 script:
-  - if [[ "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
-      yarn run check &&
-      yarn add --dev jest &&
-      yarn run check:jest;
-    fi;
-
-  - if [[ "$TRAVIS_EVENT_TYPE" = "cron" ]]; then
-      travis_retry yarn check:sauce &&
-      yarn check:third-party;
-    fi;
+  - yarn run check
 
 notifications:
   email:
@@ -43,7 +34,5 @@ notifications:
 
 after_success:
   # report coverage to coveralls.io
-  - if [[ "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
-      yarn global add coveralls@3 &&
-      cat ./coverage/lcov.info | coveralls;
-    fi;
+  - yarn global add coveralls@3
+  - cat ./coverage/lcov.info | coveralls

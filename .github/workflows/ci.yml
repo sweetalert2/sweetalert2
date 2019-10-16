@@ -1,4 +1,4 @@
-name: Linters and tests
+name: build
 
 on:
   push:
@@ -30,6 +30,11 @@ jobs:
         tsc --lib dom,es6 --noEmit test/ts/simple-usage.ts sweetalert2.d.ts
         tsc --lib dom,es6 --noEmit test/ts/dist-sweetalert2.ts sweetalert2.d.ts
         tsc --lib dom,es6 --noEmit test/ts/src-sweetalert2.ts sweetalert2.d.ts
+
+    - name: Report coverage to coveralls.io
+      run: |
+        yarn add --dev coveralls@3
+        cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
 
     - name: Run automated release process with semantic-release
       env:

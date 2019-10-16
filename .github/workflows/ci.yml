@@ -21,3 +21,11 @@ jobs:
 
     - name: Run checks
       run: yarn run check
+
+    - name: Run automated release process with semantic-release
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: |
+        yarn add --dev semantic-release@16.0.0-beta.26 @semantic-release/changelog@3 @semantic-release/exec@3.4.0-beta.2 @semantic-release/git@7.1.0-beta.3
+        ./node_modules/.bin/semantic-release

@@ -42,12 +42,6 @@ notifications:
     on_success: never
 
 after_success:
-  # run automated release process with semantic-release
-  - if [[ "$TRAVIS_BRANCH" = "master" ]]; then
-      yarn global add semantic-release@16.0.0-beta.22 @semantic-release/changelog@3 @semantic-release/exec@3.4.0-beta.2 @semantic-release/git@7.1.0-beta.3;
-      semantic-release;
-    fi;
-
   # report coverage to coveralls.io
   - if [[ "$TRAVIS_EVENT_TYPE" != "cron" ]]; then
       yarn global add coveralls@3 &&

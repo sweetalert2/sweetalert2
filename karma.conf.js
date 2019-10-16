@@ -114,13 +114,13 @@ function getBrowsers () {
 
   let browsers = ['ChromeHeadless']
 
-  // Cron on Travis or check:qunit --sauce
+  // Cron on GitHub Actions or check:qunit --sauce
   if (isSauce) {
     checkSauceCredentials()
     browsers = Object.keys(sauceLabsLaunchers)
 
-  // Travis or GitHub Actions
-  } else if (process.env.TRAVIS || process.env.GITHUB_ACTION) {
+  // GitHub Actions
+  } else if (process.env.GITHUB_ACTION) {
     browsers = ['ChromeHeadless', 'FirefoxHeadless']
   }
 
@@ -130,8 +130,8 @@ function getBrowsers () {
 function getReporters () {
   const reporters = ['spec', 'saucelabs']
 
-  // Travis
-  if (process.env.TRAVIS && !testMinified) {
+  // GitHub Actions
+  if (process.env.GITHUB_ACTION && !testMinified) {
     reporters.push('coverage')
   }
 

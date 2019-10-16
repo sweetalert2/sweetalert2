@@ -1,3 +1,10 @@
+## [8.18.4](https://github.com/sweetalert2/sweetalert2/compare/v8.18.3...v8.18.4) (2019-10-16)
+
+
+### Bug Fixes
+
+* **types:** do not use SweetAlertArrayOptions in fire() definition ([#1775](https://github.com/sweetalert2/sweetalert2/issues/1775)) ([893eee7](https://github.com/sweetalert2/sweetalert2/commit/893eee7ab6993013fb28337ff6fdf69f78d4ee9f))
+
 ## [8.18.3](https://github.com/sweetalert2/sweetalert2/compare/v8.18.2...v8.18.3) (2019-10-09)
 
 

@@ -119,12 +119,8 @@ function getBrowsers () {
     checkSauceCredentials()
     browsers = Object.keys(sauceLabsLaunchers)
 
-  // AppVeyor
-  } else if (process.env.APPVEYOR) {
-    browsers = ['IE', 'ChromeHeadless', 'FirefoxHeadless']
-
-  // Travis
-  } else if (process.env.TRAVIS) {
+  // Travis or GitHub Actions
+  } else if (process.env.TRAVIS || process.env.GITHUB_ACTION) {
     browsers = ['ChromeHeadless', 'FirefoxHeadless']
   }
 

@@ -1,0 +1,43 @@
+name: CRON tests
+
+on:
+  schedule:
+    - cron:  '0 3 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Install npm dependencies
+      run: yarn install
+
+    - name: Build
+      run: yarn build
+
+    - name: Test in node
+      run: yarn run check:require-in-node
+
+    - name: Test in jest
+      run: |
+        yarn add --dev jest
+        yarn run check:jest
+
+    - name: Test dist/*.min.js
+      run: yarn run check:qunit:minified
+
+    - name: Run cross-platform tests with SauceLabs
+      env:
+        SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+        SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+      run: |
+        yarn run check:qunit:sauce
+        yarn run check:qunit:minified:sauce
+
+    - name: Test third-party CDN services
+      run: |
+        yarn run check:jsdelivr
+        yarn run check:unpkg
+        yarn run check:wappalyzer

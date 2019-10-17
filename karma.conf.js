@@ -66,6 +66,12 @@ const sauceLabsLaunchers = {
     browserName: 'MicrosoftEdge',
     version: 'latest'
   },
+  ie: {
+    base: 'SauceLabs',
+    browserName: 'internet explorer',
+    platformVersion: '11.0',
+    platform: 'Windows 7'
+  },
   iphone: {
     base: 'SauceLabs',
     browserName: 'Safari',

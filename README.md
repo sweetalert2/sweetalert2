@@ -216,15 +216,15 @@ Big Thanks
 - [Serena Verni (@serenaperora)](https://serena.verni.xyz) for creating the amazing project logo
 - [Sauce Labs](https://saucelabs.com/) for providing the reliable cross-browser testing platform
 
-Backers
--------
+Sponsors
+--------
 
-[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](DONATIONS.md#backers) | [<img src="https://avatars2.githubusercontent.com/u/28631236?s=80&v=4" width="80">](https://flowcrypt.com/) | [<img src="https://sweetalert2.github.io/images/backers/sex-toy-education.png" width="80">](https://sextoyeducation.com/) | [<img src="https://sweetalert2.github.io/images/backers/PriceListo.png" width="80">](https://www.pricelisto.com/) | [<img src="https://sweetalert2.github.io/images/backers/loveloxy.png" width="80">](https://loveloxy.com/) | [<img src="https://www.ndchost.com/logos/ndchost-stacked-256x133-transparent.png" width="80">](https://www.ndchost.com/)
+[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](DONATIONS.md#sponsors) | [<img src="https://avatars2.githubusercontent.com/u/28631236?s=80&v=4" width="80">](https://flowcrypt.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sex-toy-education.png" width="80">](https://sextoyeducation.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/PriceListo.png" width="80">](https://www.pricelisto.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/loveloxy.png" width="80">](https://loveloxy.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/ndchost.png" width="80">](https://www.ndchost.com/)
 -|-|-|-|-|-
-[Become a backer](DONATIONS.md#backers) | [FlowCrypt](https://flowcrypt.com/) | [STED](https://sextoyeducation.com/) | [PriceListo](https://www.pricelisto.com/) | [LoveLoxy](https://www.loveloxy.com/) | [NDCHost](https://www.ndchost.com/)
+[Become a sponsor](DONATIONS.md#sponsors) | [FlowCrypt](https://flowcrypt.com/) | [STED](https://sextoyeducation.com/) | [PriceListo](https://www.pricelisto.com/) | [LoveLoxy](https://www.loveloxy.com/) | [NDCHost](https://www.ndchost.com/)
 
 
-[![](https://avatars0.githubusercontent.com/u/5826089?v=4&s=80)](https://sheetjs.com/) | [![](https://avatars2.githubusercontent.com/u/12075795?v=4&s=80)](https://www.unique-p.ch) | [<img src="https://sweetalert2.github.io/images/backers/sextoycollective.jpg" width="80">](https://sextoycollective.com/)
+[![](https://avatars0.githubusercontent.com/u/5826089?v=4&s=80)](https://sheetjs.com/) | [![](https://avatars2.githubusercontent.com/u/12075795?v=4&s=80)](https://www.unique-p.ch) | [<img src="https://sweetalert2.github.io/images/sponsors/sextoycollective.jpg" width="80">](https://sextoycollective.com/)
 -|-|-
 [SheetJS LLC](https://sheetjs.com/) | [Unique-P GmbH](https://www.unique-p.ch) | [STC (NSFW)](https://sextoycollective.com/)
 

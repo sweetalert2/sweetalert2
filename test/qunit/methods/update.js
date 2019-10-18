@@ -1,4 +1,5 @@
 const { $, Swal, SwalWithoutAnimation, isVisible } = require('../helpers')
+const sinon = require('sinon/pkg/sinon')
 
 QUnit.test('update() method', (assert) => {
   SwalWithoutAnimation.fire({
@@ -128,4 +129,18 @@ QUnit.test('should not affect input', (assert) => {
   Swal.getInput().value = 'dos'
   Swal.update({ html: 'hi' })
   assert.equal(Swal.getInput().value, 'dos')
+})
+
+QUnit.test('update() method should throw a warning when attempting to update the closing popup', (assert) => {
+  const done = assert.async()
+  const _consoleWarn = console.warn
+  const spy = sinon.spy(console, 'warn')
+
+  Swal.fire().then(() => {
+    Swal.update()
+    console.warn = _consoleWarn
+    assert.ok(spy.calledWith(`SweetAlert2: You're trying to update the closed or closing popup, that won't work. Use the update() method in preConfirm parameter or show a new popup.`))
+    done()
+  })
+  Swal.clickConfirm()
 })

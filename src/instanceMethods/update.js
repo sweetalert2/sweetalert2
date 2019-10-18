@@ -1,5 +1,6 @@
 import * as dom from '../../src/utils/dom/index.js'
 import { warn } from '../../src/utils/utils.js'
+import { swalClasses } from '../../src/utils/classes.js'
 import sweetAlert from '../sweetalert2.js'
 import privateProps from '../privateProps.js'
 
@@ -7,6 +8,12 @@ import privateProps from '../privateProps.js'
  * Updates popup parameters.
  */
 export function update (params) {
+  const popup = dom.getPopup()
+
+  if (!popup || dom.hasClass(popup, swalClasses.hide)) {
+    return warn(`You're trying to update the closed or closing popup, that won't work. Use the update() method in preConfirm parameter or show a new popup.`)
+  }
+
   const validUpdatableParams = {}
 
   // assign valid params from `params` to `defaults`

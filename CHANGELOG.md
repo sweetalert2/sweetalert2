@@ -1,3 +1,10 @@
+## [8.18.5](https://github.com/sweetalert2/sweetalert2/compare/v8.18.4...v8.18.5) (2019-10-18)
+
+
+### Bug Fixes
+
+* throw warning when calling update() for closing popup ([#1779](https://github.com/sweetalert2/sweetalert2/issues/1779)) ([69d737e](https://github.com/sweetalert2/sweetalert2/commit/69d737e0ba783ed59f56cee31cf651fa3d339c1e))
+
 ## [8.18.4](https://github.com/sweetalert2/sweetalert2/compare/v8.18.3...v8.18.4) (2019-10-16)
 
 

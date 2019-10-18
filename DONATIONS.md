@@ -24,6 +24,9 @@ Backer is a company or a person who donated 100 USD or more. Backers are listed 
 
 - **[LoveLoxy](https://loveloxy.com/)** (105 USD)
 
+- **[NDCHost](https://www.ndchost.com/)** (100 USD)
+    > Thank you for this great project!
+
 - **[SheetJS LLC](https://sheetjs.com/)** (100 USD)
     > Great Work with SweetAlert2!
 

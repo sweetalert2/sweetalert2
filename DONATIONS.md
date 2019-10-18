@@ -9,9 +9,9 @@ We would like to thank everyone who contributed to this library. If you find our
 Your contribution will be greatly appreciated!
 
 
-# Backers
+# Sponsors
 
-Backer is a company or a person who donated 100 USD or more. Backers are listed here, in [README](https://github.com/sweetalert2/sweetalert2#backers), and in [SweetAlert2's official homepage](https://sweetalert2.github.io/#backers) (65K+ unique visitors per month). All backers have priority support via GitHub issues.
+Sponsor is a company or a person who donated 100 USD or more. Sponsors are listed here, in [README](https://github.com/sweetalert2/sweetalert2#sponsors), and in [SweetAlert2's official homepage](https://sweetalert2.github.io/#sponsors) (75K+ unique visitors per month). All sponsors have priority support via GitHub issues.
 
 - **[FlowCrypt](http://flowcrypt.com)** (200 EUR + 30 USD worth of BTC and ETH)
     > Thanks for the awesome work!
@@ -73,9 +73,6 @@ Backer is a company or a person who donated 100 USD or more. Backers are listed 
 
 - **Jeff Keith** (10 EUR)
     > SweetAlert2 saved me tons of time.
-
-
-# Donors
 
 - **David Barber** (5 USD)
 

@@ -220,6 +220,8 @@ Big Thanks
 Sponsors
 --------
 
+[<img src="https://sweetalert2.github.io/images/sponsors/flowcrypt-banner.png">](https://flowcrypt.com/)
+
 [<img src="https://sweetalert2.github.io/images/plus.png" width="80">](DONATIONS.md#sponsors) | [<img src="https://avatars2.githubusercontent.com/u/28631236?s=80&v=4" width="80">](https://flowcrypt.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sex-toy-education.png" width="80">](https://sextoyeducation.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/PriceListo.png" width="80">](https://www.pricelisto.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/loveloxy.png" width="80">](https://loveloxy.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/ndchost.png" width="80">](https://www.ndchost.com/)
 -|-|-|-|-|-
 [Become a sponsor](DONATIONS.md#sponsors) | [FlowCrypt](https://flowcrypt.com/) | [STED](https://sextoyeducation.com/) | [PriceListo](https://www.pricelisto.com/) | [LoveLoxy](https://www.loveloxy.com/) | [NDCHost](https://www.ndchost.com/)

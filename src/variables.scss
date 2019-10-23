@@ -24,7 +24,7 @@ $swal2-backdrop-transition: background-color .1s !default;
 // ICONS
 $swal2-icon-size: 5em !default;
 $swal2-icon-margin: 1.25em auto 1.875em !default;
-$swal2-icon-zoom: normal !default;
+$swal2-icon-zoom: null !default;
 $swal2-success: #a5dc86 !default;
 $swal2-success-border: rgba($swal2-success, .3) !default;
 $swal2-error: #f27474 !default;
@@ -80,7 +80,7 @@ $swal2-validation-message-font-size: 1em !default;
 $swal2-validation-message-font-weight: 300 !default;
 $swal2-validation-message-icon-background: $swal2-error !default;
 $swal2-validation-message-icon-color: $swal2-white !default;
-$swal2-validation-message-icon-zoom: normal !default;
+$swal2-validation-message-icon-zoom: null !default;;
 
 // PROGRESS STEPS
 $swal2-progress-steps-background: inherit !default;

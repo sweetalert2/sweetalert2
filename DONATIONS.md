@@ -25,6 +25,8 @@ Sponsor is a company or a person who donated 100 USD or more. Sponsors are liste
 
 - **[LoveLoxy](https://loveloxy.com/)** (105 USD)
 
+- **[Bingato](https://bingato.com/)** (100 USD)
+
 - **[NDCHost](https://www.ndchost.com/)** (100 USD)
     > Thank you for this great project!
 

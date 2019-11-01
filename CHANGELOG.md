@@ -1,3 +1,10 @@
+## [8.18.7](https://github.com/sweetalert2/sweetalert2/compare/v8.18.6...v8.18.7) (2019-11-01)
+
+
+### Bug Fixes
+
+* iOS/iPadOS 13 detection ([#1789](https://github.com/sweetalert2/sweetalert2/issues/1789)) ([67e99e9](https://github.com/sweetalert2/sweetalert2/commit/67e99e905a2f45a6305d249575ea65480b45f0c4))
+
 ## [8.18.6](https://github.com/sweetalert2/sweetalert2/compare/v8.18.5...v8.18.6) (2019-10-23)
 
 

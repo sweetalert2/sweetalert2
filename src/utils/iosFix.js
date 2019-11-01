@@ -5,7 +5,7 @@ import { swalClasses } from '../utils/classes.js'
 
 /* istanbul ignore next */
 export const iOSfix = () => {
-  const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+  const iOS = (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
   if (iOS && !dom.hasClass(document.body, swalClasses.iosfix)) {
     const offset = document.body.scrollTop
     document.body.style.top = (offset * -1) + 'px'

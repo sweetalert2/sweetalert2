@@ -243,4 +243,6 @@ Has SweetAlert2 helped you create an amazing application? You can show your supp
 - Bitcoin Cash: `qz28x66hrljtdz3052p8ya3cmkwwva5avy0msz2ej3`
 - Stellar: `GDUM4VJZYDNRHBTKUQBOPC374AP6MMMVOJDMSHIPEJPEMBCY4ZHH6NDY`
 
+Also, the author of SweetAlert2 (@limonte) is looking for short-term working contracts in front-end, preferably OSS.
+
 ### [Hall of Donators :trophy:](DONATIONS.md)

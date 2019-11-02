@@ -60,7 +60,6 @@
     "webpack": "^4.29.0"
   },
   "files": [
-    "bin",
     "dist",
     "src",
     "sweetalert2.d.ts"
@@ -88,10 +87,9 @@
   ],
   "scripts": {
     "start": "gulp develop --continue-on-error --skip-minification --skip-standalone",
-    "lint": "stylelint src && eslint src test tools bin *.js *.ts",
+    "lint": "stylelint src && eslint src test tools *.js *.ts",
     "build": "gulp build",
-    "test": "karma start karma.conf.js --single-run",
-    "postinstall": "node bin/postinstall.js"
+    "test": "karma start karma.conf.js --single-run"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
   "license": "MIT"

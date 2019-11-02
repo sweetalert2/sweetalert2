@@ -66,13 +66,11 @@
   ],
   "author": "Limon Monte <limon.monte@gmail.com> (https://limonte.github.io)",
   "contributors": [
+    "Giuseppe Verni (https://github.com/gverni)",
     "Matthew Francis Brunetti <zenflow87@gmail.com> (https://github.com/zenflow)",
     "Morgan Touverey-Quilling <mtouverey@alembic-dev.com> (https://github.com/toverux)",
     "Joseph Schultz (https://github.com/acupajoe)",
-    "Sam Turrell <sam@samturrell.co.uk> (https://github.com/samturrell)",
-    "Johan Fagerberg (https://github.com/birjolaxew)",
-    "Giuseppe Verni (https://github.com/gverni)",
-    "Juliano Pereira Lima (https://github.com/julianogtz)"
+    "Johan Fagerberg (https://github.com/birjolaxew)"
   ],
   "keywords": [
     "sweetalert",

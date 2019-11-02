@@ -1,3 +1,10 @@
+# [8.19.0](https://github.com/sweetalert2/sweetalert2/compare/v8.18.7...v8.19.0) (2019-11-02)
+
+
+### Features
+
+* **scss:** add $swal2-border ([0fdf5ba](https://github.com/sweetalert2/sweetalert2/commit/0fdf5ba6813f27695b6d6654484b51eb67c03d62))
+
 ## [8.18.7](https://github.com/sweetalert2/sweetalert2/compare/v8.18.6...v8.18.7) (2019-11-01)
 
 

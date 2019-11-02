@@ -19,7 +19,6 @@ export const swalClasses = prefix([
   'toast',
   'toast-shown',
   'toast-column',
-  'fade',
   'show',
   'hide',
   'noanimation',

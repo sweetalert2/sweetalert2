@@ -68,7 +68,6 @@ const fixScrollContainer = (container, scrollbarPadding) => {
 const addClasses = (container, popup, params) => {
   if (params.animation) {
     dom.addClass(popup, swalClasses.show)
-    dom.addClass(container, swalClasses.fade)
   }
   dom.show(popup)
 

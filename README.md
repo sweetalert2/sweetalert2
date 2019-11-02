@@ -25,6 +25,10 @@
 
 ---
 
+:shipit: The author of SweetAlert2 ([@limonte](https://github.com/limonte/)) is looking for short-term working contracts in front-end, preferably OSS.
+
+---
+
 :point_right: **Upgrading from v7.x to v8.x?** [Read the release notes!](https://github.com/sweetalert2/sweetalert2/releases/tag/v8.0.0)
 <br>If you're upgrading from v6.x, please [upgrade from v6 to v7](https://github.com/sweetalert2/sweetalert2/releases/tag/v7.0.0) first!
 
@@ -242,7 +246,5 @@ Has SweetAlert2 helped you create an amazing application? You can show your supp
 - Ether: `0x192096161eB2273f12b1cB4E31aBB09Bfc03a7F3`
 - Bitcoin Cash: `qz28x66hrljtdz3052p8ya3cmkwwva5avy0msz2ej3`
 - Stellar: `GDUM4VJZYDNRHBTKUQBOPC374AP6MMMVOJDMSHIPEJPEMBCY4ZHH6NDY`
-
-Also, the author of SweetAlert2 (@limonte) is looking for short-term working contracts in front-end, preferably OSS.
 
 ### [Hall of Donators :trophy:](DONATIONS.md)

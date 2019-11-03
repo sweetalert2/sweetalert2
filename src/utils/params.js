@@ -8,11 +8,16 @@ const defaultParams = {
   footer: '',
   type: null,
   toast: false,
+  showClass: {
+    popup: 'swal2-show',
+  },
+  hideClass: {
+    popup: 'swal2-hide',
+  },
   customClass: '',
   customContainerClass: '',
   target: 'body',
   backdrop: true,
-  animation: true,
   heightAuto: true,
   allowOutsideClick: true,
   allowEscapeKey: true,

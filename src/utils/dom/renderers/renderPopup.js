@@ -29,7 +29,4 @@ export const renderPopup = (instance, params) => {
   if (typeof params.customClass === 'string') {
     dom.addClass(popup, params.customClass)
   }
-
-  // CSS animation
-  dom.toggleClass(popup, swalClasses.noanimation, !params.animation)
 }

@@ -710,18 +710,10 @@
 
 .swal2-show {
   animation: $swal2-show-animation;
-
-  &.swal2-noanimation {
-    animation: none;
-  }
 }
 
 .swal2-hide {
   animation: $swal2-hide-animation;
-
-  &.swal2-noanimation {
-    animation: none;
-  }
 }
 
 // Right-to-left support

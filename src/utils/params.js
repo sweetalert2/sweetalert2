@@ -8,6 +8,7 @@ const defaultParams = {
   footer: '',
   type: null,
   toast: false,
+  animation: true,
   showClass: {
     popup: 'swal2-show',
     backdrop: 'swal2-backdrop-show',
@@ -109,7 +110,8 @@ export const deprecatedParams = {
   confirmButtonClass: 'customClass',
   cancelButtonClass: 'customClass',
   imageClass: 'customClass',
-  inputClass: 'customClass'
+  inputClass: 'customClass',
+  animation: 'showClass" and "hideClass',
 }
 
 const toastIncompatibleParams = [
@@ -177,7 +179,7 @@ export const showWarningsForParams = (params) => {
       checkIfToastParamIsValid(param)
     }
 
-    checkIfParamIsDeprecated()
+    checkIfParamIsDeprecated(param)
   }
 }
 

@@ -720,6 +720,10 @@
   animation: $swal2-hide-animation;
 }
 
+.swal2-noanimation {
+  transition: none;
+}
+
 // Right-to-left support
 .swal2-rtl {
   .swal2-close {

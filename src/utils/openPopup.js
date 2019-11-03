@@ -67,9 +67,10 @@ const fixScrollContainer = (container, scrollbarPadding) => {
 
 const addClasses = (container, popup, params) => {
   dom.addClass(popup, params.showClass.popup)
+  dom.addClass(container, params.showClass.backdrop)
   dom.show(popup)
 
-  dom.addClass([document.documentElement, document.body, container], swalClasses.shown)
+  dom.addClass([document.documentElement, document.body], swalClasses.shown)
   if (params.heightAuto && params.backdrop && !params.toast) {
     dom.addClass([document.documentElement, document.body], swalClasses['height-auto'])
   }

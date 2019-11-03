@@ -10,9 +10,11 @@ const defaultParams = {
   toast: false,
   showClass: {
     popup: 'swal2-show',
+    backdrop: 'swal2-backdrop-show',
   },
   hideClass: {
     popup: 'swal2-hide',
+    backdrop: 'swal2-backdrop-hide',
   },
   customClass: '',
   customContainerClass: '',

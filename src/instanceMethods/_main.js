@@ -29,7 +29,11 @@ export function _main (userParams) {
     delete globalState.deferDisposalTimer
   }
 
+  const showClass = Object.assign({}, defaultParams.showClass, userParams.showClass)
+  const hideClass = Object.assign({}, defaultParams.hideClass, userParams.hideClass)
   const innerParams = Object.assign({}, defaultParams, userParams)
+  innerParams.showClass = showClass
+  innerParams.hideClass = hideClass
   setParameters(innerParams)
   Object.freeze(innerParams)
 

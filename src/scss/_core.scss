@@ -20,6 +20,14 @@
   // sweetalert2/issues/905
   -webkit-overflow-scrolling: touch;
 
+  &.swal2-backdrop-show {
+    background-color: $swal2-backdrop;
+  }
+
+  &.swal2-backdrop-hide {
+    background-color: transparent !important;
+  }
+
   &.swal2-top {
     align-items: flex-start;
   }
@@ -150,10 +158,6 @@
     .swal2-modal {
       margin: 0 !important;
     }
-  }
-
-  &.swal2-shown {
-    background-color: $swal2-backdrop;
   }
 }
 

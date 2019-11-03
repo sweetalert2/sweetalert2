@@ -75,6 +75,10 @@ export function close (resolveValue) {
   dom.removeClass(popup, innerParams.showClass.popup)
   dom.addClass(popup, innerParams.hideClass.popup)
 
+  const backdrop = dom.getContainer()
+  dom.removeClass(backdrop, innerParams.showClass.backdrop)
+  dom.addClass(backdrop, innerParams.hideClass.backdrop)
+
   handlePopupAnimation(this, popup, innerParams)
 
   // Resolve Swal promise

@@ -12,13 +12,13 @@
   }
 
   &.swal2-no-backdrop {
-    .swal2-shown {
+    .swal2-container {
       top: auto;
       right: auto;
       bottom: auto;
       left: auto;
       max-width: calc(100% - #{$swal2-container-padding} * 2);
-      background-color: transparent;
+      background-color: transparent !important;
 
       & > .swal2-modal {
         box-shadow: 0 0 10px $swal2-backdrop;

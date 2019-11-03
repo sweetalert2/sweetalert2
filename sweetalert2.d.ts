@@ -545,6 +545,14 @@ declare module 'sweetalert2' {
     timer?: number;
 
     /**
+     * @deprecated
+     * If set to false, modal CSS animation will be disabled.
+     *
+     * @default true
+     */
+    animation?: ValueOrThunk<boolean>;
+
+    /**
      * By default, SweetAlert2 sets html's and body's CSS height to auto !important.
      * If this behavior isn't compatible with your project's layout, set heightAuto to false.
      *

@@ -34,6 +34,13 @@ export function _main (userParams) {
   const innerParams = Object.assign({}, defaultParams, userParams)
   innerParams.showClass = showClass
   innerParams.hideClass = hideClass
+  if (userParams.animation === false) {
+    innerParams.showClass = {
+      popup: '',
+      backdrop: 'swal2-backdrop-show swal2-noanimation'
+    }
+    innerParams.hideClass = {}
+  }
   setParameters(innerParams)
   Object.freeze(innerParams)
 

@@ -338,6 +338,14 @@ declare module 'sweetalert2' {
     dismiss?: Swal.DismissReason;
   }
 
+  export interface SweetAlertShowClass {
+    popup?: string;
+  }
+
+  export interface SweetAlertHideClass {
+    popup?: string;
+  }
+
   export interface SweetAlertCustomClass {
     container?: string;
     popup?: string;
@@ -482,6 +490,16 @@ declare module 'sweetalert2' {
     grow?: 'row' | 'column' | 'fullscreen' | false;
 
     /**
+     * CSS classes for animations when showing a popup (fade in)
+     */
+    showClass?: SweetAlertShowClass;
+
+    /**
+     * CSS classes for animations when hiding a popup (fade out)
+     */
+    hideClass?: SweetAlertHideClass;
+
+    /**
      * A custom CSS class for the modal.
      * If a string value is provided, the classname will be applied to the popup.
      * If an object is provided, the classnames will be applied to the corresponding fields:
@@ -523,13 +541,6 @@ declare module 'sweetalert2' {
      * @default null
      */
     timer?: number;
-
-    /**
-     * If set to false, modal CSS animation will be disabled.
-     *
-     * @default true
-     */
-    animation?: ValueOrThunk<boolean>;
 
     /**
      * By default, SweetAlert2 sets html's and body's CSS height to auto !important.

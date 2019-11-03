@@ -29,7 +29,7 @@ export const renderIcon = (instance, params) => {
     dom.applyCustomClass(icon, params.customClass, 'icon')
 
     // Animate icon
-    dom.toggleClass(icon, `swal2-animate-${params.type}-icon`, params.animation)
+    dom.addClass(icon, `swal2-animate-${params.type}-icon`)
   } else {
     error(`Unknown type! Expected "success", "error", "warning", "info" or "question", got "${params.type}"`)
   }

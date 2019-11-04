@@ -49,7 +49,6 @@ const defaultParams = {
   imageWidth: null,
   imageHeight: null,
   imageAlt: '',
-  imageClass: '',
   timer: null,
   width: null,
   padding: null,
@@ -97,13 +96,11 @@ const updatableParams = [
   'imageWidth',
   'imageHeigth',
   'imageAlt',
-  'imageClass',
   'progressSteps',
   'currentProgressStep'
 ]
 
 export const deprecatedParams = {
-  imageClass: 'customClass',
   inputClass: 'customClass',
   animation: 'showClass" and "hideClass',
 }

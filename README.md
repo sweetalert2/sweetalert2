@@ -29,7 +29,8 @@
 
 ---
 
-:point_right: **Upgrading from v7.x to v8.x?** [Read the release notes!](https://github.com/sweetalert2/sweetalert2/releases/tag/v8.0.0)
+:point_right: **Upgrading from v8.x to v9.x?** [Read the release notes!](https://github.com/sweetalert2/sweetalert2/releases/tag/v9.0.0)
+<br>If you're upgrading from v7.x, please [upgrade from v7 to v8](https://github.com/sweetalert2/sweetalert2/releases/tag/v8.0.0) first!
 <br>If you're upgrading from v6.x, please [upgrade from v6 to v7](https://github.com/sweetalert2/sweetalert2/releases/tag/v7.0.0) first!
 
 :point_right: **Migrating from [SweetAlert](https://github.com/t4t5/sweetalert)?** [SweetAlert 1.x to SweetAlert2 migration guide](https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2)
@@ -47,7 +48,7 @@ Or grab from [jsdelivr CDN](https://www.jsdelivr.com/package/npm/sweetalert2)
 :
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 ```
 
 
@@ -58,7 +59,7 @@ Usage
 <script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
 
 <!-- Include a polyfill for ES6 Promises (optional) for IE11 -->
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill9/dist/polyfill.js"></script>
 ```
 
 You can also include the stylesheet separately if desired:

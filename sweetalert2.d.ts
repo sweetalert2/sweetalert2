@@ -341,11 +341,13 @@ declare module 'sweetalert2' {
   export interface SweetAlertShowClass {
     popup?: string;
     backdrop?: string;
+    icon?: string;
   }
 
   export interface SweetAlertHideClass {
     popup?: string;
     backdrop?: string;
+    icon?: string;
   }
 
   export interface SweetAlertCustomClass {

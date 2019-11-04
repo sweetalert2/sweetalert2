@@ -761,14 +761,6 @@ declare module 'sweetalert2' {
     imageAlt?: string;
 
     /**
-     * @deprecated
-     * A custom CSS class for the customized icon.
-     *
-     * @default ''
-     */
-    imageClass?: string;
-
-    /**
      * Input field placeholder.
      *
      * @default ''

@@ -140,18 +140,6 @@ declare module 'sweetalert2' {
     function disableButtons(): void;
 
     /**
-     * @deprecated
-     * Enables the "Confirm"-button only.
-     */
-    function enableConfirmButton(): void;
-
-    /**
-     * @deprecated
-     * Disables the "Confirm"-button only.
-     */
-    function disableConfirmButton(): void;
-
-    /**
      * Disables buttons and show loader. This is useful with AJAX requests.
      */
     function showLoading(): void;

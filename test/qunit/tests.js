@@ -396,12 +396,6 @@ QUnit.test('disable/enable buttons', (assert) => {
   Swal.enableButtons()
   assert.notOk($('.swal2-confirm').disabled)
   assert.notOk($('.swal2-cancel').disabled)
-
-  Swal.disableConfirmButton()
-  assert.ok($('.swal2-confirm').disabled)
-
-  Swal.enableConfirmButton()
-  assert.notOk($('.swal2-confirm').disabled)
 })
 
 QUnit.test('disable/enable input', (assert) => {

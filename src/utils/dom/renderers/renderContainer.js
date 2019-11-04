@@ -46,7 +46,4 @@ export const renderContainer = (instance, params) => {
 
   // Custom class
   dom.applyCustomClass(container, params.customClass, 'container')
-  if (params.customContainerClass) { // @deprecated
-    dom.addClass(container, params.customContainerClass)
-  }
 }

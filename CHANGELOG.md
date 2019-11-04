@@ -1,3 +1,38 @@
+# [9.0.0](https://github.com/sweetalert2/sweetalert2/compare/v8.19.0...v9.0.0) (2019-11-04)
+
+
+* BREAKING CHANGE: remove .swal2-arabic-question-mark, add iconHtml param ([f73dcba](https://github.com/sweetalert2/sweetalert2/commit/f73dcba787939877579fed7a1221d44b310079bc)), closes [#1672](https://github.com/sweetalert2/sweetalert2/issues/1672) [#1532](https://github.com/sweetalert2/sweetalert2/issues/1532)
+* BREAKING CHANGE: rename 'type' param to 'icon' ([fcaabee](https://github.com/sweetalert2/sweetalert2/commit/fcaabee80993bdf34d4bcc85faee0eb2b132947c))
+* BREAKING CHANGE: Stop disabling the Cancel button when in showLoading() ([3668055](https://github.com/sweetalert2/sweetalert2/commit/3668055a128526ca0ae1bf168c7206aedfe2985b)), closes [#1501](https://github.com/sweetalert2/sweetalert2/issues/1501)
+* BREAKING CHANGE: remove setProgressSteps(), showProgressSteps(), hideProgressSteps() ([53d9106](https://github.com/sweetalert2/sweetalert2/commit/53d91066647d13ff71634d976c904046ac22f8cc)), closes [#1507](https://github.com/sweetalert2/sweetalert2/issues/1507) [#1673](https://github.com/sweetalert2/sweetalert2/issues/1673)
+* BREAKING CHANGE: remove disableConfirmButton() and enableConfirmButton() ([8ebbcaf](https://github.com/sweetalert2/sweetalert2/commit/8ebbcaff4024416cbe5553e1c3f4b0811bafe050))
+* BREAKING CHANGE: remove inputClass ([ee7e392](https://github.com/sweetalert2/sweetalert2/commit/ee7e392998c62e04d7256be9a240c6d509373a0e))
+* BREAKING CHANGE: remove imageClass ([2594115](https://github.com/sweetalert2/sweetalert2/commit/2594115bf7e0940eaf9f3d74f195dbff9d5c2fce))
+* BREAKING CHANGE: remove confirmButtonClass and cancelButtonClass ([5276cfd](https://github.com/sweetalert2/sweetalert2/commit/5276cfd1f6a40ce5c510e94dc8840bac6a54e4de))
+* BREAKING CHANGE: remove customContainerClass ([c04782c](https://github.com/sweetalert2/sweetalert2/commit/c04782c1ae00ffc8150afb23b9510c400b78f0b5))
+* BREAKING CHANGE: remove .swal2-shown from .swal2-container, add 'backdrop' to showClass and hideClass ([c3cbb74](https://github.com/sweetalert2/sweetalert2/commit/c3cbb741fe0159bb2d452558e40553407a0ad913))
+* BREAKING CHANGE: replace animation with showClass and hideClass params ([f2153cb](https://github.com/sweetalert2/sweetalert2/commit/f2153cbfa3da01a80db4e1c986c4a94e9cfbfad0)), closes [#1193](https://github.com/sweetalert2/sweetalert2/issues/1193) [#654](https://github.com/sweetalert2/sweetalert2/issues/654) [#650](https://github.com/sweetalert2/sweetalert2/issues/650) [#761](https://github.com/sweetalert2/sweetalert2/issues/761)
+
+
+### Features
+
+* **api:** add 'icon' to showClass and hideClass ([7c4b324](https://github.com/sweetalert2/sweetalert2/commit/7c4b324c7c649d897db88e21f0de9326e9858d6e))
+
+
+### BREAKING CHANGES
+
+* remove .swal2-arabic-question-mark, add iconHtml param
+* rename 'type' param to 'icon'
+* Stop disabling the Cancel button when in showLoading()
+* remove setProgressSteps(), showProgressSteps(), hideProgressSteps()
+* remove disableConfirmButton() and enableConfirmButton()
+* remove inputClass
+* remove imageClass
+* remove confirmButtonClass and cancelButtonClass
+* remove customContainerClass
+* remove .swal2-shown from .swal2-container, add 'backdrop' to showClass and hideClass
+* replace animation with showClass and hideClass params
+
 # [8.19.0](https://github.com/sweetalert2/sweetalert2/compare/v8.18.7...v8.19.0) (2019-11-02)
 
 

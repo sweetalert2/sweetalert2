@@ -552,6 +552,15 @@
         transform: rotate(-45deg);
       }
     }
+
+    // Error icon animation
+    &.swal2-icon-show {
+      animation: $swal2-error-icon-animation;
+
+      .swal2-x-mark {
+        animation: $swal2-error-x-mark-animation;
+      }
+    }
   }
 
   &.swal2-warning {
@@ -659,6 +668,21 @@
         transform: rotate(-45deg);
       }
     }
+
+    // Success icon animation
+    &.swal2-icon-show {
+      .swal2-success-line-tip {
+        animation: $swal2-success-line-tip-animation;
+      }
+
+      .swal2-success-line-long {
+        animation: $swal2-success-line-long-animation;
+      }
+
+      .swal2-success-circular-line-right {
+        animation: $swal2-success-circular-line-animation;
+      }
+    }
   }
 }
 
@@ -729,29 +753,5 @@
   .swal2-close {
     right: auto;
     left: $swal2-close-button-gap;
-  }
-}
-
-// Success icon animation
-.swal2-animate-success-icon {
-  .swal2-success-line-tip {
-    animation: $swal2-success-line-tip-animation;
-  }
-
-  .swal2-success-line-long {
-    animation: $swal2-success-line-long-animation;
-  }
-
-  .swal2-success-circular-line-right {
-    animation: $swal2-success-circular-line-animation;
-  }
-}
-
-// Error icon animation
-.swal2-animate-error-icon {
-  animation: $swal2-error-icon-animation;
-
-  .swal2-x-mark {
-    animation: $swal2-error-x-mark-animation;
   }
 }

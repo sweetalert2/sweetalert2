@@ -20,7 +20,6 @@ const defaultParams = {
     icon: 'swal2-icon-hide',
   },
   customClass: '',
-  customContainerClass: '',
   target: 'body',
   backdrop: true,
   heightAuto: true,
@@ -108,7 +107,6 @@ const updatableParams = [
 ]
 
 export const deprecatedParams = {
-  customContainerClass: 'customClass',
   confirmButtonClass: 'customClass',
   cancelButtonClass: 'customClass',
   imageClass: 'customClass',

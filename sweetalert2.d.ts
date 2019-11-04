@@ -532,14 +532,6 @@ declare module 'sweetalert2' {
     customClass?: string | SweetAlertCustomClass;
 
     /**
-     * @deprecated
-     * A custom CSS class for the container.
-     *
-     * @default ''
-     */
-    customContainerClass?: string;
-
-    /**
      * Auto close timer of the modal. Set in ms (milliseconds).
      *
      * @default null

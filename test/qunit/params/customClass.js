@@ -8,7 +8,7 @@ QUnit.test('customClass as a string', (assert) => {
 
 QUnit.test('customClass as an object', (assert) => {
   Swal.fire({
-    type: 'question',
+    icon: 'question',
     input: 'text',
     imageUrl: '/assets/swal2-logo.png',
     customClass: {

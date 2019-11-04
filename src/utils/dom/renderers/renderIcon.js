@@ -6,23 +6,22 @@ import privateProps from '../../../privateProps.js'
 export const renderIcon = (instance, params) => {
   const innerParams = privateProps.innerParams.get(instance)
 
-  // if the icon with the given type already rendered,
-  // apply the custom class without re-rendering the icon
-  if (innerParams && params.type === innerParams.type && dom.getIcon()) {
+  // if the give icon already rendered, apply the custom class without re-rendering the icon
+  if (innerParams && params.icon === innerParams.icon && dom.getIcon()) {
     dom.applyCustomClass(dom.getIcon(), params.customClass, 'icon')
     return
   }
 
   hideAllIcons()
 
-  if (!params.type) {
+  if (!params.icon) {
     return
   }
 
   adjustSuccessIconBackgoundColor()
 
-  if (Object.keys(iconTypes).indexOf(params.type) !== -1) {
-    const icon = dom.elementBySelector(`.${swalClasses.icon}.${iconTypes[params.type]}`)
+  if (Object.keys(iconTypes).indexOf(params.icon) !== -1) {
+    const icon = dom.elementBySelector(`.${swalClasses.icon}.${iconTypes[params.icon]}`)
     dom.show(icon)
 
     // Custom class
@@ -31,7 +30,7 @@ export const renderIcon = (instance, params) => {
     // Animate icon
     dom.addClass(icon, params.showClass.icon)
   } else {
-    error(`Unknown type! Expected "success", "error", "warning", "info" or "question", got "${params.type}"`)
+    error(`Unknown icon! Expected "success", "error", "warning", "info" or "question", got "${params.icon}"`)
   }
 }
 

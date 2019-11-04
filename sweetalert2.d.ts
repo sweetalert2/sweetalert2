@@ -20,7 +20,7 @@ declare module 'sweetalert2' {
      *   import Swal from 'sweetalert2';
      *   Swal.fire('The Internet?', 'That thing is still around?', 'question');
      */
-    function fire(title?: string, message?: string, type?: SweetAlertType): Promise<SweetAlertResult>;
+    function fire(title?: string, message?: string, icon?: SweetAlertIcon): Promise<SweetAlertResult>;
 
     /**
      * Function to display a SweetAlert2 modal, with an object of options, all being optional.
@@ -55,7 +55,7 @@ declare module 'sweetalert2' {
      *
      * ex.
      *   swal.update({
-     *     type: 'error'
+     *     icon: 'error'
      *   })
      */
     function update(options: SweetAlertOptions): void;
@@ -300,7 +300,7 @@ declare module 'sweetalert2' {
     }
   }
 
-  export type SweetAlertType = 'success' | 'error' | 'warning' | 'info' | 'question';
+  export type SweetAlertIcon = 'success' | 'error' | 'warning' | 'info' | 'question';
 
   export interface SweetAlertResult {
     value?: any;
@@ -339,7 +339,7 @@ declare module 'sweetalert2' {
 
   type ValueOrThunk<T> = T | (() => T);
 
-  export type SweetAlertArrayOptions = [string?, string?, SweetAlertType?];
+  export type SweetAlertArrayOptions = [string?, string?, SweetAlertIcon?];
 
   export interface SweetAlertOptions {
     /**
@@ -381,14 +381,14 @@ declare module 'sweetalert2' {
     footer?: string | HTMLElement | JQuery;
 
     /**
-     * The type of the modal.
-     * SweetAlert2 comes with 5 built-in types which will show a corresponding icon animation: 'warning', 'error',
+     * The icon of the modal.
+     * SweetAlert2 comes with 5 built-in icons which will show a corresponding icon animation: 'warning', 'error',
      * 'success', 'info' and 'question'.
-     * It can either be put in the array under the key "type" or passed as the third parameter of the function.
+     * It can either be put in the array under the key "icon" or passed as the third parameter of the function.
      *
      * @default null
      */
-    type?: SweetAlertType;
+    icon?: SweetAlertIcon;
 
     /**
      * Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop.

@@ -120,7 +120,7 @@ Handling the result of SweetAlert2 modal:
 Swal.fire({
   title: 'Are you sure?',
   text: 'You will not be able to recover this imaginary file!',
-  type: 'warning',
+  icon: 'warning',
   showCancelButton: true,
   confirmButtonText: 'Yes, delete it!',
   cancelButtonText: 'No, keep it'

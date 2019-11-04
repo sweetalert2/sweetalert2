@@ -1,3 +1,10 @@
+## [9.0.2](https://github.com/sweetalert2/sweetalert2/compare/v9.0.1...v9.0.2) (2019-11-04)
+
+
+### Bug Fixes
+
+* **types:** add missing iconHtml ([6f7f316](https://github.com/sweetalert2/sweetalert2/commit/6f7f3162c0ea2c6f6f5b8b8f81d9c002f02e16db))
+
 ## [9.0.1](https://github.com/sweetalert2/sweetalert2/compare/v9.0.0...v9.0.1) (2019-11-04)
 
 

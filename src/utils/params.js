@@ -34,11 +34,9 @@ const defaultParams = {
   confirmButtonText: 'OK',
   confirmButtonAriaLabel: '',
   confirmButtonColor: null,
-  confirmButtonClass: '',
   cancelButtonText: 'Cancel',
   cancelButtonAriaLabel: '',
   cancelButtonColor: null,
-  cancelButtonClass: '',
   buttonsStyling: true,
   reverseButtons: false,
   focusConfirm: true,
@@ -90,11 +88,9 @@ const updatableParams = [
   'confirmButtonText',
   'confirmButtonAriaLabel',
   'confirmButtonColor',
-  'confirmButtonClass',
   'cancelButtonText',
   'cancelButtonAriaLabel',
   'cancelButtonColor',
-  'cancelButtonClass',
   'buttonsStyling',
   'reverseButtons',
   'imageUrl',
@@ -107,8 +103,6 @@ const updatableParams = [
 ]
 
 export const deprecatedParams = {
-  confirmButtonClass: 'customClass',
-  cancelButtonClass: 'customClass',
   imageClass: 'customClass',
   inputClass: 'customClass',
   animation: 'showClass" and "hideClass',

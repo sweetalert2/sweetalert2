@@ -79,6 +79,11 @@ declare module 'sweetalert2' {
     function getTitle(): HTMLElement;
 
     /**
+     * Gets progress steps.
+     */
+    function getProgressSteps(): HTMLElement;
+
+    /**
      * Gets the modal content.
      */
     function getContent(): HTMLElement;
@@ -262,30 +267,6 @@ declare module 'sweetalert2' {
      * @param index The modal index in the queue.
      */
     function deleteQueueStep(index: number): void;
-
-    /**
-     * @deprecated
-     * Gets progress steps.
-     */
-    function getProgressSteps(): string[];
-
-    /**
-     * @deprecated
-     * Sets progress steps.
-     *
-     * @param steps The modal steps
-     */
-    function setProgressSteps(steps: string[]): void;
-
-    /**
-     * Shows progress steps.
-     */
-    function showProgressSteps(): void;
-
-    /**
-     * Hides progress steps.
-     */
-    function hideProgressSteps(): void;
 
     /**
      * Determines if a given parameter name is valid.

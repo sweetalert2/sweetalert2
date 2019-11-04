@@ -79,9 +79,6 @@ const setAttributes = (inputType, inputAttributes) => {
 
 const setCustomClass = (params) => {
   const inputContainer = getInputContainer(params.input)
-  if (params.inputClass) {
-    dom.addClass(inputContainer, params.inputClass)
-  }
   if (params.customClass) {
     dom.addClass(inputContainer, params.customClass.input)
   }

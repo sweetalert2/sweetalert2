@@ -58,7 +58,6 @@ const defaultParams = {
   inputValue: '',
   inputOptions: {},
   inputAutoTrim: true,
-  inputClass: '',
   inputAttributes: {},
   inputValidator: null,
   validationMessage: null,
@@ -101,7 +100,6 @@ const updatableParams = [
 ]
 
 export const deprecatedParams = {
-  inputClass: 'customClass',
   animation: 'showClass" and "hideClass',
 }
 

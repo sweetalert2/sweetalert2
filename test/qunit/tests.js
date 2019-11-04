@@ -576,7 +576,9 @@ QUnit.test('Swal.fire() in onClose', (assert) => {
       Swal.fire({
         text: 'OnClose',
         input: 'text',
-        inputClass: 'on-close-swal'
+        customClass: {
+          input: 'on-close-swal'
+        }
       })
     }
   }).then(() => {

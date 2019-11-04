@@ -6,7 +6,7 @@ const defaultParams = {
   text: '',
   html: '',
   footer: '',
-  type: null,
+  icon: null,
   toast: false,
   animation: true,
   showClass: {

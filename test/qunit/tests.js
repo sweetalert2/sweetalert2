@@ -38,7 +38,7 @@ QUnit.test('should throw console warning about invalid params', (assert) => {
 QUnit.test('should throw console error about unexpected params', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')
-  Swal.fire('Hello world!', { type: 'success' })
+  Swal.fire('Hello world!', { icon: 'success' })
   console.error = _consoleError
   assert.ok(spy.calledWith('SweetAlert2: Unexpected type of html! Expected "string", got object'))
 })
@@ -447,7 +447,7 @@ QUnit.test('modal vertical offset', (assert) => {
     imageUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNikAQAACIAHF/uBd8AAAAASUVORK5CYII=',
     title: 'Title',
     html: '<hr><div style="height: 50px"></div><p>Text content</p>',
-    type: 'warning',
+    icon: 'warning',
     input: 'text'
   })
 

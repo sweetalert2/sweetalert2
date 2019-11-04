@@ -1,7 +1,7 @@
 import { Swal } from '../helpers.js'
 
 QUnit.test('getIcons() method', (assert) => {
-  Swal.fire({ type: 'success' })
+  Swal.fire({ icon: 'success' })
   const icons = Swal.getIcons()
   assert.equal(icons.length, 5)
   assert.equal(icons.filter(icon => icon.className.match('success'))[0].style.display, 'flex')

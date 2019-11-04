@@ -3,7 +3,7 @@ const sinon = require('sinon/pkg/sinon')
 
 QUnit.test('update() method', (assert) => {
   SwalWithoutAnimation.fire({
-    type: 'success',
+    icon: 'success',
     input: 'text',
     imageUrl: '/assets/swal2-logo.png',
   })
@@ -11,7 +11,7 @@ QUnit.test('update() method', (assert) => {
   Swal.update({
     title: 'New title',
     html: 'New content',
-    type: 'success',
+    icon: 'success',
     showConfirmButton: false,
     showCancelButton: true,
     cancelButtonText: 'New cancel button text',
@@ -34,7 +34,7 @@ QUnit.test('update() method', (assert) => {
 
 QUnit.test('update customClass', (assert) => {
   SwalWithoutAnimation.fire({
-    type: 'success',
+    icon: 'success',
     imageUrl: '/assets/swal2-logo.png',
     input: 'text'
   })
@@ -111,10 +111,10 @@ QUnit.test('isUpdatableParameter() method', (assert) => {
 })
 
 QUnit.test('should update instance\'s params', (assert) => {
-  const swal = Swal.fire({ type: 'error' })
-  assert.equal(swal.params.type, 'error')
-  swal.update({ type: 'warning' })
-  assert.equal(swal.params.type, 'warning')
+  const swal = Swal.fire({ icon: 'error' })
+  assert.equal(swal.params.icon, 'error')
+  swal.update({ icon: 'warning' })
+  assert.equal(swal.params.icon, 'warning')
 })
 
 QUnit.test('should not affect input', (assert) => {

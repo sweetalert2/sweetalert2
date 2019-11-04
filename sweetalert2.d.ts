@@ -832,14 +832,6 @@ declare module 'sweetalert2' {
     validationMessage?: string;
 
     /**
-     * @deprecated
-     * A custom CSS class for the input field.
-     *
-     * @default ''
-     */
-    inputClass?: string;
-
-    /**
      * Progress steps, useful for modal queues, see usage example.
      *
      * @default []

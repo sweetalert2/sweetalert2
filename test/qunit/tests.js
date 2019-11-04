@@ -366,11 +366,9 @@ QUnit.test('dymanic queue', (assert) => {
 QUnit.test('showLoading and hideLoading', (assert) => {
   Swal.showLoading()
   assert.ok($('.swal2-actions').classList.contains('swal2-loading'))
-  assert.ok($('.swal2-cancel').disabled)
 
   Swal.hideLoading()
   assert.notOk($('.swal2-actions').classList.contains('swal2-loading'))
-  assert.notOk($('.swal2-cancel').disabled)
 
   Swal.fire({
     title: 'test loading state',

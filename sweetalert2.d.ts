@@ -391,6 +391,19 @@ declare module 'sweetalert2' {
     icon?: SweetAlertIcon;
 
     /**
+     * The custom HTML content for an icon.
+     *
+     * ex.
+     *   Swal.fire({
+     *     icon: 'error',
+     *     iconHtml: '<i class="fas fa-bug"></i>'
+     *   })
+     *
+     * @default null
+     */
+    iconHtml?: string;
+
+    /**
      * Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop.
      * Either a boolean value or a css background value (hex, rgb, rgba, url, etc.)
      *

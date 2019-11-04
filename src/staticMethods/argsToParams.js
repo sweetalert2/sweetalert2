@@ -8,7 +8,7 @@ export const argsToParams = (args) => {
       break
 
     default:
-      ['title', 'html', 'type'].forEach((name, index) => {
+      ['title', 'html', 'icon'].forEach((name, index) => {
         switch (typeof args[index]) {
           case 'string':
             params[name] = args[index]

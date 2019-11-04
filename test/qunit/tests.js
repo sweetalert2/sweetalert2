@@ -12,6 +12,11 @@ QUnit.test('modal shows up', (assert) => {
   assert.ok(Swal.isVisible())
 })
 
+QUnit.test('the icon is shown', (assert) => {
+  Swal.fire('', '', 'success')
+  assert.ok(Swal.getIcon().classList.contains('swal2-success'))
+})
+
 QUnit.test('modal scrolled to top on open', (assert) => {
   const done = assert.async()
   Swal.fire({

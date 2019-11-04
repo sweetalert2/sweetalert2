@@ -203,24 +203,6 @@ QUnit.test('getters', (assert) => {
   assert.equal(Swal.getInput().value, 'two')
 })
 
-QUnit.test('custom buttons classes', (assert) => {
-  Swal.fire({
-    text: 'Modal with custom buttons classes',
-    confirmButtonClass: 'btn btn-success ',
-    cancelButtonClass: 'btn btn-warning '
-  })
-  assert.ok($('.swal2-confirm').classList.contains('btn'))
-  assert.ok($('.swal2-confirm').classList.contains('btn-success'))
-  assert.ok($('.swal2-cancel').classList.contains('btn'))
-  assert.ok($('.swal2-cancel').classList.contains('btn-warning'))
-
-  Swal.fire('Modal with default buttons classes')
-  assert.notOk($('.swal2-confirm').classList.contains('btn'))
-  assert.notOk($('.swal2-confirm').classList.contains('btn-success'))
-  assert.notOk($('.swal2-cancel').classList.contains('btn'))
-  assert.notOk($('.swal2-cancel').classList.contains('btn-warning'))
-})
-
 QUnit.test('content/title is set (html)', (assert) => {
   Swal.fire({
     title: '<strong>Strong</strong>, <em>Emphasis</em>',

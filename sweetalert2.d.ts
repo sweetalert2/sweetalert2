@@ -642,22 +642,6 @@ declare module 'sweetalert2' {
     cancelButtonColor?: string;
 
     /**
-     * @deprecated
-     * A custom CSS class for the "Confirm"-button.
-     *
-     * @default ''
-     */
-    confirmButtonClass?: string;
-
-    /**
-     * @deprecated
-     * A custom CSS class for the "Cancel"-button.
-     *
-     * @default ''
-     */
-    cancelButtonClass?: string;
-
-    /**
      * Use this to change the aria-label for the "Confirm"-button.
      *
      * @default ''

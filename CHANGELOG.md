@@ -1,3 +1,10 @@
+## [9.0.1](https://github.com/sweetalert2/sweetalert2/compare/v9.0.0...v9.0.1) (2019-11-04)
+
+
+### Bug Fixes
+
+* icon when passing it as third string argument ([6ad3aa5](https://github.com/sweetalert2/sweetalert2/commit/6ad3aa5354eb5e91afc2268f035267bb8b6b6dd6))
+
 # [9.0.0](https://github.com/sweetalert2/sweetalert2/compare/v8.19.0...v9.0.0) (2019-11-04)
 
 

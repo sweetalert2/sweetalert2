@@ -555,10 +555,10 @@
 
     // Error icon animation
     &.swal2-icon-show {
-      animation: $swal2-error-icon-animation;
+      animation: swal2-animate-error-icon .5s;
 
       .swal2-x-mark {
-        animation: $swal2-error-x-mark-animation;
+        animation: swal2-animate-error-x-mark .5s;
       }
     }
   }
@@ -672,15 +672,15 @@
     // Success icon animation
     &.swal2-icon-show {
       .swal2-success-line-tip {
-        animation: $swal2-success-line-tip-animation;
+        animation: swal2-animate-success-line-tip .75s;
       }
 
       .swal2-success-line-long {
-        animation: $swal2-success-line-long-animation;
+        animation: swal2-animate-success-line-long .75s;
       }
 
       .swal2-success-circular-line-right {
-        animation: $swal2-success-circular-line-animation;
+        animation: swal2-rotate-success-circular-line 4.25s ease-in;
       }
     }
   }

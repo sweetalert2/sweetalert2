@@ -11,6 +11,10 @@ $swal2-border: none !default;
 $swal2-border-radius: .3125em !default;
 $swal2-box-shadow: #d9d9d9 !default;
 
+// ANIMATIONS
+$swal2-show-animation: swal2-show .3s !default;
+$swal2-hide-animation: swal2-hide .15s forwards !default;
+
 // BACKGROUND
 $swal2-background: $swal2-white !default;
 
@@ -103,15 +107,6 @@ $swal2-footer-padding: 1em 0 0 !default;
 $swal2-footer-border-color: #eee !default;
 $swal2-footer-color: lighten($swal2-black, 33) !default;
 $swal2-footer-font-size: 1em !default;
-
-// ANIMATIONS
-$swal2-show-animation: swal2-show .3s !default;
-$swal2-hide-animation: swal2-hide .15s forwards !default;
-$swal2-success-line-tip-animation: swal2-animate-success-line-tip .75s !default;
-$swal2-success-line-long-animation: swal2-animate-success-line-long .75s !default;
-$swal2-success-circular-line-animation: swal2-rotate-success-circular-line 4.25s ease-in !default;
-$swal2-error-icon-animation: swal2-animate-error-icon .5s !default;
-$swal2-error-x-mark-animation: swal2-animate-error-x-mark .5s !default;
 
 // CLOSE BUTTON
 $swal2-close-button-width: 1.2em !default;

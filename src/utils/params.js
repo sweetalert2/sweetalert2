@@ -7,6 +7,7 @@ const defaultParams = {
   html: '',
   footer: '',
   icon: null,
+  iconHtml: null,
   toast: false,
   animation: true,
   showClass: {

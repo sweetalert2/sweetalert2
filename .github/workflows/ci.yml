@@ -38,6 +38,7 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Run automated release process with semantic-release
+      if: github.event_name == 'push' && contains(github.ref, 'master')
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

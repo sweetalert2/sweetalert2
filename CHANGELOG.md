@@ -1,3 +1,10 @@
+## [9.1.4](https://github.com/sweetalert2/sweetalert2/compare/v9.1.3...v9.1.4) (2019-11-05)
+
+
+### Bug Fixes
+
+* toast success icon (fixes [#1797](https://github.com/sweetalert2/sweetalert2/issues/1797)) ([9e15867](https://github.com/sweetalert2/sweetalert2/commit/9e1586737d6bd227c7a30d92999942d32caab87e))
+
 ## [9.1.3](https://github.com/sweetalert2/sweetalert2/compare/v9.1.2...v9.1.3) (2019-11-05)
 
 

@@ -146,6 +146,18 @@
           width: 1.375em;
         }
       }
+
+      &.swal2-icon-show {
+        @if $swal2-icon-animations {
+          .swal2-success-line-tip {
+            animation: swal2-toast-animate-success-line-tip .75s;
+          }
+
+          .swal2-success-line-long {
+            animation: swal2-toast-animate-success-line-long .75s;
+          }
+        }
+      }
     }
 
     &.swal2-show {
@@ -154,16 +166,6 @@
 
     &.swal2-hide {
       animation: $swal2-toast-hide-animation;
-    }
-
-    .swal2-animate-success-icon {
-      .swal2-success-line-tip {
-        animation: $swal2-toast-success-line-tip-animation;
-      }
-
-      .swal2-success-line-long {
-        animation: $swal2-toast-success-line-long-animation;
-      }
     }
   }
 }

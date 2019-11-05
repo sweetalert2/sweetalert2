@@ -21,11 +21,11 @@
   -webkit-overflow-scrolling: touch;
 
   &.swal2-backdrop-show {
-    background-color: $swal2-backdrop;
+    background: $swal2-backdrop;
   }
 
   &.swal2-backdrop-hide {
-    background-color: transparent !important;
+    background: transparent !important;
   }
 
   &.swal2-top {

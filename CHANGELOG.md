@@ -1,3 +1,10 @@
+# [9.1.0](https://github.com/sweetalert2/sweetalert2/compare/v9.0.2...v9.1.0) (2019-11-05)
+
+
+### Features
+
+* **scss:** add $swal2-icon-animations ([897b20b](https://github.com/sweetalert2/sweetalert2/commit/897b20b2d1a3b5d586e70188da17be0f8af8f0f1))
+
 ## [9.0.2](https://github.com/sweetalert2/sweetalert2/compare/v9.0.1...v9.0.2) (2019-11-04)
 
 

@@ -1,3 +1,10 @@
+## [9.1.3](https://github.com/sweetalert2/sweetalert2/compare/v9.1.2...v9.1.3) (2019-11-05)
+
+
+### Bug Fixes
+
+* remove default backdrop background ([5027076](https://github.com/sweetalert2/sweetalert2/commit/50270767cd6b99478bd33c9ba5a9d6244b3a34a5))
+
 ## [9.1.2](https://github.com/sweetalert2/sweetalert2/compare/v9.1.1...v9.1.2) (2019-11-05)
 
 

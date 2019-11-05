@@ -1,3 +1,10 @@
+## [9.1.1](https://github.com/sweetalert2/sweetalert2/compare/v9.1.0...v9.1.1) (2019-11-05)
+
+
+### Bug Fixes
+
+* apply $swal2-backdrop to background instead of background-color ([8c27e1a](https://github.com/sweetalert2/sweetalert2/commit/8c27e1ad31b4d0d5cc02e1bc9c7c57498d60c9e2))
+
 # [9.1.0](https://github.com/sweetalert2/sweetalert2/compare/v9.0.2...v9.1.0) (2019-11-05)
 
 

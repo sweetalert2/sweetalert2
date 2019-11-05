@@ -1,3 +1,10 @@
+## [9.1.5](https://github.com/sweetalert2/sweetalert2/compare/v9.1.4...v9.1.5) (2019-11-05)
+
+
+### Bug Fixes
+
+* .swal2-icon-content for toasts ([941b900](https://github.com/sweetalert2/sweetalert2/commit/941b900cfdecd5ad12c14d21f6e69757b84104f4))
+
 ## [9.1.4](https://github.com/sweetalert2/sweetalert2/compare/v9.1.3...v9.1.4) (2019-11-05)
 
 

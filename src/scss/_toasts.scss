@@ -42,10 +42,10 @@
       height: 2em;
       margin: 0;
 
-      &::before {
+      .swal2-icon-content {
         display: flex;
         align-items: center;
-        font-size: 2em;
+        font-size: 1.8em;
         font-weight: bold;
 
         @include ie {

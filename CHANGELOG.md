@@ -1,3 +1,10 @@
+## [9.1.2](https://github.com/sweetalert2/sweetalert2/compare/v9.1.1...v9.1.2) (2019-11-05)
+
+
+### Bug Fixes
+
+* default backdrop background ([501cab3](https://github.com/sweetalert2/sweetalert2/commit/501cab3f4290aea13d9c21e0d2dc9cdbe96dd782))
+
 ## [9.1.1](https://github.com/sweetalert2/sweetalert2/compare/v9.1.0...v9.1.1) (2019-11-05)
 
 

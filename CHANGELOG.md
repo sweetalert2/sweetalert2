@@ -1,3 +1,10 @@
+## [9.1.6](https://github.com/sweetalert2/sweetalert2/compare/v9.1.5...v9.1.6) (2019-11-08)
+
+
+### Bug Fixes
+
+* **types:** add missing version type ([10c4136](https://github.com/sweetalert2/sweetalert2/commit/10c41361c53392dfee683980b213cca6eaf49d89))
+
 ## [9.1.5](https://github.com/sweetalert2/sweetalert2/compare/v9.1.4...v9.1.5) (2019-11-05)
 
 

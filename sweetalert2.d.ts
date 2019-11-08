@@ -298,6 +298,11 @@ declare module 'sweetalert2' {
     enum DismissReason {
       cancel, backdrop, close, esc, timer
     }
+
+    /**
+     * SweetAlert2's version
+     */
+    const version: string
   }
 
   export type SweetAlertIcon = 'success' | 'error' | 'warning' | 'info' | 'question';

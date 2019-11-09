@@ -1,3 +1,10 @@
+# [9.2.0](https://github.com/sweetalert2/sweetalert2/compare/v9.1.6...v9.2.0) (2019-11-09)
+
+
+### Features
+
+* support HTMLElement and JQuery in shorthand ([#1804](https://github.com/sweetalert2/sweetalert2/issues/1804)) ([9318f79](https://github.com/sweetalert2/sweetalert2/commit/9318f79174a3c26e44c15ddb051c3ec1e2367b0b))
+
 ## [9.1.6](https://github.com/sweetalert2/sweetalert2/compare/v9.1.5...v9.1.6) (2019-11-08)
 
 

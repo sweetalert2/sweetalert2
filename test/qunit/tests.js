@@ -45,7 +45,7 @@ QUnit.test('should throw console error about unexpected params', (assert) => {
   const spy = sinon.spy(console, 'error')
   Swal.fire('Hello world!', { icon: 'success' })
   console.error = _consoleError
-  assert.ok(spy.calledWith('SweetAlert2: Unexpected type of html! Expected "string", got object'))
+  assert.ok(spy.calledWith('SweetAlert2: Unexpected type of html! Expected "string" or "Element", got object'))
 })
 
 QUnit.test('should not throw console error about undefined params and treat them as empty strings', (assert) => {
@@ -54,6 +54,16 @@ QUnit.test('should not throw console error about undefined params and treat them
   Swal.fire(undefined, 'Hello world!', undefined)
   console.error = _consoleError
   assert.ok(spy.notCalled)
+})
+
+QUnit.test('should accept Elements as shorhand params', (assert) => {
+  const title = document.createElement('strong')
+  title.innerHTML = 'title'
+  const content = document.createElement('a')
+  content.innerHTML = 'content'
+  Swal.fire(title, content, 'success')
+  assert.equal(Swal.getTitle().innerHTML, '<strong>title</strong>')
+  assert.equal(Swal.getContent().querySelector('#swal2-content').innerHTML, '<a>content</a>')
 })
 
 QUnit.test('should not throw console error when <svg> tags are present (#1289)', (assert) => {

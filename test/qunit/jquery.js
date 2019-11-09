@@ -1,5 +1,14 @@
-const { $, Swal } = require('./helpers')
+const { Swal } = require('./helpers')
 const jQuery = require('jquery')
+
+QUnit.test('jQuery elements as shorthand params', (assert) => {
+  Swal.fire(
+    jQuery('<h1>jQuery title</h1>'),
+    jQuery('<p>jQuery content</p>')
+  )
+  assert.equal(Swal.getTitle().innerHTML, '<h1>jQuery title</h1>')
+  assert.equal(Swal.getContent().querySelector('#swal2-content').innerHTML, '<p>jQuery content</p>')
+})
 
 QUnit.test('jQuery elements as params', (assert) => {
   Swal.fire({
@@ -7,7 +16,7 @@ QUnit.test('jQuery elements as params', (assert) => {
     html: jQuery('<p>jQuery content</p>'),
     footer: jQuery('<footer>jQuery footer</footer>')
   })
-  assert.equal($('.swal2-title').innerHTML, '<h1>jQuery title</h1>')
-  assert.equal($('#swal2-content').innerHTML, '<p>jQuery content</p>')
-  assert.equal($('.swal2-footer').innerHTML, '<footer>jQuery footer</footer>')
+  assert.equal(Swal.getTitle().innerHTML, '<h1>jQuery title</h1>')
+  assert.equal(Swal.getContent().querySelector('#swal2-content').innerHTML, '<p>jQuery content</p>')
+  assert.equal(Swal.getFooter().innerHTML, '<footer>jQuery footer</footer>')
 })

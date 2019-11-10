@@ -1,3 +1,10 @@
+# [9.3.0](https://github.com/sweetalert2/sweetalert2/compare/v9.2.0...v9.3.0) (2019-11-10)
+
+
+### Features
+
+* add timerProgressBar ([#1805](https://github.com/sweetalert2/sweetalert2/issues/1805)) ([d49cbe5](https://github.com/sweetalert2/sweetalert2/commit/d49cbe522242c6445e7ed731ad2c2d70980e292c))
+
 # [9.2.0](https://github.com/sweetalert2/sweetalert2/compare/v9.1.6...v9.2.0) (2019-11-09)
 
 

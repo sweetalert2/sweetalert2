@@ -123,11 +123,20 @@ const populateDomCache = (instance) => {
 }
 
 const setupTimer = (globalState, innerParams, dismissWith) => {
+  const timerProgressBar = dom.getTimerProgressBar()
+  dom.hide(timerProgressBar)
   if (innerParams.timer) {
     globalState.timeout = new Timer(() => {
       dismissWith('timer')
       delete globalState.timeout
     }, innerParams.timer)
+    if (innerParams.timerProgressBar) {
+      dom.show(timerProgressBar)
+      setTimeout(() => {
+        timerProgressBar.style.transition = `width ${innerParams.timer / 1000}s`
+        timerProgressBar.style.width = '0%'
+      })
+    }
   }
 }
 

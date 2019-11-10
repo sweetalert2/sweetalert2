@@ -526,6 +526,14 @@ declare module 'sweetalert2' {
     timer?: number;
 
     /**
+     * If set to true, the timer will have a progress bar at the bottom of a popup.
+     * Mostly, this feature is useful with toasts.
+     *
+     * @default false
+     */
+    timerProgressBar?: boolean;
+
+    /**
      * @deprecated
      * If set to false, modal CSS animation will be disabled.
      *

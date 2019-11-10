@@ -39,8 +39,8 @@ const sweetHTML = `
      <button type="button" class="${swalClasses.confirm}">OK</button>
      <button type="button" class="${swalClasses.cancel}">Cancel</button>
    </div>
-   <div class="${swalClasses.footer}">
-   </div>
+   <div class="${swalClasses.footer}"></div>
+   <div class="${swalClasses['timer-progress-bar']}"></div>
  </div>
 `.replace(/(^|\n)\s*/g, '')
 

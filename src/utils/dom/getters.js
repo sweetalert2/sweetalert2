@@ -45,6 +45,8 @@ export const getHeader = () => elementByClass(swalClasses.header)
 
 export const getFooter = () => elementByClass(swalClasses.footer)
 
+export const getTimerProgressBar = () => elementByClass(swalClasses['timer-progress-bar'])
+
 export const getCloseButton = () => elementByClass(swalClasses.close)
 
 // https://github.com/jkup/focusable/blob/master/index.js

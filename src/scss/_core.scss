@@ -317,6 +317,15 @@
   font-size: $swal2-footer-font-size;
 }
 
+.swal2-timer-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: $swal2-timer-progress-bar-height;
+  background: $swal2-timer-progress-bar-background;
+}
+
 .swal2-image {
   max-width: 100%;
   margin: $swal2-image-margin;
@@ -739,5 +748,10 @@
   .swal2-close {
     right: auto;
     left: $swal2-close-button-gap;
+  }
+
+  .swal2-timer-progress-bar {
+    right: 0;
+    left: auto;
   }
 }

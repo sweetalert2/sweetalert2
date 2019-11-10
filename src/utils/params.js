@@ -51,6 +51,7 @@ const defaultParams = {
   imageHeight: null,
   imageAlt: '',
   timer: null,
+  timerProgressBar: false,
   width: null,
   padding: null,
   background: null,

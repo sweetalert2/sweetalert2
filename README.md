@@ -25,7 +25,7 @@
 
 ---
 
-:shipit: The author of SweetAlert2 ([@limonte](https://github.com/limonte/)) is looking for short-term working contracts in front-end, preferably OSS.
+:shipit: The author of SweetAlert2 ([@limonte](https://github.com/limonte/)) is looking for short-term to medium-term working contracts in front-end, preferably OSS.
 
 ---
 

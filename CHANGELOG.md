@@ -1,3 +1,10 @@
+## [9.3.1](https://github.com/sweetalert2/sweetalert2/compare/v9.3.0...v9.3.1) (2019-11-11)
+
+
+### Bug Fixes
+
+* stop and resume timer progress bar ([#1806](https://github.com/sweetalert2/sweetalert2/issues/1806)) ([a8cf8c5](https://github.com/sweetalert2/sweetalert2/commit/a8cf8c51cbbe93344927619b836c208fca4fe158))
+
 # [9.3.0](https://github.com/sweetalert2/sweetalert2/compare/v9.2.0...v9.3.0) (2019-11-10)
 
 

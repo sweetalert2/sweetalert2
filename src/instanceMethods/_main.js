@@ -133,8 +133,7 @@ const setupTimer = (globalState, innerParams, dismissWith) => {
     if (innerParams.timerProgressBar) {
       dom.show(timerProgressBar)
       setTimeout(() => {
-        timerProgressBar.style.transition = `width ${innerParams.timer / 1000}s`
-        timerProgressBar.style.width = '0%'
+        dom.animateTimerProgressBar(innerParams.timer)
       })
     }
   }

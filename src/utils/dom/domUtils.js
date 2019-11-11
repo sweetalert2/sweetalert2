@@ -1,3 +1,4 @@
+import { getTimerProgressBar } from './getters.js'
 import { swalClasses, iconTypes } from '../classes.js'
 import { toArray, objectValues, warn } from '../utils.js'
 
@@ -138,4 +139,23 @@ export const contains = (haystack, needle) => {
   if (typeof haystack.contains === 'function') {
     return haystack.contains(needle)
   }
+}
+
+export const animateTimerProgressBar = (timer) => {
+  const timerProgressBar = getTimerProgressBar()
+  if (isVisible(timerProgressBar)) {
+    timerProgressBar.style.transition = `width ${timer / 1000}s linear`
+    timerProgressBar.style.width = '0%'
+  }
+}
+
+export const stopTimerProgressBar = () => {
+  const timerProgressBar = getTimerProgressBar()
+  const timerProgressBarWidth = parseInt(window.getComputedStyle(timerProgressBar).width)
+  timerProgressBar.style.removeProperty('transition')
+  timerProgressBar.style.width = '100%'
+  const timerProgressBarFullWidth = parseInt(window.getComputedStyle(timerProgressBar).width)
+  const timerProgressBarPercent = parseInt(timerProgressBarWidth / timerProgressBarFullWidth * 100)
+  timerProgressBar.style.removeProperty('transition')
+  timerProgressBar.style.width = `${timerProgressBarPercent}%`
 }

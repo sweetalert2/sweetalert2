@@ -1,3 +1,10 @@
+## [9.3.2](https://github.com/sweetalert2/sweetalert2/compare/v9.3.1...v9.3.2) (2019-11-12)
+
+
+### Bug Fixes
+
+* reset timer progress bar on Swal.increaseTimer() ([#1807](https://github.com/sweetalert2/sweetalert2/issues/1807)) ([604feb8](https://github.com/sweetalert2/sweetalert2/commit/604feb86b9b9f2370ac85d5f8313b6d33b6356df))
+
 ## [9.3.1](https://github.com/sweetalert2/sweetalert2/compare/v9.3.0...v9.3.1) (2019-11-11)
 
 

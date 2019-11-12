@@ -1,3 +1,10 @@
+## [9.3.3](https://github.com/sweetalert2/sweetalert2/compare/v9.3.2...v9.3.3) (2019-11-12)
+
+
+### Bug Fixes
+
+* add "funding" field to package.json ([04236fb](https://github.com/sweetalert2/sweetalert2/commit/04236fb072adcfe149dadb989772461814e374e3))
+
 ## [9.3.2](https://github.com/sweetalert2/sweetalert2/compare/v9.3.1...v9.3.2) (2019-11-12)
 
 

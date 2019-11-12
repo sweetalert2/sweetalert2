@@ -141,11 +141,17 @@ export const contains = (haystack, needle) => {
   }
 }
 
-export const animateTimerProgressBar = (timer) => {
+export const animateTimerProgressBar = (timer, reset = false) => {
   const timerProgressBar = getTimerProgressBar()
   if (isVisible(timerProgressBar)) {
-    timerProgressBar.style.transition = `width ${timer / 1000}s linear`
-    timerProgressBar.style.width = '0%'
+    if (reset) {
+      timerProgressBar.style.transition = 'none'
+      timerProgressBar.style.width = '100%'
+    }
+    setTimeout(() => {
+      timerProgressBar.style.transition = `width ${timer / 1000}s linear`
+      timerProgressBar.style.width = '0%'
+    }, 10)
   }
 }
 

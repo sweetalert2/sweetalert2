@@ -46,7 +46,11 @@ export const toggleTimer = () => {
  * If `timer` parameter isn't set, returns undefined.
  */
 export const increaseTimer = (n) => {
-  return globalState.timeout && globalState.timeout.increase(n)
+  if (globalState.timeout) {
+    const remaining = globalState.timeout.increase(n)
+    animateTimerProgressBar(remaining, true)
+    return remaining
+  }
 }
 
 /**

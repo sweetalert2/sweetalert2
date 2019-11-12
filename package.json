@@ -83,6 +83,7 @@
     "build": "gulp build",
     "test": "karma start karma.conf.js --single-run"
   },
+  "funding": "https://sweetalert2.github.io/#donations",
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
   "license": "MIT"
 }

@@ -1,3 +1,10 @@
+## [9.3.4](https://github.com/sweetalert2/sweetalert2/compare/v9.3.3...v9.3.4) (2019-11-12)
+
+
+### Bug Fixes
+
+* "funding" field can't be a string even though docs says so ([604f3d2](https://github.com/sweetalert2/sweetalert2/commit/604f3d27e86c7a7d9fd154f6750c3a90c6251579))
+
 ## [9.3.3](https://github.com/sweetalert2/sweetalert2/compare/v9.3.2...v9.3.3) (2019-11-12)
 
 

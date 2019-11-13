@@ -165,7 +165,7 @@ renderInputType.textarea = (textarea, params) => {
     const outputsize = () => {
       const contentWidth = textarea.offsetWidth + popupPadding
       if (contentWidth > initialPopupWidth) {
-        dom.getPopup().style.width = contentWidth + 'px'
+        dom.getPopup().style.width = `${contentWidth}px`
       } else {
         dom.getPopup().style.width = null
       }

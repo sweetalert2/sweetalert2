@@ -15,6 +15,12 @@ export const uniqueArray = (arr) => {
 }
 
 /**
+ * Capitalize the first letter of a string
+ * @param str
+ */
+export const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1)
+
+/**
  * Returns the array ob object values (Object.values isn't supported in IE11)
  * @param obj
  */

@@ -1,5 +1,6 @@
 import { swalClasses } from '../../classes.js'
 import * as dom from '../../dom/index.js'
+import { capitalizeFirstLetter } from '../../utils.js'
 
 export const renderActions = (instance, params) => {
   const actions = dom.getActions()
@@ -50,12 +51,12 @@ function handleButtonsStyling (confirmButton, cancelButton, params) {
 }
 
 function renderButton (button, buttonType, params) {
-  dom.toggle(button, params['showC' + buttonType.substring(1) + 'Button'], 'inline-block')
-  button.innerHTML = params[buttonType + 'ButtonText'] // Set caption text
-  button.setAttribute('aria-label', params[buttonType + 'ButtonAriaLabel']) // ARIA label
+  dom.toggle(button, params[`show${capitalizeFirstLetter(buttonType)}Button`], 'inline-block')
+  button.innerHTML = params[`${buttonType}ButtonText`] // Set caption text
+  button.setAttribute('aria-label', params[`${buttonType}ButtonAriaLabel`]) // ARIA label
 
   // Add buttons custom classes
   button.className = swalClasses[buttonType]
-  dom.applyCustomClass(button, params.customClass, buttonType + 'Button')
-  dom.addClass(button, params[buttonType + 'ButtonClass'])
+  dom.applyCustomClass(button, params.customClass, `${buttonType}Button`)
+  dom.addClass(button, params[`${buttonType}ButtonClass`])
 }

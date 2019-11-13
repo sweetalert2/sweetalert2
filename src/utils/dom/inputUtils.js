@@ -55,13 +55,13 @@ const handleInputValue = (instance, params) => {
   const input = instance.getInput()
   dom.hide(input)
   params.inputValue.then((inputValue) => {
-    input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : inputValue + ''
+    input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : `${inputValue}`
     dom.show(input)
     input.focus()
     instance.hideLoading()
   })
     .catch((err) => {
-      error('Error in inputValue promise: ' + err)
+      error(`Error in inputValue promise: ${err}`)
       input.value = ''
       dom.show(input)
       input.focus()

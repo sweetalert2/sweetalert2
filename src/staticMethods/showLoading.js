@@ -8,14 +8,14 @@ import { swalClasses } from '../utils/classes.js'
 const showLoading = () => {
   let popup = dom.getPopup()
   if (!popup) {
-    Swal.fire('')
+    Swal.fire()
   }
   popup = dom.getPopup()
   const actions = dom.getActions()
   const confirmButton = dom.getConfirmButton()
 
   dom.show(actions)
-  dom.show(confirmButton)
+  dom.show(confirmButton, 'inline-block')
   dom.addClass([popup, actions], swalClasses.loading)
   confirmButton.disabled = true
 

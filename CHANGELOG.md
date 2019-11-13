@@ -1,3 +1,10 @@
+## [9.3.5](https://github.com/sweetalert2/sweetalert2/compare/v9.3.4...v9.3.5) (2019-11-13)
+
+
+### Bug Fixes
+
+* use inline-block for confirm button in showLoading() ([#1810](https://github.com/sweetalert2/sweetalert2/issues/1810)) ([c876d13](https://github.com/sweetalert2/sweetalert2/commit/c876d133a35f71feb1c73a09b777d9534e48bf8b))
+
 ## [9.3.4](https://github.com/sweetalert2/sweetalert2/compare/v9.3.3...v9.3.4) (2019-11-12)
 
 

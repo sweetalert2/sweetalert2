@@ -298,9 +298,9 @@
   }
 
   &:focus {
-    outline: none;
+    outline: $swal2-button-focus-outline;
     background-color: $swal2-button-focus-background-color;
-    box-shadow: 0 0 0 2px $swal2-white, 0 0 0 4px $swal2-button-focus-outline;
+    box-shadow: $swal2-button-focus-box-shadow;
   }
 
   &::-moz-focus-inner {
@@ -359,6 +359,10 @@
     background: $swal2-close-button-hover-background;
     color: $swal2-close-button-hover-color;
   }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
 }
 
 .swal2-content {
@@ -402,9 +406,9 @@
   }
 
   &:focus {
-    border: $swal2-input-border-focus;
-    outline: none;
-    box-shadow: $swal2-input-box-shadow-focus;
+    border: $swal2-input-focus-border;
+    outline: $swal2-input-focus-outline;
+    box-shadow: $swal2-input-focus-box-shadow;
   }
 
   &::placeholder {

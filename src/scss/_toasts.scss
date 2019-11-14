@@ -89,7 +89,7 @@
       font-size: $swal2-toast-buttons-font-size;
 
       &:focus {
-        box-shadow: 0 0 0 .0625em $swal2-white, 0 0 0 .125em $swal2-button-focus-outline;
+        box-shadow: $swal2-toast-button-focus-box-shadow;
       }
     }
 

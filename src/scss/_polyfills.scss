@@ -31,7 +31,7 @@
 @-moz-document url-prefix() {
   .swal2-close {
     &:focus {
-      outline: 2px solid $swal2-button-focus-outline;
+      outline: 2px solid $swal2-outline-color;
     }
   }
 }

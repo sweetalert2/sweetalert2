@@ -1,7 +1,9 @@
 @mixin sweetalert2-toasts-body() {
   &.swal2-toast-shown {
     .swal2-container {
-      background-color: transparent;
+      &::before {
+        background: transparent;
+      }
 
       &.swal2-top {
         top: 0;

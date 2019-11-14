@@ -25,7 +25,7 @@ $swal2-font-size: 1rem !default;
 
 // BACKDROP
 $swal2-backdrop: rgba($swal2-black, .4) !default;
-$swal2-backdrop-transition: background-color .1s !default;
+$swal2-backdrop-transition: opacity .1s !default;
 
 // ICONS
 $swal2-icon-size: 5em !default;

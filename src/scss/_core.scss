@@ -1,4 +1,17 @@
 .swal2-container {
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: $swal2-backdrop-transition;
+    opacity: 0;
+    background: $swal2-backdrop;
+    will-change: opacity;
+  }
+
   // centering
   display: flex;
   position: fixed;
@@ -12,17 +25,20 @@
   justify-content: center;
   padding: $swal2-container-padding;
   overflow-x: hidden;
-  transition: $swal2-backdrop-transition;
 
   // sweetalert2/issues/905
   -webkit-overflow-scrolling: touch;
 
   &.swal2-backdrop-show {
-    background: $swal2-backdrop;
+    &::before {
+      opacity: 1;
+    }
   }
 
   &.swal2-backdrop-hide {
-    background: transparent !important;
+    &::before {
+      opacity: 0;
+    }
   }
 
   &.swal2-top {

@@ -1,3 +1,10 @@
+## [9.3.6](https://github.com/sweetalert2/sweetalert2/compare/v9.3.5...v9.3.6) (2019-11-14)
+
+
+### Bug Fixes
+
+* add $swal2-button-focus-box-shadow ([#1811](https://github.com/sweetalert2/sweetalert2/issues/1811)) ([2a49074](https://github.com/sweetalert2/sweetalert2/commit/2a4907417b643d55d47e81dcc63c4042453c5c1b))
+
 ## [9.3.5](https://github.com/sweetalert2/sweetalert2/compare/v9.3.4...v9.3.5) (2019-11-13)
 
 

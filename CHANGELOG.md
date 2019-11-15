@@ -1,3 +1,11 @@
+## [9.3.10](https://github.com/sweetalert2/sweetalert2/compare/v9.3.9...v9.3.10) (2019-11-15)
+
+
+### Bug Fixes
+
+* **ci:** fix semantic-release step ([fcf57b9](https://github.com/sweetalert2/sweetalert2/commit/fcf57b9b82d9a7cd873d9a6a2fce2283ea3223c8))
+* **ci:** use yarn for bundlewatch ([effa758](https://github.com/sweetalert2/sweetalert2/commit/effa758a1e88ee829af2559709cb90c4ea4ab17e))
+
 ## [9.3.9](https://github.com/sweetalert2/sweetalert2/compare/v9.3.8...v9.3.9) (2019-11-15)
 
 

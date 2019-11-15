@@ -1,3 +1,10 @@
+## [9.3.9](https://github.com/sweetalert2/sweetalert2/compare/v9.3.8...v9.3.9) (2019-11-15)
+
+
+### Bug Fixes
+
+* add showClass.popup in renderPopup() ([#1820](https://github.com/sweetalert2/sweetalert2/issues/1820)) ([38b5965](https://github.com/sweetalert2/sweetalert2/commit/38b596574590a36c859842fbba47a904d90cf91c))
+
 ## [9.3.8](https://github.com/sweetalert2/sweetalert2/compare/v9.3.7...v9.3.8) (2019-11-15)
 
 

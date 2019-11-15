@@ -1,3 +1,11 @@
+## [9.3.7](https://github.com/sweetalert2/sweetalert2/compare/v9.3.6...v9.3.7) (2019-11-15)
+
+
+### Bug Fixes
+
+* add $swal2-toast-background ([8ac68f1](https://github.com/sweetalert2/sweetalert2/commit/8ac68f1eaac2de37023141880fb641d7c62ef688))
+* use $swal2-background for range, radio, checkbox background ([6af549b](https://github.com/sweetalert2/sweetalert2/commit/6af549b8c4d00e30b4f857ddc493170fe2ea6f94))
+
 ## [9.3.6](https://github.com/sweetalert2/sweetalert2/compare/v9.3.5...v9.3.6) (2019-11-14)
 
 

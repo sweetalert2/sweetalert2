@@ -418,7 +418,7 @@
 
 .swal2-range {
   margin: $swal2-input-margin;
-  background: $swal2-input-background;
+  background: $swal2-background;
 
   input {
     width: 80%;
@@ -472,7 +472,7 @@
 .swal2-checkbox {
   align-items: center;
   justify-content: center;
-  background: $swal2-input-background;
+  background: $swal2-background;
   color: $swal2-input-color;
 
   label {

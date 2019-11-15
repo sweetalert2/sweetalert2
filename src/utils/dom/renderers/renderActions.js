@@ -13,7 +13,7 @@ export const renderActions = (instance, params) => {
   }
 
   // Custom class
-  dom.applyCustomClass(actions, params.customClass, 'actions')
+  dom.applyCustomClass(actions, params, 'actions')
 
   // Render confirm button
   renderButton(confirmButton, 'confirm', params)
@@ -57,6 +57,6 @@ function renderButton (button, buttonType, params) {
 
   // Add buttons custom classes
   button.className = swalClasses[buttonType]
-  dom.applyCustomClass(button, params.customClass, `${buttonType}Button`)
+  dom.applyCustomClass(button, params, `${buttonType}Button`)
   dom.addClass(button, params[`${buttonType}ButtonClass`])
 }

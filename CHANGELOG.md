@@ -1,3 +1,10 @@
+## [9.3.8](https://github.com/sweetalert2/sweetalert2/compare/v9.3.7...v9.3.8) (2019-11-15)
+
+
+### Bug Fixes
+
+* updatable params ([#1819](https://github.com/sweetalert2/sweetalert2/issues/1819)) ([42736bc](https://github.com/sweetalert2/sweetalert2/commit/42736bce35c993a3c6afab52ff6f9a6ff6269121))
+
 ## [9.3.7](https://github.com/sweetalert2/sweetalert2/compare/v9.3.6...v9.3.7) (2019-11-15)
 
 

@@ -1,6 +1,6 @@
 import { warn, warnAboutDepreation } from '../utils/utils.js'
 
-const defaultParams = {
+export const defaultParams = {
   title: '',
   titleText: '',
   text: '',
@@ -76,12 +76,12 @@ const defaultParams = {
   scrollbarPadding: true
 }
 
-const updatableParams = [
+export const updatableParams = [
   'title',
   'titleText',
   'text',
   'html',
-  'type',
+  'icon',
   'customClass',
   'showConfirmButton',
   'showCancelButton',
@@ -95,7 +95,7 @@ const updatableParams = [
   'reverseButtons',
   'imageUrl',
   'imageWidth',
-  'imageHeigth',
+  'imageHeight',
   'imageAlt',
   'progressSteps',
   'currentProgressStep'

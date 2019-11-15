@@ -11,23 +11,27 @@ export const hasClass = (elem, className) => {
   return elem.classList.contains(className)
 }
 
-const removeCustomClasses = (elem) => {
+const removeCustomClasses = (elem, params) => {
   toArray(elem.classList).forEach(className => {
-    if (!objectValues(swalClasses).includes(className) && !objectValues(iconTypes).includes(className)) {
+    if (
+      !objectValues(swalClasses).includes(className) &&
+      !objectValues(iconTypes).includes(className) &&
+      !objectValues(params.showClass).includes(className)
+    ) {
       elem.classList.remove(className)
     }
   })
 }
 
-export const applyCustomClass = (elem, customClass, className) => {
-  removeCustomClasses(elem)
+export const applyCustomClass = (elem, params, className) => {
+  removeCustomClasses(elem, params)
 
-  if (customClass && customClass[className]) {
-    if (typeof customClass[className] !== 'string' && !customClass[className].forEach) {
-      return warn(`Invalid type of customClass.${className}! Expected string or iterable object, got "${typeof customClass[className]}"`)
+  if (params.customClass && params.customClass[className]) {
+    if (typeof params.customClass[className] !== 'string' && !params.customClass[className].forEach) {
+      return warn(`Invalid type of customClass.${className}! Expected string or iterable object, got "${typeof params.customClass[className]}"`)
     }
 
-    addClass(elem, customClass[className])
+    addClass(elem, params.customClass[className])
   }
 }
 

@@ -141,6 +141,20 @@ QUnit.test('should not affect input', (assert) => {
   assert.equal(Swal.getInput().value, 'dos')
 })
 
+QUnit.test('should not affect showClass', (assert) => {
+  const done = assert.async()
+  Swal.fire({
+    icon: 'success',
+    onOpen: () => {
+      Swal.update({})
+      assert.ok(Swal.getContainer().classList.contains('swal2-backdrop-show'))
+      assert.ok(Swal.getPopup().classList.contains('swal2-show'))
+      assert.ok(Swal.getIcon().classList.contains('swal2-icon-show'))
+      done()
+    }
+  })
+})
+
 QUnit.test('update() method should throw a warning when attempting to update the closing popup', (assert) => {
   const done = assert.async()
   const _consoleWarn = console.warn

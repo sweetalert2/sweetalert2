@@ -161,7 +161,7 @@ $swal2-button-darken-hover: rgba($swal2-black, .1) !default;
 $swal2-button-darken-active: rgba($swal2-black, .2) !default;
 $swal2-button-focus-outline: none !default;
 $swal2-button-focus-background-color: null !default;
-$swal2-button-focus-box-shadow: 0 0 0 2px $swal2-white, 0 0 0 4px $swal2-outline-color !default;
+$swal2-button-focus-box-shadow: 0 0 0 1px $swal2-background, 0 0 0 3px $swal2-outline-color !default;
 
 // TOASTS
 $swal2-toast-show-animation: swal2-toast-show .5s !default;

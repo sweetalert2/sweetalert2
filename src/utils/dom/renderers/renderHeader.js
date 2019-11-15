@@ -9,7 +9,7 @@ export const renderHeader = (instance, params) => {
   const header = dom.getHeader()
 
   // Custom class
-  dom.applyCustomClass(header, params.customClass, 'header')
+  dom.applyCustomClass(header, params, 'header')
 
   // Progress steps
   renderProgressSteps(instance, params)

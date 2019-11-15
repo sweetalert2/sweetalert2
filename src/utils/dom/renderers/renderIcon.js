@@ -8,7 +8,7 @@ export const renderIcon = (instance, params) => {
 
   // if the give icon already rendered, apply the custom class without re-rendering the icon
   if (innerParams && params.icon === innerParams.icon && dom.getIcon()) {
-    dom.applyCustomClass(dom.getIcon(), params.customClass, 'icon')
+    dom.applyCustomClass(dom.getIcon(), params, 'icon')
     return
   }
 
@@ -27,7 +27,7 @@ export const renderIcon = (instance, params) => {
     adjustSuccessIconBackgoundColor()
 
     // Custom class
-    dom.applyCustomClass(icon, params.customClass, 'icon')
+    dom.applyCustomClass(icon, params, 'icon')
 
     // Animate icon
     dom.addClass(icon, params.showClass.icon)

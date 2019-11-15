@@ -66,7 +66,6 @@ const fixScrollContainer = (container, scrollbarPadding) => {
 }
 
 const addClasses = (container, popup, params) => {
-  dom.addClass(popup, params.showClass.popup)
   dom.addClass(container, params.showClass.backdrop)
   dom.show(popup)
 

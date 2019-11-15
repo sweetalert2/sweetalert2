@@ -45,5 +45,5 @@ export const renderContainer = (instance, params) => {
   handleGrowParam(container, params.grow)
 
   // Custom class
-  dom.applyCustomClass(container, params.customClass, 'container')
+  dom.applyCustomClass(container, params, 'container')
 }

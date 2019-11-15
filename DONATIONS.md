@@ -17,15 +17,15 @@ Sponsor is a company or a person who donated 100 USD or more. Sponsors are liste
 - **[FlowCrypt](http://flowcrypt.com)** (200 EUR + 30 USD worth of BTC and ETH)
     > Thanks for the awesome work!
 
-- **[STED](https://sextoyeducation.com/)** (116 EUR)
+- **[STED (NSFW 18+)](https://sextoyeducation.com/)** (116 EUR)
     > Extremely useful. Thanks SweetAlert2!
 
 - **[PriceListo](https://www.pricelisto.com/)** (130 USD worth of BTC)
     > Love using SweetAlert2! Our JS popups finally look great and are super fun to use.
 
-- **[LoveLoxy](https://loveloxy.com/)** (105 USD)
+- **[LoveLoxy (NSFW 18+)](https://loveloxy.com/)** (105 USD)
 
-- **[Bingato](https://bingato.com/)** (100 USD)
+- **[Bingato (NSFW 18+)](https://bingato.com/)** (100 USD)
 
 - **[NDCHost](https://www.ndchost.com/)** (100 USD)
     > Thank you for this great project!
@@ -33,7 +33,7 @@ Sponsor is a company or a person who donated 100 USD or more. Sponsors are liste
 - **[SheetJS LLC](https://sheetjs.com/)** (100 USD)
     > Great Work with SweetAlert2!
 
-- **[STC (NSFW)](http://sextoycollective.com/)** (100 USD)
+- **[STC (NSFW 18+)](http://sextoycollective.com/)** (100 USD)
     > Love this! Thanks for making the Internet a prettier place.
 
 - **[Unique-P GmbH](https://www.unique-p.ch/)** (100 CHF)

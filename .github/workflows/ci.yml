@@ -55,8 +55,8 @@ jobs:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
-        sudo npm i -g semantic-release@16.0.0-beta.26 @semantic-release/changelog@3 @semantic-release/exec@3.4.0-beta.2 @semantic-release/git@7.1.0-beta.3
-        semantic-release
+        yarn add --dev semantic-release@16.0.0-beta.26 @semantic-release/changelog@3 @semantic-release/exec@3.4.0-beta.2 @semantic-release/git@7.1.0-beta.3
+        ./node_modules/.bin/semantic-release
 
   skip:
     if: "contains(github.event.commits[0].message, '[skip ci]')"

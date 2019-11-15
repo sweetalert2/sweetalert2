@@ -41,8 +41,8 @@ jobs:
         CI_COMMIT_SHA: ${{ github.sha }}
         CI_BRANCH: ${{ github.ref }}
       run: |
-        sudo npm i -g bundlewatch
-        bundlewatch
+        yarn add --dev bundlewatch
+        ./node_modules/.bin/bundlewatch
 
     - name: Report coverage to coveralls.io
       uses: coverallsapp/github-action@master

@@ -148,7 +148,6 @@ QUnit.test('should not affect showClass', (assert) => {
     onOpen: () => {
       Swal.update({})
       assert.ok(Swal.getContainer().classList.contains('swal2-backdrop-show'))
-      console.log(Swal.getPopup().classList) // eslint-disable-line
       assert.ok(Swal.getPopup().classList.contains('swal2-show'))
       assert.ok(Swal.getIcon().classList.contains('swal2-icon-show'))
       done()

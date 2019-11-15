@@ -29,4 +29,7 @@ export const renderPopup = (instance, params) => {
   if (typeof params.customClass === 'string') {
     dom.addClass(popup, params.customClass)
   }
+
+  // Animate class
+  dom.addClass(popup, params.showClass.popup)
 }

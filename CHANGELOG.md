@@ -1,3 +1,11 @@
+## [9.3.11](https://github.com/sweetalert2/sweetalert2/compare/v9.3.10...v9.3.11) (2019-11-15)
+
+
+### Bug Fixes
+
+* use $swal2-background in $swal2-button-focus-box-shadow ([bef3d86](https://github.com/sweetalert2/sweetalert2/commit/bef3d86ce450d4380d567224e74c65fb1363dd96))
+* use $swal2-background in $swal2-toast-button-focus-box-shadow ([2da88c2](https://github.com/sweetalert2/sweetalert2/commit/2da88c29cf53405be0d4f6287b345e975d11cb79))
+
 ## [9.3.10](https://github.com/sweetalert2/sweetalert2/compare/v9.3.9...v9.3.10) (2019-11-15)
 
 

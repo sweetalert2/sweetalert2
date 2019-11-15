@@ -1,5 +1,15 @@
 const { $, Swal, SwalWithoutAnimation, isVisible } = require('../helpers')
+const { defaultParams, updatableParams } = require('../../../src/utils/params')
 const sinon = require('sinon/pkg/sinon')
+
+QUnit.test('all updatableParams are valid', (assert) => {
+  assert.ok(updatableParams)
+  updatableParams.forEach((updatableParam) => {
+    if (defaultParams[updatableParam] === undefined) {
+      throw new Error(`Invalid updatable param: ${updatableParam}`)
+    }
+  })
+})
 
 QUnit.test('update() method', (assert) => {
   SwalWithoutAnimation.fire({

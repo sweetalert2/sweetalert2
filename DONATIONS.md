@@ -58,6 +58,8 @@ Sponsor is a company or a person who donated 100 USD or more. Sponsors are liste
 
 - **Emil Kristensen** (15 EUR)
 
+- **Motim8 LLC** (10 EUR)
+
 - **Ivan Zamecnik** (10 EUR)
 
 - **Denis Veg** (10 EUR)

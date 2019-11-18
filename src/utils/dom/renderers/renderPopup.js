@@ -31,5 +31,7 @@ export const renderPopup = (instance, params) => {
   }
 
   // Animate class
-  dom.addClass(popup, params.showClass.popup)
+  setTimeout(() => { // asyncronously for IE11
+    dom.addClass(popup, params.showClass.popup)
+  })
 }

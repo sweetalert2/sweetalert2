@@ -1,3 +1,10 @@
+## [9.3.13](https://github.com/sweetalert2/sweetalert2/compare/v9.3.12...v9.3.13) (2019-11-18)
+
+
+### Bug Fixes
+
+* add showClass asyncronously to popup (IE11) ([8aed623](https://github.com/sweetalert2/sweetalert2/commit/8aed62350e032393214651f45c085dbf5d798140))
+
 ## [9.3.12](https://github.com/sweetalert2/sweetalert2/compare/v9.3.11...v9.3.12) (2019-11-18)
 
 

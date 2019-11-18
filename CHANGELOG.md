@@ -1,3 +1,10 @@
+## [9.3.12](https://github.com/sweetalert2/sweetalert2/compare/v9.3.11...v9.3.12) (2019-11-18)
+
+
+### Bug Fixes
+
+* **types:** simplify Swal.fire(title, message, icon) back ([#1823](https://github.com/sweetalert2/sweetalert2/issues/1823)) ([0cc40ff](https://github.com/sweetalert2/sweetalert2/commit/0cc40fff1956979869fee58261255e9d94fb1688))
+
 ## [9.3.11](https://github.com/sweetalert2/sweetalert2/compare/v9.3.10...v9.3.11) (2019-11-15)
 
 

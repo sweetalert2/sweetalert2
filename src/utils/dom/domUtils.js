@@ -127,6 +127,7 @@ export const toggle = (elem, condition, display) => {
 // borrowed from jquery $(elem).is(':visible') implementation
 export const isVisible = (elem) => !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
 
+/* istanbul ignore next */
 export const isScrollable = (elem) => !!(elem.scrollHeight > elem.clientHeight)
 
 // borrowed from https://stackoverflow.com/a/46352119

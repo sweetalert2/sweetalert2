@@ -14,6 +14,7 @@ export const iOSfix = () => {
   }
 }
 
+/* istanbul ignore next */
 const lockBodyScroll = () => { // #1246
   const container = dom.getContainer()
   let preventTouchMove

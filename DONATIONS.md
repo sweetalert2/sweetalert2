@@ -79,6 +79,8 @@ Sponsor is a company or a person who donated 100 USD or more. Sponsors are liste
 - **Jeff Keith** (10 EUR)
     > SweetAlert2 saved me tons of time.
 
+- **Julius Tens** (5 EUR)
+
 - **Mauricio Robles Huerta** (5 EUR)
 
 - **David Barber** (5 USD)

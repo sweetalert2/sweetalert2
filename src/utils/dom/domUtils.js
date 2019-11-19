@@ -8,7 +8,16 @@ export const states = {
 }
 
 export const hasClass = (elem, className) => {
-  return elem.classList.contains(className)
+  if (!className) {
+    return false
+  }
+  const classList = className.split(/\s+/)
+  for (let i = 0; i < classList.length; i++) {
+    if (!elem.classList.contains(classList[i])) {
+      return false
+    }
+  }
+  return true
 }
 
 const removeCustomClasses = (elem, params) => {

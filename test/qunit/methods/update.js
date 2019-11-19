@@ -1,4 +1,4 @@
-const { $, Swal, SwalWithoutAnimation, isVisible, TIMEOUT } = require('../helpers')
+const { $, Swal, SwalWithoutAnimation, isVisible } = require('../helpers')
 const { defaultParams, updatableParams } = require('../../../src/utils/params')
 const sinon = require('sinon/pkg/sinon')
 
@@ -148,11 +148,9 @@ QUnit.test('should not affect showClass', (assert) => {
     onOpen: () => {
       Swal.update({})
       assert.ok(Swal.getContainer().classList.contains('swal2-backdrop-show'))
-      setTimeout(() => {
-        assert.ok(Swal.getPopup().classList.contains('swal2-show'))
-        done()
-      }, TIMEOUT)
+      assert.ok(Swal.getPopup().classList.contains('swal2-show'))
       assert.ok(Swal.getIcon().classList.contains('swal2-icon-show'))
+      done()
     }
   })
 })

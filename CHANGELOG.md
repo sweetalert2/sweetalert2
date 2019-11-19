@@ -1,3 +1,10 @@
+## [9.3.14](https://github.com/sweetalert2/sweetalert2/compare/v9.3.13...v9.3.14) (2019-11-19)
+
+
+### Bug Fixes
+
+* measure scrollbar ([83bcdf3](https://github.com/sweetalert2/sweetalert2/commit/83bcdf33acd2db15168d18743d71997aea76d6dd))
+
 ## [9.3.13](https://github.com/sweetalert2/sweetalert2/compare/v9.3.12...v9.3.13) (2019-11-18)
 
 

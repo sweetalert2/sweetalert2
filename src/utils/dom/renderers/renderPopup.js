@@ -30,6 +30,8 @@ export const renderPopup = (instance, params) => {
     dom.addClass(popup, params.customClass)
   }
 
-  // Animate class
-  dom.addClass(popup, params.showClass.popup)
+  // Add showClass when updating Swal.update({})
+  if (dom.isVisible(popup)) {
+    dom.addClass(popup, params.showClass.popup)
+  }
 }

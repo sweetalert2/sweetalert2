@@ -795,3 +795,11 @@ QUnit.test('preConfirm returns 0', (assert) => {
     done()
   })
 })
+
+QUnit.test('Model shows with swal2 classes used in html', (assert) => {
+  Swal.fire({
+    html: '<span class="swal2-cancel"></span>'
+  })
+  assert.ok(Swal.getPopup().classList.contains('swal2-show'))
+  Swal.close()
+})

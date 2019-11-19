@@ -68,6 +68,7 @@ export const swalClasses = prefix([
   'grow-fullscreen',
   'rtl',
   'timer-progress-bar',
+  'scrollbar-measure',
 ])
 
 export const iconTypes = prefix([

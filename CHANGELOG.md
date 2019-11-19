@@ -1,3 +1,10 @@
+## [9.3.16](https://github.com/sweetalert2/sweetalert2/compare/v9.3.15...v9.3.16) (2019-11-19)
+
+
+### Bug Fixes
+
+* animate popup right after showing it ([#1826](https://github.com/sweetalert2/sweetalert2/issues/1826)) ([cf13990](https://github.com/sweetalert2/sweetalert2/commit/cf139905449e10275d137fa7b027cda95f8eec45))
+
 ## [9.3.15](https://github.com/sweetalert2/sweetalert2/compare/v9.3.14...v9.3.15) (2019-11-19)
 
 

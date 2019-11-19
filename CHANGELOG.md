@@ -1,3 +1,11 @@
+## [9.3.15](https://github.com/sweetalert2/sweetalert2/compare/v9.3.14...v9.3.15) (2019-11-19)
+
+
+### Bug Fixes
+
+* hasClass multiple classes support for IE11 ([bd4eab5](https://github.com/sweetalert2/sweetalert2/commit/bd4eab56d94e8f01615157c12ffcdd529698ff03))
+* revert "fix: add showClass asyncronously to popup (IE11)" ([6cb66cc](https://github.com/sweetalert2/sweetalert2/commit/6cb66ccbe1a246877a78436dd201afbae60154f1))
+
 ## [9.3.14](https://github.com/sweetalert2/sweetalert2/compare/v9.3.13...v9.3.14) (2019-11-19)
 
 

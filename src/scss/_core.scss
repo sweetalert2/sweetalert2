@@ -747,6 +747,15 @@
   transition: none;
 }
 
+// Measure scrollbar width for padding body during modal show/hide
+.swal2-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
 // Right-to-left support
 .swal2-rtl {
   .swal2-close {

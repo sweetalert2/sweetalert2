@@ -6,7 +6,11 @@ import privateProps from '../privateProps.js'
  * Enables buttons and hide loader.
  */
 function hideLoading () {
+  // do nothing if popup is closed
   const innerParams = privateProps.innerParams.get(this)
+  if (!innerParams) {
+    return
+  }
   const domCache = privateProps.domCache.get(this)
   if (!innerParams.showConfirmButton) {
     dom.hide(domCache.confirmButton)

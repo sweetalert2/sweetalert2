@@ -1,3 +1,10 @@
+## [9.3.17](https://github.com/sweetalert2/sweetalert2/compare/v9.3.16...v9.3.17) (2019-11-21)
+
+
+### Bug Fixes
+
+* do not fail when hideLoading() without popup ([2ada37c](https://github.com/sweetalert2/sweetalert2/commit/2ada37c1b5a0a9d05a2902ba82fd071002d5dd09))
+
 ## [9.3.16](https://github.com/sweetalert2/sweetalert2/compare/v9.3.15...v9.3.16) (2019-11-19)
 
 

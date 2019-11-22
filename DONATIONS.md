@@ -2,6 +2,7 @@ We would like to thank everyone who contributed to this library. If you find our
 
 - [GitHub Sponsors :heart:](https://github.com/sponsors/limonte)
 - [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TKTWHJGUWLR7E)
+- [PayPal.me](https://www.paypal.me/limonte)
 - Bitcoin: `16Z7RvFv7PsV3XzFvchYwPnRfw9KeLTZQJ`
 - Ether: `0x192096161eB2273f12b1cB4E31aBB09Bfc03a7F3`
 - Bitcoin Cash: `qz28x66hrljtdz3052p8ya3cmkwwva5avy0msz2ej3`

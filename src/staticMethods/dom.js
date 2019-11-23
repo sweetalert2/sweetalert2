@@ -6,6 +6,7 @@ export {
   getPopup,
   getTitle,
   getContent,
+  getHtmlContainer,
   getImage,
   getIcon,
   getIcons,

@@ -63,7 +63,7 @@ QUnit.test('should accept Elements as shorhand params', (assert) => {
   content.innerHTML = 'content'
   Swal.fire(title, content, 'success')
   assert.equal(Swal.getTitle().innerHTML, '<strong>title</strong>')
-  assert.equal(Swal.getContent().querySelector('#swal2-content').innerHTML, '<a>content</a>')
+  assert.equal(Swal.getHtmlContainer().innerHTML, '<a>content</a>')
 })
 
 QUnit.test('should not throw console error when <svg> tags are present (#1289)', (assert) => {
@@ -235,7 +235,7 @@ QUnit.test('content/title is set (text)', (assert) => {
   })
 
   assert.equal($('.swal2-title').innerHTML, '&lt;strong&gt;Strong&lt;/strong&gt;, &lt;em&gt;Emphasis&lt;/em&gt;')
-  assert.equal($('#swal2-content').innerHTML, '&lt;p&gt;Paragraph&lt;/p&gt;&lt;img /&gt;&lt;button&gt;&lt;/button&gt;')
+  assert.equal(Swal.getHtmlContainer().innerHTML, '&lt;p&gt;Paragraph&lt;/p&gt;&lt;img /&gt;&lt;button&gt;&lt;/button&gt;')
   assert.equal($('.swal2-title').querySelectorAll('strong, em').length, 0)
   assert.equal($('.swal2-content').querySelectorAll('p, img, button').length, 0)
 })
@@ -246,7 +246,7 @@ QUnit.test('JS element as html param', (assert) => {
   Swal.fire({
     html: p
   })
-  assert.equal($('#swal2-content').innerHTML, '<p>js element</p>')
+  assert.equal(Swal.getHtmlContainer().innerHTML, '<p>js element</p>')
 })
 
 QUnit.test('validation message', (assert) => {

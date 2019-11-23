@@ -89,6 +89,11 @@ declare module 'sweetalert2' {
     function getContent(): HTMLElement;
 
     /**
+     * Gets the DOM element where the html/text parameter is rendered to.
+     */
+    function getHtmlContainer(): HTMLElement;
+
+    /**
      * Gets the image.
      */
     function getImage(): HTMLElement;

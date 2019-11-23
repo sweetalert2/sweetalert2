@@ -1,3 +1,10 @@
+# [9.4.0](https://github.com/sweetalert2/sweetalert2/compare/v9.3.17...v9.4.0) (2019-11-23)
+
+
+### Features
+
+* add getHtmlContainer() getter ([#1828](https://github.com/sweetalert2/sweetalert2/issues/1828)) ([6908c3b](https://github.com/sweetalert2/sweetalert2/commit/6908c3b722f33a3595216fb9dde6ab374a688206))
+
 ## [9.3.17](https://github.com/sweetalert2/sweetalert2/compare/v9.3.16...v9.3.17) (2019-11-21)
 
 

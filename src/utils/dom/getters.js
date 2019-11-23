@@ -29,6 +29,8 @@ export const getTitle = () => elementByClass(swalClasses.title)
 
 export const getContent = () => elementByClass(swalClasses.content)
 
+export const getHtmlContainer = () => elementByClass(swalClasses['html-container'])
+
 export const getImage = () => elementByClass(swalClasses.image)
 
 export const getProgressSteps = () => elementByClass(swalClasses['progress-steps'])

@@ -1,4 +1,4 @@
-const { $, Swal } = require('../helpers')
+const { Swal } = require('../helpers')
 
 QUnit.test('HTMLElement as html', (assert) => {
   const form = document.createElement('form')
@@ -10,5 +10,5 @@ QUnit.test('HTMLElement as html', (assert) => {
   Swal.fire({
     html: form
   })
-  assert.equal($('#swal2-content').innerHTML, '<form><div><label></label><input></div></form>')
+  assert.equal(Swal.getHtmlContainer().innerHTML, '<form><div><label></label><input></div></form>')
 })

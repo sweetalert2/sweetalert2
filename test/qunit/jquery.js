@@ -7,7 +7,7 @@ QUnit.test('jQuery elements as shorthand params', (assert) => {
     jQuery('<p>jQuery content</p>')
   )
   assert.equal(Swal.getTitle().innerHTML, '<h1>jQuery title</h1>')
-  assert.equal(Swal.getContent().querySelector('#swal2-content').innerHTML, '<p>jQuery content</p>')
+  assert.equal(Swal.getHtmlContainer().innerHTML, '<p>jQuery content</p>')
 })
 
 QUnit.test('jQuery elements as params', (assert) => {
@@ -17,6 +17,6 @@ QUnit.test('jQuery elements as params', (assert) => {
     footer: jQuery('<footer>jQuery footer</footer>')
   })
   assert.equal(Swal.getTitle().innerHTML, '<h1>jQuery title</h1>')
-  assert.equal(Swal.getContent().querySelector('#swal2-content').innerHTML, '<p>jQuery content</p>')
+  assert.equal(Swal.getHtmlContainer().innerHTML, '<p>jQuery content</p>')
   assert.equal(Swal.getFooter().innerHTML, '<footer>jQuery footer</footer>')
 })

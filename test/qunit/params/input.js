@@ -20,7 +20,7 @@ QUnit.test('input text', (assert) => {
     done()
   })
 
-  $('.swal2-input').value = string
+  Swal.getInput().value = string
   Swal.clickConfirm()
 })
 

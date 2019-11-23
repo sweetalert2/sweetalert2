@@ -32,14 +32,20 @@ jobs:
         tsc --lib dom,es6 --noEmit test/ts/dist-sweetalert2.ts sweetalert2.d.ts
         tsc --lib dom,es6 --noEmit test/ts/src-sweetalert2.ts sweetalert2.d.ts
 
+    # https://stackoverflow.com/a/58035262
+    - name: Extract the branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+
     - name: Report bundlezise to bundlewatch.io
       env:
         BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
-        # TODO: remove after https://github.com/bundlewatch/bundlewatch/pull/64 is merged
+        # TODO: remove after https://github.com/bundlewatch/bundlewatch/pull/64 is released
         CI_REPO_OWNER: "sweetalert2"
         CI_REPO_NAME: "sweetalert2"
         CI_COMMIT_SHA: ${{ github.sha }}
-        CI_BRANCH: ${{ github.ref }}
+        CI_BRANCH: ${{ steps.extract_branch.outputs.branch }}
       run: |
         yarn add --dev bundlewatch
         ./node_modules/.bin/bundlewatch

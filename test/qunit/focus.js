@@ -32,7 +32,7 @@ QUnit.test('focusConfirm', (assert) => {
   Swal.fire({
     showCancelButton: true
   })
-  assert.equal(document.activeElement, $('.swal2-confirm'))
+  assert.equal(document.activeElement, Swal.getConfirmButton())
 
   const anchor = document.createElement('a')
   anchor.innerText = 'link'
@@ -51,7 +51,7 @@ QUnit.test('focusCancel', (assert) => {
     showCancelButton: true,
     focusCancel: true
   })
-  assert.equal(document.activeElement, $('.swal2-cancel'))
+  assert.equal(document.activeElement, Swal.getCancelButton())
 })
 
 // TODO(@limonte): this test needs to be revisited

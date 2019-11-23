@@ -155,13 +155,13 @@ QUnit.test('the vertical scrollbar should be restored before a toast is fired af
 
 QUnit.test('modal width', (assert) => {
   Swal.fire({ text: '300px', width: 300 })
-  assert.equal($('.swal2-modal').style.width, '300px')
+  assert.equal(Swal.getPopup().style.width, '300px')
 
   Swal.fire({ text: '400px', width: '400px' })
-  assert.equal($('.swal2-modal').style.width, '400px')
+  assert.equal(Swal.getPopup().style.width, '400px')
 
   Swal.fire({ text: '90%', width: '90%' })
-  assert.equal($('.swal2-modal').style.width, '90%')
+  assert.equal(Swal.getPopup().style.width, '90%')
 })
 
 QUnit.test('heightAuto', (assert) => {
@@ -204,7 +204,7 @@ QUnit.test('getters', (assert) => {
   assert.equal(Swal.getFooter().innerHTML, '<b>Footer</b>')
 
   Swal.fire({ input: 'text' })
-  $('.swal2-input').value = 'input text'
+  Swal.getInput().value = 'input text'
   assert.equal(Swal.getInput().value, 'input text')
 
   Swal.fire({
@@ -224,8 +224,8 @@ QUnit.test('content/title is set (html)', (assert) => {
     html: '<p>Paragraph</p><img /><button></button>'
   })
 
-  assert.equal($('.swal2-title').querySelectorAll('strong, em').length, 2)
-  assert.equal($('.swal2-content').querySelectorAll('p, img, button').length, 3)
+  assert.equal(Swal.getTitle().querySelectorAll('strong, em').length, 2)
+  assert.equal(Swal.getContent().querySelectorAll('p, img, button').length, 3)
 })
 
 QUnit.test('content/title is set (text)', (assert) => {
@@ -234,10 +234,10 @@ QUnit.test('content/title is set (text)', (assert) => {
     text: '<p>Paragraph</p><img /><button></button>'
   })
 
-  assert.equal($('.swal2-title').innerHTML, '&lt;strong&gt;Strong&lt;/strong&gt;, &lt;em&gt;Emphasis&lt;/em&gt;')
+  assert.equal(Swal.getTitle().innerHTML, '&lt;strong&gt;Strong&lt;/strong&gt;, &lt;em&gt;Emphasis&lt;/em&gt;')
   assert.equal(Swal.getHtmlContainer().innerHTML, '&lt;p&gt;Paragraph&lt;/p&gt;&lt;img /&gt;&lt;button&gt;&lt;/button&gt;')
-  assert.equal($('.swal2-title').querySelectorAll('strong, em').length, 0)
-  assert.equal($('.swal2-content').querySelectorAll('p, img, button').length, 0)
+  assert.equal(Swal.getTitle().querySelectorAll('strong, em').length, 0)
+  assert.equal(Swal.getContent().querySelectorAll('p, img, button').length, 0)
 })
 
 QUnit.test('JS element as html param', (assert) => {
@@ -256,26 +256,26 @@ QUnit.test('validation message', (assert) => {
   SwalWithoutAnimation.fire({ input: 'text', inputValidator })
   assert.ok(isHidden(Swal.getValidationMessage()))
   setTimeout(() => {
-    const initialModalHeight = $('.swal2-modal').offsetHeight
+    const initialModalHeight = Swal.getPopup().offsetHeight
 
     Swal.clickConfirm()
     setTimeout(() => {
       assert.ok(isVisible(Swal.getValidationMessage()))
       assert.equal(Swal.getValidationMessage().textContent, 'no falsy values')
-      assert.ok($('.swal2-input').getAttribute('aria-invalid'))
-      assert.ok($('.swal2-modal').offsetHeight > initialModalHeight)
+      assert.ok(Swal.getInput().getAttribute('aria-invalid'))
+      assert.ok(Swal.getPopup().offsetHeight > initialModalHeight)
 
-      $('.swal2-input').value = 'blah-blah'
+      Swal.getInput().value = 'blah-blah'
 
       // setting the value programmatically will not trigger the 'input' event,
       // doing that manually
       const event = document.createEvent('Event')
       event.initEvent('input', true, true)
-      $('.swal2-input').dispatchEvent(event)
+      Swal.getInput().dispatchEvent(event)
 
       assert.ok(isHidden(Swal.getValidationMessage()))
-      assert.notOk($('.swal2-input').getAttribute('aria-invalid'))
-      assert.ok($('.swal2-modal').offsetHeight === initialModalHeight)
+      assert.notOk(Swal.getInput().getAttribute('aria-invalid'))
+      assert.ok(Swal.getPopup().offsetHeight === initialModalHeight)
       done()
     }, TIMEOUT)
   }, TIMEOUT)
@@ -380,10 +380,10 @@ QUnit.test('dymanic queue', (assert) => {
 
 QUnit.test('showLoading and hideLoading', (assert) => {
   Swal.showLoading()
-  assert.ok($('.swal2-actions').classList.contains('swal2-loading'))
+  assert.ok(Swal.getActions().classList.contains('swal2-loading'))
 
   Swal.hideLoading()
-  assert.notOk($('.swal2-actions').classList.contains('swal2-loading'))
+  assert.notOk(Swal.getActions().classList.contains('swal2-loading'))
 
   Swal.fire({
     title: 'test loading state',
@@ -391,24 +391,24 @@ QUnit.test('showLoading and hideLoading', (assert) => {
   })
 
   Swal.showLoading()
-  assert.ok(isVisible($('.swal2-actions')))
-  assert.ok($('.swal2-actions').classList.contains('swal2-loading'))
+  assert.ok(isVisible(Swal.getActions()))
+  assert.ok(Swal.getActions().classList.contains('swal2-loading'))
 
   Swal.hideLoading()
-  assert.notOk(isVisible($('.swal2-actions')))
-  assert.notOk($('.swal2-actions').classList.contains('swal2-loading'))
+  assert.notOk(isVisible(Swal.getActions()))
+  assert.notOk(Swal.getActions().classList.contains('swal2-loading'))
 })
 
 QUnit.test('disable/enable buttons', (assert) => {
   Swal.fire('test disable/enable buttons')
 
   Swal.disableButtons()
-  assert.ok($('.swal2-confirm').disabled)
-  assert.ok($('.swal2-cancel').disabled)
+  assert.ok(Swal.getConfirmButton().disabled)
+  assert.ok(Swal.getCancelButton().disabled)
 
   Swal.enableButtons()
-  assert.notOk($('.swal2-confirm').disabled)
-  assert.notOk($('.swal2-cancel').disabled)
+  assert.notOk(Swal.getConfirmButton().disabled)
+  assert.notOk(Swal.getCancelButton().disabled)
 })
 
 QUnit.test('disable/enable input', (assert) => {
@@ -421,9 +421,9 @@ QUnit.test('disable/enable input', (assert) => {
   })
 
   Swal.disableInput()
-  assert.ok($('.swal2-input').disabled)
+  assert.ok(Swal.getInput().disabled)
   Swal.enableInput()
-  assert.notOk($('.swal2-input').disabled)
+  assert.notOk(Swal.getInput().disabled)
 
   Swal.fire({
     input: 'radio',
@@ -449,10 +449,10 @@ QUnit.test('reversed buttons', (assert) => {
     showCancelButton: true,
     reverseButtons: true
   })
-  assert.equal($('.swal2-confirm').previousSibling, $('.swal2-cancel'))
+  assert.equal(Swal.getConfirmButton().previousSibling, Swal.getCancelButton())
 
   Swal.fire('Modal with buttons')
-  assert.equal($('.swal2-cancel').previousSibling, $('.swal2-confirm'))
+  assert.equal(Swal.getCancelButton().previousSibling, Swal.getConfirmButton())
 })
 
 QUnit.test('modal vertical offset', (assert) => {
@@ -467,8 +467,8 @@ QUnit.test('modal vertical offset', (assert) => {
   })
 
   // listen for image load
-  $('.swal2-image').addEventListener('load', () => {
-    const box = $('.swal2-modal').getBoundingClientRect()
+  Swal.getImage().addEventListener('load', () => {
+    const box = Swal.getPopup().getBoundingClientRect()
     const delta = box.top - (box.bottom - box.height)
     // allow 1px difference, in case of uneven height
     assert.ok(Math.abs(delta) <= 1)
@@ -483,7 +483,7 @@ QUnit.test('onOpen', (assert) => {
   Swal.fire({
     title: 'onOpen test',
     onOpen: (modal) => {
-      assert.equal($('.swal2-modal'), modal)
+      assert.equal(Swal.getPopup(), modal)
       done()
     }
   })
@@ -497,7 +497,7 @@ QUnit.test('onBeforeOpen', (assert) => {
     title: 'onBeforeOpen test',
     onBeforeOpen: (modal) => {
       assert.notOk(Swal.isVisible())
-      assert.equal($('.swal2-modal'), modal)
+      assert.equal(Swal.getPopup(), modal)
     }
   })
 
@@ -506,10 +506,10 @@ QUnit.test('onBeforeOpen', (assert) => {
   Swal.fire({
     title: 'onBeforeOpen test',
     onBeforeOpen: () => {
-      $('.swal2-title').innerHTML = dynamicTitle
+      Swal.getTitle().innerHTML = dynamicTitle
     },
     onOpen: () => {
-      assert.equal($('.swal2-title').innerHTML, dynamicTitle)
+      assert.equal(Swal.getTitle().innerHTML, dynamicTitle)
       done()
     }
   })
@@ -534,7 +534,7 @@ QUnit.test('onRender', (assert) => {
   assert.ok(onRender.calledTwice)
 
   // the modal element must always be passed to the onRender hook
-  assert.ok(onRender.alwaysCalledWithExactly($('.swal2-modal')))
+  assert.ok(onRender.alwaysCalledWithExactly(Swal.getPopup()))
 })
 
 QUnit.test('onAfterClose', (assert) => {
@@ -554,7 +554,7 @@ QUnit.test('onAfterClose', (assert) => {
     }
   })
 
-  $('.swal2-close').click()
+  Swal.getCloseButton().click()
 })
 
 QUnit.test('onClose', (assert) => {
@@ -570,8 +570,8 @@ QUnit.test('onClose', (assert) => {
     }
   })
 
-  const modal = $('.swal2-modal')
-  $('.swal2-close').click()
+  const modal = Swal.getPopup()
+  Swal.getCloseButton().click()
 })
 
 QUnit.test('Swal.fire() in onClose', (assert) => {
@@ -650,7 +650,7 @@ QUnit.test('close button', (assert) => {
     done()
   })
 
-  const closeButton = $('.swal2-close')
+  const closeButton = Swal.getCloseButton()
   assert.ok(isVisible(closeButton))
   assert.equal(closeButton.getAttribute('aria-label'), 'Close this dialog')
   closeButton.click()
@@ -663,7 +663,7 @@ QUnit.test('close button customization', (assert) => {
     closeButtonHtml: 'c'
   })
 
-  const closeButton = $('.swal2-close')
+  const closeButton = Swal.getCloseButton()
   assert.equal(closeButton.innerHTML, 'c')
 })
 
@@ -708,10 +708,10 @@ QUnit.test('addition and removal of backdrop', (assert) => {
 
 QUnit.test('footer', (assert) => {
   Swal.fire({ title: 'Modal with footer', footer: 'I am footer' })
-  assert.ok(isVisible($('.swal2-footer')))
+  assert.ok(isVisible(Swal.getFooter()))
 
   Swal.fire('Modal w/o footer')
-  assert.ok(isHidden($('.swal2-footer')))
+  assert.ok(isHidden(Swal.getFooter()))
 })
 
 QUnit.test('visual apperarance', (assert) => {

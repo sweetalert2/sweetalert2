@@ -80,13 +80,6 @@ const sauceLabsLaunchers = {
     platformName: 'iOS',
     platformVersion: 'latest'
   },
-  android: {
-    base: 'SauceLabs',
-    deviceName: 'Android Emulator',
-    browserName: 'Chrome',
-    platformName: 'Android',
-    platformVersion: 'latest'
-  }
 }
 
 function checkSauceCredentials () {

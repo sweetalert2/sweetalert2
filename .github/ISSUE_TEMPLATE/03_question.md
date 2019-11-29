@@ -13,8 +13,10 @@ Thank you.
 ---
 
 Has SweetAlert2 helped you create an amazing application? You can show your support by making a donation:
+
+- GitHub Sponsors: https://github.com/sponsors/limonte
 - PayPal: https://www.paypal.me/limonte
-- Bitcoin: `12BxefvPMtHePgfPRDL1SaZYSG4GwQmWoP`
-- Ether: `0x36e2b10666e2c0dc343901895ba3697b5d3214d1`
-- Bitcoin Cash: `qqxs402qszgwuue00gwxw996lzhpa8up2unqm0y46g`
-- Stellar: `GBRS5KGFJO4OBUGW3TRQBIVXTM5YDS53DOSHGA3LKVE2YXKVKNVDONBP`
+- Bitcoin: `16Z7RvFv7PsV3XzFvchYwPnRfw9KeLTZQJ`
+- Ether: `0x192096161eB2273f12b1cB4E31aBB09Bfc03a7F3`
+- Bitcoin Cash: `qz28x66hrljtdz3052p8ya3cmkwwva5avy0msz2ej3`
+- Stellar: `GDUM4VJZYDNRHBTKUQBOPC374AP6MMMVOJDMSHIPEJPEMBCY4ZHH6NDY`

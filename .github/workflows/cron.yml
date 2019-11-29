@@ -1,0 +1,46 @@
+name: CRON tests
+
+on:
+  schedule:
+    - cron:  '0 3 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Install npm dependencies
+      run: yarn install
+
+    - name: Build
+      run: yarn build
+
+    - name: Test in node
+      run: node test/require-in-node
+
+    - name: Test in jest
+      run: |
+        yarn add --dev jest
+        ./node_modules/.bin/jest --ci
+
+    - name: Test dist/*.min.js
+      run: yarn test --minified
+
+    - name: Run cross-platform tests with SauceLabs
+      env:
+        SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+        SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+      run: |
+        yarn test --sauce
+        yarn test --sauce --minified
+
+    - name: Test third-party CDN services
+      run: |
+        # jsdelivr
+        curl --location 'https://cdn.jsdelivr.net/npm/sweetalert2' 2>&1 | grep --quiet 'this.Swal'
+        # unpkg
+        curl --location 'https://unpkg.com/sweetalert2' 2>&1 | grep --quiet 'this.Swal'
+        # Wappalyzer
+        curl 'https://api.wappalyzer.com/lookup-basic/v1/?url=https%3A%2F%2Fsweetalert2.github.io' 2>&1 | grep --quiet 'SweetAlert2'

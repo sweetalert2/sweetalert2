@@ -21,7 +21,7 @@ function handlePositionParam (container, position) {
 
 function handleGrowParam (container, grow) {
   if (grow && typeof grow === 'string') {
-    const growClass = 'grow-' + grow
+    const growClass = `grow-${grow}`
     if (growClass in swalClasses) {
       dom.addClass(container, swalClasses[growClass])
     }
@@ -45,8 +45,5 @@ export const renderContainer = (instance, params) => {
   handleGrowParam(container, params.grow)
 
   // Custom class
-  dom.applyCustomClass(container, params.customClass, 'container')
-  if (params.customContainerClass) { // @deprecated
-    dom.addClass(container, params.customContainerClass)
-  }
+  dom.applyCustomClass(container, params, 'container')
 }

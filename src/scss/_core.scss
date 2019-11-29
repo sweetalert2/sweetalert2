@@ -1,0 +1,770 @@
+.swal2-container {
+  // centering
+  display: flex;
+  position: fixed;
+  z-index: 1060;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: $swal2-container-padding;
+  overflow-x: hidden;
+  transition: $swal2-backdrop-transition;
+
+  // sweetalert2/issues/905
+  -webkit-overflow-scrolling: touch;
+
+  &.swal2-backdrop-show {
+    background: $swal2-backdrop;
+  }
+
+  &.swal2-backdrop-hide {
+    background: transparent !important;
+  }
+
+  &.swal2-top {
+    align-items: flex-start;
+  }
+
+  &.swal2-top-start,
+  &.swal2-top-left {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  &.swal2-top-end,
+  &.swal2-top-right {
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  &.swal2-center {
+    align-items: center;
+  }
+
+  &.swal2-center-start,
+  &.swal2-center-left {
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &.swal2-center-end,
+  &.swal2-center-right {
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &.swal2-bottom {
+    align-items: flex-end;
+  }
+
+  &.swal2-bottom-start,
+  &.swal2-bottom-left {
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
+  &.swal2-bottom-end,
+  &.swal2-bottom-right {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  &.swal2-bottom > :first-child,
+  &.swal2-bottom-start > :first-child,
+  &.swal2-bottom-left > :first-child,
+  &.swal2-bottom-end > :first-child,
+  &.swal2-bottom-right > :first-child {
+    margin-top: auto;
+  }
+
+  &.swal2-grow-fullscreen > .swal2-modal {
+    display: flex !important;
+    flex: 1;
+    align-self: stretch;
+    justify-content: center;
+  }
+
+  &.swal2-grow-row > .swal2-modal {
+    display: flex !important;
+    flex: 1;
+    align-content: center;
+    justify-content: center;
+  }
+
+  &.swal2-grow-column {
+    flex: 1;
+    flex-direction: column;
+
+    &.swal2-top,
+    &.swal2-center,
+    &.swal2-bottom {
+      align-items: center;
+    }
+
+    &.swal2-top-start,
+    &.swal2-center-start,
+    &.swal2-bottom-start,
+    &.swal2-top-left,
+    &.swal2-center-left,
+    &.swal2-bottom-left {
+      align-items: flex-start;
+    }
+
+    &.swal2-top-end,
+    &.swal2-center-end,
+    &.swal2-bottom-end,
+    &.swal2-top-right,
+    &.swal2-center-right,
+    &.swal2-bottom-right {
+      align-items: flex-end;
+    }
+
+    & > .swal2-modal {
+      display: flex !important;
+      flex: 1;
+      align-content: center;
+      justify-content: center;
+    }
+  }
+
+  @include not('.swal2-top',
+  '.swal2-top-start',
+  '.swal2-top-end',
+  '.swal2-top-left',
+  '.swal2-top-right',
+  '.swal2-center-start',
+  '.swal2-center-end',
+  '.swal2-center-left',
+  '.swal2-center-right',
+  '.swal2-bottom',
+  '.swal2-bottom-start',
+  '.swal2-bottom-end',
+  '.swal2-bottom-left',
+  '.swal2-bottom-right',
+  '.swal2-grow-fullscreen') {
+    & > .swal2-modal {
+      margin: auto;
+    }
+  }
+
+  @include ie {
+    .swal2-modal {
+      margin: 0 !important;
+    }
+  }
+}
+
+.swal2-popup {
+  display: none;
+  position: relative;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  width: $swal2-width;
+  max-width: 100%;
+  padding: $swal2-padding;
+  border: $swal2-border;
+  border-radius: $swal2-border-radius;
+  background: $swal2-background;
+  font-family: $swal2-font;
+  font-size: $swal2-font-size;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.swal2-loading {
+    overflow-y: hidden;
+  }
+}
+
+.swal2-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.swal2-title {
+  position: relative;
+  max-width: 100%;
+  margin: $swal2-title-margin;
+  padding: 0;
+  color: $swal2-title-color;
+  font-size: $swal2-title-font-size;
+  font-weight: 600;
+  text-align: center;
+  text-transform: none;
+  word-wrap: break-word;
+}
+
+.swal2-actions {
+  display: flex;
+  z-index: 1; // prevent sucess icon from overlapping buttons
+  flex-wrap: $swal2-actions-flex-wrap;
+  align-items: $swal2-actions-align-items;
+  justify-content: $swal2-actions-justify-content;
+  width: $swal2-actions-width;
+  margin: $swal2-actions-margin;
+
+  &:not(.swal2-loading) {
+    .swal2-styled {
+      &[disabled] {
+        opacity: .4;
+      }
+
+      &:hover {
+        background-image: linear-gradient($swal2-button-darken-hover, $swal2-button-darken-hover);
+      }
+
+      &:active {
+        background-image: linear-gradient($swal2-button-darken-active, $swal2-button-darken-active);
+      }
+    }
+  }
+
+  &.swal2-loading {
+    .swal2-styled {
+      &.swal2-confirm {
+        box-sizing: border-box;
+        width: 2.5em;
+        height: 2.5em;
+        margin: .46875em;
+        padding: 0;
+        animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
+        border: .25em solid transparent;
+        border-radius: 100%;
+        border-color: transparent;
+        background-color: transparent !important;
+        color: transparent;
+        cursor: default;
+        user-select: none;
+      }
+
+      &.swal2-cancel {
+        margin-right: 30px;
+        margin-left: 30px;
+      }
+    }
+
+    :not(.swal2-styled) {
+      &.swal2-confirm {
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 15px;
+          height: 15px;
+          margin-left: 5px;
+          animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
+          border: 3px solid lighten($swal2-black, 60);
+          border-radius: 50%;
+          border-right-color: transparent;
+          box-shadow: 1px 1px 1px $swal2-white;
+        }
+      }
+    }
+  }
+}
+
+.swal2-styled {
+  margin: .3125em;
+  padding: .625em 2em;
+  box-shadow: none;
+  font-weight: 500;
+
+  &:not([disabled]) {
+    cursor: pointer;
+  }
+
+  &.swal2-confirm {
+    border: $swal2-confirm-button-border;
+    border-radius: $swal2-confirm-button-border-radius;
+    background: initial;
+    background-color: $swal2-confirm-button-background-color;
+    color: $swal2-confirm-button-color;
+    font-size: $swal2-confirm-button-font-size;
+  }
+
+  &.swal2-cancel {
+    border: $swal2-cancel-button-border;
+    border-radius: $swal2-cancel-button-border-radius;
+    background: initial;
+    background-color: $swal2-cancel-button-background-color;
+    color: $swal2-cancel-button-color;
+    font-size: $swal2-cancel-button-font-size;
+  }
+
+  &:focus {
+    outline: $swal2-button-focus-outline;
+    background-color: $swal2-button-focus-background-color;
+    box-shadow: $swal2-button-focus-box-shadow;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+.swal2-footer {
+  justify-content: center;
+  margin: $swal2-footer-margin;
+  padding: $swal2-footer-padding;
+  border-top: 1px solid $swal2-footer-border-color;
+  color: $swal2-footer-color;
+  font-size: $swal2-footer-font-size;
+}
+
+.swal2-timer-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: $swal2-timer-progress-bar-height;
+  background: $swal2-timer-progress-bar-background;
+}
+
+.swal2-image {
+  max-width: 100%;
+  margin: $swal2-image-margin;
+}
+
+.swal2-close {
+  position: $swal2-close-button-position;
+  z-index: 2;
+
+  /* 1617 */
+  top: $swal2-close-button-gap;
+  right: $swal2-close-button-gap;
+  justify-content: center;
+  width: $swal2-close-button-width;
+  height: $swal2-close-button-height;
+  padding: 0;
+  overflow: hidden;
+  transition: $swal2-close-button-transition;
+  border: $swal2-close-button-border;
+  border-radius: $swal2-close-button-border-radius;
+  outline: $swal2-close-button-outline;
+  background: $swal2-close-button-background;
+  color: $swal2-close-button-color;
+  font-family: $swal2-close-button-font-family;
+  font-size: $swal2-close-button-font-size;
+  line-height: $swal2-close-button-line-height;
+  cursor: pointer;
+
+  &:hover {
+    transform: $swal2-close-button-hover-transform;
+    background: $swal2-close-button-hover-background;
+    color: $swal2-close-button-hover-color;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+.swal2-content {
+  z-index: 1; // prevent sucess icon overlapping the content
+  justify-content: $swal2-content-justify-content;
+  margin: $swal2-content-margin;
+  padding: $swal2-content-pading;
+  color: $swal2-content-color;
+  font-size: $swal2-content-font-size;
+  font-weight: $swal2-content-font-weight;
+  line-height: $swal2-content-line-height;
+  text-align: $swal2-content-text-align;
+  word-wrap: $swal2-content-word-wrap;
+}
+
+.swal2-input,
+.swal2-file,
+.swal2-textarea,
+.swal2-select,
+.swal2-radio,
+.swal2-checkbox {
+  margin: $swal2-input-margin;
+}
+
+.swal2-input,
+.swal2-file,
+.swal2-textarea {
+  box-sizing: border-box;
+  width: $swal2-input-width;
+  transition: $swal2-input-transition;
+  border: $swal2-input-border;
+  border-radius: $swal2-input-border-radius;
+  background: $swal2-input-background;
+  box-shadow: $swal2-input-box-shadow;
+  color: $swal2-input-color;
+  font-size: $swal2-input-font-size;
+
+  &.swal2-inputerror {
+    border-color: $swal2-error !important;
+    box-shadow: 0 0 2px $swal2-error !important;
+  }
+
+  &:focus {
+    border: $swal2-input-focus-border;
+    outline: $swal2-input-focus-outline;
+    box-shadow: $swal2-input-focus-box-shadow;
+  }
+
+  &::placeholder {
+    color: lighten($swal2-black, 80);
+  }
+}
+
+.swal2-range {
+  margin: $swal2-input-margin;
+  background: $swal2-background;
+
+  input {
+    width: 80%;
+  }
+
+  output {
+    width: 20%;
+    color: $swal2-input-color;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  input,
+  output {
+    height: $swal2-input-height;
+    padding: 0;
+    font-size: $swal2-input-font-size;
+    line-height: $swal2-input-height;
+  }
+}
+
+.swal2-input {
+  height: $swal2-input-height;
+  padding: $swal2-input-padding;
+
+  &[type='number'] {
+    max-width: 10em;
+  }
+}
+
+.swal2-file {
+  background: $swal2-input-background;
+  font-size: $swal2-input-font-size;
+}
+
+.swal2-textarea {
+  height: $swal2-textarea-height;
+  padding: $swal2-textarea-padding;
+}
+
+.swal2-select {
+  min-width: 50%;
+  max-width: 100%;
+  padding: .375em .625em;
+  background: $swal2-input-background;
+  color: $swal2-input-color;
+  font-size: $swal2-input-font-size;
+}
+
+.swal2-radio,
+.swal2-checkbox {
+  align-items: center;
+  justify-content: center;
+  background: $swal2-background;
+  color: $swal2-input-color;
+
+  label {
+    margin: 0 .6em;
+    font-size: $swal2-input-font-size;
+  }
+
+  input {
+    margin: 0 .4em;
+  }
+}
+
+.swal2-validation-message {
+  display: none;
+  align-items: center;
+  justify-content: $swal2-validation-message-justify-content;
+  padding: $swal2-validation-message-padding;
+  overflow: hidden;
+  background: $swal2-validation-message-background;
+  color: $swal2-validation-message-color;
+  font-size: $swal2-validation-message-font-size;
+  font-weight: $swal2-validation-message-font-weight;
+
+  &::before {
+    content: '!';
+    display: inline-block;
+    width: 1.5em;
+    min-width: 1.5em;
+    height: 1.5em;
+    margin: 0 .625em;
+    zoom: $swal2-validation-message-icon-zoom;
+    border-radius: 50%;
+    background-color: $swal2-validation-message-icon-background;
+    color: $swal2-validation-message-icon-color;
+    font-weight: 600;
+    line-height: 1.5em;
+    text-align: center;
+  }
+}
+
+.swal2-icon {
+  position: relative;
+  box-sizing: content-box;
+  justify-content: center;
+  width: $swal2-icon-size;
+  height: $swal2-icon-size;
+  margin: $swal2-icon-margin;
+  zoom: $swal2-icon-zoom;
+  border: .25em solid transparent;
+  border-radius: 50%;
+  font-family: $swal2-icon-font-family;
+  line-height: $swal2-icon-size;
+  cursor: default;
+  user-select: none;
+
+  .swal2-icon-content {
+    display: flex;
+    align-items: center;
+    font-size: 3.75em;
+  }
+
+  &.swal2-error {
+    border-color: $swal2-error;
+    color: $swal2-error;
+
+    .swal2-x-mark {
+      position: relative;
+      flex-grow: 1;
+    }
+
+    [class^='swal2-x-mark-line'] {
+      display: block;
+      position: absolute;
+      top: 2.3125em;
+      width: 2.9375em;
+      height: .3125em;
+      border-radius: .125em;
+      background-color: $swal2-error;
+
+      &[class$='left'] {
+        left: 1.0625em;
+        transform: rotate(45deg);
+      }
+
+      &[class$='right'] {
+        right: 1em;
+        transform: rotate(-45deg);
+      }
+    }
+
+    // Error icon animation
+    &.swal2-icon-show {
+      @if $swal2-icon-animations {
+        animation: swal2-animate-error-icon .5s;
+
+        .swal2-x-mark {
+          animation: swal2-animate-error-x-mark .5s;
+        }
+      }
+    }
+  }
+
+  &.swal2-warning {
+    border-color: lighten($swal2-warning, 7);
+    color: $swal2-warning;
+  }
+
+  &.swal2-info {
+    border-color: lighten($swal2-info, 20);
+    color: $swal2-info;
+  }
+
+  &.swal2-question {
+    border-color: lighten($swal2-question, 20);
+    color: $swal2-question;
+  }
+
+  &.swal2-success {
+    border-color: $swal2-success;
+    color: $swal2-success;
+
+    [class^='swal2-success-circular-line'] {
+      // Emulate moving circular line
+      position: absolute;
+      width: 3.75em;
+      height: 7.5em;
+      transform: rotate(45deg);
+      border-radius: 50%;
+
+      &[class$='left'] {
+        top: -.4375em;
+        left: -2.0635em;
+        transform: rotate(-45deg);
+        transform-origin: 3.75em 3.75em;
+        border-radius: 7.5em 0 0 7.5em;
+      }
+
+      &[class$='right'] {
+        top: -.6875em;
+        left: 1.875em;
+        transform: rotate(-45deg);
+        transform-origin: 0 3.75em;
+        border-radius: 0 7.5em 7.5em 0;
+      }
+    }
+
+    .swal2-success-ring {
+      // Ring
+      position: absolute;
+      z-index: 2;
+      top: -.25em;
+      left: -.25em;
+      box-sizing: content-box;
+      width: 100%;
+      height: 100%;
+      border: .25em solid $swal2-success-border;
+      border-radius: 50%;
+    }
+
+    .swal2-success-fix {
+      // Hide corners left from animation
+      position: absolute;
+      z-index: 1;
+      top: .5em;
+      left: 1.625em;
+      width: .4375em;
+      height: 5.625em;
+      transform: rotate(-45deg);
+    }
+
+    [class^='swal2-success-line'] {
+      display: block;
+      position: absolute;
+      z-index: 2;
+      height: .3125em;
+      border-radius: .125em;
+      background-color: $swal2-success;
+
+      &[class$='tip'] {
+        top: 2.875em;
+        left: .875em;
+        width: 1.5625em;
+        transform: rotate(45deg);
+      }
+
+      &[class$='long'] {
+        top: 2.375em;
+        right: .5em;
+        width: 2.9375em;
+        transform: rotate(-45deg);
+      }
+    }
+
+    // Success icon animation
+    &.swal2-icon-show {
+      @if $swal2-icon-animations {
+        .swal2-success-line-tip {
+          animation: swal2-animate-success-line-tip .75s;
+        }
+
+        .swal2-success-line-long {
+          animation: swal2-animate-success-line-long .75s;
+        }
+
+        .swal2-success-circular-line-right {
+          animation: swal2-rotate-success-circular-line 4.25s ease-in;
+        }
+      }
+    }
+  }
+}
+
+.swal2-progress-steps {
+  align-items: center;
+  margin: $swal2-progress-steps-margin;
+  padding: $swal2-progress-steps-padding;
+  background: $swal2-progress-steps-background;
+  font-weight: $swal2-progress-steps-font-weight;
+
+  li {
+    display: inline-block;
+    position: relative;
+  }
+
+  .swal2-progress-step {
+    z-index: 20;
+    width: $swal2-progress-step-width;
+    height: $swal2-progress-step-height;
+    border-radius: $swal2-progress-step-border-radius;
+    background: $swal2-active-step-background;
+    color: $swal2-active-step-color;
+    line-height: $swal2-progress-step-height;
+    text-align: center;
+
+    &.swal2-active-progress-step {
+      background: $swal2-active-step-background;
+
+      ~ .swal2-progress-step {
+        background: $swal2-progress-step-background;
+        color: $swal2-progress-step-color;
+      }
+
+      ~ .swal2-progress-step-line {
+        background: $swal2-progress-step-background;
+      }
+    }
+  }
+
+  .swal2-progress-step-line {
+    z-index: 10;
+    width: $swal2-progress-steps-distance;
+    height: .4em;
+    margin: 0 -1px;
+    background: $swal2-active-step-background;
+  }
+}
+
+// github.com/sweetalert2/sweetalert2/issues/268
+[class^='swal2'] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.swal2-show {
+  animation: $swal2-show-animation;
+}
+
+.swal2-hide {
+  animation: $swal2-hide-animation;
+}
+
+.swal2-noanimation {
+  transition: none;
+}
+
+// Measure scrollbar width for padding body during modal show/hide
+.swal2-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+// Right-to-left support
+.swal2-rtl {
+  .swal2-close {
+    right: auto;
+    left: $swal2-close-button-gap;
+  }
+
+  .swal2-timer-progress-bar {
+    right: 0;
+    left: auto;
+  }
+}

@@ -1,0 +1,37 @@
+@import '../variables';
+
+// Microsoft Edge
+@supports (-ms-accelerator: true) {
+  .swal2-range {
+    input {
+      width: 100% !important;
+    }
+
+    output {
+      display: none;
+    }
+  }
+}
+
+// IE11
+@media all and (-ms-high-contrast: none),
+  (-ms-high-contrast: active) {
+  .swal2-range {
+    input {
+      width: 100% !important;
+    }
+
+    output {
+      display: none;
+    }
+  }
+}
+
+// Firefox
+@-moz-document url-prefix() {
+  .swal2-close {
+    &:focus {
+      outline: 2px solid $swal2-outline-color;
+    }
+  }
+}

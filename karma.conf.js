@@ -1,5 +1,3 @@
-const ci = require('ci-info')
-
 const noLaunch = process.argv.includes('--no-launch')
 const testMinified = process.argv.includes('--minified')
 const isSauce = process.argv.includes('--sauce')
@@ -63,10 +61,17 @@ const sauceLabsLaunchers = {
     // TODO(@limonte): remove this line, the current latest 10.14 doesn't work (#1349)
     platform: 'macOS 10.13'
   },
-  edge: {
+  // TODO(@limonte): doesn't work, revisit
+  // edge: {
+  //   base: 'SauceLabs',
+  //   browserName: 'MicrosoftEdge',
+  //   version: 'latest'
+  // },
+  ie: {
     base: 'SauceLabs',
-    browserName: 'MicrosoftEdge',
-    version: 'latest'
+    browserName: 'internet explorer',
+    platformVersion: '11.0',
+    platform: 'Windows 7'
   },
   iphone: {
     base: 'SauceLabs',
@@ -75,13 +80,6 @@ const sauceLabsLaunchers = {
     platformName: 'iOS',
     platformVersion: 'latest'
   },
-  android: {
-    base: 'SauceLabs',
-    deviceName: 'Android Emulator',
-    browserName: 'Chrome',
-    platformName: 'Android',
-    platformVersion: 'latest'
-  }
 }
 
 function checkSauceCredentials () {
@@ -116,17 +114,13 @@ function getBrowsers () {
 
   let browsers = ['ChromeHeadless']
 
-  // Cron on Travis or check:qunit --sauce
+  // Cron on GitHub Actions or check:qunit --sauce
   if (isSauce) {
     checkSauceCredentials()
     browsers = Object.keys(sauceLabsLaunchers)
 
-  // AppVeyor
-  } else if (ci.APPVEYOR) {
-    browsers = ['IE', 'ChromeHeadless', 'FirefoxHeadless']
-
-  // Travis
-  } else if (ci.TRAVIS) {
+  // GitHub Actions
+  } else if (process.env.GITHUB_ACTION) {
     browsers = ['ChromeHeadless', 'FirefoxHeadless']
   }
 
@@ -136,8 +130,8 @@ function getBrowsers () {
 function getReporters () {
   const reporters = ['spec', 'saucelabs']
 
-  // Travis
-  if (ci.TRAVIS && !testMinified) {
+  // GitHub Actions
+  if (process.env.GITHUB_ACTION && !testMinified) {
     reporters.push('coverage')
   }
 

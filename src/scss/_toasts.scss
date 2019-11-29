@@ -1,0 +1,172 @@
+.swal2-popup {
+  &.swal2-toast {
+    flex-direction: row;
+    align-items: center;
+    width: $swal2-toast-width;
+    padding: $swal2-toast-padding;
+    overflow-y: hidden;
+    background: $swal2-toast-background;
+    box-shadow: $swal2-toast-box-shadow;
+
+    .swal2-header {
+      flex-direction: row;
+    }
+
+    .swal2-title {
+      flex-grow: 1;
+      justify-content: flex-start;
+      margin: $swal2-toast-title-margin;
+      font-size: $swal2-toast-title-font-size;
+    }
+
+    .swal2-footer {
+      margin: $swal2-toast-footer-margin;
+      padding: $swal2-toast-footer-margin;
+      font-size: $swal2-toast-footer-font-size;
+    }
+
+    .swal2-close {
+      position: static;
+      width: $swal2-toast-close-button-width;
+      height: $swal2-toast-close-button-height;
+      line-height: $swal2-toast-close-button-line-height;
+    }
+
+    .swal2-content {
+      justify-content: flex-start;
+      font-size: $swal2-toast-content-font-size;
+    }
+
+    .swal2-icon {
+      width: 2em;
+      min-width: 2em;
+      height: 2em;
+      margin: 0;
+
+      .swal2-icon-content {
+        display: flex;
+        align-items: center;
+        font-size: 1.8em;
+        font-weight: bold;
+
+        @include ie {
+          font-size: .25em;
+        }
+      }
+
+      &.swal2-success {
+        .swal2-success-ring {
+          width: 2em;
+          height: 2em;
+        }
+      }
+
+      &.swal2-error {
+        [class^='swal2-x-mark-line'] {
+          top: .875em;
+          width: 1.375em;
+
+          &[class$='left'] {
+            left: .3125em;
+          }
+
+          &[class$='right'] {
+            right: .3125em;
+          }
+        }
+      }
+    }
+
+    .swal2-actions {
+      flex-basis: auto !important;
+      width: auto;
+      height: auto;
+      margin: 0 .3125em;
+    }
+
+    .swal2-styled {
+      margin: 0 .3125em;
+      padding: .3125em .625em;
+      font-size: $swal2-toast-buttons-font-size;
+
+      &:focus {
+        box-shadow: $swal2-toast-button-focus-box-shadow;
+      }
+    }
+
+    .swal2-success {
+      border-color: $swal2-success;
+
+      [class^='swal2-success-circular-line'] { // Emulate moving circular line
+        position: absolute;
+        width: 1.6em;
+        height: 3em;
+        transform: rotate(45deg);
+        border-radius: 50%;
+
+        &[class$='left'] {
+          top: -.8em;
+          left: -.5em;
+          transform: rotate(-45deg);
+          transform-origin: 2em 2em;
+          border-radius: 4em 0 0 4em;
+        }
+
+        &[class$='right'] {
+          top: -.25em;
+          left: .9375em;
+          transform-origin: 0 1.5em;
+          border-radius: 0 4em 4em 0;
+        }
+      }
+
+      .swal2-success-ring {
+        width: 2em;
+        height: 2em;
+      }
+
+      .swal2-success-fix {
+        top: 0;
+        left: .4375em;
+        width: .4375em;
+        height: 2.6875em;
+      }
+
+      [class^='swal2-success-line'] {
+        height: .3125em;
+
+        &[class$='tip'] {
+          top: 1.125em;
+          left: .1875em;
+          width: .75em;
+        }
+
+        &[class$='long'] {
+          top: .9375em;
+          right: .1875em;
+          width: 1.375em;
+        }
+      }
+
+      &.swal2-icon-show {
+        @if $swal2-icon-animations {
+          .swal2-success-line-tip {
+            animation: swal2-toast-animate-success-line-tip .75s;
+          }
+
+          .swal2-success-line-long {
+            animation: swal2-toast-animate-success-line-long .75s;
+          }
+        }
+      }
+    }
+
+    &.swal2-show {
+      animation: $swal2-toast-show-animation;
+    }
+
+    &.swal2-hide {
+      animation: $swal2-toast-hide-animation;
+    }
+  }
+}

@@ -1,5 +1,6 @@
+import { getTimerProgressBar } from './getters.js'
 import { swalClasses, iconTypes } from '../classes.js'
-import { toArray, objectValues } from '../utils.js'
+import { toArray, objectValues, warn } from '../utils.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
@@ -7,19 +8,39 @@ export const states = {
 }
 
 export const hasClass = (elem, className) => {
-  return elem.classList.contains(className)
+  if (!className) {
+    return false
+  }
+  const classList = className.split(/\s+/)
+  for (let i = 0; i < classList.length; i++) {
+    if (!elem.classList.contains(classList[i])) {
+      return false
+    }
+  }
+  return true
 }
 
-export const applyCustomClass = (elem, customClass, className) => {
-  // Clean up previous custom classes
+const removeCustomClasses = (elem, params) => {
   toArray(elem.classList).forEach(className => {
-    if (!objectValues(swalClasses).includes(className) && !objectValues(iconTypes).includes(className)) {
+    if (
+      !objectValues(swalClasses).includes(className) &&
+      !objectValues(iconTypes).includes(className) &&
+      !objectValues(params.showClass).includes(className)
+    ) {
       elem.classList.remove(className)
     }
   })
+}
 
-  if (customClass && customClass[className]) {
-    addClass(elem, customClass[className])
+export const applyCustomClass = (elem, params, className) => {
+  removeCustomClasses(elem, params)
+
+  if (params.customClass && params.customClass[className]) {
+    if (typeof params.customClass[className] !== 'string' && !params.customClass[className].forEach) {
+      return warn(`Invalid type of customClass.${className}! Expected string or iterable object, got "${typeof params.customClass[className]}"`)
+    }
+
+    addClass(elem, params.customClass[className])
   }
 }
 
@@ -92,7 +113,7 @@ export const getChildByClass = (elem, className) => {
 
 export const applyNumericalStyle = (elem, property, value) => {
   if (value || parseInt(value) === 0) {
-    elem.style[property] = (typeof value === 'number') ? value + 'px' : value
+    elem.style[property] = (typeof value === 'number') ? `${value}px` : value
   } else {
     elem.style.removeProperty(property)
   }
@@ -115,6 +136,7 @@ export const toggle = (elem, condition, display) => {
 // borrowed from jquery $(elem).is(':visible') implementation
 export const isVisible = (elem) => !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
 
+/* istanbul ignore next */
 export const isScrollable = (elem) => !!(elem.scrollHeight > elem.clientHeight)
 
 // borrowed from https://stackoverflow.com/a/46352119
@@ -131,4 +153,29 @@ export const contains = (haystack, needle) => {
   if (typeof haystack.contains === 'function') {
     return haystack.contains(needle)
   }
+}
+
+export const animateTimerProgressBar = (timer, reset = false) => {
+  const timerProgressBar = getTimerProgressBar()
+  if (isVisible(timerProgressBar)) {
+    if (reset) {
+      timerProgressBar.style.transition = 'none'
+      timerProgressBar.style.width = '100%'
+    }
+    setTimeout(() => {
+      timerProgressBar.style.transition = `width ${timer / 1000}s linear`
+      timerProgressBar.style.width = '0%'
+    }, 10)
+  }
+}
+
+export const stopTimerProgressBar = () => {
+  const timerProgressBar = getTimerProgressBar()
+  const timerProgressBarWidth = parseInt(window.getComputedStyle(timerProgressBar).width)
+  timerProgressBar.style.removeProperty('transition')
+  timerProgressBar.style.width = '100%'
+  const timerProgressBarFullWidth = parseInt(window.getComputedStyle(timerProgressBar).width)
+  const timerProgressBarPercent = parseInt(timerProgressBarWidth / timerProgressBarFullWidth * 100)
+  timerProgressBar.style.removeProperty('transition')
+  timerProgressBar.style.width = `${timerProgressBarPercent}%`
 }

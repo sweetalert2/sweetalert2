@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "8.17.1",
+  "version": "9.4.0",
   "repository": "sweetalert2/sweetalert2",
   "homepage": "https://sweetalert2.github.io/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
@@ -12,21 +12,14 @@
     "@babel/core": "^7.2.2",
     "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
+    "@sweetalert2/eslint-config": "^1.0.0",
     "@sweetalert2/execute": "^1.0.0",
     "@sweetalert2/stylelint-config": "^1.1.5",
-    "@typescript-eslint/eslint-plugin": "^2.0.0",
-    "@typescript-eslint/parser": "^2.0.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-array-includes": "^2.0.3",
     "browser-sync": "^2.26.3",
-    "ci-info": "^2.0.0",
     "custom-event-polyfill": "^1.0.6",
     "eslint": "^6.0.0",
-    "eslint-config-standard": "^14.0.0",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^7.0.0",
     "gulp-clean-css": "^4.0.0",
@@ -56,25 +49,30 @@
     "rollup-plugin-json": "^4.0.0",
     "sass": "^1.22.1",
     "sinon": "^7.2.3",
-    "stylelint": "^10.0.0",
+    "stylelint": "^12.0.0",
     "typescript": "^3.5.0",
     "webpack": "^4.29.0"
   },
   "files": [
-    "bin",
     "dist",
     "src",
     "sweetalert2.d.ts"
   ],
+  "bundlewatch": {
+    "files": [
+      {
+        "path": "dist/sweetalert2.all.min.js",
+        "maxSize": "20kB"
+      }
+    ]
+  },
   "author": "Limon Monte <limon.monte@gmail.com> (https://limonte.github.io)",
   "contributors": [
+    "Giuseppe Verni (https://github.com/gverni)",
     "Matthew Francis Brunetti <zenflow87@gmail.com> (https://github.com/zenflow)",
     "Morgan Touverey-Quilling <mtouverey@alembic-dev.com> (https://github.com/toverux)",
     "Joseph Schultz (https://github.com/acupajoe)",
-    "Sam Turrell <sam@samturrell.co.uk> (https://github.com/samturrell)",
-    "Johan Fagerberg (https://github.com/birjolaxew)",
-    "Giuseppe Verni (https://github.com/gverni)",
-    "Juliano Pereira Lima (https://github.com/julianogtz)"
+    "Johan Fagerberg (https://github.com/birjolaxew)"
   ],
   "keywords": [
     "sweetalert",
@@ -87,28 +85,14 @@
     "toast",
     "accessible"
   ],
-  "engines": {
-    "node": ">=0.10.0"
-  },
   "scripts": {
     "start": "gulp develop --continue-on-error --skip-minification --skip-standalone",
-    "test": "npm run build && npm run check",
-    "lint": "stylelint src; eslint src test tools bin *.js *.ts",
+    "lint": "stylelint src && eslint src test tools *.js *.ts",
     "build": "gulp build",
-    "check": "npm run lint && npm run check:require-in-node && npm run check:qunit && npm run check:qunit:minified && npm run check:ts",
-    "check:sauce": "npm run check:qunit:sauce && npm run check:qunit:minified:sauce",
-    "check:require-in-node": "node test/require-in-node",
-    "check:jest": "jest --ci",
-    "check:qunit": "karma start karma.conf.js --single-run",
-    "check:qunit:minified": "karma start karma.conf.js --single-run --minified",
-    "check:qunit:sauce": "karma start karma.conf.js --single-run --sauce",
-    "check:qunit:minified:sauce": "karma start karma.conf.js --single-run --minified --sauce",
-    "check:ts": "tsc --lib dom,es6 --noEmit test/ts/simple-usage.ts sweetalert2.d.ts && tsc --lib dom,es6 --noEmit test/ts/dist-sweetalert2.ts sweetalert2.d.ts && tsc --lib dom,es6 --noEmit test/ts/src-sweetalert2.ts sweetalert2.d.ts",
-    "check:third-party": "npm run check:unpkg && npm run check:jsdelivr && npm run check:wappalyzer",
-    "check:wappalyzer": "curl 'https://api.wappalyzer.com/lookup-basic/v1/?url=https%3A%2F%2Fsweetalert2.github.io' 2>&1 | grep --quiet 'SweetAlert2'",
-    "check:unpkg": "curl --location 'https://unpkg.com/sweetalert2' 2>&1 | grep --quiet 'this.Swal'",
-    "check:jsdelivr": "curl --location 'https://cdn.jsdelivr.net/npm/sweetalert2' 2>&1 | grep --quiet 'this.Swal'",
-    "postinstall": "node bin/postinstall.js"
+    "test": "karma start karma.conf.js --single-run"
+  },
+  "funding": {
+    "url": "https://sweetalert2.github.io/#donations"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
   "license": "MIT"

@@ -1,18 +1,28 @@
 import { warn, warnAboutDepreation } from '../utils/utils.js'
 
-const defaultParams = {
+export const defaultParams = {
   title: '',
   titleText: '',
   text: '',
   html: '',
   footer: '',
-  type: null,
+  icon: null,
+  iconHtml: null,
   toast: false,
+  animation: true,
+  showClass: {
+    popup: 'swal2-show',
+    backdrop: 'swal2-backdrop-show',
+    icon: 'swal2-icon-show',
+  },
+  hideClass: {
+    popup: 'swal2-hide',
+    backdrop: 'swal2-backdrop-hide',
+    icon: 'swal2-icon-hide',
+  },
   customClass: '',
-  customContainerClass: '',
   target: 'body',
   backdrop: true,
-  animation: true,
   heightAuto: true,
   allowOutsideClick: true,
   allowEscapeKey: true,
@@ -25,11 +35,9 @@ const defaultParams = {
   confirmButtonText: 'OK',
   confirmButtonAriaLabel: '',
   confirmButtonColor: null,
-  confirmButtonClass: '',
   cancelButtonText: 'Cancel',
   cancelButtonAriaLabel: '',
   cancelButtonColor: null,
-  cancelButtonClass: '',
   buttonsStyling: true,
   reverseButtons: false,
   focusConfirm: true,
@@ -42,8 +50,8 @@ const defaultParams = {
   imageWidth: null,
   imageHeight: null,
   imageAlt: '',
-  imageClass: '',
   timer: null,
+  timerProgressBar: false,
   width: null,
   padding: null,
   background: null,
@@ -52,7 +60,6 @@ const defaultParams = {
   inputValue: '',
   inputOptions: {},
   inputAutoTrim: true,
-  inputClass: '',
   inputAttributes: {},
   inputValidator: null,
   validationMessage: null,
@@ -69,40 +76,33 @@ const defaultParams = {
   scrollbarPadding: true
 }
 
-const updatableParams = [
+export const updatableParams = [
   'title',
   'titleText',
   'text',
   'html',
-  'type',
+  'icon',
   'customClass',
   'showConfirmButton',
   'showCancelButton',
   'confirmButtonText',
   'confirmButtonAriaLabel',
   'confirmButtonColor',
-  'confirmButtonClass',
   'cancelButtonText',
   'cancelButtonAriaLabel',
   'cancelButtonColor',
-  'cancelButtonClass',
   'buttonsStyling',
   'reverseButtons',
   'imageUrl',
   'imageWidth',
-  'imageHeigth',
+  'imageHeight',
   'imageAlt',
-  'imageClass',
   'progressSteps',
   'currentProgressStep'
 ]
 
 export const deprecatedParams = {
-  customContainerClass: 'customClass',
-  confirmButtonClass: 'customClass',
-  cancelButtonClass: 'customClass',
-  imageClass: 'customClass',
-  inputClass: 'customClass'
+  animation: 'showClass" and "hideClass',
 }
 
 const toastIncompatibleParams = [
@@ -170,7 +170,7 @@ export const showWarningsForParams = (params) => {
       checkIfToastParamIsValid(param)
     }
 
-    checkIfParamIsDeprecated()
+    checkIfParamIsDeprecated(param)
   }
 }
 

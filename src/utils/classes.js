@@ -19,19 +19,19 @@ export const swalClasses = prefix([
   'toast',
   'toast-shown',
   'toast-column',
-  'fade',
   'show',
   'hide',
-  'noanimation',
   'close',
   'title',
   'header',
   'content',
+  'html-container',
   'actions',
   'confirm',
   'cancel',
   'footer',
   'icon',
+  'icon-content',
   'image',
   'input',
   'file',
@@ -67,7 +67,9 @@ export const swalClasses = prefix([
   'grow-row',
   'grow-column',
   'grow-fullscreen',
-  'rtl'
+  'rtl',
+  'timer-progress-bar',
+  'scrollbar-measure',
 ])
 
 export const iconTypes = prefix([

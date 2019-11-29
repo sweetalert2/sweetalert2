@@ -14,5 +14,5 @@ export const renderTitle = (instance, params) => {
   }
 
   // Custom class
-  dom.applyCustomClass(title, params.customClass, 'title')
+  dom.applyCustomClass(title, params, 'title')
 }

@@ -6,32 +6,33 @@ import privateProps from '../../../privateProps.js'
 export const renderIcon = (instance, params) => {
   const innerParams = privateProps.innerParams.get(instance)
 
-  // if the icon with the given type already rendered,
-  // apply the custom class without re-rendering the icon
-  if (innerParams && params.type === innerParams.type && dom.getIcon()) {
-    dom.applyCustomClass(dom.getIcon(), params.customClass, 'icon')
+  // if the give icon already rendered, apply the custom class without re-rendering the icon
+  if (innerParams && params.icon === innerParams.icon && dom.getIcon()) {
+    dom.applyCustomClass(dom.getIcon(), params, 'icon')
     return
   }
 
   hideAllIcons()
 
-  if (!params.type) {
+  if (!params.icon) {
     return
   }
 
-  adjustSuccessIconBackgoundColor()
-
-  if (Object.keys(iconTypes).indexOf(params.type) !== -1) {
-    const icon = dom.elementBySelector(`.${swalClasses.icon}.${iconTypes[params.type]}`)
+  if (Object.keys(iconTypes).indexOf(params.icon) !== -1) {
+    const icon = dom.elementBySelector(`.${swalClasses.icon}.${iconTypes[params.icon]}`)
     dom.show(icon)
 
+    // Custom or default content
+    setContent(icon, params)
+    adjustSuccessIconBackgoundColor()
+
     // Custom class
-    dom.applyCustomClass(icon, params.customClass, 'icon')
+    dom.applyCustomClass(icon, params, 'icon')
 
     // Animate icon
-    dom.toggleClass(icon, `swal2-animate-${params.type}-icon`, params.animation)
+    dom.addClass(icon, params.showClass.icon)
   } else {
-    error(`Unknown type! Expected "success", "error", "warning", "info" or "question", got "${params.type}"`)
+    error(`Unknown icon! Expected "success", "error", "warning", "info" or "question", got "${params.icon}"`)
   }
 }
 
@@ -51,3 +52,34 @@ const adjustSuccessIconBackgoundColor = () => {
     successIconParts[i].style.backgroundColor = popupBackgroundColor
   }
 }
+
+const setContent = (icon, params) => {
+  icon.innerHTML = ''
+
+  if (params.iconHtml) {
+    icon.innerHTML = iconContent(params.iconHtml)
+  } else if (params.icon === 'success') {
+    icon.innerHTML = `
+      <div class="swal2-success-circular-line-left"></div>
+      <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
+      <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>
+      <div class="swal2-success-circular-line-right"></div>
+    `
+  } else if (params.icon === 'error') {
+    icon.innerHTML = `
+      <span class="swal2-x-mark">
+        <span class="swal2-x-mark-line-left"></span>
+        <span class="swal2-x-mark-line-right"></span>
+      </span>
+    `
+  } else {
+    const defaultIconHtml = {
+      question: '?',
+      warning: '!',
+      info: 'i'
+    }
+    icon.innerHTML = iconContent(defaultIconHtml[params.icon])
+  }
+}
+
+const iconContent = (content) => `<div class="${swalClasses['icon-content']}">${content}</div>`

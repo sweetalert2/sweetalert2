@@ -1,4 +1,5 @@
 import { isVisible } from '../utils/dom/domUtils.js'
+import { getInputValue } from '../utils/dom/inputUtils.js'
 import { getValidationMessage } from '../utils/dom/getters.js'
 import { showLoading } from '../staticMethods/showLoading.js'
 import { DismissReason } from '../utils/DismissReason.js'
@@ -67,26 +68,3 @@ const confirm = (instance, innerParams, value) => {
     succeedWith(instance, value)
   }
 }
-
-const getInputValue = (instance, innerParams) => {
-  const input = instance.getInput()
-  if (!input) {
-    return null
-  }
-  switch (innerParams.input) {
-    case 'checkbox':
-      return getCheckboxValue(input)
-    case 'radio':
-      return getRadioValue(input)
-    case 'file':
-      return getFileValue(input)
-    default:
-      return innerParams.inputAutoTrim ? input.value.trim() : input.value
-  }
-}
-
-const getCheckboxValue = (input) => input.checked ? 1 : 0
-
-const getRadioValue = (input) => input.checked ? input.value : null
-
-const getFileValue = (input) => input.files.length ? input.files[0] : null

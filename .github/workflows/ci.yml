@@ -1,0 +1,73 @@
+name: build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Install npm dependencies
+      run: yarn install
+
+    - name: Build
+      run: yarn build
+
+    - name: Run linters
+      run: yarn lint
+
+    - name: Run tests
+      run: yarn test
+
+    - name: Check TypeScript
+      run: |
+        tsc --lib dom,es6 --noEmit test/ts/simple-usage.ts sweetalert2.d.ts
+        tsc --lib dom,es6 --noEmit test/ts/dist-sweetalert2.ts sweetalert2.d.ts
+        tsc --lib dom,es6 --noEmit test/ts/src-sweetalert2.ts sweetalert2.d.ts
+
+    # TODO: remove after https://github.com/bundlewatch/bundlewatch/pull/66 is merged and released
+    # https://stackoverflow.com/a/58035262
+    - name: Extract the branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+
+    - name: Report bundlezise to bundlewatch.io
+      env:
+        BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+        # TODO: remove after https://github.com/bundlewatch/bundlewatch/pull/66 is merged and released
+        CI_REPO_OWNER: "sweetalert2"
+        CI_REPO_NAME: "sweetalert2"
+        CI_COMMIT_SHA: ${{ github.sha }}
+        CI_BRANCH: ${{ steps.extract_branch.outputs.branch }}
+      run: |
+        yarn add --dev bundlewatch
+        ./node_modules/.bin/bundlewatch
+
+    - name: Report coverage to coveralls.io
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Run automated release process with semantic-release
+      if: github.event_name == 'push' && contains(github.ref, 'master')
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: |
+        yarn add --dev semantic-release@16.0.0-beta.26 @semantic-release/changelog@3 @semantic-release/exec@3.4.0-beta.2 @semantic-release/git@7.1.0-beta.3
+        ./node_modules/.bin/semantic-release
+
+  skip:
+    if: "contains(github.event.commits[0].message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: skip ci
+        run: echo "skip ci"

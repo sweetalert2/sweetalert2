@@ -9,24 +9,17 @@ const sweetHTML = `
  <div aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses.content}" class="${swalClasses.popup}" tabindex="-1">
    <div class="${swalClasses.header}">
      <ul class="${swalClasses['progress-steps']}"></ul>
-     <div class="${swalClasses.icon} ${iconTypes.error}">
-       <span class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span>
-     </div>
+     <div class="${swalClasses.icon} ${iconTypes.error}"></div>
      <div class="${swalClasses.icon} ${iconTypes.question}"></div>
      <div class="${swalClasses.icon} ${iconTypes.warning}"></div>
      <div class="${swalClasses.icon} ${iconTypes.info}"></div>
-     <div class="${swalClasses.icon} ${iconTypes.success}">
-       <div class="swal2-success-circular-line-left"></div>
-       <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
-       <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>
-       <div class="swal2-success-circular-line-right"></div>
-     </div>
+     <div class="${swalClasses.icon} ${iconTypes.success}"></div>
      <img class="${swalClasses.image}" />
      <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
      <button type="button" class="${swalClasses.close}"></button>
    </div>
    <div class="${swalClasses.content}">
-     <div id="${swalClasses.content}"></div>
+     <div id="${swalClasses.content}" class="${swalClasses['html-container']}"></div>
      <input class="${swalClasses.input}" />
      <input type="file" class="${swalClasses.file}" />
      <div class="${swalClasses.range}">
@@ -46,8 +39,8 @@ const sweetHTML = `
      <button type="button" class="${swalClasses.confirm}">OK</button>
      <button type="button" class="${swalClasses.cancel}">Cancel</button>
    </div>
-   <div class="${swalClasses.footer}">
-   </div>
+   <div class="${swalClasses.footer}"></div>
+   <div class="${swalClasses['timer-progress-bar']}"></div>
  </div>
 `.replace(/(^|\n)\s*/g, '')
 

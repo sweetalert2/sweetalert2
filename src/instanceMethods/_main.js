@@ -29,7 +29,7 @@ export function _main (userParams) {
     delete globalState.deferDisposalTimer
   }
 
-  const innerParams = Object.assign({}, defaultParams, userParams)
+  const innerParams = prepareParams(userParams)
   setParameters(innerParams)
   Object.freeze(innerParams)
 
@@ -49,6 +49,23 @@ export function _main (userParams) {
   privateProps.innerParams.set(this, innerParams)
 
   return swalPromise(this, domCache, innerParams)
+}
+
+const prepareParams = (userParams) => {
+  const showClass = Object.assign({}, defaultParams.showClass, userParams.showClass)
+  const hideClass = Object.assign({}, defaultParams.hideClass, userParams.hideClass)
+  const params = Object.assign({}, defaultParams, userParams)
+  params.showClass = showClass
+  params.hideClass = hideClass
+  // @deprecated
+  if (userParams.animation === false) {
+    params.showClass = {
+      popup: '',
+      backdrop: 'swal2-backdrop-show swal2-noanimation'
+    }
+    params.hideClass = {}
+  }
+  return params
 }
 
 const swalPromise = (instance, domCache, innerParams) => {
@@ -106,11 +123,19 @@ const populateDomCache = (instance) => {
 }
 
 const setupTimer = (globalState, innerParams, dismissWith) => {
+  const timerProgressBar = dom.getTimerProgressBar()
+  dom.hide(timerProgressBar)
   if (innerParams.timer) {
     globalState.timeout = new Timer(() => {
       dismissWith('timer')
       delete globalState.timeout
     }, innerParams.timer)
+    if (innerParams.timerProgressBar) {
+      dom.show(timerProgressBar)
+      setTimeout(() => {
+        dom.animateTimerProgressBar(innerParams.timer)
+      })
+    }
   }
 }
 

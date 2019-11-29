@@ -25,11 +25,13 @@ export const renderPopup = (instance, params) => {
   }
 
   // Custom class
-  dom.applyCustomClass(popup, params.customClass, 'popup')
+  dom.applyCustomClass(popup, params, 'popup')
   if (typeof params.customClass === 'string') {
     dom.addClass(popup, params.customClass)
   }
 
-  // CSS animation
-  dom.toggleClass(popup, swalClasses.noanimation, !params.animation)
+  // Add showClass when updating Swal.update({})
+  if (dom.isVisible(popup)) {
+    dom.addClass(popup, params.showClass.popup)
+  }
 }

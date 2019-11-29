@@ -1,5 +1,4 @@
 import privateProps from '../privateProps.js'
-import { warnAboutDepreation } from '../utils/utils.js'
 
 function setButtonsDisabled (instance, buttons, disabled) {
   const domCache = privateProps.domCache.get(instance)
@@ -29,18 +28,6 @@ export function enableButtons () {
 
 export function disableButtons () {
   setButtonsDisabled(this, ['confirmButton', 'cancelButton'], true)
-}
-
-// @deprecated
-export function enableConfirmButton () {
-  warnAboutDepreation('Swal.enableConfirmButton()', `Swal.getConfirmButton().removeAttribute('disabled')`)
-  setButtonsDisabled(this, ['confirmButton'], false)
-}
-
-// @deprecated
-export function disableConfirmButton () {
-  warnAboutDepreation('Swal.disableConfirmButton()', `Swal.getConfirmButton().setAttribute('disabled', '')`)
-  setButtonsDisabled(this, ['confirmButton'], true)
 }
 
 export function enableInput () {

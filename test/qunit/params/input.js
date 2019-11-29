@@ -15,14 +15,12 @@ QUnit.test('input text', (assert) => {
   const string = 'Live for yourself'
   Swal.fire({
     input: 'text',
-    inputClass: 'custom-input-class'
   }).then((result) => {
     assert.equal(result.value, string)
-    assert.ok(Swal.getInput().classList.contains('custom-input-class'))
     done()
   })
 
-  $('.swal2-input').value = string
+  Swal.getInput().value = string
   Swal.clickConfirm()
 })
 

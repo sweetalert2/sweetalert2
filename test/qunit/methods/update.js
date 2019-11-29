@@ -1,8 +1,19 @@
 const { $, Swal, SwalWithoutAnimation, isVisible } = require('../helpers')
+const { defaultParams, updatableParams } = require('../../../src/utils/params')
+const sinon = require('sinon/pkg/sinon')
+
+QUnit.test('all updatableParams are valid', (assert) => {
+  assert.ok(updatableParams)
+  updatableParams.forEach((updatableParam) => {
+    if (defaultParams[updatableParam] === undefined) {
+      throw new Error(`Invalid updatable param: ${updatableParam}`)
+    }
+  })
+})
 
 QUnit.test('update() method', (assert) => {
   SwalWithoutAnimation.fire({
-    type: 'success',
+    icon: 'success',
     input: 'text',
     imageUrl: '/assets/swal2-logo.png',
   })
@@ -10,7 +21,7 @@ QUnit.test('update() method', (assert) => {
   Swal.update({
     title: 'New title',
     html: 'New content',
-    type: 'success',
+    icon: 'success',
     showConfirmButton: false,
     showCancelButton: true,
     cancelButtonText: 'New cancel button text',
@@ -33,7 +44,7 @@ QUnit.test('update() method', (assert) => {
 
 QUnit.test('update customClass', (assert) => {
   SwalWithoutAnimation.fire({
-    type: 'success',
+    icon: 'success',
     imageUrl: '/assets/swal2-logo.png',
     input: 'text'
   })
@@ -110,10 +121,10 @@ QUnit.test('isUpdatableParameter() method', (assert) => {
 })
 
 QUnit.test('should update instance\'s params', (assert) => {
-  const swal = Swal.fire({ type: 'error' })
-  assert.equal(swal.params.type, 'error')
-  swal.update({ type: 'warning' })
-  assert.equal(swal.params.type, 'warning')
+  const swal = Swal.fire({ icon: 'error' })
+  assert.equal(swal.params.icon, 'error')
+  swal.update({ icon: 'warning' })
+  assert.equal(swal.params.icon, 'warning')
 })
 
 QUnit.test('should not affect input', (assert) => {
@@ -128,4 +139,32 @@ QUnit.test('should not affect input', (assert) => {
   Swal.getInput().value = 'dos'
   Swal.update({ html: 'hi' })
   assert.equal(Swal.getInput().value, 'dos')
+})
+
+QUnit.test('should not affect showClass', (assert) => {
+  const done = assert.async()
+  Swal.fire({
+    icon: 'success',
+    onOpen: () => {
+      Swal.update({})
+      assert.ok(Swal.getContainer().classList.contains('swal2-backdrop-show'))
+      assert.ok(Swal.getPopup().classList.contains('swal2-show'))
+      assert.ok(Swal.getIcon().classList.contains('swal2-icon-show'))
+      done()
+    }
+  })
+})
+
+QUnit.test('update() method should throw a warning when attempting to update the closing popup', (assert) => {
+  const done = assert.async()
+  const _consoleWarn = console.warn
+  const spy = sinon.spy(console, 'warn')
+
+  Swal.fire().then(() => {
+    Swal.update()
+    console.warn = _consoleWarn
+    assert.ok(spy.calledWith(`SweetAlert2: You're trying to update the closed or closing popup, that won't work. Use the update() method in preConfirm parameter or show a new popup.`))
+    done()
+  })
+  Swal.clickConfirm()
 })

@@ -90,14 +90,14 @@ QUnit.test('should not set aria-hidden="true" when `toast: true`', (assert) => {
 
 QUnit.test('dialog aria attributes', (assert) => {
   Swal.fire('Modal dialog')
-  assert.equal($('.swal2-modal').getAttribute('role'), 'dialog')
-  assert.equal($('.swal2-modal').getAttribute('aria-live'), 'assertive')
-  assert.equal($('.swal2-modal').getAttribute('aria-modal'), 'true')
+  assert.equal(Swal.getPopup().getAttribute('role'), 'dialog')
+  assert.equal(Swal.getPopup().getAttribute('aria-live'), 'assertive')
+  assert.equal(Swal.getPopup().getAttribute('aria-modal'), 'true')
 })
 
 QUnit.test('toast aria attributes', (assert) => {
   Swal.fire({ title: 'Toast', toast: true })
-  assert.equal($('.swal2-toast').getAttribute('role'), 'alert')
-  assert.equal($('.swal2-toast').getAttribute('aria-live'), 'polite')
-  assert.notOk($('.swal2-toast').getAttribute('aria-modal'))
+  assert.equal(Swal.getPopup().getAttribute('role'), 'alert')
+  assert.equal(Swal.getPopup().getAttribute('aria-live'), 'polite')
+  assert.notOk(Swal.getPopup().getAttribute('aria-modal'))
 })

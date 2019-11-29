@@ -1,31 +1,42 @@
 We would like to thank everyone who contributed to this library. If you find our library useful and wish to support as well, you can do so by making a donation:
 
+- [GitHub Sponsors :heart:](https://github.com/sponsors/limonte)
 - [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TKTWHJGUWLR7E)
-- Bitcoin: `12BxefvPMtHePgfPRDL1SaZYSG4GwQmWoP`
-- Ether: `0x36e2b10666e2c0dc343901895ba3697b5d3214d1`
-- Bitcoin Cash: `qqxs402qszgwuue00gwxw996lzhpa8up2unqm0y46g`
-- Stellar: `GBRS5KGFJO4OBUGW3TRQBIVXTM5YDS53DOSHGA3LKVE2YXKVKNVDONBP`
+- [PayPal.me](https://www.paypal.me/limonte)
+- Bitcoin: `16Z7RvFv7PsV3XzFvchYwPnRfw9KeLTZQJ`
+- Ether: `0x192096161eB2273f12b1cB4E31aBB09Bfc03a7F3`
+- Bitcoin Cash: `qz28x66hrljtdz3052p8ya3cmkwwva5avy0msz2ej3`
+- Stellar: `GDUM4VJZYDNRHBTKUQBOPC374AP6MMMVOJDMSHIPEJPEMBCY4ZHH6NDY`
 
 Your contribution will be greatly appreciated!
 
 
-# Backers
+# Sponsors
 
-Backer is a company or a person who donated 100 USD or more. Backers are listed here, in [README](https://github.com/sweetalert2/sweetalert2#backers), and in [SweetAlert2's official homepage](https://sweetalert2.github.io/#backers) (65K+ unique visitors per month). All backers have priority support via GitHub issues.
+Sponsor is a company or a person who donated 100 USD or more. Sponsors are listed here, in [README](https://github.com/sweetalert2/sweetalert2#sponsors), and in [SweetAlert2's official homepage](https://sweetalert2.github.io/#sponsors) (75K+ unique visitors per month). All sponsors have priority support via GitHub issues.
 
 - **[FlowCrypt](http://flowcrypt.com)** (200 EUR + 30 USD worth of BTC and ETH)
     > Thanks for the awesome work!
 
-- **[STED](https://sextoyeducation.com/)** (116 EUR)
+- **[STED (NSFW 18+)](https://sextoyeducation.com/)** (116 EUR)
     > Extremely useful. Thanks SweetAlert2!
 
 - **[PriceListo](https://www.pricelisto.com/)** (130 USD worth of BTC)
     > Love using SweetAlert2! Our JS popups finally look great and are super fun to use.
 
+- **[LoveLoxy (NSFW 18+)](https://loveloxy.com/)** (105 USD)
+
+- **SebaEBC** (100 USD)
+
+- **[Bingato (NSFW 18+)](https://bingato.com/)** (100 USD)
+
+- **[NDCHost](https://www.ndchost.com/)** (100 USD)
+    > Thank you for this great project!
+
 - **[SheetJS LLC](https://sheetjs.com/)** (100 USD)
     > Great Work with SweetAlert2!
 
-- **[STC (NSFW)](http://sextoycollective.com/)** (100 USD)
+- **[STC (NSFW 18+)](http://sextoycollective.com/)** (100 USD)
     > Love this! Thanks for making the Internet a prettier place.
 
 - **[Unique-P GmbH](https://www.unique-p.ch/)** (100 CHF)
@@ -50,6 +61,8 @@ Backer is a company or a person who donated 100 USD or more. Backers are listed 
 
 - **Emil Kristensen** (15 EUR)
 
+- **Motim8 LLC** (10 EUR)
+
 - **Ivan Zamecnik** (10 EUR)
 
 - **Denis Veg** (10 EUR)
@@ -69,8 +82,9 @@ Backer is a company or a person who donated 100 USD or more. Backers are listed 
 - **Jeff Keith** (10 EUR)
     > SweetAlert2 saved me tons of time.
 
+- **Julius Tens** (5 EUR)
 
-# Donors
+- **Mauricio Robles Huerta** (5 EUR)
 
 - **David Barber** (5 USD)
 

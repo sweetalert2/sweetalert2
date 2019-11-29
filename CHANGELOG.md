@@ -1,3 +1,343 @@
+# [9.4.0](https://github.com/sweetalert2/sweetalert2/compare/v9.3.17...v9.4.0) (2019-11-23)
+
+
+### Features
+
+* add getHtmlContainer() getter ([#1828](https://github.com/sweetalert2/sweetalert2/issues/1828)) ([6908c3b](https://github.com/sweetalert2/sweetalert2/commit/6908c3b722f33a3595216fb9dde6ab374a688206))
+
+## [9.3.17](https://github.com/sweetalert2/sweetalert2/compare/v9.3.16...v9.3.17) (2019-11-21)
+
+
+### Bug Fixes
+
+* do not fail when hideLoading() without popup ([2ada37c](https://github.com/sweetalert2/sweetalert2/commit/2ada37c1b5a0a9d05a2902ba82fd071002d5dd09))
+
+## [9.3.16](https://github.com/sweetalert2/sweetalert2/compare/v9.3.15...v9.3.16) (2019-11-19)
+
+
+### Bug Fixes
+
+* animate popup right after showing it ([#1826](https://github.com/sweetalert2/sweetalert2/issues/1826)) ([cf13990](https://github.com/sweetalert2/sweetalert2/commit/cf139905449e10275d137fa7b027cda95f8eec45))
+
+## [9.3.15](https://github.com/sweetalert2/sweetalert2/compare/v9.3.14...v9.3.15) (2019-11-19)
+
+
+### Bug Fixes
+
+* hasClass multiple classes support for IE11 ([bd4eab5](https://github.com/sweetalert2/sweetalert2/commit/bd4eab56d94e8f01615157c12ffcdd529698ff03))
+* revert "fix: add showClass asyncronously to popup (IE11)" ([6cb66cc](https://github.com/sweetalert2/sweetalert2/commit/6cb66ccbe1a246877a78436dd201afbae60154f1))
+
+## [9.3.14](https://github.com/sweetalert2/sweetalert2/compare/v9.3.13...v9.3.14) (2019-11-19)
+
+
+### Bug Fixes
+
+* measure scrollbar ([83bcdf3](https://github.com/sweetalert2/sweetalert2/commit/83bcdf33acd2db15168d18743d71997aea76d6dd))
+
+## [9.3.13](https://github.com/sweetalert2/sweetalert2/compare/v9.3.12...v9.3.13) (2019-11-18)
+
+
+### Bug Fixes
+
+* add showClass asyncronously to popup (IE11) ([8aed623](https://github.com/sweetalert2/sweetalert2/commit/8aed62350e032393214651f45c085dbf5d798140))
+
+## [9.3.12](https://github.com/sweetalert2/sweetalert2/compare/v9.3.11...v9.3.12) (2019-11-18)
+
+
+### Bug Fixes
+
+* **types:** simplify Swal.fire(title, message, icon) back ([#1823](https://github.com/sweetalert2/sweetalert2/issues/1823)) ([0cc40ff](https://github.com/sweetalert2/sweetalert2/commit/0cc40fff1956979869fee58261255e9d94fb1688))
+
+## [9.3.11](https://github.com/sweetalert2/sweetalert2/compare/v9.3.10...v9.3.11) (2019-11-15)
+
+
+### Bug Fixes
+
+* use $swal2-background in $swal2-button-focus-box-shadow ([bef3d86](https://github.com/sweetalert2/sweetalert2/commit/bef3d86ce450d4380d567224e74c65fb1363dd96))
+* use $swal2-background in $swal2-toast-button-focus-box-shadow ([2da88c2](https://github.com/sweetalert2/sweetalert2/commit/2da88c29cf53405be0d4f6287b345e975d11cb79))
+
+## [9.3.10](https://github.com/sweetalert2/sweetalert2/compare/v9.3.9...v9.3.10) (2019-11-15)
+
+
+### Bug Fixes
+
+* **ci:** fix semantic-release step ([fcf57b9](https://github.com/sweetalert2/sweetalert2/commit/fcf57b9b82d9a7cd873d9a6a2fce2283ea3223c8))
+* **ci:** use yarn for bundlewatch ([effa758](https://github.com/sweetalert2/sweetalert2/commit/effa758a1e88ee829af2559709cb90c4ea4ab17e))
+
+## [9.3.9](https://github.com/sweetalert2/sweetalert2/compare/v9.3.8...v9.3.9) (2019-11-15)
+
+
+### Bug Fixes
+
+* add showClass.popup in renderPopup() ([#1820](https://github.com/sweetalert2/sweetalert2/issues/1820)) ([38b5965](https://github.com/sweetalert2/sweetalert2/commit/38b596574590a36c859842fbba47a904d90cf91c))
+
+## [9.3.8](https://github.com/sweetalert2/sweetalert2/compare/v9.3.7...v9.3.8) (2019-11-15)
+
+
+### Bug Fixes
+
+* updatable params ([#1819](https://github.com/sweetalert2/sweetalert2/issues/1819)) ([42736bc](https://github.com/sweetalert2/sweetalert2/commit/42736bce35c993a3c6afab52ff6f9a6ff6269121))
+
+## [9.3.7](https://github.com/sweetalert2/sweetalert2/compare/v9.3.6...v9.3.7) (2019-11-15)
+
+
+### Bug Fixes
+
+* add $swal2-toast-background ([8ac68f1](https://github.com/sweetalert2/sweetalert2/commit/8ac68f1eaac2de37023141880fb641d7c62ef688))
+* use $swal2-background for range, radio, checkbox background ([6af549b](https://github.com/sweetalert2/sweetalert2/commit/6af549b8c4d00e30b4f857ddc493170fe2ea6f94))
+
+## [9.3.6](https://github.com/sweetalert2/sweetalert2/compare/v9.3.5...v9.3.6) (2019-11-14)
+
+
+### Bug Fixes
+
+* add $swal2-button-focus-box-shadow ([#1811](https://github.com/sweetalert2/sweetalert2/issues/1811)) ([2a49074](https://github.com/sweetalert2/sweetalert2/commit/2a4907417b643d55d47e81dcc63c4042453c5c1b))
+
+## [9.3.5](https://github.com/sweetalert2/sweetalert2/compare/v9.3.4...v9.3.5) (2019-11-13)
+
+
+### Bug Fixes
+
+* use inline-block for confirm button in showLoading() ([#1810](https://github.com/sweetalert2/sweetalert2/issues/1810)) ([c876d13](https://github.com/sweetalert2/sweetalert2/commit/c876d133a35f71feb1c73a09b777d9534e48bf8b))
+
+## [9.3.4](https://github.com/sweetalert2/sweetalert2/compare/v9.3.3...v9.3.4) (2019-11-12)
+
+
+### Bug Fixes
+
+* "funding" field can't be a string even though docs says so ([604f3d2](https://github.com/sweetalert2/sweetalert2/commit/604f3d27e86c7a7d9fd154f6750c3a90c6251579))
+
+## [9.3.3](https://github.com/sweetalert2/sweetalert2/compare/v9.3.2...v9.3.3) (2019-11-12)
+
+
+### Bug Fixes
+
+* add "funding" field to package.json ([04236fb](https://github.com/sweetalert2/sweetalert2/commit/04236fb072adcfe149dadb989772461814e374e3))
+
+## [9.3.2](https://github.com/sweetalert2/sweetalert2/compare/v9.3.1...v9.3.2) (2019-11-12)
+
+
+### Bug Fixes
+
+* reset timer progress bar on Swal.increaseTimer() ([#1807](https://github.com/sweetalert2/sweetalert2/issues/1807)) ([604feb8](https://github.com/sweetalert2/sweetalert2/commit/604feb86b9b9f2370ac85d5f8313b6d33b6356df))
+
+## [9.3.1](https://github.com/sweetalert2/sweetalert2/compare/v9.3.0...v9.3.1) (2019-11-11)
+
+
+### Bug Fixes
+
+* stop and resume timer progress bar ([#1806](https://github.com/sweetalert2/sweetalert2/issues/1806)) ([a8cf8c5](https://github.com/sweetalert2/sweetalert2/commit/a8cf8c51cbbe93344927619b836c208fca4fe158))
+
+# [9.3.0](https://github.com/sweetalert2/sweetalert2/compare/v9.2.0...v9.3.0) (2019-11-10)
+
+
+### Features
+
+* add timerProgressBar ([#1805](https://github.com/sweetalert2/sweetalert2/issues/1805)) ([d49cbe5](https://github.com/sweetalert2/sweetalert2/commit/d49cbe522242c6445e7ed731ad2c2d70980e292c))
+
+# [9.2.0](https://github.com/sweetalert2/sweetalert2/compare/v9.1.6...v9.2.0) (2019-11-09)
+
+
+### Features
+
+* support HTMLElement and JQuery in shorthand ([#1804](https://github.com/sweetalert2/sweetalert2/issues/1804)) ([9318f79](https://github.com/sweetalert2/sweetalert2/commit/9318f79174a3c26e44c15ddb051c3ec1e2367b0b))
+
+## [9.1.6](https://github.com/sweetalert2/sweetalert2/compare/v9.1.5...v9.1.6) (2019-11-08)
+
+
+### Bug Fixes
+
+* **types:** add missing version type ([10c4136](https://github.com/sweetalert2/sweetalert2/commit/10c41361c53392dfee683980b213cca6eaf49d89))
+
+## [9.1.5](https://github.com/sweetalert2/sweetalert2/compare/v9.1.4...v9.1.5) (2019-11-05)
+
+
+### Bug Fixes
+
+* .swal2-icon-content for toasts ([941b900](https://github.com/sweetalert2/sweetalert2/commit/941b900cfdecd5ad12c14d21f6e69757b84104f4))
+
+## [9.1.4](https://github.com/sweetalert2/sweetalert2/compare/v9.1.3...v9.1.4) (2019-11-05)
+
+
+### Bug Fixes
+
+* toast success icon (fixes [#1797](https://github.com/sweetalert2/sweetalert2/issues/1797)) ([9e15867](https://github.com/sweetalert2/sweetalert2/commit/9e1586737d6bd227c7a30d92999942d32caab87e))
+
+## [9.1.3](https://github.com/sweetalert2/sweetalert2/compare/v9.1.2...v9.1.3) (2019-11-05)
+
+
+### Bug Fixes
+
+* remove default backdrop background ([5027076](https://github.com/sweetalert2/sweetalert2/commit/50270767cd6b99478bd33c9ba5a9d6244b3a34a5))
+
+## [9.1.2](https://github.com/sweetalert2/sweetalert2/compare/v9.1.1...v9.1.2) (2019-11-05)
+
+
+### Bug Fixes
+
+* default backdrop background ([501cab3](https://github.com/sweetalert2/sweetalert2/commit/501cab3f4290aea13d9c21e0d2dc9cdbe96dd782))
+
+## [9.1.1](https://github.com/sweetalert2/sweetalert2/compare/v9.1.0...v9.1.1) (2019-11-05)
+
+
+### Bug Fixes
+
+* apply $swal2-backdrop to background instead of background-color ([8c27e1a](https://github.com/sweetalert2/sweetalert2/commit/8c27e1ad31b4d0d5cc02e1bc9c7c57498d60c9e2))
+
+# [9.1.0](https://github.com/sweetalert2/sweetalert2/compare/v9.0.2...v9.1.0) (2019-11-05)
+
+
+### Features
+
+* **scss:** add $swal2-icon-animations ([897b20b](https://github.com/sweetalert2/sweetalert2/commit/897b20b2d1a3b5d586e70188da17be0f8af8f0f1))
+
+## [9.0.2](https://github.com/sweetalert2/sweetalert2/compare/v9.0.1...v9.0.2) (2019-11-04)
+
+
+### Bug Fixes
+
+* **types:** add missing iconHtml ([6f7f316](https://github.com/sweetalert2/sweetalert2/commit/6f7f3162c0ea2c6f6f5b8b8f81d9c002f02e16db))
+
+## [9.0.1](https://github.com/sweetalert2/sweetalert2/compare/v9.0.0...v9.0.1) (2019-11-04)
+
+
+### Bug Fixes
+
+* icon when passing it as third string argument ([6ad3aa5](https://github.com/sweetalert2/sweetalert2/commit/6ad3aa5354eb5e91afc2268f035267bb8b6b6dd6))
+
+# [9.0.0](https://github.com/sweetalert2/sweetalert2/compare/v8.19.0...v9.0.0) (2019-11-04)
+
+
+* BREAKING CHANGE: remove .swal2-arabic-question-mark, add iconHtml param ([f73dcba](https://github.com/sweetalert2/sweetalert2/commit/f73dcba787939877579fed7a1221d44b310079bc)), closes [#1672](https://github.com/sweetalert2/sweetalert2/issues/1672) [#1532](https://github.com/sweetalert2/sweetalert2/issues/1532)
+* BREAKING CHANGE: rename 'type' param to 'icon' ([fcaabee](https://github.com/sweetalert2/sweetalert2/commit/fcaabee80993bdf34d4bcc85faee0eb2b132947c))
+* BREAKING CHANGE: Stop disabling the Cancel button when in showLoading() ([3668055](https://github.com/sweetalert2/sweetalert2/commit/3668055a128526ca0ae1bf168c7206aedfe2985b)), closes [#1501](https://github.com/sweetalert2/sweetalert2/issues/1501)
+* BREAKING CHANGE: remove setProgressSteps(), showProgressSteps(), hideProgressSteps() ([53d9106](https://github.com/sweetalert2/sweetalert2/commit/53d91066647d13ff71634d976c904046ac22f8cc)), closes [#1507](https://github.com/sweetalert2/sweetalert2/issues/1507) [#1673](https://github.com/sweetalert2/sweetalert2/issues/1673)
+* BREAKING CHANGE: remove disableConfirmButton() and enableConfirmButton() ([8ebbcaf](https://github.com/sweetalert2/sweetalert2/commit/8ebbcaff4024416cbe5553e1c3f4b0811bafe050))
+* BREAKING CHANGE: remove inputClass ([ee7e392](https://github.com/sweetalert2/sweetalert2/commit/ee7e392998c62e04d7256be9a240c6d509373a0e))
+* BREAKING CHANGE: remove imageClass ([2594115](https://github.com/sweetalert2/sweetalert2/commit/2594115bf7e0940eaf9f3d74f195dbff9d5c2fce))
+* BREAKING CHANGE: remove confirmButtonClass and cancelButtonClass ([5276cfd](https://github.com/sweetalert2/sweetalert2/commit/5276cfd1f6a40ce5c510e94dc8840bac6a54e4de))
+* BREAKING CHANGE: remove customContainerClass ([c04782c](https://github.com/sweetalert2/sweetalert2/commit/c04782c1ae00ffc8150afb23b9510c400b78f0b5))
+* BREAKING CHANGE: remove .swal2-shown from .swal2-container, add 'backdrop' to showClass and hideClass ([c3cbb74](https://github.com/sweetalert2/sweetalert2/commit/c3cbb741fe0159bb2d452558e40553407a0ad913))
+* BREAKING CHANGE: replace animation with showClass and hideClass params ([f2153cb](https://github.com/sweetalert2/sweetalert2/commit/f2153cbfa3da01a80db4e1c986c4a94e9cfbfad0)), closes [#1193](https://github.com/sweetalert2/sweetalert2/issues/1193) [#654](https://github.com/sweetalert2/sweetalert2/issues/654) [#650](https://github.com/sweetalert2/sweetalert2/issues/650) [#761](https://github.com/sweetalert2/sweetalert2/issues/761)
+
+
+### Features
+
+* **api:** add 'icon' to showClass and hideClass ([7c4b324](https://github.com/sweetalert2/sweetalert2/commit/7c4b324c7c649d897db88e21f0de9326e9858d6e))
+
+
+### BREAKING CHANGES
+
+* remove .swal2-arabic-question-mark, add iconHtml param
+* rename 'type' param to 'icon'
+* Stop disabling the Cancel button when in showLoading()
+* remove setProgressSteps(), showProgressSteps(), hideProgressSteps()
+* remove disableConfirmButton() and enableConfirmButton()
+* remove inputClass
+* remove imageClass
+* remove confirmButtonClass and cancelButtonClass
+* remove customContainerClass
+* remove .swal2-shown from .swal2-container, add 'backdrop' to showClass and hideClass
+* replace animation with showClass and hideClass params
+
+# [8.19.0](https://github.com/sweetalert2/sweetalert2/compare/v8.18.7...v8.19.0) (2019-11-02)
+
+
+### Features
+
+* **scss:** add $swal2-border ([0fdf5ba](https://github.com/sweetalert2/sweetalert2/commit/0fdf5ba6813f27695b6d6654484b51eb67c03d62))
+
+## [8.18.7](https://github.com/sweetalert2/sweetalert2/compare/v8.18.6...v8.18.7) (2019-11-01)
+
+
+### Bug Fixes
+
+* iOS/iPadOS 13 detection ([#1789](https://github.com/sweetalert2/sweetalert2/issues/1789)) ([67e99e9](https://github.com/sweetalert2/sweetalert2/commit/67e99e905a2f45a6305d249575ea65480b45f0c4))
+
+## [8.18.6](https://github.com/sweetalert2/sweetalert2/compare/v8.18.5...v8.18.6) (2019-10-23)
+
+
+### Bug Fixes
+
+* set the default value for zoom to null ([#1783](https://github.com/sweetalert2/sweetalert2/issues/1783)) ([36b7346](https://github.com/sweetalert2/sweetalert2/commit/36b7346524a7838c9517055d9fcf293b69c6d4d9))
+
+## [8.18.5](https://github.com/sweetalert2/sweetalert2/compare/v8.18.4...v8.18.5) (2019-10-18)
+
+
+### Bug Fixes
+
+* throw warning when calling update() for closing popup ([#1779](https://github.com/sweetalert2/sweetalert2/issues/1779)) ([69d737e](https://github.com/sweetalert2/sweetalert2/commit/69d737e0ba783ed59f56cee31cf651fa3d339c1e))
+
+## [8.18.4](https://github.com/sweetalert2/sweetalert2/compare/v8.18.3...v8.18.4) (2019-10-16)
+
+
+### Bug Fixes
+
+* **types:** do not use SweetAlertArrayOptions in fire() definition ([#1775](https://github.com/sweetalert2/sweetalert2/issues/1775)) ([893eee7](https://github.com/sweetalert2/sweetalert2/commit/893eee7ab6993013fb28337ff6fdf69f78d4ee9f))
+
+## [8.18.3](https://github.com/sweetalert2/sweetalert2/compare/v8.18.2...v8.18.3) (2019-10-09)
+
+
+### Bug Fixes
+
+* apply customClass only to visible input ([#1767](https://github.com/sweetalert2/sweetalert2/issues/1767)) ([98de5fb](https://github.com/sweetalert2/sweetalert2/commit/98de5fb009923d1885a2bb437deed7746820e058))
+
+## [8.18.2](https://github.com/sweetalert2/sweetalert2/compare/v8.18.1...v8.18.2) (2019-10-09)
+
+
+### Bug Fixes
+
+* **types:** getInput() returns HTMLInputElement ([#1766](https://github.com/sweetalert2/sweetalert2/issues/1766)) ([c9916da](https://github.com/sweetalert2/sweetalert2/commit/c9916da081c1dfdc48e02422b3af12aef306586d))
+
+## [8.18.1](https://github.com/sweetalert2/sweetalert2/compare/v8.18.0...v8.18.1) (2019-10-07)
+
+
+### Bug Fixes
+
+* get file result for multiple file type input ([#1759](https://github.com/sweetalert2/sweetalert2/issues/1759)) ([cf00614](https://github.com/sweetalert2/sweetalert2/commit/cf00614))
+
+# [8.18.0](https://github.com/sweetalert2/sweetalert2/compare/v8.17.6...v8.18.0) (2019-09-30)
+
+
+### Features
+
+* **scss:** add $swal2-close-button-font-family and $swal2-button-focus-background-color variables ([#1753](https://github.com/sweetalert2/sweetalert2/issues/1753)) ([bc1da42](https://github.com/sweetalert2/sweetalert2/commit/bc1da42))
+
+## [8.17.6](https://github.com/sweetalert2/sweetalert2/compare/v8.17.5...v8.17.6) (2019-09-19)
+
+
+### Bug Fixes
+
+* throw warning about unexpected type of customClass ([#1743](https://github.com/sweetalert2/sweetalert2/issues/1743)) ([102bd03](https://github.com/sweetalert2/sweetalert2/commit/102bd03))
+
+## [8.17.5](https://github.com/sweetalert2/sweetalert2/compare/v8.17.4...v8.17.5) (2019-09-19)
+
+
+### Bug Fixes
+
+* remove superfluous arguments ([#1742](https://github.com/sweetalert2/sweetalert2/issues/1742)) ([96d8429](https://github.com/sweetalert2/sweetalert2/commit/96d8429))
+
+## [8.17.4](https://github.com/sweetalert2/sweetalert2/compare/v8.17.3...v8.17.4) (2019-09-17)
+
+
+### Bug Fixes
+
+* **types:** title and footer can be of HTMLElement and JQuery types ([b00065f](https://github.com/sweetalert2/sweetalert2/commit/b00065f))
+
+## [8.17.3](https://github.com/sweetalert2/sweetalert2/compare/v8.17.2...v8.17.3) (2019-09-16)
+
+
+### Bug Fixes
+
+* move variables.scss back ([#1739](https://github.com/sweetalert2/sweetalert2/issues/1739)) ([540702a](https://github.com/sweetalert2/sweetalert2/commit/540702a)), closes [#1734](https://github.com/sweetalert2/sweetalert2/issues/1734)
+
+## [8.17.2](https://github.com/sweetalert2/sweetalert2/compare/v8.17.1...v8.17.2) (2019-09-16)
+
+
+### Bug Fixes
+
+* split SCSS into smaller pieces for easier theming ([#1734](https://github.com/sweetalert2/sweetalert2/issues/1734)) ([c21d615](https://github.com/sweetalert2/sweetalert2/commit/c21d615))
+
 ## [8.17.1](https://github.com/sweetalert2/sweetalert2/compare/v8.17.0...v8.17.1) (2019-08-31)
 
 

@@ -62,18 +62,22 @@ function disposeSwal (instance) {
 export function close (resolveValue) {
   const popup = dom.getPopup()
 
-  if (!popup || dom.hasClass(popup, swalClasses.hide)) {
+  if (!popup) {
     return
   }
 
   const innerParams = privateProps.innerParams.get(this)
-  if (!innerParams) {
+  if (!innerParams || dom.hasClass(popup, innerParams.hideClass.popup)) {
     return
   }
   const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this)
 
-  dom.removeClass(popup, swalClasses.show)
-  dom.addClass(popup, swalClasses.hide)
+  dom.removeClass(popup, innerParams.showClass.popup)
+  dom.addClass(popup, innerParams.hideClass.popup)
+
+  const backdrop = dom.getContainer()
+  dom.removeClass(backdrop, innerParams.showClass.backdrop)
+  dom.addClass(backdrop, innerParams.hideClass.backdrop)
 
   handlePopupAnimation(this, popup, innerParams)
 

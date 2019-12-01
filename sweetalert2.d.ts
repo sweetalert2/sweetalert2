@@ -356,14 +356,14 @@ declare module 'sweetalert2' {
      * The title of the modal, as HTML.
      * It can either be added to the object under the key "title" or passed as the first parameter of the function.
      *
-     * @default null
+     * @default ''
      */
     title?: string | HTMLElement | JQuery;
 
     /**
      * The title of the modal, as text. Useful to avoid HTML injection.
      *
-     * @default null
+     * @default ''
      */
     titleText?: string;
 
@@ -371,7 +371,7 @@ declare module 'sweetalert2' {
      * A description for the modal.
      * It can either be added to the object under the key "text" or passed as the second parameter of the function.
      *
-     * @default null
+     * @default ''
      */
     text?: string;
 
@@ -379,14 +379,14 @@ declare module 'sweetalert2' {
      * A HTML description for the modal.
      * If "text" and "html" parameters are provided in the same time, "text" will be used.
      *
-     * @default null
+     * @default ''
      */
     html?: string | HTMLElement | JQuery;
 
     /**
      * The footer of the modal, as HTML.
      *
-     * @default null
+     * @default ''
      */
     footer?: string | HTMLElement | JQuery;
 
@@ -396,7 +396,7 @@ declare module 'sweetalert2' {
      * 'success', 'info' and 'question'.
      * It can either be put in the array under the key "icon" or passed as the third parameter of the function.
      *
-     * @default null
+     * @default undefined
      */
     icon?: SweetAlertIcon;
 
@@ -409,7 +409,7 @@ declare module 'sweetalert2' {
      *     iconHtml: '<i class="fas fa-bug"></i>'
      *   })
      *
-     * @default null
+     * @default undefined
      */
     iconHtml?: string;
 
@@ -441,7 +441,7 @@ declare module 'sweetalert2' {
      * Input field type, can be text, email, password, number, tel, range, textarea, select, radio, checkbox, file
      * and url.
      *
-     * @default null
+     * @default undefined
      */
     input?:
     'text' | 'email' | 'password' | 'number' | 'tel' | 'range' | 'textarea' | 'select' | 'radio' | 'checkbox' |
@@ -450,21 +450,21 @@ declare module 'sweetalert2' {
     /**
      * Modal window width, including paddings (box-sizing: border-box). Can be in px or %.
      *
-     * @default null
+     * @default undefined
      */
     width?: number | string;
 
     /**
      * Modal window padding.
      *
-     * @default null
+     * @default undefined
      */
     padding?: number | string;
 
     /**
      * Modal window background (CSS background property).
      *
-     * @default '#fff'
+     * @default undefined
      */
     background?: string;
 
@@ -519,14 +519,14 @@ declare module 'sweetalert2' {
      *     }
      *   })
      *
-     * @default ''
+     * @default undefined
      */
-    customClass?: string | SweetAlertCustomClass;
+    customClass?: SweetAlertCustomClass;
 
     /**
      * Auto close timer of the modal. Set in ms (milliseconds).
      *
-     * @default null
+     * @default undefined
      */
     timer?: number;
 
@@ -630,14 +630,14 @@ declare module 'sweetalert2' {
     /**
      * Use this to change the background color of the "Confirm"-button (must be a HEX value).
      *
-     * @default '#3085d6'
+     * @default undefined
      */
     confirmButtonColor?: string;
 
     /**
      * Use this to change the background color of the "Cancel"-button (must be a HEX value).
      *
-     * @default '#aaa'
+     * @default undefined
      */
     cancelButtonColor?: string;
 
@@ -728,28 +728,28 @@ declare module 'sweetalert2' {
      *    ]
      *  }).then(result => Swal.fire(JSON.stringify(result));
      *
-     * @default null
+     * @default undefined
      */
     preConfirm?(inputValue: any): SyncOrAsync<any | void>;
 
     /**
      * Add a customized icon for the modal. Should contain a string with the path or URL to the image.
      *
-     * @default null
+     * @default undefined
      */
     imageUrl?: string;
 
     /**
      * If imageUrl is set, you can specify imageWidth to describes image width in px.
      *
-     * @default null
+     * @default undefined
      */
     imageWidth?: number;
 
     /**
      * If imageUrl is set, you can specify imageHeight to describes image height in px.
      *
-     * @default null
+     * @default undefined
      */
     imageHeight?: number;
 
@@ -800,7 +800,7 @@ declare module 'sweetalert2' {
      *     }
      *   })
      *
-     * @default null
+     * @default undefined
      */
     inputAttributes?: { [attribute: string]: string };
 
@@ -814,7 +814,7 @@ declare module 'sweetalert2' {
      *     inputValidator: result => !result && 'You need to select something!'
      *   })
      *
-     * @default null
+     * @default undefined
      */
     inputValidator?(inputValue: string): SyncOrAsync<string | null>;
 
@@ -827,7 +827,7 @@ declare module 'sweetalert2' {
      *     validationMessage: 'Adresse e-mail invalide'
      *   })
      *
-     * @default null
+     * @default undefined
      */
     validationMessage?: string;
 
@@ -841,28 +841,28 @@ declare module 'sweetalert2' {
     /**
      * Current active progress step.
      *
-     * @default Swal.getQueueStep()
+     * @default undefined
      */
     currentProgressStep?: string;
 
     /**
      * Distance between progress steps.
      *
-     * @default null
+     * @default undefined
      */
     progressStepsDistance?: string;
 
     /**
      * Function to run when modal built, but not shown yet. Provides modal DOM element as the first argument.
      *
-     * @default null
+     * @default undefined
      */
     onBeforeOpen?(modalElement: HTMLElement): void;
 
     /**
      * Function to run when modal opens, provides modal DOM element as the first argument.
      *
-     * @default null
+     * @default undefined
      */
     onOpen?(modalElement: HTMLElement): void;
 
@@ -871,21 +871,21 @@ declare module 'sweetalert2' {
      * Typically, this will happen after Swal.fire() or Swal.update().
      * If you want to perform changes in the modal's DOM, that survive Swal.update(), onRender is a good place for that.
      *
-     * @default null
+     * @default undefined
      */
     onRender?(modalElement: HTMLElement): void;
 
     /**
      * Function to run when modal closes, provides modal DOM element as the first argument.
      *
-     * @default null
+     * @default undefined
      */
     onClose?(modalElement: HTMLElement): void;
 
     /**
      * Function to run after modal has been disposed.
      *
-     * @default null
+     * @default undefined
      */
     onAfterClose?(): void;
 

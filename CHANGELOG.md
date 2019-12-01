@@ -1,3 +1,10 @@
+## [9.4.1](https://github.com/sweetalert2/sweetalert2/compare/v9.4.0...v9.4.1) (2019-12-01)
+
+
+### Bug Fixes
+
+* default values null -> undefined ([#1834](https://github.com/sweetalert2/sweetalert2/issues/1834)) ([fef4cf5](https://github.com/sweetalert2/sweetalert2/commit/fef4cf53b8a69565fdf00877401dd33ad6d4bf2c))
+
 # [9.4.0](https://github.com/sweetalert2/sweetalert2/compare/v9.3.17...v9.4.0) (2019-11-23)
 
 

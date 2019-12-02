@@ -1,4 +1,4 @@
-const { $, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible, isHidden, TIMEOUT } = require('./helpers')
+const { $, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible, isHidden, TIMEOUT, ensureClosed } = require('./helpers')
 const { toArray } = require('../../src/utils/utils')
 const { measureScrollbar } = require('../../src/utils/dom/measureScrollbar')
 const sinon = require('sinon/pkg/sinon')
@@ -293,6 +293,7 @@ QUnit.test('queue', (assert) => {
   const done = assert.async()
   const steps = ['Step 1', 'Step 2']
 
+  ensureClosed()
   assert.equal(Swal.getQueueStep(), null)
 
   SwalWithoutAnimation.queue(steps).then(() => {

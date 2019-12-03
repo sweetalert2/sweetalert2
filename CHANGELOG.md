@@ -1,3 +1,10 @@
+## [9.4.3](https://github.com/sweetalert2/sweetalert2/compare/v9.4.2...v9.4.3) (2019-12-03)
+
+
+### Bug Fixes
+
+* **types:** export input, grow and position options types ([#1837](https://github.com/sweetalert2/sweetalert2/issues/1837)) ([5e1cf62](https://github.com/sweetalert2/sweetalert2/commit/5e1cf62d404fc4d0da621e668c7e9d390c62c74a))
+
 ## [9.4.2](https://github.com/sweetalert2/sweetalert2/compare/v9.4.1...v9.4.2) (2019-12-03)
 
 

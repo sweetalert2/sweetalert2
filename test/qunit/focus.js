@@ -1,4 +1,4 @@
-const { $, Swal, SwalWithoutAnimation } = require('./helpers')
+const { Swal, SwalWithoutAnimation } = require('./helpers')
 
 QUnit.test('default focus', (assert) => {
   const done = assert.async()

@@ -1,4 +1,4 @@
-const { $, Swal, SwalWithoutAnimation } = require('./helpers')
+const { Swal, SwalWithoutAnimation } = require('./helpers')
 const { RESTORE_FOCUS_TIMEOUT } = require('../../src/constants')
 
 QUnit.test('previous active element', (assert) => {

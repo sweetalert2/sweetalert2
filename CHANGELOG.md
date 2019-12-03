@@ -1,3 +1,10 @@
+## [9.4.2](https://github.com/sweetalert2/sweetalert2/compare/v9.4.1...v9.4.2) (2019-12-03)
+
+
+### Bug Fixes
+
+* progress steps and getQueueStep() API method ([#1836](https://github.com/sweetalert2/sweetalert2/issues/1836)) ([0f9fdde](https://github.com/sweetalert2/sweetalert2/commit/0f9fdde391fe677b136195ecc80b1d9c8b887d8c))
+
 ## [9.4.1](https://github.com/sweetalert2/sweetalert2/compare/v9.4.0...v9.4.1) (2019-12-01)
 
 

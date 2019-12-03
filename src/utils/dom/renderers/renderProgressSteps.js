@@ -1,7 +1,7 @@
 import { swalClasses } from '../../classes.js'
 import { warn } from '../../utils.js'
 import * as dom from '../../dom/index.js'
-import sweetAlert from '../../../sweetalert2.js'
+import { getQueueStep } from '../../../staticMethods/queue.js'
 
 const createStepElement = (step) => {
   const stepEl = document.createElement('li')
@@ -27,7 +27,7 @@ export const renderProgressSteps = (instance, params) => {
 
   dom.show(progressStepsContainer)
   progressStepsContainer.innerHTML = ''
-  const currentProgressStep = parseInt(params.currentProgressStep === null ? sweetAlert.getQueueStep() : params.currentProgressStep)
+  const currentProgressStep = parseInt(params.currentProgressStep === undefined ? getQueueStep() : params.currentProgressStep)
   if (currentProgressStep >= params.progressSteps.length) {
     warn(
       'Invalid currentProgressStep parameter, it should be less than progressSteps.length ' +

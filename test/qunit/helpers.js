@@ -39,6 +39,6 @@ export const triggerKeydownEvent = (target, key, params = {}) => {
 }
 
 export const ensureClosed = () => {
-  SwalWithoutAnimation.fire('')
+  SwalWithoutAnimation.fire()
   SwalWithoutAnimation.close()
 }

@@ -312,6 +312,17 @@ declare module 'sweetalert2' {
 
   export type SweetAlertIcon = 'success' | 'error' | 'warning' | 'info' | 'question';
 
+  export type SweetAlertInput = 
+    'text' | 'email' | 'password' | 'number' | 'tel' | 'range' | 'textarea' | 'select' | 'radio' | 'checkbox' |
+    'file' | 'url';
+      
+  export type SweetAlertPosition = 
+    'top' | 'top-start' | 'top-end' | 'top-left' | 'top-right' |
+    'center' | 'center-start' | 'center-end' | 'center-left' | 'center-right' |
+    'bottom' | 'bottom-start' | 'bottom-end' | 'bottom-left' | 'bottom-right';
+      
+  export type SweetAlertGrow = 'row' | 'column' | 'fullscreen' | false;
+      
   export interface SweetAlertResult {
     value?: any;
     dismiss?: Swal.DismissReason;
@@ -351,17 +362,6 @@ declare module 'sweetalert2' {
 
   export type SweetAlertArrayOptions = [string?, string?, SweetAlertIcon?];
 
-  export type SweetAlertInputOption = 
-    'text' | 'email' | 'password' | 'number' | 'tel' | 'range' | 'textarea' | 'select' | 'radio' | 'checkbox' |
-    'file' | 'url';
-      
-  export type SweetAlertPositionOption = 
-    'top' | 'top-start' | 'top-end' | 'top-left' | 'top-right' |
-    'center' | 'center-start' | 'center-end' | 'center-left' | 'center-right' |
-    'bottom' | 'bottom-start' | 'bottom-end' | 'bottom-left' | 'bottom-right';
-      
-  export type SweetAlertGrowOption = 'row' | 'column' | 'fullscreen' | false;
-      
   export interface SweetAlertOptions {
     /**
      * The title of the modal, as HTML.
@@ -454,7 +454,7 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    input?: SweetAlertInputOption;
+    input?: SweetAlertInput;
 
     /**
      * Modal window width, including paddings (box-sizing: border-box). Can be in px or %.
@@ -482,14 +482,14 @@ declare module 'sweetalert2' {
      *
      * @default 'center'
      */
-    position?: SweetAlertPositionOption;
+    position?: SweetAlertPosition;
 
     /**
      * Modal window grow direction
      *
      * @default false
      */
-    grow?: SweetAlertGrowOption;
+    grow?: SweetAlertGrow;
 
     /**
      * CSS classes for animations when showing a popup (fade in)

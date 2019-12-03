@@ -312,17 +312,17 @@ declare module 'sweetalert2' {
 
   export type SweetAlertIcon = 'success' | 'error' | 'warning' | 'info' | 'question';
 
-  export type SweetAlertInput = 
+  export type SweetAlertInput =
     'text' | 'email' | 'password' | 'number' | 'tel' | 'range' | 'textarea' | 'select' | 'radio' | 'checkbox' |
     'file' | 'url';
-      
-  export type SweetAlertPosition = 
+
+  export type SweetAlertPosition =
     'top' | 'top-start' | 'top-end' | 'top-left' | 'top-right' |
     'center' | 'center-start' | 'center-end' | 'center-left' | 'center-right' |
     'bottom' | 'bottom-start' | 'bottom-end' | 'bottom-left' | 'bottom-right';
-      
+
   export type SweetAlertGrow = 'row' | 'column' | 'fullscreen' | false;
-      
+
   export interface SweetAlertResult {
     value?: any;
     dismiss?: Swal.DismissReason;

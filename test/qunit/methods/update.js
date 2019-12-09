@@ -32,7 +32,7 @@ QUnit.test('update() method', (assert) => {
   assert.equal(Swal.getContent().textContent, 'New content')
 
   assert.ok(isVisible(Swal.getIcon()))
-  assert.equal(Swal.getIcon(), $('.swal2-success'))
+  assert.equal(Swal.getIcon(), $('.swal2-icon.swal2-success'))
 
   assert.ok(isVisible(Swal.getImage()))
   assert.ok(Swal.getImage().src.indexOf('/assets/swal2-logo.png') > 0)

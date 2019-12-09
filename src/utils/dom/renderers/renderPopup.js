@@ -1,4 +1,4 @@
-import { swalClasses } from '../../classes.js'
+import { swalClasses, iconTypes } from '../../classes.js'
 import * as dom from '../../dom/index.js'
 
 export const renderPopup = (instance, params) => {
@@ -15,6 +15,11 @@ export const renderPopup = (instance, params) => {
     popup.style.background = params.background
   }
 
+  // Classes
+  addClasses(popup, params)
+}
+
+const addClasses = (popup, params) => {
   // Default Class
   popup.className = swalClasses.popup
   if (params.toast) {
@@ -28,6 +33,11 @@ export const renderPopup = (instance, params) => {
   dom.applyCustomClass(popup, params, 'popup')
   if (typeof params.customClass === 'string') {
     dom.addClass(popup, params.customClass)
+  }
+
+  // Icon class (#1842)
+  if (params.icon) {
+    dom.addClass(popup, iconTypes[params.icon])
   }
 
   // Add showClass when updating Swal.update({})

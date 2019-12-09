@@ -1,3 +1,10 @@
+# [9.5.0](https://github.com/sweetalert2/sweetalert2/compare/v9.4.3...v9.5.0) (2019-12-09)
+
+
+### Features
+
+* add icon class to popup ([#1843](https://github.com/sweetalert2/sweetalert2/issues/1843)) ([1dd00af](https://github.com/sweetalert2/sweetalert2/commit/1dd00af941e4f909cb2a9236db94747c1c6c3e92))
+
 ## [9.4.3](https://github.com/sweetalert2/sweetalert2/compare/v9.4.2...v9.4.3) (2019-12-03)
 
 

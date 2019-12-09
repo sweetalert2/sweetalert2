@@ -1,3 +1,10 @@
+## [9.5.2](https://github.com/sweetalert2/sweetalert2/compare/v9.5.1...v9.5.2) (2019-12-09)
+
+
+### Bug Fixes
+
+* do not re-add popup's showClass ([7922360](https://github.com/sweetalert2/sweetalert2/commit/7922360163d76ebff7529e244be874493afccc9c))
+
 ## [9.5.1](https://github.com/sweetalert2/sweetalert2/compare/v9.5.0...v9.5.1) (2019-12-09)
 
 

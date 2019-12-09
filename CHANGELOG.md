@@ -1,3 +1,10 @@
+## [9.5.1](https://github.com/sweetalert2/sweetalert2/compare/v9.5.0...v9.5.1) (2019-12-09)
+
+
+### Bug Fixes
+
+* make icon classes op popup different from classes on icons ([#1844](https://github.com/sweetalert2/sweetalert2/issues/1844)) ([1ae23fc](https://github.com/sweetalert2/sweetalert2/commit/1ae23fca7f3791ecbba44094721b08ebd7ef604f))
+
 # [9.5.0](https://github.com/sweetalert2/sweetalert2/compare/v9.4.3...v9.5.0) (2019-12-09)
 
 

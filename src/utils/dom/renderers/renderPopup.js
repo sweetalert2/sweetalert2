@@ -1,4 +1,4 @@
-import { swalClasses, iconTypes } from '../../classes.js'
+import { swalClasses } from '../../classes.js'
 import * as dom from '../../dom/index.js'
 
 export const renderPopup = (instance, params) => {
@@ -37,7 +37,7 @@ const addClasses = (popup, params) => {
 
   // Icon class (#1842)
   if (params.icon) {
-    dom.addClass(popup, iconTypes[params.icon])
+    dom.addClass(popup, swalClasses[`icon-${params.icon}`])
   }
 
   // Add showClass when updating Swal.update({})

@@ -70,6 +70,11 @@ export const swalClasses = prefix([
   'rtl',
   'timer-progress-bar',
   'scrollbar-measure',
+  'icon-success',
+  'icon-warning',
+  'icon-info',
+  'icon-question',
+  'icon-error',
 ])
 
 export const iconTypes = prefix([

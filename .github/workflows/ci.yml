@@ -32,6 +32,23 @@ jobs:
         tsc --lib dom,es6 --noEmit test/ts/dist-sweetalert2.ts sweetalert2.d.ts
         tsc --lib dom,es6 --noEmit test/ts/src-sweetalert2.ts sweetalert2.d.ts
 
+    - name: Run automated release process with semantic-release
+      if: github.event_name == 'push'
+      uses: cycjimmy/semantic-release-action@v2
+      with:
+        extra_plugins: |
+          @semantic-release/changelog
+          @semantic-release/git
+          @semantic-release/exec
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Report coverage to coveralls.io
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
     # TODO: remove after https://github.com/bundlewatch/bundlewatch/pull/66 is merged and released
     # https://stackoverflow.com/a/58035262
     - name: Extract the branch name
@@ -50,20 +67,6 @@ jobs:
       run: |
         yarn add --dev bundlewatch
         ./node_modules/.bin/bundlewatch
-
-    - name: Report coverage to coveralls.io
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Run automated release process with semantic-release
-      if: github.event_name == 'push' && contains(github.ref, 'master')
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      run: |
-        yarn add --dev semantic-release@16.0.0-beta.26 @semantic-release/changelog@3 @semantic-release/exec@3.4.0-beta.2 @semantic-release/git@7.1.0-beta.3
-        ./node_modules/.bin/semantic-release
 
   skip:
     if: "contains(github.event.commits[0].message, '[skip ci]')"

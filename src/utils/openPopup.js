@@ -44,7 +44,11 @@ export const openPopup = (params) => {
 const setScrollingVisibility = (container, popup) => {
   if (dom.animationEndEvent && dom.hasCssAnimation(popup)) {
     container.style.overflowY = 'hidden'
-    popup.addEventListener(dom.animationEndEvent, swalOpenAnimationFinished.bind(null, popup, container))
+    popup.addEventListener(dom.animationEndEvent, (e) => {
+      if (e.target === popup) {
+        swalOpenAnimationFinished.bind(null, popup, container)
+      }
+    })
   } else {
     container.style.overflowY = 'auto'
   }

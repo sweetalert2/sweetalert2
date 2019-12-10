@@ -1,3 +1,10 @@
+## [9.5.3](https://github.com/sweetalert2/sweetalert2/compare/v9.5.2...v9.5.3) (2019-12-10)
+
+
+### Bug Fixes
+
+* fire swalOpenAnimationFinished() only when popup's animation is finished ([#1845](https://github.com/sweetalert2/sweetalert2/issues/1845)) ([ebcb2b8](https://github.com/sweetalert2/sweetalert2/commit/ebcb2b8831b8f3488a6071c0fc21111c764f8efe))
+
 ## [9.5.2](https://github.com/sweetalert2/sweetalert2/compare/v9.5.1...v9.5.2) (2019-12-09)
 
 

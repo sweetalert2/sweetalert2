@@ -49,6 +49,14 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Report coverage to codeclimate.com
+      uses: paambaati/codeclimate-action@v2.3.0
+      env:
+        CC_TEST_REPORTER_ID: efba756cbfb334e9e5aebbc8df3267419072918409c8fc42a4c3cfdb4ee6e693
+      with:
+        coverageCommand: echo "already performed"
+        debug: true
+
     # TODO: remove after https://github.com/bundlewatch/bundlewatch/pull/66 is merged and released
     # https://stackoverflow.com/a/58035262
     - name: Extract the branch name

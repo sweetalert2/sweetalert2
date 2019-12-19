@@ -17,11 +17,7 @@ labels:
 
 <!--
 Provide a working example in order for us to be able to reproduce the issue.
-ISSUE-REPORTS WITHOUT A LIVE DEMO OR A WORKING EXAMPLE WILL BE CLOSED!
--->
-<!--
-The live demo template: https://sweetalert2.glitch.me/
-Instructions: https://github.com/sweetalert2/sweetalert2/wiki/How-to-provide-live-example-for-issue
+The live demo template: https://codepen.io/limonte/pen/JjoWRMx
 -->
 
 ---

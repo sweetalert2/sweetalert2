@@ -22,6 +22,7 @@ export const restoreActiveElement = () => {
       focusPreviousActiveElement()
       resolve()
     }, RESTORE_FOCUS_TIMEOUT) // issues/900
+    /* istanbul ignore if */
     if (typeof x !== 'undefined' && typeof y !== 'undefined') { // IE doesn't have scrollX/scrollY support
       window.scrollTo(x, y)
     }

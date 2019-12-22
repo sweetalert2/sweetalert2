@@ -604,7 +604,6 @@ QUnit.test('timer', (assert) => {
 })
 
 QUnit.test('timerProgressBar', (assert) => {
-
   SwalWithoutAnimation.fire({
     title: 'Timer test',
     timer: 10,

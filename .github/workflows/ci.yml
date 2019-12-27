@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     if: "!contains(github.event.commits[0].message, '[skip ci]')"
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v1
@@ -43,11 +43,6 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-    - name: Report coverage to coveralls.io
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
 
     # TODO: remove after https://github.com/bundlewatch/bundlewatch/pull/66 is merged and released
     # https://stackoverflow.com/a/58035262

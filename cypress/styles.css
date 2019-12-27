@@ -1,0 +1,14 @@
+.size-container {
+  transform: none !important;
+}
+
+.aut-iframe {
+  display: none !important;
+}
+
+.spec-iframe {
+  visibility: initial !important;
+  position: initial !important;
+  width: 100% !important;
+  height: 100% !important;
+}

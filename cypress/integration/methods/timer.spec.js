@@ -1,7 +1,7 @@
 import { Swal, SwalWithoutAnimation } from '../../utils'
 
 describe('getTimerLeft()', () => {
-  it('getTimerLeft() method', () => {
+  it('should return time left', () => {
     Swal.fire({
       timer: 1000
     })
@@ -10,18 +10,18 @@ describe('getTimerLeft()', () => {
     expect(timerLeft <= 1000).to.be.true
   })
 
-  it.skip('getTimerLeft() should return null if popup does not have timer', () => {
+  it('should return undefined if popup does not have timer', () => {
     Swal.fire({
       timer: 1000
     })
     Swal.fire('I do not have timer, I should reset timer')
     const timerLeft = Swal.getTimerLeft()
-    expect(timerLeft).to.equal(null)
+    expect(timerLeft).to.equal(undefined)
   })
 })
 
 describe('increaseTimer()', () => {
-  it('increaseTimer() method', (done) => {
+  it('should increase timer', (done) => {
     SwalWithoutAnimation.fire({
       timer: 500
     })
@@ -35,7 +35,7 @@ describe('increaseTimer()', () => {
     }, 1000)
   })
 
-  it('increaseTimer() after stopTimer()', (done) => {
+  it('should increase stopped timer', (done) => {
     SwalWithoutAnimation.fire({
       timer: 500
     })
@@ -61,7 +61,7 @@ it('isTimerRunning() method', (done) => {
 })
 
 describe('resumeTimer()', () => {
-  it('resumeTimer() method', (done) => {
+  it('should resume timer', (done) => {
     SwalWithoutAnimation.fire({
       timer: 100
     })
@@ -76,7 +76,7 @@ describe('resumeTimer()', () => {
     }, 700)
   })
 
-  it('resumeTimer() method called twice', (done) => {
+  it('should not fail when called twice', (done) => {
     SwalWithoutAnimation.fire({
       timer: 500
     })
@@ -91,7 +91,7 @@ describe('resumeTimer()', () => {
 })
 
 describe('stopTimer()', () => {
-  it('stopTimer() method', (done) => {
+  it('should stop timer', (done) => {
     SwalWithoutAnimation.fire({
       timer: 500
     })
@@ -104,7 +104,7 @@ describe('stopTimer()', () => {
     }, 750)
   })
 
-  it('stopTimer() method called twice', (done) => {
+  it('should not fail when called twice', (done) => {
     SwalWithoutAnimation.fire({
       timer: 500
     })

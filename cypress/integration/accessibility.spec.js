@@ -1,7 +1,8 @@
-import { Swal, SwalWithoutAnimation, triggerKeydownEvent, RESTORE_FOCUS_TIMEOUT } from '../utils'
+import { Swal, SwalWithoutAnimation, triggerKeydownEvent } from '../utils'
+import { RESTORE_FOCUS_TIMEOUT } from '../../src/constants'
 
-describe('Accessibility', () => {
-  it.skip('previous active element', (done) => {
+describe('Accessibility:', () => {
+  it('should restore focus', (done) => {
     const button = document.createElement('button')
     button.innerText = 'I am focused'
     document.body.appendChild(button)
@@ -81,14 +82,14 @@ describe('Accessibility', () => {
     Swal.close()
   })
 
-  it('dialog aria attributes', () => {
+  it('should set modal ARIA attributes', () => {
     Swal.fire('Modal dialog')
     expect(Swal.getPopup().getAttribute('role')).to.equal('dialog')
     expect(Swal.getPopup().getAttribute('aria-live')).to.equal('assertive')
     expect(Swal.getPopup().getAttribute('aria-modal')).to.equal('true')
   })
 
-  it('toast aria attributes', () => {
+  it('should set toast ARIA attributes', () => {
     Swal.fire({ title: 'Toast', toast: true })
     expect(Swal.getPopup().getAttribute('role')).to.equal('alert')
     expect(Swal.getPopup().getAttribute('aria-live')).to.equal('polite')
@@ -96,7 +97,7 @@ describe('Accessibility', () => {
   })
 })
 
-describe('Focus trap', () => {
+describe('should trap focus in modals', () => {
   it('focus trap forward', (done) => {
     Swal.fire({
       input: 'text',
@@ -198,36 +199,5 @@ describe('Focus', () => {
       focusCancel: true
     })
     expect(document.activeElement).to.equal(Swal.getCancelButton())
-  })
-
-  it.skip('previousActiveElement', (done) => {
-    const buttonToast = document.createElement('button')
-    buttonToast.innerText = 'Show toast'
-    document.body.appendChild(buttonToast)
-    const buttonModal = document.createElement('button')
-    buttonModal.innerText = 'Show modal'
-    document.body.appendChild(buttonModal)
-    buttonToast.addEventListener('click', () => {
-      SwalWithoutAnimation.fire({
-        text: 'I should not touch previousActiveElement',
-        toast: true,
-        timer: 1,
-        onAfterClose: () => {
-          buttonModal.focus()
-          buttonModal.click()
-        }
-      })
-    })
-    buttonModal.addEventListener('click', () => {
-      SwalWithoutAnimation.fire({
-        text: 'I should trap focus inside myself and restore previousActiveElement when I\'m closed',
-        timer: 1,
-        onAfterClose: () => {
-          expect(document.activeElement).to.equal(buttonModal)
-          done()
-        }
-      })
-    })
-    buttonToast.click()
   })
 })

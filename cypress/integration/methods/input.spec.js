@@ -22,7 +22,7 @@ describe('Input', () => {
     Swal.clickConfirm()
   })
 
-  it.skip('input textarea', (done) => {
+  it('input textarea', (done) => {
     Swal.fire({
       input: 'textarea',
       inputAutoTrim: false
@@ -175,7 +175,7 @@ describe('Input', () => {
     expect($('.swal2-radio').querySelectorAll('input[type="radio"]').length).to.equal(2)
   })
 
-  it.skip('popup should expand and shrink accordingly to textarea width', (done) => {
+  it('popup should expand and shrink accordingly to textarea width', (done) => {
     SwalWithoutAnimation.fire({
       input: 'textarea',
     })
@@ -251,7 +251,7 @@ describe('Validation', () => {
     }, TIMEOUT)
   })
 
-  it.skip('validation message', (done) => {
+  it('validation message', (done) => {
     const inputValidator = (value) => Promise.resolve(!value && 'no falsy values')
 
     SwalWithoutAnimation.fire({ input: 'text', inputValidator })

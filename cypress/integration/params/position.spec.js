@@ -47,8 +47,8 @@ class PositionChecker {
   }
 
   check (pos, clientRect) {
-    const verPos = pos.split.skip('-')[0]
-    const horPos = pos.split.skip('-')[1] || 'middle'
+    const verPos = pos.split('-')[0]
+    const horPos = pos.split('-')[1] || 'middle'
     return this._checkFunctions[verPos](clientRect) && this._checkFunctions[horPos](clientRect)
   }
 }
@@ -60,7 +60,7 @@ const allowedPostions = [
 ]
 
 describe('position', () => {
-  it.skip('Modal positions', () => {
+  it('Modal positions', () => {
     console.warn = () => true // Suppress the warnings
 
     const checkPosition = new PositionChecker(window, 10)
@@ -68,12 +68,13 @@ describe('position', () => {
     allowedPostions.forEach(position => {
       SwalWithoutAnimation.fire({ position: position })
       const swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
-      expect(checkPosition.check(position, swalRect), `Failed modal position on "${navigator.userAgent}": ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})\n Window: (${window.innerHeight} ${window.innerWidth})`).to.be.true
+      debugger
+      expect(checkPosition.check(position, swalRect), `modal position: ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})\n Window: (${window.innerHeight} ${window.innerWidth})`).to.be.true
       Swal.close()
     })
   })
 
-  it.skip('Toast positions', () => {
+  it('Toast positions', () => {
     console.warn = () => true // Suppress the warnings
 
     const checkPosition = new PositionChecker(window, 0)
@@ -81,12 +82,12 @@ describe('position', () => {
     allowedPostions.forEach(position => {
       SwalWithoutAnimation.fire({ toast: 'true', position: position })
       const swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
-      expect(checkPosition.check(position, swalRect), `Failed toast position: on "${navigator.userAgent}": ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})\n Window: (${window.innerHeight} ${window.innerWidth})`).to.be.true
+      expect(checkPosition.check(position, swalRect), `toast position:: ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})\n Window: (${window.innerHeight} ${window.innerWidth})`).to.be.true
       Swal.close()
     })
   })
 
-  it.skip('Modal positions with target', () => {
+  it('Modal positions with target', () => {
     console.warn = () => true // Suppress the warnings
 
     const targetWidth = 600
@@ -107,14 +108,14 @@ describe('position', () => {
     allowedPostions.forEach(position => {
       SwalWithoutAnimation.fire({ target: '#dummy-target', customClass: { container: 'position-absolute' }, position: position })
       const swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
-      expect(checkPosition.check(position, swalRect), `Failed modal position with target on "${navigator.userAgent}": ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})`).to.be.true
+      expect(checkPosition.check(position, swalRect), `modal position with target: ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})`).to.be.true
       Swal.close()
     })
 
     dummyTargetElement.parentNode.removeChild(dummyTargetElement) // Remove target element before next test
   })
 
-  it.skip('Toast positions with target', () => {
+  it('Toast positions with target', () => {
     console.warn = () => true // Suppress the warnings
 
     const targetWidth = 600
@@ -133,7 +134,7 @@ describe('position', () => {
     allowedPostions.forEach(position => {
       SwalWithoutAnimation.fire({ target: '#dummy-target', customClass: { container: 'position-absolute' }, toast: 'true', position: position })
       const swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
-      expect(checkPosition.check(position, swalRect), `Failed toast position with target on "${navigator.userAgent}": ${position}\n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})`).to.be.true
+      expect(checkPosition.check(position, swalRect), `toast position with target: ${position}\n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})`).to.be.true
       Swal.close()
     })
 

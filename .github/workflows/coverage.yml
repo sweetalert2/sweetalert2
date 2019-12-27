@@ -25,4 +25,4 @@ jobs:
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       with:
-        coverageCommand: yarn cy:run
+        coverageCommand: yarn cy:run:headless

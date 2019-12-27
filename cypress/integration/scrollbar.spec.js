@@ -15,7 +15,7 @@ describe('Vertical scrollbar', () => {
     })
   })
 
-  it.skip('should be hidden and the according padding-right should be set', (done) => {
+  it('should be hidden and the according padding-right should be set', (done) => {
     const talltDiv = document.createElement('div')
     talltDiv.innerHTML = Array(100).join('<div>lorem ipsum</div>')
     document.body.appendChild(talltDiv)

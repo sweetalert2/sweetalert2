@@ -549,7 +549,7 @@ describe('Outside click', () => {
     Swal.getContainer().click()
   })
 
-  it.skip('double backdrop click', (done) => {
+  it('double backdrop click', (done) => {
     const onAfterClose = cy.spy()
     Swal.fire({
       title: 'onAfterClose should be triggered once',
@@ -563,7 +563,7 @@ describe('Outside click', () => {
     }, 500)
   })
 
-  it.skip('popup mousedown, backdrop mouseup', (done) => {
+  it('popup mousedown, backdrop mouseup', (done) => {
     Swal.fire('popup mousedown, backdrop mouseup')
     simulateMouseEvent(1, 1, 'mousedown')
     simulateMouseEvent(window.innerWidth / 2, window.innerHeight / 2, 'mouseup')
@@ -573,7 +573,7 @@ describe('Outside click', () => {
     })
   })
 
-  it.skip('backdrop mousedown, popup mouseup', (done) => {
+  it('backdrop mousedown, popup mouseup', (done) => {
     SwalWithoutAnimation.fire('backdrop mousedown, popup mouseup')
     simulateMouseEvent(window.innerWidth / 2, window.innerHeight / 2, 'mousedown')
     simulateMouseEvent(1, 1, 'mouseup')

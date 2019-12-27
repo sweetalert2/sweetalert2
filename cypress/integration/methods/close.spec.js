@@ -1,15 +1,18 @@
 import { Swal, SwalWithoutAnimation } from '../../utils'
 
 describe('close()', () => {
-  it.skip('close() method', () => {
+  it('should add .swal2-hide to popup', (done) => {
     Swal.fire({
-      title: 'Swal.close() test'
+      title: 'Swal.close() test',
+      onClose: () => {
+        expect(Swal.getPopup().classList.contains('swal2-hide')).to.be.true
+        done()
+      }
     })
     Swal.close()
-    expect(Swal.getPopup().classList.contains('swal2-hide')).to.be.true
   })
 
-  it('close() resolves to empty object', (done) => {
+  it('resolves to empty object', (done) => {
     Swal.fire().then(result => {
       expect(result).to.be.eql({})
       done()
@@ -17,7 +20,7 @@ describe('close()', () => {
     Swal.close()
   })
 
-  it('onClose using close() method', (done) => {
+  it('should trigger onClose', (done) => {
     Swal.fire({
       onClose: () => {
         expect(Swal.isVisible()).to.be.true
@@ -27,7 +30,7 @@ describe('close()', () => {
     Swal.close()
   })
 
-  it('onAfterClose using close() method', (done) => {
+  it('should trigger onAfterClose', (done) => {
     SwalWithoutAnimation.fire({
       onAfterClose: () => {
         expect(Swal.isVisible()).to.be.false
@@ -37,7 +40,7 @@ describe('close()', () => {
     Swal.close()
   })
 
-  it('Swal.fire() inside onAfterClose', (done) => {
+  it('should not fail when calling Swal.fire() inside onAfterClose', (done) => {
     SwalWithoutAnimation.fire({
       onAfterClose: () => {
         expect(Swal.isVisible()).to.be.false
@@ -54,7 +57,7 @@ describe('close()', () => {
     Swal.close()
   })
 
-  it('Swal.close() inside onAfterClose', (done) => {
+  it('should not fail inside onAfterClose', (done) => {
     Swal.fire({
       onAfterClose: () => {
         Swal.close()

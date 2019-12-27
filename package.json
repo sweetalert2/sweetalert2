@@ -95,7 +95,7 @@
     "build": "gulp build",
     "nyc:instrument": "nyc instrument --compact=false src src_instrumented && rm -rf src && mv src_instrumented src",
     "cy:start": "cypress open",
-    "cy:run": "cypress run --config supportFile=cypress/support/ci.js --headless --browser chrome",
+    "cy:run": "cypress run --headless --browser chrome --config supportFile=cypress/support/ci.js",
     "test": "karma start karma.conf.js --single-run"
   },
   "funding": {

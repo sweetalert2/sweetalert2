@@ -1,10 +1,11 @@
 name: coverage
 
 on:
+  # TODO: re-enable when https://github.com/cypress-io/cypress/issues/6053 is fixed
   push:
     branches:
-      - master
-  pull_request:
+      - master_skip
+  # pull_request:
 
 jobs:
   coverage:

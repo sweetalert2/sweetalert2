@@ -17,17 +17,16 @@ QUnit.test('the icon is shown', (assert) => {
   assert.ok(Swal.getIcon().classList.contains('swal2-success'))
 })
 
-QUnit.test('modal scrolled to top on open', (assert) => {
+QUnit.test('container scrolled to top and has scrollbar on open', (assert) => {
   const done = assert.async()
-  Swal.fire({
+  SwalWithoutAnimation.fire({
     imageUrl: 'https://placeholder.pics/svg/300x1500',
     imageHeight: 1500,
     imageAlt: 'A tall image',
     onOpen: () => {
-      setTimeout(() => {
-        assert.equal(Swal.getContainer().scrollTop, 0)
-        done()
-      })
+      assert.equal(Swal.getContainer().scrollTop, 0)
+      assert.equal(Swal.getContainer().style.overflowY, 'auto')
+      done()
     }
   })
 })

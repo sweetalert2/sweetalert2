@@ -1,3 +1,10 @@
+## [9.5.4](https://github.com/sweetalert2/sweetalert2/compare/v9.5.3...v9.5.4) (2019-12-27)
+
+
+### Bug Fixes
+
+* swalOpenAnimationFinished ([#1859](https://github.com/sweetalert2/sweetalert2/issues/1859)) ([b525149](https://github.com/sweetalert2/sweetalert2/commit/b5251491a5b6979eaf6117d9c3294b639649e13e))
+
 ## [9.5.3](https://github.com/sweetalert2/sweetalert2/compare/v9.5.2...v9.5.3) (2019-12-10)
 
 

@@ -24,7 +24,6 @@ const webpackConfig = {
 }
 
 const karmaPlugins = [
-  'karma-coverage',
   'karma-webpack',
   'karma-qunit',
   'karma-spec-reporter',
@@ -40,17 +39,6 @@ const preprocessors = {
     'webpack',
     'sourcemap'
   ],
-  'dist/*.js': [
-    'coverage'
-  ]
-}
-
-const coverageReporter = {
-  dir: 'coverage',
-  reporters: [
-    { type: 'html', subdir: '.' },
-    { type: 'lcov', subdir: '.' }
-  ]
 }
 
 const sauceLabsLaunchers = {
@@ -127,17 +115,6 @@ function getBrowsers () {
   return browsers
 }
 
-function getReporters () {
-  const reporters = ['spec', 'saucelabs']
-
-  // GitHub Actions
-  if (process.env.GITHUB_ACTION && !testMinified) {
-    reporters.push('coverage')
-  }
-
-  return reporters
-}
-
 module.exports = function (config) {
   config.set({
     port: 3000,
@@ -150,9 +127,8 @@ module.exports = function (config) {
 
     files: getFiles(),
     browsers: getBrowsers(),
-    reporters: getReporters(),
+    reporters: ['spec', 'saucelabs'],
     preprocessors,
-    coverageReporter,
 
     webpack: webpackConfig,
     webpackMiddleware: {

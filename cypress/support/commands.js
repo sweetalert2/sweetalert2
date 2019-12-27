@@ -23,3 +23,18 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+const fetchStyles = (target, linkHref) => {
+  return new Promise((resolve) => {
+    const link = document.createElement('link')
+    link.setAttribute('rel', 'stylesheet')
+    link.onload = resolve
+    link.setAttribute('href', linkHref)
+    target.appendChild(link)
+  })
+}
+
+before(async () => {
+  await fetchStyles(parent.document.head, '/cypress/styles.css')
+  await fetchStyles(document.head, '/dist/sweetalert2.css')
+})

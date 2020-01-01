@@ -11,14 +11,7 @@ We would like to thank everyone who contributed to this library. If you find our
 Your contribution will be greatly appreciated!
 
 
-# Sponsors
-
-Sponsor is a company or a person who donated 100 USD or more. Sponsors are listed here, in [README](https://github.com/sweetalert2/sweetalert2#sponsors), and in [SweetAlert2's official homepage](https://sweetalert2.github.io/#sponsors) (75K+ unique visitors per month). All sponsors have priority support via GitHub issues.
-
-- **[FlowCrypt](http://flowcrypt.com)** (200 EUR + 30 USD worth of BTC and ETH)
-    > Thanks for the awesome work!
-
-- **[SexualAlpha (NSFW)](http://sexualalpha.com)** (19 USD per month)
+# Our Supporters
 
 - **[STED (NSFW)](https://sextoyeducation.com/)** (116 EUR)
     > Extremely useful. Thanks SweetAlert2!
@@ -43,9 +36,6 @@ Sponsor is a company or a person who donated 100 USD or more. Sponsors are liste
 
 - **[Unique-P GmbH](https://www.unique-p.ch/)** (100 CHF)
     > Great work guys! Awesome library, very helpful!
-
-
-# Supporters
 
 - **[Jan Fässler](https://github.com/faessler)** (30 EUR)
     > Nice work! 👾

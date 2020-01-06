@@ -232,9 +232,13 @@ Sponsors
 -|-|-|-|-|-
 [Become a sponsor](SPONSORS.md) | [FlowCrypt](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [SexualAlpha (NSFW)](https://sexualalpha.com/?utm_source=sweetalert2&utm_medium=logo) | [STED (NSFW)](https://sextoyeducation.com/?utm_source=sweetalert2&utm_medium=logo) | [PriceListo](https://www.pricelisto.com/?utm_source=sweetalert2&utm_medium=logo) | [LoveLoxy (NSFW)](https://www.loveloxy.com/?utm_source=sweetalert2&utm_medium=logo)
 
-<img src="https://sweetalert2.github.io/images/sponsors/sebaebc.png" width="80"> | [<img src="https://sweetalert2.github.io/images/sponsors/bingato.png" width="80">](https://bingato.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/ndchost.png" width="80">](https://www.ndchost.com/?utm_source=sweetalert2&utm_medium=logo) | [![](https://avatars0.githubusercontent.com/u/5826089?v=4&s=80)](https://sheetjs.com/?utm_source=sweetalert2&utm_medium=logo) | [![](https://avatars2.githubusercontent.com/u/12075795?v=4&s=80)](https://www.unique-p.ch/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/sextoycollective.jpg" width="80">](https://sextoycollective.com/?utm_source=sweetalert2&utm_medium=logo)
--|-|-|-|-|-
-SebaEBC | [Bingato (NSFW 18+)](https://www.bingato.com/?utm_source=sweetalert2&utm_medium=logo) | [NDCHost](https://www.ndchost.com/?utm_source=sweetalert2&utm_medium=logo) | [SheetJS LLC](https://sheetjs.com/?utm_source=sweetalert2&utm_medium=logo) | [Unique-P GmbH](https://www.unique-p.ch/?utm_source=sweetalert2&utm_medium=logo) | [STC (NSFW)](https://sextoycollective.com/?utm_source=sweetalert2&utm_medium=logo)
+[<img src="https://sweetalert2.github.io/images/sponsors/bingato.png" width="80">](https://bingato.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/ndchost.png" width="80">](https://www.ndchost.com/?utm_source=sweetalert2&utm_medium=logo) | [![](https://avatars0.githubusercontent.com/u/5826089?v=4&s=80)](https://sheetjs.com/?utm_source=sweetalert2&utm_medium=logo) | [![](https://avatars2.githubusercontent.com/u/12075795?v=4&s=80)](https://www.unique-p.ch/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/sextoycollective.jpg" width="80">](https://sextoycollective.com/?utm_source=sweetalert2&utm_medium=logo)
+-|-|-|-|-
+[Bingato (NSFW 18+)](https://www.bingato.com/?utm_source=sweetalert2&utm_medium=logo) | [NDCHost](https://www.ndchost.com/?utm_source=sweetalert2&utm_medium=logo) | [SheetJS LLC](https://sheetjs.com/?utm_source=sweetalert2&utm_medium=logo) | [Unique-P GmbH](https://www.unique-p.ch/?utm_source=sweetalert2&utm_medium=logo) | [STC (NSFW)](https://sextoycollective.com/?utm_source=sweetalert2&utm_medium=logo)
+
+[<img src="https://sweetalert2.github.io/images/sponsors/yourdoll.jpg" width="80">](https://www.yourdoll.com/?utm_source=sweetalert2&utm_medium=logo) | <img src="https://sweetalert2.github.io/images/sponsors/sebaebc.png" width="80">
+-|-
+[YourDoll (NSFW)](https://www.yourdoll.com/?utm_source=sweetalert2&utm_medium=logo) | SebaEBC
 
 Support and Donations
 ---------------------

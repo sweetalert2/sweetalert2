@@ -2,6 +2,7 @@ import * as dom from '../utils/dom/index.js'
 import { DismissReason } from '../utils/DismissReason.js'
 import { callIfFunction } from '../utils/utils.js'
 import { clickConfirm } from '../staticMethods/dom.js'
+import privateProps from '../privateProps.js'
 
 export const addKeydownHandler = (instance, globalState, innerParams, dismissWith) => {
   if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
@@ -10,7 +11,7 @@ export const addKeydownHandler = (instance, globalState, innerParams, dismissWit
   }
 
   if (!innerParams.toast) {
-    globalState.keydownHandler = (e) => keydownHandler(instance, e, innerParams, dismissWith)
+    globalState.keydownHandler = (e) => keydownHandler(instance, e, dismissWith)
     globalState.keydownTarget = innerParams.keydownListenerCapture ? window : dom.getPopup()
     globalState.keydownListenerCapture = innerParams.keydownListenerCapture
     globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
@@ -50,7 +51,9 @@ const escKeys = [
   'Esc' // IE11
 ]
 
-const keydownHandler = (instance, e, innerParams, dismissWith) => {
+const keydownHandler = (instance, e, dismissWith) => {
+  const innerParams = privateProps.innerParams.get(instance)
+
   if (innerParams.stopKeydownPropagation) {
     e.stopPropagation()
   }

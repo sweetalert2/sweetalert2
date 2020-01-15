@@ -83,6 +83,8 @@ export const updatableParams = [
   'html',
   'icon',
   'customClass',
+  'allowOutsideClick',
+  'allowEscapeKey',
   'showConfirmButton',
   'showCancelButton',
   'confirmButtonText',

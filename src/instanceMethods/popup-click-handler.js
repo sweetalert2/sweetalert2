@@ -1,9 +1,11 @@
 import { callIfFunction } from '../utils/utils.js'
 import { DismissReason } from '../utils/DismissReason.js'
+import privateProps from '../privateProps.js'
 
-export const handlePopupClick = (domCache, innerParams, dismissWith) => {
+export const handlePopupClick = (instance, domCache, dismissWith) => {
+  const innerParams = privateProps.innerParams.get(instance)
   if (innerParams.toast) {
-    handleToastClick(domCache, innerParams, dismissWith)
+    handleToastClick(instance, domCache, dismissWith)
   } else {
     // Ignore click events that had mousedown on the popup but mouseup on the container
     // This can happen when the user drags a slider
@@ -12,13 +14,14 @@ export const handlePopupClick = (domCache, innerParams, dismissWith) => {
     // Ignore click events that had mousedown on the container but mouseup on the popup
     handleContainerMousedown(domCache)
 
-    handleModalClick(domCache, innerParams, dismissWith)
+    handleModalClick(instance, domCache, dismissWith)
   }
 }
 
-const handleToastClick = (domCache, innerParams, dismissWith) => {
+const handleToastClick = (instance, domCache, dismissWith) => {
   // Closing toast by internal click
   domCache.popup.onclick = () => {
+    const innerParams = privateProps.innerParams.get(instance)
     if (
       innerParams.showConfirmButton ||
       innerParams.showCancelButton ||
@@ -58,8 +61,9 @@ const handleContainerMousedown = (domCache) => {
   }
 }
 
-const handleModalClick = (domCache, innerParams, dismissWith) => {
+const handleModalClick = (instance, domCache, dismissWith) => {
   domCache.container.onclick = (e) => {
+    const innerParams = privateProps.innerParams.get(instance)
     if (ignoreOutsideClick) {
       ignoreOutsideClick = false
       return

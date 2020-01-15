@@ -1,3 +1,10 @@
+# [9.6.0](https://github.com/sweetalert2/sweetalert2/compare/v9.5.4...v9.6.0) (2020-01-15)
+
+
+### Features
+
+* make allowOutsideClick and allowEscapeKey updatable ([#1867](https://github.com/sweetalert2/sweetalert2/issues/1867)) ([810d291](https://github.com/sweetalert2/sweetalert2/commit/810d2917724e85c0a528816fc39064bccd046bb0))
+
 ## [9.5.4](https://github.com/sweetalert2/sweetalert2/compare/v9.5.3...v9.5.4) (2019-12-27)
 
 

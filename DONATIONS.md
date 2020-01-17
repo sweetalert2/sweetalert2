@@ -42,6 +42,9 @@ Your contribution will be greatly appreciated!
 
 - **Ventsislav Radev** (23 EUR)
 
+- **Isaiah Joshua M. Samonte** (25 USD)
+    > Thank you very much for your work.
+
 - **Danny Lankar** (25 USD)
     > You should be selling this product. Love it, thank you!
 

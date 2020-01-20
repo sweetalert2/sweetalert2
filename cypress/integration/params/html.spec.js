@@ -13,4 +13,14 @@ describe('html', () => {
     })
     expect(Swal.getHtmlContainer().innerHTML).to.equal('<form><div><label></label><input></div></form>')
   })
+
+  it('Error as html', () => {
+    const error = new Error()
+    error.message = 'something is broken'
+
+    Swal.fire({
+      html: error
+    })
+    expect(Swal.getHtmlContainer().innerHTML).to.equal('Error: something is broken')
+  })
 })

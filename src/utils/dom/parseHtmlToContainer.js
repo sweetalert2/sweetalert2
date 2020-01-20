@@ -5,18 +5,22 @@ export const parseHtmlToContainer = (param, target) => {
 
   // Object
   } else if (typeof param === 'object') {
-    // JQuery element(s)
-    if (param.jquery) {
-      handleJqueryElem(target, param)
-
-    // For other objects use their string representation
-    } else {
-      target.innerHTML = param.toString()
-    }
+    handleObject(param, target)
 
   // Plain string
   } else if (param) {
     target.innerHTML = param
+  }
+}
+
+const handleObject = (param, target) => {
+  // JQuery element(s)
+  if (param.jquery) {
+    handleJqueryElem(target, param)
+
+  // For other objects use their string representation
+  } else {
+    target.innerHTML = param.toString()
   }
 }
 

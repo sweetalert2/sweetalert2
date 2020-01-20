@@ -1,3 +1,10 @@
+## [9.6.1](https://github.com/sweetalert2/sweetalert2/compare/v9.6.0...v9.6.1) (2020-01-20)
+
+
+### Bug Fixes
+
+* handle objects better ([#1873](https://github.com/sweetalert2/sweetalert2/issues/1873)) ([5385db8](https://github.com/sweetalert2/sweetalert2/commit/5385db8fade488648a51b64735ef6670a92949d4))
+
 # [9.6.0](https://github.com/sweetalert2/sweetalert2/compare/v9.5.4...v9.6.0) (2020-01-15)
 
 

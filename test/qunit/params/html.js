@@ -12,3 +12,13 @@ QUnit.test('HTMLElement as html', (assert) => {
   })
   assert.equal(Swal.getHtmlContainer().innerHTML, '<form><div><label></label><input></div></form>')
 })
+
+QUnit.test('Error as html', (assert) => {
+  const error = new Error()
+  error.message = 'something is broken'
+
+  Swal.fire({
+    html: error
+  })
+  assert.equal(Swal.getHtmlContainer().innerHTML, 'Error: something is broken')
+})

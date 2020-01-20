@@ -484,6 +484,25 @@ QUnit.test('onClose', (assert) => {
   Swal.getCloseButton().click()
 })
 
+QUnit.test('onDestroy', (assert) => {
+  const done = assert.async()
+  let firstPopupDestroyed = false
+  Swal.fire({
+    title: '1',
+    onDestroy: () => {
+      firstPopupDestroyed = true
+    }
+  })
+  Swal.fire({
+    title: '2',
+    onDestroy: () => {
+      assert.ok(firstPopupDestroyed)
+      done()
+    }
+  })
+  Swal.getConfirmButton().click()
+})
+
 QUnit.test('Swal.fire() in onClose', (assert) => {
   const done = assert.async()
 

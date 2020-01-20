@@ -278,6 +278,24 @@ describe('Miscellaneous tests', function () {
     Swal.getCloseButton().click()
   })
 
+  it('onDestroy', (done) => {
+    let firstPopupDestroyed = false
+    Swal.fire({
+      title: '1',
+      onDestroy: () => {
+        firstPopupDestroyed = true
+      }
+    })
+    Swal.fire({
+      title: '2',
+      onDestroy: () => {
+        expect(firstPopupDestroyed).to.be.true
+        done()
+      }
+    })
+    Swal.getConfirmButton().click()
+  })
+
   it('onClose', (done) => {
     // create a modal with an onClose callback
     Swal.fire({

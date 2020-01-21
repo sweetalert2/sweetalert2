@@ -496,10 +496,10 @@ QUnit.test('onDestroy', (assert) => {
   Swal.fire({
     title: '2',
     onDestroy: () => {
-      assert.ok(firstPopupDestroyed)
       done()
     }
   })
+  assert.ok(firstPopupDestroyed)
   Swal.getConfirmButton().click()
 })
 

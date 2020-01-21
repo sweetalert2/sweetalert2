@@ -3,10 +3,25 @@ import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
 
 export function _destroy () {
+  const domCache = privateProps.domCache.get(this)
   const innerParams = privateProps.innerParams.get(this)
+
   if (!innerParams) {
     return
   }
+
+  // Check if there is another Swal closing
+  if (domCache.popup && globalState.swalCloseEventFinishedCallback) {
+    globalState.swalCloseEventFinishedCallback()
+    delete globalState.swalCloseEventFinishedCallback
+  }
+
+  // Check if there is a swal disposal defer timer
+  if (globalState.deferDisposalTimer) {
+    clearTimeout(globalState.deferDisposalTimer)
+    delete globalState.deferDisposalTimer
+  }
+
   if (typeof innerParams.onDestroy === 'function') {
     innerParams.onDestroy()
   }

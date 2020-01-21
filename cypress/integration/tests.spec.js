@@ -289,10 +289,10 @@ describe('Miscellaneous tests', function () {
     Swal.fire({
       title: '2',
       onDestroy: () => {
-        expect(firstPopupDestroyed).to.be.true
         done()
       }
     })
+    expect(firstPopupDestroyed).to.be.true
     Swal.getConfirmButton().click()
   })
 

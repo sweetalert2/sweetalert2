@@ -17,8 +17,9 @@ import { DismissReason } from '../utils/DismissReason.js'
 export function _main (userParams) {
   showWarningsForParams(userParams)
 
-  cleanUpPreviousPopup()
-
+  if (globalState.currentInstance) {
+    globalState.currentInstance._destroy()
+  }
   globalState.currentInstance = this
 
   const innerParams = prepareParams(userParams)
@@ -41,24 +42,6 @@ export function _main (userParams) {
   privateProps.innerParams.set(this, innerParams)
 
   return swalPromise(this, domCache, innerParams)
-}
-
-const cleanUpPreviousPopup = () => {
-  // Check if there is another Swal closing
-  if (dom.getPopup() && globalState.swalCloseEventFinishedCallback) {
-    globalState.swalCloseEventFinishedCallback()
-    delete globalState.swalCloseEventFinishedCallback
-  }
-
-  // Check if there is a swal disposal defer timer
-  if (globalState.deferDisposalTimer) {
-    clearTimeout(globalState.deferDisposalTimer)
-    delete globalState.deferDisposalTimer
-  }
-
-  if (globalState.currentInstance) {
-    globalState.currentInstance._destroy()
-  }
 }
 
 const prepareParams = (userParams) => {

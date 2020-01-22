@@ -882,7 +882,7 @@ declare module 'sweetalert2' {
     onRender?(modalElement: HTMLElement): void;
 
     /**
-     * Function to run when modal closes, provides modal DOM element as the first argument.
+     * Function to run when modal closes by user interaction (and not by another popup), provides modal DOM element as the first argument.
      *
      * @default undefined
      */

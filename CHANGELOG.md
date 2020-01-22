@@ -1,3 +1,10 @@
+# [9.7.0](https://github.com/sweetalert2/sweetalert2/compare/v9.6.1...v9.7.0) (2020-01-22)
+
+
+### Features
+
+* add onDestroy callback ([#1872](https://github.com/sweetalert2/sweetalert2/issues/1872)) ([97de150](https://github.com/sweetalert2/sweetalert2/commit/97de150e78edcb38a9261b8ec7890feebc8aa487))
+
 ## [9.6.1](https://github.com/sweetalert2/sweetalert2/compare/v9.6.0...v9.6.1) (2020-01-20)
 
 

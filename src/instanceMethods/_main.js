@@ -17,17 +17,10 @@ import { DismissReason } from '../utils/DismissReason.js'
 export function _main (userParams) {
   showWarningsForParams(userParams)
 
-  // Check if there is another Swal closing
-  if (dom.getPopup() && globalState.swalCloseEventFinishedCallback) {
-    globalState.swalCloseEventFinishedCallback()
-    delete globalState.swalCloseEventFinishedCallback
+  if (globalState.currentInstance) {
+    globalState.currentInstance._destroy()
   }
-
-  // Check if there is a swal disposal defer timer
-  if (globalState.deferDisposalTimer) {
-    clearTimeout(globalState.deferDisposalTimer)
-    delete globalState.deferDisposalTimer
-  }
+  globalState.currentInstance = this
 
   const innerParams = prepareParams(userParams)
   setParameters(innerParams)

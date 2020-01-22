@@ -48,17 +48,6 @@ function removeBodyClasses () {
   )
 }
 
-function disposeSwal (instance) {
-  // Unset this.params so GC will dispose it (#1569)
-  delete instance.params
-  // Unset globalState props so GC will dispose globalState (#1569)
-  delete globalState.keydownHandler
-  delete globalState.keydownTarget
-  // Unset WeakMaps so GC will be able to dispose them (#1569)
-  unsetWeakMaps(privateProps)
-  unsetWeakMaps(privateMethods)
-}
-
 export function close (resolveValue) {
   const popup = dom.getPopup()
 
@@ -114,20 +103,12 @@ const animatePopup = (instance, popup, container, onAfterClose) => {
   })
 }
 
-const unsetWeakMaps = (obj) => {
-  for (const i in obj) {
-    obj[i] = new WeakMap()
-  }
-}
-
 const triggerOnAfterCloseAndDispose = (instance, onAfterClose) => {
   setTimeout(() => {
-    if (onAfterClose !== null && typeof onAfterClose === 'function') {
+    if (typeof onAfterClose === 'function') {
       onAfterClose()
     }
-    if (!dom.getPopup()) {
-      disposeSwal(instance)
-    }
+    instance._destroy()
   })
 }
 

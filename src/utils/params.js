@@ -73,6 +73,7 @@ export const defaultParams = {
   onRender: undefined,
   onClose: undefined,
   onAfterClose: undefined,
+  onDestroy: undefined,
   scrollbarPadding: true
 }
 

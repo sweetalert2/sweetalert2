@@ -889,11 +889,18 @@ declare module 'sweetalert2' {
     onClose?(modalElement: HTMLElement): void;
 
     /**
-     * Function to run after modal has been disposed.
+     * Function to run after popup has been disposed by user interaction (and not by another popup).
      *
      * @default undefined
      */
     onAfterClose?(): void;
+
+    /**
+     * Function to run after popup has been destroyed either by user interaction or by another popup.
+     *
+     * @default undefined
+     */
+    onDestroy?(): void;
 
     /**
      * Set to false to disable body padding adjustment when scrollbar is present.

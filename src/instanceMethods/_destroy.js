@@ -7,7 +7,7 @@ export function _destroy () {
   const innerParams = privateProps.innerParams.get(this)
 
   if (!innerParams) {
-    return
+    return // This instance has already been destroyed
   }
 
   // Check if there is another Swal closing

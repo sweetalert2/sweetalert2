@@ -1,4 +1,8 @@
 <p align="center">
+  <a href="https://github.com/sponsors/limonte">[== Become the :trophy: Ultimate Sponsor of SweetAlert2 and place your banner here (100K+ unique visitors per month!) ==]</a>
+</p>
+
+<p align="center">
   <a href="https://sweetalert2.github.io/">
     <img src="/assets/swal2-logo.png" alt="SweetAlert2">
   </a>

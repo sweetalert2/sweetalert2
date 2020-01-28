@@ -1,3 +1,10 @@
+## [9.7.1](https://github.com/sweetalert2/sweetalert2/compare/v9.7.0...v9.7.1) (2020-01-28)
+
+
+### Bug Fixes
+
+* polish success icon for perfect rendering in Safari (fix [#1876](https://github.com/sweetalert2/sweetalert2/issues/1876)) ([fb9fe38](https://github.com/sweetalert2/sweetalert2/commit/fb9fe383d6247dda27d8301772c3e295c3fb223d))
+
 # [9.7.0](https://github.com/sweetalert2/sweetalert2/compare/v9.6.1...v9.7.0) (2020-01-22)
 
 

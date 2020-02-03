@@ -236,9 +236,9 @@ Sponsors
 -|-|-|-|-|-
 [Become a sponsor](SPONSORS.md) | [FlowCrypt](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [SexualAlpha (NSFW)](https://sexualalpha.com/?utm_source=sweetalert2&utm_medium=logo) | [STED (NSFW)](https://sextoyeducation.com/?utm_source=sweetalert2&utm_medium=logo) | [YourDoll (NSFW)](https://www.yourdoll.com/?utm_source=sweetalert2&utm_medium=logo) | [STC (NSFW)](https://sextoycollective.com/?utm_source=sweetalert2&utm_medium=logo)
 
-[<img src="https://sweetalert2.github.io/images/sponsors/sebaebc.png" width="80">](https://github.com/sebaebc) | [<img src="https://sweetalert2.github.io/images/sponsors/loveloxy.png" width="80">](https://loveloxy.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/bingato.png" width="80">](https://bingato.com/?utm_source=sweetalert2&utm_medium=logo)
--|-|-
-[SebaEBC](https://github.com/sebaebc) | [LoveLoxy (NSFW)](https://www.loveloxy.com/?utm_source=sweetalert2&utm_medium=logo) | [Bingato (NSFW 18+)](https://www.bingato.com/?utm_source=sweetalert2&utm_medium=logo)
+[<img src="https://sweetalert2.github.io/images/sponsors/sebaebc.png" width="80">](https://github.com/sebaebc) | [<img src="https://sweetalert2.github.io/images/sponsors/loveloxy.png" width="80">](https://loveloxy.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/bingato.png" width="80">](https://bingato.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/realsexdoll.png" width="80">](https://realsexdoll.com/?utm_source=sweetalert2&utm_medium=logo)
+-|-|-|-
+[SebaEBC](https://github.com/sebaebc) | [LoveLoxy (NSFW)](https://www.loveloxy.com/?utm_source=sweetalert2&utm_medium=logo) | [Bingato (NSFW 18+)](https://bingato.com/?utm_source=sweetalert2&utm_medium=logo) | [RealSexDoll (NSFW)](https://realsexdoll.com/?utm_source=sweetalert2&utm_medium=logo)
 
 
 Support and Donations

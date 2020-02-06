@@ -77,6 +77,11 @@ declare module 'sweetalert2' {
      * Gets the modal title.
      */
     function getTitle(): HTMLElement;
+      
+    /**
+     * Gets the modal header.
+     */
+    function getHeader(): HTMLElement;
 
     /**
      * Gets progress steps.

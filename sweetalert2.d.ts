@@ -1,7 +1,7 @@
 declare module 'sweetalert2' {
   /**
    * A namespace inside the default function, containing utility function for controlling the currently-displayed
-   * modal.
+   * popup.
    *
    * ex.
    *   import Swal from 'sweetalert2';
@@ -14,7 +14,7 @@ declare module 'sweetalert2' {
    */
   namespace Swal {
     /**
-     * Function to display a simple SweetAlert2 modal.
+     * Function to display a simple SweetAlert2 popup.
      *
      * ex.
      *   import Swal from 'sweetalert2';
@@ -23,7 +23,7 @@ declare module 'sweetalert2' {
     function fire(title?: string, message?: string, icon?: SweetAlertIcon): Promise<SweetAlertResult>;
 
     /**
-     * Function to display a SweetAlert2 modal, with an object of options, all being optional.
+     * Function to display a SweetAlert2 popup, with an object of options, all being optional.
      * See the SweetAlertOptions interface for the list of accepted fields and values.
      *
      * ex.
@@ -44,7 +44,7 @@ declare module 'sweetalert2' {
     function mixin(options?: SweetAlertOptions): typeof Swal;
 
     /**
-     * Determines if a modal is shown.
+     * Determines if a popup is shown.
      * Be aware that the library returns a trueish or falsy value, not a real boolean.
      */
     function isVisible(): boolean;
@@ -61,7 +61,7 @@ declare module 'sweetalert2' {
     function update(options: SweetAlertOptions): void;
 
     /**
-     * Closes the currently open SweetAlert2 modal programmatically.
+     * Closes the currently open SweetAlert2 popup programmatically.
      *
      * @param result The promise originally returned by {@link Swal.fire} will be resolved with this value.
      *               If no object is given, the promise is resolved with an empty ({}) {@link SweetAlertResult} object.
@@ -74,12 +74,12 @@ declare module 'sweetalert2' {
     function getPopup(): HTMLElement;
 
     /**
-     * Gets the modal title.
+     * Gets the popup title.
      */
     function getTitle(): HTMLElement;
-      
+
     /**
-     * Gets the modal header.
+     * Gets the popup header.
      */
     function getHeader(): HTMLElement;
 
@@ -89,7 +89,7 @@ declare module 'sweetalert2' {
     function getProgressSteps(): HTMLElement;
 
     /**
-     * Gets the modal content.
+     * Gets the popup content.
      */
     function getContent(): HTMLElement;
 
@@ -135,7 +135,7 @@ declare module 'sweetalert2' {
     function getActions(): HTMLElement;
 
     /**
-     * Gets the modal footer.
+     * Gets the popup footer.
      */
     function getFooter(): HTMLElement;
 
@@ -165,7 +165,7 @@ declare module 'sweetalert2' {
     function hideLoading(): void;
 
     /**
-     * Determines if modal is in the loading state.
+     * Determines if popup is in the loading state.
      */
     function isLoading(): boolean;
 
@@ -197,12 +197,12 @@ declare module 'sweetalert2' {
     function getInput(): HTMLInputElement;
 
     /**
-     * Disables the modal input. A disabled input element is unusable and un-clickable.
+     * Disables the popup input. A disabled input element is unusable and un-clickable.
      */
     function disableInput(): void;
 
     /**
-     * Enables the modal input.
+     * Enables the popup input.
      */
     function enableInput(): void;
 
@@ -251,30 +251,30 @@ declare module 'sweetalert2' {
     function increaseTimer(n: number): number | undefined;
 
     /**
-     * Provide an array of SweetAlert2 parameters to show multiple modals, one modal after another.
+     * Provide an array of SweetAlert2 parameters to show multiple popups, one popup after another.
      *
      * @param steps The steps' configuration.
      */
     function queue(steps: Array<SweetAlertOptions | string>): Promise<any>;
 
     /**
-     * Gets the index of current modal in queue. When there's no active queue, null will be returned.
+     * Gets the index of current popup in queue. When there's no active queue, null will be returned.
      */
     function getQueueStep(): string | null;
 
     /**
-     * Inserts a modal in the queue.
+     * Inserts a popup in the queue.
      *
      * @param step  The step configuration (same object as in the Swal.fire() call).
      * @param index The index to insert the step at.
-     *              By default a modal will be added to the end of a queue.
+     *              By default a popup will be added to the end of a queue.
      */
     function insertQueueStep(step: SweetAlertOptions, index?: number): number;
 
     /**
-     * Deletes the modal at the specified index in the queue.
+     * Deletes the popup at the specified index in the queue.
      *
-     * @param index The modal index in the queue.
+     * @param index The popup index in the queue.
      */
     function deleteQueueStep(index: number): void;
 
@@ -369,7 +369,7 @@ declare module 'sweetalert2' {
 
   export interface SweetAlertOptions {
     /**
-     * The title of the modal, as HTML.
+     * The title of the popup, as HTML.
      * It can either be added to the object under the key "title" or passed as the first parameter of the function.
      *
      * @default ''
@@ -377,14 +377,14 @@ declare module 'sweetalert2' {
     title?: string | HTMLElement | JQuery;
 
     /**
-     * The title of the modal, as text. Useful to avoid HTML injection.
+     * The title of the popup, as text. Useful to avoid HTML injection.
      *
      * @default ''
      */
     titleText?: string;
 
     /**
-     * A description for the modal.
+     * A description for the popup.
      * It can either be added to the object under the key "text" or passed as the second parameter of the function.
      *
      * @default ''
@@ -392,7 +392,7 @@ declare module 'sweetalert2' {
     text?: string;
 
     /**
-     * A HTML description for the modal.
+     * A HTML description for the popup.
      * If "text" and "html" parameters are provided in the same time, "text" will be used.
      *
      * @default ''
@@ -400,14 +400,14 @@ declare module 'sweetalert2' {
     html?: string | HTMLElement | JQuery;
 
     /**
-     * The footer of the modal, as HTML.
+     * The footer of the popup, as HTML.
      *
      * @default ''
      */
     footer?: string | HTMLElement | JQuery;
 
     /**
-     * The icon of the modal.
+     * The icon of the popup.
      * SweetAlert2 comes with 5 built-in icons which will show a corresponding icon animation: 'warning', 'error',
      * 'success', 'info' and 'question'.
      * It can either be put in the array under the key "icon" or passed as the third parameter of the function.
@@ -447,7 +447,7 @@ declare module 'sweetalert2' {
     toast?: boolean;
 
     /**
-     * The container element for adding modal into (query selector only).
+     * The container element for adding popup into (query selector only).
      *
      * @default 'body'
      */
@@ -462,35 +462,35 @@ declare module 'sweetalert2' {
     input?: SweetAlertInput;
 
     /**
-     * Modal window width, including paddings (box-sizing: border-box). Can be in px or %.
+     * Popup width, including paddings (box-sizing: border-box). Can be in px or %.
      *
      * @default undefined
      */
     width?: number | string;
 
     /**
-     * Modal window padding.
+     * Popup padding.
      *
      * @default undefined
      */
     padding?: number | string;
 
     /**
-     * Modal window background (CSS background property).
+     * Popup background (CSS background property).
      *
      * @default undefined
      */
     background?: string;
 
     /**
-     * Modal window position
+     * Popup position
      *
      * @default 'center'
      */
     position?: SweetAlertPosition;
 
     /**
-     * Modal window grow direction
+     * Popup grow direction
      *
      * @default false
      */
@@ -507,7 +507,7 @@ declare module 'sweetalert2' {
     hideClass?: SweetAlertHideClass;
 
     /**
-     * A custom CSS class for the modal.
+     * A custom CSS class for the popup.
      * If a string value is provided, the classname will be applied to the popup.
      * If an object is provided, the classnames will be applied to the corresponding fields:
      *
@@ -535,7 +535,7 @@ declare module 'sweetalert2' {
     customClass?: SweetAlertCustomClass;
 
     /**
-     * Auto close timer of the modal. Set in ms (milliseconds).
+     * Auto close timer of the popup. Set in ms (milliseconds).
      *
      * @default undefined
      */
@@ -551,7 +551,7 @@ declare module 'sweetalert2' {
 
     /**
      * @deprecated
-     * If set to false, modal CSS animation will be disabled.
+     * If set to false, popup CSS animation will be disabled.
      *
      * @default true
      */
@@ -566,25 +566,25 @@ declare module 'sweetalert2' {
     heightAuto?: boolean;
 
     /**
-     * If set to false, the user can't dismiss the modal by clicking outside it.
+     * If set to false, the user can't dismiss the popup by clicking outside it.
      * You can also pass a custom function returning a boolean value, e.g. if you want
-     * to disable outside clicks for the loading state of a modal.
+     * to disable outside clicks for the loading state of a popup.
      *
      * @default true
      */
     allowOutsideClick?: ValueOrThunk<boolean>;
 
     /**
-     * If set to false, the user can't dismiss the modal by pressing the Escape key.
+     * If set to false, the user can't dismiss the popup by pressing the Escape key.
      * You can also pass a custom function returning a boolean value, e.g. if you want
-     * to disable the escape key for the loading state of a modal.
+     * to disable the escape key for the loading state of a popup.
      *
      * @default true
      */
     allowEscapeKey?: ValueOrThunk<boolean>;
 
     /**
-     * If set to false, the user can't confirm the modal by pressing the Enter or Space keys,
+     * If set to false, the user can't confirm the popup by pressing the Enter or Space keys,
      * unless they manually focus the confirm button.
      * You can also pass a custom function returning a boolean value.
      *
@@ -618,7 +618,7 @@ declare module 'sweetalert2' {
     showConfirmButton?: boolean;
 
     /**
-     * If set to true, a "Cancel"-button will be shown, which the user can click on to dismiss the modal.
+     * If set to true, a "Cancel"-button will be shown, which the user can click on to dismiss the popup.
      *
      * @default false
      */
@@ -696,7 +696,7 @@ declare module 'sweetalert2' {
     focusCancel?: boolean;
 
     /**
-     * Set to true to show close button in top right corner of the modal.
+     * Set to true to show close button.
      *
      * @default false
      */
@@ -744,7 +744,7 @@ declare module 'sweetalert2' {
     preConfirm?(inputValue: any): SyncOrAsync<any | void>;
 
     /**
-     * Add a customized icon for the modal. Should contain a string with the path or URL to the image.
+     * Add an image to the popup. Should contain a string with the path or URL to the image.
      *
      * @default undefined
      */
@@ -843,7 +843,7 @@ declare module 'sweetalert2' {
     validationMessage?: string;
 
     /**
-     * Progress steps, useful for modal queues, see usage example.
+     * Progress steps, useful for popup queues, see usage example.
      *
      * @default []
      */
@@ -864,34 +864,34 @@ declare module 'sweetalert2' {
     progressStepsDistance?: string;
 
     /**
-     * Function to run when modal built, but not shown yet. Provides modal DOM element as the first argument.
+     * Function to run when popup built, but not shown yet. Provides popup DOM element as the first argument.
      *
      * @default undefined
      */
-    onBeforeOpen?(modalElement: HTMLElement): void;
+    onBeforeOpen?(popup: HTMLElement): void;
 
     /**
-     * Function to run when modal opens, provides modal DOM element as the first argument.
+     * Function to run when popup opens, provides popup DOM element as the first argument.
      *
      * @default undefined
      */
-    onOpen?(modalElement: HTMLElement): void;
+    onOpen?(popup: HTMLElement): void;
 
     /**
-     * Function to run after modal DOM has been updated.
+     * Function to run after popup DOM has been updated.
      * Typically, this will happen after Swal.fire() or Swal.update().
-     * If you want to perform changes in the modal's DOM, that survive Swal.update(), onRender is a good place for that.
+     * If you want to perform changes in the popup's DOM, that survive Swal.update(), onRender is a good place for that.
      *
      * @default undefined
      */
-    onRender?(modalElement: HTMLElement): void;
+    onRender?(popup: HTMLElement): void;
 
     /**
-     * Function to run when modal closes by user interaction (and not by another popup), provides modal DOM element as the first argument.
+     * Function to run when popup closes by user interaction (and not by another popup), provides popup DOM element as the first argument.
      *
      * @default undefined
      */
-    onClose?(modalElement: HTMLElement): void;
+    onClose?(popup: HTMLElement): void;
 
     /**
      * Function to run after popup has been disposed by user interaction (and not by another popup).

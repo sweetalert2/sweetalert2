@@ -1,3 +1,10 @@
+## [9.7.2](https://github.com/sweetalert2/sweetalert2/compare/v9.7.1...v9.7.2) (2020-02-07)
+
+
+### Bug Fixes
+
+* **types:** add getHeader() ([#1883](https://github.com/sweetalert2/sweetalert2/issues/1883)) ([f7d467a](https://github.com/sweetalert2/sweetalert2/commit/f7d467a8ff634e8d4e9537c936a3b2d41956e04d))
+
 ## [9.7.1](https://github.com/sweetalert2/sweetalert2/compare/v9.7.0...v9.7.1) (2020-01-28)
 
 

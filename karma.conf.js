@@ -48,12 +48,12 @@ const sauceLabsLaunchers = {
     version: 'latest',
     platform: 'macOS 10.15'
   },
-  // TODO(@limonte): doesn't work, revisit
-  // edge: {
-  //   base: 'SauceLabs',
-  //   browserName: 'MicrosoftEdge',
-  //   version: 'latest'
-  // },
+  edge: {
+    base: 'SauceLabs',
+    browserName: 'MicrosoftEdge',
+    browserVersion: '18.17763',
+    platform: 'Windows 10',
+  },
   ie: {
     base: 'SauceLabs',
     browserName: 'internet explorer',

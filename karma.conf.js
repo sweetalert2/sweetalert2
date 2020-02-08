@@ -46,8 +46,7 @@ const sauceLabsLaunchers = {
     base: 'SauceLabs',
     browserName: 'Safari',
     version: 'latest',
-    // TODO(@limonte): remove this line, the current latest 10.14 doesn't work (#1349)
-    platform: 'macOS 10.13'
+    platform: 'macOS 10.15'
   },
   // TODO(@limonte): doesn't work, revisit
   // edge: {

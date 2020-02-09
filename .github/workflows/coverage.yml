@@ -1,11 +1,10 @@
 name: coverage
 
 on:
-  # TODO: re-enable when https://github.com/cypress-io/cypress/issues/6053 is fixed
   push:
     branches:
-      - master_skip
-  # pull_request:
+      - master
+  pull_request:
 
 jobs:
   coverage:
@@ -18,12 +17,25 @@ jobs:
     - name: Install npm dependencies
       run: yarn install
 
+    - name: fix istanbul-reports
+      run: sed -i.bak 's/const meta = branchMap\[key\];/const meta = branchMap[key]; if (!meta) return;/g' node_modules/istanbul-reports/lib/lcovonly/index.js
+
+    - name: Build
+      run: yarn build
+
     - name: Prepare src folder for generating coverage report
       run: yarn nyc:instrument
 
-    - name: Test & publish code coverage to codeclimate.com
-      uses: paambaati/codeclimate-action@v2.3.0
+    - name: Run Cypress tests, generate coverage report and publish it to codeclimate.com
+      uses: paambaati/codeclimate-action@v2.4.0
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       with:
         coverageCommand: yarn cy:run:headless
+
+    - name: Upload coverage
+      uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: coverage
+        path: coverage

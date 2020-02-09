@@ -25,10 +25,11 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 const fetchStyles = (target, linkHref) => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const link = document.createElement('link')
     link.setAttribute('rel', 'stylesheet')
     link.onload = resolve
+    link.onerror = () => reject(new Error(`${linkHref} is not found`))
     link.setAttribute('href', linkHref)
     target.appendChild(link)
   })

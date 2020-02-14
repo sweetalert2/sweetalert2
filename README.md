@@ -45,7 +45,7 @@ Installation
 ------------
 
 ```sh
-npm install --save sweetalert2
+npm i sweetalert2
 ```
 
 Or grab from [jsdelivr CDN](https://www.jsdelivr.com/package/npm/sweetalert2)

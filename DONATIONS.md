@@ -11,7 +11,7 @@ We would like to thank everyone who contributed to this library. If you find our
 Your contribution will be greatly appreciated!
 
 
-# Our Supporters
+# Our Donors
 
 - **[STED (NSFW)](https://sextoyeducation.com/)** (116 EUR)
     > Extremely useful. Thanks SweetAlert2!
@@ -76,6 +76,9 @@ Your contribution will be greatly appreciated!
 
 - **Jeff Keith** (10 EUR)
     > SweetAlert2 saved me tons of time.
+
+- **Princenetwork** (300 THB)
+    > Your work made me use less time for do some stuff about alert.
 
 - **Rotem Lanyado** (5 EUR)
 

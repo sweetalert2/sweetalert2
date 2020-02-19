@@ -52,7 +52,7 @@
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-json": "^4.0.0",
     "sass": "^1.22.1",
-    "sinon": "^8.0.0",
+    "sinon": "^9.0.0",
     "stylelint": "^13.0.0",
     "typescript": "^3.5.0",
     "webpack": "^4.29.0"

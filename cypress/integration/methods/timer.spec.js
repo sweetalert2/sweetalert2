@@ -1,4 +1,4 @@
-import { Swal, SwalWithoutAnimation } from '../../utils'
+import { $, Swal, SwalWithoutAnimation } from '../../utils'
 
 describe('getTimerLeft()', () => {
   it('should return time left', () => {
@@ -129,4 +129,12 @@ it('toggleTimer() method', (done) => {
     assert.notOk(Swal.isVisible())
     done()
   }, 2000)
+})
+
+it('getTimerProgressBar() method', () => {
+  SwalWithoutAnimation.fire({
+    timer: 500,
+    timerProgressBar: true
+  })
+  expect(Swal.getTimerProgressBar()).to.equal($('.swal2-timer-progress-bar'))
 })

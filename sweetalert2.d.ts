@@ -154,6 +154,11 @@ declare module 'sweetalert2' {
     function getFooter(): HTMLElement;
 
     /**
+     * Gets the timer progress bar (see the `timerProgressBar` param).
+     */
+    function getTimerProgressBar(): HTMLElement;
+
+    /**
      * Gets all focusable elements in the popup.
      */
     function getFocusableElements(): HTMLElement[];

@@ -41,7 +41,7 @@ describe('Accessibility:', () => {
     expect(divAriaHiddenFalse.getAttribute('aria-hidden')).to.equal('true')
 
     Swal.close()
-    assert.notOk(div.hasAttribute('aria-hidden'))
+    expect(div.hasAttribute('aria-hidden')).to.be.false
     expect(divAriaHiddenFalse.getAttribute('aria-hidden')).to.equal('false')
   })
 
@@ -52,7 +52,7 @@ describe('Accessibility:', () => {
     SwalWithoutAnimation.fire({
       target: div
     })
-    assert.notOk(div.hasAttribute('aria-hidden'))
+    expect(div.hasAttribute('aria-hidden')).to.be.false
   })
 
   it('should not set aria-hidden="true" when `backdrop: false`', () => {
@@ -62,7 +62,7 @@ describe('Accessibility:', () => {
     SwalWithoutAnimation.fire({
       backdrop: false
     })
-    assert.notOk(div.hasAttribute('aria-hidden'))
+    expect(div.hasAttribute('aria-hidden')).to.be.false
   })
 
   it('should not set aria-hidden="true" when `toast: true`', (done) => {
@@ -78,7 +78,7 @@ describe('Accessibility:', () => {
         done()
       }
     })
-    assert.notOk(div.hasAttribute('aria-hidden'))
+    expect(div.hasAttribute('aria-hidden')).to.be.false
     Swal.close()
   })
 
@@ -93,7 +93,7 @@ describe('Accessibility:', () => {
     Swal.fire({ title: 'Toast', toast: true })
     expect(Swal.getPopup().getAttribute('role')).to.equal('alert')
     expect(Swal.getPopup().getAttribute('aria-live')).to.equal('polite')
-    assert.notOk(Swal.getPopup().getAttribute('aria-modal'))
+    expect(Swal.getPopup().getAttribute('aria-modal')).to.be.null
   })
 })
 

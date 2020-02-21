@@ -30,7 +30,7 @@ describe('increaseTimer()', () => {
       expect(Swal.isVisible()).to.be.true
     }, 700)
     setTimeout(() => {
-      assert.notOk(Swal.isVisible())
+      expect(Swal.isVisible()).to.be.false
       done()
     }, 1000)
   })
@@ -71,7 +71,7 @@ describe('resumeTimer()', () => {
       Swal.resumeTimer()
     }, 200)
     setTimeout(() => {
-      assert.notOk(Swal.isVisible())
+      expect(Swal.isVisible()).to.be.false
       done()
     }, 700)
   })
@@ -126,7 +126,7 @@ it('toggleTimer() method', (done) => {
     Swal.toggleTimer()
   }, 700)
   setTimeout(() => {
-    assert.notOk(Swal.isVisible())
+    expect(Swal.isVisible()).to.be.false
     done()
   }, 2000)
 })

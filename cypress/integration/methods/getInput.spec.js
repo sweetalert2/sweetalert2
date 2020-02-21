@@ -6,7 +6,7 @@ describe('getInput()', () => {
       input: 'text',
       onAfterClose: () => {
         setTimeout(() => {
-          assert.notOk(Swal.getInput())
+          expect(Swal.getInput()).to.be.null
           done()
         }, TIMEOUT)
       }

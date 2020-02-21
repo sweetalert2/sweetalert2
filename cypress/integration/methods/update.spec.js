@@ -37,7 +37,7 @@ describe('update()', () => {
     expect(isVisible(Swal.getImage())).to.be.true
     expect(Swal.getImage().src.indexOf('/assets/swal2-logo.png') > 0).to.be.true
 
-    assert.notOk(isVisible(Swal.getConfirmButton()))
+    expect(isVisible(Swal.getConfirmButton())).to.be.false
     expect(isVisible(Swal.getCancelButton())).to.be.true
     expect(Swal.getCancelButton().textContent).to.equal('New cancel button text')
   })
@@ -86,19 +86,19 @@ describe('update()', () => {
       }
     })
 
-    assert.notOk(Swal.getContainer().classList.contains('container-class'))
-    assert.notOk(Swal.getPopup().classList.contains('popup-class'))
-    assert.notOk(Swal.getHeader().classList.contains('header-class'))
-    assert.notOk(Swal.getTitle().classList.contains('title-class'))
-    assert.notOk(Swal.getCloseButton().classList.contains('close-button-class'))
-    assert.notOk(Swal.getIcon().classList.contains('icon-class'))
-    assert.notOk(Swal.getImage().classList.contains('image-class'))
-    assert.notOk(Swal.getContent().classList.contains('content-class'))
-    assert.notOk(Swal.getInput().classList.contains('input-class'))
-    assert.notOk(Swal.getActions().classList.contains('actions-class'))
-    assert.notOk(Swal.getConfirmButton().classList.contains('confirm-button-class'))
-    assert.notOk(Swal.getCancelButton().classList.contains('cancel-button-class'))
-    assert.notOk(Swal.getFooter().classList.contains('footer-class'))
+    expect(Swal.getContainer().classList.contains('container-class')).to.be.false
+    expect(Swal.getPopup().classList.contains('popup-class')).to.be.false
+    expect(Swal.getHeader().classList.contains('header-class')).to.be.false
+    expect(Swal.getTitle().classList.contains('title-class')).to.be.false
+    expect(Swal.getCloseButton().classList.contains('close-button-class')).to.be.false
+    expect(Swal.getIcon().classList.contains('icon-class')).to.be.false
+    expect(Swal.getImage().classList.contains('image-class')).to.be.false
+    expect(Swal.getContent().classList.contains('content-class')).to.be.false
+    expect(Swal.getInput().classList.contains('input-class')).to.be.false
+    expect(Swal.getActions().classList.contains('actions-class')).to.be.false
+    expect(Swal.getConfirmButton().classList.contains('confirm-button-class')).to.be.false
+    expect(Swal.getCancelButton().classList.contains('cancel-button-class')).to.be.false
+    expect(Swal.getFooter().classList.contains('footer-class')).to.be.false
 
     expect(Swal.getContainer().classList.contains('container-class-NEW')).to.be.true
     expect(Swal.getPopup().classList.contains('popup-class-NEW')).to.be.true
@@ -117,7 +117,7 @@ describe('update()', () => {
 
   it('isUpdatableParameter() method', () => {
     expect(Swal.isUpdatableParameter('title')).to.be.true
-    assert.notOk(Swal.isUpdatableParameter('preConfirm'))
+    expect(Swal.isUpdatableParameter('preConfirm')).to.be.false
   })
 
   it('should update instance\'s params', () => {

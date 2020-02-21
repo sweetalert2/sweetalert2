@@ -8,8 +8,8 @@ describe('API', () => {
       // expect(extraPropNames.length, 0).to.be.eql(`# of extra properties ${postfix}`)
       // expect(extraPropNames.join(','), '').to.be.eql(`extra property names ${postfix}`)
       const missingProps = currentSwalPropNames.filter(key => !currentSwalPropNames.includes(key))
-      assert.deepEqual(missingProps.length, 0, `# of missing properties ${postfix}`)
-      assert.deepEqual(missingProps.join(','), '', `missing property names ${postfix}`)
+      expect(missingProps.length).to.equal(0, `# of missing properties ${postfix}`)
+      expect(missingProps.join(',')).to.equal('', `missing property names ${postfix}`)
     }
     assertConsistent('before first swal')
     Swal.fire({

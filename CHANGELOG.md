@@ -1,3 +1,10 @@
+## [9.8.1](https://github.com/sweetalert2/sweetalert2/compare/v9.8.0...v9.8.1) (2020-02-21)
+
+
+### Bug Fixes
+
+* do not start animating timerProgressBar if timer is stopped ([#1898](https://github.com/sweetalert2/sweetalert2/issues/1898)) ([c4546bc](https://github.com/sweetalert2/sweetalert2/commit/c4546bc482b7fb295905a7a498a096c70a152cf7))
+
 # [9.8.0](https://github.com/sweetalert2/sweetalert2/compare/v9.7.2...v9.8.0) (2020-02-21)
 
 

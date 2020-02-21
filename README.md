@@ -218,8 +218,7 @@ If you would like to contribute enhancements or fixes, please do the following:
 4. To begin active development, run `npm start` or `yarn start`. This does several things for you:
  - Builds the `dist` folder
  - Serves sandbox.html @ http://localhost:8080/ (browser-sync ui:  http://localhost:8081/)
- - Serves unit tests @ http://localhost:3000
- - Re-builds, re-loads and re-tests as necessary when files change
+ - Re-builds and re-loads as necessary when files change
 
 Big Thanks
 ----------

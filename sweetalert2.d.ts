@@ -3,41 +3,54 @@ declare module 'sweetalert2' {
    * A namespace inside the default function, containing utility function for controlling the currently-displayed
    * popup.
    *
-   * ex.
-   *   import Swal from 'sweetalert2';
+   * Example:
+   * ```
+   * Swal.fire('Hey user!', 'I don\'t like you.', 'warning');
    *
-   *   Swal.fire('Hey user!', 'I don\'t like you.', 'warning');
-   *
-   *   if(Swal.isVisible()) { // instant regret
-   *     Swal.close();
-   *   }
+   * if(Swal.isVisible()) { // instant regret
+   *   Swal.close();
+   * }
+   * ```
    */
   namespace Swal {
     /**
      * Function to display a simple SweetAlert2 popup.
      *
-     * ex.
-     *   import Swal from 'sweetalert2';
-     *   Swal.fire('The Internet?', 'That thing is still around?', 'question');
+     * Example:
+     * ```
+     * Swal.fire('The Internet?', 'That thing is still around?', 'question');
+     * ```
      */
-    function fire(title?: string, message?: string, icon?: SweetAlertIcon): Promise<SweetAlertResult>;
+    function fire(title?: string, html?: string, icon?: SweetAlertIcon): Promise<SweetAlertResult>;
 
     /**
      * Function to display a SweetAlert2 popup, with an object of options, all being optional.
-     * See the SweetAlertOptions interface for the list of accepted fields and values.
+     * See the `SweetAlertOptions` interface for the list of accepted fields and values.
      *
-     * ex.
-     *   import Swal from 'sweetalert2';
-     *   Swal.fire({
-     *     title: 'Auto close alert!',
-     *     text: 'I will close in 2 seconds.',
-     *     timer: 2000
-     *   })
+     * Example:
+     * ```
+     * Swal.fire({
+     *   title: 'Auto close alert!',
+     *   text: 'I will close in 2 seconds.',
+     *   timer: 2000
+     * })
+     * ```
      */
     function fire(options: SweetAlertOptions): Promise<SweetAlertResult>;
 
     /**
-     * Reuse configuration by creating a Swal instance.
+     * Reuse configuration by creating a `Swal` instance.
+     *
+     * Example:
+     * ```
+     * const Toast = Swal.mixin({
+     *   toast: true,
+     *   position: 'top-end',
+     *   timer: 3000,
+     *   timerProgressBar: true
+     * })
+     * Toast.fire('Something interesting happened', '', 'info')
+     * ```
      *
      * @param options the default options to set for this instance.
      */
@@ -45,26 +58,27 @@ declare module 'sweetalert2' {
 
     /**
      * Determines if a popup is shown.
-     * Be aware that the library returns a trueish or falsy value, not a real boolean.
      */
     function isVisible(): boolean;
 
     /**
      * Updates popup options.
-     * See the SweetAlertOptions interface for the list of accepted fields and values.
+     * See the `SweetAlertOptions` interface for the list of accepted fields and values.
      *
-     * ex.
-     *   swal.update({
-     *     icon: 'error'
-     *   })
+     * Example:
+     * ```
+     * Swal.update({
+     *   icon: 'error'
+     * })
+     * ```
      */
     function update(options: SweetAlertOptions): void;
 
     /**
      * Closes the currently open SweetAlert2 popup programmatically.
      *
-     * @param result The promise originally returned by {@link Swal.fire} will be resolved with this value.
-     *               If no object is given, the promise is resolved with an empty ({}) {@link SweetAlertResult} object.
+     * @param result The promise originally returned by `Swal.fire()` will be resolved with this value.
+     *               If no object is given, the promise is resolved with an empty `SweetAlertResult` object.
      */
     function close(result?: SweetAlertResult): void;
 
@@ -94,7 +108,7 @@ declare module 'sweetalert2' {
     function getContent(): HTMLElement;
 
     /**
-     * Gets the DOM element where the html/text parameter is rendered to.
+     * Gets the DOM element where the `html`/`text` parameter is rendered to.
      */
     function getHtmlContainer(): HTMLElement;
 
@@ -170,12 +184,12 @@ declare module 'sweetalert2' {
     function isLoading(): boolean;
 
     /**
-     * Clicks the "Confirm"-button programmatically.
+     * Clicks the "Confirm" button programmatically.
      */
     function clickConfirm(): void;
 
     /**
-     * Clicks the "Cancel"-button programmatically.
+     * Clicks the "Cancel" button programmatically.
      */
     function clickCancel(): void;
 
@@ -219,32 +233,32 @@ declare module 'sweetalert2' {
 
     /**
      * Stop timer. Returns number of milliseconds of timer remained.
-     * If `timer` parameter isn't set, returns undefined.
+     * If `timer` parameter isn't set, returns `undefined`.
      */
     function stopTimer(): number | undefined;
 
     /**
      * Resume timer. Returns number of milliseconds of timer remained.
-     * If `timer` parameter isn't set, returns undefined.
+     * If `timer` parameter isn't set, returns `undefined`.
      */
     function resumeTimer(): number | undefined;
 
     /**
      * Toggle timer. Returns number of milliseconds of timer remained.
-     * If `timer` parameter isn't set, returns undefined.
+     * If `timer` parameter isn't set, returns `undefined`.
      */
     function toggleTimer(): number | undefined;
 
     /**
      * Check if timer is running. Returns true if timer is running,
      * and false is timer is paused / stopped.
-     * If `timer` parameter isn't set, returns undefined.
+     * If `timer` parameter isn't set, returns `undefined`.
      */
     function isTimerRunning(): boolean | undefined;
 
     /**
      * Increase timer. Returns number of milliseconds of an updated timer.
-     * If `timer` parameter isn't set, returns undefined.
+     * If `timer` parameter isn't set, returns `undefined`.
      *
      * @param n The number of milliseconds to add to the currect timer
      */
@@ -258,14 +272,14 @@ declare module 'sweetalert2' {
     function queue(steps: Array<SweetAlertOptions | string>): Promise<any>;
 
     /**
-     * Gets the index of current popup in queue. When there's no active queue, null will be returned.
+     * Gets the index of current popup in queue. When there's no active queue, `null` will be returned.
      */
     function getQueueStep(): string | null;
 
     /**
      * Inserts a popup in the queue.
      *
-     * @param step  The step configuration (same object as in the Swal.fire() call).
+     * @param step  The step configuration (same object as in the `Swal.fire()` call).
      * @param index The index to insert the step at.
      *              By default a popup will be added to the end of a queue.
      */
@@ -286,7 +300,7 @@ declare module 'sweetalert2' {
     function isValidParameter(paramName: string): boolean;
 
     /**
-     * Determines if a given parameter name is valid for Swal.update() method.
+     * Determines if a given parameter name is valid for `Swal.update()` method.
      *
      * @param paramName The parameter to check
      */
@@ -294,9 +308,12 @@ declare module 'sweetalert2' {
 
     /**
      * Normalizes the arguments you can give to Swal.fire() in an object of type SweetAlertOptions.
-     * ex:
-     *     Swal.argsToParams(['title', 'text']); //=> { title: 'title', text: 'text' }
-     *     Swal.argsToParams({ title: 'title', text: 'text' }); //=> { title: 'title', text: 'text' }
+     *
+     * Example:
+     * ```
+     * Swal.argsToParams(['title', 'text']); //=> { title: 'title', text: 'text' }
+     * Swal.argsToParams({ title: 'title', text: 'text' }); //=> { title: 'title', text: 'text' }
+     * ```
      *
      * @param params The array of arguments to normalize.
      */
@@ -370,7 +387,7 @@ declare module 'sweetalert2' {
   export interface SweetAlertOptions {
     /**
      * The title of the popup, as HTML.
-     * It can either be added to the object under the key "title" or passed as the first parameter of the function.
+     * It can either be added to the object under the key `title` or passed as the first parameter of `Swal.fire()`.
      *
      * @default ''
      */
@@ -385,7 +402,7 @@ declare module 'sweetalert2' {
 
     /**
      * A description for the popup.
-     * It can either be added to the object under the key "text" or passed as the second parameter of the function.
+     * If `text` and `html` parameters are provided in the same time, `text` will be used.
      *
      * @default ''
      */
@@ -393,24 +410,17 @@ declare module 'sweetalert2' {
 
     /**
      * A HTML description for the popup.
-     * If "text" and "html" parameters are provided in the same time, "text" will be used.
+     * It can either be added to the object under the key `html` or passed as the second parameter of `Swal.fire()`.
      *
      * @default ''
      */
     html?: string | HTMLElement | JQuery;
 
     /**
-     * The footer of the popup, as HTML.
-     *
-     * @default ''
-     */
-    footer?: string | HTMLElement | JQuery;
-
-    /**
      * The icon of the popup.
-     * SweetAlert2 comes with 5 built-in icons which will show a corresponding icon animation: 'warning', 'error',
-     * 'success', 'info' and 'question'.
-     * It can either be put in the array under the key "icon" or passed as the third parameter of the function.
+     * SweetAlert2 comes with 5 built-in icons which will show a corresponding icon animation:
+     * `'warning'`, `'error'`, `'success'`, `'info'` and `'question'`.
+     * It can either be put to the object under the key `icon` or passed as the third parameter of `Swal.fire()`.
      *
      * @default undefined
      */
@@ -419,15 +429,24 @@ declare module 'sweetalert2' {
     /**
      * The custom HTML content for an icon.
      *
-     * ex.
-     *   Swal.fire({
-     *     icon: 'error',
-     *     iconHtml: '<i class="fas fa-bug"></i>'
-     *   })
+     * Example:
+     * ```
+     * Swal.fire({
+     *   icon: 'error',
+     *   iconHtml: '<i class="fas fa-bug"></i>'
+     * })
+     * ```
      *
      * @default undefined
      */
     iconHtml?: string;
+
+    /**
+     * The footer of the popup, as HTML.
+     *
+     * @default ''
+     */
+    footer?: string | HTMLElement | JQuery;
 
     /**
      * Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop.
@@ -439,7 +458,7 @@ declare module 'sweetalert2' {
 
     /**
      * Whether or not an alert should be treated as a toast notification.
-     * This option is normally coupled with the `position` parameter and a timer.
+     * This option is normally coupled with the `position` and `timer` parameters.
      * Toasts are NEVER autofocused.
      *
      * @default false
@@ -454,15 +473,15 @@ declare module 'sweetalert2' {
     target?: string | HTMLElement;
 
     /**
-     * Input field type, can be text, email, password, number, tel, range, textarea, select, radio, checkbox, file
-     * and url.
+     * Input field type, can be `'text'`, `'email'`, `'password'`, `'number'`, `'tel'`, `'range'`, `'textarea'`,
+     * `'select'`, `'radio'`, `'checkbox'`, `'file'` and `'url'`.
      *
      * @default undefined
      */
     input?: SweetAlertInput;
 
     /**
-     * Popup width, including paddings (box-sizing: border-box). Can be in px or %.
+     * Popup width, including paddings (`box-sizing: border-box`). Can be in px or %.
      *
      * @default undefined
      */
@@ -476,7 +495,7 @@ declare module 'sweetalert2' {
     padding?: number | string;
 
     /**
-     * Popup background (CSS background property).
+     * Popup background (CSS `background` property).
      *
      * @default undefined
      */
@@ -511,24 +530,26 @@ declare module 'sweetalert2' {
      * If a string value is provided, the classname will be applied to the popup.
      * If an object is provided, the classnames will be applied to the corresponding fields:
      *
-     * ex.
-     *   Swal.fire({
-     *     customClass: {
-     *       container: 'container-class',
-     *       popup: 'popup-class',
-     *       header: 'header-class',
-     *       title: 'title-class',
-     *       closeButton: 'close-button-class',
-     *       icon: 'icon-class',
-     *       image: 'image-class',
-     *       content: 'content-class',
-     *       input: 'input-class',
-     *       actions: 'actions-class',
-     *       confirmButton: 'confirm-button-class',
-     *       cancelButton: 'cancel-button-class',
-     *       footer: 'footer-class'
-     *     }
-     *   })
+     * Example:
+     * ```
+     * Swal.fire({
+     *   customClass: {
+     *     container: 'container-class',
+     *     popup: 'popup-class',
+     *     header: 'header-class',
+     *     title: 'title-class',
+     *     closeButton: 'close-button-class',
+     *     icon: 'icon-class',
+     *     image: 'image-class',
+     *     content: 'content-class',
+     *     input: 'input-class',
+     *     actions: 'actions-class',
+     *     confirmButton: 'confirm-button-class',
+     *     cancelButton: 'cancel-button-class',
+     *     footer: 'footer-class'
+     *   }
+     * })
+     * ```
      *
      * @default undefined
      */
@@ -551,22 +572,22 @@ declare module 'sweetalert2' {
 
     /**
      * @deprecated
-     * If set to false, popup CSS animation will be disabled.
+     * If set to `false`, popup CSS animation will be disabled.
      *
      * @default true
      */
     animation?: ValueOrThunk<boolean>;
 
     /**
-     * By default, SweetAlert2 sets html's and body's CSS height to auto !important.
-     * If this behavior isn't compatible with your project's layout, set heightAuto to false.
+     * By default, SweetAlert2 sets html's and body's CSS `height` to `auto !important`.
+     * If this behavior isn't compatible with your project's layout, set `heightAuto` to `false`.
      *
      * @default true
      */
     heightAuto?: boolean;
 
     /**
-     * If set to false, the user can't dismiss the popup by clicking outside it.
+     * If set to `false`, the user can't dismiss the popup by clicking outside it.
      * You can also pass a custom function returning a boolean value, e.g. if you want
      * to disable outside clicks for the loading state of a popup.
      *
@@ -575,7 +596,7 @@ declare module 'sweetalert2' {
     allowOutsideClick?: ValueOrThunk<boolean>;
 
     /**
-     * If set to false, the user can't dismiss the popup by pressing the Escape key.
+     * If set to `false`, the user can't dismiss the popup by pressing the Escape key.
      * You can also pass a custom function returning a boolean value, e.g. if you want
      * to disable the escape key for the loading state of a popup.
      *
@@ -584,7 +605,7 @@ declare module 'sweetalert2' {
     allowEscapeKey?: ValueOrThunk<boolean>;
 
     /**
-     * If set to false, the user can't confirm the popup by pressing the Enter or Space keys,
+     * If set to `false`, the user can't confirm the popup by pressing the Enter or Space keys,
      * unless they manually focus the confirm button.
      * You can also pass a custom function returning a boolean value.
      *
@@ -593,7 +614,7 @@ declare module 'sweetalert2' {
     allowEnterKey?: ValueOrThunk<boolean>;
 
     /**
-     * If set to false, SweetAlert2 will allow keydown events propagation to the document.
+     * If set to `false`, SweetAlert2 will allow keydown events propagation to the document.
      *
      * @default true
      */
@@ -601,16 +622,16 @@ declare module 'sweetalert2' {
 
     /**
      * Useful for those who are using SweetAlert2 along with Bootstrap modals.
-     * By default keydownListenerCapture is false which means when a user hits Esc,
+     * By default keydownListenerCapture is `false` which means when a user hits `Esc`,
      * both SweetAlert2 and Bootstrap modals will be closed.
-     * Set keydownListenerCapture to true to fix that behavior.
+     * Set `keydownListenerCapture` to `true` to fix that behavior.
      *
      * @default false
      */
     keydownListenerCapture?: boolean;
 
     /**
-     * If set to false, a "Confirm"-button will not be shown.
+     * If set to `false`, the "Confirm" button will not be shown.
      * It can be useful when you're using custom HTML description.
      *
      * @default true
@@ -618,49 +639,49 @@ declare module 'sweetalert2' {
     showConfirmButton?: boolean;
 
     /**
-     * If set to true, a "Cancel"-button will be shown, which the user can click on to dismiss the popup.
+     * If set to `true`, the "Cancel" button will be shown, which the user can click on to dismiss the popup.
      *
      * @default false
      */
     showCancelButton?: boolean;
 
     /**
-     * Use this to change the text on the "Confirm"-button.
+     * Use this to change the text on the "Confirm" button.
      *
      * @default 'OK'
      */
     confirmButtonText?: string;
 
     /**
-     * Use this to change the text on the "Cancel"-button.
+     * Use this to change the text on the "Cancel" button.
      *
      * @default 'Cancel'
      */
     cancelButtonText?: string;
 
     /**
-     * Use this to change the background color of the "Confirm"-button (must be a HEX value).
+     * Use this to change the background color of the "Confirm" button (must be a HEX value).
      *
      * @default undefined
      */
     confirmButtonColor?: string;
 
     /**
-     * Use this to change the background color of the "Cancel"-button (must be a HEX value).
+     * Use this to change the background color of the "Cancel" button (must be a HEX value).
      *
      * @default undefined
      */
     cancelButtonColor?: string;
 
     /**
-     * Use this to change the aria-label for the "Confirm"-button.
+     * Use this to change the `aria-label` for the "Confirm" button.
      *
      * @default ''
      */
     confirmButtonAriaLabel?: string;
 
     /**
-     * Use this to change the aria-label for the "Cancel"-button.
+     * Use this to change the `aria-label` for the "Cancel" button.
      *
      * @default ''
      */
@@ -682,21 +703,21 @@ declare module 'sweetalert2' {
     reverseButtons?: boolean;
 
     /**
-     * Set to false if you want to focus the first element in tab order instead of "Confirm"-button by default.
+     * Set to `false` if you want to focus the first element in tab order instead of the "Confirm" button by default.
      *
      * @default true
      */
     focusConfirm?: boolean;
 
     /**
-     * Set to true if you want to focus the "Cancel"-button by default.
+     * Set to `true` if you want to focus the "Cancel" button by default.
      *
      * @default false
      */
     focusCancel?: boolean;
 
     /**
-     * Set to true to show close button.
+     * Set to `true` to show close button.
      *
      * @default false
      */
@@ -726,18 +747,20 @@ declare module 'sweetalert2' {
     /**
      * Function to execute before confirm, may be async (Promise-returning) or sync.
      *
-     * ex.
-     *   Swal.fire({
-     *    title: 'Multiple inputs',
-     *    html:
-     *      '<input id="swal-input1" class="swal2-input">' +
-     *      '<input id="swal-input2" class="swal2-input">',
-     *    focusConfirm: false,
-     *    preConfirm: () => [
-     *      document.querySelector('#swal-input1').value,
-     *      document.querySelector('#swal-input2').value
-     *    ]
-     *  }).then(result => Swal.fire(JSON.stringify(result));
+     * Example:
+     * ```
+     * Swal.fire({
+     *   title: 'Multiple inputs',
+     *   html:
+     *     '<input id="swal-input1" class="swal2-input">' +
+     *     '<input id="swal-input2" class="swal2-input">',
+     *   focusConfirm: false,
+     *   preConfirm: () => [
+     *     document.querySelector('#swal-input1').value,
+     *     document.querySelector('#swal-input2').value
+     *   ]
+     * }).then(result => Swal.fire(JSON.stringify(result));
+     * ```
      *
      * @default undefined
      */
@@ -786,30 +809,32 @@ declare module 'sweetalert2' {
     inputValue?: SyncOrAsync<string>;
 
     /**
-     * If input parameter is set to "select" or "radio", you can provide options.
+     * If the `input` parameter is set to `'select'` or `'radio'`, you can provide options.
      * Object keys will represent options values, object values will represent options text values.
      */
     inputOptions?: SyncOrAsync<Map<string, string> | { [inputValue: string]: string }>;
 
     /**
      * Automatically remove whitespaces from both ends of a result string.
-     * Set this parameter to false to disable auto-trimming.
+     * Set this parameter to `false` to disable auto-trimming.
      *
      * @default true
      */
     inputAutoTrim?: boolean;
 
     /**
-     * HTML input attributes (e.g. min, max, step, accept...), that are added to the input field.
+     * HTML input attributes (e.g. `min`, `max`, `step`, `accept`), that are added to the input field.
      *
-     * ex.
-     *   Swal.fire({
-     *     title: 'Select a file',
-     *     input: 'file',
-     *     inputAttributes: {
-     *       accept: 'image/*'
-     *     }
-     *   })
+     * Example:
+     * ```
+     * Swal.fire({
+     *   title: 'Select a file',
+     *   input: 'file',
+     *   inputAttributes: {
+     *     accept: 'image/*'
+     *   }
+     * })
+     * ```
      *
      * @default undefined
      */
@@ -818,12 +843,14 @@ declare module 'sweetalert2' {
     /**
      * Validator for input field, may be async (Promise-returning) or sync.
      *
-     * ex.
-     *   Swal.fire({
-     *     title: 'Select color',
-     *     input: 'radio',
-     *     inputValidator: result => !result && 'You need to select something!'
-     *   })
+     * Example:
+     * ```
+     * Swal.fire({
+     *   title: 'Select color',
+     *   input: 'radio',
+     *   inputValidator: result => !result && 'You need to select something!'
+     * })
+     * ```
      *
      * @default undefined
      */
@@ -832,18 +859,20 @@ declare module 'sweetalert2' {
     /**
      * A custom validation message for default validators (email, url).
      *
-     * ex.
-     *   Swal.fire({
-     *     input: 'email',
-     *     validationMessage: 'Adresse e-mail invalide'
-     *   })
+     * Example:
+     * ```
+     * Swal.fire({
+     *   input: 'email',
+     *   validationMessage: 'Adresse e-mail invalide'
+     * })
+     * ```
      *
      * @default undefined
      */
     validationMessage?: string;
 
     /**
-     * Progress steps, useful for popup queues, see usage example.
+     * Progress steps, useful for popup queues.
      *
      * @default []
      */
@@ -879,15 +908,16 @@ declare module 'sweetalert2' {
 
     /**
      * Function to run after popup DOM has been updated.
-     * Typically, this will happen after Swal.fire() or Swal.update().
-     * If you want to perform changes in the popup's DOM, that survive Swal.update(), onRender is a good place for that.
+     * Typically, this will happen after `Swal.fire()` or `Swal.update()`.
+     * If you want to perform changes in the popup's DOM, that survive `Swal.update()`, `onRender` is a good place.
      *
      * @default undefined
      */
     onRender?(popup: HTMLElement): void;
 
     /**
-     * Function to run when popup closes by user interaction (and not by another popup), provides popup DOM element as the first argument.
+     * Function to run when popup closes by user interaction (and not by another popup), provides popup DOM element
+     * as the first argument.
      *
      * @default undefined
      */
@@ -908,7 +938,7 @@ declare module 'sweetalert2' {
     onDestroy?(): void;
 
     /**
-     * Set to false to disable body padding adjustment when scrollbar is present.
+     * Set to `false` to disable body padding adjustment when scrollbar is present.
      *
      * @default true
      */

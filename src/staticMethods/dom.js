@@ -16,6 +16,7 @@ export {
   getCancelButton,
   getHeader,
   getFooter,
+  getTimerProgressBar,
   getFocusableElements,
   getValidationMessage,
   isLoading

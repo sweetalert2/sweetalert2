@@ -154,7 +154,4 @@ gulp.task('develop', gulp.series(
       'dist/sweetalert2.css'
     ]).on('change', browserSync.reload)
   },
-  async function tests () {
-    await execute(`karma start karma.conf.js --no-launch`)
-  }
 ))

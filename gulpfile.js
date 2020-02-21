@@ -13,7 +13,6 @@ const merge = require('merge2')
 const sass = require('sass')
 const browserSync = require('browser-sync').create()
 const packageJson = require('./package.json')
-const execute = require('@sweetalert2/execute')
 const log = require('fancy-log')
 const fs = require('fs')
 const version = process.env.VERSION || packageJson.version
@@ -71,7 +70,13 @@ gulp.task('build:scripts', () => {
 if (typeof this !== 'undefined' && this.Sweetalert2){\
   this.swal = this.sweetAlert = this.Swal = this.SweetAlert = this.Sweetalert2\
 }`
-      }
+      },
+      // https://github.com/rollup/rollup/issues/2271
+      onwarn (warning, rollupWarn) {
+        if (warning.code !== 'CIRCULAR_DEPENDENCY') {
+          rollupWarn(warning)
+        }
+      },
     }))
     .on('error', (error) => {
       if (continueOnError) {

@@ -623,13 +623,25 @@ QUnit.test('timer', (assert) => {
 
 QUnit.test('timerProgressBar', (assert) => {
   SwalWithoutAnimation.fire({
-    title: 'Timer test',
     timer: 10,
     timerProgressBar: true
   })
 
   const progressBar = document.querySelector('.swal2-timer-progress-bar')
   assert.ok(isVisible(progressBar))
+})
+
+QUnit.test('should stop the animation of timer progress bar when timer is stopped', (assert) => {
+  const done = assert.async()
+  SwalWithoutAnimation.fire({
+    timer: 100,
+    timerProgressBar: true,
+  })
+  Swal.stopTimer()
+  setTimeout(() => {
+    assert.equal(Swal.getTimerProgressBar().style.transition, '')
+    done()
+  }, 20)
 })
 
 QUnit.test('params validation', (assert) => {

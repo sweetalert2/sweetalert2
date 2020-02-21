@@ -8,8 +8,8 @@ describe('Toast', () => {
     expect(document.body.classList.contains('swal2-toast-shown')).to.be.true
     expect(document.documentElement.classList.contains('swal2-toast-shown')).to.be.true
     Swal.fire()
-    assert.notOk(document.body.classList.contains('swal2-toast-shown'))
-    assert.notOk(document.documentElement.classList.contains('swal2-toast-shown'))
+    expect(document.body.classList.contains('swal2-toast-shown')).to.be.false
+    expect(document.documentElement.classList.contains('swal2-toast-shown')).to.be.false
   })
 
   it('should throw console warnings for incompatible parameters', () => {
@@ -31,7 +31,7 @@ describe('Toast', () => {
       expect(document.body.classList.contains('swal2-toast-column')).to.be.true
 
       Swal.fire({ input: input })
-      assert.notOk(document.body.classList.contains('swal2-toast-column'))
+      expect(document.body.classList.contains('swal2-toast-column')).to.be.false
     })
   })
 
@@ -40,7 +40,7 @@ describe('Toast', () => {
     expect(document.body.classList.contains('swal2-toast-column')).to.be.true
 
     Swal.fire({ footer: 'footer' })
-    assert.notOk(document.body.classList.contains('swal2-toast-column'))
+    expect(document.body.classList.contains('swal2-toast-column')).to.be.false
   })
 
   it('.swal2-toast-column if close button', () => {
@@ -48,14 +48,14 @@ describe('Toast', () => {
     expect(document.body.classList.contains('swal2-toast-column')).to.be.true
 
     Swal.fire({ showCloseButton: true })
-    assert.notOk(document.body.classList.contains('swal2-toast-column'))
+    expect(document.body.classList.contains('swal2-toast-column')).to.be.false
   })
 
   it('toast click closes when no buttons or input are specified', (done) => {
     Toast.fire({
       showConfirmButton: false
     }).then((result) => {
-      assert.deepEqual(result, { dismiss: Toast.DismissReason.close })
+      expect(result).to.eql({ dismiss: Toast.DismissReason.close })
       done()
     })
     Toast.getPopup().click()
@@ -94,8 +94,8 @@ describe('Toast', () => {
         Toast.close()
       },
       onAfterClose: () => {
-        assert.notOk(document.body.classList.contains('swal2-shown'))
-        assert.notOk(document.body.classList.contains('swal2-toast-shown'))
+        expect(document.body.classList.contains('swal2-shown')).to.be.false
+        expect(document.body.classList.contains('swal2-toast-shown')).to.be.false
         done()
       }
     })

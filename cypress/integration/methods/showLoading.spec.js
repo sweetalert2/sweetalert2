@@ -25,7 +25,7 @@ describe('showLoading() and hideLoading()', () => {
   it('hideLoading()', () => {
     ensureClosed()
     Swal.hideLoading()
-    assert.notOk(Swal.isVisible())
+    expect(Swal.isVisible()).to.be.false
   })
 
   it('should open an empty popup with loader', () => {

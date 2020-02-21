@@ -1,3 +1,10 @@
+# [9.8.0](https://github.com/sweetalert2/sweetalert2/compare/v9.7.2...v9.8.0) (2020-02-21)
+
+
+### Features
+
+* **api:** expose the getTimerProgressBar method ([#1897](https://github.com/sweetalert2/sweetalert2/issues/1897)) ([e48ab48](https://github.com/sweetalert2/sweetalert2/commit/e48ab4840e18eb7d0b87c691ad18403ea39e19e7))
+
 ## [9.7.2](https://github.com/sweetalert2/sweetalert2/compare/v9.7.1...v9.7.2) (2020-02-07)
 
 

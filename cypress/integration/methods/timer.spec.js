@@ -1,4 +1,4 @@
-import { $, Swal, SwalWithoutAnimation } from '../../utils'
+import { $, Swal, SwalWithoutAnimation, isVisible, TIMEOUT } from '../../utils'
 
 describe('getTimerLeft()', () => {
   it('should return time left', () => {
@@ -137,4 +137,28 @@ it('getTimerProgressBar() method', () => {
     timerProgressBar: true
   })
   expect(Swal.getTimerProgressBar()).to.equal($('.swal2-timer-progress-bar'))
+})
+
+describe('timerProgressBar', () => {
+  it('should show timer progress bar', () => {
+    SwalWithoutAnimation.fire({
+      timer: 10,
+      timerProgressBar: true
+    })
+
+    const progressBar = document.querySelector('.swal2-timer-progress-bar')
+    expect(isVisible(progressBar)).to.be.true
+  })
+
+  it('should stop the animation of timer progress bar when timer is stopped', (done) => {
+    SwalWithoutAnimation.fire({
+      timer: 100,
+      timerProgressBar: true,
+    })
+    Swal.stopTimer()
+    setTimeout(() => {
+      expect(Swal.getTimerProgressBar().style.transition).to.equal('')
+      done()
+    }, 20)
+  })
 })

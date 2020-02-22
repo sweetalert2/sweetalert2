@@ -21,7 +21,7 @@ function removePopupAndResetState (instance, container, isToast, onAfterClose) {
     globalState.keydownHandlerAdded = false
   }
 
-  if (container.parentNode) {
+  if (container.parentNode && !document.body.getAttribute('data-swal2-queue-step')) {
     container.parentNode.removeChild(container)
   }
 

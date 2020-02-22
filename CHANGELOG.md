@@ -1,3 +1,10 @@
+## [9.8.2](https://github.com/sweetalert2/sweetalert2/compare/v9.8.1...v9.8.2) (2020-02-22)
+
+
+### Bug Fixes
+
+* do not animate backdrop for queues ([#1900](https://github.com/sweetalert2/sweetalert2/issues/1900)) ([ae15307](https://github.com/sweetalert2/sweetalert2/commit/ae15307f1a36d5d2fc7387ed20add63b1af74487))
+
 ## [9.8.1](https://github.com/sweetalert2/sweetalert2/compare/v9.8.0...v9.8.1) (2020-02-21)
 
 

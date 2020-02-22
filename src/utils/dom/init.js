@@ -47,7 +47,7 @@ const sweetHTML = `
 const resetOldContainer = () => {
   const oldContainer = getContainer()
   if (!oldContainer) {
-    return
+    return false
   }
 
   oldContainer.parentNode.removeChild(oldContainer)
@@ -59,6 +59,8 @@ const resetOldContainer = () => {
       swalClasses['has-column']
     ]
   )
+
+  return true
 }
 
 let oldInputVal // IE11 workaround, see #1109 for details
@@ -120,7 +122,7 @@ const setupRTL = (targetElement) => {
  */
 export const init = (params) => {
   // Clean up the old popup container if it exists
-  resetOldContainer()
+  const oldContainerExisted = resetOldContainer()
 
   /* istanbul ignore if */
   if (isNodeEnv()) {
@@ -130,6 +132,9 @@ export const init = (params) => {
 
   const container = document.createElement('div')
   container.className = swalClasses.container
+  if (oldContainerExisted) {
+    addClass(container, swalClasses['no-transition'])
+  }
   container.innerHTML = sweetHTML
 
   const targetElement = getTarget(params.target)

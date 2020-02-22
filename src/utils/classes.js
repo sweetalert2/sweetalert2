@@ -16,6 +16,7 @@ export const swalClasses = prefix([
   'popup',
   'modal',
   'no-backdrop',
+  'no-transition',
   'toast',
   'toast-shown',
   'toast-column',

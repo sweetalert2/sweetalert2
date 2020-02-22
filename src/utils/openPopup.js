@@ -34,6 +34,7 @@ export const openPopup = (params) => {
   if (typeof params.onOpen === 'function') {
     setTimeout(() => params.onOpen(popup))
   }
+  dom.removeClass(container, swalClasses['no-transition'])
 }
 
 function swalOpenAnimationFinished (event) {

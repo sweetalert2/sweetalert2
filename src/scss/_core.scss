@@ -131,6 +131,10 @@
     }
   }
 
+  &.swal2-no-transition {
+    transition: none !important;
+  }
+
   @include not('.swal2-top',
   '.swal2-top-start',
   '.swal2-top-end',

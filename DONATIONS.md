@@ -80,6 +80,8 @@ Your contribution will be greatly appreciated!
 - **Princenetwork** (300 THB)
     > Your work made me use less time for do some stuff about alert.
 
+- **Alexey Popov** (5 EUR)
+
 - **Rotem Lanyado** (5 EUR)
 
 - **Julius Tens** (5 EUR)

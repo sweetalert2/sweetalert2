@@ -37,6 +37,9 @@ Your contribution will be greatly appreciated!
 - **[Unique-P GmbH](https://www.unique-p.ch/)** (100 CHF)
     > Great work guys! Awesome library, very helpful!
 
+- **Germano Rizzo** (35 EUR)
+    > Great job! I saved quite a few hours of work with this, and excellent quality!
+
 - **[Jan Fässler](https://github.com/faessler)** (30 EUR)
     > Nice work! 👾
 

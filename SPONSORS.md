@@ -4,7 +4,7 @@ Sponsor is a company or a person who is supporting SweetAlert2 with 19 USD per m
 
 - in this document
 - in [the official repo README](https://github.com/sweetalert2/sweetalert2#sponsors) (20K+ unique visitors per month)
-- in [SweetAlert2's official homepage](https://sweetalert2.github.io/#sponsors) (75K+ unique visitors per month).
+- in [SweetAlert2's official homepage](https://sweetalert2.github.io/#sponsors) (80K+ unique visitors per month).
 
 All sponsors have priority support via GitHub issues.
 

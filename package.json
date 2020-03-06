@@ -48,7 +48,7 @@
     "promise-polyfill": "^8.1.0",
     "qunit": "^2.8.0",
     "replace-in-file": "^5.0.2",
-    "rollup": "^1.1.2",
+    "rollup": "^2.0.0",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-json": "^4.0.0",
     "sass": "^1.22.1",

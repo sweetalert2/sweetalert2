@@ -1,3 +1,10 @@
+# [9.9.0](https://github.com/sweetalert2/sweetalert2/compare/v9.8.2...v9.9.0) (2020-03-07)
+
+
+### Features
+
+* **scss:** add $swal2-close-button-align-items and $swal2-close-button-justify-content vars ([fdf12c1](https://github.com/sweetalert2/sweetalert2/commit/fdf12c13373c31ee2463ea05eff85a97d71d1be1))
+
 ## [9.8.2](https://github.com/sweetalert2/sweetalert2/compare/v9.8.1...v9.8.2) (2020-02-22)
 
 

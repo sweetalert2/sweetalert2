@@ -342,7 +342,8 @@
   /* 1617 */
   top: $swal2-close-button-gap;
   right: $swal2-close-button-gap;
-  justify-content: center;
+  align-items: $swal2-close-button-align-items;
+  justify-content: $swal2-close-button-justify-content;
   width: $swal2-close-button-width;
   height: $swal2-close-button-height;
   padding: 0;

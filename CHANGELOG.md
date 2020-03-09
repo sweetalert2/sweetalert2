@@ -1,3 +1,10 @@
+# [9.10.0](https://github.com/sweetalert2/sweetalert2/compare/v9.9.0...v9.10.0) (2020-03-09)
+
+
+### Features
+
+* make hideClass updatable ([#1912](https://github.com/sweetalert2/sweetalert2/issues/1912)) ([06fa983](https://github.com/sweetalert2/sweetalert2/commit/06fa9835766d45beae380b9d8026b46d6357d011))
+
 # [9.9.0](https://github.com/sweetalert2/sweetalert2/compare/v9.8.2...v9.9.0) (2020-03-07)
 
 

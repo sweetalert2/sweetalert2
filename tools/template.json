@@ -1,0 +1,37 @@
+{
+  loadout: [
+    {
+      icon: undefined,
+      title: null,
+      text: null,
+      footer: null,
+      padding: null,
+      background: null,
+      backdrop: null,
+      imageUrl: null,
+      imageHeight: null,
+      imageAlt: null,
+      html: null,
+      showCloseButton: false,
+      showCancelButton: false,
+      showConfirmButton: false,
+      showLoaderOnConfirm: false,
+      focusConfirm: false,
+      confirmButtonText: null,
+      confirmButtonAriaLabel: null,
+      cancelButtonText: null,
+      cancelButtonAriaLabel: null,
+      position: null,
+      timer: 1500,
+      timerProgressBar: true,
+      showClass: {
+        popup: null
+      },
+      hideClass: {
+        popup: null
+      },
+      buttonsStyling: false
+      reverseButtons: false
+    },
+  ]
+}

@@ -45,7 +45,7 @@
       "closeButtonHtml": "&times;",
       "closeButtonAriaLabel": "Close this dialog",
       "showLoaderOnConfirm": false,
-      "scrollbarPadding" true,
+      "scrollbarPadding": true,
       "preConfirm": null,
       "imageUrl": null,
       "imageWidth": null,

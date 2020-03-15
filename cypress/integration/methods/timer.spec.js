@@ -1,4 +1,4 @@
-import { $, Swal, SwalWithoutAnimation, isVisible, TIMEOUT } from '../../utils'
+import { $, Swal, SwalWithoutAnimation, isVisible } from '../../utils'
 
 describe('getTimerLeft()', () => {
   it('should return time left', () => {

@@ -68,7 +68,6 @@ describe('position', () => {
     allowedPostions.forEach(position => {
       SwalWithoutAnimation.fire({ position: position })
       const swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
-      debugger
       expect(checkPosition.check(position, swalRect), `modal position: ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})\n Window: (${window.innerHeight} ${window.innerWidth})`).to.be.true
       Swal.close()
     })

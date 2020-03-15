@@ -92,7 +92,7 @@
   ],
   "scripts": {
     "start": "gulp develop --continue-on-error --skip-minification --skip-standalone",
-    "lint": "stylelint src && eslint src test tools *.js *.ts",
+    "lint": "stylelint src && eslint src test cypress tools *.js *.ts",
     "build": "gulp build",
     "nyc:instrument": "nyc instrument --compact=false src src_instrumented && rm -rf src && mv src_instrumented src",
     "cy:start": "cypress open",

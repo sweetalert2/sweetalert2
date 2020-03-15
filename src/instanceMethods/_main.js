@@ -70,8 +70,6 @@ const swalPromise = (instance, domCache, innerParams) => {
 
     privateMethods.swalPromiseResolve.set(instance, resolve)
 
-    setupTimer(globalState, innerParams, dismissWith)
-
     domCache.confirmButton.onclick = () => handleConfirmButtonClick(instance, innerParams)
     domCache.cancelButton.onclick = () => handleCancelButtonClick(instance, dismissWith)
 
@@ -90,6 +88,8 @@ const swalPromise = (instance, domCache, innerParams) => {
     handleInputOptionsAndValue(instance, innerParams)
 
     openPopup(innerParams)
+
+    setupTimer(globalState, innerParams, dismissWith)
 
     initFocus(domCache, innerParams)
 

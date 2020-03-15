@@ -644,6 +644,19 @@ QUnit.test('should stop the animation of timer progress bar when timer is stoppe
   }, 20)
 })
 
+QUnit.test('should stop the animation of timer progress bar when timer is stopped in onOpen', (assert) => {
+  const done = assert.async()
+  SwalWithoutAnimation.fire({
+    timer: 100,
+    timerProgressBar: true,
+    onOpen: Swal.stopTimer
+  })
+  setTimeout(() => {
+    assert.equal(Swal.getTimerProgressBar().style.transition, '')
+    done()
+  }, 20)
+})
+
 QUnit.test('params validation', (assert) => {
   assert.ok(Swal.isValidParameter('title'))
   assert.notOk(Swal.isValidParameter('foobar'))

@@ -327,6 +327,8 @@
   left: 0;
   width: 100%;
   height: $swal2-timer-progress-bar-height;
+  border-bottom-right-radius: $swal2-border-radius;
+  border-bottom-left-radius: $swal2-border-radius;
   background: $swal2-timer-progress-bar-background;
 }
 

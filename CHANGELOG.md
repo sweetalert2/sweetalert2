@@ -1,3 +1,11 @@
+## [9.10.1](https://github.com/sweetalert2/sweetalert2/compare/v9.10.0...v9.10.1) (2020-03-15)
+
+
+### Bug Fixes
+
+* setup timer after the popup is opened ([#1917](https://github.com/sweetalert2/sweetalert2/issues/1917)) ([7e24824](https://github.com/sweetalert2/sweetalert2/commit/7e248246535f9f0bc7333dcf30ebdb9c15ad5eb2))
+* **styles:** add border-bottom-radius to timer-progress-bar ([32ff38f](https://github.com/sweetalert2/sweetalert2/commit/32ff38fe26cbc1cea79e9dad36d4188592afb46f))
+
 # [9.10.0](https://github.com/sweetalert2/sweetalert2/compare/v9.9.0...v9.10.0) (2020-03-09)
 
 

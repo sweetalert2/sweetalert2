@@ -1,3 +1,10 @@
+## [9.10.2](https://github.com/sweetalert2/sweetalert2/compare/v9.10.1...v9.10.2) (2020-03-16)
+
+
+### Bug Fixes
+
+* add timer-progress-bar-container ([#1919](https://github.com/sweetalert2/sweetalert2/issues/1919)) ([c7c469e](https://github.com/sweetalert2/sweetalert2/commit/c7c469eb7e4bfbe88d6ba857668a2f04938687ad))
+
 ## [9.10.1](https://github.com/sweetalert2/sweetalert2/compare/v9.10.0...v9.10.1) (2020-03-15)
 
 

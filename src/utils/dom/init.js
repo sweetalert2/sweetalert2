@@ -40,7 +40,9 @@ const sweetHTML = `
      <button type="button" class="${swalClasses.cancel}">Cancel</button>
    </div>
    <div class="${swalClasses.footer}"></div>
-   <div class="${swalClasses['timer-progress-bar']}"></div>
+   <div class="${swalClasses['timer-progress-bar-container']}">
+     <div class="${swalClasses['timer-progress-bar']}"></div>
+   </div>
  </div>
 `.replace(/(^|\n)\s*/g, '')
 

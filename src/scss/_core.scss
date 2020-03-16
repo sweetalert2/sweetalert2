@@ -321,14 +321,20 @@
   font-size: $swal2-footer-font-size;
 }
 
-.swal2-timer-progress-bar {
+.swal2-timer-progress-bar-container {
   position: absolute;
+  right: 0;
   bottom: 0;
   left: 0;
-  width: 100%;
   height: $swal2-timer-progress-bar-height;
+  overflow: hidden;
   border-bottom-right-radius: $swal2-border-radius;
   border-bottom-left-radius: $swal2-border-radius;
+}
+
+.swal2-timer-progress-bar {
+  width: 100%;
+  height: $swal2-timer-progress-bar-height;
   background: $swal2-timer-progress-bar-background;
 }
 

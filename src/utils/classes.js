@@ -70,6 +70,7 @@ export const swalClasses = prefix([
   'grow-fullscreen',
   'rtl',
   'timer-progress-bar',
+  'timer-progress-bar-container',
   'scrollbar-measure',
   'icon-success',
   'icon-warning',

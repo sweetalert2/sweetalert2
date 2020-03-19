@@ -1,6 +1,9 @@
 name: CRON tests
 
 on:
+  push:
+    branches:
+      - cron
   schedule:
     - cron:  '0 3 * * *'
 

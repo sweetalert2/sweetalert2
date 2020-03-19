@@ -27,6 +27,9 @@ jobs:
     - name: Run tests
       run: yarn test
 
+    - name: Test in node
+      run: node test/require-in-node
+
     - name: Check TypeScript
       run: |
         tsc --lib dom,es6 --noEmit test/ts/simple-usage.ts sweetalert2.d.ts

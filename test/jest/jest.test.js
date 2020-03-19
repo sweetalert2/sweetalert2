@@ -11,7 +11,10 @@ describe('sweetalert2', () => {
     return Promise.resolve()
       .then(() => {
         return Swal.fire({
-          animation: false,
+          showClass: {
+            popup: '',
+            container: ''
+          },
           onOpen: () => {
             Swal.clickConfirm()
           }

@@ -27,7 +27,7 @@ jobs:
     - name: Test in jest
       run: |
         yarn add --dev jest
-        ./node_modules/.bin/jest --ci
+        ./node_modules/.bin/jest --ci test/jest/jest.test.js
 
     - name: Test dist/*.min.js
       run: yarn test --minified

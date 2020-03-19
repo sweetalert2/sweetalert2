@@ -9,7 +9,6 @@ on:
 
 jobs:
   build:
-    if: "github.secrets.SAUCE_USERNAME && github.secrets.SAUCE_ACCESS_TOKEN"
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -49,10 +48,3 @@ jobs:
         curl --location 'https://unpkg.com/sweetalert2' 2>&1 | grep --quiet 'this.Swal'
         # Wappalyzer
         curl 'https://api.wappalyzer.com/lookup-basic/v1/?url=https%3A%2F%2Fsweetalert2.github.io' 2>&1 | grep --quiet 'SweetAlert2'
-
-  skip:
-    if: "!github.secrets.SAUCE_USERNAME || !github.secrets.SAUCE_ACCESS_TOKEN"
-    runs-on: ubuntu-latest
-    steps:
-      - name: skip for forks
-        run: echo "SAUCE_USERNAME and SAUCE_ACCESS_TOKEN secrets should be set for running this workflow"

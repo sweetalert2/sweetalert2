@@ -1,3 +1,10 @@
+## [9.10.4](https://github.com/sweetalert2/sweetalert2/compare/v9.10.3...v9.10.4) (2020-03-21)
+
+
+### Bug Fixes
+
+* **a11y:** fix missing outline in Chrome ([7371fea](https://github.com/sweetalert2/sweetalert2/commit/7371feab405cbdeb1b5320497a928c42533eef1a))
+
 ## [9.10.3](https://github.com/sweetalert2/sweetalert2/compare/v9.10.2...v9.10.3) (2020-03-19)
 
 

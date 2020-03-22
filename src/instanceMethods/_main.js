@@ -53,8 +53,8 @@ const prepareParams = (userParams) => {
   // @deprecated
   if (userParams.animation === false) {
     params.showClass = {
-      popup: '',
-      backdrop: 'swal2-backdrop-show swal2-noanimation'
+      popup: 'swal2-noanimation',
+      backdrop: 'swal2-noanimation'
     }
     params.hideClass = {}
   }

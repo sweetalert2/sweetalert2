@@ -1,3 +1,10 @@
+## [9.10.5](https://github.com/sweetalert2/sweetalert2/compare/v9.10.4...v9.10.5) (2020-03-22)
+
+
+### Bug Fixes
+
+* disable animation more convinient ([#1925](https://github.com/sweetalert2/sweetalert2/issues/1925)) ([01e1fb1](https://github.com/sweetalert2/sweetalert2/commit/01e1fb11160cf26bd3fed835584703aeff7e4fd5))
+
 ## [9.10.4](https://github.com/sweetalert2/sweetalert2/compare/v9.10.3...v9.10.4) (2020-03-21)
 
 

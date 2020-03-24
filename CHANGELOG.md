@@ -1,3 +1,10 @@
+## [9.10.6](https://github.com/sweetalert2/sweetalert2/compare/v9.10.5...v9.10.6) (2020-03-24)
+
+
+### Bug Fixes
+
+* revert "fix: use global to detect nodejs env ([#1923](https://github.com/sweetalert2/sweetalert2/issues/1923))" ([bce912d](https://github.com/sweetalert2/sweetalert2/commit/bce912d1bbd363da0734536fc1d672f08ed62983)), closes [#1927](https://github.com/sweetalert2/sweetalert2/issues/1927)
+
 ## [9.10.5](https://github.com/sweetalert2/sweetalert2/compare/v9.10.4...v9.10.5) (2020-03-22)
 
 

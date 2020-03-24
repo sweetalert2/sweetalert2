@@ -1,2 +1,2 @@
 // Detect Node env
-export const isNodeEnv = () => typeof global !== 'undefined' && {}.toString.call(global) === '[object global]'
+export const isNodeEnv = () => typeof window === 'undefined' || typeof document === 'undefined'

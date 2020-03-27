@@ -128,10 +128,10 @@ renderInputType.range = (range, params) => {
 }
 
 renderInputType.select = (select, params) => {
-  select.innerHTML = ''
+  select.textContent = ''
   if (params.inputPlaceholder) {
     const placeholder = document.createElement('option')
-    placeholder.innerHTML = params.inputPlaceholder
+    dom.setInnerHtml(placeholder, params.inputPlaceholder)
     placeholder.value = ''
     placeholder.disabled = true
     placeholder.selected = true
@@ -141,7 +141,7 @@ renderInputType.select = (select, params) => {
 }
 
 renderInputType.radio = (radio) => {
-  radio.innerHTML = ''
+  radio.textContent = ''
   return radio
 }
 
@@ -151,7 +151,7 @@ renderInputType.checkbox = (checkboxContainer, params) => {
   checkbox.id = swalClasses.checkbox
   checkbox.checked = Boolean(params.inputValue)
   const label = checkboxContainer.querySelector('span')
-  label.innerHTML = params.inputPlaceholder
+  dom.setInnerHtml(label, params.inputPlaceholder)
   return checkboxContainer
 }
 

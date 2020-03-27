@@ -52,7 +52,7 @@ function handleButtonsStyling (confirmButton, cancelButton, params) {
 
 function renderButton (button, buttonType, params) {
   dom.toggle(button, params[`show${capitalizeFirstLetter(buttonType)}Button`], 'inline-block')
-  button.innerHTML = params[`${buttonType}ButtonText`] // Set caption text
+  dom.setInnerHtml(button, params[`${buttonType}ButtonText`]) // Set caption text
   button.setAttribute('aria-label', params[`${buttonType}ButtonAriaLabel`]) // ARIA label
 
   // Add buttons custom classes

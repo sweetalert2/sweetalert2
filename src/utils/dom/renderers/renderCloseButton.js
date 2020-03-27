@@ -3,7 +3,7 @@ import * as dom from '../../dom/index.js'
 export const renderCloseButton = (instance, params) => {
   const closeButton = dom.getCloseButton()
 
-  closeButton.innerHTML = params.closeButtonHtml
+  dom.setInnerHtml(closeButton, params.closeButtonHtml)
 
   // Custom class
   dom.applyCustomClass(closeButton, params, 'closeButton')

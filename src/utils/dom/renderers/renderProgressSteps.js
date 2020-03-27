@@ -6,7 +6,7 @@ import { getQueueStep } from '../../../staticMethods/queue.js'
 const createStepElement = (step) => {
   const stepEl = document.createElement('li')
   dom.addClass(stepEl, swalClasses['progress-step'])
-  stepEl.innerHTML = step
+  dom.setInnerHtml(stepEl, step)
   return stepEl
 }
 
@@ -26,7 +26,7 @@ export const renderProgressSteps = (instance, params) => {
   }
 
   dom.show(progressStepsContainer)
-  progressStepsContainer.innerHTML = ''
+  progressStepsContainer.textContent = ''
   const currentProgressStep = parseInt(params.currentProgressStep === undefined ? getQueueStep() : params.currentProgressStep)
   if (currentProgressStep >= params.progressSteps.length) {
     warn(

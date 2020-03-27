@@ -1,6 +1,6 @@
 import { swalClasses, iconTypes } from '../classes.js'
 import { getContainer, getPopup, getContent } from './getters.js'
-import { addClass, removeClass, getChildByClass } from './domUtils.js'
+import { addClass, removeClass, getChildByClass, setInnerHtml } from './domUtils.js'
 import { isNodeEnv } from '../isNodeEnv.js'
 import { error } from '../utils.js'
 import sweetAlert from '../../sweetalert2.js'
@@ -137,7 +137,7 @@ export const init = (params) => {
   if (oldContainerExisted) {
     addClass(container, swalClasses['no-transition'])
   }
-  container.innerHTML = sweetHTML
+  setInnerHtml(container, sweetHTML)
 
   const targetElement = getTarget(params.target)
   targetElement.appendChild(container)

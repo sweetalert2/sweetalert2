@@ -1,3 +1,5 @@
+import { setInnerHtml } from './domUtils.js'
+
 export const parseHtmlToContainer = (param, target) => {
   // DOM element
   if (param instanceof HTMLElement) {
@@ -9,7 +11,7 @@ export const parseHtmlToContainer = (param, target) => {
 
   // Plain string
   } else if (param) {
-    target.innerHTML = param
+    setInnerHtml(target, param)
   }
 }
 
@@ -20,12 +22,12 @@ const handleObject = (param, target) => {
 
   // For other objects use their string representation
   } else {
-    target.innerHTML = param.toString()
+    setInnerHtml(target, param.toString())
   }
 }
 
 const handleJqueryElem = (target, elem) => {
-  target.innerHTML = ''
+  target.textContent = ''
   if (0 in elem) {
     for (let i = 0; i in elem; i++) {
       target.appendChild(elem[i].cloneNode(true))

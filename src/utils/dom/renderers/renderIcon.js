@@ -54,31 +54,31 @@ const adjustSuccessIconBackgoundColor = () => {
 }
 
 const setContent = (icon, params) => {
-  icon.innerHTML = ''
+  icon.textContent = ''
 
   if (params.iconHtml) {
-    icon.innerHTML = iconContent(params.iconHtml)
+    dom.setInnerHtml(icon, iconContent(params.iconHtml))
   } else if (params.icon === 'success') {
-    icon.innerHTML = `
+    dom.setInnerHtml(icon, `
       <div class="swal2-success-circular-line-left"></div>
       <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
       <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>
       <div class="swal2-success-circular-line-right"></div>
-    `
+    `)
   } else if (params.icon === 'error') {
-    icon.innerHTML = `
+    dom.setInnerHtml(icon, `
       <span class="swal2-x-mark">
         <span class="swal2-x-mark-line-left"></span>
         <span class="swal2-x-mark-line-right"></span>
       </span>
-    `
+    `)
   } else {
     const defaultIconHtml = {
       question: '?',
       warning: '!',
       info: 'i'
     }
-    icon.innerHTML = iconContent(defaultIconHtml[params.icon])
+    dom.setInnerHtml(icon, iconContent(defaultIconHtml[params.icon]))
   }
 }
 

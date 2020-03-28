@@ -9,11 +9,13 @@ export const states = {
 
 export const setInnerHtml = (elem, html) => { // #1926
   elem.textContent = ''
-  const parser = new DOMParser()
-  const parsed = parser.parseFromString(html, `text/html`)
-  toArray(parsed.querySelector('body').childNodes).forEach((child) => {
-    elem.appendChild(child)
-  })
+  if (html) {
+    const parser = new DOMParser()
+    const parsed = parser.parseFromString(html, `text/html`)
+    toArray(parsed.querySelector('body').childNodes).forEach((child) => {
+      elem.appendChild(child)
+    })
+  }
 }
 
 export const hasClass = (elem, className) => {

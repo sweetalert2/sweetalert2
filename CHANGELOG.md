@@ -1,3 +1,11 @@
+## [9.10.7](https://github.com/sweetalert2/sweetalert2/compare/v9.10.6...v9.10.7) (2020-03-28)
+
+
+### Bug Fixes
+
+* use DOMParset only if html is not empty ([#1931](https://github.com/sweetalert2/sweetalert2/issues/1931)) ([54463ec](https://github.com/sweetalert2/sweetalert2/commit/54463ec87637581a65147967bb4d55f1e123c9f6)), closes [/github.com/sweetalert2/sweetalert2/pull/1930#issuecomment-605412269](https://github.com//github.com/sweetalert2/sweetalert2/pull/1930/issues/issuecomment-605412269)
+* use DOMParset to secure setting innerHTML ([#1930](https://github.com/sweetalert2/sweetalert2/issues/1930)) ([18c5a63](https://github.com/sweetalert2/sweetalert2/commit/18c5a63fe585053f31c85ed2fb17945aea3b334b))
+
 ## [9.10.6](https://github.com/sweetalert2/sweetalert2/compare/v9.10.5...v9.10.6) (2020-03-24)
 
 

@@ -46,5 +46,3 @@ jobs:
         curl --location 'https://cdn.jsdelivr.net/npm/sweetalert2' 2>&1 | grep --quiet 'this.Swal'
         # unpkg
         curl --location 'https://unpkg.com/sweetalert2' 2>&1 | grep --quiet 'this.Swal'
-        # Wappalyzer
-        curl 'https://api.wappalyzer.com/lookup-basic/v1/?url=https%3A%2F%2Fsweetalert2.github.io' 2>&1 | grep --quiet 'SweetAlert2'

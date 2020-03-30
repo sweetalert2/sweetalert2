@@ -40,9 +40,8 @@ jobs:
         yarn test --sauce
         yarn test --sauce --minified
 
-    - name: Test third-party CDN services
-      run: |
-        # jsdelivr
-        curl --location 'https://cdn.jsdelivr.net/npm/sweetalert2' 2>&1 | grep --quiet 'this.Swal'
-        # unpkg
-        curl --location 'https://unpkg.com/sweetalert2' 2>&1 | grep --quiet 'this.Swal'
+    - name: Test jsdelivr
+      run: curl --location 'https://cdn.jsdelivr.net/npm/sweetalert2' 2>&1 | grep --quiet 'this.Swal'
+
+    - name: Test unpkg
+      run: curl --location 'https://unpkg.com/sweetalert2' 2>&1 | grep --quiet 'this.Swal'

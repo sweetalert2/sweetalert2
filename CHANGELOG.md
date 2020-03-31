@@ -1,3 +1,10 @@
+## [9.10.8](https://github.com/sweetalert2/sweetalert2/compare/v9.10.7...v9.10.8) (2020-03-31)
+
+
+### Bug Fixes
+
+* take <head> into account when parsing html with DOMParser ([#1934](https://github.com/sweetalert2/sweetalert2/issues/1934)) ([92eec64](https://github.com/sweetalert2/sweetalert2/commit/92eec64d5f81e0a67fe7865d03ed3497fe8275f4))
+
 ## [9.10.7](https://github.com/sweetalert2/sweetalert2/compare/v9.10.6...v9.10.7) (2020-03-28)
 
 

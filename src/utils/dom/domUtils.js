@@ -12,6 +12,9 @@ export const setInnerHtml = (elem, html) => { // #1926
   if (html) {
     const parser = new DOMParser()
     const parsed = parser.parseFromString(html, `text/html`)
+    toArray(parsed.querySelector('head').childNodes).forEach((child) => {
+      elem.appendChild(child)
+    })
     toArray(parsed.querySelector('body').childNodes).forEach((child) => {
       elem.appendChild(child)
     })

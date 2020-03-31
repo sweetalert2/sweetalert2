@@ -220,11 +220,12 @@ QUnit.test('getters', (assert) => {
 QUnit.test('content/title is set (html)', (assert) => {
   Swal.fire({
     title: '<strong>Strong</strong>, <em>Emphasis</em>',
-    html: '<p>Paragraph</p><img /><button></button>'
+    html: '<style>p { font-size: 10px; }</style><p>Paragraph</p><img /><button style="width:10px"></button>'
   })
 
   assert.equal(Swal.getTitle().querySelectorAll('strong, em').length, 2)
-  assert.equal(Swal.getContent().querySelectorAll('p, img, button').length, 3)
+  assert.equal(Swal.getContent().querySelectorAll('style, p, img, button').length, 4)
+  assert.equal(Swal.getContent().querySelector('button').style.width, '10px')
 })
 
 QUnit.test('content/title is set (text)', (assert) => {

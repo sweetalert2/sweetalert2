@@ -130,11 +130,12 @@ describe('Miscellaneous tests', function () {
   it('content/title is set (html)', () => {
     Swal.fire({
       title: '<strong>Strong</strong>, <em>Emphasis</em>',
-      html: '<p>Paragraph</p><img /><button></button>'
+      html: '<style>p { font-size: 10px; }</style><p>Paragraph</p><img /><button style="width:10px"></button>'
     })
 
     expect(Swal.getTitle().querySelectorAll('strong, em').length).to.equal(2)
-    expect(Swal.getContent().querySelectorAll('p, img, button').length).to.equal(3)
+    expect(Swal.getContent().querySelectorAll('style, p, img, button').length).to.equal(4)
+    expect(Swal.getContent().querySelector('button').style.width).to.equal('10px')
   })
 
   it('content/title is set (text)', () => {

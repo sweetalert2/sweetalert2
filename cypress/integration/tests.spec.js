@@ -1,6 +1,6 @@
 import jQuery from 'jquery'
 import Swal from '../../src/sweetalert2'
-import { $, isHidden, isVisible, SwalWithoutAnimation, triggerKeydownEvent, TIMEOUT, dispatchCustomEvent } from '../utils'
+import { $, isHidden, isVisible, SwalWithoutAnimation, triggerKeydownEvent, TIMEOUT, dispatchCustomEvent, ensureClosed } from '../utils'
 
 describe('Miscellaneous tests', function () {
   it('version is correct semver', () => {
@@ -644,6 +644,7 @@ describe('Outside click', () => {
 
 describe('Queue', () => {
   it('queue', (done) => {
+    ensureClosed()
     const steps = ['Step 1', 'Step 2']
     expect(Swal.getQueueStep()).to.equal(null)
     SwalWithoutAnimation.queue(steps).then(() => {

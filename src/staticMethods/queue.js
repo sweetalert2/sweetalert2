@@ -38,7 +38,7 @@ export const queue = function (steps) {
 /*
  * Global function for getting the index of current popup in queue
  */
-export const getQueueStep = () => dom.getContainer().getAttribute('data-queue-step')
+export const getQueueStep = () => dom.getContainer() && dom.getContainer().getAttribute('data-queue-step')
 
 /*
  * Global function for inserting a popup to the queue

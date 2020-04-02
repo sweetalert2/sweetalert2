@@ -1,3 +1,10 @@
+## [9.10.9](https://github.com/sweetalert2/sweetalert2/compare/v9.10.8...v9.10.9) (2020-04-02)
+
+
+### Bug Fixes
+
+* getQueueStep() when popup is closed ([#1936](https://github.com/sweetalert2/sweetalert2/issues/1936)) ([ca3f3f4](https://github.com/sweetalert2/sweetalert2/commit/ca3f3f48da15482d9701465924494b699a80f207))
+
 ## [9.10.8](https://github.com/sweetalert2/sweetalert2/compare/v9.10.7...v9.10.8) (2020-03-31)
 
 

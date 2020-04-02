@@ -1,7 +1,8 @@
-const { $, Swal, SwalWithoutAnimation, TIMEOUT } = require('./helpers')
+const { $, Swal, SwalWithoutAnimation, ensureClosed, TIMEOUT } = require('./helpers')
 
 QUnit.test('queue', (assert) => {
   const done = assert.async()
+  ensureClosed()
   const steps = ['Step 1', 'Step 2']
 
   assert.equal(Swal.getQueueStep(), null)

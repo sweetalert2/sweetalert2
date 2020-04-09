@@ -1,3 +1,10 @@
+## [9.10.10](https://github.com/sweetalert2/sweetalert2/compare/v9.10.9...v9.10.10) (2020-04-09)
+
+
+### Bug Fixes
+
+* loader, color: transparent ([65642fc](https://github.com/sweetalert2/sweetalert2/commit/65642fc8837ab27e350645c767f5edfcd21d11cb)), closes [#1941](https://github.com/sweetalert2/sweetalert2/issues/1941)
+
 ## [9.10.9](https://github.com/sweetalert2/sweetalert2/compare/v9.10.8...v9.10.9) (2020-04-02)
 
 

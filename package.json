@@ -35,7 +35,7 @@
     "gulp-uglify": "^3.0.0",
     "istanbul-lib-coverage": "^3.0.0",
     "jquery": "^3.3.1",
-    "karma": "^4.0.0",
+    "karma": "^5.0.0",
     "karma-chrome-launcher": "^3.0.0",
     "karma-firefox-launcher": "^1.1.0",
     "karma-ie-launcher": "^1.0.0",

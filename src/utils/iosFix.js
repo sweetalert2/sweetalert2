@@ -18,12 +18,7 @@ const lockBodyScroll = () => { // #1246
   const container = dom.getContainer()
   let preventTouchMove
   container.ontouchstart = (e) => {
-    preventTouchMove =
-      e.target === container ||
-      (
-        !dom.isScrollable(container) &&
-        e.target.tagName !== 'INPUT' // #1603
-      )
+    preventTouchMove = shouldPreventTouchMove(e.target)
   }
   container.ontouchmove = (e) => {
     if (preventTouchMove) {
@@ -31,6 +26,24 @@ const lockBodyScroll = () => { // #1246
       e.stopPropagation()
     }
   }
+}
+
+const shouldPreventTouchMove = (target) => {
+  const container = dom.getContainer()
+  if (target === container) {
+    return true
+  }
+  if (
+    !dom.isScrollable(container) &&
+    target.tagName !== 'INPUT' && // #1603
+    !(
+      dom.isScrollable(dom.getContent()) && // #1944
+      dom.getContent().contains(target)
+    )
+  ) {
+    return true
+  }
+  return false
 }
 
 export const undoIOSfix = () => {

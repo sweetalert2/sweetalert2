@@ -1,3 +1,10 @@
+## [9.10.11](https://github.com/sweetalert2/sweetalert2/compare/v9.10.10...v9.10.11) (2020-04-13)
+
+
+### Bug Fixes
+
+* scrollable content in iOS ([#1945](https://github.com/sweetalert2/sweetalert2/issues/1945)) ([87d9884](https://github.com/sweetalert2/sweetalert2/commit/87d9884908de302541fe0f3a19ee5099f2a1c6b5))
+
 ## [9.10.10](https://github.com/sweetalert2/sweetalert2/compare/v9.10.9...v9.10.10) (2020-04-09)
 
 

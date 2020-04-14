@@ -1,3 +1,10 @@
+## [9.10.12](https://github.com/sweetalert2/sweetalert2/compare/v9.10.11...v9.10.12) (2020-04-14)
+
+
+### Bug Fixes
+
+* perform container.scrollTop = 0 asyncronously ([#1947](https://github.com/sweetalert2/sweetalert2/issues/1947)) ([5674005](https://github.com/sweetalert2/sweetalert2/commit/56740050414378e42ef377b1db565484d942f501))
+
 ## [9.10.11](https://github.com/sweetalert2/sweetalert2/compare/v9.10.10...v9.10.11) (2020-04-13)
 
 

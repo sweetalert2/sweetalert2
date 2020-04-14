@@ -93,8 +93,10 @@ const swalPromise = (instance, domCache, innerParams) => {
 
     initFocus(domCache, innerParams)
 
-    // Scroll container to top on open (#1247)
-    domCache.container.scrollTop = 0
+    // Scroll container to top on open (#1247, #1946)
+    setTimeout(() => {
+      domCache.container.scrollTop = 0
+    })
   })
 }
 

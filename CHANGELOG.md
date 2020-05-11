@@ -1,3 +1,10 @@
+## [9.10.13](https://github.com/sweetalert2/sweetalert2/compare/v9.10.12...v9.10.13) (2020-05-11)
+
+
+### Bug Fixes
+
+* loader color on update ([#1958](https://github.com/sweetalert2/sweetalert2/issues/1958)) ([a2c130d](https://github.com/sweetalert2/sweetalert2/commit/a2c130df2d5cdc9e651ff586fbb2898a7b5d2540))
+
 ## [9.10.12](https://github.com/sweetalert2/sweetalert2/compare/v9.10.11...v9.10.12) (2020-04-14)
 
 

@@ -54,10 +54,3 @@ jobs:
       run: |
         yarn add --dev bundlewatch
         ./node_modules/.bin/bundlewatch
-
-  skip:
-    if: "contains(github.event.commits[0].message, '[skip ci]')"
-    runs-on: ubuntu-latest
-    steps:
-      - name: skip ci
-        run: echo "skip ci"

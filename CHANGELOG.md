@@ -1,3 +1,10 @@
+# [9.11.0](https://github.com/sweetalert2/sweetalert2/compare/v9.10.13...v9.11.0) (2020-05-19)
+
+
+### Features
+
+* make footer updatable ([#1969](https://github.com/sweetalert2/sweetalert2/issues/1969)) ([acd2b8a](https://github.com/sweetalert2/sweetalert2/commit/acd2b8a06cec766ea5b26cca671da0246870c122))
+
 ## [9.10.13](https://github.com/sweetalert2/sweetalert2/compare/v9.10.12...v9.10.13) (2020-05-11)
 
 

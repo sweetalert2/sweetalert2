@@ -82,6 +82,7 @@ export const updatableParams = [
   'titleText',
   'text',
   'html',
+  'footer',
   'icon',
   'hideClass',
   'customClass',

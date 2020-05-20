@@ -103,7 +103,10 @@ export const updatableParams = [
   'imageHeight',
   'imageAlt',
   'progressSteps',
-  'currentProgressStep'
+  'currentProgressStep',
+  'onClose',
+  'onAfterClose',
+  'onDestroy'
 ]
 
 export const deprecatedParams = {

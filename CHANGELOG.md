@@ -1,3 +1,10 @@
+# [9.12.0](https://github.com/sweetalert2/sweetalert2/compare/v9.11.0...v9.12.0) (2020-05-20)
+
+
+### Features
+
+* make onClose onAfterClose onDestroy updatable ([#1974](https://github.com/sweetalert2/sweetalert2/issues/1974)) ([91700e7](https://github.com/sweetalert2/sweetalert2/commit/91700e74dbea701abf48c7245d5eee862f3be44c))
+
 # [9.11.0](https://github.com/sweetalert2/sweetalert2/compare/v9.10.13...v9.11.0) (2020-05-19)
 
 

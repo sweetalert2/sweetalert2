@@ -1,6 +1,18 @@
-const { $, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible, isHidden, TIMEOUT } = require('./helpers')
-const { toArray } = require('../../src/utils/utils')
-const { measureScrollbar } = require('../../src/utils/dom/measureScrollbar')
+const {
+  $,
+  Swal,
+  SwalWithoutAnimation,
+  triggerKeydownEvent,
+  isVisible,
+  isHidden,
+  TIMEOUT
+} = require('./helpers')
+const {
+  toArray
+} = require('../../src/utils/utils')
+const {
+  measureScrollbar
+} = require('../../src/utils/dom/measureScrollbar')
 const sinon = require('sinon/pkg/sinon')
 
 QUnit.test('version is correct semver', (assert) => {
@@ -34,7 +46,9 @@ QUnit.test('container scrolled to top and has scrollbar on open', (assert) => {
 QUnit.test('should throw console warning about invalid params', (assert) => {
   const _consoleWarn = console.warn
   const spy = sinon.spy(console, 'warn')
-  Swal.fire({ invalidParam: 'oops' })
+  Swal.fire({
+    invalidParam: 'oops'
+  })
   console.warn = _consoleWarn
   assert.ok(spy.calledWith('SweetAlert2: Unknown parameter "invalidParam"'))
 })
@@ -42,7 +56,9 @@ QUnit.test('should throw console warning about invalid params', (assert) => {
 QUnit.test('should throw console error about unexpected params', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')
-  Swal.fire('Hello world!', { icon: 'success' })
+  Swal.fire('Hello world!', {
+    icon: 'success'
+  })
   console.error = _consoleError
   assert.ok(spy.calledWith('SweetAlert2: Unexpected type of html! Expected "string" or "Element", got object'))
 })
@@ -153,13 +169,22 @@ QUnit.test('the vertical scrollbar should be restored before a toast is fired af
 })
 
 QUnit.test('modal width', (assert) => {
-  Swal.fire({ text: '300px', width: 300 })
+  Swal.fire({
+    text: '300px',
+    width: 300
+  })
   assert.equal(Swal.getPopup().style.width, '300px')
 
-  Swal.fire({ text: '400px', width: '400px' })
+  Swal.fire({
+    text: '400px',
+    width: '400px'
+  })
   assert.equal(Swal.getPopup().style.width, '400px')
 
-  Swal.fire({ text: '90%', width: '90%' })
+  Swal.fire({
+    text: '90%',
+    width: '90%'
+  })
   assert.equal(Swal.getPopup().style.width, '90%')
 })
 
@@ -202,7 +227,9 @@ QUnit.test('getters', (assert) => {
   assert.equal(Swal.getCancelButton().getAttribute('aria-label'), 'Cancel button aria-label')
   assert.equal(Swal.getFooter().innerHTML, '<b>Footer</b>')
 
-  Swal.fire({ input: 'text' })
+  Swal.fire({
+    input: 'text'
+  })
   Swal.getInput().value = 'input text'
   assert.equal(Swal.getInput().value, 'input text')
 
@@ -253,7 +280,10 @@ QUnit.test('validation message', (assert) => {
   const done = assert.async()
   const inputValidator = (value) => Promise.resolve(!value && 'no falsy values')
 
-  SwalWithoutAnimation.fire({ input: 'text', inputValidator })
+  SwalWithoutAnimation.fire({
+    input: 'text',
+    inputValidator
+  })
   assert.ok(isHidden(Swal.getValidationMessage()))
   setTimeout(() => {
     const initialModalHeight = Swal.getPopup().offsetHeight
@@ -284,7 +314,10 @@ QUnit.test('validation message', (assert) => {
 QUnit.test('should throw console error about unexpected type of InputOptions', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')
-  Swal.fire({ input: 'select', inputOptions: 'invalid-input-options' })
+  Swal.fire({
+    input: 'select',
+    inputOptions: 'invalid-input-options'
+  })
   console.error = _consoleError
   assert.ok(spy.calledWith('SweetAlert2: Unexpected type of inputOptions! Expected object, Map or Promise, got string'))
 })
@@ -538,7 +571,11 @@ QUnit.test('esc key', (assert) => {
     title: 'Esc me',
     onOpen: () => triggerKeydownEvent(Swal.getPopup(), 'Escape')
   }).then((result) => {
-    assert.deepEqual(result, { dismiss: Swal.DismissReason.esc })
+    assert.deepEqual(result, {
+      dismiss: Swal.DismissReason.esc,
+      isConfirmed: false,
+      isDismissed: true
+    })
     done()
   })
 })
@@ -576,7 +613,11 @@ QUnit.test('close button', (assert) => {
     title: 'Close button test',
     showCloseButton: true
   }).then((result) => {
-    assert.deepEqual(result, { dismiss: Swal.DismissReason.close })
+    assert.deepEqual(result, {
+      dismiss: Swal.DismissReason.close,
+      isConfirmed: false,
+      isDismissed: true
+    })
     done()
   })
 
@@ -603,7 +644,11 @@ QUnit.test('cancel button', (assert) => {
   Swal.fire({
     title: 'Cancel me'
   }).then((result) => {
-    assert.deepEqual(result, { dismiss: Swal.DismissReason.cancel })
+    assert.deepEqual(result, {
+      dismiss: Swal.DismissReason.cancel,
+      isConfirmed: false,
+      isDismissed: true
+    })
     done()
   })
 
@@ -617,7 +662,11 @@ QUnit.test('timer', (assert) => {
     title: 'Timer test',
     timer: 10
   }).then((result) => {
-    assert.deepEqual(result, { dismiss: Swal.DismissReason.timer })
+    assert.deepEqual(result, {
+      dismiss: Swal.DismissReason.timer,
+      isConfirmed: false,
+      isDismissed: true
+    })
     done()
   })
 })
@@ -664,16 +713,23 @@ QUnit.test('params validation', (assert) => {
 })
 
 QUnit.test('addition and removal of backdrop', (assert) => {
-  Swal.fire({ backdrop: false })
+  Swal.fire({
+    backdrop: false
+  })
   assert.ok(document.body.classList.contains('swal2-no-backdrop'))
   assert.ok(document.documentElement.classList.contains('swal2-no-backdrop'))
-  Swal.fire({ title: 'test' })
+  Swal.fire({
+    title: 'test'
+  })
   assert.notOk(document.body.classList.contains('swal2-no-backdrop'))
   assert.notOk(document.documentElement.classList.contains('swal2-no-backdrop'))
 })
 
 QUnit.test('footer', (assert) => {
-  Swal.fire({ title: 'Modal with footer', footer: 'I am footer' })
+  Swal.fire({
+    title: 'Modal with footer',
+    footer: 'I am footer'
+  })
   assert.ok(isVisible(Swal.getFooter()))
 
   Swal.fire('Modal w/o footer')

@@ -1,8 +1,12 @@
-const { Swal } = require('../helpers')
+const {
+  Swal
+} = require('../helpers')
 
 QUnit.test('basic mixin', (assert) => {
   const done = assert.async()
-  const MySwal = Swal.mixin({ title: '1_title' })
+  const MySwal = Swal.mixin({
+    title: '1_title'
+  })
   const swal = MySwal.fire({
     onOpen: () => {
       assert.equal(MySwal.getTitle().textContent, '1_title')
@@ -12,7 +16,11 @@ QUnit.test('basic mixin', (assert) => {
   assert.ok(swal instanceof MySwal)
   assert.ok(swal instanceof Swal)
   swal.then((result) => {
-    assert.deepEqual(result, { value: true })
+    assert.deepEqual(result, {
+      value: true,
+      isConfirmed: true,
+      isDismissed: false
+    })
     done()
   })
 })

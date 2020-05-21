@@ -1,4 +1,7 @@
-const { Swal, initialSwalPropNames } = require('../helpers')
+const {
+  Swal,
+  initialSwalPropNames
+} = require('../helpers')
 
 QUnit.test('properties of `Swal` class are consistent', (assert) => {
   const done = assert.async()
@@ -30,7 +33,10 @@ QUnit.test('ways to instantiate', (assert) => {
 })
 
 QUnit.test('instance properties and methods', (assert) => {
-  const params = { input: 'text', inputValue: 'foo' }
+  const params = {
+    input: 'text',
+    inputValue: 'foo'
+  }
   const swal = Swal.fire(params)
   assert.deepEqual(Object.keys(swal), ['params'])
   assert.deepEqual(swal.params, params)
@@ -40,19 +46,27 @@ QUnit.test('instance properties and methods', (assert) => {
 QUnit.test('extending swal', (assert) => {
   const done = assert.async()
   const MySwal = class extends Swal {
-    static argsToParams (args) {
+    static argsToParams(args) {
       assert.deepEqual(args, ['arg'])
-      return { title: 'title' }
+      return {
+        title: 'title'
+      }
     }
 
-    _main (params) {
-      assert.deepEqual(params, { title: 'title' })
+    _main(params) {
+      assert.deepEqual(params, {
+        title: 'title'
+      })
       return super._main({
         input: 'text',
         inputValue: 'inputValue',
         onOpen: () => MySwal.clickConfirm()
       }).then(result => {
-        assert.deepEqual(result, { value: 'inputValue' })
+        assert.deepEqual(result, {
+          value: 'inputValue',
+          isConfirmed: true,
+          isDismissed: false
+        })
         return 'result'
       })
     }

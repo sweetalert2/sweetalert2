@@ -1,4 +1,8 @@
-const { $, Swal, SwalWithoutAnimation } = require('../helpers')
+const {
+  $,
+  Swal,
+  SwalWithoutAnimation
+} = require('../helpers')
 
 QUnit.test('clickConfirm() should click the confirm button', (assert) => {
   const done = assert.async()
@@ -9,7 +13,11 @@ QUnit.test('clickConfirm() should click the confirm button', (assert) => {
       two: 'two'
     }
   }).then((result) => {
-    assert.deepEqual(result, { value: 'two' })
+    assert.deepEqual(result, {
+      value: 'two',
+      isConfirmed: true,
+      isDismissed: false
+    })
     done()
   })
   $('.swal2-radio').querySelector('input[value="two"]').checked = true

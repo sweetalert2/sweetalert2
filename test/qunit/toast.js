@@ -1,7 +1,11 @@
-const { Swal } = require('./helpers')
+const {
+  Swal
+} = require('./helpers')
 const sinon = require('sinon/pkg/sinon')
 
-const Toast = Swal.mixin({ toast: true })
+const Toast = Swal.mixin({
+  toast: true
+})
 QUnit.test('.swal2-toast-shown', (assert) => {
   Toast.fire()
   assert.ok(document.body.classList.contains('swal2-toast-shown'))
@@ -26,27 +30,39 @@ QUnit.test('should throw console warnings for incompatible parameters', (assert)
 QUnit.test('.swal2-toast-column if input', (assert) => {
   const inputs = ['text', 'email', 'password', 'number', 'tel', 'range', 'textarea', 'select', 'radio', 'checkbox', 'file', 'url']
   inputs.forEach((input) => {
-    Toast.fire({ input: input })
+    Toast.fire({
+      input: input
+    })
     assert.ok(document.body.classList.contains('swal2-toast-column'))
 
-    Swal.fire({ input: input })
+    Swal.fire({
+      input: input
+    })
     assert.notOk(document.body.classList.contains('swal2-toast-column'))
   })
 })
 
 QUnit.test('.swal2-toast-column if footer', (assert) => {
-  Toast.fire({ footer: 'footer' })
+  Toast.fire({
+    footer: 'footer'
+  })
   assert.ok(document.body.classList.contains('swal2-toast-column'))
 
-  Swal.fire({ footer: 'footer' })
+  Swal.fire({
+    footer: 'footer'
+  })
   assert.notOk(document.body.classList.contains('swal2-toast-column'))
 })
 
 QUnit.test('.swal2-toast-column if close button', (assert) => {
-  Toast.fire({ showCloseButton: true })
+  Toast.fire({
+    showCloseButton: true
+  })
   assert.ok(document.body.classList.contains('swal2-toast-column'))
 
-  Swal.fire({ showCloseButton: true })
+  Swal.fire({
+    showCloseButton: true
+  })
   assert.notOk(document.body.classList.contains('swal2-toast-column'))
 })
 
@@ -56,7 +72,11 @@ QUnit.test('toast click closes when no buttons or input are specified', (assert)
   Toast.fire({
     showConfirmButton: false
   }).then((result) => {
-    assert.deepEqual(result, { dismiss: Toast.DismissReason.close })
+    assert.deepEqual(result, {
+      dismiss: Toast.DismissReason.close,
+      isConfirmed: false,
+      isDismissed: true
+    })
     done()
   })
 

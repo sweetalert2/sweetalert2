@@ -1,3 +1,10 @@
+# [9.13.0](https://github.com/sweetalert2/sweetalert2/compare/v9.12.0...v9.13.0) (2020-05-21)
+
+
+### Features
+
+* add isConfirmed and isDismissed to SweetAlertResult ([#1976](https://github.com/sweetalert2/sweetalert2/issues/1976)) ([8fc85f3](https://github.com/sweetalert2/sweetalert2/commit/8fc85f39c1f118a1da2ee26b8c83ba22e394ceba))
+
 # [9.12.0](https://github.com/sweetalert2/sweetalert2/compare/v9.11.0...v9.12.0) (2020-05-20)
 
 

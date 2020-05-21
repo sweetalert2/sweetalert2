@@ -70,9 +70,9 @@ export function close (resolveValue) {
 
   handlePopupAnimation(this, popup, innerParams)
 
-  resolveValue.isDismissed = typeof resolveValue.dismiss !== 'undefined';
-  resolveValue.isConfirmed = typeof resolveValue.dismiss === 'undefined';
-  
+  resolveValue.isDismissed = typeof resolveValue.dismiss !== 'undefined'
+  resolveValue.isConfirmed = typeof resolveValue.dismiss === 'undefined'
+
   // Resolve Swal promise
   swalPromiseResolve(resolveValue || {})
 }

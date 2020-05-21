@@ -46,14 +46,14 @@ QUnit.test('instance properties and methods', (assert) => {
 QUnit.test('extending swal', (assert) => {
   const done = assert.async()
   const MySwal = class extends Swal {
-    static argsToParams(args) {
+    static argsToParams (args) {
       assert.deepEqual(args, ['arg'])
       return {
         title: 'title'
       }
     }
 
-    _main(params) {
+    _main (params) {
       assert.deepEqual(params, {
         title: 'title'
       })

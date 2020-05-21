@@ -101,7 +101,9 @@ QUnit.test('allowOutsideClick: () => !swal.isLoading()', (assert) => {
     allowOutsideClick: () => !Swal.isLoading()
   }).then((result) => {
     assert.deepEqual(result, {
-      dismiss: Swal.DismissReason.backdrop
+      dismiss: Swal.DismissReason.backdrop,
+      isConfirmed: false,
+      isDismissed: true
     })
     done()
   })

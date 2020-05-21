@@ -9,7 +9,11 @@ describe('clickConfirm()', () => {
         two: 'two'
       }
     }).then((result) => {
-      expect(result).to.eql({ value: 'two' })
+      expect(result).to.eql({
+        value: 'two',
+        isConfirmed: true,
+        isDismissed: false,
+      })
       done()
     })
     $('.swal2-radio').querySelector('input[value="two"]').checked = true

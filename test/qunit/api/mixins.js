@@ -12,7 +12,11 @@ QUnit.test('basic mixin', (assert) => {
   assert.ok(swal instanceof MySwal)
   assert.ok(swal instanceof Swal)
   swal.then((result) => {
-    assert.deepEqual(result, { value: true })
+    assert.deepEqual(result, {
+      value: true,
+      isConfirmed: true,
+      isDismissed: false,
+    })
     done()
   })
 })

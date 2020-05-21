@@ -538,7 +538,11 @@ QUnit.test('esc key', (assert) => {
     title: 'Esc me',
     onOpen: () => triggerKeydownEvent(Swal.getPopup(), 'Escape')
   }).then((result) => {
-    assert.deepEqual(result, { dismiss: Swal.DismissReason.esc })
+    assert.deepEqual(result, {
+      dismiss: Swal.DismissReason.esc,
+      isConfirmed: false,
+      isDismissed: true,
+    })
     done()
   })
 })
@@ -576,7 +580,11 @@ QUnit.test('close button', (assert) => {
     title: 'Close button test',
     showCloseButton: true
   }).then((result) => {
-    assert.deepEqual(result, { dismiss: Swal.DismissReason.close })
+    assert.deepEqual(result, {
+      dismiss: Swal.DismissReason.close,
+      isConfirmed: false,
+      isDismissed: true,
+    })
     done()
   })
 
@@ -603,7 +611,11 @@ QUnit.test('cancel button', (assert) => {
   Swal.fire({
     title: 'Cancel me'
   }).then((result) => {
-    assert.deepEqual(result, { dismiss: Swal.DismissReason.cancel })
+    assert.deepEqual(result, {
+      dismiss: Swal.DismissReason.cancel,
+      isConfirmed: false,
+      isDismissed: true,
+    })
     done()
   })
 
@@ -617,7 +629,11 @@ QUnit.test('timer', (assert) => {
     title: 'Timer test',
     timer: 10
   }).then((result) => {
-    assert.deepEqual(result, { dismiss: Swal.DismissReason.timer })
+    assert.deepEqual(result, {
+      dismiss: Swal.DismissReason.timer,
+      isConfirmed: false,
+      isDismissed: true,
+    })
     done()
   })
 })

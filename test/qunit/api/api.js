@@ -52,7 +52,11 @@ QUnit.test('extending swal', (assert) => {
         inputValue: 'inputValue',
         onOpen: () => MySwal.clickConfirm()
       }).then(result => {
-        assert.deepEqual(result, { value: 'inputValue' })
+        assert.deepEqual(result, {
+          value: 'inputValue',
+          isConfirmed: true,
+          isDismissed: false,
+        })
         return 'result'
       })
     }

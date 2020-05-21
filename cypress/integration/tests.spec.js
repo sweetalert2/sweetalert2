@@ -342,7 +342,11 @@ describe('Miscellaneous tests', function () {
       title: 'Esc me',
       onOpen: () => triggerKeydownEvent(Swal.getPopup(), 'Escape')
     }).then((result) => {
-      expect(result).to.eql({ dismiss: Swal.DismissReason.esc })
+      expect(result).to.eql({
+        dismiss: Swal.DismissReason.esc,
+        isConfirmed: false,
+        isDismissed: true,
+      })
       done()
     })
   })
@@ -376,7 +380,11 @@ describe('Miscellaneous tests', function () {
       title: 'Close button test',
       showCloseButton: true
     }).then((result) => {
-      expect(result).to.eql({ dismiss: Swal.DismissReason.close })
+      expect(result).to.eql({
+        dismiss: Swal.DismissReason.close,
+        isConfirmed: false,
+        isDismissed: true,
+      })
       done()
     })
 
@@ -401,7 +409,11 @@ describe('Miscellaneous tests', function () {
     Swal.fire({
       title: 'Cancel me'
     }).then((result) => {
-      expect(result).to.eql({ dismiss: Swal.DismissReason.cancel })
+      expect(result).to.eql({
+        dismiss: Swal.DismissReason.cancel,
+        isConfirmed: false,
+        isDismissed: true,
+      })
       done()
     })
 
@@ -413,7 +425,11 @@ describe('Miscellaneous tests', function () {
       title: 'Timer test',
       timer: 10
     }).then((result) => {
-      expect(result).to.eql({ dismiss: Swal.DismissReason.timer })
+      expect(result).to.eql({
+        dismiss: Swal.DismissReason.timer,
+        isConfirmed: false,
+        isDismissed: true,
+      })
       done()
     })
   })
@@ -562,7 +578,11 @@ describe('Outside click', () => {
 
   it('backdrop click', (done) => {
     SwalWithoutAnimation.fire('Backdrop click').then((result) => {
-      expect(result).to.eql({ dismiss: Swal.DismissReason.backdrop })
+      expect(result).to.eql({
+        dismiss: Swal.DismissReason.backdrop,
+        isConfirmed: false,
+        isDismissed: true,
+      })
       done()
     })
     Swal.getContainer().click()
@@ -619,7 +639,11 @@ describe('Outside click', () => {
       title: 'allowOutsideClick: () => !swal.isLoading()',
       allowOutsideClick: () => !Swal.isLoading()
     }).then((result) => {
-      expect(result).to.eql({ dismiss: Swal.DismissReason.backdrop })
+      expect(result).to.eql({
+        dismiss: Swal.DismissReason.backdrop,
+        isConfirmed: false,
+        isDismissed: true,
+      })
       done()
     })
     Swal.showLoading()

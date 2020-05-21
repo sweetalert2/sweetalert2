@@ -55,7 +55,11 @@ describe('Toast', () => {
     Toast.fire({
       showConfirmButton: false
     }).then((result) => {
-      expect(result).to.eql({ dismiss: Toast.DismissReason.close })
+      expect(result).to.eql({
+        dismiss: Toast.DismissReason.close,
+        isConfirmed: false,
+        isDismissed: true,
+      })
       done()
     })
     Toast.getPopup().click()

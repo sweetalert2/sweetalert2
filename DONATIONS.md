@@ -37,6 +37,8 @@ Your contribution will be greatly appreciated!
 - **[Unique-P GmbH](https://www.unique-p.ch/)** (100 CHF)
     > Great work guys! Awesome library, very helpful!
 
+- **[@faalbane](https://github.com/faalbane)** (36 USD)
+
 - **Germano Rizzo** (35 EUR)
     > Great job! I saved quite a few hours of work with this, and excellent quality!
 

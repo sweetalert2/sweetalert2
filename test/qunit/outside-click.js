@@ -13,7 +13,11 @@ QUnit.test('backdrop click', (assert) => {
   const done = assert.async()
 
   SwalWithoutAnimation.fire('Backdrop click').then((result) => {
-    assert.deepEqual(result, { dismiss: Swal.DismissReason.backdrop })
+    assert.deepEqual(result, {
+      dismiss: Swal.DismissReason.backdrop,
+      isConfirmed: false,
+      isDismissed: true,
+    })
     done()
   })
 
@@ -89,7 +93,11 @@ QUnit.test('allowOutsideClick: () => !swal.isLoading()', (assert) => {
     title: 'allowOutsideClick: () => !swal.isLoading()',
     allowOutsideClick: () => !Swal.isLoading()
   }).then((result) => {
-    assert.deepEqual(result, { dismiss: Swal.DismissReason.backdrop })
+    assert.deepEqual(result, {
+      dismiss: Swal.DismissReason.backdrop,
+      isConfirmed: false,
+      isDismissed: true,
+    })
     done()
   })
 

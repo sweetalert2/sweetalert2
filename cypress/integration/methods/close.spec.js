@@ -12,9 +12,12 @@ describe('close()', () => {
     Swal.close()
   })
 
-  it('resolves to empty object', (done) => {
+  it('resolves when calling Swal.close()', (done) => {
     Swal.fire().then(result => {
-      expect(result).to.be.eql({})
+      expect(result).to.be.eql({
+        isConfirmed: false,
+        isDismissed: true,
+      })
       done()
     })
     Swal.close()

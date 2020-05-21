@@ -51,7 +51,11 @@ describe('API', () => {
           inputValue: 'inputValue',
           onOpen: () => MySwal.clickConfirm()
         }).then(result => {
-          expect(result).to.be.eql({ value: 'inputValue' })
+          expect(result).to.be.eql({
+            value: 'inputValue',
+            isConfirmed: true,
+            isDismissed: false,
+          })
           return 'result'
         })
       }

@@ -70,18 +70,17 @@ export function close (resolveValue) {
 
   handlePopupAnimation(this, popup, innerParams)
 
-  extendResolveValue(resolveValue)
+  resolveValue = extendResolveValue(resolveValue)
 
   // Resolve Swal promise
   swalPromiseResolve(resolveValue || {})
 }
 
 const extendResolveValue = (resolveValue) => {
-  // Add isDismissed / isConfirmed properties
-  if (resolveValue != null) {
-    resolveValue.isDismissed = resolveValue == null || typeof resolveValue.dismiss !== 'undefined'
-    resolveValue.isConfirmed = resolveValue && typeof resolveValue.dismiss === 'undefined'
-  }
+  return Object.assign(resolveValue || {}, {
+    isDismissed: typeof resolveValue === 'undefined' || typeof resolveValue.dismiss !== 'undefined',
+    isConfirmed: typeof resolveValue !== 'undefined' && typeof resolveValue.dismiss === 'undefined'
+  })
 }
 
 const handlePopupAnimation = (instance, popup, innerParams) => {

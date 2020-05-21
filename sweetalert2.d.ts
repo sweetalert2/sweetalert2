@@ -353,8 +353,8 @@ declare module 'sweetalert2' {
   export interface SweetAlertResult {
     value?: any;
     dismiss?: Swal.DismissReason;
-    isConfirmed?: boolean;
-    isDismissed?: boolean;
+    isConfirmed: boolean;
+    isDismissed: boolean;
   }
 
   export interface SweetAlertShowClass {

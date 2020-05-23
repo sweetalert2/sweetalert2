@@ -61,6 +61,8 @@ Your contribution will be greatly appreciated!
 
 - **Emil Kristensen** (15 EUR)
 
+- **Panayiotis Panayiotou** (10 GBP)
+
 - **Motim8 LLC** (10 EUR)
 
 - **Ivan Zamecnik** (10 EUR)

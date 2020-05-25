@@ -9,13 +9,13 @@ QUnit.test('close() method', (assert) => {
   assert.ok(Swal.getPopup().classList.contains('swal2-hide'))
 })
 
-QUnit.test('close() when calling Swal.close()', (assert) => {
+QUnit.test('Swal.close() resolves', (assert) => {
   const done = assert.async()
 
   Swal.fire().then(result => {
     assert.deepEqual(result, {
       isConfirmed: false,
-      isDismissed: true
+      isDismissed: true,
     })
     done()
   })

@@ -16,7 +16,7 @@ QUnit.test('clickConfirm() should click the confirm button', (assert) => {
     assert.deepEqual(result, {
       value: 'two',
       isConfirmed: true,
-      isDismissed: false
+      isDismissed: false,
     })
     done()
   })

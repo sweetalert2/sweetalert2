@@ -37,6 +37,8 @@ Your contribution will be greatly appreciated!
 - **[Unique-P GmbH](https://www.unique-p.ch/)** (100 CHF)
     > Great work guys! Awesome library, very helpful!
 
+- **[@faalbane](https://github.com/faalbane)** (36 USD)
+
 - **Germano Rizzo** (35 EUR)
     > Great job! I saved quite a few hours of work with this, and excellent quality!
 
@@ -58,6 +60,8 @@ Your contribution will be greatly appreciated!
 - **[VEI Hosting](http://www.veihosting.com/)** (20 USD)
 
 - **Emil Kristensen** (15 EUR)
+
+- **Panayiotis Panayiotou** (10 GBP)
 
 - **Motim8 LLC** (10 EUR)
 

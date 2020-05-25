@@ -65,7 +65,7 @@ QUnit.test('extending swal', (assert) => {
         assert.deepEqual(result, {
           value: 'inputValue',
           isConfirmed: true,
-          isDismissed: false
+          isDismissed: false,
         })
         return 'result'
       })

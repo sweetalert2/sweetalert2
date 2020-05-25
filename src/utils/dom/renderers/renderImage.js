@@ -8,7 +8,7 @@ export const renderImage = (instance, params) => {
     return dom.hide(image)
   }
 
-  dom.show(image)
+  dom.show(image, '')
 
   // Src, alt
   image.setAttribute('src', params.imageUrl)

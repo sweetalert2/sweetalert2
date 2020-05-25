@@ -574,7 +574,7 @@ QUnit.test('esc key', (assert) => {
     assert.deepEqual(result, {
       dismiss: Swal.DismissReason.esc,
       isConfirmed: false,
-      isDismissed: true
+      isDismissed: true,
     })
     done()
   })
@@ -616,7 +616,7 @@ QUnit.test('close button', (assert) => {
     assert.deepEqual(result, {
       dismiss: Swal.DismissReason.close,
       isConfirmed: false,
-      isDismissed: true
+      isDismissed: true,
     })
     done()
   })
@@ -647,7 +647,7 @@ QUnit.test('cancel button', (assert) => {
     assert.deepEqual(result, {
       dismiss: Swal.DismissReason.cancel,
       isConfirmed: false,
-      isDismissed: true
+      isDismissed: true,
     })
     done()
   })
@@ -665,7 +665,7 @@ QUnit.test('timer', (assert) => {
     assert.deepEqual(result, {
       dismiss: Swal.DismissReason.timer,
       isConfirmed: false,
-      isDismissed: true
+      isDismissed: true,
     })
     done()
   })

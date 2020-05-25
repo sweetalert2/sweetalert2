@@ -19,7 +19,7 @@ QUnit.test('basic mixin', (assert) => {
     assert.deepEqual(result, {
       value: true,
       isConfirmed: true,
-      isDismissed: false
+      isDismissed: false,
     })
     done()
   })

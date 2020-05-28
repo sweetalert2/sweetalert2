@@ -1,3 +1,10 @@
+## [9.13.2](https://github.com/sweetalert2/sweetalert2/compare/v9.13.1...v9.13.2) (2020-05-28)
+
+
+### Bug Fixes
+
+* **types:** support for generic types in interfaces and methods ([#1981](https://github.com/sweetalert2/sweetalert2/issues/1981)) ([146309c](https://github.com/sweetalert2/sweetalert2/commit/146309c2024d92ce04941bd30ae43fd54a401d86))
+
 ## [9.13.1](https://github.com/sweetalert2/sweetalert2/compare/v9.13.0...v9.13.1) (2020-05-21)
 
 

@@ -21,7 +21,7 @@ declare module 'sweetalert2' {
      * Swal.fire('The Internet?', 'That thing is still around?', 'question');
      * ```
      */
-    function fire(title?: string, html?: string, icon?: SweetAlertIcon): Promise<SweetAlertResult>;
+    function fire<T>(title?: string, html?: string, icon?: SweetAlertIcon): Promise<SweetAlertResult<T>>;
 
     /**
      * Function to display a SweetAlert2 popup, with an object of options, all being optional.
@@ -36,7 +36,7 @@ declare module 'sweetalert2' {
      * })
      * ```
      */
-    function fire(options: SweetAlertOptions): Promise<SweetAlertResult>;
+    function fire<T>(options: SweetAlertOptions): Promise<SweetAlertResult<T>>;
 
     /**
      * Reuse configuration by creating a `Swal` instance.
@@ -80,7 +80,7 @@ declare module 'sweetalert2' {
      * @param result The promise originally returned by `Swal.fire()` will be resolved with this value.
      *               If no object is given, the promise is resolved with an empty `SweetAlertResult` object.
      */
-    function close(result?: SweetAlertResult): void;
+    function close<T>(result?: SweetAlertResult<T>): void;
 
     /**
      * Gets the popup.
@@ -350,8 +350,8 @@ declare module 'sweetalert2' {
 
   export type SweetAlertGrow = 'row' | 'column' | 'fullscreen' | false;
 
-  export interface SweetAlertResult {
-    value?: any;
+  export interface SweetAlertResult<T = any> {
+    value?: T;
     dismiss?: Swal.DismissReason;
     isConfirmed: boolean;
     isDismissed: boolean;

@@ -72,7 +72,7 @@ declare module 'sweetalert2' {
      * })
      * ```
      */
-    function update(options: Pick<SweetAlertOptions, UpdatableParameters>): void;
+    function update(options: Pick<SweetAlertOptions, SweetAlertUpdatableParameters>): void;
 
     /**
      * Closes the currently open SweetAlert2 popup programmatically.
@@ -309,7 +309,7 @@ declare module 'sweetalert2' {
      *
      * @param paramName The parameter to check
      */
-    function isUpdatableParameter(paramName: UpdatableParameters): boolean;
+    function isUpdatableParameter(paramName: SweetAlertUpdatableParameters): boolean;
 
     /**
      * Normalizes the arguments you can give to Swal.fire() in an object of type SweetAlertOptions.
@@ -391,7 +391,7 @@ declare module 'sweetalert2' {
 
   type ValueOrThunk<T> = T | (() => T);
 
-  export type UpdatableParameters =
+  export type SweetAlertUpdatableParameters =
     | 'allowEscapeKey'
     | 'allowOutsideClick'
     | 'buttonsStyling'

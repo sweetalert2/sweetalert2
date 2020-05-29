@@ -1,3 +1,10 @@
+## [9.13.4](https://github.com/sweetalert2/sweetalert2/compare/v9.13.3...v9.13.4) (2020-05-29)
+
+
+### Bug Fixes
+
+* **types:** add missing prefix to UpdatableParameters ([#1984](https://github.com/sweetalert2/sweetalert2/issues/1984)) ([26d037e](https://github.com/sweetalert2/sweetalert2/commit/26d037ee8da074a6da3a8298a8ee0ec0d6c52c21))
+
 ## [9.13.3](https://github.com/sweetalert2/sweetalert2/compare/v9.13.2...v9.13.3) (2020-05-29)
 
 

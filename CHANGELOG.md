@@ -1,3 +1,10 @@
+## [9.13.3](https://github.com/sweetalert2/sweetalert2/compare/v9.13.2...v9.13.3) (2020-05-29)
+
+
+### Bug Fixes
+
+* **types:** improve type inference and correct some return types ([#1983](https://github.com/sweetalert2/sweetalert2/issues/1983)) ([d2e47cd](https://github.com/sweetalert2/sweetalert2/commit/d2e47cd72eec949b9ed1375984ae6d65cd8bf055))
+
 ## [9.13.2](https://github.com/sweetalert2/sweetalert2/compare/v9.13.1...v9.13.2) (2020-05-28)
 
 

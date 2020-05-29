@@ -391,7 +391,7 @@ declare module 'sweetalert2' {
 
   type ValueOrThunk<T> = T | (() => T);
 
-  type UpdatableParameters =
+  export type UpdatableParameters =
     | 'allowEscapeKey'
     | 'allowOutsideClick'
     | 'buttonsStyling'

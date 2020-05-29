@@ -21,7 +21,7 @@ declare module 'sweetalert2' {
      * Swal.fire('The Internet?', 'That thing is still around?', 'question');
      * ```
      */
-    function fire<T>(title?: string, html?: string, icon?: SweetAlertIcon): Promise<SweetAlertResult<T>>;
+    function fire<T>(title?: string, html?: string, icon?: SweetAlertIcon): Promise<SweetAlertResult<Awaited<T>>>;
 
     /**
      * Function to display a SweetAlert2 popup, with an object of options, all being optional.
@@ -36,7 +36,7 @@ declare module 'sweetalert2' {
      * })
      * ```
      */
-    function fire<T>(options: SweetAlertOptions): Promise<SweetAlertResult<T>>;
+    function fire<T>(options: SweetAlertOptions<T>): Promise<SweetAlertResult<Awaited<T>>>;
 
     /**
      * Reuse configuration by creating a `Swal` instance.
@@ -54,7 +54,7 @@ declare module 'sweetalert2' {
      *
      * @param options the default options to set for this instance.
      */
-    function mixin(options?: SweetAlertOptions): typeof Swal;
+    function mixin(options: SweetAlertOptions): typeof Swal;
 
     /**
      * Determines if a popup is shown.
@@ -72,7 +72,7 @@ declare module 'sweetalert2' {
      * })
      * ```
      */
-    function update(options: SweetAlertOptions): void;
+    function update(options: Pick<SweetAlertOptions, UpdatableParameters>): void;
 
     /**
      * Closes the currently open SweetAlert2 popup programmatically.
@@ -80,47 +80,47 @@ declare module 'sweetalert2' {
      * @param result The promise originally returned by `Swal.fire()` will be resolved with this value.
      *               If no object is given, the promise is resolved with an empty `SweetAlertResult` object.
      */
-    function close<T>(result?: SweetAlertResult<T>): void;
+    function close(result?: SweetAlertResult): void;
 
     /**
      * Gets the popup.
      */
-    function getPopup(): HTMLElement;
+    function getPopup(): HTMLElement | null;
 
     /**
      * Gets the popup title.
      */
-    function getTitle(): HTMLElement;
+    function getTitle(): HTMLElement | null;
 
     /**
      * Gets the popup header.
      */
-    function getHeader(): HTMLElement;
+    function getHeader(): HTMLElement | null;
 
     /**
      * Gets progress steps.
      */
-    function getProgressSteps(): HTMLElement;
+    function getProgressSteps(): HTMLElement | null;
 
     /**
      * Gets the popup content.
      */
-    function getContent(): HTMLElement;
+    function getContent(): HTMLElement | null;
 
     /**
      * Gets the DOM element where the `html`/`text` parameter is rendered to.
      */
-    function getHtmlContainer(): HTMLElement;
+    function getHtmlContainer(): HTMLElement | null;
 
     /**
      * Gets the image.
      */
-    function getImage(): HTMLElement;
+    function getImage(): HTMLElement | null;
 
     /**
      * Gets the close button.
      */
-    function getCloseButton(): HTMLElement;
+    function getCloseButton(): HTMLElement | null;
 
     /**
      * Gets the current visible icon.
@@ -136,27 +136,27 @@ declare module 'sweetalert2' {
     /**
      * Gets the "Confirm" button.
      */
-    function getConfirmButton(): HTMLElement;
+    function getConfirmButton(): HTMLElement | null;
 
     /**
      * Gets the "Cancel" button.
      */
-    function getCancelButton(): HTMLElement;
+    function getCancelButton(): HTMLElement | null;
 
     /**
      * Gets actions (buttons) wrapper.
      */
-    function getActions(): HTMLElement;
+    function getActions(): HTMLElement | null;
 
     /**
      * Gets the popup footer.
      */
-    function getFooter(): HTMLElement;
+    function getFooter(): HTMLElement | null;
 
     /**
      * Gets the timer progress bar (see the `timerProgressBar` param).
      */
-    function getTimerProgressBar(): HTMLElement;
+    function getTimerProgressBar(): HTMLElement | null;
 
     /**
      * Gets all focusable elements in the popup.
@@ -228,7 +228,7 @@ declare module 'sweetalert2' {
     /**
      * Gets the validation message container.
      */
-    function getValidationMessage(): HTMLElement;
+    function getValidationMessage(): HTMLElement | null;
 
     /**
      * If `timer` parameter is set, returns number of milliseconds of timer remained.
@@ -274,7 +274,7 @@ declare module 'sweetalert2' {
      *
      * @param steps The steps' configuration.
      */
-    function queue(steps: Array<SweetAlertOptions | string>): Promise<any>;
+    function queue<T>(steps: readonly (SweetAlertOptions | string)[]): Promise<T>;
 
     /**
      * Gets the index of current popup in queue. When there's no active queue, `null` will be returned.
@@ -302,14 +302,14 @@ declare module 'sweetalert2' {
      *
      * @param paramName The parameter to check
      */
-    function isValidParameter(paramName: string): boolean;
+    function isValidParameter(paramName: keyof SweetAlertOptions): boolean;
 
     /**
      * Determines if a given parameter name is valid for `Swal.update()` method.
      *
      * @param paramName The parameter to check
      */
-    function isUpdatableParameter(paramName: string): boolean;
+    function isUpdatableParameter(paramName: UpdatableParameters): boolean;
 
     /**
      * Normalizes the arguments you can give to Swal.fire() in an object of type SweetAlertOptions.
@@ -317,12 +317,12 @@ declare module 'sweetalert2' {
      * Example:
      * ```
      * Swal.argsToParams(['title', 'text']); //=> { title: 'title', text: 'text' }
-     * Swal.argsToParams({ title: 'title', text: 'text' }); //=> { title: 'title', text: 'text' }
+     * Swal.argsToParams([{ title: 'title', text: 'text' }]); //=> { title: 'title', text: 'text' }
      * ```
      *
      * @param params The array of arguments to normalize.
      */
-    function argsToParams(params: SweetAlertArrayOptions | [SweetAlertOptions]): SweetAlertOptions;
+    function argsToParams<T>(params: SweetAlertArrayOptions | [SweetAlertOptions<T>]): SweetAlertOptions<T>;
 
     /**
      * An enum of possible reasons that can explain an alert dismissal.
@@ -385,13 +385,46 @@ declare module 'sweetalert2' {
     footer?: string;
   }
 
+  type Awaited<T> = T extends Promise<infer U> ? U : T;
+
   type SyncOrAsync<T> = T | Promise<T>;
 
   type ValueOrThunk<T> = T | (() => T);
 
+  export type UpdatableParameters =
+    | 'allowEscapeKey'
+    | 'allowOutsideClick'
+    | 'buttonsStyling'
+    | 'cancelButtonAriaLabel'
+    | 'cancelButtonColor'
+    | 'cancelButtonText'
+    | 'confirmButtonAriaLabel'
+    | 'confirmButtonColor'
+    | 'confirmButtonText'
+    | 'currentProgressStep'
+    | 'customClass'
+    | 'footer'
+    | 'hideClass'
+    | 'html'
+    | 'icon'
+    | 'imageAlt'
+    | 'imageHeight'
+    | 'imageUrl'
+    | 'imageWidth'
+    | 'onAfterClose'
+    | 'onClose'
+    | 'onDestroy'
+    | 'progressSteps'
+    | 'reverseButtons'
+    | 'showCancelButton'
+    | 'showConfirmButton'
+    | 'text'
+    | 'title'
+    | 'titleText';
+
   export type SweetAlertArrayOptions = [string?, string?, SweetAlertIcon?];
 
-  export interface SweetAlertOptions {
+  export interface SweetAlertOptions<PreConfirmResult = any, PreConfirmCallbackValue = any> extends Readonly<{
     /**
      * The title of the popup, as HTML.
      * It can either be added to the object under the key `title` or passed as the first parameter of `Swal.fire()`.
@@ -524,11 +557,13 @@ declare module 'sweetalert2' {
 
     /**
      * CSS classes for animations when showing a popup (fade in)
+     * @default { popup: 'swal2-show', backdrop: 'swal2-backdrop-show', icon: 'swal2-icon-show', }
      */
     showClass?: SweetAlertShowClass;
 
     /**
      * CSS classes for animations when hiding a popup (fade out)
+     * @default { popup: 'swal2-hide', backdrop: 'swal2-backdrop-hide', icon: 'swal2-icon-hide' }
      */
     hideClass?: SweetAlertHideClass;
 
@@ -771,7 +806,7 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    preConfirm?(inputValue: any): SyncOrAsync<any | void>;
+    preConfirm?(inputValue: PreConfirmCallbackValue): PreConfirmResult;
 
     /**
      * Add an image to the popup. Should contain a string with the path or URL to the image.
@@ -818,8 +853,9 @@ declare module 'sweetalert2' {
     /**
      * If the `input` parameter is set to `'select'` or `'radio'`, you can provide options.
      * Object keys will represent options values, object values will represent options text values.
+     * @default {}
      */
-    inputOptions?: SyncOrAsync<Map<string, string> | { [inputValue: string]: string }>;
+    inputOptions?: SyncOrAsync<ReadonlyMap<string, string> | Record<string, string>>;
 
     /**
      * Automatically remove whitespaces from both ends of a result string.
@@ -843,9 +879,9 @@ declare module 'sweetalert2' {
      * })
      * ```
      *
-     * @default undefined
+     * @default {}
      */
-    inputAttributes?: { [attribute: string]: string };
+    inputAttributes?: Record<string, string>;
 
     /**
      * Validator for input field, may be async (Promise-returning) or sync.
@@ -950,7 +986,7 @@ declare module 'sweetalert2' {
      * @default true
      */
     scrollbarPadding?: boolean;
-  }
+  }> { }
 
   export default Swal
 }

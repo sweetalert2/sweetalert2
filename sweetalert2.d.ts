@@ -557,11 +557,13 @@ declare module 'sweetalert2' {
 
     /**
      * CSS classes for animations when showing a popup (fade in)
+     * @default { popup: 'swal2-show', backdrop: 'swal2-backdrop-show', icon: 'swal2-icon-show', }
      */
     showClass?: SweetAlertShowClass;
 
     /**
      * CSS classes for animations when hiding a popup (fade out)
+     * @default { popup: 'swal2-hide', backdrop: 'swal2-backdrop-hide', icon: 'swal2-icon-hide' }
      */
     hideClass?: SweetAlertHideClass;
 
@@ -851,8 +853,9 @@ declare module 'sweetalert2' {
     /**
      * If the `input` parameter is set to `'select'` or `'radio'`, you can provide options.
      * Object keys will represent options values, object values will represent options text values.
+     * @default {}
      */
-    inputOptions?: SyncOrAsync<ReadonlyMap<string, string> | { [inputValue: string]: string }>;
+    inputOptions?: SyncOrAsync<ReadonlyMap<string, string> | Record<string, string>>;
 
     /**
      * Automatically remove whitespaces from both ends of a result string.
@@ -876,9 +879,9 @@ declare module 'sweetalert2' {
      * })
      * ```
      *
-     * @default undefined
+     * @default {}
      */
-    inputAttributes?: { [attribute: string]: string };
+    inputAttributes?: Record<string, string>;
 
     /**
      * Validator for input field, may be async (Promise-returning) or sync.

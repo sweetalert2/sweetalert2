@@ -1,3 +1,10 @@
+# [9.14.0](https://github.com/sweetalert2/sweetalert2/compare/v9.13.4...v9.14.0) (2020-05-30)
+
+
+### Features
+
+* **input/select:** add support to <optgroup> in inputOptions  ([#1985](https://github.com/sweetalert2/sweetalert2/issues/1985)) ([0659d0e](https://github.com/sweetalert2/sweetalert2/commit/0659d0eb59db5d78816134a2b1587e35cb87a9e3)), closes [#1589](https://github.com/sweetalert2/sweetalert2/issues/1589)
+
 ## [9.13.4](https://github.com/sweetalert2/sweetalert2/compare/v9.13.3...v9.13.4) (2020-05-29)
 
 

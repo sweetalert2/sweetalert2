@@ -855,7 +855,7 @@ declare module 'sweetalert2' {
      * Object keys will represent options values, object values will represent options text values.
      * @default {}
      */
-    inputOptions?: SyncOrAsync<ReadonlyMap<string, string> | Record<string, string>>;
+    inputOptions?: SyncOrAsync<ReadonlyMap<string, string> | Record<string, any>>;
 
     /**
      * Automatically remove whitespaces from both ends of a result string.

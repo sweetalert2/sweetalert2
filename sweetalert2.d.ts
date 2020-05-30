@@ -819,7 +819,7 @@ declare module 'sweetalert2' {
      * If the `input` parameter is set to `'select'` or `'radio'`, you can provide options.
      * Object keys will represent options values, object values will represent options text values.
      */
-    inputOptions?: SyncOrAsync<Map<string, string> | { [inputValue: string]: string }>;
+    inputOptions?: SyncOrAsync<Map<string, string> | { [inputValue: string]: string } | Map<string, Array>>;
 
     /**
      * Automatically remove whitespaces from both ends of a result string.

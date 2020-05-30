@@ -94,6 +94,44 @@ describe('Input', () => {
     Swal.clickConfirm()
   })
 
+  it('input select with optgroup and root options', (done) => {
+    const selected = 'três ponto um'
+    Swal.fire({
+      input: 'select',
+      inputOptions: { 'um': 1.0, 'dois': 2.0, 'três': { 'três ponto um': 3.1, 'três ponto dois': 3.2 } },
+      inputPlaceholder: 'Choose an item'
+    }).then((result) => {
+      expect(result.value).to.equal(selected)
+      done()
+    })
+    expect(Swal.getInput().value).to.equal('')
+    const placeholderOption = Swal.getInput().querySelector('option')
+    expect(placeholderOption.disabled).to.be.true
+    expect(placeholderOption.selected).to.be.true
+    expect(placeholderOption.textContent).to.equal('Choose an item')
+    Swal.getInput().value = selected
+    Swal.clickConfirm()
+  })
+
+  it('input select with only optgroups options', (done) => {
+    const selected = 'três ponto dois'
+    Swal.fire({
+      input: 'select',
+      inputOptions: { 'dois': { 'dois ponto um': 2.1, 'dois ponto dois': 2.2 }, 'três': { 'três ponto um': 3.1, 'três ponto dois': 3.2 } },
+      inputPlaceholder: 'Choose an item'
+    }).then((result) => {
+      expect(result.value).to.equal(selected)
+      done()
+    })
+    expect(Swal.getInput().value).to.equal('')
+    const placeholderOption = Swal.getInput().querySelector('option')
+    expect(placeholderOption.disabled).to.be.true
+    expect(placeholderOption.selected).to.be.true
+    expect(placeholderOption.textContent).to.equal('Choose an item')
+    Swal.getInput().value = selected
+    Swal.clickConfirm()
+  })
+
   it('input text w/ inputPlaceholder as configuration', () => {
     Swal.fire({
       input: 'text',
@@ -144,6 +182,71 @@ describe('Input', () => {
     expect($('.swal2-select option:nth-child(2)').innerHTML).to.equal('Linus Torvalds')
     expect($('.swal2-select option:nth-child(2)').value).to.equal('1')
     expect($('.swal2-select option:nth-child(2)').selected).to.equal(true)
+  })
+
+  it('input type "select", inputOptions Map with optgroup and root options', () => {
+    const inputOptions = new Map()
+    inputOptions.set(2, 'Richard Stallman')
+    inputOptions.set(1, 'Linus Torvalds')
+
+    const optGroup1Options = new Map()
+    optGroup1Options.set(100, 'jQuery')
+    optGroup1Options.set(200, 'ReactJS')
+    optGroup1Options.set(300, 'VueJS')
+    inputOptions.set('Frameworks optgroup', optGroup1Options)
+
+    SwalWithoutAnimation.fire({
+      input: 'select',
+      inputOptions,
+      inputValue: 1
+    })
+    expect($('.swal2-select').querySelectorAll('option').length).to.equal(2)
+    expect($('.swal2-select').querySelectorAll('optgroup').length).to.equal(1)
+    expect($('.swal2-select option:nth-child(1)').innerHTML).to.equal('Richard Stallman')
+    expect($('.swal2-select option:nth-child(1)').value).to.equal('2')
+    expect($('.swal2-select option:nth-child(2)').innerHTML).to.equal('Linus Torvalds')
+    expect($('.swal2-select option:nth-child(2)').value).to.equal('1')
+    expect($('.swal2-select option:nth-child(2)').selected).to.equal(true)
+    expect($('.swal2-select option:nth-child(3)').innerHTML).to.equal('jQuery')
+    expect($('.swal2-select option:nth-child(3)').value).to.equal('100')
+    expect($('.swal2-select option:nth-child(4)').innerHTML).to.equal('ReactJS')
+    expect($('.swal2-select option:nth-child(4)').value).to.equal('200')
+    expect($('.swal2-select option:nth-child(5)').innerHTML).to.equal('VueJS')
+    expect($('.swal2-select option:nth-child(5)').value).to.equal('300')
+  })
+
+  it('input type "select", inputOptions Map with only optgroup options', () => {
+    const inputOptions = new Map()
+
+    const frameworkOptGroupOptions = new Map()
+    frameworkOptGroupOptions.set('100', 'jQuery')
+    frameworkOptGroupOptions.set('200', 'ReactJS')
+    frameworkOptGroupOptions.set('300', 'VueJS')
+    inputOptions.set('Frameworks optgroup', frameworkOptGroupOptions)
+
+    const libOptGroupOptions = new Map()
+    libOptGroupOptions.set('1000', 'SweetAlert2')
+    libOptGroupOptions.set('2000', 'Bootstrap4')
+    inputOptions.set('Library optgroup', libOptGroupOptions)
+
+    SwalWithoutAnimation.fire({
+      input: 'select',
+      inputOptions,
+      inputValue: '1000'
+    })
+    expect($('.swal2-select').querySelectorAll('option').length).to.equal(5)
+    expect($('.swal2-select').querySelectorAll('optgroup').length).to.equal(2)
+    expect($('.swal2-select option:nth-child(1)').innerHTML).to.equal('jQuery')
+    expect($('.swal2-select option:nth-child(1)').value).to.equal('100')
+    expect($('.swal2-select option:nth-child(2)').innerHTML).to.equal('ReactJS')
+    expect($('.swal2-select option:nth-child(2)').value).to.equal('200')
+    expect($('.swal2-select option:nth-child(3)').innerHTML).to.equal('VueJS')
+    expect($('.swal2-select option:nth-child(3)').value).to.equal('300')
+    expect($('.swal2-select option:nth-child(4)').innerHTML).to.equal('SweetAlert2')
+    expect($('.swal2-select option:nth-child(4)').value).to.equal('1000')
+    expect($('.swal2-select option:nth-child(4)').selected).to.equal(true)
+    expect($('.swal2-select option:nth-child(5)').innerHTML).to.equal('Bootstrap4')
+    expect($('.swal2-select option:nth-child(5)').value).to.equal('2000')
   })
 
   it('input type "radio", inputOptions Map', () => {

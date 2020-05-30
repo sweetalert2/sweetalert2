@@ -12,25 +12,26 @@
 </head>
 
 <body>
-<script>
-  Swal.fire({
-    title: 'Test modal with input',
-    html: 'custom <strong>content</strong>',
-    input: 'text',
-    icon: 'success',
-    showCloseButton: true,
-    showCancelButton: true,
-    preConfirm: function (value) {
-      if (!value) {
-        Swal.showValidationMessage('Should not be empty!')
+  <script>
+    Swal.fire({
+      title: 'Test modal with input',
+      html: 'custom <strong>content</strong>',
+      input: 'text',
+      icon: 'success',
+      showCloseButton: true,
+      showCancelButton: true,
+      preConfirm: function (value) {
+        if (!value) {
+          Swal.showValidationMessage('Should not be empty!')
+        }
+      },
+      onOpen: function (modal) {
+        console.log(modal)
       }
-    },
-    onOpen: function (modal) {
-      console.log(modal)
-    }
-  }).then(function (result) {
-    console.log(result)
-  })
-</script>
+    }).then(function (result) {
+      console.log(result)
+    })
+  </script>
 </body>
+
 </html>

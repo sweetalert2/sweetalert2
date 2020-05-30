@@ -108,6 +108,48 @@ QUnit.test('input select', (assert) => {
   Swal.clickConfirm()
 })
 
+QUnit.test('input select with optgroup and root options', (assert) => {
+  const done = assert.async()
+
+  const selected = 'três ponto um'
+  Swal.fire({
+    input: 'select',
+    inputOptions: { 'um': 1.0, 'dois': 2.0, 'três': { 'três ponto um': 3.1, 'três ponto dois': 3.2 } },
+    inputPlaceholder: 'Choose an item'
+  }).then((result) => {
+    assert.equal(result.value, selected)
+    done()
+  })
+  assert.equal(Swal.getInput().value, '')
+  const placeholderOption = Swal.getInput().querySelector('option')
+  assert.ok(placeholderOption.disabled)
+  assert.ok(placeholderOption.selected)
+  assert.equal(placeholderOption.textContent, 'Choose an item')
+  Swal.getInput().value = selected
+  Swal.clickConfirm()
+})
+
+QUnit.test('input select with only optgroups options', (assert) => {
+  const done = assert.async()
+
+  const selected = 'três ponto dois'
+  Swal.fire({
+    input: 'select',
+    inputOptions: { 'dois': { 'dois ponto um': 2.1, 'dois ponto dois': 2.2 }, 'três': { 'três ponto um': 3.1, 'três ponto dois': 3.2 } },
+    inputPlaceholder: 'Choose an item'
+  }).then((result) => {
+    assert.equal(result.value, selected)
+    done()
+  })
+  assert.equal(Swal.getInput().value, '')
+  const placeholderOption = Swal.getInput().querySelector('option')
+  assert.ok(placeholderOption.disabled)
+  assert.ok(placeholderOption.selected)
+  assert.equal(placeholderOption.textContent, 'Choose an item')
+  Swal.getInput().value = selected
+  Swal.clickConfirm()
+})
+
 QUnit.test('input text w/ inputPlaceholder as configuration', (assert) => {
   const done = assert.async()
 
@@ -170,6 +212,71 @@ QUnit.test('input type "select", inputOptions Map', (assert) => {
   assert.equal($('.swal2-select option:nth-child(2)').innerHTML, 'Linus Torvalds')
   assert.equal($('.swal2-select option:nth-child(2)').value, '1')
   assert.equal($('.swal2-select option:nth-child(2)').selected, true)
+})
+
+QUnit.test('input type "select", inputOptions Map with optgroup and root options', (assert) => {
+  const inputOptions = new Map()
+  inputOptions.set(2, 'Richard Stallman')
+  inputOptions.set(1, 'Linus Torvalds')
+
+  const optGroup1Options = new Map()
+  optGroup1Options.set(100, 'jQuery')
+  optGroup1Options.set(200, 'ReactJS')
+  optGroup1Options.set(300, 'VueJS')
+  inputOptions.set('Frameworks optgroup', optGroup1Options)
+
+  SwalWithoutAnimation.fire({
+    input: 'select',
+    inputOptions,
+    inputValue: 1
+  })
+  assert.equal($('.swal2-select').querySelectorAll('option').length, 5)
+  assert.equal($('.swal2-select').querySelectorAll('optgroup').length, 1)
+  assert.equal($('.swal2-select option:nth-child(1)').innerHTML, 'Richard Stallman')
+  assert.equal($('.swal2-select option:nth-child(1)').value, '2')
+  assert.equal($('.swal2-select option:nth-child(2)').innerHTML, 'Linus Torvalds')
+  assert.equal($('.swal2-select option:nth-child(2)').value, '1')
+  assert.equal($('.swal2-select option:nth-child(2)').selected, true)
+  assert.equal($('.swal2-select optgroup option:nth-child(1)').innerHTML, 'jQuery')
+  assert.equal($('.swal2-select optgroup option:nth-child(1)').value, '100')
+  assert.equal($('.swal2-select optgroup option:nth-child(2)').innerHTML, 'ReactJS')
+  assert.equal($('.swal2-select optgroup option:nth-child(2)').value, '200')
+  assert.equal($('.swal2-select optgroup option:nth-child(3)').innerHTML, 'VueJS')
+  assert.equal($('.swal2-select optgroup option:nth-child(3)').value, '300')
+})
+
+QUnit.test('input type "select", inputOptions Map with only optgroup options', (assert) => {
+  const inputOptions = new Map()
+
+  const frameworkOptGroupOptions = new Map()
+  frameworkOptGroupOptions.set('100', 'jQuery')
+  frameworkOptGroupOptions.set('200', 'ReactJS')
+  frameworkOptGroupOptions.set('300', 'VueJS')
+  inputOptions.set('Frameworks optgroup', frameworkOptGroupOptions)
+
+  const libOptGroupOptions = new Map()
+  libOptGroupOptions.set('1000', 'SweetAlert2')
+  libOptGroupOptions.set('2000', 'Bootstrap4')
+  inputOptions.set('Library optgroup', libOptGroupOptions)
+
+  SwalWithoutAnimation.fire({
+    input: 'select',
+    inputOptions,
+    inputValue: '1000'
+  })
+  assert.equal($('.swal2-select').querySelectorAll('option').length, 5)
+  assert.equal($('.swal2-select').querySelectorAll('optgroup').length, 2)
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(1)').innerHTML, 'jQuery')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(1)').value, '100')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(2)').innerHTML, 'ReactJS')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(2)').value, '200')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(3)').innerHTML, 'VueJS')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(3)').value, '300')
+  assert.equal($('.swal2-select optgroup:nth-child(2) option:nth-child(1)').innerHTML, 'SweetAlert2')
+  assert.equal($('.swal2-select optgroup:nth-child(2) option:nth-child(1)').value, '1000')
+  assert.equal($('.swal2-select optgroup:nth-child(2) option:nth-child(1)').selected, true)
+  assert.equal($('.swal2-select optgroup:nth-child(2) option:nth-child(2)').innerHTML, 'Bootstrap4')
+  assert.equal($('.swal2-select optgroup:nth-child(2) option:nth-child(2)').value, '2000')
 })
 
 QUnit.test('input type "radio", inputOptions Map', (assert) => {

@@ -200,7 +200,7 @@ describe('Input', () => {
       inputOptions,
       inputValue: 1
     })
-    expect($('.swal2-select').querySelectorAll('option').length).to.equal(2)
+    expect($('.swal2-select').querySelectorAll('option').length).to.equal(5)
     expect($('.swal2-select').querySelectorAll('optgroup').length).to.equal(1)
     expect($('.swal2-select option:nth-child(1)').innerHTML).to.equal('Richard Stallman')
     expect($('.swal2-select option:nth-child(1)').value).to.equal('2')

@@ -214,7 +214,6 @@ QUnit.test('input type "select", inputOptions Map', (assert) => {
   assert.equal($('.swal2-select option:nth-child(2)').selected, true)
 })
 
-
 QUnit.test('input type "select", inputOptions Map with optgroup and root options', (assert) => {
   const inputOptions = new Map()
   inputOptions.set(2, 'Richard Stallman')
@@ -231,19 +230,19 @@ QUnit.test('input type "select", inputOptions Map with optgroup and root options
     inputOptions,
     inputValue: 1
   })
-  assert.equal($('.swal2-select').querySelectorAll('option').length, 2)
+  assert.equal($('.swal2-select').querySelectorAll('option').length, 5)
   assert.equal($('.swal2-select').querySelectorAll('optgroup').length, 1)
   assert.equal($('.swal2-select option:nth-child(1)').innerHTML, 'Richard Stallman')
   assert.equal($('.swal2-select option:nth-child(1)').value, '2')
   assert.equal($('.swal2-select option:nth-child(2)').innerHTML, 'Linus Torvalds')
   assert.equal($('.swal2-select option:nth-child(2)').value, '1')
   assert.equal($('.swal2-select option:nth-child(2)').selected, true)
-  assert.equal($('.swal2-select option:nth-child(3)').innerHTML, 'jQuery')
-  assert.equal($('.swal2-select option:nth-child(3)').value, '100')
-  assert.equal($('.swal2-select option:nth-child(4)').innerHTML, 'ReactJS')
-  assert.equal($('.swal2-select option:nth-child(4)').value, '200')
-  assert.equal($('.swal2-select option:nth-child(5)').innerHTML, 'VueJS')
-  assert.equal($('.swal2-select option:nth-child(5)').value, '300')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(1)').innerHTML, 'jQuery')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(1)').value, '100')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(2)').innerHTML, 'ReactJS')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(2)').value, '200')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(3)').innerHTML, 'VueJS')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(3)').value, '300')
 })
 
 QUnit.test('input type "select", inputOptions Map with only optgroup options', (assert) => {
@@ -267,19 +266,18 @@ QUnit.test('input type "select", inputOptions Map with only optgroup options', (
   })
   assert.equal($('.swal2-select').querySelectorAll('option').length, 5)
   assert.equal($('.swal2-select').querySelectorAll('optgroup').length, 2)
-  assert.equal($('.swal2-select option:nth-child(1)').innerHTML, 'jQuery')
-  assert.equal($('.swal2-select option:nth-child(1)').value, '100')
-  assert.equal($('.swal2-select option:nth-child(2)').innerHTML, 'ReactJS')
-  assert.equal($('.swal2-select option:nth-child(2)').value, '200')
-  assert.equal($('.swal2-select option:nth-child(3)').innerHTML, 'VueJS')
-  assert.equal($('.swal2-select option:nth-child(3)').value, '300')
-  assert.equal($('.swal2-select option:nth-child(4)').innerHTML, 'SweetAlert2')
-  assert.equal($('.swal2-select option:nth-child(4)').value, '1000')
-  assert.equal($('.swal2-select option:nth-child(4)').selected, true)
-  assert.equal($('.swal2-select option:nth-child(5)').innerHTML, 'Bootstrap4')
-  assert.equal($('.swal2-select option:nth-child(5)').value, '2000')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(1)').innerHTML, 'jQuery')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(1)').value, '100')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(2)').innerHTML, 'ReactJS')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(2)').value, '200')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(3)').innerHTML, 'VueJS')
+  assert.equal($('.swal2-select optgroup:nth-child(1) option:nth-child(3)').value, '300')
+  assert.equal($('.swal2-select optgroup:nth-child(2) option:nth-child(1)').innerHTML, 'SweetAlert2')
+  assert.equal($('.swal2-select optgroup:nth-child(2) option:nth-child(1)').value, '1000')
+  assert.equal($('.swal2-select optgroup:nth-child(2) option:nth-child(1)').selected, true)
+  assert.equal($('.swal2-select optgroup:nth-child(2) option:nth-child(2)').innerHTML, 'Bootstrap4')
+  assert.equal($('.swal2-select optgroup:nth-child(2) option:nth-child(2)').value, '2000')
 })
-
 
 QUnit.test('input type "radio", inputOptions Map', (assert) => {
   const inputOptions = new Map()

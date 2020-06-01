@@ -15,6 +15,7 @@ const browserSync = require('browser-sync').create()
 const packageJson = require('./package.json')
 const log = require('fancy-log')
 const fs = require('fs')
+const tildeImporter = require('node-sass-tilde-importer')
 const version = process.env.VERSION || packageJson.version
 
 const banner = `/*!
@@ -76,7 +77,7 @@ if (typeof this !== 'undefined' && this.Sweetalert2){\
         if (warning.code !== 'CIRCULAR_DEPENDENCY') {
           rollupWarn(warning)
         }
-      },
+      }
     }))
     .on('error', (error) => {
       if (continueOnError) {
@@ -92,7 +93,10 @@ if (typeof this !== 'undefined' && this.Sweetalert2){\
 })
 
 gulp.task('build:styles', () => {
-  const result = sass.renderSync({ file: 'src/sweetalert2.scss' })
+  const result = sass.renderSync({
+    file: 'src/sweetalert2.scss',
+    importer: tildeImporter
+  })
   fs.writeFileSync('dist/sweetalert2.css', result.css)
 
   return gulp.src('dist/sweetalert2.css')
@@ -158,5 +162,5 @@ gulp.task('develop', gulp.series(
       'dist/sweetalert2.js',
       'dist/sweetalert2.css'
     ]).on('change', browserSync.reload)
-  },
+  }
 ))

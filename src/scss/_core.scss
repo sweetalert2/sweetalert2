@@ -1,3 +1,6 @@
+@use 'mixins';
+@use '../variables';
+
 .swal2-container {
   // centering
   display: flex;
@@ -10,16 +13,16 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: $swal2-container-padding;
+  padding: variables.$swal2-container-padding;
   overflow-x: hidden;
-  transition: $swal2-backdrop-transition;
+  transition: variables.$swal2-backdrop-transition;
 
   // sweetalert2/issues/905
   -webkit-overflow-scrolling: touch;
 
   &.swal2-backdrop-show,
   &.swal2-noanimation {
-    background: $swal2-backdrop;
+    background: variables.$swal2-backdrop;
   }
 
   &.swal2-backdrop-hide {
@@ -136,7 +139,7 @@
     transition: none !important;
   }
 
-  @include not('.swal2-top',
+  @include mixins.not('.swal2-top',
   '.swal2-top-start',
   '.swal2-top-end',
   '.swal2-top-left',
@@ -156,7 +159,7 @@
     }
   }
 
-  @include ie {
+  @include mixins.ie {
     .swal2-modal {
       margin: 0 !important;
     }
@@ -169,14 +172,14 @@
   box-sizing: border-box;
   flex-direction: column;
   justify-content: center;
-  width: $swal2-width;
+  width: variables.$swal2-width;
   max-width: 100%;
-  padding: $swal2-padding;
-  border: $swal2-border;
-  border-radius: $swal2-border-radius;
-  background: $swal2-background;
-  font-family: $swal2-font;
-  font-size: $swal2-font-size;
+  padding: variables.$swal2-padding;
+  border: variables.$swal2-border;
+  border-radius: variables.$swal2-border-radius;
+  background: variables.$swal2-background;
+  font-family: variables.$swal2-font;
+  font-size: variables.$swal2-font-size;
 
   &:focus {
     outline: none;
@@ -196,10 +199,10 @@
 .swal2-title {
   position: relative;
   max-width: 100%;
-  margin: $swal2-title-margin;
+  margin: variables.$swal2-title-margin;
   padding: 0;
-  color: $swal2-title-color;
-  font-size: $swal2-title-font-size;
+  color: variables.$swal2-title-color;
+  font-size: variables.$swal2-title-font-size;
   font-weight: 600;
   text-align: center;
   text-transform: none;
@@ -209,11 +212,11 @@
 .swal2-actions {
   display: flex;
   z-index: 1; // prevent sucess icon from overlapping buttons
-  flex-wrap: $swal2-actions-flex-wrap;
-  align-items: $swal2-actions-align-items;
-  justify-content: $swal2-actions-justify-content;
-  width: $swal2-actions-width;
-  margin: $swal2-actions-margin;
+  flex-wrap: variables.$swal2-actions-flex-wrap;
+  align-items: variables.$swal2-actions-align-items;
+  justify-content: variables.$swal2-actions-justify-content;
+  width: variables.$swal2-actions-width;
+  margin: variables.$swal2-actions-margin;
 
   &:not(.swal2-loading) {
     .swal2-styled {
@@ -222,11 +225,11 @@
       }
 
       &:hover {
-        background-image: linear-gradient($swal2-button-darken-hover, $swal2-button-darken-hover);
+        background-image: linear-gradient(variables.$swal2-button-darken-hover, variables.$swal2-button-darken-hover);
       }
 
       &:active {
-        background-image: linear-gradient($swal2-button-darken-active, $swal2-button-darken-active);
+        background-image: linear-gradient(variables.$swal2-button-darken-active, variables.$swal2-button-darken-active);
       }
     }
   }
@@ -264,10 +267,10 @@
           height: 15px;
           margin-left: 5px;
           animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
-          border: 3px solid lighten($swal2-black, 60);
+          border: 3px solid lighten(variables.$swal2-black, 60);
           border-radius: 50%;
           border-right-color: transparent;
-          box-shadow: 1px 1px 1px $swal2-white;
+          box-shadow: 1px 1px 1px variables.$swal2-white;
         }
       }
     }
@@ -285,27 +288,27 @@
   }
 
   &.swal2-confirm {
-    border: $swal2-confirm-button-border;
-    border-radius: $swal2-confirm-button-border-radius;
+    border: variables.$swal2-confirm-button-border;
+    border-radius: variables.$swal2-confirm-button-border-radius;
     background: initial;
-    background-color: $swal2-confirm-button-background-color;
-    color: $swal2-confirm-button-color;
-    font-size: $swal2-confirm-button-font-size;
+    background-color: variables.$swal2-confirm-button-background-color;
+    color: variables.$swal2-confirm-button-color;
+    font-size: variables.$swal2-confirm-button-font-size;
   }
 
   &.swal2-cancel {
-    border: $swal2-cancel-button-border;
-    border-radius: $swal2-cancel-button-border-radius;
+    border: variables.$swal2-cancel-button-border;
+    border-radius: variables.$swal2-cancel-button-border-radius;
     background: initial;
-    background-color: $swal2-cancel-button-background-color;
-    color: $swal2-cancel-button-color;
-    font-size: $swal2-cancel-button-font-size;
+    background-color: variables.$swal2-cancel-button-background-color;
+    color: variables.$swal2-cancel-button-color;
+    font-size: variables.$swal2-cancel-button-font-size;
   }
 
   &:focus {
-    outline: $swal2-button-focus-outline;
-    background-color: $swal2-button-focus-background-color;
-    box-shadow: $swal2-button-focus-box-shadow;
+    outline: variables.$swal2-button-focus-outline;
+    background-color: variables.$swal2-button-focus-background-color;
+    box-shadow: variables.$swal2-button-focus-box-shadow;
   }
 
   &::-moz-focus-inner {
@@ -315,11 +318,11 @@
 
 .swal2-footer {
   justify-content: center;
-  margin: $swal2-footer-margin;
-  padding: $swal2-footer-padding;
-  border-top: 1px solid $swal2-footer-border-color;
-  color: $swal2-footer-color;
-  font-size: $swal2-footer-font-size;
+  margin: variables.$swal2-footer-margin;
+  padding: variables.$swal2-footer-padding;
+  border-top: 1px solid variables.$swal2-footer-border-color;
+  color: variables.$swal2-footer-color;
+  font-size: variables.$swal2-footer-font-size;
 }
 
 .swal2-timer-progress-bar-container {
@@ -327,49 +330,49 @@
   right: 0;
   bottom: 0;
   left: 0;
-  height: $swal2-timer-progress-bar-height;
+  height: variables.$swal2-timer-progress-bar-height;
   overflow: hidden;
-  border-bottom-right-radius: $swal2-border-radius;
-  border-bottom-left-radius: $swal2-border-radius;
+  border-bottom-right-radius: variables.$swal2-border-radius;
+  border-bottom-left-radius: variables.$swal2-border-radius;
 }
 
 .swal2-timer-progress-bar {
   width: 100%;
-  height: $swal2-timer-progress-bar-height;
-  background: $swal2-timer-progress-bar-background;
+  height: variables.$swal2-timer-progress-bar-height;
+  background: variables.$swal2-timer-progress-bar-background;
 }
 
 .swal2-image {
   max-width: 100%;
-  margin: $swal2-image-margin;
+  margin: variables.$swal2-image-margin;
 }
 
 .swal2-close {
-  position: $swal2-close-button-position;
+  position: variables.$swal2-close-button-position;
   z-index: 2; // sweetalert2/issues/1617
-  top: $swal2-close-button-gap;
-  right: $swal2-close-button-gap;
-  align-items: $swal2-close-button-align-items;
-  justify-content: $swal2-close-button-justify-content;
-  width: $swal2-close-button-width;
-  height: $swal2-close-button-height;
+  top: variables.$swal2-close-button-gap;
+  right: variables.$swal2-close-button-gap;
+  align-items: variables.$swal2-close-button-align-items;
+  justify-content: variables.$swal2-close-button-justify-content;
+  width: variables.$swal2-close-button-width;
+  height: variables.$swal2-close-button-height;
   padding: 0;
   overflow: hidden;
-  transition: $swal2-close-button-transition;
-  border: $swal2-close-button-border;
-  border-radius: $swal2-close-button-border-radius;
-  outline: $swal2-close-button-outline;
-  background: $swal2-close-button-background;
-  color: $swal2-close-button-color;
-  font-family: $swal2-close-button-font-family;
-  font-size: $swal2-close-button-font-size;
-  line-height: $swal2-close-button-line-height;
+  transition: variables.$swal2-close-button-transition;
+  border: variables.$swal2-close-button-border;
+  border-radius: variables.$swal2-close-button-border-radius;
+  outline: variables.$swal2-close-button-outline;
+  background: variables.$swal2-close-button-background;
+  color: variables.$swal2-close-button-color;
+  font-family: variables.$swal2-close-button-font-family;
+  font-size: variables.$swal2-close-button-font-size;
+  line-height: variables.$swal2-close-button-line-height;
   cursor: pointer;
 
   &:hover {
-    transform: $swal2-close-button-hover-transform;
-    background: $swal2-close-button-hover-background;
-    color: $swal2-close-button-hover-color;
+    transform: variables.$swal2-close-button-hover-transform;
+    background: variables.$swal2-close-button-hover-background;
+    color: variables.$swal2-close-button-hover-color;
   }
 
   &::-moz-focus-inner {
@@ -379,15 +382,15 @@
 
 .swal2-content {
   z-index: 1; // prevent sucess icon overlapping the content
-  justify-content: $swal2-content-justify-content;
-  margin: $swal2-content-margin;
-  padding: $swal2-content-pading;
-  color: $swal2-content-color;
-  font-size: $swal2-content-font-size;
-  font-weight: $swal2-content-font-weight;
-  line-height: $swal2-content-line-height;
-  text-align: $swal2-content-text-align;
-  word-wrap: $swal2-content-word-wrap;
+  justify-content: variables.$swal2-content-justify-content;
+  margin: variables.$swal2-content-margin;
+  padding: variables.$swal2-content-pading;
+  color: variables.$swal2-content-color;
+  font-size: variables.$swal2-content-font-size;
+  font-weight: variables.$swal2-content-font-weight;
+  line-height: variables.$swal2-content-line-height;
+  text-align: variables.$swal2-content-text-align;
+  word-wrap: variables.$swal2-content-word-wrap;
 }
 
 .swal2-input,
@@ -396,41 +399,41 @@
 .swal2-select,
 .swal2-radio,
 .swal2-checkbox {
-  margin: $swal2-input-margin;
+  margin: variables.$swal2-input-margin;
 }
 
 .swal2-input,
 .swal2-file,
 .swal2-textarea {
   box-sizing: border-box;
-  width: $swal2-input-width;
-  transition: $swal2-input-transition;
-  border: $swal2-input-border;
-  border-radius: $swal2-input-border-radius;
-  background: $swal2-input-background;
-  box-shadow: $swal2-input-box-shadow;
-  color: $swal2-input-color;
-  font-size: $swal2-input-font-size;
+  width: variables.$swal2-input-width;
+  transition: variables.$swal2-input-transition;
+  border: variables.$swal2-input-border;
+  border-radius: variables.$swal2-input-border-radius;
+  background: variables.$swal2-input-background;
+  box-shadow: variables.$swal2-input-box-shadow;
+  color: variables.$swal2-input-color;
+  font-size: variables.$swal2-input-font-size;
 
   &.swal2-inputerror {
-    border-color: $swal2-error !important;
-    box-shadow: 0 0 2px $swal2-error !important;
+    border-color: variables.$swal2-error !important;
+    box-shadow: 0 0 2px variables.$swal2-error !important;
   }
 
   &:focus {
-    border: $swal2-input-focus-border;
-    outline: $swal2-input-focus-outline;
-    box-shadow: $swal2-input-focus-box-shadow;
+    border: variables.$swal2-input-focus-border;
+    outline: variables.$swal2-input-focus-outline;
+    box-shadow: variables.$swal2-input-focus-box-shadow;
   }
 
   &::placeholder {
-    color: lighten($swal2-black, 80);
+    color: lighten(variables.$swal2-black, 80);
   }
 }
 
 .swal2-range {
-  margin: $swal2-input-margin;
-  background: $swal2-background;
+  margin: variables.$swal2-input-margin;
+  background: variables.$swal2-background;
 
   input {
     width: 80%;
@@ -438,23 +441,23 @@
 
   output {
     width: 20%;
-    color: $swal2-input-color;
+    color: variables.$swal2-input-color;
     font-weight: 600;
     text-align: center;
   }
 
   input,
   output {
-    height: $swal2-input-height;
+    height: variables.$swal2-input-height;
     padding: 0;
-    font-size: $swal2-input-font-size;
-    line-height: $swal2-input-height;
+    font-size: variables.$swal2-input-font-size;
+    line-height: variables.$swal2-input-height;
   }
 }
 
 .swal2-input {
-  height: $swal2-input-height;
-  padding: $swal2-input-padding;
+  height: variables.$swal2-input-height;
+  padding: variables.$swal2-input-padding;
 
   &[type='number'] {
     max-width: 10em;
@@ -462,34 +465,34 @@
 }
 
 .swal2-file {
-  background: $swal2-input-background;
-  font-size: $swal2-input-font-size;
+  background: variables.$swal2-input-background;
+  font-size: variables.$swal2-input-font-size;
 }
 
 .swal2-textarea {
-  height: $swal2-textarea-height;
-  padding: $swal2-textarea-padding;
+  height: variables.$swal2-textarea-height;
+  padding: variables.$swal2-textarea-padding;
 }
 
 .swal2-select {
   min-width: 50%;
   max-width: 100%;
   padding: .375em .625em;
-  background: $swal2-input-background;
-  color: $swal2-input-color;
-  font-size: $swal2-input-font-size;
+  background: variables.$swal2-input-background;
+  color: variables.$swal2-input-color;
+  font-size: variables.$swal2-input-font-size;
 }
 
 .swal2-radio,
 .swal2-checkbox {
   align-items: center;
   justify-content: center;
-  background: $swal2-background;
-  color: $swal2-input-color;
+  background: variables.$swal2-background;
+  color: variables.$swal2-input-color;
 
   label {
     margin: 0 .6em;
-    font-size: $swal2-input-font-size;
+    font-size: variables.$swal2-input-font-size;
   }
 
   input {
@@ -500,13 +503,13 @@
 .swal2-validation-message {
   display: none;
   align-items: center;
-  justify-content: $swal2-validation-message-justify-content;
-  padding: $swal2-validation-message-padding;
+  justify-content: variables.$swal2-validation-message-justify-content;
+  padding: variables.$swal2-validation-message-padding;
   overflow: hidden;
-  background: $swal2-validation-message-background;
-  color: $swal2-validation-message-color;
-  font-size: $swal2-validation-message-font-size;
-  font-weight: $swal2-validation-message-font-weight;
+  background: variables.$swal2-validation-message-background;
+  color: variables.$swal2-validation-message-color;
+  font-size: variables.$swal2-validation-message-font-size;
+  font-weight: variables.$swal2-validation-message-font-weight;
 
   &::before {
     content: '!';
@@ -515,10 +518,10 @@
     min-width: 1.5em;
     height: 1.5em;
     margin: 0 .625em;
-    zoom: $swal2-validation-message-icon-zoom;
+    zoom: variables.$swal2-validation-message-icon-zoom;
     border-radius: 50%;
-    background-color: $swal2-validation-message-icon-background;
-    color: $swal2-validation-message-icon-color;
+    background-color: variables.$swal2-validation-message-icon-background;
+    color: variables.$swal2-validation-message-icon-color;
     font-weight: 600;
     line-height: 1.5em;
     text-align: center;
@@ -529,14 +532,14 @@
   position: relative;
   box-sizing: content-box;
   justify-content: center;
-  width: $swal2-icon-size;
-  height: $swal2-icon-size;
-  margin: $swal2-icon-margin;
-  zoom: $swal2-icon-zoom;
+  width: variables.$swal2-icon-size;
+  height: variables.$swal2-icon-size;
+  margin: variables.$swal2-icon-margin;
+  zoom: variables.$swal2-icon-zoom;
   border: .25em solid transparent;
   border-radius: 50%;
-  font-family: $swal2-icon-font-family;
-  line-height: $swal2-icon-size;
+  font-family: variables.$swal2-icon-font-family;
+  line-height: variables.$swal2-icon-size;
   cursor: default;
   user-select: none;
 
@@ -547,8 +550,8 @@
   }
 
   &.swal2-error {
-    border-color: $swal2-error;
-    color: $swal2-error;
+    border-color: variables.$swal2-error;
+    color: variables.$swal2-error;
 
     .swal2-x-mark {
       position: relative;
@@ -562,7 +565,7 @@
       width: 2.9375em;
       height: .3125em;
       border-radius: .125em;
-      background-color: $swal2-error;
+      background-color: variables.$swal2-error;
 
       &[class$='left'] {
         left: 1.0625em;
@@ -577,7 +580,7 @@
 
     // Error icon animation
     &.swal2-icon-show {
-      @if $swal2-icon-animations {
+      @if variables.$swal2-icon-animations {
         animation: swal2-animate-error-icon .5s;
 
         .swal2-x-mark {
@@ -588,23 +591,23 @@
   }
 
   &.swal2-warning {
-    border-color: lighten($swal2-warning, 7);
-    color: $swal2-warning;
+    border-color: lighten(variables.$swal2-warning, 7);
+    color: variables.$swal2-warning;
   }
 
   &.swal2-info {
-    border-color: lighten($swal2-info, 20);
-    color: $swal2-info;
+    border-color: lighten(variables.$swal2-info, 20);
+    color: variables.$swal2-info;
   }
 
   &.swal2-question {
-    border-color: lighten($swal2-question, 20);
-    color: $swal2-question;
+    border-color: lighten(variables.$swal2-question, 20);
+    color: variables.$swal2-question;
   }
 
   &.swal2-success {
-    border-color: $swal2-success;
-    color: $swal2-success;
+    border-color: variables.$swal2-success;
+    color: variables.$swal2-success;
 
     [class^='swal2-success-circular-line'] {
       // Emulate moving circular line
@@ -640,7 +643,7 @@
       box-sizing: content-box;
       width: 100%;
       height: 100%;
-      border: .25em solid $swal2-success-border;
+      border: .25em solid variables.$swal2-success-border;
       border-radius: 50%;
     }
 
@@ -661,7 +664,7 @@
       z-index: 2;
       height: .3125em;
       border-radius: .125em;
-      background-color: $swal2-success;
+      background-color: variables.$swal2-success;
 
       &[class$='tip'] {
         top: 2.875em;
@@ -680,7 +683,7 @@
 
     // Success icon animation
     &.swal2-icon-show {
-      @if $swal2-icon-animations {
+      @if variables.$swal2-icon-animations {
         .swal2-success-line-tip {
           animation: swal2-animate-success-line-tip .75s;
         }
@@ -699,10 +702,10 @@
 
 .swal2-progress-steps {
   align-items: center;
-  margin: $swal2-progress-steps-margin;
-  padding: $swal2-progress-steps-padding;
-  background: $swal2-progress-steps-background;
-  font-weight: $swal2-progress-steps-font-weight;
+  margin: variables.$swal2-progress-steps-margin;
+  padding: variables.$swal2-progress-steps-padding;
+  background: variables.$swal2-progress-steps-background;
+  font-weight: variables.$swal2-progress-steps-font-weight;
 
   li {
     display: inline-block;
@@ -711,34 +714,34 @@
 
   .swal2-progress-step {
     z-index: 20;
-    width: $swal2-progress-step-width;
-    height: $swal2-progress-step-height;
-    border-radius: $swal2-progress-step-border-radius;
-    background: $swal2-active-step-background;
-    color: $swal2-active-step-color;
-    line-height: $swal2-progress-step-height;
+    width: variables.$swal2-progress-step-width;
+    height: variables.$swal2-progress-step-height;
+    border-radius: variables.$swal2-progress-step-border-radius;
+    background: variables.$swal2-active-step-background;
+    color: variables.$swal2-active-step-color;
+    line-height: variables.$swal2-progress-step-height;
     text-align: center;
 
     &.swal2-active-progress-step {
-      background: $swal2-active-step-background;
+      background: variables.$swal2-active-step-background;
 
       ~ .swal2-progress-step {
-        background: $swal2-progress-step-background;
-        color: $swal2-progress-step-color;
+        background: variables.$swal2-progress-step-background;
+        color: variables.$swal2-progress-step-color;
       }
 
       ~ .swal2-progress-step-line {
-        background: $swal2-progress-step-background;
+        background: variables.$swal2-progress-step-background;
       }
     }
   }
 
   .swal2-progress-step-line {
     z-index: 10;
-    width: $swal2-progress-steps-distance;
+    width: variables.$swal2-progress-steps-distance;
     height: .4em;
     margin: 0 -1px;
-    background: $swal2-active-step-background;
+    background: variables.$swal2-active-step-background;
   }
 }
 
@@ -748,11 +751,11 @@
 }
 
 .swal2-show {
-  animation: $swal2-show-animation;
+  animation: variables.$swal2-show-animation;
 }
 
 .swal2-hide {
-  animation: $swal2-hide-animation;
+  animation: variables.$swal2-hide-animation;
 }
 
 .swal2-noanimation {
@@ -772,7 +775,7 @@
 .swal2-rtl {
   .swal2-close {
     right: auto;
-    left: $swal2-close-button-gap;
+    left: variables.$swal2-close-button-gap;
   }
 
   .swal2-timer-progress-bar {

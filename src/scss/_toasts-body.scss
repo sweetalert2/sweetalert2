@@ -1,3 +1,5 @@
+@use '../variables';
+
 @mixin sweetalert2-toasts-body() {
   &.swal2-toast-shown {
     .swal2-container {
@@ -98,11 +100,11 @@
       .swal2-input {
         height: 2em;
         margin: .3125em auto;
-        font-size: $swal2-toast-input-font-size;
+        font-size: variables.$swal2-toast-input-font-size;
       }
 
       .swal2-validation-message {
-        font-size: $swal2-toast-validation-font-size;
+        font-size: variables.$swal2-toast-validation-font-size;
       }
     }
   }

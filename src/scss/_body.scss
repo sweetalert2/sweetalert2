@@ -1,8 +1,10 @@
-@import 'toasts-body';
+@use 'mixins';
+@use 'toasts-body';
+@use '../variables';
 
 @mixin sweetalert2-body() {
   &.swal2-shown {
-    @include not('.swal2-no-backdrop', '.swal2-toast-shown') {
+    @include mixins.not('.swal2-no-backdrop', '.swal2-toast-shown') {
       overflow: hidden; // not overflow-y because of Sarari, #1253
     }
   }
@@ -17,11 +19,11 @@
       right: auto;
       bottom: auto;
       left: auto;
-      max-width: calc(100% - #{$swal2-container-padding} * 2);
+      max-width: calc(100% - #{variables.$swal2-container-padding} * 2);
       background-color: transparent !important;
 
       & > .swal2-modal {
-        box-shadow: 0 0 10px $swal2-backdrop;
+        box-shadow: 0 0 10px variables.$swal2-backdrop;
       }
 
       &.swal2-top {
@@ -84,7 +86,7 @@
 
   @media print {
     &.swal2-shown {
-      @include not('.swal2-no-backdrop', '.swal2-toast-shown') {
+      @include mixins.not('.swal2-no-backdrop', '.swal2-toast-shown') {
         overflow-y: scroll !important;
 
         > [aria-hidden='true'] {

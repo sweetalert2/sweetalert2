@@ -14,6 +14,8 @@
     "@babel/preset-env": "^7.3.1",
     "@cypress/code-coverage": "^3.0.0",
     "@rollup/plugin-json": "^4.0.2",
+    "@sass-collective/sass-em": "^1.4.0",
+    "@sass-collective/sass-rem": "^1.4.0",
     "@sweetalert2/eslint-config": "^1.0.0",
     "@sweetalert2/execute": "^1.0.0",
     "@sweetalert2/stylelint-config": "^1.1.5",

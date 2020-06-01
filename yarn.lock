@@ -1077,6 +1077,29 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@sass-collective/sass-em@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@sass-collective/sass-em/-/sass-em-1.4.0.tgz#a6028af0a0b9b0da773ca4bc6413a400585dec93"
+  integrity sha512-Sz3WDQeNLAaX3ml+5bEgMd/+ezCxpO7DOPI9wNDX6eDx1KmRUAr5ludrL9xQiAEn4H7bXWrO10BGE9cHm2ZnOw==
+  dependencies:
+    "@sass-collective/strip-unit" "^1.0.1"
+    sass "^1.26.5"
+
+"@sass-collective/sass-rem@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@sass-collective/sass-rem/-/sass-rem-1.4.0.tgz#af1ee242ab448efe2380157de7a75bbddbee9d79"
+  integrity sha512-p2WwRglhPlcHK1oil68EJm2aXIlHjjbeFVqrTGueZ+WcKElFTouDGTq67u9IlgsYtX8UerfMekW+iY7PrXNidA==
+  dependencies:
+    "@sass-collective/strip-unit" "^1.0.1"
+    sass "^1.26.5"
+
+"@sass-collective/strip-unit@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@sass-collective/strip-unit/-/strip-unit-1.0.1.tgz#5b2edb39b2a180d6aee452ce4838fdcc620d992e"
+  integrity sha512-BLkRFHmtI248ZqYkH69GlXTjbU/WNZH+gbuifzDhDi6Z8fZX75KQP5drV9Vu3m2JP1NDg8PtYnTi1+mBVmXxTA==
+  dependencies:
+    sass "^1.26.3"
+
 "@sinonjs/commons@^1", "@sinonjs/commons@^1.6.0", "@sinonjs/commons@^1.7.0", "@sinonjs/commons@^1.7.2":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.0.tgz#c8d68821a854c555bba172f3b06959a0039b236d"
@@ -8323,7 +8346,7 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-sass@^1.26.7:
+sass@^1.26.3, sass@^1.26.5, sass@^1.26.7:
   version "1.26.7"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.26.7.tgz#d3c9f3dd9771632bfb60af8746c308da3765166d"
   integrity sha512-xgNazdkr6yvgHEfNaOjKtZzhDZmKYMCmoRKMPrTDo7YvjaITIzU2DDYsIUuN/atAg7/JOxPeCQHH7TtCo5Tq2g==

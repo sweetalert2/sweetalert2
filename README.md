@@ -63,7 +63,7 @@ Usage
 <script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
 
 <!-- Include a polyfill for ES6 Promises (optional) for IE11 -->
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill9/dist/polyfill.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
 ```
 
 You can also include the stylesheet separately if desired:
@@ -231,9 +231,9 @@ Sponsors
 
 [<img src="https://sweetalert2.github.io/images/sponsors/flowcrypt-banner.png">](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=banner)
 
-[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md) | [<img src="https://avatars2.githubusercontent.com/u/28631236?s=80&v=4" width="80">](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/cybervm.png" width="80">](https://cybervm.net/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/wp-reset.png" width="80">](https://wpreset.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/sebaebc.png" width="80">](https://github.com/sebaebc)
--|-|-|-|-
-[Become a sponsor](SPONSORS.md) | [FlowCrypt](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [CyberVM Stresser & Booter](https://cybervm.net/?utm_source=sweetalert2&utm_medium=logo) | [WP Reset](https://wpreset.com/?utm_source=sweetalert2&utm_medium=logo) | [SebaEBC](https://github.com/sebaebc)
+[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md) | [<img src="https://avatars2.githubusercontent.com/u/28631236?s=80&v=4" width="80">](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80">](https://github.com/tiagostutz) | [<img src="https://sweetalert2.github.io/images/sponsors/cybervm.png" width="80">](https://cybervm.net/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/wp-reset.png" width="80">](https://wpreset.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/sebaebc.png" width="80">](https://github.com/sebaebc)
+-|-|-|-|-|-
+[Become a sponsor](SPONSORS.md) | [FlowCrypt](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [Tiago de Oliveira Stutz](https://github.com/tiagostutz) | [CyberVM Stresser & Booter](https://cybervm.net/?utm_source=sweetalert2&utm_medium=logo) | [WP Reset](https://wpreset.com/?utm_source=sweetalert2&utm_medium=logo) | [SebaEBC](https://github.com/sebaebc)
 
 NSFW Sponsors
 -------------

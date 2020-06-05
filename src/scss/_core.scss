@@ -214,6 +214,7 @@
   justify-content: $swal2-actions-justify-content;
   width: $swal2-actions-width;
   margin: $swal2-actions-margin;
+  padding-bottom: env(safe-area-inset-bottom);
 
   &:not(.swal2-loading) {
     .swal2-styled {

@@ -1,3 +1,10 @@
+## [9.14.2](https://github.com/sweetalert2/sweetalert2/compare/v9.14.1...v9.14.2) (2020-06-06)
+
+
+### Bug Fixes
+
+* add bottom padding to container for iOS Safari ([#1993](https://github.com/sweetalert2/sweetalert2/issues/1993)) ([1378a78](https://github.com/sweetalert2/sweetalert2/commit/1378a78a472805407ab711f473d6e683420dea34))
+
 ## [9.14.1](https://github.com/sweetalert2/sweetalert2/compare/v9.14.0...v9.14.1) (2020-06-06)
 
 

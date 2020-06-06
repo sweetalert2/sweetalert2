@@ -206,6 +206,23 @@
   word-wrap: break-word;
 }
 
+// https://medium.com/@draganeror/iphone-x-layout-features-with-css-environment-variables-d57423433dec
+// 
+// Browsers which partially support CSS Environment variables (iOS 11.0-11.2).
+@supports (padding-bottom: constant(safe-area-inset-bottom)) {
+  .swal2-actions {
+    --safe-area-inset-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: var(--safe-area-inset-bottom);
+  }
+}
+// Browsers which fully support CSS Environment variables (iOS 11.2+).
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .swal2-actions {
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    padding-bottom: var(--safe-area-inset-bottom);
+  }
+}
+
 .swal2-actions {
   display: flex;
   z-index: 1; // prevent sucess icon from overlapping buttons
@@ -214,7 +231,6 @@
   justify-content: $swal2-actions-justify-content;
   width: $swal2-actions-width;
   margin: $swal2-actions-margin;
-  padding-bottom: env(safe-area-inset-bottom);
 
   &:not(.swal2-loading) {
     .swal2-styled {

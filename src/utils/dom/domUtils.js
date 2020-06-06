@@ -122,7 +122,7 @@ export const cssToObj = (css) => {
   return obj;
 }
 
-export const addStyle = (target, classList) =>{
+export const addStyle = (target, classList) => {
   var styles = cssToObj(classList)
   for (const key in styles) {
       if (styles.hasOwnProperty(key)) {

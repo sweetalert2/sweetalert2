@@ -48,6 +48,9 @@ const removeCustomClasses = (elem, params) => {
 
 export const applyCustomClass = (elem, params, className) => {
   removeCustomClasses(elem, params)
+  if (params.customStyle && params.customStyle[className]) {
+    addStyle(elem, params.customStyle[className]);
+  }
 
   if (params.customClass && params.customClass[className]) {
     if (typeof params.customClass[className] !== 'string' && !params.customClass[className].forEach) {
@@ -107,6 +110,26 @@ export const toggleClass = (target, classList, condition) => {
       condition ? target.classList.add(className) : target.classList.remove(className)
     }
   })
+}
+
+export const cssToObj = (css) => {
+  var obj = {},
+      s = css.toLowerCase().replace(/-(.)/g, function (m, g) {
+          return g.toUpperCase();
+      }).replace(/;\s?$/g, "").split(/:|;/g);
+  for (var i = 0; i < s.length; i += 2)
+      obj[s[i].replace(/\s/g, "")] = s[i + 1].replace(/^\s+|\s+$/g, "");
+  return obj;
+}
+
+export const addStyle =  (target, classList) =>{
+  var styles = cssToObj(classList)
+  for (const key in styles) {
+      if (styles.hasOwnProperty(key)) {
+          const style = styles[key];
+          target.style[key] = style;
+      }
+  }
 }
 
 export const addClass = (target, classList) => {

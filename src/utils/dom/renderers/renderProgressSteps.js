@@ -43,7 +43,7 @@ export const renderProgressSteps = (instance, params) => {
     }
 
     if (index !== params.progressSteps.length - 1) {
-      const lineEl = createLineElement(step)
+      const lineEl = createLineElement(params)
       progressStepsContainer.appendChild(lineEl)
     }
   })

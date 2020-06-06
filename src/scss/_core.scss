@@ -207,7 +207,7 @@
 }
 
 // https://medium.com/@draganeror/iphone-x-layout-features-with-css-environment-variables-d57423433dec
-// 
+// https://bitsofco.de/css-environment-variables/
 // Browsers which partially support CSS Environment variables (iOS 11.0-11.2).
 @supports (padding-bottom: constant(safe-area-inset-bottom)) {
   .swal2-actions {

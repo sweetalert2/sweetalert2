@@ -11,6 +11,17 @@ export const iOSfix = () => {
     document.body.style.top = `${offset * -1}px`
     dom.addClass(document.body, swalClasses.iosfix)
     lockBodyScroll()
+    addBottomPaddingForTallPopups() // #1948
+  }
+}
+
+const addBottomPaddingForTallPopups = () => {
+  const safari = !navigator.userAgent.match(/(CriOS|FxiOS|EdgiOS|YaBrowser|UCBrowser)/i)
+  if (safari) {
+    const bottomPanelHeight = 44
+    if (dom.getPopup().scrollHeight > window.innerHeight - bottomPanelHeight) {
+      dom.getContainer().style.paddingBottom = `${bottomPanelHeight}px`
+    }
   }
 }
 

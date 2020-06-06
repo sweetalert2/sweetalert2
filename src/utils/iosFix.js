@@ -16,7 +16,7 @@ export const iOSfix = () => {
 }
 
 const addBottomPaddingForTallPopups = () => {
-  const safari = !navigator.userAgent.match(/CriOS/i)
+  const safari = !navigator.userAgent.match(/(CriOS|FxiOS|EdgiOS|YaBrowser|UCBrowser)/i)
   if (safari) {
     const bottomPanelHeight = 44
     if (dom.getPopup().scrollHeight > window.innerHeight - bottomPanelHeight) {

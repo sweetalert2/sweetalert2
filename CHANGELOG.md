@@ -1,3 +1,10 @@
+## [9.14.1](https://github.com/sweetalert2/sweetalert2/compare/v9.14.0...v9.14.1) (2020-06-06)
+
+
+### Bug Fixes
+
+* progressStepsDistance ([#1995](https://github.com/sweetalert2/sweetalert2/issues/1995)) ([1c61cfe](https://github.com/sweetalert2/sweetalert2/commit/1c61cfe38a7b3dedeacf87a7095c4ebdbe12b1ff))
+
 # [9.14.0](https://github.com/sweetalert2/sweetalert2/compare/v9.13.4...v9.14.0) (2020-05-30)
 
 

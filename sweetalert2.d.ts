@@ -337,6 +337,16 @@ declare module 'sweetalert2' {
     const version: string
   }
 
+  type Awaited<T> = T extends Promise<infer U> ? U : T;
+
+  type SyncOrAsync<T> = T | Promise<T>;
+
+  type ValueOrThunk<T> = T | (() => T);
+
+  export type SweetAlertArrayOptions = [string?, string?, SweetAlertIcon?];
+
+  export type SweetAlertGrow = 'row' | 'column' | 'fullscreen' | false;
+
   export type SweetAlertIcon = 'success' | 'error' | 'warning' | 'info' | 'question';
 
   export type SweetAlertInput =
@@ -348,7 +358,36 @@ declare module 'sweetalert2' {
     'center' | 'center-start' | 'center-end' | 'center-left' | 'center-right' |
     'bottom' | 'bottom-start' | 'bottom-end' | 'bottom-left' | 'bottom-right';
 
-  export type SweetAlertGrow = 'row' | 'column' | 'fullscreen' | false;
+  export type SweetAlertUpdatableParameters =
+    | 'allowEscapeKey'
+    | 'allowOutsideClick'
+    | 'buttonsStyling'
+    | 'cancelButtonAriaLabel'
+    | 'cancelButtonColor'
+    | 'cancelButtonText'
+    | 'confirmButtonAriaLabel'
+    | 'confirmButtonColor'
+    | 'confirmButtonText'
+    | 'currentProgressStep'
+    | 'customClass'
+    | 'footer'
+    | 'hideClass'
+    | 'html'
+    | 'icon'
+    | 'imageAlt'
+    | 'imageHeight'
+    | 'imageUrl'
+    | 'imageWidth'
+    | 'onAfterClose'
+    | 'onClose'
+    | 'onDestroy'
+    | 'progressSteps'
+    | 'reverseButtons'
+    | 'showCancelButton'
+    | 'showConfirmButton'
+    | 'text'
+    | 'title'
+    | 'titleText';
 
   export interface SweetAlertResult<T = any> {
     value?: T;
@@ -384,45 +423,6 @@ declare module 'sweetalert2' {
     cancelButton?: string;
     footer?: string;
   }
-
-  type Awaited<T> = T extends Promise<infer U> ? U : T;
-
-  type SyncOrAsync<T> = T | Promise<T>;
-
-  type ValueOrThunk<T> = T | (() => T);
-
-  export type SweetAlertUpdatableParameters =
-    | 'allowEscapeKey'
-    | 'allowOutsideClick'
-    | 'buttonsStyling'
-    | 'cancelButtonAriaLabel'
-    | 'cancelButtonColor'
-    | 'cancelButtonText'
-    | 'confirmButtonAriaLabel'
-    | 'confirmButtonColor'
-    | 'confirmButtonText'
-    | 'currentProgressStep'
-    | 'customClass'
-    | 'footer'
-    | 'hideClass'
-    | 'html'
-    | 'icon'
-    | 'imageAlt'
-    | 'imageHeight'
-    | 'imageUrl'
-    | 'imageWidth'
-    | 'onAfterClose'
-    | 'onClose'
-    | 'onDestroy'
-    | 'progressSteps'
-    | 'reverseButtons'
-    | 'showCancelButton'
-    | 'showConfirmButton'
-    | 'text'
-    | 'title'
-    | 'titleText';
-
-  export type SweetAlertArrayOptions = [string?, string?, SweetAlertIcon?];
 
   export interface SweetAlertOptions<PreConfirmResult = any, PreConfirmCallbackValue = any> {
     /**

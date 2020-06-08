@@ -415,6 +415,13 @@ declare module 'sweetalert2' {
     footer?: string;
   }
 
+  export interface SweetAlertResult<T = any> {
+    readonly dismiss?: Swal.DismissReason;
+    readonly isConfirmed: boolean;
+    readonly isDismissed: boolean;
+    readonly value?: T;
+  }
+
   export interface SweetAlertOptions<PreConfirmResult = any, PreConfirmCallbackValue = any> {
     /**
      * The title of the popup, as HTML.

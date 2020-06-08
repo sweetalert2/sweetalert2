@@ -1,3 +1,10 @@
+## [9.14.3](https://github.com/sweetalert2/sweetalert2/compare/v9.14.2...v9.14.3) (2020-06-08)
+
+
+### Bug Fixes
+
+* **types:** remove the readonly modifier from 'SweetAlertOptions' ([#1996](https://github.com/sweetalert2/sweetalert2/issues/1996)) ([12fbea0](https://github.com/sweetalert2/sweetalert2/commit/12fbea0312ff3293b19d2e0e137e2aa53cd27e84))
+
 ## [9.14.2](https://github.com/sweetalert2/sweetalert2/compare/v9.14.1...v9.14.2) (2020-06-06)
 
 

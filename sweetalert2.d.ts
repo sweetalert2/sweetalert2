@@ -337,6 +337,12 @@ declare module 'sweetalert2' {
     const version: string
   }
 
+  interface SweetAlertHideShowClass {
+    backdrop?: string;
+    icon?: string;
+    popup?: string;
+  }
+
   type Awaited<T> = T extends Promise<infer U> ? U : T;
 
   type SyncOrAsync<T> = T | Promise<T>;
@@ -346,6 +352,10 @@ declare module 'sweetalert2' {
   export type SweetAlertArrayOptions = [string?, string?, SweetAlertIcon?];
 
   export type SweetAlertGrow = 'row' | 'column' | 'fullscreen' | false;
+
+  export type SweetAlertHideClass = SweetAlertHideShowClass;
+
+  export type SweetAlertShowClass = Readonly<SweetAlertHideShowClass>;
 
   export type SweetAlertIcon = 'success' | 'error' | 'warning' | 'info' | 'question';
 
@@ -388,25 +398,6 @@ declare module 'sweetalert2' {
     | 'text'
     | 'title'
     | 'titleText';
-
-  export interface SweetAlertResult<T = any> {
-    value?: T;
-    dismiss?: Swal.DismissReason;
-    isConfirmed: boolean;
-    isDismissed: boolean;
-  }
-
-  export interface SweetAlertShowClass {
-    popup?: string;
-    backdrop?: string;
-    icon?: string;
-  }
-
-  export interface SweetAlertHideClass {
-    popup?: string;
-    backdrop?: string;
-    icon?: string;
-  }
 
   export interface SweetAlertCustomClass {
     container?: string;

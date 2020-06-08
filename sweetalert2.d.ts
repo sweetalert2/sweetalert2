@@ -302,14 +302,14 @@ declare module 'sweetalert2' {
      *
      * @param paramName The parameter to check
      */
-    function isValidParameter(paramName: keyof SweetAlertOptions): boolean;
+    function isValidParameter(paramName: string): paramName is keyof SweetAlertOptions;
 
     /**
      * Determines if a given parameter name is valid for `Swal.update()` method.
      *
      * @param paramName The parameter to check
      */
-    function isUpdatableParameter(paramName: SweetAlertUpdatableParameters): boolean;
+    function isUpdatableParameter(paramName: string): paramName is SweetAlertUpdatableParameters;
 
     /**
      * Normalizes the arguments you can give to Swal.fire() in an object of type SweetAlertOptions.

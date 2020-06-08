@@ -424,7 +424,7 @@ declare module 'sweetalert2' {
 
   export type SweetAlertArrayOptions = [string?, string?, SweetAlertIcon?];
 
-  export interface SweetAlertOptions<PreConfirmResult = any, PreConfirmCallbackValue = any> extends Readonly<{
+  export interface SweetAlertOptions<PreConfirmResult = any, PreConfirmCallbackValue = any> {
     /**
      * The title of the popup, as HTML.
      * It can either be added to the object under the key `title` or passed as the first parameter of `Swal.fire()`.
@@ -986,7 +986,7 @@ declare module 'sweetalert2' {
      * @default true
      */
     scrollbarPadding?: boolean;
-  }> { }
+  }
 
   export default Swal
 }

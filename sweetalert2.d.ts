@@ -131,7 +131,7 @@ declare module 'sweetalert2' {
      * Gets all icons. The current visible icon will have `style="display: flex"`,
      * all other will be hidden by `style="display: none"`.
      */
-    function getIcons(): HTMLElement[];
+    function getIcons(): readonly HTMLElement[];
 
     /**
      * Gets the "Confirm" button.
@@ -161,7 +161,7 @@ declare module 'sweetalert2' {
     /**
      * Gets all focusable elements in the popup.
      */
-    function getFocusableElements(): HTMLElement[];
+    function getFocusableElements(): readonly HTMLElement[];
 
     /**
      * Enables "Confirm" and "Cancel" buttons.
@@ -322,7 +322,7 @@ declare module 'sweetalert2' {
      *
      * @param params The array of arguments to normalize.
      */
-    function argsToParams<T>(params: SweetAlertArrayOptions | [SweetAlertOptions<T>]): SweetAlertOptions<T>;
+    function argsToParams<T>(params: SweetAlertArrayOptions | readonly [SweetAlertOptions<T>]): SweetAlertOptions<T>;
 
     /**
      * An enum of possible reasons that can explain an alert dismissal.
@@ -349,7 +349,7 @@ declare module 'sweetalert2' {
 
   type ValueOrThunk<T> = T | (() => T);
 
-  export type SweetAlertArrayOptions = [string?, string?, SweetAlertIcon?];
+  export type SweetAlertArrayOptions = readonly [string?, string?, SweetAlertIcon?];
 
   export type SweetAlertGrow = 'row' | 'column' | 'fullscreen' | false;
 
@@ -917,7 +917,7 @@ declare module 'sweetalert2' {
      *
      * @default []
      */
-    progressSteps?: string[];
+    progressSteps?: readonly string[];
 
     /**
      * Current active progress step.

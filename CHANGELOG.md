@@ -1,3 +1,10 @@
+## [9.14.4](https://github.com/sweetalert2/sweetalert2/compare/v9.14.3...v9.14.4) (2020-06-09)
+
+
+### Bug Fixes
+
+* **types:** minor changes ([#1997](https://github.com/sweetalert2/sweetalert2/issues/1997)) ([6ece962](https://github.com/sweetalert2/sweetalert2/commit/6ece962cc8cfd05554fe6a9f37625cbb50fd8b06))
+
 ## [9.14.3](https://github.com/sweetalert2/sweetalert2/compare/v9.14.2...v9.14.3) (2020-06-08)
 
 

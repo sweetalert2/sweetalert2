@@ -131,7 +131,7 @@ declare module 'sweetalert2' {
      * Gets all icons. The current visible icon will have `style="display: flex"`,
      * all other will be hidden by `style="display: none"`.
      */
-    function getIcons(): HTMLElement[];
+    function getIcons(): readonly HTMLElement[];
 
     /**
      * Gets the "Confirm" button.
@@ -161,7 +161,7 @@ declare module 'sweetalert2' {
     /**
      * Gets all focusable elements in the popup.
      */
-    function getFocusableElements(): HTMLElement[];
+    function getFocusableElements(): readonly HTMLElement[];
 
     /**
      * Enables "Confirm" and "Cancel" buttons.
@@ -302,14 +302,14 @@ declare module 'sweetalert2' {
      *
      * @param paramName The parameter to check
      */
-    function isValidParameter(paramName: keyof SweetAlertOptions): boolean;
+    function isValidParameter(paramName: string): paramName is keyof SweetAlertOptions;
 
     /**
      * Determines if a given parameter name is valid for `Swal.update()` method.
      *
      * @param paramName The parameter to check
      */
-    function isUpdatableParameter(paramName: SweetAlertUpdatableParameters): boolean;
+    function isUpdatableParameter(paramName: string): paramName is SweetAlertUpdatableParameters;
 
     /**
      * Normalizes the arguments you can give to Swal.fire() in an object of type SweetAlertOptions.
@@ -322,7 +322,7 @@ declare module 'sweetalert2' {
      *
      * @param params The array of arguments to normalize.
      */
-    function argsToParams<T>(params: SweetAlertArrayOptions | [SweetAlertOptions<T>]): SweetAlertOptions<T>;
+    function argsToParams<T>(params: SweetAlertArrayOptions | readonly [SweetAlertOptions<T>]): SweetAlertOptions<T>;
 
     /**
      * An enum of possible reasons that can explain an alert dismissal.
@@ -337,6 +337,26 @@ declare module 'sweetalert2' {
     const version: string
   }
 
+  interface SweetAlertHideShowClass {
+    backdrop?: string;
+    icon?: string;
+    popup?: string;
+  }
+
+  type Awaited<T> = T extends Promise<infer U> ? U : T;
+
+  type SyncOrAsync<T> = T | Promise<T>;
+
+  type ValueOrThunk<T> = T | (() => T);
+
+  export type SweetAlertArrayOptions = readonly [string?, string?, SweetAlertIcon?];
+
+  export type SweetAlertGrow = 'row' | 'column' | 'fullscreen' | false;
+
+  export type SweetAlertHideClass = SweetAlertHideShowClass;
+
+  export type SweetAlertShowClass = Readonly<SweetAlertHideShowClass>;
+
   export type SweetAlertIcon = 'success' | 'error' | 'warning' | 'info' | 'question';
 
   export type SweetAlertInput =
@@ -347,49 +367,6 @@ declare module 'sweetalert2' {
     'top' | 'top-start' | 'top-end' | 'top-left' | 'top-right' |
     'center' | 'center-start' | 'center-end' | 'center-left' | 'center-right' |
     'bottom' | 'bottom-start' | 'bottom-end' | 'bottom-left' | 'bottom-right';
-
-  export type SweetAlertGrow = 'row' | 'column' | 'fullscreen' | false;
-
-  export interface SweetAlertResult<T = any> {
-    value?: T;
-    dismiss?: Swal.DismissReason;
-    isConfirmed: boolean;
-    isDismissed: boolean;
-  }
-
-  export interface SweetAlertShowClass {
-    popup?: string;
-    backdrop?: string;
-    icon?: string;
-  }
-
-  export interface SweetAlertHideClass {
-    popup?: string;
-    backdrop?: string;
-    icon?: string;
-  }
-
-  export interface SweetAlertCustomClass {
-    container?: string;
-    popup?: string;
-    header?: string;
-    title?: string;
-    closeButton?: string;
-    icon?: string;
-    image?: string;
-    content?: string;
-    input?: string;
-    actions?: string;
-    confirmButton?: string;
-    cancelButton?: string;
-    footer?: string;
-  }
-
-  type Awaited<T> = T extends Promise<infer U> ? U : T;
-
-  type SyncOrAsync<T> = T | Promise<T>;
-
-  type ValueOrThunk<T> = T | (() => T);
 
   export type SweetAlertUpdatableParameters =
     | 'allowEscapeKey'
@@ -422,7 +399,28 @@ declare module 'sweetalert2' {
     | 'title'
     | 'titleText';
 
-  export type SweetAlertArrayOptions = [string?, string?, SweetAlertIcon?];
+  export interface SweetAlertCustomClass {
+    container?: string;
+    popup?: string;
+    header?: string;
+    title?: string;
+    closeButton?: string;
+    icon?: string;
+    image?: string;
+    content?: string;
+    input?: string;
+    actions?: string;
+    confirmButton?: string;
+    cancelButton?: string;
+    footer?: string;
+  }
+
+  export interface SweetAlertResult<T = any> {
+    readonly dismiss?: Swal.DismissReason;
+    readonly isConfirmed: boolean;
+    readonly isDismissed: boolean;
+    readonly value?: T;
+  }
 
   export interface SweetAlertOptions<PreConfirmResult = any, PreConfirmCallbackValue = any> {
     /**
@@ -919,7 +917,7 @@ declare module 'sweetalert2' {
      *
      * @default []
      */
-    progressSteps?: string[];
+    progressSteps?: readonly string[];
 
     /**
      * Current active progress step.

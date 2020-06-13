@@ -21,7 +21,7 @@ export const uniqueArray = (arr) => {
 export const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
 /**
- * Returns the array ob object values (Object.values isn't supported in IE11)
+ * Returns the array of object values (Object.values isn't supported in IE11)
  * @param obj
  */
 export const objectValues = (obj) => Object.keys(obj).map(key => obj[key])
@@ -79,5 +79,9 @@ export const warnAboutDepreation = (deprecatedParam, useInstead) => {
  * @param arg
  */
 export const callIfFunction = (arg) => typeof arg === 'function' ? arg() : arg
+
+export const hasToPromiseFn = (arg) => arg && typeof arg.toPromise === 'function'
+
+export const asPromise = (arg) => hasToPromiseFn(arg) ? arg.toPromise() : Promise.resolve(arg)
 
 export const isPromise = (arg) => arg && Promise.resolve(arg) === arg

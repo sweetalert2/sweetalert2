@@ -1,6 +1,7 @@
 import { isVisible } from '../utils/dom/domUtils.js'
 import { getInputValue } from '../utils/dom/inputUtils.js'
 import { getValidationMessage } from '../utils/dom/getters.js'
+import { asPromise } from '../utils/utils.js'
 import { showLoading } from '../staticMethods/showLoading.js'
 import { DismissReason } from '../utils/DismissReason.js'
 
@@ -23,7 +24,9 @@ const handleConfirmWithInput = (instance, innerParams) => {
 
   if (innerParams.inputValidator) {
     instance.disableInput()
-    const validationPromise = Promise.resolve().then(() => innerParams.inputValidator(inputValue, innerParams.validationMessage))
+    const validationPromise = Promise.resolve().then(() => asPromise(
+      innerParams.inputValidator(inputValue, innerParams.validationMessage))
+    )
     validationPromise.then(
       (validationMessage) => {
         instance.enableButtons()
@@ -54,13 +57,15 @@ const confirm = (instance, innerParams, value) => {
 
   if (innerParams.preConfirm) {
     instance.resetValidationMessage()
-    const preConfirmPromise = Promise.resolve().then(() => innerParams.preConfirm(value, innerParams.validationMessage))
+    const preConfirmPromise = Promise.resolve().then(() => asPromise(
+      innerParams.preConfirm(value, innerParams.validationMessage))
+    )
     preConfirmPromise.then(
       (preConfirmValue) => {
         if (isVisible(getValidationMessage()) || preConfirmValue === false) {
           instance.hideLoading()
         } else {
-          succeedWith(instance, typeof (preConfirmValue) === 'undefined' ? value : preConfirmValue)
+          succeedWith(instance, typeof preConfirmValue === 'undefined' ? value : preConfirmValue)
         }
       }
     )

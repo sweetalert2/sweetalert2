@@ -213,7 +213,7 @@ declare module 'sweetalert2' {
     /**
      * Gets the input DOM node, this method works with input parameter.
      */
-    function getInput(): HTMLInputElement;
+    function getInput(): HTMLInputElement | null;
 
     /**
      * Disables the popup input. A disabled input element is unusable and un-clickable.
@@ -345,7 +345,7 @@ declare module 'sweetalert2' {
 
   type Awaited<T> = T extends Promise<infer U> ? U : T;
 
-  type SyncOrAsync<T> = T | Promise<T>;
+  type SyncOrAsync<T> = T | Promise<T> | { toPromise: () => T };
 
   type ValueOrThunk<T> = T | (() => T);
 

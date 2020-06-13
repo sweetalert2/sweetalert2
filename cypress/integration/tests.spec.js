@@ -497,9 +497,7 @@ describe('Miscellaneous tests', function () {
 
   it('preConfirm return false', () => {
     SwalWithoutAnimation.fire({
-      preConfirm: () => {
-        return false
-      }
+      preConfirm: () => false,
     })
 
     Swal.clickConfirm()
@@ -513,9 +511,7 @@ describe('Miscellaneous tests', function () {
         Swal.getContent().textContent = 'Custom content'
         Swal.clickConfirm()
       },
-      preConfirm: () => {
-        return 'Some data from custom control'
-      }
+      preConfirm: () => 'Some data from custom control',
     }).then(result => {
       expect(result.value).to.equal('Some data from custom control')
       done()
@@ -524,12 +520,20 @@ describe('Miscellaneous tests', function () {
 
   it('preConfirm returns 0', (done) => {
     SwalWithoutAnimation.fire({
-      onOpen: () => {
-        Swal.clickConfirm()
-      },
-      preConfirm: () => {
-        return 0
-      }
+      onOpen: () => Swal.clickConfirm(),
+      preConfirm: () => 0,
+    }).then(result => {
+      expect(result.value).to.equal(0)
+      done()
+    })
+  })
+
+  it('preConfirm returns object containing toPromise', (done) => {
+    SwalWithoutAnimation.fire({
+      onOpen: () => Swal.clickConfirm(),
+      preConfirm: () => ({
+        toPromise: () => Promise.resolve(0)
+      })
     }).then(result => {
       expect(result.value).to.equal(0)
       done()

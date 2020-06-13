@@ -1,3 +1,10 @@
+# [9.15.0](https://github.com/sweetalert2/sweetalert2/compare/v9.14.4...v9.15.0) (2020-06-13)
+
+
+### Features
+
+* add support for objects containing toPromise method ([#1998](https://github.com/sweetalert2/sweetalert2/issues/1998)) ([0d33441](https://github.com/sweetalert2/sweetalert2/commit/0d3344141c77f4b73d769cb3faa614c917e99f45))
+
 ## [9.14.4](https://github.com/sweetalert2/sweetalert2/compare/v9.14.3...v9.14.4) (2020-06-09)
 
 

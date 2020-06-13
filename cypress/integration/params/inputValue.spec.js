@@ -10,7 +10,7 @@ describe('inputValue', () => {
     Swal.fire({
       input: 'text',
       inputValue: {
-        toPromise: () => 'test'
+        toPromise: () => Promise.resolve('test')
       },
       onOpen: () => {
         expect(Swal.getInput().value).to.equal('test')

@@ -6,6 +6,19 @@ describe('inputValue', () => {
     expect(Swal.getInput().value).to.equal('333')
   })
 
+  it('inputValue with object containing toPromise', (done) => {
+    Swal.fire({
+      input: 'text',
+      inputValue: {
+        toPromise: () => 'test'
+      },
+      onOpen: () => {
+        expect(Swal.getInput().value).to.equal('test')
+        done()
+      }
+    })
+  })
+
   it('inputValue as a Promise', (done) => {
     const spy = cy.spy(console, 'warn')
     const inputTypes = ['text', 'email', 'number', 'tel', 'textarea']

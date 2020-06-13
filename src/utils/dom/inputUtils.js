@@ -1,13 +1,14 @@
 import * as dom from './index.js'
 import { swalClasses } from '../classes.js'
 import { getChildByClass } from './domUtils.js'
-import { error, isPromise } from '../utils.js'
+import { asPromise, error, hasToPromiseFn, isPromise } from '../utils.js'
 import { showLoading } from '../../staticMethods/showLoading.js'
 
 export const handleInputOptionsAndValue = (instance, params) => {
   if (params.input === 'select' || params.input === 'radio') {
     handleInputOptions(instance, params)
-  } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) && isPromise(params.inputValue)) {
+  } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) &&
+    (hasToPromiseFn(params.inputValue) || isPromise(params.inputValue))) {
     handleInputValue(instance, params)
   }
 }
@@ -38,9 +39,9 @@ const getFileValue = (input) => input.files.length ? (input.getAttribute('multip
 const handleInputOptions = (instance, params) => {
   const content = dom.getContent()
   const processInputOptions = (inputOptions) => populateInputOptions[params.input](content, formatInputOptions(inputOptions), params)
-  if (isPromise(params.inputOptions)) {
+  if (hasToPromiseFn(params.inputOptions) || isPromise(params.inputOptions)) {
     showLoading()
-    params.inputOptions.then((inputOptions) => {
+    asPromise(params.inputOptions).then((inputOptions) => {
       instance.hideLoading()
       processInputOptions(inputOptions)
     })
@@ -54,7 +55,7 @@ const handleInputOptions = (instance, params) => {
 const handleInputValue = (instance, params) => {
   const input = instance.getInput()
   dom.hide(input)
-  params.inputValue.then((inputValue) => {
+  asPromise(params.inputValue).then((inputValue) => {
     input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : `${inputValue}`
     dom.show(input)
     input.focus()

@@ -132,6 +132,32 @@ describe('Input', () => {
     Swal.clickConfirm()
   })
 
+  it('input select with inputOptions as Promise', (done) => {
+    Swal.fire({
+      input: 'select',
+      inputOptions: Promise.resolve({ one: 1, two: 2 }),
+      onOpen: () => {
+        Swal.getInput().value = 'one'
+        expect(Swal.getInput().value).to.equal('one')
+        done()
+      }
+    })
+  })
+
+  it('input select with inputOptions as object containing toPromise', (done) => {
+    Swal.fire({
+      input: 'select',
+      inputOptions: {
+        toPromise: () => Promise.resolve({ three: 3, four: 4 })
+      },
+      onOpen: () => {
+        Swal.getInput().value = 'three'
+        expect(Swal.getInput().value).to.equal('three')
+        done()
+      }
+    })
+  })
+
   it('input text w/ inputPlaceholder as configuration', () => {
     Swal.fire({
       input: 'text',
@@ -382,6 +408,21 @@ describe('Validation', () => {
         expect(Swal.getPopup().offsetHeight === initialModalHeight).to.be.true
         done()
       }, TIMEOUT)
+    }, TIMEOUT)
+  })
+
+  it('validation message with object containing toPromise', () => {
+    SwalWithoutAnimation.fire({
+      input: 'text',
+      inputValidator: (value) => ({
+        toPromise: () => Promise.resolve(!value && 'no falsy values')
+      })
+    })
+
+    setTimeout(() => {
+      Swal.clickConfirm()
+      expect(isVisible(Swal.getValidationMessage())).to.be.true
+      expect(Swal.getValidationMessage().textContent).to.equal('no falsy values')
     }, TIMEOUT)
   })
 

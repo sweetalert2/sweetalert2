@@ -21,8 +21,7 @@ export const getIcons = () => {
 }
 
 export const getIcon = () => {
-  const visibleIcon = getIcons().filter(icon => isVisible(icon))
-  return visibleIcon.length ? visibleIcon[0] : null
+  return getIcons().find(isVisible) || null
 }
 
 export const getTitle = () => elementByClass(swalClasses.title)

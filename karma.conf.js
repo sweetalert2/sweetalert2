@@ -60,13 +60,6 @@ const sauceLabsLaunchers = {
     platformVersion: '11.0',
     platform: 'Windows 7'
   },
-  iphone: {
-    base: 'SauceLabs',
-    browserName: 'Safari',
-    deviceName: 'iPhone Simulator',
-    platformName: 'iOS',
-    platformVersion: 'latest'
-  },
 }
 
 function checkSauceCredentials () {

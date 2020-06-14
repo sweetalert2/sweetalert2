@@ -46,19 +46,19 @@ const sauceLabsLaunchers = {
     base: 'SauceLabs',
     browserName: 'Safari',
     version: 'latest',
-    platform: 'macOS 10.15'
+    platformName: 'macOS 10.15'
   },
   edge: {
     base: 'SauceLabs',
     browserName: 'MicrosoftEdge',
     browserVersion: '18.17763',
-    platform: 'Windows 10',
+    platformName: 'Windows 10',
   },
   ie: {
     base: 'SauceLabs',
     browserName: 'internet explorer',
-    platformVersion: '11.0',
-    platform: 'Windows 7'
+    browserVersion: 'latest',
+    platformName: 'Windows 7'
   },
 }
 

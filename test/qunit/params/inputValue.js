@@ -6,6 +6,23 @@ QUnit.test('inputValue number', (assert) => {
   assert.ok(Swal.getInput().value, '333')
 })
 
+QUnit.test('inputValue with object containing toPromise', (assert) => {
+  const done = assert.async()
+
+  Swal.fire({
+    input: 'text',
+    inputValue: {
+      toPromise: () => Promise.resolve('test')
+    },
+    onOpen: () => {
+      setTimeout(() => {
+        assert.equal(Swal.getInput().value, 'test')
+        done()
+      }, TIMEOUT)
+    }
+  })
+})
+
 QUnit.test('inputValue as a Promise', (assert) => {
   const _consoleWarn = console.warn
   const spy = sinon.spy(console, 'warn')

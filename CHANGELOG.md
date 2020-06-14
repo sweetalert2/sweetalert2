@@ -1,3 +1,10 @@
+## [9.15.1](https://github.com/sweetalert2/sweetalert2/compare/v9.15.0...v9.15.1) (2020-06-14)
+
+
+### Bug Fixes
+
+* do not use Array.find because it's not supported in IE11 ([20526ab](https://github.com/sweetalert2/sweetalert2/commit/20526ab6121087b9ec4d77b09b765f5bcecb6b58))
+
 # [9.15.0](https://github.com/sweetalert2/sweetalert2/compare/v9.14.4...v9.15.0) (2020-06-13)
 
 

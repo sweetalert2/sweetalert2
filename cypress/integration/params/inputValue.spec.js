@@ -13,8 +13,10 @@ describe('inputValue', () => {
         toPromise: () => Promise.resolve('test')
       },
       onOpen: () => {
-        expect(Swal.getInput().value).to.equal('test')
-        done()
+        setTimeout(() => {
+          expect(Swal.getInput().value).to.equal('test')
+          done()
+        }, TIMEOUT)
       }
     })
   })

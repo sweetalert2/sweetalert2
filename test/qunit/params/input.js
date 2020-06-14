@@ -150,6 +150,40 @@ QUnit.test('input select with only optgroups options', (assert) => {
   Swal.clickConfirm()
 })
 
+QUnit.test('input select with inputOptions as Promise', (assert) => {
+  const done = assert.async()
+
+  Swal.fire({
+    input: 'select',
+    inputOptions: Promise.resolve({ one: 1, two: 2 }),
+    onOpen: () => {
+      setTimeout(() => {
+        Swal.getInput().value = 'one'
+        assert.equal(Swal.getInput().value, 'one')
+        done()
+      }, TIMEOUT)
+    }
+  })
+})
+
+QUnit.test('input select with inputOptions as object containing toPromise', (assert) => {
+  const done = assert.async()
+
+  Swal.fire({
+    input: 'select',
+    inputOptions: {
+      toPromise: () => Promise.resolve({ three: 3, four: 4 })
+    },
+    onOpen: () => {
+      setTimeout(() => {
+        Swal.getInput().value = 'three'
+        assert.equal(Swal.getInput().value, 'three')
+        done()
+      }, TIMEOUT)
+    }
+  })
+})
+
 QUnit.test('input text w/ inputPlaceholder as configuration', (assert) => {
   const done = assert.async()
 

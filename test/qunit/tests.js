@@ -281,6 +281,26 @@ QUnit.test('validation message', (assert) => {
   }, TIMEOUT)
 })
 
+QUnit.test('validation message with object containing toPromise', (assert) => {
+  const done = assert.async()
+
+  SwalWithoutAnimation.fire({
+    input: 'text',
+    inputValidator: (value) => ({
+      toPromise: () => Promise.resolve(!value && 'no falsy values')
+    })
+  })
+
+  setTimeout(() => {
+    Swal.clickConfirm()
+    setTimeout(() => {
+      assert.ok(isVisible(Swal.getValidationMessage()))
+      assert.equal(Swal.getValidationMessage().textContent, 'no falsy values')
+      done()
+    }, TIMEOUT)
+  }, TIMEOUT)
+})
+
 QUnit.test('should throw console error about unexpected type of InputOptions', (assert) => {
   const _consoleError = console.error
   const spy = sinon.spy(console, 'error')
@@ -737,9 +757,7 @@ QUnit.test('backdrop accepts css background param', (assert) => {
 
 QUnit.test('preConfirm return false', (assert) => {
   SwalWithoutAnimation.fire({
-    preConfirm: () => {
-      return false
-    }
+    preConfirm: () => false,
   })
 
   Swal.clickConfirm()
@@ -754,9 +772,7 @@ QUnit.test('Custom content', (assert) => {
       Swal.getContent().textContent = 'Custom content'
       Swal.clickConfirm()
     },
-    preConfirm: () => {
-      return 'Some data from custom control'
-    }
+    preConfirm: () => 'Some data from custom control',
   }).then(result => {
     assert.ok(result.value)
     done()
@@ -766,12 +782,21 @@ QUnit.test('Custom content', (assert) => {
 QUnit.test('preConfirm returns 0', (assert) => {
   const done = assert.async()
   SwalWithoutAnimation.fire({
-    onOpen: () => {
-      Swal.clickConfirm()
-    },
-    preConfirm: () => {
-      return 0
-    }
+    onOpen: () => Swal.clickConfirm(),
+    preConfirm: () => 0
+  }).then(result => {
+    assert.equal(result.value, 0)
+    done()
+  })
+})
+
+QUnit.test('preConfirm returns object containing toPromise', (assert) => {
+  const done = assert.async()
+  SwalWithoutAnimation.fire({
+    onOpen: () => Swal.clickConfirm(),
+    preConfirm: () => ({
+      toPromise: () => Promise.resolve(0)
+    })
   }).then(result => {
     assert.equal(result.value, 0)
     done()

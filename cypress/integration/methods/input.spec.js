@@ -137,9 +137,11 @@ describe('Input', () => {
       input: 'select',
       inputOptions: Promise.resolve({ one: 1, two: 2 }),
       onOpen: () => {
-        Swal.getInput().value = 'one'
-        expect(Swal.getInput().value).to.equal('one')
-        done()
+        setTimeout(() => {
+          Swal.getInput().value = 'one'
+          expect(Swal.getInput().value).to.equal('one')
+          done()
+        }, TIMEOUT)
       }
     })
   })
@@ -151,9 +153,11 @@ describe('Input', () => {
         toPromise: () => Promise.resolve({ three: 3, four: 4 })
       },
       onOpen: () => {
-        Swal.getInput().value = 'three'
-        expect(Swal.getInput().value).to.equal('three')
-        done()
+        setTimeout(() => {
+          Swal.getInput().value = 'three'
+          expect(Swal.getInput().value).to.equal('three')
+          done()
+        }, TIMEOUT)
       }
     })
   })
@@ -411,7 +415,7 @@ describe('Validation', () => {
     }, TIMEOUT)
   })
 
-  it('validation message with object containing toPromise', () => {
+  it('validation message with object containing toPromise', (done) => {
     SwalWithoutAnimation.fire({
       input: 'text',
       inputValidator: (value) => ({
@@ -421,8 +425,11 @@ describe('Validation', () => {
 
     setTimeout(() => {
       Swal.clickConfirm()
-      expect(isVisible(Swal.getValidationMessage())).to.be.true
-      expect(Swal.getValidationMessage().textContent).to.equal('no falsy values')
+      setTimeout(() => {
+        expect(isVisible(Swal.getValidationMessage())).to.be.true
+        expect(Swal.getValidationMessage().textContent).to.equal('no falsy values')
+        done()
+      }, TIMEOUT)
     }, TIMEOUT)
   })
 

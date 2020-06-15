@@ -27,6 +27,9 @@ $swal2-font-size: 1rem !default;
 $swal2-backdrop: rgba($swal2-black, .4) !default;
 $swal2-backdrop-transition: background-color .1s !default;
 
+// HEADER
+$swal2-header-padding: 0 1.8em !default;
+
 // ICONS
 $swal2-icon-size: 5em !default;
 $swal2-icon-animations: true !default;
@@ -51,7 +54,7 @@ $swal2-title-font-size: 1.875em !default;
 // CONTENT
 $swal2-content-justify-content: center !default;
 $swal2-content-margin: 0 !default;
-$swal2-content-pading: 0 !default;
+$swal2-content-pading: 0 1.6em !default;
 $swal2-content-color: lighten($swal2-black, 33) !default;
 $swal2-content-font-size: 1.125em !default;
 $swal2-content-font-weight: normal !default;

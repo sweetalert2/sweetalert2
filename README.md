@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/sponsors/limonte">[== Become the :trophy: Ultimate Sponsor of SweetAlert2 and place your banner here (100K+ unique visitors per month!) ==]</a>
+  <a href="https://github.com/sponsors/limonte">[= Become the :trophy: Ultimate Sponsor of SweetAlert2 and place your banner here (100K+ unique visitors per month) =]</a>
 </p>
 
 <p align="center">

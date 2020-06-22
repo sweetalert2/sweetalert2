@@ -55,6 +55,8 @@ Your contribution will be greatly appreciated!
 
 - **Johnny Lockhart** (25 USD)
 
+- **[Brand Lovely](https://www.brandlovely.com/)** (20 EUR)
+
 - **Alex Frei** (20 EUR)
 
 - **[VEI Hosting](http://www.veihosting.com/)** (20 USD)

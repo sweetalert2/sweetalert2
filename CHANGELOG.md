@@ -1,3 +1,10 @@
+## [9.15.2](https://github.com/sweetalert2/sweetalert2/compare/v9.15.1...v9.15.2) (2020-06-23)
+
+
+### Bug Fixes
+
+* do not fix scrollbar padding in case body has overflow-y: hidden ([#2006](https://github.com/sweetalert2/sweetalert2/issues/2006)) ([bc90d3c](https://github.com/sweetalert2/sweetalert2/commit/bc90d3ccdb589150eeb52d6b5ce254cb61d758bd))
+
 ## [9.15.1](https://github.com/sweetalert2/sweetalert2/compare/v9.15.0...v9.15.1) (2020-06-14)
 
 

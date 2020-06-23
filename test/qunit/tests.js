@@ -1,4 +1,4 @@
-const { $, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible, isHidden, TIMEOUT } = require('./helpers')
+const { $, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible, isHidden, ensureClosed, TIMEOUT } = require('./helpers')
 const { toArray } = require('../../src/utils/utils')
 const { measureScrollbar } = require('../../src/utils/dom/measureScrollbar')
 const sinon = require('sinon/pkg/sinon')
@@ -86,6 +86,7 @@ QUnit.test('should show the popup with OK button in case of empty object passed 
 
 QUnit.test('the vertical scrollbar should be hidden and the according padding-right should be set', (assert) => {
   const done = assert.async()
+  ensureClosed()
   const talltDiv = document.createElement('div')
   talltDiv.innerHTML = Array(100).join('<div>lorem ipsum</div>')
   document.body.appendChild(talltDiv)
@@ -101,11 +102,11 @@ QUnit.test('the vertical scrollbar should be hidden and the according padding-ri
       done()
     }
   })
-  const bodyStyles = window.getComputedStyle(document.body)
 
+  const bodyStyles = window.getComputedStyle(document.body)
   assert.equal(bodyStyles.paddingRight, `${scrollbarWidth + 30}px`)
   assert.equal(bodyStyles.overflow, 'hidden')
-  Swal.clickConfirm()
+  Swal.close()
 })
 
 QUnit.test('scrollbarPadding disabled', (assert) => {
@@ -124,7 +125,7 @@ QUnit.test('scrollbarPadding disabled', (assert) => {
 
   const bodyStyles = window.getComputedStyle(document.body)
   assert.equal(bodyStyles.paddingRight, '30px')
-  Swal.clickConfirm()
+  Swal.close()
 })
 
 QUnit.test('the vertical scrollbar should be restored before a toast is fired after a modal', (assert) => {
@@ -149,7 +150,22 @@ QUnit.test('the vertical scrollbar should be restored before a toast is fired af
   })
 
   const bodyStyles = window.getComputedStyle(document.body)
-  Swal.clickConfirm()
+  Swal.close()
+})
+
+QUnit.test('should not add body padding if body has overflow-y: hidden', (assert) => {
+  const talltDiv = document.createElement('div')
+  talltDiv.innerHTML = Array(100).join('<div>lorem ipsum</div>')
+  document.body.appendChild(talltDiv)
+  document.body.style.paddingRight = '0px'
+  document.body.style.overflowY = 'hidden'
+
+  SwalWithoutAnimation.fire()
+
+  const bodyStyles = window.getComputedStyle(document.body)
+  assert.equal(bodyStyles.paddingRight, '0px')
+  document.body.removeChild(talltDiv)
+  Swal.close()
 })
 
 QUnit.test('modal width', (assert) => {

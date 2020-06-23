@@ -19,13 +19,16 @@ export const openPopup = (params) => {
     params.onBeforeOpen(popup)
   }
 
+  const bodyStyles = window.getComputedStyle(document.body)
+  const initialBodyOverflow = bodyStyles.overflowY
   addClasses(container, popup, params)
 
   // scrolling is 'hidden' until animation is done, after that 'auto'
   setScrollingVisibility(container, popup)
 
   if (dom.isModal()) {
-    fixScrollContainer(container, params.scrollbarPadding)
+    fixScrollContainer(container, params.scrollbarPadding, initialBodyOverflow)
+    setAriaHidden()
   }
 
   if (!dom.isToast() && !globalState.previousActiveElement) {
@@ -56,12 +59,11 @@ const setScrollingVisibility = (container, popup) => {
   }
 }
 
-const fixScrollContainer = (container, scrollbarPadding) => {
+const fixScrollContainer = (container, scrollbarPadding, initialBodyOverflow) => {
   iOSfix()
   IEfix()
-  setAriaHidden()
 
-  if (scrollbarPadding) {
+  if (scrollbarPadding && initialBodyOverflow !== 'hidden') {
     fixScrollbar()
   }
 

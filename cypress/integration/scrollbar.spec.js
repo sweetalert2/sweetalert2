@@ -1,4 +1,4 @@
-import { Swal, SwalWithoutAnimation } from '../utils'
+import { Swal, SwalWithoutAnimation, ensureClosed } from '../utils'
 import { measureScrollbar } from '../../src/utils/dom/measureScrollbar'
 
 describe('Vertical scrollbar', () => {
@@ -10,12 +10,14 @@ describe('Vertical scrollbar', () => {
       onOpen: () => {
         expect(Swal.getContainer().scrollTop).to.equal(0)
         expect(Swal.getContainer().style.overflowY).to.equal('auto')
+        Swal.close()
         done()
       }
     })
   })
 
   it('should be hidden and the according padding-right should be set', (done) => {
+    ensureClosed()
     const talltDiv = document.createElement('div')
     talltDiv.innerHTML = Array(100).join('<div>lorem ipsum</div>')
     document.body.appendChild(talltDiv)
@@ -31,11 +33,11 @@ describe('Vertical scrollbar', () => {
         done()
       }
     })
-    const bodyStyles = window.getComputedStyle(document.body)
 
+    const bodyStyles = window.getComputedStyle(document.body)
     expect(bodyStyles.paddingRight).to.equal(`${scrollbarWidth + 30}px`)
     expect(bodyStyles.overflow).to.equal('hidden')
-    Swal.clickConfirm()
+    Swal.close()
   })
 
   it('scrollbarPadding disabled', () => {
@@ -54,7 +56,7 @@ describe('Vertical scrollbar', () => {
 
     const bodyStyles = window.getComputedStyle(document.body)
     expect(bodyStyles.paddingRight).to.equal('30px')
-    Swal.clickConfirm()
+    Swal.close()
   })
 
   it('should be restored before a toast is fired after a modal', (done) => {
@@ -78,6 +80,21 @@ describe('Vertical scrollbar', () => {
     })
 
     const bodyStyles = window.getComputedStyle(document.body)
-    Swal.clickConfirm()
+    Swal.close()
+  })
+
+  it('should not add body padding if body has overflow-y: hidden', () => {
+    const talltDiv = document.createElement('div')
+    talltDiv.innerHTML = Array(100).join('<div>lorem ipsum</div>')
+    document.body.appendChild(talltDiv)
+    document.body.style.paddingRight = '0px'
+    document.body.style.overflowY = 'hidden'
+
+    SwalWithoutAnimation.fire()
+
+    const bodyStyles = window.getComputedStyle(document.body)
+    expect(bodyStyles.paddingRight).to.equal('0px')
+    document.body.removeChild(talltDiv)
+    Swal.close()
   })
 })

@@ -235,9 +235,9 @@ Sponsors
 -|-|-|-
 [Become a sponsor](SPONSORS.md) | [FlowCrypt](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [brainbi price monitoring](https://www.brainbi.dev/) | [Tiago de Oliveira Stutz](https://github.com/tiagostutz)
 
-[<img src="https://sweetalert2.github.io/images/sponsors/sebaebc.png" width="80">](https://github.com/sebaebc) | [<img src="https://sweetalert2.github.io/images/sponsors/wp-reset.png" width="80">](https://wpreset.com/?utm_source=sweetalert2&utm_medium=logo)
--|-
-[SebaEBC](https://github.com/sebaebc) | [WP Reset](https://wpreset.com/?utm_source=sweetalert2&utm_medium=logo)
+[<img src="https://sweetalert2.github.io/images/sponsors/zillathemes.jpg" width="80">](https://zillathemes.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sebaebc.png" width="80">](https://github.com/sebaebc) | [<img src="https://sweetalert2.github.io/images/sponsors/wp-reset.png" width="80">](https://wpreset.com/?utm_source=sweetalert2&utm_medium=logo)
+-|-|-
+[Zilla Themes](https://zillathemes.com/) | [SebaEBC](https://github.com/sebaebc) | [WP Reset](https://wpreset.com/?utm_source=sweetalert2&utm_medium=logo)
 
 NSFW Sponsors
 -------------

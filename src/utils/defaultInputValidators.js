@@ -6,8 +6,8 @@ export default {
   },
   url: (string, validationMessage) => {
     try {
-      new URL(string);
-      return Promise.resolve();
+      new URL(string) // eslint-disable-line no-new
+      return Promise.resolve()
     } catch(e) {
       return Promise.resolve(validationMessage || 'Invalid URL')
     }

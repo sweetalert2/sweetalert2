@@ -8,7 +8,7 @@ export default {
     try {
       new URL(string) // eslint-disable-line no-new
       return Promise.resolve()
-    } catch(e) {
+    } catch (e) {
       return Promise.resolve(validationMessage || 'Invalid URL')
     }
   }

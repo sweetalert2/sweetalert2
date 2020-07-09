@@ -27,9 +27,13 @@ QUnit.test('input.checkValidity()', (assert) => {
 })
 
 QUnit.test('default URL validator', (assert) => {
-  const done = assert.async(3)
+  const done = assert.async(4)
 
   defaultInputValidators.url('https://google.com').then(() => {
+    done()
+  })
+
+  defaultInputValidators.url('http://g.co').then(() => {
     done()
   })
 

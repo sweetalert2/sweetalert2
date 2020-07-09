@@ -439,6 +439,12 @@ describe('Validation', () => {
     })
   })
 
+  it('default URL validator: http://g.co', (done) => {
+    defaultInputValidators.url('http://g.co').then(() => {
+      done()
+    })
+  })
+
   it('default URL validator: http://foo.localhost/', (done) => {
     defaultInputValidators.url('http://foo.localhost/').then(() => {
       done()

@@ -1,3 +1,10 @@
+## [9.15.3](https://github.com/sweetalert2/sweetalert2/compare/v9.15.2...v9.15.3) (2020-07-09)
+
+
+### Bug Fixes
+
+* url validator to support http://g.co ([#2013](https://github.com/sweetalert2/sweetalert2/issues/2013)) ([8ab6562](https://github.com/sweetalert2/sweetalert2/commit/8ab65628c0e6cd1227bce7d5898a5d77fc5e6f31))
+
 ## [9.15.2](https://github.com/sweetalert2/sweetalert2/compare/v9.15.1...v9.15.2) (2020-06-23)
 
 

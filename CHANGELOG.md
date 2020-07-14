@@ -1,3 +1,10 @@
+# [9.16.0](https://github.com/sweetalert2/sweetalert2/compare/v9.15.3...v9.16.0) (2020-07-14)
+
+
+### Features
+
+* **styles:** add $swal2-header-padding variable ([#2001](https://github.com/sweetalert2/sweetalert2/issues/2001)) ([11338e6](https://github.com/sweetalert2/sweetalert2/commit/11338e690891ac7ec7bb702abbc9884190350a63))
+
 ## [9.15.3](https://github.com/sweetalert2/sweetalert2/compare/v9.15.2...v9.15.3) (2020-07-09)
 
 

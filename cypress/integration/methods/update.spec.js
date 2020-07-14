@@ -25,7 +25,8 @@ describe('update()', () => {
       showConfirmButton: false,
       showCancelButton: true,
       cancelButtonText: 'New cancel button text',
-      imageUrl: '/assets/swal2-logo.png'
+      imageUrl: '/assets/swal2-logo.png',
+      showCloseButton: true,
     })
 
     expect(Swal.getTitle().textContent).to.equal('New title')
@@ -40,6 +41,8 @@ describe('update()', () => {
     expect(isVisible(Swal.getConfirmButton())).to.be.false
     expect(isVisible(Swal.getCancelButton())).to.be.true
     expect(Swal.getCancelButton().textContent).to.equal('New cancel button text')
+
+    expect(isVisible(Swal.getCloseButton())).to.be.true
   })
 
   it('update customClass', () => {

@@ -1,3 +1,10 @@
+# [9.17.0](https://github.com/sweetalert2/sweetalert2/compare/v9.16.0...v9.17.0) (2020-07-14)
+
+
+### Features
+
+* make close button updatable ([#2018](https://github.com/sweetalert2/sweetalert2/issues/2018)) ([911394f](https://github.com/sweetalert2/sweetalert2/commit/911394fb8d4ffe7c3771d254b83305309d6e346f))
+
 # [9.16.0](https://github.com/sweetalert2/sweetalert2/compare/v9.15.3...v9.16.0) (2020-07-14)
 
 

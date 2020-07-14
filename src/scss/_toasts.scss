@@ -10,6 +10,7 @@
 
     .swal2-header {
       flex-direction: row;
+      padding: $swal2-toast-header-padding;
     }
 
     .swal2-title {
@@ -34,6 +35,7 @@
 
     .swal2-content {
       justify-content: flex-start;
+      padding: $swal2-toast-content-padding;
       font-size: $swal2-toast-content-font-size;
     }
 

@@ -25,7 +25,8 @@ QUnit.test('update() method', (assert) => {
     showConfirmButton: false,
     showCancelButton: true,
     cancelButtonText: 'New cancel button text',
-    imageUrl: '/assets/swal2-logo.png'
+    imageUrl: '/assets/swal2-logo.png',
+    showCloseButton: true,
   })
 
   assert.equal(Swal.getTitle().textContent, 'New title')
@@ -40,6 +41,8 @@ QUnit.test('update() method', (assert) => {
   assert.notOk(isVisible(Swal.getConfirmButton()))
   assert.ok(isVisible(Swal.getCancelButton()))
   assert.equal(Swal.getCancelButton().textContent, 'New cancel button text')
+
+  assert.ok(isVisible(Swal.getCloseButton()))
 })
 
 QUnit.test('update customClass', (assert) => {

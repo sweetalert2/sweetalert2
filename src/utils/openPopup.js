@@ -77,7 +77,9 @@ const addClasses = (container, popup, params) => {
   dom.addClass(container, params.showClass.backdrop)
   dom.show(popup)
   // Animate popup right after showing it
-  dom.addClass(popup, params.showClass.popup)
+  setTimeout(() => { // IE11
+    dom.addClass(popup, params.showClass.popup)
+  })
 
   dom.addClass([document.documentElement, document.body], swalClasses.shown)
   if (params.heightAuto && params.backdrop && !params.toast) {

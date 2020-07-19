@@ -1,12 +1,6 @@
-We would like to thank everyone who contributed to this library. If you find our library useful and wish to support as well, you can do so by making a donation:
+We would like to thank everyone who contributed to this library. If you find our library useful and wish to support as well, you can show your support via [GitHub Sponsors](https://github.com/sponsors/limonte)
 
-- [GitHub Sponsors :heart:](https://github.com/sponsors/limonte)
-- [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TKTWHJGUWLR7E)
-- [PayPal.me](https://www.paypal.me/limonte)
-- Bitcoin: `16Z7RvFv7PsV3XzFvchYwPnRfw9KeLTZQJ`
-- Ether: `0x192096161eB2273f12b1cB4E31aBB09Bfc03a7F3`
-- Bitcoin Cash: `qz28x66hrljtdz3052p8ya3cmkwwva5avy0msz2ej3`
-- Stellar: `GDUM4VJZYDNRHBTKUQBOPC374AP6MMMVOJDMSHIPEJPEMBCY4ZHH6NDY`
+Alternative ways for donations (PayPal, cryptocurrencies, etc.) are listed here: https://sweetalert2.github.io/#donations
 
 Your contribution will be greatly appreciated!
 

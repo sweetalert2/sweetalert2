@@ -1,3 +1,10 @@
+## [9.17.1](https://github.com/sweetalert2/sweetalert2/compare/v9.17.0...v9.17.1) (2020-07-26)
+
+
+### Bug Fixes
+
+* typo content padding ([#2023](https://github.com/sweetalert2/sweetalert2/issues/2023)) ([e865aef](https://github.com/sweetalert2/sweetalert2/commit/e865aef94eff738c1be9d10b24e934f0f5b4feed))
+
 # [9.17.0](https://github.com/sweetalert2/sweetalert2/compare/v9.16.0...v9.17.0) (2020-07-14)
 
 

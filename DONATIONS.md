@@ -80,6 +80,9 @@ Your contribution will be greatly appreciated!
 - **Jeff Keith** (10 EUR)
     > SweetAlert2 saved me tons of time.
 
+- **TSD Technology, LLC** (10 USD)
+    > Thank you for this awesome package.
+
 - **Princenetwork** (300 THB)
     > Your work made me use less time for do some stuff about alert.
 

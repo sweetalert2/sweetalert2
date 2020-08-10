@@ -1,13 +1,16 @@
 import { $, Swal, SwalWithoutAnimation, isVisible } from '../../utils'
 
 describe('getTimerLeft()', () => {
-  it('should return time left', () => {
+  it('should return time left', (done) => {
     Swal.fire({
       timer: 1000
     })
-    const timerLeft = Swal.getTimerLeft()
-    expect(timerLeft > 0).to.be.true
-    expect(timerLeft <= 1000).to.be.true
+    setTimeout(() => {
+      const timerLeft = Swal.getTimerLeft()
+      expect(timerLeft > 0).to.be.true
+      expect(timerLeft < 1000).to.be.true
+      done()
+    }, 1)
   })
 
   it('should return undefined if popup does not have timer', () => {

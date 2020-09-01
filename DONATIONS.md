@@ -80,6 +80,8 @@ Your contribution will be greatly appreciated!
 - **Jeff Keith** (10 EUR)
     > SweetAlert2 saved me tons of time.
 
+- **Rick Hays** (10 USD)
+
 - **TSD Technology, LLC** (10 USD)
     > Thank you for this awesome package.
 

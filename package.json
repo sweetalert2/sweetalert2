@@ -12,7 +12,6 @@
     "@babel/core": "^7.2.2",
     "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
-    "@cypress/code-coverage": "^3.0.0",
     "@rollup/plugin-json": "^4.0.2",
     "@sweetalert2/eslint-config": "^1.0.0",
     "@sweetalert2/execute": "^1.0.0",
@@ -21,7 +20,6 @@
     "babel-plugin-array-includes": "^2.0.3",
     "browser-sync": "^2.26.3",
     "custom-event-polyfill": "^1.0.6",
-    "cypress": "^5.0.0",
     "eslint": "^7.0.0",
     "eslint-plugin-cypress": "^2.8.1",
     "gulp": "^4.0.0",
@@ -54,7 +52,7 @@
     "sass": "^1.22.1",
     "sinon": "^9.0.0",
     "stylelint": "^13.0.0",
-    "typescript": "^3.5.0",
+    "typescript": "^4.0.0",
     "webpack": "^4.29.0"
   },
   "files": [

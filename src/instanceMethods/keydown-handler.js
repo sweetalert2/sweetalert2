@@ -71,13 +71,9 @@ const keydownHandler = (instance, e, dismissWith) => {
   } else if (e.key === 'Tab') {
     handleTab(e, innerParams)
 
-  // ARROWS - next button
-  } else if (arrowKeysNextButton.includes(e.key)) {
-    handleArrows('next')
-
-  // ARROWS - previous button
-  } else if (arrowKeysPreviousButton.includes(e.key)) {
-    handleArrows('previous')
+  // ARROWS - switch focus between buttons
+  } else if ([...arrowKeysNextButton, ...arrowKeysPreviousButton].includes(e.key)) {
+    handleArrows(e.key)
 
   // ESC
   } else if (escKeys.includes(e.key)) {
@@ -124,14 +120,15 @@ const handleTab = (e, innerParams) => {
   e.preventDefault()
 }
 
-const handleArrows = (direction) => {
+const handleArrows = (key) => {
   const confirmButton = dom.getConfirmButton()
   const denyButton = dom.getDenyButton()
   const cancelButton = dom.getCancelButton()
-  if ([confirmButton, denyButton, cancelButton].indexOf(document.activeElement) === -1) {
+  if (![confirmButton, denyButton, cancelButton].includes(document.activeElement)) {
     return
   }
-  const buttonToFocus = document.activeElement[`${direction}ElementSibling`]
+  const sibling = arrowKeysNextButton.includes(key) ? 'nextElementSibling' : 'previousElementSibling'
+  const buttonToFocus = document.activeElement[sibling]
   if (buttonToFocus) {
     buttonToFocus.focus()
   }

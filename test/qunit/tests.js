@@ -678,7 +678,7 @@ QUnit.test('deny button', (assert) => {
     showDenyButton: true
   }).then((result) => {
     assert.deepEqual(result, {
-      dismiss: Swal.DismissReason.deny,
+      value: false,
       isConfirmed: false,
       isDenied: true,
       isDismissed: false,

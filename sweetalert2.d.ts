@@ -338,7 +338,7 @@ declare module 'sweetalert2' {
      * An enum of possible reasons that can explain an alert dismissal.
      */
     enum DismissReason {
-      cancel, deny, backdrop, close, esc, timer
+      cancel, backdrop, close, esc, timer
     }
 
     /**

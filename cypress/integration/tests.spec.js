@@ -439,7 +439,7 @@ describe('Miscellaneous tests', function () {
       showDenyButton: true
     }).then((result) => {
       expect(result).to.eql({
-        dismiss: Swal.DismissReason.deny,
+        value: false,
         isConfirmed: false,
         isDenied: true,
         isDismissed: false,

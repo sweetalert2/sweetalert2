@@ -2,7 +2,6 @@ import { undoScrollbar } from '../utils/scrollbarFix.js'
 import { undoIOSfix } from '../utils/iosFix.js'
 import { undoIEfix } from '../utils/ieFix.js'
 import { unsetAriaHidden } from '../utils/aria.js'
-import { DismissReason } from '../utils/DismissReason.js'
 import * as dom from '../utils/dom/index.js'
 import { swalClasses } from '../utils/classes.js'
 import globalState, { restoreActiveElement } from '../globalState.js'
@@ -77,9 +76,9 @@ export function close (resolveValue) {
 
 const finalizeResolveValue = (resolveValue) => {
   if (typeof resolveValue !== 'undefined') {
-    resolveValue.isConfirmed = typeof resolveValue.dismiss === 'undefined'
-    resolveValue.isDenied = resolveValue.dismiss === DismissReason.deny
-    resolveValue.isDismissed = typeof resolveValue.dismiss !== 'undefined' && !resolveValue.isDenied
+    resolveValue.isDismissed = typeof resolveValue.dismiss !== 'undefined'
+    resolveValue.isDenied = resolveValue.value === false
+    resolveValue.isConfirmed = !resolveValue.isDismissed && !resolveValue.isDenied
   } else {
     resolveValue = {
       isConfirmed: false,

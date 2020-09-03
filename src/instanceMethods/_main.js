@@ -9,7 +9,7 @@ import { openPopup } from '../utils/openPopup.js'
 import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
 import { handleInputOptionsAndValue } from '../utils/dom/inputUtils.js'
-import { handleConfirmButtonClick, handleCancelButtonClick } from './buttons-handlers.js'
+import { handleConfirmButtonClick, handleDenyButtonClick, handleCancelButtonClick } from './buttons-handlers.js'
 import { addKeydownHandler, setFocus } from './keydown-handler.js'
 import { handlePopupClick } from './popup-click-handler.js'
 import { DismissReason } from '../utils/DismissReason.js'
@@ -71,9 +71,9 @@ const swalPromise = (instance, domCache, innerParams) => {
     privateMethods.swalPromiseResolve.set(instance, resolve)
 
     domCache.confirmButton.onclick = () => handleConfirmButtonClick(instance, innerParams)
+    domCache.denyButton.onclick = () => handleDenyButtonClick(instance)
     domCache.cancelButton.onclick = () => handleCancelButtonClick(instance, dismissWith)
 
-    domCache.denyButton.onclick = () => dismissWith(DismissReason.deny)
     domCache.closeButton.onclick = () => dismissWith(DismissReason.close)
 
     handlePopupClick(instance, domCache, dismissWith)

@@ -14,6 +14,11 @@ export const handleConfirmButtonClick = (instance, innerParams) => {
   }
 }
 
+export const handleDenyButtonClick = (instance) => {
+  // here we could add preDeny in future, if needed
+  succeedWith(instance, false)
+}
+
 export const handleCancelButtonClick = (instance, dismissWith) => {
   instance.disableButtons()
   dismissWith(DismissReason.cancel)

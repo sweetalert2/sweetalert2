@@ -13,6 +13,7 @@ describe('getFocusableElements()', () => {
         <div tabindex="1">tabindex 1</div>
       `,
       showCancelButton: true,
+      showDenyButton: true,
       showCloseButton: true
     })
     const focusableElements = Swal.getFocusableElements()
@@ -25,6 +26,7 @@ describe('getFocusableElements()', () => {
     expect(focusableElements[5].textContent).to.equal('tabindex 0')
     expect(focusableElements[6]).to.equal(Swal.getInput())
     expect(focusableElements[7]).to.equal(Swal.getConfirmButton())
-    expect(focusableElements[8]).to.equal(Swal.getCancelButton())
+    expect(focusableElements[8]).to.equal(Swal.getDenyButton())
+    expect(focusableElements[9]).to.equal(Swal.getCancelButton())
   })
 })

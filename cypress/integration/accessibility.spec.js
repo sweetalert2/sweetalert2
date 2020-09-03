@@ -101,12 +101,15 @@ describe('should trap focus in modals', () => {
   it('focus trap forward', (done) => {
     Swal.fire({
       input: 'text',
+      showDenyButton: true,
       showCancelButton: true,
       showCloseButton: true,
       onOpen: () => {
         expect(document.activeElement).to.equal(Swal.getInput())
         triggerKeydownEvent(document.activeElement, 'Tab')
         expect(document.activeElement).to.equal(Swal.getConfirmButton())
+        triggerKeydownEvent(document.activeElement, 'Tab')
+        expect(document.activeElement).to.equal(Swal.getDenyButton())
         triggerKeydownEvent(document.activeElement, 'Tab')
         expect(document.activeElement).to.equal(Swal.getCancelButton())
         triggerKeydownEvent(document.activeElement, 'Tab')
@@ -130,6 +133,8 @@ describe('should trap focus in modals', () => {
         triggerKeydownEvent(document.activeElement, 'Tab', { shiftKey: true })
         expect(document.activeElement).to.equal(Swal.getCancelButton())
         triggerKeydownEvent(document.activeElement, 'Tab', { shiftKey: true })
+        expect(document.activeElement).to.equal(Swal.getDenyButton())
+        triggerKeydownEvent(document.activeElement, 'Tab', { shiftKey: true })
         expect(document.activeElement).to.equal(Swal.getConfirmButton())
         triggerKeydownEvent(document.activeElement, 'Tab', { shiftKey: true })
         expect(document.activeElement).to.equal(Swal.getInput())
@@ -140,10 +145,15 @@ describe('should trap focus in modals', () => {
 
   it('arrow keys', (done) => {
     Swal.fire({
+      showDenyButton: true,
       showCancelButton: true,
       onOpen: () => {
         triggerKeydownEvent(document.activeElement, 'ArrowRight')
+        expect(document.activeElement).to.equal(Swal.getDenyButton())
+        triggerKeydownEvent(document.activeElement, 'ArrowRight')
         expect(document.activeElement).to.equal(Swal.getCancelButton())
+        triggerKeydownEvent(document.activeElement, 'ArrowLeft')
+        expect(document.activeElement).to.equal(Swal.getDenyButton())
         triggerKeydownEvent(document.activeElement, 'ArrowLeft')
         expect(document.activeElement).to.equal(Swal.getConfirmButton())
         done()
@@ -199,5 +209,14 @@ describe('Focus', () => {
       focusCancel: true
     })
     expect(document.activeElement).to.equal(Swal.getCancelButton())
+  })
+
+  it('focusDeny', () => {
+    Swal.fire({
+      text: 'Modal with Deny button focused',
+      showDenyButton: true,
+      focusDeny: true
+    })
+    expect(document.activeElement).to.equal(Swal.getDenyButton())
   })
 })

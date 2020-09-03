@@ -2,6 +2,7 @@ import { undoScrollbar } from '../utils/scrollbarFix.js'
 import { undoIOSfix } from '../utils/iosFix.js'
 import { undoIEfix } from '../utils/ieFix.js'
 import { unsetAriaHidden } from '../utils/aria.js'
+import { DismissReason } from '../utils/DismissReason.js'
 import * as dom from '../utils/dom/index.js'
 import { swalClasses } from '../utils/classes.js'
 import globalState, { restoreActiveElement } from '../globalState.js'
@@ -71,12 +72,14 @@ export function close (resolveValue) {
   handlePopupAnimation(this, popup, innerParams)
 
   if (typeof resolveValue !== 'undefined') {
-    resolveValue.isDismissed = typeof resolveValue.dismiss !== 'undefined'
     resolveValue.isConfirmed = typeof resolveValue.dismiss === 'undefined'
+    resolveValue.isDenied = resolveValue.dismiss === DismissReason.deny
+    resolveValue.isDismissed = typeof resolveValue.dismiss !== 'undefined' && !resolveValue.isDenied
   } else {
     resolveValue = {
-      isDismissed: true,
       isConfirmed: false,
+      isDenied: false,
+      isDismissed: true,
     }
   }
 

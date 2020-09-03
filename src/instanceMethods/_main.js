@@ -73,6 +73,7 @@ const swalPromise = (instance, domCache, innerParams) => {
     domCache.confirmButton.onclick = () => handleConfirmButtonClick(instance, innerParams)
     domCache.cancelButton.onclick = () => handleCancelButtonClick(instance, dismissWith)
 
+    domCache.denyButton.onclick = () => dismissWith(DismissReason.deny)
     domCache.closeButton.onclick = () => dismissWith(DismissReason.close)
 
     handlePopupClick(instance, domCache, dismissWith)
@@ -107,6 +108,7 @@ const populateDomCache = (instance) => {
     content: dom.getContent(),
     actions: dom.getActions(),
     confirmButton: dom.getConfirmButton(),
+    denyButton: dom.getDenyButton(),
     cancelButton: dom.getCancelButton(),
     loader: dom.getLoader(),
     closeButton: dom.getCloseButton(),
@@ -148,6 +150,10 @@ const initFocus = (domCache, innerParams) => {
 
   if (innerParams.focusCancel && dom.isVisible(domCache.cancelButton)) {
     return domCache.cancelButton.focus()
+  }
+
+  if (innerParams.focusDeny && dom.isVisible(domCache.denyButton)) {
+    return domCache.denyButton.focus()
   }
 
   if (innerParams.focusConfirm && dom.isVisible(domCache.confirmButton)) {

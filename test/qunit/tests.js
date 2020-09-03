@@ -78,6 +78,7 @@ QUnit.test('should not throw console error when <svg> tags are present (#1289)',
 QUnit.test('should show the popup with OK button in case of empty object passed as an argument', (assert) => {
   Swal.fire({})
   assert.ok(isVisible(Swal.getConfirmButton()))
+  assert.ok(isHidden(Swal.getDenyButton()))
   assert.ok(isHidden(Swal.getCancelButton()))
   assert.equal(Swal.getTitle().textContent, '')
   assert.equal(Swal.getContent().textContent, '')
@@ -206,6 +207,8 @@ QUnit.test('getters', (assert) => {
     imageUrl: '/assets/swal2-logo.png',
     confirmButtonText: 'Confirm button',
     confirmButtonAriaLabel: 'Confirm button aria-label',
+    denyButtonText: 'Deny button',
+    denyButtonAriaLabel: 'Deny button aria-label',
     cancelButtonText: 'Cancel button',
     cancelButtonAriaLabel: 'Cancel button aria-label',
     footer: '<b>Footer</b>'
@@ -213,8 +216,10 @@ QUnit.test('getters', (assert) => {
   assert.ok(Swal.getImage().src.indexOf('/assets/swal2-logo.png'))
   assert.equal(Swal.getActions().textContent, 'Confirm buttonCancel button')
   assert.equal(Swal.getConfirmButton().innerText, 'Confirm button')
+  assert.equal(Swal.getDenyButton().innerText, 'Deny button')
   assert.equal(Swal.getCancelButton().innerText, 'Cancel button')
   assert.equal(Swal.getConfirmButton().getAttribute('aria-label'), 'Confirm button aria-label')
+  assert.equal(Swal.getDenyButton().getAttribute('aria-label'), 'Deny button aria-label')
   assert.equal(Swal.getCancelButton().getAttribute('aria-label'), 'Cancel button aria-label')
   assert.equal(Swal.getFooter().innerHTML, '<b>Footer</b>')
 
@@ -351,10 +356,12 @@ QUnit.test('disable/enable buttons', (assert) => {
 
   Swal.disableButtons()
   assert.ok(Swal.getConfirmButton().disabled)
+  assert.ok(Swal.getDenyButton().disabled)
   assert.ok(Swal.getCancelButton().disabled)
 
   Swal.enableButtons()
   assert.notOk(Swal.getConfirmButton().disabled)
+  assert.notOk(Swal.getDenyButton().disabled)
   assert.notOk(Swal.getCancelButton().disabled)
 })
 
@@ -393,13 +400,16 @@ QUnit.test('disable/enable input', (assert) => {
 QUnit.test('reversed buttons', (assert) => {
   Swal.fire({
     text: 'Modal with reversed buttons',
+    showDenyButton: true,
     showCancelButton: true,
     reverseButtons: true
   })
-  assert.equal(Swal.getConfirmButton().previousSibling, Swal.getCancelButton())
+  assert.equal(Swal.getConfirmButton().previousSibling, Swal.getDenyButton())
+  assert.equal(Swal.getDenyButton().previousSibling, Swal.getCancelButton())
 
   Swal.fire('Modal with buttons')
-  assert.equal(Swal.getCancelButton().previousSibling, Swal.getConfirmButton())
+  assert.equal(Swal.getCancelButton().previousSibling, Swal.getDenyButton())
+  assert.equal(Swal.getDenyButton().previousSibling, Swal.getConfirmButton())
 })
 
 QUnit.test('modal vertical offset', (assert) => {
@@ -577,6 +587,7 @@ QUnit.test('esc key', (assert) => {
     assert.deepEqual(result, {
       dismiss: Swal.DismissReason.esc,
       isConfirmed: false,
+      isDenied: false,
       isDismissed: true,
     })
     done()
@@ -619,6 +630,7 @@ QUnit.test('close button', (assert) => {
     assert.deepEqual(result, {
       dismiss: Swal.DismissReason.close,
       isConfirmed: false,
+      isDenied: false,
       isDismissed: true,
     })
     done()
@@ -645,17 +657,36 @@ QUnit.test('cancel button', (assert) => {
   const done = assert.async()
 
   Swal.fire({
-    title: 'Cancel me'
+    showCancelButton: true
   }).then((result) => {
     assert.deepEqual(result, {
       dismiss: Swal.DismissReason.cancel,
       isConfirmed: false,
+      isDenied: false,
       isDismissed: true,
     })
     done()
   })
 
   Swal.clickCancel()
+})
+
+QUnit.test('deny button', (assert) => {
+  const done = assert.async()
+
+  Swal.fire({
+    showDenyButton: true
+  }).then((result) => {
+    assert.deepEqual(result, {
+      dismiss: Swal.DismissReason.deny,
+      isConfirmed: false,
+      isDenied: true,
+      isDismissed: false,
+    })
+    done()
+  })
+
+  Swal.clickDeny()
 })
 
 QUnit.test('timer', (assert) => {
@@ -668,6 +699,7 @@ QUnit.test('timer', (assert) => {
     assert.deepEqual(result, {
       dismiss: Swal.DismissReason.timer,
       isConfirmed: false,
+      isDenied: false,
       isDismissed: true,
     })
     done()
@@ -737,12 +769,14 @@ QUnit.test('visual apperarance', (assert) => {
     padding: '2em',
     background: 'red',
     confirmButtonColor: 'green',
+    denyButtonColor: 'red',
     cancelButtonColor: 'blue'
   })
 
   assert.equal(Swal.getPopup().style.padding, '2em')
   assert.equal(window.getComputedStyle(Swal.getPopup()).backgroundColor, 'rgb(255, 0, 0)')
   assert.equal(Swal.getConfirmButton().style.backgroundColor, 'green')
+  assert.equal(Swal.getDenyButton().style.backgroundColor, 'red')
   assert.equal(Swal.getCancelButton().style.backgroundColor, 'blue')
 })
 

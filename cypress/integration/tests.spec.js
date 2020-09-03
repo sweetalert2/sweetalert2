@@ -56,6 +56,7 @@ describe('Miscellaneous tests', function () {
   it('should show the popup with OK button in case of empty object passed as an argument', () => {
     Swal.fire({})
     expect(isVisible(Swal.getConfirmButton())).to.be.true
+    expect(isHidden(Swal.getDenyButton())).to.be.true
     expect(isHidden(Swal.getCancelButton())).to.be.true
     expect(Swal.getTitle().textContent).to.equal('')
     expect(Swal.getContent().textContent).to.equal('')
@@ -97,9 +98,12 @@ describe('Miscellaneous tests', function () {
 
     Swal.fire({
       showCancelButton: true,
+      showDenyButton: true,
       imageUrl: '/assets/swal2-logo.png',
       confirmButtonText: 'Confirm button',
       confirmButtonAriaLabel: 'Confirm button aria-label',
+      denyButtonText: 'Deny button',
+      denyButtonAriaLabel: 'Deny button aria-label',
       cancelButtonText: 'Cancel button',
       cancelButtonAriaLabel: 'Cancel button aria-label',
       footer: '<b>Footer</b>'
@@ -107,8 +111,10 @@ describe('Miscellaneous tests', function () {
     expect(Swal.getImage().src.includes('/assets/swal2-logo.png')).to.be.true
     expect(Swal.getActions().textContent).to.equal('Confirm buttonCancel button')
     expect(Swal.getConfirmButton().innerText).to.equal('Confirm button')
+    expect(Swal.getDenyButton().innerText).to.equal('Deny button')
     expect(Swal.getCancelButton().innerText).to.equal('Cancel button')
     expect(Swal.getConfirmButton().getAttribute('aria-label')).to.equal('Confirm button aria-label')
+    expect(Swal.getDenyButton().getAttribute('aria-label')).to.equal('Deny button aria-label')
     expect(Swal.getCancelButton().getAttribute('aria-label')).to.equal('Cancel button aria-label')
     expect(Swal.getFooter().innerHTML).to.equal('<b>Footer</b>')
 
@@ -164,10 +170,12 @@ describe('Miscellaneous tests', function () {
 
     Swal.disableButtons()
     expect(Swal.getConfirmButton().disabled).to.be.true
+    expect(Swal.getDenyButton().disabled).to.be.true
     expect(Swal.getCancelButton().disabled).to.be.true
 
     Swal.enableButtons()
     expect(Swal.getConfirmButton().disabled).to.be.false
+    expect(Swal.getDenyButton().disabled).to.be.false
     expect(Swal.getCancelButton().disabled).to.be.false
   })
 
@@ -175,12 +183,15 @@ describe('Miscellaneous tests', function () {
     Swal.fire({
       text: 'Modal with reversed buttons',
       showCancelButton: true,
+      showDenyButton: true,
       reverseButtons: true
     })
-    expect(Swal.getConfirmButton().previousSibling).to.equal(Swal.getCancelButton())
+    expect(Swal.getConfirmButton().previousSibling).to.equal(Swal.getDenyButton())
+    expect(Swal.getDenyButton().previousSibling).to.equal(Swal.getCancelButton())
 
     Swal.fire('Modal with buttons')
-    expect(Swal.getCancelButton().previousSibling).to.equal(Swal.getConfirmButton())
+    expect(Swal.getDenyButton().previousSibling).to.equal(Swal.getConfirmButton())
+    expect(Swal.getCancelButton().previousSibling).to.equal(Swal.getDenyButton())
   })
 
   it('modal vertical offset', (done) => {
@@ -345,6 +356,7 @@ describe('Miscellaneous tests', function () {
       expect(result).to.eql({
         dismiss: Swal.DismissReason.esc,
         isConfirmed: false,
+        isDenied: false,
         isDismissed: true,
       })
       done()
@@ -383,6 +395,7 @@ describe('Miscellaneous tests', function () {
       expect(result).to.eql({
         dismiss: Swal.DismissReason.close,
         isConfirmed: false,
+        isDenied: false,
         isDismissed: true,
       })
       done()
@@ -407,17 +420,34 @@ describe('Miscellaneous tests', function () {
 
   it('cancel button', (done) => {
     Swal.fire({
-      title: 'Cancel me'
+      showCancelButton: true
     }).then((result) => {
       expect(result).to.eql({
         dismiss: Swal.DismissReason.cancel,
         isConfirmed: false,
+        isDenied: false,
         isDismissed: true,
       })
       done()
     })
 
     Swal.clickCancel()
+  })
+
+  it('deny button', (done) => {
+    Swal.fire({
+      showDenyButton: true
+    }).then((result) => {
+      expect(result).to.eql({
+        dismiss: Swal.DismissReason.deny,
+        isConfirmed: false,
+        isDenied: true,
+        isDismissed: false,
+      })
+      done()
+    })
+
+    Swal.clickDeny()
   })
 
   it('timer', (done) => {
@@ -428,6 +458,7 @@ describe('Miscellaneous tests', function () {
       expect(result).to.eql({
         dismiss: Swal.DismissReason.timer,
         isConfirmed: false,
+        isDenied: false,
         isDismissed: true,
       })
       done()
@@ -461,12 +492,14 @@ describe('Miscellaneous tests', function () {
       padding: '2em',
       background: 'red',
       confirmButtonColor: 'green',
+      denyButtonColor: 'red',
       cancelButtonColor: 'blue'
     })
 
     expect(Swal.getPopup().style.padding).to.equal('2em')
     expect(window.getComputedStyle(Swal.getPopup()).backgroundColor, 'rgb(255, 0).to.equal(0)')
     expect(Swal.getConfirmButton().style.backgroundColor).to.equal('green')
+    expect(Swal.getDenyButton().style.backgroundColor).to.equal('red')
     expect(Swal.getCancelButton().style.backgroundColor).to.equal('blue')
   })
 
@@ -585,6 +618,7 @@ describe('Outside click', () => {
       expect(result).to.eql({
         dismiss: Swal.DismissReason.backdrop,
         isConfirmed: false,
+        isDenied: false,
         isDismissed: true,
       })
       done()
@@ -646,6 +680,7 @@ describe('Outside click', () => {
       expect(result).to.eql({
         dismiss: Swal.DismissReason.backdrop,
         isConfirmed: false,
+        isDenied: false,
         isDismissed: true,
       })
       done()

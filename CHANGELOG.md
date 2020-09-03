@@ -1,3 +1,10 @@
+## [9.17.2](https://github.com/sweetalert2/sweetalert2/compare/v9.17.1...v9.17.2) (2020-09-03)
+
+
+### Bug Fixes
+
+* **types:** add missing params to SweetAlertUpdatableParameters ([#2042](https://github.com/sweetalert2/sweetalert2/issues/2042)) ([7142fad](https://github.com/sweetalert2/sweetalert2/commit/7142fad6a032481415989436390a5ff2ab65c323))
+
 ## [9.17.1](https://github.com/sweetalert2/sweetalert2/compare/v9.17.0...v9.17.1) (2020-07-26)
 
 

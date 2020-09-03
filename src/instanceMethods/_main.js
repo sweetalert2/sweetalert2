@@ -148,19 +148,28 @@ const initFocus = (domCache, innerParams) => {
     return blurActiveElement()
   }
 
-  if (innerParams.focusCancel && dom.isVisible(domCache.cancelButton)) {
-    return domCache.cancelButton.focus()
+  if (!focusButton(domCache, innerParams)) {
+    setFocus(innerParams, -1, 1)
+  }
+}
+
+const focusButton = (domCache, innerParams) => {
+  if (innerParams.focusDeny && dom.isVisible(domCache.denyButton)) {
+    domCache.denyButton.focus()
+    return true
   }
 
-  if (innerParams.focusDeny && dom.isVisible(domCache.denyButton)) {
-    return domCache.denyButton.focus()
+  if (innerParams.focusCancel && dom.isVisible(domCache.cancelButton)) {
+    domCache.cancelButton.focus()
+    return true
   }
 
   if (innerParams.focusConfirm && dom.isVisible(domCache.confirmButton)) {
-    return domCache.confirmButton.focus()
+    domCache.confirmButton.focus()
+    return true
   }
 
-  setFocus(innerParams, -1, 1)
+  return false
 }
 
 const blurActiveElement = () => {

@@ -109,7 +109,7 @@ describe('Miscellaneous tests', function () {
       footer: '<b>Footer</b>'
     })
     expect(Swal.getImage().src.includes('/assets/swal2-logo.png')).to.be.true
-    expect(Swal.getActions().textContent).to.equal('Confirm buttonCancel button')
+    expect(Swal.getActions().textContent).to.equal('Confirm buttonDeny buttonCancel button')
     expect(Swal.getConfirmButton().innerText).to.equal('Confirm button')
     expect(Swal.getDenyButton().innerText).to.equal('Deny button')
     expect(Swal.getCancelButton().innerText).to.equal('Cancel button')

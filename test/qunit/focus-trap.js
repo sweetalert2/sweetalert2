@@ -28,8 +28,8 @@ QUnit.test('focus trap backward', (assert) => {
   const done = assert.async()
   Swal.fire({
     input: 'text',
-    showCancelButton: true,
     showDenyButton: true,
+    showCancelButton: true,
     showCloseButton: true,
     onOpen: () => {
       assert.equal(document.activeElement, Swal.getInput())
@@ -51,6 +51,7 @@ QUnit.test('focus trap backward', (assert) => {
 QUnit.test('arrow keys', (assert) => {
   const done = assert.async()
   Swal.fire({
+    showDenyButton: true,
     showCancelButton: true,
     onOpen: () => {
       triggerKeydownEvent(document.activeElement, isIE ? 'Right' : 'ArrowRight')

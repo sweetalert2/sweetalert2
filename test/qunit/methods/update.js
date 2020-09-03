@@ -23,7 +23,7 @@ QUnit.test('update() method', (assert) => {
     html: 'New content',
     icon: 'success',
     showConfirmButton: false,
-    showDenyButton: false,
+    showDenyButton: true,
     showCancelButton: true,
     denyButtonText: 'New deny button text',
     cancelButtonText: 'New cancel button text',
@@ -121,7 +121,7 @@ QUnit.test('update customClass', (assert) => {
   assert.ok(Swal.getInput().classList.contains('input-class-NEW'))
   assert.ok(Swal.getActions().classList.contains('actions-class-NEW'))
   assert.ok(Swal.getConfirmButton().classList.contains('confirm-button-class-NEW'))
-  assert.ok(Swal.getDenyButton().classList.contains('Deny-button-class-NEW'))
+  assert.ok(Swal.getDenyButton().classList.contains('deny-button-class-NEW'))
   assert.ok(Swal.getCancelButton().classList.contains('cancel-button-class-NEW'))
   assert.ok(Swal.getFooter().classList.contains('footer-class-NEW'))
 })

@@ -214,7 +214,7 @@ QUnit.test('getters', (assert) => {
     footer: '<b>Footer</b>'
   })
   assert.ok(Swal.getImage().src.indexOf('/assets/swal2-logo.png'))
-  assert.equal(Swal.getActions().textContent, 'Confirm buttonCancel button')
+  assert.equal(Swal.getActions().textContent, 'Confirm buttonDeny buttonCancel button')
   assert.equal(Swal.getConfirmButton().innerText, 'Confirm button')
   assert.equal(Swal.getDenyButton().innerText, 'Deny button')
   assert.equal(Swal.getCancelButton().innerText, 'Cancel button')

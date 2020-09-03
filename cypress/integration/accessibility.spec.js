@@ -124,6 +124,7 @@ describe('should trap focus in modals', () => {
   it('focus trap backward', (done) => {
     Swal.fire({
       input: 'text',
+      showDenyButton: true,
       showCancelButton: true,
       showCloseButton: true,
       onOpen: () => {

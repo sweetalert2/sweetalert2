@@ -33,6 +33,7 @@ export const renderActions = (instance, params) => {
 
   if (params.reverseButtons) {
     actions.insertBefore(cancelButton, loader)
+    actions.insertBefore(denyButton, loader)
     actions.insertBefore(confirmButton, loader)
   }
 }

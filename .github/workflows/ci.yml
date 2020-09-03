@@ -36,17 +36,17 @@ jobs:
         tsc --lib dom,es6 --noEmit test/ts/dist-sweetalert2.ts sweetalert2.d.ts
         tsc --lib dom,es6 --noEmit test/ts/src-sweetalert2.ts sweetalert2.d.ts
 
-    - name: Run automated release process with semantic-release
-      if: github.event_name == 'push'
-      uses: cycjimmy/semantic-release-action@v2
-      with:
-        extra_plugins: |
-          @semantic-release/changelog
-          @semantic-release/git
-          @semantic-release/exec
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    # - name: Run automated release process with semantic-release
+    #   if: github.event_name == 'push'
+    #   uses: cycjimmy/semantic-release-action@v2
+    #   with:
+    #     extra_plugins: |
+    #       @semantic-release/changelog
+    #       @semantic-release/git
+    #       @semantic-release/exec
+    #   env:
+    #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Report bundlezise to bundlewatch.io
       env:

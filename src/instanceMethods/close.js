@@ -55,6 +55,8 @@ export function close (resolveValue) {
     return
   }
 
+  resolveValue = prepareResolveValue(resolveValue)
+
   const innerParams = privateProps.innerParams.get(this)
   if (!innerParams || dom.hasClass(popup, innerParams.hideClass.popup)) {
     return
@@ -71,22 +73,24 @@ export function close (resolveValue) {
   handlePopupAnimation(this, popup, innerParams)
 
   // Resolve Swal promise
-  swalPromiseResolve(finalizeResolveValue(resolveValue))
+  swalPromiseResolve(resolveValue)
 }
 
-const finalizeResolveValue = (resolveValue) => {
-  if (typeof resolveValue !== 'undefined') {
-    resolveValue.isDismissed = typeof resolveValue.dismiss !== 'undefined'
-    resolveValue.isDenied = resolveValue.value === false
-    resolveValue.isConfirmed = !resolveValue.isDismissed && !resolveValue.isDenied
-  } else {
-    resolveValue = {
+const prepareResolveValue = (resolveValue) => {
+  // When user calls Swal.close()
+  if (typeof resolveValue === 'undefined') {
+    return {
       isConfirmed: false,
       isDenied: false,
       isDismissed: true,
     }
   }
-  return resolveValue
+
+  return Object.assign({
+    isConfirmed: false,
+    isDenied: false,
+    isDismissed: false,
+  }, resolveValue)
 }
 
 const handlePopupAnimation = (instance, popup, innerParams) => {

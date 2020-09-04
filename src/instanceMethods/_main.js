@@ -65,7 +65,7 @@ const swalPromise = (instance, domCache, innerParams) => {
   return new Promise((resolve) => {
     // functions to handle all closings/dismissals
     const dismissWith = (dismiss) => {
-      instance.closePopup({ dismiss })
+      instance.closePopup({ isDismissed: true, dismiss })
     }
 
     privateMethods.swalPromiseResolve.set(instance, resolve)

@@ -1,4 +1,4 @@
-import { Swal, ensureClosed, isHidden, isVisible } from '../helpers.js'
+import { $, Swal, ensureClosed, isHidden, isVisible } from '../helpers.js'
 
 QUnit.test('should open an empty popup with loader', (assert) => {
   ensureClosed()
@@ -12,9 +12,12 @@ QUnit.test('showConfirmButton: false + showLoading()', (assert) => {
   Swal.fire({
     showConfirmButton: false,
     onOpen: () => {
+      assert.ok(isHidden(Swal.getActions()))
       Swal.showLoading()
+      assert.ok(isVisible(Swal.getActions()))
       assert.ok(Swal.getActions().classList.contains('swal2-loading'))
-      assert.ok(isVisible(Swal.getConfirmButton()))
+      assert.ok(isVisible($('.swal2-loader')))
+      assert.ok(isHidden(Swal.getConfirmButton()))
       assert.ok(isHidden(Swal.getCancelButton()))
       done()
     },

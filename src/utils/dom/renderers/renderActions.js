@@ -18,12 +18,13 @@ export const renderActions = (instance, params) => {
   // Custom class
   dom.applyCustomClass(actions, params, 'actions')
 
-  // Render Confirm button
+  // Render buttons
   renderButton(confirmButton, 'confirm', params)
-  // Render Deny button
   renderButton(denyButton, 'deny', params)
-  // render Cancel Button
   renderButton(cancelButton, 'cancel', params)
+
+  // Loader
+  loader.innerHTML = params.loaderHtml
 
   if (params.buttonsStyling) {
     handleButtonsStyling(confirmButton, denyButton, cancelButton, params)

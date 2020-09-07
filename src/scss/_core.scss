@@ -237,6 +237,8 @@
 
 .swal2-loader {
   display: none;
+  align-items: $swal2-loader-align-items;
+  justify-content: $swal2-loader-justify-content;
   width: $swal2-loader-width;
   height: $swal2-loader-height;
   margin: $swal2-loader-margin;

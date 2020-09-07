@@ -50,6 +50,7 @@ export const defaultParams = {
   showCloseButton: false,
   closeButtonHtml: '&times;',
   closeButtonAriaLabel: 'Close this dialog',
+  loaderHtml: '',
   showLoaderOnConfirm: false,
   imageUrl: undefined,
   imageWidth: undefined,

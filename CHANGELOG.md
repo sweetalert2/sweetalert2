@@ -1,3 +1,25 @@
+# [10.0.0](https://github.com/sweetalert2/sweetalert2/compare/v9.17.2...v10.0.0) (2020-09-07)
+
+
+### Bug Fixes
+
+* enable buttons in hideLoading ([#2048](https://github.com/sweetalert2/sweetalert2/issues/2048)) ([adcc392](https://github.com/sweetalert2/sweetalert2/commit/adcc3921d406a5970d4ab38ad8f40d2a7a8abf40))
+
+
+### Features
+
+* add loaderHtml ([#2049](https://github.com/sweetalert2/sweetalert2/issues/2049)) ([5c26b38](https://github.com/sweetalert2/sweetalert2/commit/5c26b3849d38a93b2f75f9b5e2be36f91b1c906e))
+* **sass:** add $swal2-<...>-button-order vars ([8f0cf9e](https://github.com/sweetalert2/sweetalert2/commit/8f0cf9ecc6a906ad8582de1c53025ae552d95364))
+* add the third DENY button 🎉 ([#2044](https://github.com/sweetalert2/sweetalert2/issues/2044)) ([1ad0f3c](https://github.com/sweetalert2/sweetalert2/commit/1ad0f3c9b75567c267943256b94b3f2308d3de0f))
+
+
+* BREAKING CHANGE: Separate loader from the confirm button (#2045) ([e049195](https://github.com/sweetalert2/sweetalert2/commit/e049195510f96de39fa375efc9c1820669d89c79)), closes [#2045](https://github.com/sweetalert2/sweetalert2/issues/2045)
+
+
+### BREAKING CHANGES
+
+* Separate loader from the confirm button
+
 ## [9.17.2](https://github.com/sweetalert2/sweetalert2/compare/v9.17.1...v9.17.2) (2020-09-03)
 
 

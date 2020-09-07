@@ -23,6 +23,7 @@ describe('customClass', () => {
         input: 'input-class',
         actions: 'actions-class',
         confirmButton: 'confirm-button-class',
+        denyButton: 'deny-button-class',
         cancelButton: 'cancel-button-class',
         footer: 'footer-class'
       }
@@ -38,6 +39,7 @@ describe('customClass', () => {
     expect(Swal.getInput().classList.contains('input-class')).to.be.true
     expect(Swal.getActions().classList.contains('actions-class')).to.be.true
     expect(Swal.getConfirmButton().classList.contains('confirm-button-class')).to.be.true
+    expect(Swal.getDenyButton().classList.contains('deny-button-class')).to.be.true
     expect(Swal.getCancelButton().classList.contains('cancel-button-class')).to.be.true
     expect(Swal.getFooter().classList.contains('footer-class')).to.be.true
   })

@@ -23,11 +23,11 @@ function setInputDisabled (input, disabled) {
 }
 
 export function enableButtons () {
-  setButtonsDisabled(this, ['confirmButton', 'cancelButton'], false)
+  setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], false)
 }
 
 export function disableButtons () {
-  setButtonsDisabled(this, ['confirmButton', 'cancelButton'], true)
+  setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], true)
 }
 
 export function enableInput () {

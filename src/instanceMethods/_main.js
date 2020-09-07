@@ -9,7 +9,7 @@ import { openPopup } from '../utils/openPopup.js'
 import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
 import { handleInputOptionsAndValue } from '../utils/dom/inputUtils.js'
-import { handleConfirmButtonClick, handleCancelButtonClick } from './buttons-handlers.js'
+import { handleConfirmButtonClick, handleDenyButtonClick, handleCancelButtonClick } from './buttons-handlers.js'
 import { addKeydownHandler, setFocus } from './keydown-handler.js'
 import { handlePopupClick } from './popup-click-handler.js'
 import { DismissReason } from '../utils/DismissReason.js'
@@ -65,12 +65,13 @@ const swalPromise = (instance, domCache, innerParams) => {
   return new Promise((resolve) => {
     // functions to handle all closings/dismissals
     const dismissWith = (dismiss) => {
-      instance.closePopup({ dismiss })
+      instance.closePopup({ isDismissed: true, dismiss })
     }
 
     privateMethods.swalPromiseResolve.set(instance, resolve)
 
     domCache.confirmButton.onclick = () => handleConfirmButtonClick(instance, innerParams)
+    domCache.denyButton.onclick = () => handleDenyButtonClick(instance)
     domCache.cancelButton.onclick = () => handleCancelButtonClick(instance, dismissWith)
 
     domCache.closeButton.onclick = () => dismissWith(DismissReason.close)
@@ -107,6 +108,7 @@ const populateDomCache = (instance) => {
     content: dom.getContent(),
     actions: dom.getActions(),
     confirmButton: dom.getConfirmButton(),
+    denyButton: dom.getDenyButton(),
     cancelButton: dom.getCancelButton(),
     loader: dom.getLoader(),
     closeButton: dom.getCloseButton(),
@@ -146,15 +148,28 @@ const initFocus = (domCache, innerParams) => {
     return blurActiveElement()
   }
 
+  if (!focusButton(domCache, innerParams)) {
+    setFocus(innerParams, -1, 1)
+  }
+}
+
+const focusButton = (domCache, innerParams) => {
+  if (innerParams.focusDeny && dom.isVisible(domCache.denyButton)) {
+    domCache.denyButton.focus()
+    return true
+  }
+
   if (innerParams.focusCancel && dom.isVisible(domCache.cancelButton)) {
-    return domCache.cancelButton.focus()
+    domCache.cancelButton.focus()
+    return true
   }
 
   if (innerParams.focusConfirm && dom.isVisible(domCache.confirmButton)) {
-    return domCache.confirmButton.focus()
+    domCache.confirmButton.focus()
+    return true
   }
 
-  setFocus(innerParams, -1, 1)
+  return false
 }
 
 const blurActiveElement = () => {

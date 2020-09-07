@@ -1,6 +1,6 @@
 import { Swal } from '../../utils'
 
-describe('getFocusableElements()', () => {
+describe('getFocusableElements() method', () => {
   it('getFocusableElements', () => {
     Swal.fire({
       input: 'text',
@@ -12,11 +12,12 @@ describe('getFocusableElements()', () => {
         <div tabindex="2">tabindex 2.2</div>
         <div tabindex="1">tabindex 1</div>
       `,
+      showDenyButton: true,
       showCancelButton: true,
       showCloseButton: true
     })
     const focusableElements = Swal.getFocusableElements()
-    expect(focusableElements.length).to.equal(9)
+    expect(focusableElements.length).to.equal(10)
     expect(focusableElements[0].textContent).to.equal('tabindex 1')
     expect(focusableElements[1].textContent).to.equal('tabindex 2.1')
     expect(focusableElements[2].textContent).to.equal('tabindex 2.2')
@@ -25,6 +26,7 @@ describe('getFocusableElements()', () => {
     expect(focusableElements[5].textContent).to.equal('tabindex 0')
     expect(focusableElements[6]).to.equal(Swal.getInput())
     expect(focusableElements[7]).to.equal(Swal.getConfirmButton())
-    expect(focusableElements[8]).to.equal(Swal.getCancelButton())
+    expect(focusableElements[8]).to.equal(Swal.getDenyButton())
+    expect(focusableElements[9]).to.equal(Swal.getCancelButton())
   })
 })

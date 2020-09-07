@@ -15,6 +15,7 @@ QUnit.test('Swal.close() resolves', (assert) => {
   Swal.fire().then(result => {
     assert.deepEqual(result, {
       isConfirmed: false,
+      isDenied: false,
       isDismissed: true,
     })
     done()

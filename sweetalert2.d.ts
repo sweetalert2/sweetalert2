@@ -139,6 +139,11 @@ declare module 'sweetalert2' {
     function getConfirmButton(): HTMLElement | null;
 
     /**
+     * Gets the "Deny" button.
+     */
+    function getDenyButton(): HTMLElement | null;
+
+    /**
      * Gets the "Cancel" button.
      */
     function getCancelButton(): HTMLElement | null;
@@ -192,6 +197,11 @@ declare module 'sweetalert2' {
      * Clicks the "Confirm" button programmatically.
      */
     function clickConfirm(): void;
+
+    /**
+     * Clicks the "Deny" button programmatically.
+     */
+    function clickDeny(): void;
 
     /**
      * Clicks the "Cancel" button programmatically.
@@ -382,6 +392,9 @@ declare module 'sweetalert2' {
     | 'confirmButtonText'
     | 'currentProgressStep'
     | 'customClass'
+    | 'denyButtonAriaLabel'
+    | 'denyButtonColor'
+    | 'denyButtonText'
     | 'footer'
     | 'hideClass'
     | 'html'
@@ -398,6 +411,7 @@ declare module 'sweetalert2' {
     | 'showCancelButton'
     | 'showCloseButton'
     | 'showConfirmButton'
+    | 'showDenyButton'
     | 'text'
     | 'title'
     | 'titleText';
@@ -414,15 +428,17 @@ declare module 'sweetalert2' {
     input?: string;
     actions?: string;
     confirmButton?: string;
+    denyButton?: string;
     cancelButton?: string;
     footer?: string;
   }
 
   export interface SweetAlertResult<T = any> {
-    readonly dismiss?: Swal.DismissReason;
     readonly isConfirmed: boolean;
+    readonly isDenied: boolean;
     readonly isDismissed: boolean;
     readonly value?: T;
+    readonly dismiss?: Swal.DismissReason;
   }
 
   export interface SweetAlertOptions<PreConfirmResult = any, PreConfirmCallbackValue = any> {
@@ -588,6 +604,7 @@ declare module 'sweetalert2' {
      *     input: 'input-class',
      *     actions: 'actions-class',
      *     confirmButton: 'confirm-button-class',
+     *     denyButton: 'deny-button-class',
      *     cancelButton: 'cancel-button-class',
      *     footer: 'footer-class'
      *   }
@@ -682,6 +699,13 @@ declare module 'sweetalert2' {
     showConfirmButton?: boolean;
 
     /**
+     * If set to `true`, the "Deny" button will be shown, which the user can click on to deny the popup.
+     *
+     * @default false
+     */
+    showDenyButton?: boolean;
+
+    /**
      * If set to `true`, the "Cancel" button will be shown, which the user can click on to dismiss the popup.
      *
      * @default false
@@ -696,6 +720,13 @@ declare module 'sweetalert2' {
     confirmButtonText?: string;
 
     /**
+     * Use this to change the text on the "Confirm" button.
+     *
+     * @default 'No'
+     */
+    denyButtonText?: string;
+
+    /**
      * Use this to change the text on the "Cancel" button.
      *
      * @default 'Cancel'
@@ -703,14 +734,21 @@ declare module 'sweetalert2' {
     cancelButtonText?: string;
 
     /**
-     * Use this to change the background color of the "Confirm" button (must be a HEX value).
+     * Use this to change the background color of the "Confirm" button.
      *
      * @default undefined
      */
     confirmButtonColor?: string;
 
     /**
-     * Use this to change the background color of the "Cancel" button (must be a HEX value).
+     * Use this to change the background color of the "Deny" button.
+     *
+     * @default undefined
+     */
+    denyButtonColor?: string;
+
+    /**
+     * Use this to change the background color of the "Cancel" button.
      *
      * @default undefined
      */
@@ -722,6 +760,13 @@ declare module 'sweetalert2' {
      * @default ''
      */
     confirmButtonAriaLabel?: string;
+
+    /**
+     * Use this to change the `aria-label` for the "Deny" button.
+     *
+     * @default ''
+     */
+    denyButtonAriaLabel?: string;
 
     /**
      * Use this to change the `aria-label` for the "Cancel" button.
@@ -751,6 +796,13 @@ declare module 'sweetalert2' {
      * @default true
      */
     focusConfirm?: boolean;
+
+    /**
+     * Set to `true` if you want to focus the "Deny" button by default.
+     *
+     * @default false
+     */
+    focusDeny?: boolean;
 
     /**
      * Set to `true` if you want to focus the "Cancel" button by default.

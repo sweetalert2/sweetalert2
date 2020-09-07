@@ -58,6 +58,7 @@ describe('Toast', () => {
       expect(result).to.eql({
         dismiss: Toast.DismissReason.close,
         isConfirmed: false,
+        isDenied: false,
         isDismissed: true,
       })
       done()

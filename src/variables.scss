@@ -146,8 +146,10 @@ $swal2-actions-align-items: center !default;
 $swal2-actions-justify-content: center !default;
 $swal2-actions-width: 100% !default;
 $swal2-actions-margin: 1.25em auto 0 !default;
+$swal2-actions-padding: 0 1.6em !default;
 
 // CONFIRM BUTTON
+$swal2-confirm-button-order: 1 !default;
 $swal2-confirm-button-border: 0 !default;
 $swal2-confirm-button-border-radius: .25em !default;
 $swal2-confirm-button-background-color: #3085d6 !default;
@@ -155,6 +157,7 @@ $swal2-confirm-button-color: $swal2-white !default;
 $swal2-confirm-button-font-size: 1.0625em !default;
 
 // DENY BUTTON
+$swal2-deny-button-order: 2 !default;
 $swal2-deny-button-border: 0 !default;
 $swal2-deny-button-border-radius: .25em !default;
 $swal2-deny-button-background-color: #dd6b55 !default;
@@ -162,6 +165,7 @@ $swal2-deny-button-color: $swal2-white !default;
 $swal2-deny-button-font-size: 1.0625em !default;
 
 // CANCEL BUTTON
+$swal2-cancel-button-order: 3 !default;
 $swal2-cancel-button-border: 0 !default;
 $swal2-cancel-button-border-radius: .25em !default;
 $swal2-cancel-button-background-color: #aaa !default;

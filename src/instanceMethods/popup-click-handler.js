@@ -24,6 +24,7 @@ const handleToastClick = (instance, domCache, dismissWith) => {
     const innerParams = privateProps.innerParams.get(instance)
     if (
       innerParams.showConfirmButton ||
+      innerParams.showDenyButton ||
       innerParams.showCancelButton ||
       innerParams.showCloseButton ||
       innerParams.input

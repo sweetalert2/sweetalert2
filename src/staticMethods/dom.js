@@ -13,6 +13,7 @@ export {
   getCloseButton,
   getActions,
   getConfirmButton,
+  getDenyButton,
   getCancelButton,
   getHeader,
   getFooter,
@@ -33,6 +34,11 @@ export const isVisible = () => {
  * Global function to click 'Confirm' button
  */
 export const clickConfirm = () => dom.getConfirmButton() && dom.getConfirmButton().click()
+
+/*
+ * Global function to click 'Deny' button
+ */
+export const clickDeny = () => dom.getDenyButton() && dom.getDenyButton().click()
 
 /*
  * Global function to click 'Cancel' button

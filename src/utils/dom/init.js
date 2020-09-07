@@ -37,8 +37,9 @@ const sweetHTML = `
    </div>
    <div class="${swalClasses.actions}">
      <div class="${swalClasses.loader}"></div>
-     <button type="button" class="${swalClasses.confirm}">OK</button>
-     <button type="button" class="${swalClasses.cancel}">Cancel</button>
+     <button type="button" class="${swalClasses.confirm}"></button>
+     <button type="button" class="${swalClasses.deny}"></button>
+     <button type="button" class="${swalClasses.cancel}"></button>
    </div>
    <div class="${swalClasses.footer}"></div>
    <div class="${swalClasses['timer-progress-bar-container']}">

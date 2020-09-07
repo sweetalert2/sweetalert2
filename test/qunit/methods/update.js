@@ -23,7 +23,9 @@ QUnit.test('update() method', (assert) => {
     html: 'New content',
     icon: 'success',
     showConfirmButton: false,
+    showDenyButton: true,
     showCancelButton: true,
+    denyButtonText: 'New deny button text',
     cancelButtonText: 'New cancel button text',
     imageUrl: '/assets/swal2-logo.png',
     showCloseButton: true,
@@ -39,6 +41,8 @@ QUnit.test('update() method', (assert) => {
   assert.ok(Swal.getImage().src.indexOf('/assets/swal2-logo.png') > 0)
 
   assert.notOk(isVisible(Swal.getConfirmButton()))
+  assert.ok(isVisible(Swal.getDenyButton()))
+  assert.equal(Swal.getDenyButton().textContent, 'New deny button text')
   assert.ok(isVisible(Swal.getCancelButton()))
   assert.equal(Swal.getCancelButton().textContent, 'New cancel button text')
 
@@ -65,6 +69,7 @@ QUnit.test('update customClass', (assert) => {
       input: 'input-class',
       actions: 'actions-class',
       confirmButton: 'confirm-button-class',
+      denyButton: 'deny-button-class',
       cancelButton: 'cancel-button-class',
       footer: 'footer-class'
     }
@@ -84,6 +89,7 @@ QUnit.test('update customClass', (assert) => {
       input: 'input-class-NEW',
       actions: 'actions-class-NEW',
       confirmButton: 'confirm-button-class-NEW',
+      denyButton: 'deny-button-class-NEW',
       cancelButton: 'cancel-button-class-NEW',
       footer: 'footer-class-NEW'
     }
@@ -100,6 +106,7 @@ QUnit.test('update customClass', (assert) => {
   assert.notOk(Swal.getInput().classList.contains('input-class'))
   assert.notOk(Swal.getActions().classList.contains('actions-class'))
   assert.notOk(Swal.getConfirmButton().classList.contains('confirm-button-class'))
+  assert.notOk(Swal.getDenyButton().classList.contains('deny-button-class'))
   assert.notOk(Swal.getCancelButton().classList.contains('cancel-button-class'))
   assert.notOk(Swal.getFooter().classList.contains('footer-class'))
 
@@ -114,6 +121,7 @@ QUnit.test('update customClass', (assert) => {
   assert.ok(Swal.getInput().classList.contains('input-class-NEW'))
   assert.ok(Swal.getActions().classList.contains('actions-class-NEW'))
   assert.ok(Swal.getConfirmButton().classList.contains('confirm-button-class-NEW'))
+  assert.ok(Swal.getDenyButton().classList.contains('deny-button-class-NEW'))
   assert.ok(Swal.getCancelButton().classList.contains('cancel-button-class-NEW'))
   assert.ok(Swal.getFooter().classList.contains('footer-class-NEW'))
 })

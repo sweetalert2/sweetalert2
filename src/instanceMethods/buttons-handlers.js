@@ -14,6 +14,12 @@ export const handleConfirmButtonClick = (instance, innerParams) => {
   }
 }
 
+export const handleDenyButtonClick = (instance) => {
+  instance.disableButtons()
+  // here we could add preDeny in future, if needed
+  deny(instance)
+}
+
 export const handleCancelButtonClick = (instance, dismissWith) => {
   instance.disableButtons()
   dismissWith(DismissReason.cancel)
@@ -46,8 +52,12 @@ const handleConfirmWithInput = (instance, innerParams) => {
   }
 }
 
+const deny = (instance) => {
+  instance.closePopup({ isDenied: true, value: false })
+}
+
 const succeedWith = (instance, value) => {
-  instance.closePopup({ value })
+  instance.closePopup({ isConfirmed: true, value })
 }
 
 const confirm = (instance, innerParams, value) => {

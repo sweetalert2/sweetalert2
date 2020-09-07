@@ -11,11 +11,12 @@ QUnit.test('getFocusableElements() method', (assert) => {
       <div tabindex="2">tabindex 2.2</div>
       <div tabindex="1">tabindex 1</div>
     `,
+    showDenyButton: true,
     showCancelButton: true,
     showCloseButton: true
   })
   const focusableElements = Swal.getFocusableElements()
-  assert.equal(focusableElements.length, 9)
+  assert.equal(focusableElements.length, 10)
   assert.equal(focusableElements[0].textContent, 'tabindex 1')
   assert.equal(focusableElements[1].textContent, 'tabindex 2.1')
   assert.equal(focusableElements[2].textContent, 'tabindex 2.2')
@@ -24,5 +25,6 @@ QUnit.test('getFocusableElements() method', (assert) => {
   assert.equal(focusableElements[5].textContent, 'tabindex 0')
   assert.equal(focusableElements[6], Swal.getInput())
   assert.equal(focusableElements[7], Swal.getConfirmButton())
-  assert.equal(focusableElements[8], Swal.getCancelButton())
+  assert.equal(focusableElements[8], Swal.getDenyButton())
+  assert.equal(focusableElements[9], Swal.getCancelButton())
 })

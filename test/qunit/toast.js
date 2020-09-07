@@ -59,6 +59,7 @@ QUnit.test('toast click closes when no buttons or input are specified', (assert)
     assert.deepEqual(result, {
       dismiss: Toast.DismissReason.close,
       isConfirmed: false,
+      isDenied: false,
       isDismissed: true,
     })
     done()

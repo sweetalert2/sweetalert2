@@ -36,6 +36,7 @@ const sweetHTML = `
      <div class="${swalClasses['validation-message']}" id="${swalClasses['validation-message']}"></div>
    </div>
    <div class="${swalClasses.actions}">
+     <div class="${swalClasses.loader}"></div>
      <button type="button" class="${swalClasses.confirm}">OK</button>
      <button type="button" class="${swalClasses.cancel}">Cancel</button>
    </div>

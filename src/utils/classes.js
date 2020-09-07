@@ -48,6 +48,7 @@ export const swalClasses = prefix([
   'active-progress-step',
   'progress-step',
   'progress-step-line',
+  'loader',
   'loading',
   'styled',
   'top',

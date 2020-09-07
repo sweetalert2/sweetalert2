@@ -231,48 +231,18 @@
       }
     }
   }
+}
 
-  &.swal2-loading {
-    .swal2-styled {
-      &.swal2-confirm {
-        box-sizing: border-box;
-        width: 2.5em;
-        height: 2.5em;
-        margin: .46875em;
-        padding: 0;
-        animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
-        border: .25em solid transparent;
-        border-radius: 100%;
-        border-color: transparent;
-        background-color: transparent !important;
-        color: transparent !important;
-        cursor: default;
-        user-select: none;
-      }
-
-      &.swal2-cancel {
-        margin-right: 30px;
-        margin-left: 30px;
-      }
-    }
-
-    :not(.swal2-styled) {
-      &.swal2-confirm {
-        &::after {
-          content: '';
-          display: inline-block;
-          width: 15px;
-          height: 15px;
-          margin-left: 5px;
-          animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
-          border: 3px solid lighten($swal2-black, 60);
-          border-radius: 50%;
-          border-right-color: transparent;
-          box-shadow: 1px 1px 1px $swal2-white;
-        }
-      }
-    }
-  }
+.swal2-loader {
+  display: none;
+  width: $swal2-loader-width;
+  height: $swal2-loader-height;
+  margin: $swal2-loader-margin;
+  animation: $swal2-loader-animation;
+  border-width: $swal2-loader-border-width;
+  border-style: $swal2-loader-border-style;
+  border-radius: $swal2-loader-border-radius;
+  border-color: $swal2-loader-border-color;
 }
 
 .swal2-styled {

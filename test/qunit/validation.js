@@ -18,6 +18,9 @@ QUnit.test('input.checkValidity()', (assert) => {
   Swal.getInput().value = 'blah-blah'
   Swal.clickConfirm()
   setTimeout(() => {
+    assert.notOk(Swal.getConfirmButton().disabled)
+    assert.notOk(Swal.getDenyButton().disabled)
+    assert.notOk(Swal.getCancelButton().disabled)
     assert.ok(isVisible(Swal.getValidationMessage()))
     assert.equal(Swal.getValidationMessage().textContent, 'Invalid phone number')
 

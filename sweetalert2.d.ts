@@ -819,7 +819,7 @@ declare module 'sweetalert2' {
     showCloseButton?: boolean;
 
     /**
-     * Use this to change the content of the close button.
+     * Use this to change the HTML content of the close button.
      *
      * @default '&times;'
      */
@@ -831,6 +831,13 @@ declare module 'sweetalert2' {
      * @default 'Close this dialog'
      */
     closeButtonAriaLabel?: string;
+
+    /**
+     * Use this to change the HTML content of the loader.
+     *
+     * @default ''
+     */
+    loaderHtml?: string;
 
     /**
      * Set to true to disable buttons and show that something is loading. Useful for AJAX requests.

@@ -210,11 +210,13 @@
 .swal2-actions {
   display: flex;
   z-index: 1; // prevent sucess icon from overlapping buttons
+  box-sizing: border-box;
   flex-wrap: $swal2-actions-flex-wrap;
   align-items: $swal2-actions-align-items;
   justify-content: $swal2-actions-justify-content;
   width: $swal2-actions-width;
   margin: $swal2-actions-margin;
+  padding: $swal2-actions-padding;
 
   &:not(.swal2-loading) {
     .swal2-styled {
@@ -256,6 +258,7 @@
   }
 
   &.swal2-confirm {
+    order: $swal2-confirm-button-order;
     border: $swal2-confirm-button-border;
     border-radius: $swal2-confirm-button-border-radius;
     background: initial;
@@ -265,6 +268,7 @@
   }
 
   &.swal2-deny {
+    order: $swal2-deny-button-order;
     border: $swal2-deny-button-border;
     border-radius: $swal2-deny-button-border-radius;
     background: initial;
@@ -274,6 +278,7 @@
   }
 
   &.swal2-cancel {
+    order: $swal2-cancel-button-order;
     border: $swal2-cancel-button-border;
     border-radius: $swal2-cancel-button-border-radius;
     background: initial;

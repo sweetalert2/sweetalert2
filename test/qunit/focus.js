@@ -54,6 +54,15 @@ QUnit.test('focusCancel', (assert) => {
   assert.equal(document.activeElement, Swal.getCancelButton())
 })
 
+QUnit.test('focusDeny', (assert) => {
+  Swal.fire({
+    text: 'Modal with Deny button focused',
+    showDenyButton: true,
+    focusDeny: true
+  })
+  assert.equal(document.activeElement, Swal.getDenyButton())
+})
+
 // TODO(@limonte): this test needs to be revisited
 // is passes even runs (2nd, 4th, 6th) and fails odd runs (1st, 3rd, 5th)
 // I suspect something is wrong with the testing environment as the same

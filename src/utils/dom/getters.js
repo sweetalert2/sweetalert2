@@ -39,6 +39,8 @@ export const getValidationMessage = () => elementByClass(swalClasses['validation
 
 export const getConfirmButton = () => elementBySelector(`.${swalClasses.actions} .${swalClasses.confirm}`)
 
+export const getDenyButton = () => elementBySelector(`.${swalClasses.actions} .${swalClasses.deny}`)
+
 export const getLoader = () => elementBySelector(`.${swalClasses.loader}`)
 
 export const getCancelButton = () => elementBySelector(`.${swalClasses.actions} .${swalClasses.cancel}`)

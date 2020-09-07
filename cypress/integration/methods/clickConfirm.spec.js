@@ -12,6 +12,7 @@ describe('clickConfirm()', () => {
       expect(result).to.eql({
         value: 'two',
         isConfirmed: true,
+        isDenied: false,
         isDismissed: false,
       })
       done()

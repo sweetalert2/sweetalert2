@@ -264,6 +264,15 @@
     font-size: $swal2-confirm-button-font-size;
   }
 
+  &.swal2-deny {
+    border: $swal2-deny-button-border;
+    border-radius: $swal2-deny-button-border-radius;
+    background: initial;
+    background-color: $swal2-deny-button-background-color;
+    color: $swal2-deny-button-color;
+    font-size: $swal2-deny-button-font-size;
+  }
+
   &.swal2-cancel {
     border: $swal2-cancel-button-border;
     border-radius: $swal2-cancel-button-border-radius;

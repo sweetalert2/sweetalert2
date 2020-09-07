@@ -23,7 +23,9 @@ describe('update()', () => {
       html: 'New content',
       icon: 'success',
       showConfirmButton: false,
+      showDenyButton: true,
       showCancelButton: true,
+      denyButtonText: 'New deny button text',
       cancelButtonText: 'New cancel button text',
       imageUrl: '/assets/swal2-logo.png',
       showCloseButton: true,
@@ -40,7 +42,9 @@ describe('update()', () => {
 
     expect(isVisible(Swal.getConfirmButton())).to.be.false
     expect(isVisible(Swal.getCancelButton())).to.be.true
+    expect(isVisible(Swal.getDenyButton())).to.be.true
     expect(Swal.getCancelButton().textContent).to.equal('New cancel button text')
+    expect(Swal.getDenyButton().textContent).to.equal('New deny button text')
 
     expect(isVisible(Swal.getCloseButton())).to.be.true
   })
@@ -65,6 +69,7 @@ describe('update()', () => {
         input: 'input-class',
         actions: 'actions-class',
         confirmButton: 'confirm-button-class',
+        denyButton: 'deny-button-class',
         cancelButton: 'cancel-button-class',
         footer: 'footer-class'
       }
@@ -84,6 +89,7 @@ describe('update()', () => {
         input: 'input-class-NEW',
         actions: 'actions-class-NEW',
         confirmButton: 'confirm-button-class-NEW',
+        denyButton: 'deny-button-class-NEW',
         cancelButton: 'cancel-button-class-NEW',
         footer: 'footer-class-NEW'
       }
@@ -100,6 +106,7 @@ describe('update()', () => {
     expect(Swal.getInput().classList.contains('input-class')).to.be.false
     expect(Swal.getActions().classList.contains('actions-class')).to.be.false
     expect(Swal.getConfirmButton().classList.contains('confirm-button-class')).to.be.false
+    expect(Swal.getDenyButton().classList.contains('deny-button-class')).to.be.false
     expect(Swal.getCancelButton().classList.contains('cancel-button-class')).to.be.false
     expect(Swal.getFooter().classList.contains('footer-class')).to.be.false
 
@@ -114,6 +121,7 @@ describe('update()', () => {
     expect(Swal.getInput().classList.contains('input-class-NEW')).to.be.true
     expect(Swal.getActions().classList.contains('actions-class-NEW')).to.be.true
     expect(Swal.getConfirmButton().classList.contains('confirm-button-class-NEW')).to.be.true
+    expect(Swal.getDenyButton().classList.contains('deny-button-class-NEW')).to.be.true
     expect(Swal.getCancelButton().classList.contains('cancel-button-class-NEW')).to.be.true
     expect(Swal.getFooter().classList.contains('footer-class-NEW')).to.be.true
   })

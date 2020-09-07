@@ -41,9 +41,14 @@ export const setFocus = (innerParams, index, increment) => {
   dom.getPopup().focus()
 }
 
-const arrowKeys = [
-  'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
-  'Left', 'Right', 'Up', 'Down' // IE11
+const arrowKeysNextButton = [
+  'ArrowRight', 'ArrowDown',
+  'Right', 'Down' // IE11
+]
+
+const arrowKeysPreviousButton = [
+  'ArrowLeft', 'ArrowUp',
+  'Left', 'Up' // IE11
 ]
 
 const escKeys = [
@@ -67,8 +72,8 @@ const keydownHandler = (instance, e, dismissWith) => {
     handleTab(e, innerParams)
 
   // ARROWS - switch focus between buttons
-  } else if (arrowKeys.includes(e.key)) {
-    handleArrows()
+  } else if ([...arrowKeysNextButton, ...arrowKeysPreviousButton].includes(e.key)) {
+    handleArrows(e.key)
 
   // ESC
   } else if (escKeys.includes(e.key)) {
@@ -115,15 +120,17 @@ const handleTab = (e, innerParams) => {
   e.preventDefault()
 }
 
-const handleArrows = () => {
+const handleArrows = (key) => {
   const confirmButton = dom.getConfirmButton()
+  const denyButton = dom.getDenyButton()
   const cancelButton = dom.getCancelButton()
-  // focus Cancel button if Confirm button is currently focused
-  if (document.activeElement === confirmButton && dom.isVisible(cancelButton)) {
-    cancelButton.focus()
-    // and vice versa
-  } else if (document.activeElement === cancelButton && dom.isVisible(confirmButton)) {
-    confirmButton.focus()
+  if (![confirmButton, denyButton, cancelButton].includes(document.activeElement)) {
+    return
+  }
+  const sibling = arrowKeysNextButton.includes(key) ? 'nextElementSibling' : 'previousElementSibling'
+  const buttonToFocus = document.activeElement[sibling]
+  if (buttonToFocus) {
+    buttonToFocus.focus()
   }
 }
 

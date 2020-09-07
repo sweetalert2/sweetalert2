@@ -16,6 +16,7 @@ describe('close()', () => {
     Swal.fire().then(result => {
       expect(result).to.be.eql({
         isConfirmed: false,
+        isDenied: false,
         isDismissed: true,
       })
       done()

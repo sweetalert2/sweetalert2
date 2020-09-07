@@ -54,6 +54,7 @@ describe('API', () => {
           expect(result).to.be.eql({
             value: 'inputValue',
             isConfirmed: true,
+            isDenied: false,
             isDismissed: false,
           })
           return 'result'

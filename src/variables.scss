@@ -168,6 +168,16 @@ $swal2-button-focus-outline: none !default;
 $swal2-button-focus-background-color: null !default;
 $swal2-button-focus-box-shadow: 0 0 0 1px $swal2-background, 0 0 0 3px $swal2-outline-color !default;
 
+// LOADER
+$swal2-loader-margin: 0 1.875em !default;
+$swal2-loader-width: 2.2em !default;
+$swal2-loader-height: 2.2em !default;
+$swal2-loader-animation: swal2-rotate-loading 1.5s linear 0s infinite normal !default;
+$swal2-loader-border-width: .25em !default;
+$swal2-loader-border-style: solid !default;
+$swal2-loader-border-radius: 100% !default;
+$swal2-loader-border-color: #3085d6 transparent #3085d6 transparent !default;
+
 // TOASTS
 $swal2-toast-show-animation: swal2-toast-show .5s !default;
 $swal2-toast-hide-animation: swal2-toast-hide .1s forwards !default;

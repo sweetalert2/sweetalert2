@@ -5,6 +5,7 @@ import { isLoading } from '../getters.js'
 
 export const renderActions = (instance, params) => {
   const actions = dom.getActions()
+  const loader = dom.getLoader()
   const confirmButton = dom.getConfirmButton()
   const cancelButton = dom.getCancelButton()
 
@@ -25,12 +26,11 @@ export const renderActions = (instance, params) => {
     handleButtonsStyling(confirmButton, cancelButton, params)
   } else {
     dom.removeClass([confirmButton, cancelButton], swalClasses.styled)
-    confirmButton.style.backgroundColor = confirmButton.style.borderLeftColor = confirmButton.style.borderRightColor = ''
-    cancelButton.style.backgroundColor = cancelButton.style.borderLeftColor = cancelButton.style.borderRightColor = ''
   }
 
   if (params.reverseButtons) {
-    confirmButton.parentNode.insertBefore(cancelButton, confirmButton)
+    actions.insertBefore(cancelButton, loader)
+    actions.insertBefore(confirmButton, loader)
   }
 }
 

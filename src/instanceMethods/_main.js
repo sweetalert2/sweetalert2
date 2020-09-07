@@ -108,6 +108,7 @@ const populateDomCache = (instance) => {
     actions: dom.getActions(),
     confirmButton: dom.getConfirmButton(),
     cancelButton: dom.getCancelButton(),
+    loader: dom.getLoader(),
     closeButton: dom.getCloseButton(),
     validationMessage: dom.getValidationMessage(),
     progressSteps: dom.getProgressSteps()

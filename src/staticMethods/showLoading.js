@@ -13,11 +13,13 @@ const showLoading = () => {
   popup = dom.getPopup()
   const actions = dom.getActions()
   const confirmButton = dom.getConfirmButton()
+  const loader = dom.getLoader()
 
   dom.show(actions)
-  dom.show(confirmButton, 'inline-block')
+  dom.hide(confirmButton)
   dom.addClass([popup, actions], swalClasses.loading)
-  confirmButton.disabled = true
+
+  dom.show(loader)
 
   popup.setAttribute('data-loading', true)
   popup.setAttribute('aria-busy', true)

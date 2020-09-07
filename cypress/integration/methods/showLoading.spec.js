@@ -1,4 +1,4 @@
-import { Swal, ensureClosed, isVisible, isHidden } from '../../utils'
+import { $, Swal, ensureClosed, isVisible, isHidden } from '../../utils'
 
 describe('showLoading() and hideLoading()', () => {
   it('showLoading and hideLoading', () => {
@@ -39,9 +39,12 @@ describe('showLoading() and hideLoading()', () => {
     Swal.fire({
       showConfirmButton: false,
       onOpen: () => {
+        expect(isHidden(Swal.getActions())).to.be.true
         Swal.showLoading()
+        expect(isVisible(Swal.getActions())).to.be.true
         expect(Swal.getActions().classList.contains('swal2-loading')).to.be.true
-        expect(isVisible(Swal.getConfirmButton())).to.be.true
+        expect(isVisible($('.swal2-loader'))).to.be.true
+        expect(isHidden(Swal.getConfirmButton())).to.be.true
         expect(isHidden(Swal.getCancelButton())).to.be.true
         done()
       },

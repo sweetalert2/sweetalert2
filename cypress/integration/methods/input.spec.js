@@ -377,6 +377,9 @@ describe('Validation', () => {
     Swal.getInput().value = 'blah-blah'
     Swal.clickConfirm()
     setTimeout(() => {
+      expect(Swal.getConfirmButton().disabled).to.be.false
+      expect(Swal.getDenyButton().disabled).to.be.false
+      expect(Swal.getCancelButton().disabled).to.be.false
       expect(isVisible(Swal.getValidationMessage())).to.be.true
       expect(Swal.getValidationMessage().textContent).to.equal('Invalid phone number')
       Swal.getInput().value = '123-456-7890'

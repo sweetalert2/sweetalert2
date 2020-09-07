@@ -434,11 +434,11 @@ declare module 'sweetalert2' {
   }
 
   export interface SweetAlertResult<T = any> {
-    readonly dismiss?: Swal.DismissReason;
     readonly isConfirmed: boolean;
     readonly isDenied: boolean;
     readonly isDismissed: boolean;
     readonly value?: T;
+    readonly dismiss?: Swal.DismissReason;
   }
 
   export interface SweetAlertOptions<PreConfirmResult = any, PreConfirmCallbackValue = any> {

@@ -1,3 +1,10 @@
+## [10.0.1](https://github.com/sweetalert2/sweetalert2/compare/v10.0.0...v10.0.1) (2020-09-08)
+
+
+### Bug Fixes
+
+* **scss:** set $swal2-<...>-button-order vars to null ([ef97ba1](https://github.com/sweetalert2/sweetalert2/commit/ef97ba11eac2119dcb0faa995e84151bf2d92100))
+
 # [10.0.0](https://github.com/sweetalert2/sweetalert2/compare/v9.17.2...v10.0.0) (2020-09-07)
 
 

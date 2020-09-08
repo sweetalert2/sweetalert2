@@ -1,3 +1,10 @@
+## [10.0.2](https://github.com/sweetalert2/sweetalert2/compare/v10.0.1...v10.0.2) (2020-09-08)
+
+
+### Bug Fixes
+
+* padding on .swal2-actions for toasts ([e2a8f6f](https://github.com/sweetalert2/sweetalert2/commit/e2a8f6f9b895122ad0e1c848f64eefe0e45ef61b))
+
 ## [10.0.1](https://github.com/sweetalert2/sweetalert2/compare/v10.0.0...v10.0.1) (2020-09-08)
 
 

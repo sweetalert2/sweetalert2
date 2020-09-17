@@ -143,6 +143,13 @@ export const hide = (elem) => {
   elem.style.display = 'none'
 }
 
+export const setStyle = (parent, selector, property, value) => {
+  const el = parent.querySelector(selector)
+  if (el) {
+    el.style[property] = value
+  }
+}
+
 export const toggle = (elem, condition, display) => {
   condition ? show(elem, display) : hide(elem)
 }

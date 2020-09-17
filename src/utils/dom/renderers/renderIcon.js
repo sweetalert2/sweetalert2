@@ -24,6 +24,7 @@ export const renderIcon = (instance, params) => {
 
     // Custom or default content
     setContent(icon, params)
+    setColor(icon, params)
     adjustSuccessIconBackgoundColor()
 
     // Custom class
@@ -80,6 +81,18 @@ const setContent = (icon, params) => {
     }
     dom.setInnerHtml(icon, iconContent(defaultIconHtml[params.icon]))
   }
+}
+
+const setColor = (icon, params) => {
+  if (!params.iconColor) {
+    return
+  }
+  icon.style.color = params.iconColor
+  icon.style.borderColor = params.iconColor
+  for (const sel of ['.swal2-success-line-tip', '.swal2-success-line-long', '.swal2-x-mark-line-left', '.swal2-x-mark-line-right']) {
+    dom.setStyle(icon, sel, 'backgroundColor', params.iconColor)
+  }
+  dom.setStyle(icon, '.swal2-success-ring', 'borderColor', params.iconColor)
 }
 
 const iconContent = (content) => `<div class="${swalClasses['icon-content']}">${content}</div>`

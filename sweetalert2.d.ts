@@ -484,6 +484,13 @@ declare module 'sweetalert2' {
     icon?: SweetAlertIcon;
 
     /**
+     * Use this to change the color of the icon.
+     *
+     * @default undefined
+     */
+    iconColor?: string;
+
+    /**
      * The custom HTML content for an icon.
      *
      * Example:

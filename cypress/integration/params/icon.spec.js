@@ -23,4 +23,22 @@ describe('icon', () => {
     expect(Swal.getContent().textContent).to.equal('')
     expect(isHidden(Swal.getFooter())).to.be.true
   })
+
+  it('Success icon with custom HTML (iconHtml)', () => {
+    Swal.fire({
+      icon: 'success',
+      iconHtml: '<i class="fa fa-circle"></i>'
+    })
+
+    expect(Swal.getIcon().innerHTML).to.equal('<div class="swal2-icon-content"><i class="fa fa-circle"></i></div>')
+  })
+
+  it('Question icon with custom color (iconColor)', () => {
+    SwalWithoutAnimation.fire({
+      icon: 'question',
+      iconColor: 'red',
+    })
+    expect(Swal.getIcon().style.color).to.equal('red')
+    expect(Swal.getIcon().style.borderColor).to.equal('red')
+  })
 })

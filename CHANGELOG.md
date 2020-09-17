@@ -1,3 +1,10 @@
+# [10.1.0](https://github.com/sweetalert2/sweetalert2/compare/v10.0.2...v10.1.0) (2020-09-17)
+
+
+### Features
+
+* add iconColor ([#2052](https://github.com/sweetalert2/sweetalert2/issues/2052)) ([81cb6f9](https://github.com/sweetalert2/sweetalert2/commit/81cb6f9f6d15af653346c7c72d9932ee5074b491))
+
 ## [10.0.2](https://github.com/sweetalert2/sweetalert2/compare/v10.0.1...v10.0.2) (2020-09-08)
 
 

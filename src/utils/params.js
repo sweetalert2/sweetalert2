@@ -7,6 +7,7 @@ export const defaultParams = {
   html: '',
   footer: '',
   icon: undefined,
+  iconColor: undefined,
   iconHtml: undefined,
   toast: false,
   animation: true,

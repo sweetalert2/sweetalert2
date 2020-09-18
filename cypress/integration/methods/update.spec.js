@@ -19,9 +19,11 @@ describe('update()', () => {
     })
 
     Swal.update({
+      background: 'green',
       title: 'New title',
       html: 'New content',
       icon: 'success',
+      iconColor: 'blue',
       showConfirmButton: false,
       showDenyButton: true,
       showCancelButton: true,
@@ -31,11 +33,15 @@ describe('update()', () => {
       showCloseButton: true,
     })
 
+    expect(window.getComputedStyle(Swal.getPopup()).backgroundColor).to.equal('rgb(0, 128, 0)')
+
     expect(Swal.getTitle().textContent).to.equal('New title')
     expect(Swal.getContent().textContent).to.equal('New content')
 
     expect(isVisible(Swal.getIcon())).to.be.true
     expect(Swal.getIcon()).to.equal($('.swal2-success'))
+    expect(Swal.getIcon().style.color).to.equal('blue')
+    expect(Swal.getIcon().style.borderColor).to.equal('blue')
 
     expect(isVisible(Swal.getImage())).to.be.true
     expect(Swal.getImage().src.indexOf('/assets/swal2-logo.png') > 0).to.be.true

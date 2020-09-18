@@ -6,9 +6,9 @@ import privateProps from '../../../privateProps.js'
 export const renderIcon = (instance, params) => {
   const innerParams = privateProps.innerParams.get(instance)
 
-  // if the give icon already rendered, apply the custom class without re-rendering the icon
+  // if the given icon already rendered, apply the styling without re-rendering the icon
   if (innerParams && params.icon === innerParams.icon && dom.getIcon()) {
-    dom.applyCustomClass(dom.getIcon(), params, 'icon')
+    applyStyles(dom.getIcon(), params)
     return
   }
 
@@ -24,11 +24,8 @@ export const renderIcon = (instance, params) => {
 
     // Custom or default content
     setContent(icon, params)
-    setColor(icon, params)
-    adjustSuccessIconBackgoundColor()
 
-    // Custom class
-    dom.applyCustomClass(icon, params, 'icon')
+    applyStyles(icon, params)
 
     // Animate icon
     dom.addClass(icon, params.showClass.icon)
@@ -42,6 +39,17 @@ const hideAllIcons = () => {
   for (let i = 0; i < icons.length; i++) {
     dom.hide(icons[i])
   }
+}
+
+const applyStyles = (icon, params) => {
+  // Icon color
+  setColor(icon, params)
+
+  // Success icon background color
+  adjustSuccessIconBackgoundColor()
+
+  // Custom class
+  dom.applyCustomClass(icon, params, 'icon')
 }
 
 // Adjust success icon background color to match the popup background color

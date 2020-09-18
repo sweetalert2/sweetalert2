@@ -19,9 +19,11 @@ QUnit.test('update() method', (assert) => {
   })
 
   Swal.update({
+    background: 'green',
     title: 'New title',
     html: 'New content',
     icon: 'success',
+    iconColor: 'blue',
     showConfirmButton: false,
     showDenyButton: true,
     showCancelButton: true,
@@ -31,11 +33,15 @@ QUnit.test('update() method', (assert) => {
     showCloseButton: true,
   })
 
+  assert.equal(window.getComputedStyle(Swal.getPopup()).backgroundColor, 'rgb(0, 128, 0)')
+
   assert.equal(Swal.getTitle().textContent, 'New title')
   assert.equal(Swal.getContent().textContent, 'New content')
 
   assert.ok(isVisible(Swal.getIcon()))
   assert.equal(Swal.getIcon(), $('.swal2-success'))
+  assert.equal(Swal.getIcon().style.color, 'blue')
+  assert.equal(Swal.getIcon().style.borderColor, 'blue')
 
   assert.ok(isVisible(Swal.getImage()))
   assert.ok(Swal.getImage().src.indexOf('/assets/swal2-logo.png') > 0)

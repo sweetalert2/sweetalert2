@@ -1,3 +1,10 @@
+# [10.2.0](https://github.com/sweetalert2/sweetalert2/compare/v10.1.0...v10.2.0) (2020-09-18)
+
+
+### Features
+
+* make background and iconColor params updatable ([#2054](https://github.com/sweetalert2/sweetalert2/issues/2054)) ([ed384ab](https://github.com/sweetalert2/sweetalert2/commit/ed384ab1ce9d70882b67b9475cf867397477e41e))
+
 # [10.1.0](https://github.com/sweetalert2/sweetalert2/compare/v10.0.2...v10.1.0) (2020-09-17)
 
 

@@ -87,6 +87,7 @@ export const defaultParams = {
 export const updatableParams = [
   'allowEscapeKey',
   'allowOutsideClick',
+  'background',
   'buttonsStyling',
   'cancelButtonAriaLabel',
   'cancelButtonColor',
@@ -105,6 +106,7 @@ export const updatableParams = [
   'hideClass',
   'html',
   'icon',
+  'iconColor',
   'imageAlt',
   'imageHeight',
   'imageUrl',

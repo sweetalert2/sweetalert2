@@ -10,7 +10,7 @@ describe('showClass', () => {
       hideClass: {
         popup: 'animated fadeOutUp faster'
       },
-      onAfterClose: () => {
+      didClose: () => {
         expect(Swal.isVisible()).to.be.false
         done()
       }

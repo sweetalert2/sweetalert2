@@ -73,7 +73,7 @@ describe('Accessibility:', () => {
     document.body.appendChild(divAriaHiddenTrue)
     SwalWithoutAnimation.fire({
       toast: true,
-      onAfterClose: () => {
+      didClose: () => {
         expect(divAriaHiddenTrue.getAttribute('aria-hidden')).to.equal('true')
         done()
       }

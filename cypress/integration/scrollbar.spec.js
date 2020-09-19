@@ -27,7 +27,7 @@ describe('Vertical scrollbar', () => {
 
     SwalWithoutAnimation.fire({
       title: 'The body has visible scrollbar, I will hide it and adjust padding-right on body',
-      onAfterClose: () => {
+      didClose: () => {
         expect(bodyStyles.paddingRight).to.equal('30px')
         document.body.removeChild(talltDiv)
         done()
@@ -49,7 +49,7 @@ describe('Vertical scrollbar', () => {
     SwalWithoutAnimation.fire({
       title: 'Padding right adjustment disabled',
       scrollbarPadding: false,
-      onAfterClose: () => {
+      didClose: () => {
         document.body.removeChild(talltDiv)
       }
     })

@@ -83,6 +83,8 @@ export const defaultParams = {
   didRender: undefined,
   onClose: undefined,
   onAfterClose: undefined,
+  willClose: undefined,
+  didClose: undefined,
   onDestroy: undefined,
   scrollbarPadding: true
 }
@@ -105,6 +107,7 @@ export const updatableParams = [
   'denyButtonAriaLabel',
   'denyButtonColor',
   'denyButtonText',
+  'didClose',
   'footer',
   'hideClass',
   'html',
@@ -126,12 +129,16 @@ export const updatableParams = [
   'text',
   'title',
   'titleText',
+  'willClose',
 ]
 
 export const deprecatedParams = {
   animation: 'showClass" and "hideClass',
   onBeforeOpen: 'willOpen',
   onOpen: 'didOpen',
+  onRender: 'didRender',
+  onClose: 'willClose',
+  onAfterClose: 'didClose',
 }
 
 const toastIncompatibleParams = [

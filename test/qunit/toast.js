@@ -110,7 +110,7 @@ QUnit.test('Body classes are removed after closing toats', (assert) => {
     didOpen: () => {
       Toast.close()
     },
-    onAfterClose: () => {
+    didClose: () => {
       assert.notOk(document.body.classList.contains('swal2-shown'))
       assert.notOk(document.body.classList.contains('swal2-toast-shown'))
       done()

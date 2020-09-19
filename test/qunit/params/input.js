@@ -360,7 +360,7 @@ QUnit.test('Swal.getInput() should return null when a popup is disposed', (asser
 
   SwalWithoutAnimation.fire({
     input: 'text',
-    onAfterClose: () => {
+    didClose: () => {
       setTimeout(() => {
         assert.notOk(Swal.getInput())
         done()

@@ -4,7 +4,7 @@ describe('close()', () => {
   it('should add .swal2-hide to popup', (done) => {
     Swal.fire({
       title: 'Swal.close() test',
-      onClose: () => {
+      willClose: () => {
         expect(Swal.getPopup().classList.contains('swal2-hide')).to.be.true
         done()
       }
@@ -24,9 +24,9 @@ describe('close()', () => {
     Swal.close()
   })
 
-  it('should trigger onClose', (done) => {
+  it('should trigger willClose', (done) => {
     Swal.fire({
-      onClose: () => {
+      willClose: () => {
         expect(Swal.isVisible()).to.be.true
         done()
       }
@@ -34,9 +34,9 @@ describe('close()', () => {
     Swal.close()
   })
 
-  it('should trigger onAfterClose', (done) => {
+  it('should trigger didClose', (done) => {
     SwalWithoutAnimation.fire({
-      onAfterClose: () => {
+      didClose: () => {
         expect(Swal.isVisible()).to.be.false
         done()
       }
@@ -44,9 +44,9 @@ describe('close()', () => {
     Swal.close()
   })
 
-  it('should not fail when calling Swal.fire() inside onAfterClose', (done) => {
+  it('should not fail when calling Swal.fire() inside didClose', (done) => {
     SwalWithoutAnimation.fire({
-      onAfterClose: () => {
+      didClose: () => {
         expect(Swal.isVisible()).to.be.false
         SwalWithoutAnimation.fire({
           input: 'text',
@@ -61,9 +61,9 @@ describe('close()', () => {
     Swal.close()
   })
 
-  it('should not fail inside onAfterClose', (done) => {
+  it('should not fail inside didClose', (done) => {
     Swal.fire({
-      onAfterClose: () => {
+      didClose: () => {
         Swal.close()
         expect(Swal.isVisible()).to.be.false
         done()

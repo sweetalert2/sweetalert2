@@ -271,17 +271,17 @@ describe('Miscellaneous tests', function () {
     expect(didRender.alwaysCalledWithExactly(Swal.getPopup())).to.be.true
   })
 
-  it('onAfterClose', (done) => {
-    let onCloseFinished = false
+  it('didClose', (done) => {
+    let willCloseFinished = false
 
-    // create a modal with an onAfterClose callback
+    // create a modal with an didClose callback
     Swal.fire({
-      title: 'onAfterClose test',
-      onClose: () => {
-        onCloseFinished = true
+      title: 'didClose test',
+      willClose: () => {
+        willCloseFinished = true
       },
-      onAfterClose: () => {
-        expect(onCloseFinished).to.be.true
+      didClose: () => {
+        expect(willCloseFinished).to.be.true
         expect(Swal.getContainer()).to.be.null
         done()
       }
@@ -308,11 +308,11 @@ describe('Miscellaneous tests', function () {
     Swal.getConfirmButton().click()
   })
 
-  it('onClose', (done) => {
-    // create a modal with an onClose callback
+  it('willClose', (done) => {
+    // create a modal with an willClose callback
     Swal.fire({
-      title: 'onClose test',
-      onClose: (_modal) => {
+      title: 'willClose test',
+      willClose: (_modal) => {
         expect(modal).to.equal(_modal)
         expect(Swal.getContainer()).to.equal($('.swal2-container'))
         done()
@@ -323,12 +323,12 @@ describe('Miscellaneous tests', function () {
     Swal.getCloseButton().click()
   })
 
-  it('Swal.fire() in onClose', (done) => {
+  it('Swal.fire() in willClose', (done) => {
     Swal.fire({
-      title: 'onClose test',
-      onClose: () => {
+      title: 'willClose test',
+      willClose: () => {
         Swal.fire({
-          text: 'OnClose',
+          text: 'WillClose',
           input: 'text',
           customClass: {
             input: 'on-close-swal'
@@ -627,15 +627,15 @@ describe('Outside click', () => {
   })
 
   it('double backdrop click', (done) => {
-    const onAfterClose = cy.spy()
+    const didClose = cy.spy()
     Swal.fire({
-      title: 'onAfterClose should be triggered once',
-      onAfterClose
+      title: 'didClose should be triggered once',
+      didClose
     })
     Swal.getContainer().click()
     Swal.getContainer().click()
     setTimeout(() => {
-      expect(onAfterClose.calledOnce).to.be.true
+      expect(didClose.calledOnce).to.be.true
       done()
     }, 500)
   })

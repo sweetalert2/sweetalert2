@@ -97,7 +97,7 @@ QUnit.test('the vertical scrollbar should be hidden and the according padding-ri
 
   Swal.fire({
     title: 'The body has visible scrollbar, I will hide it and adjust padding-right on body',
-    onAfterClose: () => {
+    didClose: () => {
       assert.equal(bodyStyles.paddingRight, '30px')
       document.body.removeChild(talltDiv)
       done()
@@ -119,7 +119,7 @@ QUnit.test('scrollbarPadding disabled', (assert) => {
   Swal.fire({
     title: 'Padding right adjustment disabled',
     scrollbarPadding: false,
-    onAfterClose: () => {
+    didClose: () => {
       document.body.removeChild(talltDiv)
     }
   })
@@ -494,18 +494,18 @@ QUnit.test('didRender', (assert) => {
   assert.ok(didRender.alwaysCalledWithExactly(Swal.getPopup()))
 })
 
-QUnit.test('onAfterClose', (assert) => {
+QUnit.test('didClose', (assert) => {
   const done = assert.async()
-  let onCloseFinished = false
+  let willCloseFinished = false
 
-  // create a modal with an onAfterClose callback
+  // create a modal with an didClose callback
   Swal.fire({
-    title: 'onAfterClose test',
-    onClose: () => {
-      onCloseFinished = true
+    title: 'didClose test',
+    willClose: () => {
+      willCloseFinished = true
     },
-    onAfterClose: () => {
-      assert.ok(onCloseFinished)
+    didClose: () => {
+      assert.ok(willCloseFinished)
       assert.notOk(Swal.getContainer())
       done()
     }
@@ -514,13 +514,13 @@ QUnit.test('onAfterClose', (assert) => {
   Swal.getCloseButton().click()
 })
 
-QUnit.test('onClose', (assert) => {
+QUnit.test('willClose', (assert) => {
   const done = assert.async()
 
-  // create a modal with an onClose callback
+  // create a modal with an willClose callback
   Swal.fire({
-    title: 'onClose test',
-    onClose: (_modal) => {
+    title: 'willClose test',
+    willClose: (_modal) => {
       assert.ok(modal, _modal)
       assert.ok(Swal.getContainer())
       done()
@@ -550,14 +550,14 @@ QUnit.test('onDestroy', (assert) => {
   Swal.getConfirmButton().click()
 })
 
-QUnit.test('Swal.fire() in onClose', (assert) => {
+QUnit.test('Swal.fire() in willClose', (assert) => {
   const done = assert.async()
 
   Swal.fire({
-    title: 'onClose test',
-    onClose: () => {
+    title: 'willClose test',
+    willClose: () => {
       Swal.fire({
-        text: 'OnClose',
+        text: 'WillClose',
         input: 'text',
         customClass: {
           input: 'on-close-swal'

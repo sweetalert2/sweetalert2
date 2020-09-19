@@ -83,7 +83,7 @@ QUnit.test('focusDeny', (assert) => {
 //       text: 'I should not touch previousActiveElement',
 //       toast: true,
 //       timer: 1,
-//       onAfterClose: () => {
+//       didClose: () => {
 //         buttonModal.focus()
 //         buttonModal.click()
 //       }
@@ -94,7 +94,7 @@ QUnit.test('focusDeny', (assert) => {
 //     SwalWithoutAnimation.fire({
 //       text: 'I should trap focus inside myself and restore previousActiveElement when I\'m closed',
 //       timer: 1,
-//       onAfterClose: () => {
+//       didClose: () => {
 //         assert.equal(document.activeElement, buttonModal)
 //         done()
 //       }

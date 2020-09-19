@@ -98,7 +98,7 @@ describe('Toast', () => {
       didOpen: () => {
         Toast.close()
       },
-      onAfterClose: () => {
+      didClose: () => {
         expect(document.body.classList.contains('swal2-shown')).to.be.false
         expect(document.body.classList.contains('swal2-toast-shown')).to.be.false
         done()

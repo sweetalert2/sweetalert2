@@ -395,6 +395,7 @@ declare module 'sweetalert2' {
     | 'denyButtonAriaLabel'
     | 'denyButtonColor'
     | 'denyButtonText'
+    | 'didClose'
     | 'footer'
     | 'hideClass'
     | 'html'
@@ -414,7 +415,8 @@ declare module 'sweetalert2' {
     | 'showDenyButton'
     | 'text'
     | 'title'
-    | 'titleText';
+    | 'titleText'
+    | 'willClose';
 
   export interface SweetAlertCustomClass {
     container?: string;
@@ -1044,23 +1046,38 @@ declare module 'sweetalert2' {
      * {@link didRender} rather than {@link willOpen}.
      *
      * @default undefined
+     * @param popup The modal DOM element.
      */
     didRender?(popup: HTMLElement): void;
 
     /**
-     * Function to run when popup closes by user interaction (and not by another popup), provides popup DOM element
-     * as the first argument.
-     *
+     * @deprecated Use drop-in replacement {@link willClose} instead.
      * @default undefined
      */
     onClose?(popup: HTMLElement): void;
 
     /**
-     * Function to run after popup has been disposed by user interaction (and not by another popup).
-     *
+     * @deprecated Use drop-in replacement {@link didClose} instead.
      * @default undefined
      */
     onAfterClose?(): void;
+
+    /**
+     * Modal lifecycle hook. Synchronously runs when the popup closes by user interaction (and not due to another popup
+     * being fired).
+     *
+     * @default undefined
+     * @param popup The modal DOM element.
+     */
+    willClose?(popup: HTMLElement): void;
+
+    /**
+     * Modal lifecycle hook. Asynchronously runs after the popup has been disposed by user interaction (and not due to
+     * another popup being fired).
+     *
+     * @default undefined
+     */
+    didClose?(): void;
 
     /**
      * Function to run after popup has been destroyed either by user interaction or by another popup.

@@ -50,7 +50,7 @@ describe('close()', () => {
         expect(Swal.isVisible()).to.be.false
         SwalWithoutAnimation.fire({
           input: 'text',
-          onOpen: () => {
+          didOpen: () => {
             expect(Swal.getInput()).to.not.be.null
             done()
           }

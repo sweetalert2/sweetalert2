@@ -107,7 +107,7 @@ QUnit.test('Body classes are removed after closing toats', (assert) => {
   const done = assert.async()
 
   Toast.fire({
-    onOpen: () => {
+    didOpen: () => {
       Toast.close()
     },
     onAfterClose: () => {

@@ -7,7 +7,7 @@ describe('Vertical scrollbar', () => {
       imageUrl: 'https://placeholder.pics/svg/300x1500',
       imageHeight: 1500,
       imageAlt: 'A tall image',
-      onOpen: () => {
+      didOpen: () => {
         expect(Swal.getContainer().scrollTop).to.equal(0)
         expect(Swal.getContainer().style.overflowY).to.equal('auto')
         Swal.close()
@@ -71,7 +71,7 @@ describe('Vertical scrollbar', () => {
       Swal.fire({
         text: 'Body padding-right should be restored',
         toast: true,
-        onOpen: () => {
+        didOpen: () => {
           expect(bodyStyles.paddingRight).to.equal('30px')
           document.body.removeChild(talltDiv)
           done()

@@ -4,7 +4,7 @@ QUnit.test('basic mixin', (assert) => {
   const done = assert.async()
   const MySwal = Swal.mixin({ title: '1_title' })
   const swal = MySwal.fire({
-    onOpen: () => {
+    didOpen: () => {
       assert.equal(MySwal.getTitle().textContent, '1_title')
       MySwal.clickConfirm()
     }
@@ -27,7 +27,7 @@ QUnit.test('mixins and shorthand calls', (assert) => {
   const MySwal = Swal.mixin({
     title: 'no effect',
     html: 'no effect',
-    onOpen: () => {
+    didOpen: () => {
       assert.equal(MySwal.getTitle().textContent, '2_title')
       assert.equal(MySwal.getContent().textContent, '2_html')
       MySwal.clickConfirm()

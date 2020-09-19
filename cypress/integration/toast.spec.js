@@ -95,7 +95,7 @@ describe('Toast', () => {
 
   it('Body classes are removed after closing toats', (done) => {
     Toast.fire({
-      onOpen: () => {
+      didOpen: () => {
         Toast.close()
       },
       onAfterClose: () => {

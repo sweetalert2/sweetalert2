@@ -104,7 +104,7 @@ describe('should trap focus in modals', () => {
       showDenyButton: true,
       showCancelButton: true,
       showCloseButton: true,
-      onOpen: () => {
+      didOpen: () => {
         expect(document.activeElement).to.equal(Swal.getInput())
         triggerKeydownEvent(document.activeElement, 'Tab')
         expect(document.activeElement).to.equal(Swal.getConfirmButton())
@@ -127,7 +127,7 @@ describe('should trap focus in modals', () => {
       showDenyButton: true,
       showCancelButton: true,
       showCloseButton: true,
-      onOpen: () => {
+      didOpen: () => {
         expect(document.activeElement).to.equal(Swal.getInput())
         triggerKeydownEvent(document.activeElement, 'Tab', { shiftKey: true })
         expect(document.activeElement).to.equal(Swal.getCloseButton())
@@ -148,7 +148,7 @@ describe('should trap focus in modals', () => {
     Swal.fire({
       showDenyButton: true,
       showCancelButton: true,
-      onOpen: () => {
+      didOpen: () => {
         triggerKeydownEvent(document.activeElement, 'ArrowRight')
         expect(document.activeElement).to.equal(Swal.getDenyButton())
         triggerKeydownEvent(document.activeElement, 'ArrowRight')
@@ -180,7 +180,7 @@ describe('Focus', () => {
     SwalWithoutAnimation.fire({
       text: 'Modal with an input',
       input: 'text',
-      onOpen: () => {
+      didOpen: () => {
         expect(document.activeElement).to.equal(document.querySelector('.swal2-input'))
         done()
       }

@@ -136,7 +136,7 @@ describe('Input', () => {
     Swal.fire({
       input: 'select',
       inputOptions: Promise.resolve({ one: 1, two: 2 }),
-      onOpen: () => {
+      didOpen: () => {
         setTimeout(() => {
           Swal.getInput().value = 'one'
           expect(Swal.getInput().value).to.equal('one')
@@ -152,7 +152,7 @@ describe('Input', () => {
       inputOptions: {
         toPromise: () => Promise.resolve({ three: 3, four: 4 })
       },
-      onOpen: () => {
+      didOpen: () => {
         setTimeout(() => {
           Swal.getInput().value = 'three'
           expect(Swal.getInput().value).to.equal('three')

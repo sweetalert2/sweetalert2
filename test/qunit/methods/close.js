@@ -58,7 +58,7 @@ QUnit.test('Swal.fire() inside onAfterClose', (assert) => {
       assert.notOk(Swal.isVisible())
       SwalWithoutAnimation.fire({
         input: 'text',
-        onOpen: () => {
+        didOpen: () => {
           assert.notDeepEqual(Swal.getInput(), null)
           done()
         }

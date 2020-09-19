@@ -21,7 +21,7 @@ QUnit.test('default focus', (assert) => {
   SwalWithoutAnimation.fire({
     text: 'Modal with an input',
     input: 'text',
-    onOpen: () => {
+    didOpen: () => {
       assert.equal(document.activeElement, document.querySelector('.swal2-input'))
       done()
     }

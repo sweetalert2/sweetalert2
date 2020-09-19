@@ -41,7 +41,7 @@ describe('showLoading() and hideLoading()', () => {
     Swal.fire({
       showConfirmButton: false,
       loaderHtml: '<i>hi</i>',
-      onOpen: () => {
+      didOpen: () => {
         expect(isHidden(Swal.getActions())).to.be.true
         Swal.showLoading()
         expect(isVisible(Swal.getActions())).to.be.true

@@ -14,7 +14,7 @@ QUnit.test('showConfirmButton: false + showLoading()', (assert) => {
   Swal.fire({
     showConfirmButton: false,
     loaderHtml: '<i>hi</i>',
-    onOpen: () => {
+    didOpen: () => {
       assert.ok(isHidden(Swal.getActions()))
       Swal.showLoading()
       assert.ok(isVisible(Swal.getActions()))

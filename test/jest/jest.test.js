@@ -15,7 +15,7 @@ describe('sweetalert2', () => {
             popup: '',
             container: ''
           },
-          onOpen: () => {
+          didOpen: () => {
             Swal.clickConfirm()
           }
         })

@@ -214,35 +214,35 @@ describe('Miscellaneous tests', function () {
     })
   })
 
-  it('onOpen', (done) => {
-    // create a modal with an onOpen callback
+  it('didOpen', (done) => {
+    // create a modal with an didOpen callback
     Swal.fire({
-      title: 'onOpen test',
-      onOpen: (modal) => {
+      title: 'didOpen test',
+      didOpen: (modal) => {
         expect(Swal.getPopup()).to.equal(modal)
         done()
       }
     })
   })
 
-  it('onBeforeOpen', (done) => {
-    // create a modal with an onBeforeOpen callback
+  it('willOpen', (done) => {
+    // create a modal with an willOpen callback
     Swal.fire({
-      title: 'onBeforeOpen test',
-      onBeforeOpen: (modal) => {
+      title: 'willOpen test',
+      willOpen: (modal) => {
         expect(Swal.isVisible()).to.be.false
         expect(Swal.getPopup()).to.equal(modal)
       }
     })
 
-    // check that onBeforeOpen calls properly
-    const dynamicTitle = 'Set onBeforeOpen title'
+    // check that willOpen calls properly
+    const dynamicTitle = 'Set willOpen title'
     Swal.fire({
-      title: 'onBeforeOpen test',
-      onBeforeOpen: () => {
+      title: 'willOpen test',
+      willOpen: () => {
         Swal.getTitle().innerHTML = dynamicTitle
       },
-      onOpen: () => {
+      didOpen: () => {
         expect(Swal.getTitle().innerHTML).to.equal(dynamicTitle)
         done()
       }
@@ -351,7 +351,7 @@ describe('Miscellaneous tests', function () {
 
     SwalWithoutAnimation.fire({
       title: 'Esc me',
-      onOpen: () => triggerKeydownEvent(Swal.getPopup(), 'Escape')
+      didOpen: () => triggerKeydownEvent(Swal.getPopup(), 'Escape')
     }).then((result) => {
       expect(result).to.eql({
         dismiss: Swal.DismissReason.esc,
@@ -372,7 +372,7 @@ describe('Miscellaneous tests', function () {
         functionWasCalled = true
         return false
       },
-      onOpen: () => {
+      didOpen: () => {
         expect(functionWasCalled).to.equal(false)
 
         triggerKeydownEvent(Swal.getPopup(), 'Escape')
@@ -540,7 +540,7 @@ describe('Miscellaneous tests', function () {
   it('Custom content', (done) => {
     Swal.fire({
       showCancelButton: true,
-      onOpen: () => {
+      didOpen: () => {
         Swal.getContent().textContent = 'Custom content'
         Swal.clickConfirm()
       },
@@ -553,7 +553,7 @@ describe('Miscellaneous tests', function () {
 
   it('preConfirm returns 0', (done) => {
     SwalWithoutAnimation.fire({
-      onOpen: () => Swal.clickConfirm(),
+      didOpen: () => Swal.clickConfirm(),
       preConfirm: () => 0,
     }).then(result => {
       expect(result.value).to.equal(0)
@@ -563,7 +563,7 @@ describe('Miscellaneous tests', function () {
 
   it('preConfirm returns object containing toPromise', (done) => {
     SwalWithoutAnimation.fire({
-      onOpen: () => Swal.clickConfirm(),
+      didOpen: () => Swal.clickConfirm(),
       preConfirm: () => ({
         toPromise: () => Promise.resolve(0)
       })

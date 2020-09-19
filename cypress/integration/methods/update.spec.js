@@ -161,7 +161,7 @@ describe('update()', () => {
   it('should not affect showClass', (done) => {
     Swal.fire({
       icon: 'success',
-      onOpen: () => {
+      didOpen: () => {
         Swal.update({})
         expect(Swal.getContainer().classList.contains('swal2-backdrop-show')).to.be.true
         expect(Swal.getPopup().classList.contains('swal2-show')).to.be.true

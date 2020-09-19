@@ -77,6 +77,8 @@ export const defaultParams = {
   progressStepsDistance: undefined,
   onBeforeOpen: undefined,
   onOpen: undefined,
+  willOpen: undefined,
+  didOpen: undefined,
   onRender: undefined,
   onClose: undefined,
   onAfterClose: undefined,
@@ -127,6 +129,8 @@ export const updatableParams = [
 
 export const deprecatedParams = {
   animation: 'showClass" and "hideClass',
+  onBeforeOpen: 'willOpen',
+  onOpen: 'didOpen',
 }
 
 const toastIncompatibleParams = [

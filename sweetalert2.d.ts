@@ -638,9 +638,9 @@ declare module 'sweetalert2' {
     timerProgressBar?: boolean;
 
     /**
-     * @deprecated
      * If set to `false`, popup CSS animation will be disabled.
      *
+     * @deprecated
      * @default true
      */
     animation?: ValueOrThunk<boolean>;
@@ -1003,18 +1003,32 @@ declare module 'sweetalert2' {
     progressStepsDistance?: string;
 
     /**
-     * Function to run when popup built, but not shown yet. Provides popup DOM element as the first argument.
-     *
+     * @deprecated Use drop-in replacement {@link willOpen} instead.
      * @default undefined
      */
     onBeforeOpen?(popup: HTMLElement): void;
 
     /**
-     * Function to run when popup opens, provides popup DOM element as the first argument.
-     *
+     * @deprecated Use drop-in replacement {@link didOpen} instead.
      * @default undefined
      */
     onOpen?(popup: HTMLElement): void;
+
+    /**
+     * Modal lifecycle hook. Runs before the modal is shown on screen.
+     *
+     * @default undefined
+     * @param popup The modal DOM element.
+     */
+    willOpen?(popup: HTMLElement): void;
+
+    /**
+     * Modal lifecycle hook. Runs after the modal has been shown on screen.
+     *
+     * @default undefined
+     * @param popup The modal DOM element.
+     */
+    didOpen?(popup: HTMLElement): void;
 
     /**
      * Function to run after popup DOM has been updated.

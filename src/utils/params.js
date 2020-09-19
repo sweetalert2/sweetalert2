@@ -1,4 +1,4 @@
-import { warn, warnAboutDepreation } from '../utils/utils.js'
+import { warn, warnAboutDeprecation } from '../utils/utils.js'
 
 export const defaultParams = {
   title: '',
@@ -193,7 +193,7 @@ const checkIfToastParamIsValid = (param) => {
 
 const checkIfParamIsDeprecated = (param) => {
   if (isDeprecatedParameter(param)) {
-    warnAboutDepreation(param, isDeprecatedParameter(param))
+    warnAboutDeprecation(param, isDeprecatedParameter(param))
   }
 }
 

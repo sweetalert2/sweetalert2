@@ -290,17 +290,17 @@ describe('Miscellaneous tests', function () {
     Swal.getCloseButton().click()
   })
 
-  it('onDestroy', (done) => {
+  it('didDestroy', (done) => {
     let firstPopupDestroyed = false
     Swal.fire({
       title: '1',
-      onDestroy: () => {
+      didDestroy: () => {
         firstPopupDestroyed = true
       }
     })
     Swal.fire({
       title: '2',
-      onDestroy: () => {
+      didDestroy: () => {
         done()
       }
     })

@@ -396,6 +396,7 @@ declare module 'sweetalert2' {
     | 'denyButtonColor'
     | 'denyButtonText'
     | 'didClose'
+    | 'didDestroy'
     | 'footer'
     | 'hideClass'
     | 'html'
@@ -1042,8 +1043,8 @@ declare module 'sweetalert2' {
      * Modal lifecycle hook. Synchronously runs after the popup DOM has been updated (ie. just before the modal is
      * repainted on the screen).
      * Typically, this will happen after `Swal.fire()` or `Swal.update()`.
-     * If you want to perform changes in the popup's DOM, that survive `Swal.update()`, you want to use
-     * {@link didRender} rather than {@link willOpen}.
+     * If you want to perform changes in the popup's DOM, that survive `Swal.update()`, prefer {@link didRender} over
+     * {@link willOpen}.
      *
      * @default undefined
      * @param popup The modal DOM element.
@@ -1080,11 +1081,20 @@ declare module 'sweetalert2' {
     didClose?(): void;
 
     /**
-     * Function to run after popup has been destroyed either by user interaction or by another popup.
-     *
+     * @deprecated Use drop-in replacement {@link didDestroy} instead.
      * @default undefined
      */
     onDestroy?(): void;
+
+    /**
+     * Modal lifecycle hook. Synchronously runs after popup has been destroyed either by user interaction or by another
+     * popup.
+     * If you have cleanup operations that you need to reliably execute each time a modal is closed, prefer
+     * {@link didDestroy} over {@link didClose}.
+     *
+     * @default undefined
+     */
+    didDestroy?(): void;
 
     /**
      * Set to `false` to disable body padding adjustment when scrollbar is present.

@@ -86,6 +86,7 @@ export const defaultParams = {
   willClose: undefined,
   didClose: undefined,
   onDestroy: undefined,
+  didDestroy: undefined,
   scrollbarPadding: true
 }
 
@@ -108,6 +109,7 @@ export const updatableParams = [
   'denyButtonColor',
   'denyButtonText',
   'didClose',
+  'didDestroy',
   'footer',
   'hideClass',
   'html',
@@ -139,6 +141,7 @@ export const deprecatedParams = {
   onRender: 'didRender',
   onClose: 'willClose',
   onAfterClose: 'didClose',
+  onDestroy: 'didDestroy',
 }
 
 const toastIncompatibleParams = [

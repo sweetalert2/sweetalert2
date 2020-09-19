@@ -80,6 +80,7 @@ export const defaultParams = {
   willOpen: undefined,
   didOpen: undefined,
   onRender: undefined,
+  didRender: undefined,
   onClose: undefined,
   onAfterClose: undefined,
   onDestroy: undefined,

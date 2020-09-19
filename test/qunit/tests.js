@@ -472,26 +472,26 @@ QUnit.test('willOpen', (assert) => {
   })
 })
 
-QUnit.test('onRender', (assert) => {
-  const onRender = sinon.fake()
+QUnit.test('didRender', (assert) => {
+  const didRender = sinon.fake()
 
-  // create a modal with an onRender callback
-  // the onRender hook should be called once here
+  // create a modal with an didRender callback
+  // the didRender hook should be called once here
   Swal.fire({
-    title: 'onRender test',
-    onRender
+    title: 'didRender test',
+    didRender
   })
 
-  assert.ok(onRender.calledOnce)
+  assert.ok(didRender.calledOnce)
 
   // update the modal, causing a new render
-  // the onRender hook should be called once again
+  // the didRender hook should be called once again
   Swal.update({})
 
-  assert.ok(onRender.calledTwice)
+  assert.ok(didRender.calledTwice)
 
-  // the modal element must always be passed to the onRender hook
-  assert.ok(onRender.alwaysCalledWithExactly(Swal.getPopup()))
+  // the modal element must always be passed to the didRender hook
+  assert.ok(didRender.alwaysCalledWithExactly(Swal.getPopup()))
 })
 
 QUnit.test('onAfterClose', (assert) => {

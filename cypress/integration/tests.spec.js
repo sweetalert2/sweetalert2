@@ -249,26 +249,26 @@ describe('Miscellaneous tests', function () {
     })
   })
 
-  it('onRender', () => {
-    const onRender = cy.spy()
+  it('didRender', () => {
+    const didRender = cy.spy()
 
-    // create a modal with an onRender callback
-    // the onRender hook should be called once here
+    // create a modal with an didRender callback
+    // the didRender hook should be called once here
     Swal.fire({
-      title: 'onRender test',
-      onRender
+      title: 'didRender test',
+      didRender
     })
 
-    expect(onRender.calledOnce).to.be.true
+    expect(didRender.calledOnce).to.be.true
 
     // update the modal, causing a new render
-    // the onRender hook should be called once again
+    // the didRender hook should be called once again
     Swal.update({})
 
-    expect(onRender.calledTwice).to.be.true
+    expect(didRender.calledTwice).to.be.true
 
-    // the modal element must always be passed to the onRender hook
-    expect(onRender.alwaysCalledWithExactly(Swal.getPopup())).to.be.true
+    // the modal element must always be passed to the didRender hook
+    expect(didRender.alwaysCalledWithExactly(Swal.getPopup())).to.be.true
   })
 
   it('onAfterClose', (done) => {

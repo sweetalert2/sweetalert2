@@ -1015,7 +1015,7 @@ declare module 'sweetalert2' {
     onOpen?(popup: HTMLElement): void;
 
     /**
-     * Modal lifecycle hook. Runs before the modal is shown on screen.
+     * Modal lifecycle hook. Synchronously runs before the modal is shown on screen.
      *
      * @default undefined
      * @param popup The modal DOM element.
@@ -1023,7 +1023,7 @@ declare module 'sweetalert2' {
     willOpen?(popup: HTMLElement): void;
 
     /**
-     * Modal lifecycle hook. Runs after the modal has been shown on screen.
+     * Modal lifecycle hook. Asynchronously runs after the modal has been shown on screen.
      *
      * @default undefined
      * @param popup The modal DOM element.
@@ -1031,13 +1031,21 @@ declare module 'sweetalert2' {
     didOpen?(popup: HTMLElement): void;
 
     /**
-     * Function to run after popup DOM has been updated.
-     * Typically, this will happen after `Swal.fire()` or `Swal.update()`.
-     * If you want to perform changes in the popup's DOM, that survive `Swal.update()`, `onRender` is a good place.
-     *
+     * @deprecated Use drop-in replacement {@link didRender} instead.
      * @default undefined
      */
     onRender?(popup: HTMLElement): void;
+
+    /**
+     * Modal lifecycle hook. Synchronously runs after the popup DOM has been updated (ie. just before the modal is
+     * repainted on the screen).
+     * Typically, this will happen after `Swal.fire()` or `Swal.update()`.
+     * If you want to perform changes in the popup's DOM, that survive `Swal.update()`, you want to use
+     * {@link didRender} rather than {@link willOpen}.
+     *
+     * @default undefined
+     */
+    didRender?(popup: HTMLElement): void;
 
     /**
      * Function to run when popup closes by user interaction (and not by another popup), provides popup DOM element

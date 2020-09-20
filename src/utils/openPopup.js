@@ -37,16 +37,20 @@ export const openPopup = (params) => {
     globalState.previousActiveElement = document.activeElement
   }
 
+  runDidOpen(popup, params)
+
+  dom.removeClass(container, swalClasses['no-transition'])
+}
+
+const runDidOpen = (popup, params) => {
   if (typeof params.didOpen === 'function') {
     setTimeout(() => params.didOpen(popup))
   } else if (typeof params.onOpen === 'function') {
     setTimeout(() => params.onOpen(popup)) // @deprecated
   }
-
-  dom.removeClass(container, swalClasses['no-transition'])
 }
 
-function swalOpenAnimationFinished (event) {
+const swalOpenAnimationFinished = (event) => {
   const popup = dom.getPopup()
   if (event.target !== popup) {
     return

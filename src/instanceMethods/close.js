@@ -103,17 +103,21 @@ const handlePopupAnimation = (instance, popup, innerParams) => {
     willClose, didClose
   } = innerParams
 
-  if (willClose !== null && typeof willClose === 'function') {
-    willClose(popup)
-  } else if (onClose !== null && typeof onClose === 'function') {
-    onClose(popup) // @deprecated
-  }
+  runDidClose(popup, willClose, onClose)
 
   if (animationIsSupported) {
     animatePopup(instance, popup, container, didClose ?? onAfterClose)
   } else {
     // Otherwise, remove immediately
     removePopupAndResetState(instance, container, dom.isToast(), didClose ?? onAfterClose)
+  }
+}
+
+const runDidClose = (popup, willClose, onClose) => {
+  if (willClose !== null && typeof willClose === 'function') {
+    willClose(popup)
+  } else if (onClose !== null && typeof onClose === 'function') {
+    onClose(popup) // @deprecated
   }
 }
 

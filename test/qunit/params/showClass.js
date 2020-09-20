@@ -11,7 +11,7 @@ QUnit.test('showClass + hideClass', (assert) => {
     hideClass: {
       popup: 'animated fadeOutUp faster'
     },
-    onAfterClose: () => {
+    didClose: () => {
       assert.notOk(Swal.isVisible())
       done()
     }

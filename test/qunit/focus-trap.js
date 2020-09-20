@@ -7,7 +7,7 @@ QUnit.test('focus trap forward', (assert) => {
     showCancelButton: true,
     showDenyButton: true,
     showCloseButton: true,
-    onOpen: () => {
+    didOpen: () => {
       assert.equal(document.activeElement, Swal.getInput())
       triggerKeydownEvent(document.activeElement, 'Tab')
       assert.equal(document.activeElement, Swal.getConfirmButton())
@@ -31,7 +31,7 @@ QUnit.test('focus trap backward', (assert) => {
     showDenyButton: true,
     showCancelButton: true,
     showCloseButton: true,
-    onOpen: () => {
+    didOpen: () => {
       assert.equal(document.activeElement, Swal.getInput())
       triggerKeydownEvent(document.activeElement, 'Tab', { shiftKey: true })
       assert.equal(document.activeElement, Swal.getCloseButton())
@@ -53,7 +53,7 @@ QUnit.test('arrow keys', (assert) => {
   Swal.fire({
     showDenyButton: true,
     showCancelButton: true,
-    onOpen: () => {
+    didOpen: () => {
       triggerKeydownEvent(document.activeElement, isIE ? 'Right' : 'ArrowRight')
       assert.equal(document.activeElement, Swal.getDenyButton())
       triggerKeydownEvent(document.activeElement, isIE ? 'Right' : 'ArrowRight')

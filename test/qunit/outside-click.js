@@ -27,18 +27,18 @@ QUnit.test('backdrop click', (assert) => {
 
 QUnit.test('double backdrop click', (assert) => {
   const done = assert.async()
-  const onAfterClose = sinon.fake()
+  const didClose = sinon.fake()
 
   Swal.fire({
-    title: 'onAfterClose should be triggered once',
-    onAfterClose
+    title: 'didClose should be triggered once',
+    didClose
   })
 
   Swal.getContainer().click()
   Swal.getContainer().click()
 
   setTimeout(() => {
-    assert.ok(onAfterClose.calledOnce)
+    assert.ok(didClose.calledOnce)
     done()
   }, 500)
 })

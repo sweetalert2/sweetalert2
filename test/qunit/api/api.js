@@ -14,7 +14,7 @@ QUnit.test('properties of `Swal` class are consistent', (assert) => {
   assertConsistent('before first swal')
   Swal.fire({
     title: 'test',
-    onOpen: () => {
+    didOpen: () => {
       assertConsistent('after opening first swal')
       Swal.clickConfirm()
     }
@@ -50,7 +50,7 @@ QUnit.test('extending swal', (assert) => {
       return super._main({
         input: 'text',
         inputValue: 'inputValue',
-        onOpen: () => MySwal.clickConfirm()
+        didOpen: () => MySwal.clickConfirm()
       }).then(result => {
         assert.deepEqual(result, {
           value: 'inputValue',

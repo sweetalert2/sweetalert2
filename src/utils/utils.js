@@ -69,7 +69,7 @@ export const warnOnce = (message) => {
 /**
  * Show a one-time console warning about deprecated params/methods
  */
-export const warnAboutDepreation = (deprecatedParam, useInstead) => {
+export const warnAboutDeprecation = (deprecatedParam, useInstead) => {
   warnOnce(`"${deprecatedParam}" is deprecated and will be removed in the next major release. Please use "${useInstead}" instead.`)
 }
 

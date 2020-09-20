@@ -23,7 +23,7 @@ QUnit.test('container scrolled to top and has scrollbar on open', (assert) => {
     imageUrl: 'https://placeholder.pics/svg/300x1500',
     imageHeight: 1500,
     imageAlt: 'A tall image',
-    onOpen: () => {
+    didOpen: () => {
       assert.equal(Swal.getContainer().scrollTop, 0)
       assert.equal(Swal.getContainer().style.overflowY, 'auto')
       done()
@@ -97,7 +97,7 @@ QUnit.test('the vertical scrollbar should be hidden and the according padding-ri
 
   Swal.fire({
     title: 'The body has visible scrollbar, I will hide it and adjust padding-right on body',
-    onAfterClose: () => {
+    didClose: () => {
       assert.equal(bodyStyles.paddingRight, '30px')
       document.body.removeChild(talltDiv)
       done()
@@ -119,7 +119,7 @@ QUnit.test('scrollbarPadding disabled', (assert) => {
   Swal.fire({
     title: 'Padding right adjustment disabled',
     scrollbarPadding: false,
-    onAfterClose: () => {
+    didClose: () => {
       document.body.removeChild(talltDiv)
     }
   })
@@ -142,7 +142,7 @@ QUnit.test('the vertical scrollbar should be restored before a toast is fired af
     Swal.fire({
       text: 'Body padding-right should be restored',
       toast: true,
-      onOpen: () => {
+      didOpen: () => {
         assert.equal(bodyStyles.paddingRight, '30px')
         document.body.removeChild(talltDiv)
         done()
@@ -433,79 +433,79 @@ QUnit.test('modal vertical offset', (assert) => {
   })
 })
 
-QUnit.test('onOpen', (assert) => {
+QUnit.test('didOpen', (assert) => {
   const done = assert.async()
 
-  // create a modal with an onOpen callback
+  // create a modal with an didOpen callback
   Swal.fire({
-    title: 'onOpen test',
-    onOpen: (modal) => {
+    title: 'didOpen test',
+    didOpen: (modal) => {
       assert.equal(Swal.getPopup(), modal)
       done()
     }
   })
 })
 
-QUnit.test('onBeforeOpen', (assert) => {
+QUnit.test('willOpen', (assert) => {
   const done = assert.async()
 
-  // create a modal with an onBeforeOpen callback
+  // create a modal with an willOpen callback
   Swal.fire({
-    title: 'onBeforeOpen test',
-    onBeforeOpen: (modal) => {
+    title: 'willOpen test',
+    willOpen: (modal) => {
       assert.notOk(Swal.isVisible())
       assert.equal(Swal.getPopup(), modal)
     }
   })
 
-  // check that onBeforeOpen calls properly
-  const dynamicTitle = 'Set onBeforeOpen title'
+  // check that willOpen calls properly
+  const dynamicTitle = 'Set willOpen title'
   Swal.fire({
-    title: 'onBeforeOpen test',
-    onBeforeOpen: () => {
+    title: 'willOpen test',
+    willOpen: () => {
       Swal.getTitle().innerHTML = dynamicTitle
     },
-    onOpen: () => {
+    didOpen: () => {
       assert.equal(Swal.getTitle().innerHTML, dynamicTitle)
       done()
     }
   })
 })
 
-QUnit.test('onRender', (assert) => {
-  const onRender = sinon.fake()
+QUnit.test('didRender', (assert) => {
+  const didRender = sinon.fake()
 
-  // create a modal with an onRender callback
-  // the onRender hook should be called once here
+  // create a modal with an didRender callback
+  // the didRender hook should be called once here
   Swal.fire({
-    title: 'onRender test',
-    onRender
+    title: 'didRender test',
+    didRender
   })
 
-  assert.ok(onRender.calledOnce)
+  assert.ok(didRender.calledOnce)
 
   // update the modal, causing a new render
-  // the onRender hook should be called once again
+  // the didRender hook should be called once again
   Swal.update({})
 
-  assert.ok(onRender.calledTwice)
+  assert.ok(didRender.calledTwice)
 
-  // the modal element must always be passed to the onRender hook
-  assert.ok(onRender.alwaysCalledWithExactly(Swal.getPopup()))
+  // the modal element must always be passed to the didRender hook
+  assert.ok(didRender.alwaysCalledWithExactly(Swal.getPopup()))
 })
 
-QUnit.test('onAfterClose', (assert) => {
+QUnit.test('didClose', (assert) => {
   const done = assert.async()
-  let onCloseFinished = false
+  let willCloseFinished = false
 
-  // create a modal with an onAfterClose callback
+  // create a modal with an didClose callback
   Swal.fire({
-    title: 'onAfterClose test',
-    onClose: () => {
-      onCloseFinished = true
+    title: 'didClose test',
+    willClose: () => {
+      willCloseFinished = true
     },
-    onAfterClose: () => {
-      assert.ok(onCloseFinished)
+    didClose: () => {
+      assert.ok(willCloseFinished)
       assert.notOk(Swal.getContainer())
       done()
     }
@@ -514,13 +514,13 @@ QUnit.test('onAfterClose', (assert) => {
   Swal.getCloseButton().click()
 })
 
-QUnit.test('onClose', (assert) => {
+QUnit.test('willClose', (assert) => {
   const done = assert.async()
 
-  // create a modal with an onClose callback
+  // create a modal with an willClose callback
   Swal.fire({
-    title: 'onClose test',
-    onClose: (_modal) => {
+    title: 'willClose test',
+    willClose: (_modal) => {
       assert.ok(modal, _modal)
       assert.ok(Swal.getContainer())
       done()
@@ -531,18 +531,18 @@ QUnit.test('onClose', (assert) => {
   Swal.getCloseButton().click()
 })
 
-QUnit.test('onDestroy', (assert) => {
+QUnit.test('didDestroy', (assert) => {
   const done = assert.async()
   let firstPopupDestroyed = false
   Swal.fire({
     title: '1',
-    onDestroy: () => {
+    didDestroy: () => {
       firstPopupDestroyed = true
     }
   })
   Swal.fire({
     title: '2',
-    onDestroy: () => {
+    didDestroy: () => {
       done()
     }
   })
@@ -550,14 +550,14 @@ QUnit.test('onDestroy', (assert) => {
   Swal.getConfirmButton().click()
 })
 
-QUnit.test('Swal.fire() in onClose', (assert) => {
+QUnit.test('Swal.fire() in willClose', (assert) => {
   const done = assert.async()
 
   Swal.fire({
-    title: 'onClose test',
-    onClose: () => {
+    title: 'willClose test',
+    willClose: () => {
       Swal.fire({
-        text: 'OnClose',
+        text: 'WillClose',
         input: 'text',
         customClass: {
           input: 'on-close-swal'
@@ -582,7 +582,7 @@ QUnit.test('esc key', (assert) => {
 
   SwalWithoutAnimation.fire({
     title: 'Esc me',
-    onOpen: () => triggerKeydownEvent(Swal.getPopup(), 'Escape')
+    didOpen: () => triggerKeydownEvent(Swal.getPopup(), 'Escape')
   }).then((result) => {
     assert.deepEqual(result, {
       dismiss: Swal.DismissReason.esc,
@@ -605,7 +605,7 @@ QUnit.test('allowEscapeKey as a function', (assert) => {
       functionWasCalled = true
       return false
     },
-    onOpen: () => {
+    didOpen: () => {
       assert.equal(functionWasCalled, false)
 
       triggerKeydownEvent(Swal.getPopup(), 'Escape')
@@ -729,12 +729,12 @@ QUnit.test('should stop the animation of timer progress bar when timer is stoppe
   }, 20)
 })
 
-QUnit.test('should stop the animation of timer progress bar when timer is stopped in onOpen', (assert) => {
+QUnit.test('should stop the animation of timer progress bar when timer is stopped in didOpen', (assert) => {
   const done = assert.async()
   SwalWithoutAnimation.fire({
     timer: 100,
     timerProgressBar: true,
-    onOpen: Swal.stopTimer
+    didOpen: Swal.stopTimer
   })
   setTimeout(() => {
     assert.equal(Swal.getTimerProgressBar().style.transition, '')
@@ -818,7 +818,7 @@ QUnit.test('Custom content', (assert) => {
   const done = assert.async()
   Swal.fire({
     showCancelButton: true,
-    onOpen: () => {
+    didOpen: () => {
       Swal.getContent().textContent = 'Custom content'
       Swal.clickConfirm()
     },
@@ -832,7 +832,7 @@ QUnit.test('Custom content', (assert) => {
 QUnit.test('preConfirm returns 0', (assert) => {
   const done = assert.async()
   SwalWithoutAnimation.fire({
-    onOpen: () => Swal.clickConfirm(),
+    didOpen: () => Swal.clickConfirm(),
     preConfirm: () => 0
   }).then(result => {
     assert.equal(result.value, 0)
@@ -843,7 +843,7 @@ QUnit.test('preConfirm returns 0', (assert) => {
 QUnit.test('preConfirm returns object containing toPromise', (assert) => {
   const done = assert.async()
   SwalWithoutAnimation.fire({
-    onOpen: () => Swal.clickConfirm(),
+    didOpen: () => Swal.clickConfirm(),
     preConfirm: () => ({
       toPromise: () => Promise.resolve(0)
     })

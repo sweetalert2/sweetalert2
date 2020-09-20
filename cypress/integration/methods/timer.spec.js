@@ -165,11 +165,11 @@ describe('timerProgressBar', () => {
     }, 20)
   })
 
-  it('should stop the animation of timer progress bar when timer is stopped in onOpen', (done) => {
+  it('should stop the animation of timer progress bar when timer is stopped in didOpen', (done) => {
     SwalWithoutAnimation.fire({
       timer: 100,
       timerProgressBar: true,
-      onOpen: Swal.stopTimer
+      didOpen: Swal.stopTimer
     })
     setTimeout(() => {
       expect(Swal.getTimerProgressBar().style.transition).to.equal('')

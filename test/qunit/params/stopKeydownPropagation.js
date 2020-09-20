@@ -10,7 +10,7 @@ QUnit.test('stopKeydownPropagation', (assert) => {
 
   SwalWithoutAnimation.fire({
     title: 'Esc me and I will propagate keydown',
-    onOpen: () => triggerKeydownEvent(SwalWithoutAnimation.getPopup(), 'Escape'),
+    didOpen: () => triggerKeydownEvent(SwalWithoutAnimation.getPopup(), 'Escape'),
     stopKeydownPropagation: false
   })
 })

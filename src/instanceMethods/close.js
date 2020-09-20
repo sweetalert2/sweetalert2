@@ -12,11 +12,11 @@ import privateMethods from '../privateMethods.js'
  * Instance method to close sweetAlert
  */
 
-function removePopupAndResetState (instance, container, isToast, onAfterClose) {
+function removePopupAndResetState (instance, container, isToast, didClose) {
   if (isToast) {
-    triggerOnAfterCloseAndDispose(instance, onAfterClose)
+    triggerDidCloseAndDispose(instance, didClose)
   } else {
-    restoreActiveElement().then(() => triggerOnAfterCloseAndDispose(instance, onAfterClose))
+    restoreActiveElement().then(() => triggerDidCloseAndDispose(instance, didClose))
     globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
     globalState.keydownHandlerAdded = false
   }
@@ -98,22 +98,27 @@ const handlePopupAnimation = (instance, popup, innerParams) => {
   // If animation is supported, animate
   const animationIsSupported = dom.animationEndEvent && dom.hasCssAnimation(popup)
 
-  const { onClose, onAfterClose } = innerParams
+  const {
+    onClose, onAfterClose, // @deprecated
+    willClose, didClose
+  } = innerParams
 
-  if (onClose !== null && typeof onClose === 'function') {
-    onClose(popup)
+  if (willClose !== null && typeof willClose === 'function') {
+    willClose(popup)
+  } else if (onClose !== null && typeof onClose === 'function') {
+    onClose(popup) // @deprecated
   }
 
   if (animationIsSupported) {
-    animatePopup(instance, popup, container, onAfterClose)
+    animatePopup(instance, popup, container, didClose ?? onAfterClose)
   } else {
     // Otherwise, remove immediately
-    removePopupAndResetState(instance, container, dom.isToast(), onAfterClose)
+    removePopupAndResetState(instance, container, dom.isToast(), didClose ?? onAfterClose)
   }
 }
 
-const animatePopup = (instance, popup, container, onAfterClose) => {
-  globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(null, instance, container, dom.isToast(), onAfterClose)
+const animatePopup = (instance, popup, container, didClose) => {
+  globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(null, instance, container, dom.isToast(), didClose)
   popup.addEventListener(dom.animationEndEvent, function (e) {
     if (e.target === popup) {
       globalState.swalCloseEventFinishedCallback()
@@ -122,10 +127,10 @@ const animatePopup = (instance, popup, container, onAfterClose) => {
   })
 }
 
-const triggerOnAfterCloseAndDispose = (instance, onAfterClose) => {
+const triggerDidCloseAndDispose = (instance, didClose) => {
   setTimeout(() => {
-    if (typeof onAfterClose === 'function') {
-      onAfterClose()
+    if (typeof didClose === 'function') {
+      didClose()
     }
     instance._destroy()
   })

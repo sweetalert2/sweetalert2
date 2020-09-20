@@ -156,7 +156,7 @@ QUnit.test('input select with inputOptions as Promise', (assert) => {
   Swal.fire({
     input: 'select',
     inputOptions: Promise.resolve({ one: 1, two: 2 }),
-    onOpen: () => {
+    didOpen: () => {
       setTimeout(() => {
         Swal.getInput().value = 'one'
         assert.equal(Swal.getInput().value, 'one')
@@ -174,7 +174,7 @@ QUnit.test('input select with inputOptions as object containing toPromise', (ass
     inputOptions: {
       toPromise: () => Promise.resolve({ three: 3, four: 4 })
     },
-    onOpen: () => {
+    didOpen: () => {
       setTimeout(() => {
         Swal.getInput().value = 'three'
         assert.equal(Swal.getInput().value, 'three')
@@ -360,7 +360,7 @@ QUnit.test('Swal.getInput() should return null when a popup is disposed', (asser
 
   SwalWithoutAnimation.fire({
     input: 'text',
-    onAfterClose: () => {
+    didClose: () => {
       setTimeout(() => {
         assert.notOk(Swal.getInput())
         done()

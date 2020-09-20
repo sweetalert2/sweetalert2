@@ -4,7 +4,7 @@ describe('getInput()', () => {
   it('Swal.getInput() should return null when a popup is disposed', (done) => {
     SwalWithoutAnimation.fire({
       input: 'text',
-      onAfterClose: () => {
+      didClose: () => {
         setTimeout(() => {
           expect(Swal.getInput()).to.be.null
           done()

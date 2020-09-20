@@ -1,4 +1,4 @@
-import { warn, warnAboutDepreation } from '../utils/utils.js'
+import { warn, warnAboutDeprecation } from '../utils/utils.js'
 
 export const defaultParams = {
   title: '',
@@ -77,10 +77,16 @@ export const defaultParams = {
   progressStepsDistance: undefined,
   onBeforeOpen: undefined,
   onOpen: undefined,
+  willOpen: undefined,
+  didOpen: undefined,
   onRender: undefined,
+  didRender: undefined,
   onClose: undefined,
   onAfterClose: undefined,
+  willClose: undefined,
+  didClose: undefined,
   onDestroy: undefined,
+  didDestroy: undefined,
   scrollbarPadding: true
 }
 
@@ -102,6 +108,8 @@ export const updatableParams = [
   'denyButtonAriaLabel',
   'denyButtonColor',
   'denyButtonText',
+  'didClose',
+  'didDestroy',
   'footer',
   'hideClass',
   'html',
@@ -123,10 +131,17 @@ export const updatableParams = [
   'text',
   'title',
   'titleText',
+  'willClose',
 ]
 
 export const deprecatedParams = {
   animation: 'showClass" and "hideClass',
+  onBeforeOpen: 'willOpen',
+  onOpen: 'didOpen',
+  onRender: 'didRender',
+  onClose: 'willClose',
+  onAfterClose: 'didClose',
+  onDestroy: 'didDestroy',
 }
 
 const toastIncompatibleParams = [
@@ -178,7 +193,7 @@ const checkIfToastParamIsValid = (param) => {
 
 const checkIfParamIsDeprecated = (param) => {
   if (isDeprecatedParameter(param)) {
-    warnAboutDepreation(param, isDeprecatedParameter(param))
+    warnAboutDeprecation(param, isDeprecatedParameter(param))
   }
 }
 

@@ -12,7 +12,7 @@ describe('inputValue', () => {
       inputValue: {
         toPromise: () => Promise.resolve('test')
       },
-      onOpen: () => {
+      didOpen: () => {
         setTimeout(() => {
           expect(Swal.getInput().value).to.equal('test')
           done()
@@ -34,7 +34,7 @@ describe('inputValue', () => {
       SwalWithoutAnimation.fire({
         input,
         inputValue,
-        onOpen: () => {
+        didOpen: () => {
           setTimeout(() => {
             expect(Swal.getInput().value).to.equal(input === 'number' ? parseFloat(value).toString() : value)
             if (inputTypes.length) {
@@ -57,7 +57,7 @@ describe('inputValue', () => {
       inputValue: new Promise((resolve, reject) => {
         reject(new Error('input promise rejected'))
       }),
-      onOpen: () => {
+      didOpen: () => {
         setTimeout(() => {
           expect(spy.calledWith('SweetAlert2: Error in inputValue promise: Error: input promise rejected')).to.be.true
           done()

@@ -15,7 +15,9 @@ export const render = (instance, params) => {
   renderActions(instance, params)
   renderFooter(instance, params)
 
-  if (typeof params.onRender === 'function') {
-    params.onRender(getPopup())
+  if (typeof params.didRender === 'function') {
+    params.didRender(getPopup())
+  } else if (typeof params.onRender === 'function') {
+    params.onRender(getPopup()) // @deprecated
   }
 }

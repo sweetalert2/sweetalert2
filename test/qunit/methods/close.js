@@ -24,11 +24,11 @@ QUnit.test('Swal.close() resolves', (assert) => {
   Swal.close()
 })
 
-QUnit.test('onClose using close() method', (assert) => {
+QUnit.test('willClose using close() method', (assert) => {
   const done = assert.async()
 
   Swal.fire({
-    onClose: () => {
+    willClose: () => {
       assert.ok(Swal.isVisible())
       done()
     }
@@ -37,11 +37,11 @@ QUnit.test('onClose using close() method', (assert) => {
   Swal.close()
 })
 
-QUnit.test('onAfterClose using close() method', (assert) => {
+QUnit.test('didClose using close() method', (assert) => {
   const done = assert.async()
 
   SwalWithoutAnimation.fire({
-    onAfterClose: () => {
+    didClose: () => {
       assert.notOk(Swal.isVisible())
       done()
     }
@@ -50,15 +50,15 @@ QUnit.test('onAfterClose using close() method', (assert) => {
   Swal.close()
 })
 
-QUnit.test('Swal.fire() inside onAfterClose', (assert) => {
+QUnit.test('Swal.fire() inside didClose', (assert) => {
   const done = assert.async()
 
   SwalWithoutAnimation.fire({
-    onAfterClose: () => {
+    didClose: () => {
       assert.notOk(Swal.isVisible())
       SwalWithoutAnimation.fire({
         input: 'text',
-        onOpen: () => {
+        didOpen: () => {
           assert.notDeepEqual(Swal.getInput(), null)
           done()
         }
@@ -70,11 +70,11 @@ QUnit.test('Swal.fire() inside onAfterClose', (assert) => {
   Swal.close()
 })
 
-QUnit.test('Swal.close() inside onAfterClose', (assert) => {
+QUnit.test('Swal.close() inside didClose', (assert) => {
   const done = assert.async()
 
   Swal.fire({
-    onAfterClose: () => {
+    didClose: () => {
       Swal.close()
       assert.notOk(Swal.isVisible())
       done()

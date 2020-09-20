@@ -9,14 +9,16 @@ import globalState from '../globalState.js'
 /**
  * Open popup, add necessary classes and styles, fix scrollbar
  *
- * @param {Array} params
+ * @param params
  */
 export const openPopup = (params) => {
   const container = dom.getContainer()
   const popup = dom.getPopup()
 
-  if (typeof params.onBeforeOpen === 'function') {
-    params.onBeforeOpen(popup)
+  if (typeof params.willOpen === 'function') {
+    params.willOpen(popup)
+  } else if (typeof params.onBeforeOpen === 'function') {
+    params.onBeforeOpen(popup) // @deprecated
   }
 
   const bodyStyles = window.getComputedStyle(document.body)
@@ -34,9 +36,13 @@ export const openPopup = (params) => {
   if (!dom.isToast() && !globalState.previousActiveElement) {
     globalState.previousActiveElement = document.activeElement
   }
-  if (typeof params.onOpen === 'function') {
-    setTimeout(() => params.onOpen(popup))
+
+  if (typeof params.didOpen === 'function') {
+    setTimeout(() => params.didOpen(popup))
+  } else if (typeof params.onOpen === 'function') {
+    setTimeout(() => params.onOpen(popup)) // @deprecated
   }
+
   dom.removeClass(container, swalClasses['no-transition'])
 }
 

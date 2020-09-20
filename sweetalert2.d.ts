@@ -395,6 +395,8 @@ declare module 'sweetalert2' {
     | 'denyButtonAriaLabel'
     | 'denyButtonColor'
     | 'denyButtonText'
+    | 'didClose'
+    | 'didDestroy'
     | 'footer'
     | 'hideClass'
     | 'html'
@@ -414,7 +416,8 @@ declare module 'sweetalert2' {
     | 'showDenyButton'
     | 'text'
     | 'title'
-    | 'titleText';
+    | 'titleText'
+    | 'willClose';
 
   export interface SweetAlertCustomClass {
     container?: string;
@@ -638,9 +641,9 @@ declare module 'sweetalert2' {
     timerProgressBar?: boolean;
 
     /**
-     * @deprecated
      * If set to `false`, popup CSS animation will be disabled.
      *
+     * @deprecated
      * @default true
      */
     animation?: ValueOrThunk<boolean>;
@@ -1003,49 +1006,95 @@ declare module 'sweetalert2' {
     progressStepsDistance?: string;
 
     /**
-     * Function to run when popup built, but not shown yet. Provides popup DOM element as the first argument.
-     *
+     * @deprecated Use drop-in replacement {@link willOpen} instead.
      * @default undefined
      */
     onBeforeOpen?(popup: HTMLElement): void;
 
     /**
-     * Function to run when popup opens, provides popup DOM element as the first argument.
-     *
+     * @deprecated Use drop-in replacement {@link didOpen} instead.
      * @default undefined
      */
     onOpen?(popup: HTMLElement): void;
 
     /**
-     * Function to run after popup DOM has been updated.
-     * Typically, this will happen after `Swal.fire()` or `Swal.update()`.
-     * If you want to perform changes in the popup's DOM, that survive `Swal.update()`, `onRender` is a good place.
+     * Modal lifecycle hook. Synchronously runs before the modal is shown on screen.
      *
+     * @default undefined
+     * @param popup The modal DOM element.
+     */
+    willOpen?(popup: HTMLElement): void;
+
+    /**
+     * Modal lifecycle hook. Asynchronously runs after the modal has been shown on screen.
+     *
+     * @default undefined
+     * @param popup The modal DOM element.
+     */
+    didOpen?(popup: HTMLElement): void;
+
+    /**
+     * @deprecated Use drop-in replacement {@link didRender} instead.
      * @default undefined
      */
     onRender?(popup: HTMLElement): void;
 
     /**
-     * Function to run when popup closes by user interaction (and not by another popup), provides popup DOM element
-     * as the first argument.
+     * Modal lifecycle hook. Synchronously runs after the popup DOM has been updated (ie. just before the modal is
+     * repainted on the screen).
+     * Typically, this will happen after `Swal.fire()` or `Swal.update()`.
+     * If you want to perform changes in the popup's DOM, that survive `Swal.update()`, prefer {@link didRender} over
+     * {@link willOpen}.
      *
+     * @default undefined
+     * @param popup The modal DOM element.
+     */
+    didRender?(popup: HTMLElement): void;
+
+    /**
+     * @deprecated Use drop-in replacement {@link willClose} instead.
      * @default undefined
      */
     onClose?(popup: HTMLElement): void;
 
     /**
-     * Function to run after popup has been disposed by user interaction (and not by another popup).
-     *
+     * @deprecated Use drop-in replacement {@link didClose} instead.
      * @default undefined
      */
     onAfterClose?(): void;
 
     /**
-     * Function to run after popup has been destroyed either by user interaction or by another popup.
+     * Modal lifecycle hook. Synchronously runs when the popup closes by user interaction (and not due to another popup
+     * being fired).
+     *
+     * @default undefined
+     * @param popup The modal DOM element.
+     */
+    willClose?(popup: HTMLElement): void;
+
+    /**
+     * Modal lifecycle hook. Asynchronously runs after the popup has been disposed by user interaction (and not due to
+     * another popup being fired).
      *
      * @default undefined
      */
+    didClose?(): void;
+
+    /**
+     * @deprecated Use drop-in replacement {@link didDestroy} instead.
+     * @default undefined
+     */
     onDestroy?(): void;
+
+    /**
+     * Modal lifecycle hook. Synchronously runs after popup has been destroyed either by user interaction or by another
+     * popup.
+     * If you have cleanup operations that you need to reliably execute each time a modal is closed, prefer
+     * {@link didDestroy} over {@link didClose}.
+     *
+     * @default undefined
+     */
+    didDestroy?(): void;
 
     /**
      * Set to `false` to disable body padding adjustment when scrollbar is present.

@@ -162,7 +162,7 @@ QUnit.test('should not affect showClass', (assert) => {
   const done = assert.async()
   Swal.fire({
     icon: 'success',
-    onOpen: () => {
+    didOpen: () => {
       Swal.update({})
       assert.ok(Swal.getContainer().classList.contains('swal2-backdrop-show'))
       assert.ok(Swal.getPopup().classList.contains('swal2-show'))

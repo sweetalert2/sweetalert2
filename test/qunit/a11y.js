@@ -79,7 +79,7 @@ QUnit.test('should not set aria-hidden="true" when `toast: true`', (assert) => {
 
   SwalWithoutAnimation.fire({
     toast: true,
-    onAfterClose: () => {
+    didClose: () => {
       assert.equal(divAriaHiddenTrue.getAttribute('aria-hidden'), 'true')
       done()
     }

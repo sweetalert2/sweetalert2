@@ -5,11 +5,11 @@ declare module 'sweetalert2' {
    *
    * Example:
    * ```
-   * Swal.fire('Hey user!', 'I don\'t like you.', 'warning');
+   * Swal.fire('Hey user!', 'You are the rockstar!', 'info');
    *
-   * if(Swal.isVisible()) { // instant regret
-   *   Swal.close();
-   * }
+   * Swal.update({
+   *   icon: 'success'
+   * })
    * ```
    */
   namespace Swal {

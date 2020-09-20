@@ -1,3 +1,10 @@
+# [10.3.0](https://github.com/sweetalert2/sweetalert2/compare/v10.2.0...v10.3.0) (2020-09-20)
+
+
+### Features
+
+* consistent hook names: willOpen, didOpen, didRender, willClose, didClose, didDestroy ([#2057](https://github.com/sweetalert2/sweetalert2/issues/2057)) ([6434fb5](https://github.com/sweetalert2/sweetalert2/commit/6434fb56033b53b765c2ac9f3a768e326568b993))
+
 # [10.2.0](https://github.com/sweetalert2/sweetalert2/compare/v10.1.0...v10.2.0) (2020-09-18)
 
 

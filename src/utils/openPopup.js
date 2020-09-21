@@ -85,10 +85,14 @@ const fixScrollContainer = (container, scrollbarPadding, initialBodyOverflow) =>
 
 const addClasses = (container, popup, params) => {
   dom.addClass(container, params.showClass.backdrop)
+  // the workaround with setting/unsetting opacity is needed for #2019 and 2059
+  popup.style.setProperty('opacity', '0', 'important')
+  dom.show(popup)
   setTimeout(() => {
-    dom.show(popup)
     // Animate popup right after showing it
     dom.addClass(popup, params.showClass.popup)
+    // and remove the opacity workaround
+    popup.style.removeProperty('opacity')
   })
 
   dom.addClass([document.documentElement, document.body], swalClasses.shown)

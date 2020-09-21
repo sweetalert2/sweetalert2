@@ -1,3 +1,10 @@
+## [10.3.1](https://github.com/sweetalert2/sweetalert2/compare/v10.3.0...v10.3.1) (2020-09-21)
+
+
+### Bug Fixes
+
+* add the opacity workaround and timeout for animating popup ([#2060](https://github.com/sweetalert2/sweetalert2/issues/2060)) ([4362d2b](https://github.com/sweetalert2/sweetalert2/commit/4362d2b21aeb3e409f0e2d9111dd98ad4b8c5ec6))
+
 # [10.3.0](https://github.com/sweetalert2/sweetalert2/compare/v10.2.0...v10.3.0) (2020-09-20)
 
 

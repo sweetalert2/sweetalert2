@@ -134,12 +134,10 @@ export const applyNumericalStyle = (elem, property, value) => {
 }
 
 export const show = (elem, display = 'flex') => {
-  elem.style.opacity = ''
   elem.style.display = display
 }
 
 export const hide = (elem) => {
-  elem.style.opacity = ''
   elem.style.display = 'none'
 }
 

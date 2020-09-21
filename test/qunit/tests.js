@@ -853,10 +853,13 @@ QUnit.test('preConfirm returns object containing toPromise', (assert) => {
   })
 })
 
-QUnit.test('Model shows with swal2 classes used in html', (assert) => {
+QUnit.test('Popup shows with swal2 classes used in html', (assert) => {
+  const done = assert.async()
   Swal.fire({
     html: '<span class="swal2-cancel"></span>'
   })
-  assert.ok(Swal.getPopup().classList.contains('swal2-show'))
-  Swal.close()
+  setTimeout(() => {
+    assert.ok(Swal.getPopup().classList.contains('swal2-show'))
+    done()
+  })
 })

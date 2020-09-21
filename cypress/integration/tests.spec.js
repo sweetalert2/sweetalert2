@@ -573,12 +573,14 @@ describe('Miscellaneous tests', function () {
     })
   })
 
-  it('Model shows with swal2 classes used in html', () => {
+  it('Popup shows with swal2 classes used in html', (done) => {
     Swal.fire({
       html: '<span class="swal2-cancel"></span>'
     })
-    expect(Swal.getPopup().classList.contains('swal2-show')).to.be.true
-    Swal.close()
+    setTimeout(() => {
+      expect(Swal.getPopup().classList.contains('swal2-show')).to.be.true
+      done()
+    })
   })
 })
 

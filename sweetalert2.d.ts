@@ -1018,18 +1018,18 @@ declare module 'sweetalert2' {
     onOpen?(popup: HTMLElement): void;
 
     /**
-     * Modal lifecycle hook. Synchronously runs before the modal is shown on screen.
+     * Popup lifecycle hook. Synchronously runs before the popup is shown on screen.
      *
      * @default undefined
-     * @param popup The modal DOM element.
+     * @param popup The popup DOM element.
      */
     willOpen?(popup: HTMLElement): void;
 
     /**
-     * Modal lifecycle hook. Asynchronously runs after the modal has been shown on screen.
+     * Popup lifecycle hook. Asynchronously runs after the popup has been shown on screen.
      *
      * @default undefined
-     * @param popup The modal DOM element.
+     * @param popup The popup DOM element.
      */
     didOpen?(popup: HTMLElement): void;
 
@@ -1040,14 +1040,14 @@ declare module 'sweetalert2' {
     onRender?(popup: HTMLElement): void;
 
     /**
-     * Modal lifecycle hook. Synchronously runs after the popup DOM has been updated (ie. just before the modal is
+     * Popup lifecycle hook. Synchronously runs after the popup DOM has been updated (ie. just before the popup is
      * repainted on the screen).
      * Typically, this will happen after `Swal.fire()` or `Swal.update()`.
      * If you want to perform changes in the popup's DOM, that survive `Swal.update()`, prefer {@link didRender} over
      * {@link willOpen}.
      *
      * @default undefined
-     * @param popup The modal DOM element.
+     * @param popup The popup DOM element.
      */
     didRender?(popup: HTMLElement): void;
 
@@ -1064,16 +1064,16 @@ declare module 'sweetalert2' {
     onAfterClose?(): void;
 
     /**
-     * Modal lifecycle hook. Synchronously runs when the popup closes by user interaction (and not due to another popup
+     * Popup lifecycle hook. Synchronously runs when the popup closes by user interaction (and not due to another popup
      * being fired).
      *
      * @default undefined
-     * @param popup The modal DOM element.
+     * @param popup The popup DOM element.
      */
     willClose?(popup: HTMLElement): void;
 
     /**
-     * Modal lifecycle hook. Asynchronously runs after the popup has been disposed by user interaction (and not due to
+     * Popup lifecycle hook. Asynchronously runs after the popup has been disposed by user interaction (and not due to
      * another popup being fired).
      *
      * @default undefined
@@ -1087,9 +1087,9 @@ declare module 'sweetalert2' {
     onDestroy?(): void;
 
     /**
-     * Modal lifecycle hook. Synchronously runs after popup has been destroyed either by user interaction or by another
+     * Popup lifecycle hook. Synchronously runs after popup has been destroyed either by user interaction or by another
      * popup.
-     * If you have cleanup operations that you need to reliably execute each time a modal is closed, prefer
+     * If you have cleanup operations that you need to reliably execute each time a popup is closed, prefer
      * {@link didDestroy} over {@link didClose}.
      *
      * @default undefined

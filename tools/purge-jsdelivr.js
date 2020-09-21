@@ -8,14 +8,14 @@ const log = console.log // eslint-disable-line
 
   const distFiles = fs.readdirSync('dist')
 
-  for (const version of ['9', 'latest']) {
-    log(` - @${version}`)
-    await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2@${version}`, { skipLogging: true })
+  for (const version of ['@10', '@latest']) {
+    log(` - ${version}`)
+    await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2${version}`, { skipLogging: true })
 
     // dist
     for (const distFile of distFiles) {
       log(`   - dist/${distFile}`)
-      await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2@${version}/dist/${distFile}`, { skipLogging: true })
+      await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2${version}/dist/${distFile}`, { skipLogging: true })
     }
   }
 

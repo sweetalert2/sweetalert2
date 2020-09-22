@@ -1,3 +1,10 @@
+## [10.3.2](https://github.com/sweetalert2/sweetalert2/compare/v10.3.1...v10.3.2) (2020-09-22)
+
+
+### Bug Fixes
+
+* add 10ms timeout before adding showClass ([#2063](https://github.com/sweetalert2/sweetalert2/issues/2063)) ([fdc89b7](https://github.com/sweetalert2/sweetalert2/commit/fdc89b701074df807e374de376a6ad24cfce9dc4))
+
 ## [10.3.1](https://github.com/sweetalert2/sweetalert2/compare/v10.3.0...v10.3.1) (2020-09-21)
 
 

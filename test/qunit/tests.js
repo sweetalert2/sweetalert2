@@ -2,6 +2,7 @@ const { $, Swal, SwalWithoutAnimation, triggerKeydownEvent, isVisible, isHidden,
 const { toArray } = require('../../src/utils/utils')
 const { measureScrollbar } = require('../../src/utils/dom/measureScrollbar')
 const sinon = require('sinon/pkg/sinon')
+const { SHOW_CLASS_TIMEOUT } = require('../../src/utils/openPopup')
 
 QUnit.test('version is correct semver', (assert) => {
   assert.ok(Swal.version.match(/\d+\.\d+\.\d+/))
@@ -861,5 +862,5 @@ QUnit.test('Popup shows with swal2 classes used in html', (assert) => {
   setTimeout(() => {
     assert.ok(Swal.getPopup().classList.contains('swal2-show'))
     done()
-  })
+  }, SHOW_CLASS_TIMEOUT)
 })

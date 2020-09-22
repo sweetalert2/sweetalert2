@@ -1,5 +1,6 @@
 import jQuery from 'jquery'
 import Swal from '../../src/sweetalert2'
+import { SHOW_CLASS_TIMEOUT } from '../../src/utils/openPopup'
 import { $, isHidden, isVisible, SwalWithoutAnimation, triggerKeydownEvent, TIMEOUT, dispatchCustomEvent, ensureClosed } from '../utils'
 
 describe('Miscellaneous tests', function () {
@@ -580,7 +581,7 @@ describe('Miscellaneous tests', function () {
     setTimeout(() => {
       expect(Swal.getPopup().classList.contains('swal2-show')).to.be.true
       done()
-    })
+    }, SHOW_CLASS_TIMEOUT)
   })
 })
 

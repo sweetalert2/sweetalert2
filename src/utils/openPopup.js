@@ -83,6 +83,7 @@ const fixScrollContainer = (container, scrollbarPadding, initialBodyOverflow) =>
   })
 }
 
+export const SHOW_CLASS_TIMEOUT = 10
 const addClasses = (container, popup, params) => {
   dom.addClass(container, params.showClass.backdrop)
   // the workaround with setting/unsetting opacity is needed for #2019 and 2059
@@ -93,7 +94,7 @@ const addClasses = (container, popup, params) => {
     dom.addClass(popup, params.showClass.popup)
     // and remove the opacity workaround
     popup.style.removeProperty('opacity')
-  })
+  }, SHOW_CLASS_TIMEOUT) // 10ms in order to fix #2062
 
   dom.addClass([document.documentElement, document.body], swalClasses.shown)
   if (params.heightAuto && params.backdrop && !params.toast) {

@@ -116,6 +116,10 @@ Your contribution will be greatly appreciated!
 
     > Keep going, awesome job!
 
+- **Elliot Ajcuc Chamale** (5 USD)
+
+    > Hello! a contribution with your work, the best sweetalert2. Thank you
+
 - **Mustafa Khader** (5 USD)
 
 - **Quentin Le Doledec** (5 EUR)

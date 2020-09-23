@@ -6,6 +6,8 @@ import { IEfix } from './ieFix.js'
 import { setAriaHidden } from './aria.js'
 import globalState from '../globalState.js'
 
+export const SHOW_CLASS_TIMEOUT = 10
+
 /**
  * Open popup, add necessary classes and styles, fix scrollbar
  *
@@ -26,7 +28,9 @@ export const openPopup = (params) => {
   addClasses(container, popup, params)
 
   // scrolling is 'hidden' until animation is done, after that 'auto'
-  setScrollingVisibility(container, popup)
+  setTimeout(() => {
+    setScrollingVisibility(container, popup)
+  }, SHOW_CLASS_TIMEOUT)
 
   if (dom.isModal()) {
     fixScrollContainer(container, params.scrollbarPadding, initialBodyOverflow)
@@ -83,7 +87,6 @@ const fixScrollContainer = (container, scrollbarPadding, initialBodyOverflow) =>
   })
 }
 
-export const SHOW_CLASS_TIMEOUT = 10
 const addClasses = (container, popup, params) => {
   dom.addClass(container, params.showClass.backdrop)
   // the workaround with setting/unsetting opacity is needed for #2019 and 2059

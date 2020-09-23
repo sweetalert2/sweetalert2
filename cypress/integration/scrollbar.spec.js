@@ -1,5 +1,6 @@
 import { Swal, SwalWithoutAnimation, ensureClosed } from '../utils'
 import { measureScrollbar } from '../../src/utils/dom/measureScrollbar'
+const { SHOW_CLASS_TIMEOUT } = require('../../src/utils/openPopup')
 
 describe('Vertical scrollbar', () => {
   it('should be visible on container and it should be scrolled to top', (done) => {
@@ -9,9 +10,11 @@ describe('Vertical scrollbar', () => {
       imageAlt: 'A tall image',
       didOpen: () => {
         expect(Swal.getContainer().scrollTop).to.equal(0)
-        expect(Swal.getContainer().style.overflowY).to.equal('auto')
-        Swal.close()
-        done()
+        setTimeout(() => {
+          expect(Swal.getContainer().style.overflowY).to.equal('auto')
+          Swal.close()
+          done()
+        }, SHOW_CLASS_TIMEOUT)
       }
     })
   })

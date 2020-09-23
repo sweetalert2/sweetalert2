@@ -1,3 +1,10 @@
+## [10.3.3](https://github.com/sweetalert2/sweetalert2/compare/v10.3.2...v10.3.3) (2020-09-23)
+
+
+### Bug Fixes
+
+* add timeout before calling setScrollingVisibility() ([#2066](https://github.com/sweetalert2/sweetalert2/issues/2066)) ([c8c28f7](https://github.com/sweetalert2/sweetalert2/commit/c8c28f794633ab30840475b457719d3c6fb6b70e))
+
 ## [10.3.2](https://github.com/sweetalert2/sweetalert2/compare/v10.3.1...v10.3.2) (2020-09-22)
 
 

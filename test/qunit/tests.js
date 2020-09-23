@@ -26,8 +26,10 @@ QUnit.test('container scrolled to top and has scrollbar on open', (assert) => {
     imageAlt: 'A tall image',
     didOpen: () => {
       assert.equal(Swal.getContainer().scrollTop, 0)
-      assert.equal(Swal.getContainer().style.overflowY, 'auto')
-      done()
+      setTimeout(() => {
+        assert.equal(Swal.getContainer().style.overflowY, 'auto')
+        done()
+      }, SHOW_CLASS_TIMEOUT)
     }
   })
 })

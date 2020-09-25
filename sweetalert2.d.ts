@@ -13,15 +13,6 @@ declare module 'sweetalert2' {
    * ```
    */
   namespace Swal {
-    /**
-     * Function to display a simple SweetAlert2 popup.
-     *
-     * Example:
-     * ```
-     * Swal.fire('The Internet?', 'That thing is still around?', 'question');
-     * ```
-     */
-    function fire<T>(title?: string, html?: string, icon?: SweetAlertIcon): Promise<SweetAlertResult<Awaited<T>>>;
 
     /**
      * Function to display a SweetAlert2 popup, with an object of options, all being optional.
@@ -36,7 +27,17 @@ declare module 'sweetalert2' {
      * })
      * ```
      */
-    function fire<T>(options: SweetAlertOptions<T>): Promise<SweetAlertResult<Awaited<T>>>;
+    function fire<T = any>(options: SweetAlertOptions<T>): Promise<SweetAlertResult<Awaited<T>>>;
+
+    /**
+     * Function to display a simple SweetAlert2 popup.
+     *
+     * Example:
+     * ```
+     * Swal.fire('The Internet?', 'That thing is still around?', 'question');
+     * ```
+     */
+    function fire<T = any>(title?: string, html?: string, icon?: SweetAlertIcon): Promise<SweetAlertResult<Awaited<T>>>;
 
     /**
      * Reuse configuration by creating a `Swal` instance.

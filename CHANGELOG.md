@@ -1,3 +1,10 @@
+## [10.3.4](https://github.com/sweetalert2/sweetalert2/compare/v10.3.3...v10.3.4) (2020-09-25)
+
+
+### Bug Fixes
+
+* **types:** move fire<T>(options: SweetAlertOptions<T>) to the top ([#2068](https://github.com/sweetalert2/sweetalert2/issues/2068)) ([20ea88d](https://github.com/sweetalert2/sweetalert2/commit/20ea88dc86b13af7410f82efa7778dc6897443cb))
+
 ## [10.3.3](https://github.com/sweetalert2/sweetalert2/compare/v10.3.2...v10.3.3) (2020-09-23)
 
 

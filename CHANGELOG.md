@@ -1,3 +1,10 @@
+## [10.3.5](https://github.com/sweetalert2/sweetalert2/compare/v10.3.4...v10.3.5) (2020-09-25)
+
+
+### Bug Fixes
+
+* remove null coalescing operator ([#2069](https://github.com/sweetalert2/sweetalert2/issues/2069)) ([5145f75](https://github.com/sweetalert2/sweetalert2/commit/5145f75bf6aa698178e2a0728752b3c8f09c140b))
+
 ## [10.3.4](https://github.com/sweetalert2/sweetalert2/compare/v10.3.3...v10.3.4) (2020-09-25)
 
 

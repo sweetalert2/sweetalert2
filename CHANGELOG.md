@@ -1,3 +1,10 @@
+## [10.3.6](https://github.com/sweetalert2/sweetalert2/compare/v10.3.5...v10.3.6) (2020-10-08)
+
+
+### Bug Fixes
+
+* wrap progress steps when they aren't fitting one row ([#2074](https://github.com/sweetalert2/sweetalert2/issues/2074)) ([fa695bf](https://github.com/sweetalert2/sweetalert2/commit/fa695bffd9d9e45629e7f84c3e73112764f93f7f))
+
 ## [10.3.5](https://github.com/sweetalert2/sweetalert2/compare/v10.3.4...v10.3.5) (2020-09-25)
 
 

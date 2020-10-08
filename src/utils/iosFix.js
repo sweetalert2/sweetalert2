@@ -29,7 +29,7 @@ const lockBodyScroll = () => { // #1246
   const container = dom.getContainer()
   let preventTouchMove
   container.ontouchstart = (e) => {
-    preventTouchMove = shouldPreventTouchMove(e.target)
+    preventTouchMove = shouldPreventTouchMove(e)
   }
   container.ontouchmove = (e) => {
     if (preventTouchMove) {
@@ -39,8 +39,12 @@ const lockBodyScroll = () => { // #1246
   }
 }
 
-const shouldPreventTouchMove = (target) => {
+const shouldPreventTouchMove = (event) => {
+  const target = event.target
   const container = dom.getContainer()
+  if (event.touches && event.touches.length && event.touches[0].touchType === 'stylus') { // #1786
+    return false
+  }
   if (target === container) {
     return true
   }

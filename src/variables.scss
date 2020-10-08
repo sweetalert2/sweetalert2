@@ -94,6 +94,9 @@ $swal2-validation-message-icon-color: $swal2-white !default;
 $swal2-validation-message-icon-zoom: null !default;
 
 // PROGRESS STEPS
+$swal2-progress-steps-flex-wrap: wrap !default;
+$swal2-progress-steps-align-items: center !default;
+$swal2-progress-steps-max-width: 100% !default;
 $swal2-progress-steps-background: inherit !default;
 $swal2-progress-steps-margin: 0 0 1.25em !default;
 $swal2-progress-steps-padding: 0 !default;

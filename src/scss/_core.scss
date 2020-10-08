@@ -685,7 +685,9 @@
 }
 
 .swal2-progress-steps {
-  align-items: center;
+  flex-wrap: $swal2-progress-steps-flex-wrap;
+  align-items: $swal2-progress-steps-align-items;
+  max-width: $swal2-progress-steps-max-width;
   margin: $swal2-progress-steps-margin;
   padding: $swal2-progress-steps-padding;
   background: $swal2-progress-steps-background;
@@ -698,6 +700,7 @@
 
   .swal2-progress-step {
     z-index: 20;
+    flex-shrink: 0;
     width: $swal2-progress-step-width;
     height: $swal2-progress-step-height;
     border-radius: $swal2-progress-step-border-radius;
@@ -722,6 +725,7 @@
 
   .swal2-progress-step-line {
     z-index: 10;
+    flex-shrink: 0;
     width: $swal2-progress-steps-distance;
     height: .4em;
     margin: 0 -1px;

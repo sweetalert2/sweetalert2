@@ -1,3 +1,10 @@
+## [10.3.7](https://github.com/sweetalert2/sweetalert2/compare/v10.3.6...v10.3.7) (2020-10-09)
+
+
+### Bug Fixes
+
+* do not prevent events for Apple Pencil ([#2075](https://github.com/sweetalert2/sweetalert2/issues/2075)) ([88dd4c7](https://github.com/sweetalert2/sweetalert2/commit/88dd4c7d236603f7fce20cf5b19bf40b261debfb))
+
 ## [10.3.6](https://github.com/sweetalert2/sweetalert2/compare/v10.3.5...v10.3.6) (2020-10-08)
 
 

@@ -908,6 +908,13 @@ declare module 'sweetalert2' {
     imageAlt?: string;
 
     /**
+     * Input field label.
+     *
+     * @default ''
+     */
+    inputLabel?: string;
+
+    /**
      * Input field placeholder.
      *
      * @default ''

@@ -1,3 +1,10 @@
+# [10.4.0](https://github.com/sweetalert2/sweetalert2/compare/v10.3.7...v10.4.0) (2020-10-11)
+
+
+### Features
+
+* add `inputLabel` parameter ([#2078](https://github.com/sweetalert2/sweetalert2/issues/2078)) ([a437376](https://github.com/sweetalert2/sweetalert2/commit/a4373763a2cc512408bb8a40c0b7a2c71167e688))
+
 ## [10.3.7](https://github.com/sweetalert2/sweetalert2/compare/v10.3.6...v10.3.7) (2020-10-09)
 
 

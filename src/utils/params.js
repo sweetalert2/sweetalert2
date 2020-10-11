@@ -64,6 +64,7 @@ export const defaultParams = {
   background: undefined,
   input: undefined,
   inputPlaceholder: '',
+  inputLabel: '',
   inputValue: '',
   inputOptions: {},
   inputAutoTrim: true,

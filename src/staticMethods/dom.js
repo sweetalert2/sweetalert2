@@ -10,6 +10,7 @@ export {
   getImage,
   getIcon,
   getIcons,
+  getInputLabel,
   getCloseButton,
   getActions,
   getConfirmButton,

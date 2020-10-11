@@ -10,7 +10,7 @@ QUnit.test('inputLabel: text input with label', (assert) => {
   })
 
   const input = Swal.getInput()
-  const label = Swal.getLabel()
+  const label = Swal.getInputLabel()
   assert.equal(input.id, label.htmlFor)
   assert.equal(label.innerText, inputLabel)
 
@@ -27,7 +27,7 @@ QUnit.test('inputLabel: password input with label', (assert) => {
   })
 
   const input = Swal.getInput()
-  const label = Swal.getLabel()
+  const label = Swal.getInputLabel()
   assert.equal(input.id, label.htmlFor)
   assert.equal(label.innerText, inputLabel)
 
@@ -90,7 +90,7 @@ QUnit.test('inputLabel: range input with label', (assert) => {
   })
 
   const input = Swal.getInput()
-  const label = Swal.getLabel()
+  const label = Swal.getInputLabel()
   assert.equal(input.id, label.htmlFor)
   assert.equal(label.innerText, inputLabel)
 

@@ -82,9 +82,9 @@ $swal2-input-transition: border-color .3s, box-shadow .3s !default;
 $swal2-textarea-height: 6.75em !default;
 $swal2-textarea-padding: .75em !default;
 
-// LABEL
-$swal2-label-margin: 1em auto !default;
-$swal2-label-align: left !default;
+// INPUT LABEL
+$swal2-input-label-margin: 1em auto !default;
+$swal2-input-label-justify-content: center !default;
 
 // VALIDATION MESSAGE
 $swal2-validation-message-justify-content: center !default;

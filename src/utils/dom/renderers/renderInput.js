@@ -97,7 +97,7 @@ const setInputLabel = (input, params) => {
     input.id = id
 
     const label = document.createElement('label')
-    const labelClass = swalClasses.label
+    const labelClass = swalClasses['input-label']
     label.setAttribute('for', id)
     label.className = labelClass
     label.innerText = params.inputLabel

@@ -41,7 +41,7 @@ export const getConfirmButton = () => elementBySelector(`.${swalClasses.actions}
 
 export const getDenyButton = () => elementBySelector(`.${swalClasses.actions} .${swalClasses.deny}`)
 
-export const getLabel = () => elementByClass(swalClasses.label)
+export const getInputLabel = () => elementByClass(swalClasses['input-label'])
 
 export const getLoader = () => elementBySelector(`.${swalClasses.loader}`)
 

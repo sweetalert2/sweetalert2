@@ -484,6 +484,12 @@
   }
 }
 
+.swal2-label {
+  display: block;
+  margin: $swal2-label-margin;
+  text-align: $swal2-label-align;
+}
+
 .swal2-validation-message {
   display: none;
   align-items: center;

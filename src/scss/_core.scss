@@ -484,6 +484,12 @@
   }
 }
 
+.swal2-input-label {
+  display: flex;
+  justify-content: $swal2-input-label-justify-content;
+  margin: $swal2-input-label-margin;
+}
+
 .swal2-validation-message {
   display: none;
   align-items: center;

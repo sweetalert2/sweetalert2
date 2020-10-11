@@ -1,4 +1,5 @@
 import { swalClasses } from '../../classes.js'
+import { swalId } from '../../id.js'
 import { warn, error, isPromise } from '../../utils.js'
 import * as dom from '../../dom/index.js'
 import privateProps from '../../../privateProps.js'
@@ -90,6 +91,20 @@ const setInputPlaceholder = (input, params) => {
   }
 }
 
+const setInputLabel = (input, params) => {
+  if (params.inputLabel) {
+    const id = input.id || swalId()
+    input.id = id
+
+    const label = document.createElement('label')
+    const labelClass = swalClasses['input-label']
+    label.setAttribute('for', id)
+    label.className = labelClass
+    label.innerText = params.inputLabel
+    input.insertAdjacentElement('beforebegin', label)
+  }
+}
+
 const getInputContainer = (inputType) => {
   const inputClass = swalClasses[inputType] ? swalClasses[inputType] : swalClasses.input
   return dom.getChildByClass(dom.getContent(), inputClass)
@@ -108,12 +123,14 @@ renderInputType.url = (input, params) => {
   } else if (!isPromise(params.inputValue)) {
     warn(`Unexpected type of inputValue! Expected "string", "number" or "Promise", got "${typeof params.inputValue}"`)
   }
+  setInputLabel(input, params)
   setInputPlaceholder(input, params)
   input.type = params.input
   return input
 }
 
 renderInputType.file = (input, params) => {
+  setInputLabel(input, params)
   setInputPlaceholder(input, params)
   return input
 }
@@ -124,6 +141,7 @@ renderInputType.range = (range, params) => {
   rangeInput.value = params.inputValue
   rangeInput.type = params.input
   rangeOutput.value = params.inputValue
+  setInputLabel(rangeInput, params)
   return range
 }
 
@@ -137,6 +155,7 @@ renderInputType.select = (select, params) => {
     placeholder.selected = true
     select.appendChild(placeholder)
   }
+  setInputLabel(select, params)
   return select
 }
 
@@ -158,6 +177,7 @@ renderInputType.checkbox = (checkboxContainer, params) => {
 renderInputType.textarea = (textarea, params) => {
   textarea.value = params.inputValue
   setInputPlaceholder(textarea, params)
+  setInputLabel(textarea, params)
 
   if ('MutationObserver' in window) { // #1699
     const initialPopupWidth = parseInt(window.getComputedStyle(dom.getPopup()).width)

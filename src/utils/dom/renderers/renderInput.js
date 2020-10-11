@@ -1,5 +1,4 @@
 import { swalClasses } from '../../classes.js'
-import { swalId } from '../../id.js'
 import { warn, error, isPromise } from '../../utils.js'
 import * as dom from '../../dom/index.js'
 import privateProps from '../../../privateProps.js'
@@ -91,17 +90,15 @@ const setInputPlaceholder = (input, params) => {
   }
 }
 
-const setInputLabel = (input, params) => {
+const setInputLabel = (input, prependTo, params) => {
   if (params.inputLabel) {
-    const id = input.id || swalId()
-    input.id = id
-
+    input.id = swalClasses.input
     const label = document.createElement('label')
     const labelClass = swalClasses['input-label']
-    label.setAttribute('for', id)
+    label.setAttribute('for', input.id)
     label.className = labelClass
     label.innerText = params.inputLabel
-    input.insertAdjacentElement('beforebegin', label)
+    prependTo.insertAdjacentElement('beforebegin', label)
   }
 }
 
@@ -123,14 +120,14 @@ renderInputType.url = (input, params) => {
   } else if (!isPromise(params.inputValue)) {
     warn(`Unexpected type of inputValue! Expected "string", "number" or "Promise", got "${typeof params.inputValue}"`)
   }
-  setInputLabel(input, params)
+  setInputLabel(input, input, params)
   setInputPlaceholder(input, params)
   input.type = params.input
   return input
 }
 
 renderInputType.file = (input, params) => {
-  setInputLabel(input, params)
+  setInputLabel(input, input, params)
   setInputPlaceholder(input, params)
   return input
 }
@@ -141,7 +138,7 @@ renderInputType.range = (range, params) => {
   rangeInput.value = params.inputValue
   rangeInput.type = params.input
   rangeOutput.value = params.inputValue
-  setInputLabel(rangeInput, params)
+  setInputLabel(rangeInput, range, params)
   return range
 }
 
@@ -155,7 +152,7 @@ renderInputType.select = (select, params) => {
     placeholder.selected = true
     select.appendChild(placeholder)
   }
-  setInputLabel(select, params)
+  setInputLabel(select, select, params)
   return select
 }
 
@@ -177,7 +174,7 @@ renderInputType.checkbox = (checkboxContainer, params) => {
 renderInputType.textarea = (textarea, params) => {
   textarea.value = params.inputValue
   setInputPlaceholder(textarea, params)
-  setInputLabel(textarea, params)
+  setInputLabel(textarea, textarea, params)
 
   if ('MutationObserver' in window) { // #1699
     const initialPopupWidth = parseInt(window.getComputedStyle(dom.getPopup()).width)

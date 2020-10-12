@@ -369,7 +369,10 @@ describe('Validation', () => {
       inputAttributes: {
         pattern: '[0-9]{3}-[0-9]{3}-[0-9]{4}'
       },
-      validationMessage: 'Invalid phone number'
+      validationMessage: 'Invalid phone number',
+      customClass: {
+        validationMessage: 'my-validation-message'
+      },
     }).then(result => {
       expect(result.value).to.equal('123-456-7890')
       done()
@@ -382,6 +385,7 @@ describe('Validation', () => {
       expect(Swal.getCancelButton().disabled).to.be.false
       expect(isVisible(Swal.getValidationMessage())).to.be.true
       expect(Swal.getValidationMessage().textContent).to.equal('Invalid phone number')
+      expect(Swal.getValidationMessage().classList.contains('my-validation-message')).to.be.true
       Swal.getInput().value = '123-456-7890'
       Swal.clickConfirm()
     }, TIMEOUT)

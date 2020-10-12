@@ -430,6 +430,7 @@ declare module 'sweetalert2' {
     image?: string;
     content?: string;
     input?: string;
+    validationMessage?: string;
     actions?: string;
     confirmButton?: string;
     denyButton?: string;
@@ -613,6 +614,7 @@ declare module 'sweetalert2' {
      *     image: 'image-class',
      *     content: 'content-class',
      *     input: 'input-class',
+     *     validationMessage: 'validation-message-class',
      *     actions: 'actions-class',
      *     confirmButton: 'confirm-button-class',
      *     denyButton: 'deny-button-class',

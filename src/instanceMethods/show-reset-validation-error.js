@@ -5,10 +5,9 @@ import privateProps from '../privateProps.js'
 // Show block with validation message
 export function showValidationMessage (error) {
   const domCache = privateProps.domCache.get(this)
+  const params = privateProps.innerParams.get(this)
   dom.setInnerHtml(domCache.validationMessage, error)
-  const popupComputedStyle = window.getComputedStyle(domCache.popup)
-  domCache.validationMessage.style.marginLeft = `-${popupComputedStyle.getPropertyValue('padding-left')}`
-  domCache.validationMessage.style.marginRight = `-${popupComputedStyle.getPropertyValue('padding-right')}`
+  domCache.validationMessage.className = `${swalClasses['validation-message']} ${params.customClass.validationMessage}`
   dom.show(domCache.validationMessage)
 
   const input = this.getInput()

@@ -1,3 +1,10 @@
+# [10.5.0](https://github.com/sweetalert2/sweetalert2/compare/v10.4.0...v10.5.0) (2020-10-12)
+
+
+### Features
+
+* add customClass.validationMessage ([#2081](https://github.com/sweetalert2/sweetalert2/issues/2081)) ([76e54e4](https://github.com/sweetalert2/sweetalert2/commit/76e54e4861ce35e8c976f0f45347ade7142b8b03))
+
 # [10.4.0](https://github.com/sweetalert2/sweetalert2/compare/v10.3.7...v10.4.0) (2020-10-11)
 
 

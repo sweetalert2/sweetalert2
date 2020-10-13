@@ -323,6 +323,23 @@ describe('Input', () => {
     })
   })
 
+  it('returnInputValueOnDeny: true should pass the input value as result.value', (done) => {
+    SwalWithoutAnimation.fire({
+      input: 'text',
+      inputValue: 'returnInputValueOnDeny',
+      returnInputValueOnDeny: true,
+    }).then((result) => {
+      expect(result).to.eql({
+        value: 'returnInputValueOnDeny',
+        isConfirmed: false,
+        isDenied: true,
+        isDismissed: false,
+      })
+      done()
+    })
+    Swal.clickDeny()
+  })
+
   it('disable/enable input', () => {
     Swal.fire('(disable/enable)Input should not fail if there is no input')
     Swal.disableInput()

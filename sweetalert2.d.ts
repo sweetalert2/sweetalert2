@@ -636,7 +636,7 @@ declare module 'sweetalert2' {
     timer?: number;
 
     /**
-     * If set to true, the timer will have a progress bar at the bottom of a popup.
+     * If set to `true`, the timer will have a progress bar at the bottom of a popup.
      * Mostly, this feature is useful with toasts.
      *
      * @default false
@@ -790,14 +790,14 @@ declare module 'sweetalert2' {
 
     /**
      * Whether to apply the default SweetAlert2 styling to buttons.
-     * If you want to use your own classes (e.g. Bootstrap classes) set this parameter to false.
+     * If you want to use your own classes (e.g. Bootstrap classes) set this parameter to `false`.
      *
      * @default true
      */
     buttonsStyling?: boolean;
 
     /**
-     * Set to true if you want to invert default buttons positions.
+     * Set to `true` if you want to invert default buttons positions.
      *
      * @default false
      */
@@ -853,7 +853,7 @@ declare module 'sweetalert2' {
     loaderHtml?: string;
 
     /**
-     * Set to true to disable buttons and show that something is loading. Useful for AJAX requests.
+     * Set to `true` to disable buttons and show that something is loading. Useful for AJAX requests.
      *
      * @default false
      */
@@ -980,6 +980,14 @@ declare module 'sweetalert2' {
     inputValidator?(inputValue: string): SyncOrAsync<string | null>;
 
     /**
+     * If you want to return the input value as `result.value` when denying the popup, set to `true`.
+     * Otherwise, the denying will set `result.value` to `false`.
+     *
+     * @default false
+     */
+    returnInputValueOnDeny: boolean;
+
+    /**
      * A custom validation message for default validators (email, url).
      *
      * Example:
@@ -1016,13 +1024,13 @@ declare module 'sweetalert2' {
     progressStepsDistance?: string;
 
     /**
-     * @deprecated Use drop-in replacement {@link willOpen} instead.
+     * @deprecated Use drop-in replacement `willOpen` instead.
      * @default undefined
      */
     onBeforeOpen?(popup: HTMLElement): void;
 
     /**
-     * @deprecated Use drop-in replacement {@link didOpen} instead.
+     * @deprecated Use drop-in replacement `didOpen` instead.
      * @default undefined
      */
     onOpen?(popup: HTMLElement): void;
@@ -1044,7 +1052,7 @@ declare module 'sweetalert2' {
     didOpen?(popup: HTMLElement): void;
 
     /**
-     * @deprecated Use drop-in replacement {@link didRender} instead.
+     * @deprecated Use drop-in replacement `didRender` instead.
      * @default undefined
      */
     onRender?(popup: HTMLElement): void;
@@ -1053,8 +1061,8 @@ declare module 'sweetalert2' {
      * Popup lifecycle hook. Synchronously runs after the popup DOM has been updated (ie. just before the popup is
      * repainted on the screen).
      * Typically, this will happen after `Swal.fire()` or `Swal.update()`.
-     * If you want to perform changes in the popup's DOM, that survive `Swal.update()`, prefer {@link didRender} over
-     * {@link willOpen}.
+     * If you want to perform changes in the popup's DOM, that survive `Swal.update()`, prefer `didRender` over
+     * `willOpen`.
      *
      * @default undefined
      * @param popup The popup DOM element.
@@ -1062,13 +1070,13 @@ declare module 'sweetalert2' {
     didRender?(popup: HTMLElement): void;
 
     /**
-     * @deprecated Use drop-in replacement {@link willClose} instead.
+     * @deprecated Use drop-in replacement `willClose` instead.
      * @default undefined
      */
     onClose?(popup: HTMLElement): void;
 
     /**
-     * @deprecated Use drop-in replacement {@link didClose} instead.
+     * @deprecated Use drop-in replacement `didClose` instead.
      * @default undefined
      */
     onAfterClose?(): void;
@@ -1091,7 +1099,7 @@ declare module 'sweetalert2' {
     didClose?(): void;
 
     /**
-     * @deprecated Use drop-in replacement {@link didDestroy} instead.
+     * @deprecated Use drop-in replacement `didDestroy` instead.
      * @default undefined
      */
     onDestroy?(): void;
@@ -1100,7 +1108,7 @@ declare module 'sweetalert2' {
      * Popup lifecycle hook. Synchronously runs after popup has been destroyed either by user interaction or by another
      * popup.
      * If you have cleanup operations that you need to reliably execute each time a popup is closed, prefer
-     * {@link didDestroy} over {@link didClose}.
+     * `didDestroy` over `didClose`.
      *
      * @default undefined
      */

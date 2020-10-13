@@ -1,3 +1,10 @@
+## [10.5.1](https://github.com/sweetalert2/sweetalert2/compare/v10.5.0...v10.5.1) (2020-10-13)
+
+
+### Bug Fixes
+
+* **types:** inputValue can be number or boolean ([#2083](https://github.com/sweetalert2/sweetalert2/issues/2083)) ([fa1ac2b](https://github.com/sweetalert2/sweetalert2/commit/fa1ac2b2ccb7763ed18751fd72c2ce0a1e21498d))
+
 # [10.5.0](https://github.com/sweetalert2/sweetalert2/compare/v10.4.0...v10.5.0) (2020-10-12)
 
 

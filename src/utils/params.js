@@ -70,6 +70,7 @@ export const defaultParams = {
   inputAutoTrim: true,
   inputAttributes: {},
   inputValidator: undefined,
+  returnInputValueOnDeny: false,
   validationMessage: undefined,
   grow: false,
   position: 'center',

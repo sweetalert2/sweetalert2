@@ -386,3 +386,21 @@ QUnit.test('popup should expand and shrink accordingly to textarea width', (asse
     })
   })
 })
+
+QUnit.test('returnInputValueOnDeny: true should pass the input value as result.value', (assert) => {
+  const done = assert.async()
+  SwalWithoutAnimation.fire({
+    input: 'text',
+    inputValue: 'returnInputValueOnDeny',
+    returnInputValueOnDeny: true,
+  }).then((result) => {
+    assert.deepEqual(result, {
+      value: 'returnInputValueOnDeny',
+      isConfirmed: false,
+      isDenied: true,
+      isDismissed: false,
+    })
+    done()
+  })
+  Swal.clickDeny()
+})

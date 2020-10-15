@@ -1,3 +1,16 @@
+# [10.6.0](https://github.com/sweetalert2/sweetalert2/compare/v10.5.1...v10.6.0) (2020-10-15)
+
+
+### Bug Fixes
+
+* make button colors WCAG compliant ([#2085](https://github.com/sweetalert2/sweetalert2/issues/2085)) ([0b1e4b4](https://github.com/sweetalert2/sweetalert2/commit/0b1e4b48ae284efb0a81437a58f3ce93e1c00085))
+* set display: inline block for confirm button ([#2086](https://github.com/sweetalert2/sweetalert2/issues/2086)) ([43fdf17](https://github.com/sweetalert2/sweetalert2/commit/43fdf1732e8838c1a4469f721a6b456a75aae7e6))
+
+
+### Features
+
+* add returnInputValueOnDeny param ([#2084](https://github.com/sweetalert2/sweetalert2/issues/2084)) ([f0833e8](https://github.com/sweetalert2/sweetalert2/commit/f0833e8ea755bfe6a0c5ecb9d9c297edf12fec57))
+
 ## [10.5.1](https://github.com/sweetalert2/sweetalert2/compare/v10.5.0...v10.5.1) (2020-10-13)
 
 

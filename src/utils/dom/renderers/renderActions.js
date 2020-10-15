@@ -1,7 +1,6 @@
 import { swalClasses } from '../../classes.js'
 import * as dom from '../../dom/index.js'
 import { capitalizeFirstLetter } from '../../utils.js'
-import { isLoading } from '../getters.js'
 
 export const renderActions = (instance, params) => {
   const actions = dom.getActions()
@@ -51,13 +50,6 @@ function handleButtonsStyling (confirmButton, denyButton, cancelButton, params) 
   }
   if (params.cancelButtonColor) {
     cancelButton.style.backgroundColor = params.cancelButtonColor
-  }
-
-  // Loading state
-  if (!isLoading()) {
-    const confirmButtonBackgroundColor = window.getComputedStyle(confirmButton).getPropertyValue('background-color')
-    confirmButton.style.borderLeftColor = confirmButtonBackgroundColor
-    confirmButton.style.borderRightColor = confirmButtonBackgroundColor
   }
 }
 

@@ -14,7 +14,7 @@ function hideLoading () {
   const domCache = privateProps.domCache.get(this)
   dom.hide(domCache.loader)
   if (innerParams.showConfirmButton) {
-    dom.show(domCache.confirmButton)
+    dom.show(domCache.confirmButton, 'inline-block')
   } else if (!innerParams.showConfirmButton && !innerParams.showCancelButton) {
     dom.hide(domCache.actions)
   }

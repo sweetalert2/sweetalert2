@@ -8,16 +8,20 @@ import { DismissReason } from '../utils/DismissReason.js'
 export const handleConfirmButtonClick = (instance, innerParams) => {
   instance.disableButtons()
   if (innerParams.input) {
-    handleConfirmWithInput(instance, innerParams)
+    handleConfirmOrDenyWithInput(instance, innerParams, 'confirm')
   } else {
     confirm(instance, innerParams, true)
   }
 }
 
-export const handleDenyButtonClick = (instance) => {
+export const handleDenyButtonClick = (instance, innerParams) => {
   instance.disableButtons()
   // here we could add preDeny in future, if needed
-  deny(instance)
+  if (innerParams.returnInputValueOnDeny) {
+    handleConfirmOrDenyWithInput(instance, innerParams, 'deny')
+  } else {
+    deny(instance, false)
+  }
 }
 
 export const handleCancelButtonClick = (instance, dismissWith) => {
@@ -25,35 +29,40 @@ export const handleCancelButtonClick = (instance, dismissWith) => {
   dismissWith(DismissReason.cancel)
 }
 
-const handleConfirmWithInput = (instance, innerParams) => {
+const handleConfirmOrDenyWithInput = (instance, innerParams, type /* type is either 'confirm' or 'deny' */) => {
   const inputValue = getInputValue(instance, innerParams)
-
   if (innerParams.inputValidator) {
-    instance.disableInput()
-    const validationPromise = Promise.resolve().then(() => asPromise(
-      innerParams.inputValidator(inputValue, innerParams.validationMessage))
-    )
-    validationPromise.then(
-      (validationMessage) => {
-        instance.enableButtons()
-        instance.enableInput()
-        if (validationMessage) {
-          instance.showValidationMessage(validationMessage)
-        } else {
-          confirm(instance, innerParams, inputValue)
-        }
-      }
-    )
+    handleInputValidator(instance, innerParams, inputValue)
   } else if (!instance.getInput().checkValidity()) {
     instance.enableButtons()
     instance.showValidationMessage(innerParams.validationMessage)
+  } else if (type === 'deny') {
+    deny(instance, inputValue)
   } else {
     confirm(instance, innerParams, inputValue)
   }
 }
 
-const deny = (instance) => {
-  instance.closePopup({ isDenied: true, value: false })
+const handleInputValidator = (instance, innerParams, inputValue) => {
+  instance.disableInput()
+  const validationPromise = Promise.resolve().then(() => asPromise(
+    innerParams.inputValidator(inputValue, innerParams.validationMessage))
+  )
+  validationPromise.then(
+    (validationMessage) => {
+      instance.enableButtons()
+      instance.enableInput()
+      if (validationMessage) {
+        instance.showValidationMessage(validationMessage)
+      } else {
+        confirm(instance, innerParams, inputValue)
+      }
+    }
+  )
+}
+
+const deny = (instance, value) => {
+  instance.closePopup({ isDenied: true, value })
 }
 
 const succeedWith = (instance, value) => {

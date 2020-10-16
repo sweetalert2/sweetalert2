@@ -985,7 +985,7 @@ declare module 'sweetalert2' {
      *
      * @default false
      */
-    returnInputValueOnDeny: boolean;
+    returnInputValueOnDeny?: boolean;
 
     /**
      * A custom validation message for default validators (email, url).

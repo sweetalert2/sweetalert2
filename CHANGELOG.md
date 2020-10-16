@@ -1,3 +1,10 @@
+## [10.6.1](https://github.com/sweetalert2/sweetalert2/compare/v10.6.0...v10.6.1) (2020-10-16)
+
+
+### Bug Fixes
+
+* **types:** make returnInputValueOnDeny optional ([9237bbc](https://github.com/sweetalert2/sweetalert2/commit/9237bbca23b549b98ed35da1d57ec84da98365bf))
+
 # [10.6.0](https://github.com/sweetalert2/sweetalert2/compare/v10.5.1...v10.6.0) (2020-10-15)
 
 

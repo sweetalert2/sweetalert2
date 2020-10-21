@@ -21,24 +21,24 @@ export const renderActions = (instance, params) => {
   renderButton(confirmButton, 'confirm', params)
   renderButton(denyButton, 'deny', params)
   renderButton(cancelButton, 'cancel', params)
-
-  // Loader
-  loader.innerHTML = params.loaderHtml
-
-  if (params.buttonsStyling) {
-    handleButtonsStyling(confirmButton, denyButton, cancelButton, params)
-  } else {
-    dom.removeClass([confirmButton, denyButton, cancelButton], swalClasses.styled)
-  }
+  handleButtonsStyling(confirmButton, denyButton, cancelButton, params)
 
   if (params.reverseButtons) {
     actions.insertBefore(cancelButton, loader)
     actions.insertBefore(denyButton, loader)
     actions.insertBefore(confirmButton, loader)
   }
+
+  // Loader
+  loader.innerHTML = params.loaderHtml
+  dom.applyCustomClass(loader, params, 'loader')
 }
 
 function handleButtonsStyling (confirmButton, denyButton, cancelButton, params) {
+  if (!params.buttonsStyling) {
+    return dom.removeClass([confirmButton, denyButton, cancelButton], swalClasses.styled)
+  }
+
   dom.addClass([confirmButton, denyButton, cancelButton], swalClasses.styled)
 
   // Buttons background colors

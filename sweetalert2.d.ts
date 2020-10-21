@@ -435,6 +435,7 @@ declare module 'sweetalert2' {
     confirmButton?: string;
     denyButton?: string;
     cancelButton?: string;
+    loader?: string;
     footer?: string;
   }
 
@@ -605,21 +606,22 @@ declare module 'sweetalert2' {
      * ```
      * Swal.fire({
      *   customClass: {
-     *     container: 'container-class',
-     *     popup: 'popup-class',
-     *     header: 'header-class',
-     *     title: 'title-class',
-     *     closeButton: 'close-button-class',
-     *     icon: 'icon-class',
-     *     image: 'image-class',
-     *     content: 'content-class',
-     *     input: 'input-class',
-     *     validationMessage: 'validation-message-class',
-     *     actions: 'actions-class',
-     *     confirmButton: 'confirm-button-class',
-     *     denyButton: 'deny-button-class',
-     *     cancelButton: 'cancel-button-class',
-     *     footer: 'footer-class'
+     *     container: '...',
+     *     popup: '...',
+     *     header: '...',
+     *     title: '...',
+     *     closeButton: '...',
+     *     icon: '...',
+     *     image: '...',
+     *     content: '...',
+     *     input: '...',
+     *     validationMessage: '...',
+     *     actions: '...',
+     *     confirmButton: '...',
+     *     denyButton: '...',
+     *     cancelButton: '...',
+     *     loader: '...',
+     *     footer: '...'
      *   }
      * })
      * ```

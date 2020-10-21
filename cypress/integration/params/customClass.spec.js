@@ -25,6 +25,7 @@ describe('customClass', () => {
         confirmButton: 'confirm-button-class',
         denyButton: 'deny-button-class',
         cancelButton: 'cancel-button-class',
+        loader: 'loader-class',
         footer: 'footer-class'
       }
     })
@@ -41,6 +42,7 @@ describe('customClass', () => {
     expect(Swal.getConfirmButton().classList.contains('confirm-button-class')).to.be.true
     expect(Swal.getDenyButton().classList.contains('deny-button-class')).to.be.true
     expect(Swal.getCancelButton().classList.contains('cancel-button-class')).to.be.true
+    expect(Swal.getLoader().classList.contains('loader-class')).to.be.true
     expect(Swal.getFooter().classList.contains('footer-class')).to.be.true
   })
 

@@ -25,6 +25,7 @@ QUnit.test('customClass as an object', (assert) => {
       confirmButton: 'confirm-button-class',
       denyButton: 'deny-button-class',
       cancelButton: 'cancel-button-class',
+      loader: 'loader-class',
       footer: 'footer-class'
     }
   })
@@ -41,6 +42,7 @@ QUnit.test('customClass as an object', (assert) => {
   assert.ok(Swal.getConfirmButton().classList.contains('confirm-button-class'))
   assert.ok(Swal.getDenyButton().classList.contains('deny-button-class'))
   assert.ok(Swal.getCancelButton().classList.contains('cancel-button-class'))
+  assert.ok(Swal.getLoader().classList.contains('loader-class'))
   assert.ok(Swal.getFooter().classList.contains('footer-class'))
 })
 

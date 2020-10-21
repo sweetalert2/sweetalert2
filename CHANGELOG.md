@@ -1,3 +1,10 @@
+# [10.7.0](https://github.com/sweetalert2/sweetalert2/compare/v10.6.1...v10.7.0) (2020-10-21)
+
+
+### Features
+
+* add customClass.loader ([#2092](https://github.com/sweetalert2/sweetalert2/issues/2092)) ([5b48086](https://github.com/sweetalert2/sweetalert2/commit/5b48086bdd7483d0746f93f70f33255408c75a2b))
+
 ## [10.6.1](https://github.com/sweetalert2/sweetalert2/compare/v10.6.0...v10.6.1) (2020-10-16)
 
 

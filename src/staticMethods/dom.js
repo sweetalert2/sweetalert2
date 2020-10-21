@@ -16,6 +16,7 @@ export {
   getConfirmButton,
   getDenyButton,
   getCancelButton,
+  getLoader,
   getHeader,
   getFooter,
   getTimerProgressBar,

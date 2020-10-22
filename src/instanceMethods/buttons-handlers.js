@@ -16,11 +16,10 @@ export const handleConfirmButtonClick = (instance, innerParams) => {
 
 export const handleDenyButtonClick = (instance, innerParams) => {
   instance.disableButtons()
-  // here we could add preDeny in future, if needed
   if (innerParams.returnInputValueOnDeny) {
     handleConfirmOrDenyWithInput(instance, innerParams, 'deny')
   } else {
-    deny(instance, false)
+    deny(instance, innerParams, false)
   }
 }
 
@@ -37,7 +36,7 @@ const handleConfirmOrDenyWithInput = (instance, innerParams, type /* type is eit
     instance.enableButtons()
     instance.showValidationMessage(innerParams.validationMessage)
   } else if (type === 'deny') {
-    deny(instance, inputValue)
+    deny(instance, innerParams, inputValue)
   } else {
     confirm(instance, innerParams, inputValue)
   }
@@ -61,8 +60,23 @@ const handleInputValidator = (instance, innerParams, inputValue) => {
   )
 }
 
-const deny = (instance, value) => {
-  instance.closePopup({ isDenied: true, value })
+const deny = (instance, innerParams, value) => {
+  if (innerParams.preDeny) {
+    const preDenyPromise = Promise.resolve().then(() => asPromise(
+      innerParams.preDeny(value, innerParams.validationMessage))
+    )
+    preDenyPromise.then(
+      (preDenyValue) => {
+        if (preDenyValue === false) {
+          instance.hideLoading()
+        } else {
+          instance.closePopup({ isDenied: true, value: typeof preDenyValue === 'undefined' ? value : preDenyValue })
+        }
+      }
+    )
+  } else {
+    instance.closePopup({ isDenied: true, value })
+  }
 }
 
 const succeedWith = (instance, value) => {

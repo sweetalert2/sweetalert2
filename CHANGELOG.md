@@ -1,3 +1,10 @@
+# [10.8.0](https://github.com/sweetalert2/sweetalert2/compare/v10.7.0...v10.8.0) (2020-10-22)
+
+
+### Features
+
+* add preDeny ([#2093](https://github.com/sweetalert2/sweetalert2/issues/2093)) ([f378e37](https://github.com/sweetalert2/sweetalert2/commit/f378e371020999b853427fc55cbbf2b96b80effa))
+
 # [10.7.0](https://github.com/sweetalert2/sweetalert2/compare/v10.6.1...v10.7.0) (2020-10-21)
 
 

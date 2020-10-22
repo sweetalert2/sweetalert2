@@ -808,54 +808,6 @@ QUnit.test('backdrop accepts css background param', (assert) => {
   assert.ok(Swal.getContainer().style.background.includes(backdrop))
 })
 
-QUnit.test('preConfirm return false', (assert) => {
-  SwalWithoutAnimation.fire({
-    preConfirm: () => false,
-  })
-
-  Swal.clickConfirm()
-  assert.ok(Swal.isVisible())
-})
-
-QUnit.test('Custom content', (assert) => {
-  const done = assert.async()
-  Swal.fire({
-    showCancelButton: true,
-    didOpen: () => {
-      Swal.getContent().textContent = 'Custom content'
-      Swal.clickConfirm()
-    },
-    preConfirm: () => 'Some data from custom control',
-  }).then(result => {
-    assert.ok(result.value)
-    done()
-  })
-})
-
-QUnit.test('preConfirm returns 0', (assert) => {
-  const done = assert.async()
-  SwalWithoutAnimation.fire({
-    didOpen: () => Swal.clickConfirm(),
-    preConfirm: () => 0
-  }).then(result => {
-    assert.equal(result.value, 0)
-    done()
-  })
-})
-
-QUnit.test('preConfirm returns object containing toPromise', (assert) => {
-  const done = assert.async()
-  SwalWithoutAnimation.fire({
-    didOpen: () => Swal.clickConfirm(),
-    preConfirm: () => ({
-      toPromise: () => Promise.resolve(0)
-    })
-  }).then(result => {
-    assert.equal(result.value, 0)
-    done()
-  })
-})
-
 QUnit.test('Popup shows with swal2 classes used in html', (assert) => {
   const done = assert.async()
   Swal.fire({

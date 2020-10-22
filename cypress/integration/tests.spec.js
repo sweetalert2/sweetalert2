@@ -529,51 +529,6 @@ describe('Miscellaneous tests', function () {
     expect(Swal.getContainer().style.background.includes(backdrop)).to.be.true
   })
 
-  it('preConfirm return false', () => {
-    SwalWithoutAnimation.fire({
-      preConfirm: () => false,
-    })
-
-    Swal.clickConfirm()
-    expect(Swal.isVisible()).to.be.true
-  })
-
-  it('Custom content', (done) => {
-    Swal.fire({
-      showCancelButton: true,
-      didOpen: () => {
-        Swal.getContent().textContent = 'Custom content'
-        Swal.clickConfirm()
-      },
-      preConfirm: () => 'Some data from custom control',
-    }).then(result => {
-      expect(result.value).to.equal('Some data from custom control')
-      done()
-    })
-  })
-
-  it('preConfirm returns 0', (done) => {
-    SwalWithoutAnimation.fire({
-      didOpen: () => Swal.clickConfirm(),
-      preConfirm: () => 0,
-    }).then(result => {
-      expect(result.value).to.equal(0)
-      done()
-    })
-  })
-
-  it('preConfirm returns object containing toPromise', (done) => {
-    SwalWithoutAnimation.fire({
-      didOpen: () => Swal.clickConfirm(),
-      preConfirm: () => ({
-        toPromise: () => Promise.resolve(0)
-      })
-    }).then(result => {
-      expect(result.value).to.equal(0)
-      done()
-    })
-  })
-
   it('Popup shows with swal2 classes used in html', (done) => {
     Swal.fire({
       html: '<span class="swal2-cancel"></span>'

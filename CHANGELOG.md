@@ -1,3 +1,10 @@
+## [10.8.1](https://github.com/sweetalert2/sweetalert2/compare/v10.8.0...v10.8.1) (2020-10-22)
+
+
+### Bug Fixes
+
+* add preDeny to params.js ([cc16a38](https://github.com/sweetalert2/sweetalert2/commit/cc16a38cd2ec3eb943a25325349fc59d7dcdeabc))
+
 # [10.8.0](https://github.com/sweetalert2/sweetalert2/compare/v10.7.0...v10.8.0) (2020-10-22)
 
 

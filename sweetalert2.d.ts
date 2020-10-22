@@ -862,7 +862,11 @@ declare module 'sweetalert2' {
     showLoaderOnConfirm?: boolean;
 
     /**
-     * Function to execute before confirm, may be async (Promise-returning) or sync.
+     * Function to execute before confirming, may be async (Promise-returning) or sync.
+     * Returned (or resolved) value can be:
+     *  - `false` to prevent a popup from closing
+     *  - anything else to pass that value as the `result.value` of `Swal.fire()`
+     *  - `undefined` to keep the default `result.value`
      *
      * Example:
      * ```
@@ -882,6 +886,17 @@ declare module 'sweetalert2' {
      * @default undefined
      */
     preConfirm?(inputValue: PreConfirmCallbackValue): PreConfirmResult;
+
+    /**
+     * Function to execute before denying, may be async (Promise-returning) or sync.
+     * Returned (or resolved) value can be:
+     *  - `false` to prevent a popup from closing
+     *  - anything else to pass that value as the `result.value` of `Swal.fire()`
+     *  - `undefined` to keep the default `result.value`
+     *
+     * @default undefined
+     */
+    preDeny?(value: any): SyncOrAsync<any | void>;
 
     /**
      * Add an image to the popup. Should contain a string with the path or URL to the image.

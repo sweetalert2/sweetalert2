@@ -249,9 +249,9 @@ NSFW Sponsors
 -|-|-|-|-|-
 [Twerking Butt](https://twerkingbutt.com/?utm_source=sweetalert2&utm_medium=logo) | [STED](https://sextoyeducation.com/?utm_source=sweetalert2&utm_medium=logo) | [Sextopedia](https://sextopedia.com/?utm_source=sweetalert2&utm_medium=logo) | [My Sex Toy Guide](https://www.mysextoyguide.com/?utm_source=sweetalert2&utm_medium=logo) | [Best Blowjob Machines](https://www.bestblowjobmachines.com/?utm_source=sweetalert2&utm_medium=logo) | [YourDoll](https://www.yourdoll.com/?utm_source=sweetalert2&utm_medium=logo)
 
-[<img src="https://sweetalert2.github.io/images/sponsors/celebjihad.png" width="80">](https://celebjihad.ltd/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/sextoycollective.jpg" width="80">](https://sextoycollective.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/bingato.png" width="80">](https://bingato.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/realsexdoll.png" width="80">](https://realsexdoll.com/?utm_source=sweetalert2&utm_medium=logo)| [<img src="https://sweetalert2.github.io/images/sponsors/doctorclimax.png" width="80">](https://doctorclimax.com/)
--|-|-|-|-
-[Celebjihad](https://celebjihad.ltd/?utm_source=sweetalert2&utm_medium=logo) | [STC](https://sextoycollective.com/?utm_source=sweetalert2&utm_medium=logo) | [Bingato](https://bingato.com/?utm_source=sweetalert2&utm_medium=logo) | [RealSexDoll](https://realsexdoll.com/?utm_source=sweetalert2&utm_medium=logo) | [DoctorClimax](https://doctorclimax.com/)
+[<img src="https://sweetalert2.github.io/images/sponsors/sextoycollective.jpg" width="80">](https://sextoycollective.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/realsexdoll.png" width="80">](https://realsexdoll.com/?utm_source=sweetalert2&utm_medium=logo)| [<img src="https://sweetalert2.github.io/images/sponsors/doctorclimax.png" width="80">](https://doctorclimax.com/)
+-|-|-
+[STC](https://sextoycollective.com/?utm_source=sweetalert2&utm_medium=logo) | [RealSexDoll](https://realsexdoll.com/?utm_source=sweetalert2&utm_medium=logo) | [DoctorClimax](https://doctorclimax.com/)
 
 Support and Donations
 ---------------------

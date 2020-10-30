@@ -1,3 +1,10 @@
+# [10.9.0](https://github.com/sweetalert2/sweetalert2/compare/v10.8.1...v10.9.0) (2020-10-30)
+
+
+### Features
+
+* add $swal2-close-button-focus-* variables ([#2099](https://github.com/sweetalert2/sweetalert2/issues/2099)) ([159c95b](https://github.com/sweetalert2/sweetalert2/commit/159c95b5e1a88e823c09da7b12d1788536c1c708))
+
 ## [10.8.1](https://github.com/sweetalert2/sweetalert2/compare/v10.8.0...v10.8.1) (2020-10-22)
 
 

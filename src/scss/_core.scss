@@ -359,6 +359,11 @@
     color: $swal2-close-button-hover-color;
   }
 
+  &:focus {
+    outline: $swal2-close-button-focus-outline;
+    box-shadow: $swal2-close-button-focus-box-shadow;
+  }
+
   &::-moz-focus-inner {
     border: 0;
   }

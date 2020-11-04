@@ -45,7 +45,7 @@ const sauceLabsLaunchers = {
   safari: {
     base: 'SauceLabs',
     browserName: 'Safari',
-    version: 'latest',
+    browserVersion: 'latest',
     platformName: 'macOS 10.15'
   },
   edge: {

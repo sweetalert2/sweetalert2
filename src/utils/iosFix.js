@@ -42,7 +42,7 @@ const lockBodyScroll = () => { // #1246
 const shouldPreventTouchMove = (event) => {
   const target = event.target
   const container = dom.getContainer()
-  if (event.touches && event.touches.length && event.touches[0].touchType === 'stylus') { // #1786
+  if (isStylys(event) || isZoom(event)) {
     return false
   }
   if (target === container) {
@@ -59,6 +59,14 @@ const shouldPreventTouchMove = (event) => {
     return true
   }
   return false
+}
+
+const isStylys = (event) => { // #1786
+  return event.touches && event.touches.length && event.touches[0].touchType === 'stylus'
+}
+
+const isZoom = (event) => { // #1891
+  return event.touches && event.touches.length > 1
 }
 
 export const undoIOSfix = () => {

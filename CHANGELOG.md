@@ -1,3 +1,10 @@
+## [10.9.1](https://github.com/sweetalert2/sweetalert2/compare/v10.9.0...v10.9.1) (2020-11-08)
+
+
+### Bug Fixes
+
+* allow zooming in iOS when modal is shown ([#2104](https://github.com/sweetalert2/sweetalert2/issues/2104)) ([e6c8028](https://github.com/sweetalert2/sweetalert2/commit/e6c80283d1501bcea227c2d2885293ca806a0464))
+
 # [10.9.0](https://github.com/sweetalert2/sweetalert2/compare/v10.8.1...v10.9.0) (2020-10-30)
 
 

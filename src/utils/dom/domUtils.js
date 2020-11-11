@@ -1,4 +1,4 @@
-import { getTimerProgressBar } from './getters.js'
+import { getTimerProgressBar, getConfirmButton, getDenyButton, getCancelButton } from './getters.js'
 import { swalClasses, iconTypes } from '../classes.js'
 import { toArray, objectValues, warn } from '../utils.js'
 
@@ -155,7 +155,8 @@ export const toggle = (elem, condition, display) => {
 // borrowed from jquery $(elem).is(':visible') implementation
 export const isVisible = (elem) => !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
 
-/* istanbul ignore next */
+export const allButtonsAreHidden = () => !isVisible(getConfirmButton()) && !isVisible(getDenyButton()) && !isVisible(getCancelButton())
+
 export const isScrollable = (elem) => !!(elem.scrollHeight > elem.clientHeight)
 
 // borrowed from https://stackoverflow.com/a/46352119

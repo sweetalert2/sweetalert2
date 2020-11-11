@@ -250,10 +250,10 @@
 }
 
 .swal2-styled {
-  margin: .3125em;
-  padding: .625em 2em;
-  box-shadow: none;
-  font-weight: 500;
+  margin: $swal2-button-margin;
+  padding: $swal2-button-padding;
+  box-shadow: $swal2-button-box-shadow;
+  font-weight: $swal2-button-font-weight;
 
   &:not([disabled]) {
     cursor: pointer;

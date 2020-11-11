@@ -187,6 +187,10 @@ $swal2-cancel-button-color: $swal2-white !default;
 $swal2-cancel-button-font-size: 1.0625em !default;
 
 // COMMON VARIABLES FOR ALL BUTTONS
+$swal2-button-margin: .3125em !default;
+$swal2-button-padding: .625em 1.1em !default;
+$swal2-button-box-shadow: none !default;
+$swal2-button-font-weight: 500 !default;
 $swal2-button-darken-hover: rgba($swal2-black, .1) !default;
 $swal2-button-darken-active: rgba($swal2-black, .2) !default;
 $swal2-button-focus-outline: none !default;

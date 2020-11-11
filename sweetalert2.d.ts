@@ -137,17 +137,17 @@ declare module 'sweetalert2' {
     /**
      * Gets the "Confirm" button.
      */
-    function getConfirmButton(): HTMLElement | null;
+    function getConfirmButton(): HTMLButtonElement | null;
 
     /**
      * Gets the "Deny" button.
      */
-    function getDenyButton(): HTMLElement | null;
+    function getDenyButton(): HTMLButtonElement | null;
 
     /**
      * Gets the "Cancel" button.
      */
-    function getCancelButton(): HTMLElement | null;
+    function getCancelButton(): HTMLButtonElement | null;
 
     /**
      * Gets actions (buttons) wrapper.
@@ -180,12 +180,18 @@ declare module 'sweetalert2' {
     function disableButtons(): void;
 
     /**
-     * Disables buttons and show loader. This is useful with AJAX requests.
+     * Shows loader (spinner), this is useful with AJAX requests.
+     *
+     * By default the loader be shown instead of the "Confirm" button, but if you want
+     * another button to be replaced with a loader, just pass it like this:
+     * ```
+     * Swal.showLoading(Swal.getDenyButton())
+     * ```
      */
-    function showLoading(): void;
+    function showLoading(buttonToReplace?: HTMLButtonElement): void;
 
     /**
-     * Enables buttons and hide loader.
+     * Hides loader and shows back the button which was hidden by .showLoading()
      */
     function hideLoading(): void;
 

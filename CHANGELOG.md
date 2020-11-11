@@ -1,3 +1,11 @@
+# [10.10.0](https://github.com/sweetalert2/sweetalert2/compare/v10.9.1...v10.10.0) (2020-11-11)
+
+
+### Features
+
+* showLoading(buttonToReplace) ([#2107](https://github.com/sweetalert2/sweetalert2/issues/2107)) ([73c0582](https://github.com/sweetalert2/sweetalert2/commit/73c05821a7b1e3d2e1b0c76b18ab6590fb627a81))
+* **sass:** add $swal2-button-* variables ([665b236](https://github.com/sweetalert2/sweetalert2/commit/665b236c3f3fa3d3d19c9494294db909dc911058))
+
 ## [10.9.1](https://github.com/sweetalert2/sweetalert2/compare/v10.9.0...v10.9.1) (2020-11-08)
 
 

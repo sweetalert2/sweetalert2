@@ -1,3 +1,10 @@
+## [10.10.1](https://github.com/sweetalert2/sweetalert2/compare/v10.10.0...v10.10.1) (2020-11-15)
+
+
+### Bug Fixes
+
+* **types): getCloseButton(:** HTMLButtonElement | null ([ecaaf13](https://github.com/sweetalert2/sweetalert2/commit/ecaaf135dee814bbe31ee3d76c95cb9dd249cff8))
+
 # [10.10.0](https://github.com/sweetalert2/sweetalert2/compare/v10.9.1...v10.10.0) (2020-11-11)
 
 

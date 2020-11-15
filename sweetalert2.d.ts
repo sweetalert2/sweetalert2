@@ -121,7 +121,7 @@ declare module 'sweetalert2' {
     /**
      * Gets the close button.
      */
-    function getCloseButton(): HTMLElement | null;
+    function getCloseButton(): HTMLButtonElement | null;
 
     /**
      * Gets the current visible icon.

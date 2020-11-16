@@ -107,6 +107,10 @@ function getBrowsers () {
   return browsers
 }
 
+function getReporters () {
+  return isSauce ? ['spec', 'saucelabs'] : ['spec']
+}
+
 module.exports = function (config) {
   config.set({
     port: 3000,
@@ -119,7 +123,7 @@ module.exports = function (config) {
 
     files: getFiles(),
     browsers: getBrowsers(),
-    reporters: ['spec', 'saucelabs'],
+    reporters: getReporters(),
     preprocessors,
 
     webpack: webpackConfig,

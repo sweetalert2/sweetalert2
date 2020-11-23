@@ -11,6 +11,7 @@ import privateMethods from '../privateMethods.js'
 import { handleInputOptionsAndValue } from '../utils/dom/inputUtils.js'
 import { handleConfirmButtonClick, handleDenyButtonClick, handleCancelButtonClick } from './buttons-handlers.js'
 import { addKeydownHandler, setFocus } from './keydown-handler.js'
+import { getTemplateParams } from './get-template-params.js'
 import { handlePopupClick } from './popup-click-handler.js'
 import { DismissReason } from '../utils/DismissReason.js'
 
@@ -47,7 +48,8 @@ export function _main (userParams) {
 const prepareParams = (userParams) => {
   const showClass = Object.assign({}, defaultParams.showClass, userParams.showClass)
   const hideClass = Object.assign({}, defaultParams.hideClass, userParams.hideClass)
-  const params = Object.assign({}, defaultParams, userParams)
+  const templateParams = getTemplateParams(userParams)
+  const params = Object.assign({}, defaultParams, templateParams, userParams)
   params.showClass = showClass
   params.hideClass = hideClass
   // @deprecated

@@ -526,6 +526,29 @@ declare module 'sweetalert2' {
     footer?: string | HTMLElement | JQuery;
 
     /**
+     * The declarative <template> of the popup.
+     *
+     * Example:
+     * ```html
+     * <template id="my-template">
+     *   <header icon="warning">Are you sure?</header>
+     *   <content>You won't be able to revert this!</content>
+     *   <confirm-button color="green">Yes</confirm-button>
+     *   <cancel-button color="#d33">Cancel</cancel-button>
+     * </template>
+     * ```
+     *
+     * ```
+     * Swal.fire({
+     *   template: document.querySelector('#my-template')
+     * })
+     * ```
+     *
+     * @default undefined
+     */
+    template?: HTMLTemplateElement;
+
+    /**
      * Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop.
      * Either a boolean value or a css background value (hex, rgb, rgba, url, etc.)
      *

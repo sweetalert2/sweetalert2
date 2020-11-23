@@ -6,31 +6,29 @@
 
   <!-- IE11 compatibility -->
   <script src="/node_modules/promise-polyfill/dist/polyfill.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@webcomponents/template@1.4.4/template.js"></script>
 
   <script src="../dist/sweetalert2.js"></script>
   <link rel="stylesheet" href="../dist/sweetalert2.css">
 </head>
 
 <body>
+  <template id="my-template">
+    <header icon="warning">
+      Are you sure?
+    </header>
+    <content>You won't be able to revert this!</content>
+    <confirm-button color="green">Yes</confirm-button>
+    <cancel-button color="#d33">Cancel</cancel-button>
+    <deny-button>Deny</deny-button>
+    <footer>
+      <div>Read more <a href="#">here</a></div>
+    </footer>
+  </template>
+
   <script>
     Swal.fire({
-      title: 'Test modal with input',
-      html: 'custom <strong>content</strong>',
-      input: 'text',
-      icon: 'success',
-      showCloseButton: true,
-      showDenyButton: true,
-      showCancelButton: true,
-      preConfirm: function (value) {
-        if (!value) {
-          Swal.showValidationMessage('Should not be empty!')
-        }
-      },
-      didOpen: function (modal) {
-        console.log(modal)
-      }
-    }).then(function (result) {
-      console.log(result)
+      template: document.querySelector('#my-template'),
     })
   </script>
 </body>

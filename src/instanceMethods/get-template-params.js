@@ -10,7 +10,8 @@ export const getTemplateParams = (params) => {
     params.template // IE11
 
   return Object.assign(
-    getHeaderParams(template),
+    getImageParams(template),
+    getSimpleBlockParams(template, 'title', 'title'),
     getSimpleBlockParams(template, 'content', 'html'),
     getSimpleBlockParams(template, 'footer', 'footer'),
     getButtonParams(template, 'confirm'),
@@ -20,14 +21,14 @@ export const getTemplateParams = (params) => {
   )
 }
 
-const getHeaderParams = (template) => {
+const getImageParams = (template) => {
   const params = {}
-  const header = template.querySelector('header')
-  if (header) {
-    params.title = header.innerHTML.trim()
-    if (header.getAttribute('icon')) {
-      params.icon = header.getAttribute('icon')
-    }
+  const image = template.querySelector('img')
+  if (image) {
+    params.imageUrl = image.getAttribute('src')
+    params.imageWidth = image.getAttribute('width')
+    params.imageHeight = image.getAttribute('height')
+    params.imageAlt = image.getAttribute('alt')
   }
   return params
 }
@@ -54,7 +55,7 @@ const getSimpleBlockParams = (template, tagName, paramName) => {
 
 const getAttributesParams = (template) => {
   const result = {}
-  const params = ['toast', 'width', 'timer']
+  const params = ['icon', 'toast', 'width', 'timer']
   for (const i in params) {
     const param = template.getAttribute(params[i])
     if (param) {

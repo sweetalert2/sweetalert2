@@ -530,8 +530,8 @@ declare module 'sweetalert2' {
      *
      * Example:
      * ```html
-     * <template id="my-template">
-     *   <header icon="warning">Are you sure?</header>
+     * <template id="my-template" icon="warning">
+     *   <title>Are you sure?</title>
      *   <content>You won't be able to revert this!</content>
      *   <confirm-button color="green">Yes</confirm-button>
      *   <cancel-button color="#d33">Cancel</cancel-button>

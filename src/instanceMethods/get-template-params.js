@@ -54,7 +54,7 @@ const getSimpleBlockParams = (template, tagName, paramName) => {
 
 const getAttributesParams = (template) => {
   const result = {}
-  const params = ['width', 'timer']
+  const params = ['toast', 'width', 'timer']
   for (const i in params) {
     const param = template.getAttribute(params[i])
     if (param) {

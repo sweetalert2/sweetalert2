@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - chrore/cypress-6
   schedule:
     - cron:  '0 3 * * *'
 

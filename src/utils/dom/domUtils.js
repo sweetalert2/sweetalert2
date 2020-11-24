@@ -126,6 +126,9 @@ export const getChildByClass = (elem, className) => {
 }
 
 export const applyNumericalStyle = (elem, property, value) => {
+  if (value === `${parseInt(value)}`) {
+    value = parseInt(value)
+  }
   if (value || parseInt(value) === 0) {
     elem.style[property] = (typeof value === 'number') ? `${value}px` : value
   } else {

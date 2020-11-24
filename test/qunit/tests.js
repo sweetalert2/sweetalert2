@@ -173,11 +173,14 @@ QUnit.test('should not add body padding if body has overflow-y: hidden', (assert
 })
 
 QUnit.test('modal width', (assert) => {
-  Swal.fire({ text: '300px', width: 300 })
+  Swal.fire({ width: 300 })
   assert.equal(Swal.getPopup().style.width, '300px')
 
-  Swal.fire({ text: '400px', width: '400px' })
+  Swal.fire({ width: '400px' })
   assert.equal(Swal.getPopup().style.width, '400px')
+
+  Swal.fire({ width: '500' })
+  assert.equal(Swal.getPopup().style.width, '500px')
 
   Swal.fire({ text: '90%', width: '90%' })
   assert.equal(Swal.getPopup().style.width, '90%')

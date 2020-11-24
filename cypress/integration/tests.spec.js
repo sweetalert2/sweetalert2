@@ -65,13 +65,16 @@ describe('Miscellaneous tests', function () {
   })
 
   it('modal width', () => {
-    Swal.fire({ text: '300px', width: 300 })
+    Swal.fire({ width: 300 })
     expect(Swal.getPopup().style.width).to.equal('300px')
 
-    Swal.fire({ text: '400px', width: '400px' })
+    Swal.fire({ width: '400px' })
     expect(Swal.getPopup().style.width).to.equal('400px')
 
-    Swal.fire({ text: '90%', width: '90%' })
+    Swal.fire({ width: '500' })
+    expect(Swal.getPopup().style.width).to.equal('500px')
+
+    Swal.fire({ width: '90%' })
     expect(Swal.getPopup().style.width).to.equal('90%')
   })
 

@@ -1,3 +1,10 @@
+## [10.10.2](https://github.com/sweetalert2/sweetalert2/compare/v10.10.1...v10.10.2) (2020-11-24)
+
+
+### Bug Fixes
+
+* allow width param to be string e.g. '500' ([#2114](https://github.com/sweetalert2/sweetalert2/issues/2114)) ([b4a4bfb](https://github.com/sweetalert2/sweetalert2/commit/b4a4bfb0f121e4c03eb8c24bceed441733645a17))
+
 ## [10.10.1](https://github.com/sweetalert2/sweetalert2/compare/v10.10.0...v10.10.1) (2020-11-15)
 
 

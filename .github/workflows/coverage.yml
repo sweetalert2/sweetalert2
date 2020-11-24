@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - chrore/cypress-6
   schedule:
     - cron:  '0 3 * * *'
 
@@ -21,7 +22,7 @@ jobs:
 
     - name: Install cypress
       run:
-        yarn add cypress@^5.0.0
+        yarn add cypress@^6.0.0
         yarn add @cypress/code-coverage@^3.0.0
 
     - name: fix istanbul-reports

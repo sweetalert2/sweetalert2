@@ -7,7 +7,7 @@ export const getTemplateParams = (params) => {
 
   const template =
     params.template.content ||
-    params.template.ownerDocument // IE11
+    params.template // IE11
 
   return Object.assign(
     getHeaderParams(template),
@@ -16,6 +16,7 @@ export const getTemplateParams = (params) => {
     getButtonParams(template, 'confirm'),
     getButtonParams(template, 'cancel'),
     getButtonParams(template, 'deny'),
+    getAttributesParams(params.template)
   )
 }
 
@@ -49,4 +50,16 @@ const getSimpleBlockParams = (template, tagName, paramName) => {
     params[paramName] = content.innerHTML.trim()
   }
   return params
+}
+
+const getAttributesParams = (template) => {
+  const result = {}
+  const params = ['width', 'timer']
+  for (const i in params) {
+    const param = template.getAttribute(params[i])
+    if (param) {
+      result[params[i]] = param
+    }
+  }
+  return result
 }

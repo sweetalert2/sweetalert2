@@ -2,13 +2,14 @@ import defaultParams, { showWarningsForParams } from '../utils/params.js'
 import * as dom from '../utils/dom/index.js'
 import { swalClasses } from '../utils/classes.js'
 import Timer from '../utils/Timer.js'
-import { callIfFunction, toArray } from '../utils/utils.js'
+import { callIfFunction } from '../utils/utils.js'
 import setParameters from '../utils/setParameters.js'
 import globalState from '../globalState.js'
 import { openPopup } from '../utils/openPopup.js'
 import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
 import { handleInputOptionsAndValue } from '../utils/dom/inputUtils.js'
+import { getTemplateParams } from './get-template-params.js'
 import { handleConfirmButtonClick, handleDenyButtonClick, handleCancelButtonClick } from './buttons-handlers.js'
 import { addKeydownHandler, setFocus } from './keydown-handler.js'
 import { handlePopupClick } from './popup-click-handler.js'
@@ -100,25 +101,6 @@ const swalPromise = (instance, domCache, innerParams) => {
       domCache.container.scrollTop = 0
     })
   })
-}
-
-const getTemplateParams = (params) => {
-  const result = {}
-  const template = typeof params.template === 'string' ? document.querySelector(params.template) : params.template
-  if (!template) {
-    return {}
-  }
-  const templateContent = template.content || template // IE11
-  toArray(templateContent.children).forEach((child) => {
-    const paramName = child.tagName.toLowerCase().replace(/^swal-/, '').replace(/-(.)/g, function (match, group) {
-      return group.toUpperCase()
-    })
-    result[paramName] = child.innerHTML.trim()
-    if (typeof defaultParams[paramName] === 'boolean' && result[paramName] === 'false') {
-      result[paramName] = false
-    }
-  })
-  return result
 }
 
 const populateDomCache = (instance) => {

@@ -14,9 +14,18 @@
 
 <body>
   <template id="my-template">
-    <swal-icon>question</swal-icon>
     <swal-title>Are you sure?</swal-title>
-    <swal-show-cancel-button>true</swal-show-cancel-button>
+    <swal-html>You won't be able to revert this!</swal-html>
+    <swal-icon type="success"></swal-icon>
+    <swal-image src="https://sweetalert2.github.io/images/SweetAlert2.png" width="300" height="60" alt="safdsafd"></swal-image>
+    <swal-input type="select" placeholder="placeholderrr" value="b">
+      <swal-input-option value="a">aa</swal-input-option>
+      <swal-input-option value="b">bb</swal-input-option>
+    </swal-input>
+    <swal-param name="showConfirmButton" value="false"></swal-param>
+    <swal-button type="deny">Denyyy</swal-button>
+    <swal-button type="cancel">Nooo</swal-button>
+    <swal-footer>footerrr</swal-footer>
   </template>
 
   <script>

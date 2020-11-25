@@ -71,4 +71,10 @@ describe('inputValue', () => {
     Swal.fire({ input: 'text', inputValue: undefined })
     expect(spy.calledWith('SweetAlert2: Unexpected type of inputValue! Expected "string", "number" or "Promise", got "undefined"')).to.be.true
   })
+
+  it('inputValue can be null', () => {
+    const spy = cy.spy(console, 'error')
+    Swal.fire({ input: 'select', inputOptions: { a: 'a' }, inputValue: null })
+    expect(spy.notCalled).to.be.true
+  })
 })

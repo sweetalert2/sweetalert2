@@ -84,3 +84,11 @@ QUnit.test('should throw console warning about unexpected type of inputValue', (
   console.warn = _consoleWarn
   assert.ok(spy.calledWith('SweetAlert2: Unexpected type of inputValue! Expected "string", "number" or "Promise", got "undefined"'))
 })
+
+QUnit.test('inputValue can be null', (assert) => {
+  const _consoleError = console.error
+  const spy = sinon.spy(console, 'error')
+  Swal.fire({ input: 'select', inputOptions: { a: 'a' }, inputValue: null })
+  console.error = _consoleError
+  assert.ok(spy.notCalled)
+})

@@ -535,7 +535,7 @@ declare module 'sweetalert2' {
      *     icon: 'question',
      *     title: 'Are you sure?',
      *     showCancelButton: true,
-     *   }"/>
+     *   }"></swal>
      * </template>
      * ```
      *

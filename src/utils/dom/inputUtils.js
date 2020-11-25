@@ -77,9 +77,7 @@ const populateInputOptions = {
       const option = document.createElement('option')
       option.value = optionValue
       dom.setInnerHtml(option, optionLabel)
-      if (params.inputValue.toString() === optionValue.toString()) {
-        option.selected = true
-      }
+      option.selected = isSelected(optionValue, params.inputValue)
       parent.appendChild(option)
     }
     inputOptions.forEach(inputOption => {
@@ -112,7 +110,7 @@ const populateInputOptions = {
       radioInput.type = 'radio'
       radioInput.name = swalClasses.radio
       radioInput.value = radioValue
-      if (params.inputValue.toString() === radioValue.toString()) {
+      if (isSelected(radioValue, params.inputValue)) {
         radioInput.checked = true
       }
       const label = document.createElement('span')
@@ -153,4 +151,8 @@ const formatInputOptions = (inputOptions) => {
     })
   }
   return result
+}
+
+const isSelected = (optionValue, inputValue) => {
+  return inputValue && inputValue.toString() === optionValue.toString()
 }

@@ -27,6 +27,9 @@ const getSwalParams = (templateContent) => {
     if (typeof defaultParams[paramName] === 'boolean' && value === 'false') {
       value = false
     }
+    if (typeof defaultParams[paramName] === 'object') {
+      value = (new Function(`return ${value}`))() // eslint-disable-line no-new-func
+    }
     result[paramName] = value
   })
   return result

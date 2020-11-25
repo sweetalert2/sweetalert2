@@ -531,9 +531,15 @@ declare module 'sweetalert2' {
      * Example:
      * ```html
      * <template id="my-template">
-     *   <swal-icon>question</swal-icon>
      *   <swal-title>Are you sure?</swal-title>
-     *   <swal-show-cancel-button>true</swal-show-cancel-button>
+     *   <swal-html>You won't be able to revert this!</swal-html>
+     *   <swal-icon type="success"></swal-icon>
+     *   <swal-image src="puppy.png" width="300" height="60" alt="woof woof"></swal-image>
+     *   <swal-input type="text" placeholder="enter something" value="initial value">
+     *   <swal-param name="inputAttributes" value="{ maxlength: 10 }"></swal-param>
+     *   <swal-button type="confirm">Yes</swal-button>
+     *   <swal-button type="cancel">No</swal-button>
+     *   <swal-footer>read more here</swal-footer>
      * </template>
      * ```
      *

@@ -12,6 +12,7 @@ QUnit.test('template as HTMLTemplateElement', (assert) => {
       <swal-input-option value="a">aa</swal-input-option>
       <swal-input-option value="b">bb</swal-input-option>
     </swal-input>
+    <swal-param name="inputAttributes" value="{ hey: 'there' }"></swal-param>
     <swal-param name="showConfirmButton" value="false"></swal-param>
     <swal-button type="deny">Denyyy</swal-button>
     <swal-button type="cancel">Nooo</swal-button>
@@ -26,6 +27,7 @@ QUnit.test('template as HTMLTemplateElement', (assert) => {
   assert.equal(Swal.getImage().style.width, '300px')
   assert.equal(Swal.getImage().style.height, '60px')
   assert.ok(Swal.getInput().classList.contains('swal2-select'))
+  assert.equal(Swal.getInput().getAttribute('hey'), 'there')
   assert.equal(Swal.getInput().querySelectorAll('option').length, 3)
   assert.equal($('.swal2-select option:nth-child(1)').innerHTML, 'placeholderrr')
   assert.ok($('.swal2-select option:nth-child(1)').disabled)

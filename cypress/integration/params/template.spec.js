@@ -13,6 +13,7 @@ describe('template', () => {
         <swal-input-option value="a">aa</swal-input-option>
         <swal-input-option value="b">bb</swal-input-option>
       </swal-input>
+      <swal-param name="inputAttributes" value="{ hey: 'there' }"></swal-param>
       <swal-param name="showConfirmButton" value="false"></swal-param>
       <swal-button type="deny">Denyyy</swal-button>
       <swal-button type="cancel">Nooo</swal-button>
@@ -30,7 +31,8 @@ describe('template', () => {
     expect(Swal.getImage().style.width).to.equal('300px')
     expect(Swal.getImage().style.height).to.equal('60px')
     expect(Swal.getInput().classList.contains('swal2-select')).to.be.true
-    expect(Swal.getInput().querySelectorAll('option').length, 3)
+    expect(Swal.getInput().getAttribute('hey')).to.equal('there')
+    expect(Swal.getInput().querySelectorAll('option').length).to.equal(3)
     expect($('.swal2-select option:nth-child(1)').innerHTML).to.equal('placeholderrr')
     expect($('.swal2-select option:nth-child(1)').disabled).to.be.true
     expect($('.swal2-select option:nth-child(2)').innerHTML).to.equal('aa')

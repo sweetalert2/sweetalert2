@@ -2,7 +2,7 @@ import defaultParams, { showWarningsForParams } from '../utils/params.js'
 import * as dom from '../utils/dom/index.js'
 import { swalClasses } from '../utils/classes.js'
 import Timer from '../utils/Timer.js'
-import { callIfFunction, warn } from '../utils/utils.js'
+import { callIfFunction, toArray } from '../utils/utils.js'
 import setParameters from '../utils/setParameters.js'
 import globalState from '../globalState.js'
 import { openPopup } from '../utils/openPopup.js'
@@ -103,17 +103,22 @@ const swalPromise = (instance, domCache, innerParams) => {
 }
 
 const getTemplateParams = (params) => {
+  const result = {}
   const template = typeof params.template === 'string' ? document.querySelector(params.template) : params.template
   if (!template) {
     return {}
   }
   const templateContent = template.content || template // IE11
-  const swalElement = templateContent.querySelector('swal')
-  if (!swalElement) {
-    warn('<swal params="{ ... }" /> is missing')
-    return {}
-  }
-  return (new Function(`return ${swalElement.getAttribute('params')}`))() // eslint-disable-line no-new-func
+  toArray(templateContent.children).forEach((child) => {
+    const paramName = child.tagName.toLowerCase().replace(/^swal-/, '').replace(/-(.)/g, function (match, group) {
+      return group.toUpperCase()
+    })
+    result[paramName] = child.innerHTML.trim()
+    if (typeof defaultParams[paramName] === 'boolean' && result[paramName] === 'false') {
+      result[paramName] = false
+    }
+  })
+  return result
 }
 
 const populateDomCache = (instance) => {

@@ -5,10 +5,8 @@ describe('template', () => {
     const template = document.createElement('template')
     template.id = 'my-template'
     template.innerHTML = `
-      <swal params="{
-        title: 'Are you sure?',
-        showCancelButton: true,
-      }"></swal>
+      <swal-title>Are you sure?</swal-title>
+      <swal-show-cancel-button>true</swal-show-cancel-button>
     `
     document.body.append(template)
     SwalWithoutAnimation.fire({
@@ -22,16 +20,14 @@ describe('template', () => {
     const template = document.createElement('template')
     template.id = 'my-template-string'
     template.innerHTML = `
-      <swal params="{
-        title: 'Are you sure?',
-        showCancelButton: true,
-      }"></swal>
+      <swal-title>Are you sure?</swal-title>
+      <swal-show-deny-button>false</swal-show-deny-button>
     `
     document.body.append(template)
     SwalWithoutAnimation.fire({
       template: '#my-template-string',
     })
     expect(Swal.getTitle().textContent).to.equal('Are you sure?')
-    expect(isVisible(Swal.getCancelButton())).to.be.true
+    expect(isVisible(Swal.getDenyButton())).to.be.false
   })
 })

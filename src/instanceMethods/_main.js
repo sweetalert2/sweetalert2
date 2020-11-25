@@ -103,20 +103,16 @@ const swalPromise = (instance, domCache, innerParams) => {
 }
 
 const getTemplateParams = (params) => {
-  if (!params.template) {
+  const template = typeof params.template === 'string' ? document.querySelector(params.template) : params.template
+  if (!template) {
     return {}
   }
-
-  const template =
-    params.template.content ||
-    params.template // IE11
-
-  const swalElement = template.querySelector('swal')
+  const templateContent = template.content || template // IE11
+  const swalElement = templateContent.querySelector('swal')
   if (!swalElement) {
     warn('<swal params="{ ... }" /> is missing')
     return {}
   }
-
   return (new Function(`return ${swalElement.getAttribute('params')}`))() // eslint-disable-line no-new-func
 }
 

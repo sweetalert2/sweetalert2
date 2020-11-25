@@ -541,13 +541,13 @@ declare module 'sweetalert2' {
      *
      * ```
      * Swal.fire({
-     *   template: document.querySelector('#my-template')
+     *   template: '#my-template'
      * })
      * ```
      *
      * @default undefined
      */
-    template?: HTMLTemplateElement;
+    template?: string | HTMLTemplateElement;
 
     /**
      * Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop.

@@ -2,7 +2,7 @@ import defaultParams, { showWarningsForParams } from '../utils/params.js'
 import * as dom from '../utils/dom/index.js'
 import { swalClasses } from '../utils/classes.js'
 import Timer from '../utils/Timer.js'
-import { callIfFunction } from '../utils/utils.js'
+import { callIfFunction, warn } from '../utils/utils.js'
 import setParameters from '../utils/setParameters.js'
 import globalState from '../globalState.js'
 import { openPopup } from '../utils/openPopup.js'
@@ -11,7 +11,6 @@ import privateMethods from '../privateMethods.js'
 import { handleInputOptionsAndValue } from '../utils/dom/inputUtils.js'
 import { handleConfirmButtonClick, handleDenyButtonClick, handleCancelButtonClick } from './buttons-handlers.js'
 import { addKeydownHandler, setFocus } from './keydown-handler.js'
-import { getTemplateParams } from './get-template-params.js'
 import { handlePopupClick } from './popup-click-handler.js'
 import { DismissReason } from '../utils/DismissReason.js'
 
@@ -101,6 +100,24 @@ const swalPromise = (instance, domCache, innerParams) => {
       domCache.container.scrollTop = 0
     })
   })
+}
+
+const getTemplateParams = (params) => {
+  if (!params.template) {
+    return {}
+  }
+
+  const template =
+    params.template.content ||
+    params.template // IE11
+
+  const swalElement = template.querySelector('swal')
+  if (!swalElement) {
+    warn('<swal params="{ ... }" /> is missing')
+    return {}
+  }
+
+  return (new Function(`return ${swalElement.getAttribute('params')}`))() // eslint-disable-line no-new-func
 }
 
 const populateDomCache = (instance) => {

@@ -13,14 +13,12 @@
 </head>
 
 <body>
-  <template id="my-template" width="600" icon="warning">
-    <img src="https://sweetalert2.github.io/images/SweetAlert2.png" width="300" height="60" alt="Hey there">
-    <title>Are you sure?</title>
-    <content>You won't be able to revert this!</content>
-    <confirm-button color="green">Yes</confirm-button>
-    <cancel-button color="#d33">Cancel</cancel-button>
-    <deny-button>Deny</deny-button>
-    <footer><div>Read more <a href="#">here</a></div></footer>
+  <template id="my-template">
+    <swal params="{
+      icon: 'question',
+      title: 'Are you sure?',
+      showCancelButton: true,
+    }"/>
   </template>
 
   <script>

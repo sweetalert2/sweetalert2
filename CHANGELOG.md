@@ -1,3 +1,10 @@
+## [10.10.3](https://github.com/sweetalert2/sweetalert2/compare/v10.10.2...v10.10.3) (2020-11-25)
+
+
+### Bug Fixes
+
+* setting inputValue to null when input is select ([#2115](https://github.com/sweetalert2/sweetalert2/issues/2115)) ([1950fb7](https://github.com/sweetalert2/sweetalert2/commit/1950fb715d7c64e244ff462176be32769318a623))
+
 ## [10.10.2](https://github.com/sweetalert2/sweetalert2/compare/v10.10.1...v10.10.2) (2020-11-24)
 
 

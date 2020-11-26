@@ -43,9 +43,9 @@ describe('template', () => {
     expect($('.swal2-select option:nth-child(3)').selected).to.be.true
     expect(isHidden(Swal.getConfirmButton())).to.be.true
     expect(isVisible(Swal.getCancelButton())).to.be.true
-    expect(Swal.getCancelButton().style.backgroundColor).to.equal('red')
+    expect(Swal.getDenyButton().style.backgroundColor).to.equal('red')
     expect(isVisible(Swal.getDenyButton())).to.be.true
-    expect(Swal.getDenyButton().getAttribute('aria-label')).to.equal('no no')
+    expect(Swal.getCancelButton().getAttribute('aria-label')).to.equal('no no')
     expect(isVisible(Swal.getFooter())).to.be.true
     expect(Swal.getFooter().innerHTML).to.equal('footerrr')
   })

@@ -1,3 +1,10 @@
+## [10.10.4](https://github.com/sweetalert2/sweetalert2/compare/v10.10.3...v10.10.4) (2020-11-26)
+
+
+### Bug Fixes
+
+* prevent setting innerHTML which is unsafe ([#2116](https://github.com/sweetalert2/sweetalert2/issues/2116)) ([35fcdfa](https://github.com/sweetalert2/sweetalert2/commit/35fcdfaae996f787e6cd1199f50595d65f8b673a))
+
 ## [10.10.3](https://github.com/sweetalert2/sweetalert2/compare/v10.10.2...v10.10.3) (2020-11-25)
 
 

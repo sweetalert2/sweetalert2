@@ -530,7 +530,7 @@ declare module 'sweetalert2' {
      * `<swal-param name="..." value="..."></swal-param>`, e.g.
      * `<swal-param name="toast" value="true"></swal-param>`
      *
-     * Aditionally, there are specialized elements for specific params:
+     * Additionally, there are specialized elements for specific params:
      *  - `<swal-title>`
      *  - `<swal-html>`
      *  - `<swal-icon>`
@@ -552,7 +552,7 @@ declare module 'sweetalert2' {
      *   <swal-input type="select" placeholder="..." label="..." value="...">
      *     <swal-input-option value="...">...</swal-input-option>
      *   </swal-input>
-     *   <swal-param name="inputAttributes" value="{ maxlength: 10 }"></swal-param>
+     *   <swal-param name="inputAttributes" value="{ multiple: true }"></swal-param>
      *
      *   <swal-button type="confirm" color="..." aria-label="...">Yes</swal-button>
      *   <swal-button type="cancel" color="..." aria-label="...">No</swal-button>

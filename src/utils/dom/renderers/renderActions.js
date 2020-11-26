@@ -30,7 +30,7 @@ export const renderActions = (instance, params) => {
   }
 
   // Loader
-  loader.innerHTML = params.loaderHtml
+  dom.setInnerHtml(loader, params.loaderHtml)
   dom.applyCustomClass(loader, params, 'loader')
 }
 

@@ -19,7 +19,7 @@ describe('template', () => {
       <swal-button type="cancel" aria-label="no no">Nooo</swal-button>
       <swal-footer>footerrr</swal-footer>
     `
-    document.body.append(template)
+    document.body.appendChild(template)
     SwalWithoutAnimation.fire({
       template: document.querySelector('#my-template'),
     })
@@ -54,7 +54,7 @@ describe('template', () => {
     const template = document.createElement('template')
     template.id = 'my-template-string'
     template.innerHTML = '<swal-title>Are you sure?</swal-title>'
-    document.body.append(template)
+    document.body.appendChild(template)
     SwalWithoutAnimation.fire({
       template: '#my-template-string',
     })

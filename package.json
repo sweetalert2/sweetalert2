@@ -16,6 +16,7 @@
     "@sweetalert2/eslint-config": "^1.0.0",
     "@sweetalert2/execute": "^1.0.0",
     "@sweetalert2/stylelint-config": "^1.1.5",
+    "@webcomponents/template": "^1.4.4",
     "babel-loader": "^8.0.4",
     "babel-plugin-array-includes": "^2.0.3",
     "browser-sync": "^2.26.3",

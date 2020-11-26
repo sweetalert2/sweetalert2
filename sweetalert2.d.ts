@@ -526,19 +526,37 @@ declare module 'sweetalert2' {
     footer?: string | HTMLElement | JQuery;
 
     /**
-     * The declarative <template> of the popup.
+     * The declarative <template> of the popup. All API prams can be set via
+     * `<swal-param name="..." value="..."></swal-param>`, e.g.
+     * `<swal-param name="toast" value="true"></swal-param>`
+     *
+     * Aditionally, there are specialized elements for specific params:
+     *  - `<swal-title>`
+     *  - `<swal-html>`
+     *  - `<swal-icon>`
+     *  - `<swal-image>`
+     *  - `<swal-input>`
+     *  - `<swal-input-option>`
+     *  - `<swal-button>`
+     *  - `<swal-footer>`
      *
      * Example:
      * ```html
      * <template id="my-template">
      *   <swal-title>Are you sure?</swal-title>
      *   <swal-html>You won't be able to revert this!</swal-html>
+     *
      *   <swal-icon type="success"></swal-icon>
-     *   <swal-image src="puppy.png" width="300" height="60" alt="woof woof"></swal-image>
-     *   <swal-input type="text" placeholder="enter something" value="initial value">
+     *   <swal-image src="..." width="..." height="..." alt="..."></swal-image>
+     *
+     *   <swal-input type="select" placeholder="..." label="..." value="...">
+     *     <swal-input-option value="...">...</swal-input-option>
+     *   </swal-input>
      *   <swal-param name="inputAttributes" value="{ maxlength: 10 }"></swal-param>
-     *   <swal-button type="confirm">Yes</swal-button>
-     *   <swal-button type="cancel">No</swal-button>
+     *
+     *   <swal-button type="confirm" color="..." aria-label="...">Yes</swal-button>
+     *   <swal-button type="cancel" color="..." aria-label="...">No</swal-button>
+     *
      *   <swal-footer>read more here</swal-footer>
      * </template>
      * ```

@@ -24,14 +24,31 @@
     </swal-input>
     <swal-param name="inputAttributes" value="{ hey: 'there' }"></swal-param>
     <swal-param name="showConfirmButton" value="false"></swal-param>
-    <swal-button type="deny">Denyyy</swal-button>
+    <swal-button type="deny" color="red">Denyyy</swal-button>
     <swal-button type="cancel">Nooo</swal-button>
     <swal-footer>footerrr</swal-footer>
   </template>
 
   <script>
     Swal.fire({
-      template: '#my-template',
+      // template: '#my-template',
+      title: 'Test modal with input',
+      html: 'custom <strong>content</strong>',
+      input: 'text',
+      icon: 'success',
+      showCloseButton: true,
+      showDenyButton: true,
+      showCancelButton: true,
+      preConfirm: function (value) {
+        if (!value) {
+          Swal.showValidationMessage('Should not be empty!')
+        }
+      },
+      didOpen: function (modal) {
+        console.log(modal)
+      }
+    }).then(function (result) {
+      console.log(result)
     })
   </script>
 </body>

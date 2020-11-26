@@ -4,5 +4,8 @@ module.exports = {
     'describe': false,
     'it': false,
     'QUnit': false
+  },
+  rules: {
+    'no-unsanitized/property': 0,
   }
 }

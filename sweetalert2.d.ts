@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 declare module 'sweetalert2' {
   /**
    * A namespace inside the default function, containing utility function for controlling the currently-displayed
@@ -1166,10 +1167,4 @@ declare module 'sweetalert2/*/sweetalert2.all.js' {
  */
 
 interface JQuery {
-}
-
-interface Promise<T> {
-}
-
-interface Map<K, V> {
 }

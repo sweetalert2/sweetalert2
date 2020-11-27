@@ -23,7 +23,7 @@ export const addKeydownHandler = (instance, globalState, innerParams, dismissWit
 export const setFocus = (innerParams, index, increment) => {
   const focusableElements = dom.getFocusableElements()
   // search for visible elements and select the next possible match
-  for (let i = 0; i < focusableElements.length; i++) {
+  if (focusableElements.length) {
     index = index + increment
 
     // rollover to first item

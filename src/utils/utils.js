@@ -37,7 +37,7 @@ export const toArray = (nodeList) => Array.prototype.slice.call(nodeList)
  * @param message
  */
 export const warn = (message) => {
-  console.warn(`${consolePrefix} ${message}`)
+  console.warn(`${consolePrefix} ${typeof message === 'object' ? message.join(' ') : message}`)
 }
 
 /**

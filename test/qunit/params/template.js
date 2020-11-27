@@ -1,4 +1,5 @@
 const { $, Swal, SwalWithoutAnimation, isVisible, isHidden } = require('../helpers')
+const sinon = require('sinon/pkg/sinon')
 
 QUnit.test('template as HTMLTemplateElement', (assert) => {
   const template = document.createElement('template')
@@ -55,4 +56,25 @@ QUnit.test('template as string', (assert) => {
     template: '#my-template-string',
   })
   assert.equal(Swal.getTitle().textContent, 'Are you sure?')
+})
+
+QUnit.test('should throw a warning when attempting to use unrecognized attributes', (assert) => {
+  const _consoleWarn = console.warn
+  const spy = sinon.spy(console, 'warn')
+  const template = document.createElement('template')
+  template.id = 'my-template-with-unexpected-attributes'
+  template.innerHTML = `
+    <swal-title value="hey!"></swal-title>
+    <swal-image src="https://sweetalert2.github.io/images/SweetAlert2.png" width="20" height="10" alt="woof" foo="1" bar>Are you sure?</swal-image>
+  `
+  document.body.appendChild(template)
+  SwalWithoutAnimation.fire({
+    template: '#my-template-with-unexpected-attributes',
+  })
+  assert.equal(Swal.getImage().src, 'https://sweetalert2.github.io/images/SweetAlert2.png')
+  console.warn = _consoleWarn
+  assert.equal(spy.callCount, 3)
+  assert.ok(spy.getCall(0).calledWith(`SweetAlert2: Unrecognized attribute "foo" on <swal-image>. Allowed attributes are: src, width, height, alt`))
+  assert.ok(spy.getCall(1).calledWith(`SweetAlert2: Unrecognized attribute "bar" on <swal-image>. Allowed attributes are: src, width, height, alt`))
+  assert.ok(spy.getCall(2).calledWith(`SweetAlert2: Unrecognized attribute "value" on <swal-title>. To set the value, use HTML within the element.`))
 })

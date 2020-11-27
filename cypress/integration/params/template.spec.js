@@ -67,7 +67,8 @@ describe('template', () => {
     template.id = 'my-template-with-unexpected-attributes'
     template.innerHTML = `
       <swal-title value="hey!"></swal-title>
-      <swal-image src="https://sweetalert2.github.io/images/SweetAlert2.png" width="20" height="10" alt="woof" foo="1" bar>Are you sure?</swal-image>
+      <swal-image src="https://sweetalert2.github.io/images/SweetAlert2.png" width="20" height="10" alt="woof" foo="1">Are you sure?</swal-image>
+      <swal-input type="text" bar>Are you sure?</swal-input>
     `
     document.body.appendChild(template)
     SwalWithoutAnimation.fire({
@@ -76,7 +77,7 @@ describe('template', () => {
     expect(Swal.getImage().src).to.equal('https://sweetalert2.github.io/images/SweetAlert2.png')
     expect(spy.callCount).to.equal(3)
     expect(spy.getCall(0).calledWith(`SweetAlert2: Unrecognized attribute "foo" on <swal-image>. Allowed attributes are: src, width, height, alt`)).to.be.true
-    expect(spy.getCall(1).calledWith(`SweetAlert2: Unrecognized attribute "bar" on <swal-image>. Allowed attributes are: src, width, height, alt`)).to.be.true
+    expect(spy.getCall(1).calledWith(`SweetAlert2: Unrecognized attribute "bar" on <swal-input>. Allowed attributes are: type, label, placeholder, label, value`)).to.be.true
     expect(spy.getCall(2).calledWith(`SweetAlert2: Unrecognized attribute "value" on <swal-title>. To set the value, use HTML within the element.`)).to.be.true
   })
 })

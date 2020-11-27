@@ -552,7 +552,7 @@ declare module 'sweetalert2' {
      *   <swal-input type="select" placeholder="..." label="..." value="...">
      *     <swal-input-option value="...">...</swal-input-option>
      *   </swal-input>
-     *   <swal-param name="inputAttributes" value="{ multiple: true }"></swal-param>
+     *   <swal-param name="inputAttributes" value='{ "multiple": true }'></swal-param>
      *
      *   <swal-button type="confirm" color="..." aria-label="...">Yes</swal-button>
      *   <swal-button type="cancel" color="..." aria-label="...">No</swal-button>

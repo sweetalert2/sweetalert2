@@ -42,7 +42,7 @@ const getSwalButtons = (templateContent) => {
     showWarningsForAttributes(button, ['type', 'color', 'aria-label'])
     const type = button.getAttribute('type')
     const color = button.getAttribute('color')
-    const ariaLabel = button.getAttribute('aria-label')
+    const ariaLabel = button.getAttribute('aria-label') || ''
     result[`${type}ButtonText`] = button.innerHTML
     result[`show${capitalizeFirstLetter(type)}Button`] = true
     if (color) {
@@ -61,7 +61,7 @@ const getSwalImage = (templateContent) => {
     result.imageUrl = image.getAttribute('src')
     result.imageWidth = image.getAttribute('width')
     result.imageHeight = image.getAttribute('height')
-    result.imageAlt = image.getAttribute('alt')
+    result.imageAlt = image.getAttribute('alt') || ''
   }
   return result
 }
@@ -82,12 +82,11 @@ const getSwalInput = (templateContent) => {
   const result = {}
   const input = templateContent.querySelector('swal-input')
   if (input) {
-    showWarningsForAttributes(input, ['type', 'label', 'placeholder', 'label', 'value'])
-    result.input = input.getAttribute('type')
-    result.inputLabel = input.getAttribute('label')
-    result.inputPlaceholder = input.getAttribute('placeholder')
-    result.inputLabel = input.getAttribute('label')
-    result.inputValue = input.getAttribute('value')
+    showWarningsForAttributes(input, ['type', 'label', 'placeholder', 'value'])
+    result.input = input.getAttribute('type') || 'text'
+    result.inputLabel = input.getAttribute('label') || ''
+    result.inputPlaceholder = input.getAttribute('placeholder') || ''
+    result.inputValue = input.getAttribute('value') || ''
   }
   const inputOptions = templateContent.querySelectorAll('swal-input-option')
   if (inputOptions.length) {

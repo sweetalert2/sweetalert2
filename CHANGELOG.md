@@ -1,3 +1,10 @@
+# [10.11.0](https://github.com/sweetalert2/sweetalert2/compare/v10.10.4...v10.11.0) (2020-12-02)
+
+
+### Features
+
+* add declarative templates support ([#2112](https://github.com/sweetalert2/sweetalert2/issues/2112)) ([ff64d26](https://github.com/sweetalert2/sweetalert2/commit/ff64d26dad50e5b931a2808263484ef6f9c37417))
+
 ## [10.10.4](https://github.com/sweetalert2/sweetalert2/compare/v10.10.3...v10.10.4) (2020-11-26)
 
 

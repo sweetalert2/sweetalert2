@@ -83,6 +83,7 @@ function getFiles () {
   }
   return files.concat([
     'node_modules/promise-polyfill/dist/polyfill.min.js',
+    'node_modules/@webcomponents/template/template.js',
     'test/qunit/**/*.js'
   ])
 }

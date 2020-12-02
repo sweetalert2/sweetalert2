@@ -3,7 +3,6 @@ name: CRON tests
 on:
   push:
     branches:
-      - feat/declarative-templates
       - cron
   schedule:
     - cron:  '0 3 * * *'

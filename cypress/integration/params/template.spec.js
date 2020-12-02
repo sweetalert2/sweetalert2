@@ -66,6 +66,7 @@ describe('template', () => {
     const template = document.createElement('template')
     template.id = 'my-template-with-unexpected-attributes'
     template.innerHTML = `
+      <swal-foo>bar</swal-foo>
       <swal-title value="hey!"></swal-title>
       <swal-image src="https://sweetalert2.github.io/images/SweetAlert2.png" width="20" height="10" alt="woof" foo="1">Are you sure?</swal-image>
       <swal-input bar>Are you sure?</swal-input>

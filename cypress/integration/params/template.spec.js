@@ -61,7 +61,7 @@ describe('template', () => {
     expect(Swal.getTitle().textContent).to.equal('Are you sure?')
   })
 
-  it('should throw a warning when attempting to use unrecognized attributes', () => {
+  it('should throw a warning when attempting to use unrecognized elements and attributes', () => {
     const spy = cy.spy(console, 'warn')
     const template = document.createElement('template')
     template.id = 'my-template-with-unexpected-attributes'
@@ -76,9 +76,10 @@ describe('template', () => {
     })
     expect(Swal.getImage().src).to.equal('https://sweetalert2.github.io/images/SweetAlert2.png')
     expect(Swal.getInput().type).to.equal('text')
-    expect(spy.callCount).to.equal(3)
-    expect(spy.getCall(0).calledWith(`SweetAlert2: Unrecognized attribute "foo" on <swal-image>. Allowed attributes are: src, width, height, alt`)).to.be.true
-    expect(spy.getCall(1).calledWith(`SweetAlert2: Unrecognized attribute "bar" on <swal-input>. Allowed attributes are: type, label, placeholder, value`)).to.be.true
-    expect(spy.getCall(2).calledWith(`SweetAlert2: Unrecognized attribute "value" on <swal-title>. To set the value, use HTML within the element.`)).to.be.true
+    expect(spy.callCount).to.equal(4)
+    expect(spy.getCall(0).calledWith(`SweetAlert2: Unrecognized element <swal-foo>`)).to.be.true
+    expect(spy.getCall(1).calledWith(`SweetAlert2: Unrecognized attribute "foo" on <swal-image>. Allowed attributes are: src, width, height, alt`)).to.be.true
+    expect(spy.getCall(2).calledWith(`SweetAlert2: Unrecognized attribute "bar" on <swal-input>. Allowed attributes are: type, label, placeholder, value`)).to.be.true
+    expect(spy.getCall(3).calledWith(`SweetAlert2: Unrecognized attribute "value" on <swal-title>. To set the value, use HTML within the element.`)).to.be.true
   })
 })

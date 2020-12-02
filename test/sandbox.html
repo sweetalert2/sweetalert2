@@ -31,22 +31,22 @@
 
   <script>
     Swal.fire({
-      // template: '#my-template',
-      title: 'Test modal with input',
-      html: 'custom <strong>content</strong>',
-      input: 'text',
-      icon: 'success',
-      showCloseButton: true,
-      showDenyButton: true,
-      showCancelButton: true,
-      preConfirm: function (value) {
-        if (!value) {
-          Swal.showValidationMessage('Should not be empty!')
-        }
-      },
-      didOpen: function (modal) {
-        console.log(modal)
-      }
+      template: '#my-template',
+      // title: 'Test modal with input',
+      // html: 'custom <strong>content</strong>',
+      // input: 'text',
+      // icon: 'success',
+      // showCloseButton: true,
+      // showDenyButton: true,
+      // showCancelButton: true,
+      // preConfirm: function (value) {
+      //   if (!value) {
+      //     Swal.showValidationMessage('Should not be empty!')
+      //   }
+      // },
+      // didOpen: function (modal) {
+      //   console.log(modal)
+      // }
     }).then(function (result) {
       console.log(result)
     })

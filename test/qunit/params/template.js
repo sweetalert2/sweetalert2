@@ -58,12 +58,13 @@ QUnit.test('template as string', (assert) => {
   assert.equal(Swal.getTitle().textContent, 'Are you sure?')
 })
 
-QUnit.test('should throw a warning when attempting to use unrecognized attributes', (assert) => {
+QUnit.test('should throw a warning when attempting to use unrecognized elements and attributes', (assert) => {
   const _consoleWarn = console.warn
   const spy = sinon.spy(console, 'warn')
   const template = document.createElement('template')
   template.id = 'my-template-with-unexpected-attributes'
   template.innerHTML = `
+    <swal-foo>bar</swal-foo>
     <swal-title value="hey!"></swal-title>
     <swal-image src="https://sweetalert2.github.io/images/SweetAlert2.png" width="20" height="10" alt="woof" foo="1">Are you sure?</swal-image>
     <swal-input bar>Are you sure?</swal-input>
@@ -75,8 +76,9 @@ QUnit.test('should throw a warning when attempting to use unrecognized attribute
   assert.equal(Swal.getImage().src, 'https://sweetalert2.github.io/images/SweetAlert2.png')
   assert.equal(Swal.getInput().type, 'text')
   console.warn = _consoleWarn
-  assert.equal(spy.callCount, 3)
-  assert.ok(spy.getCall(0).calledWith(`SweetAlert2: Unrecognized attribute "foo" on <swal-image>. Allowed attributes are: src, width, height, alt`))
-  assert.ok(spy.getCall(1).calledWith(`SweetAlert2: Unrecognized attribute "bar" on <swal-input>. Allowed attributes are: type, label, placeholder, value`))
-  assert.ok(spy.getCall(2).calledWith(`SweetAlert2: Unrecognized attribute "value" on <swal-title>. To set the value, use HTML within the element.`))
+  assert.equal(spy.callCount, 4)
+  assert.ok(spy.getCall(0).calledWith(`SweetAlert2: Unrecognized element <swal-foo>`))
+  assert.ok(spy.getCall(1).calledWith(`SweetAlert2: Unrecognized attribute "foo" on <swal-image>. Allowed attributes are: src, width, height, alt`))
+  assert.ok(spy.getCall(2).calledWith(`SweetAlert2: Unrecognized attribute "bar" on <swal-input>. Allowed attributes are: type, label, placeholder, value`))
+  assert.ok(spy.getCall(3).calledWith(`SweetAlert2: Unrecognized attribute "value" on <swal-title>. To set the value, use HTML within the element.`))
 })

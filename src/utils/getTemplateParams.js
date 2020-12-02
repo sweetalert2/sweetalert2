@@ -1,6 +1,8 @@
 import defaultParams from './params.js'
 import { toArray, capitalizeFirstLetter, warn } from './utils.js'
 
+const swalStringParams = ['swal-title', 'swal-html', 'swal-footer']
+
 export const getTemplateParams = (params) => {
   const template = typeof params.template === 'string' ? document.querySelector(params.template) : params.template
   if (!template) {
@@ -8,13 +10,15 @@ export const getTemplateParams = (params) => {
   }
   const templateContent = template.content || template // IE11
 
+  showWarningsForElements(templateContent)
+
   const result = Object.assign(
     getSwalParams(templateContent),
     getSwalButtons(templateContent),
     getSwalImage(templateContent),
     getSwalIcon(templateContent),
     getSwalInput(templateContent),
-    getSwalStringParams(templateContent, ['title', 'html', 'footer']),
+    getSwalStringParams(templateContent, swalStringParams),
   )
   return result
 }
@@ -105,17 +109,34 @@ const getSwalStringParams = (templateContent, paramNames) => {
   const result = {}
   for (const i in paramNames) {
     const paramName = paramNames[i]
-    const tag = templateContent.querySelector(`swal-${paramName}`)
+    const tag = templateContent.querySelector(paramName)
     if (tag) {
       showWarningsForAttributes(tag, [])
-      result[paramName] = tag.innerHTML
+      result[paramName.replace(/^swal-/, '')] = tag.innerHTML
     }
   }
   return result
 }
 
+const showWarningsForElements = (template) => {
+  const allowedElements = swalStringParams.concat([
+    'swal-param',
+    'swal-button',
+    'swal-image',
+    'swal-icon',
+    'swal-input',
+    'swal-input-option',
+  ])
+  toArray(template.querySelectorAll('*')).forEach((el) => {
+    const tagName = el.tagName.toLowerCase()
+    if (allowedElements.indexOf(tagName) === -1) {
+      warn(`Unrecognized element <${tagName}>`)
+    }
+  })
+}
+
 const showWarningsForAttributes = (el, allowedAttributes) => {
-  toArray(toArray(el.attributes)).forEach((attribute) => {
+  toArray(el.attributes).forEach((attribute) => {
     if (allowedAttributes.indexOf(attribute.name) === -1) {
       warn([
         `Unrecognized attribute "${attribute.name}" on <${el.tagName.toLowerCase()}>.`,

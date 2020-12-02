@@ -4,6 +4,7 @@ import { swalClasses } from '../utils/classes.js'
 import Timer from '../utils/Timer.js'
 import { callIfFunction } from '../utils/utils.js'
 import setParameters from '../utils/setParameters.js'
+import { getTemplateParams } from '../utils/getTemplateParams.js'
 import globalState from '../globalState.js'
 import { openPopup } from '../utils/openPopup.js'
 import privateProps from '../privateProps.js'
@@ -47,7 +48,8 @@ export function _main (userParams) {
 const prepareParams = (userParams) => {
   const showClass = Object.assign({}, defaultParams.showClass, userParams.showClass)
   const hideClass = Object.assign({}, defaultParams.hideClass, userParams.hideClass)
-  const params = Object.assign({}, defaultParams, userParams)
+  const templateParams = getTemplateParams(userParams)
+  const params = Object.assign({}, defaultParams, templateParams, userParams)
   params.showClass = showClass
   params.hideClass = hideClass
   // @deprecated

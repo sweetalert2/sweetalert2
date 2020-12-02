@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 declare module 'sweetalert2' {
   /**
    * A namespace inside the default function, containing utility function for controlling the currently-displayed
@@ -524,6 +523,52 @@ declare module 'sweetalert2' {
      * @default ''
      */
     footer?: string | HTMLElement | JQuery;
+
+    /**
+     * The declarative <template> of the popup. All API prams can be set via
+     * `<swal-param name="..." value="..."></swal-param>`, e.g.
+     * `<swal-param name="toast" value="true"></swal-param>`
+     *
+     * Additionally, there are specialized elements for specific params:
+     *  - `<swal-title>`
+     *  - `<swal-html>`
+     *  - `<swal-icon>`
+     *  - `<swal-image>`
+     *  - `<swal-input>`
+     *  - `<swal-input-option>`
+     *  - `<swal-button>`
+     *  - `<swal-footer>`
+     *
+     * Example:
+     * ```html
+     * <template id="my-template">
+     *   <swal-title>Are you sure?</swal-title>
+     *   <swal-html>You won't be able to revert this!</swal-html>
+     *
+     *   <swal-icon type="success"></swal-icon>
+     *   <swal-image src="..." width="..." height="..." alt="..."></swal-image>
+     *
+     *   <swal-input type="select" placeholder="..." label="..." value="...">
+     *     <swal-input-option value="...">...</swal-input-option>
+     *   </swal-input>
+     *   <swal-param name="inputAttributes" value='{ "multiple": true }'></swal-param>
+     *
+     *   <swal-button type="confirm" color="..." aria-label="...">Yes</swal-button>
+     *   <swal-button type="cancel" color="..." aria-label="...">No</swal-button>
+     *
+     *   <swal-footer>read more here</swal-footer>
+     * </template>
+     * ```
+     *
+     * ```
+     * Swal.fire({
+     *   template: '#my-template'
+     * })
+     * ```
+     *
+     * @default undefined
+     */
+    template?: string | HTMLTemplateElement;
 
     /**
      * Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop.

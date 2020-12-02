@@ -9,6 +9,7 @@ export const defaultParams = {
   icon: undefined,
   iconColor: undefined,
   iconHtml: undefined,
+  template: undefined,
   toast: false,
   animation: true,
   showClass: {

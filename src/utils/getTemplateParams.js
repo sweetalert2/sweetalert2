@@ -1,5 +1,5 @@
-import defaultParams from '../utils/params.js'
-import { toArray, capitalizeFirstLetter, warn } from '../utils/utils.js'
+import defaultParams from './params.js'
+import { toArray, capitalizeFirstLetter, warn } from './utils.js'
 
 export const getTemplateParams = (params) => {
   const template = typeof params.template === 'string' ? document.querySelector(params.template) : params.template

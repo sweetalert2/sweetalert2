@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 declare module 'sweetalert2' {
   /**
    * A namespace inside the default function, containing utility function for controlling the currently-displayed

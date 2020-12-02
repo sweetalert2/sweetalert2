@@ -3,6 +3,7 @@ name: coverage
 on:
   push:
     branches:
+      - feat/declarative-templates
       - master
   schedule:
     - cron:  '0 3 * * *'

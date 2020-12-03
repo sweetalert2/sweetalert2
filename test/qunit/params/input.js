@@ -377,7 +377,7 @@ QUnit.test('popup should expand and shrink accordingly to textarea width', (asse
   })
   Swal.getInput().style.width = '600px'
   setTimeout(() => {
-    assert.equal(Swal.getPopup().style.width, '640px')
+    assert.equal(Swal.getPopup().style.width, '696px')
 
     Swal.getInput().style.width = '100px'
     setTimeout(() => {

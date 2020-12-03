@@ -176,11 +176,12 @@ renderInputType.textarea = (textarea, params) => {
   setInputPlaceholder(textarea, params)
   setInputLabel(textarea, textarea, params)
 
+  const getPadding = (el) => parseInt(window.getComputedStyle(el).paddingLeft) + parseInt(window.getComputedStyle(el).paddingRight)
+
   if ('MutationObserver' in window) { // #1699
     const initialPopupWidth = parseInt(window.getComputedStyle(dom.getPopup()).width)
-    const popupPadding = parseInt(window.getComputedStyle(dom.getPopup()).paddingLeft) + parseInt(window.getComputedStyle(dom.getPopup()).paddingRight)
     const outputsize = () => {
-      const contentWidth = textarea.offsetWidth + popupPadding
+      const contentWidth = textarea.offsetWidth + getPadding(dom.getPopup()) + getPadding(dom.getContent())
       if (contentWidth > initialPopupWidth) {
         dom.getPopup().style.width = `${contentWidth}px`
       } else {

@@ -1,3 +1,10 @@
+## [10.11.1](https://github.com/sweetalert2/sweetalert2/compare/v10.11.0...v10.11.1) (2020-12-03)
+
+
+### Bug Fixes
+
+* resizing popup when resizing textarea ([#2121](https://github.com/sweetalert2/sweetalert2/issues/2121)) ([a55ee25](https://github.com/sweetalert2/sweetalert2/commit/a55ee25503425b1b43d5ca975d02eadfc585419c))
+
 # [10.11.0](https://github.com/sweetalert2/sweetalert2/compare/v10.10.4...v10.11.0) (2020-12-02)
 
 

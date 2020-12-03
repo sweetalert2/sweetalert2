@@ -8,7 +8,7 @@ Sponsor is a company or a person who is supporting SweetAlert2 with 19 USD per m
 
 All sponsors have priority support via GitHub issues.
 
-For all questions related to sponsorship please contact me via email limon.monte@gmail.com
+For all questions related to sponsorship please contact me via email limon.monte@protonmail.com
 
 # Our Sponsors
 

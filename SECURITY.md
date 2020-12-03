@@ -9,4 +9,4 @@
 
 ## Reporting a Vulnerability
 
-https://github.com/sweetalert2/sweetalert2/issues or limon.monte@gmail.com
+https://github.com/sweetalert2/sweetalert2/issues or limon.monte@protonmail.com

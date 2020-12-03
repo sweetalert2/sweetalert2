@@ -232,7 +232,7 @@ Big Thanks
 Sponsors
 --------
 
-For all questions related to sponsorship please contact me via email limon.monte@gmail.com
+For all questions related to sponsorship please contact me via email limon.monte@protonmail.com
 
 [<img src="https://sweetalert2.github.io/images/sponsors/flowcrypt-banner.png">](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=banner)
 

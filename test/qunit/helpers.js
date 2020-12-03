@@ -17,7 +17,18 @@ if (isIE) {
 // We *only* access `Swal` through this module, so that we can be sure `initialSwalPropNames` is set properly
 export const initialSwalPropNames = Object.keys(global.Swal)
 export const Swal = global.Swal
-export const SwalWithoutAnimation = Swal.mixin({ animation: false })
+export const SwalWithoutAnimation = Swal.mixin({
+  showClass: {
+    container: '',
+    popup: '',
+    icon: ''
+  },
+  hideClass: {
+    container: '',
+    popup: '',
+    icon: ''
+  }
+})
 
 export const dispatchCustomEvent = (elem, eventName, eventDetail = {}) => {
   const event = new CustomEvent(eventName, { bubbles: true, cancelable: true, detail: eventDetail })

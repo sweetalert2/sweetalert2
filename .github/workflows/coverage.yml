@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - full-test/**
+      - feat/bindClickHandler
   schedule:
     - cron:  '0 3 * * *'
 

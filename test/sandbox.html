@@ -29,27 +29,20 @@
     <swal-footer>footerrr</swal-footer>
   </template>
 
+  <button data-swal-template="#my-template">trigger popup</button>
+
+  <button data-swal-toast-template="#my-template">trigger toast</button>
+
+  <button data-swal-template="#my-template">
+    <img src="https://avatars0.githubusercontent.com/u/35137722?s=200&v=4">
+    event.target could be img, because of that we need to check the event path
+  </button>
+
   <script>
-    Swal.fire({
-      template: '#my-template',
-      // title: 'Test modal with input',
-      // html: 'custom <strong>content</strong>',
-      // input: 'text',
-      // icon: 'success',
-      // showCloseButton: true,
-      // showDenyButton: true,
-      // showCancelButton: true,
-      // preConfirm: function (value) {
-      //   if (!value) {
-      //     Swal.showValidationMessage('Should not be empty!')
-      //   }
-      // },
-      // didOpen: function (modal) {
-      //   console.log(modal)
-      // }
-    }).then(function (result) {
-      console.log(result)
-    })
+    Swal.bindClickHandler()
+    Swal.mixin({
+      toast: true
+    }).bindClickHandler('data-swal-toast-template')
   </script>
 </body>
 

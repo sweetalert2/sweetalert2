@@ -13,15 +13,20 @@ export function bindClickHandler (attr = 'data-swal-template') {
 const bodyClickListener = (event) => {
   let el = event.target
   while (1) {
-    for (const attr in clickHandlers) {
-      const template = el.getAttribute(attr)
-      if (template) {
-        return clickHandlers[attr].fire({ template })
-      }
-    }
-    el = el.parentNode
+    el = checkAndGetParentNode(el)
     if (!el || !el.getAttribute) { // window.getAttribute is undefined
       break
     }
   }
+}
+
+const checkAndGetParentNode = (el) => {
+  for (const attr in clickHandlers) {
+    const template = el.getAttribute(attr)
+    if (template) {
+      clickHandlers[attr].fire({ template })
+      return false
+    }
+  }
+  return el.parentNode
 }

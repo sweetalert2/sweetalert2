@@ -32,4 +32,7 @@ QUnit.test('bindClickHandler', (assert) => {
   assert.ok(Swal.isVisible())
   assert.ok(Swal.getPopup().classList.contains('swal2-toast'))
   assert.equal(Swal.getTitle().innerHTML, 'Are you sure?')
+
+  document.body.removeChild(buttonTriggerPopup)
+  document.body.removeChild(buttonTriggerToast)
 })

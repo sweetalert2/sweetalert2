@@ -33,5 +33,8 @@ describe('bindClickHandler', () => {
     expect(Swal.isVisible()).to.be.true
     expect(Swal.getPopup().classList.contains('swal2-toast')).to.be.true
     expect(Swal.getTitle().innerHTML).to.equal('Are you sure?')
+
+    document.body.removeChild(buttonTriggerPopup)
+    document.body.removeChild(buttonTriggerToast)
   })
 })

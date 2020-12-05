@@ -1,26 +1,26 @@
-let clickHandlerAdded = false
+let bodyClickListenerAdded = false
 const clickHandlers = {}
 
 export function bindClickHandler (attr = 'data-swal-template') {
   clickHandlers[attr] = this
 
-  if (!clickHandlerAdded) {
+  if (!bodyClickListenerAdded) {
     document.body.addEventListener('click', bodyClickListener)
-    clickHandlerAdded = true
+    bodyClickListenerAdded = true
   }
 }
 
 const bodyClickListener = (event) => {
   let el = event.target
   while (1) {
-    el = checkAndGetParentNode(el)
+    el = checkElementAndGetItsParentNode(el)
     if (!el || !el.getAttribute) { // window.getAttribute is undefined
       break
     }
   }
 }
 
-const checkAndGetParentNode = (el) => {
+const checkElementAndGetItsParentNode = (el) => {
   for (const attr in clickHandlers) {
     const template = el.getAttribute(attr)
     if (template) {

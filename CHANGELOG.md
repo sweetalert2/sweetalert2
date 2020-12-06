@@ -1,3 +1,10 @@
+# [10.12.0](https://github.com/sweetalert2/sweetalert2/compare/v10.11.1...v10.12.0) (2020-12-06)
+
+
+### Features
+
+* add ability to trigger popups declaratively ([#2122](https://github.com/sweetalert2/sweetalert2/issues/2122)) ([8c2acde](https://github.com/sweetalert2/sweetalert2/commit/8c2acde33fb777cb2cbf37b00c963aa95b1defdf))
+
 ## [10.11.1](https://github.com/sweetalert2/sweetalert2/compare/v10.11.0...v10.11.1) (2020-12-03)
 
 

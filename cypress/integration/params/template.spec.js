@@ -69,14 +69,17 @@ describe('template', () => {
     template.innerHTML = `
       <swal-foo>bar</swal-foo>
       <swal-title value="hey!"></swal-title>
-      <swal-image src="https://sweetalert2.github.io/images/SweetAlert2.png" width="20" height="10" alt="woof" foo="1">Are you sure?</swal-image>
+      <swal-image src="https://sweetalert2.github.io/images/SweetAlert2.png" height="100" alt="woof" foo="1">Are you sure?</swal-image>
       <swal-input bar>Are you sure?</swal-input>
     `
     document.body.appendChild(template)
     SwalWithoutAnimation.fire({
+      imageWidth: 200,
       template: '#my-template-with-unexpected-attributes',
     })
     expect(Swal.getImage().src).to.equal('https://sweetalert2.github.io/images/SweetAlert2.png')
+    expect(Swal.getImage().style.width).to.equal('200px')
+    expect(Swal.getImage().style.height).to.equal('100px')
     expect(Swal.getInput().type).to.equal('text')
     expect(spy.callCount).to.equal(4)
     expect(spy.getCall(0).calledWith(`SweetAlert2: Unrecognized element <swal-foo>`)).to.be.true

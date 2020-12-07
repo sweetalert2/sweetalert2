@@ -1,3 +1,10 @@
+## [10.12.3](https://github.com/sweetalert2/sweetalert2/compare/v10.12.2...v10.12.3) (2020-12-07)
+
+
+### Bug Fixes
+
+* support empty strings in template attributes ([#2130](https://github.com/sweetalert2/sweetalert2/issues/2130)) ([8e30ea5](https://github.com/sweetalert2/sweetalert2/commit/8e30ea5b7483b58586517234d68dcb0d8a1e281e))
+
 ## [10.12.2](https://github.com/sweetalert2/sweetalert2/compare/v10.12.1...v10.12.2) (2020-12-07)
 
 

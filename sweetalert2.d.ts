@@ -603,7 +603,7 @@ declare module 'sweetalert2' {
     input?: SweetAlertInput;
 
     /**
-     * Popup width, including paddings (`box-sizing: border-box`). Can be in px or %.
+     * Popup width, including paddings (`box-sizing: border-box`).
      *
      * @default undefined
      */
@@ -958,18 +958,18 @@ declare module 'sweetalert2' {
     imageUrl?: string;
 
     /**
-     * If imageUrl is set, you can specify imageWidth to describes image width in px.
+     * If imageUrl is set, you can specify imageWidth to describes image width.
      *
      * @default undefined
      */
-    imageWidth?: number;
+    imageWidth?: number | string;
 
     /**
-     * If imageUrl is set, you can specify imageHeight to describes image height in px.
+     * If imageUrl is set, you can specify imageHeight to describes image height.
      *
      * @default undefined
      */
-    imageHeight?: number;
+    imageHeight?: number | string;
 
     /**
      * An alternative text for the custom image icon.

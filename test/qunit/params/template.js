@@ -67,14 +67,17 @@ QUnit.test('should throw a warning when attempting to use unrecognized elements 
   template.innerHTML = `
     <swal-foo>bar</swal-foo>
     <swal-title value="hey!"></swal-title>
-    <swal-image src="https://sweetalert2.github.io/images/SweetAlert2.png" width="20" height="10" alt="woof" foo="1">Are you sure?</swal-image>
+    <swal-image src="https://sweetalert2.github.io/images/SweetAlert2.png" height="100" alt="woof" foo="1">Are you sure?</swal-image>
     <swal-input bar>Are you sure?</swal-input>
   `
   document.body.appendChild(template)
   SwalWithoutAnimation.fire({
+    imageWidth: 200,
     template: '#my-template-with-unexpected-attributes',
   })
   assert.equal(Swal.getImage().src, 'https://sweetalert2.github.io/images/SweetAlert2.png')
+  assert.equal(Swal.getImage().style.width, '200px')
+  assert.equal(Swal.getImage().style.height, '100px')
   assert.equal(Swal.getInput().type, 'text')
   console.warn = _consoleWarn
   assert.equal(spy.callCount, 4)

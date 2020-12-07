@@ -45,14 +45,14 @@ const getSwalButtons = (templateContent) => {
   toArray(templateContent.querySelectorAll('swal-button')).forEach((button) => {
     showWarningsForAttributes(button, ['type', 'color', 'aria-label'])
     const type = button.getAttribute('type')
-    const color = button.getAttribute('color')
-    const ariaLabel = button.getAttribute('aria-label') || ''
     result[`${type}ButtonText`] = button.innerHTML
     result[`show${capitalizeFirstLetter(type)}Button`] = true
-    if (color) {
-      result[`${type}ButtonColor`] = color
+    if (button.getAttribute('color')) {
+      result[`${type}ButtonColor`] = button.getAttribute('color')
     }
-    result[`${type}ButtonAriaLabel`] = ariaLabel
+    if (button.getAttribute('aria-label')) {
+      result[`${type}ButtonAriaLabel`] = button.getAttribute('aria-label')
+    }
   })
   return result
 }
@@ -62,10 +62,18 @@ const getSwalImage = (templateContent) => {
   const image = templateContent.querySelector('swal-image')
   if (image) {
     showWarningsForAttributes(image, ['src', 'width', 'height', 'alt'])
-    result.imageUrl = image.getAttribute('src')
-    result.imageWidth = image.getAttribute('width')
-    result.imageHeight = image.getAttribute('height')
-    result.imageAlt = image.getAttribute('alt') || ''
+    if (image.getAttribute('src')) {
+      result.imageUrl = image.getAttribute('src')
+    }
+    if (image.getAttribute('width')) {
+      result.imageWidth = image.getAttribute('width')
+    }
+    if (image.getAttribute('height')) {
+      result.imageHeight = image.getAttribute('height')
+    }
+    if (image.getAttribute('alt')) {
+      result.imageAlt = image.getAttribute('alt')
+    }
   }
   return result
 }
@@ -75,8 +83,12 @@ const getSwalIcon = (templateContent) => {
   const icon = templateContent.querySelector('swal-icon')
   if (icon) {
     showWarningsForAttributes(icon, ['type', 'color'])
-    result.icon = icon.getAttribute('type')
-    result.iconColor = icon.getAttribute('color')
+    if (icon.getAttribute('type')) {
+      result.icon = icon.getAttribute('type')
+    }
+    if (icon.getAttribute('color')) {
+      result.iconColor = icon.getAttribute('color')
+    }
     result.iconHtml = icon.innerHTML
   }
   return result
@@ -88,9 +100,15 @@ const getSwalInput = (templateContent) => {
   if (input) {
     showWarningsForAttributes(input, ['type', 'label', 'placeholder', 'value'])
     result.input = input.getAttribute('type') || 'text'
-    result.inputLabel = input.getAttribute('label') || ''
-    result.inputPlaceholder = input.getAttribute('placeholder') || ''
-    result.inputValue = input.getAttribute('value') || ''
+    if (input.getAttribute('label')) {
+      result.inputLabel = input.getAttribute('label')
+    }
+    if (input.getAttribute('placeholder')) {
+      result.inputPlaceholder = input.getAttribute('placeholder')
+    }
+    if (input.getAttribute('value')) {
+      result.inputValue = input.getAttribute('value')
+    }
   }
   const inputOptions = templateContent.querySelectorAll('swal-input-option')
   if (inputOptions.length) {

@@ -56,6 +56,7 @@ describe('template', () => {
     template.innerHTML = '<swal-title>Are you sure?</swal-title>'
     document.body.appendChild(template)
     SwalWithoutAnimation.fire({
+      title: 'this title should be overriden by template',
       template: '#my-template-string',
     })
     expect(Swal.getTitle().textContent).to.equal('Are you sure?')

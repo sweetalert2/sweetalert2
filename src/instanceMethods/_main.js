@@ -49,7 +49,7 @@ const prepareParams = (userParams) => {
   const showClass = Object.assign({}, defaultParams.showClass, userParams.showClass)
   const hideClass = Object.assign({}, defaultParams.hideClass, userParams.hideClass)
   const templateParams = getTemplateParams(userParams)
-  const params = Object.assign({}, defaultParams, templateParams, userParams)
+  const params = Object.assign({}, defaultParams, userParams, templateParams)
   params.showClass = showClass
   params.hideClass = hideClass
   // @deprecated

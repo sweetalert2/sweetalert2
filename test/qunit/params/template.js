@@ -53,6 +53,7 @@ QUnit.test('template as string', (assert) => {
   template.innerHTML = '<swal-title>Are you sure?</swal-title>'
   document.body.appendChild(template)
   SwalWithoutAnimation.fire({
+    title: 'this title should be overriden by template',
     template: '#my-template-string',
   })
   assert.equal(Swal.getTitle().textContent, 'Are you sure?')

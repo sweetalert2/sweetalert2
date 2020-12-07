@@ -47,10 +47,10 @@ const getSwalButtons = (templateContent) => {
     const type = button.getAttribute('type')
     result[`${type}ButtonText`] = button.innerHTML
     result[`show${capitalizeFirstLetter(type)}Button`] = true
-    if (button.getAttribute('color')) {
+    if (button.hasAttribute('color')) {
       result[`${type}ButtonColor`] = button.getAttribute('color')
     }
-    if (button.getAttribute('aria-label')) {
+    if (button.hasAttribute('aria-label')) {
       result[`${type}ButtonAriaLabel`] = button.getAttribute('aria-label')
     }
   })
@@ -62,16 +62,16 @@ const getSwalImage = (templateContent) => {
   const image = templateContent.querySelector('swal-image')
   if (image) {
     showWarningsForAttributes(image, ['src', 'width', 'height', 'alt'])
-    if (image.getAttribute('src')) {
+    if (image.hasAttribute('src')) {
       result.imageUrl = image.getAttribute('src')
     }
-    if (image.getAttribute('width')) {
+    if (image.hasAttribute('width')) {
       result.imageWidth = image.getAttribute('width')
     }
-    if (image.getAttribute('height')) {
+    if (image.hasAttribute('height')) {
       result.imageHeight = image.getAttribute('height')
     }
-    if (image.getAttribute('alt')) {
+    if (image.hasAttribute('alt')) {
       result.imageAlt = image.getAttribute('alt')
     }
   }
@@ -83,10 +83,10 @@ const getSwalIcon = (templateContent) => {
   const icon = templateContent.querySelector('swal-icon')
   if (icon) {
     showWarningsForAttributes(icon, ['type', 'color'])
-    if (icon.getAttribute('type')) {
+    if (icon.hasAttribute('type')) {
       result.icon = icon.getAttribute('type')
     }
-    if (icon.getAttribute('color')) {
+    if (icon.hasAttribute('color')) {
       result.iconColor = icon.getAttribute('color')
     }
     result.iconHtml = icon.innerHTML
@@ -100,13 +100,13 @@ const getSwalInput = (templateContent) => {
   if (input) {
     showWarningsForAttributes(input, ['type', 'label', 'placeholder', 'value'])
     result.input = input.getAttribute('type') || 'text'
-    if (input.getAttribute('label')) {
+    if (input.hasAttribute('label')) {
       result.inputLabel = input.getAttribute('label')
     }
-    if (input.getAttribute('placeholder')) {
+    if (input.hasAttribute('placeholder')) {
       result.inputPlaceholder = input.getAttribute('placeholder')
     }
-    if (input.getAttribute('value')) {
+    if (input.hasAttribute('value')) {
       result.inputValue = input.getAttribute('value')
     }
   }

@@ -1,3 +1,10 @@
+## [10.12.2](https://github.com/sweetalert2/sweetalert2/compare/v10.12.1...v10.12.2) (2020-12-07)
+
+
+### Bug Fixes
+
+* ignore null values for attributes in template elements ([#2128](https://github.com/sweetalert2/sweetalert2/issues/2128)) ([bd6ac8d](https://github.com/sweetalert2/sweetalert2/commit/bd6ac8da0336274074faeb217b232e0feb90d49e))
+
 ## [10.12.1](https://github.com/sweetalert2/sweetalert2/compare/v10.12.0...v10.12.1) (2020-12-07)
 
 

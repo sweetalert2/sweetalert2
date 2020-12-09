@@ -1,3 +1,10 @@
+## [10.12.4](https://github.com/sweetalert2/sweetalert2/compare/v10.12.3...v10.12.4) (2020-12-09)
+
+
+### Bug Fixes
+
+* params precedence, user params > template params > mixin params ([#2133](https://github.com/sweetalert2/sweetalert2/issues/2133)) ([98f44b4](https://github.com/sweetalert2/sweetalert2/commit/98f44b457ef5c9bf8784e6f3209bfa0000aafe31))
+
 ## [10.12.3](https://github.com/sweetalert2/sweetalert2/compare/v10.12.2...v10.12.3) (2020-12-07)
 
 

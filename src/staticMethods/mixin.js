@@ -18,8 +18,8 @@
  */
 export function mixin (mixinParams) {
   class MixinSwal extends this {
-    _main (params) {
-      return super._main(Object.assign({}, mixinParams, params))
+    _main (params, prevMixinParams) {
+      return super._main(params, Object.assign({}, prevMixinParams, mixinParams))
     }
   }
 

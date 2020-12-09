@@ -55,8 +55,10 @@ describe('template', () => {
     template.id = 'my-template-string'
     template.innerHTML = '<swal-title>Are you sure?</swal-title>'
     document.body.appendChild(template)
-    SwalWithoutAnimation.fire({
+    const mixin = SwalWithoutAnimation.mixin({
       title: 'this title should be overriden by template',
+    })
+    mixin.fire({
       template: '#my-template-string',
     })
     expect(Swal.getTitle().textContent).to.equal('Are you sure?')
@@ -69,13 +71,15 @@ describe('template', () => {
     template.innerHTML = `
       <swal-foo>bar</swal-foo>
       <swal-title value="hey!"></swal-title>
-      <swal-image src="https://sweetalert2.github.io/images/SweetAlert2.png" height="100" alt="" foo="1">Are you sure?</swal-image>
+      <swal-image src="https://sweetalert2.github.io/images/SweetAlert2.png" width="100" height="100" alt="" foo="1">Are you sure?</swal-image>
       <swal-input bar>Are you sure?</swal-input>
     `
     document.body.appendChild(template)
-    SwalWithoutAnimation.fire({
+    const mixin = SwalWithoutAnimation.mixin({
       imageAlt: 'this alt should be overriden by template',
-      imageWidth: 200,
+    })
+    mixin.fire({
+      imageWidth: 200, // user param should override <swal-image width="100">
       template: '#my-template-with-unexpected-attributes',
     })
     expect(Swal.getImage().src).to.equal('https://sweetalert2.github.io/images/SweetAlert2.png')

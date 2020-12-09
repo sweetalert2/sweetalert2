@@ -15,15 +15,15 @@ import { addKeydownHandler, setFocus } from './keydown-handler.js'
 import { handlePopupClick } from './popup-click-handler.js'
 import { DismissReason } from '../utils/DismissReason.js'
 
-export function _main (userParams) {
-  showWarningsForParams(userParams)
+export function _main (userParams, mixinParams = {}) {
+  showWarningsForParams(Object.assign({}, mixinParams, userParams))
 
   if (globalState.currentInstance) {
     globalState.currentInstance._destroy()
   }
   globalState.currentInstance = this
 
-  const innerParams = prepareParams(userParams)
+  const innerParams = prepareParams(userParams, mixinParams)
   setParameters(innerParams)
   Object.freeze(innerParams)
 
@@ -45,11 +45,11 @@ export function _main (userParams) {
   return swalPromise(this, domCache, innerParams)
 }
 
-const prepareParams = (userParams) => {
-  const showClass = Object.assign({}, defaultParams.showClass, userParams.showClass)
-  const hideClass = Object.assign({}, defaultParams.hideClass, userParams.hideClass)
+const prepareParams = (userParams, mixinParams) => {
   const templateParams = getTemplateParams(userParams)
-  const params = Object.assign({}, defaultParams, userParams, templateParams)
+  const showClass = Object.assign({}, defaultParams.showClass, mixinParams.showClass, templateParams.showClass, userParams.showClass)
+  const hideClass = Object.assign({}, defaultParams.hideClass, mixinParams.hideClass, templateParams.hideClass, userParams.hideClass)
+  const params = Object.assign({}, defaultParams, mixinParams, templateParams, userParams) // precedence is described in #2131
   params.showClass = showClass
   params.hideClass = hideClass
   // @deprecated

@@ -49,6 +49,9 @@ Your contribution will be greatly appreciated!
 
 - **Johnny Lockhart** (25 USD)
 
+- **Vivek Bhatnagar** (20 EUR)
+    > Thanks for sweet-alert, I used it for a small charity project and it's awesome. Please accept our small token of thanks. God bless!
+
 - **[Brand Lovely](https://www.brandlovely.com/)** (20 EUR)
 
 - **Alex Frei** (20 EUR)

@@ -14,6 +14,7 @@ QUnit.test('template as HTMLTemplateElement', (assert) => {
       <swal-input-option value="b">bb</swal-input-option>
     </swal-input>
     <swal-param name="inputAttributes" value='{ "hey": "there" }'></swal-param>
+    <swal-param name="customClass" value='{ "popup": "my-popup" }'></swal-param>
     <swal-param name="showConfirmButton" value="false"></swal-param>
     <swal-button type="deny" color="red">Denyyy</swal-button>
     <swal-button type="cancel" aria-label="no no">Nooo</swal-button>
@@ -23,6 +24,7 @@ QUnit.test('template as HTMLTemplateElement', (assert) => {
   SwalWithoutAnimation.fire({
     template: document.querySelector('#my-template'),
   })
+  assert.ok(Swal.getPopup().classList.contains('my-popup'))
   assert.equal(Swal.getTitle().textContent, 'Are you sure?')
   assert.equal(Swal.getImage().src, 'https://sweetalert2.github.io/images/SweetAlert2.png')
   assert.equal(Swal.getImage().style.width, '300px')

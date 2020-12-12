@@ -14,6 +14,7 @@ describe('template', () => {
         <swal-input-option value="b">bb</swal-input-option>
       </swal-input>
       <swal-param name="inputAttributes" value='{ "hey": "there" }'></swal-param>
+      <swal-param name="customClass" value='{ "popup": "my-popup" }'></swal-param>
       <swal-param name="showConfirmButton" value="false"></swal-param>
       <swal-button type="deny" color="red">Denyyy</swal-button>
       <swal-button type="cancel" aria-label="no no">Nooo</swal-button>
@@ -23,9 +24,7 @@ describe('template', () => {
     SwalWithoutAnimation.fire({
       template: document.querySelector('#my-template'),
     })
-    expect(Swal.getTitle().textContent).to.equal('Are you sure?')
-    expect(isVisible(Swal.getCancelButton())).to.be.true
-
+    expect(Swal.getPopup().classList.contains('my-popup')).to.be.true
     expect(Swal.getTitle().textContent).to.equal('Are you sure?')
     expect(Swal.getImage().src).to.equal('https://sweetalert2.github.io/images/SweetAlert2.png')
     expect(Swal.getImage().style.width).to.equal('300px')

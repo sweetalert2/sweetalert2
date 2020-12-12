@@ -678,7 +678,7 @@ declare module 'sweetalert2' {
      * })
      * ```
      *
-     * @default undefined
+     * @default {}
      */
     customClass?: SweetAlertCustomClass;
 

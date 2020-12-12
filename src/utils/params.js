@@ -22,7 +22,7 @@ export const defaultParams = {
     backdrop: 'swal2-backdrop-hide',
     icon: 'swal2-icon-hide',
   },
-  customClass: undefined,
+  customClass: {},
   target: 'body',
   backdrop: true,
   heightAuto: true,

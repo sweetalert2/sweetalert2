@@ -1,3 +1,10 @@
+## [10.12.5](https://github.com/sweetalert2/sweetalert2/compare/v10.12.4...v10.12.5) (2020-12-12)
+
+
+### Bug Fixes
+
+* customClass default value: undefined -> empty object ([#2137](https://github.com/sweetalert2/sweetalert2/issues/2137)) ([39bba2d](https://github.com/sweetalert2/sweetalert2/commit/39bba2d869c47b7f152a4929a85225f2676a1c4c))
+
 ## [10.12.4](https://github.com/sweetalert2/sweetalert2/compare/v10.12.3...v10.12.4) (2020-12-09)
 
 

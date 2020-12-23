@@ -1,3 +1,10 @@
+## [10.12.6](https://github.com/sweetalert2/sweetalert2/compare/v10.12.5...v10.12.6) (2020-12-23)
+
+
+### Bug Fixes
+
+* do not close toast by internal click in case the timer is set ([03f5469](https://github.com/sweetalert2/sweetalert2/commit/03f54693cb5d76bf99fa230fd63cca0636327649))
+
 ## [10.12.5](https://github.com/sweetalert2/sweetalert2/compare/v10.12.4...v10.12.5) (2020-12-12)
 
 

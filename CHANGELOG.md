@@ -1,3 +1,10 @@
+## [10.12.7](https://github.com/sweetalert2/sweetalert2/compare/v10.12.6...v10.12.7) (2021-01-01)
+
+
+### Bug Fixes
+
+* do not animate timer progress bar is timer was unset (fix [#2147](https://github.com/sweetalert2/sweetalert2/issues/2147)) ([3b165eb](https://github.com/sweetalert2/sweetalert2/commit/3b165eb8ad4fb98184d7fe910fbdca83f7ad5e49))
+
 ## [10.12.6](https://github.com/sweetalert2/sweetalert2/compare/v10.12.5...v10.12.6) (2020-12-23)
 
 

@@ -133,7 +133,7 @@ const setupTimer = (globalState, innerParams, dismissWith) => {
     if (innerParams.timerProgressBar) {
       dom.show(timerProgressBar)
       setTimeout(() => {
-        if (globalState.timeout.running) { // timer can be already stopped at this point
+        if (globalState.timeout && globalState.timeout.running) { // timer can be already stopped or unset at this point
           dom.animateTimerProgressBar(innerParams.timer)
         }
       })

@@ -94,7 +94,12 @@ const swalPromise = (instance, domCache, innerParams) => {
 
     setupTimer(globalState, innerParams, dismissWith)
 
+    const t0 = performance.now()
     initFocus(domCache, innerParams)
+    const t1 = performance.now()
+    const div = document.createElement('div')
+    div.innerHTML = `${(t1 - t0)}`
+    document.querySelector('#performance').appendChild(div)
 
     // Scroll container to top on open (#1247, #1946)
     setTimeout(() => {

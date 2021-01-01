@@ -23,7 +23,12 @@ export const openPopup = (params) => {
     params.onBeforeOpen(popup) // @deprecated
   }
 
+  const t0 = performance.now()
   const bodyStyles = window.getComputedStyle(document.body)
+  const t1 = performance.now()
+  const div = document.createElement('div')
+  div.innerHTML = `${(t1 - t0)}`
+  document.querySelector('#performance').appendChild(div)
   const initialBodyOverflow = bodyStyles.overflowY
   addClasses(container, popup, params)
 

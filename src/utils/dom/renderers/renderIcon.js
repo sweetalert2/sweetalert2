@@ -54,12 +54,17 @@ const applyStyles = (icon, params) => {
 
 // Adjust success icon background color to match the popup background color
 const adjustSuccessIconBackgoundColor = () => {
+  const t0 = performance.now()
   const popup = dom.getPopup()
   const popupBackgroundColor = window.getComputedStyle(popup).getPropertyValue('background-color')
   const successIconParts = popup.querySelectorAll('[class^=swal2-success-circular-line], .swal2-success-fix')
   for (let i = 0; i < successIconParts.length; i++) {
     successIconParts[i].style.backgroundColor = popupBackgroundColor
   }
+  const t1 = performance.now()
+  const div = document.createElement('div')
+  div.innerHTML = `${(t1 - t0)}`
+  document.querySelector('#performance').appendChild(div)
 }
 
 const setContent = (icon, params) => {

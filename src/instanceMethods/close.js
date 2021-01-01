@@ -33,6 +33,7 @@ function removePopupAndResetState (instance, container, isToast, didClose) {
   }
 
   removeBodyClasses()
+  document.querySelector('#performance').innerHTML = ''
 }
 
 function removeBodyClasses () {

@@ -116,9 +116,14 @@ const setupAccessibility = (params) => {
 }
 
 const setupRTL = (targetElement) => {
+  const t0 = performance.now()
   if (window.getComputedStyle(targetElement).direction === 'rtl') {
     addClass(getContainer(), swalClasses.rtl)
   }
+  const t1 = performance.now()
+  const div = document.createElement('div')
+  div.innerHTML = `${(t1 - t0)}`
+  document.querySelector('#performance').appendChild(div)
 }
 
 /*

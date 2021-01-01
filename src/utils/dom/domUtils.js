@@ -156,7 +156,15 @@ export const toggle = (elem, condition, display) => {
 }
 
 // borrowed from jquery $(elem).is(':visible') implementation
-export const isVisible = (elem) => !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
+export const isVisible = (elem) => {
+  const t0 = performance.now()
+  const isVisible = !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
+  const t1 = performance.now()
+  const div = document.createElement('div')
+  div.innerHTML = `${(t1 - t0)}`
+  document.querySelector('#performance').appendChild(div)
+  return isVisible
+}
 
 export const allButtonsAreHidden = () => !isVisible(getConfirmButton()) && !isVisible(getDenyButton()) && !isVisible(getCancelButton())
 
@@ -164,10 +172,15 @@ export const isScrollable = (elem) => !!(elem.scrollHeight > elem.clientHeight)
 
 // borrowed from https://stackoverflow.com/a/46352119
 export const hasCssAnimation = (elem) => {
+  const t0 = performance.now()
   const style = window.getComputedStyle(elem)
 
   const animDuration = parseFloat(style.getPropertyValue('animation-duration') || '0')
   const transDuration = parseFloat(style.getPropertyValue('transition-duration') || '0')
+  const t1 = performance.now()
+  const div = document.createElement('div')
+  div.innerHTML = `${(t1 - t0)}`
+  document.querySelector('#performance').appendChild(div)
 
   return animDuration > 0 || transDuration > 0
 }

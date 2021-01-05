@@ -667,6 +667,7 @@ declare module 'sweetalert2' {
      *     image: '...',
      *     content: '...',
      *     input: '...',
+     *     inputLabel: '...',
      *     validationMessage: '...',
      *     actions: '...',
      *     confirmButton: '...',

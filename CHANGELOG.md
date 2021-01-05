@@ -1,3 +1,10 @@
+# [10.13.0](https://github.com/sweetalert2/sweetalert2/compare/v10.12.7...v10.13.0) (2021-01-05)
+
+
+### Features
+
+* add customClass.inputLabel ([4d0f89c](https://github.com/sweetalert2/sweetalert2/commit/4d0f89c87966c7c49e636c6e16e4738d8180144c))
+
 ## [10.12.7](https://github.com/sweetalert2/sweetalert2/compare/v10.12.6...v10.12.7) (2021-01-01)
 
 

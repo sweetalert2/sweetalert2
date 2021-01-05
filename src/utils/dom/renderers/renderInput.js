@@ -97,6 +97,7 @@ const setInputLabel = (input, prependTo, params) => {
     const labelClass = swalClasses['input-label']
     label.setAttribute('for', input.id)
     label.className = labelClass
+    dom.addClass(label, params.customClass.inputLabel)
     label.innerText = params.inputLabel
     prependTo.insertAdjacentElement('beforebegin', label)
   }

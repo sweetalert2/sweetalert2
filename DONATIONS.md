@@ -135,6 +135,10 @@ Your contribution will be greatly appreciated!
 
 - **Pawel Terebinski** (5 EUR)
 
+- **iHoster** (3 EUR)
+
+    > SweetAlert is very useful. It makes our web projects more beautiful! Thanks!
+
 - **Singdavid Srun** (2 EUR)
 
 - **Victor Felipe De Freitas** (10 BRL)

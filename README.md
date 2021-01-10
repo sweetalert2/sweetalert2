@@ -29,7 +29,7 @@
 
 ---
 
-:shipit: The author of SweetAlert2 ([@limonte](https://github.com/limonte/)) is looking for short-term to medium-term working contracts in front-end, preferably OSS.
+:moneybag: [Get $100 in free credits with DigitalOcean!](https://m.do.co/c/12907f2ba0bf)
 
 ---
 

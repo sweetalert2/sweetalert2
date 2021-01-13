@@ -34,7 +34,7 @@
 ---
 
 :point_right: **Upgrading from v9.x to v10.x?** [Read the release notes!](https://github.com/sweetalert2/sweetalert2/releases/tag/v10.0.0)
-<br>If you're upgrading from v8.x, please [upgrade from v8 to v9](https://github.com/sweetalert2/sweetalert2/releases/tag/v10.0.0) first!
+<br>If you're upgrading from v8.x, please [upgrade from v8 to v9](https://github.com/sweetalert2/sweetalert2/releases/tag/v9.0.0) first!
 <br>If you're upgrading from v7.x, please [upgrade from v7 to v8](https://github.com/sweetalert2/sweetalert2/releases/tag/v8.0.0) first!
 <br>If you're upgrading from v6.x, please [upgrade from v6 to v7](https://github.com/sweetalert2/sweetalert2/releases/tag/v7.0.0) first!
 

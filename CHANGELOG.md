@@ -1,3 +1,10 @@
+## [10.13.1](https://github.com/sweetalert2/sweetalert2/compare/v10.13.0...v10.13.1) (2021-01-24)
+
+
+### Bug Fixes
+
+* only throw warnings for direct children in template ([#2156](https://github.com/sweetalert2/sweetalert2/issues/2156)) ([a0d19ea](https://github.com/sweetalert2/sweetalert2/commit/a0d19ea49dc12d29c952a4025acfcffc0d45c73a))
+
 # [10.13.0](https://github.com/sweetalert2/sweetalert2/compare/v10.12.7...v10.13.0) (2021-01-05)
 
 

@@ -145,7 +145,7 @@ const showWarningsForElements = (template) => {
     'swal-input',
     'swal-input-option',
   ])
-  toArray(template.querySelectorAll('*')).forEach((el) => {
+  toArray(template.children).forEach((el) => {
     const tagName = el.tagName.toLowerCase()
     if (allowedElements.indexOf(tagName) === -1) {
       warn(`Unrecognized element <${tagName}>`)

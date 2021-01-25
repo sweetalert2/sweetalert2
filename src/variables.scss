@@ -34,6 +34,8 @@ $swal2-header-padding: 0 1.8em !default;
 $swal2-icon-size: 5em !default;
 $swal2-icon-animations: true !default;
 $swal2-icon-margin: 1.25em auto 1.875em !default;
+$swal2-icon-font-family: inherit !default;
+$swal2-icon-font-size: 3.75em !default;
 $swal2-icon-zoom: null !default;
 $swal2-success: #a5dc86 !default;
 $swal2-success-border: rgba($swal2-success, .3) !default;
@@ -41,7 +43,6 @@ $swal2-error: #f27474 !default;
 $swal2-warning: #f8bb86 !default;
 $swal2-info: #3fc3ee !default;
 $swal2-question: #87adbd !default;
-$swal2-icon-font-family: inherit !default;
 
 // IMAGE
 $swal2-image-margin: 1.25em auto !default;
@@ -223,6 +224,7 @@ $swal2-toast-padding: .625em !default;
 $swal2-toast-header-padding: 0 !default;
 $swal2-toast-title-margin: 0 .6em !default;
 $swal2-toast-title-font-size: 1em !default;
+$swal2-toast-icon-font-size: 1.8em !default;
 $swal2-toast-content-padding: 0 !default;
 $swal2-toast-content-font-size: 1em !default;
 $swal2-toast-input-font-size: 1em !default;

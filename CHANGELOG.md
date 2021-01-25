@@ -1,3 +1,10 @@
+## [10.13.2](https://github.com/sweetalert2/sweetalert2/compare/v10.13.1...v10.13.2) (2021-01-25)
+
+
+### Bug Fixes
+
+* warnings in IE11 for invalid elements in templates ([#2157](https://github.com/sweetalert2/sweetalert2/issues/2157)) ([3f9cbd6](https://github.com/sweetalert2/sweetalert2/commit/3f9cbd6e67559a1d91cdd6cb5e3179a09a980c61))
+
 ## [10.13.1](https://github.com/sweetalert2/sweetalert2/compare/v10.13.0...v10.13.1) (2021-01-24)
 
 

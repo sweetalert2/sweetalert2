@@ -1,3 +1,10 @@
+## [10.13.3](https://github.com/sweetalert2/sweetalert2/compare/v10.13.2...v10.13.3) (2021-01-25)
+
+
+### Bug Fixes
+
+* apply $swal2-icon-size to success and error icons ([#2158](https://github.com/sweetalert2/sweetalert2/issues/2158)) ([f367041](https://github.com/sweetalert2/sweetalert2/commit/f367041215c7b44cdc4968bc45458c8e4ecd7e0b))
+
 ## [10.13.2](https://github.com/sweetalert2/sweetalert2/compare/v10.13.1...v10.13.2) (2021-01-25)
 
 

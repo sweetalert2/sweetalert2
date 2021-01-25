@@ -22,7 +22,8 @@ jobs:
 
     - name: Install cypress
       run:
-        yarn add cypress@^6.0.0
+        # 6.3.0 has issue https://github.com/cypress-io/cypress/issues/14663
+        yarn add cypress@6.2.1
         yarn add @cypress/code-coverage@^3.0.0
 
     - name: fix istanbul-reports

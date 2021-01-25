@@ -48,7 +48,7 @@
       .swal2-icon-content {
         display: flex;
         align-items: center;
-        font-size: 1.8em;
+        font-size: $swal2-toast-icon-font-size;
         font-weight: bold;
 
         @include ie {

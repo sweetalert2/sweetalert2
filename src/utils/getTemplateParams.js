@@ -145,7 +145,10 @@ const showWarningsForElements = (template) => {
     'swal-input',
     'swal-input-option',
   ])
-  toArray(template.children).forEach((el) => {
+  toArray(template.querySelectorAll('*')).forEach((el) => {
+    if (el.parentNode !== template) { // can't use template.children because of IE11
+      return
+    }
     const tagName = el.tagName.toLowerCase()
     if (allowedElements.indexOf(tagName) === -1) {
       warn(`Unrecognized element <${tagName}>`)

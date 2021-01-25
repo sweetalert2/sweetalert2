@@ -524,6 +524,12 @@
   }
 }
 
+// https://stackoverflow.com/a/12335841/1331425
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+$icon-zoom: strip-units($swal2-icon-size) / 5;
+
 .swal2-icon {
   position: relative;
   box-sizing: content-box;
@@ -532,7 +538,7 @@
   height: $swal2-icon-size;
   margin: $swal2-icon-margin;
   zoom: $swal2-icon-zoom;
-  border: .25em solid transparent;
+  border: #{.25em * $icon-zoom} solid transparent;
   border-radius: 50%;
   font-family: $swal2-icon-font-family;
   line-height: $swal2-icon-size;
@@ -542,7 +548,7 @@
   .swal2-icon-content {
     display: flex;
     align-items: center;
-    font-size: 3.75em;
+    font-size: $swal2-icon-font-size;
   }
 
   &.swal2-error {
@@ -552,6 +558,7 @@
     .swal2-x-mark {
       position: relative;
       flex-grow: 1;
+      zoom: $icon-zoom;
     }
 
     [class^='swal2-x-mark-line'] {
@@ -616,6 +623,7 @@
       &[class$='left'] {
         top: -.4375em;
         left: -2.0635em;
+        zoom: $icon-zoom;
         transform: rotate(-45deg);
         transform-origin: 3.75em 3.75em;
         border-radius: 7.5em 0 0 7.5em;
@@ -624,6 +632,7 @@
       &[class$='right'] {
         top: -.6875em;
         left: 1.875em;
+        zoom: $icon-zoom;
         transform: rotate(-45deg);
         transform-origin: 0 3.75em;
         border-radius: 0 7.5em 7.5em 0;
@@ -639,6 +648,7 @@
       box-sizing: content-box;
       width: 100%;
       height: 100%;
+      zoom: $icon-zoom;
       border: .25em solid $swal2-success-border;
       border-radius: 50%;
     }
@@ -651,6 +661,7 @@
       left: 1.625em;
       width: .4375em;
       height: 5.625em;
+      zoom: $icon-zoom;
       transform: rotate(-45deg);
     }
 
@@ -659,6 +670,7 @@
       position: absolute;
       z-index: 2;
       height: .3125em;
+      zoom: $icon-zoom;
       border-radius: .125em;
       background-color: $swal2-success;
 

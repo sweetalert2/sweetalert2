@@ -908,11 +908,18 @@ declare module 'sweetalert2' {
     loaderHtml?: string;
 
     /**
-     * Set to `true` to disable buttons and show that something is loading. Useful for AJAX requests.
+     * Set to `true` to disable buttons and show the loader instead of the Confirm button.
      *
      * @default false
      */
     showLoaderOnConfirm?: boolean;
+
+    /**
+     * Set to `true` to disable buttons and show the loader instead of the Deny button.
+     *
+     * @default false
+     */
+    showLoaderOnDeny?: boolean;
 
     /**
      * Function to execute before confirming, may be async (Promise-returning) or sync.

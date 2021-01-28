@@ -55,6 +55,7 @@ export const defaultParams = {
   closeButtonAriaLabel: 'Close this dialog',
   loaderHtml: '',
   showLoaderOnConfirm: false,
+  showLoaderOnDeny: false,
   imageUrl: undefined,
   imageWidth: undefined,
   imageHeight: undefined,

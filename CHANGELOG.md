@@ -1,3 +1,10 @@
+# [10.14.0](https://github.com/sweetalert2/sweetalert2/compare/v10.13.3...v10.14.0) (2021-01-28)
+
+
+### Features
+
+* add showLoaderOnDeny param ([#2161](https://github.com/sweetalert2/sweetalert2/issues/2161)) ([0970d56](https://github.com/sweetalert2/sweetalert2/commit/0970d565313f251533bf5e4a0f832f26513eb3be))
+
 ## [10.13.3](https://github.com/sweetalert2/sweetalert2/compare/v10.13.2...v10.13.3) (2021-01-25)
 
 

@@ -1,6 +1,6 @@
 import { isVisible } from '../utils/dom/domUtils.js'
 import { getInputValue } from '../utils/dom/inputUtils.js'
-import { getValidationMessage } from '../utils/dom/getters.js'
+import { getDenyButton, getValidationMessage } from '../utils/dom/getters.js'
 import { asPromise } from '../utils/utils.js'
 import { showLoading } from '../staticMethods/showLoading.js'
 import { DismissReason } from '../utils/DismissReason.js'
@@ -61,6 +61,10 @@ const handleInputValidator = (instance, innerParams, inputValue) => {
 }
 
 const deny = (instance, innerParams, value) => {
+  if (innerParams.showLoaderOnDeny) {
+    showLoading(getDenyButton())
+  }
+
   if (innerParams.preDeny) {
     const preDenyPromise = Promise.resolve().then(() => asPromise(
       innerParams.preDeny(value, innerParams.validationMessage))

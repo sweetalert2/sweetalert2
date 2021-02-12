@@ -1,3 +1,10 @@
+## [10.14.1](https://github.com/sweetalert2/sweetalert2/compare/v10.14.0...v10.14.1) (2021-02-12)
+
+
+### Bug Fixes
+
+* Swal.getIcon() to work in jest environment ([#2163](https://github.com/sweetalert2/sweetalert2/issues/2163)) ([f9c936e](https://github.com/sweetalert2/sweetalert2/commit/f9c936e9692cd5075e7da84f3dac38341590a614))
+
 # [10.14.0](https://github.com/sweetalert2/sweetalert2/compare/v10.13.3...v10.14.0) (2021-01-28)
 
 

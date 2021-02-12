@@ -21,7 +21,7 @@ export const getIcons = () => {
 }
 
 export const getIcon = () => {
-  const visibleIcon = getIcons().filter((icon) => isVisible(icon))
+  const visibleIcon = getIcons().filter((icon) => icon.style.display !== 'none')
   return visibleIcon.length ? visibleIcon[0] : null
 }
 

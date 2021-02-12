@@ -909,6 +909,7 @@ declare module 'sweetalert2' {
 
     /**
      * Set to `true` to disable buttons and show the loader instead of the Confirm button.
+     * Use it in combination with the `preConfirm` parameter.
      *
      * @default false
      */
@@ -916,6 +917,7 @@ declare module 'sweetalert2' {
 
     /**
      * Set to `true` to disable buttons and show the loader instead of the Deny button.
+     * Use it in combination with the `preDeny` parameter.
      *
      * @default false
      */

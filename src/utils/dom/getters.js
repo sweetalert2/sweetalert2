@@ -15,15 +15,7 @@ const elementByClass = (className) => {
 
 export const getPopup = () => elementByClass(swalClasses.popup)
 
-export const getIcons = () => {
-  const popup = getPopup()
-  return toArray(popup.querySelectorAll(`.${swalClasses.icon}`))
-}
-
-export const getIcon = () => {
-  const visibleIcon = getIcons().filter((icon) => icon.style.display !== 'none')
-  return visibleIcon.length ? visibleIcon[0] : null
-}
+export const getIcon = () => elementByClass(swalClasses.icon)
 
 export const getTitle = () => elementByClass(swalClasses.title)
 

@@ -540,6 +540,7 @@ $icon-zoom: strip-units($swal2-icon-size) / 5;
   zoom: $swal2-icon-zoom;
   border: #{.25em * $icon-zoom} solid transparent;
   border-radius: 50%;
+  border-color: $swal2-icon-border-color;
   font-family: $swal2-icon-font-family;
   line-height: $swal2-icon-size;
   cursor: default;

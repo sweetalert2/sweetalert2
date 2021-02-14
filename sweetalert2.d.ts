@@ -124,15 +124,9 @@ declare module 'sweetalert2' {
     function getCloseButton(): HTMLButtonElement | null;
 
     /**
-     * Gets the current visible icon.
+     * Gets the icon.
      */
     function getIcon(): HTMLElement | null;
-
-    /**
-     * Gets all icons. The current visible icon will have `style="display: flex"`,
-     * all other will be hidden by `style="display: none"`.
-     */
-    function getIcons(): readonly HTMLElement[];
 
     /**
      * Gets the "Confirm" button.

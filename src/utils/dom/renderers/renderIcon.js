@@ -5,43 +5,40 @@ import privateProps from '../../../privateProps.js'
 
 export const renderIcon = (instance, params) => {
   const innerParams = privateProps.innerParams.get(instance)
+  const icon = dom.getIcon()
 
   // if the given icon already rendered, apply the styling without re-rendering the icon
-  if (innerParams && params.icon === innerParams.icon && dom.getIcon()) {
-    applyStyles(dom.getIcon(), params)
-    return
-  }
-
-  hideAllIcons()
-
-  if (!params.icon) {
-    return
-  }
-
-  if (Object.keys(iconTypes).indexOf(params.icon) !== -1) {
-    const icon = dom.elementBySelector(`.${swalClasses.icon}.${iconTypes[params.icon]}`)
-    dom.show(icon)
-
+  if (innerParams && params.icon === innerParams.icon) {
     // Custom or default content
     setContent(icon, params)
 
     applyStyles(icon, params)
+    return
+  }
 
-    // Animate icon
-    dom.addClass(icon, params.showClass.icon)
-  } else {
+  if (!params.icon && !params.iconHtml) {
+    return dom.hide(icon)
+  }
+
+  if (params.icon && Object.keys(iconTypes).indexOf(params.icon) !== -1) {
     error(`Unknown icon! Expected "success", "error", "warning", "info" or "question", got "${params.icon}"`)
   }
-}
 
-const hideAllIcons = () => {
-  const icons = dom.getIcons()
-  for (let i = 0; i < icons.length; i++) {
-    dom.hide(icons[i])
-  }
+  dom.show(icon)
+
+  // Custom or default content
+  setContent(icon, params)
+
+  applyStyles(icon, params)
+
+  // Animate icon
+  dom.addClass(icon, params.showClass.icon)
 }
 
 const applyStyles = (icon, params) => {
+  icon.className = swalClasses.icon
+  dom.addClass(icon, iconTypes[params.icon])
+
   // Icon color
   setColor(icon, params)
 

@@ -435,6 +435,7 @@ declare module 'sweetalert2' {
     icon?: string;
     image?: string;
     content?: string;
+    htmlContainer?: string;
     input?: string;
     validationMessage?: string;
     actions?: string;

@@ -20,8 +20,9 @@ export const renderIcon = (instance, params) => {
     return dom.hide(icon)
   }
 
-  if (params.icon && Object.keys(iconTypes).indexOf(params.icon) !== -1) {
+  if (params.icon && Object.keys(iconTypes).indexOf(params.icon) === -1) {
     error(`Unknown icon! Expected "success", "error", "warning", "info" or "question", got "${params.icon}"`)
+    return dom.hide(icon)
   }
 
   dom.show(icon)

@@ -37,6 +37,8 @@ export const getProgressSteps = () => elementByClass(swalClasses['progress-steps
 
 export const getValidationMessage = () => elementByClass(swalClasses['validation-message'])
 
+export const getValidationMessageTop = () => elementByClass(swalClasses['validation-message-top'])
+
 export const getConfirmButton = () => elementBySelector(`.${swalClasses.actions} .${swalClasses.confirm}`)
 
 export const getDenyButton = () => elementBySelector(`.${swalClasses.actions} .${swalClasses.deny}`)

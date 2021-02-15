@@ -19,6 +19,7 @@ const sweetHTML = `
      <button type="button" class="${swalClasses.close}"></button>
    </div>
    <div class="${swalClasses.content}">
+     <div class="${swalClasses['validation-message-top']}" id="${swalClasses['validation-message-top']}">Test</div>
      <div id="${swalClasses.content}" class="${swalClasses['html-container']}"></div>
      <input class="${swalClasses.input}" />
      <input type="file" class="${swalClasses.file}" />

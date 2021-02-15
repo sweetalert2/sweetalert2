@@ -6,12 +6,26 @@ import privateProps from '../privateProps.js'
 export function showValidationMessage (error) {
   const domCache = privateProps.domCache.get(this)
   const params = privateProps.innerParams.get(this)
-  dom.setInnerHtml(domCache.validationMessage, error)
-  domCache.validationMessage.className = swalClasses['validation-message']
-  if (params.customClass && params.customClass.validationMessage) {
-    dom.addClass(domCache.validationMessage, params.customClass.validationMessage)
+
+  if (params.validationMessageAtTop) {
+    dom.setInnerHtml(domCache.validationMessageTop, error)
+    domCache.validationMessageTop.className = swalClasses['validation-message-top']
+  } else {
+    dom.setInnerHtml(domCache.validationMessage, error)
+    domCache.validationMessage.className = swalClasses['validation-message']
   }
-  dom.show(domCache.validationMessage)
+  if (params.customClass && params.customClass.validationMessage) {
+    if (params.validationMessageAtTop) {
+      dom.addClass(domCache.validationMessageTop, params.customClass.validationMessage)
+    } else {
+      dom.addClass(domCache.validationMessage, params.customClass.validationMessage)
+    }
+  }
+  if (params.validationMessageAtTop) {
+    dom.show(domCache.validationMessageTop)
+  } else {
+    dom.show(domCache.validationMessage)
+  }
 
   const input = this.getInput()
   if (input) {
@@ -27,6 +41,9 @@ export function resetValidationMessage () {
   const domCache = privateProps.domCache.get(this)
   if (domCache.validationMessage) {
     dom.hide(domCache.validationMessage)
+  }
+  if (domCache.validationMessageTop) {
+    dom.hide(domCache.validationMessageTop)
   }
 
   const input = this.getInput()

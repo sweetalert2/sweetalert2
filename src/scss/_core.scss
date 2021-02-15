@@ -495,7 +495,7 @@
   margin: $swal2-input-label-margin;
 }
 
-.swal2-validation-message {
+.swal2-validation-message, .swal2-validation-message-top {
   display: none;
   align-items: center;
   justify-content: $swal2-validation-message-justify-content;

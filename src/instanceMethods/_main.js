@@ -115,6 +115,7 @@ const populateDomCache = (instance) => {
     loader: dom.getLoader(),
     closeButton: dom.getCloseButton(),
     validationMessage: dom.getValidationMessage(),
+    validationMessageTop: dom.getValidationMessageTop(),
     progressSteps: dom.getProgressSteps()
   }
   privateProps.domCache.set(instance, domCache)

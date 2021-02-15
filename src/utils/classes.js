@@ -45,6 +45,7 @@ export const swalClasses = prefix([
   'textarea',
   'inputerror',
   'input-label',
+  'validation-message-top',
   'validation-message',
   'progress-steps',
   'active-progress-step',

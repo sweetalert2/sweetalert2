@@ -75,6 +75,7 @@ export const defaultParams = {
   inputValidator: undefined,
   returnInputValueOnDeny: false,
   validationMessage: undefined,
+  validationMessageAtTop: false,
   grow: false,
   position: 'center',
   progressSteps: [],
@@ -136,6 +137,7 @@ export const updatableParams = [
   'text',
   'title',
   'titleText',
+  'validationMessageAtTop',
   'willClose',
 ]
 

@@ -1,3 +1,10 @@
+# [10.15.0](https://github.com/sweetalert2/sweetalert2/compare/v10.14.1...v10.15.0) (2021-02-15)
+
+
+### Features
+
+* add customClass.htmlContainer ([#2169](https://github.com/sweetalert2/sweetalert2/issues/2169)) ([af69b70](https://github.com/sweetalert2/sweetalert2/commit/af69b7098dc9fe4f75ca0f6f8e163b674250ce1e))
+
 ## [10.14.1](https://github.com/sweetalert2/sweetalert2/compare/v10.14.0...v10.14.1) (2021-02-12)
 
 

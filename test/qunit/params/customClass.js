@@ -20,6 +20,7 @@ QUnit.test('customClass as an object', (assert) => {
       icon: 'icon-class',
       image: 'image-class',
       content: 'content-class',
+      htmlContainer: 'html-container-class',
       input: 'input-class',
       actions: 'actions-class',
       confirmButton: 'confirm-button-class',
@@ -37,6 +38,7 @@ QUnit.test('customClass as an object', (assert) => {
   assert.ok(Swal.getIcon().classList.contains('icon-class'))
   assert.ok(Swal.getImage().classList.contains('image-class'))
   assert.ok(Swal.getContent().classList.contains('content-class'))
+  assert.ok(Swal.getHtmlContainer().classList.contains('html-container-class'))
   assert.ok(Swal.getInput().classList.contains('input-class'))
   assert.ok(Swal.getActions().classList.contains('actions-class'))
   assert.ok(Swal.getConfirmButton().classList.contains('confirm-button-class'))

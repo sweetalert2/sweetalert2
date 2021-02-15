@@ -20,6 +20,7 @@ describe('customClass', () => {
         icon: 'icon-class',
         image: 'image-class',
         content: 'content-class',
+        htmlContainer: 'html-container-class',
         input: 'input-class',
         actions: 'actions-class',
         confirmButton: 'confirm-button-class',
@@ -36,6 +37,7 @@ describe('customClass', () => {
     expect(Swal.getCloseButton().classList.contains('close-button-class')).to.be.true
     expect(Swal.getIcon().classList.contains('icon-class')).to.be.true
     expect(Swal.getImage().classList.contains('image-class')).to.be.true
+    expect(Swal.getHtmlContainer().classList.contains('html-container-class')).to.be.true
     expect(Swal.getContent().classList.contains('content-class')).to.be.true
     expect(Swal.getInput().classList.contains('input-class')).to.be.true
     expect(Swal.getActions().classList.contains('actions-class')).to.be.true

@@ -1,23 +1,24 @@
-import { swalClasses } from '../../classes.js'
 import * as dom from '../../dom/index.js'
 import { renderInput } from './renderInput.js'
 
 export const renderContent = (instance, params) => {
-  const content = dom.getContent().querySelector(`#${swalClasses.content}`)
+  const htmlContainer = dom.getHtmlContainer()
+
+  dom.applyCustomClass(htmlContainer, params, 'htmlContainer')
 
   // Content as HTML
   if (params.html) {
-    dom.parseHtmlToContainer(params.html, content)
-    dom.show(content, 'block')
+    dom.parseHtmlToContainer(params.html, htmlContainer)
+    dom.show(htmlContainer, 'block')
 
   // Content as plain text
   } else if (params.text) {
-    content.textContent = params.text
-    dom.show(content, 'block')
+    htmlContainer.textContent = params.text
+    dom.show(htmlContainer, 'block')
 
   // No content
   } else {
-    dom.hide(content)
+    dom.hide(htmlContainer)
   }
 
   renderInput(instance, params)

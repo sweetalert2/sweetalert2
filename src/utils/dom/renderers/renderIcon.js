@@ -36,7 +36,11 @@ export const renderIcon = (instance, params) => {
 }
 
 const applyStyles = (icon, params) => {
-  icon.className = swalClasses.icon
+  for (const iconType in iconTypes) {
+    if (params.icon !== iconType) {
+      dom.removeClass(icon, iconTypes[iconType])
+    }
+  }
   dom.addClass(icon, iconTypes[params.icon])
 
   // Icon color

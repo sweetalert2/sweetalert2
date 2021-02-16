@@ -1,7 +1,9 @@
-const { Swal } = require('./helpers')
+const { Swal, SwalWithoutAnimation } = require('./helpers')
 const sinon = require('sinon/pkg/sinon')
 
 const Toast = Swal.mixin({ toast: true })
+const ToastWithoutAnimation = SwalWithoutAnimation.mixin({ toast: true })
+
 QUnit.test('.swal2-toast-shown', (assert) => {
   Toast.fire()
   assert.ok(document.body.classList.contains('swal2-toast-shown'))
@@ -71,8 +73,7 @@ QUnit.test('toast click closes when no buttons or input are specified', (assert)
 QUnit.test('toast click does not close if cancel button is present', (assert) => {
   const done = assert.async()
 
-  Toast.fire({
-    animation: false,
+  ToastWithoutAnimation.fire({
     showConfirmButton: false,
     showCancelButton: true
   })
@@ -88,8 +89,7 @@ QUnit.test('toast click does not close if cancel button is present', (assert) =>
 QUnit.test('toast click does not close if input option is specified', (assert) => {
   const done = assert.async()
 
-  Toast.fire({
-    animation: false,
+  ToastWithoutAnimation.fire({
     showConfirmButton: false,
     showCancelButton: false,
     input: 'text'
@@ -116,4 +116,19 @@ QUnit.test('Body classes are removed after closing toats', (assert) => {
       done()
     }
   })
+})
+
+QUnit.test('Percentage width should work for toasts', (assert) => {
+  const targetDiv = document.createElement('div')
+  document.body.appendChild(targetDiv)
+  targetDiv.style.width = '300px'
+  targetDiv.style.position = 'relative'
+
+  ToastWithoutAnimation.fire({
+    target: targetDiv,
+    width: '50%',
+  })
+
+  Swal.getContainer().style.position = 'absolute'
+  assert.equal(window.getComputedStyle(Swal.getPopup()).width, '150px')
 })

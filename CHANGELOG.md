@@ -1,3 +1,10 @@
+## [10.15.1](https://github.com/sweetalert2/sweetalert2/compare/v10.15.0...v10.15.1) (2021-02-16)
+
+
+### Bug Fixes
+
+* percentage width should work for toasts ([#2171](https://github.com/sweetalert2/sweetalert2/issues/2171)) ([50144a0](https://github.com/sweetalert2/sweetalert2/commit/50144a06602e22cbb9eced3d1e4f3630ded86b2b))
+
 # [10.15.0](https://github.com/sweetalert2/sweetalert2/compare/v10.14.1...v10.15.0) (2021-02-15)
 
 

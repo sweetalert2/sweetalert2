@@ -2,10 +2,16 @@ import { swalClasses } from '../../classes.js'
 import * as dom from '../../dom/index.js'
 
 export const renderPopup = (instance, params) => {
+  const container = dom.getContainer()
   const popup = dom.getPopup()
 
   // Width
-  dom.applyNumericalStyle(popup, 'width', params.width)
+  if (params.toast) { // #2170
+    dom.applyNumericalStyle(container, 'width', params.width)
+    popup.style.width = '100%'
+  } else {
+    dom.applyNumericalStyle(popup, 'width', params.width)
+  }
 
   // Padding
   dom.applyNumericalStyle(popup, 'padding', params.padding)

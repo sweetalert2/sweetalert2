@@ -1,6 +1,7 @@
-import { Swal } from '../utils'
+import { Swal, SwalWithoutAnimation } from '../utils'
 
-const Toast = Swal.mixin({ toast: true })
+const Toast = SwalWithoutAnimation.mixin({ toast: true })
+const ToastWithoutAnimation = SwalWithoutAnimation.mixin({ toast: true })
 
 describe('Toast', () => {
   it('.swal2-toast-shown', () => {
@@ -67,8 +68,7 @@ describe('Toast', () => {
   })
 
   it('toast click does not close if cancel button is present', (done) => {
-    Toast.fire({
-      animation: false,
+    ToastWithoutAnimation.fire({
       showConfirmButton: false,
       showCancelButton: true
     })
@@ -80,8 +80,7 @@ describe('Toast', () => {
   })
 
   it('toast click does not close if input option is specified', (done) => {
-    Toast.fire({
-      animation: false,
+    ToastWithoutAnimation.fire({
       showConfirmButton: false,
       showCancelButton: false,
       input: 'text'
@@ -104,5 +103,20 @@ describe('Toast', () => {
         done()
       }
     })
+  })
+
+  it('Percentage width should work for toasts', () => {
+    const targetDiv = document.createElement('div')
+    document.body.appendChild(targetDiv)
+    targetDiv.style.width = '300px'
+    targetDiv.style.position = 'relative'
+
+    ToastWithoutAnimation.fire({
+      target: targetDiv,
+      width: '50%',
+    })
+
+    Swal.getContainer().style.position = 'absolute'
+    expect(window.getComputedStyle(Swal.getPopup()).width).to.equal('150px')
   })
 })

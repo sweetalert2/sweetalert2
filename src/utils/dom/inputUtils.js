@@ -40,7 +40,7 @@ const handleInputOptions = (instance, params) => {
   const content = dom.getContent()
   const processInputOptions = (inputOptions) => populateInputOptions[params.input](content, formatInputOptions(inputOptions), params)
   if (hasToPromiseFn(params.inputOptions) || isPromise(params.inputOptions)) {
-    showLoading()
+    showLoading(dom.getConfirmButton())
     asPromise(params.inputOptions).then((inputOptions) => {
       instance.hideLoading()
       processInputOptions(inputOptions)

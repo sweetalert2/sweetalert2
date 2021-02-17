@@ -1,3 +1,10 @@
+## [10.15.2](https://github.com/sweetalert2/sweetalert2/compare/v10.15.1...v10.15.2) (2021-02-17)
+
+
+### Bug Fixes
+
+* hide the confirm button when inputOptions is a promise ([9bacebb](https://github.com/sweetalert2/sweetalert2/commit/9bacebb0f227cc7fe08d3004f8c5cadba4f80e93))
+
 ## [10.15.1](https://github.com/sweetalert2/sweetalert2/compare/v10.15.0...v10.15.1) (2021-02-16)
 
 

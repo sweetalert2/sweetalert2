@@ -120,6 +120,7 @@ export const updatableParams = [
   'html',
   'icon',
   'iconColor',
+  'iconHtml',
   'imageAlt',
   'imageHeight',
   'imageUrl',

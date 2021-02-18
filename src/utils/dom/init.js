@@ -1,4 +1,4 @@
-import { swalClasses, iconTypes } from '../classes.js'
+import { swalClasses } from '../classes.js'
 import { getContainer, getPopup, getContent } from './getters.js'
 import { addClass, removeClass, getChildByClass, setInnerHtml } from './domUtils.js'
 import { isNodeEnv } from '../isNodeEnv.js'
@@ -9,11 +9,7 @@ const sweetHTML = `
  <div aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses.content}" class="${swalClasses.popup}" tabindex="-1">
    <div class="${swalClasses.header}">
      <ul class="${swalClasses['progress-steps']}"></ul>
-     <div class="${swalClasses.icon} ${iconTypes.error}"></div>
-     <div class="${swalClasses.icon} ${iconTypes.question}"></div>
-     <div class="${swalClasses.icon} ${iconTypes.warning}"></div>
-     <div class="${swalClasses.icon} ${iconTypes.info}"></div>
-     <div class="${swalClasses.icon} ${iconTypes.success}"></div>
+     <div class="${swalClasses.icon}"></div>
      <img class="${swalClasses.image}" />
      <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
      <button type="button" class="${swalClasses.close}"></button>

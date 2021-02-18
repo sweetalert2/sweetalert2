@@ -1,3 +1,10 @@
+## [10.15.3](https://github.com/sweetalert2/sweetalert2/compare/v10.15.2...v10.15.3) (2021-02-18)
+
+
+### Bug Fixes
+
+* do not use zoom: 1 because of warnings in Firefox ([befaa51](https://github.com/sweetalert2/sweetalert2/commit/befaa5151716a22800865577dbf3f6b11923ab9e)), closes [/github.com/sweetalert2/sweetalert2/pull/1783#issuecomment-781236254](https://github.com//github.com/sweetalert2/sweetalert2/pull/1783/issues/issuecomment-781236254)
+
 ## [10.15.2](https://github.com/sweetalert2/sweetalert2/compare/v10.15.1...v10.15.2) (2021-02-17)
 
 

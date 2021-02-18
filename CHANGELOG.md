@@ -1,3 +1,10 @@
+## [10.15.4](https://github.com/sweetalert2/sweetalert2/compare/v10.15.3...v10.15.4) (2021-02-18)
+
+
+### Bug Fixes
+
+* allow icons without `icon` param ([#2166](https://github.com/sweetalert2/sweetalert2/issues/2166)) ([bbc4357](https://github.com/sweetalert2/sweetalert2/commit/bbc435772ed11caf064fe3714fe9288181e575a6))
+
 ## [10.15.3](https://github.com/sweetalert2/sweetalert2/compare/v10.15.2...v10.15.3) (2021-02-18)
 
 

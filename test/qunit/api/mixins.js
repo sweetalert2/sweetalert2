@@ -36,3 +36,8 @@ QUnit.test('mixins and shorthand calls', (assert) => {
   })
   MySwal.fire('2_title', '2_html')
 })
+
+QUnit.test('mixins precedence', (assert) => {
+  Swal.mixin({ title: '1' }).mixin({ title: '2' }).fire()
+  assert.equal(Swal.getTitle().textContent, '2')
+})

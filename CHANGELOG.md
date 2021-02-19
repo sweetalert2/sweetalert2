@@ -1,3 +1,10 @@
+## [10.15.5](https://github.com/sweetalert2/sweetalert2/compare/v10.15.4...v10.15.5) (2021-02-19)
+
+
+### Bug Fixes
+
+* mixin params added later should take precedence over mixin params added earlier  ([#2176](https://github.com/sweetalert2/sweetalert2/issues/2176)) ([9336fa1](https://github.com/sweetalert2/sweetalert2/commit/9336fa120fe19b99ef22873c246b033f5ec01cae)), closes [#2174](https://github.com/sweetalert2/sweetalert2/issues/2174)
+
 ## [10.15.4](https://github.com/sweetalert2/sweetalert2/compare/v10.15.3...v10.15.4) (2021-02-18)
 
 

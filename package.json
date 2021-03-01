@@ -9,9 +9,9 @@
   "module": "src/sweetalert2.js",
   "types": "sweetalert2.d.ts",
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-transform-object-assign": "^7.2.0",
-    "@babel/preset-env": "^7.3.1",
+    "@babel/core": "^7.12.13",
+    "@babel/plugin-transform-object-assign": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
     "@rollup/plugin-json": "^4.0.2",
     "@sweetalert2/eslint-config": "^1.0.0",
     "@sweetalert2/execute": "^1.0.0",

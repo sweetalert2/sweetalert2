@@ -19,7 +19,7 @@
     "@webcomponents/template": "^1.4.4",
     "babel-loader": "^8.0.4",
     "babel-plugin-array-includes": "^2.0.3",
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.26.14",
     "custom-event-polyfill": "^1.0.6",
     "eslint": "^7.0.0",
     "eslint-plugin-cypress": "^2.8.1",

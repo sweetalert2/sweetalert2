@@ -223,11 +223,13 @@ If you would like to contribute enhancements or fixes, please do the following:
  - Serves sandbox.html @ http://localhost:8080/ (browser-sync ui:  http://localhost:8081/)
  - Re-builds and re-loads as necessary when files change
 
+5. To run tests, run `npm run cypress:open` or `yarn cypress:open`
+
 Big Thanks
 ----------
 
+- [FlowCrypt](https://flowcrypt.com/) for continuous support of this project
 - [Serena Verni (@serenaperora)](https://serena.verni.xyz) for creating the amazing project logo
-- [Sauce Labs](https://saucelabs.com/) for providing the reliable cross-browser testing platform
 
 Sponsors
 --------

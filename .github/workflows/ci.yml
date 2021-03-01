@@ -24,8 +24,12 @@ jobs:
     - name: Run linters
       run: yarn lint
 
-    - name: Run tests
-      run: yarn test
+    - name: Run tests in Chrome
+      run: yarn test --browser chrome
+
+    - name: Run tests in Firefox
+      if: github.event_name == 'push'
+      run: yarn test --browser firefox
 
     - name: Test in node
       run: node test/require-in-node

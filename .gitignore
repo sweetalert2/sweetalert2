@@ -3,7 +3,5 @@ package-lock.json
 dist
 cypress/fixtures
 cypress/screenshots
-coverage
-.nyc_output
 .idea
 .vscode

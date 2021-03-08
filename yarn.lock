@@ -713,10 +713,10 @@
     "@babel/helper-create-regexp-features-plugin" "^7.12.13"
     "@babel/helper-plugin-utils" "^7.12.13"
 
-"@babel/preset-env@^7.12.13":
-  version "7.13.8"
-  resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.13.8.tgz#1133d7ae806d6bf981b7a1a49e336d4d88db1953"
-  integrity sha512-Sso1xOpV4S3ofnxW2DsWTE5ziRk62jEAKLGuQ+EJHC+YHTbFG38QUTixO3JVa1cYET9gkJhO1pMu+/+2dDhKvw==
+"@babel/preset-env@^7.13.9":
+  version "7.13.9"
+  resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.13.9.tgz#3ee5f233316b10d066d7f379c6d1e13a96853654"
+  integrity sha512-mcsHUlh2rIhViqMG823JpscLMesRt3QbMsv1+jhopXEb3W2wXvQ9QoiOlZI9ZbR3XqPtaFpZwEZKYqGJnGMZTQ==
   dependencies:
     "@babel/compat-data" "^7.13.8"
     "@babel/helper-compilation-targets" "^7.13.8"
@@ -3141,7 +3141,7 @@ figures@^2.0.0:
   dependencies:
     escape-string-regexp "^1.0.5"
 
-file-entry-cache@^6.0.0, file-entry-cache@^6.0.1:
+file-entry-cache@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/file-entry-cache/-/file-entry-cache-6.0.1.tgz#211b2dd9659cb0394b073e7323ac3c933d522027"
   integrity sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==
@@ -4338,10 +4338,10 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
-jquery@^3.3.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.5.1.tgz#d7b4d08e1bfdb86ad2f1a3d039ea17304717abb5"
-  integrity sha512-XwIBPqcMn57FxfT+Go5pzySnm4KWkT1Tv7gjrpT1srtf8Weynl6R273VJ5GjkRb51IzMp5nbaPjJXMWeju2MKg==
+jquery@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
+  integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
 
 js-tokens@^4.0.0:
   version "4.0.0"
@@ -4656,7 +4656,7 @@ lodash.once@^4.1.1:
   resolved "https://registry.yarnpkg.com/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
   integrity sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=
 
-lodash@^4.17.10, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20:
+lodash@^4.17.10, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -6521,7 +6521,7 @@ string-width@^2.1.1:
     is-fullwidth-code-point "^2.0.0"
     strip-ansi "^4.0.0"
 
-string-width@^4.1.0, string-width@^4.2.0:
+string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.2.tgz#dafd4f9559a7585cfba529c6a0a4f73488ebd4c5"
   integrity sha512-XBJbT3N4JhVumXE0eoLU9DCjcaF92KLNqTmFCnG1pf8duUxFGwtP6AD6nkjw9a3IdiRtL3E2w3JDiE/xi3vOeA==
@@ -6662,10 +6662,10 @@ stylelint-scss@^3.9.0:
     postcss-selector-parser "^6.0.2"
     postcss-value-parser "^4.1.0"
 
-stylelint@^13.0.0:
-  version "13.11.0"
-  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-13.11.0.tgz#591981fbdd68c9d3d3e6147a0cd6a07539fc216d"
-  integrity sha512-DhrKSWDWGZkCiQMtU+VroXM6LWJVC8hSK24nrUngTSQvXGK75yZUq4yNpynqrxD3a/fzKMED09V+XxO4z4lTbw==
+stylelint@^13.12.0:
+  version "13.12.0"
+  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-13.12.0.tgz#cceb922be0d0c7b7b6926271eea2b90cb924733e"
+  integrity sha512-P8O1xDy41B7O7iXaSlW+UuFbE5+ZWQDb61ndGDxKIt36fMH50DtlQTbwLpFLf8DikceTAb3r6nPrRv30wBlzXw==
   dependencies:
     "@stylelint/postcss-css-in-js" "^0.37.2"
     "@stylelint/postcss-markdown" "^0.36.2"
@@ -6677,7 +6677,7 @@ stylelint@^13.0.0:
     execall "^2.0.0"
     fast-glob "^3.2.5"
     fastest-levenshtein "^1.0.12"
-    file-entry-cache "^6.0.0"
+    file-entry-cache "^6.0.1"
     get-stdin "^8.0.0"
     global-modules "^2.0.0"
     globby "^11.0.2"
@@ -6687,7 +6687,7 @@ stylelint@^13.0.0:
     import-lazy "^4.0.0"
     imurmurhash "^0.1.4"
     known-css-properties "^0.21.0"
-    lodash "^4.17.20"
+    lodash "^4.17.21"
     log-symbols "^4.0.0"
     mathml-tag-names "^2.1.3"
     meow "^9.0.0"
@@ -6707,7 +6707,7 @@ stylelint@^13.0.0:
     resolve-from "^5.0.0"
     slash "^3.0.0"
     specificity "^0.4.1"
-    string-width "^4.2.0"
+    string-width "^4.2.2"
     strip-ansi "^6.0.0"
     style-search "^0.1.0"
     sugarss "^2.0.0"
@@ -7023,10 +7023,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.0.0:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.2.tgz#1450f020618f872db0ea17317d16d8da8ddb8c4c"
-  integrity sha512-tbb+NVrLfnsJy3M59lsDgrzWIflR4d4TIUjz+heUnHZwdF7YsrMTKoRERiIvI2lvBG95dfpLxB21WZhys1bgaQ==
+typescript@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.3.tgz#39062d8019912d43726298f09493d598048c1ce3"
+  integrity sha512-qOcYwxaByStAWrBf4x0fibwZvMRG+r4cQoTjbPtUlrWjBHbmCAww1i448U0GJ+3cNNEtebDteo/cHOR3xJ4wEw==
 
 ua-parser-js@^0.7.18:
   version "0.7.24"

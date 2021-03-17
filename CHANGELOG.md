@@ -1,3 +1,10 @@
+## [10.15.6](https://github.com/sweetalert2/sweetalert2/compare/v10.15.5...v10.15.6) (2021-03-17)
+
+
+### Bug Fixes
+
+* remove display: none from .swal2-validation-message ([#2193](https://github.com/sweetalert2/sweetalert2/issues/2193)) ([2e4ce60](https://github.com/sweetalert2/sweetalert2/commit/2e4ce608cca9b608470ea7779c81741c28f40e94))
+
 ## [10.15.5](https://github.com/sweetalert2/sweetalert2/compare/v10.15.4...v10.15.5) (2021-02-19)
 
 

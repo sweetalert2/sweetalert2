@@ -21,6 +21,8 @@ export const renderPopup = (instance, params) => {
     popup.style.background = params.background
   }
 
+  dom.hide(dom.getValidationMessage())
+
   // Classes
   addClasses(popup, params)
 }

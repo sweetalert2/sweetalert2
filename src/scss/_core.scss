@@ -496,8 +496,7 @@
 }
 
 .swal2-validation-message {
-  display: none;
-  align-items: center;
+  align-items: $swal2-validation-message-align-items;
   justify-content: $swal2-validation-message-justify-content;
   margin: $swal2-validation-message-margin;
   padding: $swal2-validation-message-padding;

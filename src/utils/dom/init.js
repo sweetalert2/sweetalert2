@@ -63,12 +63,10 @@ const resetOldContainer = () => {
   return true
 }
 
-let oldInputVal // IE11 workaround, see #1109 for details
-const resetValidationMessage = (e) => {
-  if (sweetAlert.isVisible() && oldInputVal !== e.target.value) {
+const resetValidationMessage = () => {
+  if (sweetAlert.isVisible()) {
     sweetAlert.resetValidationMessage()
   }
-  oldInputVal = e.target.value
 }
 
 const addInputChangeListeners = () => {

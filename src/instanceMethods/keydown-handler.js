@@ -42,18 +42,12 @@ export const setFocus = (innerParams, index, increment) => {
 }
 
 const arrowKeysNextButton = [
-  'ArrowRight', 'ArrowDown',
-  'Right', 'Down' // IE11
-]
-
-const arrowKeysPreviousButton = [
-  'ArrowLeft', 'ArrowUp',
-  'Left', 'Up' // IE11
+  'ArrowRight',
+  'ArrowDown',
 ]
 
 const escKeys = [
   'Escape',
-  'Esc' // IE11
 ]
 
 const keydownHandler = (instance, e, dismissWith) => {
@@ -72,7 +66,7 @@ const keydownHandler = (instance, e, dismissWith) => {
     handleTab(e, innerParams)
 
   // ARROWS - switch focus between buttons
-  } else if ([...arrowKeysNextButton, ...arrowKeysPreviousButton].includes(e.key)) {
+  } else if ([...arrowKeysNextButton].includes(e.key)) {
     handleArrows(e.key)
 
   // ESC

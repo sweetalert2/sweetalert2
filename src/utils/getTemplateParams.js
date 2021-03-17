@@ -8,7 +8,7 @@ export const getTemplateParams = (params) => {
   if (!template) {
     return {}
   }
-  const templateContent = template.content || template // IE11
+  const templateContent = template.content
 
   showWarningsForElements(templateContent)
 
@@ -145,10 +145,7 @@ const showWarningsForElements = (template) => {
     'swal-input',
     'swal-input-option',
   ])
-  toArray(template.querySelectorAll('*')).forEach((el) => {
-    if (el.parentNode !== template) { // can't use template.children because of IE11
-      return
-    }
+  toArray(template.children).forEach((el) => {
     const tagName = el.tagName.toLowerCase()
     if (allowedElements.indexOf(tagName) === -1) {
       warn(`Unrecognized element <${tagName}>`)

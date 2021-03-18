@@ -1,7 +1,7 @@
 import jQuery from 'jquery'
 import Swal from '../../src/sweetalert2'
 import { SHOW_CLASS_TIMEOUT } from '../../src/utils/openPopup'
-import { $, isHidden, isVisible, SwalWithoutAnimation, triggerKeydownEvent, TIMEOUT, dispatchCustomEvent, ensureClosed } from '../utils'
+import { $, isHidden, isVisible, SwalWithoutAnimation, TIMEOUT, dispatchCustomEvent, ensureClosed } from '../utils'
 
 describe('Miscellaneous tests', function () {
   it('version is correct semver', () => {
@@ -346,49 +346,6 @@ describe('Miscellaneous tests', function () {
     })
 
     Swal.clickConfirm()
-  })
-
-  it('esc key', (done) => {
-    document.body.addEventListener('keydown', () => {
-      throw new Error('Should not propagate keydown event to body!')
-    })
-
-    SwalWithoutAnimation.fire({
-      title: 'Esc me',
-      didOpen: () => triggerKeydownEvent(Swal.getPopup(), 'Escape')
-    }).then((result) => {
-      expect(result).to.eql({
-        dismiss: Swal.DismissReason.esc,
-        isConfirmed: false,
-        isDenied: false,
-        isDismissed: true,
-      })
-      done()
-    })
-  })
-
-  it('allowEscapeKey as a function', (done) => {
-    let functionWasCalled = false
-
-    SwalWithoutAnimation.fire({
-      title: 'allowEscapeKey as a function',
-      allowEscapeKey: () => {
-        functionWasCalled = true
-        return false
-      },
-      didOpen: () => {
-        expect(functionWasCalled).to.equal(false)
-
-        triggerKeydownEvent(Swal.getPopup(), 'Escape')
-
-        setTimeout(() => {
-          expect(functionWasCalled).to.equal(true)
-          expect(Swal.isVisible()).to.be.true
-
-          done()
-        })
-      }
-    })
   })
 
   it('close button', (done) => {

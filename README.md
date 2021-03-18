@@ -152,13 +152,13 @@ Swal.fire({
 Browser compatibility
 ---------------------
 
- IE11* | Edge | Chrome | Firefox | Safari | Opera | UC Browser
--------|------|--------|---------|--------|-------|------------
-:heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+ Edge | Chrome | Firefox | Safari | Opera | UC Browser
+------|--------|---------|--------|-------|------------
+ :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 \* ES6 Promise polyfill should be included, see [usage example](#usage).
 
-Note that SweetAlert2 **does not** and **will not** provide support or functionality of any kind on IE10 and lower.
+Note that SweetAlert2 **does not** and **will not** provide support or functionality of any kind on IE.
 
 
 

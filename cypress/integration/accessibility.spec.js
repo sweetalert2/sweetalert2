@@ -153,6 +153,10 @@ describe('should trap focus in modals', () => {
         expect(document.activeElement).to.equal(Swal.getDenyButton())
         triggerKeydownEvent(document.activeElement, 'ArrowRight')
         expect(document.activeElement).to.equal(Swal.getCancelButton())
+        triggerKeydownEvent(document.activeElement, 'ArrowLeft')
+        expect(document.activeElement).to.equal(Swal.getDenyButton())
+        triggerKeydownEvent(document.activeElement, 'ArrowLeft')
+        expect(document.activeElement).to.equal(Swal.getConfirmButton())
         done()
       }
     })

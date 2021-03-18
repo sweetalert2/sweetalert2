@@ -86,13 +86,13 @@ const addInputChangeListeners = () => {
   checkbox.onchange = resetValidationMessage
   textarea.oninput = resetValidationMessage
 
-  range.oninput = (e) => {
-    resetValidationMessage(e)
+  range.oninput = () => {
+    resetValidationMessage()
     rangeOutput.value = range.value
   }
 
-  range.onchange = (e) => {
-    resetValidationMessage(e)
+  range.onchange = () => {
+    resetValidationMessage()
     range.nextSibling.value = range.value
   }
 }

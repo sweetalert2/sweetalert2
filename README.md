@@ -185,6 +185,7 @@ Related projects
 - [sweetalert2-react-content](https://github.com/sweetalert2/sweetalert2-react-content) - React integration
 - [sweetalert2-webpack-demo](https://github.com/sweetalert2/sweetalert2-webpack-demo) - webpack demo
 - [sweetalert2-parcel-demo](https://github.com/sweetalert2/sweetalert2-parcel-demo) - overriding SCSS variables demo
+- [sweetforms](https://github.com/sweetalert2/sweetforms) - A package based on sweetalert2 providing highly customizable advanced forms with built-in validation, data formatting and more !
 
 
 Related community projects

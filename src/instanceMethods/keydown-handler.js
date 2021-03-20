@@ -1,4 +1,6 @@
 import * as dom from '../utils/dom/index.js'
+import { DismissReason } from '../utils/DismissReason.js'
+import { callIfFunction } from '../utils/utils.js'
 import { clickConfirm } from '../staticMethods/dom.js'
 import privateProps from '../privateProps.js'
 
@@ -47,7 +49,7 @@ const arrowKeysPreviousButton = [
   'ArrowLeft', 'ArrowUp',
 ]
 
-const keydownHandler = (instance, e) => {
+const keydownHandler = (instance, e, dismissWith) => {
   const innerParams = privateProps.innerParams.get(instance)
 
   if (innerParams.stopKeydownPropagation) {
@@ -65,6 +67,10 @@ const keydownHandler = (instance, e) => {
   // ARROWS - switch focus between buttons
   } else if ([...arrowKeysNextButton, ...arrowKeysPreviousButton].includes(e.key)) {
     handleArrows(e.key)
+
+  // ESC
+  } else if (e.key === 'Escape') {
+    handleEsc(e, innerParams, dismissWith)
   }
 }
 
@@ -118,5 +124,12 @@ const handleArrows = (key) => {
   const buttonToFocus = document.activeElement[sibling]
   if (buttonToFocus) {
     buttonToFocus.focus()
+  }
+}
+
+const handleEsc = (e, innerParams, dismissWith) => {
+  if (callIfFunction(innerParams.allowEscapeKey)) {
+    e.preventDefault()
+    dismissWith(DismissReason.esc)
   }
 }

@@ -59,6 +59,10 @@ const escKeys = [
 const keydownHandler = (instance, e, dismissWith) => {
   const innerParams = privateProps.innerParams.get(instance)
 
+  if (!innerParams) {
+    return // This instance has already been destroyed
+  }
+
   if (innerParams.stopKeydownPropagation) {
     e.stopPropagation()
   }

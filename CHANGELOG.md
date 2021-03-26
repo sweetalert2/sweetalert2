@@ -1,3 +1,10 @@
+## [10.15.7](https://github.com/sweetalert2/sweetalert2/compare/v10.15.6...v10.15.7) (2021-03-26)
+
+
+### Bug Fixes
+
+* Cannot read property 'stopKeydownPropagation' of undefined fix [#2204](https://github.com/sweetalert2/sweetalert2/issues/2204) ([541e8ab](https://github.com/sweetalert2/sweetalert2/commit/541e8abf2cc4c0b8892dcf1a7ca9a04cd21744ae))
+
 ## [10.15.6](https://github.com/sweetalert2/sweetalert2/compare/v10.15.5...v10.15.6) (2021-03-17)
 
 

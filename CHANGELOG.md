@@ -1,3 +1,10 @@
+# [10.16.0](https://github.com/sweetalert2/sweetalert2/compare/v10.15.7...v10.16.0) (2021-04-07)
+
+
+### Features
+
+* add returnFocus param ([#2210](https://github.com/sweetalert2/sweetalert2/issues/2210)) ([ff2eb81](https://github.com/sweetalert2/sweetalert2/commit/ff2eb81e02ad430fedd3f51a881909588be645ba))
+
 ## [10.15.7](https://github.com/sweetalert2/sweetalert2/compare/v10.15.6...v10.15.7) (2021-03-26)
 
 

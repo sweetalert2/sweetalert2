@@ -12,11 +12,11 @@ import privateMethods from '../privateMethods.js'
  * Instance method to close sweetAlert
  */
 
-function removePopupAndResetState (instance, container, isToast, didClose) {
-  if (isToast) {
+function removePopupAndResetState (instance, container, returnFocus, didClose) {
+  if (dom.isToast()) {
     triggerDidCloseAndDispose(instance, didClose)
   } else {
-    restoreActiveElement().then(() => triggerDidCloseAndDispose(instance, didClose))
+    restoreActiveElement(returnFocus).then(() => triggerDidCloseAndDispose(instance, didClose))
     globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
     globalState.keydownHandlerAdded = false
   }
@@ -106,10 +106,10 @@ const handlePopupAnimation = (instance, popup, innerParams) => {
   runDidClose(popup, willClose, onClose)
 
   if (animationIsSupported) {
-    animatePopup(instance, popup, container, didClose || onAfterClose)
+    animatePopup(instance, popup, container, innerParams.returnFocus, didClose || onAfterClose)
   } else {
     // Otherwise, remove immediately
-    removePopupAndResetState(instance, container, dom.isToast(), didClose || onAfterClose)
+    removePopupAndResetState(instance, container, innerParams.returnFocus, didClose || onAfterClose)
   }
 }
 
@@ -121,8 +121,8 @@ const runDidClose = (popup, willClose, onClose) => {
   }
 }
 
-const animatePopup = (instance, popup, container, didClose) => {
-  globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(null, instance, container, dom.isToast(), didClose)
+const animatePopup = (instance, popup, container, returnFocus, didClose) => {
+  globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(null, instance, container, returnFocus, didClose)
   popup.addEventListener(dom.animationEndEvent, function (e) {
     if (e.target === popup) {
       globalState.swalCloseEventFinishedCallback()

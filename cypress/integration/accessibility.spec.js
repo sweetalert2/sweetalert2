@@ -19,6 +19,24 @@ describe('Accessibility:', () => {
     }, RESTORE_FOCUS_TIMEOUT)
   })
 
+  it('should not restore focus when returnFocus set to false', (done) => {
+    const button = document.createElement('button')
+    button.innerText = 'I am focused'
+    document.body.appendChild(button)
+    button.focus()
+
+    SwalWithoutAnimation.fire({
+      returnFocus: false
+    })
+    Swal.clickConfirm()
+
+    setTimeout(() => {
+      expect(document.activeElement).to.equal(document.body)
+      document.body.removeChild(button)
+      done()
+    }, RESTORE_FOCUS_TIMEOUT)
+  })
+
   it('should focus body in there is not previuos active element', (done) => {
     SwalWithoutAnimation.fire('I was called programmatically and will focus body after closing')
     Swal.clickConfirm()

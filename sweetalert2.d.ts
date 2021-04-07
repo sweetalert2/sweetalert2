@@ -875,6 +875,14 @@ declare module 'sweetalert2' {
     focusCancel?: boolean;
 
     /**
+     * Set to `false` if you don't want to return the focus to the element that invoked the modal
+     * after the modal is closed.
+     *
+     * @default true
+     */
+    returnFocus?: boolean;
+
+    /**
      * Set to `true` to show close button.
      *
      * @default false

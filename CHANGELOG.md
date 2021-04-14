@@ -1,3 +1,10 @@
+## [10.16.1](https://github.com/sweetalert2/sweetalert2/compare/v10.16.0...v10.16.1) (2021-04-14)
+
+
+### Bug Fixes
+
+* get rid of toast-column class ([#2215](https://github.com/sweetalert2/sweetalert2/issues/2215)) ([6150573](https://github.com/sweetalert2/sweetalert2/commit/6150573a26ddbe7a2847add0967a657dd37bac45))
+
 # [10.16.0](https://github.com/sweetalert2/sweetalert2/compare/v10.15.7...v10.16.0) (2021-04-07)
 
 

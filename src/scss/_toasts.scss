@@ -1,7 +1,7 @@
 .swal2-popup {
   &.swal2-toast {
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     width: $swal2-toast-width;
     padding: $swal2-toast-padding;
     overflow-y: hidden;
@@ -18,6 +18,20 @@
       justify-content: flex-start;
       margin: $swal2-toast-title-margin;
       font-size: $swal2-toast-title-font-size;
+    }
+
+    .swal2-loading {
+      justify-content: center;
+    }
+
+    .swal2-input {
+      height: 2em;
+      margin: .3125em auto;
+      font-size: $swal2-toast-input-font-size;
+    }
+
+    .swal2-validation-message {
+      font-size: $swal2-toast-validation-font-size;
     }
 
     .swal2-footer {
@@ -37,6 +51,15 @@
       justify-content: flex-start;
       padding: $swal2-toast-content-padding;
       font-size: $swal2-toast-content-font-size;
+      text-align: initial;
+    }
+
+    .swal2-html-container {
+      padding: .625em 0 0;
+
+      &:empty {
+        padding: 0;
+      }
     }
 
     .swal2-icon {
@@ -80,10 +103,14 @@
     }
 
     .swal2-actions {
+      flex: 1;
       flex-basis: auto !important;
+      align-self: stretch;
       width: auto;
+      height: 2.2em;
       height: auto;
       margin: 0 .3125em;
+      margin-top: .3125em;
       padding: 0;
     }
 

@@ -78,32 +78,4 @@
       }
     }
   }
-
-  &.swal2-toast-column {
-    .swal2-toast {
-      flex-direction: column;
-      align-items: stretch;
-
-      .swal2-actions {
-        flex: 1;
-        align-self: stretch;
-        height: 2.2em;
-        margin-top: .3125em;
-      }
-
-      .swal2-loading {
-        justify-content: center;
-      }
-
-      .swal2-input {
-        height: 2em;
-        margin: .3125em auto;
-        font-size: $swal2-toast-input-font-size;
-      }
-
-      .swal2-validation-message {
-        font-size: $swal2-toast-validation-font-size;
-      }
-    }
-  }
 }

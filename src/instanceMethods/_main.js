@@ -1,6 +1,5 @@
 import defaultParams, { showWarningsForParams } from '../utils/params.js'
 import * as dom from '../utils/dom/index.js'
-import { swalClasses } from '../utils/classes.js'
 import Timer from '../utils/Timer.js'
 import { callIfFunction } from '../utils/utils.js'
 import setParameters from '../utils/setParameters.js'
@@ -81,12 +80,6 @@ const swalPromise = (instance, domCache, innerParams) => {
     handlePopupClick(instance, domCache, dismissWith)
 
     addKeydownHandler(instance, globalState, innerParams, dismissWith)
-
-    if (innerParams.toast && (innerParams.input || innerParams.footer || innerParams.showCloseButton)) {
-      dom.addClass(document.body, swalClasses['toast-column'])
-    } else {
-      dom.removeClass(document.body, swalClasses['toast-column'])
-    }
 
     handleInputOptionsAndValue(instance, innerParams)
 

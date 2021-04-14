@@ -43,7 +43,6 @@ function removeBodyClasses () {
       swalClasses['height-auto'],
       swalClasses['no-backdrop'],
       swalClasses['toast-shown'],
-      swalClasses['toast-column']
     ]
   )
 }

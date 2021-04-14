@@ -1,3 +1,10 @@
+## [10.16.2](https://github.com/sweetalert2/sweetalert2/compare/v10.16.1...v10.16.2) (2021-04-14)
+
+
+### Bug Fixes
+
+* **sass:** add $swal2-toast-content-margin variable ([63d85df](https://github.com/sweetalert2/sweetalert2/commit/63d85df73888364a9e172ca724c267fc678ba641))
+
 ## [10.16.1](https://github.com/sweetalert2/sweetalert2/compare/v10.16.0...v10.16.1) (2021-04-14)
 
 

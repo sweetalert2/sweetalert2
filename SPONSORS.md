@@ -5,6 +5,7 @@ Sponsor is a company or a person who is supporting SweetAlert2 with 19 USD per m
 - in this document
 - in [the official repo README](https://github.com/sweetalert2/sweetalert2#sponsors) (20K+ unique visitors per month)
 - in [SweetAlert2's official homepage](https://sweetalert2.github.io/#sponsors) (80K+ unique visitors per month).
+- on [npmjs.com](https://www.npmjs.com/package/sweetalert2)
 
 All sponsors have priority support via GitHub issues.
 
@@ -25,9 +26,9 @@ For all questions related to sponsorship please contact me via email limon.monte
 NSFW Sponsors
 -------------
 
-[<img src="https://sweetalert2.github.io/images/sponsors/fresh-materials.png" width="80">](https://www.thefreshmaterials.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/joylovedolls.png" width="80">](https://www.joylovedolls.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/sex-toy-education.png" width="80">](https://sextoyeducation.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/my-sex-toy-guide.jpg" width="80">](https://www.mysextoyguide.com/?utm_source=sweetalert2&utm_medium=logo)
--|-|-|-
-[Fresh Materials](https://www.thefreshmaterials.com/?utm_source=sweetalert2&utm_medium=logo) | [Joy Love Dolls](https://www.joylovedolls.com/?utm_source=sweetalert2&utm_medium=logo) | [STED](https://sextoyeducation.com/?utm_source=sweetalert2&utm_medium=logo) | [My Sex Toy Guide](https://www.mysextoyguide.com/?utm_source=sweetalert2&utm_medium=logo)
+[<img src="https://sweetalert2.github.io/images/sponsors/mailove.png" width="80">](https://mailovedoll.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/fresh-materials.png" width="80">](https://www.thefreshmaterials.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/joylovedolls.png" width="80">](https://www.joylovedolls.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/sex-toy-education.png" width="80">](https://sextoyeducation.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/my-sex-toy-guide.jpg" width="80">](https://www.mysextoyguide.com/?utm_source=sweetalert2&utm_medium=logo)
+-|-|-|-|-
+[Mailovedoll](https://mailovedoll.com/?utm_source=sweetalert2&utm_medium=logo) | [Fresh Materials](https://www.thefreshmaterials.com/?utm_source=sweetalert2&utm_medium=logo) | [Joy Love Dolls](https://www.joylovedolls.com/?utm_source=sweetalert2&utm_medium=logo) | [STED](https://sextoyeducation.com/?utm_source=sweetalert2&utm_medium=logo) | [My Sex Toy Guide](https://www.mysextoyguide.com/?utm_source=sweetalert2&utm_medium=logo)
 
 [<img src="https://sweetalert2.github.io/images/sponsors/best-blowjob-machines.jpg" width="80">](https://www.bestblowjobmachines.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/sextoycollective.jpg" width="80">](https://sextoycollective.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/doctorclimax.png" width="80">](https://doctorclimax.com/)
 -|-|-

@@ -49,6 +49,7 @@
 
     .swal2-content {
       justify-content: flex-start;
+      margin: $swal2-toast-content-margin;
       padding: $swal2-toast-content-padding;
       font-size: $swal2-toast-content-font-size;
       text-align: initial;
@@ -66,7 +67,7 @@
       width: 2em;
       min-width: 2em;
       height: 2em;
-      margin: 0;
+      margin: 0 .5em 0 0;
 
       .swal2-icon-content {
         display: flex;

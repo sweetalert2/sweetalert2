@@ -25,33 +25,6 @@ describe('Toast', () => {
     console.warn = _consoleWarn
   })
 
-  it('.swal2-toast-column if input', () => {
-    const inputs = ['text', 'email', 'password', 'number', 'tel', 'range', 'textarea', 'select', 'radio', 'checkbox', 'file', 'url']
-    inputs.forEach((input) => {
-      Toast.fire({ input: input })
-      expect(document.body.classList.contains('swal2-toast-column')).to.be.true
-
-      Swal.fire({ input: input })
-      expect(document.body.classList.contains('swal2-toast-column')).to.be.false
-    })
-  })
-
-  it('.swal2-toast-column if footer', () => {
-    Toast.fire({ footer: 'footer' })
-    expect(document.body.classList.contains('swal2-toast-column')).to.be.true
-
-    Swal.fire({ footer: 'footer' })
-    expect(document.body.classList.contains('swal2-toast-column')).to.be.false
-  })
-
-  it('.swal2-toast-column if close button', () => {
-    Toast.fire({ showCloseButton: true })
-    expect(document.body.classList.contains('swal2-toast-column')).to.be.true
-
-    Swal.fire({ showCloseButton: true })
-    expect(document.body.classList.contains('swal2-toast-column')).to.be.false
-  })
-
   it('toast click closes when no buttons or input are specified', (done) => {
     Toast.fire({
       showConfirmButton: false

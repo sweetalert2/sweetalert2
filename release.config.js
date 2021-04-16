@@ -17,7 +17,16 @@ module.exports = {
   ],
   publish: [
     '@semantic-release/npm',
-    '@semantic-release/github',
+    ['@semantic-release/github', {
+      'assets': [
+        { 'path': 'dist/sweetalert2.all.js' },
+        { 'path': 'dist/sweetalert2.all.min.js' },
+        { 'path': 'dist/sweetalert2.css' },
+        { 'path': 'dist/sweetalert2.js' },
+        { 'path': 'dist/sweetalert2.min.css' },
+        { 'path': 'dist/sweetalert2.min.js' },
+      ]
+    }],
   ],
   success: [
     '@semantic-release/github',

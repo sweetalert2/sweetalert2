@@ -1,3 +1,10 @@
+## [10.16.3](https://github.com/sweetalert2/sweetalert2/compare/v10.16.2...v10.16.3) (2021-04-16)
+
+
+### Bug Fixes
+
+* publish dist files to GitHub Releases ([b205739](https://github.com/sweetalert2/sweetalert2/commit/b205739f88f81bd2cfb6635c8899811cd2deb59d))
+
 ## [10.16.2](https://github.com/sweetalert2/sweetalert2/compare/v10.16.1...v10.16.2) (2021-04-14)
 
 

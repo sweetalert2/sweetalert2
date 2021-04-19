@@ -1,3 +1,12 @@
+## [10.16.4](https://github.com/sweetalert2/sweetalert2/compare/v10.16.3...v10.16.4) (2021-04-19)
+
+
+### Bug Fixes
+
+* remove horizontal padding for .swal2-actions ([446e7b5](https://github.com/sweetalert2/sweetalert2/commit/446e7b578058a9ecfb023f5fb09248648d7a6cb1))
+* trim string params from <template> ([e779812](https://github.com/sweetalert2/sweetalert2/commit/e779812a9c5767d94b1d74632b3a133ec342816b))
+* use display: block for popup title ([27fa048](https://github.com/sweetalert2/sweetalert2/commit/27fa048d4e7b5aeb78d9622baa38704759160b38))
+
 ## [10.16.3](https://github.com/sweetalert2/sweetalert2/compare/v10.16.2...v10.16.3) (2021-04-16)
 
 

@@ -130,7 +130,7 @@ const getSwalStringParams = (templateContent, paramNames) => {
     const tag = templateContent.querySelector(paramName)
     if (tag) {
       showWarningsForAttributes(tag, [])
-      result[paramName.replace(/^swal-/, '')] = tag.innerHTML
+      result[paramName.replace(/^swal-/, '')] = tag.innerHTML.trim()
     }
   }
   return result

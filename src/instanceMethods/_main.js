@@ -46,11 +46,9 @@ export function _main (userParams, mixinParams = {}) {
 
 const prepareParams = (userParams, mixinParams) => {
   const templateParams = getTemplateParams(userParams)
-  const showClass = Object.assign({}, defaultParams.showClass, mixinParams.showClass, templateParams.showClass, userParams.showClass)
-  const hideClass = Object.assign({}, defaultParams.hideClass, mixinParams.hideClass, templateParams.hideClass, userParams.hideClass)
   const params = Object.assign({}, defaultParams, mixinParams, templateParams, userParams) // precedence is described in #2131
-  params.showClass = showClass
-  params.hideClass = hideClass
+  params.showClass = Object.assign({}, defaultParams.showClass, params.showClass)
+  params.hideClass = Object.assign({}, defaultParams.hideClass, params.hideClass)
   // @deprecated
   if (userParams.animation === false) {
     params.showClass = {

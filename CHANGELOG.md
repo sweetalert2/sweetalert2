@@ -1,3 +1,10 @@
+## [10.16.5](https://github.com/sweetalert2/sweetalert2/compare/v10.16.4...v10.16.5) (2021-04-20)
+
+
+### Bug Fixes
+
+* showClass/hideClass passed via .mixin() should be treated the same as passed via .fire() ([#2179](https://github.com/sweetalert2/sweetalert2/issues/2179)) ([d228741](https://github.com/sweetalert2/sweetalert2/commit/d228741b9d406cbec2f9d6dd3a4efab5d25d317d))
+
 ## [10.16.4](https://github.com/sweetalert2/sweetalert2/compare/v10.16.3...v10.16.4) (2021-04-19)
 
 

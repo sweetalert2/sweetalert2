@@ -1,3 +1,10 @@
+## [10.16.6](https://github.com/sweetalert2/sweetalert2/compare/v10.16.5...v10.16.6) (2021-04-22)
+
+
+### Bug Fixes
+
+* prevent shrinking of radio/checkbox inputs ([5150086](https://github.com/sweetalert2/sweetalert2/commit/5150086bd3224f3bbb6e67ece08fd2c3d994253c))
+
 ## [10.16.5](https://github.com/sweetalert2/sweetalert2/compare/v10.16.4...v10.16.5) (2021-04-20)
 
 

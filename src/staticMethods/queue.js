@@ -1,4 +1,5 @@
 import * as dom from '../utils/dom/index.js'
+import { warnAboutDeprecation } from '../utils/utils.js'
 
 // private global state for the queue feature
 let currentSteps = []
@@ -7,6 +8,8 @@ let currentSteps = []
  * Global function for chaining sweetAlert popups
  */
 export const queue = function (steps) {
+  warnAboutDeprecation('Swal.queue()', `async/await`)
+
   const Swal = this
   currentSteps = steps
 

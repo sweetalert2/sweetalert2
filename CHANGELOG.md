@@ -1,3 +1,10 @@
+## [10.16.7](https://github.com/sweetalert2/sweetalert2/compare/v10.16.6...v10.16.7) (2021-05-02)
+
+
+### Bug Fixes
+
+* deprecate .queue() method, connected to [#2229](https://github.com/sweetalert2/sweetalert2/issues/2229) ([11ee2ed](https://github.com/sweetalert2/sweetalert2/commit/11ee2ed4ab2fb96a0a41e73a365a08cbbc715358))
+
 ## [10.16.6](https://github.com/sweetalert2/sweetalert2/compare/v10.16.5...v10.16.6) (2021-04-22)
 
 

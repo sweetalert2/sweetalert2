@@ -283,11 +283,13 @@ declare module 'sweetalert2' {
     /**
      * Provide an array of SweetAlert2 parameters to show multiple popups, one popup after another.
      *
+     * @deprecated
      * @param steps The steps' configuration.
      */
     function queue<T>(steps: readonly (SweetAlertOptions | string)[]): Promise<T>;
 
     /**
+     * @deprecated
      * Gets the index of current popup in queue. When there's no active queue, `null` will be returned.
      */
     function getQueueStep(): string | null;
@@ -295,6 +297,7 @@ declare module 'sweetalert2' {
     /**
      * Inserts a popup in the queue.
      *
+     * @deprecated
      * @param step  The step configuration (same object as in the `Swal.fire()` call).
      * @param index The index to insert the step at.
      *              By default a popup will be added to the end of a queue.
@@ -304,6 +307,7 @@ declare module 'sweetalert2' {
     /**
      * Deletes the popup at the specified index in the queue.
      *
+     * @deprecated
      * @param index The popup index in the queue.
      */
     function deleteQueueStep(index: number): void;

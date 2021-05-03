@@ -46,14 +46,6 @@ describe('Miscellaneous tests', function () {
     expect(Swal.getHtmlContainer().innerHTML).to.equal('<a>content</a>')
   })
 
-  it('should not throw console error when <svg> tags are present (#1289)', () => {
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-    document.body.appendChild(svg)
-    const spy = cy.spy(console, 'error')
-    Swal.fire({})
-    expect(spy.notCalled).to.be.true
-  })
-
   it('should show the popup with OK button in case of empty object passed as an argument', () => {
     Swal.fire({})
     expect(isVisible(Swal.getConfirmButton())).to.be.true

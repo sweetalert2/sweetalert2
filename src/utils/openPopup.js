@@ -4,6 +4,7 @@ import { fixScrollbar } from './scrollbarFix.js'
 import { iOSfix } from './iosFix.js'
 import { setAriaHidden } from './aria.js'
 import globalState from '../globalState.js'
+import { runIfFunction } from './utils.js'
 
 export const SHOW_CLASS_TIMEOUT = 10
 
@@ -16,11 +17,7 @@ export const openPopup = (params) => {
   const container = dom.getContainer()
   const popup = dom.getPopup()
 
-  if (typeof params.willOpen === 'function') {
-    params.willOpen(popup)
-  } else if (typeof params.onBeforeOpen === 'function') {
-    params.onBeforeOpen(popup) // @deprecated
-  }
+  runIfFunction(params.willOpen, popup)
 
   const bodyStyles = window.getComputedStyle(document.body)
   const initialBodyOverflow = bodyStyles.overflowY
@@ -40,17 +37,9 @@ export const openPopup = (params) => {
     globalState.previousActiveElement = document.activeElement
   }
 
-  runDidOpen(popup, params)
+  setTimeout(() => runIfFunction(params.didOpen, popup))
 
   dom.removeClass(container, swalClasses['no-transition'])
-}
-
-const runDidOpen = (popup, params) => {
-  if (typeof params.didOpen === 'function') {
-    setTimeout(() => params.didOpen(popup))
-  } else if (typeof params.onOpen === 'function') {
-    setTimeout(() => params.onOpen(popup)) // @deprecated
-  }
 }
 
 const swalOpenAnimationFinished = (event) => {

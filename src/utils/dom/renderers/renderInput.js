@@ -67,12 +67,6 @@ const setAttributes = (inputType, inputAttributes) => {
   removeAttributes(input)
 
   for (const attr in inputAttributes) {
-    // Do not set a placeholder for <input type="range">
-    // it'll crash Edge, #1298
-    if (inputType === 'range' && attr === 'placeholder') {
-      continue
-    }
-
     input.setAttribute(attr, inputAttributes[attr])
   }
 }

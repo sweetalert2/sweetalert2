@@ -43,17 +43,10 @@ export const setFocus = (innerParams, index, increment) => {
 
 const arrowKeysNextButton = [
   'ArrowRight', 'ArrowDown',
-  'Right', 'Down' // IE11
 ]
 
 const arrowKeysPreviousButton = [
   'ArrowLeft', 'ArrowUp',
-  'Left', 'Up' // IE11
-]
-
-const escKeys = [
-  'Escape',
-  'Esc' // IE11
 ]
 
 const keydownHandler = (instance, e, dismissWith) => {
@@ -80,7 +73,7 @@ const keydownHandler = (instance, e, dismissWith) => {
     handleArrows(e.key)
 
   // ESC
-  } else if (escKeys.includes(e.key)) {
+  } else if (e.key === 'Escape') {
     handleEsc(e, innerParams, dismissWith)
   }
 }

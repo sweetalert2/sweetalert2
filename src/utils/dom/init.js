@@ -1,36 +1,32 @@
 import { swalClasses } from '../classes.js'
-import { getContainer, getPopup, getContent } from './getters.js'
+import { getContainer, getPopup } from './getters.js'
 import { addClass, removeClass, getChildByClass, setInnerHtml } from './domUtils.js'
 import { isNodeEnv } from '../isNodeEnv.js'
 import { error } from '../utils.js'
 import sweetAlert from '../../sweetalert2.js'
 
 const sweetHTML = `
- <div aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses.content}" class="${swalClasses.popup}" tabindex="-1">
-   <div class="${swalClasses.header}">
-     <ul class="${swalClasses['progress-steps']}"></ul>
-     <div class="${swalClasses.icon}"></div>
-     <img class="${swalClasses.image}" />
-     <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
-     <button type="button" class="${swalClasses.close}"></button>
+ <div aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses['html-container']}" class="${swalClasses.popup}" tabindex="-1">
+   <ul class="${swalClasses['progress-steps']}"></ul>
+   <div class="${swalClasses.icon}"></div>
+   <img class="${swalClasses.image}" />
+   <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
+   <button type="button" class="${swalClasses.close}"></button>
+   <div class="${swalClasses['html-container']}"></div>
+   <input class="${swalClasses.input}" />
+   <input type="file" class="${swalClasses.file}" />
+   <div class="${swalClasses.range}">
+     <input type="range" />
+     <output></output>
    </div>
-   <div class="${swalClasses.content}">
-     <div id="${swalClasses.content}" class="${swalClasses['html-container']}"></div>
-     <input class="${swalClasses.input}" />
-     <input type="file" class="${swalClasses.file}" />
-     <div class="${swalClasses.range}">
-       <input type="range" />
-       <output></output>
-     </div>
-     <select class="${swalClasses.select}"></select>
-     <div class="${swalClasses.radio}"></div>
-     <label for="${swalClasses.checkbox}" class="${swalClasses.checkbox}">
-       <input type="checkbox" />
-       <span class="${swalClasses.label}"></span>
-     </label>
-     <textarea class="${swalClasses.textarea}"></textarea>
-     <div class="${swalClasses['validation-message']}" id="${swalClasses['validation-message']}"></div>
-   </div>
+   <select class="${swalClasses.select}"></select>
+   <div class="${swalClasses.radio}"></div>
+   <label for="${swalClasses.checkbox}" class="${swalClasses.checkbox}">
+     <input type="checkbox" />
+     <span class="${swalClasses.label}"></span>
+   </label>
+   <textarea class="${swalClasses.textarea}"></textarea>
+   <div class="${swalClasses['validation-message']}" id="${swalClasses['validation-message']}"></div>
    <div class="${swalClasses.actions}">
      <div class="${swalClasses.loader}"></div>
      <button type="button" class="${swalClasses.confirm}"></button>
@@ -70,15 +66,15 @@ const resetValidationMessage = () => {
 }
 
 const addInputChangeListeners = () => {
-  const content = getContent()
+  const popup = getPopup()
 
-  const input = getChildByClass(content, swalClasses.input)
-  const file = getChildByClass(content, swalClasses.file)
-  const range = content.querySelector(`.${swalClasses.range} input`)
-  const rangeOutput = content.querySelector(`.${swalClasses.range} output`)
-  const select = getChildByClass(content, swalClasses.select)
-  const checkbox = content.querySelector(`.${swalClasses.checkbox} input`)
-  const textarea = getChildByClass(content, swalClasses.textarea)
+  const input = getChildByClass(popup, swalClasses.input)
+  const file = getChildByClass(popup, swalClasses.file)
+  const range = popup.querySelector(`.${swalClasses.range} input`)
+  const rangeOutput = popup.querySelector(`.${swalClasses.range} output`)
+  const select = getChildByClass(popup, swalClasses.select)
+  const checkbox = popup.querySelector(`.${swalClasses.checkbox} input`)
+  const textarea = getChildByClass(popup, swalClasses.textarea)
 
   input.oninput = resetValidationMessage
   file.onchange = resetValidationMessage

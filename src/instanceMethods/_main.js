@@ -90,7 +90,6 @@ const populateDomCache = (instance) => {
   const domCache = {
     popup: dom.getPopup(),
     container: dom.getContainer(),
-    content: dom.getContent(),
     actions: dom.getActions(),
     confirmButton: dom.getConfirmButton(),
     denyButton: dom.getDenyButton(),

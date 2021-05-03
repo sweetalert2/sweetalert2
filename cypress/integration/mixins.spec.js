@@ -29,7 +29,7 @@ describe('mixins', () => {
       html: 'no effect',
       didOpen: () => {
         expect(MySwal.getTitle().textContent).to.equal('2_title')
-        expect(MySwal.getContent().textContent).to.equal('2_html')
+        expect(MySwal.getHtmlContainer().textContent).to.equal('2_html')
         MySwal.clickConfirm()
         done()
       }

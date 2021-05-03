@@ -187,18 +187,11 @@
   }
 }
 
-.swal2-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: $swal2-header-padding;
-}
-
 .swal2-title {
   position: relative;
   max-width: 100%;
   margin: $swal2-title-margin;
-  padding: 0;
+  padding: $swal2-title-padding;
   color: $swal2-title-color;
   font-size: $swal2-title-font-size;
   font-weight: 600;
@@ -209,7 +202,7 @@
 
 .swal2-actions {
   display: flex;
-  z-index: 1; // prevent sucess icon from overlapping buttons
+  z-index: 1; // prevent success icon from overlapping buttons
   box-sizing: border-box;
   flex-wrap: $swal2-actions-flex-wrap;
   align-items: $swal2-actions-align-items;
@@ -369,17 +362,17 @@
   }
 }
 
-.swal2-content {
+.swal2-html-container {
   z-index: 1; // prevent sucess icon overlapping the content
-  justify-content: $swal2-content-justify-content;
-  margin: $swal2-content-margin;
-  padding: $swal2-content-padding;
-  color: $swal2-content-color;
-  font-size: $swal2-content-font-size;
-  font-weight: $swal2-content-font-weight;
-  line-height: $swal2-content-line-height;
-  text-align: $swal2-content-text-align;
-  word-wrap: $swal2-content-word-wrap;
+  justify-content: $swal2-html-container-justify-content;
+  margin: $swal2-html-container-margin;
+  padding: $swal2-html-container-padding;
+  color: $swal2-html-container-color;
+  font-size: $swal2-html-container-font-size;
+  font-weight: $swal2-html-container-font-weight;
+  line-height: $swal2-html-container-line-height;
+  text-align: $swal2-html-container-text-align;
+  word-wrap: $swal2-html-container-word-wrap;
 }
 
 .swal2-input,

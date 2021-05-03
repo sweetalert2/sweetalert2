@@ -1,7 +1,7 @@
 import jQuery from 'jquery'
 import Swal from '../../src/sweetalert2'
 import { SHOW_CLASS_TIMEOUT } from '../../src/utils/openPopup'
-import { $, isHidden, isVisible, SwalWithoutAnimation, triggerKeydownEvent, TIMEOUT, dispatchCustomEvent, ensureClosed } from '../utils'
+import { $, isHidden, isVisible, SwalWithoutAnimation, triggerKeydownEvent, TIMEOUT, dispatchCustomEvent } from '../utils'
 
 describe('Miscellaneous tests', function () {
   it('version is correct semver', () => {
@@ -663,89 +663,6 @@ describe('Outside click', () => {
       backdrop: false
     })
     expect(spy.calledWith('SweetAlert2: "allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`')).to.be.true
-  })
-})
-
-describe('Queue', () => {
-  it('queue', (done) => {
-    ensureClosed()
-    const steps = ['Step 1', 'Step 2']
-    expect(Swal.getQueueStep()).to.equal(null)
-    SwalWithoutAnimation.queue(steps).then(() => {
-      SwalWithoutAnimation.fire('All done!')
-    })
-    expect($('.swal2-modal h2').textContent).to.equal('Step 1')
-    expect(Swal.getQueueStep()).to.equal('0')
-    SwalWithoutAnimation.clickConfirm()
-    setTimeout(() => {
-      expect($('.swal2-modal h2').textContent).to.equal('Step 2')
-      expect(Swal.getQueueStep()).to.equal('1')
-      SwalWithoutAnimation.clickConfirm()
-      setTimeout(() => {
-        expect($('.swal2-modal h2').textContent).to.equal('All done!')
-        expect(SwalWithoutAnimation.getQueueStep()).to.equal(null)
-        SwalWithoutAnimation.clickConfirm()
-        // test queue is cancelled on first step, other steps shouldn't be shown
-        SwalWithoutAnimation.queue(steps)
-        SwalWithoutAnimation.clickCancel()
-        expect(SwalWithoutAnimation.isVisible()).to.be.false
-        done()
-      }, TIMEOUT)
-    }, TIMEOUT)
-  })
-
-  it('dynamic queue', (done) => {
-    const steps = [
-      {
-        title: 'Step 1',
-        preConfirm: () => {
-          return new Promise((resolve) => {
-            // insert to the end by default
-            Swal.insertQueueStep('Step 3')
-            // step to be deleted
-            Swal.insertQueueStep('Step to be deleted')
-            // insert with positioning
-            Swal.insertQueueStep({
-              title: 'Step 2',
-              preConfirm: () => {
-                return new Promise((resolve) => {
-                  Swal.deleteQueueStep(3)
-                  resolve()
-                })
-              }
-            }, 1)
-            resolve()
-          })
-        }
-      }
-    ]
-    setTimeout(() => {
-      SwalWithoutAnimation.queue(steps).then(() => {
-        Swal.fire('All done!')
-      })
-
-      expect($('.swal2-modal h2').textContent).to.equal('Step 1')
-      Swal.clickConfirm()
-
-      setTimeout(() => {
-        expect($('.swal2-modal h2').textContent).to.equal('Step 2')
-        expect(Swal.getQueueStep()).to.equal('1')
-        Swal.clickConfirm()
-
-        setTimeout(() => {
-          expect($('.swal2-modal h2').textContent).to.equal('Step 3')
-          expect(Swal.getQueueStep()).to.equal('2')
-          Swal.clickConfirm()
-
-          setTimeout(() => {
-            expect($('.swal2-modal h2').textContent).to.equal('All done!')
-            expect(Swal.getQueueStep()).to.equal(null)
-            Swal.clickConfirm()
-            done()
-          }, TIMEOUT)
-        }, TIMEOUT)
-      }, TIMEOUT)
-    }, TIMEOUT)
   })
 })
 

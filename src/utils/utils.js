@@ -67,6 +67,8 @@ export const warnAboutDeprecation = (deprecatedParam, useInstead) => {
   warnOnce(`"${deprecatedParam}" is deprecated and will be removed in the next major release. Please use "${useInstead}" instead.`)
 }
 
+export const runIfFunction = (fn, arg) => { if (typeof fn === 'function') fn(arg) }
+
 /**
  * If `arg` is a function, call it (with no arguments or context) and return the result.
  * Otherwise, just pass the value through

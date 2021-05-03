@@ -1,7 +1,7 @@
 import defaultParams, { showWarningsForParams } from '../utils/params.js'
 import * as dom from '../utils/dom/index.js'
 import Timer from '../utils/Timer.js'
-import { callIfFunction } from '../utils/utils.js'
+import { callIfFunction, runIfFunction } from '../utils/utils.js'
 import setParameters from '../utils/setParameters.js'
 import { getTemplateParams } from '../utils/getTemplateParams.js'
 import globalState from '../globalState.js'
@@ -166,7 +166,7 @@ const focusButton = (domCache, innerParams) => {
 }
 
 const blurActiveElement = () => {
-  if (document.activeElement && typeof document.activeElement.blur === 'function') {
-    document.activeElement.blur()
+  if (document.activeElement) {
+    runIfFunction(document.activeElement.blur)
   }
 }

@@ -6,6 +6,7 @@ import { swalClasses } from '../utils/classes.js'
 import globalState, { restoreActiveElement } from '../globalState.js'
 import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
+import { runIfFunction } from '../utils/utils.js'
 
 /*
  * Instance method to close sweetAlert
@@ -95,26 +96,13 @@ const handlePopupAnimation = (instance, popup, innerParams) => {
   // If animation is supported, animate
   const animationIsSupported = dom.animationEndEvent && dom.hasCssAnimation(popup)
 
-  const {
-    onClose, onAfterClose, // @deprecated
-    willClose, didClose
-  } = innerParams
-
-  runDidClose(popup, willClose, onClose)
+  runIfFunction(innerParams.willClose, popup)
 
   if (animationIsSupported) {
-    animatePopup(instance, popup, container, innerParams.returnFocus, didClose || onAfterClose)
+    animatePopup(instance, popup, container, innerParams.returnFocus, innerParams.didClose)
   } else {
     // Otherwise, remove immediately
-    removePopupAndResetState(instance, container, innerParams.returnFocus, didClose || onAfterClose)
-  }
-}
-
-const runDidClose = (popup, willClose, onClose) => {
-  if (willClose !== null && typeof willClose === 'function') {
-    willClose(popup)
-  } else if (onClose !== null && typeof onClose === 'function') {
-    onClose(popup) // @deprecated
+    removePopupAndResetState(instance, container, innerParams.returnFocus, innerParams.didClose)
   }
 }
 
@@ -130,9 +118,7 @@ const animatePopup = (instance, popup, container, returnFocus, didClose) => {
 
 const triggerDidCloseAndDispose = (instance, didClose) => {
   setTimeout(() => {
-    if (typeof didClose === 'function') {
-      didClose()
-    }
+    runIfFunction(didClose)
     instance._destroy()
   })
 }

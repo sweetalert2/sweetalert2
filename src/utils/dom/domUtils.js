@@ -172,12 +172,6 @@ export const hasCssAnimation = (elem) => {
   return animDuration > 0 || transDuration > 0
 }
 
-export const contains = (haystack, needle) => {
-  if (typeof haystack.contains === 'function') {
-    return haystack.contains(needle)
-  }
-}
-
 export const animateTimerProgressBar = (timer, reset = false) => {
   const timerProgressBar = getTimerProgressBar()
   if (isVisible(timerProgressBar)) {

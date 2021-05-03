@@ -49,14 +49,6 @@ const prepareParams = (userParams, mixinParams) => {
   const params = Object.assign({}, defaultParams, mixinParams, templateParams, userParams) // precedence is described in #2131
   params.showClass = Object.assign({}, defaultParams.showClass, params.showClass)
   params.hideClass = Object.assign({}, defaultParams.hideClass, params.hideClass)
-  // @deprecated
-  if (userParams.animation === false) {
-    params.showClass = {
-      popup: 'swal2-noanimation',
-      backdrop: 'swal2-noanimation'
-    }
-    params.hideClass = {}
-  }
   return params
 }
 

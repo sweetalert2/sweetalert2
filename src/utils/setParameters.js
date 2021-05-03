@@ -1,4 +1,4 @@
-import { warn, callIfFunction } from './utils.js'
+import { warn } from './utils.js'
 import * as dom from './dom/index.js'
 import defaultInputValidators from './defaultInputValidators.js'
 
@@ -42,12 +42,6 @@ export default function setParameters (params) {
       'https://sweetalert2.github.io/#ajax-request'
     )
   }
-
-  // params.animation will be actually used in renderPopup.js
-  // but in case when params.animation is a function, we need to call that function
-  // before popup (re)initialization, so it'll be possible to check Swal.isVisible()
-  // inside the params.animation function
-  params.animation = callIfFunction(params.animation)
 
   validateCustomTargetElement(params)
 

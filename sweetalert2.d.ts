@@ -663,14 +663,6 @@ declare module 'sweetalert2' {
     timerProgressBar?: boolean;
 
     /**
-     * If set to `false`, popup CSS animation will be disabled.
-     *
-     * @deprecated
-     * @default true
-     */
-    animation?: ValueOrThunk<boolean>;
-
-    /**
      * By default, SweetAlert2 sets html's and body's CSS `height` to `auto !important`.
      * If this behavior isn't compatible with your project's layout, set `heightAuto` to `false`.
      *
@@ -1073,12 +1065,6 @@ declare module 'sweetalert2' {
      * @default undefined
      */
     progressStepsDistance?: string;
-
-    /**
-     * @deprecated Use drop-in replacement `willOpen` instead.
-     * @default undefined
-     */
-    onBeforeOpen?(popup: HTMLElement): void;
 
     /**
      * Popup lifecycle hook. Synchronously runs before the popup is shown on screen.

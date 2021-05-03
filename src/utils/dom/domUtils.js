@@ -1,6 +1,6 @@
 import { getTimerProgressBar, getConfirmButton, getDenyButton, getCancelButton } from './getters.js'
 import { swalClasses, iconTypes } from '../classes.js'
-import { toArray, objectValues, warn } from '../utils.js'
+import { toArray, warn } from '../utils.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
@@ -37,9 +37,9 @@ export const hasClass = (elem, className) => {
 const removeCustomClasses = (elem, params) => {
   toArray(elem.classList).forEach(className => {
     if (
-      !objectValues(swalClasses).includes(className) &&
-      !objectValues(iconTypes).includes(className) &&
-      !objectValues(params.showClass).includes(className)
+      !Object.values(swalClasses).includes(className) &&
+      !Object.values(iconTypes).includes(className) &&
+      !Object.values(params.showClass).includes(className)
     ) {
       elem.classList.remove(className)
     }

@@ -2,7 +2,6 @@ import * as dom from './dom/index.js'
 import { swalClasses } from './classes.js'
 import { fixScrollbar } from './scrollbarFix.js'
 import { iOSfix } from './iosFix.js'
-import { IEfix } from './ieFix.js'
 import { setAriaHidden } from './aria.js'
 import globalState from '../globalState.js'
 
@@ -75,7 +74,6 @@ const setScrollingVisibility = (container, popup) => {
 
 const fixScrollContainer = (container, scrollbarPadding, initialBodyOverflow) => {
   iOSfix()
-  IEfix()
 
   if (scrollbarPadding && initialBodyOverflow !== 'hidden') {
     fixScrollbar()

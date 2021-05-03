@@ -63,12 +63,10 @@ const resetOldContainer = () => {
   return true
 }
 
-let oldInputVal // IE11 workaround, see #1109 for details
-const resetValidationMessage = (e) => {
-  if (sweetAlert.isVisible() && oldInputVal !== e.target.value) {
+const resetValidationMessage = () => {
+  if (sweetAlert.isVisible()) {
     sweetAlert.resetValidationMessage()
   }
-  oldInputVal = e.target.value
 }
 
 const addInputChangeListeners = () => {
@@ -88,13 +86,13 @@ const addInputChangeListeners = () => {
   checkbox.onchange = resetValidationMessage
   textarea.oninput = resetValidationMessage
 
-  range.oninput = (e) => {
-    resetValidationMessage(e)
+  range.oninput = () => {
+    resetValidationMessage()
     rangeOutput.value = range.value
   }
 
-  range.onchange = (e) => {
-    resetValidationMessage(e)
+  range.onchange = () => {
+    resetValidationMessage()
     range.nextSibling.value = range.value
   }
 }

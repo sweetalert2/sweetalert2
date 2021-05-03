@@ -378,9 +378,6 @@ declare module 'sweetalert2' {
     | 'imageHeight'
     | 'imageUrl'
     | 'imageWidth'
-    | 'onAfterClose'
-    | 'onClose'
-    | 'onDestroy'
     | 'progressSteps'
     | 'reverseButtons'
     | 'showCancelButton'
@@ -1084,12 +1081,6 @@ declare module 'sweetalert2' {
     onBeforeOpen?(popup: HTMLElement): void;
 
     /**
-     * @deprecated Use drop-in replacement `didOpen` instead.
-     * @default undefined
-     */
-    onOpen?(popup: HTMLElement): void;
-
-    /**
      * Popup lifecycle hook. Synchronously runs before the popup is shown on screen.
      *
      * @default undefined
@@ -1106,12 +1097,6 @@ declare module 'sweetalert2' {
     didOpen?(popup: HTMLElement): void;
 
     /**
-     * @deprecated Use drop-in replacement `didRender` instead.
-     * @default undefined
-     */
-    onRender?(popup: HTMLElement): void;
-
-    /**
      * Popup lifecycle hook. Synchronously runs after the popup DOM has been updated (ie. just before the popup is
      * repainted on the screen).
      * Typically, this will happen after `Swal.fire()` or `Swal.update()`.
@@ -1122,18 +1107,6 @@ declare module 'sweetalert2' {
      * @param popup The popup DOM element.
      */
     didRender?(popup: HTMLElement): void;
-
-    /**
-     * @deprecated Use drop-in replacement `willClose` instead.
-     * @default undefined
-     */
-    onClose?(popup: HTMLElement): void;
-
-    /**
-     * @deprecated Use drop-in replacement `didClose` instead.
-     * @default undefined
-     */
-    onAfterClose?(): void;
 
     /**
      * Popup lifecycle hook. Synchronously runs when the popup closes by user interaction (and not due to another popup
@@ -1151,12 +1124,6 @@ declare module 'sweetalert2' {
      * @default undefined
      */
     didClose?(): void;
-
-    /**
-     * @deprecated Use drop-in replacement `didDestroy` instead.
-     * @default undefined
-     */
-    onDestroy?(): void;
 
     /**
      * Popup lifecycle hook. Synchronously runs after popup has been destroyed either by user interaction or by another

@@ -11,7 +11,6 @@ export const defaultParams = {
   iconHtml: undefined,
   template: undefined,
   toast: false,
-  animation: true,
   showClass: {
     popup: 'swal2-show',
     backdrop: 'swal2-backdrop-show',
@@ -133,9 +132,7 @@ export const updatableParams = [
   'willClose',
 ]
 
-export const deprecatedParams = {
-  animation: 'showClass" and "hideClass',
-}
+export const deprecatedParams = {}
 
 const toastIncompatibleParams = [
   'allowOutsideClick',

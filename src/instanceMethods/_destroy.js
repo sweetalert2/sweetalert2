@@ -1,6 +1,7 @@
 import globalState from '../globalState.js'
 import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
+import { runIfFunction } from '../utils/utils.js'
 
 export function _destroy () {
   const domCache = privateProps.domCache.get(this)
@@ -22,17 +23,9 @@ export function _destroy () {
     delete globalState.deferDisposalTimer
   }
 
-  runDidDestroy(innerParams)
+  runIfFunction(innerParams.didDestroy)
 
   disposeSwal(this)
-}
-
-const runDidDestroy = (innerParams) => {
-  if (typeof innerParams.didDestroy === 'function') {
-    innerParams.didDestroy()
-  } else if (typeof innerParams.onDestroy === 'function') {
-    innerParams.onDestroy() // @deprecated
-  }
 }
 
 const disposeSwal = (instance) => {

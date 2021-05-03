@@ -81,17 +81,11 @@ export const defaultParams = {
   progressSteps: [],
   currentProgressStep: undefined,
   progressStepsDistance: undefined,
-  onBeforeOpen: undefined,
-  onOpen: undefined,
   willOpen: undefined,
   didOpen: undefined,
-  onRender: undefined,
   didRender: undefined,
-  onClose: undefined,
-  onAfterClose: undefined,
   willClose: undefined,
   didClose: undefined,
-  onDestroy: undefined,
   didDestroy: undefined,
   scrollbarPadding: true
 }
@@ -126,9 +120,6 @@ export const updatableParams = [
   'imageHeight',
   'imageUrl',
   'imageWidth',
-  'onAfterClose',
-  'onClose',
-  'onDestroy',
   'progressSteps',
   'returnFocus',
   'reverseButtons',
@@ -144,12 +135,6 @@ export const updatableParams = [
 
 export const deprecatedParams = {
   animation: 'showClass" and "hideClass',
-  onBeforeOpen: 'willOpen',
-  onOpen: 'didOpen',
-  onRender: 'didRender',
-  onClose: 'willClose',
-  onAfterClose: 'didClose',
-  onDestroy: 'didDestroy',
 }
 
 const toastIncompatibleParams = [

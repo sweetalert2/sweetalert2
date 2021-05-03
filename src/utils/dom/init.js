@@ -50,7 +50,7 @@ const resetOldContainer = () => {
     return false
   }
 
-  oldContainer.parentNode.removeChild(oldContainer)
+  oldContainer.remove()
   removeClass(
     [document.documentElement, document.body],
     [

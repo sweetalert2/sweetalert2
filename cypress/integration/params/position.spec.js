@@ -111,7 +111,7 @@ describe('position', () => {
       Swal.close()
     })
 
-    dummyTargetElement.parentNode.removeChild(dummyTargetElement) // Remove target element before next test
+    dummyTargetElement.remove() // Remove target element before next test
   })
 
   it('Toast positions with target', () => {
@@ -137,6 +137,6 @@ describe('position', () => {
       Swal.close()
     })
 
-    dummyTargetElement.parentNode.removeChild(dummyTargetElement) // Remove target element before next test
+    dummyTargetElement.remove() // Remove target element before next test
   })
 })

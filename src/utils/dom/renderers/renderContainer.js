@@ -46,11 +46,4 @@ export const renderContainer = (instance, params) => {
 
   // Custom class
   dom.applyCustomClass(container, params, 'container')
-
-  // Set queue step attribute for getQueueStep() method
-  const queueStep = document.body.getAttribute('data-swal2-queue-step')
-  if (queueStep) {
-    container.setAttribute('data-queue-step', queueStep)
-    document.body.removeAttribute('data-swal2-queue-step')
-  }
 }

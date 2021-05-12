@@ -14,12 +14,10 @@ describe('customClass', () => {
       customClass: {
         container: 'container-class',
         popup: 'popup-class',
-        header: 'header-class',
         title: 'title-class',
         closeButton: 'close-button-class',
         icon: 'icon-class',
         image: 'image-class',
-        content: 'content-class',
         htmlContainer: 'html-container-class',
         input: 'input-class',
         actions: 'actions-class',
@@ -32,13 +30,11 @@ describe('customClass', () => {
     })
     expect(Swal.getContainer().classList.contains('container-class')).to.be.true
     expect(Swal.getPopup().classList.contains('popup-class')).to.be.true
-    expect(Swal.getHeader().classList.contains('header-class')).to.be.true
     expect(Swal.getTitle().classList.contains('title-class')).to.be.true
     expect(Swal.getCloseButton().classList.contains('close-button-class')).to.be.true
     expect(Swal.getIcon().classList.contains('icon-class')).to.be.true
     expect(Swal.getImage().classList.contains('image-class')).to.be.true
     expect(Swal.getHtmlContainer().classList.contains('html-container-class')).to.be.true
-    expect(Swal.getContent().classList.contains('content-class')).to.be.true
     expect(Swal.getInput().classList.contains('input-class')).to.be.true
     expect(Swal.getActions().classList.contains('actions-class')).to.be.true
     expect(Swal.getConfirmButton().classList.contains('confirm-button-class')).to.be.true

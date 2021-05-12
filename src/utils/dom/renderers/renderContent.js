@@ -22,7 +22,4 @@ export const renderContent = (instance, params) => {
   }
 
   renderInput(instance, params)
-
-  // Custom class
-  dom.applyCustomClass(dom.getContent(), params, 'content')
 }

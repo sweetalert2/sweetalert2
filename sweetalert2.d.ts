@@ -94,19 +94,9 @@ declare module 'sweetalert2' {
     function getTitle(): HTMLElement | null;
 
     /**
-     * Gets the popup header.
-     */
-    function getHeader(): HTMLElement | null;
-
-    /**
      * Gets progress steps.
      */
     function getProgressSteps(): HTMLElement | null;
-
-    /**
-     * Gets the popup content.
-     */
-    function getContent(): HTMLElement | null;
 
     /**
      * Gets the DOM element where the `html`/`text` parameter is rendered to.
@@ -392,12 +382,10 @@ declare module 'sweetalert2' {
   export interface SweetAlertCustomClass {
     container?: string;
     popup?: string;
-    header?: string;
     title?: string;
     closeButton?: string;
     icon?: string;
     image?: string;
-    content?: string;
     htmlContainer?: string;
     input?: string;
     validationMessage?: string;
@@ -624,12 +612,10 @@ declare module 'sweetalert2' {
      *   customClass: {
      *     container: '...',
      *     popup: '...',
-     *     header: '...',
      *     title: '...',
      *     closeButton: '...',
      *     icon: '...',
      *     image: '...',
-     *     content: '...',
      *     input: '...',
      *     inputLabel: '...',
      *     validationMessage: '...',

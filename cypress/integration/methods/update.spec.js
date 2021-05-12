@@ -36,7 +36,7 @@ describe('update()', () => {
     expect(window.getComputedStyle(Swal.getPopup()).backgroundColor).to.equal('rgb(0, 128, 0)')
 
     expect(Swal.getTitle().textContent).to.equal('New title')
-    expect(Swal.getContent().textContent).to.equal('New content')
+    expect(Swal.getHtmlContainer().textContent).to.equal('New content')
 
     expect(isVisible(Swal.getIcon())).to.be.true
     expect(Swal.getIcon()).to.equal($('.swal2-success'))
@@ -66,12 +66,11 @@ describe('update()', () => {
       customClass: {
         container: 'container-class',
         popup: 'popup-class',
-        header: 'header-class',
         title: 'title-class',
         closeButton: 'close-button-class',
         icon: 'icon-class',
         image: 'image-class',
-        content: 'content-class',
+        htmlContainer: 'html-container-class',
         input: 'input-class',
         actions: 'actions-class',
         confirmButton: 'confirm-button-class',
@@ -86,12 +85,11 @@ describe('update()', () => {
       customClass: {
         container: 'container-class-NEW',
         popup: 'popup-class-NEW',
-        header: 'header-class-NEW',
         title: 'title-class-NEW',
         closeButton: 'close-button-class-NEW',
         icon: 'icon-class-NEW',
         image: 'image-class-NEW',
-        content: 'content-class-NEW',
+        htmlContainer: 'html-container-class-NEW',
         input: 'input-class-NEW',
         actions: 'actions-class-NEW',
         confirmButton: 'confirm-button-class-NEW',
@@ -103,12 +101,11 @@ describe('update()', () => {
 
     expect(Swal.getContainer().classList.contains('container-class')).to.be.false
     expect(Swal.getPopup().classList.contains('popup-class')).to.be.false
-    expect(Swal.getHeader().classList.contains('header-class')).to.be.false
     expect(Swal.getTitle().classList.contains('title-class')).to.be.false
     expect(Swal.getCloseButton().classList.contains('close-button-class')).to.be.false
     expect(Swal.getIcon().classList.contains('icon-class')).to.be.false
     expect(Swal.getImage().classList.contains('image-class')).to.be.false
-    expect(Swal.getContent().classList.contains('content-class')).to.be.false
+    expect(Swal.getHtmlContainer().classList.contains('html-container-class')).to.be.false
     expect(Swal.getInput().classList.contains('input-class')).to.be.false
     expect(Swal.getActions().classList.contains('actions-class')).to.be.false
     expect(Swal.getConfirmButton().classList.contains('confirm-button-class')).to.be.false
@@ -118,12 +115,11 @@ describe('update()', () => {
 
     expect(Swal.getContainer().classList.contains('container-class-NEW')).to.be.true
     expect(Swal.getPopup().classList.contains('popup-class-NEW')).to.be.true
-    expect(Swal.getHeader().classList.contains('header-class-NEW')).to.be.true
     expect(Swal.getTitle().classList.contains('title-class-NEW')).to.be.true
     expect(Swal.getCloseButton().classList.contains('close-button-class-NEW')).to.be.true
     expect(Swal.getIcon().classList.contains('icon-class-NEW')).to.be.true
     expect(Swal.getImage().classList.contains('image-class-NEW')).to.be.true
-    expect(Swal.getContent().classList.contains('content-class-NEW')).to.be.true
+    expect(Swal.getHtmlContainer().classList.contains('html-container-class-NEW')).to.be.true
     expect(Swal.getInput().classList.contains('input-class-NEW')).to.be.true
     expect(Swal.getActions().classList.contains('actions-class-NEW')).to.be.true
     expect(Swal.getConfirmButton().classList.contains('confirm-button-class-NEW')).to.be.true

@@ -52,7 +52,7 @@ describe('Miscellaneous tests', function () {
     expect(isHidden(Swal.getDenyButton())).to.be.true
     expect(isHidden(Swal.getCancelButton())).to.be.true
     expect(Swal.getTitle().textContent).to.equal('')
-    expect(Swal.getContent().textContent).to.equal('')
+    expect(Swal.getHtmlContainer().textContent).to.equal('')
     expect(isHidden(Swal.getFooter())).to.be.true
   })
 
@@ -90,7 +90,7 @@ describe('Miscellaneous tests', function () {
   it('getters', () => {
     Swal.fire('Title', 'Content')
     expect(Swal.getTitle().innerText).to.equal('Title')
-    expect(Swal.getContent().innerText.trim()).to.equal('Content')
+    expect(Swal.getHtmlContainer().innerText.trim()).to.equal('Content')
 
     Swal.fire({
       showCancelButton: true,
@@ -136,8 +136,8 @@ describe('Miscellaneous tests', function () {
     })
 
     expect(Swal.getTitle().querySelectorAll('strong, em').length).to.equal(2)
-    expect(Swal.getContent().querySelectorAll('style, p, img, button').length).to.equal(4)
-    expect(Swal.getContent().querySelector('button').style.width).to.equal('10px')
+    expect(Swal.getHtmlContainer().querySelectorAll('style, p, img, button').length).to.equal(4)
+    expect(Swal.getHtmlContainer().querySelector('button').style.width).to.equal('10px')
   })
 
   it('content/title is set (text)', () => {
@@ -149,7 +149,7 @@ describe('Miscellaneous tests', function () {
     expect(Swal.getTitle().innerHTML, '&lt;strong&gt;Strong&lt;/strong&gt;).to.equal(&lt;em&gt;Emphasis&lt;/em&gt;')
     expect(Swal.getHtmlContainer().innerHTML).to.equal('&lt;p&gt;Paragraph&lt;/p&gt;&lt;img /&gt;&lt;button&gt;&lt;/button&gt;')
     expect(Swal.getTitle().querySelectorAll('strong, em').length).to.equal(0)
-    expect(Swal.getContent().querySelectorAll('p, img, button').length).to.equal(0)
+    expect(Swal.getHtmlContainer().querySelectorAll('p, img, button').length).to.equal(0)
   })
 
   it('JS element as html param', () => {

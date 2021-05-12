@@ -37,8 +37,8 @@ const getRadioValue = (input) => input.checked ? input.value : null
 const getFileValue = (input) => input.files.length ? (input.getAttribute('multiple') !== null ? input.files : input.files[0]) : null
 
 const handleInputOptions = (instance, params) => {
-  const content = dom.getContent()
-  const processInputOptions = (inputOptions) => populateInputOptions[params.input](content, formatInputOptions(inputOptions), params)
+  const popup = dom.getPopup()
+  const processInputOptions = (inputOptions) => populateInputOptions[params.input](popup, formatInputOptions(inputOptions), params)
   if (hasToPromiseFn(params.inputOptions) || isPromise(params.inputOptions)) {
     showLoading(dom.getConfirmButton())
     asPromise(params.inputOptions).then((inputOptions) => {
@@ -71,8 +71,8 @@ const handleInputValue = (instance, params) => {
 }
 
 const populateInputOptions = {
-  select: (content, inputOptions, params) => {
-    const select = getChildByClass(content, swalClasses.select)
+  select: (popup, inputOptions, params) => {
+    const select = getChildByClass(popup, swalClasses.select)
     const renderOption = (parent, optionLabel, optionValue) => {
       const option = document.createElement('option')
       option.value = optionValue
@@ -100,8 +100,8 @@ const populateInputOptions = {
     select.focus()
   },
 
-  radio: (content, inputOptions, params) => {
-    const radio = getChildByClass(content, swalClasses.radio)
+  radio: (popup, inputOptions, params) => {
+    const radio = getChildByClass(popup, swalClasses.radio)
     inputOptions.forEach(inputOption => {
       const radioValue = inputOption[0]
       const radioLabel = inputOption[1]

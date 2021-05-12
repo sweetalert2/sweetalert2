@@ -6,13 +6,13 @@ import privateProps from '../../../privateProps.js'
 const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
 
 export const renderInput = (instance, params) => {
-  const content = dom.getContent()
+  const popup = dom.getPopup()
   const innerParams = privateProps.innerParams.get(instance)
   const rerender = !innerParams || params.input !== innerParams.input
 
   inputTypes.forEach((inputType) => {
     const inputClass = swalClasses[inputType]
-    const inputContainer = dom.getChildByClass(content, inputClass)
+    const inputContainer = dom.getChildByClass(popup, inputClass)
 
     // set attributes
     setAttributes(inputType, params.inputAttributes)
@@ -59,7 +59,7 @@ const removeAttributes = (input) => {
 }
 
 const setAttributes = (inputType, inputAttributes) => {
-  const input = dom.getInput(dom.getContent(), inputType)
+  const input = dom.getInput(dom.getPopup(), inputType)
   if (!input) {
     return
   }
@@ -99,7 +99,7 @@ const setInputLabel = (input, prependTo, params) => {
 
 const getInputContainer = (inputType) => {
   const inputClass = swalClasses[inputType] ? swalClasses[inputType] : swalClasses.input
-  return dom.getChildByClass(dom.getContent(), inputClass)
+  return dom.getChildByClass(dom.getPopup(), inputClass)
 }
 
 const renderInputType = {}
@@ -157,7 +157,7 @@ renderInputType.radio = (radio) => {
 }
 
 renderInputType.checkbox = (checkboxContainer, params) => {
-  const checkbox = dom.getInput(dom.getContent(), 'checkbox')
+  const checkbox = dom.getInput(dom.getPopup(), 'checkbox')
   checkbox.value = 1
   checkbox.id = swalClasses.checkbox
   checkbox.checked = Boolean(params.inputValue)
@@ -171,14 +171,14 @@ renderInputType.textarea = (textarea, params) => {
   setInputPlaceholder(textarea, params)
   setInputLabel(textarea, textarea, params)
 
-  const getPadding = (el) => parseInt(window.getComputedStyle(el).paddingLeft) + parseInt(window.getComputedStyle(el).paddingRight)
+  const getMargin = (el) => parseInt(window.getComputedStyle(el).marginLeft) + parseInt(window.getComputedStyle(el).marginRight)
 
   if ('MutationObserver' in window) { // #1699
     const initialPopupWidth = parseInt(window.getComputedStyle(dom.getPopup()).width)
     const outputsize = () => {
-      const contentWidth = textarea.offsetWidth + getPadding(dom.getPopup()) + getPadding(dom.getContent())
-      if (contentWidth > initialPopupWidth) {
-        dom.getPopup().style.width = `${contentWidth}px`
+      const textareaWidth = textarea.offsetWidth + getMargin(textarea)
+      if (textareaWidth > initialPopupWidth) {
+        dom.getPopup().style.width = `${textareaWidth}px`
       } else {
         dom.getPopup().style.width = null
       }

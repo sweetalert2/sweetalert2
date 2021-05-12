@@ -8,5 +8,5 @@ export function getInput (instance) {
   if (!domCache) {
     return null
   }
-  return dom.getInput(domCache.content, innerParams.input)
+  return dom.getInput(domCache.popup, innerParams.input)
 }

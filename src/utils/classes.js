@@ -23,8 +23,6 @@ export const swalClasses = prefix([
   'hide',
   'close',
   'title',
-  'header',
-  'content',
   'html-container',
   'actions',
   'confirm',

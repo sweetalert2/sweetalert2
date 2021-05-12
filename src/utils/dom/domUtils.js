@@ -58,7 +58,7 @@ export const applyCustomClass = (elem, params, className) => {
   }
 }
 
-export function getInput (content, inputType) {
+export const getInput = (popup, inputType) => {
   if (!inputType) {
     return null
   }
@@ -66,16 +66,16 @@ export function getInput (content, inputType) {
     case 'select':
     case 'textarea':
     case 'file':
-      return getChildByClass(content, swalClasses[inputType])
+      return getChildByClass(popup, swalClasses[inputType])
     case 'checkbox':
-      return content.querySelector(`.${swalClasses.checkbox} input`)
+      return popup.querySelector(`.${swalClasses.checkbox} input`)
     case 'radio':
-      return content.querySelector(`.${swalClasses.radio} input:checked`) ||
-        content.querySelector(`.${swalClasses.radio} input:first-child`)
+      return popup.querySelector(`.${swalClasses.radio} input:checked`) ||
+        popup.querySelector(`.${swalClasses.radio} input:first-child`)
     case 'range':
-      return content.querySelector(`.${swalClasses.range} input`)
+      return popup.querySelector(`.${swalClasses.range} input`)
     default:
-      return getChildByClass(content, swalClasses.input)
+      return getChildByClass(popup, swalClasses.input)
   }
 }
 

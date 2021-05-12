@@ -327,13 +327,15 @@
 .swal2-close {
   position: $swal2-close-button-position;
   z-index: 2; // sweetalert2/issues/1617
-  top: $swal2-close-button-gap;
-  right: $swal2-close-button-gap;
   align-items: $swal2-close-button-align-items;
+  align-self: $swal2-close-button-align-self;
   justify-content: $swal2-close-button-justify-content;
   width: $swal2-close-button-width;
   height: $swal2-close-button-height;
-  padding: 0;
+  margin-top: $swal2-close-button-gap;
+  margin-right: $swal2-close-button-gap;
+  margin-bottom: -$swal2-close-button-height;
+  padding: $swal2-close-button-padding;
   overflow: hidden;
   transition: $swal2-close-button-transition;
   border: $swal2-close-button-border;
@@ -409,7 +411,7 @@
   }
 
   &::placeholder {
-    color: lighten($swal2-black, 80);
+    color: #ccc;
   }
 }
 
@@ -798,8 +800,8 @@ $icon-zoom: strip-units($swal2-icon-size) / 5;
 // Right-to-left support
 .swal2-rtl {
   .swal2-close {
-    right: auto;
-    left: $swal2-close-button-gap;
+    margin-right: initial;
+    margin-left: $swal2-close-button-gap;
   }
 
   .swal2-timer-progress-bar {

@@ -7,11 +7,11 @@ import sweetAlert from '../../sweetalert2.js'
 
 const sweetHTML = `
  <div aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses['html-container']}" class="${swalClasses.popup}" tabindex="-1">
+   <button type="button" class="${swalClasses.close}"></button>
    <ul class="${swalClasses['progress-steps']}"></ul>
    <div class="${swalClasses.icon}"></div>
    <img class="${swalClasses.image}" />
    <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
-   <button type="button" class="${swalClasses.close}"></button>
    <div class="${swalClasses['html-container']}"></div>
    <input class="${swalClasses.input}" />
    <input type="file" class="${swalClasses.file}" />

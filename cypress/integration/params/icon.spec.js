@@ -20,7 +20,7 @@ describe('icon', () => {
     expect(isVisible(Swal.getConfirmButton())).to.be.true
     expect(isHidden(Swal.getCancelButton())).to.be.true
     expect(Swal.getTitle().textContent).to.equal('')
-    expect(Swal.getContent().textContent).to.equal('')
+    expect(Swal.getHtmlContainer().textContent).to.equal('')
     expect(isHidden(Swal.getFooter())).to.be.true
   })
 

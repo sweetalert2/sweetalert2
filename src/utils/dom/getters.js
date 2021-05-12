@@ -19,8 +19,6 @@ export const getIcon = () => elementByClass(swalClasses.icon)
 
 export const getTitle = () => elementByClass(swalClasses.title)
 
-export const getContent = () => elementByClass(swalClasses.content)
-
 export const getHtmlContainer = () => elementByClass(swalClasses['html-container'])
 
 export const getImage = () => elementByClass(swalClasses.image)
@@ -40,8 +38,6 @@ export const getLoader = () => elementBySelector(`.${swalClasses.loader}`)
 export const getCancelButton = () => elementBySelector(`.${swalClasses.actions} .${swalClasses.cancel}`)
 
 export const getActions = () => elementByClass(swalClasses.actions)
-
-export const getHeader = () => elementByClass(swalClasses.header)
 
 export const getFooter = () => elementByClass(swalClasses.footer)
 

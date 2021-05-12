@@ -314,7 +314,7 @@ describe('Input', () => {
     })
     Swal.getInput().style.width = '600px'
     setTimeout(() => {
-      expect(Swal.getPopup().style.width).to.equal('696px')
+      expect(Swal.getPopup().style.width).to.equal('672px')
       Swal.getInput().style.width = '100px'
       setTimeout(() => {
         expect(Swal.getPopup().style.width).to.equal('')

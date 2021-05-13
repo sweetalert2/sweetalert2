@@ -78,7 +78,7 @@ const addClasses = (container, popup, params) => {
   dom.addClass(container, params.showClass.backdrop)
   // the workaround with setting/unsetting opacity is needed for #2019 and 2059
   popup.style.setProperty('opacity', '0', 'important')
-  dom.show(popup)
+  dom.show(popup, 'grid')
   setTimeout(() => {
     // Animate popup right after showing it
     dom.addClass(popup, params.showClass.popup)

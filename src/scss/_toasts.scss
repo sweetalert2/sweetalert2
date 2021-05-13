@@ -1,18 +1,21 @@
 .swal2-popup {
   &.swal2-toast {
-    flex-direction: column;
-    align-items: stretch;
+    grid-template-columns: 1fr 99fr 1fr;
     width: $swal2-toast-width;
     padding: $swal2-toast-padding;
     overflow-y: hidden;
     background: $swal2-toast-background;
     box-shadow: $swal2-toast-box-shadow;
 
+    > * {
+      grid-column: 2;
+    }
+
     .swal2-title {
-      flex-grow: 1;
-      justify-content: flex-start;
       margin: $swal2-toast-title-margin;
+      padding: $swal2-toast-title-padding;
       font-size: $swal2-toast-title-font-size;
+      text-align: initial;
     }
 
     .swal2-loading {
@@ -20,8 +23,8 @@
     }
 
     .swal2-input {
-      height: 2em;
-      margin: .3125em auto;
+      height: $swal2-toast-input-height;
+      margin: $swal2-toast-input-margin;
       font-size: $swal2-toast-input-font-size;
     }
 
@@ -36,17 +39,20 @@
     }
 
     .swal2-close {
-      position: static;
+      grid-column: 3;
+      grid-column-start: 3;
+      grid-row-end: 99;
+      grid-row-start: 1;
+      align-self: center;
       width: $swal2-toast-close-button-width;
       height: $swal2-toast-close-button-height;
+      margin: $swal2-toast-close-button-margin;
       line-height: $swal2-toast-close-button-line-height;
     }
 
     .swal2-html-container {
-      justify-content: flex-start;
       margin: $swal2-toast-html-container-margin;
       padding: $swal2-toast-html-container-padding;
-      padding: .625em 0 0;
       font-size: $swal2-toast-html-container-font-size;
       text-align: initial;
 
@@ -56,6 +62,10 @@
     }
 
     .swal2-icon {
+      grid-column: 1;
+      grid-row-end: 99;
+      grid-row-start: 1;
+      align-self: center;
       width: 2em;
       min-width: 2em;
       height: 2em;
@@ -92,20 +102,16 @@
     }
 
     .swal2-actions {
-      flex: 1;
-      flex-basis: auto !important;
-      align-self: stretch;
-      width: auto;
-      height: 2.2em;
+      justify-content: flex-start;
       height: auto;
-      margin: 0 .3125em;
+      margin: 0;
       margin-top: .3125em;
       padding: 0;
     }
 
     .swal2-styled {
-      margin: .125em .3125em;
-      padding: .3125em .625em;
+      margin: .25em .5em;
+      padding: .4em .6em;
       font-size: $swal2-toast-buttons-font-size;
 
       &:focus {

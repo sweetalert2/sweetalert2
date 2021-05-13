@@ -161,8 +161,6 @@
   display: none;
   position: relative;
   box-sizing: border-box;
-  flex-direction: column;
-  justify-content: center;
   width: $swal2-width;
   max-width: 100%;
   padding: $swal2-padding;
@@ -322,7 +320,7 @@
   position: $swal2-close-button-position;
   z-index: 2; // sweetalert2/issues/1617
   align-items: $swal2-close-button-align-items;
-  align-self: $swal2-close-button-align-self;
+  justify-self: $swal2-close-button-justify-self;
   justify-content: $swal2-close-button-justify-content;
   width: $swal2-close-button-width;
   height: $swal2-close-button-height;

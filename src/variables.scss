@@ -130,7 +130,7 @@ $swal2-timer-progress-bar-height: .25em;
 $swal2-timer-progress-bar-background: rgba($swal2-black, .2) !default;
 
 // CLOSE BUTTON
-$swal2-close-button-align-self: flex-end !default;
+$swal2-close-button-justify-self: end !default;
 $swal2-close-button-align-items: center !default;
 $swal2-close-button-justify-content: center !default;
 $swal2-close-button-width: 1.2em !default;

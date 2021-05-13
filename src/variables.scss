@@ -91,7 +91,7 @@ $swal2-input-label-justify-content: center !default;
 // VALIDATION MESSAGE
 $swal2-validation-message-align-items: center !default;
 $swal2-validation-message-justify-content: center !default;
-$swal2-validation-message-margin: 0 !default;
+$swal2-validation-message-margin: 1em 0 0 !default;
 $swal2-validation-message-padding: .625em !default;
 $swal2-validation-message-background: lighten($swal2-black, 94) !default;
 $swal2-validation-message-color: lighten($swal2-black, 40) !default;
@@ -222,7 +222,7 @@ $swal2-toast-close-button-width: .8em !default;
 $swal2-toast-close-button-height: .8em !default;
 $swal2-toast-close-button-margin: 0 !default;
 $swal2-toast-close-button-line-height: .8 !default;
-$swal2-toast-width: auto !default;
+$swal2-toast-width: 360px !default;
 $swal2-toast-padding: 1.25em !default;
 $swal2-toast-title-margin: .625em !default;
 $swal2-toast-title-padding: 0 !default;

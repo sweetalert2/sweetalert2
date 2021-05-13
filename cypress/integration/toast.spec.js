@@ -90,6 +90,6 @@ describe('Toast', () => {
     })
 
     Swal.getContainer().style.position = 'absolute'
-    expect(window.getComputedStyle(Swal.getPopup()).width).to.equal('150px')
+    expect(window.getComputedStyle(Swal.getContainer()).width).to.equal('150px')
   })
 })

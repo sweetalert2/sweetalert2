@@ -119,8 +119,8 @@ $swal2-active-step-background: #2778c4 !default;
 $swal2-active-step-color: $swal2-white !default;
 
 // FOOTER
-$swal2-footer-margin: 0 !default;
-$swal2-footer-padding: 1em 0 !default;
+$swal2-footer-margin: 1em 0 0 !default;
+$swal2-footer-padding: 1em 0 0 !default;
 $swal2-footer-border-color: #eee !default;
 $swal2-footer-color: lighten($swal2-black, 33) !default;
 $swal2-footer-font-size: 1em !default;
@@ -130,7 +130,7 @@ $swal2-timer-progress-bar-height: .25em;
 $swal2-timer-progress-bar-background: rgba($swal2-black, .2) !default;
 
 // CLOSE BUTTON
-$swal2-close-button-align-self: flex-end !default;
+$swal2-close-button-justify-self: end !default;
 $swal2-close-button-align-items: center !default;
 $swal2-close-button-justify-content: center !default;
 $swal2-close-button-width: 1.2em !default;

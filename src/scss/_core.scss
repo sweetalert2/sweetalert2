@@ -155,12 +155,6 @@
       margin: auto;
     }
   }
-
-  @include ie {
-    .swal2-modal {
-      margin: 0 !important;
-    }
-  }
 }
 
 .swal2-popup {

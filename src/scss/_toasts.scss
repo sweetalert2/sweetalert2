@@ -66,10 +66,6 @@
         align-items: center;
         font-size: $swal2-toast-icon-font-size;
         font-weight: bold;
-
-        @include ie {
-          font-size: .25em;
-        }
       }
 
       &.swal2-success {

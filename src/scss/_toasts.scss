@@ -1,7 +1,7 @@
 .swal2-popup {
   &.swal2-toast {
+    box-sizing: border-box;
     grid-template-columns: 1fr 99fr 1fr;
-    width: $swal2-toast-width;
     padding: $swal2-toast-padding;
     overflow-y: hidden;
     background: $swal2-toast-background;
@@ -39,10 +39,8 @@
     }
 
     .swal2-close {
-      grid-column: 3;
-      grid-column-start: 3;
-      grid-row-end: 99;
-      grid-row-start: 1;
+      grid-column: 3/3;
+      grid-row: 1/99;
       align-self: center;
       width: $swal2-toast-close-button-width;
       height: $swal2-toast-close-button-height;
@@ -63,8 +61,7 @@
 
     .swal2-icon {
       grid-column: 1;
-      grid-row-end: 99;
-      grid-row-start: 1;
+      grid-row: 1/99;
       align-self: center;
       width: 2em;
       min-width: 2em;

@@ -17,7 +17,7 @@ describe('grow', () => {
     })
     const containerStyles = window.getComputedStyle(Swal.getContainer())
     expect(Swal.getPopup().clientHeight).to.equal(
-      parseInt(Swal.getContainer().clientHeight - parseFloat(containerStyles.paddingTop) - parseFloat(containerStyles.paddingBottom))
+      parseInt(Swal.getContainer().clientHeight - parseFloat(containerStyles.paddingTop) * 2)
     )
   })
 
@@ -32,7 +32,7 @@ describe('grow', () => {
     )
 
     expect(Swal.getPopup().clientHeight).to.equal(
-      parseInt(Swal.getContainer().clientHeight - parseFloat(containerStyles.paddingTop) - parseFloat(containerStyles.paddingBottom))
+      parseInt(Swal.getContainer().clientHeight - parseFloat(containerStyles.paddingTop) * 2)
     )
   })
 })

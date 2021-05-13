@@ -1,9 +1,3 @@
-@mixin ie {
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    @content;
-  }
-}
-
 // https://stackoverflow.com/a/30250161
 @mixin not($ignor-list...) {
   @if (length($ignor-list) == 1) {

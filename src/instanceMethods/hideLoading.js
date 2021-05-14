@@ -13,11 +13,12 @@ function hideLoading () {
   }
   const domCache = privateProps.domCache.get(this)
   dom.hide(domCache.loader)
-  const buttonToReplace = domCache.popup.getElementsByClassName(domCache.loader.getAttribute('data-button-to-replace'))
-  if (buttonToReplace.length) {
-    dom.show(buttonToReplace[0], 'inline-block')
-  } else if (dom.allButtonsAreHidden()) {
-    dom.hide(domCache.actions)
+  if (dom.isToast()) {
+    if (innerParams.icon) {
+      dom.show(dom.getIcon())
+    }
+  } else {
+    showRelatedButton(domCache)
   }
   dom.removeClass([domCache.popup, domCache.actions], swalClasses.loading)
   domCache.popup.removeAttribute('aria-busy')
@@ -25,6 +26,15 @@ function hideLoading () {
   domCache.confirmButton.disabled = false
   domCache.denyButton.disabled = false
   domCache.cancelButton.disabled = false
+}
+
+const showRelatedButton = (domCache) => {
+  const buttonToReplace = domCache.popup.getElementsByClassName(domCache.loader.getAttribute('data-button-to-replace'))
+  if (buttonToReplace.length) {
+    dom.show(buttonToReplace[0], 'inline-block')
+  } else if (dom.allButtonsAreHidden()) {
+    dom.hide(domCache.actions)
+  }
 }
 
 export {

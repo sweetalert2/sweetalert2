@@ -1,3 +1,11 @@
+## [10.16.8](https://github.com/sweetalert2/sweetalert2/compare/v10.16.7...v10.16.8) (2021-05-14)
+
+
+### Bug Fixes
+
+* container layout for mobile devices ([#2244](https://github.com/sweetalert2/sweetalert2/issues/2244)) ([acfa2d9](https://github.com/sweetalert2/sweetalert2/commit/acfa2d9d9c4c7ca44bff604fe696d8a6ad3183e8))
+* popup centering in Safari ([#2242](https://github.com/sweetalert2/sweetalert2/issues/2242)) ([f9535b7](https://github.com/sweetalert2/sweetalert2/commit/f9535b71506c622fa1dd0636ba85e2afb4086f99))
+
 ## [10.16.7](https://github.com/sweetalert2/sweetalert2/compare/v10.16.6...v10.16.7) (2021-05-02)
 
 

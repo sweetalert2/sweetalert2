@@ -191,6 +191,7 @@
 .swal2-styled {
   margin: $swal2-button-margin;
   padding: $swal2-button-padding;
+  transition: $swal2-button-transition;
   box-shadow: $swal2-button-box-shadow;
   font-weight: $swal2-button-font-weight;
 
@@ -206,6 +207,10 @@
     background-color: $swal2-confirm-button-background-color;
     color: $swal2-confirm-button-color;
     font-size: $swal2-confirm-button-font-size;
+
+    &:focus {
+      box-shadow: $swal2-confirm-button-focus-box-shadow;
+    }
   }
 
   &.swal2-deny {
@@ -216,6 +221,10 @@
     background-color: $swal2-deny-button-background-color;
     color: $swal2-deny-button-color;
     font-size: $swal2-deny-button-font-size;
+
+    &:focus {
+      box-shadow: $swal2-deny-button-focus-box-shadow;
+    }
   }
 
   &.swal2-cancel {
@@ -226,12 +235,14 @@
     background-color: $swal2-cancel-button-background-color;
     color: $swal2-cancel-button-color;
     font-size: $swal2-cancel-button-font-size;
+
+    &:focus {
+      box-shadow: $swal2-cancel-button-focus-box-shadow;
+    }
   }
 
   &:focus {
     outline: $swal2-button-focus-outline;
-    background-color: $swal2-button-focus-background-color;
-    box-shadow: $swal2-button-focus-box-shadow;
   }
 
   &::-moz-focus-inner {

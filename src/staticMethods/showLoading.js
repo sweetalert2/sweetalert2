@@ -12,6 +12,21 @@ const showLoading = (buttonToReplace) => {
     Swal.fire()
   }
   popup = dom.getPopup()
+  const loader = dom.getLoader()
+
+  if (dom.isToast()) {
+    dom.hide(dom.getIcon())
+  } else {
+    replaceButton(popup, buttonToReplace)
+  }
+  dom.show(loader)
+
+  popup.setAttribute('data-loading', true)
+  popup.setAttribute('aria-busy', true)
+  popup.focus()
+}
+
+const replaceButton = (popup, buttonToReplace) => {
   const actions = dom.getActions()
   const loader = dom.getLoader()
 
@@ -26,12 +41,6 @@ const showLoading = (buttonToReplace) => {
   }
   loader.parentNode.insertBefore(loader, buttonToReplace)
   dom.addClass([popup, actions], swalClasses.loading)
-
-  dom.show(loader)
-
-  popup.setAttribute('data-loading', true)
-  popup.setAttribute('aria-busy', true)
-  popup.focus()
 }
 
 export {

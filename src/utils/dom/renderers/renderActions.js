@@ -44,12 +44,15 @@ function handleButtonsStyling (confirmButton, denyButton, cancelButton, params) 
   // Buttons background colors
   if (params.confirmButtonColor) {
     confirmButton.style.backgroundColor = params.confirmButtonColor
+    dom.addClass(confirmButton, swalClasses['default-outline'])
   }
   if (params.denyButtonColor) {
     denyButton.style.backgroundColor = params.denyButtonColor
+    dom.addClass(denyButton, swalClasses['default-outline'])
   }
   if (params.cancelButtonColor) {
     cancelButton.style.backgroundColor = params.cancelButtonColor
+    dom.addClass(cancelButton, swalClasses['default-outline'])
   }
 }
 

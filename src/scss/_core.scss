@@ -37,6 +37,24 @@
     background: transparent !important;
   }
 
+  &.swal2-top-start,
+  &.swal2-center-start,
+  &.swal2-bottom-start {
+    grid-template-columns: minmax(0, 100vh) auto auto;
+  }
+
+  &.swal2-top,
+  &.swal2-center,
+  &.swal2-bottom {
+    grid-template-columns: auto minmax(0, 100vh) auto;
+  }
+
+  &.swal2-top-end,
+  &.swal2-center-end,
+  &.swal2-bottom-end {
+    grid-template-columns: auto auto minmax(0, 100vh);
+  }
+
   &.swal2-top-start > .swal2-popup {
     align-self: start;
   }
@@ -86,6 +104,7 @@
     grid-column: 2;
     grid-row: 3;
     justify-self: center;
+    align-self: end;
   }
 
   &.swal2-bottom-end > .swal2-popup,
@@ -415,6 +434,9 @@
 }
 
 .swal2-file {
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
   background: $swal2-input-background;
   font-size: $swal2-input-font-size;
 }

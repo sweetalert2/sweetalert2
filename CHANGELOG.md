@@ -1,3 +1,39 @@
+# [11.0.0](https://github.com/sweetalert2/sweetalert2/compare/v10.16.7...v11.0.0) (2021-05-14)
+
+
+### Bug Fixes
+
+* container layout for mobile devices ([#2244](https://github.com/sweetalert2/sweetalert2/issues/2244)) ([0fffeda](https://github.com/sweetalert2/sweetalert2/commit/0fffedaa3fc4af1789b54eb6f4411fc02bbde6e9))
+* popup centering in Safari ([#2242](https://github.com/sweetalert2/sweetalert2/issues/2242)) ([e86d208](https://github.com/sweetalert2/sweetalert2/commit/e86d208c9f8cbed420b8255bd9c75c59e9cb248b))
+
+
+* BREAKING CHANGE: move loader in toasts to the left side, replacing the icon (#2240) ([3ec9fae](https://github.com/sweetalert2/sweetalert2/commit/3ec9faec59ad2fc6b67a96161b83cac34786b1a1)), closes [#2240](https://github.com/sweetalert2/sweetalert2/issues/2240)
+* BREAKING CHANGE: switch container to CSS Grid Layout (#2239) ([706665d](https://github.com/sweetalert2/sweetalert2/commit/706665d42075c6033a07c443fc97e98c02e37541)), closes [#2239](https://github.com/sweetalert2/sweetalert2/issues/2239)
+* BREAKING CHANGE: change toast layout (#2238) ([ce5cad7](https://github.com/sweetalert2/sweetalert2/commit/ce5cad7eec118ce569a0fc894830fc0bf99506c0)), closes [#2238](https://github.com/sweetalert2/sweetalert2/issues/2238)
+* BREAKING CHANGE: switch to CSS Grid Layout (#2237) ([8d8253a](https://github.com/sweetalert2/sweetalert2/commit/8d8253aaf9c0190ff7925c85e843d8594ca9a7da)), closes [#2237](https://github.com/sweetalert2/sweetalert2/issues/2237)
+* BREAKING CHANGE: remove .swal2-header and .swal2-content (#2232) ([18adb8b](https://github.com/sweetalert2/sweetalert2/commit/18adb8b7911caba104d4fd299195dcbed58eea34)), closes [#2232](https://github.com/sweetalert2/sweetalert2/issues/2232)
+* BREAKING CHANGE: remove deprecated animation param ([19d1efe](https://github.com/sweetalert2/sweetalert2/commit/19d1efe37f0198c9054650ef65d1656077739ff8))
+* BREAKING CHANGE: remove deprecated lifecycle hooks ([ed84b89](https://github.com/sweetalert2/sweetalert2/commit/ed84b898ddad1cf5940a2d0db0b88b00844ce78e))
+* BREAKING CHANGE: remove .queue() (close #2229) ([fec7977](https://github.com/sweetalert2/sweetalert2/commit/fec797717b03119f79db97adf5fe7f8593d4ae8a)), closes [#2229](https://github.com/sweetalert2/sweetalert2/issues/2229)
+* BREAKING CHANGE: Drop IE11 and old Edge support (#2191) ([c0421e5](https://github.com/sweetalert2/sweetalert2/commit/c0421e5002531d8a4bda8eb3276f7ffb0060ab01)), closes [#2191](https://github.com/sweetalert2/sweetalert2/issues/2191)
+* BREAKING CHANGE: Update btn colors (#2227) ([0dd06d9](https://github.com/sweetalert2/sweetalert2/commit/0dd06d94bb336efa05521b31977254045641417f)), closes [#2227](https://github.com/sweetalert2/sweetalert2/issues/2227)
+
+
+### BREAKING CHANGES
+
+* move loader in toasts to the left side, replacing the icon
+* switch container to CSS Grid Layout
+* change toast layout
+* switch to CSS Grid Layout
+* remove .swal2-header and .swal2-content
+
+* Remove position: absolute from close button
+* remove deprecated animation param
+* remove deprecated lifecycle hooks
+* remove .queue()
+* Drop IE11 and old Edge support (#2191)
+* Update btn colors
+
 ## [10.16.7](https://github.com/sweetalert2/sweetalert2/compare/v10.16.6...v10.16.7) (2021-05-02)
 
 

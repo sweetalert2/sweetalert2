@@ -6,6 +6,7 @@
   right: 0;
   bottom: 0;
   left: 0;
+  box-sizing: border-box;
   grid-template-areas:
     "top-start     top            top-end"
     "center-start  center         center-end"
@@ -13,18 +14,19 @@
     "gap gap gap";
   grid-template-columns: auto auto auto;
   grid-template-rows: auto auto auto $swal2-container-padding;
+  height: 100%; // Safari
   padding: $swal2-container-padding $swal2-container-padding 0;
   overflow-x: hidden;
   transition: $swal2-backdrop-transition;
+
+  // sweetalert2/issues/905
+  -webkit-overflow-scrolling: touch;
 
   &::after { // #1986
     content: '';
     grid-row: 4;
     height: $swal2-container-padding;
   }
-
-  // sweetalert2/issues/905
-  -webkit-overflow-scrolling: touch;
 
   &.swal2-backdrop-show,
   &.swal2-noanimation {

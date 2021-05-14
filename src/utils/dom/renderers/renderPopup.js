@@ -9,6 +9,7 @@ export const renderPopup = (instance, params) => {
   if (params.toast) { // #2170
     dom.applyNumericalStyle(container, 'width', params.width)
     popup.style.width = '100%'
+    popup.insertBefore(dom.getLoader(), dom.getIcon())
   } else {
     dom.applyNumericalStyle(popup, 'width', params.width)
   }

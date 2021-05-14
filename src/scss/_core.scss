@@ -275,7 +275,6 @@
   position: $swal2-close-button-position;
   z-index: 2; // sweetalert2/issues/1617
   align-items: $swal2-close-button-align-items;
-  justify-self: $swal2-close-button-justify-self;
   justify-content: $swal2-close-button-justify-content;
   width: $swal2-close-button-width;
   height: $swal2-close-button-height;
@@ -291,9 +290,10 @@
   background: $swal2-close-button-background;
   color: $swal2-close-button-color;
   font-family: $swal2-close-button-font-family;
+  font-family: monospace;
   font-size: $swal2-close-button-font-size;
-  line-height: $swal2-close-button-line-height;
   cursor: pointer;
+  justify-self: $swal2-close-button-justify-self;
 
   &:hover {
     transform: $swal2-close-button-hover-transform;

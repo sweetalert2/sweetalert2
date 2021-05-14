@@ -1,7 +1,7 @@
 import { $, Swal, ensureClosed, isVisible, isHidden } from '../../utils'
 
 describe('showLoading() and hideLoading()', () => {
-  it('showLoading and hideLoading', () => {
+  it('showLoading() and hideLoading()', () => {
     Swal.showLoading()
     expect(Swal.getActions().classList.contains('swal2-loading')).to.be.true
 

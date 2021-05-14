@@ -243,6 +243,12 @@
     }
   }
 
+  &.swal2-default-outline {
+    &:focus {
+      box-shadow: $swal2-button-focus-box-shadow;
+    }
+  }
+
   &:focus {
     outline: $swal2-button-focus-outline;
   }

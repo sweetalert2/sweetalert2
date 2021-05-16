@@ -1,3 +1,10 @@
+## [11.0.2](https://github.com/sweetalert2/sweetalert2/compare/v11.0.1...v11.0.2) (2021-05-16)
+
+
+### Bug Fixes
+
+* returnInputValueOnDeny + inputValidator ([#2248](https://github.com/sweetalert2/sweetalert2/issues/2248)) ([ce83192](https://github.com/sweetalert2/sweetalert2/commit/ce83192649c40d93d95c513558c7fb9e62af0ddb))
+
 ## [11.0.1](https://github.com/sweetalert2/sweetalert2/compare/v11.0.0...v11.0.1) (2021-05-16)
 
 

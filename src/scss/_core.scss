@@ -23,6 +23,7 @@
 
   &::after { // #1986
     content: '';
+    grid-column: 1/4;
     grid-row: 4;
     height: $swal2-container-padding;
   }

@@ -1,4 +1,3 @@
-import { error } from './utils/utils.js'
 import { DismissReason } from './utils/DismissReason.js'
 import * as staticMethods from './staticMethods.js'
 import * as instanceMethods from './instanceMethods.js'
@@ -11,11 +10,6 @@ class SweetAlert {
     // Prevent run in Node env
     if (typeof window === 'undefined') {
       return
-    }
-
-    // Check for the existence of Promise
-    if (typeof Promise === 'undefined') {
-      error('This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)')
     }
 
     currentInstance = this

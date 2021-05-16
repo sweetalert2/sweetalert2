@@ -1,3 +1,11 @@
+## [11.0.1](https://github.com/sweetalert2/sweetalert2/compare/v11.0.0...v11.0.1) (2021-05-16)
+
+
+### Bug Fixes
+
+* footer horizontal padding ([b1d623d](https://github.com/sweetalert2/sweetalert2/commit/b1d623d70fac5e607d5252105ee40229c6755ade))
+* width: 100% ([#2247](https://github.com/sweetalert2/sweetalert2/issues/2247)) ([6313681](https://github.com/sweetalert2/sweetalert2/commit/6313681ab6bbc12b73d68c53579cb4e14b893a7e))
+
 # [11.0.0](https://github.com/sweetalert2/sweetalert2/compare/v10.16.7...v11.0.0) (2021-05-14)
 
 

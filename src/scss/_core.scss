@@ -155,14 +155,14 @@
 }
 
 .swal2-title {
-  position: relative;
-  max-width: 100%;
+  position: $swal2-title-position;
+  max-width: $swal2-title-max-width;
   margin: $swal2-title-margin;
   padding: $swal2-title-padding;
   color: $swal2-title-color;
   font-size: $swal2-title-font-size;
-  font-weight: 600;
-  text-align: center;
+  font-weight: $swal2-title-font-weight;
+  text-align: $swal2-title-text-align;
   text-transform: none;
   word-wrap: break-word;
 }

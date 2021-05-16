@@ -1,3 +1,10 @@
+## [11.0.4](https://github.com/sweetalert2/sweetalert2/compare/v11.0.3...v11.0.4) (2021-05-16)
+
+
+### Bug Fixes
+
+* progress steps margin ([7a105ca](https://github.com/sweetalert2/sweetalert2/commit/7a105caec7c92e3b06c192c4f1167a572d8f441c))
+
 ## [11.0.3](https://github.com/sweetalert2/sweetalert2/compare/v11.0.2...v11.0.3) (2021-05-16)
 
 

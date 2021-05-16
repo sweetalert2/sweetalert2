@@ -46,10 +46,14 @@ $swal2-question: #87adbd !default;
 $swal2-image-margin: 2em auto 1em !default;
 
 // TITLE
+$swal2-title-position: relative !default;
+$swal2-title-max-width: 100% !default;
 $swal2-title-margin: 0 !default;
 $swal2-title-padding: .8em 1em 0 !default;
 $swal2-title-color: lighten($swal2-black, 35) !default;
 $swal2-title-font-size: 1.875em !default;
+$swal2-title-font-weight: 600 !default;
+$swal2-title-text-align: center !default;
 
 // HTML CONTAINER
 $swal2-html-container-justify-content: center !default;

@@ -12,7 +12,6 @@
     "center-start  center         center-end"
     "bottom-start  bottom-center  bottom-end"
     "gap gap gap";
-  grid-template-columns: auto auto auto;
   grid-template-rows: auto auto auto $swal2-container-padding;
   height: 100%; // Safari
   padding: $swal2-container-padding $swal2-container-padding 0;
@@ -40,19 +39,19 @@
   &.swal2-top-start,
   &.swal2-center-start,
   &.swal2-bottom-start {
-    grid-template-columns: minmax(0, 100vh) auto auto;
+    grid-template-columns: minmax(0, 1fr) auto auto;
   }
 
   &.swal2-top,
   &.swal2-center,
   &.swal2-bottom {
-    grid-template-columns: auto minmax(0, 100vh) auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
   }
 
   &.swal2-top-end,
   &.swal2-center-end,
   &.swal2-bottom-end {
-    grid-template-columns: auto auto minmax(0, 100vh);
+    grid-template-columns: auto auto minmax(0, 1fr);
   }
 
   &.swal2-top-start > .swal2-popup {

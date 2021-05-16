@@ -31,7 +31,7 @@ export const handleCancelButtonClick = (instance, dismissWith) => {
 const handleConfirmOrDenyWithInput = (instance, innerParams, type /* type is either 'confirm' or 'deny' */) => {
   const inputValue = getInputValue(instance, innerParams)
   if (innerParams.inputValidator) {
-    handleInputValidator(instance, innerParams, inputValue)
+    handleInputValidator(instance, innerParams, inputValue, type)
   } else if (!instance.getInput().checkValidity()) {
     instance.enableButtons()
     instance.showValidationMessage(innerParams.validationMessage)
@@ -42,7 +42,7 @@ const handleConfirmOrDenyWithInput = (instance, innerParams, type /* type is eit
   }
 }
 
-const handleInputValidator = (instance, innerParams, inputValue) => {
+const handleInputValidator = (instance, innerParams, inputValue, type /* type is either 'confirm' or 'deny' */) => {
   instance.disableInput()
   const validationPromise = Promise.resolve().then(() => asPromise(
     innerParams.inputValidator(inputValue, innerParams.validationMessage))
@@ -53,6 +53,8 @@ const handleInputValidator = (instance, innerParams, inputValue) => {
       instance.enableInput()
       if (validationMessage) {
         instance.showValidationMessage(validationMessage)
+      } else if (type === 'deny') {
+        deny(instance, innerParams, inputValue)
       } else {
         confirm(instance, innerParams, inputValue)
       }

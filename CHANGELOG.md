@@ -1,3 +1,10 @@
+## [11.0.3](https://github.com/sweetalert2/sweetalert2/compare/v11.0.2...v11.0.3) (2021-05-16)
+
+
+### Bug Fixes
+
+* bottom gap ([eafe992](https://github.com/sweetalert2/sweetalert2/commit/eafe992a8ac362b46611b3ac0e7670b8f718e8ac))
+
 ## [11.0.2](https://github.com/sweetalert2/sweetalert2/compare/v11.0.1...v11.0.2) (2021-05-16)
 
 

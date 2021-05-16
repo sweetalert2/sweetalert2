@@ -1,3 +1,10 @@
+## [11.0.5](https://github.com/sweetalert2/sweetalert2/compare/v11.0.4...v11.0.5) (2021-05-16)
+
+
+### Bug Fixes
+
+* add scss variables for .swal2-title ([a280885](https://github.com/sweetalert2/sweetalert2/commit/a280885165fb0d3db218b8e90f32beb6e4e8ebf9))
+
 ## [11.0.4](https://github.com/sweetalert2/sweetalert2/compare/v11.0.3...v11.0.4) (2021-05-16)
 
 

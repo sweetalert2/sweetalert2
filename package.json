@@ -10,13 +10,11 @@
   "types": "sweetalert2.d.ts",
   "devDependencies": {
     "@babel/core": "^7.14.0",
-    "@babel/plugin-transform-object-assign": "^7.12.13",
     "@babel/preset-env": "^7.14.1",
     "@rollup/plugin-json": "^4.0.2",
     "@sweetalert2/eslint-config": "^1.0.0",
     "@sweetalert2/execute": "^1.0.0",
     "@sweetalert2/stylelint-config": "^1.1.5",
-    "babel-plugin-array-includes": "^2.0.3",
     "browser-sync": "^2.26.14",
     "cypress": "^7.2.0",
     "eslint": "^7.26.0",
@@ -54,7 +52,7 @@
       }
     ]
   },
-  "author": "Limon Monte <limon.monte@protonmail.com> (https://limonte.github.io)",
+  "author": "Limon Monte <limon.monte@gmail.com> (https://limonte.github.io)",
   "contributors": [
     "Giuseppe Verni (https://github.com/gverni)",
     "Matthew Francis Brunetti <zenflow87@gmail.com> (https://github.com/zenflow)",

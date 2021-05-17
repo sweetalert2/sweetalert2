@@ -3,12 +3,13 @@
     [
       "@babel/preset-env",
       {
-        "modules": false
+        "modules": false,
+        "targets": {
+          "chrome": "88",
+          "firefox": "86",
+          "safari": "12"
+        }
       }
     ]
-  ],
-  "plugins": [
-    "array-includes",
-    "@babel/plugin-transform-object-assign"
   ]
 }

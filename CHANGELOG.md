@@ -1,3 +1,10 @@
+## [11.0.6](https://github.com/sweetalert2/sweetalert2/compare/v11.0.5...v11.0.6) (2021-05-17)
+
+
+### Bug Fixes
+
+* do not use runIfFunction() helper for document.activeElement.blur() ([fc8f893](https://github.com/sweetalert2/sweetalert2/commit/fc8f893791e235691c63dac0d3776fe41f274cca)), closes [#2250](https://github.com/sweetalert2/sweetalert2/issues/2250)
+
 ## [11.0.5](https://github.com/sweetalert2/sweetalert2/compare/v11.0.4...v11.0.5) (2021-05-16)
 
 

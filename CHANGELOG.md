@@ -1,3 +1,10 @@
+## [11.0.7](https://github.com/sweetalert2/sweetalert2/compare/v11.0.6...v11.0.7) (2021-05-17)
+
+
+### Bug Fixes
+
+* do not build for old browsers ([#2251](https://github.com/sweetalert2/sweetalert2/issues/2251)) ([d769162](https://github.com/sweetalert2/sweetalert2/commit/d76916219eb10e3e368398078812806cc5f044aa))
+
 ## [11.0.6](https://github.com/sweetalert2/sweetalert2/compare/v11.0.5...v11.0.6) (2021-05-17)
 
 

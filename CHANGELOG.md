@@ -1,3 +1,10 @@
+## [11.0.8](https://github.com/sweetalert2/sweetalert2/compare/v11.0.7...v11.0.8) (2021-05-19)
+
+
+### Bug Fixes
+
+* **scss:** add $swal2-html-container-word-break ([fa966dd](https://github.com/sweetalert2/sweetalert2/commit/fa966dd0aa40529363c4a16423ede6e5bc5bf54b))
+
 ## [11.0.7](https://github.com/sweetalert2/sweetalert2/compare/v11.0.6...v11.0.7) (2021-05-17)
 
 

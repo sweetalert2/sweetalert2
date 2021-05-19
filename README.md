@@ -157,7 +157,7 @@ Chrome | Firefox | Safari | Edge
 -------|---------|--------|-----
 :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 
-IF you need IE11 and old Edge support, please use [the previous major version](https://github.com/sweetalert2/sweetalert2/releases/tag/v10.16.7).
+If you need IE11 and legacy Edge support, please use [the previous major version](https://github.com/sweetalert2/sweetalert2/releases/tag/v10.16.7).
 
 
 
@@ -181,7 +181,6 @@ Related projects
 - [sweetalert2-react-content](https://github.com/sweetalert2/sweetalert2-react-content) - React integration
 - [sweetalert2-webpack-demo](https://github.com/sweetalert2/sweetalert2-webpack-demo) - webpack demo
 - [sweetalert2-parcel-demo](https://github.com/sweetalert2/sweetalert2-parcel-demo) - overriding SCSS variables demo
-- [sweetforms](https://github.com/sweetalert2/sweetforms) - A package based on sweetalert2 providing highly customizable advanced forms with built-in validation, data formatting and more !
 
 
 Related community projects
@@ -191,14 +190,6 @@ Related community projects
 - [realrashid/sweet-alert](https://github.com/realrashid/sweet-alert) - Laravel 5 Package
 - [Basaingeal/Razor.SweetAlert2](https://github.com/Basaingeal/Razor.SweetAlert2) - Blazor Wrapper
 - [ElectronAlert](https://electron.guide/electron-alert/) - SweetAlert2 for Electron applications (main process)
-
-
-Collaborators
--------------
-
-[![](https://avatars3.githubusercontent.com/u/17089396?v=4&s=80)](https://github.com/gverni) | [![](https://avatars3.githubusercontent.com/u/3198597?v=4&s=80)](https://github.com/zenflow) | [![](https://avatars1.githubusercontent.com/u/1343250?v=4&s=80)](https://github.com/toverux)
--|-|-
-[@gverni](https://github.com/gverni) | [@zenflow](https://github.com/zenflow) | [@toverux](https://github.com/toverux)
 
 
 Contributing

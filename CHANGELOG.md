@@ -1,3 +1,10 @@
+## [11.0.9](https://github.com/sweetalert2/sweetalert2/compare/v11.0.8...v11.0.9) (2021-05-21)
+
+
+### Bug Fixes
+
+* this in lifecycle hooks ([#2256](https://github.com/sweetalert2/sweetalert2/issues/2256)) ([959e103](https://github.com/sweetalert2/sweetalert2/commit/959e103b4d8b296f51fed4c0780c5af3a1d54071))
+
 ## [11.0.8](https://github.com/sweetalert2/sweetalert2/compare/v11.0.7...v11.0.8) (2021-05-19)
 
 

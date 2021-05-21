@@ -6,7 +6,6 @@ import { swalClasses } from '../utils/classes.js'
 import globalState, { restoreActiveElement } from '../globalState.js'
 import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
-import { runIfFunction } from '../utils/utils.js'
 
 /*
  * Instance method to close sweetAlert
@@ -96,7 +95,9 @@ const handlePopupAnimation = (instance, popup, innerParams) => {
   // If animation is supported, animate
   const animationIsSupported = dom.animationEndEvent && dom.hasCssAnimation(popup)
 
-  runIfFunction(innerParams.willClose, popup)
+  if (typeof innerParams.willClose === 'function') {
+    innerParams.willClose(popup)
+  }
 
   if (animationIsSupported) {
     animatePopup(instance, popup, container, innerParams.returnFocus, innerParams.didClose)
@@ -118,7 +119,9 @@ const animatePopup = (instance, popup, container, returnFocus, didClose) => {
 
 const triggerDidCloseAndDispose = (instance, didClose) => {
   setTimeout(() => {
-    runIfFunction(didClose)
+    if (typeof didClose === 'function') {
+      didClose.bind(instance.params)()
+    }
     instance._destroy()
   })
 }

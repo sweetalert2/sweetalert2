@@ -1,3 +1,10 @@
+## [11.0.11](https://github.com/sweetalert2/sweetalert2/compare/v11.0.10...v11.0.11) (2021-05-23)
+
+
+### Bug Fixes
+
+* follow-up for [#2258](https://github.com/sweetalert2/sweetalert2/issues/2258) ([450fdfd](https://github.com/sweetalert2/sweetalert2/commit/450fdfdd4feba757f3aa818920bc1b90d6c4bb13))
+
 ## [11.0.10](https://github.com/sweetalert2/sweetalert2/compare/v11.0.9...v11.0.10) (2021-05-23)
 
 

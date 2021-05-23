@@ -16,7 +16,11 @@
       background-color: transparent !important;
       pointer-events: none;
 
-      & > .swal2-modal {
+      .swal2-popup {
+        pointer-events: all;
+      }
+
+      .swal2-modal {
         box-shadow: 0 0 10px $swal2-backdrop;
       }
     }

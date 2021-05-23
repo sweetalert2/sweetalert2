@@ -1,3 +1,10 @@
+## [11.0.10](https://github.com/sweetalert2/sweetalert2/compare/v11.0.9...v11.0.10) (2021-05-23)
+
+
+### Bug Fixes
+
+* disable pointer-events on .swal2-container when backdrop: false ([#2258](https://github.com/sweetalert2/sweetalert2/issues/2258)) ([4619c23](https://github.com/sweetalert2/sweetalert2/commit/4619c239d42f203a9a71fd3acb2adcc7efc6f4d6))
+
 ## [11.0.9](https://github.com/sweetalert2/sweetalert2/compare/v11.0.8...v11.0.9) (2021-05-21)
 
 

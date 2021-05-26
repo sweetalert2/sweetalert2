@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .swal2-container {
   display: grid;
   position: fixed;
@@ -510,9 +512,9 @@
 
 // https://stackoverflow.com/a/12335841/1331425
 @function strip-units($number) {
-  @return $number / ($number * 0 + 1);
+  @return math.div($number, ($number * 0 + 1));
 }
-$icon-zoom: strip-units($swal2-icon-size) / 5;
+$icon-zoom: math.div(strip-units($swal2-icon-size), 5);
 
 .swal2-icon {
   position: relative;

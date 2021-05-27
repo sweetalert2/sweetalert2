@@ -7,8 +7,11 @@ import { showLoading } from '../../staticMethods/showLoading.js'
 export const handleInputOptionsAndValue = (instance, params) => {
   if (params.input === 'select' || params.input === 'radio') {
     handleInputOptions(instance, params)
-  } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) &&
-    (hasToPromiseFn(params.inputValue) || isPromise(params.inputValue))) {
+  } else if (
+    ['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) &&
+    (hasToPromiseFn(params.inputValue) || isPromise(params.inputValue))
+  ) {
+    showLoading(dom.getConfirmButton())
     handleInputValue(instance, params)
   }
 }

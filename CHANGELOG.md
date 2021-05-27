@@ -1,3 +1,10 @@
+## [11.0.12](https://github.com/sweetalert2/sweetalert2/compare/v11.0.11...v11.0.12) (2021-05-27)
+
+
+### Bug Fixes
+
+* show loading while waiting for inputValue promise ([#2260](https://github.com/sweetalert2/sweetalert2/issues/2260)) ([3cf8608](https://github.com/sweetalert2/sweetalert2/commit/3cf86082fde05db742e66648679126477c530931))
+
 ## [11.0.11](https://github.com/sweetalert2/sweetalert2/compare/v11.0.10...v11.0.11) (2021-05-23)
 
 

@@ -51,6 +51,7 @@ const shouldPreventTouchMove = (event) => {
   if (
     !dom.isScrollable(container) &&
     target.tagName !== 'INPUT' && // #1603
+    target.tagName !== 'TEXTAREA' && // #2266
     !(
       dom.isScrollable(dom.getHtmlContainer()) && // #1944
       dom.getHtmlContainer().contains(target)

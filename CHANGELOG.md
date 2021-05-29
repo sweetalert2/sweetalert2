@@ -1,3 +1,10 @@
+## [11.0.15](https://github.com/sweetalert2/sweetalert2/compare/v11.0.14...v11.0.15) (2021-05-29)
+
+
+### Bug Fixes
+
+* **types:** add missing types for Swal.getContainer() ([5b87ee7](https://github.com/sweetalert2/sweetalert2/commit/5b87ee7fa8fd8f754add8d52aa7739e1bd62563c))
+
 ## [11.0.14](https://github.com/sweetalert2/sweetalert2/compare/v11.0.13...v11.0.14) (2021-05-29)
 
 

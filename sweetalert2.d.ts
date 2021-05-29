@@ -84,6 +84,11 @@ declare module 'sweetalert2' {
     function close(result?: SweetAlertResult): void;
 
     /**
+     * Gets the popup container which contains the backdrop and the popup itself.
+     */
+    function getContainer(): HTMLElement | null;
+
+    /**
      * Gets the popup.
      */
     function getPopup(): HTMLElement | null;

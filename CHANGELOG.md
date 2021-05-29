@@ -1,3 +1,10 @@
+## [11.0.14](https://github.com/sweetalert2/sweetalert2/compare/v11.0.13...v11.0.14) (2021-05-29)
+
+
+### Bug Fixes
+
+* **safari:** purge container instead of removing it ([#2268](https://github.com/sweetalert2/sweetalert2/issues/2268)) ([5559256](https://github.com/sweetalert2/sweetalert2/commit/5559256ff407c31f05407de76bc5eb1b5f26fc6a))
+
 ## [11.0.13](https://github.com/sweetalert2/sweetalert2/compare/v11.0.12...v11.0.13) (2021-05-29)
 
 

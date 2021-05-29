@@ -1,3 +1,10 @@
+## [11.0.13](https://github.com/sweetalert2/sweetalert2/compare/v11.0.12...v11.0.13) (2021-05-29)
+
+
+### Bug Fixes
+
+* scroll textarea in iOS ([#2267](https://github.com/sweetalert2/sweetalert2/issues/2267)) ([a14bdc0](https://github.com/sweetalert2/sweetalert2/commit/a14bdc0fda91944fd1e70d562a2158145c20d1ee))
+
 ## [11.0.12](https://github.com/sweetalert2/sweetalert2/compare/v11.0.11...v11.0.12) (2021-05-27)
 
 

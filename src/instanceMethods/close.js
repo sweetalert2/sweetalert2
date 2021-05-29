@@ -20,7 +20,14 @@ function removePopupAndResetState (instance, container, returnFocus, didClose) {
     globalState.keydownHandlerAdded = false
   }
 
-  if (container.parentNode) {
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+  // workaround for #2088
+  // for some reason removing the container in Safari will scroll the document to bottom
+  if (isSafari) {
+    container.setAttribute('style', 'display:none !important')
+    container.removeAttribute('class')
+    container.innerHTML = ''
+  } else {
     container.remove()
   }
 

@@ -21,7 +21,7 @@
     "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-no-unsanitized": "^3.1.5",
     "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^7.0.0",
+    "gulp-autoprefixer": "^8.0.0",
     "gulp-clean-css": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-css2js": "^1.1.2",
@@ -35,7 +35,7 @@
     "rollup": "^2.49.0",
     "rollup-plugin-babel": "^4.3.2",
     "sass": "^1.34.0",
-    "sinon": "^10.0.0",
+    "sinon": "^11.0.0",
     "stylelint": "^13.13.1",
     "typescript": "^4.2.3"
   },

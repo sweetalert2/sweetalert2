@@ -1,3 +1,10 @@
+## [11.0.16](https://github.com/sweetalert2/sweetalert2/compare/v11.0.15...v11.0.16) (2021-05-30)
+
+
+### Bug Fixes
+
+* warning for allowOutsideClick ([#2270](https://github.com/sweetalert2/sweetalert2/issues/2270)) ([fbe52c3](https://github.com/sweetalert2/sweetalert2/commit/fbe52c3d7db88c9806477470439c9f3850dbe15b))
+
 ## [11.0.15](https://github.com/sweetalert2/sweetalert2/compare/v11.0.14...v11.0.15) (2021-05-29)
 
 

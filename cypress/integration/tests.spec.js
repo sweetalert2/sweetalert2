@@ -1,7 +1,7 @@
 import jQuery from 'jquery'
 import Swal from '../../src/sweetalert2'
 import { SHOW_CLASS_TIMEOUT } from '../../src/utils/openPopup'
-import { $, isHidden, isVisible, SwalWithoutAnimation, triggerKeydownEvent, TIMEOUT, dispatchCustomEvent } from '../utils'
+import { $, isHidden, isVisible, SwalWithoutAnimation, triggerKeydownEvent, dispatchCustomEvent } from '../utils'
 
 describe('Miscellaneous tests', function () {
   it('version is correct semver', () => {
@@ -611,50 +611,6 @@ describe('Outside click', () => {
       expect(Swal.isVisible()).to.be.true
       done()
     })
-  })
-
-  it('allowOutsideClick: false', (done) => {
-    SwalWithoutAnimation.fire({
-      title: 'allowOutsideClick: false',
-      allowOutsideClick: false
-    })
-    Swal.getContainer().click()
-    setTimeout(() => {
-      expect(Swal.isVisible()).to.be.true
-      done()
-    })
-  })
-
-  it('allowOutsideClick: () => !swal.isLoading()', (done) => {
-    SwalWithoutAnimation.fire({
-      title: 'allowOutsideClick: () => !swal.isLoading()',
-      allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
-      expect(result).to.eql({
-        dismiss: Swal.DismissReason.backdrop,
-        isConfirmed: false,
-        isDenied: false,
-        isDismissed: true,
-      })
-      done()
-    })
-    Swal.showLoading()
-    Swal.getContainer().click()
-    setTimeout(() => {
-      expect(Swal.isVisible()).to.be.true
-      Swal.hideLoading()
-      Swal.getContainer().click()
-    }, TIMEOUT)
-  })
-
-  it('allowOutsideClick: should throw console warning for popups without backdrop', () => {
-    const spy = cy.spy(console, 'warn')
-    SwalWithoutAnimation.fire({
-      title: 'allowOutsideClick is not compatible with modeless popups',
-      allowOutsideClick: true,
-      backdrop: false
-    })
-    expect(spy.calledWith('SweetAlert2: "allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`')).to.be.true
   })
 })
 

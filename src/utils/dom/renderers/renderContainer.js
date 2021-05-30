@@ -37,10 +37,6 @@ export const renderContainer = (instance, params) => {
 
   handleBackdropParam(container, params.backdrop)
 
-  if (!params.backdrop && params.allowOutsideClick) {
-    warn('"allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`')
-  }
-
   handlePositionParam(container, params.position)
   handleGrowParam(container, params.grow)
 

@@ -194,6 +194,10 @@ const checkIfParamIsDeprecated = (param) => {
  * @param params
  */
 export const showWarningsForParams = (params) => {
+  if (!params.backdrop && params.allowOutsideClick) {
+    warn('"allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`')
+  }
+
   for (const param in params) {
     checkIfParamIsValid(param)
 

@@ -1,3 +1,10 @@
+## [11.0.17](https://github.com/sweetalert2/sweetalert2/compare/v11.0.16...v11.0.17) (2021-06-11)
+
+
+### Bug Fixes
+
+* aria-describedby expects ID ([#2274](https://github.com/sweetalert2/sweetalert2/issues/2274)) ([68e6ce7](https://github.com/sweetalert2/sweetalert2/commit/68e6ce73bd243742568783899097ce730a746193))
+
 ## [11.0.16](https://github.com/sweetalert2/sweetalert2/compare/v11.0.15...v11.0.16) (2021-05-30)
 
 

@@ -16,7 +16,7 @@ export function showValidationMessage (error) {
   const input = this.getInput()
   if (input) {
     input.setAttribute('aria-invalid', true)
-    input.setAttribute('aria-describedBy', swalClasses['validation-message'])
+    input.setAttribute('aria-describedby', swalClasses['validation-message'])
     dom.focusInput(input)
     dom.addClass(input, swalClasses.inputerror)
   }
@@ -32,7 +32,7 @@ export function resetValidationMessage () {
   const input = this.getInput()
   if (input) {
     input.removeAttribute('aria-invalid')
-    input.removeAttribute('aria-describedBy')
+    input.removeAttribute('aria-describedby')
     dom.removeClass(input, swalClasses.inputerror)
   }
 }

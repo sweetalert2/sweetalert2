@@ -12,7 +12,7 @@ const sweetHTML = `
    <div class="${swalClasses.icon}"></div>
    <img class="${swalClasses.image}" />
    <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
-   <div class="${swalClasses['html-container']}"></div>
+   <div class="${swalClasses['html-container']}" id="${swalClasses['html-container']}"></div>
    <input class="${swalClasses.input}" />
    <input type="file" class="${swalClasses.file}" />
    <div class="${swalClasses.range}">

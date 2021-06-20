@@ -8,6 +8,7 @@
     overflow-y: hidden;
     background: $swal2-toast-background;
     box-shadow: $swal2-toast-box-shadow;
+    pointer-events: all;
 
     > * {
       grid-column: 2;

@@ -5,6 +5,7 @@
       width: $swal2-toast-width;
       max-width: 100%;
       background-color: transparent;
+      pointer-events: none;
 
       &.swal2-top {
         top: 0;

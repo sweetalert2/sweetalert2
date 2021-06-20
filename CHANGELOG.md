@@ -1,3 +1,10 @@
+## [11.0.18](https://github.com/sweetalert2/sweetalert2/compare/v11.0.17...v11.0.18) (2021-06-20)
+
+
+### Bug Fixes
+
+* disable pointer-events for toast container ([#2278](https://github.com/sweetalert2/sweetalert2/issues/2278)) ([08defbf](https://github.com/sweetalert2/sweetalert2/commit/08defbf1d7040d94bbfabf52d1ad074d98ac7474))
+
 ## [11.0.17](https://github.com/sweetalert2/sweetalert2/compare/v11.0.16...v11.0.17) (2021-06-11)
 
 

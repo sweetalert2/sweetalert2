@@ -1161,6 +1161,20 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@humanwhocodes/config-array@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.5.0.tgz#1407967d4c6eecd7388f83acf1eaf4d0c6e58ef9"
+  integrity sha512-FagtKFz74XrTl7y6HCzQpwDfXP0yhxe9lHLD1UZxjvZIcbyRz8zTFF/yYNfSfzU414eDwZ1SrO0Qvtyf+wFMQg==
+  dependencies:
+    "@humanwhocodes/object-schema" "^1.2.0"
+    debug "^4.1.1"
+    minimatch "^3.0.4"
+
+"@humanwhocodes/object-schema@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
+  integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
+
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz#d4b3549a5db5de2683e0c1071ab4f140904bbf69"
@@ -1943,20 +1957,20 @@ braces@^3.0.1, braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
-browser-sync-client@^2.27.3:
-  version "2.27.3"
-  resolved "https://registry.yarnpkg.com/browser-sync-client/-/browser-sync-client-2.27.3.tgz#6525466f819d5672c5b7fbc65465050a1428326b"
-  integrity sha512-GaadUAfO0hmueUi5hikJQhv1Qdak4qc62WFWl+0MQcqWTKDFG4fFbjnXs/W/sDpcOHclXVbNZqx2l+LLwuNz5Q==
+browser-sync-client@^2.27.4:
+  version "2.27.4"
+  resolved "https://registry.yarnpkg.com/browser-sync-client/-/browser-sync-client-2.27.4.tgz#3129299f67bbe016995975924c1f946be3edd31c"
+  integrity sha512-l0krAGZnpLaD+tUYdM25WeS4FP73ZoPeaxlVzOvmtL9uKSlvpmywsnDwa3PJzc3ubmDPAcD74ifJjl6MmVksXw==
   dependencies:
     etag "1.8.1"
     fresh "0.5.2"
     mitt "^1.1.3"
     rxjs "^5.5.6"
 
-browser-sync-ui@^2.27.3:
-  version "2.27.3"
-  resolved "https://registry.yarnpkg.com/browser-sync-ui/-/browser-sync-ui-2.27.3.tgz#d37c1c93e022cd6e3bab1828dcd914b8f10ec724"
-  integrity sha512-va7dNwF+BC9gBVuVYa07wZPWEp4mTgi8/08oXiAzH0aSXOciu7II/Pu0V1fOFhRWcoFQxP8EzRJ4JP9Drx8evQ==
+browser-sync-ui@^2.27.4:
+  version "2.27.4"
+  resolved "https://registry.yarnpkg.com/browser-sync-ui/-/browser-sync-ui-2.27.4.tgz#cd1767926528c0e6cfb3abe1eeb61a9026a98953"
+  integrity sha512-E58Mb6ycz57Nm393oqVJj4jxuLJH3MhZnY8AV+zd9LsNVGZjrKRNNIw5JPYYguyb37ZjLjq2x4u+38mRv3Sb7g==
   dependencies:
     async-each-series "0.1.1"
     connect-history-api-fallback "^1"
@@ -1965,13 +1979,13 @@ browser-sync-ui@^2.27.3:
     socket.io-client "^2.4.0"
     stream-throttle "^0.1.3"
 
-browser-sync@^2.27.3:
-  version "2.27.3"
-  resolved "https://registry.yarnpkg.com/browser-sync/-/browser-sync-2.27.3.tgz#a6759502e53de7fee43ba5e35e1bce1c3e1ef1dd"
-  integrity sha512-kyU5t5Sbm0lwCZTM4r2TKO9opznOT/P8eorkwWF4leZkbIZGyZohbSBiifYEWWlElM/vCRRhN/AqBH/3sSfOUw==
+browser-sync@^2.27.4:
+  version "2.27.4"
+  resolved "https://registry.yarnpkg.com/browser-sync/-/browser-sync-2.27.4.tgz#5336c3e370731ee97ab50f94d010c00d43b591e1"
+  integrity sha512-zgjrI6oUXxLa671SxVmWfIH+XiG6yZiGuvsQ1huuGEBlKkWuBVKgYjh+j9kagKm891FARgmK4Ct4PAhckLKaYg==
   dependencies:
-    browser-sync-client "^2.27.3"
-    browser-sync-ui "^2.27.3"
+    browser-sync-client "^2.27.4"
+    browser-sync-ui "^2.27.4"
     bs-recipes "1.3.4"
     bs-snippet-injector "^2.0.1"
     chokidar "^3.5.1"
@@ -1998,7 +2012,7 @@ browser-sync@^2.27.3:
     serve-static "1.13.2"
     server-destroy "1.0.1"
     socket.io "2.4.0"
-    ua-parser-js "^0.7.18"
+    ua-parser-js "^0.7.28"
     yargs "^15.4.1"
 
 browserslist@^4.12.0, browserslist@^4.16.6:
@@ -3119,13 +3133,14 @@ eslint-visitor-keys@^2.0.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-2.1.0.tgz#f65328259305927392c938ed44eb0a5c9b2bd303"
   integrity sha512-0rSmRBzXgDzIsD6mGdJgevzgezI534Cer5L/vyMX0kHzT/jiB43jRhd9YUlMGYLQy2zprNmoT8qasCGtY+QaKw==
 
-eslint@^7.29.0:
-  version "7.29.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.29.0.tgz#ee2a7648f2e729485e4d0bd6383ec1deabc8b3c0"
-  integrity sha512-82G/JToB9qIy/ArBzIWG9xvvwL3R86AlCjtGw+A29OMZDqhTybz/MByORSukGxeI+YPCR4coYyITKk8BFH9nDA==
+eslint@^7.30.0:
+  version "7.30.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.30.0.tgz#6d34ab51aaa56112fd97166226c9a97f505474f8"
+  integrity sha512-VLqz80i3as3NdloY44BQSJpFw534L9Oh+6zJOUaViV4JPd+DaHwutqP7tcpkW3YiXbK6s05RZl7yl7cQn+lijg==
   dependencies:
     "@babel/code-frame" "7.12.11"
     "@eslint/eslintrc" "^0.4.2"
+    "@humanwhocodes/config-array" "^0.5.0"
     ajv "^6.10.0"
     chalk "^4.0.0"
     cross-spawn "^7.0.2"
@@ -6346,10 +6361,10 @@ rollup@^0.68.2:
     "@types/estree" "0.0.39"
     "@types/node" "*"
 
-rollup@^2.52.3:
-  version "2.52.3"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.52.3.tgz#062fc3c85f67736d6758749310cfee64836c4e2a"
-  integrity sha512-QF3Sju8Kl2z0osI4unyOLyUudyhOMK6G0AeqJWgfiyigqLAlnNrfBcDWDx+f1cqn+JU2iIYVkDrgQ6/KtwEfrg==
+rollup@^2.52.7:
+  version "2.52.7"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.52.7.tgz#e15a8bf734f6e4c204b7cdf33521151310250cb2"
+  integrity sha512-55cSH4CCU6MaPr9TAOyrIC+7qFCHscL7tkNsm1MBfIJRRqRbCEY0mmeFn4Wg8FKsHtEH8r389Fz38r/o+kgXLg==
   optionalDependencies:
     fsevents "~2.3.2"
 
@@ -7306,12 +7321,12 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.3.4:
-  version "4.3.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.4.tgz#3f85b986945bcf31071decdd96cf8bfa65f9dcbc"
-  integrity sha512-uauPG7XZn9F/mo+7MrsRjyvbxFpzemRjKEZXS4AK83oP2KKOJPvb+9cO/gmnv8arWZvhnjVOXz7B49m1l0e9Ew==
+typescript@^4.3.5:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
+  integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
 
-ua-parser-js@^0.7.18:
+ua-parser-js@^0.7.28:
   version "0.7.28"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
   integrity sha512-6Gurc1n//gjp9eQNXjD9O3M/sMwVtN5S8Lv9bvOYBfKfDNiIIhqiyi01vMBO45u4zkDE420w/e0se7Vs+sIg+g==

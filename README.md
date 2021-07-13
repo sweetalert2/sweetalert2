@@ -42,6 +42,9 @@
 :point_right: **Migrating from [SweetAlert](https://github.com/t4t5/sweetalert)?** [SweetAlert 1.x to SweetAlert2 migration guide](https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2)
 
 ---
+VSCode Snippet Extension
+------------
+<a href="https://marketplace.visualstudio.com/items?itemName=rohit-chouhan.sweetalert2-snippet">https://marketplace.visualstudio.com/items?itemName=rohit-chouhan.sweetalert2-snippet</a>
 
 Installation
 ------------
@@ -218,6 +221,7 @@ Big Thanks
 
 - [FlowCrypt](https://flowcrypt.com/) for continuous support of this project
 - [Serena Verni (@serenaperora)](https://serena.verni.xyz) for creating the amazing project logo
+- [Rohit Chouhan (@rohit-chouhan)](https://rohitchouhan.com) for building sweetalert snippet for vs code
 
 Sponsors
 --------

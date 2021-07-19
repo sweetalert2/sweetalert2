@@ -312,13 +312,15 @@ describe('Input', () => {
     SwalWithoutAnimation.fire({
       input: 'textarea',
     })
-    Swal.getInput().style.width = '600px'
     setTimeout(() => {
-      expect(Swal.getPopup().style.width).to.equal('672px')
-      Swal.getInput().style.width = '100px'
+      Swal.getInput().style.width = '600px'
       setTimeout(() => {
-        expect(Swal.getPopup().style.width).to.equal('')
-        done()
+        expect(Swal.getPopup().style.width).to.equal('672px')
+        Swal.getInput().style.width = '100px'
+        setTimeout(() => {
+          expect(Swal.getPopup().style.width).to.equal('')
+          done()
+        })
       })
     })
   })

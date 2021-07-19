@@ -1,3 +1,10 @@
+## [11.0.19](https://github.com/sweetalert2/sweetalert2/compare/v11.0.18...v11.0.19) (2021-07-19)
+
+
+### Bug Fixes
+
+* modal width with textarea inside ([#2293](https://github.com/sweetalert2/sweetalert2/issues/2293)) ([c1aa615](https://github.com/sweetalert2/sweetalert2/commit/c1aa6155ea12a55b4a4d01b3a7bbd0354389e703))
+
 ## [11.0.18](https://github.com/sweetalert2/sweetalert2/compare/v11.0.17...v11.0.18) (2021-06-20)
 
 

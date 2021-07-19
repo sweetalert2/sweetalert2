@@ -173,20 +173,22 @@ renderInputType.textarea = (textarea, params) => {
 
   const getMargin = (el) => parseInt(window.getComputedStyle(el).marginLeft) + parseInt(window.getComputedStyle(el).marginRight)
 
-  if ('MutationObserver' in window) { // #1699
-    const initialPopupWidth = parseInt(window.getComputedStyle(dom.getPopup()).width)
-    const outputsize = () => {
-      const textareaWidth = textarea.offsetWidth + getMargin(textarea)
-      if (textareaWidth > initialPopupWidth) {
-        dom.getPopup().style.width = `${textareaWidth}px`
-      } else {
-        dom.getPopup().style.width = null
+  setTimeout(() => { // #2291
+    if ('MutationObserver' in window) { // #1699
+      const initialPopupWidth = parseInt(window.getComputedStyle(dom.getPopup()).width)
+      const textareaResizeHandler = () => {
+        const textareaWidth = textarea.offsetWidth + getMargin(textarea)
+        if (textareaWidth > initialPopupWidth) {
+          dom.getPopup().style.width = `${textareaWidth}px`
+        } else {
+          dom.getPopup().style.width = null
+        }
       }
+      new MutationObserver(textareaResizeHandler).observe(textarea, {
+        attributes: true, attributeFilter: ['style']
+      })
     }
-    new MutationObserver(outputsize).observe(textarea, {
-      attributes: true, attributeFilter: ['style']
-    })
-  }
+  })
 
   return textarea
 }

@@ -5,10 +5,11 @@ $swal2-outline-color: rgba(100, 150, 200, .5) !default;
 // CONTAINER
 $swal2-container-padding: .625em !default;
 
-// BOX MODEL
+// POPUP
 $swal2-width: 32em !default;
 $swal2-padding: 0 0 1.25em !default;
 $swal2-border: none !default;
+$swal2-color: lighten($swal2-black, 33) !default;
 $swal2-border-radius: 5px !default;
 $swal2-box-shadow: #d9d9d9 !default;
 

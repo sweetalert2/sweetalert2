@@ -1,3 +1,11 @@
+## [11.0.20](https://github.com/sweetalert2/sweetalert2/compare/v11.0.19...v11.0.20) (2021-07-23)
+
+
+### Bug Fixes
+
+* overflowing children of html-container ([#2295](https://github.com/sweetalert2/sweetalert2/issues/2295)) ([f2724f3](https://github.com/sweetalert2/sweetalert2/commit/f2724f3cccc43ec154d57a87ac26f17788eafaef))
+* **scss:** add $swal2-color variable ([10745a7](https://github.com/sweetalert2/sweetalert2/commit/10745a72a54ae45eef5752a5e34576deeb938b26))
+
 ## [11.0.19](https://github.com/sweetalert2/sweetalert2/compare/v11.0.18...v11.0.19) (2021-07-19)
 
 

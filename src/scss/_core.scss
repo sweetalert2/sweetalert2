@@ -138,6 +138,7 @@
   display: none;
   position: relative;
   box-sizing: border-box;
+  grid-template-columns: minmax(0, 100%);
   width: $swal2-width;
   max-width: 100%;
   padding: $swal2-padding;
@@ -357,6 +358,7 @@
   justify-content: $swal2-html-container-justify-content;
   margin: $swal2-html-container-margin;
   padding: $swal2-html-container-padding;
+  overflow: $swal2-html-container-overflow;
   color: $swal2-html-container-color;
   font-size: $swal2-html-container-font-size;
   font-weight: $swal2-html-container-font-weight;

@@ -58,8 +58,9 @@ $swal2-title-text-align: center !default;
 
 // HTML CONTAINER
 $swal2-html-container-justify-content: center !default;
-$swal2-html-container-margin: 0 !default;
-$swal2-html-container-padding: 1em 1.6em .3em !default;
+$swal2-html-container-margin: 1em 1.6em .3em !default;
+$swal2-html-container-padding: 0 !default;
+$swal2-html-container-overflow: auto !default;
 $swal2-html-container-color: lighten($swal2-black, 33) !default;
 $swal2-html-container-font-size: 1.125em !default;
 $swal2-html-container-font-weight: normal !default;

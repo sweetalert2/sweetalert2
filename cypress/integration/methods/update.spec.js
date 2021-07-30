@@ -15,7 +15,9 @@ describe('update()', () => {
     SwalWithoutAnimation.fire({
       icon: 'success',
       input: 'text',
+      showConfirmButton: false,
       imageUrl: '/assets/swal2-logo.png',
+      preConfirm: () => console.log('1') // eslint-disable-line no-console
     })
 
     Swal.update({
@@ -24,13 +26,14 @@ describe('update()', () => {
       html: 'New content',
       icon: 'success',
       iconColor: 'blue',
-      showConfirmButton: false,
+      showConfirmButton: true,
       showDenyButton: true,
       showCancelButton: true,
       denyButtonText: 'New deny button text',
       cancelButtonText: 'New cancel button text',
       imageUrl: '/assets/swal2-logo.png',
       showCloseButton: true,
+      preConfirm: () => console.log('2') // eslint-disable-line no-console
     })
 
     expect(window.getComputedStyle(Swal.getPopup()).backgroundColor).to.equal('rgb(0, 128, 0)')
@@ -46,13 +49,20 @@ describe('update()', () => {
     expect(isVisible(Swal.getImage())).to.be.true
     expect(Swal.getImage().src.indexOf('/assets/swal2-logo.png') > 0).to.be.true
 
-    expect(isVisible(Swal.getConfirmButton())).to.be.false
+    expect(isVisible(Swal.getConfirmButton())).to.be.true
     expect(isVisible(Swal.getCancelButton())).to.be.true
     expect(isVisible(Swal.getDenyButton())).to.be.true
     expect(Swal.getCancelButton().textContent).to.equal('New cancel button text')
     expect(Swal.getDenyButton().textContent).to.equal('New deny button text')
 
     expect(isVisible(Swal.getCloseButton())).to.be.true
+
+    setTimeout(() => {
+      const spy = cy.spy(console, 'warn')
+      Swal.clickConfirm()
+      expect(spy.calledWith('1')).to.be.false
+      expect(spy.calledWith('2')).to.be.true
+    })
   })
 
   it('update customClass', () => {
@@ -130,7 +140,7 @@ describe('update()', () => {
 
   it('isUpdatableParameter() method', () => {
     expect(Swal.isUpdatableParameter('title')).to.be.true
-    expect(Swal.isUpdatableParameter('preConfirm')).to.be.false
+    expect(Swal.isUpdatableParameter('willOpen')).to.be.false
   })
 
   it('should update instance\'s params', () => {

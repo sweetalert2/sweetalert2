@@ -119,6 +119,8 @@ export const updatableParams = [
   'imageHeight',
   'imageUrl',
   'imageWidth',
+  'preConfirm',
+  'preDeny',
   'progressSteps',
   'returnFocus',
   'reverseButtons',

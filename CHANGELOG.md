@@ -1,3 +1,10 @@
+# [11.1.0](https://github.com/sweetalert2/sweetalert2/compare/v11.0.20...v11.1.0) (2021-07-30)
+
+
+### Features
+
+* make preConfirm and preDeny updatable ([#2300](https://github.com/sweetalert2/sweetalert2/issues/2300)) ([e04ba05](https://github.com/sweetalert2/sweetalert2/commit/e04ba0569bbe3a2a3d4e83f20d5fd4832ac1b10f))
+
 ## [11.0.20](https://github.com/sweetalert2/sweetalert2/compare/v11.0.19...v11.0.20) (2021-07-23)
 
 

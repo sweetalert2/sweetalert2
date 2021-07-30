@@ -61,8 +61,8 @@ const swalPromise = (instance, domCache, innerParams) => {
 
     privateMethods.swalPromiseResolve.set(instance, resolve)
 
-    domCache.confirmButton.onclick = () => handleConfirmButtonClick(instance, innerParams)
-    domCache.denyButton.onclick = () => handleDenyButtonClick(instance, innerParams)
+    domCache.confirmButton.onclick = () => handleConfirmButtonClick(instance)
+    domCache.denyButton.onclick = () => handleDenyButtonClick(instance)
     domCache.cancelButton.onclick = () => handleCancelButtonClick(instance, dismissWith)
 
     domCache.closeButton.onclick = () => dismissWith(DismissReason.close)

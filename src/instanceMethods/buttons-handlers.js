@@ -4,22 +4,25 @@ import { getDenyButton, getValidationMessage } from '../utils/dom/getters.js'
 import { asPromise } from '../utils/utils.js'
 import { showLoading } from '../staticMethods/showLoading.js'
 import { DismissReason } from '../utils/DismissReason.js'
+import privateProps from '../privateProps.js'
 
-export const handleConfirmButtonClick = (instance, innerParams) => {
+export const handleConfirmButtonClick = (instance) => {
+  const innerParams = privateProps.innerParams.get(instance)
   instance.disableButtons()
   if (innerParams.input) {
-    handleConfirmOrDenyWithInput(instance, innerParams, 'confirm')
+    handleConfirmOrDenyWithInput(instance, 'confirm')
   } else {
-    confirm(instance, innerParams, true)
+    confirm(instance, true)
   }
 }
 
-export const handleDenyButtonClick = (instance, innerParams) => {
+export const handleDenyButtonClick = (instance) => {
+  const innerParams = privateProps.innerParams.get(instance)
   instance.disableButtons()
   if (innerParams.returnInputValueOnDeny) {
-    handleConfirmOrDenyWithInput(instance, innerParams, 'deny')
+    handleConfirmOrDenyWithInput(instance, 'deny')
   } else {
-    deny(instance, innerParams, false)
+    deny(instance, false)
   }
 }
 
@@ -28,21 +31,23 @@ export const handleCancelButtonClick = (instance, dismissWith) => {
   dismissWith(DismissReason.cancel)
 }
 
-const handleConfirmOrDenyWithInput = (instance, innerParams, type /* type is either 'confirm' or 'deny' */) => {
+const handleConfirmOrDenyWithInput = (instance, type /* 'confirm' | 'deny' */) => {
+  const innerParams = privateProps.innerParams.get(instance)
   const inputValue = getInputValue(instance, innerParams)
   if (innerParams.inputValidator) {
-    handleInputValidator(instance, innerParams, inputValue, type)
+    handleInputValidator(instance, inputValue, type)
   } else if (!instance.getInput().checkValidity()) {
     instance.enableButtons()
     instance.showValidationMessage(innerParams.validationMessage)
   } else if (type === 'deny') {
-    deny(instance, innerParams, inputValue)
+    deny(instance, inputValue)
   } else {
-    confirm(instance, innerParams, inputValue)
+    confirm(instance, inputValue)
   }
 }
 
-const handleInputValidator = (instance, innerParams, inputValue, type /* type is either 'confirm' or 'deny' */) => {
+const handleInputValidator = (instance, inputValue, type /* 'confirm' | 'deny' */) => {
+  const innerParams = privateProps.innerParams.get(instance)
   instance.disableInput()
   const validationPromise = Promise.resolve().then(() => asPromise(
     innerParams.inputValidator(inputValue, innerParams.validationMessage))
@@ -54,15 +59,17 @@ const handleInputValidator = (instance, innerParams, inputValue, type /* type is
       if (validationMessage) {
         instance.showValidationMessage(validationMessage)
       } else if (type === 'deny') {
-        deny(instance, innerParams, inputValue)
+        deny(instance, inputValue)
       } else {
-        confirm(instance, innerParams, inputValue)
+        confirm(instance, inputValue)
       }
     }
   )
 }
 
-const deny = (instance, innerParams, value) => {
+const deny = (instance, value) => {
+  const innerParams = privateProps.innerParams.get(instance || this)
+
   if (innerParams.showLoaderOnDeny) {
     showLoading(getDenyButton())
   }
@@ -89,7 +96,9 @@ const succeedWith = (instance, value) => {
   instance.closePopup({ isConfirmed: true, value })
 }
 
-const confirm = (instance, innerParams, value) => {
+const confirm = (instance, value) => {
+  const innerParams = privateProps.innerParams.get(instance || this)
+
   if (innerParams.showLoaderOnConfirm) {
     showLoading() // TODO: make showLoading an *instance* method
   }

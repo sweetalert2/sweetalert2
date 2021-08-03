@@ -1,7 +1,6 @@
 declare module 'sweetalert2' {
   /**
-   * A namespace inside the default function, containing utility function for controlling the currently-displayed
-   * popup.
+   * A namespace inside the default function, containing utility function for controlling the currently-displayed popup.
    *
    * Example:
    * ```
@@ -79,7 +78,7 @@ declare module 'sweetalert2' {
      * Closes the currently open SweetAlert2 popup programmatically.
      *
      * @param result The promise originally returned by `Swal.fire()` will be resolved with this value.
-     *               If no object is given, the promise is resolved with an empty `SweetAlertResult` object.
+     * If no object is given, the promise is resolved with an empty `SweetAlertResult` object.
      */
     function close(result?: SweetAlertResult): void;
 
@@ -316,9 +315,9 @@ declare module 'sweetalert2' {
   }
 
   interface SweetAlertHideShowClass {
-    backdrop?: string;
-    icon?: string;
-    popup?: string;
+    backdrop?: string | readonly string[];
+    icon?: string | readonly string[];
+    popup?: string | readonly string[];
   }
 
   type Awaited<T> = T extends Promise<infer U> ? U : T;
@@ -349,6 +348,7 @@ declare module 'sweetalert2' {
   export type SweetAlertUpdatableParameters =
     | 'allowEscapeKey'
     | 'allowOutsideClick'
+    | 'background'
     | 'buttonsStyling'
     | 'cancelButtonAriaLabel'
     | 'cancelButtonColor'
@@ -369,10 +369,13 @@ declare module 'sweetalert2' {
     | 'hideClass'
     | 'html'
     | 'icon'
+    | 'iconColor'
     | 'imageAlt'
     | 'imageHeight'
     | 'imageUrl'
     | 'imageWidth'
+    | 'preConfirm'
+    | 'preDeny'
     | 'progressSteps'
     | 'reverseButtons'
     | 'showCancelButton'
@@ -385,21 +388,21 @@ declare module 'sweetalert2' {
     | 'willClose';
 
   export interface SweetAlertCustomClass {
-    container?: string;
-    popup?: string;
-    title?: string;
-    closeButton?: string;
-    icon?: string;
-    image?: string;
-    htmlContainer?: string;
-    input?: string;
-    validationMessage?: string;
-    actions?: string;
-    confirmButton?: string;
-    denyButton?: string;
-    cancelButton?: string;
-    loader?: string;
-    footer?: string;
+    container?: string | readonly string[];
+    popup?: string | readonly string[];
+    title?: string | readonly string[];
+    closeButton?: string | readonly string[];
+    icon?: string | readonly string[];
+    image?: string | readonly string[];
+    htmlContainer?: string | readonly string[];
+    input?: string | readonly string[];
+    validationMessage?: string | readonly string[];
+    actions?: string | readonly string[];
+    confirmButton?: string | readonly string[];
+    denyButton?: string | readonly string[];
+    cancelButton?: string | readonly string[];
+    loader?: string | readonly string[];
+    footer?: string | readonly string[];
   }
 
   export interface SweetAlertResult<T = any> {
@@ -596,7 +599,7 @@ declare module 'sweetalert2' {
 
     /**
      * CSS classes for animations when showing a popup (fade in)
-     * @default { popup: 'swal2-show', backdrop: 'swal2-backdrop-show', icon: 'swal2-icon-show', }
+     * @default { popup: 'swal2-show', backdrop: 'swal2-backdrop-show', icon: 'swal2-icon-show' }
      */
     showClass?: SweetAlertShowClass;
 
@@ -1048,14 +1051,14 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    currentProgressStep?: string;
+    currentProgressStep?: number;
 
     /**
      * Distance between progress steps.
      *
      * @default undefined
      */
-    progressStepsDistance?: string;
+    progressStepsDistance?: number | string;
 
     /**
      * Popup lifecycle hook. Synchronously runs before the popup is shown on screen.

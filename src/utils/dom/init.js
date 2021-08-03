@@ -115,6 +115,9 @@ const setupRTL = (targetElement) => {
  * Add modal + backdrop to DOM
  */
 export const init = (params) => {
+  const targetElement = getTarget(params.target)
+  setTarget(targetElement)
+  
   // Clean up the old popup container if it exists
   const oldContainerExisted = resetOldContainer()
 
@@ -131,8 +134,6 @@ export const init = (params) => {
   }
   setInnerHtml(container, sweetHTML)
 
-  const targetElement = getTarget(params.target)
-  setTarget(targetElement)
   targetElement.appendChild(container)
 
   setupAccessibility(params)

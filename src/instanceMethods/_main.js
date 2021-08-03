@@ -13,12 +13,16 @@ import { handleConfirmButtonClick, handleDenyButtonClick, handleCancelButtonClic
 import { addKeydownHandler, setFocus } from './keydown-handler.js'
 import { handlePopupClick } from './popup-click-handler.js'
 import { DismissReason } from '../utils/DismissReason.js'
+import { unsetAriaHidden } from '../utils/aria.js'
 
 export function _main (userParams, mixinParams = {}) {
   showWarningsForParams(Object.assign({}, mixinParams, userParams))
 
   if (globalState.currentInstance) {
     globalState.currentInstance._destroy()
+    if (dom.isModal()) {
+      unsetAriaHidden()
+    }
   }
   globalState.currentInstance = this
 

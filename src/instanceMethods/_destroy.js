@@ -38,6 +38,8 @@ const disposeSwal = (instance) => {
   // Unset WeakMaps so GC will be able to dispose them (#1569)
   unsetWeakMaps(privateProps)
   unsetWeakMaps(privateMethods)
+  // Unset currentInstance
+  delete globalState.currentInstance
 }
 
 const unsetWeakMaps = (obj) => {

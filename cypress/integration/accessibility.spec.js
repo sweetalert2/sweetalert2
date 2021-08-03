@@ -122,6 +122,17 @@ describe('Accessibility:', () => {
     expect(Swal.getPopup().getAttribute('aria-live')).to.equal('polite')
     expect(Swal.getPopup().getAttribute('aria-modal')).to.be.null
   })
+
+  it('should set toast ARIA attributes inside Shadow DOM', () => {
+    const container = document.createElement('test-container')
+    container.attachShadow({ mode: 'open' })
+    document.body.appendChild(container)
+    Swal.fire({ target: container.shadowRoot, title: 'Toast', toast: true })
+    expect(container.shadowRoot.contains(Swal.getPopup())).to.be.true
+    expect(Swal.getPopup().getAttribute('role')).to.equal('alert')
+    expect(Swal.getPopup().getAttribute('aria-live')).to.equal('polite')
+    expect(Swal.getPopup().getAttribute('aria-modal')).to.be.null
+  })
 })
 
 describe('should trap focus in modals', () => {

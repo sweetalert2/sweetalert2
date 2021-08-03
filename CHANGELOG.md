@@ -1,3 +1,10 @@
+## [11.1.2](https://github.com/sweetalert2/sweetalert2/compare/v11.1.1...v11.1.2) (2021-08-03)
+
+
+### Bug Fixes
+
+* **types:** add missing updatable parameters ([#2304](https://github.com/sweetalert2/sweetalert2/issues/2304)) ([317f826](https://github.com/sweetalert2/sweetalert2/commit/317f8265f7c05d27d4151ec1c13b5f866feb134e))
+
 ## [11.1.1](https://github.com/sweetalert2/sweetalert2/compare/v11.1.0...v11.1.1) (2021-08-03)
 
 

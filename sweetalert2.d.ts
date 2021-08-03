@@ -315,9 +315,9 @@ declare module 'sweetalert2' {
   }
 
   interface SweetAlertHideShowClass {
-    backdrop?: string;
-    icon?: string;
-    popup?: string;
+    backdrop?: string | readonly string[];
+    icon?: string | readonly string[];
+    popup?: string | readonly string[];
   }
 
   type Awaited<T> = T extends Promise<infer U> ? U : T;
@@ -388,21 +388,21 @@ declare module 'sweetalert2' {
     | 'willClose';
 
   export interface SweetAlertCustomClass {
-    container?: string;
-    popup?: string;
-    title?: string;
-    closeButton?: string;
-    icon?: string;
-    image?: string;
-    htmlContainer?: string;
-    input?: string;
-    validationMessage?: string;
-    actions?: string;
-    confirmButton?: string;
-    denyButton?: string;
-    cancelButton?: string;
-    loader?: string;
-    footer?: string;
+    container?: string | readonly string[];
+    popup?: string | readonly string[];
+    title?: string | readonly string[];
+    closeButton?: string | readonly string[];
+    icon?: string | readonly string[];
+    image?: string | readonly string[];
+    htmlContainer?: string | readonly string[];
+    input?: string | readonly string[];
+    validationMessage?: string | readonly string[];
+    actions?: string | readonly string[];
+    confirmButton?: string | readonly string[];
+    denyButton?: string | readonly string[];
+    cancelButton?: string | readonly string[];
+    loader?: string | readonly string[];
+    footer?: string | readonly string[];
   }
 
   export interface SweetAlertResult<T = any> {
@@ -1051,14 +1051,14 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    currentProgressStep?: string;
+    currentProgressStep?: number;
 
     /**
      * Distance between progress steps.
      *
      * @default undefined
      */
-    progressStepsDistance?: string;
+    progressStepsDistance?: number | string;
 
     /**
      * Popup lifecycle hook. Synchronously runs before the popup is shown on screen.

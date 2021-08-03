@@ -1,7 +1,6 @@
 declare module 'sweetalert2' {
   /**
-   * A namespace inside the default function, containing utility function for controlling the currently-displayed
-   * popup.
+   * A namespace inside the default function, containing utility function for controlling the currently-displayed popup.
    *
    * Example:
    * ```
@@ -79,7 +78,7 @@ declare module 'sweetalert2' {
      * Closes the currently open SweetAlert2 popup programmatically.
      *
      * @param result The promise originally returned by `Swal.fire()` will be resolved with this value.
-     *               If no object is given, the promise is resolved with an empty `SweetAlertResult` object.
+     * If no object is given, the promise is resolved with an empty `SweetAlertResult` object.
      */
     function close(result?: SweetAlertResult): void;
 
@@ -349,6 +348,7 @@ declare module 'sweetalert2' {
   export type SweetAlertUpdatableParameters =
     | 'allowEscapeKey'
     | 'allowOutsideClick'
+    | 'background'
     | 'buttonsStyling'
     | 'cancelButtonAriaLabel'
     | 'cancelButtonColor'
@@ -369,10 +369,13 @@ declare module 'sweetalert2' {
     | 'hideClass'
     | 'html'
     | 'icon'
+    | 'iconColor'
     | 'imageAlt'
     | 'imageHeight'
     | 'imageUrl'
     | 'imageWidth'
+    | 'preConfirm'
+    | 'preDeny'
     | 'progressSteps'
     | 'reverseButtons'
     | 'showCancelButton'
@@ -596,7 +599,7 @@ declare module 'sweetalert2' {
 
     /**
      * CSS classes for animations when showing a popup (fade in)
-     * @default { popup: 'swal2-show', backdrop: 'swal2-backdrop-show', icon: 'swal2-icon-show', }
+     * @default { popup: 'swal2-show', backdrop: 'swal2-backdrop-show', icon: 'swal2-icon-show' }
      */
     showClass?: SweetAlertShowClass;
 

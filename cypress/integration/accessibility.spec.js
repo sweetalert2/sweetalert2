@@ -100,6 +100,16 @@ describe('Accessibility:', () => {
     Swal.close()
   })
 
+  it('should unset aria-hidden="true" when modal is called twice', () => {
+    const div = document.createElement('div')
+    document.body.appendChild(div)
+    Swal.fire()
+    Swal.fire()
+    Swal.close()
+    expect(div.hasAttribute('aria-hidden')).to.be.false
+    Swal.close()
+  })
+
   it('should set modal ARIA attributes', () => {
     Swal.fire('Modal dialog')
     expect(Swal.getPopup().getAttribute('role')).to.equal('dialog')

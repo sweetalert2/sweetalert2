@@ -1,3 +1,10 @@
+## [11.1.1](https://github.com/sweetalert2/sweetalert2/compare/v11.1.0...v11.1.1) (2021-08-03)
+
+
+### Bug Fixes
+
+* unsetting `aria-hidden="true"` when modal is called twice ([#2306](https://github.com/sweetalert2/sweetalert2/issues/2306)) ([64223a7](https://github.com/sweetalert2/sweetalert2/commit/64223a7bad995c9d760df2d6c58ffc906c5a7d5a))
+
 # [11.1.0](https://github.com/sweetalert2/sweetalert2/compare/v11.0.20...v11.1.0) (2021-07-30)
 
 

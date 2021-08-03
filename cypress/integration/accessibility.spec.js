@@ -103,11 +103,10 @@ describe('Accessibility:', () => {
   it('should unset aria-hidden="true" when modal is called twice', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
-    Swal.fire()
-    Swal.fire()
-    Swal.close()
+    SwalWithoutAnimation.fire()
+    SwalWithoutAnimation.fire()
+    SwalWithoutAnimation.close()
     expect(div.hasAttribute('aria-hidden')).to.be.false
-    Swal.close()
   })
 
   it('should set modal ARIA attributes', () => {

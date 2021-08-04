@@ -2,9 +2,9 @@ import { swalClasses } from '../classes.js'
 import { uniqueArray, toArray } from '../utils.js'
 import { isVisible } from './domUtils.js'
 
-let target = document.body;
+let target = document.body
 export const setTarget = (targetElement) => {
-  target = targetElement;
+  target = targetElement
 }
 
 export const getContainer = () => target.querySelector(`.${swalClasses.container}`)

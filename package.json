@@ -32,7 +32,7 @@
     "jquery": "^3.6.0",
     "merge2": "^1.2.3",
     "replace-in-file": "^6.0.0",
-    "rollup": "^2.56.0",
+    "rollup": "^2.56.2",
     "rollup-plugin-babel": "^4.3.2",
     "sass": "^1.37.5",
     "sinon": "^11.1.2",

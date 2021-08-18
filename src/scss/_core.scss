@@ -433,10 +433,6 @@
 .swal2-input {
   height: $swal2-input-height;
   padding: $swal2-input-padding;
-
-  &[type='number'] {
-    max-width: 10em;
-  }
 }
 
 .swal2-file {

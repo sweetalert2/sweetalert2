@@ -1,3 +1,10 @@
+## [11.1.3](https://github.com/sweetalert2/sweetalert2/compare/v11.1.2...v11.1.3) (2021-08-18)
+
+
+### Bug Fixes
+
+* remove hardcoded max-width from input='number' ([b186823](https://github.com/sweetalert2/sweetalert2/commit/b186823674bd097b9f2cc136f36d5367a31e3894))
+
 ## [11.1.2](https://github.com/sweetalert2/sweetalert2/compare/v11.1.1...v11.1.2) (2021-08-03)
 
 

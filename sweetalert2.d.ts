@@ -431,7 +431,7 @@ declare module 'sweetalert2' {
 
     /**
      * A description for the popup.
-     * If `text` and `html` parameters are provided in the same time, `text` will be used.
+     * If `text` and `html` parameters are provided in the same time, `html` will be used.
      *
      * @default ''
      */
@@ -439,7 +439,10 @@ declare module 'sweetalert2' {
 
     /**
      * A HTML description for the popup.
-     * It can either be added to the object under the key `html` or passed as the second parameter of `Swal.fire()`.
+     * If `text` and `html` parameters are provided in the same time, `html` will be used.
+     *
+     * [Security] SweetAlert2 does NOT sanitize this parameter. It is the developer's responsibility
+     * to escape any user input when using the `html` option, so XSS attacks would be prevented.
      *
      * @default ''
      */

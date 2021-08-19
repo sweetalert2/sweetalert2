@@ -1,3 +1,10 @@
+## [11.1.4](https://github.com/sweetalert2/sweetalert2/compare/v11.1.3...v11.1.4) (2021-08-19)
+
+
+### Bug Fixes
+
+* **docs:** `html` precides over `text` ([5084d76](https://github.com/sweetalert2/sweetalert2/commit/5084d761686ed7fb9c5a1882c7a3811bf6bbd599)), closes [#2312](https://github.com/sweetalert2/sweetalert2/issues/2312)
+
 ## [11.1.3](https://github.com/sweetalert2/sweetalert2/compare/v11.1.2...v11.1.3) (2021-08-18)
 
 

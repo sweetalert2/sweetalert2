@@ -1,3 +1,10 @@
+## [11.1.5](https://github.com/sweetalert2/sweetalert2/compare/v11.1.4...v11.1.5) (2021-09-07)
+
+
+### Bug Fixes
+
+* get rid of workabound for bottom gap in Firefox, fix it properly ([#2317](https://github.com/sweetalert2/sweetalert2/issues/2317)) ([7857b9e](https://github.com/sweetalert2/sweetalert2/commit/7857b9eb6f88066864bb1fe1a9271e233007faca))
+
 ## [11.1.4](https://github.com/sweetalert2/sweetalert2/compare/v11.1.3...v11.1.4) (2021-08-19)
 
 

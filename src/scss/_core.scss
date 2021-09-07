@@ -12,23 +12,15 @@
   grid-template-areas:
     "top-start     top            top-end"
     "center-start  center         center-end"
-    "bottom-start  bottom-center  bottom-end"
-    "gap gap gap";
-  grid-template-rows: auto auto auto $swal2-container-padding;
+    "bottom-start  bottom-center  bottom-end";
+  grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);
   height: 100%; // Safari
-  padding: $swal2-container-padding $swal2-container-padding 0;
+  padding: $swal2-container-padding;
   overflow-x: hidden;
   transition: $swal2-backdrop-transition;
 
   // sweetalert2/issues/905
   -webkit-overflow-scrolling: touch;
-
-  &::after { // #1986
-    content: '';
-    grid-column: 1/4;
-    grid-row: 4;
-    height: $swal2-container-padding;
-  }
 
   &.swal2-backdrop-show,
   &.swal2-noanimation {

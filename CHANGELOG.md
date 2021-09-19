@@ -1,3 +1,10 @@
+## [11.1.6](https://github.com/sweetalert2/sweetalert2/compare/v11.1.5...v11.1.6) (2021-09-19)
+
+
+### Bug Fixes
+
+* improve toasts styles ([afb7942](https://github.com/sweetalert2/sweetalert2/commit/afb7942740bdd53385d1cd9249d726fcdc9be258))
+
 ## [11.1.5](https://github.com/sweetalert2/sweetalert2/compare/v11.1.4...v11.1.5) (2021-09-07)
 
 

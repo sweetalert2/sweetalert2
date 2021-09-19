@@ -11,7 +11,6 @@ export function bindClickHandler (attr = 'data-swal-template') {
 }
 
 const bodyClickListener = (event) => {
-  // TODO: replace with event.composedPath()
   for (let el = event.target; el && el !== document; el = el.parentNode) {
     for (const attr in clickHandlers) {
       const template = el.getAttribute(attr)

@@ -100,7 +100,7 @@ const confirm = (instance, value) => {
   const innerParams = privateProps.innerParams.get(instance || this)
 
   if (innerParams.showLoaderOnConfirm) {
-    showLoading() // TODO: make showLoading an *instance* method
+    showLoading()
   }
 
   if (innerParams.preConfirm) {

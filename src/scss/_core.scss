@@ -779,6 +779,14 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
   overflow: scroll;
 }
 
+body.swal2-iosfix {
+  pointer-events: none;
+
+  .swal2-container {
+    pointer-events: initial;
+  }
+}
+
 // Right-to-left support
 .swal2-rtl {
   .swal2-close {

@@ -122,10 +122,6 @@
       margin: .25em .5em;
       padding: .4em .6em;
       font-size: $swal2-toast-buttons-font-size;
-
-      &:focus {
-        box-shadow: $swal2-toast-button-focus-box-shadow;
-      }
     }
 
     .swal2-success {

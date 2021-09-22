@@ -1,3 +1,10 @@
+## [11.1.7](https://github.com/sweetalert2/sweetalert2/compare/v11.1.6...v11.1.7) (2021-09-22)
+
+
+### Bug Fixes
+
+* buttons outline for toasts ([a51814f](https://github.com/sweetalert2/sweetalert2/commit/a51814f38fe0b674d76292e7c826e50560cedc2c))
+
 ## [11.1.6](https://github.com/sweetalert2/sweetalert2/compare/v11.1.5...v11.1.6) (2021-09-19)
 
 

@@ -68,7 +68,7 @@ const deny = (instance, innerParams, value) => {
   if (innerParams.preDeny) {
     const preDenyPromise = Promise.resolve().then(() => asPromise(
       innerParams.preDeny(value, innerParams.validationMessage))
-    )
+    ).catch((error) => instance.rejectPopup(error))
     preDenyPromise.then(
       (preDenyValue) => {
         if (preDenyValue === false) {
@@ -96,7 +96,7 @@ const confirm = (instance, innerParams, value) => {
     instance.resetValidationMessage()
     const preConfirmPromise = Promise.resolve().then(() => asPromise(
       innerParams.preConfirm(value, innerParams.validationMessage))
-    )
+    ).catch((error) => instance.rejectPopup(error))
     preConfirmPromise.then(
       (preConfirmValue) => {
         if (isVisible(getValidationMessage()) || preConfirmValue === false) {

@@ -75,6 +75,13 @@ export function close (resolveValue) {
   swalPromiseResolve(resolveValue)
 }
 
+export function reject (error) {
+  const swalPromiseReject = privateMethods.swalPromiseReject.get(this)
+
+  // Reject Swal promise
+  swalPromiseReject(error)
+}
+
 const prepareResolveValue = (resolveValue) => {
   // When user calls Swal.close()
   if (typeof resolveValue === 'undefined') {
@@ -140,6 +147,9 @@ const triggerDidCloseAndDispose = (instance, didClose) => {
 }
 
 export {
+  reject as rejectPopup,
+  reject as rejectModal,
+  reject as rejectToast,
   close as closePopup,
   close as closeModal,
   close as closeToast

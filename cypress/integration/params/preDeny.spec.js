@@ -50,4 +50,22 @@ describe('preDeny', () => {
       done()
     })
   })
+
+  it('preDeny promise is rejected', (done) => {
+    let thenTriggered = false
+    const errorMsg = 'message1'
+    SwalWithoutAnimation.fire({
+      preDeny: () => {
+        return Promise.reject(new Error(errorMsg))
+      },
+    }).then(() => {
+      thenTriggered = true
+    }).catch(result => {
+      expect(thenTriggered).to.equal(false)
+      expect(result.message).to.equal(errorMsg)
+      done()
+    })
+    Swal.clickDeny()
+    expect(Swal.isVisible()).to.be.true
+  })
 })

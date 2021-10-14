@@ -40,4 +40,22 @@ describe('preConfirm', () => {
       done()
     })
   })
+
+  it('preConfirm promise is rejected', (done) => {
+    let thenTriggered = false
+    const errorMsg = 'message1'
+    SwalWithoutAnimation.fire({
+      preConfirm: () => {
+        return Promise.reject(new Error(errorMsg))
+      },
+    }).then(() => {
+      thenTriggered = true
+    }).catch(result => {
+      expect(thenTriggered).to.equal(false)
+      expect(result.message).to.equal(errorMsg)
+      done()
+    })
+    Swal.clickConfirm()
+    expect(Swal.isVisible()).to.be.true
+  })
 })

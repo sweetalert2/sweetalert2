@@ -4,6 +4,7 @@ import { getDenyButton, getValidationMessage } from '../utils/dom/getters.js'
 import { asPromise } from '../utils/utils.js'
 import { showLoading } from '../staticMethods/showLoading.js'
 import { DismissReason } from '../utils/DismissReason.js'
+import privateMethods from '../privateMethods.js'
 import privateProps from '../privateProps.js'
 
 export const handleConfirmButtonClick = (instance) => {
@@ -77,7 +78,7 @@ const deny = (instance, value) => {
   if (innerParams.preDeny) {
     const preDenyPromise = Promise.resolve().then(() => asPromise(
       innerParams.preDeny(value, innerParams.validationMessage))
-    )
+    ).catch((error) => privateMethods.swalPromiseReject.get(instance || this)(error))
     preDenyPromise.then(
       (preDenyValue) => {
         if (preDenyValue === false) {
@@ -107,7 +108,7 @@ const confirm = (instance, value) => {
     instance.resetValidationMessage()
     const preConfirmPromise = Promise.resolve().then(() => asPromise(
       innerParams.preConfirm(value, innerParams.validationMessage))
-    )
+    ).catch((error) => privateMethods.swalPromiseReject.get(instance || this)(error))
     preConfirmPromise.then(
       (preConfirmValue) => {
         if (isVisible(getValidationMessage()) || preConfirmValue === false) {

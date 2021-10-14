@@ -1,3 +1,10 @@
+## [11.1.8](https://github.com/sweetalert2/sweetalert2/compare/v11.1.7...v11.1.8) (2021-10-14)
+
+
+### Bug Fixes
+
+* preConfirm & preDeny promise rejections rejects the main Swal.fire promise ([#2334](https://github.com/sweetalert2/sweetalert2/issues/2334)) ([040b7a9](https://github.com/sweetalert2/sweetalert2/commit/040b7a9beec3da92561462b0dcb307b521464338))
+
 ## [11.1.7](https://github.com/sweetalert2/sweetalert2/compare/v11.1.6...v11.1.7) (2021-09-22)
 
 

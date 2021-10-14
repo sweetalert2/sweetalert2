@@ -57,13 +57,14 @@ const prepareParams = (userParams, mixinParams) => {
 }
 
 const swalPromise = (instance, domCache, innerParams) => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     // functions to handle all closings/dismissals
     const dismissWith = (dismiss) => {
       instance.closePopup({ isDismissed: true, dismiss })
     }
 
     privateMethods.swalPromiseResolve.set(instance, resolve)
+    privateMethods.swalPromiseReject.set(instance, reject)
 
     domCache.confirmButton.onclick = () => handleConfirmButtonClick(instance)
     domCache.denyButton.onclick = () => handleDenyButtonClick(instance)

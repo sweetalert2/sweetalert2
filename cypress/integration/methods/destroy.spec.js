@@ -1,4 +1,4 @@
-import { Swal, SwalWithoutAnimation } from '../../utils'
+import { Swal, SwalWithoutAnimation, TIMEOUT } from '../../utils'
 import privateMethods from '../../../src/privateMethods'
 import globalState from '../../../src/globalState'
 import privateProps from '../../../src/privateProps'
@@ -29,13 +29,15 @@ describe('_destroy()', () => {
           didOpen: () => {
             expect(privateMethods.swalPromiseResolve.get(instance)).to.not.equal(undefined)
             Swal.clickConfirm()
-            expect(privateMethods.swalPromiseResolve.get(instance)).to.equal(undefined)
+            setTimeout(() => {
+              expect(privateMethods.swalPromiseResolve.get(instance)).to.equal(undefined)
+              done()
+            }, TIMEOUT)
           }
         })
       }
     })
     instance = globalState.currentInstance
     Swal.clickConfirm()
-    done()
   })
 })

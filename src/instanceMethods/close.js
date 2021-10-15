@@ -54,6 +54,7 @@ function removeBodyClasses () {
 
 export function close (resolveValue) {
   const popup = dom.getPopup()
+  onPromiseResolved(this)
 
   if (!popup) {
     return
@@ -78,7 +79,6 @@ export function close (resolveValue) {
 
   // Resolve Swal promise
   swalPromiseResolve(resolveValue)
-  onPromiseResolved(this)
 }
 
 export function reject (error) {

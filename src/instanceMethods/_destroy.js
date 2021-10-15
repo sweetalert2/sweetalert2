@@ -7,6 +7,7 @@ export function _destroy () {
   const innerParams = privateProps.innerParams.get(this)
 
   if (!innerParams) {
+    disposeSwal(this)
     return // This instance has already been destroyed
   }
 
@@ -25,7 +26,6 @@ export function _destroy () {
   if (typeof innerParams.didDestroy === 'function') {
     innerParams.didDestroy()
   }
-
   disposeSwal(this)
 }
 

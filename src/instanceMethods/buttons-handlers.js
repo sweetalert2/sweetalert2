@@ -4,7 +4,6 @@ import { getDenyButton, getValidationMessage } from '../utils/dom/getters.js'
 import { asPromise } from '../utils/utils.js'
 import { showLoading } from '../staticMethods/showLoading.js'
 import { DismissReason } from '../utils/DismissReason.js'
-import privateMethods from '../privateMethods.js'
 import privateProps from '../privateProps.js'
 
 export const handleConfirmButtonClick = (instance) => {
@@ -76,9 +75,10 @@ const deny = (instance, value) => {
   }
 
   if (innerParams.preDeny) {
+    privateProps.awaitingPromise.set(instance || this, true) // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesnt get destroyed until the result from this preDeny's promise is received
     const preDenyPromise = Promise.resolve().then(() => asPromise(
       innerParams.preDeny(value, innerParams.validationMessage))
-    ).catch((error) => privateMethods.swalPromiseReject.get(instance || this)(error))
+    ).catch((error) => rejectWith(instance || this, error))
     preDenyPromise.then(
       (preDenyValue) => {
         if (preDenyValue === false) {
@@ -97,6 +97,10 @@ const succeedWith = (instance, value) => {
   instance.closePopup({ isConfirmed: true, value })
 }
 
+const rejectWith = (instance, error) => {
+  instance.rejectPopup(error)
+}
+
 const confirm = (instance, value) => {
   const innerParams = privateProps.innerParams.get(instance || this)
 
@@ -106,9 +110,10 @@ const confirm = (instance, value) => {
 
   if (innerParams.preConfirm) {
     instance.resetValidationMessage()
+    privateProps.awaitingPromise.set(instance || this, true) // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesnt get destroyed until the result from this preConfirm's promise is received
     const preConfirmPromise = Promise.resolve().then(() => asPromise(
       innerParams.preConfirm(value, innerParams.validationMessage))
-    ).catch((error) => privateMethods.swalPromiseReject.get(instance || this)(error))
+    ).catch((error) => rejectWith(instance || this, error))
     preConfirmPromise.then(
       (preConfirmValue) => {
         if (isVisible(getValidationMessage()) || preConfirmValue === false) {

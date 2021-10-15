@@ -78,6 +78,22 @@ export function close (resolveValue) {
 
   // Resolve Swal promise
   swalPromiseResolve(resolveValue)
+  onPromiseResolved(this)
+}
+
+export function reject (error) {
+  const swalPromiseReject = privateMethods.swalPromiseReject.get(this)
+
+  // Reject Swal promise
+  swalPromiseReject(error)
+  onPromiseResolved(this)
+}
+
+const onPromiseResolved = (instance) => {
+  privateProps.awaitingPromise.set(instance, false)
+  if (!privateProps.innerParams.get(instance)) {
+    instance._destroy()
+  }
 }
 
 const prepareResolveValue = (resolveValue) => {
@@ -134,6 +150,9 @@ const triggerDidCloseAndDispose = (instance, didClose) => {
 }
 
 export {
+  reject as rejectPopup,
+  reject as rejectModal,
+  reject as rejectToast,
   close as closePopup,
   close as closeModal,
   close as closeToast

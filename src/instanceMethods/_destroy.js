@@ -7,6 +7,7 @@ export function _destroy () {
   const innerParams = privateProps.innerParams.get(this)
 
   if (!innerParams) {
+    disposeSwal(this)
     return // This instance has already been destroyed
   }
 
@@ -35,15 +36,18 @@ const disposeSwal = (instance) => {
   // Unset globalState props so GC will dispose globalState (#1569)
   delete globalState.keydownHandler
   delete globalState.keydownTarget
+  // If the current instance is awaiting a promise result, we keep the privateMethods to call them once the promise result is retreived
+  if (!privateProps.awaitingPromise.get(instance)) {
+    unsetWeakMaps(privateMethods, instance)
+  }
   // Unset WeakMaps so GC will be able to dispose them (#1569)
-  unsetWeakMaps(privateProps)
-  unsetWeakMaps(privateMethods)
+  unsetWeakMaps(privateProps, instance)
   // Unset currentInstance
   delete globalState.currentInstance
 }
 
-const unsetWeakMaps = (obj) => {
+const unsetWeakMaps = (obj, instance) => {
   for (const i in obj) {
-    obj[i] = new WeakMap()
+    obj[i].delete(instance)
   }
 }

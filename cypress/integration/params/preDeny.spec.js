@@ -68,4 +68,31 @@ describe('preDeny', () => {
     Swal.clickDeny()
     expect(Swal.isVisible()).to.be.true
   })
+
+  it('preDeny promise is rejected with a swal chain inside preDeny', (done) => {
+    let thenTriggered = false
+    const errorMsg = 'message1'
+    SwalWithoutAnimation.fire({
+      preDeny: () => {
+        return SwalWithoutAnimation.fire({
+          preDeny: () => {
+            return Promise.reject(new Error(errorMsg))
+          },
+          didOpen: () => {
+            Swal.clickDeny()
+          }
+        }).then(() => {
+          thenTriggered = true
+        })
+      }
+    }).then(() => {
+      thenTriggered = true
+    }).catch(result => {
+      expect(thenTriggered).to.equal(false)
+      expect(result.message).to.equal(errorMsg)
+      done()
+    })
+    Swal.clickDeny()
+    expect(Swal.isVisible()).to.be.true
+  })
 })

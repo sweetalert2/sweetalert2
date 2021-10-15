@@ -7,7 +7,6 @@ export function _destroy () {
   const innerParams = privateProps.innerParams.get(this)
 
   if (!innerParams) {
-    disposeSwal(this)
     return // This instance has already been destroyed
   }
 

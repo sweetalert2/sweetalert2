@@ -1,3 +1,10 @@
+## [11.1.9](https://github.com/sweetalert2/sweetalert2/compare/v11.1.8...v11.1.9) (2021-10-16)
+
+
+### Bug Fixes
+
+* handle the rejection of the initial Swal when chaining multiple Swal inside preConfirm ([#2335](https://github.com/sweetalert2/sweetalert2/issues/2335)) ([84e2e55](https://github.com/sweetalert2/sweetalert2/commit/84e2e55bbbaa9cd1fac0c65f21e63e2c0ecee59e))
+
 ## [11.1.8](https://github.com/sweetalert2/sweetalert2/compare/v11.1.7...v11.1.8) (2021-10-14)
 
 

@@ -4,7 +4,6 @@ import { getDenyButton, getValidationMessage } from '../utils/dom/getters.js'
 import { asPromise } from '../utils/utils.js'
 import { showLoading } from '../staticMethods/showLoading.js'
 import { DismissReason } from '../utils/DismissReason.js'
-import privateMethods from '../privateMethods.js'
 import privateProps from '../privateProps.js'
 
 export const handleConfirmButtonClick = (instance) => {
@@ -76,9 +75,10 @@ const deny = (instance, value) => {
   }
 
   if (innerParams.preDeny) {
+    privateProps.awaitingPromise.set(instance || this, true) // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesnt get destroyed until the result from this preDeny's promise is received
     const preDenyPromise = Promise.resolve().then(() => asPromise(
       innerParams.preDeny(value, innerParams.validationMessage))
-    ).catch((error) => privateMethods.swalPromiseReject.get(instance || this)(error))
+    )
     preDenyPromise.then(
       (preDenyValue) => {
         if (preDenyValue === false) {
@@ -87,7 +87,7 @@ const deny = (instance, value) => {
           instance.closePopup({ isDenied: true, value: typeof preDenyValue === 'undefined' ? value : preDenyValue })
         }
       }
-    )
+    ).catch((error) => rejectWith(instance || this, error))
   } else {
     instance.closePopup({ isDenied: true, value })
   }
@@ -95,6 +95,10 @@ const deny = (instance, value) => {
 
 const succeedWith = (instance, value) => {
   instance.closePopup({ isConfirmed: true, value })
+}
+
+const rejectWith = (instance, error) => {
+  instance.rejectPromise(error)
 }
 
 const confirm = (instance, value) => {
@@ -106,9 +110,10 @@ const confirm = (instance, value) => {
 
   if (innerParams.preConfirm) {
     instance.resetValidationMessage()
+    privateProps.awaitingPromise.set(instance || this, true) // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesnt get destroyed until the result from this preConfirm's promise is received
     const preConfirmPromise = Promise.resolve().then(() => asPromise(
       innerParams.preConfirm(value, innerParams.validationMessage))
-    ).catch((error) => privateMethods.swalPromiseReject.get(instance || this)(error))
+    )
     preConfirmPromise.then(
       (preConfirmValue) => {
         if (isVisible(getValidationMessage()) || preConfirmValue === false) {
@@ -117,7 +122,7 @@ const confirm = (instance, value) => {
           succeedWith(instance, typeof preConfirmValue === 'undefined' ? value : preConfirmValue)
         }
       }
-    )
+    ).catch((error) => rejectWith(instance || this, error))
   } else {
     succeedWith(instance, value)
   }

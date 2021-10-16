@@ -58,4 +58,31 @@ describe('preConfirm', () => {
     Swal.clickConfirm()
     expect(Swal.isVisible()).to.be.true
   })
+
+  it('preConfirm promise is rejected with a swal chain inside preConfirm', (done) => {
+    let thenTriggered = false
+    const errorMsg = 'message1'
+    SwalWithoutAnimation.fire({
+      preConfirm: () => {
+        return SwalWithoutAnimation.fire({
+          preConfirm: () => {
+            return Promise.reject(new Error(errorMsg))
+          },
+          didOpen: () => {
+            Swal.clickConfirm()
+          }
+        }).then(() => {
+          thenTriggered = true
+        })
+      }
+    }).then(() => {
+      thenTriggered = true
+    }).catch(result => {
+      expect(thenTriggered).to.equal(false)
+      expect(result.message).to.equal(errorMsg)
+      done()
+    })
+    Swal.clickConfirm()
+    expect(Swal.isVisible()).to.be.true
+  })
 })

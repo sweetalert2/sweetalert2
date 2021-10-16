@@ -53,20 +53,39 @@ function removeBodyClasses () {
 }
 
 export function close (resolveValue) {
-  const popup = dom.getPopup()
-  onPromiseResolved(this)
-
-  if (!popup) {
-    return
-  }
-
   resolveValue = prepareResolveValue(resolveValue)
 
-  const innerParams = privateProps.innerParams.get(this)
-  if (!innerParams || dom.hasClass(popup, innerParams.hideClass.popup)) {
-    return
-  }
   const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this)
+
+  const didClose = triggerClosePopup(this)
+
+  if (this.isAwaitingPromise()) {
+    // A swal awaiting for a promise (after a click on Confirm or Deny) cannot be dismissed anymore #2335
+    if (!resolveValue.isDismissed) {
+      handleAwaitingPromise(this)
+      swalPromiseResolve(resolveValue)
+    }
+  } else if (didClose) {
+    // Resolve Swal promise
+    swalPromiseResolve(resolveValue)
+  }
+}
+
+export function isAwaitingPromise () {
+  return !!privateProps.awaitingPromise.get(this)
+}
+
+const triggerClosePopup = (instance) => {
+  const popup = dom.getPopup()
+
+  if (!popup) {
+    return false
+  }
+
+  const innerParams = privateProps.innerParams.get(instance)
+  if (!innerParams || dom.hasClass(popup, innerParams.hideClass.popup)) {
+    return false
+  }
 
   dom.removeClass(popup, innerParams.showClass.popup)
   dom.addClass(popup, innerParams.hideClass.popup)
@@ -75,24 +94,27 @@ export function close (resolveValue) {
   dom.removeClass(backdrop, innerParams.showClass.backdrop)
   dom.addClass(backdrop, innerParams.hideClass.backdrop)
 
-  handlePopupAnimation(this, popup, innerParams)
+  handlePopupAnimation(instance, popup, innerParams)
 
-  // Resolve Swal promise
-  swalPromiseResolve(resolveValue)
+  return true
 }
 
-export function reject (error) {
-  const swalPromiseReject = privateMethods.swalPromiseReject.get(this)
-
-  // Reject Swal promise
-  swalPromiseReject(error)
-  onPromiseResolved(this)
+export function rejectPromise (error) {
+  const rejectPromise = privateMethods.swalPromiseReject.get(this)
+  handleAwaitingPromise(this)
+  if (rejectPromise) {
+    // Reject Swal promise
+    rejectPromise(error)
+  }
 }
 
-const onPromiseResolved = (instance) => {
-  privateProps.awaitingPromise.set(instance, false)
-  if (!privateProps.innerParams.get(instance)) {
-    instance._destroy()
+const handleAwaitingPromise = (instance) => {
+  if (instance.isAwaitingPromise()) {
+    privateProps.awaitingPromise.delete(instance)
+    // The instance might have been previously partly destroyed, we must resume the destroy process in this case #2335
+    if (!privateProps.innerParams.get(instance)) {
+      instance._destroy()
+    }
   }
 }
 
@@ -150,9 +172,6 @@ const triggerDidCloseAndDispose = (instance, didClose) => {
 }
 
 export {
-  reject as rejectPopup,
-  reject as rejectModal,
-  reject as rejectToast,
   close as closePopup,
   close as closeModal,
   close as closeToast

@@ -41,7 +41,7 @@ const disposeSwal = (instance) => {
 }
 
 const disposeWeakMaps = (instance) => {
-  // If the current instance is awaiting a promise result, we keep the privateMethods to call them once the promise result is retreived #2335
+  // If the current instance is awaiting a promise result, we keep the privateMethods to call them once the promise result is retrieved #2335
   if (instance.isAwaitingPromise()) {
     unsetWeakMaps(privateProps, instance)
     privateProps.awaitingPromise.set(instance, true)

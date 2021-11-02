@@ -1,5 +1,5 @@
 /**
- * This module containts `WeakMap`s for each effectively-"private  property" that a `Swal` has.
+ * This module contains `WeakMap`s for each effectively-"private  property" that a `Swal` has.
  * For example, to set the private property "foo" of `this` to "bar", you can `privateProps.foo.set(this, 'bar')`
  * This is the approach that Babel will probably take to implement private methods/fields
  *   https://github.com/tc39/proposal-private-methods

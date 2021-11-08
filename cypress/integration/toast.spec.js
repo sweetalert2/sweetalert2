@@ -92,4 +92,14 @@ describe('Toast', () => {
     Swal.getContainer().style.position = 'absolute'
     expect(window.getComputedStyle(Swal.getContainer()).width).to.equal('150px')
   })
+
+  it('Should be possible to reverse buttons', () => {
+    Swal.fire({
+      toast: true,
+      showCancelButton: true,
+      reverseButtons: true,
+    })
+    expect(Swal.getCancelButton().nextElementSibling.innerText).to.equal('No')
+    expect(Swal.getCancelButton().nextElementSibling.nextElementSibling.innerText).to.equal('OK')
+  })
 })

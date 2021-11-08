@@ -5,9 +5,6 @@ import { capitalizeFirstLetter } from '../../utils.js'
 export const renderActions = (instance, params) => {
   const actions = dom.getActions()
   const loader = dom.getLoader()
-  const confirmButton = dom.getConfirmButton()
-  const denyButton = dom.getDenyButton()
-  const cancelButton = dom.getCancelButton()
 
   // Actions (buttons) wrapper
   if (!params.showConfirmButton && !params.showDenyButton && !params.showCancelButton) {
@@ -19,6 +16,19 @@ export const renderActions = (instance, params) => {
   // Custom class
   dom.applyCustomClass(actions, params, 'actions')
 
+  // Render all the buttons
+  renderButtons(actions, loader, params)
+
+  // Loader
+  dom.setInnerHtml(loader, params.loaderHtml)
+  dom.applyCustomClass(loader, params, 'loader')
+}
+
+function renderButtons (actions, loader, params) {
+  const confirmButton = dom.getConfirmButton()
+  const denyButton = dom.getDenyButton()
+  const cancelButton = dom.getCancelButton()
+
   // Render buttons
   renderButton(confirmButton, 'confirm', params)
   renderButton(denyButton, 'deny', params)
@@ -26,14 +36,15 @@ export const renderActions = (instance, params) => {
   handleButtonsStyling(confirmButton, denyButton, cancelButton, params)
 
   if (params.reverseButtons) {
-    actions.insertBefore(cancelButton, loader)
-    actions.insertBefore(denyButton, loader)
-    actions.insertBefore(confirmButton, loader)
+    if (params.toast) {
+      actions.insertBefore(cancelButton, confirmButton)
+      actions.insertBefore(denyButton, confirmButton)
+    } else {
+      actions.insertBefore(cancelButton, loader)
+      actions.insertBefore(denyButton, loader)
+      actions.insertBefore(confirmButton, loader)
+    }
   }
-
-  // Loader
-  dom.setInnerHtml(loader, params.loaderHtml)
-  dom.applyCustomClass(loader, params, 'loader')
 }
 
 function handleButtonsStyling (confirmButton, denyButton, cancelButton, params) {

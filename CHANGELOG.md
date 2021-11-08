@@ -1,3 +1,10 @@
+## [11.1.10](https://github.com/sweetalert2/sweetalert2/compare/v11.1.9...v11.1.10) (2021-11-08)
+
+
+### Bug Fixes
+
+* reverse buttons in toasts ([#2344](https://github.com/sweetalert2/sweetalert2/issues/2344)) ([36eb14d](https://github.com/sweetalert2/sweetalert2/commit/36eb14dd407009b1dd2edceef53313807ade5f63))
+
 ## [11.1.9](https://github.com/sweetalert2/sweetalert2/compare/v11.1.8...v11.1.9) (2021-10-16)
 
 

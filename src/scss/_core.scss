@@ -577,16 +577,49 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
   &.swal2-warning {
     border-color: lighten($swal2-warning, 7);
     color: $swal2-warning;
+
+    // Warning icon animation
+    &.swal2-icon-show {
+      @if $swal2-icon-animations {
+        animation: swal2-animate-error-icon .5s;
+
+        .swal2-icon-content {
+          animation: swal2-animate-i-mark .5s;
+        }
+      }
+    }
   }
 
   &.swal2-info {
     border-color: lighten($swal2-info, 20);
     color: $swal2-info;
+
+    // Info icon animation
+    &.swal2-icon-show {
+      @if $swal2-icon-animations {
+        animation: swal2-animate-error-icon .5s;
+
+        .swal2-icon-content {
+          animation: swal2-animate-i-mark .8s;
+        }
+      }
+    }
   }
 
   &.swal2-question {
     border-color: lighten($swal2-question, 20);
     color: $swal2-question;
+
+    // Question icon animation
+    &.swal2-icon-show {
+      @if $swal2-icon-animations {
+        animation: swal2-animate-error-icon .5s;
+
+        .swal2-icon-content {
+          animation: swal2-animate-question-mark .8s;
+        }
+      }
+    }
   }
 
   &.swal2-success {

@@ -1,3 +1,10 @@
+# [11.2.0](https://github.com/sweetalert2/sweetalert2/compare/v11.1.10...v11.2.0) (2021-11-20)
+
+
+### Features
+
+* add new animation for question, info and warning mark ([#2351](https://github.com/sweetalert2/sweetalert2/issues/2351)) ([c5d8b68](https://github.com/sweetalert2/sweetalert2/commit/c5d8b681197575cc73509448bd2e824bcf27372d))
+
 ## [11.1.10](https://github.com/sweetalert2/sweetalert2/compare/v11.1.9...v11.1.10) (2021-11-08)
 
 

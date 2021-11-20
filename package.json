@@ -16,7 +16,7 @@
     "@sweetalert2/execute": "^1.0.0",
     "@sweetalert2/stylelint-config": "^2.0.0",
     "browser-sync": "^2.27.7",
-    "cypress": "^8.7.0",
+    "cypress": "^9.0.0",
     "eslint": "^8.2.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-no-unsanitized": "^4.0.0",

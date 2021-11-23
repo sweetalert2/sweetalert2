@@ -56,6 +56,9 @@ Your contribution will be greatly appreciated!
 
 - **Alex Frei** (20 EUR)
 
+- **[iCrew Rowing](https://www.icrew.club/)** (20 USD)
+    > SweetAlert2 is indeed "sweet".  Glad I stumbled up it in a post on StackOverflow.
+
 - **[VEI Hosting](http://www.veihosting.com/)** (20 USD)
 
 - **Emil Kristensen** (15 EUR)

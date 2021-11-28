@@ -19,9 +19,9 @@ For all questions related to sponsorship please contact me via email limon.monte
 -|-|-|-|-|-
 [Become a sponsor](SPONSORS.md) | [FlowCrypt](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [My Bitcoin slots](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo) | [TorcStark](https://torcstark.com/) | [life digital](https://lifedigitalwiki.org/?utm_source=sweetalert2&utm_medium=logo) | [Code Rubik](https://coderubik.com/?utm_source=sweetalert2&utm_medium=logo)
 
-[<img src="https://www.ndchost.com/logos/ndchost-stacked-256x256-transparent.png" width="80">](https://ndchost.com/?utm_campaign=sponsorship&utm_source=github&utm_medium=sweetalert2) | [<img src="https://sweetalert2.github.io/images/sponsors/halvinlaina.png" width="80">](https://halvinlaina.fi/) | [<img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80">](https://github.com/tiagostutz) | [<img src="https://sweetalert2.github.io/images/sponsors/sebaebc.png" width="80">](https://github.com/sebaebc)
--|-|-|-
-[NDCHost](https://ndchost.com/?utm_campaign=sponsorship&utm_source=github&utm_medium=sweetalert2) | [Halvin Laina](https://halvinlaina.fi/) | [Tiago de Oliveira Stutz](https://github.com/tiagostutz) | [SebaEBC](https://github.com/sebaebc)
+[<img src="https://sweetalert2.github.io/images/sponsors/halvinlaina.png" width="80">](https://halvinlaina.fi/) | [<img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80">](https://github.com/tiagostutz) | [<img src="https://sweetalert2.github.io/images/sponsors/sebaebc.png" width="80">](https://github.com/sebaebc)
+-|-|-
+[Halvin Laina](https://halvinlaina.fi/) | [Tiago de Oliveira Stutz](https://github.com/tiagostutz) | [SebaEBC](https://github.com/sebaebc)
 
 NSFW Sponsors
 -------------

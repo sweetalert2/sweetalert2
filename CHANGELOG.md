@@ -1,3 +1,10 @@
+## [11.2.2](https://github.com/sweetalert2/sweetalert2/compare/v11.2.1...v11.2.2) (2021-12-03)
+
+
+### Bug Fixes
+
+* detecting toast so removePopupAndResetState() would work properly ([#2360](https://github.com/sweetalert2/sweetalert2/issues/2360)) ([afef35a](https://github.com/sweetalert2/sweetalert2/commit/afef35a291f389fdbed414b8de028382e8458e0a))
+
 ## [11.2.1](https://github.com/sweetalert2/sweetalert2/compare/v11.2.0...v11.2.1) (2021-11-25)
 
 

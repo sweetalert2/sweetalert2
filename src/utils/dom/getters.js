@@ -1,6 +1,6 @@
 import { swalClasses } from '../classes.js'
 import { uniqueArray, toArray } from '../utils.js'
-import { isVisible } from './domUtils.js'
+import { isVisible, hasClass } from './domUtils.js'
 
 export const getContainer = () => document.body.querySelector(`.${swalClasses.container}`)
 
@@ -87,11 +87,11 @@ export const getFocusableElements = () => {
 }
 
 export const isModal = () => {
-  return !isToast() && !document.body.classList.contains(swalClasses['no-backdrop'])
+  return !hasClass(document.body, swalClasses['toast-shown']) && !hasClass(document.body, swalClasses['no-backdrop'])
 }
 
 export const isToast = () => {
-  return document.body.classList.contains(swalClasses['toast-shown'])
+  return getPopup() && hasClass(getPopup(), swalClasses.toast)
 }
 
 export const isLoading = () => {

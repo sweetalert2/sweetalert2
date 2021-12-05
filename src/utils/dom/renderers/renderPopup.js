@@ -17,6 +17,11 @@ export const renderPopup = (instance, params) => {
   // Padding
   dom.applyNumericalStyle(popup, 'padding', params.padding)
 
+  // Color
+  if (params.color) {
+    popup.style.color = params.color
+  }
+
   // Background
   if (params.background) {
     popup.style.background = params.background

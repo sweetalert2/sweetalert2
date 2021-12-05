@@ -1,3 +1,10 @@
+# [11.3.0](https://github.com/sweetalert2/sweetalert2/compare/v11.2.2...v11.3.0) (2021-12-05)
+
+
+### Features
+
+* add color param ([#2362](https://github.com/sweetalert2/sweetalert2/issues/2362)) ([e845d9e](https://github.com/sweetalert2/sweetalert2/commit/e845d9e5b5c080161a37e5dfd954b1fa2b553e7a))
+
 ## [11.2.2](https://github.com/sweetalert2/sweetalert2/compare/v11.2.1...v11.2.2) (2021-12-03)
 
 

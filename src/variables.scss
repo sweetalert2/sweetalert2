@@ -51,7 +51,7 @@ $swal2-title-position: relative !default;
 $swal2-title-max-width: 100% !default;
 $swal2-title-margin: 0 !default;
 $swal2-title-padding: .8em 1em 0 !default;
-$swal2-title-color: lighten($swal2-black, 35) !default;
+$swal2-title-color: inherit !default;
 $swal2-title-font-size: 1.875em !default;
 $swal2-title-font-weight: 600 !default;
 $swal2-title-text-align: center !default;
@@ -61,7 +61,7 @@ $swal2-html-container-justify-content: center !default;
 $swal2-html-container-margin: 1em 1.6em .3em !default;
 $swal2-html-container-padding: 0 !default;
 $swal2-html-container-overflow: auto !default;
-$swal2-html-container-color: lighten($swal2-black, 33) !default;
+$swal2-html-container-color: inherit !default;
 $swal2-html-container-font-size: 1.125em !default;
 $swal2-html-container-font-weight: normal !default;
 $swal2-html-container-line-height: normal !default;
@@ -129,7 +129,7 @@ $swal2-active-step-color: $swal2-white !default;
 $swal2-footer-margin: 1em 0 0 !default;
 $swal2-footer-padding: 1em 1em 0 !default;
 $swal2-footer-border-color: #eee !default;
-$swal2-footer-color: lighten($swal2-black, 33) !default;
+$swal2-footer-color: inherit !default;
 $swal2-footer-font-size: 1em !default;
 
 // TIMER POGRESS BAR

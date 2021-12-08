@@ -580,14 +580,14 @@ declare module 'sweetalert2' {
     padding?: number | string;
 
     /**
-     * Popup color for title, content and footer (CSS `color` property).
+     * Color for title, content and footer (CSS `color` property).  The default color is `#545454`.
      *
      * @default undefined
      */
     color?: string;
 
     /**
-     * Popup background (CSS `background` property).
+     * Popup background (CSS `background` property). The default background is `#fff`.
      *
      * @default undefined
      */

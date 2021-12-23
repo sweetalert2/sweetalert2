@@ -65,6 +65,8 @@ Your contribution will be greatly appreciated!
 
 - **Panayiotis Panayiotou** (10 GBP)
 
+- **Alfredo Impera** (10 EUR)
+
 - **Motim8 LLC** (10 EUR)
 
 - **Ivan Zamecnik** (10 EUR)

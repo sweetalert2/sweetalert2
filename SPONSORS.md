@@ -26,13 +26,17 @@ For all questions related to sponsorship please contact me via email limon.monte
 NSFW Sponsors
 -------------
 
+[<img src="https://sweetalert2.github.io/images/sponsors/bestrealdoll.jpeg" width="80">](https://www.bestrealdoll.com/collections/us-warehouse) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdolltech.jpeg" width="80">](https://www.sexdolltech.com/product-category/us-warehouse/) | [<img src="https://sweetalert2.github.io/images/sponsors/rosewives.png" width="80">](https://rosewives.com/)
+-|-|-
+[BestRealDoll](https://www.bestrealdoll.com/collections/us-warehouse) | [SexDollTech](https://www.sexdolltech.com/product-category/us-warehouse/) | [Rose Wives](https://rosewives.com/)
+
 [<img src="https://sweetalert2.github.io/images/sponsors/sexdollsoff.png" width="80">](https://www.sexdollsoff.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/realsexdoll.png" width="80">](https://realsexdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/yourdoll.jpg" width="80">](https://www.yourdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/annies-dollhouse.png" width="80">](https://anniesdollhouse.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdollcenter.png" width="80">](https://sexdollcenter.vip/) |
 -|-|-|-|-
 [SexDollsOff](https://www.sexdollsoff.com/) | [RealSexDoll](https://realsexdoll.com/) | [Your Doll](https://www.yourdoll.com/) | [Annie's Dollhouse](https://anniesdollhouse.com/) | [Sex Doll Center](https://sexdollcenter.vip/)
 
-[<img src="https://sweetalert2.github.io/images/sponsors/ailijia.png" width="80">](https://www.ailijia.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/vsdoll.png" width="80">](https://vsdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexangelbaby.png" width="80">](https://sexangelbaby.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/theadulttoyfinder.png" width="80">](https://theadulttoyfinder.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/fresh-materials.png" width="80">](https://www.thefreshmaterials.com/?utm_source=sweetalert2&utm_medium=logo)
--|-|-|-|-
-[Ailijia Doll](https://ailijia.com/) | [VSDoll](https://vsdoll.com/) | [SexAngelbaby](https://sexangelbaby.com/) | [The Adult Toy Finder](https://theadulttoyfinder.com/?utm_source=sweetalert2&utm_medium=logo) | [Fresh Materials](https://www.thefreshmaterials.com/?utm_source=sweetalert2&utm_medium=logo)
+[<img src="https://sweetalert2.github.io/images/sponsors/vsdoll.png" width="80">](https://vsdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexangelbaby.png" width="80">](https://sexangelbaby.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/theadulttoyfinder.png" width="80">](https://theadulttoyfinder.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/fresh-materials.png" width="80">](https://www.thefreshmaterials.com/?utm_source=sweetalert2&utm_medium=logo)
+-|-|-|-
+[VSDoll](https://vsdoll.com/) | [SexAngelbaby](https://sexangelbaby.com/) | [The Adult Toy Finder](https://theadulttoyfinder.com/?utm_source=sweetalert2&utm_medium=logo) | [Fresh Materials](https://www.thefreshmaterials.com/?utm_source=sweetalert2&utm_medium=logo)
 
 [<img src="https://sweetalert2.github.io/images/sponsors/joylovedolls.png" width="80">](https://www.joylovedolls.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/my-sex-toy-guide.jpg" width="80">](https://www.mysextoyguide.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/best-blowjob-machines.jpg" width="80">](https://www.bestblowjobmachines.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/sextoycollective.jpg" width="80">](https://sextoycollective.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/doctorclimax.png" width="80">](https://doctorclimax.com/)
 -|-|-|-|-

@@ -1,7 +1,7 @@
 import * as dom from '../../src/utils/dom/index.js'
 import { warn } from '../../src/utils/utils.js'
-import sweetAlert from '../sweetalert2.js'
 import privateProps from '../privateProps.js'
+import { isUpdatableParameter } from '../../src/utils/params.js'
 
 /**
  * Updates popup parameters.
@@ -18,7 +18,7 @@ export function update (params) {
 
   // assign valid params from `params` to `defaults`
   Object.keys(params).forEach(param => {
-    if (sweetAlert.isUpdatableParameter(param)) {
+    if (isUpdatableParameter(param)) {
       validUpdatableParams[param] = params[param]
     } else {
       warn(`Invalid parameter to update: "${param}". Updatable params are listed here: https://github.com/sweetalert2/sweetalert2/blob/master/src/utils/params.js\n\nIf you think this parameter should be updatable, request it here: https://github.com/sweetalert2/sweetalert2/issues/new?template=02_feature_request.md`)

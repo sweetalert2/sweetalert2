@@ -9,7 +9,7 @@ import { swalClasses } from '../utils/classes.js'
 const showLoading = (buttonToReplace) => {
   let popup = dom.getPopup()
   if (!popup) {
-    Swal.fire()
+    new Swal() // eslint-disable-line no-new
   }
   popup = dom.getPopup()
   const loader = dom.getLoader()

@@ -5,6 +5,7 @@ import { swalClasses } from '../utils/classes.js'
 // Fix iOS scrolling http://stackoverflow.com/q/39626302
 
 export const iOSfix = () => {
+  // @ts-ignore
   const iOS = (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
   if (iOS && !dom.hasClass(document.body, swalClasses.iosfix)) {
     const offset = document.body.scrollTop

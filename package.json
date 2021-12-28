@@ -78,6 +78,7 @@
     "lint": "stylelint src/**/*.scss && eslint src test cypress tools *.js *.ts",
     "build": "gulp build",
     "test": "cypress run --headless",
+    "check-types": "tsc --noEmit -p jsconfig.json",
     "cypress:open": "cypress open"
   },
   "funding": {

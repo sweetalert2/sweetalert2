@@ -22,18 +22,22 @@ const handleToastClick = (instance, domCache, dismissWith) => {
   // Closing toast by internal click
   domCache.popup.onclick = () => {
     const innerParams = privateProps.innerParams.get(instance)
-    if (
-      innerParams.showConfirmButton ||
-      innerParams.showDenyButton ||
-      innerParams.showCancelButton ||
-      innerParams.showCloseButton ||
-      innerParams.timer ||
-      innerParams.input
-    ) {
+    if (innerParams && (isAnyButtonShown(innerParams) || innerParams.timer || innerParams.input)) {
       return
     }
     dismissWith(DismissReason.close)
   }
+}
+
+/**
+ * @param {*} innerParams
+ * @returns {boolean}
+ */
+const isAnyButtonShown = (innerParams) => {
+  return innerParams.showConfirmButton ||
+    innerParams.showDenyButton ||
+    innerParams.showCancelButton ||
+    innerParams.showCloseButton
 }
 
 let ignoreOutsideClick = false

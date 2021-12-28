@@ -1,8 +1,8 @@
-import * as dom from '../utils/dom/index.js'
-import { DismissReason } from '../utils/DismissReason.js'
-import { callIfFunction } from '../utils/utils.js'
-import { clickConfirm } from '../staticMethods/dom.js'
-import privateProps from '../privateProps.js'
+import * as dom from './utils/dom/index.js'
+import { DismissReason } from './utils/DismissReason.js'
+import { callIfFunction } from './utils/utils.js'
+import { clickConfirm } from './staticMethods/dom.js'
+import privateProps from './privateProps.js'
 
 export const addKeydownHandler = (instance, globalState, innerParams, dismissWith) => {
   if (globalState.keydownTarget && globalState.keydownHandlerAdded) {

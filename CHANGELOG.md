@@ -1,3 +1,10 @@
+## [11.3.1](https://github.com/sweetalert2/sweetalert2/compare/v11.3.0...v11.3.1) (2021-12-28)
+
+
+### Bug Fixes
+
+* move _main() to class SweetAlert ([#2372](https://github.com/sweetalert2/sweetalert2/issues/2372)) ([bb11ce2](https://github.com/sweetalert2/sweetalert2/commit/bb11ce23ba6a57a64ad515ec03f844278ed95948))
+
 # [11.3.0](https://github.com/sweetalert2/sweetalert2/compare/v11.2.2...v11.3.0) (2021-12-05)
 
 

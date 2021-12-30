@@ -1,3 +1,10 @@
+## [11.3.2](https://github.com/sweetalert2/sweetalert2/compare/v11.3.1...v11.3.2) (2021-12-30)
+
+
+### Bug Fixes
+
+* enable type checking ([#2373](https://github.com/sweetalert2/sweetalert2/issues/2373)) ([1f052ba](https://github.com/sweetalert2/sweetalert2/commit/1f052baf691b185ee84752424b95826eda991da6))
+
 ## [11.3.1](https://github.com/sweetalert2/sweetalert2/compare/v11.3.0...v11.3.1) (2021-12-28)
 
 

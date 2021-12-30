@@ -152,7 +152,7 @@ const toastIncompatibleParams = [
 
 /**
  * Is valid parameter
- * @param {String} paramName
+ * @param {string} paramName
  */
 export const isValidParameter = (paramName) => {
   return Object.prototype.hasOwnProperty.call(defaultParams, paramName)
@@ -160,7 +160,7 @@ export const isValidParameter = (paramName) => {
 
 /**
  * Is valid parameter for Swal.update() method
- * @param {String} paramName
+ * @param {string} paramName
  */
 export const isUpdatableParameter = (paramName) => {
   return updatableParams.indexOf(paramName) !== -1
@@ -168,7 +168,7 @@ export const isUpdatableParameter = (paramName) => {
 
 /**
  * Is deprecated parameter
- * @param {String} paramName
+ * @param {string} paramName
  */
 export const isDeprecatedParameter = (paramName) => {
   return deprecatedParams[paramName]

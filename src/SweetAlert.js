@@ -28,6 +28,7 @@ class SweetAlert {
 
     currentInstance = this
 
+    // @ts-ignore
     const outerParams = Object.freeze(this.constructor.argsToParams(args))
 
     Object.defineProperties(this, {
@@ -39,6 +40,7 @@ class SweetAlert {
       }
     })
 
+    // @ts-ignore
     const promise = this._main(this.params)
     privateProps.promise.set(this, promise)
   }
@@ -202,7 +204,7 @@ const focusButton = (domCache, innerParams) => {
 }
 
 const blurActiveElement = () => {
-  if (document.activeElement && typeof document.activeElement.blur === 'function') {
+  if (document.activeElement instanceof HTMLElement && typeof document.activeElement.blur === 'function') {
     document.activeElement.blur()
   }
 }

@@ -29,7 +29,6 @@ function validateCustomTargetElement (params) {
  * Set type, text and actions on popup
  *
  * @param params
- * @returns {boolean}
  */
 export default function setParameters (params) {
   setDefaultInputValidators(params)

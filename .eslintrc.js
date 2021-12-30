@@ -5,5 +5,6 @@ module.exports = {
   ],
   rules: {
     'import/extensions': ['error', 'always'],
+    '@typescript-eslint/ban-ts-comment': 0,
   }
 }

@@ -157,8 +157,9 @@ renderInputType.radio = (radio) => {
 }
 
 renderInputType.checkbox = (checkboxContainer, params) => {
+  /** @type {HTMLInputElement} */
   const checkbox = dom.getInput(dom.getPopup(), 'checkbox')
-  checkbox.value = 1
+  checkbox.value = '1'
   checkbox.id = swalClasses.checkbox
   checkbox.checked = Boolean(params.inputValue)
   const label = checkboxContainer.querySelector('span')

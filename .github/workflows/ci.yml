@@ -24,6 +24,9 @@ jobs:
     - name: Run linters
       run: yarn lint
 
+    - name: Check types
+      run: yarn check-types
+
     - name: Run tests in Chrome
       run: yarn test --browser chrome
 

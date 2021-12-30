@@ -2,6 +2,11 @@ import { swalClasses } from '../classes.js'
 import { uniqueArray, toArray } from '../utils.js'
 import { isVisible, hasClass } from './domUtils.js'
 
+/**
+ * Gets the popup container which contains the backdrop and the popup itself.
+ *
+ * @returns {HTMLElement | null}
+ */
 export const getContainer = () => document.body.querySelector(`.${swalClasses.container}`)
 
 export const elementBySelector = (selectorString) => {

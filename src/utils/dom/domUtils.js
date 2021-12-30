@@ -7,7 +7,14 @@ export const states = {
   previousBodyPadding: null
 }
 
-export const setInnerHtml = (elem, html) => { // #1926
+/**
+ * Securely set innerHTML of an element
+ * https://github.com/sweetalert2/sweetalert2/issues/1926
+ *
+ * @param {HTMLElement} elem
+ * @param {string} html
+ */
+export const setInnerHtml = (elem, html) => {
   elem.textContent = ''
   if (html) {
     const parser = new DOMParser()
@@ -21,6 +28,11 @@ export const setInnerHtml = (elem, html) => { // #1926
   }
 }
 
+/**
+ * @param {HTMLElement} elem
+ * @param {string} className
+ * @returns {boolean}
+ */
 export const hasClass = (elem, className) => {
   if (!className) {
     return false
@@ -58,6 +70,11 @@ export const applyCustomClass = (elem, params, className) => {
   }
 }
 
+/**
+ * @param {HTMLElement} popup
+ * @param {string} inputType
+ * @returns {HTMLInputElement | null}
+ */
 export const getInput = (popup, inputType) => {
   if (!inputType) {
     return null
@@ -66,7 +83,7 @@ export const getInput = (popup, inputType) => {
     case 'select':
     case 'textarea':
     case 'file':
-      return getChildByClass(popup, swalClasses[inputType])
+      return popup.querySelector(`.${swalClasses[inputType]}`)
     case 'checkbox':
       return popup.querySelector(`.${swalClasses.checkbox} input`)
     case 'radio':
@@ -75,10 +92,13 @@ export const getInput = (popup, inputType) => {
     case 'range':
       return popup.querySelector(`.${swalClasses.range} input`)
     default:
-      return getChildByClass(popup, swalClasses.input)
+      return popup.querySelector(`.${swalClasses.input}`)
   }
 }
 
+/**
+ * @param {HTMLInputElement} input
+ */
 export const focusInput = (input) => {
   input.focus()
 
@@ -91,6 +111,11 @@ export const focusInput = (input) => {
   }
 }
 
+/**
+ * @param {HTMLElement | HTMLElement[] | null} target
+ * @param {string | string[]} classList
+ * @param {boolean} condition
+ */
 export const toggleClass = (target, classList, condition) => {
   if (!target || !classList) {
     return
@@ -99,7 +124,7 @@ export const toggleClass = (target, classList, condition) => {
     classList = classList.split(/\s+/).filter(Boolean)
   }
   classList.forEach((className) => {
-    if (target.forEach) {
+    if (Array.isArray(target)) {
       target.forEach((elem) => {
         condition ? elem.classList.add(className) : elem.classList.remove(className)
       })
@@ -109,22 +134,41 @@ export const toggleClass = (target, classList, condition) => {
   })
 }
 
+/**
+ * @param {HTMLElement | HTMLElement[] | null} target
+ * @param {string | string[]} classList
+ */
 export const addClass = (target, classList) => {
   toggleClass(target, classList, true)
 }
 
+/**
+ * @param {HTMLElement | HTMLElement[] | null} target
+ * @param {string | string[]} classList
+ */
 export const removeClass = (target, classList) => {
   toggleClass(target, classList, false)
 }
 
+/**
+ * @param {HTMLElement} elem
+ * @param {string} className
+ * @returns {HTMLElement | null}
+ */
 export const getChildByClass = (elem, className) => {
-  for (let i = 0; i < elem.childNodes.length; i++) {
-    if (hasClass(elem.childNodes[i], className)) {
-      return elem.childNodes[i]
+  const childNodes = toArray(elem.childNodes)
+  for (let i = 0; i < childNodes.length; i++) {
+    if (hasClass(childNodes[i], className)) {
+      return childNodes[i]
     }
   }
 }
 
+/**
+ * @param {HTMLElement} elem
+ * @param {string} property
+ * @param {*} value
+ */
 export const applyNumericalStyle = (elem, property, value) => {
   if (value === `${parseInt(value)}`) {
     value = parseInt(value)
@@ -136,10 +180,17 @@ export const applyNumericalStyle = (elem, property, value) => {
   }
 }
 
+/**
+ * @param {HTMLElement} elem
+ * @param {string} display
+ */
 export const show = (elem, display = 'flex') => {
   elem.style.display = display
 }
 
+/**
+ * @param {HTMLElement} elem
+ */
 export const hide = (elem) => {
   elem.style.display = 'none'
 }
@@ -192,7 +243,7 @@ export const stopTimerProgressBar = () => {
   timerProgressBar.style.removeProperty('transition')
   timerProgressBar.style.width = '100%'
   const timerProgressBarFullWidth = parseInt(window.getComputedStyle(timerProgressBar).width)
-  const timerProgressBarPercent = parseInt(timerProgressBarWidth / timerProgressBarFullWidth * 100)
+  const timerProgressBarPercent = timerProgressBarWidth / timerProgressBarFullWidth * 100
   timerProgressBar.style.removeProperty('transition')
   timerProgressBar.style.width = `${timerProgressBarPercent}%`
 }

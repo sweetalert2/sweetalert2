@@ -3,7 +3,7 @@ import { getContainer, getPopup } from './getters.js'
 import { addClass, removeClass, getChildByClass, setInnerHtml } from './domUtils.js'
 import { isNodeEnv } from '../isNodeEnv.js'
 import { error } from '../utils.js'
-import sweetAlert from '../../sweetalert2.js'
+import globalState from '../../globalState.js'
 
 const sweetHTML = `
  <div aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses['html-container']}" class="${swalClasses.popup}" tabindex="-1">
@@ -60,9 +60,7 @@ const resetOldContainer = () => {
 }
 
 const resetValidationMessage = () => {
-  if (sweetAlert.isVisible()) {
-    sweetAlert.resetValidationMessage()
-  }
+  globalState.currentInstance.resetValidationMessage()
 }
 
 const addInputChangeListeners = () => {

@@ -12,7 +12,7 @@ export const renderInput = (instance, params) => {
 
   inputTypes.forEach((inputType) => {
     const inputClass = swalClasses[inputType]
-    const inputContainer = dom.getChildByClass(popup, inputClass)
+    const inputContainer = dom.getDirectChildByClass(popup, inputClass)
 
     // set attributes
     setAttributes(inputType, params.inputAttributes)
@@ -99,7 +99,7 @@ const setInputLabel = (input, prependTo, params) => {
 
 const getInputContainer = (inputType) => {
   const inputClass = swalClasses[inputType] ? swalClasses[inputType] : swalClasses.input
-  return dom.getChildByClass(dom.getPopup(), inputClass)
+  return dom.getDirectChildByClass(dom.getPopup(), inputClass)
 }
 
 const renderInputType = {}

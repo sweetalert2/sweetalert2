@@ -1,6 +1,6 @@
 import * as dom from './index.js'
 import { swalClasses } from '../classes.js'
-import { getChildByClass } from './domUtils.js'
+import { getDirectChildByClass } from './domUtils.js'
 import { asPromise, error, hasToPromiseFn, isPromise } from '../utils.js'
 import { showLoading } from '../../staticMethods/showLoading.js'
 
@@ -75,7 +75,7 @@ const handleInputValue = (instance, params) => {
 
 const populateInputOptions = {
   select: (popup, inputOptions, params) => {
-    const select = getChildByClass(popup, swalClasses.select)
+    const select = getDirectChildByClass(popup, swalClasses.select)
     const renderOption = (parent, optionLabel, optionValue) => {
       const option = document.createElement('option')
       option.value = optionValue
@@ -104,7 +104,7 @@ const populateInputOptions = {
   },
 
   radio: (popup, inputOptions, params) => {
-    const radio = getChildByClass(popup, swalClasses.radio)
+    const radio = getDirectChildByClass(popup, swalClasses.radio)
     inputOptions.forEach(inputOption => {
       const radioValue = inputOption[0]
       const radioLabel = inputOption[1]

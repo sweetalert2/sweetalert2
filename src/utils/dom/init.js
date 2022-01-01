@@ -1,6 +1,6 @@
 import { swalClasses } from '../classes.js'
 import { getContainer, getPopup } from './getters.js'
-import { addClass, removeClass, getChildByClass, setInnerHtml } from './domUtils.js'
+import { addClass, removeClass, getDirectChildByClass, setInnerHtml } from './domUtils.js'
 import { isNodeEnv } from '../isNodeEnv.js'
 import { error } from '../utils.js'
 import globalState from '../../globalState.js'
@@ -66,13 +66,13 @@ const resetValidationMessage = () => {
 const addInputChangeListeners = () => {
   const popup = getPopup()
 
-  const input = getChildByClass(popup, swalClasses.input)
-  const file = getChildByClass(popup, swalClasses.file)
+  const input = getDirectChildByClass(popup, swalClasses.input)
+  const file = getDirectChildByClass(popup, swalClasses.file)
   const range = popup.querySelector(`.${swalClasses.range} input`)
   const rangeOutput = popup.querySelector(`.${swalClasses.range} output`)
-  const select = getChildByClass(popup, swalClasses.select)
+  const select = getDirectChildByClass(popup, swalClasses.select)
   const checkbox = popup.querySelector(`.${swalClasses.checkbox} input`)
-  const textarea = getChildByClass(popup, swalClasses.textarea)
+  const textarea = getDirectChildByClass(popup, swalClasses.textarea)
 
   input.oninput = resetValidationMessage
   file.onchange = resetValidationMessage

@@ -379,6 +379,28 @@ describe('Input', () => {
     Swal.fire({ input: 'select', inputOptions: 'invalid-input-options' })
     expect(spy.calledWith('SweetAlert2: Unexpected type of inputOptions! Expected object, Map or Promise, got string')).to.be.true
   })
+
+  it('multiple inputs', (done) => {
+    Swal.fire({
+      html:
+        '<input id="swal-input1" class="swal2-input">' +
+        '<input id="swal-input2" class="swal2-input">',
+      preConfirm: () => {
+        return [
+          document.getElementById('swal-input1').value,
+          document.getElementById('swal-input2').value
+        ]
+      },
+      didOpen: () => {
+        document.getElementById('swal-input1').value = 'foo'
+        document.getElementById('swal-input2').value = 'bar'
+        Swal.clickConfirm()
+      }
+    }).then(result => {
+      expect(result.value).to.eql(['foo', 'bar'])
+      done()
+    })
+  })
 })
 
 describe('Validation', () => {

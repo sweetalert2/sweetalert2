@@ -1,3 +1,10 @@
+## [11.3.3](https://github.com/sweetalert2/sweetalert2/compare/v11.3.2...v11.3.3) (2022-01-01)
+
+
+### Bug Fixes
+
+* getInput() ([#2376](https://github.com/sweetalert2/sweetalert2/issues/2376)) ([f308103](https://github.com/sweetalert2/sweetalert2/commit/f3081037492ccb546c0b8ce1d9195907c0161c87))
+
 ## [11.3.2](https://github.com/sweetalert2/sweetalert2/compare/v11.3.1...v11.3.2) (2021-12-30)
 
 

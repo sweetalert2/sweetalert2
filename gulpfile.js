@@ -73,7 +73,7 @@ if (typeof this !== 'undefined' && this.Sweetalert2){\
       },
       // https://github.com/rollup/rollup/issues/2271
       onwarn (warning, rollupWarn) {
-        if (warning.code !== 'CIRCULAR_DEPENDENCY') {
+        if (warning.code !== 'CIRCULAR_DEPENDENCY' && warning.code !== 'THIS_IS_UNDEFINED') {
           rollupWarn(warning)
         }
       },

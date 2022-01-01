@@ -83,16 +83,16 @@ export const getInput = (popup, inputType) => {
     case 'select':
     case 'textarea':
     case 'file':
-      return popup.querySelector(`.${swalClasses[inputType]}`)
+      return popup.querySelector(`.${swalClasses.popup} > .${swalClasses[inputType]}`)
     case 'checkbox':
-      return popup.querySelector(`.${swalClasses.checkbox} input`)
+      return popup.querySelector(`.${swalClasses.popup} > .${swalClasses.checkbox} input`)
     case 'radio':
-      return popup.querySelector(`.${swalClasses.radio} input:checked`) ||
-        popup.querySelector(`.${swalClasses.radio} input:first-child`)
+      return popup.querySelector(`.${swalClasses.popup} > .${swalClasses.radio} input:checked`) ||
+        popup.querySelector(`.${swalClasses.popup} > .${swalClasses.radio} input:first-child`)
     case 'range':
-      return popup.querySelector(`.${swalClasses.range} input`)
+      return popup.querySelector(`.${swalClasses.popup} > .${swalClasses.range} input`)
     default:
-      return popup.querySelector(`.${swalClasses.input}`)
+      return popup.querySelector(`.${swalClasses.popup} > .${swalClasses.input}`)
   }
 }
 
@@ -151,11 +151,13 @@ export const removeClass = (target, classList) => {
 }
 
 /**
+ * Get direct child of an element by class name
+ *
  * @param {HTMLElement} elem
  * @param {string} className
  * @returns {HTMLElement | null}
  */
-export const getChildByClass = (elem, className) => {
+export const getDirectChildByClass = (elem, className) => {
   const childNodes = toArray(elem.childNodes)
   for (let i = 0; i < childNodes.length; i++) {
     if (hasClass(childNodes[i], className)) {

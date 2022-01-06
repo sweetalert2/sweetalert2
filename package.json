@@ -16,6 +16,7 @@
     "@sweetalert2/execute": "^1.0.0",
     "@sweetalert2/stylelint-config": "^2.0.6",
     "browser-sync": "^2.27.7",
+    "cspell": "^5.14.0",
     "cypress": "^9.2.0",
     "eslint": "^8.6.0",
     "eslint-plugin-cypress": "^2.12.1",
@@ -75,7 +76,7 @@
   ],
   "scripts": {
     "start": "gulp develop --continue-on-error --skip-minification --skip-standalone",
-    "lint": "stylelint src/**/*.scss && eslint src test cypress tools *.js *.ts",
+    "lint": "stylelint src/**/*.scss && eslint src test cypress tools *.js *.ts && cspell lint 'src/**/*.js' --no-progress --no-summary",
     "build": "gulp build",
     "test": "cypress run --headless",
     "check-types": "tsc --noEmit -p jsconfig.json",

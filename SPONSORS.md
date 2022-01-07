@@ -1,6 +1,6 @@
 # Sponsors
 
-Sponsor is a company or a person who is supporting SweetAlert2 with 19 USD per month or more [via GitHub Sponsors](https://github.com/sponsors/limonte) or [via PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TKTWHJGUWLR7E). Sponsors are listed in these places:
+Sponsor is a company or a person who is supporting SweetAlert2 with $19 per month [via GitHub Sponsors](https://github.com/sponsors/limonte) or [via PayPal](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=UW5EA4KTHM4B6). Sponsors are listed in these places:
 
 - in this document
 - in [the official repo README](https://github.com/sweetalert2/sweetalert2#sponsors) (20K+ unique visitors per month)
@@ -11,17 +11,20 @@ All sponsors have priority support via GitHub issues.
 
 For all questions related to sponsorship please contact me via email limon.monte@protonmail.com
 
+# How to become a sponsor
+
+1. Set up the $19 per month sponsorship [via GitHub Sponsors](https://github.com/sponsors/limonte) or [via PayPal](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=UW5EA4KTHM4B6)
+2. Send your logo and link to limon.monte@protonmail.com and I will publish it in the same day
+
 # Our Sponsors
 
-[<img src="https://sweetalert2.github.io/images/sponsors/flowcrypt-banner.png">](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=banner)
-
-[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md) | [<img src="https://avatars2.githubusercontent.com/u/28631236?s=80&v=4" width="80">](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/celltrackingapps.png" width="80">](https://celltrackingapps.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/mybitcoinslots.png" width="80">](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/torc-stark.png" width="80">](https://torcstark.com/)
+[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md#sponsors) | [<img src="https://avatars2.githubusercontent.com/u/28631236?s=80&v=4" width="80">](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/phatoil.png" width="80">](https://phatoil.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/celltrackingapps.png" width="80">](https://celltrackingapps.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/mybitcoinslots.png" width="80">](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo)
 -|-|-|-|-
-[Become a sponsor](SPONSORS.md) | [FlowCrypt](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [Phone Tracking Apps](https://celltrackingapps.com) | [My Bitcoin slots](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo) | [TorcStark](https://torcstark.com/)
+[Become a sponsor](SPONSORS.md) | [FlowCrypt](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [Pure Essential Oil](https://phatoil.com/) | [Phone Tracking Apps](https://celltrackingapps.com) | [My Bitcoin slots](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo)
 
-[<img src="https://sweetalert2.github.io/images/sponsors/coderubik.png" width="80">](https://coderubik.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/halvinlaina.png" width="80">](https://halvinlaina.fi/) | [<img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80">](https://github.com/tiagostutz) | [<img src="https://sweetalert2.github.io/images/sponsors/sebaebc.png" width="80">](https://github.com/sebaebc)
--|-|-|-
-[Code Rubik](https://coderubik.com/?utm_source=sweetalert2&utm_medium=logo) | [Halvin Laina](https://halvinlaina.fi/) | [Tiago de Oliveira Stutz](https://github.com/tiagostutz) | [SebaEBC](https://github.com/sebaebc)
+[<img src="https://sweetalert2.github.io/images/sponsors/torc-stark.png" width="80">](https://torcstark.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/coderubik.png" width="80">](https://coderubik.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/halvinlaina.png" width="80">](https://halvinlaina.fi/) | [<img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80">](https://github.com/tiagostutz) | [<img src="https://sweetalert2.github.io/images/sponsors/sebaebc.png" width="80">](https://github.com/sebaebc)
+-|-|-|-|-
+[TorcStark](https://torcstark.com/) | [Code Rubik](https://coderubik.com/?utm_source=sweetalert2&utm_medium=logo) | [Halvin Laina](https://halvinlaina.fi/) | [Tiago de Oliveira Stutz](https://github.com/tiagostutz) | [SebaEBC](https://github.com/sebaebc)
 
 NSFW Sponsors
 -------------

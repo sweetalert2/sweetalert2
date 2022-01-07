@@ -79,7 +79,7 @@ const fixScrollContainer = (container, scrollbarPadding, initialBodyOverflow) =>
 
 const addClasses = (container, popup, params) => {
   dom.addClass(container, params.showClass.backdrop)
-  // the workaround with setting/unsetting opacity is needed for #2019 and 2059
+  // this workaround with opacity is needed for https://github.com/sweetalert2/sweetalert2/issues/2059
   popup.style.setProperty('opacity', '0', 'important')
   dom.show(popup, 'grid')
   setTimeout(() => {

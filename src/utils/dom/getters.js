@@ -74,11 +74,11 @@ export const getFocusableElements = () => {
   )
   // sort according to tabindex
     .sort((a, b) => {
-      a = parseInt(a.getAttribute('tabindex'))
-      b = parseInt(b.getAttribute('tabindex'))
-      if (a > b) {
+      const tabindexA = parseInt(a.getAttribute('tabindex'))
+      const tabindexB = parseInt(b.getAttribute('tabindex'))
+      if (tabindexA > tabindexB) {
         return 1
-      } else if (a < b) {
+      } else if (tabindexA < tabindexB) {
         return -1
       }
       return 0

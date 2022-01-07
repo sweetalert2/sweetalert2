@@ -16,27 +16,28 @@ export const uniqueArray = (arr) => {
 
 /**
  * Capitalize the first letter of a string
- * @param str
+ * @param {string} str
+ * @returns {string}
  */
 export const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
 /**
- * Convert NodeList to Array
- * @param nodeList
+ * @param {NodeList | HTMLCollection | NamedNodeMap} nodeList
+ * @returns {array}
  */
 export const toArray = (nodeList) => Array.prototype.slice.call(nodeList)
 
 /**
- * Standardise console warnings
- * @param message
+ * Standardize console warnings
+ * @param {string | array} message
  */
 export const warn = (message) => {
   console.warn(`${consolePrefix} ${typeof message === 'object' ? message.join(' ') : message}`)
 }
 
 /**
- * Standardise console errors
- * @param message
+ * Standardize console errors
+ * @param {string} message
  */
 export const error = (message) => {
   console.error(`${consolePrefix} ${message}`)
@@ -51,7 +52,7 @@ const previousWarnOnceMessages = []
 
 /**
  * Show a console warning, but only if it hasn't already been shown
- * @param message
+ * @param {string} message
  */
 export const warnOnce = (message) => {
   if (!previousWarnOnceMessages.includes(message)) {

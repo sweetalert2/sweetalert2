@@ -75,7 +75,7 @@ const deny = (instance, value) => {
   }
 
   if (innerParams.preDeny) {
-    privateProps.awaitingPromise.set(instance || this, true) // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesnt get destroyed until the result from this preDeny's promise is received
+    privateProps.awaitingPromise.set(instance || this, true) // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preDeny's promise is received
     const preDenyPromise = Promise.resolve().then(() => asPromise(
       innerParams.preDeny(value, innerParams.validationMessage))
     )
@@ -110,7 +110,7 @@ const confirm = (instance, value) => {
 
   if (innerParams.preConfirm) {
     instance.resetValidationMessage()
-    privateProps.awaitingPromise.set(instance || this, true) // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesnt get destroyed until the result from this preConfirm's promise is received
+    privateProps.awaitingPromise.set(instance || this, true) // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preConfirm's promise is received
     const preConfirmPromise = Promise.resolve().then(() => asPromise(
       innerParams.preConfirm(value, innerParams.validationMessage))
     )

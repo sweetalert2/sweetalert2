@@ -7,7 +7,7 @@ export function _destroy () {
   const innerParams = privateProps.innerParams.get(this)
 
   if (!innerParams) {
-    disposeWeakMaps(this) // The WeakMaps might have been partly destroyed, we must recall it to dispose any remaining weakmaps #2335
+    disposeWeakMaps(this) // The WeakMaps might have been partly destroyed, we must recall it to dispose any remaining WeakMaps #2335
     return // This instance has already been destroyed
   }
 

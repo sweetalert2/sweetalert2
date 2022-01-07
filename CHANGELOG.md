@@ -1,3 +1,10 @@
+## [11.3.4](https://github.com/sweetalert2/sweetalert2/compare/v11.3.3...v11.3.4) (2022-01-07)
+
+
+### Bug Fixes
+
+* grammar with cspell + add some types ([#2379](https://github.com/sweetalert2/sweetalert2/issues/2379)) ([c986e40](https://github.com/sweetalert2/sweetalert2/commit/c986e4028874cf1b8cd1622ead15086353fcfe79))
+
 ## [11.3.3](https://github.com/sweetalert2/sweetalert2/compare/v11.3.2...v11.3.3) (2022-01-01)
 
 

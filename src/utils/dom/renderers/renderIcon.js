@@ -48,14 +48,14 @@ const applyStyles = (icon, params) => {
   setColor(icon, params)
 
   // Success icon background color
-  adjustSuccessIconBackgoundColor()
+  adjustSuccessIconBackgroundColor()
 
   // Custom class
   dom.applyCustomClass(icon, params, 'icon')
 }
 
 // Adjust success icon background color to match the popup background color
-const adjustSuccessIconBackgoundColor = () => {
+const adjustSuccessIconBackgroundColor = () => {
   const popup = dom.getPopup()
   const popupBackgroundColor = window.getComputedStyle(popup).getPropertyValue('background-color')
   const successIconParts = popup.querySelectorAll('[class^=swal2-success-circular-line], .swal2-success-fix')

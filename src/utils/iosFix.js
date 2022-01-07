@@ -12,13 +12,19 @@ export const iOSfix = () => {
     document.body.style.top = `${offset * -1}px`
     dom.addClass(document.body, swalClasses.iosfix)
     lockBodyScroll()
-    addBottomPaddingForTallPopups() // #1948
+    addBottomPaddingForTallPopups()
   }
 }
 
+/**
+ * https://github.com/sweetalert2/sweetalert2/issues/1948
+ */
 const addBottomPaddingForTallPopups = () => {
-  const safari = !navigator.userAgent.match(/(CriOS|FxiOS|EdgiOS|YaBrowser|UCBrowser)/i)
-  if (safari) {
+  const ua = navigator.userAgent
+  const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i)
+  const webkit = !!ua.match(/WebKit/i)
+  const iOSSafari = iOS && webkit && !ua.match(/CriOS/i)
+  if (iOSSafari) {
     const bottomPanelHeight = 44
     if (dom.getPopup().scrollHeight > window.innerHeight - bottomPanelHeight) {
       dom.getContainer().style.paddingBottom = `${bottomPanelHeight}px`
@@ -43,7 +49,7 @@ const lockBodyScroll = () => { // #1246
 const shouldPreventTouchMove = (event) => {
   const target = event.target
   const container = dom.getContainer()
-  if (isStylys(event) || isZoom(event)) {
+  if (isStylus(event) || isZoom(event)) {
     return false
   }
   if (target === container) {
@@ -63,7 +69,13 @@ const shouldPreventTouchMove = (event) => {
   return false
 }
 
-const isStylys = (event) => { // #1786
+/**
+ * https://github.com/sweetalert2/sweetalert2/issues/1786
+ *
+ * @param {*} event
+ * @returns {boolean}
+ */
+const isStylus = (event) => {
   return event.touches && event.touches.length && event.touches[0].touchType === 'stylus'
 }
 

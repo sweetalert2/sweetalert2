@@ -28,14 +28,13 @@ const getSwalParams = (templateContent) => {
   toArray(templateContent.querySelectorAll('swal-param')).forEach((param) => {
     showWarningsForAttributes(param, ['name', 'value'])
     const paramName = param.getAttribute('name')
-    let value = param.getAttribute('value')
+    const value = param.getAttribute('value')
     if (typeof defaultParams[paramName] === 'boolean' && value === 'false') {
-      value = false
+      result[paramName] = false
     }
     if (typeof defaultParams[paramName] === 'object') {
-      value = JSON.parse(value)
+      result[paramName] = JSON.parse(value)
     }
-    result[paramName] = value
   })
   return result
 }
@@ -153,6 +152,10 @@ const showWarningsForElements = (template) => {
   })
 }
 
+/**
+ * @param {HTMLElement} el
+ * @param {string[]} allowedAttributes
+ */
 const showWarningsForAttributes = (el, allowedAttributes) => {
   toArray(el.attributes).forEach((attribute) => {
     if (allowedAttributes.indexOf(attribute.name) === -1) {

@@ -1,7 +1,7 @@
 import { isVisible } from './utils/dom/domUtils.js'
 import { getInputValue } from './utils/dom/inputUtils.js'
 import { getDenyButton, getValidationMessage } from './utils/dom/getters.js'
-import { asPromise } from './utils/utils.js'
+import { asPromise, capitalizeFirstLetter, error } from './utils/utils.js'
 import { showLoading } from './staticMethods/showLoading.js'
 import { DismissReason } from './utils/DismissReason.js'
 import privateProps from './privateProps.js'
@@ -33,6 +33,9 @@ export const handleCancelButtonClick = (instance, dismissWith) => {
 
 const handleConfirmOrDenyWithInput = (instance, type /* 'confirm' | 'deny' */) => {
   const innerParams = privateProps.innerParams.get(instance)
+  if (!innerParams.input) {
+    return error(`The "input" parameter is needed to be set when using returnInputValueOn${capitalizeFirstLetter(type)}`)
+  }
   const inputValue = getInputValue(instance, innerParams)
   if (innerParams.inputValidator) {
     handleInputValidator(instance, inputValue, type)

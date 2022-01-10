@@ -342,6 +342,16 @@ describe('Input', () => {
     Swal.clickDeny()
   })
 
+  it(`returnInputValueOnDeny: true should throw warning if the input params isn't set`, () => {
+    const spy = cy.spy(console, 'error')
+    SwalWithoutAnimation.fire({
+      showDenyButton: true,
+      returnInputValueOnDeny: true,
+    })
+    Swal.clickDeny()
+    expect(spy.calledWith('SweetAlert2: The "input" parameter is needed to be set when using returnInputValueOnDeny')).to.be.true
+  })
+
   it('disable/enable input', () => {
     Swal.fire('(disable/enable)Input should not fail if there is no input')
     Swal.disableInput()

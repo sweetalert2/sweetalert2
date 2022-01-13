@@ -1,3 +1,10 @@
+## [11.3.5](https://github.com/sweetalert2/sweetalert2/compare/v11.3.4...v11.3.5) (2022-01-13)
+
+
+### Bug Fixes
+
+* throw error when returnInputValueOnDeny is used without input ([#2381](https://github.com/sweetalert2/sweetalert2/issues/2381)) ([a09fc87](https://github.com/sweetalert2/sweetalert2/commit/a09fc870a9aef8bfb257c3d0dd81a1cd667d3785))
+
 ## [11.3.4](https://github.com/sweetalert2/sweetalert2/compare/v11.3.3...v11.3.4) (2022-01-07)
 
 

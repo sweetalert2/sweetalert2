@@ -8,6 +8,7 @@ export const getTemplateParams = (params) => {
   if (!template) {
     return {}
   }
+  /** @type {DocumentFragment} */
   const templateContent = template.content
 
   showWarningsForElements(templateContent)
@@ -23,6 +24,9 @@ export const getTemplateParams = (params) => {
   return result
 }
 
+/**
+ * @param {DocumentFragment} templateContent
+ */
 const getSwalParams = (templateContent) => {
   const result = {}
   toArray(templateContent.querySelectorAll('swal-param')).forEach((param) => {
@@ -39,6 +43,9 @@ const getSwalParams = (templateContent) => {
   return result
 }
 
+/**
+ * @param {DocumentFragment} templateContent
+ */
 const getSwalButtons = (templateContent) => {
   const result = {}
   toArray(templateContent.querySelectorAll('swal-button')).forEach((button) => {
@@ -56,8 +63,12 @@ const getSwalButtons = (templateContent) => {
   return result
 }
 
+/**
+ * @param {DocumentFragment} templateContent
+ */
 const getSwalImage = (templateContent) => {
   const result = {}
+  /** @type {HTMLElement} */
   const image = templateContent.querySelector('swal-image')
   if (image) {
     showWarningsForAttributes(image, ['src', 'width', 'height', 'alt'])
@@ -77,8 +88,12 @@ const getSwalImage = (templateContent) => {
   return result
 }
 
+/**
+ * @param {DocumentFragment} templateContent
+ */
 const getSwalIcon = (templateContent) => {
   const result = {}
+  /** @type {HTMLElement} */
   const icon = templateContent.querySelector('swal-icon')
   if (icon) {
     showWarningsForAttributes(icon, ['type', 'color'])
@@ -93,8 +108,12 @@ const getSwalIcon = (templateContent) => {
   return result
 }
 
+/**
+ * @param {DocumentFragment} templateContent
+ */
 const getSwalInput = (templateContent) => {
   const result = {}
+  /** @type {HTMLElement} */
   const input = templateContent.querySelector('swal-input')
   if (input) {
     showWarningsForAttributes(input, ['type', 'label', 'placeholder', 'value'])
@@ -122,10 +141,15 @@ const getSwalInput = (templateContent) => {
   return result
 }
 
+/**
+ * @param {DocumentFragment} templateContent
+ * @param {string[]} paramNames
+ */
 const getSwalStringParams = (templateContent, paramNames) => {
   const result = {}
   for (const i in paramNames) {
     const paramName = paramNames[i]
+    /** @type {HTMLElement} */
     const tag = templateContent.querySelector(paramName)
     if (tag) {
       showWarningsForAttributes(tag, [])
@@ -135,7 +159,10 @@ const getSwalStringParams = (templateContent, paramNames) => {
   return result
 }
 
-const showWarningsForElements = (template) => {
+/**
+ * @param {DocumentFragment} templateContent
+ */
+const showWarningsForElements = (templateContent) => {
   const allowedElements = swalStringParams.concat([
     'swal-param',
     'swal-button',
@@ -144,7 +171,7 @@ const showWarningsForElements = (template) => {
     'swal-input',
     'swal-input-option',
   ])
-  toArray(template.children).forEach((el) => {
+  toArray(templateContent.children).forEach((el) => {
     const tagName = el.tagName.toLowerCase()
     if (allowedElements.indexOf(tagName) === -1) {
       warn(`Unrecognized element <${tagName}>`)

@@ -1,10 +1,9 @@
 import Swal from '../src/sweetalert2'
+import { isVisible } from '../src/utils/dom'
 
 export { default as Swal } from '../src/sweetalert2'
 
 export const $ = document.querySelector.bind(document)
-
-export const { isVisible } = require('../src/utils/dom/domUtils.js')
 
 export const isHidden = (elem) => !isVisible(elem)
 
@@ -15,17 +14,21 @@ export const SwalWithoutAnimation = Swal.mixin({
   showClass: {
     container: '',
     popup: '',
-    icon: ''
+    icon: '',
   },
   hideClass: {
     container: '',
     popup: '',
-    icon: ''
-  }
+    icon: '',
+  },
 })
 
 export const dispatchCustomEvent = (elem, eventName, eventDetail = {}) => {
-  const event = new CustomEvent(eventName, { bubbles: true, cancelable: true, detail: eventDetail })
+  const event = new CustomEvent(eventName, {
+    bubbles: true,
+    cancelable: true,
+    detail: eventDetail,
+  })
   elem.dispatchEvent(event)
 }
 

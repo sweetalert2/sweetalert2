@@ -25,8 +25,8 @@ describe('customClass', () => {
         denyButton: 'deny-button-class',
         cancelButton: 'cancel-button-class',
         loader: 'loader-class',
-        footer: 'footer-class'
-      }
+        footer: 'footer-class',
+      },
     })
     expect(Swal.getContainer().classList.contains('container-class')).to.be.true
     expect(Swal.getPopup().classList.contains('popup-class')).to.be.true
@@ -49,7 +49,7 @@ describe('customClass', () => {
       input: 'checkbox',
       customClass: {
         input: 'input-class',
-      }
+      },
     })
     expect($('.swal2-checkbox').classList.contains('input-class')).to.be.true
     expect(Swal.getInput().classList.contains('input-class')).to.be.false
@@ -60,7 +60,7 @@ describe('customClass', () => {
       title: 'I should have a custom classname',
       customClass: {
         title: 'title-class',
-      }
+      },
     })
     expect(Swal.getTitle().classList.contains('title-class')).to.be.true
   })
@@ -71,9 +71,13 @@ describe('customClass', () => {
       customClass: {
         title: {},
         popup: 14,
-      }
+      },
     })
-    expect(spy.calledWith('SweetAlert2: Invalid type of customClass.title! Expected string or iterable object, got "object"')).to.be.true
-    expect(spy.calledWith('SweetAlert2: Invalid type of customClass.popup! Expected string or iterable object, got "number"')).to.be.true
+    expect(
+      spy.calledWith('SweetAlert2: Invalid type of customClass.title! Expected string or iterable object, got "object"')
+    ).to.be.true
+    expect(
+      spy.calledWith('SweetAlert2: Invalid type of customClass.popup! Expected string or iterable object, got "number"')
+    ).to.be.true
   })
 })

@@ -20,7 +20,7 @@ import globalState from './globalState.js'
 let currentInstance
 
 class SweetAlert {
-  constructor (...args) {
+  constructor(...args) {
     // Prevent run in Node env
     if (typeof window === 'undefined') {
       return
@@ -36,8 +36,8 @@ class SweetAlert {
         value: outerParams,
         writable: false,
         enumerable: true,
-        configurable: true
-      }
+        configurable: true,
+      },
     })
 
     // @ts-ignore
@@ -45,7 +45,7 @@ class SweetAlert {
     privateProps.promise.set(this, promise)
   }
 
-  _main (userParams, mixinParams = {}) {
+  _main(userParams, mixinParams = {}) {
     showWarningsForParams(Object.assign({}, mixinParams, userParams))
 
     if (globalState.currentInstance) {
@@ -79,12 +79,12 @@ class SweetAlert {
   }
 
   // `catch` cannot be the name of a module export, so we define our thenable methods here instead
-  then (onFulfilled) {
+  then(onFulfilled) {
     const promise = privateProps.promise.get(this)
     return promise.then(onFulfilled)
   }
 
-  finally (onFinally) {
+  finally(onFinally) {
     const promise = privateProps.promise.get(this)
     return promise.finally(onFinally)
   }
@@ -144,7 +144,7 @@ const populateDomCache = (instance) => {
     loader: dom.getLoader(),
     closeButton: dom.getCloseButton(),
     validationMessage: dom.getValidationMessage(),
-    progressSteps: dom.getProgressSteps()
+    progressSteps: dom.getProgressSteps(),
   }
   privateProps.domCache.set(instance, domCache)
 
@@ -162,7 +162,8 @@ const setupTimer = (globalState, innerParams, dismissWith) => {
     if (innerParams.timerProgressBar) {
       dom.show(timerProgressBar)
       setTimeout(() => {
-        if (globalState.timeout && globalState.timeout.running) { // timer can be already stopped or unset at this point
+        if (globalState.timeout && globalState.timeout.running) {
+          // timer can be already stopped or unset at this point
           dom.animateTimerProgressBar(innerParams.timer)
         }
       })
@@ -216,7 +217,7 @@ Object.assign(SweetAlert.prototype, instanceMethods)
 Object.assign(SweetAlert, staticMethods)
 
 // Proxy to instance methods to constructor, for now, for backwards compatibility
-Object.keys(instanceMethods).forEach(key => {
+Object.keys(instanceMethods).forEach((key) => {
   SweetAlert[key] = function (...args) {
     if (currentInstance) {
       return currentInstance[key](...args)

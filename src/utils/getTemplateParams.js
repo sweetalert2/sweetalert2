@@ -19,7 +19,7 @@ export const getTemplateParams = (params) => {
     getSwalImage(templateContent),
     getSwalIcon(templateContent),
     getSwalInput(templateContent),
-    getSwalStringParams(templateContent, swalStringParams),
+    getSwalStringParams(templateContent, swalStringParams)
   )
   return result
 }
@@ -188,7 +188,11 @@ const showWarningsForAttributes = (el, allowedAttributes) => {
     if (allowedAttributes.indexOf(attribute.name) === -1) {
       warn([
         `Unrecognized attribute "${attribute.name}" on <${el.tagName.toLowerCase()}>.`,
-        `${allowedAttributes.length ? `Allowed attributes are: ${allowedAttributes.join(', ')}` : 'To set the value, use HTML within the element.'}`
+        `${
+          allowedAttributes.length
+            ? `Allowed attributes are: ${allowedAttributes.join(', ')}`
+            : 'To set the value, use HTML within the element.'
+        }`,
       ])
     }
   })

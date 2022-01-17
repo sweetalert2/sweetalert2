@@ -21,13 +21,15 @@ describe('_destroy()', () => {
   it('should empty the private methods after having received a reject of an async call', (done) => {
     let instance = null
     Swal.fire({
-      preConfirm: () => new Promise((resolve, reject) => cy.wait(500).then(() => reject(new Error('msg3'))))
-    }).then(() => {
-      //
-    }).catch(() => {
-      expect(privateMethods.swalPromiseResolve.get(instance)).to.equal(undefined)
-      done()
+      preConfirm: () => new Promise((resolve, reject) => cy.wait(500).then(() => reject(new Error('msg3')))),
     })
+      .then(() => {
+        //
+      })
+      .catch(() => {
+        expect(privateMethods.swalPromiseResolve.get(instance)).to.equal(undefined)
+        done()
+      })
     instance = globalState.currentInstance
     Swal.clickConfirm()
     Swal.fire({})
@@ -36,7 +38,7 @@ describe('_destroy()', () => {
   it('should empty the private methods after having received a resolve of an async call', (done) => {
     let instance = null
     Swal.fire({
-      preConfirm: () => new Promise((resolve) => cy.wait(500).then(resolve))
+      preConfirm: () => new Promise((resolve) => cy.wait(500).then(resolve)),
     }).then(() => {
       expect(privateMethods.swalPromiseResolve.get(instance)).to.equal(undefined)
       done()
@@ -49,16 +51,17 @@ describe('_destroy()', () => {
   it('should empty the private methods after the result of an async call in preConfirm even when another unrelated swal is fired', (done) => {
     let instance = null
     Swal.fire({
-      preConfirm: () => new Promise((resolve) => {
-        Swal.fire({
-          test: 'Unrelated Swal',
-          didOpen: () => {
-            expect(privateProps.innerParams.get(instance)).to.equal(undefined)
-            expect(privateMethods.swalPromiseResolve.get(instance)).to.not.equal(undefined)
-          }
-        })
-        cy.wait(500).then(resolve)
-      })
+      preConfirm: () =>
+        new Promise((resolve) => {
+          Swal.fire({
+            test: 'Unrelated Swal',
+            didOpen: () => {
+              expect(privateProps.innerParams.get(instance)).to.equal(undefined)
+              expect(privateMethods.swalPromiseResolve.get(instance)).to.not.equal(undefined)
+            },
+          })
+          cy.wait(500).then(resolve)
+        }),
     }).then(() => {
       expect(privateMethods.swalPromiseResolve.get(instance)).to.equal(undefined)
       done()
@@ -69,16 +72,17 @@ describe('_destroy()', () => {
   it('should destroy privateMethods after the result of an async call in preDeny even when another unrelated swal is fired', (done) => {
     let instance = null
     Swal.fire({
-      preDeny: () => new Promise((resolve) => {
-        Swal.fire({
-          test: 'Unrelated Swal',
-          didOpen: () => {
-            expect(privateProps.innerParams.get(instance)).to.equal(undefined)
-            expect(privateMethods.swalPromiseResolve.get(instance)).to.not.equal(undefined)
-          }
-        })
-        cy.wait(500).then(resolve)
-      })
+      preDeny: () =>
+        new Promise((resolve) => {
+          Swal.fire({
+            test: 'Unrelated Swal',
+            didOpen: () => {
+              expect(privateProps.innerParams.get(instance)).to.equal(undefined)
+              expect(privateMethods.swalPromiseResolve.get(instance)).to.not.equal(undefined)
+            },
+          })
+          cy.wait(500).then(resolve)
+        }),
     }).then(() => {
       expect(privateMethods.swalPromiseResolve.get(instance)).to.equal(undefined)
       done()
@@ -99,9 +103,9 @@ describe('_destroy()', () => {
             expect(isResolved).to.equal(false)
             expect(privateMethods.swalPromiseResolve.get(instance)).to.not.equal(undefined)
             Swal.clickConfirm()
-          }
+          },
         })
-      }
+      },
     }).then(() => {
       isResolved = true
       expect(privateMethods.swalPromiseResolve.get(instance)).to.equal(undefined)

@@ -19,7 +19,7 @@ export {
   getTimerProgressBar,
   getFocusableElements,
   getValidationMessage,
-  isLoading
+  isLoading,
 } from '../utils/dom/index.js'
 
 /*

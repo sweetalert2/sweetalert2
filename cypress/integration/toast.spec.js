@@ -18,7 +18,7 @@ describe('Toast', () => {
     const spy = cy.spy(console, 'warn')
 
     Toast.fire({
-      allowOutsideClick: true
+      allowOutsideClick: true,
     })
     expect(spy.calledWith('SweetAlert2: The parameter "allowOutsideClick" is incompatible with toasts')).to.be.true
 
@@ -27,7 +27,7 @@ describe('Toast', () => {
 
   it('toast click closes when no buttons or input are specified', (done) => {
     Toast.fire({
-      showConfirmButton: false
+      showConfirmButton: false,
     }).then((result) => {
       expect(result).to.eql({
         dismiss: Toast.DismissReason.close,
@@ -43,7 +43,7 @@ describe('Toast', () => {
   it('toast click does not close if cancel button is present', (done) => {
     ToastWithoutAnimation.fire({
       showConfirmButton: false,
-      showCancelButton: true
+      showCancelButton: true,
     })
     Toast.getPopup().click()
     setTimeout(() => {
@@ -56,7 +56,7 @@ describe('Toast', () => {
     ToastWithoutAnimation.fire({
       showConfirmButton: false,
       showCancelButton: false,
-      input: 'text'
+      input: 'text',
     })
     Toast.getPopup().click()
     setTimeout(() => {
@@ -74,7 +74,7 @@ describe('Toast', () => {
         expect(document.body.classList.contains('swal2-shown')).to.be.false
         expect(document.body.classList.contains('swal2-toast-shown')).to.be.false
         done()
-      }
+      },
     })
   })
 

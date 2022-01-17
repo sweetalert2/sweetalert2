@@ -1,3 +1,4 @@
+/* eslint @typescript-eslint/no-var-requires: 0 */
 const pify = require('pify')
 const rimraf = require('rimraf')
 const execute = require('@sweetalert2/execute')

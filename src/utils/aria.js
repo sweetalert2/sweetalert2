@@ -8,7 +8,7 @@ import { toArray } from './utils.js'
 
 export const setAriaHidden = () => {
   const bodyChildren = toArray(document.body.children)
-  bodyChildren.forEach(el => {
+  bodyChildren.forEach((el) => {
     if (el === getContainer() || el.contains(getContainer())) {
       return
     }
@@ -22,7 +22,7 @@ export const setAriaHidden = () => {
 
 export const unsetAriaHidden = () => {
   const bodyChildren = toArray(document.body.children)
-  bodyChildren.forEach(el => {
+  bodyChildren.forEach((el) => {
     if (el.hasAttribute('data-previous-aria-hidden')) {
       el.setAttribute('aria-hidden', el.getAttribute('data-previous-aria-hidden'))
       el.removeAttribute('data-previous-aria-hidden')

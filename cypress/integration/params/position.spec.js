@@ -1,14 +1,16 @@
 import { Swal, SwalWithoutAnimation } from '../../utils'
 
 class PositionChecker {
-  constructor (container, offset) {
+  constructor(container, offset) {
     this._offset = offset
-    this._containerTop = (container === window ? 0 : container.offsetTop)
-    this._containerCenter = (container === window) ? window.innerHeight / 2 : container.offsetTop + container.clientHeight / 2
-    this._containerBottom = (container === window) ? window.innerHeight : container.offsetTop + container.clientHeight
-    this._containerLeft = (container === window ? 0 : container.offsetLeft)
-    this._containerMiddle = (container === window) ? window.innerWidth / 2 : container.offsetLeft + container.clientWidth / 2
-    this._containerRight = (container === window) ? window.innerWidth : container.offsetLeft + container.clientWidth
+    this._containerTop = container === window ? 0 : container.offsetTop
+    this._containerCenter =
+      container === window ? window.innerHeight / 2 : container.offsetTop + container.clientHeight / 2
+    this._containerBottom = container === window ? window.innerHeight : container.offsetTop + container.clientHeight
+    this._containerLeft = container === window ? 0 : container.offsetLeft
+    this._containerMiddle =
+      container === window ? window.innerWidth / 2 : container.offsetLeft + container.clientWidth / 2
+    this._containerRight = container === window ? window.innerWidth : container.offsetLeft + container.clientWidth
 
     this._checkFunctions = {
       top: this.isTop.bind(this),
@@ -16,37 +18,37 @@ class PositionChecker {
       bottom: this.isBottom.bind(this),
       left: this.isLeft.bind(this),
       middle: this.isMiddle.bind(this),
-      right: this.isRight.bind(this)
+      right: this.isRight.bind(this),
     }
   }
 
-  isTop (clientRect) {
-    return (Math.abs(clientRect.top - (this._containerTop + this._offset)) < 1)
+  isTop(clientRect) {
+    return Math.abs(clientRect.top - (this._containerTop + this._offset)) < 1
   }
 
-  isCenter (clientRect) {
-    const rectCenter = clientRect.top + (clientRect.height / 2)
-    return (Math.abs(rectCenter - this._containerCenter) < 1)
+  isCenter(clientRect) {
+    const rectCenter = clientRect.top + clientRect.height / 2
+    return Math.abs(rectCenter - this._containerCenter) < 1
   }
 
-  isBottom (clientRect) {
-    return (Math.abs(clientRect.bottom - (this._containerBottom - this._offset)) < 1)
+  isBottom(clientRect) {
+    return Math.abs(clientRect.bottom - (this._containerBottom - this._offset)) < 1
   }
 
-  isLeft (clientRect) {
-    return (Math.abs(clientRect.left - (this._containerLeft + this._offset)) < 1)
+  isLeft(clientRect) {
+    return Math.abs(clientRect.left - (this._containerLeft + this._offset)) < 1
   }
 
-  isMiddle (clientRect) {
-    const clientMiddle = clientRect.left + (clientRect.width / 2)
-    return (Math.abs(clientMiddle - this._containerMiddle) < 1)
+  isMiddle(clientRect) {
+    const clientMiddle = clientRect.left + clientRect.width / 2
+    return Math.abs(clientMiddle - this._containerMiddle) < 1
   }
 
-  isRight (clientRect) {
-    return (Math.abs(clientRect.right - (this._containerRight - this._offset)) < 1)
+  isRight(clientRect) {
+    return Math.abs(clientRect.right - (this._containerRight - this._offset)) < 1
   }
 
-  check (pos, clientRect) {
+  check(pos, clientRect) {
     const verPos = pos.split('-')[0]
     const horPos = pos.split('-')[1] || 'middle'
     return this._checkFunctions[verPos](clientRect) && this._checkFunctions[horPos](clientRect)
@@ -54,9 +56,15 @@ class PositionChecker {
 }
 
 const allowedPostions = [
-  'top-left', 'top', 'top-right',
-  'center-left', 'center', 'center-right',
-  'bottom-left', 'bottom', 'bottom-right'
+  'top-left',
+  'top',
+  'top-right',
+  'center-left',
+  'center',
+  'center-right',
+  'bottom-left',
+  'bottom',
+  'bottom-right',
 ]
 
 describe('position', () => {
@@ -65,10 +73,13 @@ describe('position', () => {
 
     const checkPosition = new PositionChecker(window, 10)
 
-    allowedPostions.forEach(position => {
+    allowedPostions.forEach((position) => {
       SwalWithoutAnimation.fire({ position: position })
       const swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
-      expect(checkPosition.check(position, swalRect), `modal position: ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})\n Window: (${window.innerHeight} ${window.innerWidth})`).to.be.true
+      expect(
+        checkPosition.check(position, swalRect),
+        `modal position: ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})\n Window: (${window.innerHeight} ${window.innerWidth})`
+      ).to.be.true
       Swal.close()
     })
   })
@@ -78,10 +89,13 @@ describe('position', () => {
 
     const checkPosition = new PositionChecker(window, 0)
 
-    allowedPostions.forEach(position => {
+    allowedPostions.forEach((position) => {
       SwalWithoutAnimation.fire({ toast: 'true', position: position })
       const swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
-      expect(checkPosition.check(position, swalRect), `toast position:: ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})\n Window: (${window.innerHeight} ${window.innerWidth})`).to.be.true
+      expect(
+        checkPosition.check(position, swalRect),
+        `toast position:: ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})\n Window: (${window.innerHeight} ${window.innerWidth})`
+      ).to.be.true
       Swal.close()
     })
   })
@@ -104,10 +118,17 @@ describe('position', () => {
 
     const checkPosition = new PositionChecker(dummyTargetElement, 10)
 
-    allowedPostions.forEach(position => {
-      SwalWithoutAnimation.fire({ target: '#dummy-target', customClass: { container: 'position-absolute' }, position: position })
+    allowedPostions.forEach((position) => {
+      SwalWithoutAnimation.fire({
+        target: '#dummy-target',
+        customClass: { container: 'position-absolute' },
+        position: position,
+      })
       const swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
-      expect(checkPosition.check(position, swalRect), `modal position with target: ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})`).to.be.true
+      expect(
+        checkPosition.check(position, swalRect),
+        `modal position with target: ${position} \n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})`
+      ).to.be.true
       Swal.close()
     })
 
@@ -130,10 +151,18 @@ describe('position', () => {
 
     const checkPosition = new PositionChecker(dummyTargetElement, 0)
 
-    allowedPostions.forEach(position => {
-      SwalWithoutAnimation.fire({ target: '#dummy-target', customClass: { container: 'position-absolute' }, toast: 'true', position: position })
+    allowedPostions.forEach((position) => {
+      SwalWithoutAnimation.fire({
+        target: '#dummy-target',
+        customClass: { container: 'position-absolute' },
+        toast: 'true',
+        position: position,
+      })
       const swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
-      expect(checkPosition.check(position, swalRect), `toast position with target: ${position}\n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})`).to.be.true
+      expect(
+        checkPosition.check(position, swalRect),
+        `toast position with target: ${position}\n Swal: (${swalRect.top}, ${swalRect.right}, ${swalRect.bottom}, ${swalRect.left})x(${swalRect.height}, ${swalRect.width})`
+      ).to.be.true
       Swal.close()
     })
 

@@ -7,7 +7,7 @@ describe('preDeny', () => {
       preDeny: (value) => {
         expect(value).to.be.false
         return false
-      }
+      },
     })
     Swal.clickDeny()
     expect(Swal.isVisible()).to.be.true
@@ -20,7 +20,7 @@ describe('preDeny', () => {
       inputValue: 'Initial input value',
       returnInputValueOnDeny: true,
       preDeny: (value) => `${value} + Some data from preDeny`,
-    }).then(result => {
+    }).then((result) => {
       expect(result.value).to.equal('Initial input value + Some data from preDeny')
       done()
     })
@@ -31,7 +31,7 @@ describe('preDeny', () => {
     SwalWithoutAnimation.fire({
       showDenyButton: true,
       preDeny: () => 0,
-    }).then(result => {
+    }).then((result) => {
       expect(result.value).to.equal(0)
       done()
     })
@@ -43,9 +43,9 @@ describe('preDeny', () => {
       showDenyButton: true,
       didOpen: () => Swal.clickDeny(),
       preDeny: () => ({
-        toPromise: () => Promise.resolve(0)
-      })
-    }).then(result => {
+        toPromise: () => Promise.resolve(0),
+      }),
+    }).then((result) => {
       expect(result.value).to.equal(0)
       done()
     })
@@ -58,13 +58,15 @@ describe('preDeny', () => {
       preDeny: () => {
         return Promise.reject(new Error(errorMsg))
       },
-    }).then(() => {
-      thenTriggered = true
-    }).catch(result => {
-      expect(thenTriggered).to.equal(false)
-      expect(result.message).to.equal(errorMsg)
-      done()
     })
+      .then(() => {
+        thenTriggered = true
+      })
+      .catch((result) => {
+        expect(thenTriggered).to.equal(false)
+        expect(result.message).to.equal(errorMsg)
+        done()
+      })
     Swal.clickDeny()
     expect(Swal.isVisible()).to.be.true
   })
@@ -80,18 +82,20 @@ describe('preDeny', () => {
           },
           didOpen: () => {
             Swal.clickDeny()
-          }
+          },
         }).then(() => {
           thenTriggered = true
         })
-      }
-    }).then(() => {
-      thenTriggered = true
-    }).catch(result => {
-      expect(thenTriggered).to.equal(false)
-      expect(result.message).to.equal(errorMsg)
-      done()
+      },
     })
+      .then(() => {
+        thenTriggered = true
+      })
+      .catch((result) => {
+        expect(thenTriggered).to.equal(false)
+        expect(result.message).to.equal(errorMsg)
+        done()
+      })
     Swal.clickDeny()
     expect(Swal.isVisible()).to.be.true
   })

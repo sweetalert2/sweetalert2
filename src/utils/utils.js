@@ -65,7 +65,9 @@ export const warnOnce = (message) => {
  * Show a one-time console warning about deprecated params/methods
  */
 export const warnAboutDeprecation = (deprecatedParam, useInstead) => {
-  warnOnce(`"${deprecatedParam}" is deprecated and will be removed in the next major release. Please use "${useInstead}" instead.`)
+  warnOnce(
+    `"${deprecatedParam}" is deprecated and will be removed in the next major release. Please use "${useInstead}" instead.`
+  )
 }
 
 /**
@@ -73,10 +75,10 @@ export const warnAboutDeprecation = (deprecatedParam, useInstead) => {
  * Otherwise, just pass the value through
  * @param arg
  */
-export const callIfFunction = (arg) => typeof arg === 'function' ? arg() : arg
+export const callIfFunction = (arg) => (typeof arg === 'function' ? arg() : arg)
 
 export const hasToPromiseFn = (arg) => arg && typeof arg.toPromise === 'function'
 
-export const asPromise = (arg) => hasToPromiseFn(arg) ? arg.toPromise() : Promise.resolve(arg)
+export const asPromise = (arg) => (hasToPromiseFn(arg) ? arg.toPromise() : Promise.resolve(arg))
 
 export const isPromise = (arg) => arg && Promise.resolve(arg) === arg

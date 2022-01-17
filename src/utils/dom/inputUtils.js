@@ -33,15 +33,17 @@ export const getInputValue = (instance, innerParams) => {
   }
 }
 
-const getCheckboxValue = (input) => input.checked ? 1 : 0
+const getCheckboxValue = (input) => (input.checked ? 1 : 0)
 
-const getRadioValue = (input) => input.checked ? input.value : null
+const getRadioValue = (input) => (input.checked ? input.value : null)
 
-const getFileValue = (input) => input.files.length ? (input.getAttribute('multiple') !== null ? input.files : input.files[0]) : null
+const getFileValue = (input) =>
+  input.files.length ? (input.getAttribute('multiple') !== null ? input.files : input.files[0]) : null
 
 const handleInputOptions = (instance, params) => {
   const popup = dom.getPopup()
-  const processInputOptions = (inputOptions) => populateInputOptions[params.input](popup, formatInputOptions(inputOptions), params)
+  const processInputOptions = (inputOptions) =>
+    populateInputOptions[params.input](popup, formatInputOptions(inputOptions), params)
   if (hasToPromiseFn(params.inputOptions) || isPromise(params.inputOptions)) {
     showLoading(dom.getConfirmButton())
     asPromise(params.inputOptions).then((inputOptions) => {
@@ -58,12 +60,13 @@ const handleInputOptions = (instance, params) => {
 const handleInputValue = (instance, params) => {
   const input = instance.getInput()
   dom.hide(input)
-  asPromise(params.inputValue).then((inputValue) => {
-    input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : `${inputValue}`
-    dom.show(input)
-    input.focus()
-    instance.hideLoading()
-  })
+  asPromise(params.inputValue)
+    .then((inputValue) => {
+      input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : `${inputValue}`
+      dom.show(input)
+      input.focus()
+      instance.hideLoading()
+    })
     .catch((err) => {
       error(`Error in inputValue promise: ${err}`)
       input.value = ''
@@ -83,20 +86,22 @@ const populateInputOptions = {
       option.selected = isSelected(optionValue, params.inputValue)
       parent.appendChild(option)
     }
-    inputOptions.forEach(inputOption => {
+    inputOptions.forEach((inputOption) => {
       const optionValue = inputOption[0]
       const optionLabel = inputOption[1]
       // <optgroup> spec:
       // https://www.w3.org/TR/html401/interact/forms.html#h-17.6
       // "...all OPTGROUP elements must be specified directly within a SELECT element (i.e., groups may not be nested)..."
       // check whether this is a <optgroup>
-      if (Array.isArray(optionLabel)) { // if it is an array, then it is an <optgroup>
+      if (Array.isArray(optionLabel)) {
+        // if it is an array, then it is an <optgroup>
         const optgroup = document.createElement('optgroup')
         optgroup.label = optionValue
         optgroup.disabled = false // not configurable for now
         select.appendChild(optgroup)
-        optionLabel.forEach(o => renderOption(optgroup, o[1], o[0]))
-      } else { // case of <option>
+        optionLabel.forEach((o) => renderOption(optgroup, o[1], o[0]))
+      } else {
+        // case of <option>
         renderOption(select, optionLabel, optionValue)
       }
     })
@@ -105,7 +110,7 @@ const populateInputOptions = {
 
   radio: (popup, inputOptions, params) => {
     const radio = getDirectChildByClass(popup, swalClasses.radio)
-    inputOptions.forEach(inputOption => {
+    inputOptions.forEach((inputOption) => {
       const radioValue = inputOption[0]
       const radioLabel = inputOption[1]
       const radioInput = document.createElement('input')
@@ -127,7 +132,7 @@ const populateInputOptions = {
     if (radios.length) {
       radios[0].focus()
     }
-  }
+  },
 }
 
 /**
@@ -139,15 +144,17 @@ const formatInputOptions = (inputOptions) => {
   if (typeof Map !== 'undefined' && inputOptions instanceof Map) {
     inputOptions.forEach((value, key) => {
       let valueFormatted = value
-      if (typeof valueFormatted === 'object') { // case of <optgroup>
+      if (typeof valueFormatted === 'object') {
+        // case of <optgroup>
         valueFormatted = formatInputOptions(valueFormatted)
       }
       result.push([key, valueFormatted])
     })
   } else {
-    Object.keys(inputOptions).forEach(key => {
+    Object.keys(inputOptions).forEach((key) => {
       let valueFormatted = inputOptions[key]
-      if (typeof valueFormatted === 'object') { // case of <optgroup>
+      if (typeof valueFormatted === 'object') {
+        // case of <optgroup>
         valueFormatted = formatInputOptions(valueFormatted)
       }
       result.push([key, valueFormatted])

@@ -15,7 +15,7 @@ const focusPreviousActiveElement = () => {
 
 // Restore previous active (focused) element
 export const restoreActiveElement = (returnFocus) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (!returnFocus) {
       return resolve()
     }

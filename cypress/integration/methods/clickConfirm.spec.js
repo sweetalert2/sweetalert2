@@ -6,8 +6,8 @@ describe('clickConfirm()', () => {
       input: 'radio',
       inputOptions: {
         one: 'one',
-        two: 'two'
-      }
+        two: 'two',
+      },
     }).then((result) => {
       expect(result).to.eql({
         value: 'two',

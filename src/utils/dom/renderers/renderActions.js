@@ -24,7 +24,7 @@ export const renderActions = (instance, params) => {
   dom.applyCustomClass(loader, params, 'loader')
 }
 
-function renderButtons (actions, loader, params) {
+function renderButtons(actions, loader, params) {
   const confirmButton = dom.getConfirmButton()
   const denyButton = dom.getDenyButton()
   const cancelButton = dom.getCancelButton()
@@ -47,7 +47,7 @@ function renderButtons (actions, loader, params) {
   }
 }
 
-function handleButtonsStyling (confirmButton, denyButton, cancelButton, params) {
+function handleButtonsStyling(confirmButton, denyButton, cancelButton, params) {
   if (!params.buttonsStyling) {
     return dom.removeClass([confirmButton, denyButton, cancelButton], swalClasses.styled)
   }
@@ -69,7 +69,7 @@ function handleButtonsStyling (confirmButton, denyButton, cancelButton, params) 
   }
 }
 
-function renderButton (button, buttonType, params) {
+function renderButton(button, buttonType, params) {
   dom.toggle(button, params[`show${capitalizeFirstLetter(buttonType)}Button`], 'inline-block')
   dom.setInnerHtml(button, params[`${buttonType}ButtonText`]) // Set caption text
   button.setAttribute('aria-label', params[`${buttonType}ButtonAriaLabel`]) // ARIA label

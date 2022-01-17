@@ -2,7 +2,7 @@ import globalState from '../globalState.js'
 import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
 
-export function _destroy () {
+export function _destroy() {
   const domCache = privateProps.domCache.get(this)
   const innerParams = privateProps.innerParams.get(this)
 

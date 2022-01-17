@@ -43,7 +43,4 @@ const replaceButton = (popup, buttonToReplace) => {
   dom.addClass([popup, actions], swalClasses.loading)
 }
 
-export {
-  showLoading,
-  showLoading as enableLoading
-}
+export { showLoading, showLoading as enableLoading }

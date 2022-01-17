@@ -6,7 +6,9 @@ import privateProps from './privateProps.js'
 
 export const addKeydownHandler = (instance, globalState, innerParams, dismissWith) => {
   if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
-    globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
+    globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
+      capture: globalState.keydownListenerCapture,
+    })
     globalState.keydownHandlerAdded = false
   }
 
@@ -14,7 +16,9 @@ export const addKeydownHandler = (instance, globalState, innerParams, dismissWit
     globalState.keydownHandler = (e) => keydownHandler(instance, e, dismissWith)
     globalState.keydownTarget = innerParams.keydownListenerCapture ? window : dom.getPopup()
     globalState.keydownListenerCapture = innerParams.keydownListenerCapture
-    globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
+    globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, {
+      capture: globalState.keydownListenerCapture,
+    })
     globalState.keydownHandlerAdded = true
   }
 }
@@ -41,13 +45,9 @@ export const setFocus = (innerParams, index, increment) => {
   dom.getPopup().focus()
 }
 
-const arrowKeysNextButton = [
-  'ArrowRight', 'ArrowDown',
-]
+const arrowKeysNextButton = ['ArrowRight', 'ArrowDown']
 
-const arrowKeysPreviousButton = [
-  'ArrowLeft', 'ArrowUp',
-]
+const arrowKeysPreviousButton = ['ArrowLeft', 'ArrowUp']
 
 const keydownHandler = (instance, e, dismissWith) => {
   const innerParams = privateProps.innerParams.get(instance)
@@ -63,17 +63,20 @@ const keydownHandler = (instance, e, dismissWith) => {
   // ENTER
   if (e.key === 'Enter') {
     handleEnter(instance, e, innerParams)
+  }
 
   // TAB
-  } else if (e.key === 'Tab') {
+  else if (e.key === 'Tab') {
     handleTab(e, innerParams)
+  }
 
   // ARROWS - switch focus between buttons
-  } else if ([...arrowKeysNextButton, ...arrowKeysPreviousButton].includes(e.key)) {
+  else if ([...arrowKeysNextButton, ...arrowKeysPreviousButton].includes(e.key)) {
     handleArrows(e.key)
+  }
 
   // ESC
-  } else if (e.key === 'Escape') {
+  else if (e.key === 'Escape') {
     handleEsc(e, innerParams, dismissWith)
   }
 }
@@ -106,13 +109,16 @@ const handleTab = (e, innerParams) => {
     }
   }
 
+  // Cycle to the next button
   if (!e.shiftKey) {
-    // Cycle to the next button
     setFocus(innerParams, btnIndex, 1)
-  } else {
-    // Cycle to the prev button
+  }
+
+  // Cycle to the prev button
+  else {
     setFocus(innerParams, btnIndex, -1)
   }
+
   e.stopPropagation()
   e.preventDefault()
 }

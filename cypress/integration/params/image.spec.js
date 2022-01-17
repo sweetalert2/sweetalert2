@@ -5,7 +5,7 @@ describe('image', () => {
     Swal.fire({
       imageUrl: 'https://sweetalert2.github.io/images/swal2-logo.png',
       imageWidth: 498,
-      imageHeight: 84
+      imageHeight: 84,
     })
     expect(Swal.getImage().src).to.equal('https://sweetalert2.github.io/images/swal2-logo.png')
     expect(Swal.getImage().style.width).to.equal('498px')
@@ -16,7 +16,7 @@ describe('image', () => {
     Swal.fire({
       imageUrl: 'https://sweetalert2.github.io/images/swal2-logo.png',
       imageWidth: '50%',
-      imageHeight: '3em'
+      imageHeight: '3em',
     })
     expect(Swal.getImage().style.width).to.equal('50%')
     expect(Swal.getImage().style.height).to.equal('3em')

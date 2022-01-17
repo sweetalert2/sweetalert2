@@ -26,7 +26,7 @@ describe('Accessibility:', () => {
     button.focus()
 
     SwalWithoutAnimation.fire({
-      returnFocus: false
+      returnFocus: false,
     })
     Swal.clickConfirm()
 
@@ -68,7 +68,7 @@ describe('Accessibility:', () => {
     document.body.appendChild(div)
 
     SwalWithoutAnimation.fire({
-      target: div
+      target: div,
     })
     expect(div.hasAttribute('aria-hidden')).to.be.false
   })
@@ -78,7 +78,7 @@ describe('Accessibility:', () => {
     document.body.appendChild(div)
 
     SwalWithoutAnimation.fire({
-      backdrop: false
+      backdrop: false,
     })
     expect(div.hasAttribute('aria-hidden')).to.be.false
   })
@@ -94,7 +94,7 @@ describe('Accessibility:', () => {
       didClose: () => {
         expect(divAriaHiddenTrue.getAttribute('aria-hidden')).to.equal('true')
         done()
-      }
+      },
     })
     expect(div.hasAttribute('aria-hidden')).to.be.false
     Swal.close()
@@ -144,7 +144,7 @@ describe('should trap focus in modals', () => {
         triggerKeydownEvent(document.activeElement, 'Tab')
         expect(document.activeElement).to.equal(Swal.getInput())
         done()
-      }
+      },
     })
   })
 
@@ -167,7 +167,7 @@ describe('should trap focus in modals', () => {
         triggerKeydownEvent(document.activeElement, 'Tab', { shiftKey: true })
         expect(document.activeElement).to.equal(Swal.getInput())
         done()
-      }
+      },
     })
   })
 
@@ -185,7 +185,7 @@ describe('should trap focus in modals', () => {
         triggerKeydownEvent(document.activeElement, 'ArrowLeft')
         expect(document.activeElement).to.equal(Swal.getConfirmButton())
         done()
-      }
+      },
     })
   })
 })
@@ -196,12 +196,12 @@ describe('Focus', () => {
     expect(document.activeElement).to.equal(document.querySelector('.swal2-confirm'))
     SwalWithoutAnimation.fire({
       text: 'Modal with two buttons',
-      showCancelButton: true
+      showCancelButton: true,
     })
     expect(document.activeElement).to.equal(document.querySelector('.swal2-confirm'))
     SwalWithoutAnimation.fire({
       text: 'Modal with no focusable elements in it',
-      showConfirmButton: false
+      showConfirmButton: false,
     })
     expect(document.activeElement).to.equal(document.querySelector('.swal2-modal'))
     SwalWithoutAnimation.fire({
@@ -210,13 +210,13 @@ describe('Focus', () => {
       didOpen: () => {
         expect(document.activeElement).to.equal(document.querySelector('.swal2-input'))
         done()
-      }
+      },
     })
   })
 
   it('focusConfirm', () => {
     Swal.fire({
-      showCancelButton: true
+      showCancelButton: true,
     })
     expect(document.activeElement).to.equal(Swal.getConfirmButton())
     const anchor = document.createElement('a')
@@ -225,7 +225,7 @@ describe('Focus', () => {
     Swal.fire({
       html: anchor,
       showCancelButton: true,
-      focusConfirm: false
+      focusConfirm: false,
     })
     expect(document.activeElement.outerHTML).to.equal(anchor.outerHTML)
   })
@@ -234,7 +234,7 @@ describe('Focus', () => {
     Swal.fire({
       text: 'Modal with Cancel button focused',
       showCancelButton: true,
-      focusCancel: true
+      focusCancel: true,
     })
     expect(document.activeElement).to.equal(Swal.getCancelButton())
   })
@@ -243,7 +243,7 @@ describe('Focus', () => {
     Swal.fire({
       text: 'Modal with Deny button focused',
       showDenyButton: true,
-      focusDeny: true
+      focusDeny: true,
     })
     expect(document.activeElement).to.equal(Swal.getDenyButton())
   })

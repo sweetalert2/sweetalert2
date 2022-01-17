@@ -8,7 +8,7 @@ export const argsToParams = (args) => {
   if (typeof args[0] === 'object' && !isElement(args[0])) {
     Object.assign(params, args[0])
   } else {
-    ['title', 'html', 'icon'].forEach((name, index) => {
+    ;['title', 'html', 'icon'].forEach((name, index) => {
       const arg = args[index]
       if (typeof arg === 'string' || isElement(arg)) {
         params[name] = arg

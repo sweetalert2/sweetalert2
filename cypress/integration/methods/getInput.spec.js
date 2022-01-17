@@ -9,7 +9,7 @@ describe('getInput()', () => {
           expect(Swal.getInput()).to.be.null
           done()
         }, TIMEOUT)
-      }
+      },
     })
     Swal.close()
   })

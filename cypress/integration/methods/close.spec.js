@@ -7,13 +7,13 @@ describe('close()', () => {
       willClose: () => {
         expect(Swal.getPopup().classList.contains('swal2-hide')).to.be.true
         done()
-      }
+      },
     })
     Swal.close()
   })
 
   it('resolves when calling Swal.close()', (done) => {
-    Swal.fire().then(result => {
+    Swal.fire().then((result) => {
       expect(result).to.be.eql({
         isConfirmed: false,
         isDenied: false,
@@ -29,7 +29,7 @@ describe('close()', () => {
       willClose: () => {
         expect(Swal.isVisible()).to.be.true
         done()
-      }
+      },
     })
     Swal.close()
   })
@@ -39,7 +39,7 @@ describe('close()', () => {
       didClose: () => {
         expect(Swal.isVisible()).to.be.false
         done()
-      }
+      },
     })
     Swal.close()
   })
@@ -53,10 +53,10 @@ describe('close()', () => {
           didOpen: () => {
             expect(Swal.getInput()).to.not.be.null
             done()
-          }
+          },
         })
         expect(Swal.isVisible()).to.be.true
-      }
+      },
     })
     Swal.close()
   })
@@ -67,7 +67,7 @@ describe('close()', () => {
         Swal.close()
         expect(Swal.isVisible()).to.be.false
         done()
-      }
+      },
     })
     Swal.close()
   })

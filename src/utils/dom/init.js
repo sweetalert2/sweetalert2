@@ -49,11 +49,7 @@ const resetOldContainer = () => {
   oldContainer.remove()
   removeClass(
     [document.documentElement, document.body],
-    [
-      swalClasses['no-backdrop'],
-      swalClasses['toast-shown'],
-      swalClasses['has-column']
-    ]
+    [swalClasses['no-backdrop'], swalClasses['toast-shown'], swalClasses['has-column']]
   )
 
   return true
@@ -91,7 +87,7 @@ const addInputChangeListeners = () => {
   }
 }
 
-const getTarget = (target) => typeof target === 'string' ? document.querySelector(target) : target
+const getTarget = (target) => (typeof target === 'string' ? document.querySelector(target) : target)
 
 const setupAccessibility = (params) => {
   const popup = getPopup()

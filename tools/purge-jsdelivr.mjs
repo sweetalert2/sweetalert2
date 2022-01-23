@@ -1,7 +1,7 @@
-const execute = require('@sweetalert2/execute')
-const fs = require('fs')
+import execute from '@sweetalert2/execute'
+import fs from 'fs'
 
-const log = console.log // eslint-disable-line
+const log = console.log // eslint-disable-line no-console
 
 ;(async () => {
   log(`Purge jsdelivr cache...`)
@@ -15,7 +15,9 @@ const log = console.log // eslint-disable-line
     // dist
     for (const distFile of distFiles) {
       log(`   - dist/${distFile}`)
-      await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2${version}/dist/${distFile}`, { skipLogging: true })
+      await execute(`curl --silent https://purge.jsdelivr.net/npm/sweetalert2${version}/dist/${distFile}`, {
+        skipLogging: true,
+      })
     }
   }
 

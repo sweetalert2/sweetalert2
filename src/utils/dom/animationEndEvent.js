@@ -10,7 +10,7 @@ export const animationEndEvent = (() => {
   const testEl = document.createElement('div')
   const transEndEventNames = {
     WebkitAnimation: 'webkitAnimationEnd', // Chrome, Safari and Opera
-    animation: 'animationend' // Standard syntax
+    animation: 'animationend', // Standard syntax
   }
   for (const i in transEndEventNames) {
     if (Object.prototype.hasOwnProperty.call(transEndEventNames, i) && typeof testEl.style[i] !== 'undefined') {

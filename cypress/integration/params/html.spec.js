@@ -9,7 +9,7 @@ describe('html', () => {
     form.appendChild(div)
 
     Swal.fire({
-      html: form
+      html: form,
     })
     expect(Swal.getHtmlContainer().innerHTML).to.equal('<form><div><label></label><input></div></form>')
   })
@@ -19,7 +19,7 @@ describe('html', () => {
     error.message = 'something is broken'
 
     Swal.fire({
-      html: error
+      html: error,
     })
     expect(Swal.getHtmlContainer().innerHTML).to.equal('Error: something is broken')
   })

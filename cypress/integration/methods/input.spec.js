@@ -1,4 +1,5 @@
-import { $, Swal, SwalWithoutAnimation, isVisible, isHidden, triggerKeydownEvent, dispatchCustomEvent, TIMEOUT } from '../../utils'
+import { isVisible } from '../../../src/utils/dom'
+import { $, Swal, SwalWithoutAnimation, isHidden, triggerKeydownEvent, dispatchCustomEvent, TIMEOUT } from '../../utils'
 import { toArray } from '../../../src/utils/utils'
 import defaultInputValidators from '../../../src/utils/defaultInputValidators'
 
@@ -6,7 +7,9 @@ describe('Input', () => {
   it('should throw console error about unexpected input type', () => {
     const spy = cy.spy(console, 'error')
     Swal.fire({ input: 'invalid-input-type' })
-    expect(spy).to.be.calledWith('SweetAlert2: Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "invalid-input-type"')
+    expect(spy).to.be.calledWith(
+      'SweetAlert2: Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "invalid-input-type"'
+    )
   })
 
   it('input text', (done) => {
@@ -25,7 +28,7 @@ describe('Input', () => {
   it('input textarea', (done) => {
     Swal.fire({
       input: 'textarea',
-      inputAutoTrim: false
+      inputAutoTrim: false,
     }).then((result) => {
       expect(result.value).to.equal('hola!')
       done()
@@ -80,7 +83,7 @@ describe('Input', () => {
     Swal.fire({
       input: 'select',
       inputOptions: { uno: 1, dos: 2 },
-      inputPlaceholder: 'Choose a number'
+      inputPlaceholder: 'Choose a number',
     }).then((result) => {
       expect(result.value).to.equal(selected)
       done()
@@ -98,8 +101,8 @@ describe('Input', () => {
     const selected = 'três ponto um'
     Swal.fire({
       input: 'select',
-      inputOptions: { 'um': 1.0, 'dois': 2.0, 'três': { 'três ponto um': 3.1, 'três ponto dois': 3.2 } },
-      inputPlaceholder: 'Choose an item'
+      inputOptions: { um: 1.0, dois: 2.0, três: { 'três ponto um': 3.1, 'três ponto dois': 3.2 } },
+      inputPlaceholder: 'Choose an item',
     }).then((result) => {
       expect(result.value).to.equal(selected)
       done()
@@ -117,8 +120,11 @@ describe('Input', () => {
     const selected = 'três ponto dois'
     Swal.fire({
       input: 'select',
-      inputOptions: { 'dois': { 'dois ponto um': 2.1, 'dois ponto dois': 2.2 }, 'três': { 'três ponto um': 3.1, 'três ponto dois': 3.2 } },
-      inputPlaceholder: 'Choose an item'
+      inputOptions: {
+        dois: { 'dois ponto um': 2.1, 'dois ponto dois': 2.2 },
+        três: { 'três ponto um': 3.1, 'três ponto dois': 3.2 },
+      },
+      inputPlaceholder: 'Choose an item',
     }).then((result) => {
       expect(result.value).to.equal(selected)
       done()
@@ -142,7 +148,7 @@ describe('Input', () => {
           expect(Swal.getInput().value).to.equal('one')
           done()
         }, TIMEOUT)
-      }
+      },
     })
   })
 
@@ -150,7 +156,7 @@ describe('Input', () => {
     Swal.fire({
       input: 'select',
       inputOptions: {
-        toPromise: () => Promise.resolve({ three: 3, four: 4 })
+        toPromise: () => Promise.resolve({ three: 3, four: 4 }),
       },
       didOpen: () => {
         setTimeout(() => {
@@ -158,14 +164,14 @@ describe('Input', () => {
           expect(Swal.getInput().value).to.equal('three')
           done()
         }, TIMEOUT)
-      }
+      },
     })
   })
 
   it('input text w/ inputPlaceholder as configuration', () => {
     Swal.fire({
       input: 'text',
-      inputPlaceholder: 'placeholder text'
+      inputPlaceholder: 'placeholder text',
     })
     expect(Swal.getInput().value).to.equal('')
     expect(Swal.getInput().placeholder).to.equal('placeholder text')
@@ -204,7 +210,7 @@ describe('Input', () => {
     SwalWithoutAnimation.fire({
       input: 'select',
       inputOptions,
-      inputValue: 1
+      inputValue: 1,
     })
     expect($('.swal2-select').querySelectorAll('option').length).to.equal(2)
     expect($('.swal2-select option:nth-child(1)').innerHTML).to.equal('Richard Stallman')
@@ -228,7 +234,7 @@ describe('Input', () => {
     SwalWithoutAnimation.fire({
       input: 'select',
       inputOptions,
-      inputValue: 1
+      inputValue: 1,
     })
     expect($('.swal2-select').querySelectorAll('option').length).to.equal(5)
     expect($('.swal2-select').querySelectorAll('optgroup').length).to.equal(1)
@@ -262,7 +268,7 @@ describe('Input', () => {
     SwalWithoutAnimation.fire({
       input: 'select',
       inputOptions,
-      inputValue: '1000'
+      inputValue: '1000',
     })
     expect($('.swal2-select').querySelectorAll('option').length).to.equal(5)
     expect($('.swal2-select').querySelectorAll('optgroup').length).to.equal(2)
@@ -286,7 +292,7 @@ describe('Input', () => {
     Swal.fire({
       input: 'radio',
       inputOptions,
-      inputValue: 1
+      inputValue: 1,
     })
     expect($('.swal2-radio').querySelectorAll('label').length).to.equal(2)
     expect($('.swal2-radio label:nth-child(1)').textContent).to.equal('Richard Stallman')
@@ -301,8 +307,8 @@ describe('Input', () => {
       input: 'radio',
       inputOptions: {
         one: 'one',
-        two: 'two'
-      }
+        two: 'two',
+      },
     })
     expect($('.swal2-radio').querySelectorAll('label').length).to.equal(2)
     expect($('.swal2-radio').querySelectorAll('input[type="radio"]').length).to.equal(2)
@@ -349,7 +355,8 @@ describe('Input', () => {
       returnInputValueOnDeny: true,
     })
     Swal.clickDeny()
-    expect(spy.calledWith('SweetAlert2: The "input" parameter is needed to be set when using returnInputValueOnDeny')).to.be.true
+    expect(spy.calledWith('SweetAlert2: The "input" parameter is needed to be set when using returnInputValueOnDeny'))
+      .to.be.true
   })
 
   it('disable/enable input', () => {
@@ -358,7 +365,7 @@ describe('Input', () => {
     Swal.enableInput()
 
     Swal.fire({
-      input: 'text'
+      input: 'text',
     })
 
     Swal.disableInput()
@@ -370,8 +377,8 @@ describe('Input', () => {
       input: 'radio',
       inputOptions: {
         one: 'one',
-        two: 'two'
-      }
+        two: 'two',
+      },
     })
 
     Swal.disableInput()
@@ -387,26 +394,22 @@ describe('Input', () => {
   it('should throw console error about unexpected type of InputOptions', () => {
     const spy = cy.spy(console, 'error')
     Swal.fire({ input: 'select', inputOptions: 'invalid-input-options' })
-    expect(spy.calledWith('SweetAlert2: Unexpected type of inputOptions! Expected object, Map or Promise, got string')).to.be.true
+    expect(spy.calledWith('SweetAlert2: Unexpected type of inputOptions! Expected object, Map or Promise, got string'))
+      .to.be.true
   })
 
   it('multiple inputs', (done) => {
     Swal.fire({
-      html:
-        '<input id="swal-input1" class="swal2-input">' +
-        '<input id="swal-input2" class="swal2-input">',
+      html: '<input id="swal-input1" class="swal2-input">' + '<input id="swal-input2" class="swal2-input">',
       preConfirm: () => {
-        return [
-          document.getElementById('swal-input1').value,
-          document.getElementById('swal-input2').value
-        ]
+        return [document.getElementById('swal-input1').value, document.getElementById('swal-input2').value]
       },
       didOpen: () => {
         document.getElementById('swal-input1').value = 'foo'
         document.getElementById('swal-input2').value = 'bar'
         Swal.clickConfirm()
-      }
-    }).then(result => {
+      },
+    }).then((result) => {
       expect(result.value).to.eql(['foo', 'bar'])
       done()
     })
@@ -418,13 +421,13 @@ describe('Validation', () => {
     Swal.fire({
       input: 'tel',
       inputAttributes: {
-        pattern: '[0-9]{3}-[0-9]{3}-[0-9]{4}'
+        pattern: '[0-9]{3}-[0-9]{3}-[0-9]{4}',
       },
       validationMessage: 'Invalid phone number',
       customClass: {
-        validationMessage: 'my-validation-message'
+        validationMessage: 'my-validation-message',
       },
-    }).then(result => {
+    }).then((result) => {
       expect(result.value).to.equal('123-456-7890')
       done()
     })
@@ -477,8 +480,8 @@ describe('Validation', () => {
     SwalWithoutAnimation.fire({
       input: 'text',
       inputValidator: (value) => ({
-        toPromise: () => Promise.resolve(!value && 'no falsy values')
-      })
+        toPromise: () => Promise.resolve(!value && 'no falsy values'),
+      }),
     })
 
     setTimeout(() => {
@@ -510,7 +513,7 @@ describe('Validation', () => {
   })
 
   it('default URL validator: invalid url', (done) => {
-    defaultInputValidators.url('invalid url').then(data => {
+    defaultInputValidators.url('invalid url').then((data) => {
       expect(data).to.equal('Invalid URL')
       done()
     })

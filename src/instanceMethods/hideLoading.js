@@ -5,7 +5,7 @@ import privateProps from '../privateProps.js'
 /**
  * Hides loader and shows back the button which was hidden by .showLoading()
  */
-function hideLoading () {
+function hideLoading() {
   // do nothing if popup is closed
   const innerParams = privateProps.innerParams.get(this)
   if (!innerParams) {
@@ -37,7 +37,4 @@ const showRelatedButton = (domCache) => {
   }
 }
 
-export {
-  hideLoading,
-  hideLoading as disableLoading
-}
+export { hideLoading, hideLoading as disableLoading }

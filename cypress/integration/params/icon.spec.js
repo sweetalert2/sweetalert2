@@ -1,4 +1,5 @@
-import { Swal, SwalWithoutAnimation, isVisible, isHidden } from '../../utils'
+import { isVisible } from '../../../src/utils/dom'
+import { Swal, SwalWithoutAnimation, isHidden } from '../../utils'
 import { iconTypes, swalClasses } from '../../../src/utils/classes'
 
 describe('icon', () => {
@@ -12,9 +13,13 @@ describe('icon', () => {
   it('should throw console error about invalid icon', () => {
     const spy = cy.spy(console, 'error')
     Swal.fire({
-      icon: 'invalid-icon'
+      icon: 'invalid-icon',
     })
-    expect(spy.calledWith('SweetAlert2: Unknown icon! Expected "success", "error", "warning", "info" or "question", got "invalid-icon"')).to.be.true
+    expect(
+      spy.calledWith(
+        'SweetAlert2: Unknown icon! Expected "success", "error", "warning", "info" or "question", got "invalid-icon"'
+      )
+    ).to.be.true
 
     // should behave the same way as empty object would be passed
     expect(isVisible(Swal.getConfirmButton())).to.be.true
@@ -27,7 +32,7 @@ describe('icon', () => {
   it('Success icon with custom HTML (iconHtml)', () => {
     Swal.fire({
       icon: 'success',
-      iconHtml: '<i class="fa fa-circle"></i>'
+      iconHtml: '<i class="fa fa-circle"></i>',
     })
 
     expect(Swal.getIcon().innerHTML).to.equal('<div class="swal2-icon-content"><i class="fa fa-circle"></i></div>')

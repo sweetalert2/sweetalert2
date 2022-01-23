@@ -64,30 +64,34 @@ const adjustSuccessIconBackgroundColor = () => {
   }
 }
 
+const successIconHtml = `
+  <div class="swal2-success-circular-line-left"></div>
+  <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
+  <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>
+  <div class="swal2-success-circular-line-right"></div>
+`
+
+const errorIconHtml = `
+  <span class="swal2-x-mark">
+    <span class="swal2-x-mark-line-left"></span>
+    <span class="swal2-x-mark-line-right"></span>
+  </span>
+`
+
 const setContent = (icon, params) => {
   icon.textContent = ''
 
   if (params.iconHtml) {
     dom.setInnerHtml(icon, iconContent(params.iconHtml))
   } else if (params.icon === 'success') {
-    dom.setInnerHtml(icon, `
-      <div class="swal2-success-circular-line-left"></div>
-      <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
-      <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>
-      <div class="swal2-success-circular-line-right"></div>
-    `)
+    dom.setInnerHtml(icon, successIconHtml)
   } else if (params.icon === 'error') {
-    dom.setInnerHtml(icon, `
-      <span class="swal2-x-mark">
-        <span class="swal2-x-mark-line-left"></span>
-        <span class="swal2-x-mark-line-right"></span>
-      </span>
-    `)
+    dom.setInnerHtml(icon, errorIconHtml)
   } else {
     const defaultIconHtml = {
       question: '?',
       warning: '!',
-      info: 'i'
+      info: 'i',
     }
     dom.setInnerHtml(icon, iconContent(defaultIconHtml[params.icon]))
   }
@@ -99,7 +103,12 @@ const setColor = (icon, params) => {
   }
   icon.style.color = params.iconColor
   icon.style.borderColor = params.iconColor
-  for (const sel of ['.swal2-success-line-tip', '.swal2-success-line-long', '.swal2-x-mark-line-left', '.swal2-x-mark-line-right']) {
+  for (const sel of [
+    '.swal2-success-line-tip',
+    '.swal2-success-line-long',
+    '.swal2-x-mark-line-left',
+    '.swal2-x-mark-line-right',
+  ]) {
     dom.setStyle(icon, sel, 'backgroundColor', params.iconColor)
   }
   dom.setStyle(icon, '.swal2-success-ring', 'borderColor', params.iconColor)

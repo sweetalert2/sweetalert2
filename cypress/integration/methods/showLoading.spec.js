@@ -1,4 +1,5 @@
-import { $, Swal, ensureClosed, isVisible, isHidden } from '../../utils'
+import { isVisible } from '../../../src/utils/dom'
+import { $, Swal, ensureClosed, isHidden } from '../../utils'
 
 describe('showLoading() and hideLoading()', () => {
   it('showLoading() and hideLoading()', () => {
@@ -10,7 +11,7 @@ describe('showLoading() and hideLoading()', () => {
 
     Swal.fire({
       title: 'test loading state',
-      showConfirmButton: false
+      showConfirmButton: false,
     })
 
     Swal.showLoading()

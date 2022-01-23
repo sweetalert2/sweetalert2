@@ -10,7 +10,7 @@ describe('progressSteps', () => {
     SwalWithoutAnimation.fire({
       title: 'Esc me and I will propagate keydown',
       didOpen: () => triggerKeydownEvent(SwalWithoutAnimation.getPopup(), 'Escape'),
-      stopKeydownPropagation: false
+      stopKeydownPropagation: false,
     })
   })
 })

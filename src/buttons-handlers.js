@@ -34,7 +34,9 @@ export const handleCancelButtonClick = (instance, dismissWith) => {
 const handleConfirmOrDenyWithInput = (instance, type /* 'confirm' | 'deny' */) => {
   const innerParams = privateProps.innerParams.get(instance)
   if (!innerParams.input) {
-    return error(`The "input" parameter is needed to be set when using returnInputValueOn${capitalizeFirstLetter(type)}`)
+    return error(
+      `The "input" parameter is needed to be set when using returnInputValueOn${capitalizeFirstLetter(type)}`
+    )
   }
   const inputValue = getInputValue(instance, innerParams)
   if (innerParams.inputValidator) {
@@ -52,22 +54,20 @@ const handleConfirmOrDenyWithInput = (instance, type /* 'confirm' | 'deny' */) =
 const handleInputValidator = (instance, inputValue, type /* 'confirm' | 'deny' */) => {
   const innerParams = privateProps.innerParams.get(instance)
   instance.disableInput()
-  const validationPromise = Promise.resolve().then(() => asPromise(
-    innerParams.inputValidator(inputValue, innerParams.validationMessage))
+  const validationPromise = Promise.resolve().then(() =>
+    asPromise(innerParams.inputValidator(inputValue, innerParams.validationMessage))
   )
-  validationPromise.then(
-    (validationMessage) => {
-      instance.enableButtons()
-      instance.enableInput()
-      if (validationMessage) {
-        instance.showValidationMessage(validationMessage)
-      } else if (type === 'deny') {
-        deny(instance, inputValue)
-      } else {
-        confirm(instance, inputValue)
-      }
+  validationPromise.then((validationMessage) => {
+    instance.enableButtons()
+    instance.enableInput()
+    if (validationMessage) {
+      instance.showValidationMessage(validationMessage)
+    } else if (type === 'deny') {
+      deny(instance, inputValue)
+    } else {
+      confirm(instance, inputValue)
     }
-  )
+  })
 }
 
 const deny = (instance, value) => {
@@ -79,18 +79,18 @@ const deny = (instance, value) => {
 
   if (innerParams.preDeny) {
     privateProps.awaitingPromise.set(instance || this, true) // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preDeny's promise is received
-    const preDenyPromise = Promise.resolve().then(() => asPromise(
-      innerParams.preDeny(value, innerParams.validationMessage))
+    const preDenyPromise = Promise.resolve().then(() =>
+      asPromise(innerParams.preDeny(value, innerParams.validationMessage))
     )
-    preDenyPromise.then(
-      (preDenyValue) => {
+    preDenyPromise
+      .then((preDenyValue) => {
         if (preDenyValue === false) {
           instance.hideLoading()
         } else {
           instance.closePopup({ isDenied: true, value: typeof preDenyValue === 'undefined' ? value : preDenyValue })
         }
-      }
-    ).catch((error) => rejectWith(instance || this, error))
+      })
+      .catch((error) => rejectWith(instance || this, error))
   } else {
     instance.closePopup({ isDenied: true, value })
   }
@@ -114,18 +114,18 @@ const confirm = (instance, value) => {
   if (innerParams.preConfirm) {
     instance.resetValidationMessage()
     privateProps.awaitingPromise.set(instance || this, true) // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preConfirm's promise is received
-    const preConfirmPromise = Promise.resolve().then(() => asPromise(
-      innerParams.preConfirm(value, innerParams.validationMessage))
+    const preConfirmPromise = Promise.resolve().then(() =>
+      asPromise(innerParams.preConfirm(value, innerParams.validationMessage))
     )
-    preConfirmPromise.then(
-      (preConfirmValue) => {
+    preConfirmPromise
+      .then((preConfirmValue) => {
         if (isVisible(getValidationMessage()) || preConfirmValue === false) {
           instance.hideLoading()
         } else {
           succeedWith(instance, typeof preConfirmValue === 'undefined' ? value : preConfirmValue)
         }
-      }
-    ).catch((error) => rejectWith(instance || this, error))
+      })
+      .catch((error) => rejectWith(instance || this, error))
   } else {
     succeedWith(instance, value)
   }

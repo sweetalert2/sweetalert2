@@ -1,4 +1,5 @@
-import { $, Swal, SwalWithoutAnimation, isVisible, isHidden } from '../../utils'
+import { isVisible } from '../../../src/utils/dom'
+import { $, Swal, SwalWithoutAnimation, isHidden } from '../../utils'
 
 describe('template', () => {
   it('template as HTMLTemplateElement', () => {
@@ -89,8 +90,26 @@ describe('template', () => {
     expect(Swal.getInput().type).to.equal('text')
     expect(spy.callCount).to.equal(4)
     expect(spy.getCall(0).calledWith(`SweetAlert2: Unrecognized element <swal-foo>`)).to.be.true
-    expect(spy.getCall(1).calledWith(`SweetAlert2: Unrecognized attribute "foo" on <swal-image>. Allowed attributes are: src, width, height, alt`)).to.be.true
-    expect(spy.getCall(2).calledWith(`SweetAlert2: Unrecognized attribute "bar" on <swal-input>. Allowed attributes are: type, label, placeholder, value`)).to.be.true
-    expect(spy.getCall(3).calledWith(`SweetAlert2: Unrecognized attribute "value" on <swal-title>. To set the value, use HTML within the element.`)).to.be.true
+    expect(
+      spy
+        .getCall(1)
+        .calledWith(
+          `SweetAlert2: Unrecognized attribute "foo" on <swal-image>. Allowed attributes are: src, width, height, alt`
+        )
+    ).to.be.true
+    expect(
+      spy
+        .getCall(2)
+        .calledWith(
+          `SweetAlert2: Unrecognized attribute "bar" on <swal-input>. Allowed attributes are: type, label, placeholder, value`
+        )
+    ).to.be.true
+    expect(
+      spy
+        .getCall(3)
+        .calledWith(
+          `SweetAlert2: Unrecognized attribute "value" on <swal-title>. To set the value, use HTML within the element.`
+        )
+    ).to.be.true
   })
 })

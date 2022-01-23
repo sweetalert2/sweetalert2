@@ -4,7 +4,7 @@ describe('allowOutsideClick', () => {
   it('allowOutsideClick: false', (done) => {
     SwalWithoutAnimation.fire({
       title: 'allowOutsideClick: false',
-      allowOutsideClick: false
+      allowOutsideClick: false,
     })
     Swal.getContainer().click()
     setTimeout(() => {
@@ -16,7 +16,7 @@ describe('allowOutsideClick', () => {
   it('allowOutsideClick: () => !swal.isLoading()', (done) => {
     SwalWithoutAnimation.fire({
       title: 'allowOutsideClick: () => !swal.isLoading()',
-      allowOutsideClick: () => !Swal.isLoading()
+      allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
       expect(result).to.eql({
         dismiss: Swal.DismissReason.backdrop,
@@ -40,15 +40,17 @@ describe('allowOutsideClick', () => {
     SwalWithoutAnimation.fire({
       title: 'allowOutsideClick is not compatible with modeless popups',
       allowOutsideClick: true,
-      backdrop: false
+      backdrop: false,
     })
-    expect(spy.calledWith('SweetAlert2: "allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`')).to.be.true
+    expect(
+      spy.calledWith('SweetAlert2: "allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`')
+    ).to.be.true
   })
 
   it('should not throw console warning for { backdrop: false }', () => {
     const spy = cy.spy(console, 'warn')
     SwalWithoutAnimation.fire({
-      backdrop: false
+      backdrop: false,
     })
     expect(spy.notCalled).to.be.true
   })

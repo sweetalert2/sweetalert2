@@ -2,7 +2,7 @@ import { warn } from './utils.js'
 import * as dom from './dom/index.js'
 import defaultInputValidators from './defaultInputValidators.js'
 
-function setDefaultInputValidators (params) {
+function setDefaultInputValidators(params) {
   // Use default `inputValidator` for supported input types if not provided
   if (!params.inputValidator) {
     Object.keys(defaultInputValidators).forEach((key) => {
@@ -13,7 +13,7 @@ function setDefaultInputValidators (params) {
   }
 }
 
-function validateCustomTargetElement (params) {
+function validateCustomTargetElement(params) {
   // Determine if the custom target element is valid
   if (
     !params.target ||
@@ -30,15 +30,15 @@ function validateCustomTargetElement (params) {
  *
  * @param params
  */
-export default function setParameters (params) {
+export default function setParameters(params) {
   setDefaultInputValidators(params)
 
   // showLoaderOnConfirm && preConfirm
   if (params.showLoaderOnConfirm && !params.preConfirm) {
     warn(
       'showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' +
-      'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' +
-      'https://sweetalert2.github.io/#ajax-request'
+        'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' +
+        'https://sweetalert2.github.io/#ajax-request'
     )
   }
 

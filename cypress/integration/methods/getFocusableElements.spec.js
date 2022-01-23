@@ -14,7 +14,7 @@ describe('getFocusableElements() method', () => {
       `,
       showDenyButton: true,
       showCancelButton: true,
-      showCloseButton: true
+      showCloseButton: true,
     })
     const focusableElements = Swal.getFocusableElements()
     expect(focusableElements.length).to.equal(10)

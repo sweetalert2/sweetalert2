@@ -12,7 +12,7 @@ describe('preConfirm', () => {
   it('preConfirm custom value', (done) => {
     SwalWithoutAnimation.fire({
       preConfirm: () => 'Some data from preConfirm',
-    }).then(result => {
+    }).then((result) => {
       expect(result.value).to.equal('Some data from preConfirm')
       done()
     })
@@ -22,7 +22,7 @@ describe('preConfirm', () => {
   it('preConfirm returns 0', (done) => {
     SwalWithoutAnimation.fire({
       preConfirm: () => 0,
-    }).then(result => {
+    }).then((result) => {
       expect(result.value).to.equal(0)
       done()
     })
@@ -33,9 +33,9 @@ describe('preConfirm', () => {
     SwalWithoutAnimation.fire({
       didOpen: () => Swal.clickConfirm(),
       preConfirm: () => ({
-        toPromise: () => Promise.resolve(0)
-      })
-    }).then(result => {
+        toPromise: () => Promise.resolve(0),
+      }),
+    }).then((result) => {
       expect(result.value).to.equal(0)
       done()
     })
@@ -48,13 +48,15 @@ describe('preConfirm', () => {
       preConfirm: () => {
         return Promise.reject(new Error(errorMsg))
       },
-    }).then(() => {
-      thenTriggered = true
-    }).catch(result => {
-      expect(thenTriggered).to.equal(false)
-      expect(result.message).to.equal(errorMsg)
-      done()
     })
+      .then(() => {
+        thenTriggered = true
+      })
+      .catch((result) => {
+        expect(thenTriggered).to.equal(false)
+        expect(result.message).to.equal(errorMsg)
+        done()
+      })
     Swal.clickConfirm()
     expect(Swal.isVisible()).to.be.true
   })
@@ -70,18 +72,20 @@ describe('preConfirm', () => {
           },
           didOpen: () => {
             Swal.clickConfirm()
-          }
+          },
         }).then(() => {
           thenTriggered = true
         })
-      }
-    }).then(() => {
-      thenTriggered = true
-    }).catch(result => {
-      expect(thenTriggered).to.equal(false)
-      expect(result.message).to.equal(errorMsg)
-      done()
+      },
     })
+      .then(() => {
+        thenTriggered = true
+      })
+      .catch((result) => {
+        expect(thenTriggered).to.equal(false)
+        expect(result.message).to.equal(errorMsg)
+        done()
+      })
     Swal.clickConfirm()
     expect(Swal.isVisible()).to.be.true
   })

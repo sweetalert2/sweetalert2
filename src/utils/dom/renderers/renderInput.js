@@ -36,7 +36,9 @@ export const renderInput = (instance, params) => {
 
 const showInput = (params) => {
   if (!renderInputType[params.input]) {
-    return error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`)
+    return error(
+      `Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`
+    )
   }
 
   const inputContainer = getInputContainer(params.input)
@@ -105,21 +107,24 @@ const getInputContainer = (inputType) => {
 const renderInputType = {}
 
 renderInputType.text =
-renderInputType.email =
-renderInputType.password =
-renderInputType.number =
-renderInputType.tel =
-renderInputType.url = (input, params) => {
-  if (typeof params.inputValue === 'string' || typeof params.inputValue === 'number') {
-    input.value = params.inputValue
-  } else if (!isPromise(params.inputValue)) {
-    warn(`Unexpected type of inputValue! Expected "string", "number" or "Promise", got "${typeof params.inputValue}"`)
-  }
-  setInputLabel(input, input, params)
-  setInputPlaceholder(input, params)
-  input.type = params.input
-  return input
-}
+  renderInputType.email =
+  renderInputType.password =
+  renderInputType.number =
+  renderInputType.tel =
+  renderInputType.url =
+    (input, params) => {
+      if (typeof params.inputValue === 'string' || typeof params.inputValue === 'number') {
+        input.value = params.inputValue
+      } else if (!isPromise(params.inputValue)) {
+        warn(
+          `Unexpected type of inputValue! Expected "string", "number" or "Promise", got "${typeof params.inputValue}"`
+        )
+      }
+      setInputLabel(input, input, params)
+      setInputPlaceholder(input, params)
+      input.type = params.input
+      return input
+    }
 
 renderInputType.file = (input, params) => {
   setInputLabel(input, input, params)
@@ -172,10 +177,13 @@ renderInputType.textarea = (textarea, params) => {
   setInputPlaceholder(textarea, params)
   setInputLabel(textarea, textarea, params)
 
-  const getMargin = (el) => parseInt(window.getComputedStyle(el).marginLeft) + parseInt(window.getComputedStyle(el).marginRight)
+  const getMargin = (el) =>
+    parseInt(window.getComputedStyle(el).marginLeft) + parseInt(window.getComputedStyle(el).marginRight)
 
-  setTimeout(() => { // #2291
-    if ('MutationObserver' in window) { // #1699
+  // https://github.com/sweetalert2/sweetalert2/issues/2291
+  setTimeout(() => {
+    // https://github.com/sweetalert2/sweetalert2/issues/1699
+    if ('MutationObserver' in window) {
       const initialPopupWidth = parseInt(window.getComputedStyle(dom.getPopup()).width)
       const textareaResizeHandler = () => {
         const textareaWidth = textarea.offsetWidth + getMargin(textarea)
@@ -186,7 +194,8 @@ renderInputType.textarea = (textarea, params) => {
         }
       }
       new MutationObserver(textareaResizeHandler).observe(textarea, {
-        attributes: true, attributeFilter: ['style']
+        attributes: true,
+        attributeFilter: ['style'],
       })
     }
   })

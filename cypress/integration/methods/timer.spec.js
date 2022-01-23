@@ -1,9 +1,10 @@
-import { $, Swal, SwalWithoutAnimation, isVisible } from '../../utils'
+import { isVisible } from '../../../src/utils/dom'
+import { $, Swal, SwalWithoutAnimation } from '../../utils'
 
 describe('getTimerLeft()', () => {
   it('should return time left', (done) => {
     Swal.fire({
-      timer: 1000
+      timer: 1000,
     })
     setTimeout(() => {
       const timerLeft = Swal.getTimerLeft()
@@ -15,7 +16,7 @@ describe('getTimerLeft()', () => {
 
   it('should return undefined if popup does not have timer', () => {
     Swal.fire({
-      timer: 1000
+      timer: 1000,
     })
     Swal.fire('I do not have timer, I should reset timer')
     const timerLeft = Swal.getTimerLeft()
@@ -26,7 +27,7 @@ describe('getTimerLeft()', () => {
 describe('increaseTimer()', () => {
   it('should increase timer', (done) => {
     SwalWithoutAnimation.fire({
-      timer: 500
+      timer: 500,
     })
     expect(Swal.increaseTimer(400) > 0).to.be.true
     setTimeout(() => {
@@ -40,7 +41,7 @@ describe('increaseTimer()', () => {
 
   it('should increase stopped timer', (done) => {
     SwalWithoutAnimation.fire({
-      timer: 500
+      timer: 500,
     })
     const remainingTime = Swal.stopTimer()
     Swal.increaseTimer(10)
@@ -53,7 +54,7 @@ describe('increaseTimer()', () => {
 
 it('isTimerRunning() method', (done) => {
   SwalWithoutAnimation.fire({
-    timer: 200
+    timer: 200,
   })
   setTimeout(() => {
     expect(Swal.isTimerRunning()).to.be.true
@@ -66,7 +67,7 @@ it('isTimerRunning() method', (done) => {
 describe('resumeTimer()', () => {
   it('should resume timer', (done) => {
     SwalWithoutAnimation.fire({
-      timer: 100
+      timer: 100,
     })
     Swal.stopTimer()
     setTimeout(() => {
@@ -81,7 +82,7 @@ describe('resumeTimer()', () => {
 
   it('should not fail when called twice', (done) => {
     SwalWithoutAnimation.fire({
-      timer: 500
+      timer: 500,
     })
     Swal.resumeTimer()
     Swal.resumeTimer()
@@ -96,7 +97,7 @@ describe('resumeTimer()', () => {
 describe('stopTimer()', () => {
   it('should stop timer', (done) => {
     SwalWithoutAnimation.fire({
-      timer: 500
+      timer: 500,
     })
     setTimeout(() => {
       expect(Swal.stopTimer() > 0).to.be.true
@@ -109,7 +110,7 @@ describe('stopTimer()', () => {
 
   it('should not fail when called twice', (done) => {
     SwalWithoutAnimation.fire({
-      timer: 500
+      timer: 500,
     })
     const remainingTime = Swal.stopTimer()
     setTimeout(() => {
@@ -121,7 +122,7 @@ describe('stopTimer()', () => {
 
 it('toggleTimer() method', (done) => {
   SwalWithoutAnimation.fire({
-    timer: 500
+    timer: 500,
   })
   Swal.toggleTimer()
   setTimeout(() => {
@@ -137,7 +138,7 @@ it('toggleTimer() method', (done) => {
 it('getTimerProgressBar() method', () => {
   SwalWithoutAnimation.fire({
     timer: 500,
-    timerProgressBar: true
+    timerProgressBar: true,
   })
   expect(Swal.getTimerProgressBar()).to.equal($('.swal2-timer-progress-bar'))
 })
@@ -146,7 +147,7 @@ describe('timerProgressBar', () => {
   it('should show timer progress bar', () => {
     SwalWithoutAnimation.fire({
       timer: 10,
-      timerProgressBar: true
+      timerProgressBar: true,
     })
 
     const progressBar = document.querySelector('.swal2-timer-progress-bar')
@@ -169,7 +170,7 @@ describe('timerProgressBar', () => {
     SwalWithoutAnimation.fire({
       timer: 100,
       timerProgressBar: true,
-      didOpen: Swal.stopTimer
+      didOpen: Swal.stopTimer,
     })
     setTimeout(() => {
       expect(Swal.getTimerProgressBar().style.transition).to.equal('')

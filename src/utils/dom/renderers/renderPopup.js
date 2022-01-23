@@ -6,7 +6,8 @@ export const renderPopup = (instance, params) => {
   const popup = dom.getPopup()
 
   // Width
-  if (params.toast) { // #2170
+  // https://github.com/sweetalert2/sweetalert2/issues/2170
+  if (params.toast) {
     dom.applyNumericalStyle(container, 'width', params.width)
     popup.style.width = '100%'
     popup.insertBefore(dom.getLoader(), dom.getIcon())

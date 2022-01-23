@@ -10,5 +10,5 @@
 
 export default {
   swalPromiseResolve: new WeakMap(),
-  swalPromiseReject: new WeakMap()
+  swalPromiseReject: new WeakMap(),
 }

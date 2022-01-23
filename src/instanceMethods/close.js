@@ -11,12 +11,14 @@ import privateMethods from '../privateMethods.js'
  * Instance method to close sweetAlert
  */
 
-function removePopupAndResetState (instance, container, returnFocus, didClose) {
+function removePopupAndResetState(instance, container, returnFocus, didClose) {
   if (dom.isToast()) {
     triggerDidCloseAndDispose(instance, didClose)
   } else {
     restoreActiveElement(returnFocus).then(() => triggerDidCloseAndDispose(instance, didClose))
-    globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, { capture: globalState.keydownListenerCapture })
+    globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
+      capture: globalState.keydownListenerCapture,
+    })
     globalState.keydownHandlerAdded = false
   }
 
@@ -40,19 +42,14 @@ function removePopupAndResetState (instance, container, returnFocus, didClose) {
   removeBodyClasses()
 }
 
-function removeBodyClasses () {
+function removeBodyClasses() {
   dom.removeClass(
     [document.documentElement, document.body],
-    [
-      swalClasses.shown,
-      swalClasses['height-auto'],
-      swalClasses['no-backdrop'],
-      swalClasses['toast-shown'],
-    ]
+    [swalClasses.shown, swalClasses['height-auto'], swalClasses['no-backdrop'], swalClasses['toast-shown']]
   )
 }
 
-export function close (resolveValue) {
+export function close(resolveValue) {
   resolveValue = prepareResolveValue(resolveValue)
 
   const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this)
@@ -71,7 +68,7 @@ export function close (resolveValue) {
   }
 }
 
-export function isAwaitingPromise () {
+export function isAwaitingPromise() {
   return !!privateProps.awaitingPromise.get(this)
 }
 
@@ -99,7 +96,7 @@ const triggerClosePopup = (instance) => {
   return true
 }
 
-export function rejectPromise (error) {
+export function rejectPromise(error) {
   const rejectPromise = privateMethods.swalPromiseReject.get(this)
   handleAwaitingPromise(this)
   if (rejectPromise) {
@@ -128,11 +125,14 @@ const prepareResolveValue = (resolveValue) => {
     }
   }
 
-  return Object.assign({
-    isConfirmed: false,
-    isDenied: false,
-    isDismissed: false,
-  }, resolveValue)
+  return Object.assign(
+    {
+      isConfirmed: false,
+      isDenied: false,
+      isDismissed: false,
+    },
+    resolveValue
+  )
 }
 
 const handlePopupAnimation = (instance, popup, innerParams) => {
@@ -153,7 +153,13 @@ const handlePopupAnimation = (instance, popup, innerParams) => {
 }
 
 const animatePopup = (instance, popup, container, returnFocus, didClose) => {
-  globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(null, instance, container, returnFocus, didClose)
+  globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(
+    null,
+    instance,
+    container,
+    returnFocus,
+    didClose
+  )
   popup.addEventListener(dom.animationEndEvent, function (e) {
     if (e.target === popup) {
       globalState.swalCloseEventFinishedCallback()
@@ -171,8 +177,4 @@ const triggerDidCloseAndDispose = (instance, didClose) => {
   })
 }
 
-export {
-  close as closePopup,
-  close as closeModal,
-  close as closeToast
-}
+export { close as closePopup, close as closeModal, close as closeToast }

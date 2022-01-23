@@ -72,7 +72,7 @@ export const getFocusableElements = () => {
   const focusableElementsWithTabindex = toArray(
     getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')
   )
-  // sort according to tabindex
+    // sort according to tabindex
     .sort((a, b) => {
       const tabindexA = parseInt(a.getAttribute('tabindex'))
       const tabindexB = parseInt(b.getAttribute('tabindex'))
@@ -84,11 +84,11 @@ export const getFocusableElements = () => {
       return 0
     })
 
-  const otherFocusableElements = toArray(
-    getPopup().querySelectorAll(focusable)
-  ).filter(el => el.getAttribute('tabindex') !== '-1')
+  const otherFocusableElements = toArray(getPopup().querySelectorAll(focusable)).filter(
+    (el) => el.getAttribute('tabindex') !== '-1'
+  )
 
-  return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements)).filter(el => isVisible(el))
+  return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements)).filter((el) => isVisible(el))
 }
 
 export const isModal = () => {

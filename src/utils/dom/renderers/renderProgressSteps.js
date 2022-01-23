@@ -29,7 +29,7 @@ export const renderProgressSteps = (instance, params) => {
   if (params.currentProgressStep >= params.progressSteps.length) {
     warn(
       'Invalid currentProgressStep parameter, it should be less than progressSteps.length ' +
-      '(currentProgressStep like JS arrays starts from 0)'
+        '(currentProgressStep like JS arrays starts from 0)'
     )
   }
 

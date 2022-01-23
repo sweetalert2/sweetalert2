@@ -4,7 +4,7 @@ import { toArray, warn } from '../utils.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
-  previousBodyPadding: null
+  previousBodyPadding: null,
 }
 
 /**
@@ -47,7 +47,7 @@ export const hasClass = (elem, className) => {
 }
 
 const removeCustomClasses = (elem, params) => {
-  toArray(elem.classList).forEach(className => {
+  toArray(elem.classList).forEach((className) => {
     if (
       !Object.values(swalClasses).includes(className) &&
       !Object.values(iconTypes).includes(className) &&
@@ -63,7 +63,11 @@ export const applyCustomClass = (elem, params, className) => {
 
   if (params.customClass && params.customClass[className]) {
     if (typeof params.customClass[className] !== 'string' && !params.customClass[className].forEach) {
-      return warn(`Invalid type of customClass.${className}! Expected string or iterable object, got "${typeof params.customClass[className]}"`)
+      return warn(
+        `Invalid type of customClass.${className}! Expected string or iterable object, got "${typeof params.customClass[
+          className
+        ]}"`
+      )
     }
 
     addClass(elem, params.customClass[className])
@@ -87,8 +91,10 @@ export const getInput = (popup, inputType) => {
     case 'checkbox':
       return popup.querySelector(`.${swalClasses.popup} > .${swalClasses.checkbox} input`)
     case 'radio':
-      return popup.querySelector(`.${swalClasses.popup} > .${swalClasses.radio} input:checked`) ||
+      return (
+        popup.querySelector(`.${swalClasses.popup} > .${swalClasses.radio} input:checked`) ||
         popup.querySelector(`.${swalClasses.popup} > .${swalClasses.radio} input:first-child`)
+      )
     case 'range':
       return popup.querySelector(`.${swalClasses.popup} > .${swalClasses.range} input`)
     default:
@@ -176,7 +182,7 @@ export const applyNumericalStyle = (elem, property, value) => {
     value = parseInt(value)
   }
   if (value || parseInt(value) === 0) {
-    elem.style[property] = (typeof value === 'number') ? `${value}px` : value
+    elem.style[property] = typeof value === 'number' ? `${value}px` : value
   } else {
     elem.style.removeProperty(property)
   }
@@ -211,7 +217,8 @@ export const toggle = (elem, condition, display) => {
 // borrowed from jquery $(elem).is(':visible') implementation
 export const isVisible = (elem) => !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
 
-export const allButtonsAreHidden = () => !isVisible(getConfirmButton()) && !isVisible(getDenyButton()) && !isVisible(getCancelButton())
+export const allButtonsAreHidden = () =>
+  !isVisible(getConfirmButton()) && !isVisible(getDenyButton()) && !isVisible(getCancelButton())
 
 export const isScrollable = (elem) => !!(elem.scrollHeight > elem.clientHeight)
 
@@ -245,7 +252,7 @@ export const stopTimerProgressBar = () => {
   timerProgressBar.style.removeProperty('transition')
   timerProgressBar.style.width = '100%'
   const timerProgressBarFullWidth = parseInt(window.getComputedStyle(timerProgressBar).width)
-  const timerProgressBarPercent = timerProgressBarWidth / timerProgressBarFullWidth * 100
+  const timerProgressBarPercent = (timerProgressBarWidth / timerProgressBarFullWidth) * 100
   timerProgressBar.style.removeProperty('transition')
   timerProgressBar.style.width = `${timerProgressBarPercent}%`
 }

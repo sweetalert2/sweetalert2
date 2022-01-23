@@ -1,7 +1,9 @@
 import jQuery from 'jquery'
 import Swal from '../../src/sweetalert2'
 import { SHOW_CLASS_TIMEOUT } from '../../src/utils/openPopup'
-import { $, isHidden, isVisible, SwalWithoutAnimation, triggerKeydownEvent, dispatchCustomEvent } from '../utils'
+import { $, isHidden, SwalWithoutAnimation, triggerKeydownEvent, dispatchCustomEvent } from '../utils'
+import { isVisible } from '../../src/utils/dom'
+import { defaultParams } from '../../src/utils/params'
 
 describe('Miscellaneous tests', function () {
   it('version is correct semver', () => {
@@ -27,7 +29,8 @@ describe('Miscellaneous tests', function () {
   it('should throw console error about unexpected params', () => {
     const spy = cy.spy(console, 'error')
     Swal.fire('Hello world!', { icon: 'success' })
-    expect(spy.calledWith('SweetAlert2: Unexpected type of html! Expected "string" or "Element", got object')).to.be.true
+    expect(spy.calledWith('SweetAlert2: Unexpected type of html! Expected "string" or "Element", got object')).to.be
+      .true
   })
 
   it('should not throw console error about undefined params and treat them as empty strings', () => {
@@ -76,13 +79,13 @@ describe('Miscellaneous tests', function () {
 
     Swal.fire({
       title: 'I am modeless and should not set .swal2-height-auto',
-      backdrop: false
+      backdrop: false,
     })
     expect(document.documentElement.classList.contains('swal2-height-auto')).to.be.true
 
     Swal.fire({
       title: 'I am toast and should not set .swal2-height-auto',
-      toast: true
+      toast: true,
     })
     expect(document.documentElement.classList.contains('swal2-height-auto')).to.be.true
   })
@@ -102,7 +105,7 @@ describe('Miscellaneous tests', function () {
       denyButtonAriaLabel: 'Deny button aria-label',
       cancelButtonText: 'Cancel button',
       cancelButtonAriaLabel: 'Cancel button aria-label',
-      footer: '<b>Footer</b>'
+      footer: '<b>Footer</b>',
     })
     expect(Swal.getImage().src.includes('/assets/swal2-logo.png')).to.be.true
     expect(Swal.getActions().textContent).to.equal('Confirm buttonDeny buttonCancel button')
@@ -122,8 +125,8 @@ describe('Miscellaneous tests', function () {
       input: 'radio',
       inputOptions: {
         one: 'one',
-        two: 'two'
-      }
+        two: 'two',
+      },
     })
     $('.swal2-radio input[value="two"]').setAttribute('checked', true)
     expect(Swal.getInput().value).to.equal('two')
@@ -132,7 +135,7 @@ describe('Miscellaneous tests', function () {
   it('content/title is set (html)', () => {
     Swal.fire({
       title: '<strong>Strong</strong>, <em>Emphasis</em>',
-      html: '<style>p { font-size: 10px; }</style><p>Paragraph</p><img /><button style="width:10px"></button>'
+      html: '<style>p { font-size: 10px; }</style><p>Paragraph</p><img /><button style="width:10px"></button>',
     })
 
     expect(Swal.getTitle().querySelectorAll('strong, em').length).to.equal(2)
@@ -143,11 +146,13 @@ describe('Miscellaneous tests', function () {
   it('content/title is set (text)', () => {
     Swal.fire({
       titleText: '<strong>Strong</strong>, <em>Emphasis</em>',
-      text: '<p>Paragraph</p><img /><button></button>'
+      text: '<p>Paragraph</p><img /><button></button>',
     })
 
     expect(Swal.getTitle().innerHTML, '&lt;strong&gt;Strong&lt;/strong&gt;).to.equal(&lt;em&gt;Emphasis&lt;/em&gt;')
-    expect(Swal.getHtmlContainer().innerHTML).to.equal('&lt;p&gt;Paragraph&lt;/p&gt;&lt;img /&gt;&lt;button&gt;&lt;/button&gt;')
+    expect(Swal.getHtmlContainer().innerHTML).to.equal(
+      '&lt;p&gt;Paragraph&lt;/p&gt;&lt;img /&gt;&lt;button&gt;&lt;/button&gt;'
+    )
     expect(Swal.getTitle().querySelectorAll('strong, em').length).to.equal(0)
     expect(Swal.getHtmlContainer().querySelectorAll('p, img, button').length).to.equal(0)
   })
@@ -156,7 +161,7 @@ describe('Miscellaneous tests', function () {
     const p = document.createElement('p')
     p.textContent = 'js element'
     Swal.fire({
-      html: p
+      html: p,
     })
     expect(Swal.getHtmlContainer().innerHTML).to.equal('<p>js element</p>')
   })
@@ -180,7 +185,7 @@ describe('Miscellaneous tests', function () {
       text: 'Modal with reversed buttons',
       showCancelButton: true,
       showDenyButton: true,
-      reverseButtons: true
+      reverseButtons: true,
     })
     expect(Swal.getConfirmButton().previousSibling).to.equal(Swal.getDenyButton())
     expect(Swal.getDenyButton().previousSibling).to.equal(Swal.getCancelButton())
@@ -193,11 +198,12 @@ describe('Miscellaneous tests', function () {
   it('modal vertical offset', (done) => {
     // create a modal with dynamic-height content
     SwalWithoutAnimation.fire({
-      imageUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNikAQAACIAHF/uBd8AAAAASUVORK5CYII=',
+      imageUrl:
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNikAQAACIAHF/uBd8AAAAASUVORK5CYII=',
       title: 'Title',
       html: '<hr><div style="height: 50px"></div><p>Text content</p>',
       icon: 'warning',
-      input: 'text'
+      input: 'text',
     })
 
     // listen for image load
@@ -217,7 +223,7 @@ describe('Miscellaneous tests', function () {
       didOpen: (modal) => {
         expect(Swal.getPopup()).to.equal(modal)
         done()
-      }
+      },
     })
   })
 
@@ -228,7 +234,7 @@ describe('Miscellaneous tests', function () {
       willOpen: (modal) => {
         expect(Swal.isVisible()).to.be.false
         expect(Swal.getPopup()).to.equal(modal)
-      }
+      },
     })
 
     // check that willOpen calls properly
@@ -241,7 +247,7 @@ describe('Miscellaneous tests', function () {
       didOpen: () => {
         expect(Swal.getTitle().innerHTML).to.equal(dynamicTitle)
         done()
-      }
+      },
     })
   })
 
@@ -252,7 +258,7 @@ describe('Miscellaneous tests', function () {
     // the didRender hook should be called once here
     Swal.fire({
       title: 'didRender test',
-      didRender
+      didRender,
     })
 
     expect(didRender.calledOnce).to.be.true
@@ -280,7 +286,7 @@ describe('Miscellaneous tests', function () {
         expect(willCloseFinished).to.be.true
         expect(Swal.getContainer()).to.be.null
         done()
-      }
+      },
     })
 
     Swal.getCloseButton().click()
@@ -292,13 +298,13 @@ describe('Miscellaneous tests', function () {
       title: '1',
       didDestroy: () => {
         firstPopupDestroyed = true
-      }
+      },
     })
     Swal.fire({
       title: '2',
       didDestroy: () => {
         done()
-      }
+      },
     })
     expect(firstPopupDestroyed).to.be.true
     Swal.getConfirmButton().click()
@@ -312,7 +318,7 @@ describe('Miscellaneous tests', function () {
         expect(modal).to.equal(_modal)
         expect(Swal.getContainer()).to.equal($('.swal2-container'))
         done()
-      }
+      },
     })
 
     const modal = Swal.getPopup()
@@ -327,10 +333,10 @@ describe('Miscellaneous tests', function () {
           text: 'WillClose',
           input: 'text',
           customClass: {
-            input: 'on-close-swal'
-          }
+            input: 'on-close-swal',
+          },
         })
-      }
+      },
     }).then(() => {
       expect(Swal.isVisible()).to.be.true
       expect(Swal.getInput().classList.contains('on-close-swal')).to.be.true
@@ -347,7 +353,7 @@ describe('Miscellaneous tests', function () {
 
     SwalWithoutAnimation.fire({
       title: 'Esc me',
-      didOpen: () => triggerKeydownEvent(Swal.getPopup(), 'Escape')
+      didOpen: () => triggerKeydownEvent(Swal.getPopup(), 'Escape'),
     }).then((result) => {
       expect(result).to.eql({
         dismiss: Swal.DismissReason.esc,
@@ -379,14 +385,14 @@ describe('Miscellaneous tests', function () {
 
           done()
         })
-      }
+      },
     })
   })
 
   it('close button', (done) => {
     Swal.fire({
       title: 'Close button test',
-      showCloseButton: true
+      showCloseButton: true,
     }).then((result) => {
       expect(result).to.eql({
         dismiss: Swal.DismissReason.close,
@@ -407,7 +413,7 @@ describe('Miscellaneous tests', function () {
     Swal.fire({
       title: 'Customized Close button test',
       showCloseButton: true,
-      closeButtonHtml: 'c'
+      closeButtonHtml: 'c',
     })
 
     const closeButton = Swal.getCloseButton()
@@ -416,7 +422,7 @@ describe('Miscellaneous tests', function () {
 
   it('cancel button', (done) => {
     Swal.fire({
-      showCancelButton: true
+      showCancelButton: true,
     }).then((result) => {
       expect(result).to.eql({
         dismiss: Swal.DismissReason.cancel,
@@ -432,7 +438,7 @@ describe('Miscellaneous tests', function () {
 
   it('deny button', (done) => {
     Swal.fire({
-      showDenyButton: true
+      showDenyButton: true,
     }).then((result) => {
       expect(result).to.eql({
         value: false,
@@ -449,7 +455,7 @@ describe('Miscellaneous tests', function () {
   it('timer', (done) => {
     SwalWithoutAnimation.fire({
       title: 'Timer test',
-      timer: 10
+      timer: 10,
     }).then((result) => {
       expect(result).to.eql({
         dismiss: Swal.DismissReason.timer,
@@ -489,7 +495,7 @@ describe('Miscellaneous tests', function () {
       background: 'red',
       confirmButtonColor: 'green',
       denyButtonColor: 'red',
-      cancelButtonColor: 'blue'
+      cancelButtonColor: 'blue',
     })
 
     expect(Swal.getPopup().style.padding).to.equal('2em')
@@ -500,9 +506,8 @@ describe('Miscellaneous tests', function () {
   })
 
   it('null values', () => {
-    const defaultParams = require('../../src/utils/params').default
     const params = {}
-    Object.keys(defaultParams).forEach(key => {
+    Object.keys(defaultParams).forEach((key) => {
       params[key] = null
     })
     Swal.fire(params)
@@ -512,21 +517,21 @@ describe('Miscellaneous tests', function () {
   it('backdrop accepts css background param', () => {
     Swal.fire({
       title: 'I have no backdrop',
-      backdrop: false
+      backdrop: false,
     })
     expect(Swal.getContainer().style.background).to.equal('')
 
     const backdrop = 'rgb(123, 123, 123)'
     Swal.fire({
       title: 'I have a custom backdrop',
-      backdrop
+      backdrop,
     })
     expect(Swal.getContainer().style.background.includes(backdrop)).to.be.true
   })
 
   it('Popup shows with swal2 classes used in html', (done) => {
     Swal.fire({
-      html: '<span class="swal2-cancel"></span>'
+      html: '<span class="swal2-cancel"></span>',
     })
     setTimeout(() => {
       expect(Swal.getPopup().classList.contains('swal2-show')).to.be.true
@@ -537,10 +542,7 @@ describe('Miscellaneous tests', function () {
 
 describe('JQuery', () => {
   it('jQuery elements as shorthand params', () => {
-    Swal.fire(
-      jQuery('<h1>jQuery title</h1>'),
-      jQuery('<p>jQuery content</p>')
-    )
+    Swal.fire(jQuery('<h1>jQuery title</h1>'), jQuery('<p>jQuery content</p>'))
     expect(Swal.getTitle().innerHTML).to.equal('<h1>jQuery title</h1>')
     expect(Swal.getHtmlContainer().innerHTML).to.equal('<p>jQuery content</p>')
   })
@@ -549,7 +551,7 @@ describe('JQuery', () => {
     Swal.fire({
       title: jQuery('<h1>jQuery title</h1>'),
       html: jQuery('<p>jQuery content</p>'),
-      footer: jQuery('<footer>jQuery footer</footer>')
+      footer: jQuery('<footer>jQuery footer</footer>'),
     })
     expect(Swal.getTitle().innerHTML).to.equal('<h1>jQuery title</h1>')
     expect(Swal.getHtmlContainer().innerHTML).to.equal('<p>jQuery content</p>')
@@ -559,11 +561,7 @@ describe('JQuery', () => {
 
 describe('Outside click', () => {
   const simulateMouseEvent = (x, y, eventType) => {
-    dispatchCustomEvent(
-      document.elementFromPoint(x, y),
-      eventType,
-      { clientX: x, clientY: y }
-    )
+    dispatchCustomEvent(document.elementFromPoint(x, y), eventType, { clientX: x, clientY: y })
   }
 
   it('backdrop click', (done) => {
@@ -583,7 +581,7 @@ describe('Outside click', () => {
     const didClose = cy.spy()
     Swal.fire({
       title: 'didClose should be triggered once',
-      didClose
+      didClose,
     })
     Swal.getContainer().click()
     Swal.getContainer().click()

@@ -10,14 +10,16 @@ export const renderContent = (instance, params) => {
   if (params.html) {
     dom.parseHtmlToContainer(params.html, htmlContainer)
     dom.show(htmlContainer, 'block')
+  }
 
   // Content as plain text
-  } else if (params.text) {
+  else if (params.text) {
     htmlContainer.textContent = params.text
     dom.show(htmlContainer, 'block')
+  }
 
   // No content
-  } else {
+  else {
     dom.hide(htmlContainer)
   }
 

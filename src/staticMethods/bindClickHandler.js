@@ -1,7 +1,7 @@
 let bodyClickListenerAdded = false
 const clickHandlers = {}
 
-export function bindClickHandler (attr = 'data-swal-template') {
+export function bindClickHandler(attr = 'data-swal-template') {
   clickHandlers[attr] = this
 
   if (!bodyClickListenerAdded) {

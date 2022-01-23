@@ -10,14 +10,14 @@ describe('inputValue', () => {
     Swal.fire({
       input: 'text',
       inputValue: {
-        toPromise: () => Promise.resolve('test')
+        toPromise: () => Promise.resolve('test'),
       },
       didOpen: () => {
         setTimeout(() => {
           expect(Swal.getInput().value).to.equal('test')
           done()
         }, TIMEOUT)
-      }
+      },
     })
   })
 
@@ -29,7 +29,7 @@ describe('inputValue', () => {
       resolve('1.1 input value')
     })
 
-    function showPopupWithInput () {
+    function showPopupWithInput() {
       const input = inputTypes.pop()
       SwalWithoutAnimation.fire({
         input,
@@ -43,7 +43,7 @@ describe('inputValue', () => {
               done()
             }
           }, TIMEOUT)
-        }
+        },
       })
     }
     showPopupWithInput()
@@ -62,14 +62,18 @@ describe('inputValue', () => {
           expect(spy.calledWith('SweetAlert2: Error in inputValue promise: Error: input promise rejected')).to.be.true
           done()
         }, TIMEOUT)
-      }
+      },
     })
   })
 
   it('should throw console warning about unexpected type of inputValue', () => {
     const spy = cy.spy(console, 'warn')
     Swal.fire({ input: 'text', inputValue: undefined })
-    expect(spy.calledWith('SweetAlert2: Unexpected type of inputValue! Expected "string", "number" or "Promise", got "undefined"')).to.be.true
+    expect(
+      spy.calledWith(
+        'SweetAlert2: Unexpected type of inputValue! Expected "string", "number" or "Promise", got "undefined"'
+      )
+    ).to.be.true
   })
 
   it('inputValue can be null', () => {

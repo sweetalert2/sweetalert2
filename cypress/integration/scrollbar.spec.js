@@ -1,6 +1,6 @@
 import { Swal, SwalWithoutAnimation, ensureClosed } from '../utils'
 import { measureScrollbar } from '../../src/utils/dom/measureScrollbar'
-const { SHOW_CLASS_TIMEOUT } = require('../../src/utils/openPopup')
+import { SHOW_CLASS_TIMEOUT } from '../../src/utils/openPopup'
 
 describe('Vertical scrollbar', () => {
   it('should be visible on container and it should be scrolled to top', (done) => {
@@ -15,7 +15,7 @@ describe('Vertical scrollbar', () => {
           Swal.close()
           done()
         }, SHOW_CLASS_TIMEOUT)
-      }
+      },
     })
   })
 
@@ -34,7 +34,7 @@ describe('Vertical scrollbar', () => {
         expect(bodyStyles.paddingRight).to.equal('30px')
         document.body.removeChild(talltDiv)
         done()
-      }
+      },
     })
 
     const bodyStyles = window.getComputedStyle(document.body)
@@ -54,7 +54,7 @@ describe('Vertical scrollbar', () => {
       scrollbarPadding: false,
       didClose: () => {
         document.body.removeChild(talltDiv)
-      }
+      },
     })
 
     const bodyStyles = window.getComputedStyle(document.body)
@@ -69,7 +69,7 @@ describe('Vertical scrollbar', () => {
     document.body.style.paddingRight = '30px'
 
     SwalWithoutAnimation.fire({
-      title: 'The body has visible scrollbar, I will hide it and adjust padding-right on body'
+      title: 'The body has visible scrollbar, I will hide it and adjust padding-right on body',
     }).then(() => {
       Swal.fire({
         text: 'Body padding-right should be restored',
@@ -78,7 +78,7 @@ describe('Vertical scrollbar', () => {
           expect(bodyStyles.paddingRight).to.equal('30px')
           document.body.removeChild(talltDiv)
           done()
-        }
+        },
       })
     })
 

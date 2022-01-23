@@ -87,7 +87,7 @@ export const defaultParams = {
   willClose: undefined,
   didClose: undefined,
   didDestroy: undefined,
-  scrollbarPadding: true
+  scrollbarPadding: true,
 }
 
 export const updatableParams = [
@@ -147,7 +147,7 @@ const toastIncompatibleParams = [
   'focusCancel',
   'returnFocus',
   'heightAuto',
-  'keydownListenerCapture'
+  'keydownListenerCapture',
 ]
 
 /**

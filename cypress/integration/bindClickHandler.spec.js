@@ -4,7 +4,7 @@ describe('bindClickHandler', () => {
   it('bindClickHandler', () => {
     SwalWithoutAnimation.bindClickHandler()
     SwalWithoutAnimation.mixin({
-      toast: true
+      toast: true,
     }).bindClickHandler('data-swal-toast-template')
 
     const template = document.createElement('template')

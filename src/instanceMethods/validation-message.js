@@ -3,7 +3,7 @@ import { swalClasses } from '../utils/classes.js'
 import privateProps from '../privateProps.js'
 
 // Show block with validation message
-export function showValidationMessage (error) {
+export function showValidationMessage(error) {
   const domCache = privateProps.domCache.get(this)
   const params = privateProps.innerParams.get(this)
   dom.setInnerHtml(domCache.validationMessage, error)
@@ -23,7 +23,7 @@ export function showValidationMessage (error) {
 }
 
 // Hide block with validation message
-export function resetValidationMessage () {
+export function resetValidationMessage() {
   const domCache = privateProps.domCache.get(this)
   if (domCache.validationMessage) {
     dom.hide(domCache.validationMessage)

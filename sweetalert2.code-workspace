@@ -1,0 +1,19 @@
+{
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.fixAll.stylelint": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "extensions": {
+    "recommendations": ["dbaeumer.vscode-eslint", "stylelint.vscode-stylelint", "esbenp.prettier-vscode"]
+  }
+}

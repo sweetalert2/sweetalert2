@@ -34,10 +34,12 @@ const handleToastClick = (instance, domCache, dismissWith) => {
  * @returns {boolean}
  */
 const isAnyButtonShown = (innerParams) => {
-  return innerParams.showConfirmButton ||
+  return (
+    innerParams.showConfirmButton ||
     innerParams.showDenyButton ||
     innerParams.showCancelButton ||
     innerParams.showCloseButton
+  )
 }
 
 let ignoreOutsideClick = false

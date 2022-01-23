@@ -1,4 +1,5 @@
-import { $, Swal, SwalWithoutAnimation, isVisible } from '../../utils'
+import { $, Swal, SwalWithoutAnimation } from '../../utils'
+import { isVisible } from '../../../src/utils/dom'
 import { defaultParams, updatableParams } from '../../../src/utils/params'
 
 describe('update()', () => {
@@ -17,7 +18,7 @@ describe('update()', () => {
       input: 'text',
       showConfirmButton: false,
       imageUrl: '/assets/swal2-logo.png',
-      preConfirm: () => console.log('1') // eslint-disable-line no-console
+      preConfirm: () => console.log('1'), // eslint-disable-line no-console
     })
 
     Swal.update({
@@ -33,7 +34,7 @@ describe('update()', () => {
       cancelButtonText: 'New cancel button text',
       imageUrl: '/assets/swal2-logo.png',
       showCloseButton: true,
-      preConfirm: () => console.log('2') // eslint-disable-line no-console
+      preConfirm: () => console.log('2'), // eslint-disable-line no-console
     })
 
     expect(window.getComputedStyle(Swal.getPopup()).backgroundColor).to.equal('rgb(0, 128, 0)')
@@ -69,7 +70,7 @@ describe('update()', () => {
     SwalWithoutAnimation.fire({
       icon: 'success',
       imageUrl: '/assets/swal2-logo.png',
-      input: 'text'
+      input: 'text',
     })
 
     Swal.update({
@@ -86,8 +87,8 @@ describe('update()', () => {
         confirmButton: 'confirm-button-class',
         denyButton: 'deny-button-class',
         cancelButton: 'cancel-button-class',
-        footer: 'footer-class'
-      }
+        footer: 'footer-class',
+      },
     })
 
     // new custom classnames should be added, and the previous custom classnames should be removed
@@ -105,8 +106,8 @@ describe('update()', () => {
         confirmButton: 'confirm-button-class-NEW',
         denyButton: 'deny-button-class-NEW',
         cancelButton: 'cancel-button-class-NEW',
-        footer: 'footer-class-NEW'
-      }
+        footer: 'footer-class-NEW',
+      },
     })
 
     expect(Swal.getContainer().classList.contains('container-class')).to.be.false
@@ -143,7 +144,7 @@ describe('update()', () => {
     expect(Swal.isUpdatableParameter('willOpen')).to.be.false
   })
 
-  it('should update instance\'s params', () => {
+  it("should update instance's params", () => {
     const swal = Swal.fire({ icon: 'error' })
     expect(swal.params.icon).to.equal('error')
     swal.update({ icon: 'warning' })
@@ -156,8 +157,8 @@ describe('update()', () => {
       inputOptions: {
         uno: 'uno',
         dos: 'dos',
-        tres: 'tres'
-      }
+        tres: 'tres',
+      },
     })
     Swal.getInput().value = 'dos'
     Swal.update({ html: 'hi' })
@@ -173,7 +174,7 @@ describe('update()', () => {
         expect(Swal.getPopup().classList.contains('swal2-show')).to.be.true
         expect(Swal.getIcon().classList.contains('swal2-icon-show')).to.be.true
         done()
-      }
+      },
     })
   })
 
@@ -181,7 +182,11 @@ describe('update()', () => {
     const spy = cy.spy(console, 'warn')
     Swal.fire().then(() => {
       Swal.update()
-      expect(spy.calledWith(`SweetAlert2: You're trying to update the closed or closing popup, that won't work. Use the update() method in preConfirm parameter or show a new popup.`)).to.be.true
+      expect(
+        spy.calledWith(
+          `SweetAlert2: You're trying to update the closed or closing popup, that won't work. Use the update() method in preConfirm parameter or show a new popup.`
+        )
+      ).to.be.true
       done()
     })
     Swal.clickConfirm()

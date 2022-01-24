@@ -1,7 +1,7 @@
 import jQuery from 'jquery'
 import Swal from '../../src/sweetalert2'
 import { SHOW_CLASS_TIMEOUT } from '../../src/utils/openPopup'
-import { $, isHidden, SwalWithoutAnimation, triggerKeydownEvent, dispatchCustomEvent } from '../utils'
+import { $, SwalWithoutAnimation, dispatchCustomEvent, isHidden, triggerKeydownEvent } from '../utils'
 import { isVisible } from '../../src/utils/dom'
 import { defaultParams } from '../../src/utils/params'
 

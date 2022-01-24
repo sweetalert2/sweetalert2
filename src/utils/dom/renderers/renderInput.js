@@ -1,5 +1,5 @@
 import { swalClasses } from '../../classes.js'
-import { warn, error, isPromise } from '../../utils.js'
+import { error, isPromise, warn } from '../../utils.js'
 import * as dom from '../../dom/index.js'
 import privateProps from '../../../privateProps.js'
 

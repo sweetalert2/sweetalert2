@@ -1,5 +1,5 @@
-import { getTimerProgressBar, getConfirmButton, getDenyButton, getCancelButton } from './getters.js'
-import { swalClasses, iconTypes } from '../classes.js'
+import { getCancelButton, getConfirmButton, getDenyButton, getTimerProgressBar } from './getters.js'
+import { iconTypes, swalClasses } from '../classes.js'
 import { toArray, warn } from '../utils.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.

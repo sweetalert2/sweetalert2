@@ -1,9 +1,4 @@
 {
   "dictionaries": ["html"],
-  "words": [
-    "swal",
-    "sweetalert",
-    "inputerror",
-    "iosfix"
-  ]
+  "words": ["swal", "sweetalert", "inputerror", "iosfix"]
 }

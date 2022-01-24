@@ -1,6 +1,6 @@
 import { swalClasses } from '../classes.js'
-import { uniqueArray, toArray } from '../utils.js'
-import { isVisible, hasClass } from './domUtils.js'
+import { toArray, uniqueArray } from '../utils.js'
+import { hasClass, isVisible } from './domUtils.js'
 
 /**
  * Gets the popup container which contains the backdrop and the popup itself.

@@ -1,5 +1,5 @@
 import defaultParams from './params.js'
-import { toArray, capitalizeFirstLetter, warn } from './utils.js'
+import { capitalizeFirstLetter, toArray, warn } from './utils.js'
 
 const swalStringParams = ['swal-title', 'swal-html', 'swal-footer']
 

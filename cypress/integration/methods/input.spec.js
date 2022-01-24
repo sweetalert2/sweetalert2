@@ -1,5 +1,5 @@
 import { isVisible } from '../../../src/utils/dom'
-import { $, Swal, SwalWithoutAnimation, isHidden, triggerKeydownEvent, dispatchCustomEvent, TIMEOUT } from '../../utils'
+import { $, Swal, SwalWithoutAnimation, TIMEOUT, dispatchCustomEvent, isHidden, triggerKeydownEvent } from '../../utils'
 import { toArray } from '../../../src/utils/utils'
 import defaultInputValidators from '../../../src/utils/defaultInputValidators'
 

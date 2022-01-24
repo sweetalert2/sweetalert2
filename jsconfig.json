@@ -2,13 +2,9 @@
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
-    "target": "es5",
+    "target": "es5"
     // "strict": true
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

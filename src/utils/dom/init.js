@@ -1,6 +1,6 @@
 import { swalClasses } from '../classes.js'
 import { getContainer, getPopup } from './getters.js'
-import { addClass, removeClass, getDirectChildByClass, setInnerHtml } from './domUtils.js'
+import { addClass, getDirectChildByClass, removeClass, setInnerHtml } from './domUtils.js'
 import { isNodeEnv } from '../isNodeEnv.js'
 import { error } from '../utils.js'
 import globalState from '../../globalState.js'

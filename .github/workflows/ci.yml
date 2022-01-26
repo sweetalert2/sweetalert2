@@ -36,8 +36,6 @@ jobs:
 
       - name: Test in CommonJS
         run: |
-          cp dist/sweetalert2.js dist/sweetalert2.cjs
-          cp dist/sweetalert2.all.js dist/sweetalert2.all.cjs
           node test/require-in-commonjs.cjs
 
       - name: Check TypeScript

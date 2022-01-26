@@ -1,7 +1,6 @@
 import pify from 'pify'
 import rimraf from 'rimraf'
 import execute from '@sweetalert2/execute'
-import replaceInFile from 'replace-in-file'
 
 const log = console.log // eslint-disable-line no-console
 const removeDir = pify(rimraf)
@@ -26,8 +25,6 @@ const removeDir = pify(rimraf)
 
   log('Running the build...')
   await execute('yarn build')
-
-  await execute('git checkout package.json')
 
   log('OK!')
 })().catch(console.error)

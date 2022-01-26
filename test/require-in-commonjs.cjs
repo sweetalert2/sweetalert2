@@ -1,2 +1,2 @@
-require('../dist/sweetalert2.cjs')
-require('../dist/sweetalert2.all.cjs')
+require('../dist/sweetalert2.js')
+require('../dist/sweetalert2.all.js')

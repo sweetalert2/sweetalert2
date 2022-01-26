@@ -1,20 +1,20 @@
-import gulp from 'gulp'
-import rollup from 'gulp-rollup'
-import gulpif from 'gulp-if'
-import uglify from 'gulp-uglify'
-import rename from 'gulp-rename'
-import css2js from 'gulp-css2js'
-import concat from 'gulp-concat'
-import autoprefixer from 'gulp-autoprefixer'
-import cleanCss from 'gulp-clean-css'
-import babel from 'rollup-plugin-babel'
-import json from '@rollup/plugin-json'
-import merge from 'merge2'
-import sass from 'sass'
-import browserSync from 'browser-sync'
-import log from 'fancy-log'
-import fs from 'fs'
-import editJsonFile from 'edit-json-file'
+/* eslint @typescript-eslint/no-var-requires: 0 */
+const gulp = require('gulp')
+const rollup = require('gulp-rollup')
+const gulpif = require('gulp-if')
+const uglify = require('gulp-uglify')
+const rename = require('gulp-rename')
+const css2js = require('gulp-css2js')
+const concat = require('gulp-concat')
+const autoprefixer = require('gulp-autoprefixer')
+const cleanCss = require('gulp-clean-css')
+const babel = require('rollup-plugin-babel')
+const json = require('@rollup/plugin-json')
+const merge = require('merge2')
+const sass = require('sass')
+const browserSync = require('browser-sync').create()
+const log = require('fancy-log')
+const fs = require('fs')
 
 const packageJson = JSON.parse(fs.readFileSync('package.json'))
 const version = process.env.VERSION || packageJson.version
@@ -57,11 +57,6 @@ gulp.task('clean', () => {
 })
 
 gulp.task('build:scripts', () => {
-  // https://github.com/sweetalert2/sweetalert2/issues/2396
-  const packageJson = editJsonFile('package.json')
-  packageJson.unset('type')
-  packageJson.save()
-
   return gulp
     .src(['package.json', ...srcScriptFiles])
     .pipe(

@@ -1,3 +1,10 @@
+## [11.3.8](https://github.com/sweetalert2/sweetalert2/compare/v11.3.7...v11.3.8) (2022-01-26)
+
+
+### Bug Fixes
+
+* use ESM modules for dev/build tools ([1b182e6](https://github.com/sweetalert2/sweetalert2/commit/1b182e6b04ec847ffbb040f10a4a8d4194daed4c))
+
 ## [11.3.7](https://github.com/sweetalert2/sweetalert2/compare/v11.3.6...v11.3.7) (2022-01-26)
 
 

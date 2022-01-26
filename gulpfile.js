@@ -14,6 +14,7 @@ import sass from 'sass'
 import browserSync from 'browser-sync'
 import log from 'fancy-log'
 import fs from 'fs'
+import editJsonFile from 'edit-json-file'
 
 const packageJson = JSON.parse(fs.readFileSync('package.json'))
 const version = process.env.VERSION || packageJson.version
@@ -56,6 +57,11 @@ gulp.task('clean', () => {
 })
 
 gulp.task('build:scripts', () => {
+  // https://github.com/sweetalert2/sweetalert2/issues/2396
+  const packageJson = editJsonFile('package.json')
+  packageJson.unset('type')
+  packageJson.save()
+
   return gulp
     .src(['package.json', ...srcScriptFiles])
     .pipe(

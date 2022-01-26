@@ -1,3 +1,11 @@
+## [11.3.9](https://github.com/sweetalert2/sweetalert2/compare/v11.3.8...v11.3.9) (2022-01-26)
+
+
+### Bug Fixes
+
+* remove type="module" from package.json ([0ae493b](https://github.com/sweetalert2/sweetalert2/commit/0ae493b808400bc2f9dc68a2a6b9a1ef5c6b3050))
+* remove type="module" from package.json before building dist ([#2397](https://github.com/sweetalert2/sweetalert2/issues/2397)) ([1968d8b](https://github.com/sweetalert2/sweetalert2/commit/1968d8b5f446f950d3dff214e25f6db3ecaef51e))
+
 ## [11.3.8](https://github.com/sweetalert2/sweetalert2/compare/v11.3.7...v11.3.8) (2022-01-26)
 
 

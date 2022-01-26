@@ -1,3 +1,10 @@
+## [11.3.10](https://github.com/sweetalert2/sweetalert2/compare/v11.3.9...v11.3.10) (2022-01-26)
+
+
+### Bug Fixes
+
+* revert mistakenly deleted replace-in-file ([6c728fd](https://github.com/sweetalert2/sweetalert2/commit/6c728fdfc4b11e58c690c1ad0120a302941885fc))
+
 ## [11.3.9](https://github.com/sweetalert2/sweetalert2/compare/v11.3.8...v11.3.9) (2022-01-26)
 
 

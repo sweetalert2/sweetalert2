@@ -27,5 +27,7 @@ const removeDir = pify(rimraf)
   log('Running the build...')
   await execute('yarn build')
 
+  await execute('git checkout package.json')
+
   log('OK!')
 })().catch(console.error)

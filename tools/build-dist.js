@@ -1,10 +1,9 @@
-/* eslint @typescript-eslint/no-var-requires: 0 */
-const pify = require('pify')
-const rimraf = require('rimraf')
-const execute = require('@sweetalert2/execute')
-const replaceInFile = require('replace-in-file')
+import pify from 'pify'
+import rimraf from 'rimraf'
+import execute from '@sweetalert2/execute'
+import replaceInFile from 'replace-in-file'
 
-const log = console.log // eslint-disable-line
+const log = console.log // eslint-disable-line no-console
 const removeDir = pify(rimraf)
 
 ;(async () => {

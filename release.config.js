@@ -5,7 +5,7 @@ module.exports = {
   prepare: [
     {
       path: '@semantic-release/exec',
-      cmd: 'VERSION=${nextRelease.version} node tools/build-dist', // eslint-disable-line no-template-curly-in-string
+      cmd: 'VERSION=${nextRelease.version} node tools/build-dist.js',
     },
     '@semantic-release/changelog',
     '@semantic-release/npm',
@@ -31,7 +31,7 @@ module.exports = {
     '@semantic-release/github',
     {
       path: '@semantic-release/exec',
-      cmd: 'node tools/purge-jsdelivr',
+      cmd: 'node tools/purge-jsdelivr.js',
     },
   ],
 }

@@ -13,51 +13,54 @@ jobs:
     timeout-minutes: 10
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Install npm dependencies
-      run: yarn install
+      - name: Install npm dependencies
+        run: yarn install
 
-    - name: Build
-      run: yarn build
+      - name: Build
+        run: yarn build
 
-    - name: Run linters
-      run: yarn lint
+      - name: Run linters
+        run: yarn lint
 
-    - name: Check types
-      run: yarn check-types
+      - name: Check types
+        run: yarn check-types
 
-    - name: Run tests in Chrome
-      run: yarn test --browser chrome
+      - name: Run tests in Chrome
+        run: yarn test --browser chrome
 
-    - name: Run tests in Firefox
-      if: github.event_name == 'push'
-      run: yarn test --browser firefox
+      - name: Run tests in Firefox
+        if: github.event_name == 'push'
+        run: yarn test --browser firefox
 
-    - name: Test in node
-      run: node test/require-in-node
+      - name: Test in CommonJS
+        run: |
+          cp dist/sweetalert2.js dist/sweetalert2.cjs
+          cp dist/sweetalert2.all.js dist/sweetalert2.all.cjs
+          node test/require-in-commonjs.cjs
 
-    - name: Check TypeScript
-      run: |
-        tsc --lib dom,es6 --noEmit test/ts/simple-usage.ts sweetalert2.d.ts
-        tsc --lib dom,es6 --noEmit test/ts/dist-sweetalert2.ts sweetalert2.d.ts
-        tsc --lib dom,es6 --noEmit test/ts/src-sweetalert2.ts sweetalert2.d.ts
+      - name: Check TypeScript
+        run: |
+          tsc --lib dom,es6 --noEmit test/ts/simple-usage.ts sweetalert2.d.ts
+          tsc --lib dom,es6 --noEmit test/ts/dist-sweetalert2.ts sweetalert2.d.ts
+          tsc --lib dom,es6 --noEmit test/ts/src-sweetalert2.ts sweetalert2.d.ts
 
-    - name: Run automated release process with semantic-release
-      if: github.event_name == 'push'
-      uses: cycjimmy/semantic-release-action@v2
-      with:
-        extra_plugins: |
-          @semantic-release/changelog
-          @semantic-release/git
-          @semantic-release/exec
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Run automated release process with semantic-release
+        if: github.event_name == 'push'
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+            @semantic-release/exec
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-    - name: Report bundlezise to bundlewatch.io
-      env:
-        BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
-      run: |
-        yarn add --dev bundlewatch
-        ./node_modules/.bin/bundlewatch
+      - name: Report bundlezise to bundlewatch.io
+        env:
+          BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+        run: |
+          yarn add --dev bundlewatch
+          ./node_modules/.bin/bundlewatch

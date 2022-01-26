@@ -79,7 +79,7 @@
   ],
   "scripts": {
     "start": "gulp develop --continue-on-error --skip-minification --skip-standalone",
-    "lint": "stylelint src/**/*.scss && eslint src test cypress tools *.js *.ts && prettier --check src/**/*.js cypress/**/*.js test/**/*.{js,ts} tools/**/*.js *.js && cspell lint 'src/**/*.js' --no-progress --no-summary",
+    "lint": "stylelint src/**/*.scss && eslint src cypress *.js *.ts && prettier --check src/**/*.js cypress/**/*.js *.js && cspell lint 'src/**/*.js' --no-progress --no-summary",
     "build": "gulp build",
     "test": "cypress run --headless",
     "check-types": "tsc --noEmit -p jsconfig.json",

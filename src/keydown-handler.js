@@ -82,8 +82,8 @@ const keydownHandler = (instance, e, dismissWith) => {
 }
 
 const handleEnter = (instance, e, innerParams) => {
-  // #720 #721
-  if (e.isComposing) {
+  // #2386 #720 #721
+  if (!callIfFunction(innerParams.allowEnterKey) || e.isComposing) {
     return
   }
 

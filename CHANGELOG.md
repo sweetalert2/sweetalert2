@@ -1,3 +1,10 @@
+## [11.3.7](https://github.com/sweetalert2/sweetalert2/compare/v11.3.6...v11.3.7) (2022-01-26)
+
+
+### Bug Fixes
+
+* allowEnterKey when input is set ([#2388](https://github.com/sweetalert2/sweetalert2/issues/2388)) ([a71c73f](https://github.com/sweetalert2/sweetalert2/commit/a71c73f7f473c834a602e948ab94590b0b3c245a))
+
 ## [11.3.6](https://github.com/sweetalert2/sweetalert2/compare/v11.3.5...v11.3.6) (2022-01-17)
 
 

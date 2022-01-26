@@ -20,6 +20,7 @@
     "browser-sync": "^2.27.7",
     "cspell": "^5.15.1",
     "cypress": "^9.2.0",
+    "edit-json-file": "^1.7.0",
     "eslint": "^8.7.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.25.4",

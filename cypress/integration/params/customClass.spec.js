@@ -11,6 +11,8 @@ describe('customClass', () => {
       icon: 'question',
       input: 'text',
       imageUrl: '/assets/swal2-logo.png',
+      timer: 10000,
+      timerProgressBar: true,
       customClass: {
         container: 'container-class',
         popup: 'popup-class',
@@ -26,6 +28,7 @@ describe('customClass', () => {
         cancelButton: 'cancel-button-class',
         loader: 'loader-class',
         footer: 'footer-class',
+        timerProgressBar: 'timer-progress-bar-class',
       },
     })
     expect(Swal.getContainer().classList.contains('container-class')).to.be.true
@@ -42,6 +45,7 @@ describe('customClass', () => {
     expect(Swal.getCancelButton().classList.contains('cancel-button-class')).to.be.true
     expect(Swal.getLoader().classList.contains('loader-class')).to.be.true
     expect(Swal.getFooter().classList.contains('footer-class')).to.be.true
+    expect(Swal.getTimerProgressBar().classList.contains('timer-progress-bar-class')).to.be.true
   })
 
   it('only visible input has custom class', () => {

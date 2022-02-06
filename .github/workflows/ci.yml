@@ -35,8 +35,7 @@ jobs:
         run: yarn test --browser firefox
 
       - name: Test in CommonJS
-        run: |
-          node test/require-in-commonjs.cjs
+        run: node test/require-in-commonjs.cjs
 
       - name: Check TypeScript
         run: |

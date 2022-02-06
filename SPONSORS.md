@@ -29,9 +29,13 @@ For all questions related to sponsorship please contact me via email limon.monte
 NSFW Sponsors
 -------------
 
-[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md#sponsors) | [<img src="https://sweetalert2.github.io/images/sponsors/sensualdolls.png" width="80">](https://www.sensualdolls.com) | [<img src="https://sweetalert2.github.io/images/sponsors/bestrealdoll.jpeg" width="80">](https://www.bestrealdoll.com/collections/us-warehouse) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdolltech.jpeg" width="80">](https://www.sexdolltech.com/product-category/us-warehouse/) | [<img src="https://sweetalert2.github.io/images/sponsors/rosewives.png" width="80">](https://rosewives.com/)
--|-|-|-|-
-[Become a NSFW sponsor](SPONSORS.md#sponsors) | [Sensual Dolls](https://www.sensualdolls.com) | [BestRealDoll](https://www.bestrealdoll.com/collections/us-warehouse) | [SexDollTech](https://www.sexdolltech.com/product-category/us-warehouse/) | [Rose Wives](https://rosewives.com/)
+[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md#sponsors) | [<img src="https://sweetalert2.github.io/images/sponsors/sexvibrator.png" width="80">](https://www.sexvibrators.in/) | [<img src="https://sweetalert2.github.io/images/sponsors/viva-awa.png" width="80">](https://www.viva-awa.com/)
+-|-|-
+[Become a NSFW sponsor](SPONSORS.md#sponsors) | [Sex Vibrators](https://www.sexvibrators.in/) | [Viva Awa](https://www.viva-awa.com/)
+
+[<img src="https://sweetalert2.github.io/images/sponsors/sensualdolls.png" width="80">](https://www.sensualdolls.com) | [<img src="https://sweetalert2.github.io/images/sponsors/bestrealdoll.jpeg" width="80">](https://www.bestrealdoll.com/collections/us-warehouse) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdolltech.jpeg" width="80">](https://www.sexdolltech.com/product-category/us-warehouse/) | [<img src="https://sweetalert2.github.io/images/sponsors/rosewives.png" width="80">](https://rosewives.com/)
+-|-|-|-
+[Sensual Dolls](https://www.sensualdolls.com) | [BestRealDoll](https://www.bestrealdoll.com/collections/us-warehouse) | [SexDollTech](https://www.sexdolltech.com/product-category/us-warehouse/) | [Rose Wives](https://rosewives.com/)
 
 [<img src="https://sweetalert2.github.io/images/sponsors/sexdollsoff.png" width="80">](https://www.sexdollsoff.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/realsexdoll.png" width="80">](https://realsexdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/yourdoll.jpg" width="80">](https://www.yourdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/annies-dollhouse.png" width="80">](https://anniesdollhouse.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdollcenter.png" width="80">](https://sexdollcenter.vip/) |
 -|-|-|-|-

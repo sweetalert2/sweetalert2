@@ -31,7 +31,7 @@ module.exports = {
     '@semantic-release/github',
     {
       path: '@semantic-release/exec',
-      cmd: 'node tools/purge-jsdelivr.js',
+      cmd: 'node tools/purge-jsdelivr.mjs',
     },
   ],
 }

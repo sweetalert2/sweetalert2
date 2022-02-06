@@ -1,3 +1,10 @@
+# [11.4.0](https://github.com/sweetalert2/sweetalert2/compare/v11.3.10...v11.4.0) (2022-02-06)
+
+
+### Features
+
+* add customClass.timerProgressBar ([#2401](https://github.com/sweetalert2/sweetalert2/issues/2401)) ([929359b](https://github.com/sweetalert2/sweetalert2/commit/929359b7afa5d6401afa9128869b47ebd5733781))
+
 ## [11.3.10](https://github.com/sweetalert2/sweetalert2/compare/v11.3.9...v11.3.10) (2022-01-26)
 
 

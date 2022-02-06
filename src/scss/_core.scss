@@ -10,9 +10,9 @@
   left: 0;
   box-sizing: border-box;
   grid-template-areas:
-    "top-start     top            top-end"
-    "center-start  center         center-end"
-    "bottom-start  bottom-center  bottom-end";
+    'top-start     top            top-end'
+    'center-start  center         center-end'
+    'bottom-start  bottom-center  bottom-end';
   grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);
   height: 100%; // Safari
   padding: $swal2-container-padding;
@@ -177,7 +177,7 @@
   &:not(.swal2-loading) {
     .swal2-styled {
       &[disabled] {
-        opacity: .4;
+        opacity: 0.4;
       }
 
       &:hover {
@@ -288,7 +288,6 @@
   bottom: 0;
   left: 0;
   grid-column: auto !important;
-  height: $swal2-timer-progress-bar-height;
   overflow: hidden;
   border-bottom-right-radius: $swal2-border-radius;
   border-bottom-left-radius: $swal2-border-radius;
@@ -443,7 +442,7 @@
 .swal2-select {
   min-width: 50%;
   max-width: 100%;
-  padding: .375em .625em;
+  padding: 0.375em 0.625em;
   background: $swal2-input-background;
   color: $swal2-input-color;
   font-size: $swal2-input-font-size;
@@ -457,13 +456,13 @@
   color: $swal2-input-color;
 
   label {
-    margin: 0 .6em;
+    margin: 0 0.6em;
     font-size: $swal2-input-font-size;
   }
 
   input {
     flex-shrink: 0;
-    margin: 0 .4em;
+    margin: 0 0.4em;
   }
 }
 
@@ -490,7 +489,7 @@
     width: 1.5em;
     min-width: 1.5em;
     height: 1.5em;
-    margin: 0 .625em;
+    margin: 0 0.625em;
     zoom: $swal2-validation-message-icon-zoom;
     border-radius: 50%;
     background-color: $swal2-validation-message-icon-background;
@@ -515,7 +514,7 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
   height: $swal2-icon-size;
   margin: $swal2-icon-margin;
   zoom: $swal2-icon-zoom;
-  border: #{.25em * $icon-zoom} solid transparent;
+  border: #{0.25em * $icon-zoom} solid transparent;
   border-radius: 50%;
   border-color: $swal2-icon-border-color;
   font-family: $swal2-icon-font-family;
@@ -547,8 +546,8 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
       position: absolute;
       top: 2.3125em;
       width: 2.9375em;
-      height: .3125em;
-      border-radius: .125em;
+      height: 0.3125em;
+      border-radius: 0.125em;
       background-color: $swal2-error;
 
       &[class$='left'] {
@@ -565,10 +564,10 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
     // Error icon animation
     &.swal2-icon-show {
       @if $swal2-icon-animations {
-        animation: swal2-animate-error-icon .5s;
+        animation: swal2-animate-error-icon 0.5s;
 
         .swal2-x-mark {
-          animation: swal2-animate-error-x-mark .5s;
+          animation: swal2-animate-error-x-mark 0.5s;
         }
       }
     }
@@ -581,10 +580,10 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
     // Warning icon animation
     &.swal2-icon-show {
       @if $swal2-icon-animations {
-        animation: swal2-animate-error-icon .5s;
+        animation: swal2-animate-error-icon 0.5s;
 
         .swal2-icon-content {
-          animation: swal2-animate-i-mark .5s;
+          animation: swal2-animate-i-mark 0.5s;
         }
       }
     }
@@ -597,10 +596,10 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
     // Info icon animation
     &.swal2-icon-show {
       @if $swal2-icon-animations {
-        animation: swal2-animate-error-icon .5s;
+        animation: swal2-animate-error-icon 0.5s;
 
         .swal2-icon-content {
-          animation: swal2-animate-i-mark .8s;
+          animation: swal2-animate-i-mark 0.8s;
         }
       }
     }
@@ -613,10 +612,10 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
     // Question icon animation
     &.swal2-icon-show {
       @if $swal2-icon-animations {
-        animation: swal2-animate-error-icon .5s;
+        animation: swal2-animate-error-icon 0.5s;
 
         .swal2-icon-content {
-          animation: swal2-animate-question-mark .8s;
+          animation: swal2-animate-question-mark 0.8s;
         }
       }
     }
@@ -635,7 +634,7 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
       border-radius: 50%;
 
       &[class$='left'] {
-        top: -.4375em;
+        top: -0.4375em;
         left: -2.0635em;
         transform: rotate(-45deg);
         transform-origin: 3.75em 3.75em;
@@ -647,7 +646,7 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
       }
 
       &[class$='right'] {
-        top: -.6875em;
+        top: -0.6875em;
         left: 1.875em;
         transform: rotate(-45deg);
         transform-origin: 0 3.75em;
@@ -663,12 +662,12 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
       // Ring
       position: absolute;
       z-index: 2;
-      top: -.25em;
-      left: -.25em;
+      top: -0.25em;
+      left: -0.25em;
       box-sizing: content-box;
       width: 100%;
       height: 100%;
-      border: .25em solid $swal2-success-border;
+      border: 0.25em solid $swal2-success-border;
       border-radius: 50%;
 
       @if $icon-zoom != 1 {
@@ -680,9 +679,9 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
       // Hide corners left from animation
       position: absolute;
       z-index: 1;
-      top: .5em;
+      top: 0.5em;
       left: 1.625em;
-      width: .4375em;
+      width: 0.4375em;
       height: 5.625em;
       transform: rotate(-45deg);
 
@@ -695,20 +694,20 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
       display: block;
       position: absolute;
       z-index: 2;
-      height: .3125em;
-      border-radius: .125em;
+      height: 0.3125em;
+      border-radius: 0.125em;
       background-color: $swal2-success;
 
       &[class$='tip'] {
         top: 2.875em;
-        left: .8125em;
+        left: 0.8125em;
         width: 1.5625em;
         transform: rotate(45deg);
       }
 
       &[class$='long'] {
         top: 2.375em;
-        right: .5em;
+        right: 0.5em;
         width: 2.9375em;
         transform: rotate(-45deg);
       }
@@ -722,11 +721,11 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
     &.swal2-icon-show {
       @if $swal2-icon-animations {
         .swal2-success-line-tip {
-          animation: swal2-animate-success-line-tip .75s;
+          animation: swal2-animate-success-line-tip 0.75s;
         }
 
         .swal2-success-line-long {
-          animation: swal2-animate-success-line-long .75s;
+          animation: swal2-animate-success-line-long 0.75s;
         }
 
         .swal2-success-circular-line-right {
@@ -780,7 +779,7 @@ $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
     z-index: 10;
     flex-shrink: 0;
     width: $swal2-progress-steps-distance;
-    height: .4em;
+    height: 0.4em;
     margin: 0 -1px;
     background: $swal2-active-step-background;
   }

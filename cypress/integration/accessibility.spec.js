@@ -100,6 +100,24 @@ describe('Accessibility:', () => {
     Swal.close()
   })
 
+  it('should unset aria-hidden="true" when two modals are called one after another', (done) => {
+    const div = document.createElement('div')
+    div.setAttribute('aria-hidden', 'true')
+    document.body.appendChild(div)
+    Swal.fire({
+      didClose: () => {
+        Swal.fire({
+          didClose: () => {
+            expect(div.hasAttribute('aria-hidden')).to.be.true
+            done()
+          },
+        })
+        Swal.close()
+      },
+    })
+    Swal.close()
+  })
+
   it('should unset aria-hidden="true" when modal is called twice', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)

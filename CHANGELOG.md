@@ -1,3 +1,10 @@
+## [11.4.1](https://github.com/sweetalert2/sweetalert2/compare/v11.4.0...v11.4.1) (2022-02-19)
+
+
+### Bug Fixes
+
+* isModal() to return true only if .swal2-shown is set on body ([#2405](https://github.com/sweetalert2/sweetalert2/issues/2405)) ([e0f2240](https://github.com/sweetalert2/sweetalert2/commit/e0f2240c7c936f38695debd34d04188612bfb4c1))
+
 # [11.4.0](https://github.com/sweetalert2/sweetalert2/compare/v11.3.10...v11.4.0) (2022-02-06)
 
 

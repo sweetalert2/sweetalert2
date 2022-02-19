@@ -92,7 +92,11 @@ export const getFocusableElements = () => {
 }
 
 export const isModal = () => {
-  return !hasClass(document.body, swalClasses['toast-shown']) && !hasClass(document.body, swalClasses['no-backdrop'])
+  return (
+    hasClass(document.body, swalClasses.shown) &&
+    !hasClass(document.body, swalClasses['toast-shown']) &&
+    !hasClass(document.body, swalClasses['no-backdrop'])
+  )
 }
 
 export const isToast = () => {

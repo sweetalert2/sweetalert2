@@ -131,8 +131,17 @@ const handleArrows = (key) => {
     return
   }
   const sibling = arrowKeysNextButton.includes(key) ? 'nextElementSibling' : 'previousElementSibling'
-  const buttonToFocus = document.activeElement[sibling]
-  if (buttonToFocus instanceof HTMLElement) {
+  let buttonToFocus = document.activeElement
+  for (let i = 0; i < dom.getActions().children.length; i++) {
+    buttonToFocus = buttonToFocus[sibling]
+    if (!buttonToFocus) {
+      return
+    }
+    if (dom.isVisible(buttonToFocus) && buttonToFocus instanceof HTMLButtonElement) {
+      break
+    }
+  }
+  if (buttonToFocus instanceof HTMLButtonElement) {
     buttonToFocus.focus()
   }
 }

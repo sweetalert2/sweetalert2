@@ -189,7 +189,20 @@ describe('should trap focus in modals', () => {
     })
   })
 
-  it('arrow keys', (done) => {
+  it('arrow keys with Confirm, Cancel buttons', (done) => {
+    Swal.fire({
+      showCancelButton: true,
+      didOpen: () => {
+        triggerKeydownEvent(document.activeElement, 'ArrowRight')
+        expect(document.activeElement).to.equal(Swal.getCancelButton())
+        triggerKeydownEvent(document.activeElement, 'ArrowLeft')
+        expect(document.activeElement).to.equal(Swal.getConfirmButton())
+        done()
+      },
+    })
+  })
+
+  it('arrow keys with Confirm, Cancel, Deny buttons', (done) => {
     Swal.fire({
       showDenyButton: true,
       showCancelButton: true,

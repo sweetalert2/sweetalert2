@@ -1,3 +1,10 @@
+## [11.4.2](https://github.com/sweetalert2/sweetalert2/compare/v11.4.1...v11.4.2) (2022-02-20)
+
+
+### Bug Fixes
+
+* arrow keys when there are Confirm and Cancel buttons ([95f3632](https://github.com/sweetalert2/sweetalert2/commit/95f363211277c53c261b5cd884d24ec2742909b5))
+
 ## [11.4.1](https://github.com/sweetalert2/sweetalert2/compare/v11.4.0...v11.4.1) (2022-02-19)
 
 

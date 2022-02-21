@@ -89,4 +89,19 @@ describe('preConfirm', () => {
     Swal.clickConfirm()
     expect(Swal.isVisible()).to.be.true
   })
+
+  it('should complete the promise when calling showValidationMessage() inside preConfirm', (done) => {
+    Swal.fire({
+      showCancelButton: true,
+      preConfirm: () => {
+        Swal.showValidationMessage('Now click the cancel button')
+      },
+      didOpen: () => {
+        Swal.clickConfirm()
+      },
+    }).then(() => {
+      done()
+    })
+    Swal.clickCancel()
+  })
 })

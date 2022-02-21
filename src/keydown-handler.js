@@ -56,6 +56,14 @@ const keydownHandler = (instance, e, dismissWith) => {
     return // This instance has already been destroyed
   }
 
+  // Ignore keydown during IME composition
+  // https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event#ignoring_keydown_during_ime_composition
+  // https://github.com/sweetalert2/sweetalert2/issues/720
+  // https://github.com/sweetalert2/sweetalert2/issues/2406
+  if (e.isComposing || e.keyCode === 229) {
+    return
+  }
+
   if (innerParams.stopKeydownPropagation) {
     e.stopPropagation()
   }
@@ -82,8 +90,8 @@ const keydownHandler = (instance, e, dismissWith) => {
 }
 
 const handleEnter = (instance, e, innerParams) => {
-  // #2386 #720 #721
-  if (!callIfFunction(innerParams.allowEnterKey) || e.isComposing) {
+  // https://github.com/sweetalert2/sweetalert2/issues/2386
+  if (!callIfFunction(innerParams.allowEnterKey)) {
     return
   }
 

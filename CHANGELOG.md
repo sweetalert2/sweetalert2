@@ -1,3 +1,10 @@
+## [11.4.3](https://github.com/sweetalert2/sweetalert2/compare/v11.4.2...v11.4.3) (2022-02-21)
+
+
+### Bug Fixes
+
+* ignore keydown during IME composition ([#2408](https://github.com/sweetalert2/sweetalert2/issues/2408)) ([402bc8c](https://github.com/sweetalert2/sweetalert2/commit/402bc8cf8d0f823051cac1bd8f23c0feb3493239))
+
 ## [11.4.2](https://github.com/sweetalert2/sweetalert2/compare/v11.4.1...v11.4.2) (2022-02-20)
 
 

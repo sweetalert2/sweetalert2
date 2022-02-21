@@ -1,3 +1,10 @@
+## [11.4.4](https://github.com/sweetalert2/sweetalert2/compare/v11.4.3...v11.4.4) (2022-02-21)
+
+
+### Bug Fixes
+
+* complete the promise when calling showValidationMessage() inside preConfirm ([#2409](https://github.com/sweetalert2/sweetalert2/issues/2409)) ([e2384a6](https://github.com/sweetalert2/sweetalert2/commit/e2384a68b8b9edf37b60c33916044c8d2539ab7b))
+
 ## [11.4.3](https://github.com/sweetalert2/sweetalert2/compare/v11.4.2...v11.4.3) (2022-02-21)
 
 

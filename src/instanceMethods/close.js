@@ -105,7 +105,7 @@ export function rejectPromise(error) {
   }
 }
 
-const handleAwaitingPromise = (instance) => {
+export const handleAwaitingPromise = (instance) => {
   if (instance.isAwaitingPromise()) {
     privateProps.awaitingPromise.delete(instance)
     // The instance might have been previously partly destroyed, we must resume the destroy process in this case #2335

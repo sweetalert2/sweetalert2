@@ -5,6 +5,7 @@ import { asPromise, capitalizeFirstLetter, error } from './utils/utils.js'
 import { showLoading } from './staticMethods/showLoading.js'
 import { DismissReason } from './utils/DismissReason.js'
 import privateProps from './privateProps.js'
+import { handleAwaitingPromise } from './instanceMethods.js'
 
 export const handleConfirmButtonClick = (instance) => {
   const innerParams = privateProps.innerParams.get(instance)
@@ -86,6 +87,7 @@ const deny = (instance, value) => {
       .then((preDenyValue) => {
         if (preDenyValue === false) {
           instance.hideLoading()
+          handleAwaitingPromise(instance)
         } else {
           instance.closePopup({ isDenied: true, value: typeof preDenyValue === 'undefined' ? value : preDenyValue })
         }
@@ -121,6 +123,7 @@ const confirm = (instance, value) => {
       .then((preConfirmValue) => {
         if (isVisible(getValidationMessage()) || preConfirmValue === false) {
           instance.hideLoading()
+          handleAwaitingPromise(instance)
         } else {
           succeedWith(instance, typeof preConfirmValue === 'undefined' ? value : preConfirmValue)
         }

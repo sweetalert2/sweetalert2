@@ -18,7 +18,7 @@
     "@sweetalert2/stylelint-config": "^2.0.6",
     "browser-sync": "^2.27.7",
     "cspell": "^5.18.3",
-    "cypress": "^9.4.1",
+    "cypress": "^9.5.1",
     "eslint": "^8.10.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.25.4",
@@ -37,11 +37,11 @@
     "postcss-scss": "^4.0.2",
     "prettier": "^2.5.1",
     "replace-in-file": "^6.3.2",
-    "rollup": "^2.68.0",
+    "rollup": "^2.69.1",
     "rollup-plugin-babel": "^4.3.2",
     "sass": "^1.49.9",
     "stylelint": "^14.5.3",
-    "typescript": "^4.5.4"
+    "typescript": "^4.6.2"
   },
   "files": [
     "dist",

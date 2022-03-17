@@ -1,3 +1,10 @@
+## [11.4.5](https://github.com/sweetalert2/sweetalert2/compare/v11.4.4...v11.4.5) (2022-03-17)
+
+
+### Bug Fixes
+
+* rm cspell, it takes too long to install ([c39de26](https://github.com/sweetalert2/sweetalert2/commit/c39de260c70c7faf5b450d4c03fd7ea16cdb24db))
+
 ## [11.4.4](https://github.com/sweetalert2/sweetalert2/compare/v11.4.3...v11.4.4) (2022-02-21)
 
 

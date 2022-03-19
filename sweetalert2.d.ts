@@ -676,7 +676,7 @@ declare module 'sweetalert2' {
      *
      * @default {}
      */
-    customClass?: SweetAlertCustomClass
+    customClass?: SweetAlertCustomClass | string
 
     /**
      * Auto close timer of the popup. Set in ms (milliseconds).

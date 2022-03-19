@@ -1,3 +1,10 @@
+## [11.4.6](https://github.com/sweetalert2/sweetalert2/compare/v11.4.5...v11.4.6) (2022-03-19)
+
+
+### Bug Fixes
+
+* **types:** customClass can be also a string ([27e9282](https://github.com/sweetalert2/sweetalert2/commit/27e9282b743babab7631938c2394482c24d4755f)), closes [#2411](https://github.com/sweetalert2/sweetalert2/issues/2411)
+
 ## [11.4.5](https://github.com/sweetalert2/sweetalert2/compare/v11.4.4...v11.4.5) (2022-03-17)
 
 

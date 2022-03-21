@@ -9,7 +9,7 @@
   "module": "src/sweetalert2.js",
   "types": "sweetalert2.d.ts",
   "devDependencies": {
-    "@babel/core": "^7.17.0",
+    "@babel/core": "^7.17.8",
     "@babel/preset-env": "^7.16.7",
     "@rollup/plugin-json": "^4.0.2",
     "@sweetalert2/eslint-config": "^1.0.11",

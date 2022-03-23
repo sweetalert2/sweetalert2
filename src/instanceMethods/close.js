@@ -6,6 +6,7 @@ import { swalClasses } from '../utils/classes.js'
 import globalState, { restoreActiveElement } from '../globalState.js'
 import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
+import { removeKeydownHandler } from '../keydown-handler.js'
 
 /*
  * Instance method to close sweetAlert
@@ -16,12 +17,7 @@ function removePopupAndResetState(instance, container, returnFocus, didClose) {
     triggerDidCloseAndDispose(instance, didClose)
   } else {
     restoreActiveElement(returnFocus).then(() => triggerDidCloseAndDispose(instance, didClose))
-    if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
-      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
-        capture: globalState.keydownListenerCapture,
-      })
-      globalState.keydownHandlerAdded = false
-    }
+    removeKeydownHandler(globalState)
   }
 
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)

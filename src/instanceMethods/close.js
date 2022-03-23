@@ -16,10 +16,12 @@ function removePopupAndResetState(instance, container, returnFocus, didClose) {
     triggerDidCloseAndDispose(instance, didClose)
   } else {
     restoreActiveElement(returnFocus).then(() => triggerDidCloseAndDispose(instance, didClose))
-    globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
-      capture: globalState.keydownListenerCapture,
-    })
-    globalState.keydownHandlerAdded = false
+    if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
+      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
+        capture: globalState.keydownListenerCapture,
+      })
+      globalState.keydownHandlerAdded = false
+    }
   }
 
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)

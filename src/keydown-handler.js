@@ -4,14 +4,17 @@ import { callIfFunction } from './utils/utils.js'
 import { clickConfirm } from './staticMethods/dom.js'
 import privateProps from './privateProps.js'
 
-export const addKeydownHandler = (instance, globalState, innerParams, dismissWith) => {
+export const removeKeydownHandler = (globalState) => {
   if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
     globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
       capture: globalState.keydownListenerCapture,
     })
     globalState.keydownHandlerAdded = false
   }
+}
 
+export const addKeydownHandler = (instance, globalState, innerParams, dismissWith) => {
+  removeKeydownHandler(globalState)
   if (!innerParams.toast) {
     globalState.keydownHandler = (e) => keydownHandler(instance, e, dismissWith)
     globalState.keydownTarget = innerParams.keydownListenerCapture ? window : dom.getPopup()

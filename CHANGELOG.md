@@ -1,3 +1,10 @@
+## [11.4.7](https://github.com/sweetalert2/sweetalert2/compare/v11.4.6...v11.4.7) (2022-03-24)
+
+
+### Bug Fixes
+
+* 'removeEventListener' of undefined ([#2421](https://github.com/sweetalert2/sweetalert2/issues/2421)) ([4f44984](https://github.com/sweetalert2/sweetalert2/commit/4f44984eb0f900cf8b2401a18511a55bd2eaaf42))
+
 ## [11.4.6](https://github.com/sweetalert2/sweetalert2/compare/v11.4.5...v11.4.6) (2022-03-19)
 
 

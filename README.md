@@ -19,9 +19,13 @@ Sponsors
 
 For all questions related to sponsorship please contact me via email limon.monte@protonmail.com
 
-[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md#sponsors) | [<img src="https://avatars2.githubusercontent.com/u/28631236?s=80&v=4" width="80">](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/vegega.jpeg" width="80">](https://www.vegega.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/phatoil.png" width="80">](https://phatoil.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/celltrackingapps.png" width="80">](https://celltrackingapps.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/mybitcoinslots.png" width="80">](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo)
--|-|-|-|-|-
-[Become a sponsor](SPONSORS.md#sponsors) | [FlowCrypt](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [Metal Raised Garden Bed](https://www.vegega.com/) | [Pure Essential Oil](https://phatoil.com/) | [Phone Tracking Apps](https://celltrackingapps.com) | [My Bitcoin slots](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo)
+[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md#sponsors) | [<img src="https://sweetalert2.github.io/images/sponsors/bestforandroid.png" width="80">](https://bestforandroid.com/) | [<img src="https://avatars2.githubusercontent.com/u/28631236?s=80&v=4" width="80">](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/mybitcoinslots.png" width="80">](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo)
+-|-|-|-
+[Become a sponsor](SPONSORS.md#sponsors) | [Best For Android](https://bestforandroid.com/) | [FlowCrypt](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [My Bitcoin slots](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo)
+
+[<img src="https://sweetalert2.github.io/images/sponsors/vegega.jpeg" width="80">](https://www.vegega.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/phatoil.png" width="80">](https://phatoil.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/celltrackingapps.png" width="80">](https://celltrackingapps.com/)
+-|-|-
+[Metal Raised Garden Bed](https://www.vegega.com/) | [Pure Essential Oil](https://phatoil.com/) | [Phone Tracking Apps](https://celltrackingapps.com)
 
 [<img src="https://sweetalert2.github.io/images/sponsors/torc-stark.png" width="80">](https://torcstark.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/coderubik.png" width="80">](https://coderubik.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/halvinlaina.png" width="80">](https://halvinlaina.fi/) | [<img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80">](https://github.com/tiagostutz) | [<img src="https://sweetalert2.github.io/images/sponsors/sebaebc.png" width="80">](https://github.com/sebaebc)
 -|-|-|-|-

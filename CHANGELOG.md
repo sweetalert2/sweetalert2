@@ -1,3 +1,10 @@
+## [11.4.8](https://github.com/sweetalert2/sweetalert2/compare/v11.4.7...v11.4.8) (2022-03-29)
+
+
+### Bug Fixes
+
+* bump cycjimmy/semantic-release-action to v3 ([f6cb46f](https://github.com/sweetalert2/sweetalert2/commit/f6cb46fa9fb0bab53c39d858c1d5d3c36833968f))
+
 ## [11.4.7](https://github.com/sweetalert2/sweetalert2/compare/v11.4.6...v11.4.7) (2022-03-24)
 
 

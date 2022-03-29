@@ -45,7 +45,7 @@ jobs:
 
       - name: Run automated release process with semantic-release
         if: github.event_name == 'push'
-        uses: cycjimmy/semantic-release-action@v2
+        uses: cycjimmy/semantic-release-action@v3
         with:
           extra_plugins: |
             @semantic-release/changelog

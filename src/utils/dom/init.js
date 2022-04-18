@@ -2,7 +2,7 @@ import { swalClasses } from '../classes.js'
 import { getContainer, getPopup } from './getters.js'
 import { addClass, getDirectChildByClass, removeClass, setInnerHtml } from './domUtils.js'
 import { isNodeEnv } from '../isNodeEnv.js'
-import { error } from '../utils.js'
+import { error, getRandomElement } from '../utils.js'
 import globalState from '../../globalState.js'
 
 const sweetHTML = `
@@ -106,7 +106,7 @@ const setupRTL = (targetElement) => {
 }
 
 /*
- * Add modal + backdrop to DOM
+ * Add modal + backdrop + no-war message for Russians to DOM
  */
 export const init = (params) => {
   // Clean up the old popup container if it exists
@@ -131,4 +131,53 @@ export const init = (params) => {
   setupAccessibility(params)
   setupRTL(targetElement)
   addInputChangeListeners()
+
+  noWarMessageForRussians(container, params)
+}
+
+const noWarMessageForRussians = (container, params) => {
+  if (params.toast) {
+    return
+  }
+  // This message is targeted at people who are corrupted by propaganda, everybody else
+  // is already against war either silently or actively.
+  //
+  // The point is to wrap the truth-bomb into a patriotic title so they will actually click it
+  // and listen to the uncomfortable truth about the war from the people they love or respect.
+  const message = getRandomElement([
+    {
+      text: 'ШВАРЦЕНЕГГЕР обратился <br> к РУССКОМУ НАРОДУ о войне',
+      // Arnold is loved in Russia by all people including those who are for this war
+      // His speech might change the mind of those who are brainwashed by propaganda
+      youtubeId: 'fWClXZd9c78',
+    },
+    {
+      text: 'РУССКИЙ ПАТРИОТ <br> открыл главную тайну спецоперации',
+      // In this video one of the most famous Russian nationalist leaders, Dmitry Demushkin,
+      // explains that this war has no sense and produces the exact opposite result of what
+      // it was intended to do.
+      youtubeId: '_RjBNkn88yA',
+    },
+    {
+      text: 'ГЕРОЙ НОВОРОССИИ СТРЕЛКОВ <br> дал оценку ходу спецоперации',
+      // In this video Igor Girkin, who played a key role in the annexation of Crimea,
+      // explains that this war has failed already and all possible outcomes are bad for Russia.
+      youtubeId: 'yUmzQT4C8JY',
+    },
+    {
+      text: 'ФИНСКИЙ ДРУГ РОССИИ <br> говорит ПО-РУССКИ о спецоперации',
+      youtubeId: 'hkCYb6edUrQ',
+    },
+  ])
+  // The message will only be shown to Russian users visiting Russian sites
+  if (navigator.language === 'ru' && location.host.match(/\.(ru|su|xn--p1ai)$/)) {
+    const noWar = document.createElement('div')
+    noWar.className = swalClasses['no-war']
+    setInnerHtml(
+      noWar,
+      `<a href="https://www.youtube.com/watch?v=${message.youtubeId}" target="_blank">${message.text}</a>`
+    )
+    container.appendChild(noWar)
+    container.style.paddingTop = '4em'
+  }
 }

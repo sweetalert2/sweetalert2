@@ -1,3 +1,10 @@
+## [11.4.9](https://github.com/sweetalert2/sweetalert2/compare/v11.4.8...v11.4.9) (2022-04-21)
+
+
+### Bug Fixes
+
+* add STOP WAR message for Russians ([#2428](https://github.com/sweetalert2/sweetalert2/issues/2428)) ([64825e4](https://github.com/sweetalert2/sweetalert2/commit/64825e44f7a67e3a8b43d0b37ad665cc7fd4f78f))
+
 ## [11.4.8](https://github.com/sweetalert2/sweetalert2/compare/v11.4.7...v11.4.8) (2022-03-29)
 
 

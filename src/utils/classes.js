@@ -78,6 +78,7 @@ export const swalClasses = prefix([
   'icon-info',
   'icon-question',
   'icon-error',
+  'no-war',
 ])
 
 export const iconTypes = prefix(['success', 'warning', 'info', 'question', 'error'])

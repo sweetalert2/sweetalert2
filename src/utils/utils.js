@@ -82,3 +82,5 @@ export const hasToPromiseFn = (arg) => arg && typeof arg.toPromise === 'function
 export const asPromise = (arg) => (hasToPromiseFn(arg) ? arg.toPromise() : Promise.resolve(arg))
 
 export const isPromise = (arg) => arg && Promise.resolve(arg) === arg
+
+export const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)]

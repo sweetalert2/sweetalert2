@@ -38,9 +38,7 @@ const filterValidParams = (params) => {
     if (isUpdatableParameter(param)) {
       validUpdatableParams[param] = params[param]
     } else {
-      warn(
-        `Invalid parameter to update: "${param}". Updatable params are listed here: https://github.com/sweetalert2/sweetalert2/blob/master/src/utils/params.js\n\nIf you think this parameter should be updatable, request it here: https://github.com/sweetalert2/sweetalert2/issues/new?template=02_feature_request.md`
-      )
+      warn(`Invalid parameter to update: ${param}`)
     }
   })
   return validUpdatableParams

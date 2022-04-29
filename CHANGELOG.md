@@ -1,3 +1,10 @@
+## [11.4.10](https://github.com/sweetalert2/sweetalert2/compare/v11.4.9...v11.4.10) (2022-04-29)
+
+
+### Bug Fixes
+
+* throw warning about invalid inputType for input: textarea ([a26e08a](https://github.com/sweetalert2/sweetalert2/commit/a26e08abb2c1bea27fffbc0cbfe434add2d88135))
+
 ## [11.4.9](https://github.com/sweetalert2/sweetalert2/compare/v11.4.8...v11.4.9) (2022-04-21)
 
 

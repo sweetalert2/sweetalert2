@@ -1,9 +1,15 @@
+/// <reference path="../../../../sweetalert2.d.ts"/>
+
 import { swalClasses } from '../../classes.js'
 import { error, isPromise, warn } from '../../utils.js'
 import * as dom from '../../dom/index.js'
 import privateProps from '../../../privateProps.js'
 
 const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
+
+/**
+ * @typedef { import("sweetalert2").SweetAlertOptions } SweetAlertOptions
+ */
 
 export const renderInput = (instance, params) => {
   const popup = dom.getPopup()
@@ -106,6 +112,23 @@ const getInputContainer = (inputType) => {
 
 const renderInputType = {}
 
+/**
+ * @param {HTMLInputElement | HTMLTextAreaElement} input
+ * @param {SweetAlertOptions} params
+ */
+const checkAndSetInputValue = (input, params) => {
+  if (['string', 'number'].includes(typeof params.inputValue)) {
+    input.value = `${params.inputValue}`
+  } else if (!isPromise(params.inputValue)) {
+    warn(`Unexpected type of inputValue! Expected "string", "number" or "Promise", got "${typeof params.inputValue}"`)
+  }
+}
+
+/**
+ * @param {HTMLInputElement} input
+ * @param {SweetAlertOptions} params
+ * @returns
+ */
 renderInputType.text =
   renderInputType.email =
   renderInputType.password =
@@ -113,13 +136,7 @@ renderInputType.text =
   renderInputType.tel =
   renderInputType.url =
     (input, params) => {
-      if (typeof params.inputValue === 'string' || typeof params.inputValue === 'number') {
-        input.value = params.inputValue
-      } else if (!isPromise(params.inputValue)) {
-        warn(
-          `Unexpected type of inputValue! Expected "string", "number" or "Promise", got "${typeof params.inputValue}"`
-        )
-      }
+      checkAndSetInputValue(input, params)
       setInputLabel(input, input, params)
       setInputPlaceholder(input, params)
       input.type = params.input
@@ -172,8 +189,13 @@ renderInputType.checkbox = (checkboxContainer, params) => {
   return checkboxContainer
 }
 
+/**
+ * @param {HTMLTextAreaElement} textarea
+ * @param {SweetAlertOptions} params
+ * @returns
+ */
 renderInputType.textarea = (textarea, params) => {
-  textarea.value = params.inputValue
+  checkAndSetInputValue(textarea, params)
   setInputPlaceholder(textarea, params)
   setInputLabel(textarea, textarea, params)
 

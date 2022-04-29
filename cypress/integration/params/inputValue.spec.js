@@ -66,12 +66,22 @@ describe('inputValue', () => {
     })
   })
 
-  it('should throw console warning about unexpected type of inputValue', () => {
+  it('should throw console warning about unexpected type of inputValue for input: text', () => {
     const spy = cy.spy(console, 'warn')
     Swal.fire({ input: 'text', inputValue: undefined })
     expect(
       spy.calledWith(
         'SweetAlert2: Unexpected type of inputValue! Expected "string", "number" or "Promise", got "undefined"'
+      )
+    ).to.be.true
+  })
+
+  it('should throw console warning about unexpected type of inputValue for input: textarea', () => {
+    const spy = cy.spy(console, 'warn')
+    Swal.fire({ input: 'textarea', inputValue: {} })
+    expect(
+      spy.calledWith(
+        'SweetAlert2: Unexpected type of inputValue! Expected "string", "number" or "Promise", got "object"'
       )
     ).to.be.true
   })

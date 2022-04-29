@@ -16,7 +16,7 @@ const removeDir = pify(rimraf)
   // the command has been called by semantic-release, bump version in src/SweetAlert.js before building dist
   if (process.env.VERSION) {
     log('Updating the version in src/SweetAlert.js...')
-    await replaceInFile({
+    replaceInFile.sync({
       files: 'src/SweetAlert.js',
       from: /\.version = '.*?'/,
       to: `.version = '${process.env.VERSION}'`,

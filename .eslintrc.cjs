@@ -6,5 +6,6 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/no-empty-interface': 0,
     '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/triple-slash-reference': 0,
   },
 }

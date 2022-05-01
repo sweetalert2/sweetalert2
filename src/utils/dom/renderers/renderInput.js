@@ -1,30 +1,37 @@
 /// <reference path="../../../../sweetalert2.d.ts"/>
 
+/**
+ * @typedef { import('sweetalert2') } SweetAlert2
+ * @typedef { import('sweetalert2').SweetAlertOptions } SweetAlertOptions
+ * @typedef { HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement } Input
+ * @typedef { 'input' | 'file' | 'range' | 'select' | 'radio' | 'checkbox' | 'textarea' } InputClass
+ */
+
 import { swalClasses } from '../../classes.js'
 import { error, isPromise, warn } from '../../utils.js'
 import * as dom from '../../dom/index.js'
 import privateProps from '../../../privateProps.js'
 
-const inputTypes = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
+/** @type {InputClass[]} */
+const inputClasses = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
 
 /**
- * @typedef { import("sweetalert2").SweetAlertOptions } SweetAlertOptions
+ * @param {SweetAlert2} instance
+ * @param {SweetAlertOptions} params
  */
-
 export const renderInput = (instance, params) => {
   const popup = dom.getPopup()
   const innerParams = privateProps.innerParams.get(instance)
   const rerender = !innerParams || params.input !== innerParams.input
 
-  inputTypes.forEach((inputType) => {
-    const inputClass = swalClasses[inputType]
-    const inputContainer = dom.getDirectChildByClass(popup, inputClass)
+  inputClasses.forEach((inputClass) => {
+    const inputContainer = dom.getDirectChildByClass(popup, swalClasses[inputClass])
 
     // set attributes
-    setAttributes(inputType, params.inputAttributes)
+    setAttributes(inputClass, params.inputAttributes)
 
     // set class
-    inputContainer.className = inputClass
+    inputContainer.className = swalClasses[inputClass]
 
     if (rerender) {
       dom.hide(inputContainer)
@@ -40,6 +47,9 @@ export const renderInput = (instance, params) => {
   }
 }
 
+/**
+ * @param {SweetAlertOptions} params
+ */
 const showInput = (params) => {
   if (!renderInputType[params.input]) {
     return error(
@@ -57,6 +67,9 @@ const showInput = (params) => {
   })
 }
 
+/**
+ * @param {HTMLInputElement} input
+ */
 const removeAttributes = (input) => {
   for (let i = 0; i < input.attributes.length; i++) {
     const attrName = input.attributes[i].name
@@ -66,8 +79,12 @@ const removeAttributes = (input) => {
   }
 }
 
-const setAttributes = (inputType, inputAttributes) => {
-  const input = dom.getInput(dom.getPopup(), inputType)
+/**
+ * @param {InputClass} inputClass
+ * @param {SweetAlertOptions['inputAttributes']} inputAttributes
+ */
+const setAttributes = (inputClass, inputAttributes) => {
+  const input = dom.getInput(dom.getPopup(), inputClass)
   if (!input) {
     return
   }
@@ -79,19 +96,31 @@ const setAttributes = (inputType, inputAttributes) => {
   }
 }
 
+/**
+ * @param {SweetAlertOptions} params
+ */
 const setCustomClass = (params) => {
   const inputContainer = getInputContainer(params.input)
-  if (params.customClass) {
+  if (typeof params.customClass === 'object') {
     dom.addClass(inputContainer, params.customClass.input)
   }
 }
 
+/**
+ * @param {HTMLInputElement | HTMLTextAreaElement} input
+ * @param {SweetAlertOptions} params
+ */
 const setInputPlaceholder = (input, params) => {
   if (!input.placeholder || params.inputPlaceholder) {
     input.placeholder = params.inputPlaceholder
   }
 }
 
+/**
+ * @param {Input} input
+ * @param {Input} prependTo
+ * @param {SweetAlertOptions} params
+ */
 const setInputLabel = (input, prependTo, params) => {
   if (params.inputLabel) {
     input.id = swalClasses.input
@@ -99,35 +128,41 @@ const setInputLabel = (input, prependTo, params) => {
     const labelClass = swalClasses['input-label']
     label.setAttribute('for', input.id)
     label.className = labelClass
-    dom.addClass(label, params.customClass.inputLabel)
+    if (typeof params.customClass === 'object') {
+      dom.addClass(label, params.customClass.inputLabel)
+    }
     label.innerText = params.inputLabel
     prependTo.insertAdjacentElement('beforebegin', label)
   }
 }
 
+/**
+ * @param {SweetAlertOptions['input']} inputType
+ * @returns {HTMLElement}
+ */
 const getInputContainer = (inputType) => {
-  const inputClass = swalClasses[inputType] ? swalClasses[inputType] : swalClasses.input
-  return dom.getDirectChildByClass(dom.getPopup(), inputClass)
+  return dom.getDirectChildByClass(dom.getPopup(), swalClasses[inputType] || swalClasses.input)
 }
-
-const renderInputType = {}
 
 /**
- * @param {HTMLInputElement | HTMLTextAreaElement} input
- * @param {SweetAlertOptions} params
+ * @param {HTMLInputElement | HTMLOutputElement | HTMLTextAreaElement} input
+ * @param {SweetAlertOptions['inputValue']} inputValue
  */
-const checkAndSetInputValue = (input, params) => {
-  if (['string', 'number'].includes(typeof params.inputValue)) {
-    input.value = `${params.inputValue}`
-  } else if (!isPromise(params.inputValue)) {
-    warn(`Unexpected type of inputValue! Expected "string", "number" or "Promise", got "${typeof params.inputValue}"`)
+const checkAndSetInputValue = (input, inputValue) => {
+  if (['string', 'number'].includes(typeof inputValue)) {
+    input.value = `${inputValue}`
+  } else if (!isPromise(inputValue)) {
+    warn(`Unexpected type of inputValue! Expected "string", "number" or "Promise", got "${typeof inputValue}"`)
   }
 }
+
+/** @type Record<string, (input: Input | HTMLElement, params: SweetAlertOptions) => Input> */
+const renderInputType = {}
 
 /**
  * @param {HTMLInputElement} input
  * @param {SweetAlertOptions} params
- * @returns
+ * @returns {HTMLInputElement}
  */
 renderInputType.text =
   renderInputType.email =
@@ -136,29 +171,44 @@ renderInputType.text =
   renderInputType.tel =
   renderInputType.url =
     (input, params) => {
-      checkAndSetInputValue(input, params)
+      checkAndSetInputValue(input, params.inputValue)
       setInputLabel(input, input, params)
       setInputPlaceholder(input, params)
       input.type = params.input
       return input
     }
 
+/**
+ * @param {HTMLInputElement} input
+ * @param {SweetAlertOptions} params
+ * @returns {HTMLInputElement}
+ */
 renderInputType.file = (input, params) => {
   setInputLabel(input, input, params)
   setInputPlaceholder(input, params)
   return input
 }
 
+/**
+ * @param {HTMLInputElement} range
+ * @param {SweetAlertOptions} params
+ * @returns {HTMLInputElement}
+ */
 renderInputType.range = (range, params) => {
   const rangeInput = range.querySelector('input')
   const rangeOutput = range.querySelector('output')
-  rangeInput.value = params.inputValue
+  checkAndSetInputValue(rangeInput, params.inputValue)
   rangeInput.type = params.input
-  rangeOutput.value = params.inputValue
+  checkAndSetInputValue(rangeOutput, params.inputValue)
   setInputLabel(rangeInput, range, params)
   return range
 }
 
+/**
+ * @param {HTMLSelectElement} select
+ * @param {SweetAlertOptions} params
+ * @returns {HTMLSelectElement}
+ */
 renderInputType.select = (select, params) => {
   select.textContent = ''
   if (params.inputPlaceholder) {
@@ -173,32 +223,44 @@ renderInputType.select = (select, params) => {
   return select
 }
 
+/**
+ * @param {HTMLInputElement} radio
+ * @returns {HTMLInputElement}
+ */
 renderInputType.radio = (radio) => {
   radio.textContent = ''
   return radio
 }
 
+/**
+ * @param {HTMLLabelElement} checkboxContainer
+ * @param {SweetAlertOptions} params
+ * @returns {HTMLInputElement}
+ */
 renderInputType.checkbox = (checkboxContainer, params) => {
-  /** @type {HTMLInputElement} */
   const checkbox = dom.getInput(dom.getPopup(), 'checkbox')
   checkbox.value = '1'
   checkbox.id = swalClasses.checkbox
   checkbox.checked = Boolean(params.inputValue)
   const label = checkboxContainer.querySelector('span')
   dom.setInnerHtml(label, params.inputPlaceholder)
-  return checkboxContainer
+  return checkbox
 }
 
 /**
  * @param {HTMLTextAreaElement} textarea
  * @param {SweetAlertOptions} params
- * @returns
+ * @returns {HTMLTextAreaElement}
  */
 renderInputType.textarea = (textarea, params) => {
-  checkAndSetInputValue(textarea, params)
+  checkAndSetInputValue(textarea, params.inputValue)
   setInputPlaceholder(textarea, params)
   setInputLabel(textarea, textarea, params)
 
+  /**
+   * @param {HTMLElement} el
+   * @returns {number}
+   */
   const getMargin = (el) =>
     parseInt(window.getComputedStyle(el).marginLeft) + parseInt(window.getComputedStyle(el).marginRight)
 

@@ -76,18 +76,18 @@ export const applyCustomClass = (elem, params, className) => {
 
 /**
  * @param {HTMLElement} popup
- * @param {string} inputType
+ * @param {import('./renderers/renderInput').InputClass} inputClass
  * @returns {HTMLInputElement | null}
  */
-export const getInput = (popup, inputType) => {
-  if (!inputType) {
+export const getInput = (popup, inputClass) => {
+  if (!inputClass) {
     return null
   }
-  switch (inputType) {
+  switch (inputClass) {
     case 'select':
     case 'textarea':
     case 'file':
-      return popup.querySelector(`.${swalClasses.popup} > .${swalClasses[inputType]}`)
+      return popup.querySelector(`.${swalClasses.popup} > .${swalClasses[inputClass]}`)
     case 'checkbox':
       return popup.querySelector(`.${swalClasses.popup} > .${swalClasses.checkbox} input`)
     case 'radio':
@@ -103,7 +103,7 @@ export const getInput = (popup, inputType) => {
 }
 
 /**
- * @param {HTMLInputElement} input
+ * @param {HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement} input
  */
 export const focusInput = (input) => {
   input.focus()
@@ -119,7 +119,7 @@ export const focusInput = (input) => {
 
 /**
  * @param {HTMLElement | HTMLElement[] | null} target
- * @param {string | string[]} classList
+ * @param {string | string[] | readonly string[]} classList
  * @param {boolean} condition
  */
 export const toggleClass = (target, classList, condition) => {
@@ -142,7 +142,7 @@ export const toggleClass = (target, classList, condition) => {
 
 /**
  * @param {HTMLElement | HTMLElement[] | null} target
- * @param {string | string[]} classList
+ * @param {string | string[] | readonly string[]} classList
  */
 export const addClass = (target, classList) => {
   toggleClass(target, classList, true)
@@ -150,7 +150,7 @@ export const addClass = (target, classList) => {
 
 /**
  * @param {HTMLElement | HTMLElement[] | null} target
- * @param {string | string[]} classList
+ * @param {string | string[] | readonly string[]} classList
  */
 export const removeClass = (target, classList) => {
   toggleClass(target, classList, false)

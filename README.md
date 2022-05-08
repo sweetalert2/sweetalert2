@@ -46,9 +46,9 @@ NSFW Sponsors
 -|-|-|-|-|-
 [hydoll](https://www.hydoll.com/) | [SexDollsOff](https://www.sexdollsoff.com/) | [RealSexDoll](https://realsexdoll.com/) | [Your Doll](https://www.yourdoll.com/) | [Annie's Dollhouse](https://anniesdollhouse.com/) | [Sex Doll Center](https://sexdollcenter.vip/)
 
-[<img src="https://sweetalert2.github.io/images/sponsors/vsdoll.png" width="80">](https://vsdoll.com/sex-doll-in-us/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexangelbaby.png" width="80">](https://sexangelbaby.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/theadulttoyfinder.png" width="80">](https://theadulttoyfinder.com/?utm_source=sweetalert2&utm_medium=logo)
+[<img src="https://sweetalert2.github.io/images/sponsors/vsdoll.png" width="80">](https://vsdoll.com/homepage/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexangelbaby.png" width="80">](https://sexangelbaby.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/theadulttoyfinder.png" width="80">](https://theadulttoyfinder.com/?utm_source=sweetalert2&utm_medium=logo)
 -|-|-
-[VSDoll](https://vsdoll.com/sex-doll-in-us/) | [SexAngelbaby](https://sexangelbaby.com/) | [The Adult Toy Finder](https://theadulttoyfinder.com/?utm_source=sweetalert2&utm_medium=logo)
+[VSDoll](https://vsdoll.com/homepage/) | [SexAngelbaby](https://sexangelbaby.com/) | [The Adult Toy Finder](https://theadulttoyfinder.com/?utm_source=sweetalert2&utm_medium=logo)
 
 [<img src="https://sweetalert2.github.io/images/sponsors/my-sex-toy-guide.jpg" width="80">](https://www.mysextoyguide.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/best-blowjob-machines.jpg" width="80">](https://www.bestblowjobmachines.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/sextoycollective.jpg" width="80">](https://sextoycollective.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/doctorclimax.png" width="80">](https://doctorclimax.com/)
 -|-|-|-

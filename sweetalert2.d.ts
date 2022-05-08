@@ -421,6 +421,7 @@ declare module 'sweetalert2' {
     image?: string | readonly string[]
     htmlContainer?: string | readonly string[]
     input?: string | readonly string[]
+    inputLabel?: string | readonly string[]
     validationMessage?: string | readonly string[]
     actions?: string | readonly string[]
     confirmButton?: string | readonly string[]

@@ -1,3 +1,10 @@
+## [11.4.11](https://github.com/sweetalert2/sweetalert2/compare/v11.4.10...v11.4.11) (2022-05-08)
+
+
+### Bug Fixes
+
+* use transparent background for progressSteps and input ([#2437](https://github.com/sweetalert2/sweetalert2/issues/2437)) ([ac9407f](https://github.com/sweetalert2/sweetalert2/commit/ac9407fcfc55f3a83f87a3275b54244299e69fb4))
+
 ## [11.4.10](https://github.com/sweetalert2/sweetalert2/compare/v11.4.9...v11.4.10) (2022-04-29)
 
 

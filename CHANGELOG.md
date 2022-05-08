@@ -1,3 +1,10 @@
+## [11.4.12](https://github.com/sweetalert2/sweetalert2/compare/v11.4.11...v11.4.12) (2022-05-08)
+
+
+### Bug Fixes
+
+* **types:** add missing `customClass.inputLabel` ([#2432](https://github.com/sweetalert2/sweetalert2/issues/2432)) ([f2152d2](https://github.com/sweetalert2/sweetalert2/commit/f2152d2f792faa75084934d83fd4e728c3799994))
+
 ## [11.4.11](https://github.com/sweetalert2/sweetalert2/compare/v11.4.10...v11.4.11) (2022-05-08)
 
 

@@ -1,3 +1,10 @@
+## [11.4.13](https://github.com/sweetalert2/sweetalert2/compare/v11.4.12...v11.4.13) (2022-05-09)
+
+
+### Bug Fixes
+
+* show input container ([#2440](https://github.com/sweetalert2/sweetalert2/issues/2440)) ([ceb6940](https://github.com/sweetalert2/sweetalert2/commit/ceb6940d359f1065edb88e2afa2bf16d0b243cf4))
+
 ## [11.4.12](https://github.com/sweetalert2/sweetalert2/compare/v11.4.11...v11.4.12) (2022-05-08)
 
 

@@ -59,7 +59,7 @@ const showInput = (params) => {
 
   const inputContainer = getInputContainer(params.input)
   const input = renderInputType[params.input](inputContainer, params)
-  dom.show(input)
+  dom.show(inputContainer)
 
   // input autofocus
   setTimeout(() => {

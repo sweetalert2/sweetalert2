@@ -184,6 +184,7 @@ describe('Input', () => {
       done()
     })
     const checkbox = $('.swal2-checkbox input')
+    expect(isVisible(checkbox)).to.be.true
     checkbox.checked = true
     Swal.clickConfirm()
   })
@@ -192,6 +193,8 @@ describe('Input', () => {
     Swal.fire({ input: 'range', inputAttributes: { min: 1, max: 10 }, inputValue: 5 })
     const input = Swal.getInput()
     const output = $('.swal2-range output')
+    expect(isVisible(input)).to.be.true
+    expect(isVisible(output)).to.be.true
     expect(input.getAttribute('min')).to.equal('1')
     expect(input.getAttribute('max')).to.equal('10')
     expect(input.value).to.equal('5')

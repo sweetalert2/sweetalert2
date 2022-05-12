@@ -19,9 +19,9 @@ Sponsors
 
 For all questions related to sponsorship please contact me via email limon.monte@protonmail.com
 
-[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md#sponsors) | [<img src="https://sweetalert2.github.io/images/sponsors/bestforandroid.png" width="80">](https://bestforandroid.com/) | [<img src="https://avatars2.githubusercontent.com/u/28631236?s=80&v=4" width="80">](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/mybitcoinslots.png" width="80">](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo)
--|-|-|-
-[Become a sponsor](SPONSORS.md#sponsors) | [Best For Android](https://bestforandroid.com/) | [FlowCrypt](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [My Bitcoin slots](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo)
+[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md#sponsors) | [<img src="https://sweetalert2.github.io/images/sponsors/evguru.png" width="80">](https://www.evguru.com.my/) | [<img src="https://sweetalert2.github.io/images/sponsors/bestforandroid.png" width="80">](https://bestforandroid.com/) | [<img src="https://avatars2.githubusercontent.com/u/28631236?s=80&v=4" width="80">](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/mybitcoinslots.png" width="80">](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo)
+-|-|-|-|-
+[Become a sponsor](SPONSORS.md#sponsors) | [EvGuru EV Chargers](https://www.evguru.com.my/) | [Best For Android](https://bestforandroid.com/) | [FlowCrypt](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo) | [My Bitcoin slots](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo)
 
 [<img src="https://sweetalert2.github.io/images/sponsors/vegega.jpeg" width="80">](https://www.vegega.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/phatoil.png" width="80">](https://phatoil.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/celltrackingapps.png" width="80">](https://celltrackingapps.com/)
 -|-|-
@@ -34,13 +34,13 @@ For all questions related to sponsorship please contact me via email limon.monte
 NSFW Sponsors
 -------------
 
-[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md#sponsors) | [<img src="https://sweetalert2.github.io/images/sponsors/dollnight.jpeg" width="80">](https://www.dollnight.com/cheap-sex-doll) | [<img src="https://sweetalert2.github.io/images/sponsors/sexvibrator.png" width="80">](https://www.sexvibrators.in/) | [<img src="https://sweetalert2.github.io/images/sponsors/viva-awa.png" width="80">](https://www.viva-awa.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sensualdolls.png" width="80">](https://www.sensualdolls.com)
+[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md#sponsors) | [<img src="https://sweetalert2.github.io/images/sponsors/sexysexdoll.png" width="80">](https://www.sexysexdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/dollnight.jpeg" width="80">](https://www.dollnight.com/cheap-sex-doll) | [<img src="https://sweetalert2.github.io/images/sponsors/sexvibrator.png" width="80">](https://www.sexvibrators.in/) | [<img src="https://sweetalert2.github.io/images/sponsors/viva-awa.png" width="80">](https://www.viva-awa.com/)
 -|-|-|-|-
-[Become a NSFW sponsor](SPONSORS.md#sponsors) | [Cheap Sex Doll](https://www.dollnight.com/cheap-sex-doll)  | [Sex Vibrators](https://www.sexvibrators.in/) | [Viva Awa](https://www.viva-awa.com/) | [Sensual Dolls](https://www.sensualdolls.com)
+[Become a NSFW sponsor](SPONSORS.md#sponsors) | [Sexy Sex Doll](https://www.sexysexdoll.com/) | [Cheap Sex Doll](https://www.dollnight.com/cheap-sex-doll) | [Sex Vibrators](https://www.sexvibrators.in/) | [Viva Awa](https://www.viva-awa.com/)
 
-[<img src="https://sweetalert2.github.io/images/sponsors/bestrealdoll.jpeg" width="80">](https://www.bestrealdoll.com/collections/us-warehouse) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdolltech.jpeg" width="80">](https://www.sexdolltech.com/product-category/us-warehouse/) | [<img src="https://sweetalert2.github.io/images/sponsors/rosewives.png" width="80">](https://rosewives.com/)
--|-|-
-[BestRealDoll](https://www.bestrealdoll.com/collections/us-warehouse) | [SexDollTech](https://www.sexdolltech.com/product-category/us-warehouse/) | [Rose Wives](https://rosewives.com/)
+[<img src="https://sweetalert2.github.io/images/sponsors/sensualdolls.png" width="80">](https://www.sensualdolls.com) | [<img src="https://sweetalert2.github.io/images/sponsors/bestrealdoll.jpeg" width="80">](https://www.bestrealdoll.com/collections/us-warehouse) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdolltech.jpeg" width="80">](https://www.sexdolltech.com/product-category/us-warehouse/) | [<img src="https://sweetalert2.github.io/images/sponsors/rosewives.png" width="80">](https://rosewives.com/)
+-|-|-|-
+[Sensual Dolls](https://www.sensualdolls.com) | [BestRealDoll](https://www.bestrealdoll.com/collections/us-warehouse) | [SexDollTech](https://www.sexdolltech.com/product-category/us-warehouse/) | [Rose Wives](https://rosewives.com/)
 
 [<img src="https://sweetalert2.github.io/images/sponsors/hydoll.png" width="80">](https://www.hydoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdollsoff.png" width="80">](https://www.sexdollsoff.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/realsexdoll.png" width="80">](https://realsexdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/yourdoll.jpg" width="80">](https://www.yourdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/annies-dollhouse.png" width="80">](https://anniesdollhouse.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdollcenter.png" width="80">](https://sexdollcenter.vip/) |
 -|-|-|-|-|-

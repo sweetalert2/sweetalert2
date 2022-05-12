@@ -1,3 +1,10 @@
+## [11.4.14](https://github.com/sweetalert2/sweetalert2/compare/v11.4.13...v11.4.14) (2022-05-12)
+
+
+### Bug Fixes
+
+* numerical progressStepsDistance ([#2441](https://github.com/sweetalert2/sweetalert2/issues/2441)) ([98238a1](https://github.com/sweetalert2/sweetalert2/commit/98238a1cdf674cf84277b673764db70b7b5e8794))
+
 ## [11.4.13](https://github.com/sweetalert2/sweetalert2/compare/v11.4.12...v11.4.13) (2022-05-09)
 
 

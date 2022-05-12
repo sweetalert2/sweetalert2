@@ -2,22 +2,15 @@ import { swalClasses } from '../../classes.js'
 import { warn } from '../../utils.js'
 import * as dom from '../../dom/index.js'
 
-const createStepElement = (step) => {
-  const stepEl = document.createElement('li')
-  dom.addClass(stepEl, swalClasses['progress-step'])
-  dom.setInnerHtml(stepEl, step)
-  return stepEl
-}
+/**
+ * @typedef { import('sweetalert2') } SweetAlert2
+ * @typedef { import('sweetalert2').SweetAlertOptions } SweetAlertOptions
+ */
 
-const createLineElement = (params) => {
-  const lineEl = document.createElement('li')
-  dom.addClass(lineEl, swalClasses['progress-step-line'])
-  if (params.progressStepsDistance) {
-    lineEl.style.width = params.progressStepsDistance
-  }
-  return lineEl
-}
-
+/**
+ * @param {SweetAlert2} instance
+ * @param {SweetAlertOptions} params
+ */
 export const renderProgressSteps = (instance, params) => {
   const progressStepsContainer = dom.getProgressSteps()
   if (!params.progressSteps || params.progressSteps.length === 0) {
@@ -45,4 +38,28 @@ export const renderProgressSteps = (instance, params) => {
       progressStepsContainer.appendChild(lineEl)
     }
   })
+}
+
+/**
+ * @param {string} step
+ * @returns {HTMLLIElement}
+ */
+const createStepElement = (step) => {
+  const stepEl = document.createElement('li')
+  dom.addClass(stepEl, swalClasses['progress-step'])
+  dom.setInnerHtml(stepEl, step)
+  return stepEl
+}
+
+/**
+ * @param {SweetAlertOptions} params
+ * @returns {HTMLLIElement}
+ */
+const createLineElement = (params) => {
+  const lineEl = document.createElement('li')
+  dom.addClass(lineEl, swalClasses['progress-step-line'])
+  if (params.progressStepsDistance) {
+    dom.applyNumericalStyle(lineEl, 'width', params.progressStepsDistance)
+  }
+  return lineEl
 }

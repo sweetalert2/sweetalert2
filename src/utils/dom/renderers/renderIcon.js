@@ -3,6 +3,15 @@ import { error } from '../../utils.js'
 import * as dom from '../../dom/index.js'
 import privateProps from '../../../privateProps.js'
 
+/**
+ * @typedef { import('sweetalert2') } SweetAlert2
+ * @typedef { import('sweetalert2').SweetAlertOptions } SweetAlertOptions
+ */
+
+/**
+ * @param {SweetAlert2} instance
+ * @param {SweetAlertOptions} params
+ */
 export const renderIcon = (instance, params) => {
   const innerParams = privateProps.innerParams.get(instance)
   const icon = dom.getIcon()
@@ -36,6 +45,10 @@ export const renderIcon = (instance, params) => {
   dom.addClass(icon, params.showClass.icon)
 }
 
+/**
+ * @param {HTMLElement} icon
+ * @param {SweetAlertOptions} params
+ */
 const applyStyles = (icon, params) => {
   for (const iconType in iconTypes) {
     if (params.icon !== iconType) {
@@ -78,6 +91,10 @@ const errorIconHtml = `
   </span>
 `
 
+/**
+ * @param {HTMLElement} icon
+ * @param {SweetAlertOptions} params
+ */
 const setContent = (icon, params) => {
   icon.textContent = ''
 
@@ -97,6 +114,10 @@ const setContent = (icon, params) => {
   }
 }
 
+/**
+ * @param {HTMLElement} icon
+ * @param {SweetAlertOptions} params
+ */
 const setColor = (icon, params) => {
   if (!params.iconColor) {
     return
@@ -114,4 +135,7 @@ const setColor = (icon, params) => {
   dom.setStyle(icon, '.swal2-success-ring', 'borderColor', params.iconColor)
 }
 
+/**
+ * @param {string} content
+ */
 const iconContent = (content) => `<div class="${swalClasses['icon-content']}">${content}</div>`

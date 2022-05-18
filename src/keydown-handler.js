@@ -4,6 +4,9 @@ import { callIfFunction } from './utils/utils.js'
 import { clickConfirm } from './staticMethods/dom.js'
 import privateProps from './privateProps.js'
 
+/**
+ * @param {GlobalState} globalState
+ */
 export const removeKeydownHandler = (globalState) => {
   if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
     globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
@@ -13,6 +16,12 @@ export const removeKeydownHandler = (globalState) => {
   }
 }
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {GlobalState} globalState
+ * @param {SweetAlertOptions} innerParams
+ * @param {*} dismissWith
+ */
 export const addKeydownHandler = (instance, globalState, innerParams, dismissWith) => {
   removeKeydownHandler(globalState)
   if (!innerParams.toast) {
@@ -26,7 +35,11 @@ export const addKeydownHandler = (instance, globalState, innerParams, dismissWit
   }
 }
 
-// Focus handling
+/**
+ * @param {SweetAlertOptions} innerParams
+ * @param {number} index
+ * @param {number} increment
+ */
 export const setFocus = (innerParams, index, increment) => {
   const focusableElements = dom.getFocusableElements()
   // search for visible elements and select the next possible match
@@ -52,6 +65,11 @@ const arrowKeysNextButton = ['ArrowRight', 'ArrowDown']
 
 const arrowKeysPreviousButton = ['ArrowLeft', 'ArrowUp']
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {KeyboardEvent} e
+ * @param {function} dismissWith
+ */
 const keydownHandler = (instance, e, dismissWith) => {
   const innerParams = privateProps.innerParams.get(instance)
 
@@ -92,13 +110,23 @@ const keydownHandler = (instance, e, dismissWith) => {
   }
 }
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {KeyboardEvent} e
+ * @param {SweetAlertOptions} innerParams
+ */
 const handleEnter = (instance, e, innerParams) => {
   // https://github.com/sweetalert2/sweetalert2/issues/2386
   if (!callIfFunction(innerParams.allowEnterKey)) {
     return
   }
 
-  if (e.target && instance.getInput() && e.target.outerHTML === instance.getInput().outerHTML) {
+  if (
+    e.target &&
+    instance.getInput() &&
+    e.target instanceof HTMLElement &&
+    e.target.outerHTML === instance.getInput().outerHTML
+  ) {
     if (['textarea', 'file'].includes(innerParams.input)) {
       return // do not submit
     }
@@ -108,6 +136,10 @@ const handleEnter = (instance, e, innerParams) => {
   }
 }
 
+/**
+ * @param {KeyboardEvent} e
+ * @param {SweetAlertOptions} innerParams
+ */
 const handleTab = (e, innerParams) => {
   const targetElement = e.target
 
@@ -134,11 +166,17 @@ const handleTab = (e, innerParams) => {
   e.preventDefault()
 }
 
+/**
+ * @param {string} key
+ */
 const handleArrows = (key) => {
   const confirmButton = dom.getConfirmButton()
   const denyButton = dom.getDenyButton()
   const cancelButton = dom.getCancelButton()
-  if (![confirmButton, denyButton, cancelButton].includes(document.activeElement)) {
+  if (
+    document.activeElement instanceof HTMLElement &&
+    ![confirmButton, denyButton, cancelButton].includes(document.activeElement)
+  ) {
     return
   }
   const sibling = arrowKeysNextButton.includes(key) ? 'nextElementSibling' : 'previousElementSibling'
@@ -148,7 +186,7 @@ const handleArrows = (key) => {
     if (!buttonToFocus) {
       return
     }
-    if (dom.isVisible(buttonToFocus) && buttonToFocus instanceof HTMLButtonElement) {
+    if (buttonToFocus instanceof HTMLButtonElement && dom.isVisible(buttonToFocus)) {
       break
     }
   }
@@ -157,6 +195,11 @@ const handleArrows = (key) => {
   }
 }
 
+/**
+ * @param {KeyboardEvent} e
+ * @param {SweetAlertOptions} innerParams
+ * @param {function} dismissWith
+ */
 const handleEsc = (e, innerParams, dismissWith) => {
   if (callIfFunction(innerParams.allowEscapeKey)) {
     e.preventDefault()

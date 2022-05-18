@@ -41,7 +41,7 @@ class SweetAlert {
     })
 
     // @ts-ignore
-    const promise = this._main(this.params)
+    const promise = currentInstance._main(currentInstance.params)
     privateProps.promise.set(this, promise)
   }
 
@@ -49,12 +49,14 @@ class SweetAlert {
     showWarningsForParams(Object.assign({}, mixinParams, userParams))
 
     if (globalState.currentInstance) {
+      // @ts-ignore
       globalState.currentInstance._destroy()
       if (dom.isModal()) {
         unsetAriaHidden()
       }
     }
-    globalState.currentInstance = this
+
+    globalState.currentInstance = currentInstance
 
     const innerParams = prepareParams(userParams, mixinParams)
     setParameters(innerParams)
@@ -69,13 +71,13 @@ class SweetAlert {
     // clear the restore focus timeout
     clearTimeout(globalState.restoreFocusTimeout)
 
-    const domCache = populateDomCache(this)
+    const domCache = populateDomCache(currentInstance)
 
-    dom.render(this, innerParams)
+    dom.render(currentInstance, innerParams)
 
-    privateProps.innerParams.set(this, innerParams)
+    privateProps.innerParams.set(currentInstance, innerParams)
 
-    return swalPromise(this, domCache, innerParams)
+    return swalPromise(currentInstance, domCache, innerParams)
   }
 
   // `catch` cannot be the name of a module export, so we define our thenable methods here instead
@@ -133,6 +135,10 @@ const prepareParams = (userParams, mixinParams) => {
   return params
 }
 
+/**
+ * @param {SweetAlert2} instance
+ * @returns {DomCache}
+ */
 const populateDomCache = (instance) => {
   const domCache = {
     popup: dom.getPopup(),
@@ -151,6 +157,11 @@ const populateDomCache = (instance) => {
   return domCache
 }
 
+/**
+ * @param {GlobalState} globalState
+ * @param {SweetAlertOptions} innerParams
+ * @param {function} dismissWith
+ */
 const setupTimer = (globalState, innerParams, dismissWith) => {
   const timerProgressBar = dom.getTimerProgressBar()
   dom.hide(timerProgressBar)
@@ -172,6 +183,10 @@ const setupTimer = (globalState, innerParams, dismissWith) => {
   }
 }
 
+/**
+ * @param {DomCache} domCache
+ * @param {SweetAlertOptions} innerParams
+ */
 const initFocus = (domCache, innerParams) => {
   if (innerParams.toast) {
     return
@@ -186,6 +201,11 @@ const initFocus = (domCache, innerParams) => {
   }
 }
 
+/**
+ * @param {DomCache} domCache
+ * @param {SweetAlertOptions} innerParams
+ * @returns {boolean}
+ */
 const focusButton = (domCache, innerParams) => {
   if (innerParams.focusDeny && dom.isVisible(domCache.denyButton)) {
     domCache.denyButton.focus()

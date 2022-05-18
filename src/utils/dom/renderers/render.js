@@ -10,6 +10,10 @@ import { renderProgressSteps } from './renderProgressSteps.js'
 import { renderTitle } from './renderTitle.js'
 import { renderPopup } from './renderPopup.js'
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {SweetAlertOptions} params
+ */
 export const render = (instance, params) => {
   renderPopup(instance, params)
   renderContainer(instance, params)

@@ -3,11 +3,6 @@ import { warn } from '../../utils.js'
 import * as dom from '../../dom/index.js'
 
 /**
- * @typedef { import('sweetalert2') } SweetAlert2
- * @typedef { import('sweetalert2').SweetAlertOptions } SweetAlertOptions
- */
-
-/**
  * @param {SweetAlert2} instance
  * @param {SweetAlertOptions} params
  */

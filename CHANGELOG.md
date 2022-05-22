@@ -1,3 +1,10 @@
+## [11.4.15](https://github.com/sweetalert2/sweetalert2/compare/v11.4.14...v11.4.15) (2022-05-22)
+
+
+### Bug Fixes
+
+* remove unused globalState.deferDisposalTimer ([#2443](https://github.com/sweetalert2/sweetalert2/issues/2443)) ([a5f32e9](https://github.com/sweetalert2/sweetalert2/commit/a5f32e912027764a4ecad970f588ef456478f4c6))
+
 ## [11.4.14](https://github.com/sweetalert2/sweetalert2/compare/v11.4.13...v11.4.14) (2022-05-12)
 
 

@@ -21,8 +21,8 @@ const showLoading = (buttonToReplace) => {
   }
   dom.show(loader)
 
-  popup.setAttribute('data-loading', true)
-  popup.setAttribute('aria-busy', true)
+  popup.setAttribute('data-loading', 'true')
+  popup.setAttribute('aria-busy', 'true')
   popup.focus()
 }
 

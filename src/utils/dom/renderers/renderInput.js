@@ -1,8 +1,6 @@
 /// <reference path="../../../../sweetalert2.d.ts"/>
 
 /**
- * @typedef { import('sweetalert2') } SweetAlert2
- * @typedef { import('sweetalert2').SweetAlertOptions } SweetAlertOptions
  * @typedef { HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement } Input
  * @typedef { 'input' | 'file' | 'range' | 'select' | 'radio' | 'checkbox' | 'textarea' } InputClass
  */

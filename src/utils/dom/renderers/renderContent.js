@@ -1,6 +1,10 @@
 import * as dom from '../../dom/index.js'
 import { renderInput } from './renderInput.js'
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {SweetAlertOptions} params
+ */
 export const renderContent = (instance, params) => {
   const htmlContainer = dom.getHtmlContainer()
 

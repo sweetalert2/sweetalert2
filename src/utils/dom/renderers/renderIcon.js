@@ -4,11 +4,6 @@ import * as dom from '../../dom/index.js'
 import privateProps from '../../../privateProps.js'
 
 /**
- * @typedef { import('sweetalert2') } SweetAlert2
- * @typedef { import('sweetalert2').SweetAlertOptions } SweetAlertOptions
- */
-
-/**
  * @param {SweetAlert2} instance
  * @param {SweetAlertOptions} params
  */
@@ -71,6 +66,7 @@ const applyStyles = (icon, params) => {
 const adjustSuccessIconBackgroundColor = () => {
   const popup = dom.getPopup()
   const popupBackgroundColor = window.getComputedStyle(popup).getPropertyValue('background-color')
+  /** @type {NodeListOf<HTMLElement>} */
   const successIconParts = popup.querySelectorAll('[class^=swal2-success-circular-line], .swal2-success-fix')
   for (let i = 0; i < successIconParts.length; i++) {
     successIconParts[i].style.backgroundColor = popupBackgroundColor

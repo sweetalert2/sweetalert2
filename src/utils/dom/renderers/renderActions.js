@@ -2,6 +2,10 @@ import { swalClasses } from '../../classes.js'
 import * as dom from '../../dom/index.js'
 import { capitalizeFirstLetter } from '../../utils.js'
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {SweetAlertOptions} params
+ */
 export const renderActions = (instance, params) => {
   const actions = dom.getActions()
   const loader = dom.getLoader()
@@ -24,6 +28,11 @@ export const renderActions = (instance, params) => {
   dom.applyCustomClass(loader, params, 'loader')
 }
 
+/**
+ * @param {HTMLElement} actions
+ * @param {HTMLElement} loader
+ * @param {SweetAlertOptions} params
+ */
 function renderButtons(actions, loader, params) {
   const confirmButton = dom.getConfirmButton()
   const denyButton = dom.getDenyButton()
@@ -47,6 +56,12 @@ function renderButtons(actions, loader, params) {
   }
 }
 
+/**
+ * @param {HTMLElement} confirmButton
+ * @param {HTMLElement} denyButton
+ * @param {HTMLElement} cancelButton
+ * @param {SweetAlertOptions} params
+ */
 function handleButtonsStyling(confirmButton, denyButton, cancelButton, params) {
   if (!params.buttonsStyling) {
     return dom.removeClass([confirmButton, denyButton, cancelButton], swalClasses.styled)
@@ -69,6 +84,11 @@ function handleButtonsStyling(confirmButton, denyButton, cancelButton, params) {
   }
 }
 
+/**
+ * @param {HTMLElement} button
+ * @param {'confirm' | 'deny' | 'cancel'} buttonType
+ * @param {SweetAlertOptions} params
+ */
 function renderButton(button, buttonType, params) {
   dom.toggle(button, params[`show${capitalizeFirstLetter(buttonType)}Button`], 'inline-block')
   dom.setInnerHtml(button, params[`${buttonType}ButtonText`]) // Set caption text

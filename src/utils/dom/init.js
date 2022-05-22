@@ -40,6 +40,9 @@ const sweetHTML = `
  </div>
 `.replace(/(^|\n)\s*/g, '')
 
+/**
+ * @returns {boolean}
+ */
 const resetOldContainer = () => {
   const oldContainer = getContainer()
   if (!oldContainer) {
@@ -64,9 +67,12 @@ const addInputChangeListeners = () => {
 
   const input = getDirectChildByClass(popup, swalClasses.input)
   const file = getDirectChildByClass(popup, swalClasses.file)
+  /** @type {HTMLInputElement} */
   const range = popup.querySelector(`.${swalClasses.range} input`)
+  /** @type {HTMLOutputElement} */
   const rangeOutput = popup.querySelector(`.${swalClasses.range} output`)
   const select = getDirectChildByClass(popup, swalClasses.select)
+  /** @type {HTMLInputElement} */
   const checkbox = popup.querySelector(`.${swalClasses.checkbox} input`)
   const textarea = getDirectChildByClass(popup, swalClasses.textarea)
 
@@ -83,12 +89,19 @@ const addInputChangeListeners = () => {
 
   range.onchange = () => {
     resetValidationMessage()
-    range.nextSibling.value = range.value
+    rangeOutput.value = range.value
   }
 }
 
+/**
+ * @param {string | HTMLElement} target
+ * @returns {HTMLElement}
+ */
 const getTarget = (target) => (typeof target === 'string' ? document.querySelector(target) : target)
 
+/**
+ * @param {SweetAlertOptions} params
+ */
 const setupAccessibility = (params) => {
   const popup = getPopup()
 
@@ -99,14 +112,19 @@ const setupAccessibility = (params) => {
   }
 }
 
+/**
+ * @param {HTMLElement} targetElement
+ */
 const setupRTL = (targetElement) => {
   if (window.getComputedStyle(targetElement).direction === 'rtl') {
     addClass(getContainer(), swalClasses.rtl)
   }
 }
 
-/*
+/**
  * Add modal + backdrop + no-war message for Russians to DOM
+ *
+ * @param {SweetAlertOptions} params
  */
 export const init = (params) => {
   // Clean up the old popup container if it exists
@@ -135,6 +153,11 @@ export const init = (params) => {
   noWarMessageForRussians(container, params)
 }
 
+/**
+ * @param {HTMLElement} container
+ * @param {SweetAlertOptions} params
+ * @returns
+ */
 const noWarMessageForRussians = (container, params) => {
   if (params.toast) {
     return
@@ -167,6 +190,18 @@ const noWarMessageForRussians = (container, params) => {
     {
       text: 'ФИНСКИЙ ДРУГ РОССИИ <br> говорит ПО-РУССКИ о спецоперации',
       youtubeId: 'hkCYb6edUrQ',
+    },
+    {
+      text: 'ЮРИЙ ПОДОЛЯКА честно <br> о генералах РУССКОЙ АРМИИ',
+      youtubeId: 'w4-_8BJKfpk',
+    },
+    {
+      text: 'Полковник ФСБ СТРЕЛКОВ <br> об успехах РОССИИ в спецоперации',
+      youtubeId: 'saK5UTKroDA',
+    },
+    {
+      text: 'СКОБЕЕВА и ПЕРВЫЙ КАНАЛ <br> о контрнаступлении ВСУ на КРЫМ',
+      youtubeId: 'rnnUCSKZ-SM',
     },
   ])
   // The message will only be shown to Russian users visiting Russian sites

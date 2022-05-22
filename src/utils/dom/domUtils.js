@@ -46,6 +46,10 @@ export const hasClass = (elem, className) => {
   return true
 }
 
+/**
+ * @param {HTMLElement} elem
+ * @param {SweetAlertOptions} params
+ */
 const removeCustomClasses = (elem, params) => {
   toArray(elem.classList).forEach((className) => {
     if (
@@ -58,6 +62,11 @@ const removeCustomClasses = (elem, params) => {
   })
 }
 
+/**
+ * @param {HTMLElement} elem
+ * @param {SweetAlertOptions} params
+ * @param {string} className
+ */
 export const applyCustomClass = (elem, params, className) => {
   removeCustomClasses(elem, params)
 
@@ -203,26 +212,54 @@ export const hide = (elem) => {
   elem.style.display = 'none'
 }
 
+/**
+ * @param {HTMLElement} parent
+ * @param {string} selector
+ * @param {string} property
+ * @param {string} value
+ */
 export const setStyle = (parent, selector, property, value) => {
+  /** @type {HTMLElement} */
   const el = parent.querySelector(selector)
   if (el) {
     el.style[property] = value
   }
 }
 
-export const toggle = (elem, condition, display) => {
+/**
+ * @param {HTMLElement} elem
+ * @param {any} condition
+ * @param {string} display
+ */
+export const toggle = (elem, condition, display = 'flex') => {
   condition ? show(elem, display) : hide(elem)
 }
 
-// borrowed from jquery $(elem).is(':visible') implementation
+/**
+ * borrowed from jquery $(elem).is(':visible') implementation
+ *
+ * @param {HTMLElement} elem
+ * @returns {boolean}
+ */
 export const isVisible = (elem) => !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
 
+/**
+ * @returns {boolean}
+ */
 export const allButtonsAreHidden = () =>
   !isVisible(getConfirmButton()) && !isVisible(getDenyButton()) && !isVisible(getCancelButton())
 
+/**
+ * @returns {boolean}
+ */
 export const isScrollable = (elem) => !!(elem.scrollHeight > elem.clientHeight)
 
-// borrowed from https://stackoverflow.com/a/46352119
+/**
+ * borrowed from https://stackoverflow.com/a/46352119
+ *
+ * @param {HTMLElement} elem
+ * @returns {boolean}
+ */
 export const hasCssAnimation = (elem) => {
   const style = window.getComputedStyle(elem)
 
@@ -232,6 +269,10 @@ export const hasCssAnimation = (elem) => {
   return animDuration > 0 || transDuration > 0
 }
 
+/**
+ * @param {number} timer
+ * @param {boolean} reset
+ */
 export const animateTimerProgressBar = (timer, reset = false) => {
   const timerProgressBar = getTimerProgressBar()
   if (isVisible(timerProgressBar)) {

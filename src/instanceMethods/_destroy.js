@@ -17,21 +17,19 @@ export function _destroy() {
     delete globalState.swalCloseEventFinishedCallback
   }
 
-  // Check if there is a swal disposal defer timer
-  if (globalState.deferDisposalTimer) {
-    clearTimeout(globalState.deferDisposalTimer)
-    delete globalState.deferDisposalTimer
-  }
-
   if (typeof innerParams.didDestroy === 'function') {
     innerParams.didDestroy()
   }
   disposeSwal(this)
 }
 
+/**
+ * @param {SweetAlert2} instance
+ */
 const disposeSwal = (instance) => {
   disposeWeakMaps(instance)
   // Unset this.params so GC will dispose it (#1569)
+  // @ts-ignore
   delete instance.params
   // Unset globalState props so GC will dispose globalState (#1569)
   delete globalState.keydownHandler
@@ -40,8 +38,12 @@ const disposeSwal = (instance) => {
   delete globalState.currentInstance
 }
 
+/**
+ * @param {SweetAlert2} instance
+ */
 const disposeWeakMaps = (instance) => {
   // If the current instance is awaiting a promise result, we keep the privateMethods to call them once the promise result is retrieved #2335
+  // @ts-ignore
   if (instance.isAwaitingPromise()) {
     unsetWeakMaps(privateProps, instance)
     privateProps.awaitingPromise.set(instance, true)
@@ -51,6 +53,10 @@ const disposeWeakMaps = (instance) => {
   }
 }
 
+/**
+ * @param {object} obj
+ * @param {SweetAlert2} instance
+ */
 const unsetWeakMaps = (obj, instance) => {
   for (const i in obj) {
     obj[i].delete(instance)

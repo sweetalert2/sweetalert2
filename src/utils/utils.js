@@ -22,7 +22,7 @@ export const uniqueArray = (arr) => {
 export const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
 /**
- * @param {NodeList | HTMLCollection | NamedNodeMap} nodeList
+ * @param {NodeList | HTMLCollection | NamedNodeMap | DOMTokenList} nodeList
  * @returns {array}
  */
 export const toArray = (nodeList) => Array.prototype.slice.call(nodeList)

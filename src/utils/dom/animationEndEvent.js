@@ -1,5 +1,8 @@
 import { isNodeEnv } from '../isNodeEnv.js'
 
+/**
+ * @returns {'webkitAnimationEnd' | 'animationend' | false}
+ */
 export const animationEndEvent = (() => {
   // Prevent run in Node env
   /* istanbul ignore if */

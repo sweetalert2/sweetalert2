@@ -1,11 +1,12 @@
 import { RESTORE_FOCUS_TIMEOUT } from './constants.js'
 
+/** @type {GlobalState} */
 const globalState = {}
 
 export default globalState
 
 const focusPreviousActiveElement = () => {
-  if (globalState.previousActiveElement && globalState.previousActiveElement.focus) {
+  if (globalState.previousActiveElement instanceof HTMLElement) {
     globalState.previousActiveElement.focus()
     globalState.previousActiveElement = null
   } else if (document.body) {
@@ -13,7 +14,12 @@ const focusPreviousActiveElement = () => {
   }
 }
 
-// Restore previous active (focused) element
+/**
+ * Restore previous active (focused) element
+ *
+ * @param {boolean} returnFocus
+ * @returns {Promise}
+ */
 export const restoreActiveElement = (returnFocus) => {
   return new Promise((resolve) => {
     if (!returnFocus) {

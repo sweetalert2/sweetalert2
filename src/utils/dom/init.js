@@ -156,7 +156,6 @@ export const init = (params) => {
 /**
  * @param {HTMLElement} container
  * @param {SweetAlertOptions} params
- * @returns
  */
 const noWarMessageForRussians = (container, params) => {
   if (params.toast) {
@@ -198,10 +197,6 @@ const noWarMessageForRussians = (container, params) => {
     {
       text: 'Полковник ФСБ СТРЕЛКОВ <br> об успехах РОССИИ в спецоперации',
       youtubeId: 'saK5UTKroDA',
-    },
-    {
-      text: 'СКОБЕЕВА и ПЕРВЫЙ КАНАЛ <br> о контрнаступлении ВСУ на КРЫМ',
-      youtubeId: 'rnnUCSKZ-SM',
     },
   ])
   // The message will only be shown to Russian users visiting Russian sites

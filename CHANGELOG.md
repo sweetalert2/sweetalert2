@@ -1,3 +1,10 @@
+## [11.4.16](https://github.com/sweetalert2/sweetalert2/compare/v11.4.15...v11.4.16) (2022-05-23)
+
+
+### Bug Fixes
+
+* **types:** fix types for Swal.close() ([3cc9193](https://github.com/sweetalert2/sweetalert2/commit/3cc9193a01b2744acd32e0ff325ce7728c14330d))
+
 ## [11.4.15](https://github.com/sweetalert2/sweetalert2/compare/v11.4.14...v11.4.15) (2022-05-22)
 
 

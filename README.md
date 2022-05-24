@@ -42,9 +42,9 @@ NSFW Sponsors
 -|-|-|-
 [Sensual Dolls](https://www.sensualdolls.com) | [BestRealDoll](https://www.bestrealdoll.com/collections/us-warehouse) | [SexDollTech](https://www.sexdolltech.com/product-category/us-warehouse/) | [Rose Wives](https://rosewives.com/)
 
-[<img src="https://sweetalert2.github.io/images/sponsors/hydoll.png" width="80">](https://www.hydoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdollsoff.png" width="80">](https://www.sexdollsoff.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/realsexdoll.png" width="80">](https://realsexdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/yourdoll.jpg" width="80">](https://www.yourdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/annies-dollhouse.png" width="80">](https://anniesdollhouse.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdollcenter.png" width="80">](https://sexdollcenter.vip/) |
--|-|-|-|-|-
-[hydoll](https://www.hydoll.com/) | [SexDollsOff](https://www.sexdollsoff.com/) | [RealSexDoll](https://realsexdoll.com/) | [Your Doll](https://www.yourdoll.com/) | [Annie's Dollhouse](https://anniesdollhouse.com/) | [Sex Doll Center](https://sexdollcenter.vip/)
+[<img src="https://sweetalert2.github.io/images/sponsors/sexdollsoff.png" width="80">](https://www.sexdollsoff.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/realsexdoll.png" width="80">](https://realsexdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/yourdoll.jpg" width="80">](https://www.yourdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/annies-dollhouse.png" width="80">](https://anniesdollhouse.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdollcenter.png" width="80">](https://sexdollcenter.vip/) |
+-|-|-|-|-
+[SexDollsOff](https://www.sexdollsoff.com/) | [RealSexDoll](https://realsexdoll.com/) | [Your Doll](https://www.yourdoll.com/) | [Annie's Dollhouse](https://anniesdollhouse.com/) | [Sex Doll Center](https://sexdollcenter.vip/)
 
 [<img src="https://sweetalert2.github.io/images/sponsors/vsdoll.png" width="80">](https://vsdoll.com/homepage/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexangelbaby.png" width="80">](https://sexangelbaby.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/theadulttoyfinder.png" width="80">](https://theadulttoyfinder.com/?utm_source=sweetalert2&utm_medium=logo)
 -|-|-

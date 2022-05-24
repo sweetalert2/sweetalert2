@@ -1,3 +1,10 @@
+## [11.4.17](https://github.com/sweetalert2/sweetalert2/compare/v11.4.16...v11.4.17) (2022-05-24)
+
+
+### Bug Fixes
+
+* prevent re-rendering the same icon ([#2447](https://github.com/sweetalert2/sweetalert2/issues/2447)) ([0bae8b5](https://github.com/sweetalert2/sweetalert2/commit/0bae8b57d03a96852ffd2fd14f4c194f349313c3))
+
 ## [11.4.16](https://github.com/sweetalert2/sweetalert2/compare/v11.4.15...v11.4.16) (2022-05-23)
 
 

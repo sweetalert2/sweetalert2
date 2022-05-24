@@ -2,6 +2,9 @@ import { warn } from './utils.js'
 import * as dom from './dom/index.js'
 import defaultInputValidators from './defaultInputValidators.js'
 
+/**
+ * @param {SweetAlertOptions} params
+ */
 function setDefaultInputValidators(params) {
   // Use default `inputValidator` for supported input types if not provided
   if (!params.inputValidator) {
@@ -13,6 +16,9 @@ function setDefaultInputValidators(params) {
   }
 }
 
+/**
+ * @param {SweetAlertOptions} params
+ */
 function validateCustomTargetElement(params) {
   // Determine if the custom target element is valid
   if (
@@ -28,7 +34,7 @@ function validateCustomTargetElement(params) {
 /**
  * Set type, text and actions on popup
  *
- * @param params
+ * @param {SweetAlertOptions} params
  */
 export default function setParameters(params) {
   setDefaultInputValidators(params)

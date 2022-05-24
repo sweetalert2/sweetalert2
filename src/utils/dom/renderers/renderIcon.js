@@ -21,12 +21,14 @@ export const renderIcon = (instance, params) => {
   }
 
   if (!params.icon && !params.iconHtml) {
-    return dom.hide(icon)
+    dom.hide(icon)
+    return
   }
 
   if (params.icon && Object.keys(iconTypes).indexOf(params.icon) === -1) {
     error(`Unknown icon! Expected "success", "error", "warning", "info" or "question", got "${params.icon}"`)
-    return dom.hide(icon)
+    dom.hide(icon)
+    return
   }
 
   dom.show(icon)
@@ -92,21 +94,26 @@ const errorIconHtml = `
  * @param {SweetAlertOptions} params
  */
 const setContent = (icon, params) => {
-  icon.textContent = ''
-
+  let oldContent = icon.innerHTML
+  let newContent
   if (params.iconHtml) {
-    dom.setInnerHtml(icon, iconContent(params.iconHtml))
+    newContent = iconContent(params.iconHtml)
   } else if (params.icon === 'success') {
-    dom.setInnerHtml(icon, successIconHtml)
+    newContent = successIconHtml
+    oldContent = oldContent.replace(/ style=".*?"/g, '') // undo adjustSuccessIconBackgroundColor()
   } else if (params.icon === 'error') {
-    dom.setInnerHtml(icon, errorIconHtml)
+    newContent = errorIconHtml
   } else {
     const defaultIconHtml = {
       question: '?',
       warning: '!',
       info: 'i',
     }
-    dom.setInnerHtml(icon, iconContent(defaultIconHtml[params.icon]))
+    newContent = iconContent(defaultIconHtml[params.icon])
+  }
+
+  if (oldContent.trim() !== newContent.trim()) {
+    dom.setInnerHtml(icon, newContent)
   }
 }
 
@@ -133,5 +140,6 @@ const setColor = (icon, params) => {
 
 /**
  * @param {string} content
+ * @returns {string}
  */
 const iconContent = (content) => `<div class="${swalClasses['icon-content']}">${content}</div>`

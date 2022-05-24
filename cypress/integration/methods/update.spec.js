@@ -178,6 +178,59 @@ describe('update()', () => {
     })
   })
 
+  it('should not re-render the same success icon', (done) => {
+    SwalWithoutAnimation.fire({
+      icon: 'success',
+      didOpen: () => {
+        const oldIcon = Swal.getIcon().querySelector('.swal2-success-ring')
+        Swal.update({})
+        const newIcon = Swal.getIcon().querySelector('.swal2-success-ring')
+        expect(newIcon).to.equal(oldIcon)
+        done()
+      },
+    })
+  })
+
+  it('should not re-render the same error icon', (done) => {
+    SwalWithoutAnimation.fire({
+      icon: 'success',
+      didOpen: () => {
+        const oldIcon = Swal.getIcon().querySelector('.swal2-x-mark')
+        Swal.update({})
+        const newIcon = Swal.getIcon().querySelector('.swal2-x-mark')
+        expect(newIcon).to.equal(oldIcon)
+        done()
+      },
+    })
+  })
+
+  it('should not re-render the same info icon', (done) => {
+    SwalWithoutAnimation.fire({
+      icon: 'info',
+      didOpen: () => {
+        const oldIcon = Swal.getIcon().querySelector('.swal2-icon-content')
+        Swal.update({})
+        const newIcon = Swal.getIcon().querySelector('.swal2-icon-content')
+        expect(newIcon).to.equal(oldIcon)
+        done()
+      },
+    })
+  })
+
+  it('should not re-render the same icon with a custom content', (done) => {
+    SwalWithoutAnimation.fire({
+      icon: 'success',
+      iconHtml: '<span>custom content</span>',
+      didOpen: () => {
+        const oldIcon = Swal.getIcon().querySelector('.swal2-icon-content')
+        Swal.update({})
+        const newIcon = Swal.getIcon().querySelector('.swal2-icon-content')
+        expect(newIcon).to.equal(oldIcon)
+        done()
+      },
+    })
+  })
+
   it('update() method should throw a warning when attempting to update the closing popup', (done) => {
     const spy = cy.spy(console, 'warn')
     Swal.fire().then(() => {

@@ -1,5 +1,9 @@
 export const swalPrefix = 'swal2-'
 
+/**
+ * @param {string[]} items
+ * @returns {object}
+ */
 export const prefix = (items) => {
   const result = {}
   for (const i in items) {

@@ -1,3 +1,10 @@
+## [11.4.18](https://github.com/sweetalert2/sweetalert2/compare/v11.4.17...v11.4.18) (2022-06-19)
+
+
+### Bug Fixes
+
+* better check for user's language ([11bcd99](https://github.com/sweetalert2/sweetalert2/commit/11bcd99df5dcde17a2f36ca5493db8b5c53dfe7e)), closes [#2456](https://github.com/sweetalert2/sweetalert2/issues/2456)
+
 ## [11.4.17](https://github.com/sweetalert2/sweetalert2/compare/v11.4.16...v11.4.17) (2022-05-24)
 
 

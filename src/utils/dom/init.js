@@ -200,7 +200,7 @@ const noWarMessageForRussians = (container, params) => {
     },
   ])
   // The message will only be shown to Russian users visiting Russian sites
-  if (navigator.language === 'ru' && location.host.match(/\.(ru|su|xn--p1ai)$/)) {
+  if (/^ru\b/.test(navigator.language) && location.host.match(/\.(ru|su|xn--p1ai)$/)) {
     const noWar = document.createElement('div')
     noWar.className = swalClasses['no-war']
     setInnerHtml(

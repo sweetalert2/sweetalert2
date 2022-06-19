@@ -26,9 +26,9 @@ For all questions related to sponsorship please contact me via email limon.monte
 -|-|-|-
 [My Bitcoin slots](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo) | [Metal Raised Garden Bed](https://www.vegega.com/) | [Pure Essential Oil](https://phatoil.com/) | [Phone Tracking Apps](https://celltrackingapps.com)
 
-[<img src="https://sweetalert2.github.io/images/sponsors/torc-stark.png" width="80">](https://torcstark.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/coderubik.png" width="80">](https://coderubik.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/halvinlaina.png" width="80">](https://halvinlaina.fi/) | [<img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80">](https://github.com/tiagostutz) | [<img src="https://sweetalert2.github.io/images/sponsors/sebaebc.png" width="80">](https://github.com/sebaebc)
--|-|-|-|-
-[TorcStark](https://torcstark.com/) | [Code Rubik](https://coderubik.com/?utm_source=sweetalert2&utm_medium=logo) | [Halvin Laina](https://halvinlaina.fi/) | [Tiago de Oliveira Stutz](https://github.com/tiagostutz) | [SebaEBC](https://github.com/sebaebc)
+[<img src="https://sweetalert2.github.io/images/sponsors/torc-stark.png" width="80">](https://torcstark.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/coderubik.png" width="80">](https://coderubik.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/halvinlaina.png" width="80">](https://halvinlaina.fi/) | [<img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80">](https://github.com/tiagostutz)
+-|-|-|-
+[TorcStark](https://torcstark.com/) | [Code Rubik](https://coderubik.com/?utm_source=sweetalert2&utm_medium=logo) | [Halvin Laina](https://halvinlaina.fi/) | [Tiago de Oliveira Stutz](https://github.com/tiagostutz)
 
 NSFW Sponsors
 -------------

@@ -33,9 +33,9 @@ For all questions related to sponsorship please contact me via email limon.monte
 NSFW Sponsors
 -------------
 
-[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md#sponsors) | [<img src="https://sweetalert2.github.io/images/sponsors/sexysexdoll.png" width="80">](https://www.sexysexdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/dollnight.jpeg" width="80">](https://www.dollnight.com/cheap-sex-doll) | [<img src="https://sweetalert2.github.io/images/sponsors/sexvibrator.png" width="80">](https://www.sexvibrators.in/) | [<img src="https://sweetalert2.github.io/images/sponsors/viva-awa.png" width="80">](https://www.viva-awa.com/)
--|-|-|-|-
-[Become a NSFW sponsor](SPONSORS.md#sponsors) | [Sexy Sex Doll](https://www.sexysexdoll.com/) | [Cheap Sex Doll](https://www.dollnight.com/cheap-sex-doll) | [Sex Vibrators](https://www.sexvibrators.in/) | [Viva Awa](https://www.viva-awa.com/)
+[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md#sponsors) | [<img src="https://sweetalert2.github.io/images/sponsors/sexysexdoll.png" width="80">](https://www.sexysexdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexvibrator.png" width="80">](https://www.sexvibrators.in/) | [<img src="https://sweetalert2.github.io/images/sponsors/viva-awa.png" width="80">](https://www.viva-awa.com/)
+-|-|-|-
+[Become a NSFW sponsor](SPONSORS.md#sponsors) | [Sexy Sex Doll](https://www.sexysexdoll.com/) | [Sex Vibrators](https://www.sexvibrators.in/) | [Viva Awa](https://www.viva-awa.com/)
 
 [<img src="https://sweetalert2.github.io/images/sponsors/sensualdolls.png" width="80">](https://www.sensualdolls.com) | [<img src="https://sweetalert2.github.io/images/sponsors/bestrealdoll.jpeg" width="80">](https://www.bestrealdoll.com/collections/us-warehouse) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdolltech.jpeg" width="80">](https://www.sexdolltech.com/product-category/us-warehouse/) | [<img src="https://sweetalert2.github.io/images/sponsors/rosewives.png" width="80">](https://rosewives.com/)
 -|-|-|-

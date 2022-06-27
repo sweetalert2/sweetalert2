@@ -1,3 +1,10 @@
+## [11.4.19](https://github.com/sweetalert2/sweetalert2/compare/v11.4.18...v11.4.19) (2022-06-27)
+
+
+### Bug Fixes
+
+* auto-import styles in Vite ([#2459](https://github.com/sweetalert2/sweetalert2/issues/2459)) ([31a98d6](https://github.com/sweetalert2/sweetalert2/commit/31a98d6dee29b1e402e5fd2ea1ba7745737c03e8))
+
 ## [11.4.18](https://github.com/sweetalert2/sweetalert2/compare/v11.4.17...v11.4.18) (2022-06-19)
 
 

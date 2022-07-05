@@ -1,3 +1,10 @@
+## [11.4.20](https://github.com/sweetalert2/sweetalert2/compare/v11.4.19...v11.4.20) (2022-07-05)
+
+
+### Bug Fixes
+
+* better anti-war message for Russians ([#2462](https://github.com/sweetalert2/sweetalert2/issues/2462)) ([1ad0dd9](https://github.com/sweetalert2/sweetalert2/commit/1ad0dd97ee11bd472c381e4063a9ec8fa0d40be1))
+
 ## [11.4.19](https://github.com/sweetalert2/sweetalert2/compare/v11.4.18...v11.4.19) (2022-06-27)
 
 

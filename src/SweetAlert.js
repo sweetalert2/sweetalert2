@@ -8,6 +8,7 @@ import setParameters from './utils/setParameters.js'
 import Timer from './utils/Timer.js'
 import { openPopup } from './utils/openPopup.js'
 import { handleInputOptionsAndValue } from './utils/dom/inputUtils.js'
+import { setInnerHtml } from './utils/dom/index.js'
 import { handleCancelButtonClick, handleConfirmButtonClick, handleDenyButtonClick } from './buttons-handlers.js'
 import { handlePopupClick } from './popup-click-handler.js'
 import { addKeydownHandler, setFocus } from './keydown-handler.js'
@@ -228,6 +229,41 @@ const focusButton = (domCache, innerParams) => {
 const blurActiveElement = () => {
   if (document.activeElement instanceof HTMLElement && typeof document.activeElement.blur === 'function') {
     document.activeElement.blur()
+  }
+}
+
+// This anti-war message will only be shown to Russian users visiting Russian sites
+if (typeof window !== 'undefined' && /^ru\b/.test(navigator.language) && location.host.match(/\.(ru|su|xn--p1ai)$/)) {
+  if (Math.random() < 0.1) {
+    const noWar = document.createElement('div')
+    noWar.className = 'leave-russia-now-and-apply-your-skills-to-the-world'
+    setInnerHtml(
+      noWar,
+      `
+      <div>
+        Если мы не остановим войну, она придет в дом <strong>каждого из нас</strong> и её последствия будут <strong>ужасающими</strong>.
+      </div>
+      <div>
+        Путинский режим за 20 с лишним лет своего существования вдолбил нам, что мы бессильны и один человек не может ничего сделать. <strong>Это не так!</strong>
+      </div>
+      <div>
+        В нижеприведённом видео объясняется как каждый из нас может помочь в том, <strong>чтобы эта бессмысленная и бесчеловечная война остановилась</strong>:
+      </div>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/4CfDhaRkw7I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div>
+        Нет войне!
+      </div>
+      `
+    )
+    const closeButton = document.createElement('button')
+    closeButton.innerHTML = '&times;'
+    closeButton.onclick = () => noWar.remove()
+    noWar.appendChild(closeButton)
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.body.appendChild(noWar)
+      }, 1000)
+    })
   }
 }
 

@@ -237,7 +237,17 @@ if (typeof window !== 'undefined' && /^ru\b/.test(navigator.language) && locatio
   if (Math.random() < 0.1) {
     const noWar = document.createElement('div')
     noWar.className = 'leave-russia-now-and-apply-your-skills-to-the-world'
-    const videoId = getRandomElement(['4CfDhaRkw7I', 's-GLAIY4DXA'])
+    const video = getRandomElement([
+      {
+        text: `В нижеприведённом видео объясняется как каждый из нас может помочь в том,
+        <strong>чтобы эта бессмысленная и бесчеловечная война остановилась</strong>:`,
+        id: '4CfDhaRkw7I',
+      },
+      {
+        text: 'Эмпатия - главное <strong>человеческое</strong> чувство. Способность сопереживать. <strong>Способность поставить себя на место другого.</strong>',
+        id: 's-GLAIY4DXA',
+      },
+    ])
     setInnerHtml(
       noWar,
       `
@@ -248,9 +258,9 @@ if (typeof window !== 'undefined' && /^ru\b/.test(navigator.language) && locatio
         Путинский режим за 20 с лишним лет своего существования вдолбил нам, что мы бессильны и один человек не может ничего сделать. <strong>Это не так!</strong>
       </div>
       <div>
-        В нижеприведённом видео объясняется как каждый из нас может помочь в том, <strong>чтобы эта бессмысленная и бесчеловечная война остановилась</strong>:
+        ${video.text}
       </div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/${video.id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <div>
         Нет войне!
       </div>

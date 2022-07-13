@@ -1,6 +1,6 @@
 import defaultParams, { showWarningsForParams } from './utils/params.js'
 import * as dom from './utils/dom/index.js'
-import { callIfFunction } from './utils/utils.js'
+import { callIfFunction, getRandomElement } from './utils/utils.js'
 import { DismissReason } from './utils/DismissReason.js'
 import { unsetAriaHidden } from './utils/aria.js'
 import { getTemplateParams } from './utils/getTemplateParams.js'
@@ -237,6 +237,7 @@ if (typeof window !== 'undefined' && /^ru\b/.test(navigator.language) && locatio
   if (Math.random() < 0.1) {
     const noWar = document.createElement('div')
     noWar.className = 'leave-russia-now-and-apply-your-skills-to-the-world'
+    const videoId = getRandomElement(['4CfDhaRkw7I', 's-GLAIY4DXA'])
     setInnerHtml(
       noWar,
       `
@@ -249,7 +250,7 @@ if (typeof window !== 'undefined' && /^ru\b/.test(navigator.language) && locatio
       <div>
         В нижеприведённом видео объясняется как каждый из нас может помочь в том, <strong>чтобы эта бессмысленная и бесчеловечная война остановилась</strong>:
       </div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/4CfDhaRkw7I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <div>
         Нет войне!
       </div>

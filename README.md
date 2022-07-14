@@ -19,17 +19,32 @@ Sponsors
 
 For all questions related to sponsorship please contact me via email limon.monte@protonmail.com
 
-[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md#sponsors) | [<img src="https://sweetalert2.github.io/images/sponsors/istartips.png" width="80">](https://www.istartips.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/evguru.png" width="80">](https://www.evguru.com.my/) | [<img src="https://sweetalert2.github.io/images/sponsors/bestforandroid.png" width="80">](https://bestforandroid.com/) | [<img src="https://avatars2.githubusercontent.com/u/28631236?s=80&v=4" width="80">](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo)
--|-|-|-|-
-[Become a sponsor](SPONSORS.md#sponsors) | [iStarTips](https://www.istartips.com/) | [EvGuru EV Chargers](https://www.evguru.com.my/) | [Best For Android](https://bestforandroid.com/) | [FlowCrypt](https://flowcrypt.com/?utm_source=sweetalert2&utm_medium=logo)
-
-[<img src="https://sweetalert2.github.io/images/sponsors/mybitcoinslots.png" width="80">](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/vegega.jpeg" width="80">](https://www.vegega.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/phatoil.png" width="80">](https://phatoil.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/celltrackingapps.png" width="80">](https://celltrackingapps.com/)
--|-|-|-
-[My Bitcoin slots](https://www.mybitcoinslots.com/?utm_source=sweetalert2&utm_medium=logo) | [Metal Raised Garden Bed](https://www.vegega.com/) | [Pure Essential Oil](https://phatoil.com/) | [Phone Tracking Apps](https://celltrackingapps.com)
-
-[<img src="https://sweetalert2.github.io/images/sponsors/torc-stark.png" width="80">](https://torcstark.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/coderubik.png" width="80">](https://coderubik.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/halvinlaina.png" width="80">](https://halvinlaina.fi/) | [<img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80">](https://github.com/tiagostutz)
--|-|-|-
-[TorcStark](https://torcstark.com/) | [Code Rubik](https://coderubik.com/?utm_source=sweetalert2&utm_medium=logo) | [Halvin Laina](https://halvinlaina.fi/) | [Tiago de Oliveira Stutz](https://github.com/tiagostutz)
+<table>
+<tr>
+<td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
+<td align="center"><a href="https://www.realspyapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/realspyapps.jpeg" width="80"><br>Real Spy Apps</a>
+<td align="center"><a href="https://www.istartips.com/"><img src="https://sweetalert2.github.io/images/sponsors/istartips.png" width="80"><br>iStarTips</a>
+<td align="center"><a href="https://www.evguru.com.my/"><img src="https://sweetalert2.github.io/images/sponsors/evguru.png" width="80"><br>EvGuru EV Chargers</a></td>
+<td align="center"><a href="https://bestforandroid.com/"><img src="https://sweetalert2.github.io/images/sponsors/bestforandroid.png" width="80"><br>Best For Android</a></td>
+</tr>
+</table>
+<table>
+<tr>
+<td align="center"><a href="https://celltrackingapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/celltrackingapps.png" width="80"><br>Phone Tracking Apps</a></td>
+<td align="center"><a href="https://flowcrypt.com/"><img src="https://avatars2.githubusercontent.com/u/28631236?s=80&v=4" width="80"><br>FlowCrypt</a></td>
+<td align="center"><a href="https://www.mybitcoinslots.com/"><img src="https://sweetalert2.github.io/images/sponsors/mybitcoinslots.png" width="80"><br>My Bitcoin slots</a></td>
+<td align="center"><a href="https://www.vegega.com/"><img src="https://sweetalert2.github.io/images/sponsors/vegega.jpeg" width="80"><br>Metal Raised Garden Bed</a></td>
+<td align="center"><a href="https://phatoil.com/"><img src="https://sweetalert2.github.io/images/sponsors/phatoil.png" width="80"><br>Pure Essential Oil</a></td>
+</tr>
+</table>
+<table>
+<tr>
+<td align="center"><a href="https://torcstark.com/"><img src="https://sweetalert2.github.io/images/sponsors/torc-stark.png" width="80"><br>TorcStark</a></td>
+<td align="center"><a href="https://coderubik.com/"><img src="https://sweetalert2.github.io/images/sponsors/coderubik.png" width="80"><br>Code Rubik</a></td>
+<td align="center"><a href="https://halvinlaina.fi/"><img src="https://sweetalert2.github.io/images/sponsors/halvinlaina.png" width="80"><br>Halvin Laina</a></td>
+<td align="center"><a href="https://github.com/tiagostutz"><img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80"><br>Tiago de Oliveira Stutz</a></td>
+</tr>
+</table>
 
 NSFW Sponsors
 -------------

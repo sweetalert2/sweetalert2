@@ -7,6 +7,9 @@ import { DismissReason } from './utils/DismissReason.js'
 import privateProps from './privateProps.js'
 import { handleAwaitingPromise } from './instanceMethods.js'
 
+/**
+ * @param {SweetAlert2} instance
+ */
 export const handleConfirmButtonClick = (instance) => {
   const innerParams = privateProps.innerParams.get(instance)
   instance.disableButtons()
@@ -17,6 +20,9 @@ export const handleConfirmButtonClick = (instance) => {
   }
 }
 
+/**
+ * @param {SweetAlert2} instance
+ */
 export const handleDenyButtonClick = (instance) => {
   const innerParams = privateProps.innerParams.get(instance)
   instance.disableButtons()
@@ -27,17 +33,24 @@ export const handleDenyButtonClick = (instance) => {
   }
 }
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {Function} dismissWith
+ */
 export const handleCancelButtonClick = (instance, dismissWith) => {
   instance.disableButtons()
   dismissWith(DismissReason.cancel)
 }
 
-const handleConfirmOrDenyWithInput = (instance, type /* 'confirm' | 'deny' */) => {
+/**
+ * @param {SweetAlert2} instance
+ * @param {'confirm' | 'deny'} type
+ */
+const handleConfirmOrDenyWithInput = (instance, type) => {
   const innerParams = privateProps.innerParams.get(instance)
   if (!innerParams.input) {
-    return error(
-      `The "input" parameter is needed to be set when using returnInputValueOn${capitalizeFirstLetter(type)}`
-    )
+    error(`The "input" parameter is needed to be set when using returnInputValueOn${capitalizeFirstLetter(type)}`)
+    return
   }
   const inputValue = getInputValue(instance, innerParams)
   if (innerParams.inputValidator) {
@@ -52,7 +65,12 @@ const handleConfirmOrDenyWithInput = (instance, type /* 'confirm' | 'deny' */) =
   }
 }
 
-const handleInputValidator = (instance, inputValue, type /* 'confirm' | 'deny' */) => {
+/**
+ * @param {SweetAlert2} instance
+ * @param {string} inputValue
+ * @param {'confirm' | 'deny'} type
+ */
+const handleInputValidator = (instance, inputValue, type) => {
   const innerParams = privateProps.innerParams.get(instance)
   instance.disableInput()
   const validationPromise = Promise.resolve().then(() =>
@@ -71,6 +89,10 @@ const handleInputValidator = (instance, inputValue, type /* 'confirm' | 'deny' *
   })
 }
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {any} value
+ */
 const deny = (instance, value) => {
   const innerParams = privateProps.innerParams.get(instance || this)
 
@@ -89,23 +111,38 @@ const deny = (instance, value) => {
           instance.hideLoading()
           handleAwaitingPromise(instance)
         } else {
-          instance.closePopup({ isDenied: true, value: typeof preDenyValue === 'undefined' ? value : preDenyValue })
+          instance.close({ isDenied: true, value: typeof preDenyValue === 'undefined' ? value : preDenyValue })
         }
       })
       .catch((error) => rejectWith(instance || this, error))
   } else {
-    instance.closePopup({ isDenied: true, value })
+    instance.close({ isDenied: true, value })
   }
 }
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {any} value
+ */
 const succeedWith = (instance, value) => {
-  instance.closePopup({ isConfirmed: true, value })
+  instance.close({ isConfirmed: true, value })
 }
 
+/**
+ *
+ * @param {SweetAlert2} instance
+ * @param {string} error
+ */
 const rejectWith = (instance, error) => {
+  // @ts-ignore
   instance.rejectPromise(error)
 }
 
+/**
+ *
+ * @param {SweetAlert2} instance
+ * @param {any} value
+ */
 const confirm = (instance, value) => {
   const innerParams = privateProps.innerParams.get(instance || this)
 

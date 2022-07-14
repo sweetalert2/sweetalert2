@@ -1,3 +1,10 @@
+## [11.4.23](https://github.com/sweetalert2/sweetalert2/compare/v11.4.22...v11.4.23) (2022-07-14)
+
+
+### Bug Fixes
+
+* add types to button-handlers.js ([e51f6c1](https://github.com/sweetalert2/sweetalert2/commit/e51f6c1df73b8a3f6e01709c28cc6b5d42cf0f50))
+
 ## [11.4.22](https://github.com/sweetalert2/sweetalert2/compare/v11.4.21...v11.4.22) (2022-07-13)
 
 

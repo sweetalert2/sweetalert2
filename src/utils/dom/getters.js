@@ -1,5 +1,5 @@
 import { swalClasses } from '../classes.js'
-import { toArray, uniqueArray } from '../utils.js'
+import { uniqueArray } from '../utils.js'
 import { hasClass, isVisible } from './domUtils.js'
 
 /**
@@ -127,7 +127,7 @@ const focusable = `
  * @returns {HTMLElement[]}
  */
 export const getFocusableElements = () => {
-  const focusableElementsWithTabindex = toArray(
+  const focusableElementsWithTabindex = Array.from(
     getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')
   )
     // sort according to tabindex
@@ -142,7 +142,7 @@ export const getFocusableElements = () => {
       return 0
     })
 
-  const otherFocusableElements = toArray(getPopup().querySelectorAll(focusable)).filter(
+  const otherFocusableElements = Array.from(getPopup().querySelectorAll(focusable)).filter(
     (el) => el.getAttribute('tabindex') !== '-1'
   )
 

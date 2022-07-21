@@ -1,6 +1,6 @@
 import { getCancelButton, getConfirmButton, getDenyButton, getTimerProgressBar } from './getters.js'
 import { iconTypes, swalClasses } from '../classes.js'
-import { toArray, warn } from '../utils.js'
+import { warn } from '../utils.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {
@@ -19,10 +19,10 @@ export const setInnerHtml = (elem, html) => {
   if (html) {
     const parser = new DOMParser()
     const parsed = parser.parseFromString(html, `text/html`)
-    toArray(parsed.querySelector('head').childNodes).forEach((child) => {
+    Array.from(parsed.querySelector('head').childNodes).forEach((child) => {
       elem.appendChild(child)
     })
-    toArray(parsed.querySelector('body').childNodes).forEach((child) => {
+    Array.from(parsed.querySelector('body').childNodes).forEach((child) => {
       elem.appendChild(child)
     })
   }
@@ -51,7 +51,7 @@ export const hasClass = (elem, className) => {
  * @param {SweetAlertOptions} params
  */
 const removeCustomClasses = (elem, params) => {
-  toArray(elem.classList).forEach((className) => {
+  Array.from(elem.classList).forEach((className) => {
     if (
       !Object.values(swalClasses).includes(className) &&
       !Object.values(iconTypes).includes(className) &&
@@ -173,10 +173,11 @@ export const removeClass = (target, classList) => {
  * @returns {HTMLElement | null}
  */
 export const getDirectChildByClass = (elem, className) => {
-  const childNodes = toArray(elem.childNodes)
-  for (let i = 0; i < childNodes.length; i++) {
-    if (hasClass(childNodes[i], className)) {
-      return childNodes[i]
+  const children = Array.from(elem.children)
+  for (let i = 0; i < children.length; i++) {
+    const child = children[i]
+    if (child instanceof HTMLElement && hasClass(child, className)) {
+      return child
     }
   }
 }

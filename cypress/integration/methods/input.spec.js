@@ -1,6 +1,5 @@
 import { isVisible } from '../../../src/utils/dom'
 import { $, Swal, SwalWithoutAnimation, TIMEOUT, dispatchCustomEvent, isHidden, triggerKeydownEvent } from '../../utils'
-import { toArray } from '../../../src/utils/utils'
 import defaultInputValidators from '../../../src/utils/defaultInputValidators'
 
 describe('Input', () => {
@@ -385,11 +384,11 @@ describe('Input', () => {
     })
 
     Swal.disableInput()
-    toArray($('.swal2-radio').querySelectorAll('radio')).forEach((radio) => {
+    Array.from($('.swal2-radio').querySelectorAll('radio')).forEach((radio) => {
       expect(radio.disabled).to.be.true
     })
     Swal.enableInput()
-    toArray($('.swal2-radio').querySelectorAll('radio')).forEach((radio) => {
+    Array.from($('.swal2-radio').querySelectorAll('radio')).forEach((radio) => {
       expect(radio.disabled).to.be.false
     })
   })

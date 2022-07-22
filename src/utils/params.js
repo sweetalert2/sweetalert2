@@ -152,7 +152,9 @@ const toastIncompatibleParams = [
 
 /**
  * Is valid parameter
+ *
  * @param {string} paramName
+ * @returns {boolean}
  */
 export const isValidParameter = (paramName) => {
   return Object.prototype.hasOwnProperty.call(defaultParams, paramName)
@@ -160,7 +162,9 @@ export const isValidParameter = (paramName) => {
 
 /**
  * Is valid parameter for Swal.update() method
+ *
  * @param {string} paramName
+ * @returns {boolean}
  */
 export const isUpdatableParameter = (paramName) => {
   return updatableParams.indexOf(paramName) !== -1
@@ -168,24 +172,35 @@ export const isUpdatableParameter = (paramName) => {
 
 /**
  * Is deprecated parameter
+ *
  * @param {string} paramName
+ * @returns {boolean}
  */
 export const isDeprecatedParameter = (paramName) => {
-  return deprecatedParams[paramName]
+  return !!deprecatedParams[paramName]
 }
 
+/**
+ * @param {string} param
+ */
 const checkIfParamIsValid = (param) => {
   if (!isValidParameter(param)) {
     warn(`Unknown parameter "${param}"`)
   }
 }
 
+/**
+ * @param {string} param
+ */
 const checkIfToastParamIsValid = (param) => {
   if (toastIncompatibleParams.includes(param)) {
     warn(`The parameter "${param}" is incompatible with toasts`)
   }
 }
 
+/**
+ * @param {string} param
+ */
 const checkIfParamIsDeprecated = (param) => {
   if (isDeprecatedParameter(param)) {
     warnAboutDeprecation(param, isDeprecatedParameter(param))
@@ -195,7 +210,7 @@ const checkIfParamIsDeprecated = (param) => {
 /**
  * Show relevant warnings for given params
  *
- * @param params
+ * @param {SweetAlertOptions} params
  */
 export const showWarningsForParams = (params) => {
   if (!params.backdrop && params.allowOutsideClick) {

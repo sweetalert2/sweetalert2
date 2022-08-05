@@ -7,5 +7,6 @@ module.exports = {
     'no-unsanitized/property': 0,
     'no-unused-expressions': 0,
     'import/extensions': 0,
+    'jsdoc/require-jsdoc': 0,
   },
 }

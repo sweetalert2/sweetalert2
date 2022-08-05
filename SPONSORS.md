@@ -21,14 +21,15 @@ For all questions related to sponsorship please contact me via email limon.monte
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
+<td align="center"><a href="https://rushradar.com/"><img src="https://sweetalert2.github.io/images/sponsors/rushradar.png" width="80"><br>RushRadar</a>
 <td align="center"><a href="https://iganony.com/"><img src="https://sweetalert2.github.io/images/sponsors/iganony.png" width="80"><br>IgAnony</a>
 <td align="center"><a href="https://www.realspyapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/realspyapps.jpeg" width="80"><br>Real Spy Apps</a>
 <td align="center"><a href="https://www.istartips.com/"><img src="https://sweetalert2.github.io/images/sponsors/istartips.png" width="80"><br>iStarTips</a><td align="center"><a href="https://www.evguru.com.my/"><img src="https://sweetalert2.github.io/images/sponsors/evguru.png" width="80"><br>EvGuru EV Chargers</a></td>
-<td align="center"><a href="https://bestforandroid.com/"><img src="https://sweetalert2.github.io/images/sponsors/bestforandroid.png" width="80"><br>Best For Android</a></td>
 </tr>
 </table>
 <table>
 <tr>
+<td align="center"><a href="https://bestforandroid.com/"><img src="https://sweetalert2.github.io/images/sponsors/bestforandroid.png" width="80"><br>Best For Android</a></td>
 <td align="center"><a href="https://celltrackingapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/celltrackingapps.png" width="80"><br>Phone Tracking Apps</a></td>
 <td align="center"><a href="https://flowcrypt.com/"><img src="https://avatars2.githubusercontent.com/u/28631236?s=80&v=4" width="80"><br>FlowCrypt</a></td>
 <td align="center"><a href="https://www.mybitcoinslots.com/"><img src="https://sweetalert2.github.io/images/sponsors/mybitcoinslots.png" width="80"><br>My Bitcoin slots</a></td>

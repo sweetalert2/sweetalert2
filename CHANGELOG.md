@@ -1,3 +1,10 @@
+## [11.4.25](https://github.com/sweetalert2/sweetalert2/compare/v11.4.24...v11.4.25) (2022-08-05)
+
+
+### Bug Fixes
+
+* add types to params.js ([#2473](https://github.com/sweetalert2/sweetalert2/issues/2473)) ([7c1c1a9](https://github.com/sweetalert2/sweetalert2/commit/7c1c1a94812ce88f669348b39479cffb23d1a34f))
+
 ## [11.4.24](https://github.com/sweetalert2/sweetalert2/compare/v11.4.23...v11.4.24) (2022-07-21)
 
 

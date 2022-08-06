@@ -1,3 +1,10 @@
+## [11.4.26](https://github.com/sweetalert2/sweetalert2/compare/v11.4.25...v11.4.26) (2022-08-06)
+
+
+### Bug Fixes
+
+* add types to utils.js ([65081d0](https://github.com/sweetalert2/sweetalert2/commit/65081d02b1a714ecd27680ad400aa9c0bb87685f))
+
 ## [11.4.25](https://github.com/sweetalert2/sweetalert2/compare/v11.4.24...v11.4.25) (2022-08-05)
 
 

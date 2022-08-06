@@ -50,25 +50,49 @@ For all questions related to sponsorship please contact me via email limon.monte
 NSFW Sponsors
 -------------
 
-[<img src="https://sweetalert2.github.io/images/plus.png" width="80">](SPONSORS.md#sponsors) | [<img src="https://sweetalert2.github.io/images/sponsors/sexysexdoll.png" width="80">](https://www.sexysexdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/dollnight.jpeg" width="80">](https://www.dollnight.com/cheap-sex-doll) | [<img src="https://sweetalert2.github.io/images/sponsors/sexvibrator.png" width="80">](https://www.sexvibrators.in/) | [<img src="https://sweetalert2.github.io/images/sponsors/viva-awa.png" width="80">](https://www.viva-awa.com/)
--|-|-|-|-
-[Become a NSFW sponsor](SPONSORS.md#sponsors) | [Sexy Sex Doll](https://www.sexysexdoll.com/) | [Cheap Sex Doll](https://www.dollnight.com/cheap-sex-doll) | [Sex Vibrators](https://www.sexvibrators.in/) | [Viva Awa](https://www.viva-awa.com/)
-
-[<img src="https://sweetalert2.github.io/images/sponsors/sensualdolls.png" width="80">](https://www.sensualdolls.com) | [<img src="https://sweetalert2.github.io/images/sponsors/bestrealdoll.jpeg" width="80">](https://www.bestrealdoll.com/collections/us-warehouse) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdolltech.jpeg" width="80">](https://www.sexdolltech.com/product-category/us-warehouse/) | [<img src="https://sweetalert2.github.io/images/sponsors/rosewives.png" width="80">](https://rosewives.com/)
--|-|-|-
-[Sensual Dolls](https://www.sensualdolls.com) | [BestRealDoll](https://www.bestrealdoll.com/collections/us-warehouse) | [SexDollTech](https://www.sexdolltech.com/product-category/us-warehouse/) | [Rose Wives](https://rosewives.com/)
-
-[<img src="https://sweetalert2.github.io/images/sponsors/sexdollsoff.png" width="80">](https://www.sexdollsoff.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/realsexdoll.png" width="80">](https://realsexdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/yourdoll.jpg" width="80">](https://www.yourdoll.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/annies-dollhouse.png" width="80">](https://anniesdollhouse.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexdollcenter.png" width="80">](https://sexdollcenter.vip/) |
--|-|-|-|-
-[SexDollsOff](https://www.sexdollsoff.com/) | [RealSexDoll](https://realsexdoll.com/) | [Your Doll](https://www.yourdoll.com/) | [Annie's Dollhouse](https://anniesdollhouse.com/) | [Sex Doll Center](https://sexdollcenter.vip/)
-
-[<img src="https://sweetalert2.github.io/images/sponsors/vsdoll.png" width="80">](https://vsdoll.com/homepage/) | [<img src="https://sweetalert2.github.io/images/sponsors/sexangelbaby.png" width="80">](https://sexangelbaby.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/theadulttoyfinder.png" width="80">](https://theadulttoyfinder.com/?utm_source=sweetalert2&utm_medium=logo)
--|-|-
-[VSDoll](https://vsdoll.com/homepage/) | [SexAngelbaby](https://sexangelbaby.com/) | [The Adult Toy Finder](https://theadulttoyfinder.com/?utm_source=sweetalert2&utm_medium=logo)
-
-[<img src="https://sweetalert2.github.io/images/sponsors/my-sex-toy-guide.jpg" width="80">](https://www.mysextoyguide.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/best-blowjob-machines.jpg" width="80">](https://www.bestblowjobmachines.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/sextoycollective.jpg" width="80">](https://sextoycollective.com/?utm_source=sweetalert2&utm_medium=logo) | [<img src="https://sweetalert2.github.io/images/sponsors/doctorclimax.png" width="80">](https://doctorclimax.com/) | [<img src="https://sweetalert2.github.io/images/sponsors/bedbible.png" width="80">](https://bedbible.com/)
--|-|-|-|-
-[My Sex Toy Guide](https://www.mysextoyguide.com/?utm_source=sweetalert2&utm_medium=logo) | [Best Blowjob Machines](https://www.bestblowjobmachines.com/?utm_source=sweetalert2&utm_medium=logo) | [STC](https://sextoycollective.com/?utm_source=sweetalert2&utm_medium=logo) | [DoctorClimax](https://doctorclimax.com/) | [BedBible](https://bedbible.com/)
+<table>
+<tr>
+<td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
+<td align="center"><a href="https://meifoxdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/meifoxdoll.png" width="80"><br>MeiFoxDoll</a></td>
+<td align="center"><a href="https://www.sexysexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexysexdoll.png" width="80"><br>Sexy Sex Doll</a></td>
+<td align="center"><a href="https://www.dollnight.com/cheap-sex-doll"><img src="https://sweetalert2.github.io/images/sponsors/dollnight.jpeg" width="80"><br>Cheap Sex Doll</a></td>
+<td align="center"><a href="https://www.sexvibrators.in/"><img src="https://sweetalert2.github.io/images/sponsors/sexvibrator.png" width="80"><br>Sex Vibrators</a></td>
+</tr>
+</table>
+<table>
+<tr>
+<td align="center"><a href="https://www.viva-awa.com/"><img src="https://sweetalert2.github.io/images/sponsors/viva-awa.png" width="80"><br>Viva Awa</a></td>
+<td align="center"><a href="https://www.sensualdolls.com/"><img src="https://sweetalert2.github.io/images/sponsors/sensualdolls.png" width="80"><br>Sensual Dolls</a></td>
+<td align="center"><a href="https://www.bestrealdoll.com/collections/us-warehouse"><img src="https://sweetalert2.github.io/images/sponsors/bestrealdoll.jpeg" width="80"><br>BestRealDoll</a></td>
+<td align="center"><a href="https://www.sexdolltech.com/product-category/us-warehouse/"><img src="https://sweetalert2.github.io/images/sponsors/sexdolltech.jpeg" width="80"><br>SexDollTech</a></td>
+<td align="center"><a href="https://rosewives.com/"><img src="https://sweetalert2.github.io/images/sponsors/rosewives.png" width="80"><br>Rose Wives</a></td>
+</tr>
+</table>
+<table>
+<tr>
+<td align="center"><a href="https://www.sexdollsoff.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexdollsoff.png" width="80"><br>SexDollsOff</a></td>
+<td align="center"><a href="https://realsexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/realsexdoll.png" width="80"><br>RealSexDoll</a></td>
+<td align="center"><a href="https://www.yourdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/yourdoll.jpg" width="80"><br>Your Doll</a></td>
+<td align="center"><a href="https://anniesdollhouse.com/"><img src="https://sweetalert2.github.io/images/sponsors/annies-dollhouse.png" width="80"><br>Annie's Dollhouse</a></td>
+<td align="center"><a href="https://sexdollcenter.vip/"><img src="https://sweetalert2.github.io/images/sponsors/sexdollcenter.png" width="80"><br>Sex Doll Center</a></td>
+</tr>
+</table>
+<table>
+<tr>
+<td align="center"><a href="https://vsdoll.com/homepage/"><img src="https://sweetalert2.github.io/images/sponsors/vsdoll.png" width="80"><br>VSDoll</a></td>
+<td align="center"><a href="https://sexangelbaby.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexangelbaby.png" width="80"><br>SexAngelbaby</a></td>
+<td align="center"><a href="https://theadulttoyfinder.com/"><img src="https://sweetalert2.github.io/images/sponsors/theadulttoyfinder.png" width="80"><br>The Adult Toy Finder</a></td>
+<td align="center"><a href="https://www.mysextoyguide.com/"><img src="https://sweetalert2.github.io/images/sponsors/my-sex-toy-guide.jpg" width="80"><br>My Sex Toy Guide</a></td>
+</tr>
+</table>
+<table>
+<tr>
+<td align="center"><a href="https://www.bestblowjobmachines.com/"><img src="https://sweetalert2.github.io/images/sponsors/best-blowjob-machines.jpg" width="80"><br>Best Blowjob Machines</a></td>
+<td align="center"><a href="https://sextoycollective.com/"><img src="https://sweetalert2.github.io/images/sponsors/sextoycollective.jpg" width="80"><br>STC</a></td>
+<td align="center"><a href="https://doctorclimax.com/"><img src="https://sweetalert2.github.io/images/sponsors/doctorclimax.png" width="80"><br>DoctorClimax</a></td>
+<td align="center"><a href="https://bedbible.com/"><img src="https://sweetalert2.github.io/images/sponsors/bedbible.png" width="80"><br>BedBible</a></td>
+</tr>
+</table>
 
 Support and Donations
 ---------------------

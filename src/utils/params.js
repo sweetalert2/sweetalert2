@@ -174,10 +174,10 @@ export const isUpdatableParameter = (paramName) => {
  * Is deprecated parameter
  *
  * @param {string} paramName
- * @returns {boolean}
+ * @returns {string | undefined}
  */
 export const isDeprecatedParameter = (paramName) => {
-  return !!deprecatedParams[paramName]
+  return deprecatedParams[paramName]
 }
 
 /**

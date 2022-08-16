@@ -1,3 +1,10 @@
+## [11.4.27](https://github.com/sweetalert2/sweetalert2/compare/v11.4.26...v11.4.27) (2022-08-16)
+
+
+### Bug Fixes
+
+* add types to openPopup.js ([#2480](https://github.com/sweetalert2/sweetalert2/issues/2480)) ([de55163](https://github.com/sweetalert2/sweetalert2/commit/de55163d15974b53b2efd8f7cfc15a0029a68d04))
+
 ## [11.4.26](https://github.com/sweetalert2/sweetalert2/compare/v11.4.25...v11.4.26) (2022-08-06)
 
 

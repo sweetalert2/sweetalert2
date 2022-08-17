@@ -1,4 +1,8 @@
 export default class Timer {
+  /**
+   * @param {Function} callback
+   * @param {number} delay
+   */
   constructor(callback, delay) {
     this.callback = callback
     this.remaining = delay

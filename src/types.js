@@ -9,27 +9,27 @@
 
 /**
  * @typedef GlobalState
- * @prop {SweetAlert2} [currentInstance]
- * @prop {Element} [previousActiveElement]
- * @prop {Timer} [timeout]
- * @prop {NodeJS.Timeout} [restoreFocusTimeout]
- * @prop {(this: HTMLElement, event: KeyboardEvent) => any} [keydownHandler]
- * @prop {HTMLElement | (Window & typeof globalThis)} [keydownTarget]
- * @prop {boolean} [keydownHandlerAdded]
- * @prop {boolean} [keydownListenerCapture]
- * @prop {function} [swalCloseEventFinishedCallback]
+ * @property {SweetAlert2} [currentInstance]
+ * @property {Element} [previousActiveElement]
+ * @property {Timer} [timeout]
+ * @property {NodeJS.Timeout} [restoreFocusTimeout]
+ * @property {(this: HTMLElement, event: KeyboardEvent) => any} [keydownHandler]
+ * @property {HTMLElement | (Window & typeof globalThis)} [keydownTarget]
+ * @property {boolean} [keydownHandlerAdded]
+ * @property {boolean} [keydownListenerCapture]
+ * @property {Function} [swalCloseEventFinishedCallback]
  */
 
 /**
  * @typedef DomCache
- * @prop {HTMLElement} popup
- * @prop {HTMLElement} container
- * @prop {HTMLElement} actions
- * @prop {HTMLElement} confirmButton
- * @prop {HTMLElement} denyButton
- * @prop {HTMLElement} cancelButton
- * @prop {HTMLElement} loader
- * @prop {HTMLElement} closeButton
- * @prop {HTMLElement} validationMessage
- * @prop {HTMLElement} progressSteps
+ * @property {HTMLElement} popup
+ * @property {HTMLElement} container
+ * @property {HTMLElement} actions
+ * @property {HTMLElement} confirmButton
+ * @property {HTMLElement} denyButton
+ * @property {HTMLElement} cancelButton
+ * @property {HTMLElement} loader
+ * @property {HTMLElement} closeButton
+ * @property {HTMLElement} validationMessage
+ * @property {HTMLElement} progressSteps
  */

@@ -40,9 +40,15 @@ const addBottomPaddingForTallPopups = () => {
 const lockBodyScroll = () => {
   const container = dom.getContainer()
   let preventTouchMove
+  /**
+   * @param {TouchEvent} e
+   */
   container.ontouchstart = (e) => {
     preventTouchMove = shouldPreventTouchMove(e)
   }
+  /**
+   * @param {TouchEvent} e
+   */
   container.ontouchmove = (e) => {
     if (preventTouchMove) {
       e.preventDefault()
@@ -51,6 +57,10 @@ const lockBodyScroll = () => {
   }
 }
 
+/**
+ * @param {TouchEvent} event
+ * @returns {boolean}
+ */
 const shouldPreventTouchMove = (event) => {
   const target = event.target
   const container = dom.getContainer()
@@ -62,6 +72,7 @@ const shouldPreventTouchMove = (event) => {
   }
   if (
     !dom.isScrollable(container) &&
+    target instanceof HTMLElement &&
     target.tagName !== 'INPUT' && // #1603
     target.tagName !== 'TEXTAREA' && // #2266
     !(

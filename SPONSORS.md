@@ -52,15 +52,16 @@ NSFW Sponsors
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
+<td align="center"><a href="https://cutesexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/cutesexdoll.jpg" width="80"><br>Cute Sex Doll</a></td>
 <td align="center"><a href="https://toyhero.com/"><img src="https://sweetalert2.github.io/images/sponsors/toyhero.png" width="80"><br>Adult Toys</a></td>
 <td align="center"><a href="https://meifoxdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/meifoxdoll.png" width="80"><br>MeiFoxDoll</a></td>
 <td align="center"><a href="https://www.sexysexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexysexdoll.png" width="80"><br>Sexy Sex Doll</a></td>
 <td align="center"><a href="https://www.dollnight.com/cheap-sex-doll"><img src="https://sweetalert2.github.io/images/sponsors/dollnight.jpeg" width="80"><br>Cheap Sex Doll</a></td>
-<td align="center"><a href="https://www.sexvibrators.in/"><img src="https://sweetalert2.github.io/images/sponsors/sexvibrator.png" width="80"><br>Sex Vibrators</a></td>
 </tr>
 </table>
 <table>
 <tr>
+<td align="center"><a href="https://www.sexvibrators.in/"><img src="https://sweetalert2.github.io/images/sponsors/sexvibrator.png" width="80"><br>Sex Vibrators</a></td>
 <td align="center"><a href="https://www.viva-awa.com/"><img src="https://sweetalert2.github.io/images/sponsors/viva-awa.png" width="80"><br>Viva Awa</a></td>
 <td align="center"><a href="https://www.sensualdolls.com/"><img src="https://sweetalert2.github.io/images/sponsors/sensualdolls.png" width="80"><br>Sensual Dolls</a></td>
 <td align="center"><a href="https://www.bestrealdoll.com/collections/us-warehouse"><img src="https://sweetalert2.github.io/images/sponsors/bestrealdoll.jpeg" width="80"><br>BestRealDoll</a></td>

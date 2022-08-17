@@ -1,3 +1,10 @@
+## [11.4.28](https://github.com/sweetalert2/sweetalert2/compare/v11.4.27...v11.4.28) (2022-08-17)
+
+
+### Bug Fixes
+
+* add types to iosFix.js ([#2481](https://github.com/sweetalert2/sweetalert2/issues/2481)) ([82e7411](https://github.com/sweetalert2/sweetalert2/commit/82e7411316a3efa647750802375938f2af1a97e5))
+
 ## [11.4.27](https://github.com/sweetalert2/sweetalert2/compare/v11.4.26...v11.4.27) (2022-08-16)
 
 

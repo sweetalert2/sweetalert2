@@ -54,6 +54,7 @@
     .swal2-html-container {
       margin: $swal2-toast-html-container-margin;
       padding: $swal2-toast-html-container-padding;
+      overflow: initial;
       font-size: $swal2-toast-html-container-font-size;
       text-align: initial;
 

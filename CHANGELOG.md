@@ -1,3 +1,10 @@
+## [11.4.29](https://github.com/sweetalert2/sweetalert2/compare/v11.4.28...v11.4.29) (2022-08-20)
+
+
+### Bug Fixes
+
+* **toast:** html vertical alignment ([#2483](https://github.com/sweetalert2/sweetalert2/issues/2483)) ([374740f](https://github.com/sweetalert2/sweetalert2/commit/374740f76752d5a5799038590593d6bc34c4a9df))
+
 ## [11.4.28](https://github.com/sweetalert2/sweetalert2/compare/v11.4.27...v11.4.28) (2022-08-17)
 
 

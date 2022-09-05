@@ -1,6 +1,6 @@
 import { swalClasses } from '../../classes.js'
-import { warn } from '../../utils.js'
 import * as dom from '../../dom/index.js'
+import { warn } from '../../utils.js'
 
 /**
  * @param {SweetAlert2} instance

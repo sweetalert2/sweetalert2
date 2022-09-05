@@ -1,5 +1,5 @@
-import * as dom from '../utils/dom/index.js'
 import privateProps from '../privateProps.js'
+import * as dom from '../utils/dom/index.js'
 
 /**
  * Gets the input DOM node, this method works with input parameter.

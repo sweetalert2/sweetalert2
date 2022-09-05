@@ -1,5 +1,5 @@
-import * as dom from '../utils/dom/index.js'
 import * as domUtils from '../utils/dom/domUtils.js'
+import * as dom from '../utils/dom/index.js'
 
 export {
   getContainer,

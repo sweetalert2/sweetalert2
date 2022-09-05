@@ -1,8 +1,8 @@
-import * as dom from './index.js'
-import { swalClasses } from '../classes.js'
-import { getDirectChildByClass } from './domUtils.js'
-import { asPromise, error, hasToPromiseFn, isPromise } from '../utils.js'
 import { showLoading } from '../../staticMethods/showLoading.js'
+import { swalClasses } from '../classes.js'
+import { asPromise, error, hasToPromiseFn, isPromise } from '../utils.js'
+import { getDirectChildByClass } from './domUtils.js'
+import * as dom from './index.js'
 
 export const handleInputOptionsAndValue = (instance, params) => {
   if (params.input === 'select' || params.input === 'radio') {

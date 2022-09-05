@@ -1,7 +1,7 @@
-import { iconTypes, swalClasses } from '../../classes.js'
-import { error } from '../../utils.js'
-import * as dom from '../../dom/index.js'
 import privateProps from '../../../privateProps.js'
+import { iconTypes, swalClasses } from '../../classes.js'
+import * as dom from '../../dom/index.js'
+import { error } from '../../utils.js'
 
 /**
  * @param {SweetAlert2} instance

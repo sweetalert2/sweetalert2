@@ -1,11 +1,11 @@
-import { isVisible } from './utils/dom/domUtils.js'
-import { getInputValue } from './utils/dom/inputUtils.js'
-import { getDenyButton, getValidationMessage } from './utils/dom/getters.js'
-import { asPromise, capitalizeFirstLetter, error } from './utils/utils.js'
+import { handleAwaitingPromise } from './instanceMethods.js'
+import privateProps from './privateProps.js'
 import { showLoading } from './staticMethods/showLoading.js'
 import { DismissReason } from './utils/DismissReason.js'
-import privateProps from './privateProps.js'
-import { handleAwaitingPromise } from './instanceMethods.js'
+import { isVisible } from './utils/dom/domUtils.js'
+import { getDenyButton, getValidationMessage } from './utils/dom/getters.js'
+import { getInputValue } from './utils/dom/inputUtils.js'
+import { asPromise, capitalizeFirstLetter, error } from './utils/utils.js'
 
 /**
  * @param {SweetAlert2} instance

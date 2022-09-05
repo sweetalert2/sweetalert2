@@ -1,6 +1,6 @@
-import * as dom from '../utils/dom/index.js'
-import { swalClasses } from '../utils/classes.js'
 import privateProps from '../privateProps.js'
+import { swalClasses } from '../utils/classes.js'
+import * as dom from '../utils/dom/index.js'
 
 /**
  * Hides loader and shows back the button which was hidden by .showLoading()

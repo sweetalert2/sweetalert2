@@ -1,6 +1,6 @@
-import { getCancelButton, getConfirmButton, getDenyButton, getTimerProgressBar } from './getters.js'
 import { iconTypes, swalClasses } from '../classes.js'
 import { warn } from '../utils.js'
+import { getCancelButton, getConfirmButton, getDenyButton, getTimerProgressBar } from './getters.js'
 
 // Remember state in cases where opening and handling a modal will fiddle with it.
 export const states = {

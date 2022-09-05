@@ -1,5 +1,5 @@
-import { animateTimerProgressBar, stopTimerProgressBar } from '../utils/dom/domUtils.js'
 import globalState from '../globalState.js'
+import { animateTimerProgressBar, stopTimerProgressBar } from '../utils/dom/domUtils.js'
 
 /**
  * If `timer` parameter is set, returns number of milliseconds of timer remained.

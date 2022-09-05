@@ -1,7 +1,7 @@
 import * as dom from '../../src/utils/dom/index.js'
+import { isUpdatableParameter } from '../../src/utils/params.js'
 import { warn } from '../../src/utils/utils.js'
 import privateProps from '../privateProps.js'
-import { isUpdatableParameter } from '../../src/utils/params.js'
 
 /**
  * Updates popup parameters.

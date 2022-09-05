@@ -1,6 +1,6 @@
-import { warn } from './utils.js'
-import * as dom from './dom/index.js'
 import defaultInputValidators from './defaultInputValidators.js'
+import * as dom from './dom/index.js'
+import { warn } from './utils.js'
 
 /**
  * @param {SweetAlertOptions} params

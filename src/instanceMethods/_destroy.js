@@ -1,6 +1,6 @@
 import globalState from '../globalState.js'
-import privateProps from '../privateProps.js'
 import privateMethods from '../privateMethods.js'
+import privateProps from '../privateProps.js'
 
 export function _destroy() {
   const domCache = privateProps.domCache.get(this)

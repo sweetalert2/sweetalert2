@@ -1,3 +1,10 @@
+## [11.4.30](https://github.com/sweetalert2/sweetalert2/compare/v11.4.29...v11.4.30) (2022-09-05)
+
+
+### Bug Fixes
+
+* add types to Timer.js ([#2482](https://github.com/sweetalert2/sweetalert2/issues/2482)) ([b785030](https://github.com/sweetalert2/sweetalert2/commit/b785030108b886f28b34d7f61747dbc51bb4e575))
+
 ## [11.4.29](https://github.com/sweetalert2/sweetalert2/compare/v11.4.28...v11.4.29) (2022-08-20)
 
 

@@ -1,9 +1,9 @@
+import globalState from '../../globalState.js'
 import { swalClasses } from '../classes.js'
-import { getContainer, getPopup } from './getters.js'
-import { addClass, getDirectChildByClass, removeClass, setInnerHtml } from './domUtils.js'
 import { isNodeEnv } from '../isNodeEnv.js'
 import { error } from '../utils.js'
-import globalState from '../../globalState.js'
+import { addClass, getDirectChildByClass, removeClass, setInnerHtml } from './domUtils.js'
+import { getContainer, getPopup } from './getters.js'
 
 const sweetHTML = `
  <div aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses['html-container']}" class="${swalClasses.popup}" tabindex="-1">

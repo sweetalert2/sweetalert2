@@ -1,6 +1,6 @@
 /* istanbul ignore file */
-import * as dom from './dom/index.js'
 import { swalClasses } from '../utils/classes.js'
+import * as dom from './dom/index.js'
 
 // Fix iOS scrolling http://stackoverflow.com/q/39626302
 

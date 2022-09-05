@@ -1,6 +1,6 @@
-import { callIfFunction } from './utils/utils.js'
-import { DismissReason } from './utils/DismissReason.js'
 import privateProps from './privateProps.js'
+import { DismissReason } from './utils/DismissReason.js'
+import { callIfFunction } from './utils/utils.js'
 
 export const handlePopupClick = (instance, domCache, dismissWith) => {
   const innerParams = privateProps.innerParams.get(instance)

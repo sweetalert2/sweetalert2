@@ -1,9 +1,9 @@
-import * as dom from './dom/index.js'
-import { swalClasses } from './classes.js'
-import { fixScrollbar } from './scrollbarFix.js'
-import { iOSfix } from './iosFix.js'
-import { setAriaHidden } from './aria.js'
 import globalState from '../globalState.js'
+import { setAriaHidden } from './aria.js'
+import { swalClasses } from './classes.js'
+import * as dom from './dom/index.js'
+import { iOSfix } from './iosFix.js'
+import { fixScrollbar } from './scrollbarFix.js'
 
 export const SHOW_CLASS_TIMEOUT = 10
 

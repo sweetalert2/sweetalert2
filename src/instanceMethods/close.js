@@ -1,12 +1,12 @@
-import { undoScrollbar } from '../utils/scrollbarFix.js'
-import { undoIOSfix } from '../utils/iosFix.js'
-import { unsetAriaHidden } from '../utils/aria.js'
-import * as dom from '../utils/dom/index.js'
-import { swalClasses } from '../utils/classes.js'
 import globalState, { restoreActiveElement } from '../globalState.js'
-import privateProps from '../privateProps.js'
-import privateMethods from '../privateMethods.js'
 import { removeKeydownHandler } from '../keydown-handler.js'
+import privateMethods from '../privateMethods.js'
+import privateProps from '../privateProps.js'
+import { unsetAriaHidden } from '../utils/aria.js'
+import { swalClasses } from '../utils/classes.js'
+import * as dom from '../utils/dom/index.js'
+import { undoIOSfix } from '../utils/iosFix.js'
+import { undoScrollbar } from '../utils/scrollbarFix.js'
 
 /*
  * Instance method to close sweetAlert

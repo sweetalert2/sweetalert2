@@ -1,3 +1,10 @@
+## [11.4.31](https://github.com/sweetalert2/sweetalert2/compare/v11.4.30...v11.4.31) (2022-09-06)
+
+
+### Bug Fixes
+
+* add types to getTemplateParams.js ([#2492](https://github.com/sweetalert2/sweetalert2/issues/2492)) ([60413f0](https://github.com/sweetalert2/sweetalert2/commit/60413f09300ec7bb0a09c65f058e15aa28282c59))
+
 ## [11.4.30](https://github.com/sweetalert2/sweetalert2/compare/v11.4.29...v11.4.30) (2022-09-05)
 
 

@@ -3,7 +3,12 @@ import { capitalizeFirstLetter, warn } from './utils.js'
 
 const swalStringParams = ['swal-title', 'swal-html', 'swal-footer']
 
+/**
+ * @param {SweetAlertOptions} params
+ * @returns {SweetAlertOptions}
+ */
 export const getTemplateParams = (params) => {
+  /** @type {HTMLTemplateElement} */
   const template = typeof params.template === 'string' ? document.querySelector(params.template) : params.template
   if (!template) {
     return {}
@@ -26,6 +31,7 @@ export const getTemplateParams = (params) => {
 
 /**
  * @param {DocumentFragment} templateContent
+ * @returns {SweetAlertOptions}
  */
 const getSwalParams = (templateContent) => {
   const result = {}
@@ -47,6 +53,7 @@ const getSwalParams = (templateContent) => {
 
 /**
  * @param {DocumentFragment} templateContent
+ * @returns {SweetAlertOptions}
  */
 const getSwalButtons = (templateContent) => {
   const result = {}
@@ -69,6 +76,7 @@ const getSwalButtons = (templateContent) => {
 
 /**
  * @param {DocumentFragment} templateContent
+ * @returns {SweetAlertOptions}
  */
 const getSwalImage = (templateContent) => {
   const result = {}
@@ -94,6 +102,7 @@ const getSwalImage = (templateContent) => {
 
 /**
  * @param {DocumentFragment} templateContent
+ * @returns {SweetAlertOptions}
  */
 const getSwalIcon = (templateContent) => {
   const result = {}
@@ -102,6 +111,8 @@ const getSwalIcon = (templateContent) => {
   if (icon) {
     showWarningsForAttributes(icon, ['type', 'color'])
     if (icon.hasAttribute('type')) {
+      /** @type {SweetAlertIcon} */
+      // @ts-ignore
       result.icon = icon.getAttribute('type')
     }
     if (icon.hasAttribute('color')) {
@@ -114,6 +125,7 @@ const getSwalIcon = (templateContent) => {
 
 /**
  * @param {DocumentFragment} templateContent
+ * @returns {SweetAlertOptions}
  */
 const getSwalInput = (templateContent) => {
   const result = {}
@@ -121,6 +133,8 @@ const getSwalInput = (templateContent) => {
   const input = templateContent.querySelector('swal-input')
   if (input) {
     showWarningsForAttributes(input, ['type', 'label', 'placeholder', 'value'])
+    /** @type {SweetAlertInput} */
+    // @ts-ignore
     result.input = input.getAttribute('type') || 'text'
     if (input.hasAttribute('label')) {
       result.inputLabel = input.getAttribute('label')
@@ -149,6 +163,7 @@ const getSwalInput = (templateContent) => {
 /**
  * @param {DocumentFragment} templateContent
  * @param {string[]} paramNames
+ * @returns {SweetAlertOptions}
  */
 const getSwalStringParams = (templateContent, paramNames) => {
   const result = {}
@@ -178,7 +193,7 @@ const showWarningsForElements = (templateContent) => {
   ])
   Array.from(templateContent.children).forEach((el) => {
     const tagName = el.tagName.toLowerCase()
-    if (allowedElements.indexOf(tagName) === -1) {
+    if (!allowedElements.includes(tagName)) {
       warn(`Unrecognized element <${tagName}>`)
     }
   })

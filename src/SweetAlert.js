@@ -93,21 +93,42 @@ class SweetAlert {
   }
 }
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {DomCache} domCache
+ * @param {SweetAlertOptions} innerParams
+ * @returns {Promise}
+ */
 const swalPromise = (instance, domCache, innerParams) => {
   return new Promise((resolve, reject) => {
     // functions to handle all closings/dismissals
+    /**
+     * @param {DismissReason} dismiss
+     */
     const dismissWith = (dismiss) => {
-      instance.closePopup({ isDismissed: true, dismiss })
+      // @ts-ignore
+      instance.close({ isDismissed: true, dismiss })
     }
 
     privateMethods.swalPromiseResolve.set(instance, resolve)
     privateMethods.swalPromiseReject.set(instance, reject)
 
-    domCache.confirmButton.onclick = () => handleConfirmButtonClick(instance)
-    domCache.denyButton.onclick = () => handleDenyButtonClick(instance)
-    domCache.cancelButton.onclick = () => handleCancelButtonClick(instance, dismissWith)
+    domCache.confirmButton.onclick = () => {
+      handleConfirmButtonClick(instance)
+    }
 
-    domCache.closeButton.onclick = () => dismissWith(DismissReason.close)
+    domCache.denyButton.onclick = () => {
+      handleDenyButtonClick(instance)
+    }
+
+    domCache.cancelButton.onclick = () => {
+      handleCancelButtonClick(instance, dismissWith)
+    }
+
+    domCache.closeButton.onclick = () => {
+      // @ts-ignore
+      dismissWith(DismissReason.close)
+    }
 
     handlePopupClick(instance, domCache, dismissWith)
 
@@ -128,6 +149,11 @@ const swalPromise = (instance, domCache, innerParams) => {
   })
 }
 
+/**
+ * @param {SweetAlertOptions} userParams
+ * @param {SweetAlertOptions} mixinParams
+ * @returns {SweetAlertOptions}
+ */
 const prepareParams = (userParams, mixinParams) => {
   const templateParams = getTemplateParams(userParams)
   const params = Object.assign({}, defaultParams, mixinParams, templateParams, userParams) // precedence is described in #2131
@@ -161,7 +187,7 @@ const populateDomCache = (instance) => {
 /**
  * @param {GlobalState} globalState
  * @param {SweetAlertOptions} innerParams
- * @param {function} dismissWith
+ * @param {Function} dismissWith
  */
 const setupTimer = (globalState, innerParams, dismissWith) => {
   const timerProgressBar = dom.getTimerProgressBar()
@@ -194,7 +220,8 @@ const initFocus = (domCache, innerParams) => {
   }
 
   if (!callIfFunction(innerParams.allowEnterKey)) {
-    return blurActiveElement()
+    blurActiveElement()
+    return
   }
 
   if (!focusButton(domCache, innerParams)) {
@@ -286,6 +313,10 @@ Object.assign(SweetAlert, staticMethods)
 
 // Proxy to instance methods to constructor, for now, for backwards compatibility
 Object.keys(instanceMethods).forEach((key) => {
+  /**
+   * @param {...any} args
+   * @returns {any}
+   */
   SweetAlert[key] = function (...args) {
     if (currentInstance) {
       return currentInstance[key](...args)

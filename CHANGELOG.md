@@ -1,3 +1,10 @@
+## [11.4.32](https://github.com/sweetalert2/sweetalert2/compare/v11.4.31...v11.4.32) (2022-09-07)
+
+
+### Bug Fixes
+
+* add types to src/SweetAlert.js ([#2494](https://github.com/sweetalert2/sweetalert2/issues/2494)) ([5430fcb](https://github.com/sweetalert2/sweetalert2/commit/5430fcbdf2ef4514eb6c0322e8e9cb2543e2062d))
+
 ## [11.4.31](https://github.com/sweetalert2/sweetalert2/compare/v11.4.30...v11.4.31) (2022-09-06)
 
 

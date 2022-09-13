@@ -4,6 +4,14 @@ import { asPromise, error, hasToPromiseFn, isPromise } from '../utils.js'
 import { getDirectChildByClass } from './domUtils.js'
 import * as dom from './index.js'
 
+/**
+ * @typedef { string | number | boolean } InputValue
+ */
+
+/**
+ * @param {SweetAlert2} instance
+ * @param {SweetAlertOptions} params
+ */
 export const handleInputOptionsAndValue = (instance, params) => {
   if (params.input === 'select' || params.input === 'radio') {
     handleInputOptions(instance, params)
@@ -16,6 +24,11 @@ export const handleInputOptionsAndValue = (instance, params) => {
   }
 }
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {SweetAlertOptions} innerParams
+ * @returns {string | number | File | FileList | null}
+ */
 export const getInputValue = (instance, innerParams) => {
   const input = instance.getInput()
   if (!input) {
@@ -33,17 +46,37 @@ export const getInputValue = (instance, innerParams) => {
   }
 }
 
+/**
+ * @param {HTMLInputElement} input
+ * @returns {number}
+ */
 const getCheckboxValue = (input) => (input.checked ? 1 : 0)
 
+/**
+ * @param {HTMLInputElement} input
+ * @returns {string | null}
+ */
 const getRadioValue = (input) => (input.checked ? input.value : null)
 
+/**
+ * @param {HTMLInputElement} input
+ * @returns {FileList | File | null}
+ */
 const getFileValue = (input) =>
   input.files.length ? (input.getAttribute('multiple') !== null ? input.files : input.files[0]) : null
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {SweetAlertOptions} params
+ */
 const handleInputOptions = (instance, params) => {
   const popup = dom.getPopup()
-  const processInputOptions = (inputOptions) =>
+  /**
+   * @param {Record<string, any>} inputOptions
+   */
+  const processInputOptions = (inputOptions) => {
     populateInputOptions[params.input](popup, formatInputOptions(inputOptions), params)
+  }
   if (hasToPromiseFn(params.inputOptions) || isPromise(params.inputOptions)) {
     showLoading(dom.getConfirmButton())
     asPromise(params.inputOptions).then((inputOptions) => {
@@ -57,12 +90,16 @@ const handleInputOptions = (instance, params) => {
   }
 }
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {SweetAlertOptions} params
+ */
 const handleInputValue = (instance, params) => {
   const input = instance.getInput()
   dom.hide(input)
   asPromise(params.inputValue)
     .then((inputValue) => {
-      input.value = params.input === 'number' ? parseFloat(inputValue) || 0 : `${inputValue}`
+      input.value = params.input === 'number' ? `${parseFloat(inputValue) || 0}` : `${inputValue}`
       dom.show(input)
       input.focus()
       instance.hideLoading()
@@ -77,8 +114,18 @@ const handleInputValue = (instance, params) => {
 }
 
 const populateInputOptions = {
+  /**
+   * @param {HTMLElement} popup
+   * @param {Record<string, any>} inputOptions
+   * @param {SweetAlertOptions} params
+   */
   select: (popup, inputOptions, params) => {
     const select = getDirectChildByClass(popup, swalClasses.select)
+    /**
+     * @param {HTMLElement} parent
+     * @param {string} optionLabel
+     * @param {string} optionValue
+     */
     const renderOption = (parent, optionLabel, optionValue) => {
       const option = document.createElement('option')
       option.value = optionValue
@@ -108,6 +155,11 @@ const populateInputOptions = {
     select.focus()
   },
 
+  /**
+   * @param {HTMLElement} popup
+   * @param {Record<string, any>} inputOptions
+   * @param {SweetAlertOptions} params
+   */
   radio: (popup, inputOptions, params) => {
     const radio = getDirectChildByClass(popup, swalClasses.radio)
     inputOptions.forEach((inputOption) => {
@@ -137,7 +189,9 @@ const populateInputOptions = {
 
 /**
  * Converts `inputOptions` into an array of `[value, label]`s
- * @param inputOptions
+ *
+ * @param {Record<string, any>} inputOptions
+ * @returns {Array<Array<string>>}
  */
 const formatInputOptions = (inputOptions) => {
   const result = []
@@ -163,6 +217,11 @@ const formatInputOptions = (inputOptions) => {
   return result
 }
 
+/**
+ * @param {string} optionValue
+ * @param {InputValue | Promise<InputValue> | { toPromise: () => InputValue }} inputValue
+ * @returns {boolean}
+ */
 const isSelected = (optionValue, inputValue) => {
   return inputValue && inputValue.toString() === optionValue.toString()
 }

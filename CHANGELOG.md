@@ -1,3 +1,10 @@
+## [11.4.33](https://github.com/sweetalert2/sweetalert2/compare/v11.4.32...v11.4.33) (2022-09-13)
+
+
+### Bug Fixes
+
+* add types to enable-disable-elements.js ([#2495](https://github.com/sweetalert2/sweetalert2/issues/2495)) ([07ca6bb](https://github.com/sweetalert2/sweetalert2/commit/07ca6bb8487ea2c45a403d315cbabb760b367d3f))
+
 ## [11.4.32](https://github.com/sweetalert2/sweetalert2/compare/v11.4.31...v11.4.32) (2022-09-07)
 
 

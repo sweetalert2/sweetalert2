@@ -1,5 +1,10 @@
 import privateProps from '../privateProps.js'
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {string[]} buttons
+ * @param {boolean} disabled
+ */
 function setButtonsDisabled(instance, buttons, disabled) {
   const domCache = privateProps.domCache.get(instance)
   buttons.forEach((button) => {
@@ -7,9 +12,13 @@ function setButtonsDisabled(instance, buttons, disabled) {
   })
 }
 
+/**
+ * @param {HTMLInputElement} input
+ * @param {boolean} disabled
+ */
 function setInputDisabled(input, disabled) {
   if (!input) {
-    return false
+    return
   }
   if (input.type === 'radio') {
     const radiosContainer = input.parentNode.parentNode
@@ -31,9 +40,9 @@ export function disableButtons() {
 }
 
 export function enableInput() {
-  return setInputDisabled(this.getInput(), false)
+  setInputDisabled(this.getInput(), false)
 }
 
 export function disableInput() {
-  return setInputDisabled(this.getInput(), true)
+  setInputDisabled(this.getInput(), true)
 }

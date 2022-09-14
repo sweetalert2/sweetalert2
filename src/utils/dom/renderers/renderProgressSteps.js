@@ -9,7 +9,8 @@ import { warn } from '../../utils.js'
 export const renderProgressSteps = (instance, params) => {
   const progressStepsContainer = dom.getProgressSteps()
   if (!params.progressSteps || params.progressSteps.length === 0) {
-    return dom.hide(progressStepsContainer)
+    dom.hide(progressStepsContainer)
+    return
   }
 
   dom.show(progressStepsContainer)

@@ -90,7 +90,7 @@ NSFW Sponsors
 </table>
 <table>
 <tr>
-<td align="center"><a href="https://vsdoll.com/homepage/"><img src="https://sweetalert2.github.io/images/sponsors/vsdoll.png" width="80"><br>VSDoll</a></td>
+<td align="center"><a href="https://vsdoll.net/"><img src="https://sweetalert2.github.io/images/sponsors/vsdoll.png" width="80"><br>VSDoll</a></td>
 <td align="center"><a href="https://sexangelbaby.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexangelbaby.png" width="80"><br>SexAngelbaby</a></td>
 <td align="center"><a href="https://theadulttoyfinder.com/"><img src="https://sweetalert2.github.io/images/sponsors/theadulttoyfinder.png" width="80"><br>The Adult Toy Finder</a></td>
 <td align="center"><a href="https://www.mysextoyguide.com/"><img src="https://sweetalert2.github.io/images/sponsors/my-sex-toy-guide.jpg" width="80"><br>My Sex Toy Guide</a></td>

@@ -1,3 +1,10 @@
+## [11.4.34](https://github.com/sweetalert2/sweetalert2/compare/v11.4.33...v11.4.34) (2022-09-26)
+
+
+### Bug Fixes
+
+* add types to inputUtils.js ([#2500](https://github.com/sweetalert2/sweetalert2/issues/2500)) ([816b7ce](https://github.com/sweetalert2/sweetalert2/commit/816b7ce21f37db9dbf2d41ee6b0dcac883264391))
+
 ## [11.4.33](https://github.com/sweetalert2/sweetalert2/compare/v11.4.32...v11.4.33) (2022-09-13)
 
 

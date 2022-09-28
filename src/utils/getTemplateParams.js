@@ -41,8 +41,8 @@ const getSwalParams = (templateContent) => {
     showWarningsForAttributes(param, ['name', 'value'])
     const paramName = param.getAttribute('name')
     const value = param.getAttribute('value')
-    if (typeof defaultParams[paramName] === 'boolean' && value === 'false') {
-      result[paramName] = false
+    if (typeof defaultParams[paramName] === 'boolean') {
+      result[paramName] = value !== 'false'
     }
     if (typeof defaultParams[paramName] === 'object') {
       result[paramName] = JSON.parse(value)

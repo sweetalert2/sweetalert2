@@ -1,3 +1,10 @@
+## [11.4.35](https://github.com/sweetalert2/sweetalert2/compare/v11.4.34...v11.4.35) (2022-09-28)
+
+
+### Bug Fixes
+
+* boolean params inn template ([#2506](https://github.com/sweetalert2/sweetalert2/issues/2506)) ([171f645](https://github.com/sweetalert2/sweetalert2/commit/171f6457a9b9958f2a86390371a06a4656ae3e5e))
+
 ## [11.4.34](https://github.com/sweetalert2/sweetalert2/compare/v11.4.33...v11.4.34) (2022-09-26)
 
 

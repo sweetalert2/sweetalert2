@@ -17,6 +17,7 @@ describe('template', () => {
       <swal-param name="inputAttributes" value='{ "hey": "there" }'></swal-param>
       <swal-param name="customClass" value='{ "popup": "my-popup" }'></swal-param>
       <swal-param name="showConfirmButton" value="false"></swal-param>
+      <swal-param name="reverseButtons" value="true"></swal-param>
       <swal-button type="deny" color="red">Denyyy</swal-button>
       <swal-button type="cancel" aria-label="no no">Nooo</swal-button>
       <swal-footer>footerrr</swal-footer>
@@ -45,6 +46,7 @@ describe('template', () => {
     expect(isVisible(Swal.getCancelButton())).to.be.true
     expect(Swal.getDenyButton().style.backgroundColor).to.equal('red')
     expect(isVisible(Swal.getDenyButton())).to.be.true
+    expect(Swal.getCancelButton().nextSibling).to.equal(Swal.getDenyButton())
     expect(Swal.getCancelButton().getAttribute('aria-label')).to.equal('no no')
     expect(isVisible(Swal.getFooter())).to.be.true
     expect(Swal.getFooter().innerHTML).to.equal('footerrr')

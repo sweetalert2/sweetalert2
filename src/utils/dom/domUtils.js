@@ -23,7 +23,11 @@ export const setInnerHtml = (elem, html) => {
       elem.appendChild(child)
     })
     Array.from(parsed.querySelector('body').childNodes).forEach((child) => {
-      elem.appendChild(child)
+      if (child instanceof HTMLVideoElement || child instanceof HTMLAudioElement) {
+        elem.appendChild(child.cloneNode(true)) // https://github.com/sweetalert2/sweetalert2/issues/2507
+      } else {
+        elem.appendChild(child)
+      }
     })
   }
 }

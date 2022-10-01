@@ -54,10 +54,3 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Report bundlezise to bundlewatch.io
-        env:
-          BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
-        run: |
-          yarn add --dev bundlewatch
-          ./node_modules/.bin/bundlewatch

@@ -47,14 +47,6 @@
     "src",
     "sweetalert2.d.ts"
   ],
-  "bundlewatch": {
-    "files": [
-      {
-        "path": "dist/sweetalert2.all.min.js",
-        "maxSize": "20kB"
-      }
-    ]
-  },
   "author": "Limon Monte <limon.monte@gmail.com> (https://limonte.github.io)",
   "contributors": [
     "Giuseppe Verni (https://github.com/gverni)",

@@ -141,6 +141,7 @@ describe('Miscellaneous tests', function () {
     expect(Swal.getTitle().querySelectorAll('strong, em').length).to.equal(2)
     expect(Swal.getHtmlContainer().querySelectorAll('style, p, img, button').length).to.equal(4)
     expect(Swal.getHtmlContainer().querySelector('button').style.width).to.equal('10px')
+    expect(window.getComputedStyle(Swal.getHtmlContainer().querySelector('p')).fontSize).to.equal('10px')
   })
 
   it('content/title is set (text)', () => {

@@ -1,3 +1,10 @@
+## [11.4.36](https://github.com/sweetalert2/sweetalert2/compare/v11.4.35...v11.4.36) (2022-10-01)
+
+
+### Bug Fixes
+
+* video/audio tags in Safari ([#2509](https://github.com/sweetalert2/sweetalert2/issues/2509)) ([cd1132e](https://github.com/sweetalert2/sweetalert2/commit/cd1132e1b3d880ad39bd5266d1356675dec9d05e))
+
 ## [11.4.35](https://github.com/sweetalert2/sweetalert2/compare/v11.4.34...v11.4.35) (2022-09-28)
 
 

@@ -14,7 +14,6 @@
     "@rollup/plugin-json": "^4.0.2",
     "@sweetalert2/eslint-config": "^1.0.11",
     "@sweetalert2/execute": "^1.0.0",
-    "@sweetalert2/prettier-config": "^1.0.0",
     "@sweetalert2/stylelint-config": "^2.0.6",
     "browser-sync": "^2.27.7",
     "cypress": "^10.8.0",
@@ -78,6 +77,13 @@
   "funding": {
     "type": "individual",
     "url": "https://sweetalert2.github.io/#donations"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true,
+    "quoteProps": "consistent",
+    "trailingComma": "es5"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
   "license": "MIT"

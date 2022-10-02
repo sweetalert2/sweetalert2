@@ -64,7 +64,8 @@ function renderButtons(actions, loader, params) {
  */
 function handleButtonsStyling(confirmButton, denyButton, cancelButton, params) {
   if (!params.buttonsStyling) {
-    return dom.removeClass([confirmButton, denyButton, cancelButton], swalClasses.styled)
+    dom.removeClass([confirmButton, denyButton, cancelButton], swalClasses.styled)
+    return
   }
 
   dom.addClass([confirmButton, denyButton, cancelButton], swalClasses.styled)

@@ -9,7 +9,8 @@ export const renderImage = (instance, params) => {
   const image = dom.getImage()
 
   if (!params.imageUrl) {
-    return dom.hide(image)
+    dom.hide(image)
+    return
   }
 
   dom.show(image, '')

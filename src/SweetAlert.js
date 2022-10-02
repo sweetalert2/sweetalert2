@@ -261,36 +261,20 @@ const blurActiveElement = () => {
 
 // This anti-war message will only be shown to Russian users visiting Russian sites
 if (typeof window !== 'undefined' && /^ru\b/.test(navigator.language) && location.host.match(/\.(ru|su|xn--p1ai)$/)) {
-  if (Math.random() < 0.1) {
+  if (Math.random() < 0.3) {
     const noWar = document.createElement('div')
-    noWar.className = 'leave-russia-now-and-apply-your-skills-to-the-world'
+    noWar.className = 'save-yourself-from-war'
     const video = getRandomElement([
       {
-        text: `В нижеприведённом видео объясняется как каждый из нас может помочь в том,
-        <strong>чтобы эта бессмысленная и бесчеловечная война остановилась</strong>:`,
-        id: '4CfDhaRkw7I',
-      },
-      {
-        text: 'Эмпатия - главное <strong>человеческое</strong> чувство. Способность сопереживать. <strong>Способность поставить себя на место другого.</strong>',
-        id: 's-GLAIY4DXA',
+        text: `Главная задача сейчас - не попасть на войну и помочь своим ближним не быть мобилизоваными.`,
+        id: 'X39ZkynPjpQ',
       },
     ])
     setInnerHtml(
       noWar,
-      `
-      <div>
-        Если мы не остановим войну, она придет в дом <strong>каждого из нас</strong> и её последствия будут <strong>ужасающими</strong>.
-      </div>
-      <div>
-        Путинский режим за 20 с лишним лет своего существования вдолбил нам, что мы бессильны и один человек не может ничего сделать. <strong>Это не так!</strong>
-      </div>
-      <div>
-        ${video.text}
-      </div>
+      `<div>${video.text}</div>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/${video.id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div>
-        Нет войне!
-      </div>
+      <div>Сохраните себя и своих близких!</div>
       `
     )
     const closeButton = document.createElement('button')

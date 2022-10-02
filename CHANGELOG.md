@@ -1,3 +1,10 @@
+## [11.4.37](https://github.com/sweetalert2/sweetalert2/compare/v11.4.36...v11.4.37) (2022-10-02)
+
+
+### Bug Fixes
+
+* types in renderers ([#2501](https://github.com/sweetalert2/sweetalert2/issues/2501)) ([a4b79dd](https://github.com/sweetalert2/sweetalert2/commit/a4b79dd24942c4ad0b52dc55d69f3959a4e6a4a1))
+
 ## [11.4.36](https://github.com/sweetalert2/sweetalert2/compare/v11.4.35...v11.4.36) (2022-10-01)
 
 

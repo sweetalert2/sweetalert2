@@ -63,6 +63,23 @@ NSFW Sponsors
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
+<td align="center"><a href="https://www.sextorso.com/"><img src="https://sweetalert2.github.io/images/sponsors/sextorso.png" width="80"><br>sexdoll torso</a></td>
+<td align="center"><a href="https://www.minisexdoll.com/anime-sexdoll/"><img src="https://sweetalert2.github.io/images/sponsors/minisexdoll.png" width="80"><br>anime sexdoll</a></td>
+<td align="center"><a href="https://www.myminisexdoll.com/cheap-sex-dolls/"><img src="https://sweetalert2.github.io/images/sponsors/myminisexdoll.png" width="80"><br>cheap sexdoll</a></td>
+<td align="center"><a href="https://www.hugedildo.com/"><img src="https://sweetalert2.github.io/images/sponsors/hugedildo.png" width="80"><br>huge dildo</a></td>
+<td align="center"><a href="https://www.uusexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/uusexdoll.png" width="80"><br>sexdoll</a></td>
+</tr>
+</table>
+<table>
+<tr>
+<td align="center"><a href="https://www.uusextoy.com/best-pocket-pussy/"><img src="https://sweetalert2.github.io/images/sponsors/uusextoy.png" width="80"><br>best pocket pussy</a></td>
+<td align="center"><a href="https://www.lovedolltorso.com/female-torso-sex-doll/"><img src="https://sweetalert2.github.io/images/sponsors/lovedolltorso.png" width="80"><br>female torso sex doll</a></td>
+<td align="center"><a href="https://www.mymasturbators.com/"><img src="https://sweetalert2.github.io/images/sponsors/mymasturbators.png" width="80"><br>male masturbator</a></td>
+<td align="center"><a href="https://www.buypenispump.com/"><img src="https://sweetalert2.github.io/images/sponsors/buypenispump.png" width="80"><br>penis pump</a></td>
+</tr>
+</table>
+<table>
+<tr>
 <td align="center"><a href="https://cutesexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/cutesexdoll.jpg" width="80"><br>Cute Sex Doll</a></td>
 <td align="center"><a href="https://toyhero.com/"><img src="https://sweetalert2.github.io/images/sponsors/toyhero.png" width="80"><br>Adult Toys</a></td>
 <td align="center"><a href="https://meifoxdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/meifoxdoll.png" width="80"><br>MeiFoxDoll</a></td>

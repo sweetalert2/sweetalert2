@@ -1,3 +1,10 @@
+## [11.4.38](https://github.com/sweetalert2/sweetalert2/compare/v11.4.37...v11.4.38) (2022-10-06)
+
+
+### Bug Fixes
+
+* template params when typeof default value is undefined or string ([#2517](https://github.com/sweetalert2/sweetalert2/issues/2517)) ([53ced8c](https://github.com/sweetalert2/sweetalert2/commit/53ced8c6db3337ea34dfbe28f9916d8fa9d896fd))
+
 ## [11.4.37](https://github.com/sweetalert2/sweetalert2/compare/v11.4.36...v11.4.37) (2022-10-02)
 
 

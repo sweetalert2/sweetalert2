@@ -30,9 +30,10 @@ jobs:
       - name: Run tests in Chrome
         run: yarn test --browser chrome
 
-      - name: Run tests in Firefox
-        if: github.event_name == 'push'
-        run: yarn test --browser firefox
+      # reenable when https://github.com/cypress-io/cypress/issues/23897 is fixed
+      # - name: Run tests in Firefox
+      #   if: github.event_name == 'push'
+      #   run: yarn test --browser firefox
 
       - name: Test in CommonJS
         run: node test/require-in-commonjs.cjs

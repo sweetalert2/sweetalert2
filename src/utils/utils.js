@@ -100,9 +100,3 @@ export const asPromise = (arg) => (hasToPromiseFn(arg) ? arg.toPromise() : Promi
  * @returns {boolean}
  */
 export const isPromise = (arg) => arg && Promise.resolve(arg) === arg
-
-/**
- * @param {Array} arr
- * @returns {any}
- */
-export const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)]

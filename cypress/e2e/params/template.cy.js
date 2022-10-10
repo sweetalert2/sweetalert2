@@ -72,6 +72,29 @@ describe('template', () => {
     expect(Swal.getTitle().textContent).to.equal('Are you sure?')
   })
 
+  it('swal-function-param', (done) => {
+    const _consoleLog = console.log // eslint-disable-line no-console
+    const spy = cy.spy(console, 'log')
+    const template = document.createElement('template')
+    template.id = 'my-template-functon-param'
+    const didOpen = (modal) => {
+      console.log(modal.querySelector('.swal2-title').innerText) // eslint-disable-line no-console
+    }
+    template.innerHTML = `
+      <swal-title>Function param</swal-title>
+      <swal-function-param name="didOpen" value="${didOpen}"></swal-function-param>
+    `
+    document.body.appendChild(template)
+    SwalWithoutAnimation.fire({
+      template: '#my-template-functon-param',
+    })
+    setTimeout(() => {
+      expect(spy.calledWith('Function param')).to.be.true
+      console.log = _consoleLog // eslint-disable-line no-console
+      done()
+    })
+  })
+
   it('should throw a warning when attempting to use unrecognized elements and attributes', () => {
     const spy = cy.spy(console, 'warn')
     const template = document.createElement('template')

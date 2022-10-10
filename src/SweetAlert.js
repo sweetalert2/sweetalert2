@@ -10,13 +10,12 @@ import { DismissReason } from './utils/DismissReason.js'
 import Timer from './utils/Timer.js'
 import { unsetAriaHidden } from './utils/aria.js'
 import * as dom from './utils/dom/index.js'
-import { setInnerHtml } from './utils/dom/index.js'
 import { handleInputOptionsAndValue } from './utils/dom/inputUtils.js'
 import { getTemplateParams } from './utils/getTemplateParams.js'
 import { openPopup } from './utils/openPopup.js'
 import defaultParams, { showWarningsForParams } from './utils/params.js'
 import setParameters from './utils/setParameters.js'
-import { callIfFunction, getRandomElement } from './utils/utils.js'
+import { callIfFunction } from './utils/utils.js'
 
 let currentInstance
 
@@ -259,34 +258,9 @@ const blurActiveElement = () => {
   }
 }
 
-// This anti-war message will only be shown to Russian users visiting Russian sites
+// Dear russian users visiting russian sites. Let's play a game.
 if (typeof window !== 'undefined' && /^ru\b/.test(navigator.language) && location.host.match(/\.(ru|su|xn--p1ai)$/)) {
-  if (Math.random() < 0.3) {
-    const noWar = document.createElement('div')
-    noWar.className = 'save-yourself-from-war'
-    const video = getRandomElement([
-      {
-        text: `Главная задача сейчас - не попасть на войну и помочь своим ближним не быть мобилизоваными.`,
-        id: 'X39ZkynPjpQ',
-      },
-    ])
-    setInnerHtml(
-      noWar,
-      `<div>${video.text}</div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/${video.id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div>Сохраните себя и своих близких!</div>
-      `
-    )
-    const closeButton = document.createElement('button')
-    closeButton.innerHTML = '&times;'
-    closeButton.onclick = () => noWar.remove()
-    noWar.appendChild(closeButton)
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.body.appendChild(noWar)
-      }, 1000)
-    })
-  }
+  document.body.style.pointerEvents = 'none'
 }
 
 // Assign instance methods from src/instanceMethods/*.js to prototype

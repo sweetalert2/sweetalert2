@@ -20,6 +20,7 @@ export const getTemplateParams = (params) => {
 
   const result = Object.assign(
     getSwalParams(templateContent),
+    getSwalFunctionParams(templateContent),
     getSwalButtons(templateContent),
     getSwalImage(templateContent),
     getSwalIcon(templateContent),
@@ -48,6 +49,22 @@ const getSwalParams = (templateContent) => {
     } else {
       result[paramName] = value
     }
+  })
+  return result
+}
+
+/**
+ * @param {DocumentFragment} templateContent
+ * @returns {SweetAlertOptions}
+ */
+const getSwalFunctionParams = (templateContent) => {
+  const result = {}
+  /** @type {HTMLElement[]} */
+  const swalFunctions = Array.from(templateContent.querySelectorAll('swal-function-param'))
+  swalFunctions.forEach((param) => {
+    const paramName = param.getAttribute('name')
+    const value = param.getAttribute('value')
+    result[paramName] = new Function(`return ${value}`)()
   })
   return result
 }
@@ -186,6 +203,7 @@ const getSwalStringParams = (templateContent, paramNames) => {
 const showWarningsForElements = (templateContent) => {
   const allowedElements = swalStringParams.concat([
     'swal-param',
+    'swal-function-param',
     'swal-button',
     'swal-image',
     'swal-icon',

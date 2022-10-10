@@ -106,6 +106,8 @@ Your contribution will be greatly appreciated!
 
   > SweetAlert2 saved me tons of time.
 
+- **Gabe Livan** (10 USD)
+
 - **Rick Hays** (10 USD)
 
 - **TSD Technology, LLC** (10 USD)

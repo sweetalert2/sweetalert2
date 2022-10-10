@@ -1,3 +1,10 @@
+# [11.5.0](https://github.com/sweetalert2/sweetalert2/compare/v11.4.38...v11.5.0) (2022-10-10)
+
+
+### Features
+
+* add ability to pass function as a template param ([#2519](https://github.com/sweetalert2/sweetalert2/issues/2519)) ([0a8d004](https://github.com/sweetalert2/sweetalert2/commit/0a8d004324b7adad8df7574cefe170aa63fd54b8))
+
 ## [11.4.38](https://github.com/sweetalert2/sweetalert2/compare/v11.4.37...v11.4.38) (2022-10-06)
 
 

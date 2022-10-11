@@ -76,11 +76,12 @@ export const applyCustomClass = (elem, params, className) => {
 
   if (params.customClass && params.customClass[className]) {
     if (typeof params.customClass[className] !== 'string' && !params.customClass[className].forEach) {
-      return warn(
+      warn(
         `Invalid type of customClass.${className}! Expected string or iterable object, got "${typeof params.customClass[
           className
         ]}"`
       )
+      return
     }
 
     addClass(elem, params.customClass[className])
@@ -255,6 +256,7 @@ export const allButtonsAreHidden = () =>
   !isVisible(getConfirmButton()) && !isVisible(getDenyButton()) && !isVisible(getCancelButton())
 
 /**
+ * @param {HTMLElement} elem
  * @returns {boolean}
  */
 export const isScrollable = (elem) => !!(elem.scrollHeight > elem.clientHeight)

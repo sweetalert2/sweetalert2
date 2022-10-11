@@ -15,6 +15,7 @@
     'bottom-start  bottom-center  bottom-end';
   grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);
   height: 100%; // Safari
+  overscroll-behavior: none; // Safari - ensure page can't be scrolled in the background
   padding: $swal2-container-padding;
   overflow-x: hidden;
   transition: $swal2-backdrop-transition;

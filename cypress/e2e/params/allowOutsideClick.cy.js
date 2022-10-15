@@ -47,6 +47,14 @@ describe('allowOutsideClick', () => {
     ).to.be.true
   })
 
+  it('should not throw console warning for { allowOutsideClick: true }', () => {
+    const spy = cy.spy(console, 'warn')
+    SwalWithoutAnimation.fire({
+      allowOutsideClick: true,
+    })
+    expect(spy.notCalled).to.be.true
+  })
+
   it('should not throw console warning for { backdrop: false }', () => {
     const spy = cy.spy(console, 'warn')
     SwalWithoutAnimation.fire({

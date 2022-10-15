@@ -1,3 +1,10 @@
+## [11.5.2](https://github.com/sweetalert2/sweetalert2/compare/v11.5.1...v11.5.2) (2022-10-15)
+
+
+### Bug Fixes
+
+* should not throw console warning for `{ allowOutsideClick: true }` since default value of `backdrop` is `true` ([#2524](https://github.com/sweetalert2/sweetalert2/issues/2524)) ([a95871e](https://github.com/sweetalert2/sweetalert2/commit/a95871e136a9d64942a9b9435c54dd205d8737bf))
+
 ## [11.5.1](https://github.com/sweetalert2/sweetalert2/compare/v11.5.0...v11.5.1) (2022-10-11)
 
 

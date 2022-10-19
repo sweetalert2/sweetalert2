@@ -39,6 +39,11 @@ export const getIcon = () => elementByClass(swalClasses.icon)
 /**
  * @returns {HTMLElement | null}
  */
+export const getIconContent = () => elementByClass(swalClasses['icon-content'])
+
+/**
+ * @returns {HTMLElement | null}
+ */
 export const getTitle = () => elementByClass(swalClasses.title)
 
 /**

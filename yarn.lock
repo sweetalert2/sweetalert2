@@ -1077,14 +1077,14 @@
     execa "^2.0.0"
 
 "@sweetalert2/stylelint-config@^2.0.6":
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/@sweetalert2/stylelint-config/-/stylelint-config-2.0.12.tgz#c148e52c77a2e20d45618e28a9ddb12562dd22a7"
-  integrity sha512-kyKZw+dJXngQHTs/kMxEDG2yn1gdmcAxsTvMKcqnmBryFnuAAsmYBVaMeyeu3dh/tl5T5+oWDQkgrp18mJp4nA==
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@sweetalert2/stylelint-config/-/stylelint-config-2.1.1.tgz#bebe35ff705a5a7d25c529a57e3e8b52cd6b4aea"
+  integrity sha512-d4pWQVL4OceQ9Q7/IuCFx3u0jbir23WqJxpvisOCENtKZ7ethvQEjk1B78SThyQlHQwqmFkuvctQIJg/DYFLjA==
   dependencies:
-    stylelint-config-property-sort-order-smacss "^8.0.0"
-    stylelint-config-standard "^24.0.0"
+    stylelint-config-property-sort-order-smacss "^9.0.0"
+    stylelint-config-standard "^29.0.0"
     stylelint-csstree-validator "^2.0.0"
-    stylelint-scss "^4.1.0"
+    stylelint-scss "^4.3.0"
 
 "@types/cookie@^0.4.1":
   version "0.4.1"
@@ -2272,10 +2272,10 @@ css-functions-list@^3.1.0:
   resolved "https://registry.yarnpkg.com/css-functions-list/-/css-functions-list-3.1.0.tgz#cf5b09f835ad91a00e5959bcfc627cd498e1321b"
   integrity sha512-/9lCvYZaUbBGvYUgYGFJ4dcYiyqdhSjG7IPVluoV8A1ILjkF7ilmhp1OGUz8n+nmBcu0RNrQAzgD8B6FJbrt2w==
 
-css-property-sort-order-smacss@~2.1.3:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/css-property-sort-order-smacss/-/css-property-sort-order-smacss-2.1.3.tgz#b9cf1753b3612ee7d18fe99224f483353ea38e53"
-  integrity sha512-tMGlBxcfQq5VYmMFp4tGqxkNeXDBmlGbyuuz1FFGRvCUj9CvocShe23d4kFyfxW6JMlhlBVfnZRa8AO8kgceJA==
+css-property-sort-order-smacss@~2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/css-property-sort-order-smacss/-/css-property-sort-order-smacss-2.2.0.tgz#c2cb4741e5580fe2f6d968ccde0946e8b689033c"
+  integrity sha512-nXutswsivIEBOrPo/OZw2KQjFPLvtg68aovJf6Kqrm3L6FmTvvFPaeDrk83hh0+pRJGuP3PeKJwMS0E6DFipdQ==
 
 css-tree@^2.0.1:
   version "2.2.1"
@@ -6279,25 +6279,25 @@ style-search@^0.1.0:
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
   integrity sha512-Dj1Okke1C3uKKwQcetra4jSuk0DqbzbYtXipzFlFMZtowbF1x7BKJwB9AayVMyFARvU8EDrZdcax4At/452cAg==
 
-stylelint-config-property-sort-order-smacss@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-property-sort-order-smacss/-/stylelint-config-property-sort-order-smacss-8.0.0.tgz#6e9415baba015a82eab786f3b0462666a4ea1f3c"
-  integrity sha512-tuHNU/PJ6SYvQCaBbv/mhtBh79yHtzc7M3y5oTck3Pgm3hk+K7Jkr6i4/PB7m5Rodle9wQ0oEPLF5psF/t+7wQ==
+stylelint-config-property-sort-order-smacss@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-property-sort-order-smacss/-/stylelint-config-property-sort-order-smacss-9.0.0.tgz#2916751f0bf8793d3735429900599b44fdb9d785"
+  integrity sha512-jQ1miJ6uQA+n6UkunhdhBmjFd5XCe/X7l9/yBI2KGdU+8+nYt1/7slHeLvsT7SCYByYqaLt9fUUCCOjyXH6PCw==
   dependencies:
-    css-property-sort-order-smacss "~2.1.3"
+    css-property-sort-order-smacss "~2.2.0"
     stylelint-order "^5.0.0"
 
-stylelint-config-recommended@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-6.0.0.tgz#fd2523a322836005ad9bf473d3e5534719c09f9d"
-  integrity sha512-ZorSSdyMcxWpROYUvLEMm0vSZud2uB7tX1hzBZwvVY9SV/uly4AvvJPPhCcymZL3fcQhEQG5AELmrxWqtmzacw==
+stylelint-config-recommended@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-9.0.0.tgz#1c9e07536a8cd875405f8ecef7314916d94e7e40"
+  integrity sha512-9YQSrJq4NvvRuTbzDsWX3rrFOzOlYBmZP+o513BJN/yfEmGSr0AxdvrWs0P/ilSpVV/wisamAHu5XSk8Rcf4CQ==
 
-stylelint-config-standard@^24.0.0:
-  version "24.0.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-standard/-/stylelint-config-standard-24.0.0.tgz#6823f207ab997ae0b641f9a636d007cc44d77541"
-  integrity sha512-+RtU7fbNT+VlNbdXJvnjc3USNPZRiRVp/d2DxOF/vBDDTi0kH5RX2Ny6errdtZJH3boO+bmqIYEllEmok4jiuw==
+stylelint-config-standard@^29.0.0:
+  version "29.0.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-standard/-/stylelint-config-standard-29.0.0.tgz#4cc0e0f05512a39bb8b8e97853247d3a95d66fa2"
+  integrity sha512-uy8tZLbfq6ZrXy4JKu3W+7lYLgRQBxYTUUB88vPgQ+ZzAxdrvcaSUW9hOMNLYBnwH+9Kkj19M2DHdZ4gKwI7tg==
   dependencies:
-    stylelint-config-recommended "^6.0.0"
+    stylelint-config-recommended "^9.0.0"
 
 stylelint-csstree-validator@^2.0.0:
   version "2.0.0"
@@ -6314,7 +6314,7 @@ stylelint-order@^5.0.0:
     postcss "^8.3.11"
     postcss-sorting "^7.0.1"
 
-stylelint-scss@^4.1.0:
+stylelint-scss@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-4.3.0.tgz#638800faf823db11fff60d537c81051fe74c90fa"
   integrity sha512-GvSaKCA3tipzZHoz+nNO7S02ZqOsdBzMiCx9poSmLlb3tdJlGddEX/8QzCOD8O7GQan9bjsvLMsO5xiw6IhhIQ==

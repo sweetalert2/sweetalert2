@@ -1,3 +1,10 @@
+# [11.6.0](https://github.com/sweetalert2/sweetalert2/compare/v11.5.2...v11.6.0) (2022-10-19)
+
+
+### Features
+
+* add getIconContent() method ([#2529](https://github.com/sweetalert2/sweetalert2/issues/2529)) ([6b6fa03](https://github.com/sweetalert2/sweetalert2/commit/6b6fa033d481f8d70d8c2aa2cbf1a7b0545aac9a))
+
 ## [11.5.2](https://github.com/sweetalert2/sweetalert2/compare/v11.5.1...v11.5.2) (2022-10-15)
 
 

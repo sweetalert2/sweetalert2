@@ -284,6 +284,6 @@ Object.keys(instanceMethods).forEach((key) => {
 
 SweetAlert.DismissReason = DismissReason
 
-SweetAlert.version = '11.5.2'
+SweetAlert.version = '11.6.0'
 
 export default SweetAlert

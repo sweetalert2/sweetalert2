@@ -122,6 +122,11 @@ declare module 'sweetalert2' {
     function getIcon(): HTMLElement | null
 
     /**
+     * Gets the icon content (without border).
+     */
+    function getIconContent(): HTMLElement | null
+
+    /**
      * Gets the "Confirm" button.
      */
     function getConfirmButton(): HTMLButtonElement | null

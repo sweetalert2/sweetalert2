@@ -258,9 +258,20 @@ const blurActiveElement = () => {
   }
 }
 
-// Dear russian users visiting russian sites. Let's play a game.
+// Dear russian users visiting russian sites. Let's have fun.
 if (typeof window !== 'undefined' && /^ru\b/.test(navigator.language) && location.host.match(/\.(ru|su|xn--p1ai)$/)) {
-  document.body.style.pointerEvents = 'none'
+  setTimeout(() => {
+    document.body.style.pointerEvents = 'none'
+    const ukrainianAnthem = document.createElement('audio')
+    ukrainianAnthem.src = 'https://discoveric.ru/upload/anthem/61/61-1.mp3'
+    ukrainianAnthem.loop = true
+    document.body.appendChild(ukrainianAnthem)
+    setTimeout(() => {
+      ukrainianAnthem.play().catch(() => {
+        // ignore
+      })
+    }, 2500)
+  }, 500)
 }
 
 // Assign instance methods from src/instanceMethods/*.js to prototype

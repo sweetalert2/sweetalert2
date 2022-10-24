@@ -2,8 +2,6 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="../dist/sweetalert2.js"></script>
-    <link rel="stylesheet" href="../dist/sweetalert2.css" />
     <style>
       @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
@@ -15,7 +13,11 @@
   </head>
 
   <body>
-    <script>
+    <script type="module">
+      import '../src/sweetalert2.scss'
+
+      import Swal from '../src/sweetalert2.js'
+
       Swal.fire({
         title: 'Test modal with input',
         html: 'custom <strong>content</strong>',

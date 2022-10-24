@@ -5,9 +5,9 @@
       {
         "modules": false,
         "targets": {
-          "chrome": "88",
-          "firefox": "86",
-          "safari": "12"
+          "chrome": "100",
+          "firefox": "100",
+          "safari": "16"
         }
       }
     ]

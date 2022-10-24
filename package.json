@@ -9,37 +9,27 @@
   "module": "dist/sweetalert2.all.js",
   "types": "sweetalert2.d.ts",
   "devDependencies": {
-    "@babel/core": "^7.19.1",
+    "@babel/core": "^7.19.6",
     "@babel/preset-env": "^7.19.4",
-    "@rollup/plugin-json": "^5.0.0",
+    "@rollup/plugin-babel": "^6.0.2",
     "@sweetalert2/eslint-config": "^1.0.11",
     "@sweetalert2/execute": "^1.0.0",
     "@sweetalert2/stylelint-config": "^2.0.6",
-    "browser-sync": "^2.27.7",
     "cypress": "^10.10.0",
     "eslint": "^8.24.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-no-unsanitized": "^4.0.1",
-    "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^8.0.0",
-    "gulp-clean-css": "^4.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-css2js": "^1.1.2",
-    "gulp-if": "^3.0.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-rollup": "^2.16.2",
-    "gulp-uglify": "^3.0.0",
     "jquery": "^3.6.1",
-    "merge2": "^1.2.3",
     "postcss-scss": "^4.0.5",
     "prettier": "^2.7.1",
     "replace-in-file": "^6.3.5",
     "rollup": "^3.2.2",
-    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.55.0",
     "stylelint": "^14.14.0",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.3",
+    "vite": "^3.1.8"
   },
   "files": [
     "dist",
@@ -48,9 +38,9 @@
   ],
   "author": "Limon Monte <limon.monte@gmail.com> (https://limonte.github.io)",
   "contributors": [
-    "Giuseppe Verni (https://github.com/gverni)",
     "Matthew Francis Brunetti <zenflow87@gmail.com> (https://github.com/zenflow)",
     "Morgan Touverey-Quilling <mtouverey@alembic-dev.com> (https://github.com/toverux)",
+    "Giuseppe Verni (https://github.com/gverni)",
     "Sam Turrell <sam@samturrell.co.uk> (https://github.com/samturrell)",
     "Joseph Schultz (https://github.com/acupofjose)",
     "Johan Fagerberg (https://github.com/birjolaxew)"
@@ -67,16 +57,16 @@
     "accessible"
   ],
   "scripts": {
-    "start": "gulp develop --continue-on-error --skip-minification --skip-standalone",
+    "start": "vite sandbox",
     "lint": "stylelint src/**/*.scss && eslint src cypress *.js *.ts && prettier --check src/**/*.js cypress/**/*.js *.js",
-    "build": "gulp build",
+    "build": "node tools/build.mjs",
     "test": "cypress run --headless",
     "check-types": "tsc --noEmit -p jsconfig.json",
     "cypress:open": "cypress open"
   },
   "funding": {
     "type": "individual",
-    "url": "https://sweetalert2.github.io/#donations"
+    "url": "https://github.com/sponsors/limonte"
   },
   "prettier": {
     "printWidth": 120,

@@ -1,3 +1,10 @@
+## [11.6.2](https://github.com/sweetalert2/sweetalert2/compare/v11.6.1...v11.6.2) (2022-10-24)
+
+
+### Bug Fixes
+
+* simplify dev environment by replacing Gulp with Vite ([#2537](https://github.com/sweetalert2/sweetalert2/issues/2537)) ([f6bc48a](https://github.com/sweetalert2/sweetalert2/commit/f6bc48aa087c64a98e3fda2c35b62a3e6a32d78a)), closes [#2536](https://github.com/sweetalert2/sweetalert2/issues/2536)
+
 ## [11.6.1](https://github.com/sweetalert2/sweetalert2/compare/v11.6.0...v11.6.1) (2022-10-21)
 
 

@@ -1,3 +1,10 @@
+## [11.6.4](https://github.com/sweetalert2/sweetalert2/compare/v11.6.3...v11.6.4) (2022-10-27)
+
+
+### Bug Fixes
+
+* use @rollup/plugin-terser ([19e858a](https://github.com/sweetalert2/sweetalert2/commit/19e858a16c9e7e87633220072bfffac648d4d7d4))
+
 ## [11.6.3](https://github.com/sweetalert2/sweetalert2/compare/v11.6.2...v11.6.3) (2022-10-27)
 
 

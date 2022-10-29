@@ -13,6 +13,10 @@ export const renderPopup = (instance, params) => {
   // https://github.com/sweetalert2/sweetalert2/issues/2170
   if (params.toast) {
     dom.applyNumericalStyle(container, 'width', params.width)
+
+    // Check if the toast has icon and adjust columns accordingly
+    if (params.icon) popup.style.gridTemplateColumns = '1fr auto 1fr'
+
     popup.style.width = '100%'
     popup.insertBefore(dom.getLoader(), dom.getIcon())
   } else {

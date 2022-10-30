@@ -3,7 +3,7 @@
     box-sizing: border-box;
     grid-column: 1/4 !important;
     grid-row: 1/4 !important;
-    grid-template-columns: 1fr 99fr 1fr;
+    grid-template-columns: min-content auto min-content;
     padding: $swal2-toast-padding;
     overflow-y: hidden;
     background: $swal2-toast-background;

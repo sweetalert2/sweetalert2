@@ -3,12 +3,24 @@
     box-sizing: border-box;
     grid-column: 1/4 !important;
     grid-row: 1/4 !important;
-    grid-template-columns: 1fr 99fr 1fr;
+    grid-template-columns: 0 auto 0;
     padding: $swal2-toast-padding;
     overflow-y: hidden;
     background: $swal2-toast-background;
     box-shadow: $swal2-toast-box-shadow;
     pointer-events: all;
+
+    &.swal2-with-icon {
+      grid-template-columns: 1fr auto 0;
+    }
+
+    &.swal2-with-close-button {
+      grid-template-columns: 0 auto 1fr;
+    }
+
+    &.swal2-with-icon.swal2-with-close-button {
+      grid-template-columns: 1fr auto 1fr;
+    }
 
     > * {
       grid-column: 2;

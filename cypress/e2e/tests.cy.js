@@ -13,11 +13,15 @@ describe('Miscellaneous tests', function () {
   it('modal shows up', () => {
     Swal.fire('Hello world!')
     expect(Swal.isVisible()).to.be.true
+    expect(Swal.getPopup().classList.contains('swal2-with-icon')).to.be.false
+    expect(Swal.getPopup().classList.contains('swal2-with-close-button')).to.be.false
   })
 
   it('the icon is shown', () => {
     Swal.fire('', '', 'success')
     expect(Swal.getIcon().classList.contains('swal2-success')).to.be.true
+    expect(Swal.getPopup().classList.contains('swal2-with-icon')).to.be.true
+    expect(Swal.getPopup().classList.contains('swal2-icon-success')).to.be.true
   })
 
   it('should throw console warning about invalid params', () => {
@@ -407,6 +411,7 @@ describe('Miscellaneous tests', function () {
     const closeButton = Swal.getCloseButton()
     expect(isVisible(closeButton)).to.be.true
     expect(closeButton.getAttribute('aria-label')).to.equal('Close this dialog')
+    expect(Swal.getPopup().classList.contains('swal2-with-close-button')).to.be.true
     closeButton.click()
   })
 

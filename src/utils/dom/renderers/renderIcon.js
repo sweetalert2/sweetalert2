@@ -47,12 +47,15 @@ export const renderIcon = (instance, params) => {
  * @param {SweetAlertOptions} params
  */
 const applyStyles = (icon, params) => {
+  const popup = dom.getPopup()
+
   for (const iconType in iconTypes) {
     if (params.icon !== iconType) {
       dom.removeClass(icon, iconTypes[iconType])
     }
   }
   dom.addClass(icon, iconTypes[params.icon])
+  dom.addClass(popup, swalClasses['with-icon'])
 
   // Icon color
   setColor(icon, params)

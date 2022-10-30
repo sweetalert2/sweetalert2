@@ -22,7 +22,6 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-no-unsanitized": "^4.0.1",
     "jquery": "^3.6.1",
-    "postcss-scss": "^4.0.5",
     "prettier": "^2.7.1",
     "replace-in-file": "^6.3.5",
     "rollup": "^3.2.2",

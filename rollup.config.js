@@ -1,6 +1,5 @@
 import { readFileSync } from 'fs'
 import babel from '@rollup/plugin-babel'
-// todo: use @rollup/plugin-terser: https://github.com/rollup/plugins/pull/1323
 import terser from '@rollup/plugin-terser'
 
 const packageJson = JSON.parse(readFileSync('package.json'))

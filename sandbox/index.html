@@ -18,6 +18,8 @@
 
       import Swal from '../src/sweetalert2.js'
 
+      window.Swal = Swal
+
       Swal.fire({
         title: 'Test modal with input',
         html: 'custom <strong>content</strong>',

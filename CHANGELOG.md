@@ -1,3 +1,10 @@
+## [11.6.5](https://github.com/sweetalert2/sweetalert2/compare/v11.6.4...v11.6.5) (2022-10-30)
+
+
+### Bug Fixes
+
+* toast pop up sizing based on message length ([#2540](https://github.com/sweetalert2/sweetalert2/issues/2540)) ([251ffea](https://github.com/sweetalert2/sweetalert2/commit/251ffea84b11ebdaf5b3af233a3a4539b8d80533))
+
 ## [11.6.4](https://github.com/sweetalert2/sweetalert2/compare/v11.6.3...v11.6.4) (2022-10-27)
 
 

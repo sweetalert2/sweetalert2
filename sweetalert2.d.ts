@@ -334,6 +334,10 @@ declare module 'sweetalert2' {
 
   type ValueOrThunk<T> = T | (() => T)
 
+  type CSSUnit = 'px' | 'cm' | 'mm' | 'Q' | 'in' | 'pc' | 'pt' | 'rem' | 'em' | 'vw' | 'vh' | 'vmin' | 'vmax' | '%'
+
+  export type CSSValueWithUnit = `${number}${CSSUnit}` | number
+
   export type SweetAlertArrayOptions = readonly [string?, string?, SweetAlertIcon?]
 
   export type SweetAlertGrow = 'row' | 'column' | 'fullscreen' | false
@@ -602,14 +606,14 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    width?: number | string
+    width?: CSSValueWithUnit
 
     /**
      * Popup padding.
      *
      * @default undefined
      */
-    padding?: number | string
+    padding?: CSSValueWithUnit
 
     /**
      * Color for title, content and footer (CSS `color` property).  The default color is `#545454`.
@@ -975,14 +979,14 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    imageWidth?: number | string
+    imageWidth?: CSSValueWithUnit
 
     /**
      * If imageUrl is set, you can specify imageHeight to describes image height.
      *
      * @default undefined
      */
-    imageHeight?: number | string
+    imageHeight?: CSSValueWithUnit
 
     /**
      * An alternative text for the custom image icon.
@@ -1104,7 +1108,7 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    progressStepsDistance?: number | string
+    progressStepsDistance?: CSSValueWithUnit
 
     /**
      * Popup lifecycle hook. Synchronously runs before the popup is shown on screen.

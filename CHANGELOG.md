@@ -1,3 +1,10 @@
+## [11.6.6](https://github.com/sweetalert2/sweetalert2/compare/v11.6.5...v11.6.6) (2022-11-06)
+
+
+### Bug Fixes
+
+* **types:** add CSSValueWithUnit type ([#2545](https://github.com/sweetalert2/sweetalert2/issues/2545)) ([34fff14](https://github.com/sweetalert2/sweetalert2/commit/34fff143962740ec440d2d6e228a19b62d1db26a))
+
 ## [11.6.5](https://github.com/sweetalert2/sweetalert2/compare/v11.6.4...v11.6.5) (2022-10-30)
 
 

@@ -106,13 +106,9 @@ const getSwalImage = (templateContent) => {
       result.imageUrl = image.getAttribute('src')
     }
     if (image.hasAttribute('width')) {
-      /** @type {CSSValueWithUnit} */
-      // @ts-ignore
       result.imageWidth = image.getAttribute('width')
     }
     if (image.hasAttribute('height')) {
-      /** @type {CSSValueWithUnit} */
-      // @ts-ignore
       result.imageHeight = image.getAttribute('height')
     }
     if (image.hasAttribute('alt')) {

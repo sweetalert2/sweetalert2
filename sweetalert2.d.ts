@@ -180,7 +180,7 @@ declare module 'sweetalert2' {
      * Swal.showLoading(Swal.getDenyButton())
      * ```
      */
-    function showLoading(buttonToReplace?: HTMLButtonElement): void
+    function showLoading(buttonToReplace: HTMLButtonElement | null): void
 
     /**
      * Hides loader and shows back the button which was hidden by .showLoading()
@@ -333,10 +333,6 @@ declare module 'sweetalert2' {
   type SyncOrAsync<T> = T | Promise<T> | { toPromise: () => T }
 
   type ValueOrThunk<T> = T | (() => T)
-
-  type CSSUnit = 'px' | 'cm' | 'mm' | 'Q' | 'in' | 'pc' | 'pt' | 'rem' | 'em' | 'vw' | 'vh' | 'vmin' | 'vmax' | '%'
-
-  export type CSSValueWithUnit = `${number}${CSSUnit}` | number
 
   export type SweetAlertArrayOptions = readonly [string?, string?, SweetAlertIcon?]
 
@@ -606,14 +602,14 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    width?: CSSValueWithUnit
+    width?: number | string
 
     /**
      * Popup padding.
      *
      * @default undefined
      */
-    padding?: CSSValueWithUnit
+    padding?: number | string
 
     /**
      * Color for title, content and footer (CSS `color` property).  The default color is `#545454`.
@@ -979,14 +975,14 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    imageWidth?: CSSValueWithUnit
+    imageWidth?: number | string
 
     /**
      * If imageUrl is set, you can specify imageHeight to describes image height.
      *
      * @default undefined
      */
-    imageHeight?: CSSValueWithUnit
+    imageHeight?: number | string
 
     /**
      * An alternative text for the custom image icon.
@@ -1108,7 +1104,7 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    progressStepsDistance?: CSSValueWithUnit
+    progressStepsDistance?: number | string
 
     /**
      * Popup lifecycle hook. Synchronously runs before the popup is shown on screen.

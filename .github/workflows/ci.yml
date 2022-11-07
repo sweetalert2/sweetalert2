@@ -31,7 +31,7 @@ jobs:
       #   run: yarn test --browser chrome
 
       - name: Run tests in Firefox
-        if: github.ref_name == 'main'
+        if: github.event_name == 'push'
         run: yarn test --browser firefox
 
       - name: Test in CommonJS

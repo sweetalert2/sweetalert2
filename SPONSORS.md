@@ -62,14 +62,15 @@ NSFW Sponsors
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
+<td align="center"><a href="https://www.nakedoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/nakedoll.png" width="80"><br>Nake Doll</a></td>
 <td align="center"><a href="https://blowupdollshop.com/inflatable-sex-doll/"><img src="https://sweetalert2.github.io/images/sponsors/blowupdollshop.png" width="80"><br>Inflatable sex doll</a></td>
 <td align="center"><a href="https://sextoystop.com/"><img src="https://sweetalert2.github.io/images/sponsors/sextoystop.png" width="80"><br>Sex Doll Torso</a></td>
 <td align="center"><a href="https://sexydollies.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexydollies.png" width="80"><br>porn sexdoll</a></td>
-<td align="center"><a href="https://bululusexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/bululusexdoll.png" width="80"><br>cheap sex doll</a></td>
 </tr>
 </table>
 <table>
 <tr>
+<td align="center"><a href="https://bululusexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/bululusexdoll.png" width="80"><br>cheap sex doll</a></td>
 <td align="center"><a href="https://bululu.shop/"><img src="https://sweetalert2.github.io/images/sponsors/bululu.png" width="80"><br>BULULU</a></td>
 <td align="center"><a href="https://www.xndoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/xndoll.jpeg" width="80"><br>XNDOLL</a></td>
 <td align="center"><a href="https://sexsitoys.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexsitoys.jpg" width="80"><br>Sexsi Toys</a></td>

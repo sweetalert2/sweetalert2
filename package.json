@@ -8,6 +8,13 @@
   "browser": "dist/sweetalert2.all.js",
   "module": "dist/sweetalert2.all.js",
   "types": "sweetalert2.d.ts",
+  "typesVersions": {
+    ">=4.0": {
+      "*": [
+        "sweetalert2.d.ts"
+      ]
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.19.6",
     "@babel/preset-env": "^7.19.4",
@@ -27,11 +34,11 @@
     "rollup": "^3.2.2",
     "sass": "^1.55.0",
     "stylelint": "^14.14.0",
-    "typescript": "4.1.5",
+    "typescript": "4.0.2",
     "vite": "^3.1.8"
   },
   "devDependenciesComments": {
-    "typescript": "Do not upgrade TS, tests will verify that types work with the very first version of TS >= 4.1"
+    "typescript": "Do not upgrade TS, tests will verify that types work with the very first version of TS >= 4.0"
   },
   "files": [
     "dist",
@@ -63,7 +70,7 @@
     "lint": "stylelint src/**/*.scss && eslint src cypress *.js *.ts && prettier --check src/**/*.js cypress/**/*.js *.js",
     "build": "node tools/build.mjs",
     "test": "cypress run --headless",
-    "check-types": "tsc --noEmit -p jsconfig.json",
+    "check-types": "npx -p typescript@latest tsc --noEmit -p jsconfig.json",
     "cypress:open": "cypress open"
   },
   "funding": {

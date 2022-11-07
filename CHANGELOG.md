@@ -1,3 +1,10 @@
+## [11.6.7](https://github.com/sweetalert2/sweetalert2/compare/v11.6.6...v11.6.7) (2022-11-07)
+
+
+### Bug Fixes
+
+* support TS >= 4.0 ([#2548](https://github.com/sweetalert2/sweetalert2/issues/2548)) ([49c5abf](https://github.com/sweetalert2/sweetalert2/commit/49c5abf3da0f6a6f28765b406f911e3901e61ba0))
+
 ## [11.6.6](https://github.com/sweetalert2/sweetalert2/compare/v11.6.5...v11.6.6) (2022-11-06)
 
 

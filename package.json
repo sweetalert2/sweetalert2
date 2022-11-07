@@ -27,8 +27,11 @@
     "rollup": "^3.2.2",
     "sass": "^1.55.0",
     "stylelint": "^14.14.0",
-    "typescript": "^4.8.3",
+    "typescript": "4.1.5",
     "vite": "^3.1.8"
+  },
+  "devDependenciesComments": {
+    "typescript": "Do not upgrade TS, tests will verify that types work with the very first version of TS >= 4.1"
   },
   "files": [
     "dist",

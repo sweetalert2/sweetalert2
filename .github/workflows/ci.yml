@@ -27,8 +27,8 @@ jobs:
       - name: Check types
         run: yarn check-types
 
-      - name: Run tests in Chrome
-        run: yarn test --browser chrome
+      # - name: Run tests in Chrome
+      #   run: yarn test --browser chrome
 
       - name: Run tests in Firefox
         if: github.ref_name == 'main'
@@ -39,7 +39,8 @@ jobs:
 
       - name: Check TypeScript
         run: |
-          tsc --lib dom,es6 --noEmit test/ts/simple-usage.ts sweetalert2.d.ts
+          ln -s ../../ test/ts/node_modules
+          tsc --lib dom,es6 --noEmit test/ts/simple-usage.ts
           tsc --lib dom,es6 --noEmit test/ts/dist-sweetalert2.ts sweetalert2.d.ts
           tsc --lib dom,es6 --noEmit test/ts/src-sweetalert2.ts sweetalert2.d.ts
 

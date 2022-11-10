@@ -175,7 +175,7 @@ export const removeClass = (target, classList) => {
  *
  * @param {HTMLElement} elem
  * @param {string} className
- * @returns {HTMLElement | null}
+ * @returns {HTMLElement | undefined}
  */
 export const getDirectChildByClass = (elem, className) => {
   const children = Array.from(elem.children)

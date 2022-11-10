@@ -1,3 +1,10 @@
+## [11.6.8](https://github.com/sweetalert2/sweetalert2/compare/v11.6.7...v11.6.8) (2022-11-10)
+
+
+### Bug Fixes
+
+* types in domUtils.js ([eb8d96a](https://github.com/sweetalert2/sweetalert2/commit/eb8d96a5fde10fb5f77e576c60c54cced62c0be1))
+
 ## [11.6.7](https://github.com/sweetalert2/sweetalert2/compare/v11.6.6...v11.6.7) (2022-11-07)
 
 

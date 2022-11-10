@@ -27,15 +27,15 @@
         icon: 'success',
         showCloseButton: true,
         showCancelButton: true,
-        preConfirm: function (value) {
+        preConfirm: (value) => {
           if (!value) {
             Swal.showValidationMessage('Should not be empty!')
           }
         },
-        didOpen: function (modal) {
+        didOpen: (modal) => {
           console.log(modal)
         },
-      }).then(function (result) {
+      }).then((result) => {
         console.log(result)
       })
     </script>

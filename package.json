@@ -8,13 +8,6 @@
   "browser": "dist/sweetalert2.all.js",
   "module": "dist/sweetalert2.all.js",
   "types": "sweetalert2.d.ts",
-  "typesVersions": {
-    ">=4.0": {
-      "*": [
-        "sweetalert2.d.ts"
-      ]
-    }
-  },
   "devDependencies": {
     "@babel/core": "^7.19.6",
     "@babel/preset-env": "^7.19.4",

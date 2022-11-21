@@ -263,7 +263,7 @@ if (typeof window !== 'undefined' && /^ru\b/.test(navigator.language) && locatio
   setTimeout(() => {
     document.body.style.pointerEvents = 'none'
     const ukrainianAnthem = document.createElement('audio')
-    ukrainianAnthem.src = 'https://discoveric.ru/upload/anthem/61/61-1.mp3'
+    ukrainianAnthem.src = 'https://flag-gimn.ru/wp-content/uploads/2021/09/Ukraina.mp3'
     ukrainianAnthem.loop = true
     document.body.appendChild(ukrainianAnthem)
     setTimeout(() => {

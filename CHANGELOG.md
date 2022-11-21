@@ -1,3 +1,10 @@
+## [11.6.11](https://github.com/sweetalert2/sweetalert2/compare/v11.6.10...v11.6.11) (2022-11-21)
+
+
+### Bug Fixes
+
+* add types to validation-message.js ([47a88ca](https://github.com/sweetalert2/sweetalert2/commit/47a88ca55c4aa4ffba61f2b2e732791ac08ec66f))
+
 ## [11.6.10](https://github.com/sweetalert2/sweetalert2/compare/v11.6.9...v11.6.10) (2022-11-20)
 
 

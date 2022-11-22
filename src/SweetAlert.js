@@ -258,22 +258,6 @@ const blurActiveElement = () => {
   }
 }
 
-// Dear russian users visiting russian sites. Let's have fun.
-if (typeof window !== 'undefined' && /^ru\b/.test(navigator.language) && location.host.match(/\.(ru|su|xn--p1ai)$/)) {
-  setTimeout(() => {
-    document.body.style.pointerEvents = 'none'
-    const ukrainianAnthem = document.createElement('audio')
-    ukrainianAnthem.src = 'https://flag-gimn.ru/wp-content/uploads/2021/09/Ukraina.mp3'
-    ukrainianAnthem.loop = true
-    document.body.appendChild(ukrainianAnthem)
-    setTimeout(() => {
-      ukrainianAnthem.play().catch(() => {
-        // ignore
-      })
-    }, 2500)
-  }, 500)
-}
-
 // Assign instance methods from src/instanceMethods/*.js to prototype
 Object.assign(SweetAlert.prototype, instanceMethods)
 

@@ -1,3 +1,10 @@
+## [11.6.12](https://github.com/sweetalert2/sweetalert2/compare/v11.6.11...v11.6.12) (2022-11-23)
+
+
+### Bug Fixes
+
+* add types to update.js ([ad39471](https://github.com/sweetalert2/sweetalert2/commit/ad394715caf026b19831b473f3a831da0ea214cf))
+
 ## [11.6.11](https://github.com/sweetalert2/sweetalert2/compare/v11.6.10...v11.6.11) (2022-11-21)
 
 

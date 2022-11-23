@@ -1,3 +1,10 @@
+## [11.6.13](https://github.com/sweetalert2/sweetalert2/compare/v11.6.12...v11.6.13) (2022-11-23)
+
+
+### Bug Fixes
+
+* remove unnecessary instanceMethods/progress-steps.js ([6b56c13](https://github.com/sweetalert2/sweetalert2/commit/6b56c13b3ad89e916311ad96000ae94cb95d78f2))
+
 ## [11.6.12](https://github.com/sweetalert2/sweetalert2/compare/v11.6.11...v11.6.12) (2022-11-23)
 
 

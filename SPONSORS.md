@@ -21,8 +21,6 @@ For all questions related to sponsorship please contact me via email limon.monte
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
-<td align="center"><a href="https://an1.fun/"><img src="https://sweetalert2.github.io/images/sponsors/an1.png" width="80"><br>AN1</a>
-<td align="center"><a href="https://gemwire.gg/en/free-fortnite-reward-codes-4/"><img src="https://sweetalert2.github.io/images/sponsors/gemwire.png" width="80"><br>Fortnite Redeem <br> Code (Today)</a>
 <td align="center"><a href="https://mybettingcanada.com/"><img src="https://sweetalert2.github.io/images/sponsors/mybettingcanada.png" width="80"><br>My Betting Canada</a>
 <td align="center"><a href="https://kasynoonlineblik.pl/"><img src="https://sweetalert2.github.io/images/sponsors/kasynoonlineblik.png" width="80"><br>Kasyno Online Blik</a>
 </tr>

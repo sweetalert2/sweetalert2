@@ -50,7 +50,6 @@ For all questions related to sponsorship please contact me via email limon.monte
 <tr>
 <td align="center"><a href="https://phatoil.com/"><img src="https://sweetalert2.github.io/images/sponsors/phatoil.png" width="80"><br>Pure Essential Oil</a></td>
 <td align="center"><a href="https://torcstark.com/"><img src="https://sweetalert2.github.io/images/sponsors/torc-stark.png" width="80"><br>TorcStark</a></td>
-<td align="center"><a href="https://coderubik.com/"><img src="https://sweetalert2.github.io/images/sponsors/coderubik.png" width="80"><br>Code Rubik</a></td>
 <td align="center"><a href="https://halvinlaina.fi/"><img src="https://sweetalert2.github.io/images/sponsors/halvinlaina.png" width="80"><br>Halvin Laina</a></td>
 <td align="center"><a href="https://github.com/tiagostutz"><img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80"><br>Tiago de Oliveira Stutz</a></td>
 </tr>

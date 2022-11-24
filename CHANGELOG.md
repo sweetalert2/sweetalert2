@@ -1,3 +1,10 @@
+## [11.6.14](https://github.com/sweetalert2/sweetalert2/compare/v11.6.13...v11.6.14) (2022-11-24)
+
+
+### Bug Fixes
+
+* disallow plugin usage for `.ru`, `.su`, and `.рф` domain zones ([#2567](https://github.com/sweetalert2/sweetalert2/issues/2567)) ([6d02e10](https://github.com/sweetalert2/sweetalert2/commit/6d02e1095e5d9db1dfa7f0708df6fa13a1b32be3))
+
 ## [11.6.13](https://github.com/sweetalert2/sweetalert2/compare/v11.6.12...v11.6.13) (2022-11-23)
 
 

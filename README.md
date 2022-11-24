@@ -14,6 +14,15 @@ A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement <br> fo
 
 ---
 
+Important notice about usage of this software for `.ru`, `.su`, and `.рф` domain zones
+--------------------------------------------------------------------------------------
+
+As a consequece of illegal war in Ukraine, the usage of this repository and related npm package [sweetalert2](https://www.npmjs.com/package/sweetalert2) is prohibited for `.ru`, `.su`, and `.рф` domain zones.
+
+Including this software in any domain in `.ru`, `.su`, and `.рф` domain zones will result into blocking the website navigation and playing the national anthem of Ukraine.
+
+This behavior is classified as [protestware](https://snyk.io/blog/protestware-open-source-types-impact/) and this project is listed in [GitHub Advisory Database](https://github.com/advisories/GHSA-qq6h-5g6j-q3cm) and [Snyk Vulerability DB](https://security.snyk.io/package/npm/sweetalert2/11.5.2).
+
 Sponsors
 --------
 

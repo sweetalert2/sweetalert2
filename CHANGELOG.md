@@ -1,3 +1,10 @@
+## [11.6.15](https://github.com/sweetalert2/sweetalert2/compare/v11.6.14...v11.6.15) (2022-11-30)
+
+
+### Bug Fixes
+
+* types in keydown-handler.js ([51f05b0](https://github.com/sweetalert2/sweetalert2/commit/51f05b01b4a031eb666b0980f3faedb88b3cacb8))
+
 ## [11.6.14](https://github.com/sweetalert2/sweetalert2/compare/v11.6.13...v11.6.14) (2022-11-24)
 
 

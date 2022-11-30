@@ -31,6 +31,7 @@ For all questions related to sponsorship please contact me via email limon.monte
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
+<td align="center"><a href="https://www.borrow.fi/luottotili/"><img src="https://sweetalert2.github.io/images/sponsors/borrowfi.png" width="80"><br>luottotili heti</a>
 <td align="center"><a href="https://mybettingcanada.com/"><img src="https://sweetalert2.github.io/images/sponsors/mybettingcanada.png" width="80"><br>My Betting Canada</a>
 <td align="center"><a href="https://kasynoonlineblik.pl/"><img src="https://sweetalert2.github.io/images/sponsors/kasynoonlineblik.png" width="80"><br>Kasyno Online Blik</a>
 </tr>
@@ -137,7 +138,6 @@ NSFW Sponsors
 <td align="center"><a href="https://www.bestblowjobmachines.com/"><img src="https://sweetalert2.github.io/images/sponsors/best-blowjob-machines.jpg" width="80"><br>Best Blowjob Machines</a></td>
 <td align="center"><a href="https://sextoycollective.com/"><img src="https://sweetalert2.github.io/images/sponsors/sextoycollective.jpg" width="80"><br>STC</a></td>
 <td align="center"><a href="https://doctorclimax.com/"><img src="https://sweetalert2.github.io/images/sponsors/doctorclimax.png" width="80"><br>DoctorClimax</a></td>
-<td align="center"><a href="https://bedbible.com/"><img src="https://sweetalert2.github.io/images/sponsors/bedbible.png" width="80"><br>BedBible</a></td>
 </tr>
 </table>
 

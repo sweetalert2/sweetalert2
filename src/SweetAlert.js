@@ -290,7 +290,7 @@ Object.assign(SweetAlert, staticMethods)
 Object.keys(instanceMethods).forEach((key) => {
   /**
    * @param {...any} args
-   * @returns {any}
+   * @returns {any | undefined}
    */
   SweetAlert[key] = function (...args) {
     if (currentInstance) {

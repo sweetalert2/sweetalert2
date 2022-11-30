@@ -55,7 +55,8 @@ export const setFocus = (innerParams, index, increment) => {
       index = focusableElements.length - 1
     }
 
-    return focusableElements[index].focus()
+    focusableElements[index].focus()
+    return
   }
   // no visible focusable elements, focus the popup
   dom.getPopup().focus()
@@ -68,7 +69,7 @@ const arrowKeysPreviousButton = ['ArrowLeft', 'ArrowUp']
 /**
  * @param {SweetAlert2} instance
  * @param {KeyboardEvent} e
- * @param {function} dismissWith
+ * @param {Function} dismissWith
  */
 const keydownHandler = (instance, e, dismissWith) => {
   const innerParams = privateProps.innerParams.get(instance)
@@ -198,7 +199,7 @@ const handleArrows = (key) => {
 /**
  * @param {KeyboardEvent} e
  * @param {SweetAlertOptions} innerParams
- * @param {function} dismissWith
+ * @param {Function} dismissWith
  */
 const handleEsc = (e, innerParams, dismissWith) => {
   if (callIfFunction(innerParams.allowEscapeKey)) {

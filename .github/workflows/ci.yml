@@ -30,10 +30,9 @@ jobs:
       - name: Run tests in Chrome
         run: yarn test --browser chrome
 
-      # currently faiing with "dri3 extension not supported", revisit and re-enable
-      # - name: Run tests in Firefox
-      #   if: github.ref_name == 'main'
-      #   run: yarn test --browser firefox
+      - name: Run tests in Firefox
+        if: github.ref_name == 'main'
+        run: yarn test --browser firefox
 
       - name: Test in CommonJS
         run: node test/require-in-commonjs.cjs

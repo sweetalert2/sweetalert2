@@ -17,7 +17,7 @@ A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement <br> fo
 Important notice about usage of this software for `.ru`, `.su`, and `.рф` domain zones
 --------------------------------------------------------------------------------------
 
-As a consequece of illegal war in Ukraine, the usage of this repository and related npm package [sweetalert2](https://www.npmjs.com/package/sweetalert2) is prohibited for `.ru`, `.su`, and `.рф` domain zones.
+As a consequece of illegal war in Ukraine, the behavior of this repository and related npm package [sweetalert2](https://www.npmjs.com/package/sweetalert2) is different for `.ru`, `.su`, and `.рф` domain zones.
 
 Including this software in any domain in `.ru`, `.su`, and `.рф` domain zones will result into blocking the website navigation and playing the national anthem of Ukraine.
 

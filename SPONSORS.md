@@ -21,7 +21,7 @@ For all questions related to sponsorship please contact me via email limon.monte
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
-<td align="center"><a href="https://www.borrow.fi/luottotili/"><img src="https://sweetalert2.github.io/images/sponsors/borrowfi.png" width="80"><br>luottotili heti</a>
+<td align="center"><a href="https://www.borrow.fi/luottotili/"><img src="https://sweetalert2.github.io/images/sponsors/borrowfi.png" width="80"><br>luottotili</a>
 <td align="center"><a href="https://mybettingcanada.com/"><img src="https://sweetalert2.github.io/images/sponsors/mybettingcanada.png" width="80"><br>My Betting Canada</a>
 <td align="center"><a href="https://kasynoonlineblik.pl/"><img src="https://sweetalert2.github.io/images/sponsors/kasynoonlineblik.png" width="80"><br>Kasyno Online Blik</a>
 </tr>

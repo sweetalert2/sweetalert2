@@ -12,7 +12,7 @@
     "@babel/core": "^7.19.6",
     "@babel/preset-env": "^7.19.4",
     "@rollup/plugin-babel": "^6.0.2",
-    "@rollup/plugin-terser": "^0.1.0",
+    "@rollup/plugin-terser": "^0.2.0",
     "@sweetalert2/eslint-config": "^1.0.11",
     "@sweetalert2/stylelint-config": "^2.0.6",
     "cypress": "^11.0.0",
@@ -26,7 +26,7 @@
     "sass": "^1.55.0",
     "stylelint": "^14.14.0",
     "typescript": "4.0.2",
-    "vite": "^3.1.8",
+    "vite": "^4.0.0",
     "zx": "^7.1.1"
   },
   "devDependenciesComments": {

@@ -15,7 +15,7 @@
     "@rollup/plugin-terser": "^0.2.0",
     "@sweetalert2/eslint-config": "^1.0.11",
     "@sweetalert2/stylelint-config": "^2.0.6",
-    "cypress": "^11.0.0",
+    "cypress": "^12.0.0",
     "eslint": "^8.24.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-jsdoc": "^39.3.6",

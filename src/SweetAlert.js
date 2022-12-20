@@ -224,7 +224,7 @@ const initFocus = (domCache, innerParams) => {
   }
 
   if (!focusButton(domCache, innerParams)) {
-    setFocus(innerParams, -1, 1)
+    setFocus(-1, 1)
   }
 }
 

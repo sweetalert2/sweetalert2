@@ -1,3 +1,10 @@
+## [11.6.16](https://github.com/sweetalert2/sweetalert2/compare/v11.6.15...v11.6.16) (2022-12-20)
+
+
+### Bug Fixes
+
+* remove innerParams from handleTab() and setFocus() ([#2570](https://github.com/sweetalert2/sweetalert2/issues/2570)) ([ac79cfc](https://github.com/sweetalert2/sweetalert2/commit/ac79cfc4b4a1f3a1e564f1fd353c520ba7a1ca3d))
+
 ## [11.6.15](https://github.com/sweetalert2/sweetalert2/compare/v11.6.14...v11.6.15) (2022-11-30)
 
 

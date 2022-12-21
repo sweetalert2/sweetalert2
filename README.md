@@ -26,7 +26,7 @@ This behavior is classified as [protestware](https://snyk.io/blog/protestware-op
 Sponsors
 --------
 
-For all questions related to sponsorship please contact me via email limon.monte@protonmail.com
+For all questions related to sponsorship please contact me via email sweetalert2@gmail.com
 
 <table>
 <tr>
@@ -40,7 +40,6 @@ For all questions related to sponsorship please contact me via email limon.monte
 <tr>
 <td align="center"><a href="https://w88yesbet.com/"><img src="https://sweetalert2.github.io/images/sponsors/w88yesbet.png" width="80"><br>W88YES</a>
 <td align="center"><a href="https://rushradar.com/"><img src="https://sweetalert2.github.io/images/sponsors/rushradar.png" width="80"><br>RushRadar:&nbsp;Articles, <br>Reviews,&nbsp;and&nbsp;Discounts</a>
-<td align="center"><a href="https://iganony.com/"><img src="https://sweetalert2.github.io/images/sponsors/iganony.png" width="80"><br>IgAnony</a>
 <td align="center"><a href="https://www.realspyapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/realspyapps.jpeg" width="80"><br>Real Spy Apps</a>
 <td align="center"><a href="https://www.istartips.com/"><img src="https://sweetalert2.github.io/images/sponsors/istartips.png" width="80"><br>iStarTips</a>
 </tr>
@@ -146,7 +145,3 @@ Support and Donations
 ---------------------
 
 Has SweetAlert2 helped you create an amazing application? You can show your support via [GitHub Sponsors](https://github.com/sponsors/limonte)
-
-Alternative ways for donations (PayPal, cryptocurrencies, etc.) are listed here: https://sweetalert2.github.io/#donations
-
-### [Hall of Donators :trophy:](DONATIONS.md)

@@ -2,19 +2,19 @@
 
 Sponsor is a company or a person who is supporting SweetAlert2 with $19 per month [via GitHub Sponsors](https://github.com/sponsors/limonte) or [via PayPal](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=UW5EA4KTHM4B6). Sponsors are listed in these places:
 
-- in this document
+- in [SweetAlert2's official homepage](https://sweetalert2.github.io/#sponsors) (100K+ unique visitors per month).
 - in [the official repo README](https://github.com/sweetalert2/sweetalert2#sponsors) (20K+ unique visitors per month)
-- in [SweetAlert2's official homepage](https://sweetalert2.github.io/#sponsors) (80K+ unique visitors per month).
 - on [npmjs.com](https://www.npmjs.com/package/sweetalert2)
+- in this document
 
 All sponsors have priority support via GitHub issues.
 
-For all questions related to sponsorship please contact me via email limon.monte@protonmail.com
+For all questions related to sponsorship please contact me via email sweetalert2@gmail.com
 
 # How to become a sponsor
 
 1. Set up the $19 per month sponsorship [via GitHub Sponsors](https://github.com/sponsors/limonte) or [via PayPal](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=UW5EA4KTHM4B6)
-2. Send your logo and link to limon.monte@protonmail.com and I will publish it in the same day
+2. Send your logo and link to sweetalert2@gmail.com and I will publish it in the same day
 
 # Our Sponsors
 
@@ -30,7 +30,6 @@ For all questions related to sponsorship please contact me via email limon.monte
 <tr>
 <td align="center"><a href="https://w88yesbet.com/"><img src="https://sweetalert2.github.io/images/sponsors/w88yesbet.png" width="80"><br>W88YES</a>
 <td align="center"><a href="https://rushradar.com/"><img src="https://sweetalert2.github.io/images/sponsors/rushradar.png" width="80"><br>RushRadar:&nbsp;Articles, <br>Reviews,&nbsp;and&nbsp;Discounts</a>
-<td align="center"><a href="https://iganony.com/"><img src="https://sweetalert2.github.io/images/sponsors/iganony.png" width="80"><br>IgAnony</a>
 <td align="center"><a href="https://www.realspyapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/realspyapps.jpeg" width="80"><br>Real Spy Apps</a>
 <td align="center"><a href="https://www.istartips.com/"><img src="https://sweetalert2.github.io/images/sponsors/istartips.png" width="80"><br>iStarTips</a>
 </tr>

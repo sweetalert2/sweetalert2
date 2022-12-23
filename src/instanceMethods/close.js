@@ -8,10 +8,12 @@ import * as dom from '../utils/dom/index.js'
 import { undoIOSfix } from '../utils/iosFix.js'
 import { undoScrollbar } from '../utils/scrollbarFix.js'
 
-/*
- * Instance method to close sweetAlert
+/**
+ * @param {SweetAlert2} instance
+ * @param {HTMLElement} container
+ * @param {boolean} returnFocus
+ * @param {Function} didClose
  */
-
 function removePopupAndResetState(instance, container, returnFocus, didClose) {
   if (dom.isToast()) {
     triggerDidCloseAndDispose(instance, didClose)
@@ -40,6 +42,9 @@ function removePopupAndResetState(instance, container, returnFocus, didClose) {
   removeBodyClasses()
 }
 
+/**
+ * Remove SweetAlert2 classes from body
+ */
 function removeBodyClasses() {
   dom.removeClass(
     [document.documentElement, document.body],
@@ -47,6 +52,11 @@ function removeBodyClasses() {
   )
 }
 
+/**
+ * Instance method to close sweetAlert
+ *
+ * @param {any} resolveValue
+ */
 export function close(resolveValue) {
   resolveValue = prepareResolveValue(resolveValue)
 
@@ -66,6 +76,9 @@ export function close(resolveValue) {
   }
 }
 
+/**
+ * @returns {boolean}
+ */
 export function isAwaitingPromise() {
   return !!privateProps.awaitingPromise.get(this)
 }
@@ -94,6 +107,9 @@ const triggerClosePopup = (instance) => {
   return true
 }
 
+/**
+ * @param {any} error
+ */
 export function rejectPromise(error) {
   const rejectPromise = privateMethods.swalPromiseReject.get(this)
   handleAwaitingPromise(this)
@@ -103,16 +119,25 @@ export function rejectPromise(error) {
   }
 }
 
+/**
+ * @param {SweetAlert2} instance
+ */
 export const handleAwaitingPromise = (instance) => {
+  // @ts-ignore
   if (instance.isAwaitingPromise()) {
     privateProps.awaitingPromise.delete(instance)
     // The instance might have been previously partly destroyed, we must resume the destroy process in this case #2335
     if (!privateProps.innerParams.get(instance)) {
+      // @ts-ignore
       instance._destroy()
     }
   }
 }
 
+/**
+ * @param {any} resolveValue
+ * @returns {import('sweetalert2').SweetAlertResult}
+ */
 const prepareResolveValue = (resolveValue) => {
   // When user calls Swal.close()
   if (typeof resolveValue === 'undefined') {
@@ -133,6 +158,11 @@ const prepareResolveValue = (resolveValue) => {
   )
 }
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {HTMLElement} popup
+ * @param {SweetAlertOptions} innerParams
+ */
 const handlePopupAnimation = (instance, popup, innerParams) => {
   const container = dom.getContainer()
   // If animation is supported, animate
@@ -150,6 +180,13 @@ const handlePopupAnimation = (instance, popup, innerParams) => {
   }
 }
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {HTMLElement} popup
+ * @param {HTMLElement} container
+ * @param {boolean} returnFocus
+ * @param {Function} didClose
+ */
 const animatePopup = (instance, popup, container, returnFocus, didClose) => {
   globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(
     null,
@@ -166,11 +203,17 @@ const animatePopup = (instance, popup, container, returnFocus, didClose) => {
   })
 }
 
+/**
+ * @param {SweetAlert2} instance
+ * @param {Function} didClose
+ */
 const triggerDidCloseAndDispose = (instance, didClose) => {
   setTimeout(() => {
     if (typeof didClose === 'function') {
+      // @ts-ignore
       didClose.bind(instance.params)()
     }
+    // @ts-ignore
     instance._destroy()
   })
 }

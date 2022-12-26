@@ -103,7 +103,6 @@ NSFW Sponsors
 <td align="center"><a href="https://cutesexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/cutesexdoll.jpg" width="80"><br>Cute Sex Doll</a></td>
 <td align="center"><a href="https://toyhero.com/"><img src="https://sweetalert2.github.io/images/sponsors/toyhero.png" width="80"><br>Adult Toys</a></td>
 <td align="center"><a href="https://www.sexysexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexysexdoll.png" width="80"><br>Sexy Sex Doll</a></td>
-<td align="center"><a href="https://www.dollnight.com/cheap-sex-doll"><img src="https://sweetalert2.github.io/images/sponsors/dollnight.jpeg" width="80"><br>Cheap Sex Doll</a></td>
 </tr>
 </table>
 <table>

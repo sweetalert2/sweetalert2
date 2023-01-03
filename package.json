@@ -1,6 +1,6 @@
 {
   "name": "freealert",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": "ntj125app/freealert",
   "description": "This is a fork. This repo/package is for those looking for fix with vulnerabilities warning.",
   "main": "dist/sweetalert2.all.js",
@@ -46,8 +46,8 @@
     "Johan Fagerberg (https://github.com/birjolaxew)"
   ],
   "keywords": [
-    "sweetalert",
-    "sweetalert2",
+    "sweetalert-fork",
+    "sweetalert2-fork",
     "alert",
     "modal",
     "popup",

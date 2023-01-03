@@ -2,8 +2,8 @@ name: Build Package
 
 on:
   push:
-    branches:
-      - 'main'
+    tags:
+      - 'v*.*.*'
   workflow_dispatch:
 
 jobs:
@@ -15,8 +15,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        env:
-          persist-credentials: false
 
       - uses: actions/setup-node@v3
         with:
@@ -52,14 +50,7 @@ jobs:
           tsc --lib dom,es6 --noEmit test/ts/dist-sweetalert2.ts sweetalert2.d.ts
           tsc --lib dom,es6 --noEmit test/ts/src-sweetalert2.ts sweetalert2.d.ts
 
-      - name: Run automated release process with semantic-release
-        if: github.ref_name == 'main'
-        uses: cycjimmy/semantic-release-action@v3
-        with:
-          extra_plugins: |
-            @semantic-release/changelog
-            @semantic-release/git
-            @semantic-release/exec
+      - name: Run NPM Publish
+        run: npm publish
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

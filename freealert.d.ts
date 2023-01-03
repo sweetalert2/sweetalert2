@@ -1,4 +1,4 @@
-declare module 'sweetalert2' {
+declare module 'freealert' {
   /**
    * A namespace inside the default function, containing utility function for controlling the currently-displayed popup.
    *
@@ -15,6 +15,9 @@ declare module 'sweetalert2' {
     /**
      * Function to display a SweetAlert2 popup, with an object of options, all being optional.
      * See the `SweetAlertOptions` interface for the list of accepted fields and values.
+     * 
+     * @param {SweetAlertOptions<T>} options
+     * @returns {Promise<SweetAlertResult<Awaited<T>>>}
      *
      * Example:
      * ```
@@ -30,6 +33,11 @@ declare module 'sweetalert2' {
     /**
      * Function to display a simple SweetAlert2 popup.
      *
+     * @param {string} title
+     * @param {string} html
+     * @param {SweetAlertIcon} icon
+     * @returns {Promise<SweetAlertResult<Awaited<T>>>}
+     * 
      * Example:
      * ```
      * Swal.fire('The Internet?', 'That thing is still around?', 'question');
@@ -39,7 +47,8 @@ declare module 'sweetalert2' {
 
     /**
      * Reuse configuration by creating a `Swal` instance.
-     *
+     * 
+     * @returns {typeof Swal}
      * Example:
      * ```
      * const Toast = Swal.mixin({
@@ -50,13 +59,14 @@ declare module 'sweetalert2' {
      * })
      * Toast.fire('Something interesting happened', '', 'info')
      * ```
-     *
-     * @param options the default options to set for this instance.
+     * @param {any} options the default options to set for this instance.
      */
     function mixin(options: SweetAlertOptions): typeof Swal
 
     /**
      * Determines if a popup is shown.
+     * 
+     * @returns {boolean}
      */
     function isVisible(): boolean
 
@@ -70,94 +80,129 @@ declare module 'sweetalert2' {
      *   icon: 'error'
      * })
      * ```
+     *
+     * @param {Pick<SweetAlertOptions, SweetAlertUpdatableParameters>} options
+     * @returns {void}
      */
     function update(options: Pick<SweetAlertOptions, SweetAlertUpdatableParameters>): void
 
     /**
      * Closes the currently open SweetAlert2 popup programmatically.
      *
-     * @param result The promise originally returned by `Swal.fire()` will be resolved with this value.
+     * @param {Partial<SweetAlertResult>} result The promise originally returned by `Swal.fire()` will be resolved with this value.
      * If no object is given, the promise is resolved with an empty `SweetAlertResult` object.
      */
     function close(result?: Partial<SweetAlertResult>): void
 
     /**
      * Gets the popup container which contains the backdrop and the popup itself.
+     * 
+     * @returns {HTMLElement | null}
      */
     function getContainer(): HTMLElement | null
 
     /**
      * Gets the popup.
+     * 
+     * @returns {HTMLElement | null}
      */
     function getPopup(): HTMLElement | null
 
     /**
      * Gets the popup title.
+     * 
+     * @returns {HTMLElement | null}
      */
     function getTitle(): HTMLElement | null
 
     /**
      * Gets progress steps.
+     * 
+     * @returns {HTMLElement | null}
      */
     function getProgressSteps(): HTMLElement | null
 
     /**
      * Gets the DOM element where the `html`/`text` parameter is rendered to.
+     * 
+     * @returns {HTMLElement | null}
      */
     function getHtmlContainer(): HTMLElement | null
 
     /**
      * Gets the image.
+     * 
+     * @returns {HTMLElement | null}
      */
     function getImage(): HTMLElement | null
 
     /**
      * Gets the close button.
+     * 
+     * @returns {HTMLButtonElement | null}
      */
     function getCloseButton(): HTMLButtonElement | null
 
     /**
      * Gets the icon.
+     * 
+     * @returns {HTMLElement | null}
      */
     function getIcon(): HTMLElement | null
 
     /**
      * Gets the icon content (without border).
+     * 
+     * @returns {HTMLElement | null}
      */
     function getIconContent(): HTMLElement | null
 
     /**
      * Gets the "Confirm" button.
+     * 
+     * @returns {HTMLButtonElement | null}
      */
     function getConfirmButton(): HTMLButtonElement | null
 
     /**
      * Gets the "Deny" button.
+     * 
+     * @returns {HTMLButtonElement | null}
      */
     function getDenyButton(): HTMLButtonElement | null
 
     /**
      * Gets the "Cancel" button.
+     * 
+     * @returns {HTMLButtonElement | null}
      */
     function getCancelButton(): HTMLButtonElement | null
 
     /**
      * Gets actions (buttons) wrapper.
+     * 
+     * @returns {HTMLElement | null}
      */
     function getActions(): HTMLElement | null
 
     /**
      * Gets the popup footer.
+     * 
+     * @returns {HTMLElement | null}
      */
     function getFooter(): HTMLElement | null
 
     /**
      * Gets the timer progress bar (see the `timerProgressBar` param).
+     * 
+     * @returns {HTMLElement | null}
      */
     function getTimerProgressBar(): HTMLElement | null
 
     /**
      * Gets all focusable elements in the popup.
+     * 
+     * @returns {readonly HTMLElement[]}
      */
     function getFocusableElements(): readonly HTMLElement[]
 
@@ -179,6 +224,8 @@ declare module 'sweetalert2' {
      * ```
      * Swal.showLoading(Swal.getDenyButton())
      * ```
+     * 
+     * @param {HTMLButtonElement | null} buttonToReplace
      */
     function showLoading(buttonToReplace: HTMLButtonElement | null): void
 
@@ -189,6 +236,8 @@ declare module 'sweetalert2' {
 
     /**
      * Determines if popup is in the loading state.
+     * 
+     * @returns {boolean}
      */
     function isLoading(): boolean
 
@@ -210,7 +259,7 @@ declare module 'sweetalert2' {
     /**
      * Shows a validation message.
      *
-     * @param validationMessage The validation message.
+     * @param {string} validationMessage The validation message.
      */
     function showValidationMessage(validationMessage: string): void
 
@@ -221,6 +270,8 @@ declare module 'sweetalert2' {
 
     /**
      * Gets the input DOM node, this method works with input parameter.
+     * 
+     * @returns {HTMLInputElement | null}
      */
     function getInput(): HTMLInputElement | null
 
@@ -236,30 +287,40 @@ declare module 'sweetalert2' {
 
     /**
      * Gets the validation message container.
+     * 
+     * @returns {HTMLElement | null}
      */
     function getValidationMessage(): HTMLElement | null
 
     /**
      * If `timer` parameter is set, returns number of milliseconds of timer remained.
      * Otherwise, returns undefined.
+     * 
+     * @returns {number | undefined}
      */
     function getTimerLeft(): number | undefined
 
     /**
      * Stop timer. Returns number of milliseconds of timer remained.
      * If `timer` parameter isn't set, returns `undefined`.
+     * 
+     * @returns {number | undefined}
      */
     function stopTimer(): number | undefined
 
     /**
      * Resume timer. Returns number of milliseconds of timer remained.
      * If `timer` parameter isn't set, returns `undefined`.
+     * 
+     * @returns {number | undefined}
      */
     function resumeTimer(): number | undefined
 
     /**
      * Toggle timer. Returns number of milliseconds of timer remained.
      * If `timer` parameter isn't set, returns `undefined`.
+     * 
+     * @returns {number | undefined}
      */
     function toggleTimer(): number | undefined
 
@@ -267,6 +328,8 @@ declare module 'sweetalert2' {
      * Check if timer is running. Returns true if timer is running,
      * and false is timer is paused / stopped.
      * If `timer` parameter isn't set, returns `undefined`.
+     * 
+     * @returns {boolean | undefined}
      */
     function isTimerRunning(): boolean | undefined
 
@@ -274,21 +337,24 @@ declare module 'sweetalert2' {
      * Increase timer. Returns number of milliseconds of an updated timer.
      * If `timer` parameter isn't set, returns `undefined`.
      *
-     * @param n The number of milliseconds to add to the currect timer
+     * @param {number} n The number of milliseconds to add to the currect timer
+     * @returns {number | undefined} The number of milliseconds of an updated timer or undefined if timer is not running     * 
      */
     function increaseTimer(n: number): number | undefined
 
     /**
      * Determines if a given parameter name is valid.
      *
-     * @param paramName The parameter to check
+     * @param {string} paramName The parameter to check
+     * @returns {paramName is keyof SweetAlertOptions} True if the parameter is valid, false otherwise
      */
     function isValidParameter(paramName: string): paramName is keyof SweetAlertOptions
 
     /**
      * Determines if a given parameter name is valid for `Swal.update()` method.
      *
-     * @param paramName The parameter to check
+     * @param {string} paramName The parameter to check
+     * @returns {paramName is SweetAlertUpdatableParameters} True if the parameter is valid, false otherwise
      */
     function isUpdatableParameter(paramName: string): paramName is SweetAlertUpdatableParameters
 
@@ -301,7 +367,8 @@ declare module 'sweetalert2' {
      * Swal.argsToParams([{ title: 'title', text: 'text' }]); //=> { title: 'title', text: 'text' }
      * ```
      *
-     * @param params The array of arguments to normalize.
+     * @param {SweetAlertArrayOptions | readonly [SweetAlertOptions<T>]} params The array of arguments to normalize.
+     * @returns {SweetAlertOptions<T>} The normalized object of type SweetAlertOptions.
      */
     function argsToParams<T>(params: SweetAlertArrayOptions | readonly [SweetAlertOptions<T>]): SweetAlertOptions<T>
 
@@ -1172,16 +1239,16 @@ declare module 'sweetalert2' {
   export default Swal
 }
 
-declare module 'sweetalert2/*/sweetalert2.js' {
-  export * from 'sweetalert2'
+declare module 'freealert/*/sweetalert2.js' {
+  export * from 'freealert'
   // "export *" does not matches the default export, so do it explicitly.
-  export { default } from 'sweetalert2' // eslint-disable-line
+  export { default } from 'freealert' // eslint-disable-line
 }
 
-declare module 'sweetalert2/*/sweetalert2.all.js' {
-  export * from 'sweetalert2'
+declare module 'freealert/*/sweetalert2.all.js' {
+  export * from 'freealert'
   // "export *" does not matches the default export, so do it explicitly.
-  export { default } from 'sweetalert2' // eslint-disable-line
+  export { default } from 'freealert' // eslint-disable-line
 }
 
 /**

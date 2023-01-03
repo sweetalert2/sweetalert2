@@ -1,3 +1,3 @@
 # Sponsors
 
-This for doesn't accept sponsor.
+This fork doesn't accept sponsor.

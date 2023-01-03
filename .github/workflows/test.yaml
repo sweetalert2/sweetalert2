@@ -1,10 +1,16 @@
-name: Build Package
+name: Test Build Package
 
 on:
   push:
     tags:
       - 'v*.*.*'
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - 'main'
   workflow_dispatch:
+
 
 jobs:
   build-lib: # Steps to build production packages
@@ -49,8 +55,3 @@ jobs:
           tsc --lib dom,es6 --noEmit test/ts/simple-usage.ts
           tsc --lib dom,es6 --noEmit test/ts/dist-sweetalert2.ts freealert.d.ts
           tsc --lib dom,es6 --noEmit test/ts/src-sweetalert2.ts freealert.d.ts
-
-      - name: Run NPM Publish
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

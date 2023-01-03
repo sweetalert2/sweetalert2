@@ -1,6 +1,6 @@
 {
   "name": "freealert",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": "ntj125app/freealert",
   "description": "This is a fork. This repo/package is for those looking for fix with vulnerabilities warning.",
   "main": "dist/sweetalert2.all.js",

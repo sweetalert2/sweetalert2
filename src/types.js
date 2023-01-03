@@ -1,8 +1,8 @@
 /**
- * @typedef { import('sweetalert2').default } SweetAlert2
- * @typedef { import('sweetalert2').SweetAlertOptions } SweetAlertOptions
- * @typedef { import('sweetalert2').SweetAlertIcon } SweetAlertIcon
- * @typedef { import('sweetalert2').SweetAlertInput } SweetAlertInput
+ * @typedef { import('freealert').default } SweetAlert2
+ * @typedef { import('freealert').SweetAlertOptions } SweetAlertOptions
+ * @typedef { import('freealert').SweetAlertIcon } SweetAlertIcon
+ * @typedef { import('freealert').SweetAlertInput } SweetAlertInput
  */
 
 /**

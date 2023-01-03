@@ -60,9 +60,11 @@ const showInput = (params) => {
   dom.show(inputContainer)
 
   // input autofocus
-  setTimeout(() => {
-    dom.focusInput(input)
-  })
+  if (params.inputAutoFocus) {
+    setTimeout(() => {
+      dom.focusInput(input)
+    })
+  }
 }
 
 /**

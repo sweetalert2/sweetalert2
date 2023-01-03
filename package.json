@@ -1,9 +1,8 @@
 {
-  "name": "sweetalert2",
+  "name": "freealert",
   "version": "11.6.16",
-  "repository": "sweetalert2/sweetalert2",
-  "homepage": "https://sweetalert2.github.io/",
-  "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
+  "repository": "ntj125app/freealert",
+  "description": "This is a fork. This repo/package is for those looking for fix with vulnerabilities warning.",
   "main": "dist/sweetalert2.all.js",
   "browser": "dist/sweetalert2.all.js",
   "module": "dist/sweetalert2.all.js",
@@ -65,10 +64,6 @@
     "check-types": "npx -p typescript@latest tsc --noEmit -p jsconfig.json",
     "cypress:open": "cypress open"
   },
-  "funding": {
-    "type": "individual",
-    "url": "https://github.com/sponsors/limonte"
-  },
   "prettier": {
     "printWidth": 120,
     "semi": false,
@@ -76,6 +71,6 @@
     "quoteProps": "consistent",
     "trailingComma": "es5"
   },
-  "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
+  "bugs": "https://github.com/ntj125app/freealert/issues",
   "license": "MIT"
 }

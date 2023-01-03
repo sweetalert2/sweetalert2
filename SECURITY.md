@@ -9,4 +9,4 @@
 
 ## Reporting a Vulnerability
 
-https://github.com/sweetalert2/sweetalert2/issues or sweetalert2@gmail.com
+https://github.com/ntj125app/freealert/issues

@@ -1,8 +1,8 @@
-import { isVisible } from '../../../src/utils/dom'
-import { $, Swal, SwalWithoutAnimation, TIMEOUT, dispatchCustomEvent, isHidden, triggerKeydownEvent } from '../../utils'
-import defaultInputValidators from '../../../src/utils/defaultInputValidators'
+import { isVisible } from '../../src/utils/dom'
+import { $, Swal, SwalWithoutAnimation, TIMEOUT, dispatchCustomEvent, isHidden, triggerKeydownEvent } from '../utils'
+import defaultInputValidators from '../../src/utils/defaultInputValidators'
 
-describe('Input', () => {
+describe('Inputs', () => {
   it('should throw console error about unexpected input type', () => {
     const spy = cy.spy(console, 'error')
     Swal.fire({ input: 'invalid-input-type' })
@@ -27,7 +27,6 @@ describe('Input', () => {
   it('input textarea', (done) => {
     Swal.fire({
       input: 'textarea',
-      inputAutoTrim: false,
     }).then((result) => {
       expect(result.value).to.equal('hola!')
       done()
@@ -36,8 +35,45 @@ describe('Input', () => {
     // Enter should not submit but put a newline to the textarea
     triggerKeydownEvent(Swal.getInput(), 'Enter')
 
-    Swal.getInput().value = 'hola!'
+    Swal.getInput().value = ' hola! '
     Swal.clickConfirm()
+  })
+
+  it('input textarea + inputAutoTrim: false', (done) => {
+    Swal.fire({
+      input: 'textarea',
+      inputAutoTrim: false,
+    }).then((result) => {
+      expect(result.value).to.equal(' hola! ')
+      done()
+    })
+
+    // Enter should not submit but put a newline to the textarea
+    triggerKeydownEvent(Swal.getInput(), 'Enter')
+
+    Swal.getInput().value = ' hola! '
+    Swal.clickConfirm()
+  })
+
+  it('inputAutoFocus: true (default)', (done) => {
+    Swal.fire({
+      input: 'textarea',
+    })
+    setTimeout(() => {
+      expect(document.activeElement).to.equal(Swal.getInput())
+      done()
+    })
+  })
+
+  it('inputAutoFocus: false', (done) => {
+    Swal.fire({
+      input: 'textarea',
+      inputAutoFocus: false,
+    })
+    setTimeout(() => {
+      expect(document.activeElement).to.equal(Swal.getConfirmButton())
+      done()
+    })
   })
 
   it('input email + built-in email validation', (done) => {
@@ -519,5 +555,133 @@ describe('Validation', () => {
       expect(data).to.equal('Invalid URL')
       done()
     })
+  })
+})
+
+describe('inputAttributes', () => {
+  it('input text w/ placeholder', () => {
+    Swal.fire({
+      input: 'text',
+      inputAttributes: {
+        placeholder: 'placeholder text',
+      },
+    })
+    expect(Swal.getInput().value).to.equal('')
+    expect(Swal.getInput().placeholder).to.equal('placeholder text')
+  })
+
+  it('input file w/ placeholder', () => {
+    Swal.fire({
+      input: 'file',
+      inputAttributes: {
+        placeholder: 'placeholder text',
+      },
+    })
+    expect(Swal.getInput().value).to.equal('')
+    expect(Swal.getInput().placeholder).to.equal('placeholder text')
+  })
+
+  it('input textarea w/ placeholder', () => {
+    Swal.fire({
+      input: 'textarea',
+      inputAttributes: {
+        placeholder: 'Provide your input here',
+      },
+    })
+    expect(Swal.getInput().value).to.equal('')
+    expect(Swal.getInput().placeholder).to.equal('Provide your input here')
+  })
+})
+
+describe('inputValue', () => {
+  it('inputValue number', () => {
+    Swal.fire({ input: 'text', inputValue: 333 })
+    expect(Swal.getInput().value).to.equal('333')
+  })
+
+  it('inputValue with object containing toPromise', (done) => {
+    Swal.fire({
+      input: 'text',
+      inputValue: {
+        toPromise: () => Promise.resolve('test'),
+      },
+      didOpen: () => {
+        setTimeout(() => {
+          expect(Swal.getInput().value).to.equal('test')
+          done()
+        }, TIMEOUT)
+      },
+    })
+  })
+
+  it('inputValue as a Promise', (done) => {
+    const spy = cy.spy(console, 'warn')
+    const inputTypes = ['text', 'email', 'number', 'tel', 'textarea']
+    const value = '1.1 input value'
+    const inputValue = new Promise((resolve) => {
+      resolve('1.1 input value')
+    })
+
+    function showPopupWithInput() {
+      const input = inputTypes.pop()
+      SwalWithoutAnimation.fire({
+        input,
+        inputValue,
+        didOpen: () => {
+          setTimeout(() => {
+            expect(Swal.getInput().value).to.equal(input === 'number' ? parseFloat(value).toString() : value)
+            if (inputTypes.length) {
+              showPopupWithInput()
+            } else {
+              done()
+            }
+          }, TIMEOUT)
+        },
+      })
+    }
+    showPopupWithInput()
+    expect(spy.notCalled).to.be.true
+  })
+
+  it('should throw console error when inputValue as a Promise rejects', (done) => {
+    const spy = cy.spy(console, 'error')
+    SwalWithoutAnimation.fire({
+      input: 'text',
+      inputValue: new Promise((resolve, reject) => {
+        reject(new Error('input promise rejected'))
+      }),
+      didOpen: () => {
+        setTimeout(() => {
+          expect(spy.calledWith('SweetAlert2: Error in inputValue promise: Error: input promise rejected')).to.be.true
+          done()
+        }, TIMEOUT)
+      },
+    })
+  })
+
+  it('should throw console warning about unexpected type of inputValue for input: text', () => {
+    const spy = cy.spy(console, 'warn')
+    Swal.fire({ input: 'text', inputValue: undefined })
+    expect(
+      spy.calledWith(
+        'SweetAlert2: Unexpected type of inputValue! Expected "string", "number" or "Promise", got "undefined"'
+      )
+    ).to.be.true
+  })
+
+  it('should throw console warning about unexpected type of inputValue for input: textarea', () => {
+    const spy = cy.spy(console, 'warn')
+    Swal.fire({ input: 'textarea', inputValue: {} })
+    expect(
+      spy.calledWith(
+        'SweetAlert2: Unexpected type of inputValue! Expected "string", "number" or "Promise", got "object"'
+      )
+    ).to.be.true
+  })
+
+  it('inputValue can be null', () => {
+    const spy = cy.spy(console, 'error')
+    Swal.fire({ input: 'select', inputOptions: { a: 'a' }, inputValue: null })
+    expect(spy.notCalled).to.be.true
   })
 })

@@ -1021,6 +1021,14 @@ declare module 'sweetalert2' {
     inputOptions?: SyncOrAsync<ReadonlyMap<string, string> | Record<string, any>>
 
     /**
+     * Automatically focus the input when popup is shown.
+     * Set this parameter to `false` to disable auto-focusing.
+     *
+     * @default true
+     */
+    inputAutoFocus?: boolean
+
+    /**
      * Automatically remove whitespaces from both ends of a result string.
      * Set this parameter to `false` to disable auto-trimming.
      *

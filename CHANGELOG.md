@@ -1,3 +1,10 @@
+# [11.7.0](https://github.com/sweetalert2/sweetalert2/compare/v11.6.16...v11.7.0) (2023-01-11)
+
+
+### Features
+
+* add inputAutoFocus param ([#2581](https://github.com/sweetalert2/sweetalert2/issues/2581)) ([bcdb60c](https://github.com/sweetalert2/sweetalert2/commit/bcdb60c3a7e89846f74cff346004a28a2c0ea169))
+
 ## [11.6.16](https://github.com/sweetalert2/sweetalert2/compare/v11.6.15...v11.6.16) (2022-12-20)
 
 

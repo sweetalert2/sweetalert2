@@ -301,6 +301,5 @@ export const stopTimerProgressBar = () => {
   timerProgressBar.style.width = '100%'
   const timerProgressBarFullWidth = parseInt(window.getComputedStyle(timerProgressBar).width)
   const timerProgressBarPercent = (timerProgressBarWidth / timerProgressBarFullWidth) * 100
-  timerProgressBar.style.removeProperty('transition')
   timerProgressBar.style.width = `${timerProgressBarPercent}%`
 }

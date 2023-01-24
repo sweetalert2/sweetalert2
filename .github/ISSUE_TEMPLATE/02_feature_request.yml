@@ -1,0 +1,24 @@
+name: Feature request
+description: Wouldn’t it be nice if SweetAlert2 could ...
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this feature request!
+  - type: textarea
+    id: motivation
+    attributes:
+      label: New feature motivation
+      description: Describe the context, the use-case and the advantages of the feature request
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: New feature description
+      description: Optionally describe the functional changes that would have to be made in SweetAlert2
+  - type: textarea
+    id: implementation
+    attributes:
+      label: New feature implementation
+      description: Optionally describe the technical changes to be made in SweetAlert2

@@ -1,3 +1,10 @@
+## [11.7.1](https://github.com/sweetalert2/sweetalert2/compare/v11.7.0...v11.7.1) (2023-01-24)
+
+
+### Bug Fixes
+
+* **types:** showLoading() ([#2595](https://github.com/sweetalert2/sweetalert2/issues/2595)) ([6b4aa39](https://github.com/sweetalert2/sweetalert2/commit/6b4aa39bec078d004d28009a6a51933193b862b9))
+
 # [11.7.0](https://github.com/sweetalert2/sweetalert2/compare/v11.6.16...v11.7.0) (2023-01-11)
 
 

@@ -67,14 +67,22 @@ export const getProgressSteps = () => elementByClass(swalClasses['progress-steps
 export const getValidationMessage = () => elementByClass(swalClasses['validation-message'])
 
 /**
- * @returns {HTMLElement | null}
+ * @returns {HTMLButtonElement | null}
  */
-export const getConfirmButton = () => elementBySelector(`.${swalClasses.actions} .${swalClasses.confirm}`)
+export const getConfirmButton = () =>
+  /** @type {HTMLButtonElement} */ (elementBySelector(`.${swalClasses.actions} .${swalClasses.confirm}`))
 
 /**
- * @returns {HTMLElement | null}
+ * @returns {HTMLButtonElement | null}
  */
-export const getDenyButton = () => elementBySelector(`.${swalClasses.actions} .${swalClasses.deny}`)
+export const getCancelButton = () =>
+  /** @type {HTMLButtonElement} */ (elementBySelector(`.${swalClasses.actions} .${swalClasses.cancel}`))
+
+/**
+ * @returns {HTMLButtonElement | null}
+ */
+export const getDenyButton = () =>
+  /** @type {HTMLButtonElement} */ (elementBySelector(`.${swalClasses.actions} .${swalClasses.deny}`))
 
 /**
  * @returns {HTMLElement | null}
@@ -85,11 +93,6 @@ export const getInputLabel = () => elementByClass(swalClasses['input-label'])
  * @returns {HTMLElement | null}
  */
 export const getLoader = () => elementBySelector(`.${swalClasses.loader}`)
-
-/**
- * @returns {HTMLElement | null}
- */
-export const getCancelButton = () => elementBySelector(`.${swalClasses.actions} .${swalClasses.cancel}`)
 
 /**
  * @returns {HTMLElement | null}

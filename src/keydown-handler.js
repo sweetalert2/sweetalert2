@@ -172,10 +172,9 @@ const handleArrows = (key) => {
   const confirmButton = dom.getConfirmButton()
   const denyButton = dom.getDenyButton()
   const cancelButton = dom.getCancelButton()
-  if (
-    document.activeElement instanceof HTMLElement &&
-    ![confirmButton, denyButton, cancelButton].includes(document.activeElement)
-  ) {
+  /** @type HTMLElement[] */
+  const buttons = [confirmButton, denyButton, cancelButton]
+  if (document.activeElement instanceof HTMLElement && !buttons.includes(document.activeElement)) {
     return
   }
   const sibling = arrowKeysNextButton.includes(key) ? 'nextElementSibling' : 'previousElementSibling'

@@ -5,6 +5,8 @@ import * as dom from '../utils/dom/index.js'
 /**
  * Shows loader (spinner), this is useful with AJAX requests.
  * By default the loader be shown instead of the "Confirm" button.
+ *
+ * @param {HTMLButtonElement} [buttonToReplace]
  */
 const showLoading = (buttonToReplace) => {
   let popup = dom.getPopup()
@@ -26,6 +28,10 @@ const showLoading = (buttonToReplace) => {
   popup.focus()
 }
 
+/**
+ * @param {HTMLElement} popup
+ * @param {HTMLButtonElement} [buttonToReplace]
+ */
 const replaceButton = (popup, buttonToReplace) => {
   const actions = dom.getActions()
   const loader = dom.getLoader()

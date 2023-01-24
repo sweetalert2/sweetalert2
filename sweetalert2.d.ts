@@ -180,7 +180,7 @@ declare module 'sweetalert2' {
      * Swal.showLoading(Swal.getDenyButton())
      * ```
      */
-    function showLoading(buttonToReplace: HTMLButtonElement | null): void
+    function showLoading(buttonToReplace?: HTMLButtonElement): void
 
     /**
      * Hides loader and shows back the button which was hidden by .showLoading()

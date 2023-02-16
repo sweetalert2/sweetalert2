@@ -24,7 +24,7 @@
     "prettier": "^2.7.1",
     "rollup": "^3.2.2",
     "sass": "^1.55.0",
-    "stylelint": "^14.14.0",
+    "stylelint": "^15.0.0",
     "typescript": "4.0.2",
     "vite": "^4.0.0",
     "zx": "^7.1.1"

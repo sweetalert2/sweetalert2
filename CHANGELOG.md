@@ -1,3 +1,10 @@
+## [11.7.2](https://github.com/sweetalert2/sweetalert2/compare/v11.7.1...v11.7.2) (2023-02-17)
+
+
+### Bug Fixes
+
+* add types to close.js ([#2576](https://github.com/sweetalert2/sweetalert2/issues/2576)) ([d2bd860](https://github.com/sweetalert2/sweetalert2/commit/d2bd860cd1767bca837a7cf90506a1aa900ad44c))
+
 ## [11.7.1](https://github.com/sweetalert2/sweetalert2/compare/v11.7.0...v11.7.1) (2023-01-24)
 
 

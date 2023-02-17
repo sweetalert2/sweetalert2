@@ -136,7 +136,7 @@ export const handleAwaitingPromise = (instance) => {
 
 /**
  * @param {any} resolveValue
- * @returns {import('sweetalert2').SweetAlertResult}
+ * @returns {SweetAlertResult}
  */
 const prepareResolveValue = (resolveValue) => {
   // When user calls Swal.close()

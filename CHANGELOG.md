@@ -1,3 +1,10 @@
+## [11.7.3](https://github.com/sweetalert2/sweetalert2/compare/v11.7.2...v11.7.3) (2023-02-28)
+
+
+### Bug Fixes
+
+* add types to fire.js ([#2603](https://github.com/sweetalert2/sweetalert2/issues/2603)) ([86a4753](https://github.com/sweetalert2/sweetalert2/commit/86a4753f9b4072539f78ee57206aa77e3ce86ae0))
+
 ## [11.7.2](https://github.com/sweetalert2/sweetalert2/compare/v11.7.1...v11.7.2) (2023-02-17)
 
 

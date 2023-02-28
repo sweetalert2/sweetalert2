@@ -67,6 +67,13 @@ NSFW Sponsors
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
+<td align="center"><a href="https://celebexposed.com/"><img src="https://sweetalert2.github.io/images/sponsors/celebexposed.jpg" width="80"><br>CelebExposed</a></td>
+<td align="center"><a href="https://escortsear.ch/"><img src="https://sweetalert2.github.io/images/sponsors/escortsearch.jpg" width="80"><br>EscortSearch</a></td>
+</tr>
+</table>
+
+<table>
+<tr>
 <td align="center"><a href="https://www.hxdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/hxdoll.png" width="80"><br>HXDOLL</a></td>
 <td align="center"><a href="https://readysetcam.com/"><img src="https://sweetalert2.github.io/images/sponsors/readysetcam.png" width="80"><br>Ready Set Cam</a></td>
 <td align="center"><a href="https://www.onahole.com/"><img src="https://sweetalert2.github.io/images/sponsors/onahole.png" width="80"><br>hentai sex toys</a></td>

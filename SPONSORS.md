@@ -21,6 +21,13 @@ For all questions related to sponsorship please contact me via email sweetalert2
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
+<td align="center"><a href="https://celebexposed.com/"><img src="https://sweetalert2.github.io/images/sponsors/celebexposed.jpg" width="80"><br>CelebExposed</a></td>
+<td align="center"><a href="https://escortsear.ch/"><img src="https://sweetalert2.github.io/images/sponsors/escortsearch.jpg" width="80"><br>EscortSearch</a></td>
+</tr>
+</table>
+
+<table>
+<tr>
 <td align="center"><a href="https://www.serpempire.com/"><img src="https://sweetalert2.github.io/images/sponsors/serpempire.png" width="80"><br>SERP Empire</a>
 <td align="center"><a href="https://www.borrow.fi/luottotili/"><img src="https://sweetalert2.github.io/images/sponsors/borrowfi.png" width="80"><br>luottotili</a>
 <td align="center"><a href="https://mybettingcanada.com/"><img src="https://sweetalert2.github.io/images/sponsors/mybettingcanada.png" width="80"><br>My Betting Canada</a>

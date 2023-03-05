@@ -39,7 +39,6 @@ For all questions related to sponsorship please contact me via email sweetalert2
 <table>
 <tr>
 <td align="center"><a href="https://kasynoonlineblik.pl/"><img src="https://sweetalert2.github.io/images/sponsors/kasynoonlineblik.png" width="80"><br>Kasyno Online Blik</a>
-<td align="center"><a href="https://w88yesbet.com/"><img src="https://sweetalert2.github.io/images/sponsors/w88yesbet.png" width="80"><br>W88YES</a>
 <td align="center"><a href="https://www.realspyapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/realspyapps.jpeg" width="80"><br>Real Spy Apps</a>
 <td align="center"><a href="https://www.istartips.com/"><img src="https://sweetalert2.github.io/images/sponsors/istartips.png" width="80"><br>iStarTips</a>
 </tr>

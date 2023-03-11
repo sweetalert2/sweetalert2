@@ -33,17 +33,13 @@ For all questions related to sponsorship please contact me via email sweetalert2
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
 <td align="center"><a href="https://www.serpempire.com/"><img src="https://sweetalert2.github.io/images/sponsors/serpempire.png" width="80"><br>SERP Empire</a>
 <td align="center"><a href="https://www.borrow.fi/luottotili/"><img src="https://sweetalert2.github.io/images/sponsors/borrowfi.png" width="80"><br>luottotili</a>
-</tr>
-</table>
-<table>
-<tr>
 <td align="center"><a href="https://www.realspyapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/realspyapps.jpeg" width="80"><br>Real Spy Apps</a>
 <td align="center"><a href="https://www.istartips.com/"><img src="https://sweetalert2.github.io/images/sponsors/istartips.png" width="80"><br>iStarTips</a>
-<td align="center"><a href="https://www.evguru.com.my/"><img src="https://sweetalert2.github.io/images/sponsors/evguru.png" width="80"><br>EvGuru EV Chargers</a></td>
 </tr>
 </table>
 <table>
 <tr>
+<td align="center"><a href="https://www.evguru.com.my/"><img src="https://sweetalert2.github.io/images/sponsors/evguru.png" width="80"><br>EvGuru EV Chargers</a></td>
 <td align="center"><a href="https://celltrackingapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/celltrackingapps.png" width="80"><br>Phone Tracking Apps</a></td>
 <td align="center"><a href="https://www.mybitcoinslots.com/"><img src="https://sweetalert2.github.io/images/sponsors/mybitcoinslots.png" width="80"><br>My Bitcoin slots</a></td>
 <td align="center"><a href="https://www.vegega.com/"><img src="https://sweetalert2.github.io/images/sponsors/vegega.jpeg" width="80"><br>Metal Raised Garden Bed</a></td>
@@ -64,11 +60,11 @@ NSFW Sponsors
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
+<td align="center"><a href="https://www.bestblowjobmachines.com/"><img src="https://sweetalert2.github.io/images/sponsors/best-blowjob-machines.jpg" width="80"><br>Best Blowjob Machines</a></td>
 <td align="center"><a href="https://celebexposed.com/"><img src="https://sweetalert2.github.io/images/sponsors/celebexposed.jpg" width="80"><br>CelebExposed</a></td>
 <td align="center"><a href="https://escortsear.ch/"><img src="https://sweetalert2.github.io/images/sponsors/escortsearch.jpg" width="80"><br>EscortSearch</a></td>
 </tr>
 </table>
-
 <table>
 <tr>
 <td align="center"><a href="https://www.hxdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/hxdoll.png" width="80"><br>HXDOLL</a></td>
@@ -132,11 +128,6 @@ NSFW Sponsors
 <td align="center"><a href="https://vsdoll.net/"><img src="https://sweetalert2.github.io/images/sponsors/vsdoll.png" width="80"><br>VSDoll</a></td>
 <td align="center"><a href="https://sexangelbaby.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexangelbaby.png" width="80"><br>SexAngelbaby</a></td>
 <td align="center"><a href="https://www.mysextoyguide.com/"><img src="https://sweetalert2.github.io/images/sponsors/my-sex-toy-guide.jpg" width="80"><br>My Sex Toy Guide</a></td>
-</tr>
-</table>
-<table>
-<tr>
-<td align="center"><a href="https://www.bestblowjobmachines.com/"><img src="https://sweetalert2.github.io/images/sponsors/best-blowjob-machines.jpg" width="80"><br>Best Blowjob Machines</a></td>
 <td align="center"><a href="https://sextoycollective.com/"><img src="https://sweetalert2.github.io/images/sponsors/sextoycollective.jpg" width="80"><br>STC</a></td>
 <td align="center"><a href="https://doctorclimax.com/"><img src="https://sweetalert2.github.io/images/sponsors/doctorclimax.png" width="80"><br>DoctorClimax</a></td>
 </tr>

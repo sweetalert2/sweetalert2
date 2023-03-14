@@ -31,6 +31,7 @@ For all questions related to sponsorship please contact me via email sweetalert2
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
+<td align="center"><a href="https://www.zezelife.com/"><img src="https://sweetalert2.github.io/images/sponsors/zezelife.png" width="80"><br>Cat Tree</a>
 <td align="center"><a href="https://www.serpempire.com/"><img src="https://sweetalert2.github.io/images/sponsors/serpempire.png" width="80"><br>SERP Empire</a>
 <td align="center"><a href="https://www.borrow.fi/luottotili/"><img src="https://sweetalert2.github.io/images/sponsors/borrowfi.png" width="80"><br>luottotili</a>
 <td align="center"><a href="https://www.realspyapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/realspyapps.jpeg" width="80"><br>Real Spy Apps</a>
@@ -70,7 +71,6 @@ NSFW Sponsors
 <td align="center"><a href="https://www.hxdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/hxdoll.png" width="80"><br>HXDOLL</a></td>
 <td align="center"><a href="https://readysetcam.com/"><img src="https://sweetalert2.github.io/images/sponsors/readysetcam.png" width="80"><br>Ready Set Cam</a></td>
 <td align="center"><a href="https://www.onahole.com/"><img src="https://sweetalert2.github.io/images/sponsors/onahole.png" width="80"><br>hentai sex toys</a></td>
-<td align="center"><a href="https://www.nakedoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/nakedoll.png" width="80"><br>Nake Doll</a></td>
 <td align="center"><a href="https://blowupdollshop.com/inflatable-sex-doll/"><img src="https://sweetalert2.github.io/images/sponsors/blowupdollshop.png" width="80"><br>Inflatable sex doll</a></td>
 </tr>
 </table>

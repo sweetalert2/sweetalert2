@@ -101,7 +101,6 @@ NSFW Sponsors
 <td align="center"><a href="https://www.sensualdolls.com/"><img src="https://sweetalert2.github.io/images/sponsors/sensualdolls.png" width="80"><br>Sensual Dolls</a></td>
 <td align="center"><a href="https://www.bestrealdoll.com/collections/us-warehouse"><img src="https://sweetalert2.github.io/images/sponsors/bestrealdoll.jpeg" width="80"><br>BestRealDoll</a></td>
 <td align="center"><a href="https://www.sexdolltech.com/product-category/us-warehouse/"><img src="https://sweetalert2.github.io/images/sponsors/sexdolltech.jpeg" width="80"><br>SexDollTech</a></td>
-<td align="center"><a href="https://rosewives.com/"><img src="https://sweetalert2.github.io/images/sponsors/rosewives.png" width="80"><br>Rose Wives</a></td>
 </tr>
 </table>
 <table>

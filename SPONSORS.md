@@ -30,7 +30,6 @@ For all questions related to sponsorship please contact me via email sweetalert2
 </table>
 <table>
 <tr>
-<td align="center"><a href="https://www.evguru.com.my/"><img src="https://sweetalert2.github.io/images/sponsors/evguru.png" width="80"><br>EvGuru EV Chargers</a></td>
 <td align="center"><a href="https://celltrackingapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/celltrackingapps.png" width="80"><br>Phone Tracking Apps</a></td>
 <td align="center"><a href="https://www.mybitcoinslots.com/"><img src="https://sweetalert2.github.io/images/sponsors/mybitcoinslots.png" width="80"><br>My Bitcoin slots</a></td>
 <td align="center"><a href="https://www.vegega.com/"><img src="https://sweetalert2.github.io/images/sponsors/vegega.jpeg" width="80"><br>Metal Raised Garden Bed</a></td>
@@ -90,7 +89,6 @@ NSFW Sponsors
 <td align="center"><a href="https://www.buypenispump.com/"><img src="https://sweetalert2.github.io/images/sponsors/buypenispump.png" width="80"><br>penis pump</a></td>
 <td align="center"><a href="https://cutesexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/cutesexdoll.jpg" width="80"><br>Cute Sex Doll</a></td>
 <td align="center"><a href="https://toyhero.com/"><img src="https://sweetalert2.github.io/images/sponsors/toyhero.png" width="80"><br>Adult Toys</a></td>
-<td align="center"><a href="https://www.sexysexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexysexdoll.png" width="80"><br>Sexy Sex Doll</a></td>
 </tr>
 </table>
 <table>

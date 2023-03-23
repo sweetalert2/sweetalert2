@@ -23,6 +23,7 @@ For all questions related to sponsorship please contact me via email sweetalert2
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
 <td align="center"><a href="https://github.com/tiagostutz"><img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80"><br>Tiago de Oliveira Stutz</a></td>
 <td align="center"><a href="https://istar.tips/"><img src="https://sweetalert2.github.io/images/sponsors/istartips.png" width="80"><br>iStarTips</a>
+<td align="center"><a href="https://www.evguru.com.my/"><img src="https://sweetalert2.github.io/images/sponsors/evguru.png" width="80"><br>EvGuru EV Chargers</a></td>
 <td align="center"><a href="https://www.zezelife.com/"><img src="https://sweetalert2.github.io/images/sponsors/zezelife.png" width="80"><br>Cat Tree</a>
 <td align="center"><a href="https://www.serpempire.com/"><img src="https://sweetalert2.github.io/images/sponsors/serpempire.png" width="80"><br>SERP Empire</a>
 </tr>
@@ -49,6 +50,7 @@ NSFW Sponsors
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
+<td align="center"><a href="https://www.sexysexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexysexdoll.png" width="80"><br>Sexy Sex Doll</a></td>
 <td align="center"><a href="https://www.bestblowjobmachines.com/"><img src="https://sweetalert2.github.io/images/sponsors/best-blowjob-machines.jpg" width="80"><br>Best Blowjob Machines</a></td>
 <td align="center"><a href="https://celebexposed.com/"><img src="https://sweetalert2.github.io/images/sponsors/celebexposed.jpg" width="80"><br>CelebExposed</a></td>
 <td align="center"><a href="https://escortsear.ch/"><img src="https://sweetalert2.github.io/images/sponsors/escortsearch.jpg" width="80"><br>EscortSearch</a></td>

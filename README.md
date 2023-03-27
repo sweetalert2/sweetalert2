@@ -117,13 +117,11 @@ NSFW Sponsors
 <td align="center"><a href="https://realsexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/realsexdoll.png" width="80"><br>RealSexDoll</a></td>
 <td align="center"><a href="https://www.yourdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/yourdoll.jpg" width="80"><br>Your Doll</a></td>
 <td align="center"><a href="https://anniesdollhouse.com/"><img src="https://sweetalert2.github.io/images/sponsors/annies-dollhouse.png" width="80"><br>Annie's Dollhouse</a></td>
-<td align="center"><a href="https://sexdollcenter.vip/"><img src="https://sweetalert2.github.io/images/sponsors/sexdollcenter.png" width="80"><br>Sex Doll Center</a></td>
 </tr>
 </table>
 <table>
 <tr>
 <td align="center"><a href="https://vsdoll.net/"><img src="https://sweetalert2.github.io/images/sponsors/vsdoll.png" width="80"><br>VSDoll</a></td>
-<td align="center"><a href="https://sexangelbaby.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexangelbaby.png" width="80"><br>SexAngelbaby</a></td>
 <td align="center"><a href="https://www.mysextoyguide.com/"><img src="https://sweetalert2.github.io/images/sponsors/my-sex-toy-guide.jpg" width="80"><br>My Sex Toy Guide</a></td>
 <td align="center"><a href="https://sextoycollective.com/"><img src="https://sweetalert2.github.io/images/sponsors/sextoycollective.jpg" width="80"><br>STC</a></td>
 <td align="center"><a href="https://doctorclimax.com/"><img src="https://sweetalert2.github.io/images/sponsors/doctorclimax.png" width="80"><br>DoctorClimax</a></td>

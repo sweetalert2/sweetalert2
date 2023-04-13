@@ -18,7 +18,7 @@
     "cypress": "^12.0.0",
     "eslint": "^8.24.0",
     "eslint-plugin-cypress": "^2.12.1",
-    "eslint-plugin-jsdoc": "^40.0.0",
+    "eslint-plugin-jsdoc": "^41.0.0",
     "eslint-plugin-no-unsanitized": "^4.0.1",
     "jquery": "^3.6.1",
     "prettier": "^2.7.1",

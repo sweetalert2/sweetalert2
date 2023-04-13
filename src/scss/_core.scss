@@ -4,10 +4,7 @@
   display: grid;
   position: fixed;
   z-index: 1060;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   box-sizing: border-box;
   grid-template-areas:
     'top-start     top            top-end'
@@ -323,7 +320,6 @@
   background: $swal2-close-button-background;
   color: $swal2-close-button-color;
   font-family: $swal2-close-button-font-family;
-  font-family: monospace;
   font-size: $swal2-close-button-font-size;
   cursor: pointer;
   justify-self: $swal2-close-button-justify-self;

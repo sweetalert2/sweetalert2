@@ -49,7 +49,6 @@ For all questions related to sponsorship please contact me via email sweetalert2
 </table>
 <table>
 <tr>
-<td align="center"><a href="https://phatoil.com/"><img src="https://sweetalert2.github.io/images/sponsors/phatoil.png" width="80"><br>Pure Essential Oil</a></td>
 <td align="center"><a href="https://torcstark.com/"><img src="https://sweetalert2.github.io/images/sponsors/torc-stark.png" width="80"><br>TorcStark</a></td>
 <td align="center"><a href="https://halvinlaina.fi/"><img src="https://sweetalert2.github.io/images/sponsors/halvinlaina.png" width="80"><br>Halvin Laina</a></td>
 </tr>

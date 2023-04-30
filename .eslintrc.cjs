@@ -11,6 +11,7 @@ module.exports = {
     'jsdoc/require-property-description': 0,
     'jsdoc/require-returns-description': 0,
     'jsdoc/no-undefined-types': 0,
+    'jsdoc/tag-lines': 0,
     'jsdoc/valid-types': 0,
   },
   overrides: [

@@ -11,28 +11,24 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
       - name: Install npm dependencies
-        run: yarn install
+        run: npm install
 
       - name: Build
-        run: yarn build
+        run: npm run build
 
       - name: Run linters
-        run: yarn lint
+        run: npm run lint
 
       - name: Check types
-        run: yarn check-types
+        run: npm run check-types
 
       - name: Run tests in Chrome
-        run: yarn test --browser chrome
+        run: npm test -- --browser chrome
 
       - name: Run tests in Firefox
         if: github.ref_name == 'main'
-        run: yarn test --browser firefox
+        run: npm test -- --browser firefox
 
       - name: Test in CommonJS
         run: node test/require-in-commonjs.cjs

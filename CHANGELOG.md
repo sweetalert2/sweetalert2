@@ -1,3 +1,10 @@
+## [11.7.4](https://github.com/sweetalert2/sweetalert2/compare/v11.7.3...v11.7.4) (2023-05-04)
+
+
+### Bug Fixes
+
+* **styles:** set `$swal2-close-button-font-family` to monospace ([d4bef39](https://github.com/sweetalert2/sweetalert2/commit/d4bef3980cb236222e3a81ca1cf49f28db3ad5e1))
+
 ## [11.7.3](https://github.com/sweetalert2/sweetalert2/compare/v11.7.2...v11.7.3) (2023-02-28)
 
 

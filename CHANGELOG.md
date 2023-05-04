@@ -1,3 +1,10 @@
+## [11.7.5](https://github.com/sweetalert2/sweetalert2/compare/v11.7.4...v11.7.5) (2023-05-04)
+
+
+### Bug Fixes
+
+* add types to mixin.js and enable-disable-elements.js ([#2605](https://github.com/sweetalert2/sweetalert2/issues/2605)) ([f77f418](https://github.com/sweetalert2/sweetalert2/commit/f77f41846e87dbc8848b48f82f3b3d5cfb1eedfb))
+
 ## [11.7.4](https://github.com/sweetalert2/sweetalert2/compare/v11.7.3...v11.7.4) (2023-05-04)
 
 

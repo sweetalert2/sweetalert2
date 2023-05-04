@@ -31,18 +31,30 @@ function setInputDisabled(input, disabled) {
   }
 }
 
+/**
+ * Enable all the buttons
+ */
 export function enableButtons() {
   setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], false)
 }
 
+/**
+ * Disable all the buttons
+ */
 export function disableButtons() {
   setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], true)
 }
 
+/**
+ * Enable the input field
+ */
 export function enableInput() {
   setInputDisabled(this.getInput(), false)
 }
 
+/**
+ * Disable the input field
+ */
 export function disableInput() {
   setInputDisabled(this.getInput(), true)
 }

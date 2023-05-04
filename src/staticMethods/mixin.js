@@ -14,7 +14,8 @@
  * const {value: firstName} = await TextPrompt('What is your first name?')
  * const {value: lastName} = await TextPrompt('What is your last name?')
  *
- * @param mixinParams
+ * @param {SweetAlertOptions} mixinParams
+ * @returns {SweetAlert2}
  */
 export function mixin(mixinParams) {
   class MixinSwal extends this {
@@ -22,6 +23,6 @@ export function mixin(mixinParams) {
       return super._main(params, Object.assign({}, mixinParams, priorityMixinParams))
     }
   }
-
+  // @ts-ignore
   return MixinSwal
 }

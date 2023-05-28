@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { Swal, SwalWithoutAnimation, ensureClosed } from '../utils'
 import { measureScrollbar } from '../../src/utils/dom/measureScrollbar'
 import { SHOW_CLASS_TIMEOUT } from '../../src/utils/openPopup'

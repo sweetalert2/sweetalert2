@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { SwalWithoutAnimation, triggerKeydownEvent } from '../../utils'
 
 describe('progressSteps', () => {

@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { Swal } from '../../utils'
 import privateMethods from '../../../src/privateMethods'
 import globalState from '../../../src/globalState'

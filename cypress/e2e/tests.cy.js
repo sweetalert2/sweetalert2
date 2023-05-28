@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import jQuery from 'jquery'
 import Swal from '../../src/sweetalert2'
 import { SHOW_CLASS_TIMEOUT } from '../../src/utils/openPopup'

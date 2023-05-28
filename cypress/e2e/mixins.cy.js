@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { Swal } from '../utils'
 import { SHOW_CLASS_TIMEOUT } from '../../src/utils/openPopup'
 

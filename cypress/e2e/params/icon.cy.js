@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { isVisible } from '../../../src/utils/dom'
 import { Swal, SwalWithoutAnimation, isHidden } from '../../utils'
 import { iconTypes, swalClasses } from '../../../src/utils/classes'

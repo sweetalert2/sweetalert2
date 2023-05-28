@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { isVisible } from '../../../src/utils/dom'
 import { $, Swal, ensureClosed, isHidden } from '../../utils'
 

@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { Swal, SwalWithoutAnimation, triggerKeydownEvent } from '../utils'
 import { RESTORE_FOCUS_TIMEOUT } from '../../src/constants'
 

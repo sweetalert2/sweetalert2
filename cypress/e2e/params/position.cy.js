@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { Swal, SwalWithoutAnimation } from '../../utils'
 
 class PositionChecker {

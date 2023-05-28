@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { $, Swal, SwalWithoutAnimation } from '../../utils'
 import { isVisible } from '../../../src/utils/dom'
 import { defaultParams, updatableParams } from '../../../src/utils/params'

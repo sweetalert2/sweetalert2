@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { $, Swal } from '../../utils'
 
 describe('customClass', () => {

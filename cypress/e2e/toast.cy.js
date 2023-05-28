@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import { Swal, SwalWithoutAnimation } from '../utils'
 
 const Toast = SwalWithoutAnimation.mixin({ toast: true })

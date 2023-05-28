@@ -3,7 +3,7 @@ import * as dom from '../../dom/index.js'
 import { capitalizeFirstLetter } from '../../utils.js'
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {SweetAlertOptions} params
  */
 export const renderActions = (instance, params) => {

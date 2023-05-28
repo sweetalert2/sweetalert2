@@ -9,7 +9,7 @@ import * as dom from './index.js'
  */
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {SweetAlertOptions} params
  */
 export const handleInputOptionsAndValue = (instance, params) => {
@@ -25,7 +25,7 @@ export const handleInputOptionsAndValue = (instance, params) => {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {SweetAlertOptions} innerParams
  * @returns {string | number | File | FileList | null}
  */
@@ -66,7 +66,7 @@ const getFileValue = (input) =>
   input.files.length ? (input.getAttribute('multiple') !== null ? input.files : input.files[0]) : null
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {SweetAlertOptions} params
  */
 const handleInputOptions = (instance, params) => {
@@ -91,7 +91,7 @@ const handleInputOptions = (instance, params) => {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {SweetAlertOptions} params
  */
 const handleInputValue = (instance, params) => {

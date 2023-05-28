@@ -1,7 +1,7 @@
 import privateProps from '../privateProps.js'
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {string[]} buttons
  * @param {boolean} disabled
  */

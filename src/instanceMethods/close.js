@@ -9,7 +9,7 @@ import { undoIOSfix } from '../utils/iosFix.js'
 import { undoScrollbar } from '../utils/scrollbarFix.js'
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {HTMLElement} container
  * @param {boolean} returnFocus
  * @param {Function} didClose
@@ -120,7 +120,7 @@ export function rejectPromise(error) {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  */
 export const handleAwaitingPromise = (instance) => {
   // @ts-ignore
@@ -159,7 +159,7 @@ const prepareResolveValue = (resolveValue) => {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {HTMLElement} popup
  * @param {SweetAlertOptions} innerParams
  */
@@ -181,7 +181,7 @@ const handlePopupAnimation = (instance, popup, innerParams) => {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {HTMLElement} popup
  * @param {HTMLElement} container
  * @param {boolean} returnFocus
@@ -204,7 +204,7 @@ const animatePopup = (instance, popup, container, returnFocus, didClose) => {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {Function} didClose
  */
 const triggerDidCloseAndDispose = (instance, didClose) => {

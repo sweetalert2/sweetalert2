@@ -1,7 +1,7 @@
 import * as dom from '../../dom/index.js'
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {SweetAlertOptions} params
  */
 export const renderCloseButton = (instance, params) => {

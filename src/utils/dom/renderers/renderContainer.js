@@ -3,7 +3,7 @@ import * as dom from '../../dom/index.js'
 import { warn } from '../../utils.js'
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {SweetAlertOptions} params
  */
 export const renderContainer = (instance, params) => {

@@ -17,7 +17,7 @@ export const removeKeydownHandler = (globalState) => {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {GlobalState} globalState
  * @param {SweetAlertOptions} innerParams
  * @param {*} dismissWith
@@ -66,7 +66,7 @@ const arrowKeysNextButton = ['ArrowRight', 'ArrowDown']
 const arrowKeysPreviousButton = ['ArrowLeft', 'ArrowUp']
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {KeyboardEvent} event
  * @param {Function} dismissWith
  */
@@ -111,7 +111,7 @@ const keydownHandler = (instance, event, dismissWith) => {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {KeyboardEvent} event
  * @param {SweetAlertOptions} innerParams
  */

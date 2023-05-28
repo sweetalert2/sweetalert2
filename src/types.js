@@ -1,5 +1,5 @@
 /**
- * @typedef { import('sweetalert2').default } SweetAlert2
+ * @typedef { import('./SweetAlert').SweetAlert } SweetAlert
  * @typedef { import('sweetalert2').SweetAlertOptions } SweetAlertOptions
  * @typedef { import('sweetalert2').SweetAlertIcon } SweetAlertIcon
  * @typedef { import('sweetalert2').SweetAlertInput } SweetAlertInput
@@ -12,7 +12,7 @@
 
 /**
  * @typedef GlobalState
- * @property {SweetAlert2} [currentInstance]
+ * @property {SweetAlert} [currentInstance]
  * @property {Element} [previousActiveElement]
  * @property {Timer} [timeout]
  * @property {NodeJS.Timeout} [restoreFocusTimeout]

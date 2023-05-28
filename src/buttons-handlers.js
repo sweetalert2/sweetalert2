@@ -8,7 +8,7 @@ import { getInputValue } from './utils/dom/inputUtils.js'
 import { asPromise, capitalizeFirstLetter, error } from './utils/utils.js'
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  */
 export const handleConfirmButtonClick = (instance) => {
   const innerParams = privateProps.innerParams.get(instance)
@@ -21,7 +21,7 @@ export const handleConfirmButtonClick = (instance) => {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  */
 export const handleDenyButtonClick = (instance) => {
   const innerParams = privateProps.innerParams.get(instance)
@@ -34,7 +34,7 @@ export const handleDenyButtonClick = (instance) => {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {Function} dismissWith
  */
 export const handleCancelButtonClick = (instance, dismissWith) => {
@@ -43,7 +43,7 @@ export const handleCancelButtonClick = (instance, dismissWith) => {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {'confirm' | 'deny'} type
  */
 const handleConfirmOrDenyWithInput = (instance, type) => {
@@ -66,7 +66,7 @@ const handleConfirmOrDenyWithInput = (instance, type) => {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {string | number | File | FileList | null} inputValue
  * @param {'confirm' | 'deny'} type
  */
@@ -90,7 +90,7 @@ const handleInputValidator = (instance, inputValue, type) => {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {any} value
  */
 const deny = (instance, value) => {
@@ -121,7 +121,7 @@ const deny = (instance, value) => {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {any} value
  */
 const succeedWith = (instance, value) => {
@@ -130,7 +130,7 @@ const succeedWith = (instance, value) => {
 
 /**
  *
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {string} error
  */
 const rejectWith = (instance, error) => {
@@ -140,7 +140,7 @@ const rejectWith = (instance, error) => {
 
 /**
  *
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {any} value
  */
 const confirm = (instance, value) => {

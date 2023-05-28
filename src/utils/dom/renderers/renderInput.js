@@ -13,7 +13,7 @@ import { error, isPromise, warn } from '../../utils.js'
 const inputClasses = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea']
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {SweetAlertOptions} params
  */
 export const renderInput = (instance, params) => {

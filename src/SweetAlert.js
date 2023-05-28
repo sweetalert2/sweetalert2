@@ -17,9 +17,10 @@ import defaultParams, { showWarningsForParams } from './utils/params.js'
 import setParameters from './utils/setParameters.js'
 import { callIfFunction } from './utils/utils.js'
 
+/** @type {SweetAlert} */
 let currentInstance
 
-class SweetAlert {
+export class SweetAlert {
   constructor(...args) {
     // Prevent run in Node env
     if (typeof window === 'undefined') {
@@ -80,6 +81,25 @@ class SweetAlert {
     return swalPromise(currentInstance, domCache, innerParams)
   }
 
+  disableButtons = instanceMethods.disableButtons
+  enableButtons = instanceMethods.enableButtons
+  getInput = instanceMethods.getInput
+  disableInput = instanceMethods.disableInput
+  enableInput = instanceMethods.enableInput
+  hideLoading = instanceMethods.hideLoading
+  disableLoading = instanceMethods.disableLoading
+  showValidationMessage = instanceMethods.showValidationMessage
+  resetValidationMessage = instanceMethods.resetValidationMessage
+  close = instanceMethods.close
+  closePopup = instanceMethods.closePopup
+  closeModal = instanceMethods.closeModal
+  closeToast = instanceMethods.closeToast
+  isAwaitingPromise = instanceMethods.isAwaitingPromise
+  handleAwaitingPromise = instanceMethods.handleAwaitingPromise
+  rejectPromise = instanceMethods.rejectPromise
+  update = instanceMethods.update
+  _destroy = instanceMethods._destroy
+
   // `catch` cannot be the name of a module export, so we define our thenable methods here instead
   then(onFulfilled) {
     const promise = privateProps.promise.get(this)
@@ -93,7 +113,7 @@ class SweetAlert {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @param {DomCache} domCache
  * @param {SweetAlertOptions} innerParams
  * @returns {Promise}
@@ -162,7 +182,7 @@ const prepareParams = (userParams, mixinParams) => {
 }
 
 /**
- * @param {SweetAlert2} instance
+ * @param {SweetAlert} instance
  * @returns {DomCache}
  */
 const populateDomCache = (instance) => {
@@ -279,9 +299,6 @@ if (typeof window !== 'undefined' && /^ru\b/.test(navigator.language) && locatio
     }, 500)
   }
 }
-
-// Assign instance methods from src/instanceMethods/*.js to prototype
-Object.assign(SweetAlert.prototype, instanceMethods)
 
 // Assign static methods from src/staticMethods/*.js to constructor
 Object.assign(SweetAlert, staticMethods)

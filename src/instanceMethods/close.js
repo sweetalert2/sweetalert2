@@ -64,7 +64,7 @@ export function close(resolveValue) {
 
   const didClose = triggerClosePopup(this)
 
-  if (this.isAwaitingPromise()) {
+  if (this.isAwaitingPromise) {
     // A swal awaiting for a promise (after a click on Confirm or Deny) cannot be dismissed anymore #2335
     if (!resolveValue.isDismissed) {
       handleAwaitingPromise(this)
@@ -74,13 +74,6 @@ export function close(resolveValue) {
     // Resolve Swal promise
     swalPromiseResolve(resolveValue)
   }
-}
-
-/**
- * @returns {boolean}
- */
-export function isAwaitingPromise() {
-  return !!privateProps.awaitingPromise.get(this)
 }
 
 const triggerClosePopup = (instance) => {
@@ -123,12 +116,10 @@ export function rejectPromise(error) {
  * @param {SweetAlert} instance
  */
 export const handleAwaitingPromise = (instance) => {
-  // @ts-ignore
-  if (instance.isAwaitingPromise()) {
-    privateProps.awaitingPromise.delete(instance)
+  if (instance.isAwaitingPromise) {
+    delete instance.isAwaitingPromise
     // The instance might have been previously partly destroyed, we must resume the destroy process in this case #2335
     if (!privateProps.innerParams.get(instance)) {
-      // @ts-ignore
       instance._destroy()
     }
   }
@@ -213,8 +204,10 @@ const triggerDidCloseAndDispose = (instance, didClose) => {
       // @ts-ignore
       didClose.bind(instance.params)()
     }
-    // @ts-ignore
-    instance._destroy()
+    // instance might have been destroyed already
+    if (instance._destroy) {
+      instance._destroy()
+    }
   })
 }
 

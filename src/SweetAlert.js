@@ -21,6 +21,10 @@ import { callIfFunction } from './utils/utils.js'
 let currentInstance
 
 export class SweetAlert {
+  /**
+   * @param {...any} args
+   * @this {SweetAlert}
+   */
   constructor(...args) {
     // Prevent run in Node env
     if (typeof window === 'undefined') {
@@ -41,6 +45,9 @@ export class SweetAlert {
       },
     })
 
+    /** @type {boolean} */
+    this.isAwaitingPromise = false
+
     // @ts-ignore
     const promise = currentInstance._main(currentInstance.params)
     privateProps.promise.set(this, promise)
@@ -50,7 +57,6 @@ export class SweetAlert {
     showWarningsForParams(Object.assign({}, mixinParams, userParams))
 
     if (globalState.currentInstance) {
-      // @ts-ignore
       globalState.currentInstance._destroy()
       if (dom.isModal()) {
         unsetAriaHidden()
@@ -94,8 +100,6 @@ export class SweetAlert {
   closePopup = instanceMethods.closePopup
   closeModal = instanceMethods.closeModal
   closeToast = instanceMethods.closeToast
-  isAwaitingPromise = instanceMethods.isAwaitingPromise
-  handleAwaitingPromise = instanceMethods.handleAwaitingPromise
   rejectPromise = instanceMethods.rejectPromise
   update = instanceMethods.update
   _destroy = instanceMethods._destroy
@@ -125,7 +129,6 @@ const swalPromise = (instance, domCache, innerParams) => {
      * @param {DismissReason} dismiss
      */
     const dismissWith = (dismiss) => {
-      // @ts-ignore
       instance.close({ isDismissed: true, dismiss })
     }
 
@@ -310,9 +313,10 @@ Object.keys(instanceMethods).forEach((key) => {
    * @returns {any | undefined}
    */
   SweetAlert[key] = function (...args) {
-    if (currentInstance) {
+    if (currentInstance && currentInstance[key]) {
       return currentInstance[key](...args)
     }
+    return null
   }
 })
 

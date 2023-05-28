@@ -1,4 +1,4 @@
-import { handleAwaitingPromise } from './instanceMethods.js'
+import { handleAwaitingPromise } from './instanceMethods/close.js'
 import privateProps from './privateProps.js'
 import { showLoading } from './staticMethods/showLoading.js'
 import { DismissReason } from './utils/DismissReason.js'
@@ -101,7 +101,7 @@ const deny = (instance, value) => {
   }
 
   if (innerParams.preDeny) {
-    privateProps.awaitingPromise.set(instance || this, true) // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preDeny's promise is received
+    instance.isAwaitingPromise = true // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preDeny's promise is received
     const preDenyPromise = Promise.resolve().then(() =>
       asPromise(innerParams.preDeny(value, innerParams.validationMessage))
     )
@@ -134,7 +134,6 @@ const succeedWith = (instance, value) => {
  * @param {string} error
  */
 const rejectWith = (instance, error) => {
-  // @ts-ignore
   instance.rejectPromise(error)
 }
 
@@ -152,7 +151,7 @@ const confirm = (instance, value) => {
 
   if (innerParams.preConfirm) {
     instance.resetValidationMessage()
-    privateProps.awaitingPromise.set(instance || this, true) // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preConfirm's promise is received
+    instance.isAwaitingPromise = true // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preConfirm's promise is received
     const preConfirmPromise = Promise.resolve().then(() =>
       asPromise(innerParams.preConfirm(value, innerParams.validationMessage))
     )

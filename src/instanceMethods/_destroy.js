@@ -46,13 +46,31 @@ const disposeSwal = (instance) => {
  */
 const disposeWeakMaps = (instance) => {
   // If the current instance is awaiting a promise result, we keep the privateMethods to call them once the promise result is retrieved #2335
-  // @ts-ignore
-  if (instance.isAwaitingPromise()) {
+  if (instance.isAwaitingPromise) {
     unsetWeakMaps(privateProps, instance)
-    privateProps.awaitingPromise.set(instance, true)
+    instance.isAwaitingPromise = true
   } else {
     unsetWeakMaps(privateMethods, instance)
     unsetWeakMaps(privateProps, instance)
+
+    delete instance.isAwaitingPromise
+    // Unset instance methods
+    delete instance.disableButtons
+    delete instance.enableButtons
+    delete instance.getInput
+    delete instance.disableInput
+    delete instance.enableInput
+    delete instance.hideLoading
+    delete instance.disableLoading
+    delete instance.showValidationMessage
+    delete instance.resetValidationMessage
+    delete instance.close
+    delete instance.closePopup
+    delete instance.closeModal
+    delete instance.closeToast
+    delete instance.rejectPromise
+    delete instance.update
+    delete instance._destroy
   }
 }
 

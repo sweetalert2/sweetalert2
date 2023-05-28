@@ -1,3 +1,10 @@
+## [11.7.6](https://github.com/sweetalert2/sweetalert2/compare/v11.7.5...v11.7.6) (2023-05-28)
+
+
+### Bug Fixes
+
+* types for SweetAlert class ([166077e](https://github.com/sweetalert2/sweetalert2/commit/166077ea3fc9e2174a262fa938d736813564c24e))
+
 ## [11.7.5](https://github.com/sweetalert2/sweetalert2/compare/v11.7.4...v11.7.5) (2023-05-04)
 
 

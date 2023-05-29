@@ -36,19 +36,12 @@ export class SweetAlert {
     // @ts-ignore
     const outerParams = Object.freeze(this.constructor.argsToParams(args))
 
-    Object.defineProperties(this, {
-      params: {
-        value: outerParams,
-        writable: false,
-        enumerable: true,
-        configurable: true,
-      },
-    })
+    /** @type {Readonly<SweetAlertOptions>} */
+    this.params = outerParams
 
     /** @type {boolean} */
     this.isAwaitingPromise = false
 
-    // @ts-ignore
     const promise = currentInstance._main(currentInstance.params)
     privateProps.promise.set(this, promise)
   }
@@ -131,7 +124,6 @@ const swalPromise = (instance, domCache, innerParams) => {
     }
 
     domCache.closeButton.onclick = () => {
-      // @ts-ignore
       dismissWith(DismissReason.close)
     }
 

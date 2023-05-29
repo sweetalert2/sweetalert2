@@ -201,7 +201,6 @@ const animatePopup = (instance, popup, container, returnFocus, didClose) => {
 const triggerDidCloseAndDispose = (instance, didClose) => {
   setTimeout(() => {
     if (typeof didClose === 'function') {
-      // @ts-ignore
       didClose.bind(instance.params)()
     }
     // instance might have been destroyed already

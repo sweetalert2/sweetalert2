@@ -32,7 +32,6 @@ export function _destroy() {
 const disposeSwal = (instance) => {
   disposeWeakMaps(instance)
   // Unset this.params so GC will dispose it (#1569)
-  // @ts-ignore
   delete instance.params
   // Unset globalState props so GC will dispose globalState (#1569)
   delete globalState.keydownHandler

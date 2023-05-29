@@ -1,5 +1,4 @@
 import { swalClasses } from '../classes.js'
-import { uniqueArray } from '../utils.js'
 import { hasClass, isVisible } from './domUtils.js'
 
 /**
@@ -135,9 +134,11 @@ const focusable = `
  * @returns {HTMLElement[]}
  */
 export const getFocusableElements = () => {
-  const focusableElementsWithTabindex = Array.from(
-    getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')
+  /** @type {NodeListOf<HTMLElement>} */
+  const focusableElementsWithTabindex = getPopup().querySelectorAll(
+    '[tabindex]:not([tabindex="-1"]):not([tabindex="0"])'
   )
+  const focusableElementsWithTabindexSorted = Array.from(focusableElementsWithTabindex)
     // sort according to tabindex
     .sort((a, b) => {
       const tabindexA = parseInt(a.getAttribute('tabindex'))
@@ -150,11 +151,15 @@ export const getFocusableElements = () => {
       return 0
     })
 
-  const otherFocusableElements = Array.from(getPopup().querySelectorAll(focusable)).filter(
+  /** @type {NodeListOf<HTMLElement>} */
+  const otherFocusableElements = getPopup().querySelectorAll(focusable)
+  const otherFocusableElementsFiltered = Array.from(otherFocusableElements).filter(
     (el) => el.getAttribute('tabindex') !== '-1'
   )
 
-  return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements)).filter((el) => isVisible(el))
+  return [...new Set(focusableElementsWithTabindexSorted.concat(otherFocusableElementsFiltered))].filter((el) =>
+    isVisible(el)
+  )
 }
 
 /**

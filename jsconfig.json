@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
-    "target": "es5"
+    "target": "es2015"
     // "strict": true
   },
   "include": ["src/**/*"],

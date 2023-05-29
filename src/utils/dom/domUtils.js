@@ -2,11 +2,6 @@ import { iconTypes, swalClasses } from '../classes.js'
 import { warn } from '../utils.js'
 import { getCancelButton, getConfirmButton, getDenyButton, getTimerProgressBar } from './getters.js'
 
-// Remember state in cases where opening and handling a modal will fiddle with it.
-export const states = {
-  previousBodyPadding: null,
-}
-
 /**
  * Securely set innerHTML of an element
  * https://github.com/sweetalert2/sweetalert2/issues/1926

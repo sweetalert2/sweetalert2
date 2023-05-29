@@ -1,3 +1,10 @@
+## [11.7.8](https://github.com/sweetalert2/sweetalert2/compare/v11.7.7...v11.7.8) (2023-05-29)
+
+
+### Bug Fixes
+
+* webpack test output ([74137fd](https://github.com/sweetalert2/sweetalert2/commit/74137fd77cdbf3144f4663d49a0ca5926cc92337))
+
 ## [11.7.7](https://github.com/sweetalert2/sweetalert2/compare/v11.7.6...v11.7.7) (2023-05-29)
 
 

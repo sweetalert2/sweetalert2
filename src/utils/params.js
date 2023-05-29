@@ -137,6 +137,7 @@ export const updatableParams = [
   'willClose',
 ]
 
+/** @type {Record<string, string>} */
 export const deprecatedParams = {}
 
 const toastIncompatibleParams = [
@@ -203,8 +204,9 @@ const checkIfToastParamIsValid = (param) => {
  * @param {string} param
  */
 const checkIfParamIsDeprecated = (param) => {
-  if (isDeprecatedParameter(param)) {
-    warnAboutDeprecation(param, isDeprecatedParameter(param))
+  const isDeprecated = isDeprecatedParameter(param)
+  if (isDeprecated) {
+    warnAboutDeprecation(param, isDeprecated)
   }
 }
 

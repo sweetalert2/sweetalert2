@@ -11,6 +11,9 @@ export default class Timer {
     this.start()
   }
 
+  /**
+   * @returns {number}
+   */
   start() {
     if (!this.running) {
       this.running = true
@@ -20,8 +23,11 @@ export default class Timer {
     return this.remaining
   }
 
+  /**
+   * @returns {number}
+   */
   stop() {
-    if (this.running) {
+    if (this.started && this.running) {
       this.running = false
       clearTimeout(this.id)
       this.remaining -= new Date().getTime() - this.started.getTime()
@@ -29,6 +35,10 @@ export default class Timer {
     return this.remaining
   }
 
+  /**
+   * @param {number} n
+   * @returns {number}
+   */
   increase(n) {
     const running = this.running
     if (running) {
@@ -41,6 +51,9 @@ export default class Timer {
     return this.remaining
   }
 
+  /**
+   * @returns {number}
+   */
   getTimerLeft() {
     if (this.running) {
       this.stop()
@@ -49,6 +62,9 @@ export default class Timer {
     return this.remaining
   }
 
+  /**
+   * @returns {boolean}
+   */
   isRunning() {
     return this.running
   }

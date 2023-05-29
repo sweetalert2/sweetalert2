@@ -7,6 +7,9 @@ import * as dom from '../../dom/index.js'
  */
 export const renderImage = (instance, params) => {
   const image = dom.getImage()
+  if (!image) {
+    return
+  }
 
   if (!params.imageUrl) {
     dom.hide(image)
@@ -17,7 +20,7 @@ export const renderImage = (instance, params) => {
 
   // Src, alt
   image.setAttribute('src', params.imageUrl)
-  image.setAttribute('alt', params.imageAlt)
+  image.setAttribute('alt', params.imageAlt || '')
 
   // Width, height
   dom.applyNumericalStyle(image, 'width', params.imageWidth)

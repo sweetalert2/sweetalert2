@@ -8,28 +8,34 @@ import { warn } from '../../utils.js'
  */
 export const renderProgressSteps = (instance, params) => {
   const progressStepsContainer = dom.getProgressSteps()
-  if (!params.progressSteps || params.progressSteps.length === 0) {
+  if (!progressStepsContainer) {
+    return
+  }
+
+  const { progressSteps, currentProgressStep } = params
+
+  if (!progressSteps || progressSteps.length === 0 || currentProgressStep === undefined) {
     dom.hide(progressStepsContainer)
     return
   }
 
   dom.show(progressStepsContainer)
   progressStepsContainer.textContent = ''
-  if (params.currentProgressStep >= params.progressSteps.length) {
+  if (currentProgressStep >= progressSteps.length) {
     warn(
       'Invalid currentProgressStep parameter, it should be less than progressSteps.length ' +
         '(currentProgressStep like JS arrays starts from 0)'
     )
   }
 
-  params.progressSteps.forEach((step, index) => {
+  progressSteps.forEach((step, index) => {
     const stepEl = createStepElement(step)
     progressStepsContainer.appendChild(stepEl)
-    if (index === params.currentProgressStep) {
+    if (index === currentProgressStep) {
       dom.addClass(stepEl, swalClasses['active-progress-step'])
     }
 
-    if (index !== params.progressSteps.length - 1) {
+    if (index !== progressSteps.length - 1) {
       const lineEl = createLineElement(params)
       progressStepsContainer.appendChild(lineEl)
     }

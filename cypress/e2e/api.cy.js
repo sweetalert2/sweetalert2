@@ -34,17 +34,7 @@ describe('API', () => {
   it('instance properties and methods', () => {
     const params = { input: 'text', inputValue: 'foo' }
     const swal = Swal.fire(params)
-    expect(Object.keys(swal)).contain.members([
-      'params',
-      'disableButtons',
-      'enableButtons',
-      'getInput',
-      'disableInput',
-      'enableInput',
-      'showValidationMessage',
-      'resetValidationMessage',
-      'close',
-    ])
+    expect(Object.keys(swal)).contain.members(['params'])
     expect(swal.params).to.be.eql(params)
     expect(swal.getInput().value).to.equal('foo')
   })

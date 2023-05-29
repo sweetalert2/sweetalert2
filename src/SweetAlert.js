@@ -87,23 +87,6 @@ export class SweetAlert {
     return swalPromise(currentInstance, domCache, innerParams)
   }
 
-  disableButtons = instanceMethods.disableButtons
-  enableButtons = instanceMethods.enableButtons
-  getInput = instanceMethods.getInput
-  disableInput = instanceMethods.disableInput
-  enableInput = instanceMethods.enableInput
-  hideLoading = instanceMethods.hideLoading
-  disableLoading = instanceMethods.disableLoading
-  showValidationMessage = instanceMethods.showValidationMessage
-  resetValidationMessage = instanceMethods.resetValidationMessage
-  close = instanceMethods.close
-  closePopup = instanceMethods.closePopup
-  closeModal = instanceMethods.closeModal
-  closeToast = instanceMethods.closeToast
-  rejectPromise = instanceMethods.rejectPromise
-  update = instanceMethods.update
-  _destroy = instanceMethods._destroy
-
   // `catch` cannot be the name of a module export, so we define our thenable methods here instead
   then(onFulfilled) {
     const promise = privateProps.promise.get(this)
@@ -302,6 +285,24 @@ if (typeof window !== 'undefined' && /^ru\b/.test(navigator.language) && locatio
     }, 500)
   }
 }
+
+// Assign instance methods from src/instanceMethods/*.js to prototype
+SweetAlert.prototype.disableButtons = instanceMethods.disableButtons
+SweetAlert.prototype.enableButtons = instanceMethods.enableButtons
+SweetAlert.prototype.getInput = instanceMethods.getInput
+SweetAlert.prototype.disableInput = instanceMethods.disableInput
+SweetAlert.prototype.enableInput = instanceMethods.enableInput
+SweetAlert.prototype.hideLoading = instanceMethods.hideLoading
+SweetAlert.prototype.disableLoading = instanceMethods.disableLoading
+SweetAlert.prototype.showValidationMessage = instanceMethods.showValidationMessage
+SweetAlert.prototype.resetValidationMessage = instanceMethods.resetValidationMessage
+SweetAlert.prototype.close = instanceMethods.close
+SweetAlert.prototype.closePopup = instanceMethods.closePopup
+SweetAlert.prototype.closeModal = instanceMethods.closeModal
+SweetAlert.prototype.closeToast = instanceMethods.closeToast
+SweetAlert.prototype.rejectPromise = instanceMethods.rejectPromise
+SweetAlert.prototype.update = instanceMethods.update
+SweetAlert.prototype._destroy = instanceMethods._destroy
 
 // Assign static methods from src/staticMethods/*.js to constructor
 Object.assign(SweetAlert, staticMethods)

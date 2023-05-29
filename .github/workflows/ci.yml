@@ -31,9 +31,20 @@ jobs:
         run: yarn test --browser firefox
 
       - name: Test in CommonJS
+        if: github.ref_name == 'main'
         run: node test/require-in-commonjs.cjs
 
+      - name: Test with Webpack
+        if: github.ref_name == 'main'
+        run: |
+          yarn add --dev webpack@^5.0.0 webpack-cli@^5.0.0
+          yarn webpack-build
+          yarn add --dev webpack@^4.0.0 webpack-cli@^4.0.0
+          export NODE_OPTIONS=--openssl-legacy-provider
+          yarn webpack-build
+
       - name: Check TypeScript
+        if: github.ref_name == 'main'
         run: |
           ln -s ../../ test/ts/node_modules
           tsc --lib dom,es6 --noEmit test/ts/simple-usage.ts

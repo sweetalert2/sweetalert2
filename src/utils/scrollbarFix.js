@@ -1,4 +1,4 @@
-import * as dom from './dom/index.js'
+import { measureScrollbar } from './dom/measureScrollbar.js'
 
 /**
  * Remember state in cases where opening and handling a modal will fiddle with it.
@@ -15,7 +15,7 @@ export const fixScrollbar = () => {
   if (document.body.scrollHeight > window.innerHeight) {
     // add padding so the content doesn't shift after removal of scrollbar
     previousBodyPadding = parseInt(window.getComputedStyle(document.body).getPropertyValue('padding-right'))
-    document.body.style.paddingRight = `${previousBodyPadding + dom.measureScrollbar()}px`
+    document.body.style.paddingRight = `${previousBodyPadding + measureScrollbar()}px`
   }
 }
 

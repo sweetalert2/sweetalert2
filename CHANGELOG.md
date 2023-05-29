@@ -1,3 +1,10 @@
+## [11.7.7](https://github.com/sweetalert2/sweetalert2/compare/v11.7.6...v11.7.7) (2023-05-29)
+
+
+### Bug Fixes
+
+* assign instance methods to prototype in a webpack4 compatible way (fixes [#2625](https://github.com/sweetalert2/sweetalert2/issues/2625)) ([f8942e8](https://github.com/sweetalert2/sweetalert2/commit/f8942e8e42e26b532158ce1b704107d02ad35d45))
+
 ## [11.7.6](https://github.com/sweetalert2/sweetalert2/compare/v11.7.5...v11.7.6) (2023-05-28)
 
 

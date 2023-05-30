@@ -199,18 +199,18 @@ export const applyNumericalStyle = (elem, property, value) => {
 }
 
 /**
- * @param {HTMLElement} elem
+ * @param {HTMLElement | null} elem
  * @param {string} display
  */
 export const show = (elem, display = 'flex') => {
-  elem.style.display = display
+  elem && (elem.style.display = display)
 }
 
 /**
- * @param {HTMLElement} elem
+ * @param {HTMLElement | null} elem
  */
 export const hide = (elem) => {
-  elem.style.display = 'none'
+  elem && (elem.style.display = 'none')
 }
 
 /**

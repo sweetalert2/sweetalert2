@@ -1,3 +1,10 @@
+## [11.7.9](https://github.com/sweetalert2/sweetalert2/compare/v11.7.8...v11.7.9) (2023-05-30)
+
+
+### Bug Fixes
+
+* styles specificity ([#2627](https://github.com/sweetalert2/sweetalert2/issues/2627)) ([7a2f526](https://github.com/sweetalert2/sweetalert2/commit/7a2f5262f3eda96514729b4d92c21c9cfd27c479))
+
 ## [11.7.8](https://github.com/sweetalert2/sweetalert2/compare/v11.7.7...v11.7.8) (2023-05-29)
 
 

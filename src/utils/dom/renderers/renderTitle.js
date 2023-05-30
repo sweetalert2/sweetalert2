@@ -6,6 +6,9 @@ import * as dom from '../../dom/index.js'
  */
 export const renderTitle = (instance, params) => {
   const title = dom.getTitle()
+  if (!title) {
+    return
+  }
 
   dom.toggle(title, params.title || params.titleText, 'block')
 

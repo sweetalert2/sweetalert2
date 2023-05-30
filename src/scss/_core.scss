@@ -1,6 +1,6 @@
 @use 'sass:math';
 
-.swal2-container {
+:where(.swal2-container) {
   display: grid;
   position: fixed;
   z-index: 1060;
@@ -123,7 +123,7 @@
   }
 }
 
-.swal2-popup {
+:where(.swal2-popup) {
   display: none;
   position: relative;
   box-sizing: border-box;
@@ -147,7 +147,7 @@
   }
 }
 
-.swal2-title {
+:where(.swal2-title) {
   position: $swal2-title-position;
   max-width: $swal2-title-max-width;
   margin: $swal2-title-margin;
@@ -160,7 +160,7 @@
   word-wrap: break-word;
 }
 
-.swal2-actions {
+:where(.swal2-actions) {
   display: flex;
   z-index: 1; // prevent success icon from overlapping buttons
   box-sizing: border-box;
@@ -188,7 +188,7 @@
   }
 }
 
-.swal2-loader {
+:where(.swal2-loader) {
   display: none;
   align-items: $swal2-loader-align-items;
   justify-content: $swal2-loader-justify-content;
@@ -202,7 +202,7 @@
   border-color: $swal2-loader-border-color;
 }
 
-.swal2-styled {
+:where(.swal2-styled) {
   margin: $swal2-button-margin;
   padding: $swal2-button-padding;
   transition: $swal2-button-transition;
@@ -270,7 +270,7 @@
   }
 }
 
-.swal2-footer {
+:where(.swal2-footer) {
   justify-content: center;
   margin: $swal2-footer-margin;
   padding: $swal2-footer-padding;
@@ -290,18 +290,18 @@
   border-bottom-left-radius: $swal2-border-radius;
 }
 
-.swal2-timer-progress-bar {
+:where(.swal2-timer-progress-bar) {
   width: 100%;
   height: $swal2-timer-progress-bar-height;
   background: $swal2-timer-progress-bar-background;
 }
 
-.swal2-image {
+:where(.swal2-image) {
   max-width: 100%;
   margin: $swal2-image-margin;
 }
 
-.swal2-close {
+:where(.swal2-close) {
   position: $swal2-close-button-position;
   z-index: 2; // sweetalert2/issues/1617
   align-items: $swal2-close-button-align-items;
@@ -355,18 +355,18 @@
   word-break: $swal2-html-container-word-break;
 }
 
-.swal2-input,
-.swal2-file,
-.swal2-textarea,
-.swal2-select,
-.swal2-radio,
-.swal2-checkbox {
+:where(.swal2-input),
+:where(.swal2-file),
+:where(.swal2-textarea),
+:where(.swal2-select),
+:where(.swal2-radio),
+:where(.swal2-checkbox) {
   margin: $swal2-input-margin;
 }
 
-.swal2-input,
-.swal2-file,
-.swal2-textarea {
+:where(.swal2-input),
+:where(.swal2-file),
+:where(.swal2-textarea) {
   box-sizing: border-box;
   width: $swal2-input-width;
   transition: $swal2-input-transition;
@@ -462,13 +462,13 @@
   }
 }
 
-.swal2-input-label {
+:where(.swal2-input-label) {
   display: flex;
   justify-content: $swal2-input-label-justify-content;
   margin: $swal2-input-label-margin;
 }
 
-.swal2-validation-message {
+:where(.swal2-validation-message) {
   align-items: $swal2-validation-message-align-items;
   justify-content: $swal2-validation-message-justify-content;
   margin: $swal2-validation-message-margin;
@@ -502,7 +502,7 @@
 }
 $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
 
-.swal2-icon {
+:where(.swal2-icon) {
   position: relative;
   box-sizing: content-box;
   justify-content: center;

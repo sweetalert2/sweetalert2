@@ -13,7 +13,7 @@
 /**
  * @typedef GlobalState
  * @property {SweetAlert} [currentInstance]
- * @property {Element} [previousActiveElement]
+ * @property {Element | null} [previousActiveElement]
  * @property {Timer} [timeout]
  * @property {NodeJS.Timeout} [restoreFocusTimeout]
  * @property {(this: HTMLElement, event: KeyboardEvent) => any} [keydownHandler]

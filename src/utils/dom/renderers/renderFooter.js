@@ -6,6 +6,9 @@ import * as dom from '../../dom/index.js'
  */
 export const renderFooter = (instance, params) => {
   const footer = dom.getFooter()
+  if (!footer) {
+    return
+  }
 
   dom.toggle(footer, params.footer)
 

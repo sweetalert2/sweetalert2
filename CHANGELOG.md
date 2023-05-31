@@ -1,3 +1,10 @@
+## [11.7.10](https://github.com/sweetalert2/sweetalert2/compare/v11.7.9...v11.7.10) (2023-05-31)
+
+
+### Bug Fixes
+
+* disallow overriding styles by frameworks ([#2629](https://github.com/sweetalert2/sweetalert2/issues/2629)) ([b078f5b](https://github.com/sweetalert2/sweetalert2/commit/b078f5bbd8a0db84d1eb092cca567adf660be3fa))
+
 ## [11.7.9](https://github.com/sweetalert2/sweetalert2/compare/v11.7.8...v11.7.9) (2023-05-30)
 
 

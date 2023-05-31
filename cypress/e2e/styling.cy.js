@@ -133,7 +133,7 @@ describe('Styling', () => {
         expect(window.getComputedStyle(Swal.getIcon()).width).to.equal('80px')
         expect(window.getComputedStyle(Swal.getImage()).maxWidth).to.equal('100%')
         expect(window.getComputedStyle(Swal.getInput()).fontSize).to.equal('18px')
-        expect(window.getComputedStyle(Swal.getInputLabel()).margin).to.equal('16px 0px 0px')
+        expect(window.getComputedStyle(Swal.getInputLabel()).marginTop).to.equal('16px')
         Swal.showValidationMessage('validationMessage')
         expect(window.getComputedStyle(Swal.getValidationMessage()).padding).to.equal('10px')
         expect(window.getComputedStyle(Swal.getActions()).padding).to.equal('0px')

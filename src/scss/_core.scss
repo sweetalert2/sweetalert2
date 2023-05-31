@@ -1,6 +1,6 @@
 @use 'sass:math';
 
-:where(.swal2-container) {
+div:where(.swal2-container) {
   display: grid;
   position: fixed;
   z-index: 1060;
@@ -121,663 +121,663 @@
   &.swal2-no-transition {
     transition: none !important;
   }
-}
 
-:where(.swal2-popup) {
-  display: none;
-  position: relative;
-  box-sizing: border-box;
-  grid-template-columns: minmax(0, 100%);
-  width: $swal2-width;
-  max-width: 100%;
-  padding: $swal2-padding;
-  border: $swal2-border;
-  border-radius: $swal2-border-radius;
-  background: $swal2-background;
-  color: $swal2-color;
-  font-family: $swal2-font;
-  font-size: $swal2-font-size;
-
-  &:focus {
-    outline: none;
-  }
-
-  &.swal2-loading {
-    overflow-y: hidden;
-  }
-}
-
-:where(.swal2-title) {
-  position: $swal2-title-position;
-  max-width: $swal2-title-max-width;
-  margin: $swal2-title-margin;
-  padding: $swal2-title-padding;
-  color: $swal2-title-color;
-  font-size: $swal2-title-font-size;
-  font-weight: $swal2-title-font-weight;
-  text-align: $swal2-title-text-align;
-  text-transform: none;
-  word-wrap: break-word;
-}
-
-:where(.swal2-actions) {
-  display: flex;
-  z-index: 1; // prevent success icon from overlapping buttons
-  box-sizing: border-box;
-  flex-wrap: $swal2-actions-flex-wrap;
-  align-items: $swal2-actions-align-items;
-  justify-content: $swal2-actions-justify-content;
-  width: $swal2-actions-width;
-  margin: $swal2-actions-margin;
-  padding: $swal2-actions-padding;
-
-  &:not(.swal2-loading) {
-    .swal2-styled {
-      &[disabled] {
-        opacity: 0.4;
-      }
-
-      &:hover {
-        background-image: linear-gradient($swal2-button-darken-hover, $swal2-button-darken-hover);
-      }
-
-      &:active {
-        background-image: linear-gradient($swal2-button-darken-active, $swal2-button-darken-active);
-      }
-    }
-  }
-}
-
-:where(.swal2-loader) {
-  display: none;
-  align-items: $swal2-loader-align-items;
-  justify-content: $swal2-loader-justify-content;
-  width: $swal2-loader-width;
-  height: $swal2-loader-height;
-  margin: $swal2-loader-margin;
-  animation: $swal2-loader-animation;
-  border-width: $swal2-loader-border-width;
-  border-style: $swal2-loader-border-style;
-  border-radius: $swal2-loader-border-radius;
-  border-color: $swal2-loader-border-color;
-}
-
-:where(.swal2-styled) {
-  margin: $swal2-button-margin;
-  padding: $swal2-button-padding;
-  transition: $swal2-button-transition;
-  box-shadow: $swal2-button-box-shadow;
-  font-weight: $swal2-button-font-weight;
-
-  &:not([disabled]) {
-    cursor: pointer;
-  }
-
-  &.swal2-confirm {
-    order: $swal2-confirm-button-order;
-    border: $swal2-confirm-button-border;
-    border-radius: $swal2-confirm-button-border-radius;
-    background: initial;
-    background-color: $swal2-confirm-button-background-color;
-    color: $swal2-confirm-button-color;
-    font-size: $swal2-confirm-button-font-size;
-
-    &:focus {
-      box-shadow: $swal2-confirm-button-focus-box-shadow;
-    }
-  }
-
-  &.swal2-deny {
-    order: $swal2-deny-button-order;
-    border: $swal2-deny-button-border;
-    border-radius: $swal2-deny-button-border-radius;
-    background: initial;
-    background-color: $swal2-deny-button-background-color;
-    color: $swal2-deny-button-color;
-    font-size: $swal2-deny-button-font-size;
-
-    &:focus {
-      box-shadow: $swal2-deny-button-focus-box-shadow;
-    }
-  }
-
-  &.swal2-cancel {
-    order: $swal2-cancel-button-order;
-    border: $swal2-cancel-button-border;
-    border-radius: $swal2-cancel-button-border-radius;
-    background: initial;
-    background-color: $swal2-cancel-button-background-color;
-    color: $swal2-cancel-button-color;
-    font-size: $swal2-cancel-button-font-size;
-
-    &:focus {
-      box-shadow: $swal2-cancel-button-focus-box-shadow;
-    }
-  }
-
-  &.swal2-default-outline {
-    &:focus {
-      box-shadow: $swal2-button-focus-box-shadow;
-    }
-  }
-
-  &:focus {
-    outline: $swal2-button-focus-outline;
-  }
-
-  &::-moz-focus-inner {
-    border: 0;
-  }
-}
-
-:where(.swal2-footer) {
-  justify-content: center;
-  margin: $swal2-footer-margin;
-  padding: $swal2-footer-padding;
-  border-top: 1px solid $swal2-footer-border-color;
-  color: $swal2-footer-color;
-  font-size: $swal2-footer-font-size;
-}
-
-.swal2-timer-progress-bar-container {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  grid-column: auto !important;
-  overflow: hidden;
-  border-bottom-right-radius: $swal2-border-radius;
-  border-bottom-left-radius: $swal2-border-radius;
-}
-
-:where(.swal2-timer-progress-bar) {
-  width: 100%;
-  height: $swal2-timer-progress-bar-height;
-  background: $swal2-timer-progress-bar-background;
-}
-
-:where(.swal2-image) {
-  max-width: 100%;
-  margin: $swal2-image-margin;
-}
-
-:where(.swal2-close) {
-  position: $swal2-close-button-position;
-  z-index: 2; // sweetalert2/issues/1617
-  align-items: $swal2-close-button-align-items;
-  justify-content: $swal2-close-button-justify-content;
-  width: $swal2-close-button-width;
-  height: $swal2-close-button-height;
-  margin-top: $swal2-close-button-gap;
-  margin-right: $swal2-close-button-gap;
-  margin-bottom: -$swal2-close-button-height;
-  padding: $swal2-close-button-padding;
-  overflow: hidden;
-  transition: $swal2-close-button-transition;
-  border: $swal2-close-button-border;
-  border-radius: $swal2-close-button-border-radius;
-  outline: $swal2-close-button-outline;
-  background: $swal2-close-button-background;
-  color: $swal2-close-button-color;
-  font-family: $swal2-close-button-font-family;
-  font-size: $swal2-close-button-font-size;
-  cursor: pointer;
-  justify-self: $swal2-close-button-justify-self;
-
-  &:hover {
-    transform: $swal2-close-button-hover-transform;
-    background: $swal2-close-button-hover-background;
-    color: $swal2-close-button-hover-color;
-  }
-
-  &:focus {
-    outline: $swal2-close-button-focus-outline;
-    box-shadow: $swal2-close-button-focus-box-shadow;
-  }
-
-  &::-moz-focus-inner {
-    border: 0;
-  }
-}
-
-.swal2-html-container {
-  z-index: 1; // prevent sucess icon overlapping the content
-  justify-content: $swal2-html-container-justify-content;
-  margin: $swal2-html-container-margin;
-  padding: $swal2-html-container-padding;
-  overflow: $swal2-html-container-overflow;
-  color: $swal2-html-container-color;
-  font-size: $swal2-html-container-font-size;
-  font-weight: $swal2-html-container-font-weight;
-  line-height: $swal2-html-container-line-height;
-  text-align: $swal2-html-container-text-align;
-  word-wrap: $swal2-html-container-word-wrap;
-  word-break: $swal2-html-container-word-break;
-}
-
-:where(.swal2-input),
-:where(.swal2-file),
-:where(.swal2-textarea),
-:where(.swal2-select),
-:where(.swal2-radio),
-:where(.swal2-checkbox) {
-  margin: $swal2-input-margin;
-}
-
-:where(.swal2-input),
-:where(.swal2-file),
-:where(.swal2-textarea) {
-  box-sizing: border-box;
-  width: $swal2-input-width;
-  transition: $swal2-input-transition;
-  border: $swal2-input-border;
-  border-radius: $swal2-input-border-radius;
-  background: $swal2-input-background;
-  box-shadow: $swal2-input-box-shadow;
-  color: $swal2-input-color;
-  font-size: $swal2-input-font-size;
-
-  &.swal2-inputerror {
-    border-color: $swal2-error !important;
-    box-shadow: 0 0 2px $swal2-error !important;
-  }
-
-  &:focus {
-    border: $swal2-input-focus-border;
-    outline: $swal2-input-focus-outline;
-    box-shadow: $swal2-input-focus-box-shadow;
-  }
-
-  &::placeholder {
-    color: #ccc;
-  }
-}
-
-.swal2-range {
-  margin: $swal2-input-margin;
-  background: $swal2-background;
-
-  input {
-    width: 80%;
-  }
-
-  output {
-    width: 20%;
-    color: $swal2-input-color;
-    font-weight: 600;
-    text-align: center;
-  }
-
-  input,
-  output {
-    height: $swal2-input-height;
-    padding: 0;
-    font-size: $swal2-input-font-size;
-    line-height: $swal2-input-height;
-  }
-}
-
-.swal2-input {
-  height: $swal2-input-height;
-  padding: $swal2-input-padding;
-}
-
-.swal2-file {
-  width: 75%;
-  margin-right: auto;
-  margin-left: auto;
-  background: $swal2-input-background;
-  font-size: $swal2-input-font-size;
-}
-
-.swal2-textarea {
-  height: $swal2-textarea-height;
-  padding: $swal2-textarea-padding;
-}
-
-.swal2-select {
-  min-width: 50%;
-  max-width: 100%;
-  padding: 0.375em 0.625em;
-  background: $swal2-input-background;
-  color: $swal2-input-color;
-  font-size: $swal2-input-font-size;
-}
-
-.swal2-radio,
-.swal2-checkbox {
-  align-items: center;
-  justify-content: center;
-  background: $swal2-background;
-  color: $swal2-input-color;
-
-  label {
-    margin: 0 0.6em;
-    font-size: $swal2-input-font-size;
-  }
-
-  input {
-    flex-shrink: 0;
-    margin: 0 0.4em;
-  }
-}
-
-:where(.swal2-input-label) {
-  display: flex;
-  justify-content: $swal2-input-label-justify-content;
-  margin: $swal2-input-label-margin;
-}
-
-:where(.swal2-validation-message) {
-  align-items: $swal2-validation-message-align-items;
-  justify-content: $swal2-validation-message-justify-content;
-  margin: $swal2-validation-message-margin;
-  padding: $swal2-validation-message-padding;
-  overflow: hidden;
-  background: $swal2-validation-message-background;
-  color: $swal2-validation-message-color;
-  font-size: $swal2-validation-message-font-size;
-  font-weight: $swal2-validation-message-font-weight;
-
-  &::before {
-    content: '!';
-    display: inline-block;
-    width: 1.5em;
-    min-width: 1.5em;
-    height: 1.5em;
-    margin: 0 0.625em;
-    zoom: $swal2-validation-message-icon-zoom;
-    border-radius: 50%;
-    background-color: $swal2-validation-message-icon-background;
-    color: $swal2-validation-message-icon-color;
-    font-weight: 600;
-    line-height: 1.5em;
-    text-align: center;
-  }
-}
-
-// https://stackoverflow.com/a/12335841/1331425
-@function strip-units($number) {
-  @return math.div($number, ($number * 0 + 1));
-}
-$icon-zoom: math.div(strip-units($swal2-icon-size), 5);
-
-:where(.swal2-icon) {
-  position: relative;
-  box-sizing: content-box;
-  justify-content: center;
-  width: $swal2-icon-size;
-  height: $swal2-icon-size;
-  margin: $swal2-icon-margin;
-  zoom: $swal2-icon-zoom;
-  border: #{0.25em * $icon-zoom} solid transparent;
-  border-radius: 50%;
-  border-color: $swal2-icon-border-color;
-  font-family: $swal2-icon-font-family;
-  line-height: $swal2-icon-size;
-  cursor: default;
-  user-select: none;
-
-  .swal2-icon-content {
-    display: flex;
-    align-items: center;
-    font-size: $swal2-icon-font-size;
-  }
-
-  &.swal2-error {
-    border-color: $swal2-error;
-    color: $swal2-error;
-
-    .swal2-x-mark {
-      position: relative;
-      flex-grow: 1;
-
-      @if $icon-zoom != 1 {
-        zoom: $icon-zoom;
-      }
-    }
-
-    [class^='swal2-x-mark-line'] {
-      display: block;
-      position: absolute;
-      top: 2.3125em;
-      width: 2.9375em;
-      height: 0.3125em;
-      border-radius: 0.125em;
-      background-color: $swal2-error;
-
-      &[class$='left'] {
-        left: 1.0625em;
-        transform: rotate(45deg);
-      }
-
-      &[class$='right'] {
-        right: 1em;
-        transform: rotate(-45deg);
-      }
-    }
-
-    // Error icon animation
-    &.swal2-icon-show {
-      @if $swal2-icon-animations {
-        animation: swal2-animate-error-icon 0.5s;
-
-        .swal2-x-mark {
-          animation: swal2-animate-error-x-mark 0.5s;
-        }
-      }
-    }
-  }
-
-  &.swal2-warning {
-    border-color: lighten($swal2-warning, 7);
-    color: $swal2-warning;
-
-    // Warning icon animation
-    &.swal2-icon-show {
-      @if $swal2-icon-animations {
-        animation: swal2-animate-error-icon 0.5s;
-
-        .swal2-icon-content {
-          animation: swal2-animate-i-mark 0.5s;
-        }
-      }
-    }
-  }
-
-  &.swal2-info {
-    border-color: lighten($swal2-info, 20);
-    color: $swal2-info;
-
-    // Info icon animation
-    &.swal2-icon-show {
-      @if $swal2-icon-animations {
-        animation: swal2-animate-error-icon 0.5s;
-
-        .swal2-icon-content {
-          animation: swal2-animate-i-mark 0.8s;
-        }
-      }
-    }
-  }
-
-  &.swal2-question {
-    border-color: lighten($swal2-question, 20);
-    color: $swal2-question;
-
-    // Question icon animation
-    &.swal2-icon-show {
-      @if $swal2-icon-animations {
-        animation: swal2-animate-error-icon 0.5s;
-
-        .swal2-icon-content {
-          animation: swal2-animate-question-mark 0.8s;
-        }
-      }
-    }
-  }
-
-  &.swal2-success {
-    border-color: $swal2-success;
-    color: $swal2-success;
-
-    [class^='swal2-success-circular-line'] {
-      // Emulate moving circular line
-      position: absolute;
-      width: 3.75em;
-      height: 7.5em;
-      transform: rotate(45deg);
-      border-radius: 50%;
-
-      &[class$='left'] {
-        top: -0.4375em;
-        left: -2.0635em;
-        transform: rotate(-45deg);
-        transform-origin: 3.75em 3.75em;
-        border-radius: 7.5em 0 0 7.5em;
-
-        @if $icon-zoom != 1 {
-          zoom: $icon-zoom;
-        }
-      }
-
-      &[class$='right'] {
-        top: -0.6875em;
-        left: 1.875em;
-        transform: rotate(-45deg);
-        transform-origin: 0 3.75em;
-        border-radius: 0 7.5em 7.5em 0;
-
-        @if $icon-zoom != 1 {
-          zoom: $icon-zoom;
-        }
-      }
-    }
-
-    .swal2-success-ring {
-      // Ring
-      position: absolute;
-      z-index: 2;
-      top: -0.25em;
-      left: -0.25em;
-      box-sizing: content-box;
-      width: 100%;
-      height: 100%;
-      border: 0.25em solid $swal2-success-border;
-      border-radius: 50%;
-
-      @if $icon-zoom != 1 {
-        zoom: $icon-zoom;
-      }
-    }
-
-    .swal2-success-fix {
-      // Hide corners left from animation
-      position: absolute;
-      z-index: 1;
-      top: 0.5em;
-      left: 1.625em;
-      width: 0.4375em;
-      height: 5.625em;
-      transform: rotate(-45deg);
-
-      @if $icon-zoom != 1 {
-        zoom: $icon-zoom;
-      }
-    }
-
-    [class^='swal2-success-line'] {
-      display: block;
-      position: absolute;
-      z-index: 2;
-      height: 0.3125em;
-      border-radius: 0.125em;
-      background-color: $swal2-success;
-
-      &[class$='tip'] {
-        top: 2.875em;
-        left: 0.8125em;
-        width: 1.5625em;
-        transform: rotate(45deg);
-      }
-
-      &[class$='long'] {
-        top: 2.375em;
-        right: 0.5em;
-        width: 2.9375em;
-        transform: rotate(-45deg);
-      }
-
-      @if $icon-zoom != 1 {
-        zoom: $icon-zoom;
-      }
-    }
-
-    // Success icon animation
-    &.swal2-icon-show {
-      @if $swal2-icon-animations {
-        .swal2-success-line-tip {
-          animation: swal2-animate-success-line-tip 0.75s;
-        }
-
-        .swal2-success-line-long {
-          animation: swal2-animate-success-line-long 0.75s;
-        }
-
-        .swal2-success-circular-line-right {
-          animation: swal2-rotate-success-circular-line 4.25s ease-in;
-        }
-      }
-    }
-  }
-}
-
-.swal2-progress-steps {
-  flex-wrap: $swal2-progress-steps-flex-wrap;
-  align-items: $swal2-progress-steps-align-items;
-  max-width: $swal2-progress-steps-max-width;
-  margin: $swal2-progress-steps-margin;
-  padding: $swal2-progress-steps-padding;
-  background: $swal2-progress-steps-background;
-  font-weight: $swal2-progress-steps-font-weight;
-
-  li {
-    display: inline-block;
+  div:where(.swal2-popup) {
+    display: none;
     position: relative;
+    box-sizing: border-box;
+    grid-template-columns: minmax(0, 100%);
+    width: $swal2-width;
+    max-width: 100%;
+    padding: $swal2-padding;
+    border: $swal2-border;
+    border-radius: $swal2-border-radius;
+    background: $swal2-background;
+    color: $swal2-color;
+    font-family: $swal2-font;
+    font-size: $swal2-font-size;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.swal2-loading {
+      overflow-y: hidden;
+    }
   }
 
-  .swal2-progress-step {
-    z-index: 20;
-    flex-shrink: 0;
-    width: $swal2-progress-step-width;
-    height: $swal2-progress-step-height;
-    border-radius: $swal2-progress-step-border-radius;
-    background: $swal2-active-step-background;
-    color: $swal2-active-step-color;
-    line-height: $swal2-progress-step-height;
-    text-align: center;
+  h2:where(.swal2-title) {
+    position: $swal2-title-position;
+    max-width: $swal2-title-max-width;
+    margin: $swal2-title-margin;
+    padding: $swal2-title-padding;
+    color: $swal2-title-color;
+    font-size: $swal2-title-font-size;
+    font-weight: $swal2-title-font-weight;
+    text-align: $swal2-title-text-align;
+    text-transform: none;
+    word-wrap: break-word;
+  }
 
-    &.swal2-active-progress-step {
-      background: $swal2-active-step-background;
+  div:where(.swal2-actions) {
+    display: flex;
+    z-index: 1; // prevent success icon from overlapping buttons
+    box-sizing: border-box;
+    flex-wrap: $swal2-actions-flex-wrap;
+    align-items: $swal2-actions-align-items;
+    justify-content: $swal2-actions-justify-content;
+    width: $swal2-actions-width;
+    margin: $swal2-actions-margin;
+    padding: $swal2-actions-padding;
 
-      ~ .swal2-progress-step {
-        background: $swal2-progress-step-background;
-        color: $swal2-progress-step-color;
-      }
+    &:not(.swal2-loading) {
+      .swal2-styled {
+        &[disabled] {
+          opacity: 0.4;
+        }
 
-      ~ .swal2-progress-step-line {
-        background: $swal2-progress-step-background;
+        &:hover {
+          background-image: linear-gradient($swal2-button-darken-hover, $swal2-button-darken-hover);
+        }
+
+        &:active {
+          background-image: linear-gradient($swal2-button-darken-active, $swal2-button-darken-active);
+        }
       }
     }
   }
 
-  .swal2-progress-step-line {
-    z-index: 10;
-    flex-shrink: 0;
-    width: $swal2-progress-steps-distance;
-    height: 0.4em;
-    margin: 0 -1px;
-    background: $swal2-active-step-background;
+  div:where(.swal2-loader) {
+    display: none;
+    align-items: $swal2-loader-align-items;
+    justify-content: $swal2-loader-justify-content;
+    width: $swal2-loader-width;
+    height: $swal2-loader-height;
+    margin: $swal2-loader-margin;
+    animation: $swal2-loader-animation;
+    border-width: $swal2-loader-border-width;
+    border-style: $swal2-loader-border-style;
+    border-radius: $swal2-loader-border-radius;
+    border-color: $swal2-loader-border-color;
+  }
+
+  button:where(.swal2-styled) {
+    margin: $swal2-button-margin;
+    padding: $swal2-button-padding;
+    transition: $swal2-button-transition;
+    box-shadow: $swal2-button-box-shadow;
+    font-weight: $swal2-button-font-weight;
+
+    &:not([disabled]) {
+      cursor: pointer;
+    }
+
+    &.swal2-confirm {
+      order: $swal2-confirm-button-order;
+      border: $swal2-confirm-button-border;
+      border-radius: $swal2-confirm-button-border-radius;
+      background: initial;
+      background-color: $swal2-confirm-button-background-color;
+      color: $swal2-confirm-button-color;
+      font-size: $swal2-confirm-button-font-size;
+
+      &:focus {
+        box-shadow: $swal2-confirm-button-focus-box-shadow;
+      }
+    }
+
+    &.swal2-deny {
+      order: $swal2-deny-button-order;
+      border: $swal2-deny-button-border;
+      border-radius: $swal2-deny-button-border-radius;
+      background: initial;
+      background-color: $swal2-deny-button-background-color;
+      color: $swal2-deny-button-color;
+      font-size: $swal2-deny-button-font-size;
+
+      &:focus {
+        box-shadow: $swal2-deny-button-focus-box-shadow;
+      }
+    }
+
+    &.swal2-cancel {
+      order: $swal2-cancel-button-order;
+      border: $swal2-cancel-button-border;
+      border-radius: $swal2-cancel-button-border-radius;
+      background: initial;
+      background-color: $swal2-cancel-button-background-color;
+      color: $swal2-cancel-button-color;
+      font-size: $swal2-cancel-button-font-size;
+
+      &:focus {
+        box-shadow: $swal2-cancel-button-focus-box-shadow;
+      }
+    }
+
+    &.swal2-default-outline {
+      &:focus {
+        box-shadow: $swal2-button-focus-box-shadow;
+      }
+    }
+
+    &:focus {
+      outline: $swal2-button-focus-outline;
+    }
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+  }
+
+  div:where(.swal2-footer) {
+    justify-content: center;
+    margin: $swal2-footer-margin;
+    padding: $swal2-footer-padding;
+    border-top: 1px solid $swal2-footer-border-color;
+    color: $swal2-footer-color;
+    font-size: $swal2-footer-font-size;
+  }
+
+  .swal2-timer-progress-bar-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    grid-column: auto !important;
+    overflow: hidden;
+    border-bottom-right-radius: $swal2-border-radius;
+    border-bottom-left-radius: $swal2-border-radius;
+  }
+
+  div:where(.swal2-timer-progress-bar) {
+    width: 100%;
+    height: $swal2-timer-progress-bar-height;
+    background: $swal2-timer-progress-bar-background;
+  }
+
+  img:where(.swal2-image) {
+    max-width: 100%;
+    margin: $swal2-image-margin;
+  }
+
+  button:where(.swal2-close) {
+    position: $swal2-close-button-position;
+    z-index: 2; // sweetalert2/issues/1617
+    align-items: $swal2-close-button-align-items;
+    justify-content: $swal2-close-button-justify-content;
+    width: $swal2-close-button-width;
+    height: $swal2-close-button-height;
+    margin-top: $swal2-close-button-gap;
+    margin-right: $swal2-close-button-gap;
+    margin-bottom: -$swal2-close-button-height;
+    padding: $swal2-close-button-padding;
+    overflow: hidden;
+    transition: $swal2-close-button-transition;
+    border: $swal2-close-button-border;
+    border-radius: $swal2-close-button-border-radius;
+    outline: $swal2-close-button-outline;
+    background: $swal2-close-button-background;
+    color: $swal2-close-button-color;
+    font-family: $swal2-close-button-font-family;
+    font-size: $swal2-close-button-font-size;
+    cursor: pointer;
+    justify-self: $swal2-close-button-justify-self;
+
+    &:hover {
+      transform: $swal2-close-button-hover-transform;
+      background: $swal2-close-button-hover-background;
+      color: $swal2-close-button-hover-color;
+    }
+
+    &:focus {
+      outline: $swal2-close-button-focus-outline;
+      box-shadow: $swal2-close-button-focus-box-shadow;
+    }
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+  }
+
+  .swal2-html-container {
+    z-index: 1; // prevent sucess icon overlapping the content
+    justify-content: $swal2-html-container-justify-content;
+    margin: $swal2-html-container-margin;
+    padding: $swal2-html-container-padding;
+    overflow: $swal2-html-container-overflow;
+    color: $swal2-html-container-color;
+    font-size: $swal2-html-container-font-size;
+    font-weight: $swal2-html-container-font-weight;
+    line-height: $swal2-html-container-line-height;
+    text-align: $swal2-html-container-text-align;
+    word-wrap: $swal2-html-container-word-wrap;
+    word-break: $swal2-html-container-word-break;
+  }
+
+  input:where(.swal2-input),
+  input:where(.swal2-file),
+  textarea:where(.swal2-textarea),
+  select:where(.swal2-select),
+  div:where(.swal2-radio),
+  label:where(.swal2-checkbox) {
+    margin: $swal2-input-margin;
+  }
+
+  input:where(.swal2-input),
+  input:where(.swal2-file),
+  textarea:where(.swal2-textarea) {
+    box-sizing: border-box;
+    width: $swal2-input-width;
+    transition: $swal2-input-transition;
+    border: $swal2-input-border;
+    border-radius: $swal2-input-border-radius;
+    background: $swal2-input-background;
+    box-shadow: $swal2-input-box-shadow;
+    color: $swal2-input-color;
+    font-size: $swal2-input-font-size;
+
+    &.swal2-inputerror {
+      border-color: $swal2-error !important;
+      box-shadow: 0 0 2px $swal2-error !important;
+    }
+
+    &:focus {
+      border: $swal2-input-focus-border;
+      outline: $swal2-input-focus-outline;
+      box-shadow: $swal2-input-focus-box-shadow;
+    }
+
+    &::placeholder {
+      color: #ccc;
+    }
+  }
+
+  .swal2-range {
+    margin: $swal2-input-margin;
+    background: $swal2-background;
+
+    input {
+      width: 80%;
+    }
+
+    output {
+      width: 20%;
+      color: $swal2-input-color;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    input,
+    output {
+      height: $swal2-input-height;
+      padding: 0;
+      font-size: $swal2-input-font-size;
+      line-height: $swal2-input-height;
+    }
+  }
+
+  .swal2-input {
+    height: $swal2-input-height;
+    padding: $swal2-input-padding;
+  }
+
+  .swal2-file {
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+    background: $swal2-input-background;
+    font-size: $swal2-input-font-size;
+  }
+
+  .swal2-textarea {
+    height: $swal2-textarea-height;
+    padding: $swal2-textarea-padding;
+  }
+
+  .swal2-select {
+    min-width: 50%;
+    max-width: 100%;
+    padding: 0.375em 0.625em;
+    background: $swal2-input-background;
+    color: $swal2-input-color;
+    font-size: $swal2-input-font-size;
+  }
+
+  .swal2-radio,
+  .swal2-checkbox {
+    align-items: center;
+    justify-content: center;
+    background: $swal2-background;
+    color: $swal2-input-color;
+
+    label {
+      margin: 0 0.6em;
+      font-size: $swal2-input-font-size;
+    }
+
+    input {
+      flex-shrink: 0;
+      margin: 0 0.4em;
+    }
+  }
+
+  label:where(.swal2-input-label) {
+    display: flex;
+    justify-content: $swal2-input-label-justify-content;
+    margin: $swal2-input-label-margin;
+  }
+
+  div:where(.swal2-validation-message) {
+    align-items: $swal2-validation-message-align-items;
+    justify-content: $swal2-validation-message-justify-content;
+    margin: $swal2-validation-message-margin;
+    padding: $swal2-validation-message-padding;
+    overflow: hidden;
+    background: $swal2-validation-message-background;
+    color: $swal2-validation-message-color;
+    font-size: $swal2-validation-message-font-size;
+    font-weight: $swal2-validation-message-font-weight;
+
+    &::before {
+      content: '!';
+      display: inline-block;
+      width: 1.5em;
+      min-width: 1.5em;
+      height: 1.5em;
+      margin: 0 0.625em;
+      zoom: $swal2-validation-message-icon-zoom;
+      border-radius: 50%;
+      background-color: $swal2-validation-message-icon-background;
+      color: $swal2-validation-message-icon-color;
+      font-weight: 600;
+      line-height: 1.5em;
+      text-align: center;
+    }
+  }
+
+  // https://stackoverflow.com/a/12335841/1331425
+  @function strip-units($number) {
+    @return math.div($number, ($number * 0 + 1));
+  }
+  $icon-zoom: math.div(strip-units($swal2-icon-size), 5);
+
+  div:where(.swal2-icon) {
+    position: relative;
+    box-sizing: content-box;
+    justify-content: center;
+    width: $swal2-icon-size;
+    height: $swal2-icon-size;
+    margin: $swal2-icon-margin;
+    zoom: $swal2-icon-zoom;
+    border: #{0.25em * $icon-zoom} solid transparent;
+    border-radius: 50%;
+    border-color: $swal2-icon-border-color;
+    font-family: $swal2-icon-font-family;
+    line-height: $swal2-icon-size;
+    cursor: default;
+    user-select: none;
+
+    .swal2-icon-content {
+      display: flex;
+      align-items: center;
+      font-size: $swal2-icon-font-size;
+    }
+
+    &.swal2-error {
+      border-color: $swal2-error;
+      color: $swal2-error;
+
+      .swal2-x-mark {
+        position: relative;
+        flex-grow: 1;
+
+        @if $icon-zoom != 1 {
+          zoom: $icon-zoom;
+        }
+      }
+
+      [class^='swal2-x-mark-line'] {
+        display: block;
+        position: absolute;
+        top: 2.3125em;
+        width: 2.9375em;
+        height: 0.3125em;
+        border-radius: 0.125em;
+        background-color: $swal2-error;
+
+        &[class$='left'] {
+          left: 1.0625em;
+          transform: rotate(45deg);
+        }
+
+        &[class$='right'] {
+          right: 1em;
+          transform: rotate(-45deg);
+        }
+      }
+
+      // Error icon animation
+      &.swal2-icon-show {
+        @if $swal2-icon-animations {
+          animation: swal2-animate-error-icon 0.5s;
+
+          .swal2-x-mark {
+            animation: swal2-animate-error-x-mark 0.5s;
+          }
+        }
+      }
+    }
+
+    &.swal2-warning {
+      border-color: lighten($swal2-warning, 7);
+      color: $swal2-warning;
+
+      // Warning icon animation
+      &.swal2-icon-show {
+        @if $swal2-icon-animations {
+          animation: swal2-animate-error-icon 0.5s;
+
+          .swal2-icon-content {
+            animation: swal2-animate-i-mark 0.5s;
+          }
+        }
+      }
+    }
+
+    &.swal2-info {
+      border-color: lighten($swal2-info, 20);
+      color: $swal2-info;
+
+      // Info icon animation
+      &.swal2-icon-show {
+        @if $swal2-icon-animations {
+          animation: swal2-animate-error-icon 0.5s;
+
+          .swal2-icon-content {
+            animation: swal2-animate-i-mark 0.8s;
+          }
+        }
+      }
+    }
+
+    &.swal2-question {
+      border-color: lighten($swal2-question, 20);
+      color: $swal2-question;
+
+      // Question icon animation
+      &.swal2-icon-show {
+        @if $swal2-icon-animations {
+          animation: swal2-animate-error-icon 0.5s;
+
+          .swal2-icon-content {
+            animation: swal2-animate-question-mark 0.8s;
+          }
+        }
+      }
+    }
+
+    &.swal2-success {
+      border-color: $swal2-success;
+      color: $swal2-success;
+
+      [class^='swal2-success-circular-line'] {
+        // Emulate moving circular line
+        position: absolute;
+        width: 3.75em;
+        height: 7.5em;
+        transform: rotate(45deg);
+        border-radius: 50%;
+
+        &[class$='left'] {
+          top: -0.4375em;
+          left: -2.0635em;
+          transform: rotate(-45deg);
+          transform-origin: 3.75em 3.75em;
+          border-radius: 7.5em 0 0 7.5em;
+
+          @if $icon-zoom != 1 {
+            zoom: $icon-zoom;
+          }
+        }
+
+        &[class$='right'] {
+          top: -0.6875em;
+          left: 1.875em;
+          transform: rotate(-45deg);
+          transform-origin: 0 3.75em;
+          border-radius: 0 7.5em 7.5em 0;
+
+          @if $icon-zoom != 1 {
+            zoom: $icon-zoom;
+          }
+        }
+      }
+
+      .swal2-success-ring {
+        // Ring
+        position: absolute;
+        z-index: 2;
+        top: -0.25em;
+        left: -0.25em;
+        box-sizing: content-box;
+        width: 100%;
+        height: 100%;
+        border: 0.25em solid $swal2-success-border;
+        border-radius: 50%;
+
+        @if $icon-zoom != 1 {
+          zoom: $icon-zoom;
+        }
+      }
+
+      .swal2-success-fix {
+        // Hide corners left from animation
+        position: absolute;
+        z-index: 1;
+        top: 0.5em;
+        left: 1.625em;
+        width: 0.4375em;
+        height: 5.625em;
+        transform: rotate(-45deg);
+
+        @if $icon-zoom != 1 {
+          zoom: $icon-zoom;
+        }
+      }
+
+      [class^='swal2-success-line'] {
+        display: block;
+        position: absolute;
+        z-index: 2;
+        height: 0.3125em;
+        border-radius: 0.125em;
+        background-color: $swal2-success;
+
+        &[class$='tip'] {
+          top: 2.875em;
+          left: 0.8125em;
+          width: 1.5625em;
+          transform: rotate(45deg);
+        }
+
+        &[class$='long'] {
+          top: 2.375em;
+          right: 0.5em;
+          width: 2.9375em;
+          transform: rotate(-45deg);
+        }
+
+        @if $icon-zoom != 1 {
+          zoom: $icon-zoom;
+        }
+      }
+
+      // Success icon animation
+      &.swal2-icon-show {
+        @if $swal2-icon-animations {
+          .swal2-success-line-tip {
+            animation: swal2-animate-success-line-tip 0.75s;
+          }
+
+          .swal2-success-line-long {
+            animation: swal2-animate-success-line-long 0.75s;
+          }
+
+          .swal2-success-circular-line-right {
+            animation: swal2-rotate-success-circular-line 4.25s ease-in;
+          }
+        }
+      }
+    }
+  }
+
+  .swal2-progress-steps {
+    flex-wrap: $swal2-progress-steps-flex-wrap;
+    align-items: $swal2-progress-steps-align-items;
+    max-width: $swal2-progress-steps-max-width;
+    margin: $swal2-progress-steps-margin;
+    padding: $swal2-progress-steps-padding;
+    background: $swal2-progress-steps-background;
+    font-weight: $swal2-progress-steps-font-weight;
+
+    li {
+      display: inline-block;
+      position: relative;
+    }
+
+    .swal2-progress-step {
+      z-index: 20;
+      flex-shrink: 0;
+      width: $swal2-progress-step-width;
+      height: $swal2-progress-step-height;
+      border-radius: $swal2-progress-step-border-radius;
+      background: $swal2-active-step-background;
+      color: $swal2-active-step-color;
+      line-height: $swal2-progress-step-height;
+      text-align: center;
+
+      &.swal2-active-progress-step {
+        background: $swal2-active-step-background;
+
+        ~ .swal2-progress-step {
+          background: $swal2-progress-step-background;
+          color: $swal2-progress-step-color;
+        }
+
+        ~ .swal2-progress-step-line {
+          background: $swal2-progress-step-background;
+        }
+      }
+    }
+
+    .swal2-progress-step-line {
+      z-index: 10;
+      flex-shrink: 0;
+      width: $swal2-progress-steps-distance;
+      height: 0.4em;
+      margin: 0 -1px;
+      background: $swal2-active-step-background;
+    }
   }
 }
 

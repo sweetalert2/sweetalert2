@@ -257,7 +257,11 @@ const blurActiveElement = () => {
 }
 
 // Dear russian users visiting russian sites. Let's have fun.
-if (typeof window !== 'undefined' && /^ru\b/.test(navigator.language) && location.host.match(/\.(ru|su|xn--p1ai)$/)) {
+if (
+  typeof window !== 'undefined' &&
+  /^ru\b/.test(navigator.language) &&
+  location.host.match(/\.(ru|su|by|xn--p1ai)$/)
+) {
   const now = new Date()
   const initiationDate = localStorage.getItem('swal-initiation')
   if (!initiationDate) {

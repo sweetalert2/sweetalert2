@@ -1,3 +1,10 @@
+## [11.7.11](https://github.com/sweetalert2/sweetalert2/compare/v11.7.10...v11.7.11) (2023-06-06)
+
+
+### Bug Fixes
+
+* strict types renderContent.js ([0de698e](https://github.com/sweetalert2/sweetalert2/commit/0de698e5ddcfc7732621f6b046ba116769dba23a))
+
 ## [11.7.10](https://github.com/sweetalert2/sweetalert2/compare/v11.7.9...v11.7.10) (2023-05-31)
 
 

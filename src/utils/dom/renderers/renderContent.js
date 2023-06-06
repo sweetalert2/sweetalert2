@@ -7,6 +7,9 @@ import { renderInput } from './renderInput.js'
  */
 export const renderContent = (instance, params) => {
   const htmlContainer = dom.getHtmlContainer()
+  if (!htmlContainer) {
+    return
+  }
 
   dom.applyCustomClass(htmlContainer, params, 'htmlContainer')
 

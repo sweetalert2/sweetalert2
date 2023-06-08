@@ -13,7 +13,7 @@ export const setAriaHidden = () => {
     }
 
     if (el.hasAttribute('aria-hidden')) {
-      el.setAttribute('data-previous-aria-hidden', el.getAttribute('aria-hidden'))
+      el.setAttribute('data-previous-aria-hidden', el.getAttribute('aria-hidden') || '')
     }
     el.setAttribute('aria-hidden', 'true')
   })
@@ -23,7 +23,7 @@ export const unsetAriaHidden = () => {
   const bodyChildren = Array.from(document.body.children)
   bodyChildren.forEach((el) => {
     if (el.hasAttribute('data-previous-aria-hidden')) {
-      el.setAttribute('aria-hidden', el.getAttribute('data-previous-aria-hidden'))
+      el.setAttribute('aria-hidden', el.getAttribute('data-previous-aria-hidden') || '')
       el.removeAttribute('data-previous-aria-hidden')
     } else {
       el.removeAttribute('aria-hidden')

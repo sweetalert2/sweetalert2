@@ -1,3 +1,10 @@
+## [11.7.12](https://github.com/sweetalert2/sweetalert2/compare/v11.7.11...v11.7.12) (2023-06-09)
+
+
+### Bug Fixes
+
+* allow icons outside of .swal2-container ([#2636](https://github.com/sweetalert2/sweetalert2/issues/2636)) ([ec56a1e](https://github.com/sweetalert2/sweetalert2/commit/ec56a1e01da5deb8c9bee289bd7f6538d91e9dd8))
+
 ## [11.7.11](https://github.com/sweetalert2/sweetalert2/compare/v11.7.10...v11.7.11) (2023-06-06)
 
 

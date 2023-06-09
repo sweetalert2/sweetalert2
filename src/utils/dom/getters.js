@@ -134,15 +134,17 @@ const focusable = `
  * @returns {HTMLElement[]}
  */
 export const getFocusableElements = () => {
+  const popup = getPopup()
+  if (!popup) {
+    return []
+  }
   /** @type {NodeListOf<HTMLElement>} */
-  const focusableElementsWithTabindex = getPopup().querySelectorAll(
-    '[tabindex]:not([tabindex="-1"]):not([tabindex="0"])'
-  )
+  const focusableElementsWithTabindex = popup.querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')
   const focusableElementsWithTabindexSorted = Array.from(focusableElementsWithTabindex)
     // sort according to tabindex
     .sort((a, b) => {
-      const tabindexA = parseInt(a.getAttribute('tabindex'))
-      const tabindexB = parseInt(b.getAttribute('tabindex'))
+      const tabindexA = parseInt(a.getAttribute('tabindex') || '0')
+      const tabindexB = parseInt(b.getAttribute('tabindex') || '0')
       if (tabindexA > tabindexB) {
         return 1
       } else if (tabindexA < tabindexB) {
@@ -152,7 +154,7 @@ export const getFocusableElements = () => {
     })
 
   /** @type {NodeListOf<HTMLElement>} */
-  const otherFocusableElements = getPopup().querySelectorAll(focusable)
+  const otherFocusableElements = popup.querySelectorAll(focusable)
   const otherFocusableElementsFiltered = Array.from(otherFocusableElements).filter(
     (el) => el.getAttribute('tabindex') !== '-1'
   )
@@ -177,12 +179,20 @@ export const isModal = () => {
  * @returns {boolean}
  */
 export const isToast = () => {
-  return getPopup() && hasClass(getPopup(), swalClasses.toast)
+  const popup = getPopup()
+  if (!popup) {
+    return false
+  }
+  return hasClass(popup, swalClasses.toast)
 }
 
 /**
  * @returns {boolean}
  */
 export const isLoading = () => {
-  return getPopup().hasAttribute('data-loading')
+  const popup = getPopup()
+  if (!popup) {
+    return false
+  }
+  return popup.hasAttribute('data-loading')
 }

@@ -9,6 +9,9 @@ import { capitalizeFirstLetter } from '../../utils.js'
 export const renderActions = (instance, params) => {
   const actions = dom.getActions()
   const loader = dom.getLoader()
+  if (!actions || !loader) {
+    return
+  }
 
   // Actions (buttons) wrapper
   if (!params.showConfirmButton && !params.showDenyButton && !params.showCancelButton) {
@@ -24,7 +27,7 @@ export const renderActions = (instance, params) => {
   renderButtons(actions, loader, params)
 
   // Loader
-  dom.setInnerHtml(loader, params.loaderHtml)
+  dom.setInnerHtml(loader, params.loaderHtml || '')
   dom.applyCustomClass(loader, params, 'loader')
 }
 
@@ -37,6 +40,9 @@ function renderButtons(actions, loader, params) {
   const confirmButton = dom.getConfirmButton()
   const denyButton = dom.getDenyButton()
   const cancelButton = dom.getCancelButton()
+  if (!confirmButton || !denyButton || !cancelButton) {
+    return
+  }
 
   // Render buttons
   renderButton(confirmButton, 'confirm', params)
@@ -91,12 +97,13 @@ function handleButtonsStyling(confirmButton, denyButton, cancelButton, params) {
  * @param {SweetAlertOptions} params
  */
 function renderButton(button, buttonType, params) {
-  dom.toggle(button, params[`show${capitalizeFirstLetter(buttonType)}Button`], 'inline-block')
-  dom.setInnerHtml(button, params[`${buttonType}ButtonText`]) // Set caption text
-  button.setAttribute('aria-label', params[`${buttonType}ButtonAriaLabel`]) // ARIA label
+  const buttonName = /** @type {'Confirm' | 'Deny' | 'Cancel'} */ (capitalizeFirstLetter(buttonType))
+
+  dom.toggle(button, params[`show${buttonName}Button`], 'inline-block')
+  dom.setInnerHtml(button, params[`${buttonType}ButtonText`] || '') // Set caption text
+  button.setAttribute('aria-label', params[`${buttonType}ButtonAriaLabel`] || '') // ARIA label
 
   // Add buttons custom classes
   button.className = swalClasses[buttonType]
   dom.applyCustomClass(button, params, `${buttonType}Button`)
-  dom.addClass(button, params[`${buttonType}ButtonClass`])
 }

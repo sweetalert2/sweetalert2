@@ -28,7 +28,8 @@ export const render = (instance, params) => {
   renderActions(instance, params)
   renderFooter(instance, params)
 
-  if (typeof params.didRender === 'function') {
-    params.didRender(getPopup())
+  const popup = getPopup()
+  if (typeof params.didRender === 'function' && popup) {
+    params.didRender(popup)
   }
 }

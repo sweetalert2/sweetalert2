@@ -128,7 +128,7 @@ export const focusInput = (input) => {
 
 /**
  * @param {HTMLElement | HTMLElement[] | null} target
- * @param {string | string[] | readonly string[]} classList
+ * @param {string | string[] | readonly string[] | undefined} classList
  * @param {boolean} condition
  */
 export const toggleClass = (target, classList, condition) => {
@@ -151,7 +151,7 @@ export const toggleClass = (target, classList, condition) => {
 
 /**
  * @param {HTMLElement | HTMLElement[] | null} target
- * @param {string | string[] | readonly string[]} classList
+ * @param {string | string[] | readonly string[] | undefined} classList
  */
 export const addClass = (target, classList) => {
   toggleClass(target, classList, true)
@@ -159,7 +159,7 @@ export const addClass = (target, classList) => {
 
 /**
  * @param {HTMLElement | HTMLElement[] | null} target
- * @param {string | string[] | readonly string[]} classList
+ * @param {string | string[] | readonly string[] | undefined} classList
  */
 export const removeClass = (target, classList) => {
   toggleClass(target, classList, false)

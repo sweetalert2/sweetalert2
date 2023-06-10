@@ -39,6 +39,9 @@ function handleBackdropParam(container, backdrop) {
  * @param {SweetAlertOptions['position']} position
  */
 function handlePositionParam(container, position) {
+  if (!position) {
+    return
+  }
   if (position in swalClasses) {
     dom.addClass(container, swalClasses[position])
   } else {
@@ -52,10 +55,8 @@ function handlePositionParam(container, position) {
  * @param {SweetAlertOptions['grow']} grow
  */
 function handleGrowParam(container, grow) {
-  if (grow && typeof grow === 'string') {
-    const growClass = `grow-${grow}`
-    if (growClass in swalClasses) {
-      dom.addClass(container, swalClasses[growClass])
-    }
+  if (!grow) {
+    return
   }
+  dom.addClass(container, swalClasses[`grow-${grow}`])
 }

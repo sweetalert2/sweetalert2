@@ -22,7 +22,7 @@ export const parseHtmlToContainer = (param, target) => {
 }
 
 /**
- * @param {object} param
+ * @param {any} param
  * @param {HTMLElement} target
  */
 const handleObject = (param, target) => {
@@ -39,7 +39,7 @@ const handleObject = (param, target) => {
 
 /**
  * @param {HTMLElement} target
- * @param {HTMLElement} elem
+ * @param {any} elem
  */
 const handleJqueryElem = (target, elem) => {
   target.textContent = ''

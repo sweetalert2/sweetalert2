@@ -18,6 +18,7 @@ div:where(.swal2-icon) {
   font-family: $swal2-icon-font-family;
   line-height: $swal2-icon-size;
   cursor: default;
+  -webkit-user-select: none; /* Safari */
   user-select: none;
 
   .swal2-icon-content {

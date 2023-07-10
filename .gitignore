@@ -1,6 +1,0 @@
-node_modules
-dist
-cypress/fixtures
-cypress/screenshots
-.idea
-.vscode

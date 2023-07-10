@@ -10,7 +10,7 @@ const sweetHTML = `
    <button type="button" class="${swalClasses.close}"></button>
    <ul class="${swalClasses['progress-steps']}"></ul>
    <div class="${swalClasses.icon}"></div>
-   <img class="${swalClasses.image}" />
+   <img alt="image" class="${swalClasses.image}" />
    <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
    <div class="${swalClasses['html-container']}" id="${swalClasses['html-container']}"></div>
    <input class="${swalClasses.input}" />
@@ -22,7 +22,7 @@ const sweetHTML = `
    <select class="${swalClasses.select}"></select>
    <div class="${swalClasses.radio}"></div>
    <label for="${swalClasses.checkbox}" class="${swalClasses.checkbox}">
-     <input type="checkbox" />
+     <input type="checkbox" id="${swalClasses.checkbox}"/>
      <span class="${swalClasses.label}"></span>
    </label>
    <textarea class="${swalClasses.textarea}"></textarea>

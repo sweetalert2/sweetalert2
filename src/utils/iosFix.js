@@ -14,23 +14,6 @@ export const iOSfix = () => {
     document.body.style.top = `${offset * -1}px`
     dom.addClass(document.body, swalClasses.iosfix)
     lockBodyScroll()
-    addBottomPaddingForTallPopups()
-  }
-}
-
-/**
- * https://github.com/sweetalert2/sweetalert2/issues/1948
- */
-const addBottomPaddingForTallPopups = () => {
-  const ua = navigator.userAgent
-  const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i)
-  const webkit = !!ua.match(/WebKit/i)
-  const iOSSafari = iOS && webkit && !ua.match(/CriOS/i)
-  if (iOSSafari) {
-    const bottomPanelHeight = 44
-    if (dom.getPopup().scrollHeight > window.innerHeight - bottomPanelHeight) {
-      dom.getContainer().style.paddingBottom = `${bottomPanelHeight}px`
-    }
   }
 }
 

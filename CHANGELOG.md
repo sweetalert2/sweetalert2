@@ -1,3 +1,10 @@
+## [11.7.14](https://github.com/sweetalert2/sweetalert2/compare/v11.7.13...v11.7.14) (2023-07-11)
+
+
+### Bug Fixes
+
+* id attr on checkbox ([#2648](https://github.com/sweetalert2/sweetalert2/issues/2648)) ([f90064b](https://github.com/sweetalert2/sweetalert2/commit/f90064bebb5d6867559848a1a90969899d8e84a8))
+
 ## [11.7.13](https://github.com/sweetalert2/sweetalert2/compare/v11.7.12...v11.7.13) (2023-07-11)
 
 

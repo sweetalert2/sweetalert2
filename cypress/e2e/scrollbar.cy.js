@@ -21,14 +21,14 @@ describe('Vertical scrollbar', () => {
     })
   })
 
-  it('should be hidden and the according padding-right should be set', (done) => {
+  it('should be hidden and the according padding-right should be set', async (done) => {
     ensureClosed()
     const talltDiv = document.createElement('div')
     talltDiv.innerHTML = Array(100).join('<div>lorem ipsum</div>')
     document.body.appendChild(talltDiv)
     document.body.style.paddingRight = '30px'
 
-    const scrollbarWidth = measureScrollbar()
+    const scrollbarWidth = await measureScrollbar()
 
     SwalWithoutAnimation.fire({
       title: 'The body has visible scrollbar, I will hide it and adjust padding-right on body',

@@ -3,7 +3,7 @@ import { swalClasses } from '../utils/classes.js'
 import * as dom from './dom/index.js'
 
 // @ts-ignore
-export const isSafariOrIOS = !!window.GestureEvent // true for Safari desktop + all iOS browsers https://stackoverflow.com/a/70585394
+export const isSafariOrIOS = typeof window !== 'undefined' && !!window.GestureEvent // true for Safari desktop + all iOS browsers https://stackoverflow.com/a/70585394
 
 // Fix iOS scrolling http://stackoverflow.com/q/39626302
 

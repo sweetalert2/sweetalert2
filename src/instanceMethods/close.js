@@ -7,6 +7,7 @@ import { swalClasses } from '../utils/classes.js'
 import * as dom from '../utils/dom/index.js'
 import { undoIOSfix } from '../utils/iosFix.js'
 import { undoScrollbar } from '../utils/scrollbarFix.js'
+import { isSafariOrIOS } from '../utils/iosFix.js'
 
 /**
  * @param {SweetAlert} instance
@@ -22,10 +23,9 @@ function removePopupAndResetState(instance, container, returnFocus, didClose) {
     removeKeydownHandler(globalState)
   }
 
-  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-  // workaround for #2088
+  // workaround for https://github.com/sweetalert2/sweetalert2/issues/2088
   // for some reason removing the container in Safari will scroll the document to bottom
-  if (isSafari) {
+  if (isSafariOrIOS) {
     container.setAttribute('style', 'display:none !important')
     container.removeAttribute('class')
     container.innerHTML = ''

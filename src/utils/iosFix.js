@@ -2,14 +2,13 @@
 import { swalClasses } from '../utils/classes.js'
 import * as dom from './dom/index.js'
 
+// @ts-ignore
+export const isSafariOrIOS = !!window.GestureEvent // true for Safari desktop + all iOS browsers https://stackoverflow.com/a/70585394
+
 // Fix iOS scrolling http://stackoverflow.com/q/39626302
 
 export const iOSfix = () => {
-  const iOS =
-    // @ts-ignore
-    (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) ||
-    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
-  if (iOS && !dom.hasClass(document.body, swalClasses.iosfix)) {
+  if (isSafariOrIOS && !dom.hasClass(document.body, swalClasses.iosfix)) {
     const offset = document.body.scrollTop
     document.body.style.top = `${offset * -1}px`
     dom.addClass(document.body, swalClasses.iosfix)

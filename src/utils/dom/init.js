@@ -13,19 +13,19 @@ const sweetHTML = `
    <img class="${swalClasses.image}" />
    <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
    <div class="${swalClasses['html-container']}" id="${swalClasses['html-container']}"></div>
-   <input class="${swalClasses.input}" />
+   <input class="${swalClasses.input}" id="${swalClasses.input}" />
    <input type="file" class="${swalClasses.file}" />
    <div class="${swalClasses.range}">
      <input type="range" />
      <output></output>
    </div>
-   <select class="${swalClasses.select}"></select>
+   <select class="${swalClasses.select}" id="${swalClasses.select}"></select>
    <div class="${swalClasses.radio}"></div>
-   <label for="${swalClasses.checkbox}" class="${swalClasses.checkbox}">
-     <input type="checkbox" />
+   <label class="${swalClasses.checkbox}">
+     <input type="checkbox" id="${swalClasses.checkbox}" />
      <span class="${swalClasses.label}"></span>
    </label>
-   <textarea class="${swalClasses.textarea}"></textarea>
+   <textarea class="${swalClasses.textarea}" id="${swalClasses.textarea}"></textarea>
    <div class="${swalClasses['validation-message']}" id="${swalClasses['validation-message']}"></div>
    <div class="${swalClasses.actions}">
      <div class="${swalClasses.loader}"></div>

@@ -73,7 +73,7 @@ const showInput = (params) => {
 const removeAttributes = (input) => {
   for (let i = 0; i < input.attributes.length; i++) {
     const attrName = input.attributes[i].name
-    if (!['type', 'value', 'style'].includes(attrName)) {
+    if (!['id', 'type', 'value', 'style'].includes(attrName)) {
       input.removeAttribute(attrName)
     }
   }
@@ -123,7 +123,6 @@ const setInputPlaceholder = (input, params) => {
  */
 const setInputLabel = (input, prependTo, params) => {
   if (params.inputLabel) {
-    input.id = swalClasses.input
     const label = document.createElement('label')
     const labelClass = swalClasses['input-label']
     label.setAttribute('for', input.id)
@@ -240,7 +239,6 @@ renderInputType.radio = (radio) => {
 renderInputType.checkbox = (checkboxContainer, params) => {
   const checkbox = dom.getInput(dom.getPopup(), 'checkbox')
   checkbox.value = '1'
-  checkbox.id = swalClasses.checkbox
   checkbox.checked = Boolean(params.inputValue)
   const label = checkboxContainer.querySelector('span')
   dom.setInnerHtml(label, params.inputPlaceholder)

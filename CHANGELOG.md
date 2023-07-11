@@ -1,3 +1,10 @@
+## [11.7.16](https://github.com/sweetalert2/sweetalert2/compare/v11.7.15...v11.7.16) (2023-07-11)
+
+
+### Bug Fixes
+
+* avoid using navigator.userAgent and navigator.platform ([#2650](https://github.com/sweetalert2/sweetalert2/issues/2650)) ([3039432](https://github.com/sweetalert2/sweetalert2/commit/3039432e9e44b68ca523c04aeb8286ec0b5d0d61))
+
 ## [11.7.15](https://github.com/sweetalert2/sweetalert2/compare/v11.7.14...v11.7.15) (2023-07-11)
 
 

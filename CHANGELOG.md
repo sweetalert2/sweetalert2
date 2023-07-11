@@ -1,3 +1,10 @@
+## [11.7.15](https://github.com/sweetalert2/sweetalert2/compare/v11.7.14...v11.7.15) (2023-07-11)
+
+
+### Bug Fixes
+
+* rm addBottomPaddingForTallPopups, undo [#1993](https://github.com/sweetalert2/sweetalert2/issues/1993) ([#2649](https://github.com/sweetalert2/sweetalert2/issues/2649)) ([40752da](https://github.com/sweetalert2/sweetalert2/commit/40752da1924a88eb1eca0591b68d413fff45217b))
+
 ## [11.7.14](https://github.com/sweetalert2/sweetalert2/compare/v11.7.13...v11.7.14) (2023-07-11)
 
 

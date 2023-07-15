@@ -1,3 +1,10 @@
+## [11.7.18](https://github.com/sweetalert2/sweetalert2/compare/v11.7.17...v11.7.18) (2023-07-15)
+
+
+### Bug Fixes
+
+* check if texarea is still in document ([#2655](https://github.com/sweetalert2/sweetalert2/issues/2655)) ([6277fda](https://github.com/sweetalert2/sweetalert2/commit/6277fda672df3d14077d8d80fcb9c4630cb8e858))
+
 ## [11.7.17](https://github.com/sweetalert2/sweetalert2/compare/v11.7.16...v11.7.17) (2023-07-15)
 
 

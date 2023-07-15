@@ -272,7 +272,7 @@ renderInputType.textarea = (textarea, params) => {
         if (textareaWidth > initialPopupWidth) {
           dom.getPopup().style.width = `${textareaWidth}px`
         } else {
-          dom.getPopup().style.width = null
+          dom.applyNumericalStyle(dom.getPopup(), 'width', params.width)
         }
       }
       new MutationObserver(textareaResizeHandler).observe(textarea, {

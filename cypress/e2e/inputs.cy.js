@@ -388,6 +388,24 @@ describe('Inputs', () => {
     }, 20)
   })
 
+  it('should not fail if textarea value is a promise and popup is closed before the promise is resolved', (done) => {
+    SwalWithoutAnimation.fire({
+      input: 'textarea',
+      width: 600,
+      inputValue: new Promise((resolve) => {
+        setTimeout(() => {
+          resolve('foo')
+        }, 10)
+      }),
+      didOpen: () => {
+        Swal.close()
+      },
+    })
+    setTimeout(() => {
+      done()
+    }, 20)
+  })
+
   it('returnInputValueOnDeny: true should pass the input value as result.value', (done) => {
     SwalWithoutAnimation.fire({
       input: 'text',

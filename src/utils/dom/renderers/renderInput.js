@@ -268,6 +268,10 @@ renderInputType.textarea = (textarea, params) => {
     if ('MutationObserver' in window) {
       const initialPopupWidth = parseInt(window.getComputedStyle(dom.getPopup()).width)
       const textareaResizeHandler = () => {
+        // check if texarea is still in document (i.e. popup wasn't closed in the meantime)
+        if (!document.body.contains(textarea)) {
+          return
+        }
         const textareaWidth = textarea.offsetWidth + getMargin(textarea)
         if (textareaWidth > initialPopupWidth) {
           dom.getPopup().style.width = `${textareaWidth}px`

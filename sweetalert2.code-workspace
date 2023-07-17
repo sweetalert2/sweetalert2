@@ -8,6 +8,7 @@
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#8e64a5",
       "titleBar.inactiveBackground": "#8e64a5"
     }
   },

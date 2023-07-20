@@ -74,7 +74,6 @@ NSFW Sponsors
 <td align="center"><a href="https://bululu.shop/"><img src="https://sweetalert2.github.io/images/sponsors/bululu.png" width="80"><br>BULULU</a></td>
 <td align="center"><a href="https://vsdoll.net/"><img src="https://sweetalert2.github.io/images/sponsors/vsdoll.png" width="80"><br>VSDoll</a></td>
 <td align="center"><a href="https://www.xndoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/xndoll.jpeg" width="80"><br>XNDOLL</a></td>
-<td align="center"><a href="https://sexsitoys.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexsitoys.jpg" width="80"><br>Sexsi Toys</a></td>
 </tr>
 </table>
 <table>

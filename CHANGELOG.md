@@ -1,3 +1,10 @@
+## [11.7.19](https://github.com/sweetalert2/sweetalert2/compare/v11.7.18...v11.7.19) (2023-07-22)
+
+
+### Bug Fixes
+
+* rended iconHTML with icon: undefined ([83e8fe2](https://github.com/sweetalert2/sweetalert2/commit/83e8fe2b460ed8b63baae6be0348753a33b214c1))
+
 ## [11.7.18](https://github.com/sweetalert2/sweetalert2/compare/v11.7.17...v11.7.18) (2023-07-15)
 
 

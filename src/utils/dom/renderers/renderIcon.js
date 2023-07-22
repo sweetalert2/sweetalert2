@@ -100,11 +100,11 @@ const errorIconHtml = `
  * @param {SweetAlertOptions} params
  */
 const setContent = (icon, params) => {
-  if (!params.icon) {
+  if (!params.icon && !params.iconHtml) {
     return
   }
   let oldContent = icon.innerHTML
-  let newContent
+  let newContent = ''
   if (params.iconHtml) {
     newContent = iconContent(params.iconHtml)
   } else if (params.icon === 'success') {
@@ -112,7 +112,7 @@ const setContent = (icon, params) => {
     oldContent = oldContent.replace(/ style=".*?"/g, '') // undo adjustSuccessIconBackgroundColor()
   } else if (params.icon === 'error') {
     newContent = errorIconHtml
-  } else {
+  } else if (params.icon) {
     const defaultIconHtml = {
       question: '?',
       warning: '!',

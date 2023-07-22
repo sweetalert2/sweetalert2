@@ -40,6 +40,15 @@ describe('icon', () => {
     expect(Swal.getIcon().innerHTML).to.equal('<div class="swal2-icon-content"><i class="fa fa-circle"></i></div>')
   })
 
+  it('Undefined icon with custom HTML (iconHtml)', () => {
+    Swal.fire({
+      icon: undefined,
+      iconHtml: '<i class="fa fa-circle"></i>',
+    })
+
+    expect(Swal.getIcon().innerHTML).to.equal('<div class="swal2-icon-content"><i class="fa fa-circle"></i></div>')
+  })
+
   it('Question icon with custom color (iconColor)', () => {
     SwalWithoutAnimation.fire({
       icon: 'question',

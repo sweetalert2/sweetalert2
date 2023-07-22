@@ -14,16 +14,20 @@ export const setInnerHtml = (elem, html) => {
   if (html) {
     const parser = new DOMParser()
     const parsed = parser.parseFromString(html, `text/html`)
-    Array.from(parsed.querySelector('head').childNodes).forEach((child) => {
-      elem.appendChild(child)
-    })
-    Array.from(parsed.querySelector('body').childNodes).forEach((child) => {
-      if (child instanceof HTMLVideoElement || child instanceof HTMLAudioElement) {
-        elem.appendChild(child.cloneNode(true)) // https://github.com/sweetalert2/sweetalert2/issues/2507
-      } else {
+    const head = parsed.querySelector('head')
+    head &&
+      Array.from(head.childNodes).forEach((child) => {
         elem.appendChild(child)
-      }
-    })
+      })
+    const body = parsed.querySelector('body')
+    body &&
+      Array.from(body.childNodes).forEach((child) => {
+        if (child instanceof HTMLVideoElement || child instanceof HTMLAudioElement) {
+          elem.appendChild(child.cloneNode(true)) // https://github.com/sweetalert2/sweetalert2/issues/2507
+        } else {
+          elem.appendChild(child)
+        }
+      })
   }
 }
 
@@ -54,7 +58,7 @@ const removeCustomClasses = (elem, params) => {
     if (
       !Object.values(swalClasses).includes(className) &&
       !Object.values(iconTypes).includes(className) &&
-      !Object.values(params.showClass).includes(className)
+      !Object.values(params.showClass || {}).includes(className)
     ) {
       elem.classList.remove(className)
     }

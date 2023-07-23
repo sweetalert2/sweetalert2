@@ -1069,7 +1069,7 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    inputValidator?(inputValue: string): SyncOrAsync<string | null>
+    inputValidator?(inputValue: string, validationMessage?: string): SyncOrAsync<string | null | void>
 
     /**
      * If you want to return the input value as `result.value` when denying the popup, set to `true`.

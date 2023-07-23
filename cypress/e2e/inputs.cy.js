@@ -554,9 +554,10 @@ describe('Validation', () => {
   it('validation message with object containing toPromise', (done) => {
     SwalWithoutAnimation.fire({
       input: 'text',
-      inputValidator: (value) => ({
-        toPromise: () => Promise.resolve(!value && 'no falsy values'),
+      inputValidator: (value, validationMessage) => ({
+        toPromise: () => Promise.resolve(!value && validationMessage),
       }),
+      validationMessage: 'no falsy values',
     })
 
     setTimeout(() => {

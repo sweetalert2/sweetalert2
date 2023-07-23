@@ -1,8 +1,8 @@
 export default {
   /**
    * @param {string} string
-   * @param {string} validationMessage
-   * @returns {Promise<void | string>}
+   * @param {string} [validationMessage]
+   * @returns {Promise<string | void>}
    */
   email: (string, validationMessage) => {
     return /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(string)
@@ -11,8 +11,8 @@ export default {
   },
   /**
    * @param {string} string
-   * @param {string} validationMessage
-   * @returns {Promise<void | string>}
+   * @param {string} [validationMessage]
+   * @returns {Promise<string | void>}
    */
   url: (string, validationMessage) => {
     // taken from https://stackoverflow.com/a/3809435 with a small change from #1306 and #2013

@@ -1,3 +1,10 @@
+## [11.7.20](https://github.com/sweetalert2/sweetalert2/compare/v11.7.19...v11.7.20) (2023-07-23)
+
+
+### Bug Fixes
+
+* inputValidator types ([#2656](https://github.com/sweetalert2/sweetalert2/issues/2656)) ([4dc7db8](https://github.com/sweetalert2/sweetalert2/commit/4dc7db84ac2739d71c261291f4d439414f2e905a))
+
 ## [11.7.19](https://github.com/sweetalert2/sweetalert2/compare/v11.7.18...v11.7.19) (2023-07-22)
 
 

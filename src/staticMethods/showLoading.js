@@ -14,6 +14,9 @@ const showLoading = (buttonToReplace) => {
     new Swal() // eslint-disable-line no-new
   }
   popup = dom.getPopup()
+  if (!popup) {
+    return
+  }
   const loader = dom.getLoader()
 
   if (dom.isToast()) {
@@ -30,11 +33,14 @@ const showLoading = (buttonToReplace) => {
 
 /**
  * @param {HTMLElement} popup
- * @param {HTMLButtonElement} [buttonToReplace]
+ * @param {HTMLButtonElement | null} [buttonToReplace]
  */
 const replaceButton = (popup, buttonToReplace) => {
   const actions = dom.getActions()
   const loader = dom.getLoader()
+  if (!actions || !loader) {
+    return
+  }
 
   if (!buttonToReplace && dom.isVisible(dom.getConfirmButton())) {
     buttonToReplace = dom.getConfirmButton()
@@ -44,8 +50,8 @@ const replaceButton = (popup, buttonToReplace) => {
   if (buttonToReplace) {
     dom.hide(buttonToReplace)
     loader.setAttribute('data-button-to-replace', buttonToReplace.className)
+    actions.insertBefore(loader, buttonToReplace)
   }
-  loader.parentNode.insertBefore(loader, buttonToReplace)
   dom.addClass([popup, actions], swalClasses.loading)
 }
 

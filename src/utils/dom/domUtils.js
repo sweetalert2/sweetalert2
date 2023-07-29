@@ -243,7 +243,7 @@ export const toggle = (elem, condition, display = 'flex') => {
 /**
  * borrowed from jquery $(elem).is(':visible') implementation
  *
- * @param {HTMLElement} elem
+ * @param {HTMLElement | null} elem
  * @returns {boolean}
  */
 export const isVisible = (elem) => !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
@@ -281,6 +281,9 @@ export const hasCssAnimation = (elem) => {
  */
 export const animateTimerProgressBar = (timer, reset = false) => {
   const timerProgressBar = getTimerProgressBar()
+  if (!timerProgressBar) {
+    return
+  }
   if (isVisible(timerProgressBar)) {
     if (reset) {
       timerProgressBar.style.transition = 'none'
@@ -295,6 +298,9 @@ export const animateTimerProgressBar = (timer, reset = false) => {
 
 export const stopTimerProgressBar = () => {
   const timerProgressBar = getTimerProgressBar()
+  if (!timerProgressBar) {
+    return
+  }
   const timerProgressBarWidth = parseInt(window.getComputedStyle(timerProgressBar).width)
   timerProgressBar.style.removeProperty('transition')
   timerProgressBar.style.width = '100%'

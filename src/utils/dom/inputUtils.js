@@ -5,7 +5,7 @@ import { getDirectChildByClass } from './domUtils.js'
 import * as dom from './index.js'
 
 /**
- * @typedef { string | number | boolean } InputValue
+ * @typedef { string | number | boolean | undefined } InputValue
  */
 
 /**
@@ -16,7 +16,7 @@ export const handleInputOptionsAndValue = (instance, params) => {
   if (params.input === 'select' || params.input === 'radio') {
     handleInputOptions(instance, params)
   } else if (
-    ['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) &&
+    ['text', 'email', 'number', 'tel', 'textarea'].some((i) => i === params.input) &&
     (hasToPromiseFn(params.inputValue) || isPromise(params.inputValue))
   ) {
     showLoading(dom.getConfirmButton())
@@ -63,7 +63,7 @@ const getRadioValue = (input) => (input.checked ? input.value : null)
  * @returns {FileList | File | null}
  */
 const getFileValue = (input) =>
-  input.files.length ? (input.getAttribute('multiple') !== null ? input.files : input.files[0]) : null
+  input.files && input.files.length ? (input.getAttribute('multiple') !== null ? input.files : input.files[0]) : null
 
 /**
  * @param {SweetAlert} instance
@@ -71,11 +71,18 @@ const getFileValue = (input) =>
  */
 const handleInputOptions = (instance, params) => {
   const popup = dom.getPopup()
+  if (!popup) {
+    return
+  }
   /**
    * @param {Record<string, any>} inputOptions
    */
   const processInputOptions = (inputOptions) => {
-    populateInputOptions[params.input](popup, formatInputOptions(inputOptions), params)
+    if (params.input === 'select') {
+      populateSelectOptions(popup, formatInputOptions(inputOptions), params)
+    } else if (params.input === 'radio') {
+      populateRadioOptions(popup, formatInputOptions(inputOptions), params)
+    }
   }
   if (hasToPromiseFn(params.inputOptions) || isPromise(params.inputOptions)) {
     showLoading(dom.getConfirmButton())
@@ -96,6 +103,9 @@ const handleInputOptions = (instance, params) => {
  */
 const handleInputValue = (instance, params) => {
   const input = instance.getInput()
+  if (!input) {
+    return
+  }
   dom.hide(input)
   asPromise(params.inputValue)
     .then((inputValue) => {
@@ -113,89 +123,95 @@ const handleInputValue = (instance, params) => {
     })
 }
 
-const populateInputOptions = {
+/**
+ * @param {HTMLElement} popup
+ * @param {InputOptionFlattened[]} inputOptions
+ * @param {SweetAlertOptions} params
+ */
+function populateSelectOptions(popup, inputOptions, params) {
+  const select = getDirectChildByClass(popup, swalClasses.select)
+  if (!select) {
+    return
+  }
   /**
-   * @param {HTMLElement} popup
-   * @param {Record<string, any>} inputOptions
-   * @param {SweetAlertOptions} params
+   * @param {HTMLElement} parent
+   * @param {string} optionLabel
+   * @param {string} optionValue
    */
-  select: (popup, inputOptions, params) => {
-    const select = getDirectChildByClass(popup, swalClasses.select)
-    /**
-     * @param {HTMLElement} parent
-     * @param {string} optionLabel
-     * @param {string} optionValue
-     */
-    const renderOption = (parent, optionLabel, optionValue) => {
-      const option = document.createElement('option')
-      option.value = optionValue
-      dom.setInnerHtml(option, optionLabel)
-      option.selected = isSelected(optionValue, params.inputValue)
-      parent.appendChild(option)
+  const renderOption = (parent, optionLabel, optionValue) => {
+    const option = document.createElement('option')
+    option.value = optionValue
+    dom.setInnerHtml(option, optionLabel)
+    option.selected = isSelected(optionValue, params.inputValue)
+    parent.appendChild(option)
+  }
+  inputOptions.forEach((inputOption) => {
+    const optionValue = inputOption[0]
+    const optionLabel = inputOption[1]
+    // <optgroup> spec:
+    // https://www.w3.org/TR/html401/interact/forms.html#h-17.6
+    // "...all OPTGROUP elements must be specified directly within a SELECT element (i.e., groups may not be nested)..."
+    // check whether this is a <optgroup>
+    if (Array.isArray(optionLabel)) {
+      // if it is an array, then it is an <optgroup>
+      const optgroup = document.createElement('optgroup')
+      optgroup.label = optionValue
+      optgroup.disabled = false // not configurable for now
+      select.appendChild(optgroup)
+      optionLabel.forEach((o) => renderOption(optgroup, o[1], o[0]))
+    } else {
+      // case of <option>
+      renderOption(select, optionLabel, optionValue)
     }
-    inputOptions.forEach((inputOption) => {
-      const optionValue = inputOption[0]
-      const optionLabel = inputOption[1]
-      // <optgroup> spec:
-      // https://www.w3.org/TR/html401/interact/forms.html#h-17.6
-      // "...all OPTGROUP elements must be specified directly within a SELECT element (i.e., groups may not be nested)..."
-      // check whether this is a <optgroup>
-      if (Array.isArray(optionLabel)) {
-        // if it is an array, then it is an <optgroup>
-        const optgroup = document.createElement('optgroup')
-        optgroup.label = optionValue
-        optgroup.disabled = false // not configurable for now
-        select.appendChild(optgroup)
-        optionLabel.forEach((o) => renderOption(optgroup, o[1], o[0]))
-      } else {
-        // case of <option>
-        renderOption(select, optionLabel, optionValue)
-      }
-    })
-    select.focus()
-  },
+  })
+  select.focus()
+}
 
-  /**
-   * @param {HTMLElement} popup
-   * @param {Record<string, any>} inputOptions
-   * @param {SweetAlertOptions} params
-   */
-  radio: (popup, inputOptions, params) => {
-    const radio = getDirectChildByClass(popup, swalClasses.radio)
-    inputOptions.forEach((inputOption) => {
-      const radioValue = inputOption[0]
-      const radioLabel = inputOption[1]
-      const radioInput = document.createElement('input')
-      const radioLabelElement = document.createElement('label')
-      radioInput.type = 'radio'
-      radioInput.name = swalClasses.radio
-      radioInput.value = radioValue
-      if (isSelected(radioValue, params.inputValue)) {
-        radioInput.checked = true
-      }
-      const label = document.createElement('span')
-      dom.setInnerHtml(label, radioLabel)
-      label.className = swalClasses.label
-      radioLabelElement.appendChild(radioInput)
-      radioLabelElement.appendChild(label)
-      radio.appendChild(radioLabelElement)
-    })
-    const radios = radio.querySelectorAll('input')
-    if (radios.length) {
-      radios[0].focus()
+/**
+ * @param {HTMLElement} popup
+ * @param {InputOptionFlattened[]} inputOptions
+ * @param {SweetAlertOptions} params
+ */
+function populateRadioOptions(popup, inputOptions, params) {
+  const radio = getDirectChildByClass(popup, swalClasses.radio)
+  if (!radio) {
+    return
+  }
+  inputOptions.forEach((inputOption) => {
+    const radioValue = inputOption[0]
+    const radioLabel = inputOption[1]
+    const radioInput = document.createElement('input')
+    const radioLabelElement = document.createElement('label')
+    radioInput.type = 'radio'
+    radioInput.name = swalClasses.radio
+    radioInput.value = radioValue
+    if (isSelected(radioValue, params.inputValue)) {
+      radioInput.checked = true
     }
-  },
+    const label = document.createElement('span')
+    dom.setInnerHtml(label, radioLabel)
+    label.className = swalClasses.label
+    radioLabelElement.appendChild(radioInput)
+    radioLabelElement.appendChild(label)
+    radio.appendChild(radioLabelElement)
+  })
+  const radios = radio.querySelectorAll('input')
+  if (radios.length) {
+    radios[0].focus()
+  }
 }
 
 /**
  * Converts `inputOptions` into an array of `[value, label]`s
  *
  * @param {Record<string, any>} inputOptions
- * @returns {Array<Array<string>>}
+ * @typedef {string[]} InputOptionFlattened
+ * @returns {InputOptionFlattened[]}
  */
 const formatInputOptions = (inputOptions) => {
+  /** @type {InputOptionFlattened[]} */
   const result = []
-  if (typeof Map !== 'undefined' && inputOptions instanceof Map) {
+  if (inputOptions instanceof Map) {
     inputOptions.forEach((value, key) => {
       let valueFormatted = value
       if (typeof valueFormatted === 'object') {
@@ -223,5 +239,5 @@ const formatInputOptions = (inputOptions) => {
  * @returns {boolean}
  */
 const isSelected = (optionValue, inputValue) => {
-  return inputValue && inputValue.toString() === optionValue.toString()
+  return !!inputValue && inputValue.toString() === optionValue.toString()
 }

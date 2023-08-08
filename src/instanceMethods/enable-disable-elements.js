@@ -1,4 +1,6 @@
+import * as dom from '../utils/dom/index.js'
 import privateProps from '../privateProps.js'
+import { swalClasses } from '../utils/classes.js'
 
 /**
  * @param {SweetAlert} instance
@@ -13,16 +15,17 @@ function setButtonsDisabled(instance, buttons, disabled) {
 }
 
 /**
- * @param {HTMLInputElement} input
+ * @param {HTMLInputElement | null} input
  * @param {boolean} disabled
  */
 function setInputDisabled(input, disabled) {
-  if (!input) {
+  const popup = dom.getPopup()
+  if (!popup || !input) {
     return
   }
   if (input.type === 'radio') {
-    const radiosContainer = input.parentNode.parentNode
-    const radios = radiosContainer.querySelectorAll('input')
+    /** @type {NodeListOf<HTMLInputElement>} */
+    const radios = popup.querySelectorAll(`[name="${swalClasses.radio}"]`)
     for (let i = 0; i < radios.length; i++) {
       radios[i].disabled = disabled
     }
@@ -33,6 +36,7 @@ function setInputDisabled(input, disabled) {
 
 /**
  * Enable all the buttons
+ * @this {SweetAlert}
  */
 export function enableButtons() {
   setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], false)
@@ -40,6 +44,7 @@ export function enableButtons() {
 
 /**
  * Disable all the buttons
+ * @this {SweetAlert}
  */
 export function disableButtons() {
   setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], true)
@@ -47,6 +52,7 @@ export function disableButtons() {
 
 /**
  * Enable the input field
+ * @this {SweetAlert}
  */
 export function enableInput() {
   setInputDisabled(this.getInput(), false)
@@ -54,6 +60,7 @@ export function enableInput() {
 
 /**
  * Disable the input field
+ * @this {SweetAlert}
  */
 export function disableInput() {
   setInputDisabled(this.getInput(), true)

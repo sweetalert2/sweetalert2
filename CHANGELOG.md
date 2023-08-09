@@ -1,3 +1,10 @@
+## [11.7.21](https://github.com/sweetalert2/sweetalert2/compare/v11.7.20...v11.7.21) (2023-08-09)
+
+
+### Bug Fixes
+
+* **types:** add `SyncOrAsync` to `preConfirm` definition ([#2658](https://github.com/sweetalert2/sweetalert2/issues/2658)) ([98c3b5f](https://github.com/sweetalert2/sweetalert2/commit/98c3b5fb8141b286d51e6dde9b368f2dfd441a97))
+
 ## [11.7.20](https://github.com/sweetalert2/sweetalert2/compare/v11.7.19...v11.7.20) (2023-07-23)
 
 

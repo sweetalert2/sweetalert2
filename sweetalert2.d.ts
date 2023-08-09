@@ -951,7 +951,7 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    preConfirm?(inputValue: PreConfirmCallbackValue): PreConfirmResult
+    preConfirm?(inputValue: PreConfirmCallbackValue): SyncOrAsync<PreConfirmResult>
 
     /**
      * Function to execute before denying, may be async (Promise-returning) or sync.

@@ -18,11 +18,18 @@ const inputClasses = ['input', 'file', 'range', 'select', 'radio', 'checkbox', '
  */
 export const renderInput = (instance, params) => {
   const popup = dom.getPopup()
+  if (!popup) {
+    return
+  }
   const innerParams = privateProps.innerParams.get(instance)
   const rerender = !innerParams || params.input !== innerParams.input
 
   inputClasses.forEach((inputClass) => {
     const inputContainer = dom.getDirectChildByClass(popup, swalClasses[inputClass])
+
+    if (!inputContainer) {
+      return
+    }
 
     // set attributes
     setAttributes(inputClass, params.inputAttributes)
@@ -48,6 +55,10 @@ export const renderInput = (instance, params) => {
  * @param {SweetAlertOptions} params
  */
 const showInput = (params) => {
+  if (!params.input) {
+    return
+  }
+
   if (!renderInputType[params.input]) {
     error(
       `Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`
@@ -155,7 +166,7 @@ const checkAndSetInputValue = (input, inputValue) => {
   }
 }
 
-/** @type {Record<string, (input: Input | HTMLElement, params: SweetAlertOptions) => Input>} */
+/** @type {Record<SweetAlertInput, (input: Input | HTMLElement, params: SweetAlertOptions) => Input>} */
 const renderInputType = {}
 
 /**

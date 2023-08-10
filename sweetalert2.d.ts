@@ -25,7 +25,7 @@ declare module 'sweetalert2' {
      * })
      * ```
      */
-    function fire<T = any>(options: SweetAlertOptions<T>): Promise<SweetAlertResult<Awaited<T>>>
+    function fire<T = any>(options: SweetAlertOptions): Promise<SweetAlertResult<Awaited<T>>>
 
     /**
      * Function to display a simple SweetAlert2 popup.
@@ -303,7 +303,7 @@ declare module 'sweetalert2' {
      *
      * @param params The array of arguments to normalize.
      */
-    function argsToParams<T>(params: SweetAlertArrayOptions | readonly [SweetAlertOptions<T>]): SweetAlertOptions<T>
+    function argsToParams(params: SweetAlertArrayOptions | readonly [SweetAlertOptions]): SweetAlertOptions
 
     /**
      * An enum of possible reasons that can explain an alert dismissal.
@@ -445,7 +445,7 @@ declare module 'sweetalert2' {
     readonly dismiss?: Swal.DismissReason
   }
 
-  export interface SweetAlertOptions<PreConfirmResult = any, PreConfirmCallbackValue = any> {
+  export interface SweetAlertOptions {
     /**
      * The title of the popup, as HTML.
      * It can either be added to the object under the key `title` or passed as the first parameter of `Swal.fire()`.
@@ -951,7 +951,7 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    preConfirm?(inputValue: PreConfirmCallbackValue): SyncOrAsync<PreConfirmResult>
+    preConfirm?(inputValue: any): SyncOrAsync<any>
 
     /**
      * Function to execute before denying, may be async (Promise-returning) or sync.

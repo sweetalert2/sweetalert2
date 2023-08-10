@@ -1,3 +1,10 @@
+## [11.7.22](https://github.com/sweetalert2/sweetalert2/compare/v11.7.21...v11.7.22) (2023-08-10)
+
+
+### Bug Fixes
+
+* **types:** rm generic from SweetAlertOptions to make it easier to read ([c3bf4cc](https://github.com/sweetalert2/sweetalert2/commit/c3bf4cc17c5d14d9f65393a939137330865e677a))
+
 ## [11.7.21](https://github.com/sweetalert2/sweetalert2/compare/v11.7.20...v11.7.21) (2023-08-09)
 
 

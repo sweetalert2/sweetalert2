@@ -1,12 +1,13 @@
-/* istanbul ignore file */
 import { swalClasses } from '../utils/classes.js'
 import * as dom from './dom/index.js'
 
 // @ts-ignore
 export const isSafariOrIOS = typeof window !== 'undefined' && !!window.GestureEvent // true for Safari desktop + all iOS browsers https://stackoverflow.com/a/70585394
 
-// Fix iOS scrolling http://stackoverflow.com/q/39626302
-
+/**
+ * Fix iOS scrolling
+ * http://stackoverflow.com/q/39626302
+ */
 export const iOSfix = () => {
   if (isSafariOrIOS && !dom.hasClass(document.body, swalClasses.iosfix)) {
     const offset = document.body.scrollTop
@@ -21,6 +22,10 @@ export const iOSfix = () => {
  */
 const lockBodyScroll = () => {
   const container = dom.getContainer()
+  if (!container) {
+    return
+  }
+  /** @type {boolean} */
   let preventTouchMove
   /**
    * @param {TouchEvent} event
@@ -46,6 +51,10 @@ const lockBodyScroll = () => {
 const shouldPreventTouchMove = (event) => {
   const target = event.target
   const container = dom.getContainer()
+  const htmlContainer = dom.getHtmlContainer()
+  if (!container || !htmlContainer) {
+    return false
+  }
   if (isStylus(event) || isZoom(event)) {
     return false
   }
@@ -58,8 +67,8 @@ const shouldPreventTouchMove = (event) => {
     target.tagName !== 'INPUT' && // #1603
     target.tagName !== 'TEXTAREA' && // #2266
     !(
-      dom.isScrollable(dom.getHtmlContainer()) && // #1944
-      dom.getHtmlContainer().contains(target)
+      dom.isScrollable(htmlContainer) && // #1944
+      htmlContainer.contains(target)
     )
   ) {
     return true

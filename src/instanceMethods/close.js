@@ -179,6 +179,9 @@ const handlePopupAnimation = (instance, popup, innerParams) => {
  * @param {Function} didClose
  */
 const animatePopup = (instance, popup, container, returnFocus, didClose) => {
+  if (!dom.animationEndEvent) {
+    return
+  }
   globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(
     null,
     instance,

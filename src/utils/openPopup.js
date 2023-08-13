@@ -50,7 +50,7 @@ export const openPopup = (params) => {
  */
 const swalOpenAnimationFinished = (event) => {
   const popup = dom.getPopup()
-  if (event.target !== popup) {
+  if (event.target !== popup || !dom.animationEndEvent) {
     return
   }
   const container = dom.getContainer()

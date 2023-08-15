@@ -1,3 +1,10 @@
+## [11.7.23](https://github.com/sweetalert2/sweetalert2/compare/v11.7.22...v11.7.23) (2023-08-15)
+
+
+### Bug Fixes
+
+* change footer's display flex -> block ([#2661](https://github.com/sweetalert2/sweetalert2/issues/2661)) ([c515e76](https://github.com/sweetalert2/sweetalert2/commit/c515e7664b3904a54aab79a43e58802e81f8bca2))
+
 ## [11.7.22](https://github.com/sweetalert2/sweetalert2/compare/v11.7.21...v11.7.22) (2023-08-10)
 
 

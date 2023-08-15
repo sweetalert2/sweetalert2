@@ -40,7 +40,6 @@ For all questions related to sponsorship please contact me via email sweetalert2
 <tr>
 <td align="center"><a href="https://www.mybitcoinslots.com/"><img src="https://sweetalert2.github.io/images/sponsors/mybitcoinslots.png" width="80"><br>My Bitcoin slots</a></td>
 <td align="center"><a href="https://www.vegega.com/"><img src="https://sweetalert2.github.io/images/sponsors/vegega.jpeg" width="80"><br>Metal Raised Garden Bed</a></td>
-<td align="center"><a href="https://torcstark.com/"><img src="https://sweetalert2.github.io/images/sponsors/torc-stark.png" width="80"><br>TorcStark</a></td>
 <td align="center"><a href="https://halvinlaina.fi/"><img src="https://sweetalert2.github.io/images/sponsors/halvinlaina.png" width="80"><br>Halvin Laina</a></td>
 </tr>
 </table>

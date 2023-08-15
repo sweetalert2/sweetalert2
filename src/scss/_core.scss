@@ -270,12 +270,12 @@ div:where(.swal2-container) {
   }
 
   div:where(.swal2-footer) {
-    justify-content: center;
     margin: $swal2-footer-margin;
     padding: $swal2-footer-padding;
     border-top: 1px solid $swal2-footer-border-color;
     color: $swal2-footer-color;
     font-size: $swal2-footer-font-size;
+    text-align: $swal2-footer-text-align;
   }
 
   .swal2-timer-progress-bar-container {

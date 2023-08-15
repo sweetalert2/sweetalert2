@@ -10,7 +10,7 @@ export const renderFooter = (instance, params) => {
     return
   }
 
-  dom.toggle(footer, params.footer)
+  dom.toggle(footer, params.footer, 'block')
 
   if (params.footer) {
     dom.parseHtmlToContainer(params.footer, footer)

@@ -64,12 +64,12 @@ describe('Vertical scrollbar', () => {
     Swal.close()
   })
 
-  it('should not adjust body padding if overflow-y: scroll is set on body', () => {
-    const talltDiv = document.createElement('div')
-    talltDiv.innerHTML = Array(100).join('<div>lorem ipsum</div>')
-    document.body.appendChild(talltDiv)
+  it('should adjust body padding if overflow-y: scroll is set on body', () => {
+    document.body.innerHTML = ''
     document.body.style.overflowY = 'scroll'
     document.body.style.paddingRight = '30px'
+
+    const scrollbarWidth = measureScrollbar()
 
     SwalWithoutAnimation.fire({
       title: 'no padding right adjustment when overflow-y: scroll is set on body',
@@ -79,7 +79,7 @@ describe('Vertical scrollbar', () => {
     })
 
     const bodyStyles = window.getComputedStyle(document.body)
-    expect(bodyStyles.paddingRight).to.equal('30px')
+    expect(bodyStyles.paddingRight).to.equal(`${scrollbarWidth + 30}px`)
   })
 
   it('should be restored before a toast is fired after a modal', (done) => {

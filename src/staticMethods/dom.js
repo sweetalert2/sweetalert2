@@ -34,14 +34,14 @@ export const isVisible = () => {
 /*
  * Global function to click 'Confirm' button
  */
-export const clickConfirm = () => dom.getConfirmButton() && dom.getConfirmButton().click()
+export const clickConfirm = () => dom.getConfirmButton()?.click()
 
 /*
  * Global function to click 'Deny' button
  */
-export const clickDeny = () => dom.getDenyButton() && dom.getDenyButton().click()
+export const clickDeny = () => dom.getDenyButton()?.click()
 
 /*
  * Global function to click 'Cancel' button
  */
-export const clickCancel = () => dom.getCancelButton() && dom.getCancelButton().click()
+export const clickCancel = () => dom.getCancelButton()?.click()

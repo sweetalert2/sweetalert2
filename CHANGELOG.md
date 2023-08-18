@@ -1,3 +1,10 @@
+## [11.7.25](https://github.com/sweetalert2/sweetalert2/compare/v11.7.24...v11.7.25) (2023-08-18)
+
+
+### Bug Fixes
+
+* always adjust padding right when body has overflow-y: scroll ([#2665](https://github.com/sweetalert2/sweetalert2/issues/2665)) ([b0ec753](https://github.com/sweetalert2/sweetalert2/commit/b0ec7538a9100bd204e13ef1e89009c097143902))
+
 ## [11.7.24](https://github.com/sweetalert2/sweetalert2/compare/v11.7.23...v11.7.24) (2023-08-18)
 
 

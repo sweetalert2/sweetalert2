@@ -7,6 +7,11 @@ import { measureScrollbar } from './dom/measureScrollbar.js'
 let previousBodyPadding = null
 
 export const fixScrollbar = () => {
+  const bodyStyles = window.getComputedStyle(document.body)
+  // https://github.com/sweetalert2/sweetalert2/issues/2663
+  if (bodyStyles.overflowY === 'scroll') {
+    return
+  }
   // for queues, do not do this more than once
   if (previousBodyPadding !== null) {
     return
@@ -14,7 +19,7 @@ export const fixScrollbar = () => {
   // if the body has overflow
   if (document.body.scrollHeight > window.innerHeight) {
     // add padding so the content doesn't shift after removal of scrollbar
-    previousBodyPadding = parseInt(window.getComputedStyle(document.body).getPropertyValue('padding-right'))
+    previousBodyPadding = parseInt(bodyStyles.getPropertyValue('padding-right'))
     document.body.style.paddingRight = `${previousBodyPadding + measureScrollbar()}px`
   }
 }

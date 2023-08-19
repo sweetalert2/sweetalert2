@@ -1,3 +1,10 @@
+## [11.7.26](https://github.com/sweetalert2/sweetalert2/compare/v11.7.25...v11.7.26) (2023-08-19)
+
+
+### Bug Fixes
+
+* refactor scrollbar files ([ae88c5e](https://github.com/sweetalert2/sweetalert2/commit/ae88c5e44598336c80baa862b746308554625510)), closes [#2663](https://github.com/sweetalert2/sweetalert2/issues/2663)
+
 ## [11.7.25](https://github.com/sweetalert2/sweetalert2/compare/v11.7.24...v11.7.25) (2023-08-18)
 
 

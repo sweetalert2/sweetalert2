@@ -3,7 +3,7 @@ import { setAriaHidden } from './aria.js'
 import { swalClasses } from './classes.js'
 import * as dom from './dom/index.js'
 import { iOSfix } from './iosFix.js'
-import { fixScrollbar } from './scrollbarFix.js'
+import { replaceScrollbarWithPadding } from './scrollbar.js'
 
 export const SHOW_CLASS_TIMEOUT = 10
 
@@ -80,7 +80,7 @@ const fixScrollContainer = (container, scrollbarPadding, initialBodyOverflow) =>
   iOSfix()
 
   if (scrollbarPadding && initialBodyOverflow !== 'hidden') {
-    fixScrollbar()
+    replaceScrollbarWithPadding(initialBodyOverflow)
   }
 
   // sweetalert2/issues/1247

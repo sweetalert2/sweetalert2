@@ -6,7 +6,7 @@ import { unsetAriaHidden } from '../utils/aria.js'
 import { swalClasses } from '../utils/classes.js'
 import * as dom from '../utils/dom/index.js'
 import { undoIOSfix } from '../utils/iosFix.js'
-import { undoScrollbar } from '../utils/scrollbarFix.js'
+import { undoReplaceScrollbarWithPadding } from '../utils/scrollbar.js'
 import { isSafariOrIOS } from '../utils/iosFix.js'
 
 /**
@@ -34,7 +34,7 @@ function removePopupAndResetState(instance, container, returnFocus, didClose) {
   }
 
   if (dom.isModal()) {
-    undoScrollbar()
+    undoReplaceScrollbarWithPadding()
     undoIOSfix()
     unsetAriaHidden()
   }

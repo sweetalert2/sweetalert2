@@ -22,6 +22,11 @@ let currentInstance
 
 export class SweetAlert {
   /**
+   * @type {Promise<SweetAlertResult>}
+   */
+  #promise
+
+  /**
    * @param {...any} args
    * @this {SweetAlert}
    */
@@ -42,8 +47,7 @@ export class SweetAlert {
     /** @type {boolean} */
     this.isAwaitingPromise = false
 
-    const promise = currentInstance._main(currentInstance.params)
-    privateProps.promise.set(this, promise)
+    this.#promise = this._main(currentInstance.params)
   }
 
   _main(userParams, mixinParams = {}) {
@@ -82,13 +86,11 @@ export class SweetAlert {
 
   // `catch` cannot be the name of a module export, so we define our thenable methods here instead
   then(onFulfilled) {
-    const promise = privateProps.promise.get(this)
-    return promise.then(onFulfilled)
+    return this.#promise.then(onFulfilled)
   }
 
   finally(onFinally) {
-    const promise = privateProps.promise.get(this)
-    return promise.finally(onFinally)
+    return this.#promise.finally(onFinally)
   }
 }
 

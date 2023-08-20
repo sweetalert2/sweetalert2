@@ -68,7 +68,7 @@ const handleConfirmOrDenyWithInput = (instance, type) => {
 
 /**
  * @param {SweetAlert} instance
- * @param {SweetAlertInputValue | null} inputValue
+ * @param {SweetAlertInputValue} inputValue
  * @param {'confirm' | 'deny'} type
  */
 const handleInputValidator = (instance, inputValue, type) => {

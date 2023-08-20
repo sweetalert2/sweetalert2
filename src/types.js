@@ -4,6 +4,7 @@
  * @typedef { import('sweetalert2').SweetAlertIcon } SweetAlertIcon
  * @typedef { import('sweetalert2').SweetAlertInput } SweetAlertInput
  * @typedef { import('sweetalert2').SweetAlertResult } SweetAlertResult
+ * @typedef { import('sweetalert2').SweetAlertOptions['inputValue'] } SweetAlertInputValue
  */
 
 /**

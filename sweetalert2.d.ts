@@ -1011,7 +1011,7 @@ declare module 'sweetalert2' {
      *
      * @default ''
      */
-    inputValue?: SyncOrAsync<string | number | boolean>
+    inputValue?: SyncOrAsync<string | number | File | FileList>
 
     /**
      * If the `input` parameter is set to `'select'` or `'radio'`, you can provide options.

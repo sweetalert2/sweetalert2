@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -6,8 +6,7 @@
       @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
       * {
-        font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
-          'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-family: Montserrat, sans-serif;
       }
     </style>
   </head>
@@ -27,9 +26,9 @@
         icon: 'success',
         showCloseButton: true,
         showCancelButton: true,
-        preConfirm: (value) => {
+        inputValidator: (value) => {
           if (!value) {
-            Swal.showValidationMessage('Should not be empty!')
+            return 'Should not be empty!'
           }
         },
         didOpen: (modal) => {

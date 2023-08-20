@@ -5,10 +5,6 @@ import { getDirectChildByClass } from './domUtils.js'
 import * as dom from './index.js'
 
 /**
- * @typedef { string | number | boolean | undefined } InputValue
- */
-
-/**
  * @param {SweetAlert} instance
  * @param {SweetAlertOptions} params
  */
@@ -27,7 +23,7 @@ export const handleInputOptionsAndValue = (instance, params) => {
 /**
  * @param {SweetAlert} instance
  * @param {SweetAlertOptions} innerParams
- * @returns {string | number | File | FileList | null}
+ * @returns {SweetAlertInputValue}
  */
 export const getInputValue = (instance, innerParams) => {
   const input = instance.getInput()
@@ -235,7 +231,7 @@ const formatInputOptions = (inputOptions) => {
 
 /**
  * @param {string} optionValue
- * @param {InputValue | Promise<InputValue> | { toPromise: () => InputValue }} inputValue
+ * @param {SweetAlertInputValue} inputValue
  * @returns {boolean}
  */
 const isSelected = (optionValue, inputValue) => {

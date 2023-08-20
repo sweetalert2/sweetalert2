@@ -1,4 +1,3 @@
-import privateProps from './privateProps.js'
 import { clickConfirm } from './staticMethods/dom.js'
 import { DismissReason } from './utils/DismissReason.js'
 import * as dom from './utils/dom/index.js'
@@ -17,15 +16,14 @@ export const removeKeydownHandler = (globalState) => {
 }
 
 /**
- * @param {SweetAlert} instance
  * @param {GlobalState} globalState
  * @param {SweetAlertOptions} innerParams
  * @param {*} dismissWith
  */
-export const addKeydownHandler = (instance, globalState, innerParams, dismissWith) => {
+export const addKeydownHandler = (globalState, innerParams, dismissWith) => {
   removeKeydownHandler(globalState)
   if (!innerParams.toast) {
-    globalState.keydownHandler = (e) => keydownHandler(instance, e, dismissWith)
+    globalState.keydownHandler = (e) => keydownHandler(innerParams, e, dismissWith)
     globalState.keydownTarget = innerParams.keydownListenerCapture ? window : dom.getPopup()
     globalState.keydownListenerCapture = innerParams.keydownListenerCapture
     globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, {
@@ -66,13 +64,11 @@ const arrowKeysNextButton = ['ArrowRight', 'ArrowDown']
 const arrowKeysPreviousButton = ['ArrowLeft', 'ArrowUp']
 
 /**
- * @param {SweetAlert} instance
+ * @param {SweetAlertOptions} innerParams
  * @param {KeyboardEvent} event
  * @param {Function} dismissWith
  */
-const keydownHandler = (instance, event, dismissWith) => {
-  const innerParams = privateProps.innerParams.get(instance)
-
+const keydownHandler = (innerParams, event, dismissWith) => {
   if (!innerParams) {
     return // This instance has already been destroyed
   }
@@ -91,7 +87,7 @@ const keydownHandler = (instance, event, dismissWith) => {
 
   // ENTER
   if (event.key === 'Enter') {
-    handleEnter(instance, event, innerParams)
+    handleEnter(event, innerParams)
   }
 
   // TAB
@@ -111,22 +107,18 @@ const keydownHandler = (instance, event, dismissWith) => {
 }
 
 /**
- * @param {SweetAlert} instance
  * @param {KeyboardEvent} event
  * @param {SweetAlertOptions} innerParams
  */
-const handleEnter = (instance, event, innerParams) => {
+const handleEnter = (event, innerParams) => {
   // https://github.com/sweetalert2/sweetalert2/issues/2386
   if (!callIfFunction(innerParams.allowEnterKey)) {
     return
   }
 
-  if (
-    event.target &&
-    instance.getInput() &&
-    event.target instanceof HTMLElement &&
-    event.target.outerHTML === instance.getInput().outerHTML
-  ) {
+  const input = dom.getInput(dom.getPopup(), innerParams.input)
+
+  if (event.target && input && event.target instanceof HTMLElement && event.target.outerHTML === input.outerHTML) {
     if (['textarea', 'file'].includes(innerParams.input)) {
       return // do not submit
     }

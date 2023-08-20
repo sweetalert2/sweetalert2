@@ -131,7 +131,7 @@ const swalPromise = (instance, domCache, innerParams) => {
 
     handlePopupClick(innerParams, domCache, dismissWith)
 
-    addKeydownHandler(instance, globalState, innerParams, dismissWith)
+    addKeydownHandler(globalState, innerParams, dismissWith)
 
     handleInputOptionsAndValue(instance, innerParams)
 

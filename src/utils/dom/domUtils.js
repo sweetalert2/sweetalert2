@@ -89,7 +89,7 @@ export const applyCustomClass = (elem, params, className) => {
 
 /**
  * @param {HTMLElement} popup
- * @param {import('./renderers/renderInput').InputClass} inputClass
+ * @param {import('./renderers/renderInput').InputClass | SweetAlertInput} inputClass
  * @returns {HTMLInputElement | null}
  */
 export const getInput = (popup, inputClass) => {

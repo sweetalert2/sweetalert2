@@ -1,3 +1,10 @@
+## [11.7.27](https://github.com/sweetalert2/sweetalert2/compare/v11.7.26...v11.7.27) (2023-08-20)
+
+
+### Bug Fixes
+
+* **types:** inputValue type ([671fbc2](https://github.com/sweetalert2/sweetalert2/commit/671fbc22cc8ca45a7e60d65ab9ed8f3b3a9bce85))
+
 ## [11.7.26](https://github.com/sweetalert2/sweetalert2/compare/v11.7.25...v11.7.26) (2023-08-19)
 
 

@@ -35,7 +35,6 @@ For all questions related to sponsorship please get in touch with me via email s
 <td align="center"><a href="https://istar.tips/"><img src="https://sweetalert2.github.io/images/sponsors/istartips.png" width="80"><br>iStarTips</a>
 <td align="center"><a href="https://refermate.com/"><img src="https://sweetalert2.github.io/images/sponsors/refermate.png" width="80"><br>Refermate</a>
 <td align="center"><a href="https://roboflow.com/"><img src="https://sweetalert2.github.io/images/sponsors/roboflow.png" width="80"><br>Roboflow</a>
-<td align="center"><a href="https://www.evguru.com.my/"><img src="https://sweetalert2.github.io/images/sponsors/evguru.png" width="80"><br>EvGuru EV Chargers</a></td>
 </tr>
 </table>
 <table>
@@ -63,7 +62,6 @@ NSFW Sponsors
 <td align="center"><a href="https://faplux.com/"><img src="https://sweetalert2.github.io/images/sponsors/faplux.png" width="80"><br>Faplux</a></td>
 <td align="center"><a href="https://sexsitoys.com/lovense-games/"><img src="https://sweetalert2.github.io/images/sponsors/sexsitoys.jpg" width="80"><br>Sexsi Toys</a></td>
 <td align="center"><a href="https://www.cheapestsexdolls.com"><img src="https://sweetalert2.github.io/images/sponsors/cheapestsexdolls.png" width="80"><br>CheapestSexDolls</a></td>
-<td align="center"><a href="https://www.sexysexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexysexdoll.png" width="80"><br>Sexy Sex Doll</a></td>
 </tr>
 </table>
 <table>

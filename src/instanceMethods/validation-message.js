@@ -6,6 +6,7 @@ import * as dom from '../utils/dom/index.js'
  * Show block with validation message
  *
  * @param {string} error
+ * @this {SweetAlert}
  */
 export function showValidationMessage(error) {
   const domCache = privateProps.domCache.get(this)
@@ -19,7 +20,7 @@ export function showValidationMessage(error) {
 
   const input = this.getInput()
   if (input) {
-    input.setAttribute('aria-invalid', true)
+    input.setAttribute('aria-invalid', 'true')
     input.setAttribute('aria-describedby', swalClasses['validation-message'])
     dom.focusInput(input)
     dom.addClass(input, swalClasses.inputerror)
@@ -28,6 +29,8 @@ export function showValidationMessage(error) {
 
 /**
  * Hide block with validation message
+ *
+ * @this {SweetAlert}
  */
 export function resetValidationMessage() {
   const domCache = privateProps.domCache.get(this)

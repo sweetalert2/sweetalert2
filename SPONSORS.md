@@ -49,7 +49,7 @@ NSFW Sponsors
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
-<td align="center"><a href="https://faplux.com/"><img src="https://sweetalert2.github.io/images/sponsors/faplux.png" width="80"><br>Faplux</a></td>
+<td align="center"><a href="https://taboodude.com/"><img src="https://sweetalert2.github.io/images/sponsors/taboodude.png" width="80"><br>TabooDude</a></td>
 <td align="center"><a href="https://sexsitoys.com/lovense-games/"><img src="https://sweetalert2.github.io/images/sponsors/sexsitoys.jpg" width="80"><br>Sexsi Toys</a></td>
 <td align="center"><a href="https://www.cheapestsexdolls.com"><img src="https://sweetalert2.github.io/images/sponsors/cheapestsexdolls.png" width="80"><br>CheapestSexDolls</a></td>
 </tr>

@@ -21,6 +21,7 @@
     "eslint-plugin-jsdoc": "^46.0.0",
     "eslint-plugin-no-unsanitized": "^4.0.1",
     "jquery": "^3.6.1",
+    "playwright-webkit": "^1.37.1",
     "prettier": "^3.0.0",
     "rollup": "^3.2.2",
     "sass": "^1.55.0",

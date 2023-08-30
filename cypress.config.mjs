@@ -5,5 +5,6 @@ export default cypress.defineConfig({
     supportFile: 'cypress/support/index.js',
     video: false,
     experimentalRunAllSpecs: true,
+    experimentalWebKitSupport: true,
   },
 })

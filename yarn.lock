@@ -3367,6 +3367,18 @@ pify@^2.2.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
   integrity sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==
 
+playwright-core@1.37.1:
+  version "1.37.1"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.37.1.tgz#cb517d52e2e8cb4fa71957639f1cd105d1683126"
+  integrity sha512-17EuQxlSIYCmEMwzMqusJ2ztDgJePjrbttaefgdsiqeLWidjYz9BxXaTaZWxH1J95SHGk6tjE+dwgWILJoUZfA==
+
+playwright-webkit@^1.37.1:
+  version "1.37.1"
+  resolved "https://registry.yarnpkg.com/playwright-webkit/-/playwright-webkit-1.37.1.tgz#b601355c2c4189cc76472c14c392154174d136e1"
+  integrity sha512-evRNDTDgcBpKbLHbY8YKJq0LTKaRxmvhIyZHGljIc42mtmID15wkQXXVJAc90ohV0UVRw9y83k57IMjoA/xEyw==
+  dependencies:
+    playwright-core "1.37.1"
+
 postcss-media-query-parser@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/postcss-media-query-parser/-/postcss-media-query-parser-0.2.3.tgz#27b39c6f4d94f81b1a73b8f76351c609e5cef244"

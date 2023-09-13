@@ -60,6 +60,7 @@ NSFW Sponsors
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
+<td align="center"><a href="https://www.xspacecup.com/"><img src="https://sweetalert2.github.io/images/sponsors/xspacecup.png" width="80"><br>XspaceCup - Top Male Masturbator Brand</a></td>
 <td align="center"><a href="https://vlixa.com/"><img src="https://sweetalert2.github.io/images/sponsors/vlixa.png" width="80"><br>Vlixa</a></td>
 <td align="center"><a href="https://taboodude.com/"><img src="https://sweetalert2.github.io/images/sponsors/taboodude.png" width="80"><br>TabooDude</a></td>
 <td align="center"><a href="https://sexsitoys.com/lovense-games/"><img src="https://sweetalert2.github.io/images/sponsors/sexsitoys.jpg" width="80"><br>Sexsi Toys</a></td>

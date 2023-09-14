@@ -56,7 +56,7 @@ export const setFocus = (index, increment) => {
     return
   }
   // no visible focusable elements, focus the popup
-  dom.getPopup().focus()
+  dom.getPopup()?.focus()
 }
 
 const arrowKeysNextButton = ['ArrowRight', 'ArrowDown']
@@ -161,9 +161,13 @@ const handleTab = (event) => {
  * @param {string} key
  */
 const handleArrows = (key) => {
+  const actions = dom.getActions()
   const confirmButton = dom.getConfirmButton()
   const denyButton = dom.getDenyButton()
   const cancelButton = dom.getCancelButton()
+  if (!actions || !confirmButton || !denyButton || !cancelButton) {
+    return
+  }
   /** @type HTMLElement[] */
   const buttons = [confirmButton, denyButton, cancelButton]
   if (document.activeElement instanceof HTMLElement && !buttons.includes(document.activeElement)) {
@@ -171,7 +175,10 @@ const handleArrows = (key) => {
   }
   const sibling = arrowKeysNextButton.includes(key) ? 'nextElementSibling' : 'previousElementSibling'
   let buttonToFocus = document.activeElement
-  for (let i = 0; i < dom.getActions().children.length; i++) {
+  if (!buttonToFocus) {
+    return
+  }
+  for (let i = 0; i < actions.children.length; i++) {
     buttonToFocus = buttonToFocus[sibling]
     if (!buttonToFocus) {
       return

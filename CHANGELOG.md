@@ -1,3 +1,10 @@
+## [11.7.28](https://github.com/sweetalert2/sweetalert2/compare/v11.7.27...v11.7.28) (2023-09-14)
+
+
+### Bug Fixes
+
+* strict types keydown-handler.js ([1e39486](https://github.com/sweetalert2/sweetalert2/commit/1e394868bca417f9f2865d6b0b3ee138fb04bdc9))
+
 ## [11.7.27](https://github.com/sweetalert2/sweetalert2/compare/v11.7.26...v11.7.27) (2023-08-20)
 
 

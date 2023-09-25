@@ -587,7 +587,7 @@ declare module 'sweetalert2' {
      *
      * @default 'body'
      */
-    target?: string | HTMLElement
+    target?: string | HTMLElement | null
 
     /**
      * Input field type, can be `'text'`, `'email'`, `'password'`, `'number'`, `'tel'`, `'range'`, `'textarea'`,

@@ -969,7 +969,7 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    imageUrl?: string
+    imageUrl?: string | null
 
     /**
      * If imageUrl is set, you can specify imageWidth to describes image width.

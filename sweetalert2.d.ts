@@ -292,7 +292,7 @@ declare module 'sweetalert2' {
      *
      * @param attribute The attribute name to search for, defaults to `data-swal-template`
      */
-    function bindClickHandler(attribute: string): void
+    function bindClickHandler(attribute?: string): void
 
     /**
      * Determines if a given parameter name is valid.

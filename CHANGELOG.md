@@ -1,3 +1,10 @@
+## [11.7.31](https://github.com/sweetalert2/sweetalert2/compare/v11.7.30...v11.7.31) (2023-09-26)
+
+
+### Bug Fixes
+
+* **types:** make bindClickHandler()'s param optional ([de5f162](https://github.com/sweetalert2/sweetalert2/commit/de5f1620773798e8416089cfcea207c42aa040f5))
+
 ## [11.7.30](https://github.com/sweetalert2/sweetalert2/compare/v11.7.29...v11.7.30) (2023-09-26)
 
 

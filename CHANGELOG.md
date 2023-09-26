@@ -1,3 +1,10 @@
+## [11.7.30](https://github.com/sweetalert2/sweetalert2/compare/v11.7.29...v11.7.30) (2023-09-26)
+
+
+### Bug Fixes
+
+* **types:** add missing bindClickHandler() ([59a9613](https://github.com/sweetalert2/sweetalert2/commit/59a96132055e04e3e7085ffcdbe51590fba84c94))
+
 ## [11.7.29](https://github.com/sweetalert2/sweetalert2/compare/v11.7.28...v11.7.29) (2023-09-25)
 
 

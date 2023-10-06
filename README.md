@@ -91,7 +91,7 @@ NSFW Sponsors
 <td align="center"><a href="https://www.xndoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/xndoll.jpeg" width="80"><br>XNDOLL</a></td>
 <td align="center"><a href="https://www.sextorso.com/"><img src="https://sweetalert2.github.io/images/sponsors/sextorso.png" width="80"><br>sexdoll torso</a></td>
 <td align="center"><a href="https://www.minisexdoll.com/anime-sexdoll/"><img src="https://sweetalert2.github.io/images/sponsors/minisexdoll.png" width="80"><br>anime sexdoll</a></td>
-<td align="center"><a href="https://www.myminisexdoll.com/cheap-sex-dolls/"><img src="https://sweetalert2.github.io/images/sponsors/myminisexdoll.png" width="80"><br>cheap sexdoll</a></td>
+<td align="center"><a href="https://www.myminisexdoll.com/under-300/"><img src="https://sweetalert2.github.io/images/sponsors/myminisexdoll.png" width="80"><br>cheap sexdoll</a></td>
 <td align="center"><a href="https://www.hugedildo.com/"><img src="https://sweetalert2.github.io/images/sponsors/hugedildo.png" width="80"><br>huge dildo</a></td>
 </tr>
 </table>

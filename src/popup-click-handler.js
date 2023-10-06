@@ -41,7 +41,7 @@ const handleToastClick = (innerParams, domCache, dismissWith) => {
  * @returns {boolean}
  */
 const isAnyButtonShown = (innerParams) => {
-  return (
+  return !!(
     innerParams.showConfirmButton ||
     innerParams.showDenyButton ||
     innerParams.showCancelButton ||
@@ -57,7 +57,7 @@ let ignoreOutsideClick = false
 const handleModalMousedown = (domCache) => {
   domCache.popup.onmousedown = () => {
     domCache.container.onmouseup = function (e) {
-      domCache.container.onmouseup = undefined
+      domCache.container.onmouseup = () => {}
       // We only check if the mouseup target is the container because usually it doesn't
       // have any other direct children aside of the popup
       if (e.target === domCache.container) {
@@ -73,7 +73,7 @@ const handleModalMousedown = (domCache) => {
 const handleContainerMousedown = (domCache) => {
   domCache.container.onmousedown = () => {
     domCache.popup.onmouseup = function (e) {
-      domCache.popup.onmouseup = undefined
+      domCache.popup.onmouseup = () => {}
       // We also need to check if the mouseup target is a child of the popup
       if (e.target === domCache.popup || (e.target instanceof HTMLElement && domCache.popup.contains(e.target))) {
         ignoreOutsideClick = true

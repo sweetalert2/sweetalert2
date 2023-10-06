@@ -1,3 +1,10 @@
+## [11.7.32](https://github.com/sweetalert2/sweetalert2/compare/v11.7.31...v11.7.32) (2023-10-06)
+
+
+### Bug Fixes
+
+* strict types popup-click-handler.js ([e5af701](https://github.com/sweetalert2/sweetalert2/commit/e5af701d8372e1327dc2f01d42d3fd8f27517dfd))
+
 ## [11.7.31](https://github.com/sweetalert2/sweetalert2/compare/v11.7.30...v11.7.31) (2023-09-26)
 
 

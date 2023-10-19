@@ -23,7 +23,7 @@
     "jquery": "^3.6.1",
     "playwright-webkit": "^1.37.1",
     "prettier": "^3.0.0",
-    "rollup": "^3.2.2",
+    "rollup": "^4.0.0",
     "sass": "^1.55.0",
     "stylelint": "^15.0.0",
     "typescript": "4.3.5",

@@ -133,5 +133,5 @@ NSFW Sponsors
 
 Support and Donations
 ---------------------
-
+HOOOSSSEIN
 Has SweetAlert2 helped you create a fantastic application? You can show your support via [GitHub Sponsors](https://github.com/sponsors/limonte)

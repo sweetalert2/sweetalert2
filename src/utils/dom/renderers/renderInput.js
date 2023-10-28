@@ -60,9 +60,7 @@ const showInput = (params) => {
   }
 
   if (!renderInputType[params.input]) {
-    error(
-      `Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`
-    )
+    error(`Unexpected type of input! Expected ${Object.keys(renderInputType).join(' | ')}, got "${params.input}"`)
     return
   }
 
@@ -180,6 +178,12 @@ renderInputType.text =
   renderInputType.number =
   renderInputType.tel =
   renderInputType.url =
+  renderInputType.search =
+  renderInputType.date =
+  renderInputType['datetime-local'] =
+  renderInputType.time =
+  renderInputType.week =
+  renderInputType.month =
     (input, params) => {
       checkAndSetInputValue(input, params.inputValue)
       setInputLabel(input, input, params)

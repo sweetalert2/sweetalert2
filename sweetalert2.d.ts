@@ -366,6 +366,7 @@ declare module 'sweetalert2' {
     | 'password'
     | 'number'
     | 'tel'
+    | 'search'
     | 'range'
     | 'textarea'
     | 'select'
@@ -373,6 +374,11 @@ declare module 'sweetalert2' {
     | 'checkbox'
     | 'file'
     | 'url'
+    | 'date'
+    | 'datetime-local'
+    | 'time'
+    | 'week'
+    | 'month'
 
   export type SweetAlertPosition =
     | 'top'
@@ -606,8 +612,9 @@ declare module 'sweetalert2' {
     target?: string | HTMLElement | null
 
     /**
-     * Input field type, can be `'text'`, `'email'`, `'password'`, `'number'`, `'tel'`, `'range'`, `'textarea'`,
-     * `'select'`, `'radio'`, `'checkbox'`, `'file'` and `'url'`.
+     * Input field type, can be `'text'`, `'email'`, `'password'`, `'number'`, `'tel'`, `'search'`, `'range'`,
+     * `'textarea'`, `'select'`, `'radio'`, `'checkbox'`, `'file'`, `'url'`, `'date'`, `'datetime-local'`,
+     * `'time'`, `'week'`, `'month'`.
      *
      * @default undefined
      */

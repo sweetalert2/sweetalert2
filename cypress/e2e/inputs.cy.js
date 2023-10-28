@@ -9,7 +9,7 @@ describe('Inputs', () => {
     const spy = cy.spy(console, 'error')
     Swal.fire({ input: 'invalid-input-type' })
     expect(spy).to.be.calledWith(
-      'SweetAlert2: Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "invalid-input-type"'
+      'SweetAlert2: Unexpected type of input! Expected month | week | time | datetime-local | date | search | url | tel | number | password | email | text | file | range | select | radio | checkbox | textarea, got "invalid-input-type"'
     )
   })
 

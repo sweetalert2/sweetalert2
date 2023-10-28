@@ -1,3 +1,10 @@
+# [11.8.0](https://github.com/sweetalert2/sweetalert2/compare/v11.7.32...v11.8.0) (2023-10-28)
+
+
+### Features
+
+* support input date, datetime-local, time, week, month, search ([#2679](https://github.com/sweetalert2/sweetalert2/issues/2679)) ([3fce8ac](https://github.com/sweetalert2/sweetalert2/commit/3fce8ac4a2ad8dbe85e55fdb3dc28c66707d43fc))
+
 ## [11.7.32](https://github.com/sweetalert2/sweetalert2/compare/v11.7.31...v11.7.32) (2023-10-06)
 
 

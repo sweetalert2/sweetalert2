@@ -11,6 +11,8 @@ export const renderContent = (instance, params) => {
     return
   }
 
+  dom.showWhenInnerHtmlPresent(htmlContainer)
+
   dom.applyCustomClass(htmlContainer, params, 'htmlContainer')
 
   // Content as HTML

@@ -61,6 +61,22 @@ describe('Miscellaneous tests', function () {
     expect(isHidden(Swal.getFooter())).to.be.true
   })
 
+  it('should show and hide title, content and footer when dynamically update their innerHTML', (done) => {
+    Swal.fire({})
+    expect(isHidden(Swal.getTitle())).to.be.true
+    expect(isHidden(Swal.getHtmlContainer())).to.be.true
+    expect(isHidden(Swal.getFooter())).to.be.true
+    Swal.getTitle().textContent = 'title'
+    Swal.getHtmlContainer().textContent = 'content'
+    Swal.getFooter().textContent = 'footer'
+    setTimeout(() => {
+      expect(isVisible(Swal.getTitle())).to.be.true
+      expect(isVisible(Swal.getHtmlContainer())).to.be.true
+      expect(isVisible(Swal.getFooter())).to.be.true
+      done()
+    })
+  })
+
   it('modal width', () => {
     Swal.fire({ width: 300 })
     expect(Swal.getPopup().style.width).to.equal('300px')

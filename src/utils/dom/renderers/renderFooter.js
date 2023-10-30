@@ -10,6 +10,8 @@ export const renderFooter = (instance, params) => {
     return
   }
 
+  dom.showWhenInnerHtmlPresent(footer)
+
   dom.toggle(footer, params.footer, 'block')
 
   if (params.footer) {

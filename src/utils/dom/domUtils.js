@@ -218,6 +218,19 @@ export const hide = (elem) => {
 }
 
 /**
+ * @param {HTMLElement | null} elem
+ * @param {string} display
+ */
+export const showWhenInnerHtmlPresent = (elem, display = 'block') => {
+  if (!elem) {
+    return
+  }
+  new MutationObserver(() => {
+    toggle(elem, elem.innerHTML, display)
+  }).observe(elem, { childList: true, subtree: true })
+}
+
+/**
  * @param {HTMLElement} parent
  * @param {string} selector
  * @param {string} property

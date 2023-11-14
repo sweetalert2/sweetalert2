@@ -7,13 +7,13 @@ type Equal<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ?
 Swal.fire({
   input: 'text',
   inputValidator: (inputValue) => {
-    type test = Expect<Equal<typeof inputValue, string>>
+    type _ = Expect<Equal<typeof inputValue, string>>
   },
 })
 
 Swal.fire({
   input: 'file',
   inputValidator: (inputValue) => {
-    type test = Expect<Equal<typeof inputValue, File | FileList | null>>
+    type _ = Expect<Equal<typeof inputValue, File | FileList | null>>
   },
 })

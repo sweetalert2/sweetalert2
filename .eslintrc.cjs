@@ -6,6 +6,7 @@ module.exports = {
     '@typescript-eslint/no-empty-interface': 0,
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-this-alias': 0,
+    '@typescript-eslint/no-unused-vars': ['error', { varsIgnorePattern: '_' }],
     '@typescript-eslint/triple-slash-reference': 0,
     'jsdoc/require-param-description': 0,
     'jsdoc/require-property-description': 0,

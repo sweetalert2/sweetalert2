@@ -382,8 +382,6 @@ declare module 'sweetalert2' {
 
   type SweetAlertStringInput = Exclude<SweetAlertInput, 'file'>
 
-  type SweetAlertFileInput = 'file'
-
   type SweetAlertInputValidator =
     | {
         input?: SweetAlertStringInput
@@ -403,7 +401,7 @@ declare module 'sweetalert2' {
         inputValidator?: (value: string) => SyncOrAsync<string | null | false | void>
       }
     | {
-        input: SweetAlertFileInput
+        input: 'file'
         /**
          * Validator for input field, may be async (Promise-returning) or sync.
          *

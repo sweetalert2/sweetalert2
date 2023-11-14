@@ -1,3 +1,10 @@
+## [11.9.1](https://github.com/sweetalert2/sweetalert2/compare/v11.9.0...v11.9.1) (2023-11-14)
+
+
+### Bug Fixes
+
+* inputValidator + input: 'file' ([#2686](https://github.com/sweetalert2/sweetalert2/issues/2686)) ([25197ec](https://github.com/sweetalert2/sweetalert2/commit/25197ec6028d92a725c181a63b2cd8895a03dbe0))
+
 # [11.9.0](https://github.com/sweetalert2/sweetalert2/compare/v11.8.0...v11.9.0) (2023-10-30)
 
 

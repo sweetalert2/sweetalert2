@@ -96,15 +96,19 @@ const fixScrollContainer = (container, scrollbarPadding, initialBodyOverflow) =>
  */
 const addClasses = (container, popup, params) => {
   dom.addClass(container, params.showClass.backdrop)
-  // this workaround with opacity is needed for https://github.com/sweetalert2/sweetalert2/issues/2059
-  popup.style.setProperty('opacity', '0', 'important')
-  dom.show(popup, 'grid')
-  setTimeout(() => {
-    // Animate popup right after showing it
-    dom.addClass(popup, params.showClass.popup)
-    // and remove the opacity workaround
-    popup.style.removeProperty('opacity')
-  }, SHOW_CLASS_TIMEOUT) // 10ms in order to fix #2062
+  if (params.animation) {
+    // this workaround with opacity is needed for https://github.com/sweetalert2/sweetalert2/issues/2059
+    popup.style.setProperty('opacity', '0', 'important')
+    dom.show(popup, 'grid')
+    setTimeout(() => {
+      // Animate popup right after showing it
+      dom.addClass(popup, params.showClass.popup)
+      // and remove the opacity workaround
+      popup.style.removeProperty('opacity')
+    }, SHOW_CLASS_TIMEOUT) // 10ms in order to fix #2062
+  } else {
+    dom.show(popup, 'grid')
+  }
 
   dom.addClass([document.documentElement, document.body], swalClasses.shown)
   if (params.heightAuto && params.backdrop && !params.toast) {

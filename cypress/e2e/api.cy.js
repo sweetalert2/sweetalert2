@@ -6,9 +6,6 @@ describe('API', () => {
   it('properties of `Swal` class are consistent', (done) => {
     const assertConsistent = (postfix) => {
       const currentSwalPropNames = Object.keys(Swal)
-      // const extraPropNames = currentSwalPropNames.filter(key => !initialSwalPropNames.includes(key))
-      // expect(extraPropNames.length, 0).to.be.eql(`# of extra properties ${postfix}`)
-      // expect(extraPropNames.join(','), '').to.be.eql(`extra property names ${postfix}`)
       const missingProps = currentSwalPropNames.filter((key) => !currentSwalPropNames.includes(key))
       expect(missingProps.length).to.equal(0, `# of missing properties ${postfix}`)
       expect(missingProps.join(',')).to.equal('', `missing property names ${postfix}`)

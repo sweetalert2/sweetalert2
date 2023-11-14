@@ -486,6 +486,32 @@ describe('Miscellaneous tests', function () {
     })
   })
 
+  it('animation enabled', (done) => {
+    Swal.fire({
+      animation: true,
+      didOpen: () => {
+        setTimeout(() => {
+          expect(Array.from(Swal.getPopup().classList)).to.contain('swal2-show')
+          expect(Array.from(Swal.getContainer().classList)).not.to.contain('swal2-noanimation')
+          done()
+        }, SHOW_CLASS_TIMEOUT)
+      },
+    })
+  })
+
+  it('animation disabled', (done) => {
+    Swal.fire({
+      animation: false,
+      didOpen: () => {
+        setTimeout(() => {
+          expect(Array.from(Swal.getPopup().classList)).not.to.contain('swal2-show')
+          expect(Array.from(Swal.getContainer().classList)).to.contain('swal2-noanimation')
+          done()
+        }, SHOW_CLASS_TIMEOUT)
+      },
+    })
+  })
+
   it('params validation', () => {
     expect(Swal.isValidParameter('title')).to.be.true
     expect(Swal.isValidParameter('foobar')).to.be.false

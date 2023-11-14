@@ -692,6 +692,13 @@ declare module 'sweetalert2' {
     grow?: SweetAlertGrow
 
     /**
+     * If set to `false`, the popup animation will be disabled.
+     *
+     * @default true
+     */
+    animation?: boolean
+
+    /**
      * CSS classes for animations when showing a popup (fade in)
      *
      * @default { popup: 'swal2-show', backdrop: 'swal2-backdrop-show', icon: 'swal2-icon-show' }

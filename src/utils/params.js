@@ -11,6 +11,7 @@ export const defaultParams = {
   iconHtml: undefined,
   template: undefined,
   toast: false,
+  animation: true,
   showClass: {
     popup: 'swal2-show',
     backdrop: 'swal2-backdrop-show',

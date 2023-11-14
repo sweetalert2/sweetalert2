@@ -9,19 +9,7 @@ export const isHidden = (elem) => !isVisible(elem)
 
 export const TIMEOUT = 10
 
-// We *only* access `Swal` through this module, so that we can be sure `initialSwalPropNames` is set properly
-export const SwalWithoutAnimation = Swal.mixin({
-  showClass: {
-    container: '',
-    popup: '',
-    icon: '',
-  },
-  hideClass: {
-    container: '',
-    popup: '',
-    icon: '',
-  },
-})
+export const SwalWithoutAnimation = Swal.mixin({ animation: false })
 
 export const dispatchCustomEvent = (elem, eventName, eventDetail = {}) => {
   const event = new CustomEvent(eventName, {

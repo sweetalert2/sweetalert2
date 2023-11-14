@@ -486,6 +486,15 @@ describe('Miscellaneous tests', function () {
     })
   })
 
+  it('animation', (done) => {
+    SwalWithoutAnimation.fire({
+      didOpen: () => {
+        expect(Array.from(Swal.getContainer().classList)).to.contain('swal2-noanimation')
+        done()
+      },
+    })
+  })
+
   it('params validation', () => {
     expect(Swal.isValidParameter('title')).to.be.true
     expect(Swal.isValidParameter('foobar')).to.be.false

@@ -27,14 +27,7 @@ export default {
   plugins: [
     babel({
       babelHelpers: 'bundled',
-      presets: [
-        [
-          '@babel/preset-env',
-          {
-            targets: '> 0.25%, last 2 versions, Firefox ESR, not dead',
-          },
-        ],
-      ],
+      presets: ['@babel/preset-env'],
     }),
   ],
   input: 'src/sweetalert2.js',

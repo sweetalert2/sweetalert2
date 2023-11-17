@@ -1,9 +1,9 @@
 {
-  "name": "sweetalert2",
-  "version": "11.9.1",
-  "repository": "sweetalert2/sweetalert2",
+  "name": "sweetalert2-uncensored",
+  "version": "11.10.0-uncensored",
+  "repository": "cirmialexis/sweetalert2-uncensored",
   "homepage": "https://sweetalert2.github.io/",
-  "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
+  "description": "SweetAlert 2 without protestware.",
   "main": "dist/sweetalert2.all.js",
   "browser": "dist/sweetalert2.all.js",
   "module": "dist/sweetalert2.all.js",
@@ -38,8 +38,9 @@
     "src",
     "sweetalert2.d.ts"
   ],
-  "author": "Limon Monte (https://limonte.github.io)",
+  "author": "Alexis Emanuel Cirmi (https://github.com/cirmialexis)",
   "contributors": [
+    "Limon Monte (https://limonte.github.io)",
     "Matthew Francis Brunetti <zenflow87@gmail.com> (https://github.com/zenflow)",
     "Morgan Touverey-Quilling <mtouverey@alembic-dev.com> (https://github.com/toverux)",
     "Giuseppe Verni (https://github.com/gverni)",
@@ -56,7 +57,8 @@
     "prompt",
     "confirm",
     "toast",
-    "accessible"
+    "accessible",
+    "uncensored"
   ],
   "scripts": {
     "dev": "vite sandbox --open",
@@ -66,10 +68,6 @@
     "check-types": "npx -p typescript@latest tsc --noEmit -p jsconfig.json",
     "cypress:open": "cypress open",
     "webpack-build": "webpack --config=test/webpack/webpack.config.js"
-  },
-  "funding": {
-    "type": "individual",
-    "url": "https://github.com/sponsors/limonte"
   },
   "prettier": {
     "printWidth": 120,

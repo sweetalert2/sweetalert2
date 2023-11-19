@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2",
-  "version": "11.10.0",
+  "version": "11.10.1",
   "repository": "sweetalert2/sweetalert2",
   "homepage": "https://sweetalert2.github.io/",
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",

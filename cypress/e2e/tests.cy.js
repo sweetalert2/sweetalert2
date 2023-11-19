@@ -489,9 +489,7 @@ describe('Miscellaneous tests', function () {
   it('swal dismissed by another swal should resolve', (done) => {
     SwalWithoutAnimation.fire().then((result) => {
       expect(result).to.eql({
-        isConfirmed: false,
-        isDenied: false,
-        isDismissed: false,
+        isDismissed: true,
       })
       done()
     })

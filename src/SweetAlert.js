@@ -54,7 +54,12 @@ export class SweetAlert {
     showWarningsForParams(Object.assign({}, mixinParams, userParams))
 
     if (globalState.currentInstance) {
+      const swalPromiseResolve = privateMethods.swalPromiseResolve.get(globalState.currentInstance)
+      const { isAwaitingPromise } = globalState.currentInstance
       globalState.currentInstance._destroy()
+      if (!isAwaitingPromise) {
+        swalPromiseResolve({ isDismissed: true })
+      }
       if (dom.isModal()) {
         unsetAriaHidden()
       }

@@ -16,7 +16,7 @@ A beautiful, responsive, customizable, accessible (WAI-ARIA) replacement <br> fo
 
 > [!IMPORTANT]
 > As a consequence of the illegal war in Ukraine, the behavior of this repository and related npm package [sweetalert2](https://www.npmjs.com/package/sweetalert2) is different for `.ru`, `.su`, `.by`, and `.рф` domain zones.
-> 
+>
 > Including this software in any domain in `.ru`, `.su`, `.by`, and `.рф` domain zones will block the website navigation and play the national anthem of Ukraine.
 >
 > This behavior is classified as [protestware](https://snyk.io/blog/protestware-open-source-types-impact/) and this project is listed in [GitHub Advisory Database](https://github.com/advisories/GHSA-mrr8-v49w-3333) and [Snyk Vulnerability DB](https://security.snyk.io/package/npm/sweetalert2/11.5.2).
@@ -31,7 +31,6 @@ For all questions related to sponsorship please get in touch with me via email s
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
 <td align="center"><a href="https://dlxplugins.com/"><img src="https://avatars.githubusercontent.com/u/106675919?s=200&v=4" width="80"><br>DLX Plugins</a></td>
 <td align="center"><a href="https://github.com/tiagostutz"><img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80"><br>Tiago de Oliveira Stutz</a></td>
-<td align="center"><a href="https://istar.tips/"><img src="https://sweetalert2.github.io/images/sponsors/istartips.png" width="80"><br>iStarTips</a>
 <td align="center"><a href="https://refermate.com/"><img src="https://sweetalert2.github.io/images/sponsors/refermate.png" width="80"><br>Refermate</a>
 </tr>
 </table>

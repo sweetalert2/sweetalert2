@@ -14,7 +14,7 @@
     "@rollup/plugin-babel": "^6.0.2",
     "@rollup/plugin-terser": "^0.4.0",
     "@sweetalert2/eslint-config": "^1.0.11",
-    "@sweetalert2/stylelint-config": "^2.0.6",
+    "@sweetalert2/stylelint-config": "^3.0.0",
     "cypress": "^13.0.0",
     "eslint": "^8.24.0",
     "eslint-plugin-cypress": "^2.12.1",
@@ -25,7 +25,7 @@
     "prettier": "^3.0.0",
     "rollup": "^4.0.0",
     "sass": "^1.55.0",
-    "stylelint": "^15.0.0",
+    "stylelint": "^16.0.0",
     "typescript": "4.3.5",
     "vite": "^5.0.0",
     "zx": "^7.1.1"

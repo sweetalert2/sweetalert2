@@ -77,7 +77,7 @@ NSFW Sponsors
 <td align="center"><a href="https://readysetcam.com/"><img src="https://sweetalert2.github.io/images/sponsors/readysetcam.png" width="80"><br>Ready Set Cam</a></td>
 <td align="center"><a href="https://www.onahole.com/"><img src="https://sweetalert2.github.io/images/sponsors/onahole.png" width="80"><br>hentai sex toys</a></td>
 <td align="center"><a href="https://blowupdollshop.com/inflatable-sex-doll/"><img src="https://sweetalert2.github.io/images/sponsors/blowupdollshop.png" width="80"><br>Inflatable sex doll</a></td>
-<td align="center"><a href="https://sextoystop.com/"><img src="https://sweetalert2.github.io/images/sponsors/sextoystop.png" width="80"><br>Sex Doll Torso</a></td>
+<td align="center"><a href="https://sexdollsmarket.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexdollsmarket.png" width="80"><br>Sex Doll Torso</a></td>
 <td align="center"><a href="https://sexydollies.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexydollies.png" width="80"><br>porn sexdoll</a></td>
 <td align="center"><a href="https://bululusexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/bululusexdoll.png" width="80"><br>cheap sex doll</a></td>
 </tr>

@@ -1,3 +1,10 @@
+## [11.10.2](https://github.com/sweetalert2/sweetalert2/compare/v11.10.1...v11.10.2) (2023-12-27)
+
+
+### Bug Fixes
+
+* strict types domUtils.js ([3a963d4](https://github.com/sweetalert2/sweetalert2/commit/3a963d4dddd9bd00f6acdb9dd9803469532649dd))
+
 ## [11.10.1](https://github.com/sweetalert2/sweetalert2/compare/v11.10.0...v11.10.1) (2023-11-19)
 
 

@@ -196,7 +196,7 @@ export const applyNumericalStyle = (elem, property, value) => {
     value = parseInt(value)
   }
   if (value || parseInt(value) === 0) {
-    elem.style[property] = typeof value === 'number' ? `${value}px` : value
+    elem.style.setProperty(property, typeof value === 'number' ? `${value}px` : value)
   } else {
     elem.style.removeProperty(property)
   }
@@ -237,10 +237,10 @@ export const showWhenInnerHtmlPresent = (elem, display = 'block') => {
  * @param {string} value
  */
 export const setStyle = (parent, selector, property, value) => {
-  /** @type {HTMLElement} */
+  /** @type {HTMLElement | null} */
   const el = parent.querySelector(selector)
   if (el) {
-    el.style[property] = value
+    el.style.setProperty(property, value)
   }
 }
 

@@ -15,7 +15,7 @@ or download the pre-built files [here](https://github.com/cirmialexis/sweetalert
 The only difference with SweetAlert 2 vanilla is the way you import the plugin:
 
     import  Swal  from  'sweetalert2-uncensored'
-     
+
     // or via CommonJS
     const  Swal = require('sweetalert2-uncensored')
 

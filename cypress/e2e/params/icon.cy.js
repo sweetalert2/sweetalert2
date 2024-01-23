@@ -74,6 +74,6 @@ describe('icon', () => {
     expect(Swal.getIcon().style.color).to.equal('red')
     expect(Swal.getIcon().style.borderColor).to.equal('red')
     expect(Swal.getIcon().querySelector('.swal2-x-mark-line-left').style.backgroundColor).to.equal('red')
-    expect(Swal.getIcon().querySelector('.swal2-x-mark-line-left').style.backgroundColor).to.equal('red')
+    expect(Swal.getIcon().querySelector('.swal2-x-mark-line-right').style.backgroundColor).to.equal('red')
   })
 })

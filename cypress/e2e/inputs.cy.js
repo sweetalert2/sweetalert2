@@ -78,6 +78,21 @@ describe('Inputs', () => {
     })
   })
 
+  it('browser validation + browser validation message', (done) => {
+    SwalWithoutAnimation.fire({ input: 'text', inputAttributes: { pattern: '[0-9]+' } })
+
+    Swal.getInput().value = 'a'
+    Swal.clickConfirm()
+    setTimeout(() => {
+      expect(isVisible(Swal.getValidationMessage())).to.be.true
+      // Chrome: Please match the format requested.
+      // Firefox: Please match the requested format.
+      // Safari: Match the requested format.
+      expect(Swal.getValidationMessage().textContent.indexOf('atch the') !== -1).to.be.true
+      done()
+    }, TIMEOUT)
+  })
+
   it('input email + built-in email validation', (done) => {
     const invalidEmailAddress = 'blah-blah@zzz'
     const validEmailAddress = 'team+support+a.b@example.com'

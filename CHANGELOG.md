@@ -1,3 +1,10 @@
+## [11.10.4](https://github.com/sweetalert2/sweetalert2/compare/v11.10.3...v11.10.4) (2024-01-23)
+
+
+### Bug Fixes
+
+* iconColor for success and error icons ([#2703](https://github.com/sweetalert2/sweetalert2/issues/2703)) ([ebb0c39](https://github.com/sweetalert2/sweetalert2/commit/ebb0c396adcde822b16c19fa08e98e4ccdc73000))
+
 ## [11.10.3](https://github.com/sweetalert2/sweetalert2/compare/v11.10.2...v11.10.3) (2024-01-11)
 
 

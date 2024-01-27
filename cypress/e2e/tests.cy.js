@@ -558,7 +558,7 @@ describe('Miscellaneous tests', function () {
     expect(isHidden(Swal.getFooter())).to.be.true
   })
 
-  it('visual apperarance', () => {
+  it('visual appearance', () => {
     Swal.fire({
       padding: '2em',
       background: 'red',

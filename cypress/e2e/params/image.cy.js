@@ -14,7 +14,7 @@ describe('image', () => {
     expect(Swal.getImage().style.height).to.equal('84px')
   })
 
-  it('image dimentions in custom CSS units', () => {
+  it('image dimensions in custom CSS units', () => {
     Swal.fire({
       imageUrl: 'https://sweetalert2.github.io/images/swal2-logo.png',
       imageWidth: '50%',

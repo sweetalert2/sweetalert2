@@ -1129,7 +1129,7 @@ declare module 'sweetalert2' {
      * ```
      * Swal.fire({
      *   input: 'email',
-     *   validationMessage: 'Address e-mail invalid'
+     *   validationMessage: 'Invalid email address'
      * })
      * ```
      *

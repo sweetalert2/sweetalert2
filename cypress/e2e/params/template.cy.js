@@ -66,7 +66,7 @@ describe('template', () => {
     template.innerHTML = '<swal-title>Are you sure?</swal-title>'
     document.body.appendChild(template)
     const mixin = SwalWithoutAnimation.mixin({
-      title: 'this title should be overriden by template',
+      title: 'this title should be overridden by template',
     })
     mixin.fire({
       template: '#my-template-string',
@@ -78,7 +78,7 @@ describe('template', () => {
     const _consoleLog = console.log // eslint-disable-line no-console
     const spy = cy.spy(console, 'log')
     const template = document.createElement('template')
-    template.id = 'my-template-functon-param'
+    template.id = 'my-template-function-param'
     const didOpen = (modal) => {
       console.log(modal.querySelector('.swal2-title').innerText) // eslint-disable-line no-console
     }
@@ -88,7 +88,7 @@ describe('template', () => {
     `
     document.body.appendChild(template)
     SwalWithoutAnimation.fire({
-      template: '#my-template-functon-param',
+      template: '#my-template-function-param',
     })
     setTimeout(() => {
       expect(spy.calledWith('Function param')).to.be.true
@@ -110,7 +110,7 @@ describe('template', () => {
     `
     document.body.appendChild(template)
     const mixin = SwalWithoutAnimation.mixin({
-      imageAlt: 'this alt should be overriden by template',
+      imageAlt: 'this alt should be overridden by template',
     })
     mixin.fire({
       imageWidth: 200, // user param should override <swal-image width="100">

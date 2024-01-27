@@ -57,7 +57,7 @@ class PositionChecker {
   }
 }
 
-const allowedPostions = [
+const allowedPositions = [
   'top-left',
   'top',
   'top-right',
@@ -75,7 +75,7 @@ describe('position', () => {
 
     const checkPosition = new PositionChecker(window, 10)
 
-    allowedPostions.forEach((position) => {
+    allowedPositions.forEach((position) => {
       SwalWithoutAnimation.fire({ position: position })
       const swalRect = document.querySelector('.swal2-popup').getBoundingClientRect()
       expect(
@@ -91,7 +91,7 @@ describe('position', () => {
 
     const checkPosition = new PositionChecker(window, 0)
 
-    allowedPostions.forEach((position) => {
+    allowedPositions.forEach((position) => {
       SwalWithoutAnimation.fire({ toast: 'true', position: position })
       const swalRect = document.querySelector('.swal2-container').getBoundingClientRect()
       expect(
@@ -120,7 +120,7 @@ describe('position', () => {
 
     const checkPosition = new PositionChecker(dummyTargetElement, 10)
 
-    allowedPostions.forEach((position) => {
+    allowedPositions.forEach((position) => {
       SwalWithoutAnimation.fire({
         target: '#dummy-target',
         customClass: { container: 'position-absolute' },
@@ -153,7 +153,7 @@ describe('position', () => {
 
     const checkPosition = new PositionChecker(dummyTargetElement, 0)
 
-    allowedPostions.forEach((position) => {
+    allowedPositions.forEach((position) => {
       SwalWithoutAnimation.fire({
         target: '#dummy-target',
         customClass: { container: 'position-absolute' },

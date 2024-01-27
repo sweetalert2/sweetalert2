@@ -45,13 +45,13 @@ describe('mixins', () => {
   })
 
   it('params from 2nd mixin should override params from 1st mixin', (done) => {
-    Swal.mixin({ showClass: { popup: 'i-should-be-overriden' } })
+    Swal.mixin({ showClass: { popup: 'i-should-be-overridden' } })
       .mixin({ showClass: { backdrop: 'backdrop-custom-show-class' } })
       .fire({
         didOpen: () => {
           setTimeout(() => {
             expect(Swal.getContainer().classList.contains('backdrop-custom-show-class')).to.be.true
-            expect(Swal.getPopup().classList.contains('i-should-be-overriden')).to.be.false
+            expect(Swal.getPopup().classList.contains('i-should-be-overridden')).to.be.false
             done()
           }, SHOW_CLASS_TIMEOUT)
         },
@@ -59,12 +59,12 @@ describe('mixins', () => {
   })
 
   it('params from fire() should override params from mixin()', (done) => {
-    Swal.mixin({ showClass: { popup: 'i-should-be-overriden' } }).fire({
+    Swal.mixin({ showClass: { popup: 'i-should-be-overridden' } }).fire({
       showClass: { backdrop: 'backdrop-custom-show-class' },
       didOpen: () => {
         setTimeout(() => {
           expect(Swal.getContainer().classList.contains('backdrop-custom-show-class')).to.be.true
-          expect(Swal.getPopup().classList.contains('i-should-be-overriden')).to.be.false
+          expect(Swal.getPopup().classList.contains('i-should-be-overridden')).to.be.false
           done()
         }, SHOW_CLASS_TIMEOUT)
       },

@@ -274,7 +274,7 @@ declare module 'sweetalert2' {
      * Increase timer. Returns number of milliseconds of an updated timer.
      * If `timer` parameter isn't set, returns `undefined`.
      *
-     * @param ms The number of milliseconds to add to the currect timer
+     * @param ms The number of milliseconds to add to the current timer
      */
     function increaseTimer(ms: number): number | undefined
 
@@ -1129,7 +1129,7 @@ declare module 'sweetalert2' {
      * ```
      * Swal.fire({
      *   input: 'email',
-     *   validationMessage: 'Adresse e-mail invalide'
+     *   validationMessage: 'Invalid email address'
      * })
      * ```
      *

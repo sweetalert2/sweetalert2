@@ -1,3 +1,17 @@
+## [11.10.4](https://github.com/sweetalert2/sweetalert2/compare/v11.10.3...v11.10.4) (2024-01-23)
+
+
+### Bug Fixes
+
+* iconColor for success and error icons ([#2703](https://github.com/sweetalert2/sweetalert2/issues/2703)) ([ebb0c39](https://github.com/sweetalert2/sweetalert2/commit/ebb0c396adcde822b16c19fa08e98e4ccdc73000))
+
+## [11.10.3](https://github.com/sweetalert2/sweetalert2/compare/v11.10.2...v11.10.3) (2024-01-11)
+
+
+### Bug Fixes
+
+* rm unnecessary transform styles on success icon ([69c2372](https://github.com/sweetalert2/sweetalert2/commit/69c237281563dad020af3bb0771d695ccf6aff14)), closes [#2698](https://github.com/sweetalert2/sweetalert2/issues/2698)
+
 ## [11.10.2](https://github.com/sweetalert2/sweetalert2/compare/v11.10.1...v11.10.2) (2023-12-27)
 
 

@@ -142,9 +142,9 @@ const setColor = (icon, params) => {
     '.swal2-x-mark-line-left',
     '.swal2-x-mark-line-right',
   ]) {
-    dom.setStyle(icon, sel, 'backgroundColor', params.iconColor)
+    dom.setStyle(icon, sel, 'background-color', params.iconColor)
   }
-  dom.setStyle(icon, '.swal2-success-ring', 'borderColor', params.iconColor)
+  dom.setStyle(icon, '.swal2-success-ring', 'border-color', params.iconColor)
 }
 
 /**

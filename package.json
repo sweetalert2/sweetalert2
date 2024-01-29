@@ -1,6 +1,6 @@
 {
   "name": "sweetalert2-uncensored",
-  "version": "11.10.2-uncensored",
+  "version": "11.10.4-uncensored",
   "repository": "cirmialexis/sweetalert2-uncensored",
   "homepage": "https://sweetalert2.github.io/",
   "description": "SweetAlert 2 without protestware.",
@@ -18,7 +18,7 @@
     "cypress": "^13.0.0",
     "eslint": "^8.24.0",
     "eslint-plugin-cypress": "^2.12.1",
-    "eslint-plugin-jsdoc": "^46.0.0",
+    "eslint-plugin-jsdoc": "^48.0.0",
     "eslint-plugin-no-unsanitized": "^4.0.1",
     "jquery": "^3.6.1",
     "playwright-webkit": "^1.37.1",

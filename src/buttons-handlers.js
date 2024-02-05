@@ -58,7 +58,7 @@ const handleConfirmOrDenyWithInput = (instance, type) => {
     handleInputValidator(instance, inputValue, type)
   } else if (input && !input.checkValidity()) {
     instance.enableButtons()
-    instance.showValidationMessage(innerParams.validationMessage)
+    instance.showValidationMessage(innerParams.validationMessage || input.validationMessage)
   } else if (type === 'deny') {
     deny(instance, inputValue)
   } else {

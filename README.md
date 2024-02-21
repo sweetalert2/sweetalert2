@@ -120,7 +120,6 @@ NSFW Sponsors
 </table>
 <table>
 <tr>
-<td align="center"><a href="https://www.mysextoyguide.com/"><img src="https://sweetalert2.github.io/images/sponsors/my-sex-toy-guide.jpg" width="80"><br>My Sex Toy Guide</a></td>
 <td align="center"><a href="https://sextoycollective.com/"><img src="https://sweetalert2.github.io/images/sponsors/sextoycollective.jpg" width="80"><br>STC</a></td>
 <td align="center"><a href="https://doctorclimax.com/"><img src="https://sweetalert2.github.io/images/sponsors/doctorclimax.png" width="80"><br>DoctorClimax</a></td>
 <td align="center"><a href="https://www.bsdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/bsdoll.jpg" width="80"><br>BSDoll</a></td>

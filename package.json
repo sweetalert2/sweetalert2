@@ -26,7 +26,7 @@
     "rollup": "^4.0.0",
     "sass": "^1.55.0",
     "stylelint": "^16.0.0",
-    "typescript": "4.3.5",
+    "typescript": "4.7.4",
     "vite": "^5.0.0",
     "zx": "^7.1.1"
   },

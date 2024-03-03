@@ -5,7 +5,7 @@ export default {
    * @returns {Promise<string | void>}
    */
   email: (string, validationMessage) => {
-    return /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(string)
+    return /^[a-zA-Z0-9.+_'-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]+$/.test(string)
       ? Promise.resolve()
       : Promise.resolve(validationMessage || 'Invalid email address')
   },

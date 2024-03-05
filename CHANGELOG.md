@@ -1,3 +1,10 @@
+## [11.10.6](https://github.com/sweetalert2/sweetalert2/compare/v11.10.5...v11.10.6) (2024-03-05)
+
+
+### Bug Fixes
+
+* allow single quotes in default email validator ([#2717](https://github.com/sweetalert2/sweetalert2/issues/2717)) ([e4b7a3a](https://github.com/sweetalert2/sweetalert2/commit/e4b7a3a9a19a5e9009dbe594022ab338ad5bb21c))
+
 ## [11.10.5](https://github.com/sweetalert2/sweetalert2/compare/v11.10.4...v11.10.5) (2024-02-05)
 
 

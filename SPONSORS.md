@@ -51,7 +51,6 @@ NSFW Sponsors
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
 <td align="center"><a href="https://www.sexdollpartner.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexdollpartner.jpg" width="80"><br>SexDollPartner</a></td>
 <td align="center"><a href="https://nexromance.com/playstore/index.php?sweetalert"><img src="https://sweetalert2.github.io/images/sponsors/chatforsex.jpg" width="80"><br>ChatGPT for Sex</a></td>
-<td align="center"><a href="https://pinktoys.co.uk/pocket-pussy/"><img src="https://sweetalert2.github.io/images/sponsors/pinktoys.png" width="80"><br>Pocket pussy</a></td>
 <td align="center"><a href="https://www.xspacecup.com/"><img src="https://sweetalert2.github.io/images/sponsors/xspacecup.png" width="80"><br>XspaceCup - Top Male <br> Masturbator Brand</a></td>
 </tr>
 </table>

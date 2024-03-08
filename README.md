@@ -73,7 +73,6 @@ NSFW Sponsors
 <table>
 <tr>
 <td align="center"><a href="https://nakedoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/nakedoll.png" width="80"><br>NakeDoll</a></td>
-<td align="center"><a href="https://readysetcam.com/"><img src="https://sweetalert2.github.io/images/sponsors/readysetcam.png" width="80"><br>Ready Set Cam</a></td>
 <td align="center"><a href="https://www.onahole.com/"><img src="https://sweetalert2.github.io/images/sponsors/onahole.png" width="80"><br>hentai sex toys</a></td>
 <td align="center"><a href="https://blowupdollshop.com/inflatable-sex-doll/"><img src="https://sweetalert2.github.io/images/sponsors/blowupdollshop.png" width="80"><br>Inflatable sex doll</a></td>
 <td align="center"><a href="https://sexdollsmarket.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexdollsmarket.png" width="80"><br>Sex Doll Torso</a></td>

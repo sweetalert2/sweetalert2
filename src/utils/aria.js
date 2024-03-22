@@ -6,9 +6,10 @@ import { getContainer } from './dom/getters.js'
 // reader’s list of elements (headings, form controls, landmarks, etc.) in the document.
 
 export const setAriaHidden = () => {
+  const container = getContainer()
   const bodyChildren = Array.from(document.body.children)
   bodyChildren.forEach((el) => {
-    if (el === getContainer() || el.contains(getContainer())) {
+    if (el.contains(container)) {
       return
     }
 

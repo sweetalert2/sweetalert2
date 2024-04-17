@@ -71,7 +71,11 @@ const handleModalMousedown = (domCache) => {
  * @param {DomCache} domCache
  */
 const handleContainerMousedown = (domCache) => {
-  domCache.container.onmousedown = () => {
+  domCache.container.onmousedown = (e) => {
+    // prevent the modal text from being selected on double click on the container (allowOutsideClick: false)
+    if (e.target === domCache.container) {
+      e.preventDefault()
+    }
     domCache.popup.onmouseup = function (e) {
       domCache.popup.onmouseup = () => {}
       // We also need to check if the mouseup target is a child of the popup

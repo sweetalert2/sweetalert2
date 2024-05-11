@@ -512,14 +512,14 @@ declare module 'sweetalert2' {
      *
      * @default ''
      */
-    title?: string | HTMLElement | JQuery
+    title?: string | HTMLElement | JQuery | undefined
 
     /**
      * The title of the popup, as text. Useful to avoid HTML injection.
      *
      * @default ''
      */
-    titleText?: string
+    titleText?: string | undefined
 
     /**
      * A description for the popup.
@@ -527,7 +527,7 @@ declare module 'sweetalert2' {
      *
      * @default ''
      */
-    text?: string
+    text?: string | undefined
 
     /**
      * A HTML description for the popup.
@@ -538,7 +538,7 @@ declare module 'sweetalert2' {
      *
      * @default ''
      */
-    html?: string | HTMLElement | JQuery
+    html?: string | HTMLElement | JQuery | undefined
 
     /**
      * The icon of the popup.
@@ -548,14 +548,14 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    icon?: SweetAlertIcon
+    icon?: SweetAlertIcon | undefined
 
     /**
      * Use this to change the color of the icon.
      *
      * @default undefined
      */
-    iconColor?: string
+    iconColor?: string | undefined
 
     /**
      * The custom HTML content for an icon.
@@ -570,14 +570,14 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    iconHtml?: string
+    iconHtml?: string | undefined
 
     /**
      * The footer of the popup, as HTML.
      *
      * @default ''
      */
-    footer?: string | HTMLElement | JQuery
+    footer?: string | HTMLElement | JQuery | undefined
 
     /**
      * The declarative <template> of the popup. All API prams can be set via
@@ -623,7 +623,7 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    template?: string | HTMLTemplateElement
+    template?: string | HTMLTemplateElement | undefined
 
     /**
      * Whether or not SweetAlert2 should show a full screen click-to-dismiss backdrop.
@@ -631,7 +631,7 @@ declare module 'sweetalert2' {
      *
      * @default true
      */
-    backdrop?: boolean | string
+    backdrop?: boolean | string | undefined
 
     /**
      * Whether or not an alert should be treated as a toast notification.
@@ -640,77 +640,77 @@ declare module 'sweetalert2' {
      *
      * @default false
      */
-    toast?: boolean
+    toast?: boolean | undefined
 
     /**
      * The container element for adding popup into (query selector only).
      *
      * @default 'body'
      */
-    target?: string | HTMLElement | null
+    target?: string | HTMLElement | null | undefined
 
     /**
      * Popup width, including paddings (`box-sizing: border-box`).
      *
      * @default undefined
      */
-    width?: number | string
+    width?: number | string | undefined
 
     /**
      * Popup padding.
      *
      * @default undefined
      */
-    padding?: number | string
+    padding?: number | string | undefined
 
     /**
      * Color for title, content and footer (CSS `color` property).  The default color is `#545454`.
      *
      * @default undefined
      */
-    color?: string
+    color?: string | undefined
 
     /**
      * Popup background (CSS `background` property). The default background is `#fff`.
      *
      * @default undefined
      */
-    background?: string
+    background?: string | undefined
 
     /**
      * Popup position
      *
      * @default 'center'
      */
-    position?: SweetAlertPosition
+    position?: SweetAlertPosition | undefined
 
     /**
      * Popup grow direction
      *
      * @default false
      */
-    grow?: SweetAlertGrow
+    grow?: SweetAlertGrow | undefined
 
     /**
      * If set to `false`, the popup animation will be disabled.
      *
      * @default true
      */
-    animation?: boolean
+    animation?: boolean | undefined
 
     /**
      * CSS classes for animations when showing a popup (fade in)
      *
      * @default { popup: 'swal2-show', backdrop: 'swal2-backdrop-show', icon: 'swal2-icon-show' }
      */
-    showClass?: SweetAlertShowClass
+    showClass?: SweetAlertShowClass | undefined
 
     /**
      * CSS classes for animations when hiding a popup (fade out)
      *
      * @default { popup: 'swal2-hide', backdrop: 'swal2-backdrop-hide', icon: 'swal2-icon-hide' }
      */
-    hideClass?: SweetAlertHideClass
+    hideClass?: SweetAlertHideClass | undefined
 
     /**
      * A custom CSS class for the popup.
@@ -744,14 +744,14 @@ declare module 'sweetalert2' {
      *
      * @default {}
      */
-    customClass?: SweetAlertCustomClass | string
+    customClass?: SweetAlertCustomClass | string | undefined
 
     /**
      * Auto close timer of the popup. Set in ms (milliseconds).
      *
      * @default undefined
      */
-    timer?: number
+    timer?: number | undefined
 
     /**
      * If set to `true`, the timer will have a progress bar at the bottom of a popup.
@@ -759,7 +759,7 @@ declare module 'sweetalert2' {
      *
      * @default false
      */
-    timerProgressBar?: boolean
+    timerProgressBar?: boolean | undefined
 
     /**
      * By default, SweetAlert2 sets html's and body's CSS `height` to `auto !important`.
@@ -767,7 +767,7 @@ declare module 'sweetalert2' {
      *
      * @default true
      */
-    heightAuto?: boolean
+    heightAuto?: boolean | undefined
 
     /**
      * If set to `false`, the user can't dismiss the popup by clicking outside it.
@@ -776,7 +776,7 @@ declare module 'sweetalert2' {
      *
      * @default true
      */
-    allowOutsideClick?: ValueOrThunk<boolean>
+    allowOutsideClick?: ValueOrThunk<boolean> | undefined
 
     /**
      * If set to `false`, the user can't dismiss the popup by pressing the Escape key.
@@ -785,7 +785,7 @@ declare module 'sweetalert2' {
      *
      * @default true
      */
-    allowEscapeKey?: ValueOrThunk<boolean>
+    allowEscapeKey?: ValueOrThunk<boolean> | undefined
 
     /**
      * If set to `false`, the user can't confirm the popup by pressing the Enter or Space keys,
@@ -794,14 +794,14 @@ declare module 'sweetalert2' {
      *
      * @default true
      */
-    allowEnterKey?: ValueOrThunk<boolean>
+    allowEnterKey?: ValueOrThunk<boolean> | undefined
 
     /**
      * If set to `false`, SweetAlert2 will allow keydown events propagation to the document.
      *
      * @default true
      */
-    stopKeydownPropagation?: boolean
+    stopKeydownPropagation?: boolean | undefined
 
     /**
      * Useful for those who are using SweetAlert2 along with Bootstrap modals.
@@ -811,7 +811,7 @@ declare module 'sweetalert2' {
      *
      * @default false
      */
-    keydownListenerCapture?: boolean
+    keydownListenerCapture?: boolean | undefined
 
     /**
      * If set to `false`, the "Confirm" button will not be shown.
@@ -819,84 +819,84 @@ declare module 'sweetalert2' {
      *
      * @default true
      */
-    showConfirmButton?: boolean
+    showConfirmButton?: boolean | undefined
 
     /**
      * If set to `true`, the "Deny" button will be shown, which the user can click on to deny the popup.
      *
      * @default false
      */
-    showDenyButton?: boolean
+    showDenyButton?: boolean | undefined
 
     /**
      * If set to `true`, the "Cancel" button will be shown, which the user can click on to dismiss the popup.
      *
      * @default false
      */
-    showCancelButton?: boolean
+    showCancelButton?: boolean | undefined
 
     /**
      * Use this to change the text on the "Confirm" button.
      *
      * @default 'OK'
      */
-    confirmButtonText?: string
+    confirmButtonText?: string | undefined
 
     /**
      * Use this to change the text on the "Confirm" button.
      *
      * @default 'No'
      */
-    denyButtonText?: string
+    denyButtonText?: string | undefined
 
     /**
      * Use this to change the text on the "Cancel" button.
      *
      * @default 'Cancel'
      */
-    cancelButtonText?: string
+    cancelButtonText?: string | undefined
 
     /**
      * Use this to change the background color of the "Confirm" button.
      *
      * @default undefined
      */
-    confirmButtonColor?: string
+    confirmButtonColor?: string | undefined
 
     /**
      * Use this to change the background color of the "Deny" button.
      *
      * @default undefined
      */
-    denyButtonColor?: string
+    denyButtonColor?: string | undefined
 
     /**
      * Use this to change the background color of the "Cancel" button.
      *
      * @default undefined
      */
-    cancelButtonColor?: string
+    cancelButtonColor?: string | undefined
 
     /**
      * Use this to change the `aria-label` for the "Confirm" button.
      *
      * @default ''
      */
-    confirmButtonAriaLabel?: string
+    confirmButtonAriaLabel?: string | undefined
 
     /**
      * Use this to change the `aria-label` for the "Deny" button.
      *
      * @default ''
      */
-    denyButtonAriaLabel?: string
+    denyButtonAriaLabel?: string | undefined
 
     /**
      * Use this to change the `aria-label` for the "Cancel" button.
      *
      * @default ''
      */
-    cancelButtonAriaLabel?: string
+    cancelButtonAriaLabel?: string | undefined
 
     /**
      * Whether to apply the default SweetAlert2 styling to buttons.
@@ -904,35 +904,35 @@ declare module 'sweetalert2' {
      *
      * @default true
      */
-    buttonsStyling?: boolean
+    buttonsStyling?: boolean | undefined
 
     /**
      * Set to `true` if you want to invert default buttons positions.
      *
      * @default false
      */
-    reverseButtons?: boolean
+    reverseButtons?: boolean | undefined
 
     /**
      * Set to `false` if you want to focus the first element in tab order instead of the "Confirm" button by default.
      *
      * @default true
      */
-    focusConfirm?: boolean
+    focusConfirm?: boolean | undefined
 
     /**
      * Set to `true` if you want to focus the "Deny" button by default.
      *
      * @default false
      */
-    focusDeny?: boolean
+    focusDeny?: boolean | undefined
 
     /**
      * Set to `true` if you want to focus the "Cancel" button by default.
      *
      * @default false
      */
-    focusCancel?: boolean
+    focusCancel?: boolean | undefined
 
     /**
      * Set to `false` if you don't want to return the focus to the element that invoked the modal
@@ -940,35 +940,35 @@ declare module 'sweetalert2' {
      *
      * @default true
      */
-    returnFocus?: boolean
+    returnFocus?: boolean | undefined
 
     /**
      * Set to `true` to show close button.
      *
      * @default false
      */
-    showCloseButton?: boolean
+    showCloseButton?: boolean | undefined
 
     /**
      * Use this to change the HTML content of the close button.
      *
      * @default '&times;'
      */
-    closeButtonHtml?: string
+    closeButtonHtml?: string | undefined
 
     /**
      * Use this to change the `aria-label` for the close button.
      *
      * @default 'Close this dialog'
      */
-    closeButtonAriaLabel?: string
+    closeButtonAriaLabel?: string | undefined
 
     /**
      * Use this to change the HTML content of the loader.
      *
      * @default ''
      */
-    loaderHtml?: string
+    loaderHtml?: string | undefined
 
     /**
      * Set to `true` to disable buttons and show the loader instead of the Confirm button.
@@ -976,7 +976,7 @@ declare module 'sweetalert2' {
      *
      * @default false
      */
-    showLoaderOnConfirm?: boolean
+    showLoaderOnConfirm?: boolean | undefined
 
     /**
      * Set to `true` to disable buttons and show the loader instead of the Deny button.
@@ -984,7 +984,7 @@ declare module 'sweetalert2' {
      *
      * @default false
      */
-    showLoaderOnDeny?: boolean
+    showLoaderOnDeny?: boolean | undefined
 
     /**
      * Function to execute before confirming, may be async (Promise-returning) or sync.
@@ -1028,49 +1028,49 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    imageUrl?: string | null
+    imageUrl?: string | null | undefined
 
     /**
      * If imageUrl is set, you can specify imageWidth to describes image width.
      *
      * @default undefined
      */
-    imageWidth?: number | string
+    imageWidth?: number | string | undefined
 
     /**
      * If imageUrl is set, you can specify imageHeight to describes image height.
      *
      * @default undefined
      */
-    imageHeight?: number | string
+    imageHeight?: number | string | undefined
 
     /**
      * An alternative text for the custom image icon.
      *
      * @default ''
      */
-    imageAlt?: string
+    imageAlt?: string | undefined
 
     /**
      * Input field label.
      *
      * @default ''
      */
-    inputLabel?: string
+    inputLabel?: string | undefined
 
     /**
      * Input field placeholder.
      *
      * @default ''
      */
-    inputPlaceholder?: string
+    inputPlaceholder?: string | undefined
 
     /**
      * Input field initial value.
      *
      * @default ''
      */
-    inputValue?: SyncOrAsync<string | number | File | FileList>
+    inputValue?: SyncOrAsync<string | number | File | FileList> | undefined
 
     /**
      * If the `input` parameter is set to `'select'` or `'radio'`, you can provide options.
@@ -1078,7 +1078,7 @@ declare module 'sweetalert2' {
      *
      * @default {}
      */
-    inputOptions?: SyncOrAsync<ReadonlyMap<string, string> | Record<string, any>>
+    inputOptions?: SyncOrAsync<ReadonlyMap<string, string> | Record<string, any>> | undefined
 
     /**
      * Automatically focus the input when popup is shown.
@@ -1086,7 +1086,7 @@ declare module 'sweetalert2' {
      *
      * @default true
      */
-    inputAutoFocus?: boolean
+    inputAutoFocus?: boolean | undefined
 
     /**
      * Automatically remove whitespaces from both ends of a result string.
@@ -1094,7 +1094,7 @@ declare module 'sweetalert2' {
      *
      * @default true
      */
-    inputAutoTrim?: boolean
+    inputAutoTrim?: boolean | undefined
 
     /**
      * HTML input attributes (e.g. `min`, `max`, `step`, `accept`), that are added to the input field.
@@ -1112,7 +1112,7 @@ declare module 'sweetalert2' {
      *
      * @default {}
      */
-    inputAttributes?: Record<string, string>
+    inputAttributes?: Record<string, string> | undefined
 
     /**
      * If you want to return the input value as `result.value` when denying the popup, set to `true`.
@@ -1120,7 +1120,7 @@ declare module 'sweetalert2' {
      *
      * @default false
      */
-    returnInputValueOnDeny?: boolean
+    returnInputValueOnDeny?: boolean | undefined
 
     /**
      * A custom validation message for default validators (email, url).
@@ -1135,28 +1135,28 @@ declare module 'sweetalert2' {
      *
      * @default undefined
      */
-    validationMessage?: string
+    validationMessage?: string | undefined
 
     /**
      * Progress steps, useful for popup queues.
      *
      * @default []
      */
-    progressSteps?: readonly string[]
+    progressSteps?: readonly string[] | undefined
 
     /**
      * Current active progress step.
      *
      * @default undefined
      */
-    currentProgressStep?: number
+    currentProgressStep?: number | undefined
 
     /**
      * Distance between progress steps.
      *
      * @default undefined
      */
-    progressStepsDistance?: number | string
+    progressStepsDistance?: number | string | undefined
 
     /**
      * Popup lifecycle hook. Synchronously runs before the popup is shown on screen.
@@ -1218,7 +1218,7 @@ declare module 'sweetalert2' {
      *
      * @default true
      */
-    scrollbarPadding?: boolean
+    scrollbarPadding?: boolean | undefined
   }
 
   export default Swal

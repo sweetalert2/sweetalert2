@@ -1,3 +1,10 @@
+# [11.11.0](https://github.com/sweetalert2/sweetalert2/compare/v11.10.8...v11.11.0) (2024-05-11)
+
+
+### Features
+
+* **types:** allow `undefined` as options ([#2728](https://github.com/sweetalert2/sweetalert2/issues/2728)) ([0d6f0ec](https://github.com/sweetalert2/sweetalert2/commit/0d6f0ecb253d7e4422e987a185648bee977310e1))
+
 ## [11.10.8](https://github.com/sweetalert2/sweetalert2/compare/v11.10.7...v11.10.8) (2024-04-17)
 
 

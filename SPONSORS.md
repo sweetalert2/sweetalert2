@@ -29,7 +29,6 @@ For all questions related to sponsorship please contact me via email sweetalert2
 </table>
 <table>
 <tr>
-<td align="center"><a href="https://refermate.com/"><img src="https://sweetalert2.github.io/images/sponsors/refermate.png" width="80"><br>Refermate</a>
 <td align="center"><a href="https://roboflow.com/"><img src="https://sweetalert2.github.io/images/sponsors/roboflow.png" width="80"><br>Roboflow</a>
 <td align="center"><a href="https://www.zezelife.com/"><img src="https://sweetalert2.github.io/images/sponsors/zezelife.png" width="80"><br>ZezeLife</a>
 <td align="center"><a href="https://www.serpempire.com/"><img src="https://sweetalert2.github.io/images/sponsors/serpempire.png" width="80"><br>SERP Empire</a>

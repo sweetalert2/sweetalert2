@@ -94,25 +94,25 @@ const getSwalButtons = (templateContent) => {
 
 /**
  * @param {DocumentFragment} templateContent
- * @returns {SweetAlertOptions}
+ * @returns {Pick<SweetAlertOptions, 'imageUrl' | 'imageWidth' | 'imageHeight' | 'imageAlt'>}
  */
 const getSwalImage = (templateContent) => {
   const result = {}
-  /** @type {HTMLElement} */
+  /** @type {HTMLElement | null} */
   const image = templateContent.querySelector('swal-image')
   if (image) {
     showWarningsForAttributes(image, ['src', 'width', 'height', 'alt'])
     if (image.hasAttribute('src')) {
-      result.imageUrl = image.getAttribute('src')
+      result.imageUrl = image.getAttribute('src') || undefined
     }
     if (image.hasAttribute('width')) {
-      result.imageWidth = image.getAttribute('width')
+      result.imageWidth = image.getAttribute('width') || undefined
     }
     if (image.hasAttribute('height')) {
-      result.imageHeight = image.getAttribute('height')
+      result.imageHeight = image.getAttribute('height') || undefined
     }
     if (image.hasAttribute('alt')) {
-      result.imageAlt = image.getAttribute('alt')
+      result.imageAlt = image.getAttribute('alt') || undefined
     }
   }
   return result

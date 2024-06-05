@@ -1,3 +1,10 @@
+## [11.11.1](https://github.com/sweetalert2/sweetalert2/compare/v11.11.0...v11.11.1) (2024-06-05)
+
+
+### Bug Fixes
+
+* **types:** getSwalImage() ([e0e5e4c](https://github.com/sweetalert2/sweetalert2/commit/e0e5e4c4d806d2fe36b258926cf8f0f9a6177fd8))
+
 # [11.11.0](https://github.com/sweetalert2/sweetalert2/compare/v11.10.8...v11.11.0) (2024-05-11)
 
 

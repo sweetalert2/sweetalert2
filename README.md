@@ -44,7 +44,6 @@ For all questions related to sponsorship please get in touch with me via email s
 <td align="center"><a href="https://www.hismith.co.uk/"><img src="https://sweetalert2.github.io/images/sponsors/hismith.png" width="80"><br>Hismith</a></td>
 <td align="center"><a href="https://dollauthority.com/"><img src="https://sweetalert2.github.io/images/sponsors/dollauthority.png" width="80"><br>Doll Authority</a></td>
 <td align="center"><a href="https://dreamlovedoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/dreamlovedoll.jpg" width="80"><br>DreamLoveDoll</a></td>
-<td align="center"><a href="https://thepinkrabbits.com/"><img src="https://sweetalert2.github.io/images/sponsors/thepinkrabbits.png" width="80"><br>The Pink Rabbits</a></td>
 </tr>
 </table>
 <table>

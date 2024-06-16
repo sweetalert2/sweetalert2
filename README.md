@@ -16,7 +16,6 @@ For all questions related to sponsorship please get in touch with me via email s
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
 <td align="center"><a href="https://www.coinbit.fi/"><img src="https://sweetalert2.github.io/images/sponsors/coinbit.png" width="80"><br>Kryptovaluutat</a></td>
-<td align="center"><a href="https://www.vancouvercoir.com/"><img src="https://sweetalert2.github.io/images/sponsors/vancouvercoir.png" width="80"><br>Vancouver Coir</a></td>
 <td align="center"><a href="https://dlxplugins.com/"><img src="https://avatars.githubusercontent.com/u/106675919?s=200&v=4" width="80"><br>DLX Plugins</a></td>
 <td align="center"><a href="https://github.com/tiagostutz"><img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80"><br>Tiago de Oliveira Stutz</a></td>
 </tr>

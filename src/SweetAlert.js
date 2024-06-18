@@ -221,6 +221,15 @@ const setupTimer = (globalState, innerParams, dismissWith) => {
 }
 
 /**
+ * Initialize focus in the popup:
+ *
+ * 1. If `toast` is `true`, don't steal focus from the document.
+ * 2. Else if there is an [autofocus] element, focus it.
+ * 3. Else if `focusConfirm` is `true` and confirm button is visible, focus it.
+ * 4. Else if `focusDeny` is `true` and deny button is visible, focus it.
+ * 5. Else if `focusCancel` is `true` and cancel button is visible, focus it.
+ * 6. Else focus the first focusable element in a popup (if any).
+ *
  * @param {DomCache} domCache
  * @param {SweetAlertOptions} innerParams
  */
@@ -235,9 +244,30 @@ const initFocus = (domCache, innerParams) => {
     return
   }
 
-  if (!focusButton(domCache, innerParams)) {
-    setFocus(-1, 1)
+  if (focusAutofocus(domCache)) {
+    return
   }
+
+  if (focusButton(domCache, innerParams)) {
+    return
+  }
+
+  setFocus(-1, 1)
+}
+
+/**
+ * @param {DomCache} domCache
+ * @returns {boolean}
+ */
+const focusAutofocus = (domCache) => {
+  const autofocusElements = domCache.popup.querySelectorAll('[autofocus]')
+  for (const autofocusElement of autofocusElements) {
+    if (autofocusElement instanceof HTMLElement && dom.isVisible(autofocusElement)) {
+      autofocusElement.focus()
+      return true
+    }
+  }
+  return false
 }
 
 /**

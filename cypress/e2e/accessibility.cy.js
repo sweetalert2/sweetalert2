@@ -285,10 +285,11 @@ describe('Focus', () => {
     Swal.fire({
       html: `
         <a href>link 1</a>
-        <a href autofocus>link 2</a>
+        <a href autofocus style="display: none">link 2</a>
         <a href autofocus>link 3</a>
+        <a href autofocus>link 4</a>
       `,
     })
-    expect(document.activeElement.innerText).to.equal('link 2')
+    expect(document.activeElement.innerText).to.equal('link 3')
   })
 })

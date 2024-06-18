@@ -237,7 +237,7 @@ const initFocus = (domCache, innerParams) => {
   if (innerParams.toast) {
     return
   }
-  // TODO: this is dumb, remove `allowEnterKey` param in the next major version
+
   if (!callIfFunction(innerParams.allowEnterKey)) {
     blurActiveElement()
     return
@@ -259,10 +259,12 @@ const initFocus = (domCache, innerParams) => {
  * @returns {boolean}
  */
 const focusAutofocus = (domCache) => {
-  const autofocusElement = domCache.popup.querySelector('[autofocus]')
-  if (autofocusElement instanceof HTMLElement && dom.isVisible(autofocusElement)) {
-    autofocusElement.focus()
-    return true
+  const autofocusElements = domCache.popup.querySelectorAll('[autofocus]')
+  for (const autofocusElement of autofocusElements) {
+    if (autofocusElement instanceof HTMLElement && dom.isVisible(autofocusElement)) {
+      autofocusElement.focus()
+      return true
+    }
   }
   return false
 }

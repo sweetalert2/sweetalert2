@@ -793,6 +793,7 @@ declare module 'sweetalert2' {
      * You can also pass a custom function returning a boolean value.
      *
      * @default true
+     * @deprecated
      */
     allowEnterKey?: ValueOrThunk<boolean> | undefined
 

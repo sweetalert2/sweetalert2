@@ -15,7 +15,7 @@ import { getTemplateParams } from './utils/getTemplateParams.js'
 import { openPopup } from './utils/openPopup.js'
 import defaultParams, { showWarningsForParams } from './utils/params.js'
 import setParameters from './utils/setParameters.js'
-import { callIfFunction } from './utils/utils.js'
+import { callIfFunction, warnAboutDeprecation } from './utils/utils.js'
 
 /** @type {SweetAlert} */
 let currentInstance
@@ -228,8 +228,9 @@ const initFocus = (domCache, innerParams) => {
   if (innerParams.toast) {
     return
   }
-
+  // TODO: this is dumb, remove `allowEnterKey` param in the next major version
   if (!callIfFunction(innerParams.allowEnterKey)) {
+    warnAboutDeprecation('allowEnterKey')
     blurActiveElement()
     return
   }

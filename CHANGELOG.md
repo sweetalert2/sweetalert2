@@ -1,3 +1,15 @@
+# [11.12.0](https://github.com/sweetalert2/sweetalert2/compare/v11.11.1...v11.12.0) (2024-06-18)
+
+
+### Bug Fixes
+
+* **styles:** :focus -> :focus-visible for buttons ([#2733](https://github.com/sweetalert2/sweetalert2/issues/2733)) ([9be8249](https://github.com/sweetalert2/sweetalert2/commit/9be8249e518d0bc82d5171f5671c17c43288b25c))
+
+
+### Features
+
+* focus `[autofocus]` element in a popup ([#2736](https://github.com/sweetalert2/sweetalert2/issues/2736)) ([52fedf3](https://github.com/sweetalert2/sweetalert2/commit/52fedf32e7c393e2ac30fbd29a269a49e1f1c07c))
+
 ## [11.11.1](https://github.com/sweetalert2/sweetalert2/compare/v11.11.0...v11.11.1) (2024-06-05)
 
 

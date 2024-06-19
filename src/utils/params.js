@@ -138,8 +138,10 @@ export const updatableParams = [
   'willClose',
 ]
 
-/** @type {Record<string, string>} */
-export const deprecatedParams = {}
+/** @type {Record<string, string | undefined>} */
+export const deprecatedParams = {
+  allowEnterKey: undefined,
+}
 
 const toastIncompatibleParams = [
   'allowOutsideClick',

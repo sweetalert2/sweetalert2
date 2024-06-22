@@ -56,7 +56,6 @@ NSFW Sponsors
 <table>
 <tr>
 <td align="center"><a href="https://www.sexdollpartner.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexdollpartner.jpg" width="80"><br>SexDollPartner</a></td>
-<td align="center"><a href="https://nexromance.com/playstore/index.php?sweetalert"><img src="https://sweetalert2.github.io/images/sponsors/chatforsex.jpg" width="80"><br>ChatGPT for Sex</a></td>
 <td align="center"><a href="https://www.xspacecup.com/"><img src="https://sweetalert2.github.io/images/sponsors/xspacecup.png" width="80"><br>XspaceCup</a></td>
 <td align="center"><a href="https://vlixa.com/"><img src="https://sweetalert2.github.io/images/sponsors/vlixa.png" width="80"><br>Vlixa</a></td>
 <td align="center"><a href="https://sexsitoys.com/lovense-games/"><img src="https://sweetalert2.github.io/images/sponsors/sexsitoys.jpg" width="80"><br>Sexsi Toys</a></td>

@@ -32,6 +32,6 @@ body:
 
         Bug reports without live demo will be closed!
       value: |
-        The live demo template: https://codepen.io/limonte/pen/JjoWRMx
+        The live demo template: https://codepen.io/pen?template=JjoWRMx
     validations:
       required: true

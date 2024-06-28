@@ -73,18 +73,22 @@ const removeCustomClasses = (elem, params) => {
 export const applyCustomClass = (elem, params, className) => {
   removeCustomClasses(elem, params)
 
-  if (params.customClass && params.customClass[className]) {
-    if (typeof params.customClass[className] !== 'string' && !params.customClass[className].forEach) {
-      warn(
-        `Invalid type of customClass.${className}! Expected string or iterable object, got "${typeof params.customClass[
-          className
-        ]}"`
-      )
-      return
-    }
-
-    addClass(elem, params.customClass[className])
+  if (!params.customClass) {
+    return
   }
+
+  const customClass = params.customClass[/** @type {keyof SweetAlertCustomClass} */ (className)]
+
+  if (!customClass) {
+    return
+  }
+
+  if (typeof customClass !== 'string' && !customClass.forEach) {
+    warn(`Invalid type of customClass.${className}! Expected string or iterable object, got "${typeof customClass}"`)
+    return
+  }
+
+  addClass(elem, customClass)
 }
 
 /**

@@ -744,7 +744,7 @@ declare module 'sweetalert2' {
      *
      * @default {}
      */
-    customClass?: SweetAlertCustomClass | string | undefined
+    customClass?: SweetAlertCustomClass | undefined
 
     /**
      * Auto close timer of the popup. Set in ms (milliseconds).
@@ -1071,7 +1071,7 @@ declare module 'sweetalert2' {
      *
      * @default ''
      */
-    inputValue?: SyncOrAsync<string | number | File | FileList> | undefined
+    inputValue?: SyncOrAsync<string | number | File | FileList> | null | undefined
 
     /**
      * If the `input` parameter is set to `'select'` or `'radio'`, you can provide options.

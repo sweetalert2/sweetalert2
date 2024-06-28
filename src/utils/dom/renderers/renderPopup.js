@@ -60,6 +60,7 @@ const addClasses = (popup, params) => {
 
   // Custom class
   dom.applyCustomClass(popup, params, 'popup')
+  // TODO: remove in the next major
   if (typeof params.customClass === 'string') {
     dom.addClass(popup, params.customClass)
   }

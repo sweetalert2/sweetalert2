@@ -206,7 +206,7 @@ div:where(.swal2-container) {
       cursor: pointer;
     }
 
-    &.swal2-confirm {
+    &:where(.swal2-confirm) {
       order: $swal2-confirm-button-order;
       border: $swal2-confirm-button-border;
       border-radius: $swal2-confirm-button-border-radius;
@@ -220,7 +220,7 @@ div:where(.swal2-container) {
       }
     }
 
-    &.swal2-deny {
+    &:where(.swal2-deny) {
       order: $swal2-deny-button-order;
       border: $swal2-deny-button-border;
       border-radius: $swal2-deny-button-border-radius;
@@ -234,7 +234,7 @@ div:where(.swal2-container) {
       }
     }
 
-    &.swal2-cancel {
+    &:where(.swal2-cancel) {
       order: $swal2-cancel-button-order;
       border: $swal2-cancel-button-border;
       border-radius: $swal2-cancel-button-border-radius;

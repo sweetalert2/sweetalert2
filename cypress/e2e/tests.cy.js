@@ -3766,12 +3766,15 @@ describe('Styling', () => {
       }
       .my-confirm-button {
         padding: 2px;
+        color: red;
       }
       .my-deny-button {
         padding: 3px;
+        color: red;
       }
       .my-cancel-button {
         padding: 4px;
+        color: red;
       }
       .my-loader {
         border-width: 7px;
@@ -3826,9 +3829,12 @@ describe('Styling', () => {
         expect(window.getComputedStyle(Swal.getValidationMessage()).padding).to.equal('0px')
         expect(window.getComputedStyle(Swal.getActions()).padding).to.equal('1px')
         expect(window.getComputedStyle(Swal.getConfirmButton()).padding).to.equal('2px')
+        expect(window.getComputedStyle(Swal.getConfirmButton()).color).to.equal('rgb(255, 0, 0)')
         expect(window.getComputedStyle(Swal.getDenyButton()).padding).to.equal('3px')
+        expect(window.getComputedStyle(Swal.getDenyButton()).color).to.equal('rgb(255, 0, 0)')
         expect(window.getComputedStyle(Swal.getCancelButton()).padding).to.equal('4px')
         Swal.showLoading()
+        expect(window.getComputedStyle(Swal.getCancelButton()).color).to.equal('rgb(255, 0, 0)')
         expect(window.getComputedStyle(Swal.getLoader()).borderWidth).to.equal('7px')
         expect(window.getComputedStyle(Swal.getFooter()).padding).to.equal('8px')
         expect(window.getComputedStyle(Swal.getTimerProgressBar()).height).to.equal('9px')

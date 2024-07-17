@@ -195,7 +195,7 @@ div:where(.swal2-container) {
     border-color: $swal2-loader-border-color;
   }
 
-  button:where(.swal2-styled) {
+  button[type='button']:where(.swal2-styled) {
     margin: $swal2-button-margin;
     padding: $swal2-button-padding;
     transition: $swal2-button-transition;
@@ -294,7 +294,7 @@ div:where(.swal2-container) {
     margin: $swal2-image-margin;
   }
 
-  button:where(.swal2-close) {
+  button[type='button']:where(.swal2-close) {
     position: $swal2-close-button-position;
     z-index: 2; // sweetalert2/issues/1617
     align-items: $swal2-close-button-align-items;

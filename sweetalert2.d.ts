@@ -714,8 +714,7 @@ declare module 'sweetalert2' {
 
     /**
      * A custom CSS class for the popup.
-     * If a string value is provided, the classname will be applied to the popup.
-     * If an object is provided, the classnames will be applied to the corresponding fields:
+     * The classnames will be applied to the corresponding parts of a popup:
      *
      * Example:
      * ```

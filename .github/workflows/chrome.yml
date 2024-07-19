@@ -1,4 +1,4 @@
-name: Test
+name: Test Chrome
 
 on:
   push:

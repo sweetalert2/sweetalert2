@@ -8,8 +8,10 @@ const swalStringParams = ['swal-title', 'swal-html', 'swal-footer']
  * @returns {SweetAlertOptions}
  */
 export const getTemplateParams = (params) => {
-  /** @type {HTMLTemplateElement} */
-  const template = typeof params.template === 'string' ? document.querySelector(params.template) : params.template
+  const template =
+    typeof params.template === 'string'
+      ? /** @type {HTMLTemplateElement} */ (document.querySelector(params.template))
+      : params.template
   if (!template) {
     return {}
   }
@@ -32,16 +34,20 @@ export const getTemplateParams = (params) => {
 
 /**
  * @param {DocumentFragment} templateContent
- * @returns {SweetAlertOptions}
+ * @returns {Record<string, any>}
  */
 const getSwalParams = (templateContent) => {
+  /** @type {Record<string, any>} */
   const result = {}
   /** @type {HTMLElement[]} */
   const swalParams = Array.from(templateContent.querySelectorAll('swal-param'))
   swalParams.forEach((param) => {
     showWarningsForAttributes(param, ['name', 'value'])
-    const paramName = param.getAttribute('name')
+    const paramName = /** @type {keyof SweetAlertOptions} */ (param.getAttribute('name'))
     const value = param.getAttribute('value')
+    if (!paramName || !value) {
+      return
+    }
     if (typeof defaultParams[paramName] === 'boolean') {
       result[paramName] = value !== 'false'
     } else if (typeof defaultParams[paramName] === 'object') {
@@ -55,15 +61,19 @@ const getSwalParams = (templateContent) => {
 
 /**
  * @param {DocumentFragment} templateContent
- * @returns {SweetAlertOptions}
+ * @returns {Record<string, any>}
  */
 const getSwalFunctionParams = (templateContent) => {
+  /** @type {Record<string, any>} */
   const result = {}
   /** @type {HTMLElement[]} */
   const swalFunctions = Array.from(templateContent.querySelectorAll('swal-function-param'))
   swalFunctions.forEach((param) => {
-    const paramName = param.getAttribute('name')
+    const paramName = /** @type {keyof SweetAlertOptions} */ param.getAttribute('name')
     const value = param.getAttribute('value')
+    if (!paramName || !value) {
+      return
+    }
     result[paramName] = new Function(`return ${value}`)()
   })
   return result
@@ -71,15 +81,19 @@ const getSwalFunctionParams = (templateContent) => {
 
 /**
  * @param {DocumentFragment} templateContent
- * @returns {SweetAlertOptions}
+ * @returns {Record<string, any>}
  */
 const getSwalButtons = (templateContent) => {
+  /** @type {Record<string, any>} */
   const result = {}
   /** @type {HTMLElement[]} */
   const swalButtons = Array.from(templateContent.querySelectorAll('swal-button'))
   swalButtons.forEach((button) => {
     showWarningsForAttributes(button, ['type', 'color', 'aria-label'])
     const type = button.getAttribute('type')
+    if (!type || !['confirm', 'cancel', 'deny'].includes(type)) {
+      return
+    }
     result[`${type}ButtonText`] = button.innerHTML
     result[`show${capitalizeFirstLetter(type)}Button`] = true
     if (button.hasAttribute('color')) {
@@ -120,17 +134,15 @@ const getSwalImage = (templateContent) => {
 
 /**
  * @param {DocumentFragment} templateContent
- * @returns {SweetAlertOptions}
+ * @returns {Record<string, any>}
  */
 const getSwalIcon = (templateContent) => {
   const result = {}
-  /** @type {HTMLElement} */
+  /** @type {HTMLElement | null} */
   const icon = templateContent.querySelector('swal-icon')
   if (icon) {
     showWarningsForAttributes(icon, ['type', 'color'])
     if (icon.hasAttribute('type')) {
-      /** @type {SweetAlertIcon} */
-      // @ts-ignore
       result.icon = icon.getAttribute('type')
     }
     if (icon.hasAttribute('color')) {
@@ -143,16 +155,15 @@ const getSwalIcon = (templateContent) => {
 
 /**
  * @param {DocumentFragment} templateContent
- * @returns {SweetAlertOptions}
+ * @returns {Record<string, any>}
  */
 const getSwalInput = (templateContent) => {
+  /** @type {Record<string, any>} */
   const result = {}
-  /** @type {HTMLElement} */
+  /** @type {HTMLElement | null} */
   const input = templateContent.querySelector('swal-input')
   if (input) {
     showWarningsForAttributes(input, ['type', 'label', 'placeholder', 'value'])
-    /** @type {SweetAlertInput} */
-    // @ts-ignore
     result.input = input.getAttribute('type') || 'text'
     if (input.hasAttribute('label')) {
       result.inputLabel = input.getAttribute('label')
@@ -171,6 +182,9 @@ const getSwalInput = (templateContent) => {
     inputOptions.forEach((option) => {
       showWarningsForAttributes(option, ['value'])
       const optionValue = option.getAttribute('value')
+      if (!optionValue) {
+        return
+      }
       const optionName = option.innerHTML
       result.inputOptions[optionValue] = optionName
     })
@@ -181,13 +195,14 @@ const getSwalInput = (templateContent) => {
 /**
  * @param {DocumentFragment} templateContent
  * @param {string[]} paramNames
- * @returns {SweetAlertOptions}
+ * @returns {Record<string, any>}
  */
 const getSwalStringParams = (templateContent, paramNames) => {
+  /** @type {Record<string, any>} */
   const result = {}
   for (const i in paramNames) {
     const paramName = paramNames[i]
-    /** @type {HTMLElement} */
+    /** @type {HTMLElement | null} */
     const tag = templateContent.querySelector(paramName)
     if (tag) {
       showWarningsForAttributes(tag, [])

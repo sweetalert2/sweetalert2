@@ -1,3 +1,10 @@
+## [11.12.3](https://github.com/sweetalert2/sweetalert2/compare/v11.12.2...v11.12.3) (2024-07-19)
+
+
+### Bug Fixes
+
+* strict types renderInput.js and getTemplateParams.js ([df6d0ed](https://github.com/sweetalert2/sweetalert2/commit/df6d0ed1ca1b6cbc947e5ef7cdb3bfdddf50ab67))
+
 ## [11.12.2](https://github.com/sweetalert2/sweetalert2/compare/v11.12.1...v11.12.2) (2024-07-05)
 
 

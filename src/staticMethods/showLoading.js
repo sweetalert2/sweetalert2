@@ -11,7 +11,7 @@ import * as dom from '../utils/dom/index.js'
 const showLoading = (buttonToReplace) => {
   let popup = dom.getPopup()
   if (!popup) {
-    new Swal() // eslint-disable-line no-new
+    new Swal()
   }
   popup = dom.getPopup()
   if (!popup) {

@@ -1437,7 +1437,7 @@ describe('_destroy()', () => {
   it('should empty the private methods after having received a reject of an async call', (done) => {
     let instance = null
     Swal.fire({
-      preConfirm: () => new Promise((resolve, reject) => cy.wait(500).then(() => reject(new Error('msg3')))),
+      preConfirm: () => new Promise((resolve, reject) => cy.wait(TIMEOUT).then(() => reject(new Error('msg3')))),
     })
       .then(() => {
         //
@@ -1455,7 +1455,7 @@ describe('_destroy()', () => {
   it('should empty the private methods after having received a resolve of an async call', (done) => {
     let instance = null
     Swal.fire({
-      preConfirm: () => new Promise((resolve) => cy.wait(500).then(resolve)),
+      preConfirm: () => new Promise((resolve) => cy.wait(TIMEOUT).then(resolve)),
     }).then(() => {
       expect(privateMethods.swalPromiseResolve.get(instance)).to.equal(undefined)
       done()
@@ -1478,7 +1478,7 @@ describe('_destroy()', () => {
               expect(privateMethods.swalPromiseResolve.get(instance)).to.not.equal(undefined)
             },
           })
-          cy.wait(500).then(resolve)
+          cy.wait(TIMEOUT).then(resolve)
         }),
     }).then(() => {
       expect(privateMethods.swalPromiseResolve.get(instance)).to.equal(undefined)
@@ -1500,7 +1500,7 @@ describe('_destroy()', () => {
               expect(privateMethods.swalPromiseResolve.get(instance)).to.not.equal(undefined)
             },
           })
-          cy.wait(500).then(resolve)
+          cy.wait(TIMEOUT).then(resolve)
         }),
     }).then(() => {
       expect(privateMethods.swalPromiseResolve.get(instance)).to.equal(undefined)
@@ -3681,9 +3681,6 @@ describe('Vertical scrollbar', () => {
 
     SwalWithoutAnimation.fire({
       title: 'no padding right adjustment when overflow-y: scroll is set on body',
-      didClose: () => {
-        document.body.removeChild(talltDiv)
-      },
     })
 
     const bodyStyles = window.getComputedStyle(document.body)

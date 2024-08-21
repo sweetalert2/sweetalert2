@@ -18,7 +18,7 @@
     "cypress": "^13.0.0",
     "eslint": "^9.0.0",
     "eslint-plugin-cypress": "^3.0.0",
-    "eslint-plugin-jsdoc": "^48.0.0",
+    "eslint-plugin-jsdoc": "^49.0.0",
     "eslint-plugin-no-unsanitized": "^4.0.1",
     "jquery": "^3.6.1",
     "playwright-webkit": "^1.37.1",

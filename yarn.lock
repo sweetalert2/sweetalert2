@@ -2198,10 +2198,10 @@ eslint-plugin-cypress@^3.0.0:
   dependencies:
     globals "^13.20.0"
 
-eslint-plugin-jsdoc@^48.0.0:
-  version "48.10.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-48.10.2.tgz#dd3fb8b8d4c6a0add3191b7f00b32a1e1ca7880d"
-  integrity sha512-xTkf/MmEeVrTbezc6kDqCJmK9RcseIKo8X4oyoDCMvV4LY8dqrQi8kmfRrv9n0gNBkCclevaOh2Lkmu6Fs8SLg==
+eslint-plugin-jsdoc@^49.0.0:
+  version "49.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-49.0.0.tgz#8520227f30cdd4ce20e321979acf7fa68107a503"
+  integrity sha512-MlLQpFmann7YkTpjJfsWiSSG877RrijLfg5A1lwfl2FAFTM343Kd+HRt/cnLG+rjypSwaWVqgEgtBTIovnS6qA==
   dependencies:
     "@es-joy/jsdoccomment" "~0.46.0"
     are-docs-informative "^0.0.2"

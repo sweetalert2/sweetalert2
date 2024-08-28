@@ -1,6 +1,6 @@
 # Sponsors
 
-Sponsor is a company or a person who is supporting SweetAlert2 with $19 per month [via GitHub Sponsors](https://github.com/sponsors/limonte) or [via PayPal](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=UW5EA4KTHM4B6). Sponsors are listed in these places:
+Sponsor is a company or a person who is supporting SweetAlert2 with $29 per month [via GitHub Sponsors](https://github.com/sponsors/limonte) or [via PayPal](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=UW5EA4KTHM4B6). Sponsors are listed in these places:
 
 - in [SweetAlert2's official homepage](https://sweetalert2.github.io/#sponsors) (100K+ unique visitors per month).
 - in [the official repo README](https://github.com/sweetalert2/sweetalert2#sponsors) (20K+ unique visitors per month)
@@ -13,7 +13,7 @@ For all questions related to sponsorship please contact me via email sweetalert2
 
 # How to become a sponsor
 
-1. Set up the $19 per month sponsorship [via GitHub Sponsors](https://github.com/sponsors/limonte) or [via PayPal](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=UW5EA4KTHM4B6)
+1. Set up the $29 per month sponsorship [via GitHub Sponsors](https://github.com/sponsors/limonte) or [via PayPal](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=UW5EA4KTHM4B6)
 2. Send your logo and link to sweetalert2@gmail.com and I will publish it in the same day
 
 # Our Sponsors
@@ -31,10 +31,6 @@ For all questions related to sponsorship please contact me via email sweetalert2
 <td align="center"><a href="https://roboflow.com/"><img src="https://sweetalert2.github.io/images/sponsors/roboflow.png" width="80"><br>Roboflow</a>
 <td align="center"><a href="https://www.zezelife.com/"><img src="https://sweetalert2.github.io/images/sponsors/zezelife.png" width="80"><br>ZezeLife</a>
 <td align="center"><a href="https://www.realspyapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/realspyapps.jpeg" width="80"><br>Real Spy Apps</a>
-</tr>
-</table>
-<table>
-<tr>
 <td align="center"><a href="https://celltrackingapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/celltrackingapps.png" width="80"><br>Phone Tracking Apps</a></td>
 <td align="center"><a href="https://www.vegega.com/"><img src="https://sweetalert2.github.io/images/sponsors/vegega.jpeg" width="80"><br>Metal Raised Garden Bed</a></td>
 </tr>

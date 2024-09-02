@@ -54,4 +54,15 @@ export default [
       },
     },
   },
+  {
+    files: ['tools/build*'],
+    rules: {
+      '@typescript-eslint/no-unused-expressions': 0,
+    },
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
 ]

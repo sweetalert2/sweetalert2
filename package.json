@@ -31,7 +31,7 @@
     "zx": "^8.0.0"
   },
   "devDependenciesComments": {
-    "typescript": "Do not upgrade TS, tests will verify that types work with the very first version of TS >= 4.0"
+    "typescript": "Do not upgrade TS, tests will verify that types work with the very first version of TS >= 4.7.4"
   },
   "files": [
     "dist",

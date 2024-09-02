@@ -20,6 +20,8 @@ module.exports = {
           { path: 'dist/sweetalert2.all.js' },
           { path: 'dist/sweetalert2.all.min.js' },
           { path: 'dist/sweetalert2.css' },
+          { path: 'dist/sweetalert2.esm.js' },
+          { path: 'dist/sweetalert2.esm.min.js' },
           { path: 'dist/sweetalert2.js' },
           { path: 'dist/sweetalert2.min.css' },
           { path: 'dist/sweetalert2.min.js' },

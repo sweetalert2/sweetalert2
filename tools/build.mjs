@@ -17,5 +17,10 @@ const cssInJs = `"undefined"!=typeof document&&function(e,t){var n=e.createEleme
   .replace(/"/g, '\\"')}");`
 fs.writeFileSync('dist/sweetalert2.all.js', `${fs.readFileSync('dist/sweetalert2.js', 'utf-8')}${cssInJs}`)
 fs.writeFileSync('dist/sweetalert2.all.min.js', `${fs.readFileSync('dist/sweetalert2.min.js', 'utf-8')}${cssInJs}`)
+fs.writeFileSync('dist/sweetalert2.esm.all.js', `${fs.readFileSync('dist/sweetalert2.esm.js', 'utf-8')}${cssInJs}`)
+fs.writeFileSync(
+  'dist/sweetalert2.esm.all.min.js',
+  `${fs.readFileSync('dist/sweetalert2.esm.min.js', 'utf-8')}${cssInJs}`
+)
 echo`OK!`
 echo``

@@ -55,15 +55,6 @@ For all questions related to sponsorship please get in touch with me via email s
 <tr>
 <td align="center"><a href="https://nakedoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/nakedoll.png" width="80"><br>NakeDoll</a></td>
 <td align="center"><a href="https://www.onahole.com/"><img src="https://sweetalert2.github.io/images/sponsors/onahole.png" width="80"><br>hentai sex toys</a></td>
-<td align="center"><a href="https://blowupdollshop.com/inflatable-sex-doll/"><img src="https://sweetalert2.github.io/images/sponsors/blowupdollshop.png" width="80"><br>Inflatable sex doll</a></td>
-<td align="center"><a href="https://sexdollsmarket.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexdollsmarket.png" width="80"><br>Sex Doll Torso</a></td>
-<td align="center"><a href="https://sexydollies.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexydollies.png" width="80"><br>porn sexdoll</a></td>
-</tr>
-</table>
-<table>
-<tr>
-<td align="center"><a href="https://bululusexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/bululusexdoll.png" width="80"><br>cheap sex doll</a></td>
-<td align="center"><a href="https://bululu.shop/"><img src="https://sweetalert2.github.io/images/sponsors/bululu.png" width="80"><br>BULULU</a></td>
 <td align="center"><a href="https://vsdoll.net/"><img src="https://sweetalert2.github.io/images/sponsors/vsdoll.png" width="80"><br>VSDoll</a></td>
 <td align="center"><a href="https://www.xndoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/xndoll.jpeg" width="80"><br>XNDOLL</a></td>
 <td align="center"><a href="https://www.sextorso.com/"><img src="https://sweetalert2.github.io/images/sponsors/sextorso.png" width="80"><br>sexdoll torso</a></td>

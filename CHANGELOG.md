@@ -1,3 +1,10 @@
+## [11.13.1](https://github.com/sweetalert2/sweetalert2/compare/v11.13.0...v11.13.1) (2024-09-03)
+
+
+### Bug Fixes
+
+* esm module export ([29082b5](https://github.com/sweetalert2/sweetalert2/commit/29082b54353abbb16a1161a2de2211587f6428a6))
+
 # [11.13.0](https://github.com/sweetalert2/sweetalert2/compare/v11.12.4...v11.13.0) (2024-09-03)
 
 

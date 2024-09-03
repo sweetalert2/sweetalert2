@@ -6,7 +6,7 @@
   "description": "A beautiful, responsive, customizable and accessible (WAI-ARIA) replacement for JavaScript's popup boxes, supported fork of sweetalert",
   "main": "dist/sweetalert2.all.js",
   "browser": "dist/sweetalert2.all.js",
-  "module": "dist/sweetalert2.esm.js",
+  "module": "dist/sweetalert2.esm.all.js",
   "types": "sweetalert2.d.ts",
   "devDependencies": {
     "@babel/core": "^7.19.6",

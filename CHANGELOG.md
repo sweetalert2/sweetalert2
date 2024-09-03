@@ -1,3 +1,10 @@
+# [11.13.0](https://github.com/sweetalert2/sweetalert2/compare/v11.12.4...v11.13.0) (2024-09-03)
+
+
+### Features
+
+* publish .esm.js ([#2757](https://github.com/sweetalert2/sweetalert2/issues/2757)) ([e6537e5](https://github.com/sweetalert2/sweetalert2/commit/e6537e5ed6a6309a2947f877002db60e47fc6978))
+
 ## [11.12.4](https://github.com/sweetalert2/sweetalert2/compare/v11.12.3...v11.12.4) (2024-08-01)
 
 

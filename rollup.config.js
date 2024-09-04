@@ -32,7 +32,7 @@ export default {
   plugins: [
     babel({
       babelHelpers: 'bundled',
-      presets: ['@babel/preset-env'],
+      presets: [['@babel/preset-env', { include: ['transform-optional-chaining', 'transform-class-properties'] }]],
       targets: 'defaults',
     }),
   ],

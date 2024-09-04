@@ -33,6 +33,7 @@ export default {
     babel({
       babelHelpers: 'bundled',
       presets: ['@babel/preset-env'],
+      targets: 'defaults',
     }),
   ],
   input: 'src/sweetalert2.js',

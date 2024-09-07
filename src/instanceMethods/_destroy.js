@@ -23,6 +23,7 @@ export function _destroy() {
   if (typeof innerParams.didDestroy === 'function') {
     innerParams.didDestroy()
   }
+  globalState.eventEmitter.emit('didDestroy')
   disposeSwal(this)
 }
 

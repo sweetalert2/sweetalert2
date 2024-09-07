@@ -360,6 +360,8 @@ declare module 'sweetalert2' {
 
   export type SweetAlertIcon = 'success' | 'error' | 'warning' | 'info' | 'question'
 
+  export type SweetAlertEventName = 'didRender' | 'willOpen' | 'didOpen' | 'willClose' | 'didClose' | 'didDestroy'
+
   export type SweetAlertInput =
     | 'text'
     | 'email'
@@ -1213,6 +1215,24 @@ declare module 'sweetalert2' {
      * @default undefined
      */
     didDestroy?(): void
+
+    /**
+     * Attach a handler function for a lifecycle event.
+     */
+    on?(event: SweetAlertEventName, handler: () => void): void
+
+    /**
+     * Attach a handler function for a lifecycle event. The handler is executed at most once.
+     */
+    once?(event: SweetAlertEventName, handler: () => void): void
+
+    /**
+     * Remove event handlers.
+     * If neither `event` nor `handler` is provided, all handlers for all events will be removed.
+     * If `event` is provided, but `handler` is not, all handlers for the given event will be removed.
+     * If both `event` and `handler` are provided, only the given handler for the given event will be removed.
+     */
+    off?(event?: SweetAlertEventName, handler?: () => void): void
 
     /**
      * Set to `false` to disable body padding adjustment when scrollbar is present.

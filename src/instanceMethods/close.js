@@ -162,6 +162,7 @@ const handlePopupAnimation = (instance, popup, innerParams) => {
   if (typeof innerParams.willClose === 'function') {
     innerParams.willClose(popup)
   }
+  globalState.eventEmitter.emit('willClose', popup)
 
   if (animationIsSupported) {
     animatePopup(instance, popup, container, innerParams.returnFocus, innerParams.didClose)
@@ -206,6 +207,7 @@ const triggerDidCloseAndDispose = (instance, didClose) => {
     if (typeof didClose === 'function') {
       didClose.bind(instance.params)()
     }
+    globalState.eventEmitter.emit('didClose')
     // instance might have been destroyed already
     if (instance._destroy) {
       instance._destroy()

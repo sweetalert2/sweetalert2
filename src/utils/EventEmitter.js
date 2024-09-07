@@ -30,13 +30,12 @@ export default class EventEmitter {
    * @param {EventHandler} eventHandler
    */
   one(eventName, eventHandler) {
-    const self = this
     /**
      * @param {Array} args
      */
-    const onceFn = function (...args) {
-      self.removeListener(eventName, onceFn)
-      eventHandler.apply(self, args)
+    const onceFn = (...args) => {
+      this.removeListener(eventName, onceFn)
+      eventHandler.apply(this, args)
     }
     this.on(eventName, onceFn)
   }

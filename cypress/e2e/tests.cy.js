@@ -1888,6 +1888,26 @@ describe('global events and listeners', () => {
     })
   })
 
+  it('should handle exeptions from handlers properly', (done) => {
+    const spyDidOpen = cy.spy()
+    const spyConsoleError = cy.spy(console, 'error')
+
+    Swal.on('willOpen', () => {
+      throw new Error('error from willOpen')
+    })
+    Swal.on('didOpen', spyDidOpen)
+
+    SwalWithoutAnimation.fire({
+      didOpen: () => {
+        expect(spyConsoleError).to.be.calledOnce
+        const calls = spyConsoleError.getCalls()
+        expect(calls[0].args[0].toString()).to.equal('Error: error from willOpen')
+        expect(spyDidOpen).to.be.called
+        done()
+      },
+    })
+  })
+
   it('should call handlers added with .one()', (done) => {
     const spyDidRender = cy.spy()
     const spyWillOpen = cy.spy()

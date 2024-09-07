@@ -274,7 +274,7 @@ renderInputType.checkbox = (checkboxContainer, params) => {
   checkbox.value = '1'
   checkbox.checked = Boolean(params.inputValue)
   const label = checkboxContainer.querySelector('span')
-  dom.setInnerHtml(label, params.inputPlaceholder)
+  dom.setInnerHtml(label, params.inputPlaceholder || params.inputLabel)
   return checkbox
 }
 

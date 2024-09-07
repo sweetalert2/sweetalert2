@@ -1,3 +1,10 @@
+## [11.13.3](https://github.com/sweetalert2/sweetalert2/compare/v11.13.2...v11.13.3) (2024-09-07)
+
+
+### Bug Fixes
+
+* checkbox label = inputPlaceholder || inputLabel ([#2761](https://github.com/sweetalert2/sweetalert2/issues/2761)) ([e783864](https://github.com/sweetalert2/sweetalert2/commit/e78386406bad7d703b1e4db3d0c078f7bcb029aa))
+
 ## [11.13.2](https://github.com/sweetalert2/sweetalert2/compare/v11.13.1...v11.13.2) (2024-09-04)
 
 

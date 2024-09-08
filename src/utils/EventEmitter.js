@@ -80,7 +80,10 @@ export default class EventEmitter {
    * @param {string} eventName
    */
   removeAllListeners(eventName) {
-    delete this.events[eventName]
+    if (this.events[eventName] !== undefined) {
+      // https://github.com/sweetalert2/sweetalert2/pull/2763#discussion_r1749239222
+      this.events[eventName].length = 0
+    }
   }
 
   reset() {

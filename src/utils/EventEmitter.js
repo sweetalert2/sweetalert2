@@ -54,13 +54,13 @@ export default class EventEmitter {
       /**
        * @param {EventHandler} eventHandler
        */
-      function (eventHandler) {
+      (eventHandler) => {
         try {
           eventHandler.apply(this, args)
         } catch (error) {
           console.error(error)
         }
-      }.bind(this)
+      }
     )
   }
 

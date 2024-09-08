@@ -117,6 +117,6 @@
 
 /**
  * @typedef {(eventName: string) => void} EventHandler
- * @typedef {Set<EventHandler>} EventHandlers
+ * @typedef {EventHandler[]} EventHandlers
  * @typedef {Record<string, EventHandlers>} Events
  */

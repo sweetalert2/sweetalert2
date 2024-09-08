@@ -10,9 +10,11 @@ export default class EventEmitter {
    * @param {string} eventName
    * @returns {EventHandlers}
    */
-  _getEventListByName(eventName) {
+  _getHandlersByEventName(eventName) {
     if (typeof this.events[eventName] === 'undefined') {
-      this.events[eventName] = new Set()
+      // not Set because we need to keep the FIFO order
+      // https://github.com/sweetalert2/sweetalert2/pull/2763#discussion_r1748990334
+      this.events[eventName] = []
     }
     return this.events[eventName]
   }
@@ -22,7 +24,10 @@ export default class EventEmitter {
    * @param {EventHandler} eventHandler
    */
   on(eventName, eventHandler) {
-    this._getEventListByName(eventName).add(eventHandler)
+    const currentHandlers = this._getHandlersByEventName(eventName)
+    if (!currentHandlers.includes(eventHandler)) {
+      currentHandlers.push(eventHandler)
+    }
   }
 
   /**
@@ -45,7 +50,7 @@ export default class EventEmitter {
    * @param {Array} args
    */
   emit(eventName, ...args) {
-    this._getEventListByName(eventName).forEach(
+    this._getHandlersByEventName(eventName).forEach(
       /**
        * @param {EventHandler} eventHandler
        */
@@ -64,14 +69,18 @@ export default class EventEmitter {
    * @param {EventHandler} eventHandler
    */
   removeListener(eventName, eventHandler) {
-    this._getEventListByName(eventName).delete(eventHandler)
+    const currentHandlers = this._getHandlersByEventName(eventName)
+    const index = currentHandlers.indexOf(eventHandler)
+    if (index > -1) {
+      currentHandlers.splice(index, 1)
+    }
   }
 
   /**
    * @param {string} eventName
    */
   removeAllListeners(eventName) {
-    this._getEventListByName(eventName).clear()
+    this.events[eventName] = []
   }
 
   reset() {

@@ -80,7 +80,7 @@ export default class EventEmitter {
    * @param {string} eventName
    */
   removeAllListeners(eventName) {
-    this.events[eventName] = []
+    delete this.events[eventName]
   }
 
   reset() {

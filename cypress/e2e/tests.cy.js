@@ -1836,6 +1836,171 @@ describe('timerProgressBar', () => {
   })
 })
 
+describe('global events and listeners', () => {
+  it('should attach event handlers with .on()', (done) => {
+    const spyDidRender = cy.spy()
+    const spyWillOpen = cy.spy()
+    const spyDidOpen = cy.spy()
+    const spyWillClose = cy.spy()
+    const spyDidClose = cy.spy()
+    const spyDidDestroy = cy.spy()
+    Swal.on('didRender', spyDidRender)
+    Swal.on('willOpen', spyWillOpen)
+    Swal.on('didOpen', spyDidOpen)
+    Swal.on('willClose', spyWillClose)
+    Swal.on('didClose', spyDidClose)
+    Swal.on('didDestroy', spyDidDestroy)
+    let popup
+    SwalWithoutAnimation.fire({
+      didOpen: () => {
+        popup = Swal.getPopup()
+        expect(spyDidRender).to.be.calledWith(popup)
+        expect(spyWillOpen).to.be.calledWith(popup)
+        expect(spyDidOpen).to.be.calledWith(popup)
+        Swal.clickConfirm()
+      },
+      didClose: () => {
+        expect(spyWillClose).to.be.calledWith()
+      },
+      didDestroy: () => {
+        setTimeout(() => {
+          expect(spyDidClose).to.be.calledWith()
+          expect(spyDidDestroy).to.be.calledWith()
+          done()
+        })
+      },
+    })
+  })
+
+  it('should attach multiple handler for the same event', (done) => {
+    const spyWillOpen1 = cy.spy()
+    const spyWillOpen2 = cy.spy()
+
+    Swal.on('willOpen', spyWillOpen1)
+    Swal.on('willOpen', spyWillOpen2)
+
+    SwalWithoutAnimation.fire({
+      didOpen: () => {
+        expect(spyWillOpen1).to.be.called
+        expect(spyWillOpen2).to.be.called
+        done()
+      },
+    })
+  })
+
+  it('should handle exeptions from handlers properly', (done) => {
+    const spyDidOpen = cy.spy()
+    const spyConsoleError = cy.spy(console, 'error')
+
+    Swal.on('willOpen', () => {
+      throw new Error('error from willOpen')
+    })
+    Swal.on('didOpen', spyDidOpen)
+
+    SwalWithoutAnimation.fire({
+      didOpen: () => {
+        expect(spyConsoleError).to.be.calledOnce
+        const calls = spyConsoleError.getCalls()
+        expect(calls[0].args[0].toString()).to.equal('Error: error from willOpen')
+        expect(spyDidOpen).to.be.called
+        done()
+      },
+    })
+  })
+
+  it('should call handlers added with .once()', (done) => {
+    const spyDidRender = cy.spy()
+    const spyWillOpen = cy.spy()
+    const spyDidOpen = cy.spy()
+    const spyWillClose = cy.spy()
+    const spyDidClose = cy.spy()
+    const spyDidDestroy = cy.spy()
+    Swal.once('didRender', spyDidRender)
+    Swal.once('willOpen', spyWillOpen)
+    Swal.once('didOpen', spyDidOpen)
+    Swal.once('willClose', spyWillClose)
+    Swal.once('didClose', spyDidClose)
+    Swal.once('didDestroy', spyDidDestroy)
+    let popup
+    SwalWithoutAnimation.fire({
+      title: 'first swal',
+      willOpen: () => {
+        popup = Swal.getPopup()
+      },
+    }).then(() => {
+      SwalWithoutAnimation.fire({
+        title: 'second swal',
+        didOpen: () => {
+          expect(spyDidRender).to.be.calledOnceWith(popup)
+          expect(spyWillOpen).to.be.calledOnceWith(popup)
+          expect(spyDidOpen).to.be.calledOnceWith(popup)
+          Swal.clickConfirm()
+        },
+        didClose: () => {
+          expect(spyWillClose).to.be.calledOnceWith()
+        },
+        didDestroy: () => {
+          setTimeout(() => {
+            expect(spyDidClose).to.be.calledOnceWith()
+            expect(spyDidDestroy).to.be.calledOnceWith()
+            done()
+          })
+        },
+      })
+    })
+    Swal.clickConfirm()
+  })
+
+  it('should unset all handlers for all events .off()', (done) => {
+    const spyWillOpen = cy.spy()
+    const spyDidOpen = cy.spy()
+    Swal.on('willOpen', spyWillOpen)
+    Swal.on('didOpen', spyDidOpen)
+    Swal.off()
+
+    SwalWithoutAnimation.fire({
+      didOpen: () => {
+        expect(spyWillOpen).not.to.be.called
+        expect(spyDidOpen).not.to.be.called
+        done()
+      },
+    })
+  })
+
+  it('should unset all handlers for a specifi event .off(eventName)', (done) => {
+    const spyWillOpen = cy.spy()
+    const spyDidOpen = cy.spy()
+    Swal.on('willOpen', spyWillOpen)
+    Swal.on('didOpen', spyDidOpen)
+    Swal.off('willOpen')
+
+    SwalWithoutAnimation.fire({
+      didOpen: () => {
+        expect(spyWillOpen).not.to.be.called
+        expect(spyDidOpen).to.be.called
+        done()
+      },
+    })
+  })
+
+  it('should unset a specific handler for a specifi event .off(eventName, eventHandler)', (done) => {
+    const spyWillOpen1 = cy.spy()
+    const spyWillOpen2 = cy.spy()
+
+    Swal.on('willOpen', spyWillOpen1)
+    Swal.on('willOpen', spyWillOpen2)
+    Swal.off('willOpen', spyWillOpen1)
+
+    SwalWithoutAnimation.fire({
+      didOpen: () => {
+        expect(spyWillOpen1).not.to.be.called
+        expect(spyWillOpen2).to.be.called
+        done()
+      },
+    })
+  })
+})
+
 describe('update()', () => {
   it('all updatableParams are valid', () => {
     expect(updatableParams.length).not.to.equal(0)

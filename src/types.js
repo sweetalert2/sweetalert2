@@ -10,6 +10,7 @@
 
 /**
  * @typedef { import('./utils/Timer').default } Timer
+ * @typedef { import('./utils/EventEmitter').default } EventEmitter
  */
 
 /**
@@ -17,6 +18,7 @@
  * @property {SweetAlert} [currentInstance]
  * @property {Element | null} [previousActiveElement]
  * @property {Timer} [timeout]
+ * @property {EventEmitter} [eventEmitter]
  * @property {NodeJS.Timeout} [restoreFocusTimeout]
  * @property {(this: HTMLElement, event: KeyboardEvent) => any} [keydownHandler]
  * @property {HTMLElement | (Window & typeof globalThis)} [keydownTarget]
@@ -111,4 +113,10 @@
  *   | 'icon-question'
  *   | 'icon-error'
  * } SwalClass
+ */
+
+/**
+ * @typedef {(eventName: string) => void} EventHandler
+ * @typedef {EventHandler[]} EventHandlers
+ * @typedef {Record<string, EventHandlers>} Events
  */

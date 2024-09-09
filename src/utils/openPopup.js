@@ -19,6 +19,7 @@ export const openPopup = (params) => {
   if (typeof params.willOpen === 'function') {
     params.willOpen(popup)
   }
+  globalState.eventEmitter.emit('willOpen', popup)
 
   const bodyStyles = window.getComputedStyle(document.body)
   const initialBodyOverflow = bodyStyles.overflowY
@@ -41,6 +42,7 @@ export const openPopup = (params) => {
   if (typeof params.didOpen === 'function') {
     setTimeout(() => params.didOpen(popup))
   }
+  globalState.eventEmitter.emit('didOpen', popup)
 
   dom.removeClass(container, swalClasses['no-transition'])
 }

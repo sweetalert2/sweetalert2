@@ -1,3 +1,4 @@
+import globalState from '../../../globalState.js'
 import { getPopup } from '../getters.js'
 import { renderActions } from './renderActions.js'
 import { renderCloseButton } from './renderCloseButton.js'
@@ -32,4 +33,5 @@ export const render = (instance, params) => {
   if (typeof params.didRender === 'function' && popup) {
     params.didRender(popup)
   }
+  globalState.eventEmitter.emit('didRender', popup)
 }

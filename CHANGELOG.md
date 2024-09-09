@@ -1,3 +1,10 @@
+# [11.14.0](https://github.com/sweetalert2/sweetalert2/compare/v11.13.3...v11.14.0) (2024-09-09)
+
+
+### Features
+
+* add global events `.on()` `.off()` `.once()` ([#2763](https://github.com/sweetalert2/sweetalert2/issues/2763)) ([60dabc1](https://github.com/sweetalert2/sweetalert2/commit/60dabc13a790fc04c624b70bc1e6c6ca01386151))
+
 ## [11.13.3](https://github.com/sweetalert2/sweetalert2/compare/v11.13.2...v11.13.3) (2024-09-07)
 
 

@@ -34,7 +34,7 @@ export default class EventEmitter {
    * @param {string} eventName
    * @param {EventHandler} eventHandler
    */
-  one(eventName, eventHandler) {
+  once(eventName, eventHandler) {
     /**
      * @param {Array} args
      */

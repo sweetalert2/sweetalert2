@@ -1908,19 +1908,19 @@ describe('global events and listeners', () => {
     })
   })
 
-  it('should call handlers added with .one()', (done) => {
+  it('should call handlers added with .once()', (done) => {
     const spyDidRender = cy.spy()
     const spyWillOpen = cy.spy()
     const spyDidOpen = cy.spy()
     const spyWillClose = cy.spy()
     const spyDidClose = cy.spy()
     const spyDidDestroy = cy.spy()
-    Swal.one('didRender', spyDidRender)
-    Swal.one('willOpen', spyWillOpen)
-    Swal.one('didOpen', spyDidOpen)
-    Swal.one('willClose', spyWillClose)
-    Swal.one('didClose', spyDidClose)
-    Swal.one('didDestroy', spyDidDestroy)
+    Swal.once('didRender', spyDidRender)
+    Swal.once('willOpen', spyWillOpen)
+    Swal.once('didOpen', spyDidOpen)
+    Swal.once('willClose', spyWillClose)
+    Swal.once('didClose', spyDidClose)
+    Swal.once('didDestroy', spyDidDestroy)
     let popup
     SwalWithoutAnimation.fire({
       title: 'first swal',

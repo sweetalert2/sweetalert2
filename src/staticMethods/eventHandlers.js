@@ -15,8 +15,8 @@ export const on = (eventName, eventHandler) => {
  * @param {string} eventName
  * @param {EventHandler} eventHandler
  */
-export const one = (eventName, eventHandler) => {
-  globalState.eventEmitter.one(eventName, eventHandler)
+export const once = (eventName, eventHandler) => {
+  globalState.eventEmitter.once(eventName, eventHandler)
 }
 
 /**

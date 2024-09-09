@@ -14,34 +14,29 @@
   <body>
     <script type="module">
       import '../src/sweetalert2.scss'
+
       import Swal from '../src/sweetalert2.js'
+
       window.Swal = Swal
 
-      const willOpenListener = (popup) => console.log('on: willOpen')
-
-      Swal.on('didRender', (popup) => console.log('on: didRender'))
-      Swal.on('willOpen', willOpenListener)
-      Swal.on('didOpen', (popup) => console.log('on: didOpen'))
-      Swal.on('willClose', (popup) => console.log('on: willClose'))
-      Swal.on('didClose', () => console.log('on: didClose'))
-      Swal.on('didDestroy', () => console.log('on: didDestroy'))
-
-      Swal.one('didRender', (popup) => console.log('one: didRender'))
-      Swal.one('willOpen', (popup) => console.log('one: willOpen'))
-      Swal.one('didOpen', (popup) => console.log('one: didOpen'))
-      Swal.one('willClose', (popup) => console.log('one: willClose'))
-      Swal.one('didClose', () => console.log('one: didClose'))
-      Swal.one('didDestroy', () => console.log('one: didDestroy'))
-
-      window.showSwal = () => Swal.fire('hi there, check out the console')
-      window.removeWillOpenListeners = () => Swal.off('willOpen')
-      window.removeSpecificWillOpenListener = () => Swal.off('willOpen', willOpenListener)
-      window.removeListeners = () => Swal.off()
+      Swal.fire({
+        title: 'Test modal with input',
+        html: 'custom <strong>content</strong>',
+        input: 'text',
+        icon: 'success',
+        showCloseButton: true,
+        showCancelButton: true,
+        inputValidator: (value) => {
+          if (!value) {
+            return 'Should not be empty!'
+          }
+        },
+        didOpen: (modal) => {
+          console.log(modal)
+        },
+      }).then((result) => {
+        console.log(result)
+      })
     </script>
-
-    <button onclick="window.showSwal()">Swal.fire()</button>
-    <button onclick="window.removeSpecificWillOpenListener()">Swal.off('willOpen', willOpenListener)</button>
-    <button onclick="window.removeWillOpenListeners()">Swal.off('willOpen')</button>
-    <button onclick="window.removeListeners()">Swal.off()</button>
   </body>
 </html>

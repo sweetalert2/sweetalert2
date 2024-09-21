@@ -1,3 +1,10 @@
+## [11.14.1](https://github.com/sweetalert2/sweetalert2/compare/v11.14.0...v11.14.1) (2024-09-21)
+
+
+### Bug Fixes
+
+* avoid using deprecated sass lighten function ([#2767](https://github.com/sweetalert2/sweetalert2/issues/2767)) ([eb16ab3](https://github.com/sweetalert2/sweetalert2/commit/eb16ab318f92eda4e3c8e994c4df8a44e2bd9e52))
+
 # [11.14.0](https://github.com/sweetalert2/sweetalert2/compare/v11.13.3...v11.14.0) (2024-09-09)
 
 

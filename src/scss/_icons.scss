@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use 'sass:math';
+
 // https://stackoverflow.com/a/12335841/1331425
 @function strip-units($number) {
   @return math.div($number, ($number * 0 + 1));
@@ -72,7 +75,7 @@ div:where(.swal2-icon) {
   }
 
   &.swal2-warning {
-    border-color: lighten($swal2-warning, 7);
+    border-color: color.adjust($swal2-warning, $lightness: 7%);
     color: $swal2-warning;
 
     // Warning icon animation
@@ -88,7 +91,7 @@ div:where(.swal2-icon) {
   }
 
   &.swal2-info {
-    border-color: lighten($swal2-info, 20);
+    border-color: color.adjust($swal2-info, $lightness: 20%);
     color: $swal2-info;
 
     // Info icon animation
@@ -104,7 +107,7 @@ div:where(.swal2-icon) {
   }
 
   &.swal2-question {
-    border-color: lighten($swal2-question, 20);
+    border-color: color.adjust($swal2-question, $lightness: 20%);
     color: $swal2-question;
 
     // Question icon animation

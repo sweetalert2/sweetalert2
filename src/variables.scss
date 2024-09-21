@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $swal2-white: #fff !default;
 $swal2-black: #000 !default;
 $swal2-outline-color: rgba(100, 150, 200, 0.5) !default;
@@ -9,7 +11,7 @@ $swal2-container-padding: 0.625em !default;
 $swal2-width: 32em !default;
 $swal2-padding: 0 0 1.25em !default;
 $swal2-border: none !default;
-$swal2-color: lighten($swal2-black, 33) !default;
+$swal2-color: color.adjust($swal2-black, $lightness: 33%) !default;
 $swal2-border-radius: 5px !default;
 $swal2-box-shadow: #d9d9d9 !default;
 
@@ -74,7 +76,7 @@ $swal2-input-margin: 1em 2em 3px !default;
 $swal2-input-width: auto !default;
 $swal2-input-height: 2.625em !default;
 $swal2-input-padding: 0 0.75em !default;
-$swal2-input-border: 1px solid lighten($swal2-black, 85) !default;
+$swal2-input-border: 1px solid color.adjust($swal2-black, $lightness: 85%) !default;
 $swal2-input-border-radius: 0.1875em !default;
 $swal2-input-box-shadow:
   inset 0 1px 1px rgba($swal2-black, 0.06),
@@ -106,8 +108,8 @@ $swal2-validation-message-align-items: center !default;
 $swal2-validation-message-justify-content: center !default;
 $swal2-validation-message-margin: 1em 0 0 !default;
 $swal2-validation-message-padding: 0.625em !default;
-$swal2-validation-message-background: lighten($swal2-black, 94) !default;
-$swal2-validation-message-color: lighten($swal2-black, 40) !default;
+$swal2-validation-message-background: color.adjust($swal2-black, $lightness: 94%) !default;
+$swal2-validation-message-color: color.adjust($swal2-black, $lightness: 40%) !default;
 $swal2-validation-message-font-size: 1em !default;
 $swal2-validation-message-font-weight: 300 !default;
 $swal2-validation-message-icon-background: $swal2-error !default;

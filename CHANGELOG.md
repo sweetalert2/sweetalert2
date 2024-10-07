@@ -1,3 +1,10 @@
+## [11.14.2](https://github.com/sweetalert2/sweetalert2/compare/v11.14.1...v11.14.2) (2024-10-07)
+
+
+### Bug Fixes
+
+* use animationend event ([#2770](https://github.com/sweetalert2/sweetalert2/issues/2770)) ([c510323](https://github.com/sweetalert2/sweetalert2/commit/c51032360ca9cff448ca7375001f604df1061982))
+
 ## [11.14.1](https://github.com/sweetalert2/sweetalert2/compare/v11.14.0...v11.14.1) (2024-09-21)
 
 

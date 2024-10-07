@@ -157,7 +157,7 @@ const prepareResolveValue = (resolveValue) => {
 const handlePopupAnimation = (instance, popup, innerParams) => {
   const container = dom.getContainer()
   // If animation is supported, animate
-  const animationIsSupported = dom.animationEndEvent && dom.hasCssAnimation(popup)
+  const animationIsSupported = dom.hasCssAnimation(popup)
 
   if (typeof innerParams.willClose === 'function') {
     innerParams.willClose(popup)
@@ -180,9 +180,6 @@ const handlePopupAnimation = (instance, popup, innerParams) => {
  * @param {Function} didClose
  */
 const animatePopup = (instance, popup, container, returnFocus, didClose) => {
-  if (!dom.animationEndEvent) {
-    return
-  }
   globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(
     null,
     instance,
@@ -190,7 +187,7 @@ const animatePopup = (instance, popup, container, returnFocus, didClose) => {
     returnFocus,
     didClose
   )
-  popup.addEventListener(dom.animationEndEvent, function (e) {
+  popup.addEventListener('animationend', function (e) {
     if (e.target === popup) {
       globalState.swalCloseEventFinishedCallback()
       delete globalState.swalCloseEventFinishedCallback

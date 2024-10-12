@@ -57,6 +57,7 @@ const swalOpenAnimationFinished = (event) => {
   }
   const container = dom.getContainer()
   popup.removeEventListener('animationend', swalOpenAnimationFinished)
+  popup.removeEventListener('transitionend', swalOpenAnimationFinished)
   container.style.overflowY = 'auto'
 }
 
@@ -68,6 +69,7 @@ const setScrollingVisibility = (container, popup) => {
   if (dom.hasCssAnimation(popup)) {
     container.style.overflowY = 'hidden'
     popup.addEventListener('animationend', swalOpenAnimationFinished)
+    popup.addEventListener('transitionend', swalOpenAnimationFinished)
   } else {
     container.style.overflowY = 'auto'
   }

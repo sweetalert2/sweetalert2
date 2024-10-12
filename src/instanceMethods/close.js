@@ -187,12 +187,16 @@ const animatePopup = (instance, popup, container, returnFocus, didClose) => {
     returnFocus,
     didClose
   )
-  popup.addEventListener('animationend', function (e) {
+  const swalCloseAnimationFinished = function (e) {
     if (e.target === popup) {
       globalState.swalCloseEventFinishedCallback()
       delete globalState.swalCloseEventFinishedCallback
+      popup.removeEventListener('animationend', swalCloseAnimationFinished)
+      popup.removeEventListener('transitionend', swalCloseAnimationFinished)
     }
-  })
+  }
+  popup.addEventListener('animationend', swalCloseAnimationFinished)
+  popup.addEventListener('transitionend', swalCloseAnimationFinished)
 }
 
 /**

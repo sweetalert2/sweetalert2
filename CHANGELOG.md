@@ -1,3 +1,10 @@
+## [11.14.3](https://github.com/sweetalert2/sweetalert2/compare/v11.14.2...v11.14.3) (2024-10-12)
+
+
+### Bug Fixes
+
+* handle `transitionend` together with `animationend` ([#2773](https://github.com/sweetalert2/sweetalert2/issues/2773)) ([3441fc5](https://github.com/sweetalert2/sweetalert2/commit/3441fc5c64f207bcd5afebdd0a266dcc5f009c13))
+
 ## [11.14.2](https://github.com/sweetalert2/sweetalert2/compare/v11.14.1...v11.14.2) (2024-10-07)
 
 

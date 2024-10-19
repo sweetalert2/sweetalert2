@@ -1,10 +1,8 @@
 @import 'toasts-body';
 
 @mixin sweetalert2-body() {
-  &.swal2-shown {
-    @include not('.swal2-no-backdrop', '.swal2-toast-shown') {
-      overflow: hidden; // not overflow-y because of Sarari, #1253
-    }
+  &.swal2-shown:not(.swal2-no-backdrop, .swal2-toast-shown) {
+    overflow: hidden; // not overflow-y because of Sarari, #1253
   }
 
   &.swal2-height-auto {
@@ -27,17 +25,15 @@
   }
 
   @media print {
-    &.swal2-shown {
-      @include not('.swal2-no-backdrop', '.swal2-toast-shown') {
-        overflow-y: scroll !important;
+    &.swal2-shown:not(.swal2-no-backdrop, .swal2-toast-shown) {
+      overflow-y: scroll !important;
 
-        > [aria-hidden='true'] {
-          display: none;
-        }
+      > [aria-hidden='true'] {
+        display: none;
+      }
 
-        .swal2-container {
-          position: static !important;
-        }
+      .swal2-container {
+        position: static !important;
       }
     }
   }

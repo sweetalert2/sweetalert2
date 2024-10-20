@@ -43,6 +43,7 @@ NSFW Sponsors
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
+<td align="center"><a href="https://huntlocals.com/"><img src="https://sweetalert2.github.io/images/sponsors/huntlocals.png" width="80"><br>HuntLocals</a></td>
 <td align="center"><a href="https://siteshartbandi.co/"><img src="https://sweetalert2.github.io/images/sponsors/siteshartbandi.png" width="80"><br><span dir="rtl">سایت شرط بندی</span></a></td>
 <td align="center"><a href="https://www.sosexdoll.com/cheap-sex-doll"><img src="https://sweetalert2.github.io/images/sponsors/sosexdoll.png" width="80"><br>SoSexDoll</a></td>
 <td align="center"><a href="https://aeroescorts.com/"><img src="https://sweetalert2.github.io/images/sponsors/aeroescorts.png" width="80"><br>AeroEscorts</a></td>

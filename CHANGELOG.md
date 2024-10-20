@@ -1,3 +1,10 @@
+## [11.14.4](https://github.com/sweetalert2/sweetalert2/compare/v11.14.3...v11.14.4) (2024-10-20)
+
+
+### Bug Fixes
+
+* get rid of sass/mixins ([#2774](https://github.com/sweetalert2/sweetalert2/issues/2774)) ([e79ddb0](https://github.com/sweetalert2/sweetalert2/commit/e79ddb091170498f19a408c97136d3d994ee08e3))
+
 ## [11.14.3](https://github.com/sweetalert2/sweetalert2/compare/v11.14.2...v11.14.3) (2024-10-12)
 
 

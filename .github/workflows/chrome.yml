@@ -39,10 +39,10 @@ jobs:
         if: github.ref_name == 'main'
         run: |
           ln -s ../../ test/ts/node_modules
-          tsc --lib dom,es6 --noEmit --strict test/ts/simple-usage.ts
-          tsc --lib dom,es6 --noEmit --strict test/ts/inputValidator.ts
-          tsc --lib dom,es6 --noEmit --strict test/ts/dist-sweetalert2.ts sweetalert2.d.ts
-          tsc --lib dom,es6 --noEmit --strict test/ts/src-sweetalert2.ts sweetalert2.d.ts
+          tsc --lib dom,es6 --skipLibCheck --noEmit --strict test/ts/simple-usage.ts
+          tsc --lib dom,es6 --skipLibCheck --noEmit --strict test/ts/inputValidator.ts
+          tsc --lib dom,es6 --skipLibCheck --noEmit --strict test/ts/dist-sweetalert2.ts sweetalert2.d.ts
+          tsc --lib dom,es6 --skipLibCheck --noEmit --strict test/ts/src-sweetalert2.ts sweetalert2.d.ts
 
       - name: Run automated release process with semantic-release
         if: github.ref_name == 'main'

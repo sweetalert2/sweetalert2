@@ -260,7 +260,7 @@ const initFocus = (domCache, innerParams) => {
  * @returns {boolean}
  */
 const focusAutofocus = (domCache) => {
-  const autofocusElements = domCache.popup.querySelectorAll('[autofocus]')
+  const autofocusElements = Array.from(domCache.popup.querySelectorAll('[autofocus]'))
   for (const autofocusElement of autofocusElements) {
     if (autofocusElement instanceof HTMLElement && dom.isVisible(autofocusElement)) {
       autofocusElement.focus()

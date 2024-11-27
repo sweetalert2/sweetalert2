@@ -59,7 +59,6 @@ For all questions related to sponsorship please get in touch with me via email s
 <td align="center"><a href="https://nakedoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/nakedoll.png" width="80"><br>NakeDoll</a></td>
 <td align="center"><a href="https://www.onahole.com/"><img src="https://sweetalert2.github.io/images/sponsors/onahole.png" width="80"><br>hentai sex toys</a></td>
 <td align="center"><a href="https://vsdoll.net/"><img src="https://sweetalert2.github.io/images/sponsors/vsdoll.png" width="80"><br>VSDoll</a></td>
-<td align="center"><a href="https://www.xndoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/xndoll.jpeg" width="80"><br>XNDOLL</a></td>
 <td align="center"><a href="https://www.sextorso.com/"><img src="https://sweetalert2.github.io/images/sponsors/sextorso.png" width="80"><br>sexdoll torso</a></td>
 </tr>
 </table>

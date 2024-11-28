@@ -21,17 +21,22 @@ For all questions related to sponsorship please contact me via email sweetalert2
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
+<td align="center"><a href="https://bluehive.com/?utm_source=sweetalert2&utm_medium=sponsored&utm_campaign=listing"><img src="https://sweetalert2.github.io/images/sponsors/bluehive.png" width="80"><br>Occupational Healthcare</a></td>
 <td align="center"><a href="https://boilerplatehub.com/?utm_source=sweetalert2"><img src="https://sweetalert2.github.io/images/sponsors/boilerplatehub.jpg" width="80"><br>Build your SaaS or App</a></td>
 <td align="center"><a href="https://ssmarket.net/buy-youtube-views"><img src="https://sweetalert2.github.io/images/sponsors/ssmarket.png" width="80"><br>Buy Youtube Views</a></td>
-<td align="center"><a href="https://www.coinbit.fi/"><img src="https://sweetalert2.github.io/images/sponsors/coinbit.png" width="80"><br>Kryptovaluutat</a></td>
-<td align="center"><a href="https://dlxplugins.com/"><img src="https://avatars.githubusercontent.com/u/106675919?s=200&v=4" width="80"><br>DLX Plugins</a></td>
 </tr>
 </table>
 <table>
 <tr>
+<td align="center"><a href="https://www.coinbit.fi/"><img src="https://sweetalert2.github.io/images/sponsors/coinbit.png" width="80"><br>Kryptovaluutat</a></td>
+<td align="center"><a href="https://dlxplugins.com/"><img src="https://avatars.githubusercontent.com/u/106675919?s=200&v=4" width="80"><br>DLX Plugins</a></td>
 <td align="center"><a href="https://github.com/tiagostutz"><img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80"><br>Tiago de Oliveira Stutz</a></td>
 <td align="center"><a href="https://roboflow.com/"><img src="https://sweetalert2.github.io/images/sponsors/roboflow.png" width="80"><br>Roboflow</a>
 <td align="center"><a href="https://www.zezelife.com/"><img src="https://sweetalert2.github.io/images/sponsors/zezelife.png" width="80"><br>ZezeLife</a>
+</tr>
+</table>
+<table>
+<tr>
 <td align="center"><a href="https://www.realspyapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/realspyapps.jpeg" width="80"><br>Real Spy Apps</a>
 <td align="center"><a href="https://celltrackingapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/celltrackingapps.png" width="80"><br>Phone Tracking Apps</a></td>
 </tr>

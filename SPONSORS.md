@@ -48,25 +48,26 @@ NSFW Sponsors
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
+<td align="center"><a href="https://www.fantasywives.com/cheap-sex-dolls/"><img src="https://sweetalert2.github.io/images/sponsors/fantasywives.png" width="80"><br>Cheap sex dolls</a></td>
 <td align="center"><a href="https://tabootwin.com?utm_source=sweetalert"><img src="https://sweetalert2.github.io/images/sponsors/tabootwin.png" width="80"><br>TabooTwin <br> AI Girlfriend</a></td>
 <td align="center"><a href="https://huntlocals.com/"><img src="https://sweetalert2.github.io/images/sponsors/huntlocals.png" width="80"><br>HuntLocals</a></td>
 <td align="center"><a href="https://siteshartbandi.co/"><img src="https://sweetalert2.github.io/images/sponsors/siteshartbandi.png" width="80"><br><span dir="rtl">سایت شرط بندی</span></a></td>
 <td align="center"><a href="https://www.sosexdoll.com/cheap-sex-doll"><img src="https://sweetalert2.github.io/images/sponsors/sosexdoll.png" width="80"><br>SoSexDoll</a></td>
-<td align="center"><a href="https://aeroescorts.com/"><img src="https://sweetalert2.github.io/images/sponsors/aeroescorts.png" width="80"><br>AeroEscorts</a></td>
 </tr>
 </table>
 <table>
 <tr>
+<td align="center"><a href="https://aeroescorts.com/"><img src="https://sweetalert2.github.io/images/sponsors/aeroescorts.png" width="80"><br>AeroEscorts</a></td>
 <td align="center"><a href="https://www.hismith.co.uk/"><img src="https://sweetalert2.github.io/images/sponsors/hismith.png" width="80"><br>Hismith</a></td>
 <td align="center"><a href="https://dollauthority.com/"><img src="https://sweetalert2.github.io/images/sponsors/dollauthority.png" width="80"><br>Doll Authority</a></td>
 <td align="center"><a href="https://dreamlovedoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/dreamlovedoll.jpg" width="80"><br>DreamLoveDoll</a></td>
 <td align="center"><a href="https://www.sexdollpartner.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexdollpartner.jpg" width="80"><br>SexDollPartner</a></td>
 <td align="center"><a href="https://www.xspacecup.com/"><img src="https://sweetalert2.github.io/images/sponsors/xspacecup.png" width="80"><br>XspaceCup</a></td>
-<td align="center"><a href="https://sexsitoys.com/lovense-games/"><img src="https://sweetalert2.github.io/images/sponsors/sexsitoys.jpg" width="80"><br>Sexsi Toys</a></td>
 </tr>
 </table>
 <table>
 <tr>
+<td align="center"><a href="https://sexsitoys.com/lovense-games/"><img src="https://sweetalert2.github.io/images/sponsors/sexsitoys.jpg" width="80"><br>Sexsi Toys</a></td>
 <td align="center"><a href="https://www.cheapestsexdolls.com"><img src="https://sweetalert2.github.io/images/sponsors/cheapestsexdolls.png" width="80"><br>CheapestSexDolls</a></td>
 <td align="center"><a href="https://nakedoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/nakedoll.png" width="80"><br>NakeDoll</a></td>
 <td align="center"><a href="https://www.onahole.com/"><img src="https://sweetalert2.github.io/images/sponsors/onahole.png" width="80"><br>hentai sex toys</a></td>

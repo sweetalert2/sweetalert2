@@ -550,6 +550,10 @@ div:where(.swal2-container) {
   animation: $swal2-show-animation;
 }
 
+.swal2-show-fancy {
+  animation: $swal2-show-fancy-animation;
+}
+
 .swal2-hide {
   animation: $swal2-hide-animation;
 }

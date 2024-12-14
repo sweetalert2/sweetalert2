@@ -9,6 +9,7 @@ import {
   TIMEOUT,
   dispatchCustomEvent,
   dispatchMouseEvent,
+  dispatchTouchEvent,
   ensureClosed,
   isHidden,
   triggerKeydownEvent,
@@ -464,7 +465,7 @@ describe('customClass', () => {
   })
 })
 
-describe.only('draggable', () => {
+describe('draggable', () => {
   it('drag popup with mouse evnets', () => {
     SwalWithoutAnimation.fire({
       title: 'Drag me!',
@@ -480,6 +481,30 @@ describe.only('draggable', () => {
     dispatchMouseEvent(document.body, 'mousemove', { clientX: initialX + 10, clientY: initialY + 10 })
     dispatchMouseEvent(popup, 'mouseup')
     dispatchMouseEvent(document.body, 'mousemove', { clientX: initialX + 20, clientY: initialY + 20 })
+
+    const finalRect = popup.getBoundingClientRect()
+    const finalX = finalRect.left
+    const finalY = finalRect.top
+
+    expect(finalX).to.equal(initialX + 10)
+    expect(finalY).to.equal(initialY + 10)
+  })
+
+  it('drag popup with touch events', () => {
+    SwalWithoutAnimation.fire({
+      title: 'Drag me!',
+      draggable: true,
+    })
+
+    const popup = Swal.getPopup()
+    const initialRect = popup.getBoundingClientRect()
+    const initialX = initialRect.left
+    const initialY = initialRect.top
+
+    dispatchTouchEvent(popup, 'touchstart', { clientX: initialX, clientY: initialY })
+    dispatchTouchEvent(document.body, 'touchmove', { clientX: initialX + 10, clientY: initialY + 10 })
+    dispatchTouchEvent(popup, 'touchend')
+    dispatchTouchEvent(document.body, 'touchmove', { clientX: initialX + 20, clientY: initialY + 20 })
 
     const finalRect = popup.getBoundingClientRect()
     const finalX = finalRect.left

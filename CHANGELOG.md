@@ -1,3 +1,10 @@
+# [11.15.0](https://github.com/sweetalert2/sweetalert2/compare/v11.14.5...v11.15.0) (2024-12-14)
+
+
+### Features
+
+* add draggable param ([#2786](https://github.com/sweetalert2/sweetalert2/issues/2786)) ([eb86a66](https://github.com/sweetalert2/sweetalert2/commit/eb86a660f999f2373d5b685a8c9900050b17468e))
+
 ## [11.14.5](https://github.com/sweetalert2/sweetalert2/compare/v11.14.4...v11.14.5) (2024-11-04)
 
 

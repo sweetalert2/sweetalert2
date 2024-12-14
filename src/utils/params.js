@@ -11,6 +11,7 @@ export const defaultParams = {
   iconHtml: undefined,
   template: undefined,
   toast: false,
+  draggable: false,
   animation: true,
   showClass: {
     popup: 'swal2-show',
@@ -113,6 +114,7 @@ export const updatableParams = [
   'denyButtonText',
   'didClose',
   'didDestroy',
+  'draggable',
   'footer',
   'hideClass',
   'html',
@@ -147,6 +149,7 @@ const toastIncompatibleParams = [
   'allowOutsideClick',
   'allowEnterKey',
   'backdrop',
+  'draggable',
   'focusConfirm',
   'focusDeny',
   'focusCancel',

@@ -636,13 +636,20 @@ declare module 'sweetalert2' {
     backdrop?: boolean | string | undefined
 
     /**
-     * Whether or not an alert should be treated as a toast notification.
+     * Whether or not a popup should be treated as a toast notification.
      * This option is normally coupled with the `position` and `timer` parameters.
-     * Toasts are NEVER autofocused.
+     * Toasts are NEVER autofocused and they don't block the document.
      *
      * @default false
      */
     toast?: boolean | undefined
+
+    /**
+     * Whether or not a popup should be draggabele.
+     *
+     * @default false
+     */
+    draggable?: boolean | undefined
 
     /**
      * The container element for adding popup into (query selector only).

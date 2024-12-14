@@ -20,6 +20,30 @@ export const dispatchCustomEvent = (elem, eventName, eventDetail = {}) => {
   elem.dispatchEvent(event)
 }
 
+export const dispatchMouseEvent = (elem, eventName, eventDetail = {}) => {
+  const event = new MouseEvent(eventName, {
+    bubbles: true,
+    cancelable: true,
+    ...eventDetail,
+  })
+  elem.dispatchEvent(event)
+}
+
+export const dispatchTouchEvent = (elem, eventName, touchDetail = {}) => {
+  const touch = new Touch({
+    identifier: JSON.stringify(touchDetail),
+    target: elem,
+    ...touchDetail,
+  });
+
+  const event = new TouchEvent(eventName, {
+    bubbles: true,
+    cancelable: true,
+    touches: [touch],
+  })
+  elem.dispatchEvent(event)
+}
+
 export const triggerKeydownEvent = (target, key, params = {}) => {
   const event = document.createEvent('HTMLEvents')
   event.key = key

@@ -466,7 +466,7 @@ describe('customClass', () => {
 })
 
 describe('draggable', () => {
-  it('drag popup with mouse evnets', () => {
+  it('should drag popup with mouse evnets', () => {
     SwalWithoutAnimation.fire({
       title: 'Drag me!',
       draggable: true,
@@ -490,7 +490,7 @@ describe('draggable', () => {
     expect(finalY).to.equal(initialY + 10)
   })
 
-  it('drag popup with touch events', () => {
+  it('should drag popup with touch events', () => {
     SwalWithoutAnimation.fire({
       title: 'Drag me!',
       draggable: true,

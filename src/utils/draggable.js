@@ -45,6 +45,7 @@ const down = (event) => {
     mousedownY = clientXY.clientY
     initialX = parseInt(popup.style.insetInlineStart) || 0
     initialY = parseInt(popup.style.insetBlockStart) || 0
+    dom.addClass(popup, 'swal2-dragging')
   }
 }
 
@@ -62,7 +63,10 @@ const move = (event) => {
 }
 
 const up = () => {
+  const popup = dom.getPopup()
+
   dragging = false
+  dom.removeClass(popup, 'swal2-dragging')
 }
 
 /**

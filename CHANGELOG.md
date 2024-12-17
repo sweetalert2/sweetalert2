@@ -1,3 +1,10 @@
+## [11.15.2](https://github.com/sweetalert2/sweetalert2/compare/v11.15.1...v11.15.2) (2024-12-17)
+
+
+### Bug Fixes
+
+* draggable cursor ([#2788](https://github.com/sweetalert2/sweetalert2/issues/2788)) ([b561301](https://github.com/sweetalert2/sweetalert2/commit/b561301ecc025cd4bd2fef807b1c06711246d23b))
+
 ## [11.15.1](https://github.com/sweetalert2/sweetalert2/compare/v11.15.0...v11.15.1) (2024-12-16)
 
 

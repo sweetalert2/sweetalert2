@@ -45,8 +45,10 @@ export const renderPopup = (instance, params) => {
   addClasses(popup, params)
 
   if (params.draggable && !params.toast) {
+    dom.addClass(popup, swalClasses.draggable)
     addDraggableListeners(popup)
   } else {
+    dom.removeClass(popup, swalClasses.draggable)
     removeDraggableListeners(popup)
   }
 }

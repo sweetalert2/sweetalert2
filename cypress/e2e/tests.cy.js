@@ -3963,6 +3963,9 @@ describe('Styling', () => {
       .my-icon {
         width: 12px;
       }
+      .my-html-container {
+        padding: 0;
+      }
       .my-image {
         max-width: 13px;
       }
@@ -4018,6 +4021,7 @@ describe('Styling', () => {
         title: 'my-title',
         closeButton: 'my-close-button',
         icon: 'my-icon',
+        htmlContainer: 'my-html-container',
         image: 'my-image',
         input: 'my-input',
         inputLabel: 'my-input-label',
@@ -4036,6 +4040,8 @@ describe('Styling', () => {
         expect(window.getComputedStyle(Swal.getTitle()).fontSize).to.equal('10px')
         expect(window.getComputedStyle(Swal.getCloseButton()).fontSize).to.equal('11px')
         expect(window.getComputedStyle(Swal.getIcon()).width).to.equal('12px')
+        expect(window.getComputedStyle(Swal.getHtmlContainer()).paddingTop).to.equal('0px')
+        expect(window.getComputedStyle(Swal.getHtmlContainer()).paddingLeft).to.equal('0px')
         expect(window.getComputedStyle(Swal.getImage()).maxWidth).to.equal('13px')
         expect(window.getComputedStyle(Swal.getInput()).fontSize).to.equal('14px')
         expect(window.getComputedStyle(Swal.getInputLabel()).margin).to.equal('0px')

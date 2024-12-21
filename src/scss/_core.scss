@@ -352,7 +352,7 @@ div:where(.swal2-container) {
     }
   }
 
-  .swal2-html-container {
+  div:where(.swal2-html-container) {
     z-index: 1; // prevent success icon overlapping the content
     justify-content: $swal2-html-container-justify-content;
     margin: $swal2-html-container-margin;

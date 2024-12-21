@@ -1,3 +1,10 @@
+## [11.15.3](https://github.com/sweetalert2/sweetalert2/compare/v11.15.2...v11.15.3) (2024-12-21)
+
+
+### Bug Fixes
+
+* styles specificity for html container ([1104474](https://github.com/sweetalert2/sweetalert2/commit/11044749830e36846190ff87030dd5a58d835fb8))
+
 ## [11.15.2](https://github.com/sweetalert2/sweetalert2/compare/v11.15.1...v11.15.2) (2024-12-17)
 
 

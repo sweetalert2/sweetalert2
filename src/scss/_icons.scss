@@ -1,3 +1,4 @@
+@use "../variables";
 @use 'sass:color';
 @use 'sass:math';
 
@@ -5,33 +6,33 @@
 @function strip-units($number) {
   @return math.div($number, ($number * 0 + 1));
 }
-$icon-zoom: math.div(strip-units($swal2-icon-size), 5);
+$icon-zoom: math.div(strip-units(variables.$swal2-icon-size), 5);
 
 div:where(.swal2-icon) {
   position: relative;
   box-sizing: content-box;
   justify-content: center;
-  width: $swal2-icon-size;
-  height: $swal2-icon-size;
-  margin: $swal2-icon-margin;
-  zoom: $swal2-icon-zoom;
+  width: variables.$swal2-icon-size;
+  height: variables.$swal2-icon-size;
+  margin: variables.$swal2-icon-margin;
+  zoom: variables.$swal2-icon-zoom;
   border: #{0.25em * $icon-zoom} solid transparent;
   border-radius: 50%;
-  border-color: $swal2-icon-border-color;
-  font-family: $swal2-icon-font-family;
-  line-height: $swal2-icon-size;
+  border-color: variables.$swal2-icon-border-color;
+  font-family: variables.$swal2-icon-font-family;
+  line-height: variables.$swal2-icon-size;
   cursor: default;
   user-select: none;
 
   .swal2-icon-content {
     display: flex;
     align-items: center;
-    font-size: $swal2-icon-font-size;
+    font-size: variables.$swal2-icon-font-size;
   }
 
   &.swal2-error {
-    border-color: $swal2-error;
-    color: $swal2-error;
+    border-color: variables.$swal2-error;
+    color: variables.$swal2-error;
 
     .swal2-x-mark {
       position: relative;
@@ -49,7 +50,7 @@ div:where(.swal2-icon) {
       width: 2.9375em;
       height: 0.3125em;
       border-radius: 0.125em;
-      background-color: $swal2-error;
+      background-color: variables.$swal2-error;
 
       &[class$='left'] {
         left: 1.0625em;
@@ -64,7 +65,7 @@ div:where(.swal2-icon) {
 
     // Error icon animation
     &.swal2-icon-show {
-      @if $swal2-icon-animations {
+      @if variables.$swal2-icon-animations {
         animation: swal2-animate-error-icon 0.5s;
 
         .swal2-x-mark {
@@ -75,12 +76,12 @@ div:where(.swal2-icon) {
   }
 
   &.swal2-warning {
-    border-color: color.adjust($swal2-warning, $lightness: 7%);
-    color: $swal2-warning;
+    border-color: color.adjust(variables.$swal2-warning, $lightness: 7%);
+    color: variables.$swal2-warning;
 
     // Warning icon animation
     &.swal2-icon-show {
-      @if $swal2-icon-animations {
+      @if variables.$swal2-icon-animations {
         animation: swal2-animate-error-icon 0.5s;
 
         .swal2-icon-content {
@@ -91,12 +92,12 @@ div:where(.swal2-icon) {
   }
 
   &.swal2-info {
-    border-color: color.adjust($swal2-info, $lightness: 20%);
-    color: $swal2-info;
+    border-color: color.adjust(variables.$swal2-info, $lightness: 20%);
+    color: variables.$swal2-info;
 
     // Info icon animation
     &.swal2-icon-show {
-      @if $swal2-icon-animations {
+      @if variables.$swal2-icon-animations {
         animation: swal2-animate-error-icon 0.5s;
 
         .swal2-icon-content {
@@ -107,12 +108,12 @@ div:where(.swal2-icon) {
   }
 
   &.swal2-question {
-    border-color: color.adjust($swal2-question, $lightness: 20%);
-    color: $swal2-question;
+    border-color: color.adjust(variables.$swal2-question, $lightness: 20%);
+    color: variables.$swal2-question;
 
     // Question icon animation
     &.swal2-icon-show {
-      @if $swal2-icon-animations {
+      @if variables.$swal2-icon-animations {
         animation: swal2-animate-error-icon 0.5s;
 
         .swal2-icon-content {
@@ -123,8 +124,8 @@ div:where(.swal2-icon) {
   }
 
   &.swal2-success {
-    border-color: $swal2-success;
-    color: $swal2-success;
+    border-color: variables.$swal2-success;
+    color: variables.$swal2-success;
 
     [class^='swal2-success-circular-line'] {
       // Emulate moving circular line
@@ -167,7 +168,7 @@ div:where(.swal2-icon) {
       box-sizing: content-box;
       width: 100%;
       height: 100%;
-      border: 0.25em solid $swal2-success-border;
+      border: 0.25em solid variables.$swal2-success-border;
       border-radius: 50%;
 
       @if $icon-zoom != 1 {
@@ -196,7 +197,7 @@ div:where(.swal2-icon) {
       z-index: 2;
       height: 0.3125em;
       border-radius: 0.125em;
-      background-color: $swal2-success;
+      background-color: variables.$swal2-success;
 
       &[class$='tip'] {
         top: 2.875em;
@@ -219,7 +220,7 @@ div:where(.swal2-icon) {
 
     // Success icon animation
     &.swal2-icon-show {
-      @if $swal2-icon-animations {
+      @if variables.$swal2-icon-animations {
         .swal2-success-line-tip {
           animation: swal2-animate-success-line-tip 0.75s;
         }

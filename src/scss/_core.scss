@@ -1,5 +1,3 @@
-@use "sass:meta";
-@use "../variables";
 @use 'sass:math';
 
 div:where(.swal2-container) {
@@ -14,16 +12,16 @@ div:where(.swal2-container) {
     'bottom-start  bottom-center  bottom-end';
   grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);
   height: 100%; // Safari
-  padding: variables.$swal2-container-padding;
+  padding: $swal2-container-padding;
   overflow-x: hidden;
-  transition: variables.$swal2-backdrop-transition;
+  transition: $swal2-backdrop-transition;
 
   // sweetalert2/issues/905
   -webkit-overflow-scrolling: touch;
 
   &.swal2-backdrop-show,
   &.swal2-noanimation {
-    background: variables.$swal2-backdrop;
+    background: $swal2-backdrop;
   }
 
   &.swal2-backdrop-hide {
@@ -123,15 +121,15 @@ div:where(.swal2-container) {
     position: relative;
     box-sizing: border-box;
     grid-template-columns: minmax(0, 100%);
-    width: variables.$swal2-width;
+    width: $swal2-width;
     max-width: 100%;
-    padding: variables.$swal2-padding;
-    border: variables.$swal2-border;
-    border-radius: variables.$swal2-border-radius;
-    background: variables.$swal2-background;
-    color: variables.$swal2-color;
-    font-family: variables.$swal2-font;
-    font-size: variables.$swal2-font-size;
+    padding: $swal2-padding;
+    border: $swal2-border;
+    border-radius: $swal2-border-radius;
+    background: $swal2-background;
+    color: $swal2-color;
+    font-family: $swal2-font;
+    font-size: $swal2-font-size;
 
     &:focus {
       outline: none;
@@ -159,14 +157,14 @@ div:where(.swal2-container) {
   }
 
   h2:where(.swal2-title) {
-    position: variables.$swal2-title-position;
-    max-width: variables.$swal2-title-max-width;
-    margin: variables.$swal2-title-margin;
-    padding: variables.$swal2-title-padding;
-    color: variables.$swal2-title-color;
-    font-size: variables.$swal2-title-font-size;
-    font-weight: variables.$swal2-title-font-weight;
-    text-align: variables.$swal2-title-text-align;
+    position: $swal2-title-position;
+    max-width: $swal2-title-max-width;
+    margin: $swal2-title-margin;
+    padding: $swal2-title-padding;
+    color: $swal2-title-color;
+    font-size: $swal2-title-font-size;
+    font-weight: $swal2-title-font-weight;
+    text-align: $swal2-title-text-align;
     text-transform: none;
     word-wrap: break-word;
     cursor: initial;
@@ -176,12 +174,12 @@ div:where(.swal2-container) {
     display: flex;
     z-index: 1; // prevent success icon from overlapping buttons
     box-sizing: border-box;
-    flex-wrap: variables.$swal2-actions-flex-wrap;
-    align-items: variables.$swal2-actions-align-items;
-    justify-content: variables.$swal2-actions-justify-content;
-    width: variables.$swal2-actions-width;
-    margin: variables.$swal2-actions-margin;
-    padding: variables.$swal2-actions-padding;
+    flex-wrap: $swal2-actions-flex-wrap;
+    align-items: $swal2-actions-align-items;
+    justify-content: $swal2-actions-justify-content;
+    width: $swal2-actions-width;
+    margin: $swal2-actions-margin;
+    padding: $swal2-actions-padding;
 
     &:not(.swal2-loading) {
       .swal2-styled {
@@ -190,11 +188,11 @@ div:where(.swal2-container) {
         }
 
         &:hover {
-          background-image: linear-gradient(variables.$swal2-button-darken-hover, variables.$swal2-button-darken-hover);
+          background-image: linear-gradient($swal2-button-darken-hover, $swal2-button-darken-hover);
         }
 
         &:active {
-          background-image: linear-gradient(variables.$swal2-button-darken-active, variables.$swal2-button-darken-active);
+          background-image: linear-gradient($swal2-button-darken-active, $swal2-button-darken-active);
         }
       }
     }
@@ -202,79 +200,79 @@ div:where(.swal2-container) {
 
   div:where(.swal2-loader) {
     display: none;
-    align-items: variables.$swal2-loader-align-items;
-    justify-content: variables.$swal2-loader-justify-content;
-    width: variables.$swal2-loader-width;
-    height: variables.$swal2-loader-height;
-    margin: variables.$swal2-loader-margin;
-    animation: variables.$swal2-loader-animation;
-    border-width: variables.$swal2-loader-border-width;
-    border-style: variables.$swal2-loader-border-style;
-    border-radius: variables.$swal2-loader-border-radius;
-    border-color: variables.$swal2-loader-border-color;
+    align-items: $swal2-loader-align-items;
+    justify-content: $swal2-loader-justify-content;
+    width: $swal2-loader-width;
+    height: $swal2-loader-height;
+    margin: $swal2-loader-margin;
+    animation: $swal2-loader-animation;
+    border-width: $swal2-loader-border-width;
+    border-style: $swal2-loader-border-style;
+    border-radius: $swal2-loader-border-radius;
+    border-color: $swal2-loader-border-color;
   }
 
   button:where(.swal2-styled) {
-    margin: variables.$swal2-button-margin;
-    padding: variables.$swal2-button-padding;
-    transition: variables.$swal2-button-transition;
-    box-shadow: variables.$swal2-button-box-shadow;
-    font-weight: variables.$swal2-button-font-weight;
+    margin: $swal2-button-margin;
+    padding: $swal2-button-padding;
+    transition: $swal2-button-transition;
+    box-shadow: $swal2-button-box-shadow;
+    font-weight: $swal2-button-font-weight;
 
     &:not([disabled]) {
       cursor: pointer;
     }
 
     &:where(.swal2-confirm) {
-      order: variables.$swal2-confirm-button-order;
-      border: variables.$swal2-confirm-button-border;
-      border-radius: variables.$swal2-confirm-button-border-radius;
+      order: $swal2-confirm-button-order;
+      border: $swal2-confirm-button-border;
+      border-radius: $swal2-confirm-button-border-radius;
       background: initial;
-      background-color: variables.$swal2-confirm-button-background-color;
-      color: variables.$swal2-confirm-button-color;
-      font-size: variables.$swal2-confirm-button-font-size;
+      background-color: $swal2-confirm-button-background-color;
+      color: $swal2-confirm-button-color;
+      font-size: $swal2-confirm-button-font-size;
 
       &:focus-visible {
-        box-shadow: variables.$swal2-confirm-button-focus-box-shadow;
+        box-shadow: $swal2-confirm-button-focus-box-shadow;
       }
     }
 
     &:where(.swal2-deny) {
-      order: variables.$swal2-deny-button-order;
-      border: variables.$swal2-deny-button-border;
-      border-radius: variables.$swal2-deny-button-border-radius;
+      order: $swal2-deny-button-order;
+      border: $swal2-deny-button-border;
+      border-radius: $swal2-deny-button-border-radius;
       background: initial;
-      background-color: variables.$swal2-deny-button-background-color;
-      color: variables.$swal2-deny-button-color;
-      font-size: variables.$swal2-deny-button-font-size;
+      background-color: $swal2-deny-button-background-color;
+      color: $swal2-deny-button-color;
+      font-size: $swal2-deny-button-font-size;
 
       &:focus-visible {
-        box-shadow: variables.$swal2-deny-button-focus-box-shadow;
+        box-shadow: $swal2-deny-button-focus-box-shadow;
       }
     }
 
     &:where(.swal2-cancel) {
-      order: variables.$swal2-cancel-button-order;
-      border: variables.$swal2-cancel-button-border;
-      border-radius: variables.$swal2-cancel-button-border-radius;
+      order: $swal2-cancel-button-order;
+      border: $swal2-cancel-button-border;
+      border-radius: $swal2-cancel-button-border-radius;
       background: initial;
-      background-color: variables.$swal2-cancel-button-background-color;
-      color: variables.$swal2-cancel-button-color;
-      font-size: variables.$swal2-cancel-button-font-size;
+      background-color: $swal2-cancel-button-background-color;
+      color: $swal2-cancel-button-color;
+      font-size: $swal2-cancel-button-font-size;
 
       &:focus-visible {
-        box-shadow: variables.$swal2-cancel-button-focus-box-shadow;
+        box-shadow: $swal2-cancel-button-focus-box-shadow;
       }
     }
 
     &.swal2-default-outline {
       &:focus-visible {
-        box-shadow: variables.$swal2-button-focus-box-shadow;
+        box-shadow: $swal2-button-focus-box-shadow;
       }
     }
 
     &:focus-visible {
-      outline: variables.$swal2-button-focus-outline;
+      outline: $swal2-button-focus-outline;
     }
 
     &::-moz-focus-inner {
@@ -283,12 +281,12 @@ div:where(.swal2-container) {
   }
 
   div:where(.swal2-footer) {
-    margin: variables.$swal2-footer-margin;
-    padding: variables.$swal2-footer-padding;
-    border-top: 1px solid variables.$swal2-footer-border-color;
-    color: variables.$swal2-footer-color;
-    font-size: variables.$swal2-footer-font-size;
-    text-align: variables.$swal2-footer-text-align;
+    margin: $swal2-footer-margin;
+    padding: $swal2-footer-padding;
+    border-top: 1px solid $swal2-footer-border-color;
+    color: $swal2-footer-color;
+    font-size: $swal2-footer-font-size;
+    text-align: $swal2-footer-text-align;
     cursor: initial;
   }
 
@@ -299,54 +297,54 @@ div:where(.swal2-container) {
     left: 0;
     grid-column: auto !important;
     overflow: hidden;
-    border-bottom-right-radius: variables.$swal2-border-radius;
-    border-bottom-left-radius: variables.$swal2-border-radius;
+    border-bottom-right-radius: $swal2-border-radius;
+    border-bottom-left-radius: $swal2-border-radius;
   }
 
   div:where(.swal2-timer-progress-bar) {
     width: 100%;
-    height: variables.$swal2-timer-progress-bar-height;
-    background: variables.$swal2-timer-progress-bar-background;
+    height: $swal2-timer-progress-bar-height;
+    background: $swal2-timer-progress-bar-background;
   }
 
   img:where(.swal2-image) {
     max-width: 100%;
-    margin: variables.$swal2-image-margin;
+    margin: $swal2-image-margin;
     cursor: initial;
   }
 
   button:where(.swal2-close) {
-    position: variables.$swal2-close-button-position;
+    position: $swal2-close-button-position;
     z-index: 2; // sweetalert2/issues/1617
-    align-items: variables.$swal2-close-button-align-items;
-    justify-content: variables.$swal2-close-button-justify-content;
-    width: variables.$swal2-close-button-width;
-    height: variables.$swal2-close-button-height;
-    margin-top: variables.$swal2-close-button-gap;
-    margin-right: variables.$swal2-close-button-gap;
-    margin-bottom: -(variables.$swal2-close-button-height);
-    padding: variables.$swal2-close-button-padding;
+    align-items: $swal2-close-button-align-items;
+    justify-content: $swal2-close-button-justify-content;
+    width: $swal2-close-button-width;
+    height: $swal2-close-button-height;
+    margin-top: $swal2-close-button-gap;
+    margin-right: $swal2-close-button-gap;
+    margin-bottom: -$swal2-close-button-height;
+    padding: $swal2-close-button-padding;
     overflow: hidden;
-    transition: variables.$swal2-close-button-transition;
-    border: variables.$swal2-close-button-border;
-    border-radius: variables.$swal2-close-button-border-radius;
-    outline: variables.$swal2-close-button-outline;
-    background: variables.$swal2-close-button-background;
-    color: variables.$swal2-close-button-color;
-    font-family: variables.$swal2-close-button-font-family;
-    font-size: variables.$swal2-close-button-font-size;
+    transition: $swal2-close-button-transition;
+    border: $swal2-close-button-border;
+    border-radius: $swal2-close-button-border-radius;
+    outline: $swal2-close-button-outline;
+    background: $swal2-close-button-background;
+    color: $swal2-close-button-color;
+    font-family: $swal2-close-button-font-family;
+    font-size: $swal2-close-button-font-size;
     cursor: pointer;
-    justify-self: variables.$swal2-close-button-justify-self;
+    justify-self: $swal2-close-button-justify-self;
 
     &:hover {
-      transform: variables.$swal2-close-button-hover-transform;
-      background: variables.$swal2-close-button-hover-background;
-      color: variables.$swal2-close-button-hover-color;
+      transform: $swal2-close-button-hover-transform;
+      background: $swal2-close-button-hover-background;
+      color: $swal2-close-button-hover-color;
     }
 
     &:focus-visible {
-      outline: variables.$swal2-close-button-focus-outline;
-      box-shadow: variables.$swal2-close-button-focus-box-shadow;
+      outline: $swal2-close-button-focus-outline;
+      box-shadow: $swal2-close-button-focus-box-shadow;
     }
 
     &::-moz-focus-inner {
@@ -356,17 +354,17 @@ div:where(.swal2-container) {
 
   div:where(.swal2-html-container) {
     z-index: 1; // prevent success icon overlapping the content
-    justify-content: variables.$swal2-html-container-justify-content;
-    margin: variables.$swal2-html-container-margin;
-    padding: variables.$swal2-html-container-padding;
-    overflow: variables.$swal2-html-container-overflow;
-    color: variables.$swal2-html-container-color;
-    font-size: variables.$swal2-html-container-font-size;
-    font-weight: variables.$swal2-html-container-font-weight;
-    line-height: variables.$swal2-html-container-line-height;
-    text-align: variables.$swal2-html-container-text-align;
-    word-wrap: variables.$swal2-html-container-word-wrap;
-    word-break: variables.$swal2-html-container-word-break;
+    justify-content: $swal2-html-container-justify-content;
+    margin: $swal2-html-container-margin;
+    padding: $swal2-html-container-padding;
+    overflow: $swal2-html-container-overflow;
+    color: $swal2-html-container-color;
+    font-size: $swal2-html-container-font-size;
+    font-weight: $swal2-html-container-font-weight;
+    line-height: $swal2-html-container-line-height;
+    text-align: $swal2-html-container-text-align;
+    word-wrap: $swal2-html-container-word-wrap;
+    word-break: $swal2-html-container-word-break;
     cursor: initial;
   }
 
@@ -376,31 +374,31 @@ div:where(.swal2-container) {
   select:where(.swal2-select),
   div:where(.swal2-radio),
   label:where(.swal2-checkbox) {
-    margin: variables.$swal2-input-margin;
+    margin: $swal2-input-margin;
   }
 
   input:where(.swal2-input),
   input:where(.swal2-file),
   textarea:where(.swal2-textarea) {
     box-sizing: border-box;
-    width: variables.$swal2-input-width;
-    transition: variables.$swal2-input-transition;
-    border: variables.$swal2-input-border;
-    border-radius: variables.$swal2-input-border-radius;
-    background: variables.$swal2-input-background;
-    box-shadow: variables.$swal2-input-box-shadow;
-    color: variables.$swal2-input-color;
-    font-size: variables.$swal2-input-font-size;
+    width: $swal2-input-width;
+    transition: $swal2-input-transition;
+    border: $swal2-input-border;
+    border-radius: $swal2-input-border-radius;
+    background: $swal2-input-background;
+    box-shadow: $swal2-input-box-shadow;
+    color: $swal2-input-color;
+    font-size: $swal2-input-font-size;
 
     &.swal2-inputerror {
-      border-color: variables.$swal2-error !important;
-      box-shadow: 0 0 2px variables.$swal2-error !important;
+      border-color: $swal2-error !important;
+      box-shadow: 0 0 2px $swal2-error !important;
     }
 
     &:focus {
-      border: variables.$swal2-input-focus-border;
-      outline: variables.$swal2-input-focus-outline;
-      box-shadow: variables.$swal2-input-focus-box-shadow;
+      border: $swal2-input-focus-border;
+      outline: $swal2-input-focus-outline;
+      box-shadow: $swal2-input-focus-box-shadow;
     }
 
     &::placeholder {
@@ -409,8 +407,8 @@ div:where(.swal2-container) {
   }
 
   .swal2-range {
-    margin: variables.$swal2-input-margin;
-    background: variables.$swal2-background;
+    margin: $swal2-input-margin;
+    background: $swal2-background;
 
     input {
       width: 80%;
@@ -418,57 +416,57 @@ div:where(.swal2-container) {
 
     output {
       width: 20%;
-      color: variables.$swal2-input-color;
+      color: $swal2-input-color;
       font-weight: 600;
       text-align: center;
     }
 
     input,
     output {
-      height: variables.$swal2-input-height;
+      height: $swal2-input-height;
       padding: 0;
-      font-size: variables.$swal2-input-font-size;
-      line-height: variables.$swal2-input-height;
+      font-size: $swal2-input-font-size;
+      line-height: $swal2-input-height;
     }
   }
 
   .swal2-input {
-    height: variables.$swal2-input-height;
-    padding: variables.$swal2-input-padding;
+    height: $swal2-input-height;
+    padding: $swal2-input-padding;
   }
 
   .swal2-file {
     width: 75%;
     margin-right: auto;
     margin-left: auto;
-    background: variables.$swal2-input-background;
-    font-size: variables.$swal2-input-font-size;
+    background: $swal2-input-background;
+    font-size: $swal2-input-font-size;
   }
 
   .swal2-textarea {
-    height: variables.$swal2-textarea-height;
-    padding: variables.$swal2-textarea-padding;
+    height: $swal2-textarea-height;
+    padding: $swal2-textarea-padding;
   }
 
   .swal2-select {
     min-width: 50%;
     max-width: 100%;
     padding: 0.375em 0.625em;
-    background: variables.$swal2-input-background;
-    color: variables.$swal2-input-color;
-    font-size: variables.$swal2-input-font-size;
+    background: $swal2-input-background;
+    color: $swal2-input-color;
+    font-size: $swal2-input-font-size;
   }
 
   .swal2-radio,
   .swal2-checkbox {
     align-items: center;
     justify-content: center;
-    background: variables.$swal2-background;
-    color: variables.$swal2-input-color;
+    background: $swal2-background;
+    color: $swal2-input-color;
 
     label {
       margin: 0 0.6em;
-      font-size: variables.$swal2-input-font-size;
+      font-size: $swal2-input-font-size;
     }
 
     input {
@@ -479,20 +477,20 @@ div:where(.swal2-container) {
 
   label:where(.swal2-input-label) {
     display: flex;
-    justify-content: variables.$swal2-input-label-justify-content;
-    margin: variables.$swal2-input-label-margin;
+    justify-content: $swal2-input-label-justify-content;
+    margin: $swal2-input-label-margin;
   }
 
   div:where(.swal2-validation-message) {
-    align-items: variables.$swal2-validation-message-align-items;
-    justify-content: variables.$swal2-validation-message-justify-content;
-    margin: variables.$swal2-validation-message-margin;
-    padding: variables.$swal2-validation-message-padding;
+    align-items: $swal2-validation-message-align-items;
+    justify-content: $swal2-validation-message-justify-content;
+    margin: $swal2-validation-message-margin;
+    padding: $swal2-validation-message-padding;
     overflow: hidden;
-    background: variables.$swal2-validation-message-background;
-    color: variables.$swal2-validation-message-color;
-    font-size: variables.$swal2-validation-message-font-size;
-    font-weight: variables.$swal2-validation-message-font-weight;
+    background: $swal2-validation-message-background;
+    color: $swal2-validation-message-color;
+    font-size: $swal2-validation-message-font-size;
+    font-weight: $swal2-validation-message-font-weight;
 
     &::before {
       content: '!';
@@ -501,10 +499,10 @@ div:where(.swal2-container) {
       min-width: 1.5em;
       height: 1.5em;
       margin: 0 0.625em;
-      zoom: variables.$swal2-validation-message-icon-zoom;
+      zoom: $swal2-validation-message-icon-zoom;
       border-radius: 50%;
-      background-color: variables.$swal2-validation-message-icon-background;
-      color: variables.$swal2-validation-message-icon-color;
+      background-color: $swal2-validation-message-icon-background;
+      color: $swal2-validation-message-icon-color;
       font-weight: 600;
       line-height: 1.5em;
       text-align: center;
@@ -512,13 +510,13 @@ div:where(.swal2-container) {
   }
 
   .swal2-progress-steps {
-    flex-wrap: variables.$swal2-progress-steps-flex-wrap;
-    align-items: variables.$swal2-progress-steps-align-items;
-    max-width: variables.$swal2-progress-steps-max-width;
-    margin: variables.$swal2-progress-steps-margin;
-    padding: variables.$swal2-progress-steps-padding;
-    background: variables.$swal2-progress-steps-background;
-    font-weight: variables.$swal2-progress-steps-font-weight;
+    flex-wrap: $swal2-progress-steps-flex-wrap;
+    align-items: $swal2-progress-steps-align-items;
+    max-width: $swal2-progress-steps-max-width;
+    margin: $swal2-progress-steps-margin;
+    padding: $swal2-progress-steps-padding;
+    background: $swal2-progress-steps-background;
+    font-weight: $swal2-progress-steps-font-weight;
 
     li {
       display: inline-block;
@@ -528,24 +526,24 @@ div:where(.swal2-container) {
     .swal2-progress-step {
       z-index: 20;
       flex-shrink: 0;
-      width: variables.$swal2-progress-step-width;
-      height: variables.$swal2-progress-step-height;
-      border-radius: variables.$swal2-progress-step-border-radius;
-      background: variables.$swal2-active-step-background;
-      color: variables.$swal2-active-step-color;
-      line-height: variables.$swal2-progress-step-height;
+      width: $swal2-progress-step-width;
+      height: $swal2-progress-step-height;
+      border-radius: $swal2-progress-step-border-radius;
+      background: $swal2-active-step-background;
+      color: $swal2-active-step-color;
+      line-height: $swal2-progress-step-height;
       text-align: center;
 
       &.swal2-active-progress-step {
-        background: variables.$swal2-active-step-background;
+        background: $swal2-active-step-background;
 
         ~ .swal2-progress-step {
-          background: variables.$swal2-progress-step-background;
-          color: variables.$swal2-progress-step-color;
+          background: $swal2-progress-step-background;
+          color: $swal2-progress-step-color;
         }
 
         ~ .swal2-progress-step-line {
-          background: variables.$swal2-progress-step-background;
+          background: $swal2-progress-step-background;
         }
       }
     }
@@ -553,15 +551,15 @@ div:where(.swal2-container) {
     .swal2-progress-step-line {
       z-index: 10;
       flex-shrink: 0;
-      width: variables.$swal2-progress-steps-distance;
+      width: $swal2-progress-steps-distance;
       height: 0.4em;
       margin: 0 -1px;
-      background: variables.$swal2-active-step-background;
+      background: $swal2-active-step-background;
     }
   }
 }
 
-@include meta.load-css('icons');
+@import 'icons';
 
 // github.com/sweetalert2/sweetalert2/issues/268
 [class^='swal2'] {
@@ -569,11 +567,11 @@ div:where(.swal2-container) {
 }
 
 .swal2-show {
-  animation: variables.$swal2-show-animation;
+  animation: $swal2-show-animation;
 }
 
 .swal2-hide {
-  animation: variables.$swal2-hide-animation;
+  animation: $swal2-hide-animation;
 }
 
 .swal2-noanimation {
@@ -593,7 +591,7 @@ div:where(.swal2-container) {
 .swal2-rtl {
   .swal2-close {
     margin-right: initial;
-    margin-left: variables.$swal2-close-button-gap;
+    margin-left: $swal2-close-button-gap;
   }
 
   .swal2-timer-progress-bar {

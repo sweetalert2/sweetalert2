@@ -1,5 +1,4 @@
-@use 'toasts-body';
-@use "../variables";
+@import 'toasts-body';
 
 @mixin sweetalert2-body() {
   &.swal2-shown:not(.swal2-no-backdrop, .swal2-toast-shown) {
@@ -20,7 +19,7 @@
       }
 
       .swal2-modal {
-        box-shadow: 0 0 10px variables.$swal2-backdrop;
+        box-shadow: 0 0 10px $swal2-backdrop;
       }
     }
   }

@@ -1,10 +1,8 @@
-@use "../variables";
-
 @mixin sweetalert2-toasts-body() {
   &.swal2-toast-shown {
     .swal2-container {
       box-sizing: border-box;
-      width: variables.$swal2-toast-width;
+      width: $swal2-toast-width;
       max-width: 100%;
       background-color: transparent;
       pointer-events: none;

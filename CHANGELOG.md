@@ -1,3 +1,10 @@
+## [11.15.5](https://github.com/sweetalert2/sweetalert2/compare/v11.15.4...v11.15.5) (2025-01-01)
+
+
+### Bug Fixes
+
+* revert "stop using deprecated sass imports ([#2790](https://github.com/sweetalert2/sweetalert2/issues/2790))" ([dd97316](https://github.com/sweetalert2/sweetalert2/commit/dd97316de67a71b719255481d0c5c730a0eea65d))
+
 ## [11.15.4](https://github.com/sweetalert2/sweetalert2/compare/v11.15.3...v11.15.4) (2025-01-01)
 
 

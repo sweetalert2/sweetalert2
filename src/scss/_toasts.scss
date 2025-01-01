@@ -1,13 +1,15 @@
+@use "../variables";
+
 .swal2-popup {
   &.swal2-toast {
     box-sizing: border-box;
     grid-column: 1/4 !important;
     grid-row: 1/4 !important;
     grid-template-columns: min-content auto min-content;
-    padding: $swal2-toast-padding;
+    padding: variables.$swal2-toast-padding;
     overflow-y: hidden;
-    background: $swal2-toast-background;
-    box-shadow: $swal2-toast-box-shadow;
+    background: variables.$swal2-toast-background;
+    box-shadow: variables.$swal2-toast-box-shadow;
     pointer-events: all;
 
     > * {
@@ -15,9 +17,9 @@
     }
 
     .swal2-title {
-      margin: $swal2-toast-title-margin;
-      padding: $swal2-toast-title-padding;
-      font-size: $swal2-toast-title-font-size;
+      margin: variables.$swal2-toast-title-margin;
+      padding: variables.$swal2-toast-title-padding;
+      font-size: variables.$swal2-toast-title-font-size;
       text-align: initial;
     }
 
@@ -26,36 +28,36 @@
     }
 
     .swal2-input {
-      height: $swal2-toast-input-height;
-      margin: $swal2-toast-input-margin;
-      font-size: $swal2-toast-input-font-size;
+      height: variables.$swal2-toast-input-height;
+      margin: variables.$swal2-toast-input-margin;
+      font-size: variables.$swal2-toast-input-font-size;
     }
 
     .swal2-validation-message {
-      font-size: $swal2-toast-validation-font-size;
+      font-size: variables.$swal2-toast-validation-font-size;
     }
 
     .swal2-footer {
-      margin: $swal2-toast-footer-margin;
-      padding: $swal2-toast-footer-margin;
-      font-size: $swal2-toast-footer-font-size;
+      margin: variables.$swal2-toast-footer-margin;
+      padding: variables.$swal2-toast-footer-margin;
+      font-size: variables.$swal2-toast-footer-font-size;
     }
 
     .swal2-close {
       grid-column: 3/3;
       grid-row: 1/99;
       align-self: center;
-      width: $swal2-toast-close-button-width;
-      height: $swal2-toast-close-button-height;
-      margin: $swal2-toast-close-button-margin;
-      font-size: $swal2-toast-close-button-font-size;
+      width: variables.$swal2-toast-close-button-width;
+      height: variables.$swal2-toast-close-button-height;
+      margin: variables.$swal2-toast-close-button-margin;
+      font-size: variables.$swal2-toast-close-button-font-size;
     }
 
     .swal2-html-container {
-      margin: $swal2-toast-html-container-margin;
-      padding: $swal2-toast-html-container-padding;
+      margin: variables.$swal2-toast-html-container-margin;
+      padding: variables.$swal2-toast-html-container-padding;
       overflow: initial;
-      font-size: $swal2-toast-html-container-font-size;
+      font-size: variables.$swal2-toast-html-container-font-size;
       text-align: initial;
 
       &:empty {
@@ -84,7 +86,7 @@
       .swal2-icon-content {
         display: flex;
         align-items: center;
-        font-size: $swal2-toast-icon-font-size;
+        font-size: variables.$swal2-toast-icon-font-size;
         font-weight: bold;
       }
 
@@ -122,11 +124,11 @@
     .swal2-styled {
       margin: 0.25em 0.5em;
       padding: 0.4em 0.6em;
-      font-size: $swal2-toast-buttons-font-size;
+      font-size: variables.$swal2-toast-buttons-font-size;
     }
 
     .swal2-success {
-      border-color: $swal2-success;
+      border-color: variables.$swal2-success;
 
       [class^='swal2-success-circular-line'] {
         // Emulate moving circular line
@@ -180,7 +182,7 @@
       }
 
       &.swal2-icon-show {
-        @if $swal2-icon-animations {
+        @if variables.$swal2-icon-animations {
           .swal2-success-line-tip {
             animation: swal2-toast-animate-success-line-tip 0.75s;
           }
@@ -193,11 +195,11 @@
     }
 
     &.swal2-show {
-      animation: $swal2-toast-show-animation;
+      animation: variables.$swal2-toast-show-animation;
     }
 
     &.swal2-hide {
-      animation: $swal2-toast-hide-animation;
+      animation: variables.$swal2-toast-hide-animation;
     }
   }
 }

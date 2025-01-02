@@ -2,7 +2,6 @@
 // github.com/sweetalert2/sweetalert2
 
 @use 'sass:color';
-@use 'sass:math';
 
 $swal2-white: #fff !default;
 $swal2-black: #000 !default;
@@ -40,6 +39,7 @@ $swal2-icon-animations: true !default;
 $swal2-icon-margin: 2.5em auto 0.6em !default;
 $swal2-icon-font-family: inherit !default;
 $swal2-icon-font-size: 3.75em !default;
+$swal2-icon-border-width: 0.25em !default;
 $swal2-icon-border-color: #000 !default;
 $swal2-icon-zoom: null !default;
 $swal2-success: #a5dc86 !default;
@@ -930,11 +930,6 @@ div:where(.swal2-container) {
 }
 
 // ICONS
-// https://stackoverflow.com/a/12335841/1331425
-@function strip-units($number) {
-  @return math.div($number, ($number * 0 + 1));
-}
-$icon-zoom: math.div(strip-units($swal2-icon-size), 5);
 
 div:where(.swal2-icon) {
   position: relative;
@@ -944,7 +939,7 @@ div:where(.swal2-icon) {
   height: $swal2-icon-size;
   margin: $swal2-icon-margin;
   zoom: $swal2-icon-zoom;
-  border: #{0.25em * $icon-zoom} solid transparent;
+  border: $swal2-icon-border-width solid transparent;
   border-radius: 50%;
   border-color: $swal2-icon-border-color;
   font-family: $swal2-icon-font-family;
@@ -965,10 +960,6 @@ div:where(.swal2-icon) {
     .swal2-x-mark {
       position: relative;
       flex-grow: 1;
-
-      @if $icon-zoom != 1 {
-        zoom: $icon-zoom;
-      }
     }
 
     [class^='swal2-x-mark-line'] {
@@ -1068,10 +1059,6 @@ div:where(.swal2-icon) {
         transform: rotate(-45deg);
         transform-origin: 3.75em 3.75em;
         border-radius: 7.5em 0 0 7.5em;
-
-        @if $icon-zoom != 1 {
-          zoom: $icon-zoom;
-        }
       }
 
       &[class$='right'] {
@@ -1080,10 +1067,6 @@ div:where(.swal2-icon) {
         transform: rotate(-45deg);
         transform-origin: 0 3.75em;
         border-radius: 0 7.5em 7.5em 0;
-
-        @if $icon-zoom != 1 {
-          zoom: $icon-zoom;
-        }
       }
     }
 
@@ -1098,10 +1081,6 @@ div:where(.swal2-icon) {
       height: 100%;
       border: 0.25em solid $swal2-success-border;
       border-radius: 50%;
-
-      @if $icon-zoom != 1 {
-        zoom: $icon-zoom;
-      }
     }
 
     .swal2-success-fix {
@@ -1113,10 +1092,6 @@ div:where(.swal2-icon) {
       width: 0.4375em;
       height: 5.625em;
       transform: rotate(-45deg);
-
-      @if $icon-zoom != 1 {
-        zoom: $icon-zoom;
-      }
     }
 
     [class^='swal2-success-line'] {
@@ -1139,10 +1114,6 @@ div:where(.swal2-icon) {
         right: 0.5em;
         width: 2.9375em;
         transform: rotate(-45deg);
-      }
-
-      @if $icon-zoom != 1 {
-        zoom: $icon-zoom;
       }
     }
 

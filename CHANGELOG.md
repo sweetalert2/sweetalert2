@@ -1,3 +1,10 @@
+## [11.15.7](https://github.com/sweetalert2/sweetalert2/compare/v11.15.6...v11.15.7) (2025-01-02)
+
+
+### Bug Fixes
+
+* style for toast icons ([812d6c5](https://github.com/sweetalert2/sweetalert2/commit/812d6c57b2cd22cd89857671979b8e6046376edd)), closes [#2792](https://github.com/sweetalert2/sweetalert2/issues/2792)
+
 ## [11.15.6](https://github.com/sweetalert2/sweetalert2/compare/v11.15.5...v11.15.6) (2025-01-02)
 
 

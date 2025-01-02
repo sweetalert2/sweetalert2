@@ -1,3 +1,10 @@
+## [11.15.9](https://github.com/sweetalert2/sweetalert2/compare/v11.15.8...v11.15.9) (2025-01-02)
+
+
+### Bug Fixes
+
+* **styles:** stop using sass:math, add $swal2-icon-border-width scss variable ([d0bf711](https://github.com/sweetalert2/sweetalert2/commit/d0bf7115e4e21dc8ce3df0740ea73b20463e9543))
+
 ## [11.15.8](https://github.com/sweetalert2/sweetalert2/compare/v11.15.7...v11.15.8) (2025-01-02)
 
 

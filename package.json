@@ -24,7 +24,7 @@
     "playwright-webkit": "^1.37.1",
     "prettier": "^3.0.0",
     "rollup": "^4.0.0",
-    "sass": "~1.79.0",
+    "sass": "^1.83.0",
     "stylelint": "^16.0.0",
     "typescript": "4.8.4",
     "vite": "^6.0.0",

@@ -1205,7 +1205,7 @@ div:where(.swal2-icon) {
 }
 
 // TOAST
-div:where(.swal2-toast) {
+.swal2-toast {
   box-sizing: border-box;
   grid-column: 1/4 !important;
   grid-row: 1/4 !important;

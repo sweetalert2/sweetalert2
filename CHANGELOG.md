@@ -1,3 +1,10 @@
+## [11.15.6](https://github.com/sweetalert2/sweetalert2/compare/v11.15.5...v11.15.6) (2025-01-02)
+
+
+### Bug Fixes
+
+* get rid of SCSS mixins, one file for styles is what I need ([#2791](https://github.com/sweetalert2/sweetalert2/issues/2791)) ([5e72a29](https://github.com/sweetalert2/sweetalert2/commit/5e72a29a1395c4d58d4cc0759cb6aa530ac390dc))
+
 ## [11.15.5](https://github.com/sweetalert2/sweetalert2/compare/v11.15.4...v11.15.5) (2025-01-01)
 
 

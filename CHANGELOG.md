@@ -1,3 +1,10 @@
+## [11.15.8](https://github.com/sweetalert2/sweetalert2/compare/v11.15.7...v11.15.8) (2025-01-02)
+
+
+### Bug Fixes
+
+* toast styles ([4dc809d](https://github.com/sweetalert2/sweetalert2/commit/4dc809dde42c83d96255ddcd9814eff39dc3d95a))
+
 ## [11.15.7](https://github.com/sweetalert2/sweetalert2/compare/v11.15.6...v11.15.7) (2025-01-02)
 
 

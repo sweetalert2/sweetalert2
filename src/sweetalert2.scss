@@ -1,10 +1,1691 @@
 // SweetAlert2
 // github.com/sweetalert2/sweetalert2
 
-@import 'scss/theming';
-@import 'scss/animations';
+@use 'sass:color';
+@use 'sass:math';
+
+$swal2-white: #fff !default;
+$swal2-black: #000 !default;
+$swal2-outline-color: rgba(100, 150, 200, 0.5) !default;
+
+// CONTAINER
+$swal2-container-padding: 0.625em !default;
+
+// POPUP
+$swal2-width: 32em !default;
+$swal2-padding: 0 0 1.25em !default;
+$swal2-border: none !default;
+$swal2-color: color.adjust($swal2-black, $lightness: 33%) !default;
+$swal2-border-radius: 5px !default;
+$swal2-box-shadow: #d9d9d9 !default;
+
+// ANIMATIONS
+$swal2-show-animation: swal2-show 0.3s !default;
+$swal2-hide-animation: swal2-hide 0.15s forwards !default;
+
+// BACKGROUND
+$swal2-background: $swal2-white !default;
+
+// TYPOGRAPHY
+$swal2-font: inherit !default;
+$swal2-font-size: 1rem !default;
+
+// BACKDROP
+$swal2-backdrop: rgba($swal2-black, 0.4) !default;
+$swal2-backdrop-transition: background-color 0.1s !default;
+
+// ICONS
+$swal2-icon-size: 5em !default;
+$swal2-icon-animations: true !default;
+$swal2-icon-margin: 2.5em auto 0.6em !default;
+$swal2-icon-font-family: inherit !default;
+$swal2-icon-font-size: 3.75em !default;
+$swal2-icon-border-color: #000 !default;
+$swal2-icon-zoom: null !default;
+$swal2-success: #a5dc86 !default;
+$swal2-success-border: rgba($swal2-success, 0.3) !default;
+$swal2-error: #f27474 !default;
+$swal2-warning: #f8bb86 !default;
+$swal2-info: #3fc3ee !default;
+$swal2-question: #87adbd !default;
+
+// IMAGE
+$swal2-image-margin: 2em auto 1em !default;
+
+// TITLE
+$swal2-title-position: relative !default;
+$swal2-title-max-width: 100% !default;
+$swal2-title-margin: 0 !default;
+$swal2-title-padding: 0.8em 1em 0 !default;
+$swal2-title-color: inherit !default;
+$swal2-title-font-size: 1.875em !default;
+$swal2-title-font-weight: 600 !default;
+$swal2-title-text-align: center !default;
+
+// HTML CONTAINER
+$swal2-html-container-justify-content: center !default;
+$swal2-html-container-margin: 0 !default;
+$swal2-html-container-padding: 1em 1.6em 0.3em !default;
+$swal2-html-container-overflow: auto !default;
+$swal2-html-container-color: inherit !default;
+$swal2-html-container-font-size: 1.125em !default;
+$swal2-html-container-font-weight: normal !default;
+$swal2-html-container-line-height: normal !default;
+$swal2-html-container-text-align: center !default;
+$swal2-html-container-word-wrap: break-word !default;
+$swal2-html-container-word-break: break-word !default;
+
+// INPUT
+$swal2-input-margin: 1em 2em 3px !default;
+$swal2-input-width: auto !default;
+$swal2-input-height: 2.625em !default;
+$swal2-input-padding: 0 0.75em !default;
+$swal2-input-border: 1px solid color.adjust($swal2-black, $lightness: 85%) !default;
+$swal2-input-border-radius: 0.1875em !default;
+$swal2-input-box-shadow:
+  inset 0 1px 1px rgba($swal2-black, 0.06),
+  0 0 0 3px transparent !default;
+$swal2-input-font-size: 1.125em !default;
+$swal2-input-background: transparent !default;
+$swal2-input-color: inherit !default;
+$swal2-input-transition:
+  border-color 0.1s,
+  box-shadow 0.1s !default;
+
+// INPUT:FOCUS
+$swal2-input-focus-border: 1px solid #b4dbed !default;
+$swal2-input-focus-outline: none !default;
+$swal2-input-focus-box-shadow:
+  inset 0 1px 1px rgba($swal2-black, 0.06),
+  0 0 0 3px $swal2-outline-color !default;
+
+// TEXTAREA SPECIFIC VARIABLES
+$swal2-textarea-height: 6.75em !default;
+$swal2-textarea-padding: 0.75em !default;
+
+// INPUT LABEL
+$swal2-input-label-margin: 1em auto 0 !default;
+$swal2-input-label-justify-content: center !default;
+
+// VALIDATION MESSAGE
+$swal2-validation-message-align-items: center !default;
+$swal2-validation-message-justify-content: center !default;
+$swal2-validation-message-margin: 1em 0 0 !default;
+$swal2-validation-message-padding: 0.625em !default;
+$swal2-validation-message-background: color.adjust($swal2-black, $lightness: 94%) !default;
+$swal2-validation-message-color: color.adjust($swal2-black, $lightness: 40%) !default;
+$swal2-validation-message-font-size: 1em !default;
+$swal2-validation-message-font-weight: 300 !default;
+$swal2-validation-message-icon-background: $swal2-error !default;
+$swal2-validation-message-icon-color: $swal2-white !default;
+$swal2-validation-message-icon-zoom: null !default;
+
+// PROGRESS STEPS
+$swal2-progress-steps-flex-wrap: wrap !default;
+$swal2-progress-steps-align-items: center !default;
+$swal2-progress-steps-max-width: 100% !default;
+$swal2-progress-steps-background: transparent !default;
+$swal2-progress-steps-margin: 1.25em auto !default;
+$swal2-progress-steps-padding: 0 !default;
+$swal2-progress-steps-font-weight: 600 !default;
+$swal2-progress-steps-distance: 2.5em !default;
+$swal2-progress-step-width: 2em;
+$swal2-progress-step-height: 2em;
+$swal2-progress-step-border-radius: 2em;
+$swal2-progress-step-background: #add8e6 !default;
+$swal2-progress-step-color: $swal2-white !default;
+$swal2-active-step-background: #2778c4 !default;
+$swal2-active-step-color: $swal2-white !default;
+
+// FOOTER
+$swal2-footer-margin: 1em 0 0 !default;
+$swal2-footer-padding: 1em 1em 0 !default;
+$swal2-footer-border-color: #eee !default;
+$swal2-footer-color: inherit !default;
+$swal2-footer-font-size: 1em !default;
+$swal2-footer-text-align: center !default;
+
+// TIMER PROGRESS BAR
+$swal2-timer-progress-bar-height: 0.25em;
+$swal2-timer-progress-bar-background: rgba($swal2-black, 0.2) !default;
+
+// CLOSE BUTTON
+$swal2-close-button-justify-self: end !default;
+$swal2-close-button-align-items: center !default;
+$swal2-close-button-justify-content: center !default;
+$swal2-close-button-width: 1.2em !default;
+$swal2-close-button-height: 1.2em !default;
+$swal2-close-button-position: null !default;
+$swal2-close-button-gap: 0 !default;
+$swal2-close-button-padding: 0 !default;
+$swal2-close-button-transition:
+  color 0.1s,
+  box-shadow 0.1s !default;
+$swal2-close-button-border: none !default;
+$swal2-close-button-border-radius: $swal2-border-radius !default;
+$swal2-close-button-outline: null !default;
+$swal2-close-button-background: transparent !default;
+$swal2-close-button-color: #ccc !default;
+$swal2-close-button-font-family: monospace !default;
+$swal2-close-button-font-size: 2.5em !default;
+$swal2-close-button-box-shadow: inset 0 0 0 3px transparent !default;
+
+// CLOSE BUTTON:HOVER
+$swal2-close-button-hover-transform: none !default;
+$swal2-close-button-hover-color: $swal2-error !default;
+$swal2-close-button-hover-background: transparent !default;
+
+// CLOSE BUTTON:FOCUS
+$swal2-close-button-focus-outline: none !default;
+$swal2-close-button-focus-box-shadow: inset 0 0 0 3px $swal2-outline-color !default;
+
+// ACTIONS
+$swal2-actions-flex-wrap: wrap !default;
+$swal2-actions-align-items: center !default;
+$swal2-actions-justify-content: center !default;
+$swal2-actions-width: auto !default;
+$swal2-actions-margin: 1.25em auto 0 !default;
+$swal2-actions-padding: 0 !default;
+
+// COMMON VARIABLES FOR ALL ACTION BUTTONS
+$swal2-button-margin: 0.3125em !default;
+$swal2-button-padding: 0.625em 1.1em !default;
+$swal2-button-transition: box-shadow 0.1s !default;
+$swal2-button-box-shadow: 0 0 0 3px transparent !default;
+$swal2-button-font-weight: 500 !default;
+$swal2-button-darken-hover: rgba($swal2-black, 0.1) !default;
+$swal2-button-darken-active: rgba($swal2-black, 0.2) !default;
+$swal2-button-focus-outline: none !default;
+$swal2-button-focus-box-shadow: 0 0 0 3px $swal2-outline-color !default;
+
+// CONFIRM BUTTON
+$swal2-confirm-button-order: null !default;
+$swal2-confirm-button-border: 0 !default;
+$swal2-confirm-button-border-radius: 0.25em !default;
+$swal2-confirm-button-background-color: #7066e0 !default;
+$swal2-confirm-button-color: $swal2-white !default;
+$swal2-confirm-button-font-size: 1em !default;
+$swal2-confirm-button-focus-box-shadow: 0 0 0 3px rgba($swal2-confirm-button-background-color, 0.5) !default;
+
+// DENY BUTTON
+$swal2-deny-button-order: null !default;
+$swal2-deny-button-border: 0 !default;
+$swal2-deny-button-border-radius: 0.25em !default;
+$swal2-deny-button-background-color: #dc3741 !default;
+$swal2-deny-button-color: $swal2-white !default;
+$swal2-deny-button-font-size: 1em !default;
+$swal2-deny-button-focus-box-shadow: 0 0 0 3px rgba($swal2-deny-button-background-color, 0.5) !default;
+
+// CANCEL BUTTON
+$swal2-cancel-button-order: null !default;
+$swal2-cancel-button-border: 0 !default;
+$swal2-cancel-button-border-radius: 0.25em !default;
+$swal2-cancel-button-background-color: #6e7881 !default;
+$swal2-cancel-button-color: $swal2-white !default;
+$swal2-cancel-button-font-size: 1em !default;
+$swal2-cancel-button-focus-box-shadow: 0 0 0 3px rgba($swal2-cancel-button-background-color, 0.5) !default;
+
+// LOADER
+$swal2-loader-align-items: center !default;
+$swal2-loader-justify-content: center !default;
+$swal2-loader-width: 2.2em !default;
+$swal2-loader-height: 2.2em !default;
+$swal2-loader-margin: 0 1.875em !default;
+$swal2-loader-animation: swal2-rotate-loading 1.5s linear 0s infinite normal !default;
+$swal2-loader-border-width: 0.25em !default;
+$swal2-loader-border-style: solid !default;
+$swal2-loader-border-radius: 100% !default;
+$swal2-loader-border-color: #2778c4 transparent #2778c4 transparent !default;
+
+// TOASTS
+$swal2-toast-show-animation: swal2-toast-show 0.5s !default;
+$swal2-toast-hide-animation: swal2-toast-hide 0.1s forwards !default;
+$swal2-toast-border: none !default;
+$swal2-toast-box-shadow:
+  0 0 1px hsl(0deg 0% 0% / 0.075),
+  0 1px 2px hsl(0deg 0% 0% / 0.075),
+  1px 2px 4px hsl(0deg 0% 0% / 0.075),
+  1px 3px 8px hsl(0deg 0% 0% / 0.075),
+  2px 4px 16px hsl(0deg 0% 0% / 0.075) !default;
+$swal2-toast-background: $swal2-white !default;
+$swal2-toast-close-button-width: 0.8em !default;
+$swal2-toast-close-button-height: 0.8em !default;
+$swal2-toast-close-button-margin: 0 !default;
+$swal2-toast-close-button-font-size: 2em !default;
+$swal2-toast-width: 360px !default;
+$swal2-toast-padding: 1em !default;
+$swal2-toast-title-margin: 0.5em 1em !default;
+$swal2-toast-title-padding: 0 !default;
+$swal2-toast-title-font-size: 1em !default;
+$swal2-toast-icon-font-size: 1.8em !default;
+$swal2-toast-html-container-margin: 0.5em 1em !default;
+$swal2-toast-html-container-padding: 0 !default;
+$swal2-toast-html-container-font-size: 1em !default;
+$swal2-toast-input-height: 2em !default;
+$swal2-toast-input-margin: 0.5em !default;
+$swal2-toast-input-font-size: 1em !default;
+$swal2-toast-validation-font-size: 1em !default;
+$swal2-toast-buttons-font-size: 1em !default;
+$swal2-toast-footer-margin: 0.5em 0 0 !default;
+$swal2-toast-footer-padding: 0.5em 0 0 !default;
+$swal2-toast-footer-font-size: 0.8em !default;
 
 body {
-  @include sweetalert2-body();
-  @include sweetalert2-toasts-body();
+  // MODAL
+  &.swal2-shown:not(.swal2-no-backdrop, .swal2-toast-shown) {
+    overflow: hidden; // not overflow-y because of Sarari, #1253
+  }
+
+  &.swal2-height-auto {
+    height: auto !important; // #781 #1107
+  }
+
+  &.swal2-no-backdrop {
+    .swal2-container {
+      background-color: transparent !important;
+      pointer-events: none;
+
+      .swal2-popup {
+        pointer-events: all;
+      }
+
+      .swal2-modal {
+        box-shadow: 0 0 10px $swal2-backdrop;
+      }
+    }
+  }
+
+  // TOAST
+  &.swal2-toast-shown {
+    .swal2-container {
+      box-sizing: border-box;
+      width: $swal2-toast-width;
+      max-width: 100%;
+      background-color: transparent;
+      pointer-events: none;
+
+      &.swal2-top {
+        inset: 0 auto auto 50%;
+        transform: translateX(-50%);
+      }
+
+      &.swal2-top-end,
+      &.swal2-top-right {
+        inset: 0 0 auto auto;
+      }
+
+      &.swal2-top-start,
+      &.swal2-top-left {
+        inset: 0 auto auto 0;
+      }
+
+      &.swal2-center-start,
+      &.swal2-center-left {
+        inset: 50% auto auto 0;
+        transform: translateY(-50%);
+      }
+
+      &.swal2-center {
+        inset: 50% auto auto 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &.swal2-center-end,
+      &.swal2-center-right {
+        inset: 50% 0 auto auto;
+        transform: translateY(-50%);
+      }
+
+      &.swal2-bottom-start,
+      &.swal2-bottom-left {
+        inset: auto auto 0 0;
+      }
+
+      &.swal2-bottom {
+        inset: auto auto 0 50%;
+        transform: translateX(-50%);
+      }
+
+      &.swal2-bottom-end,
+      &.swal2-bottom-right {
+        inset: auto 0 0 auto;
+      }
+    }
+  }
+
+  // PRINT
+  @media print {
+    &.swal2-shown:not(.swal2-no-backdrop, .swal2-toast-shown) {
+      overflow-y: scroll !important;
+
+      > [aria-hidden='true'] {
+        display: none;
+      }
+
+      .swal2-container {
+        position: static !important;
+      }
+    }
+  }
+}
+
+// MODAL
+div:where(.swal2-container) {
+  display: grid;
+  position: fixed;
+  z-index: 1060;
+  inset: 0;
+  box-sizing: border-box;
+  grid-template-areas:
+    'top-start     top            top-end'
+    'center-start  center         center-end'
+    'bottom-start  bottom-center  bottom-end';
+  grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);
+  height: 100%; // Safari
+  padding: $swal2-container-padding;
+  overflow-x: hidden;
+  transition: $swal2-backdrop-transition;
+
+  // sweetalert2/issues/905
+  -webkit-overflow-scrolling: touch;
+
+  &.swal2-backdrop-show,
+  &.swal2-noanimation {
+    background: $swal2-backdrop;
+  }
+
+  &.swal2-backdrop-hide {
+    background: transparent !important;
+  }
+
+  &.swal2-top-start,
+  &.swal2-center-start,
+  &.swal2-bottom-start {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+  }
+
+  &.swal2-top,
+  &.swal2-center,
+  &.swal2-bottom {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  &.swal2-top-end,
+  &.swal2-center-end,
+  &.swal2-bottom-end {
+    grid-template-columns: auto auto minmax(0, 1fr);
+  }
+
+  &.swal2-top-start > .swal2-popup {
+    align-self: start;
+  }
+
+  &.swal2-top > .swal2-popup {
+    grid-column: 2;
+    place-self: start center;
+  }
+
+  &.swal2-top-end > .swal2-popup,
+  &.swal2-top-right > .swal2-popup {
+    grid-column: 3;
+    place-self: start end;
+  }
+
+  &.swal2-center-start > .swal2-popup,
+  &.swal2-center-left > .swal2-popup {
+    grid-row: 2;
+    align-self: center;
+  }
+
+  &.swal2-center > .swal2-popup {
+    grid-column: 2;
+    grid-row: 2;
+    place-self: center center;
+  }
+
+  &.swal2-center-end > .swal2-popup,
+  &.swal2-center-right > .swal2-popup {
+    grid-column: 3;
+    grid-row: 2;
+    place-self: center end;
+  }
+
+  &.swal2-bottom-start > .swal2-popup,
+  &.swal2-bottom-left > .swal2-popup {
+    grid-column: 1;
+    grid-row: 3;
+    align-self: end;
+  }
+
+  &.swal2-bottom > .swal2-popup {
+    grid-column: 2;
+    grid-row: 3;
+    place-self: end center;
+  }
+
+  &.swal2-bottom-end > .swal2-popup,
+  &.swal2-bottom-right > .swal2-popup {
+    grid-column: 3;
+    grid-row: 3;
+    place-self: end end;
+  }
+
+  &.swal2-grow-row > .swal2-popup,
+  &.swal2-grow-fullscreen > .swal2-popup {
+    grid-column: 1/4;
+    width: 100%;
+  }
+
+  &.swal2-grow-column > .swal2-popup,
+  &.swal2-grow-fullscreen > .swal2-popup {
+    grid-row: 1/4;
+    align-self: stretch;
+  }
+
+  &.swal2-no-transition {
+    transition: none !important;
+  }
+
+  div:where(.swal2-popup) {
+    display: none;
+    position: relative;
+    box-sizing: border-box;
+    grid-template-columns: minmax(0, 100%);
+    width: $swal2-width;
+    max-width: 100%;
+    padding: $swal2-padding;
+    border: $swal2-border;
+    border-radius: $swal2-border-radius;
+    background: $swal2-background;
+    color: $swal2-color;
+    font-family: $swal2-font;
+    font-size: $swal2-font-size;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.swal2-loading {
+      overflow-y: hidden;
+    }
+
+    &.swal2-draggable {
+      cursor: grab;
+
+      div:where(.swal2-icon) {
+        cursor: grab;
+      }
+    }
+
+    &.swal2-dragging {
+      cursor: grabbing;
+
+      div:where(.swal2-icon) {
+        cursor: grabbing;
+      }
+    }
+  }
+
+  h2:where(.swal2-title) {
+    position: $swal2-title-position;
+    max-width: $swal2-title-max-width;
+    margin: $swal2-title-margin;
+    padding: $swal2-title-padding;
+    color: $swal2-title-color;
+    font-size: $swal2-title-font-size;
+    font-weight: $swal2-title-font-weight;
+    text-align: $swal2-title-text-align;
+    text-transform: none;
+    word-wrap: break-word;
+    cursor: initial;
+  }
+
+  div:where(.swal2-actions) {
+    display: flex;
+    z-index: 1; // prevent success icon from overlapping buttons
+    box-sizing: border-box;
+    flex-wrap: $swal2-actions-flex-wrap;
+    align-items: $swal2-actions-align-items;
+    justify-content: $swal2-actions-justify-content;
+    width: $swal2-actions-width;
+    margin: $swal2-actions-margin;
+    padding: $swal2-actions-padding;
+
+    &:not(.swal2-loading) {
+      .swal2-styled {
+        &[disabled] {
+          opacity: 0.4;
+        }
+
+        &:hover {
+          background-image: linear-gradient($swal2-button-darken-hover, $swal2-button-darken-hover);
+        }
+
+        &:active {
+          background-image: linear-gradient($swal2-button-darken-active, $swal2-button-darken-active);
+        }
+      }
+    }
+  }
+
+  div:where(.swal2-loader) {
+    display: none;
+    align-items: $swal2-loader-align-items;
+    justify-content: $swal2-loader-justify-content;
+    width: $swal2-loader-width;
+    height: $swal2-loader-height;
+    margin: $swal2-loader-margin;
+    animation: $swal2-loader-animation;
+    border-width: $swal2-loader-border-width;
+    border-style: $swal2-loader-border-style;
+    border-radius: $swal2-loader-border-radius;
+    border-color: $swal2-loader-border-color;
+  }
+
+  button:where(.swal2-styled) {
+    margin: $swal2-button-margin;
+    padding: $swal2-button-padding;
+    transition: $swal2-button-transition;
+    box-shadow: $swal2-button-box-shadow;
+    font-weight: $swal2-button-font-weight;
+
+    &:not([disabled]) {
+      cursor: pointer;
+    }
+
+    &:where(.swal2-confirm) {
+      order: $swal2-confirm-button-order;
+      border: $swal2-confirm-button-border;
+      border-radius: $swal2-confirm-button-border-radius;
+      background: initial;
+      background-color: $swal2-confirm-button-background-color;
+      color: $swal2-confirm-button-color;
+      font-size: $swal2-confirm-button-font-size;
+
+      &:focus-visible {
+        box-shadow: $swal2-confirm-button-focus-box-shadow;
+      }
+    }
+
+    &:where(.swal2-deny) {
+      order: $swal2-deny-button-order;
+      border: $swal2-deny-button-border;
+      border-radius: $swal2-deny-button-border-radius;
+      background: initial;
+      background-color: $swal2-deny-button-background-color;
+      color: $swal2-deny-button-color;
+      font-size: $swal2-deny-button-font-size;
+
+      &:focus-visible {
+        box-shadow: $swal2-deny-button-focus-box-shadow;
+      }
+    }
+
+    &:where(.swal2-cancel) {
+      order: $swal2-cancel-button-order;
+      border: $swal2-cancel-button-border;
+      border-radius: $swal2-cancel-button-border-radius;
+      background: initial;
+      background-color: $swal2-cancel-button-background-color;
+      color: $swal2-cancel-button-color;
+      font-size: $swal2-cancel-button-font-size;
+
+      &:focus-visible {
+        box-shadow: $swal2-cancel-button-focus-box-shadow;
+      }
+    }
+
+    &.swal2-default-outline {
+      &:focus-visible {
+        box-shadow: $swal2-button-focus-box-shadow;
+      }
+    }
+
+    &:focus-visible {
+      outline: $swal2-button-focus-outline;
+    }
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+  }
+
+  div:where(.swal2-footer) {
+    margin: $swal2-footer-margin;
+    padding: $swal2-footer-padding;
+    border-top: 1px solid $swal2-footer-border-color;
+    color: $swal2-footer-color;
+    font-size: $swal2-footer-font-size;
+    text-align: $swal2-footer-text-align;
+    cursor: initial;
+  }
+
+  .swal2-timer-progress-bar-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    grid-column: auto !important;
+    overflow: hidden;
+    border-bottom-right-radius: $swal2-border-radius;
+    border-bottom-left-radius: $swal2-border-radius;
+  }
+
+  div:where(.swal2-timer-progress-bar) {
+    width: 100%;
+    height: $swal2-timer-progress-bar-height;
+    background: $swal2-timer-progress-bar-background;
+  }
+
+  img:where(.swal2-image) {
+    max-width: 100%;
+    margin: $swal2-image-margin;
+    cursor: initial;
+  }
+
+  button:where(.swal2-close) {
+    position: $swal2-close-button-position;
+    z-index: 2; // sweetalert2/issues/1617
+    align-items: $swal2-close-button-align-items;
+    justify-content: $swal2-close-button-justify-content;
+    width: $swal2-close-button-width;
+    height: $swal2-close-button-height;
+    margin-top: $swal2-close-button-gap;
+    margin-right: $swal2-close-button-gap;
+    margin-bottom: -$swal2-close-button-height;
+    padding: $swal2-close-button-padding;
+    overflow: hidden;
+    transition: $swal2-close-button-transition;
+    border: $swal2-close-button-border;
+    border-radius: $swal2-close-button-border-radius;
+    outline: $swal2-close-button-outline;
+    background: $swal2-close-button-background;
+    color: $swal2-close-button-color;
+    font-family: $swal2-close-button-font-family;
+    font-size: $swal2-close-button-font-size;
+    cursor: pointer;
+    justify-self: $swal2-close-button-justify-self;
+
+    &:hover {
+      transform: $swal2-close-button-hover-transform;
+      background: $swal2-close-button-hover-background;
+      color: $swal2-close-button-hover-color;
+    }
+
+    &:focus-visible {
+      outline: $swal2-close-button-focus-outline;
+      box-shadow: $swal2-close-button-focus-box-shadow;
+    }
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+  }
+
+  div:where(.swal2-html-container) {
+    z-index: 1; // prevent success icon overlapping the content
+    justify-content: $swal2-html-container-justify-content;
+    margin: $swal2-html-container-margin;
+    padding: $swal2-html-container-padding;
+    overflow: $swal2-html-container-overflow;
+    color: $swal2-html-container-color;
+    font-size: $swal2-html-container-font-size;
+    font-weight: $swal2-html-container-font-weight;
+    line-height: $swal2-html-container-line-height;
+    text-align: $swal2-html-container-text-align;
+    word-wrap: $swal2-html-container-word-wrap;
+    word-break: $swal2-html-container-word-break;
+    cursor: initial;
+  }
+
+  input:where(.swal2-input),
+  input:where(.swal2-file),
+  textarea:where(.swal2-textarea),
+  select:where(.swal2-select),
+  div:where(.swal2-radio),
+  label:where(.swal2-checkbox) {
+    margin: $swal2-input-margin;
+  }
+
+  input:where(.swal2-input),
+  input:where(.swal2-file),
+  textarea:where(.swal2-textarea) {
+    box-sizing: border-box;
+    width: $swal2-input-width;
+    transition: $swal2-input-transition;
+    border: $swal2-input-border;
+    border-radius: $swal2-input-border-radius;
+    background: $swal2-input-background;
+    box-shadow: $swal2-input-box-shadow;
+    color: $swal2-input-color;
+    font-size: $swal2-input-font-size;
+
+    &.swal2-inputerror {
+      border-color: $swal2-error !important;
+      box-shadow: 0 0 2px $swal2-error !important;
+    }
+
+    &:focus {
+      border: $swal2-input-focus-border;
+      outline: $swal2-input-focus-outline;
+      box-shadow: $swal2-input-focus-box-shadow;
+    }
+
+    &::placeholder {
+      color: #ccc;
+    }
+  }
+
+  .swal2-range {
+    margin: $swal2-input-margin;
+    background: $swal2-background;
+
+    input {
+      width: 80%;
+    }
+
+    output {
+      width: 20%;
+      color: $swal2-input-color;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    input,
+    output {
+      height: $swal2-input-height;
+      padding: 0;
+      font-size: $swal2-input-font-size;
+      line-height: $swal2-input-height;
+    }
+  }
+
+  .swal2-input {
+    height: $swal2-input-height;
+    padding: $swal2-input-padding;
+  }
+
+  .swal2-file {
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+    background: $swal2-input-background;
+    font-size: $swal2-input-font-size;
+  }
+
+  .swal2-textarea {
+    height: $swal2-textarea-height;
+    padding: $swal2-textarea-padding;
+  }
+
+  .swal2-select {
+    min-width: 50%;
+    max-width: 100%;
+    padding: 0.375em 0.625em;
+    background: $swal2-input-background;
+    color: $swal2-input-color;
+    font-size: $swal2-input-font-size;
+  }
+
+  .swal2-radio,
+  .swal2-checkbox {
+    align-items: center;
+    justify-content: center;
+    background: $swal2-background;
+    color: $swal2-input-color;
+
+    label {
+      margin: 0 0.6em;
+      font-size: $swal2-input-font-size;
+    }
+
+    input {
+      flex-shrink: 0;
+      margin: 0 0.4em;
+    }
+  }
+
+  label:where(.swal2-input-label) {
+    display: flex;
+    justify-content: $swal2-input-label-justify-content;
+    margin: $swal2-input-label-margin;
+  }
+
+  div:where(.swal2-validation-message) {
+    align-items: $swal2-validation-message-align-items;
+    justify-content: $swal2-validation-message-justify-content;
+    margin: $swal2-validation-message-margin;
+    padding: $swal2-validation-message-padding;
+    overflow: hidden;
+    background: $swal2-validation-message-background;
+    color: $swal2-validation-message-color;
+    font-size: $swal2-validation-message-font-size;
+    font-weight: $swal2-validation-message-font-weight;
+
+    &::before {
+      content: '!';
+      display: inline-block;
+      width: 1.5em;
+      min-width: 1.5em;
+      height: 1.5em;
+      margin: 0 0.625em;
+      zoom: $swal2-validation-message-icon-zoom;
+      border-radius: 50%;
+      background-color: $swal2-validation-message-icon-background;
+      color: $swal2-validation-message-icon-color;
+      font-weight: 600;
+      line-height: 1.5em;
+      text-align: center;
+    }
+  }
+
+  .swal2-progress-steps {
+    flex-wrap: $swal2-progress-steps-flex-wrap;
+    align-items: $swal2-progress-steps-align-items;
+    max-width: $swal2-progress-steps-max-width;
+    margin: $swal2-progress-steps-margin;
+    padding: $swal2-progress-steps-padding;
+    background: $swal2-progress-steps-background;
+    font-weight: $swal2-progress-steps-font-weight;
+
+    li {
+      display: inline-block;
+      position: relative;
+    }
+
+    .swal2-progress-step {
+      z-index: 20;
+      flex-shrink: 0;
+      width: $swal2-progress-step-width;
+      height: $swal2-progress-step-height;
+      border-radius: $swal2-progress-step-border-radius;
+      background: $swal2-active-step-background;
+      color: $swal2-active-step-color;
+      line-height: $swal2-progress-step-height;
+      text-align: center;
+
+      &.swal2-active-progress-step {
+        background: $swal2-active-step-background;
+
+        ~ .swal2-progress-step {
+          background: $swal2-progress-step-background;
+          color: $swal2-progress-step-color;
+        }
+
+        ~ .swal2-progress-step-line {
+          background: $swal2-progress-step-background;
+        }
+      }
+    }
+
+    .swal2-progress-step-line {
+      z-index: 10;
+      flex-shrink: 0;
+      width: $swal2-progress-steps-distance;
+      height: 0.4em;
+      margin: 0 -1px;
+      background: $swal2-active-step-background;
+    }
+  }
+}
+
+// TOAST
+div:where(.swal2-toast) {
+  box-sizing: border-box;
+  grid-column: 1/4 !important;
+  grid-row: 1/4 !important;
+  grid-template-columns: min-content auto min-content;
+  padding: $swal2-toast-padding;
+  overflow-y: hidden;
+  background: $swal2-toast-background;
+  box-shadow: $swal2-toast-box-shadow;
+  pointer-events: all;
+
+  > * {
+    grid-column: 2;
+  }
+
+  h2:where(.swal2-title) {
+    margin: $swal2-toast-title-margin;
+    padding: $swal2-toast-title-padding;
+    font-size: $swal2-toast-title-font-size;
+    text-align: initial;
+  }
+
+  .swal2-loading {
+    justify-content: center;
+  }
+
+  input:where(.swal2-input) {
+    height: $swal2-toast-input-height;
+    margin: $swal2-toast-input-margin;
+    font-size: $swal2-toast-input-font-size;
+  }
+
+  .swal2-validation-message {
+    font-size: $swal2-toast-validation-font-size;
+  }
+
+  div:where(.swal2-footer) {
+    margin: $swal2-toast-footer-margin;
+    padding: $swal2-toast-footer-margin;
+    font-size: $swal2-toast-footer-font-size;
+  }
+
+  button:where(.swal2-close) {
+    grid-column: 3/3;
+    grid-row: 1/99;
+    align-self: center;
+    width: $swal2-toast-close-button-width;
+    height: $swal2-toast-close-button-height;
+    margin: $swal2-toast-close-button-margin;
+    font-size: $swal2-toast-close-button-font-size;
+  }
+
+  div:where(.swal2-html-container) {
+    margin: $swal2-toast-html-container-margin;
+    padding: $swal2-toast-html-container-padding;
+    overflow: initial;
+    font-size: $swal2-toast-html-container-font-size;
+    text-align: initial;
+
+    &:empty {
+      padding: 0;
+    }
+  }
+
+  .swal2-loader {
+    grid-column: 1;
+    grid-row: 1/99;
+    align-self: center;
+    width: 2em;
+    height: 2em;
+    margin: 0.25em;
+  }
+
+  .swal2-icon {
+    grid-column: 1;
+    grid-row: 1/99;
+    align-self: center;
+    width: 2em;
+    min-width: 2em;
+    height: 2em;
+    margin: 0 0.5em 0 0;
+
+    .swal2-icon-content {
+      display: flex;
+      align-items: center;
+      font-size: $swal2-toast-icon-font-size;
+      font-weight: bold;
+    }
+
+    &.swal2-success {
+      .swal2-success-ring {
+        width: 2em;
+        height: 2em;
+      }
+    }
+
+    &.swal2-error {
+      [class^='swal2-x-mark-line'] {
+        top: 0.875em;
+        width: 1.375em;
+
+        &[class$='left'] {
+          left: 0.3125em;
+        }
+
+        &[class$='right'] {
+          right: 0.3125em;
+        }
+      }
+    }
+  }
+
+  div:where(.swal2-actions) {
+    justify-content: flex-start;
+    height: auto;
+    margin: 0;
+    margin-top: 0.5em;
+    padding: 0 0.5em;
+  }
+
+  button:where(.swal2-styled) {
+    margin: 0.25em 0.5em;
+    padding: 0.4em 0.6em;
+    font-size: $swal2-toast-buttons-font-size;
+  }
+
+  .swal2-success {
+    border-color: $swal2-success;
+
+    [class^='swal2-success-circular-line'] {
+      // Emulate moving circular line
+      position: absolute;
+      width: 1.6em;
+      height: 3em;
+      border-radius: 50%;
+
+      &[class$='left'] {
+        top: -0.8em;
+        left: -0.5em;
+        transform: rotate(-45deg);
+        transform-origin: 2em 2em;
+        border-radius: 4em 0 0 4em;
+      }
+
+      &[class$='right'] {
+        top: -0.25em;
+        left: 0.9375em;
+        transform-origin: 0 1.5em;
+        border-radius: 0 4em 4em 0;
+      }
+    }
+
+    .swal2-success-ring {
+      width: 2em;
+      height: 2em;
+    }
+
+    .swal2-success-fix {
+      top: 0;
+      left: 0.4375em;
+      width: 0.4375em;
+      height: 2.6875em;
+    }
+
+    [class^='swal2-success-line'] {
+      height: 0.3125em;
+
+      &[class$='tip'] {
+        top: 1.125em;
+        left: 0.1875em;
+        width: 0.75em;
+      }
+
+      &[class$='long'] {
+        top: 0.9375em;
+        right: 0.1875em;
+        width: 1.375em;
+      }
+    }
+
+    &.swal2-icon-show {
+      @if $swal2-icon-animations {
+        .swal2-success-line-tip {
+          animation: swal2-toast-animate-success-line-tip 0.75s;
+        }
+
+        .swal2-success-line-long {
+          animation: swal2-toast-animate-success-line-long 0.75s;
+        }
+      }
+    }
+  }
+
+  &.swal2-show {
+    animation: $swal2-toast-show-animation;
+  }
+
+  &.swal2-hide {
+    animation: $swal2-toast-hide-animation;
+  }
+}
+
+// ICONS
+// https://stackoverflow.com/a/12335841/1331425
+@function strip-units($number) {
+  @return math.div($number, ($number * 0 + 1));
+}
+$icon-zoom: math.div(strip-units($swal2-icon-size), 5);
+
+div:where(.swal2-icon) {
+  position: relative;
+  box-sizing: content-box;
+  justify-content: center;
+  width: $swal2-icon-size;
+  height: $swal2-icon-size;
+  margin: $swal2-icon-margin;
+  zoom: $swal2-icon-zoom;
+  border: #{0.25em * $icon-zoom} solid transparent;
+  border-radius: 50%;
+  border-color: $swal2-icon-border-color;
+  font-family: $swal2-icon-font-family;
+  line-height: $swal2-icon-size;
+  cursor: default;
+  user-select: none;
+
+  .swal2-icon-content {
+    display: flex;
+    align-items: center;
+    font-size: $swal2-icon-font-size;
+  }
+
+  &.swal2-error {
+    border-color: $swal2-error;
+    color: $swal2-error;
+
+    .swal2-x-mark {
+      position: relative;
+      flex-grow: 1;
+
+      @if $icon-zoom != 1 {
+        zoom: $icon-zoom;
+      }
+    }
+
+    [class^='swal2-x-mark-line'] {
+      display: block;
+      position: absolute;
+      top: 2.3125em;
+      width: 2.9375em;
+      height: 0.3125em;
+      border-radius: 0.125em;
+      background-color: $swal2-error;
+
+      &[class$='left'] {
+        left: 1.0625em;
+        transform: rotate(45deg);
+      }
+
+      &[class$='right'] {
+        right: 1em;
+        transform: rotate(-45deg);
+      }
+    }
+
+    // Error icon animation
+    &.swal2-icon-show {
+      @if $swal2-icon-animations {
+        animation: swal2-animate-error-icon 0.5s;
+
+        .swal2-x-mark {
+          animation: swal2-animate-error-x-mark 0.5s;
+        }
+      }
+    }
+  }
+
+  &.swal2-warning {
+    border-color: color.adjust($swal2-warning, $lightness: 7%);
+    color: $swal2-warning;
+
+    // Warning icon animation
+    &.swal2-icon-show {
+      @if $swal2-icon-animations {
+        animation: swal2-animate-error-icon 0.5s;
+
+        .swal2-icon-content {
+          animation: swal2-animate-i-mark 0.5s;
+        }
+      }
+    }
+  }
+
+  &.swal2-info {
+    border-color: color.adjust($swal2-info, $lightness: 20%);
+    color: $swal2-info;
+
+    // Info icon animation
+    &.swal2-icon-show {
+      @if $swal2-icon-animations {
+        animation: swal2-animate-error-icon 0.5s;
+
+        .swal2-icon-content {
+          animation: swal2-animate-i-mark 0.8s;
+        }
+      }
+    }
+  }
+
+  &.swal2-question {
+    border-color: color.adjust($swal2-question, $lightness: 20%);
+    color: $swal2-question;
+
+    // Question icon animation
+    &.swal2-icon-show {
+      @if $swal2-icon-animations {
+        animation: swal2-animate-error-icon 0.5s;
+
+        .swal2-icon-content {
+          animation: swal2-animate-question-mark 0.8s;
+        }
+      }
+    }
+  }
+
+  &.swal2-success {
+    border-color: $swal2-success;
+    color: $swal2-success;
+
+    [class^='swal2-success-circular-line'] {
+      // Emulate moving circular line
+      position: absolute;
+      width: 3.75em;
+      height: 7.5em;
+      border-radius: 50%;
+
+      &[class$='left'] {
+        top: -0.4375em;
+        left: -2.0635em;
+        transform: rotate(-45deg);
+        transform-origin: 3.75em 3.75em;
+        border-radius: 7.5em 0 0 7.5em;
+
+        @if $icon-zoom != 1 {
+          zoom: $icon-zoom;
+        }
+      }
+
+      &[class$='right'] {
+        top: -0.6875em;
+        left: 1.875em;
+        transform: rotate(-45deg);
+        transform-origin: 0 3.75em;
+        border-radius: 0 7.5em 7.5em 0;
+
+        @if $icon-zoom != 1 {
+          zoom: $icon-zoom;
+        }
+      }
+    }
+
+    .swal2-success-ring {
+      // Ring
+      position: absolute;
+      z-index: 2;
+      top: -0.25em;
+      left: -0.25em;
+      box-sizing: content-box;
+      width: 100%;
+      height: 100%;
+      border: 0.25em solid $swal2-success-border;
+      border-radius: 50%;
+
+      @if $icon-zoom != 1 {
+        zoom: $icon-zoom;
+      }
+    }
+
+    .swal2-success-fix {
+      // Hide corners left from animation
+      position: absolute;
+      z-index: 1;
+      top: 0.5em;
+      left: 1.625em;
+      width: 0.4375em;
+      height: 5.625em;
+      transform: rotate(-45deg);
+
+      @if $icon-zoom != 1 {
+        zoom: $icon-zoom;
+      }
+    }
+
+    [class^='swal2-success-line'] {
+      display: block;
+      position: absolute;
+      z-index: 2;
+      height: 0.3125em;
+      border-radius: 0.125em;
+      background-color: $swal2-success;
+
+      &[class$='tip'] {
+        top: 2.875em;
+        left: 0.8125em;
+        width: 1.5625em;
+        transform: rotate(45deg);
+      }
+
+      &[class$='long'] {
+        top: 2.375em;
+        right: 0.5em;
+        width: 2.9375em;
+        transform: rotate(-45deg);
+      }
+
+      @if $icon-zoom != 1 {
+        zoom: $icon-zoom;
+      }
+    }
+
+    // Success icon animation
+    &.swal2-icon-show {
+      @if $swal2-icon-animations {
+        .swal2-success-line-tip {
+          animation: swal2-animate-success-line-tip 0.75s;
+        }
+
+        .swal2-success-line-long {
+          animation: swal2-animate-success-line-long 0.75s;
+        }
+
+        .swal2-success-circular-line-right {
+          animation: swal2-rotate-success-circular-line 4.25s ease-in;
+        }
+      }
+    }
+  }
+}
+
+// github.com/sweetalert2/sweetalert2/issues/268
+[class^='swal2'] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.swal2-show {
+  animation: $swal2-show-animation;
+}
+
+.swal2-hide {
+  animation: $swal2-hide-animation;
+}
+
+.swal2-noanimation {
+  transition: none;
+}
+
+// Measure scrollbar width for padding body during modal show/hide
+.swal2-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+// Right-to-left support
+.swal2-rtl {
+  .swal2-close {
+    margin-right: initial;
+    margin-left: $swal2-close-button-gap;
+  }
+
+  .swal2-timer-progress-bar {
+    right: 0;
+    left: auto;
+  }
+}
+
+//////////////////////////////
+// ANIMATIONS
+// Appearance animation
+@keyframes swal2-show {
+  0% {
+    transform: scale(0.7);
+  }
+
+  45% {
+    transform: scale(1.05);
+  }
+
+  80% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+// Disppearance animation
+@keyframes swal2-hide {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+// Success icon animations
+@keyframes swal2-animate-success-line-tip {
+  0% {
+    top: 1.1875em;
+    left: 0.0625em;
+    width: 0;
+  }
+
+  54% {
+    top: 1.0625em;
+    left: 0.125em;
+    width: 0;
+  }
+
+  70% {
+    top: 2.1875em;
+    left: -0.375em;
+    width: 3.125em;
+  }
+
+  84% {
+    top: 3em;
+    left: 1.3125em;
+    width: 1.0625em;
+  }
+
+  100% {
+    top: 2.8125em;
+    left: 0.8125em;
+    width: 1.5625em;
+  }
+}
+
+@keyframes swal2-animate-success-line-long {
+  0% {
+    top: 3.375em;
+    right: 2.875em;
+    width: 0;
+  }
+
+  65% {
+    top: 3.375em;
+    right: 2.875em;
+    width: 0;
+  }
+
+  84% {
+    top: 2.1875em;
+    right: 0;
+    width: 3.4375em;
+  }
+
+  100% {
+    top: 2.375em;
+    right: 0.5em;
+    width: 2.9375em;
+  }
+}
+
+@keyframes swal2-rotate-success-circular-line {
+  0% {
+    transform: rotate(-45deg);
+  }
+
+  5% {
+    transform: rotate(-45deg);
+  }
+
+  12% {
+    transform: rotate(-405deg);
+  }
+
+  100% {
+    transform: rotate(-405deg);
+  }
+}
+
+// Error icon animations
+@keyframes swal2-animate-error-x-mark {
+  0% {
+    margin-top: 1.625em;
+    transform: scale(0.4);
+    opacity: 0;
+  }
+
+  50% {
+    margin-top: 1.625em;
+    transform: scale(0.4);
+    opacity: 0;
+  }
+
+  80% {
+    margin-top: -0.375em;
+    transform: scale(1.15);
+  }
+
+  100% {
+    margin-top: 0;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes swal2-animate-error-icon {
+  0% {
+    transform: rotateX(100deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes swal2-rotate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Question mark animation
+@keyframes swal2-animate-question-mark {
+  0% {
+    transform: rotateY(-360deg);
+  }
+
+  100% {
+    transform: rotateY(0);
+  }
+}
+
+// Info and Warning mark animation
+@keyframes swal2-animate-i-mark {
+  0% {
+    transform: rotateZ(45deg);
+    opacity: 0;
+  }
+
+  25% {
+    transform: rotateZ(-25deg);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: rotateZ(15deg);
+    opacity: 0.8;
+  }
+
+  75% {
+    transform: rotateZ(-5deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}
+
+//////////////////////////////
+// TOAST ANIMATIONS
+@keyframes swal2-toast-show {
+  0% {
+    transform: translateY(-0.625em) rotateZ(2deg);
+  }
+
+  33% {
+    transform: translateY(0) rotateZ(-2deg);
+  }
+
+  66% {
+    transform: translateY(0.3125em) rotateZ(2deg);
+  }
+
+  100% {
+    transform: translateY(0) rotateZ(0deg);
+  }
+}
+
+@keyframes swal2-toast-hide {
+  100% {
+    transform: rotateZ(1deg);
+    opacity: 0;
+  }
+}
+
+@keyframes swal2-toast-animate-success-line-tip {
+  0% {
+    top: 0.5625em;
+    left: 0.0625em;
+    width: 0;
+  }
+
+  54% {
+    top: 0.125em;
+    left: 0.125em;
+    width: 0;
+  }
+
+  70% {
+    top: 0.625em;
+    left: -0.25em;
+    width: 1.625em;
+  }
+
+  84% {
+    top: 1.0625em;
+    left: 0.75em;
+    width: 0.5em;
+  }
+
+  100% {
+    top: 1.125em;
+    left: 0.1875em;
+    width: 0.75em;
+  }
+}
+
+@keyframes swal2-toast-animate-success-line-long {
+  0% {
+    top: 1.625em;
+    right: 1.375em;
+    width: 0;
+  }
+
+  65% {
+    top: 1.25em;
+    right: 0.9375em;
+    width: 0;
+  }
+
+  84% {
+    top: 0.9375em;
+    right: 0;
+    width: 1.125em;
+  }
+
+  100% {
+    top: 0.9375em;
+    right: 0.1875em;
+    width: 1.375em;
+  }
 }

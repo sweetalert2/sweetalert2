@@ -1,3 +1,10 @@
+## [11.15.10](https://github.com/sweetalert2/sweetalert2/compare/v11.15.9...v11.15.10) (2025-01-03)
+
+
+### Bug Fixes
+
+* **kiss:** get rid of sass:color ([ef5ff13](https://github.com/sweetalert2/sweetalert2/commit/ef5ff132d65ed824be09cdce7538e29c4b364bda))
+
 ## [11.15.9](https://github.com/sweetalert2/sweetalert2/compare/v11.15.8...v11.15.9) (2025-01-02)
 
 

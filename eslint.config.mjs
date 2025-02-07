@@ -55,7 +55,7 @@ export default [
     },
   },
   {
-    files: ['tools/build*'],
+    files: ['tools/*.mjs'],
     rules: {
       '@typescript-eslint/no-unused-expressions': 0,
     },

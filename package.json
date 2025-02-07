@@ -60,7 +60,7 @@
   ],
   "scripts": {
     "dev": "vite sandbox --open",
-    "lint": "stylelint src/**/*.scss && eslint src cypress *.js *.ts && prettier --check src/**/*.js cypress/**/*.js *.js",
+    "lint": "stylelint src/**/*.scss && eslint src cypress tools *.js *.ts && prettier --check src/**/*.js cypress/**/*.js *.js",
     "build": "zx tools/build.mjs",
     "test": "cypress run --headless",
     "check-types": "npx -p typescript@latest tsc --noEmit --lib dom,es2018 -p jsconfig.json",

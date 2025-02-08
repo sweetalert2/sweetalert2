@@ -13,6 +13,7 @@ export const defaultParams = {
   toast: false,
   draggable: false,
   animation: true,
+  theme: 'light',
   showClass: {
     popup: 'swal2-show',
     backdrop: 'swal2-backdrop-show',
@@ -137,6 +138,7 @@ export const updatableParams = [
   'text',
   'title',
   'titleText',
+  'theme',
   'willClose',
 ]
 
@@ -224,6 +226,10 @@ const checkIfParamIsDeprecated = (param) => {
 export const showWarningsForParams = (params) => {
   if (params.backdrop === false && params.allowOutsideClick) {
     warn('"allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`')
+  }
+
+  if (params.theme && !['light', 'dark', 'auto'].includes(params.theme)) {
+    warn(`Invalid theme "${params.theme}". Expected "light", "dark", or "auto"`)
   }
 
   for (const param in params) {

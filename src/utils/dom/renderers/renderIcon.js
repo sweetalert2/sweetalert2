@@ -43,6 +43,10 @@ export const renderIcon = (instance, params) => {
 
   // Animate icon
   dom.addClass(icon, params.showClass && params.showClass.icon)
+
+  // Re-adjust the success icon on system theme change
+  const colorSchemeQueryList = window.matchMedia('(prefers-color-scheme: dark)');
+  colorSchemeQueryList.addEventListener('change', adjustSuccessIconBackgroundColor);
 }
 
 /**

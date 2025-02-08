@@ -142,6 +142,8 @@ export const init = (params) => {
   }
   setInnerHtml(container, sweetHTML)
 
+  container.dataset['swal2Theme'] = params.theme
+
   const targetElement = getTarget(params.target)
   targetElement.appendChild(container)
 

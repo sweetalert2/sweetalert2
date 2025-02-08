@@ -1,35 +1,86 @@
 // SweetAlert2
 // github.com/sweetalert2/sweetalert2
 
+// CSS Variables
+:root {
+  // CONTAINER
+  --swal2-container-padding: 0.625em;
+
+  // BACKDROP
+  --swal2-backdrop: rgba(0, 0, 0, 0.4);
+
+  // POPUP
+  --swal2-width: 32em;
+  --swal2-padding: 0 0 1.25em;
+  --swal2-border: none;
+  --swal2-border-radius: 0.3125rem;
+  --swal2-background: white;
+  --swal2-color: #545454;
+  --swal2-footer-border-color: #eee;
+
+  // INPUT
+  --swal2-input-background: transparent;
+
+  // VALIDATION MESSAGE
+  --swal2-validation-message-background: #f0f0f0;
+  --swal2-validation-message-color: #666;
+}
+
+// DARK THEME
+@mixin dark-theme {
+  --swal2-dark-theme-black: #19191a;
+  --swal2-dark-theme-white: #e1e1e1;
+
+  // POPUP
+  --swal2-background: var(--swal2-dark-theme-black);
+  --swal2-color: var(--swal2-dark-theme-white);
+  --swal2-footer-border-color: #555;
+
+  // INPUT
+  --swal2-input-background: color-mix(in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10%);
+
+  // VALIDATION MESSAGE
+  --swal2-validation-message-background: color-mix(in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10%);
+  --swal2-validation-message-color: var(--swal2-dark-theme-white);
+}
+
+[data-swal2-theme="dark"] {
+  @include dark-theme;
+}
+
+// AUTO THEME, based on prefers-color-scheme
+@media (prefers-color-scheme: dark) {
+  [data-swal2-theme="auto"] {
+    @include dark-theme;
+  }
+}
+
 $swal2-white: #fff !default;
 $swal2-black: #000 !default;
 $swal2-outline-color: rgba(100, 150, 200, 0.5) !default;
 
 // CONTAINER
-$swal2-container-padding: 0.625em !default;
+$swal2-container-padding: var(--swal2-container-padding) !default;
+
+// BACKDROP
+$swal2-backdrop: var(--swal2-backdrop) !default;
+$swal2-backdrop-transition: background-color .1s !default;
 
 // POPUP
-$swal2-width: 32em !default;
-$swal2-padding: 0 0 1.25em !default;
-$swal2-border: none !default;
-$swal2-color: #545454 !default;
-$swal2-border-radius: 5px !default;
-$swal2-box-shadow: #d9d9d9 !default;
+$swal2-width: var(--swal2-width) !default;
+$swal2-padding: var(--swal2-padding) !default;
+$swal2-border: var(--swal2-border) !default;
+$swal2-border-radius: var(--swal2-border-radius) !default;
+$swal2-background: var(--swal2-background) !default;
+$swal2-color: var(--swal2-color) !default;
 
 // ANIMATIONS
 $swal2-show-animation: swal2-show 0.3s !default;
 $swal2-hide-animation: swal2-hide 0.15s forwards !default;
 
-// BACKGROUND
-$swal2-background: $swal2-white !default;
-
 // TYPOGRAPHY
 $swal2-font: inherit !default;
 $swal2-font-size: 1rem !default;
-
-// BACKDROP
-$swal2-backdrop: rgba($swal2-black, 0.4) !default;
-$swal2-backdrop-transition: background-color 0.1s !default;
 
 // ICONS
 $swal2-icon-size: 5em !default;
@@ -84,7 +135,7 @@ $swal2-input-box-shadow:
   inset 0 1px 1px rgba($swal2-black, 0.06),
   0 0 0 3px transparent !default;
 $swal2-input-font-size: 1.125em !default;
-$swal2-input-background: transparent !default;
+$swal2-input-background: var(--swal2-input-background) !default;
 $swal2-input-color: inherit !default;
 $swal2-input-transition:
   border-color 0.1s,
@@ -110,8 +161,8 @@ $swal2-validation-message-align-items: center !default;
 $swal2-validation-message-justify-content: center !default;
 $swal2-validation-message-margin: 1em 0 0 !default;
 $swal2-validation-message-padding: 0.625em !default;
-$swal2-validation-message-background: #f0f0f0 !default;
-$swal2-validation-message-color: #666 !default;
+$swal2-validation-message-background: var(--swal2-validation-message-background) !default;
+$swal2-validation-message-color: var(--swal2-validation-message-color) !default;
 $swal2-validation-message-font-size: 1em !default;
 $swal2-validation-message-font-weight: 300 !default;
 $swal2-validation-message-icon-background: $swal2-error !default;
@@ -138,7 +189,7 @@ $swal2-active-step-color: $swal2-white !default;
 // FOOTER
 $swal2-footer-margin: 1em 0 0 !default;
 $swal2-footer-padding: 1em 1em 0 !default;
-$swal2-footer-border-color: #eee !default;
+$swal2-footer-border-color: var(--swal2-footer-border-color) !default;
 $swal2-footer-color: inherit !default;
 $swal2-footer-font-size: 1em !default;
 $swal2-footer-text-align: center !default;

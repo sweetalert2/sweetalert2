@@ -1,5 +1,5 @@
 import * as dom from '../../src/utils/dom/index.js'
-import { isUpdatableParameter } from '../../src/utils/params.js'
+import { isUpdatableParameter, showWarningsForParams } from '../../src/utils/params.js'
 import { warn } from '../../src/utils/utils.js'
 import privateProps from '../privateProps.js'
 
@@ -23,6 +23,7 @@ export function update(params) {
   const validUpdatableParams = filterValidParams(params)
 
   const updatedParams = Object.assign({}, innerParams, validUpdatableParams)
+  showWarningsForParams(updatedParams)
 
   container.dataset['swal2Theme'] = updatedParams.theme
   dom.render(this, updatedParams)

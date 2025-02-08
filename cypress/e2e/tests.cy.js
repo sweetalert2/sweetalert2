@@ -2056,6 +2056,38 @@ describe('global events and listeners', () => {
   })
 })
 
+describe('theme', () => {
+  it('should use light theme by default', () => {
+    SwalWithoutAnimation.fire()
+    const computedPopupStyle = window.getComputedStyle(Swal.getPopup())
+    expect(computedPopupStyle.backgroundColor).to.equal('rgb(255, 255, 255)')
+  })
+
+  it('should show dark theme', () => {
+    SwalWithoutAnimation.fire({ theme: 'dark' })
+    const computedPopupStyle = window.getComputedStyle(Swal.getPopup())
+    expect(computedPopupStyle.backgroundColor).to.equal('rgb(25, 25, 26)')
+  })
+
+  it('should show auto theme', () => {
+    SwalWithoutAnimation.fire({ theme: 'auto' })
+    const computedPopupStyle = window.getComputedStyle(Swal.getPopup())
+    if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+      expect(computedPopupStyle.backgroundColor).to.equal('rgb(255, 255, 255)')
+    } else {
+      expect(computedPopupStyle.backgroundColor).to.equal('rgb(25, 25, 26)')
+    }
+  })
+
+  it('should throw a warning when theme param is invalid', () => {
+    const spy = cy.spy(console, 'warn')
+    SwalWithoutAnimation.fire({
+      theme: 'foo',
+    })
+    expect(spy.calledWith(`SweetAlert2: Invalid theme "foo". Expected "light", "dark", or "auto"`)).to.be.true
+  })
+})
+
 describe('update()', () => {
   it('all updatableParams are valid', () => {
     expect(updatableParams.length).not.to.equal(0)
@@ -2297,6 +2329,13 @@ describe('update()', () => {
       done()
     })
     Swal.clickConfirm()
+  })
+
+  it('update() method should throw a warning about invalid new params', () => {
+    const spy = cy.spy(console, 'warn')
+    SwalWithoutAnimation.fire()
+    Swal.update({ theme: 'foo' })
+    expect(spy.calledWith(`SweetAlert2: Invalid theme "foo". Expected "light", "dark", or "auto"`)).to.be.true
   })
 })
 

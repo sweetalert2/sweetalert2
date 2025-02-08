@@ -13,6 +13,7 @@ export const defaultParams = {
   toast: false,
   draggable: false,
   animation: true,
+  theme: 'light',
   showClass: {
     popup: 'swal2-show',
     backdrop: 'swal2-backdrop-show',
@@ -137,6 +138,7 @@ export const updatableParams = [
   'text',
   'title',
   'titleText',
+  'theme',
   'willClose',
 ]
 

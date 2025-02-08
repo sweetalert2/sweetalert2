@@ -420,6 +420,8 @@ declare module 'sweetalert2' {
         inputValidator?: (file: File | FileList | null) => SyncOrAsync<string | null | false | void>
       }
 
+  export type SweetAlertTheme = 'light' | 'dark' | 'auto'
+
   export type SweetAlertPosition =
     | 'top'
     | 'top-start'
@@ -706,6 +708,18 @@ declare module 'sweetalert2' {
      * @default true
      */
     animation?: boolean | undefined
+
+    /**
+     * Theme of the popup. 'light', 'dark', and 'auto' for now.
+     * This is a new feature, more themes are coming.
+     * Feel free to request new themes (or create your own and PR it).
+     *
+     * The defaul theme in the ideal world would be 'auto'. But for now, it's 'light'
+     * in order not to bring a breaking change to the existing users.
+     *
+     * @default 'light'
+     */
+    theme?: SweetAlertTheme
 
     /**
      * CSS classes for animations when showing a popup (fade in)

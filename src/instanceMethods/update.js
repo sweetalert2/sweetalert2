@@ -9,6 +9,7 @@ import privateProps from '../privateProps.js'
  * @param {SweetAlertOptions} params
  */
 export function update(params) {
+  const container = dom.getContainer()
   const popup = dom.getPopup()
   const innerParams = privateProps.innerParams.get(this)
 
@@ -23,6 +24,7 @@ export function update(params) {
 
   const updatedParams = Object.assign({}, innerParams, validUpdatableParams)
 
+  container.dataset['swal2Theme'] = updatedParams.theme
   dom.render(this, updatedParams)
 
   privateProps.innerParams.set(this, updatedParams)

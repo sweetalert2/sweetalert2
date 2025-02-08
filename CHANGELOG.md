@@ -1,3 +1,10 @@
+# [11.16.0](https://github.com/sweetalert2/sweetalert2/compare/v11.15.10...v11.16.0) (2025-02-08)
+
+
+### Features
+
+* add built-in light/dark/auto themes ([#2796](https://github.com/sweetalert2/sweetalert2/issues/2796)) ([3f64e05](https://github.com/sweetalert2/sweetalert2/commit/3f64e0584c276f56e631a957fc56ae4c74214224))
+
 ## [11.15.10](https://github.com/sweetalert2/sweetalert2/compare/v11.15.9...v11.15.10) (2025-01-03)
 
 

@@ -1,3 +1,10 @@
+## [11.17.1](https://github.com/sweetalert2/sweetalert2/compare/v11.17.0...v11.17.1) (2025-02-16)
+
+
+### Bug Fixes
+
+* **types:** allow borderless theme ([8618e53](https://github.com/sweetalert2/sweetalert2/commit/8618e539acb8fc1a65aeb9f2c95fa4c8f0f0926f))
+
 # [11.17.0](https://github.com/sweetalert2/sweetalert2/compare/v11.16.1...v11.17.0) (2025-02-16)
 
 

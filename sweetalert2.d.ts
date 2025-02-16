@@ -479,6 +479,7 @@ declare module 'sweetalert2' {
     | 'text'
     | 'title'
     | 'titleText'
+    | 'theme'
     | 'willClose'
 
   export interface SweetAlertCustomClass {

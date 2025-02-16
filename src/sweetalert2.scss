@@ -18,12 +18,25 @@
   --swal2-color: #545454;
   --swal2-footer-border-color: #eee;
 
+  // ANIMATIONS
+  --swal2-show-animation: swal2-show 0.3s;
+  --swal2-hide-animation: swal2-hide 0.15s forwards;
+
   // INPUT
   --swal2-input-background: transparent;
+
+  // PROGRESS STEPS
+  --swal2-progress-step-background: #add8e6;
 
   // VALIDATION MESSAGE
   --swal2-validation-message-background: #f0f0f0;
   --swal2-validation-message-color: #666;
+
+  // CLOSE BUTTON
+  --swal2-close-button-position: initial;
+  --swal2-close-button-inset: auto;
+  --swal2-close-button-font-size: 2.5em;
+  --swal2-close-button-color: #ccc;
 }
 
 // DARK THEME
@@ -40,17 +53,21 @@
   --swal2-input-background: color-mix(in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10%);
 
   // VALIDATION MESSAGE
-  --swal2-validation-message-background: color-mix(in srgb, var(--swal2-dark-theme-black), var(--swal2-dark-theme-white) 10%);
+  --swal2-validation-message-background: color-mix(
+    in srgb,
+    var(--swal2-dark-theme-black),
+    var(--swal2-dark-theme-white) 10%
+  );
   --swal2-validation-message-color: var(--swal2-dark-theme-white);
 }
 
-[data-swal2-theme="dark"] {
+[data-swal2-theme='dark'] {
   @include dark-theme;
 }
 
 // AUTO THEME, based on prefers-color-scheme
 @media (prefers-color-scheme: dark) {
-  [data-swal2-theme="auto"] {
+  [data-swal2-theme='auto'] {
     @include dark-theme;
   }
 }
@@ -64,7 +81,7 @@ $swal2-container-padding: var(--swal2-container-padding) !default;
 
 // BACKDROP
 $swal2-backdrop: var(--swal2-backdrop) !default;
-$swal2-backdrop-transition: background-color .1s !default;
+$swal2-backdrop-transition: background-color 0.1s !default;
 
 // POPUP
 $swal2-width: var(--swal2-width) !default;
@@ -75,8 +92,8 @@ $swal2-background: var(--swal2-background) !default;
 $swal2-color: var(--swal2-color) !default;
 
 // ANIMATIONS
-$swal2-show-animation: swal2-show 0.3s !default;
-$swal2-hide-animation: swal2-hide 0.15s forwards !default;
+$swal2-show-animation: var(--swal2-show-animation) !default;
+$swal2-hide-animation: var(--swal2-hide-animation) !default;
 
 // TYPOGRAPHY
 $swal2-font: inherit !default;
@@ -181,7 +198,7 @@ $swal2-progress-steps-distance: 2.5em !default;
 $swal2-progress-step-width: 2em;
 $swal2-progress-step-height: 2em;
 $swal2-progress-step-border-radius: 2em;
-$swal2-progress-step-background: #add8e6 !default;
+$swal2-progress-step-background: var(--swal2-progress-step-background) !default;
 $swal2-progress-step-color: $swal2-white !default;
 $swal2-active-step-background: #2778c4 !default;
 $swal2-active-step-color: $swal2-white !default;
@@ -204,7 +221,8 @@ $swal2-close-button-align-items: center !default;
 $swal2-close-button-justify-content: center !default;
 $swal2-close-button-width: 1.2em !default;
 $swal2-close-button-height: 1.2em !default;
-$swal2-close-button-position: null !default;
+$swal2-close-button-position: var(--swal2-close-button-position) !default;
+$swal2-close-button-inset: var(--swal2-close-button-inset) !default;
 $swal2-close-button-gap: 0 !default;
 $swal2-close-button-padding: 0 !default;
 $swal2-close-button-transition:
@@ -214,9 +232,9 @@ $swal2-close-button-border: none !default;
 $swal2-close-button-border-radius: $swal2-border-radius !default;
 $swal2-close-button-outline: null !default;
 $swal2-close-button-background: transparent !default;
-$swal2-close-button-color: #ccc !default;
+$swal2-close-button-color: var(--swal2-close-button-color) !default;
 $swal2-close-button-font-family: monospace !default;
-$swal2-close-button-font-size: 2.5em !default;
+$swal2-close-button-font-size: var(--swal2-close-button-font-size) !default;
 $swal2-close-button-box-shadow: inset 0 0 0 3px transparent !default;
 
 // CLOSE BUTTON:HOVER
@@ -734,6 +752,7 @@ div:where(.swal2-container) {
 
   button:where(.swal2-close) {
     position: $swal2-close-button-position;
+    inset: $swal2-close-button-inset;
     z-index: 2; // sweetalert2/issues/1617
     align-items: $swal2-close-button-align-items;
     justify-content: $swal2-close-button-justify-content;

@@ -228,8 +228,8 @@ export const showWarningsForParams = (params) => {
     warn('"allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`')
   }
 
-  if (params.theme && !['light', 'dark', 'auto'].includes(params.theme)) {
-    warn(`Invalid theme "${params.theme}". Expected "light", "dark", or "auto"`)
+  if (params.theme && !['light', 'dark', 'auto', 'borderless'].includes(params.theme)) {
+    warn(`Invalid theme "${params.theme}". Expected "light", "dark", "auto", or "borderless"`)
   }
 
   for (const param in params) {

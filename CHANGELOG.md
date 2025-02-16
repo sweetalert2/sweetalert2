@@ -1,3 +1,10 @@
+## [11.17.2](https://github.com/sweetalert2/sweetalert2/compare/v11.17.1...v11.17.2) (2025-02-16)
+
+
+### Bug Fixes
+
+* **types:** allow theme update ([4b8c4e2](https://github.com/sweetalert2/sweetalert2/commit/4b8c4e2d1ee01dae36870a01fbb3067615bd5d35))
+
 ## [11.17.1](https://github.com/sweetalert2/sweetalert2/compare/v11.17.0...v11.17.1) (2025-02-16)
 
 

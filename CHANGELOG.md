@@ -1,3 +1,10 @@
+# [11.17.0](https://github.com/sweetalert2/sweetalert2/compare/v11.16.1...v11.17.0) (2025-02-16)
+
+
+### Features
+
+* add borderless theme ([#2800](https://github.com/sweetalert2/sweetalert2/issues/2800)) ([31bc364](https://github.com/sweetalert2/sweetalert2/commit/31bc364be19e3f57ae84bafcb14296f8e9984af3))
+
 ## [11.16.1](https://github.com/sweetalert2/sweetalert2/compare/v11.16.0...v11.16.1) (2025-02-14)
 
 

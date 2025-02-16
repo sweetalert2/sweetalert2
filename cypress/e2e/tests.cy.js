@@ -2084,7 +2084,8 @@ describe('theme', () => {
     SwalWithoutAnimation.fire({
       theme: 'foo',
     })
-    expect(spy.calledWith(`SweetAlert2: Invalid theme "foo". Expected "light", "dark", or "auto"`)).to.be.true
+    expect(spy.calledWith(`SweetAlert2: Invalid theme "foo". Expected "light", "dark", "auto", or "borderless"`)).to.be
+      .true
   })
 })
 
@@ -2335,7 +2336,8 @@ describe('update()', () => {
     const spy = cy.spy(console, 'warn')
     SwalWithoutAnimation.fire()
     Swal.update({ theme: 'foo' })
-    expect(spy.calledWith(`SweetAlert2: Invalid theme "foo". Expected "light", "dark", or "auto"`)).to.be.true
+    expect(spy.calledWith(`SweetAlert2: Invalid theme "foo". Expected "light", "dark", "auto", or "borderless"`)).to.be
+      .true
   })
 })
 

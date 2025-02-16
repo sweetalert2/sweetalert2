@@ -1,0 +1,46 @@
+[data-swal2-theme='borderless'] {
+  /* BACKDROP */
+  --swal2-backdrop: rgba(54, 70, 93, 0.99);
+
+  /* POPUP */
+  --swal2-background: transparent;
+  --swal2-color: white;
+
+  /* ANIMATIONS */
+  --swal2-show-animation: opacity-show 0.3s;
+  --swal2-hide-animation: opacity-hide 0.1s;
+
+  /* PROGRESS STEPS */
+  --swal2-progress-step-background: color-mix(in srgb, var(--swal2-backdrop), white 30%);
+
+  /* VALIDATION MESSAGE */
+  --swal2-validation-message-background: transparent;
+  --swal2-validation-message-color: white;
+
+  /* FOOTER */
+  --swal2-footer-border-color: rgba(255, 255, 255, 0.2);
+
+  /* CLOSE BUTTON */
+  --swal2-close-button-position: fixed;
+  --swal2-close-button-inset: 0;
+  --swal2-close-button-font-size: 3em;
+  --swal2-close-button-color: white;
+}
+
+/* Appearance animation */
+@keyframes opacity-show {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Disppearance animation */
+@keyframes opacity-hide {
+  100% {
+    opacity: 0;
+  }
+}

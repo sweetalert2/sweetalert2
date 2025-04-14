@@ -22,6 +22,12 @@
   --swal2-show-animation: swal2-show 0.3s;
   --swal2-hide-animation: swal2-hide 0.15s forwards;
 
+  // TITLE
+  --swal2-title-padding: 0.8em 1em 0;
+
+  // HTML CONTAINER
+  --swal2-html-container-padding: 1em 1.6em 0.3em;
+
   // INPUT
   --swal2-input-background: transparent;
 
@@ -37,6 +43,11 @@
   --swal2-close-button-inset: auto;
   --swal2-close-button-font-size: 2.5em;
   --swal2-close-button-color: #ccc;
+  --swal2-close-button-transition: color 0.1s, box-shadow 0.1s;
+  --swal2-close-button-outline: initial;
+
+  // CLOSE BUTTON:HOVER
+  --swal2-close-button-hover-transform: none;
 }
 
 // DARK THEME
@@ -122,7 +133,7 @@ $swal2-image-margin: 2em auto 1em !default;
 $swal2-title-position: relative !default;
 $swal2-title-max-width: 100% !default;
 $swal2-title-margin: 0 !default;
-$swal2-title-padding: 0.8em 1em 0 !default;
+$swal2-title-padding: var(--swal2-title-padding) !default;
 $swal2-title-color: inherit !default;
 $swal2-title-font-size: 1.875em !default;
 $swal2-title-font-weight: 600 !default;
@@ -131,7 +142,7 @@ $swal2-title-text-align: center !default;
 // HTML CONTAINER
 $swal2-html-container-justify-content: center !default;
 $swal2-html-container-margin: 0 !default;
-$swal2-html-container-padding: 1em 1.6em 0.3em !default;
+$swal2-html-container-padding: var(--swal2-html-container-padding) !default;
 $swal2-html-container-overflow: auto !default;
 $swal2-html-container-color: inherit !default;
 $swal2-html-container-font-size: 1.125em !default;
@@ -225,12 +236,10 @@ $swal2-close-button-position: var(--swal2-close-button-position) !default;
 $swal2-close-button-inset: var(--swal2-close-button-inset) !default;
 $swal2-close-button-gap: 0 !default;
 $swal2-close-button-padding: 0 !default;
-$swal2-close-button-transition:
-  color 0.1s,
-  box-shadow 0.1s !default;
+$swal2-close-button-transition: var(--swal2-close-button-transition) !default;
 $swal2-close-button-border: none !default;
 $swal2-close-button-border-radius: $swal2-border-radius !default;
-$swal2-close-button-outline: null !default;
+$swal2-close-button-outline: var(--swal2-close-button-outline) !default;
 $swal2-close-button-background: transparent !default;
 $swal2-close-button-color: var(--swal2-close-button-color) !default;
 $swal2-close-button-font-family: monospace !default;
@@ -238,7 +247,7 @@ $swal2-close-button-font-size: var(--swal2-close-button-font-size) !default;
 $swal2-close-button-box-shadow: inset 0 0 0 3px transparent !default;
 
 // CLOSE BUTTON:HOVER
-$swal2-close-button-hover-transform: none !default;
+$swal2-close-button-hover-transform: var(--swal2-close-button-hover-transform) !default;
 $swal2-close-button-hover-color: $swal2-error !default;
 $swal2-close-button-hover-background: transparent !default;
 

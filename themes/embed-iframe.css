@@ -1,0 +1,29 @@
+[data-swal2-theme='embed-iframe'] {
+  /* POPUP */
+  --swal2-padding: 0;
+  --swal2-backdrop: rgba(54, 70, 93, 0.99);
+  --swal2-border-radius: 0;
+
+  /* CLOSE BUTTON */
+  --swal2-close-button-position: fixed;
+  --swal2-close-button-inset: 0;
+  --swal2-close-button-font-size: 3em;
+  --swal2-close-button-color: white;
+  --swal2-close-button-transition: transform 0.3s ease-out;
+  --swal2-close-button-outline: none;
+
+  /* CLOSE BUTTON:HOVER */
+  --swal2-close-button-hover-transform: rotate(90deg);
+
+  /* TITLE */
+  --swal2-title-padding: 0.5em 1em;
+
+  /* HTML CONTAINER */
+  --swal2-html-container-padding: 0;
+
+  iframe {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    float: left;
+  }
+}

@@ -1,3 +1,10 @@
+# [11.18.0](https://github.com/sweetalert2/sweetalert2/compare/v11.17.2...v11.18.0) (2025-04-14)
+
+
+### Features
+
+* add embed-iframe theme ([#2813](https://github.com/sweetalert2/sweetalert2/issues/2813)) ([f455b5f](https://github.com/sweetalert2/sweetalert2/commit/f455b5f93291f07c30fd1557f0a35497ea6b7592))
+
 ## [11.17.2](https://github.com/sweetalert2/sweetalert2/compare/v11.17.1...v11.17.2) (2025-02-16)
 
 

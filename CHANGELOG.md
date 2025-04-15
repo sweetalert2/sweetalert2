@@ -1,3 +1,10 @@
+# [11.19.0](https://github.com/sweetalert2/sweetalert2/compare/v11.18.0...v11.19.0) (2025-04-15)
+
+
+### Features
+
+* match outline color with custom button colors ([#2814](https://github.com/sweetalert2/sweetalert2/issues/2814)) ([62fb3fc](https://github.com/sweetalert2/sweetalert2/commit/62fb3fc8eaaacf5931a5d541003f479cb992f6d0))
+
 # [11.18.0](https://github.com/sweetalert2/sweetalert2/compare/v11.17.2...v11.18.0) (2025-04-14)
 
 

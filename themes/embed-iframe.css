@@ -10,7 +10,7 @@
   --swal2-close-button-font-size: 3em;
   --swal2-close-button-color: white;
   --swal2-close-button-transition: transform 0.3s ease-out;
-  --swal2-close-button-outline: none;
+  --swal2-close-button-focus-box-shadow: none;
 
   /* CLOSE BUTTON:HOVER */
   --swal2-close-button-hover-transform: rotate(90deg);

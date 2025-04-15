@@ -76,19 +76,33 @@ function handleButtonsStyling(confirmButton, denyButton, cancelButton, params) {
 
   dom.addClass([confirmButton, denyButton, cancelButton], swalClasses.styled)
 
-  // Buttons background colors
+  // Apply custom background colors to action buttons
   if (params.confirmButtonColor) {
-    confirmButton.style.backgroundColor = params.confirmButtonColor
-    dom.addClass(confirmButton, swalClasses['default-outline'])
+    confirmButton.style.setProperty('--swal2-confirm-button-background-color', params.confirmButtonColor)
   }
   if (params.denyButtonColor) {
-    denyButton.style.backgroundColor = params.denyButtonColor
-    dom.addClass(denyButton, swalClasses['default-outline'])
+    denyButton.style.setProperty('--swal2-deny-button-background-color', params.denyButtonColor)
   }
   if (params.cancelButtonColor) {
-    cancelButton.style.backgroundColor = params.cancelButtonColor
-    dom.addClass(cancelButton, swalClasses['default-outline'])
+    cancelButton.style.setProperty('--swal2-cancel-button-background-color', params.cancelButtonColor)
   }
+
+  // Apply the outline color to action buttons
+  applyOutlineColor(confirmButton)
+  applyOutlineColor(denyButton)
+  applyOutlineColor(cancelButton)
+}
+
+/**
+ * @param {HTMLElement} button
+ */
+function applyOutlineColor(button) {
+  const buttonStyle = window.getComputedStyle(button)
+  const outlineColor = buttonStyle.backgroundColor.replace(/rgba?\((\d+), (\d+), (\d+).*/, 'rgba($1, $2, $3, 0.5)')
+  button.style.setProperty(
+    '--swal2-action-button-outline',
+    buttonStyle.getPropertyValue('--swal2-outline').replace(/ rgba\(.*/, ` ${outlineColor}`)
+  )
 }
 
 /**

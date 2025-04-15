@@ -207,6 +207,9 @@ describe('should trap focus in modals', () => {
         expect(document.activeElement).to.equal(Swal.getConfirmButton())
         triggerKeydownEvent(document.activeElement, 'Tab', { shiftKey: true })
         expect(document.activeElement).to.equal(Swal.getInput())
+        Swal.getPopup().focus()
+        triggerKeydownEvent(document.activeElement, 'Tab', { shiftKey: true })
+        expect(document.activeElement).to.equal(Swal.getCancelButton())
         done()
       },
     })

@@ -1,3 +1,10 @@
+## [11.19.1](https://github.com/sweetalert2/sweetalert2/compare/v11.19.0...v11.19.1) (2025-04-15)
+
+
+### Bug Fixes
+
+* shift+tab when a popup is focused ([#2815](https://github.com/sweetalert2/sweetalert2/issues/2815)) ([f68b60e](https://github.com/sweetalert2/sweetalert2/commit/f68b60e9fefd713b2b50ec15b94d5577fdced1ae))
+
 # [11.19.0](https://github.com/sweetalert2/sweetalert2/compare/v11.18.0...v11.19.0) (2025-04-15)
 
 

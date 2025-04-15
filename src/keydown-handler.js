@@ -43,6 +43,11 @@ export const setFocus = (index, increment) => {
   if (focusableElements.length) {
     index = index + increment
 
+    // shift + tab when .swal2-popup is focused
+    if (index === -2) {
+      index = focusableElements.length - 1
+    }
+
     // rollover to first item
     if (index === focusableElements.length) {
       index = 0

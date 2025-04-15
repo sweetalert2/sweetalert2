@@ -30,7 +30,6 @@ const classNames = [
   'confirm',
   'deny',
   'cancel',
-  'default-outline',
   'footer',
   'icon',
   'icon-content',

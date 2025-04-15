@@ -3,6 +3,8 @@
 
 // CSS Variables
 :root {
+  --swal2-outline: 0 0 0 3px rgba(100, 150, 200, 0.5);
+
   // CONTAINER
   --swal2-container-padding: 0.625em;
 
@@ -45,9 +47,20 @@
   --swal2-close-button-color: #ccc;
   --swal2-close-button-transition: color 0.1s, box-shadow 0.1s;
   --swal2-close-button-outline: initial;
+  --swal2-close-button-box-shadow: inset 0 0 0 3px transparent;
+  --swal2-close-button-focus-box-shadow: inset var(--swal2-outline);
 
   // CLOSE BUTTON:HOVER
   --swal2-close-button-hover-transform: none;
+
+  // CONFIRM BUTTON
+  --swal2-confirm-button-background-color: #7066e0;
+
+  // DENY BUTTON
+  --swal2-deny-button-background-color: #dc3741;
+
+  // CANCEL BUTTON
+  --swal2-cancel-button-background-color: #6e7881;
 }
 
 // DARK THEME
@@ -244,7 +257,7 @@ $swal2-close-button-background: transparent !default;
 $swal2-close-button-color: var(--swal2-close-button-color) !default;
 $swal2-close-button-font-family: monospace !default;
 $swal2-close-button-font-size: var(--swal2-close-button-font-size) !default;
-$swal2-close-button-box-shadow: inset 0 0 0 3px transparent !default;
+$swal2-close-button-box-shadow: var(--swal2-close-button-box-shadow) !default;
 
 // CLOSE BUTTON:HOVER
 $swal2-close-button-hover-transform: var(--swal2-close-button-hover-transform) !default;
@@ -253,7 +266,7 @@ $swal2-close-button-hover-background: transparent !default;
 
 // CLOSE BUTTON:FOCUS
 $swal2-close-button-focus-outline: none !default;
-$swal2-close-button-focus-box-shadow: inset 0 0 0 3px $swal2-outline-color !default;
+$swal2-close-button-focus-box-shadow: var(--swal2-close-button-focus-box-shadow) !default;
 
 // ACTIONS
 $swal2-actions-flex-wrap: wrap !default;
@@ -271,35 +284,30 @@ $swal2-button-box-shadow: 0 0 0 3px transparent !default;
 $swal2-button-font-weight: 500 !default;
 $swal2-button-darken-hover: rgba($swal2-black, 0.1) !default;
 $swal2-button-darken-active: rgba($swal2-black, 0.2) !default;
-$swal2-button-focus-outline: none !default;
-$swal2-button-focus-box-shadow: 0 0 0 3px $swal2-outline-color !default;
 
 // CONFIRM BUTTON
 $swal2-confirm-button-order: null !default;
 $swal2-confirm-button-border: 0 !default;
 $swal2-confirm-button-border-radius: 0.25em !default;
-$swal2-confirm-button-background-color: #7066e0 !default;
+$swal2-confirm-button-background-color: var(--swal2-confirm-button-background-color) !default;
 $swal2-confirm-button-color: $swal2-white !default;
 $swal2-confirm-button-font-size: 1em !default;
-$swal2-confirm-button-focus-box-shadow: 0 0 0 3px rgba($swal2-confirm-button-background-color, 0.5) !default;
 
 // DENY BUTTON
 $swal2-deny-button-order: null !default;
 $swal2-deny-button-border: 0 !default;
 $swal2-deny-button-border-radius: 0.25em !default;
-$swal2-deny-button-background-color: #dc3741 !default;
+$swal2-deny-button-background-color: var(--swal2-deny-button-background-color) !default;
 $swal2-deny-button-color: $swal2-white !default;
 $swal2-deny-button-font-size: 1em !default;
-$swal2-deny-button-focus-box-shadow: 0 0 0 3px rgba($swal2-deny-button-background-color, 0.5) !default;
 
 // CANCEL BUTTON
 $swal2-cancel-button-order: null !default;
 $swal2-cancel-button-border: 0 !default;
 $swal2-cancel-button-border-radius: 0.25em !default;
-$swal2-cancel-button-background-color: #6e7881 !default;
+$swal2-cancel-button-background-color: var(--swal2-cancel-button-background-color) !default;
 $swal2-cancel-button-color: $swal2-white !default;
 $swal2-cancel-button-font-size: 1em !default;
-$swal2-cancel-button-focus-box-shadow: 0 0 0 3px rgba($swal2-cancel-button-background-color, 0.5) !default;
 
 // LOADER
 $swal2-loader-align-items: center !default;
@@ -677,10 +685,6 @@ div:where(.swal2-container) {
       background-color: $swal2-confirm-button-background-color;
       color: $swal2-confirm-button-color;
       font-size: $swal2-confirm-button-font-size;
-
-      &:focus-visible {
-        box-shadow: $swal2-confirm-button-focus-box-shadow;
-      }
     }
 
     &:where(.swal2-deny) {
@@ -691,10 +695,6 @@ div:where(.swal2-container) {
       background-color: $swal2-deny-button-background-color;
       color: $swal2-deny-button-color;
       font-size: $swal2-deny-button-font-size;
-
-      &:focus-visible {
-        box-shadow: $swal2-deny-button-focus-box-shadow;
-      }
     }
 
     &:where(.swal2-cancel) {
@@ -705,20 +705,11 @@ div:where(.swal2-container) {
       background-color: $swal2-cancel-button-background-color;
       color: $swal2-cancel-button-color;
       font-size: $swal2-cancel-button-font-size;
-
-      &:focus-visible {
-        box-shadow: $swal2-cancel-button-focus-box-shadow;
-      }
-    }
-
-    &.swal2-default-outline {
-      &:focus-visible {
-        box-shadow: $swal2-button-focus-box-shadow;
-      }
     }
 
     &:focus-visible {
-      outline: $swal2-button-focus-outline;
+      outline: none;
+      box-shadow: var(--swal2-action-button-outline);
     }
 
     &::-moz-focus-inner {

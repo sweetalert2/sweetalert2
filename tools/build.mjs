@@ -1,13 +1,18 @@
 #!/usr/bin/env zx
-import { $, echo, fs } from 'zx'
+import { $, echo, fs, glob } from 'zx'
+import { eslintFormat } from '@sweetalert2/eslint-config'
+import eslintConfig from '../eslint.config.mjs'
 
 echo`1. Build JS ...`
+await eslintFormat(glob.sync('src/**/*.js'), eslintConfig)
 await $`rollup -c --bundleConfigAsCjs`
+echo`OK!`
 echo``
 
 echo`2. Build CSS ...`
 await $`sass src/sweetalert2.scss dist/sweetalert2.css --no-source-map`
 await $`sass src/sweetalert2.scss dist/sweetalert2.min.css --no-source-map --style=compressed`
+echo`OK!`
 echo``
 
 echo`3. Build JS+CSS ...`
@@ -22,5 +27,6 @@ fs.writeFileSync(
   'dist/sweetalert2.esm.all.min.js',
   `${fs.readFileSync('dist/sweetalert2.esm.min.js', 'utf-8')}${cssInJs}`
 )
+await $`git checkout . >/dev/null 2>&1`
 echo`OK!`
 echo``

@@ -1,3 +1,10 @@
+# [11.20.0](https://github.com/sweetalert2/sweetalert2/compare/v11.19.1...v11.20.0) (2025-05-03)
+
+
+### Features
+
+* add topLayer param to utilize browsers' top layer API ([#2820](https://github.com/sweetalert2/sweetalert2/issues/2820)) ([003902a](https://github.com/sweetalert2/sweetalert2/commit/003902aa324699f0a751abeaa89b3cbe11ac9821))
+
 ## [11.19.1](https://github.com/sweetalert2/sweetalert2/compare/v11.19.0...v11.19.1) (2025-04-15)
 
 

@@ -92,6 +92,7 @@ export const defaultParams = {
   didClose: undefined,
   didDestroy: undefined,
   scrollbarPadding: true,
+  topLayer: false,
 }
 
 export const updatableParams = [

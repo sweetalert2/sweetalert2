@@ -147,6 +147,11 @@ export const init = (params) => {
   const targetElement = getTarget(params.target)
   targetElement.appendChild(container)
 
+  if (params.topLayer) {
+    container.setAttribute('popover', '')
+    container.showPopover()
+  }
+
   setupAccessibility(params)
   setupRTL(targetElement)
   addInputChangeListeners()

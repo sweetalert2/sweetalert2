@@ -570,6 +570,11 @@ div:where(.swal2-container) {
     transition: none !important;
   }
 
+  &[popover] {
+    width: auto;
+    border: 0;
+  }
+
   div:where(.swal2-popup) {
     display: none;
     position: relative;

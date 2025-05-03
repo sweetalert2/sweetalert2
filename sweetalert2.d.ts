@@ -1262,6 +1262,14 @@ declare module 'sweetalert2' {
      * @default true
      */
     scrollbarPadding?: boolean | undefined
+
+    /**
+     * Set to `true` to put the popup on top of all other elements (Top Layer).
+     * Top layer docs: https://developer.mozilla.org/en-US/docs/Glossary/Top_layer
+     *
+     * @default false
+     */
+    topLayer?: boolean | undefined
   }
 
   export default Swal

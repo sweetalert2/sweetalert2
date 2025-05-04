@@ -1,0 +1,40 @@
+[data-swal2-theme='minimal'] {
+  /* BACKDROP */
+  --swal2-backdrop-transition: none;
+
+  /* POPUP */
+  --swal2-border-radius: 0;
+
+  /* ANIMATIONS */
+  --swal2-show-animation: none;
+  --swal2-hide-animation: none;
+
+  /* ICONS */
+  --swal2-icon-animations: false;
+
+  /* INPUT */
+  --swal2-input-border-radius: 0;
+  --swal2-input-box-shadow: none;
+  --swal2-input-transition: none;
+
+  /* CLOSE BUTTON */
+  --swal2-close-button-transition: none;
+
+  /* COMMON VARIABLES FOR ALL ACTION BUTTONS */
+  --swal2-button-transition: none;
+
+  /* CONFIRM BUTTON */
+  --swal2-confirm-button-border-radius: 0;
+
+  /* DENY BUTTON */
+  --swal2-deny-button-border-radius: 0;
+
+  /* CANCEL BUTTON */
+  --swal2-cancel-button-border-radius: 0;
+
+  /* TOASTS */
+  --swal2-toast-show-animation: none;
+  --swal2-toast-hide-animation: none;
+  --swal2-toast-border: 1px solid rgba(0, 0, 0, 0.3);
+  --swal2-toast-box-shadow: none;
+}

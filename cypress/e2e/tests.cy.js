@@ -2089,7 +2089,7 @@ describe('theme', () => {
     })
     expect(
       spy.calledWith(
-        `SweetAlert2: Invalid theme "foo". Expected "light", "dark", "auto", "borderless", or "embed-iframe"`
+        `SweetAlert2: Invalid theme "foo". Expected "light", "dark", "auto", "minimal", "borderless", or "embed-iframe"`
       )
     ).to.be.true
   })
@@ -2344,7 +2344,7 @@ describe('update()', () => {
     Swal.update({ theme: 'foo' })
     expect(
       spy.calledWith(
-        `SweetAlert2: Invalid theme "foo". Expected "light", "dark", "auto", "borderless", or "embed-iframe"`
+        `SweetAlert2: Invalid theme "foo". Expected "light", "dark", "auto", "minimal", "borderless", or "embed-iframe"`
       )
     ).to.be.true
   })

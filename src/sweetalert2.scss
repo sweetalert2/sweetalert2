@@ -10,6 +10,7 @@
 
   // BACKDROP
   --swal2-backdrop: rgba(0, 0, 0, 0.4);
+  --swal2-backdrop-transition: background-color 0.1s;
 
   // POPUP
   --swal2-width: 32em;
@@ -24,6 +25,10 @@
   --swal2-show-animation: swal2-show 0.3s;
   --swal2-hide-animation: swal2-hide 0.15s forwards;
 
+  // ICONS
+  --swal2-icon-zoom: 1;
+  --swal2-icon-animations: true;
+
   // TITLE
   --swal2-title-padding: 0.8em 1em 0;
 
@@ -31,7 +36,10 @@
   --swal2-html-container-padding: 1em 1.6em 0.3em;
 
   // INPUT
+  --swal2-input-border-radius: 0.1875em;
+  --swal2-input-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06), 0 0 0 3px transparent;
   --swal2-input-background: transparent;
+  --swal2-input-transition: border-color 0.1s, box-shadow 0.1s;
 
   // PROGRESS STEPS
   --swal2-progress-step-background: #add8e6;
@@ -53,14 +61,33 @@
   // CLOSE BUTTON:HOVER
   --swal2-close-button-hover-transform: none;
 
+  // COMMON VARIABLES FOR ALL ACTION BUTTONS
+  --swal2-button-darken-hover: rgba(0, 0, 0, 0.1);
+  --swal2-button-darken-active: rgba(0, 0, 0, 0.2);
+  --swal2-button-transition: box-shadow 0.1s;
+
   // CONFIRM BUTTON
+  --swal2-confirm-button-border: 0;
+  --swal2-confirm-button-border-radius: 0.25em;
   --swal2-confirm-button-background-color: #7066e0;
 
   // DENY BUTTON
+  --swal2-deny-button-border: 0;
+  --swal2-deny-button-border-radius: 0.25em;
   --swal2-deny-button-background-color: #dc3741;
 
   // CANCEL BUTTON
+  --swal2-cancel-button-border: 0;
+  --swal2-cancel-button-border-radius: 0.25em;
   --swal2-cancel-button-background-color: #6e7881;
+
+  // TOASTS
+  --swal2-toast-show-animation: swal2-toast-show 0.5s;
+  --swal2-toast-hide-animation: swal2-toast-hide 0.1s forwards;
+  --swal2-toast-border: none;
+  --swal2-toast-box-shadow:
+    0 0 1px hsl(0deg 0% 0% / 0.075), 0 1px 2px hsl(0deg 0% 0% / 0.075), 1px 2px 4px hsl(0deg 0% 0% / 0.075),
+    1px 3px 8px hsl(0deg 0% 0% / 0.075), 2px 4px 16px hsl(0deg 0% 0% / 0.075);
 }
 
 // DARK THEME
@@ -105,7 +132,7 @@ $swal2-container-padding: var(--swal2-container-padding) !default;
 
 // BACKDROP
 $swal2-backdrop: var(--swal2-backdrop) !default;
-$swal2-backdrop-transition: background-color 0.1s !default;
+$swal2-backdrop-transition: var(--swal2-backdrop-transition) !default;
 
 // POPUP
 $swal2-width: var(--swal2-width) !default;
@@ -124,14 +151,12 @@ $swal2-font: inherit !default;
 $swal2-font-size: 1rem !default;
 
 // ICONS
-$swal2-icon-size: 5em !default;
-$swal2-icon-animations: true !default;
 $swal2-icon-margin: 2.5em auto 0.6em !default;
 $swal2-icon-font-family: inherit !default;
 $swal2-icon-font-size: 3.75em !default;
 $swal2-icon-border-width: 0.25em !default;
 $swal2-icon-border-color: #000 !default;
-$swal2-icon-zoom: null !default;
+$swal2-icon-zoom: var(--swal2-icon-zoom) !default;
 $swal2-success: #a5dc86 !default;
 $swal2-success-border: rgba($swal2-success, 0.3) !default;
 $swal2-error: #f27474 !default;
@@ -171,16 +196,12 @@ $swal2-input-width: auto !default;
 $swal2-input-height: 2.625em !default;
 $swal2-input-padding: 0 0.75em !default;
 $swal2-input-border: 1px solid #d9d9d9 !default;
-$swal2-input-border-radius: 0.1875em !default;
-$swal2-input-box-shadow:
-  inset 0 1px 1px rgba($swal2-black, 0.06),
-  0 0 0 3px transparent !default;
+$swal2-input-border-radius: var(--swal2-input-border-radius) !default;
+$swal2-input-box-shadow: var(--swal2-input-box-shadow) !default;
 $swal2-input-font-size: 1.125em !default;
 $swal2-input-background: var(--swal2-input-background) !default;
 $swal2-input-color: inherit !default;
-$swal2-input-transition:
-  border-color 0.1s,
-  box-shadow 0.1s !default;
+$swal2-input-transition: var(--swal2-input-transition) !default;
 
 // INPUT:FOCUS
 $swal2-input-focus-border: 1px solid #b4dbed !default;
@@ -279,32 +300,30 @@ $swal2-actions-padding: 0 !default;
 // COMMON VARIABLES FOR ALL ACTION BUTTONS
 $swal2-button-margin: 0.3125em !default;
 $swal2-button-padding: 0.625em 1.1em !default;
-$swal2-button-transition: box-shadow 0.1s !default;
+$swal2-button-transition: var(--swal2-button-transition) !default;
 $swal2-button-box-shadow: 0 0 0 3px transparent !default;
 $swal2-button-font-weight: 500 !default;
-$swal2-button-darken-hover: rgba($swal2-black, 0.1) !default;
-$swal2-button-darken-active: rgba($swal2-black, 0.2) !default;
 
 // CONFIRM BUTTON
 $swal2-confirm-button-order: null !default;
-$swal2-confirm-button-border: 0 !default;
-$swal2-confirm-button-border-radius: 0.25em !default;
+$swal2-confirm-button-border: var(--swal2-confirm-button-border) !default;
+$swal2-confirm-button-border-radius: var(--swal2-confirm-button-border-radius) !default;
 $swal2-confirm-button-background-color: var(--swal2-confirm-button-background-color) !default;
 $swal2-confirm-button-color: $swal2-white !default;
 $swal2-confirm-button-font-size: 1em !default;
 
 // DENY BUTTON
 $swal2-deny-button-order: null !default;
-$swal2-deny-button-border: 0 !default;
-$swal2-deny-button-border-radius: 0.25em !default;
+$swal2-deny-button-border: var(--swal2-deny-button-border) !default;
+$swal2-deny-button-border-radius: var(--swal2-deny-button-border-radius) !default;
 $swal2-deny-button-background-color: var(--swal2-deny-button-background-color) !default;
 $swal2-deny-button-color: $swal2-white !default;
 $swal2-deny-button-font-size: 1em !default;
 
 // CANCEL BUTTON
 $swal2-cancel-button-order: null !default;
-$swal2-cancel-button-border: 0 !default;
-$swal2-cancel-button-border-radius: 0.25em !default;
+$swal2-cancel-button-border: var(--swal2-cancel-button-border) !default;
+$swal2-cancel-button-border-radius: var(--swal2-cancel-button-border-radius) !default;
 $swal2-cancel-button-background-color: var(--swal2-cancel-button-background-color) !default;
 $swal2-cancel-button-color: $swal2-white !default;
 $swal2-cancel-button-font-size: 1em !default;
@@ -322,15 +341,10 @@ $swal2-loader-border-radius: 100% !default;
 $swal2-loader-border-color: #2778c4 transparent #2778c4 transparent !default;
 
 // TOASTS
-$swal2-toast-show-animation: swal2-toast-show 0.5s !default;
-$swal2-toast-hide-animation: swal2-toast-hide 0.1s forwards !default;
-$swal2-toast-border: none !default;
-$swal2-toast-box-shadow:
-  0 0 1px hsl(0deg 0% 0% / 0.075),
-  0 1px 2px hsl(0deg 0% 0% / 0.075),
-  1px 2px 4px hsl(0deg 0% 0% / 0.075),
-  1px 3px 8px hsl(0deg 0% 0% / 0.075),
-  2px 4px 16px hsl(0deg 0% 0% / 0.075) !default;
+$swal2-toast-show-animation: var(--swal2-toast-show-animation) !default;
+$swal2-toast-hide-animation: var(--swal2-toast-hide-animation) !default;
+$swal2-toast-border: var(--swal2-toast-border) !default;
+$swal2-toast-box-shadow: var(--swal2-toast-box-shadow) !default;
 $swal2-toast-background: $swal2-background !default;
 $swal2-toast-close-button-width: 0.8em !default;
 $swal2-toast-close-button-height: 0.8em !default;
@@ -589,6 +603,7 @@ div:where(.swal2-container) {
     color: $swal2-color;
     font-family: $swal2-font;
     font-size: $swal2-font-size;
+    container-name: swal2-popup;
 
     &:focus {
       outline: none;
@@ -647,11 +662,11 @@ div:where(.swal2-container) {
         }
 
         &:hover {
-          background-image: linear-gradient($swal2-button-darken-hover, $swal2-button-darken-hover);
+          background-image: linear-gradient(var(--swal2-button-darken-hover), var(--swal2-button-darken-hover));
         }
 
         &:active {
-          background-image: linear-gradient($swal2-button-darken-active, $swal2-button-darken-active);
+          background-image: linear-gradient(var(--swal2-button-darken-active), var(--swal2-button-darken-active));
         }
       }
     }
@@ -1008,15 +1023,15 @@ div:where(.swal2-icon) {
   position: relative;
   box-sizing: content-box;
   justify-content: center;
-  width: $swal2-icon-size;
-  height: $swal2-icon-size;
+  width: 5em;
+  height: 5em;
   margin: $swal2-icon-margin;
   zoom: $swal2-icon-zoom;
   border: $swal2-icon-border-width solid transparent;
   border-radius: 50%;
   border-color: $swal2-icon-border-color;
   font-family: $swal2-icon-font-family;
-  line-height: $swal2-icon-size;
+  line-height: 5em;
   cursor: default;
   user-select: none;
 
@@ -1056,8 +1071,8 @@ div:where(.swal2-icon) {
     }
 
     // Error icon animation
-    &.swal2-icon-show {
-      @if $swal2-icon-animations {
+    @container swal2-popup style(--swal2-icon-animations:true) {
+      &.swal2-icon-show {
         animation: swal2-animate-error-icon 0.5s;
 
         .swal2-x-mark {
@@ -1072,8 +1087,8 @@ div:where(.swal2-icon) {
     color: $swal2-warning;
 
     // Warning icon animation
-    &.swal2-icon-show {
-      @if $swal2-icon-animations {
+    @container swal2-popup style(--swal2-icon-animations:true) {
+      &.swal2-icon-show {
         animation: swal2-animate-error-icon 0.5s;
 
         .swal2-icon-content {
@@ -1088,8 +1103,8 @@ div:where(.swal2-icon) {
     color: $swal2-info;
 
     // Info icon animation
-    &.swal2-icon-show {
-      @if $swal2-icon-animations {
+    @container swal2-popup style(--swal2-icon-animations:true) {
+      &.swal2-icon-show {
         animation: swal2-animate-error-icon 0.5s;
 
         .swal2-icon-content {
@@ -1104,8 +1119,8 @@ div:where(.swal2-icon) {
     color: $swal2-question;
 
     // Question icon animation
-    &.swal2-icon-show {
-      @if $swal2-icon-animations {
+    @container swal2-popup style(--swal2-icon-animations:true) {
+      &.swal2-icon-show {
         animation: swal2-animate-error-icon 0.5s;
 
         .swal2-icon-content {
@@ -1191,8 +1206,8 @@ div:where(.swal2-icon) {
     }
 
     // Success icon animation
-    &.swal2-icon-show {
-      @if $swal2-icon-animations {
+    @container swal2-popup style(--swal2-icon-animations:true) {
+      &.swal2-icon-show {
         .swal2-success-line-tip {
           animation: swal2-animate-success-line-tip 0.75s;
         }
@@ -1256,6 +1271,7 @@ div:where(.swal2-icon) {
   grid-template-columns: min-content auto min-content;
   padding: $swal2-toast-padding;
   overflow-y: hidden;
+  border: $swal2-toast-border;
   background: $swal2-toast-background;
   box-shadow: $swal2-toast-box-shadow;
   pointer-events: all;
@@ -1429,8 +1445,8 @@ div:where(.swal2-icon) {
       }
     }
 
-    &.swal2-icon-show {
-      @if $swal2-icon-animations {
+    @container swal2-popup style(--swal2-icon-animations:true) {
+      &.swal2-icon-show {
         .swal2-success-line-tip {
           animation: swal2-toast-animate-success-line-tip 0.75s;
         }

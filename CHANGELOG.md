@@ -1,3 +1,10 @@
+# [11.21.0](https://github.com/sweetalert2/sweetalert2/compare/v11.20.0...v11.21.0) (2025-05-04)
+
+
+### Features
+
+* add minimal theme ([#2821](https://github.com/sweetalert2/sweetalert2/issues/2821)) ([a98a063](https://github.com/sweetalert2/sweetalert2/commit/a98a0630456a68654be770226eb9d40973437ed6))
+
 # [11.20.0](https://github.com/sweetalert2/sweetalert2/compare/v11.19.1...v11.20.0) (2025-05-03)
 
 

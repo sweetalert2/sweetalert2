@@ -300,6 +300,22 @@ export const allButtonsAreHidden = () =>
 export const isScrollable = (elem) => !!(elem.scrollHeight > elem.clientHeight)
 
 /**
+ * @param {HTMLElement} element
+ * @param {HTMLElement} stopElement
+ * @returns {boolean}
+ */
+export const selfOrParentIsScrollable = (element, stopElement) => {
+  let parent = element
+  while (parent && parent !== stopElement) {
+    if (isScrollable(parent)) {
+      return true
+    }
+    parent = parent.parentElement
+  }
+  return false
+}
+
+/**
  * borrowed from https://stackoverflow.com/a/46352119
  *
  * @param {HTMLElement} elem

@@ -1,3 +1,10 @@
+## [11.21.2](https://github.com/sweetalert2/sweetalert2/compare/v11.21.1...v11.21.2) (2025-05-18)
+
+
+### Bug Fixes
+
+* **theming:** use color-mix for buttons darkening ([#2825](https://github.com/sweetalert2/sweetalert2/issues/2825)) ([57d12b6](https://github.com/sweetalert2/sweetalert2/commit/57d12b6e5841377dac68387d6077b2d9b6b97b31))
+
 ## [11.21.1](https://github.com/sweetalert2/sweetalert2/compare/v11.21.0...v11.21.1) (2025-05-16)
 
 

@@ -62,7 +62,6 @@ NSFW Sponsors
 <td align="center"><a href="https://aeroescorts.com/"><img src="https://sweetalert2.github.io/images/sponsors/aeroescorts.png" width="80"><br>AeroEscorts</a></td>
 <td align="center"><a href="https://www.hismith.co.uk/"><img src="https://sweetalert2.github.io/images/sponsors/hismith.png" width="80"><br>Hismith</a></td>
 <td align="center"><a href="https://dollauthority.com/"><img src="https://sweetalert2.github.io/images/sponsors/dollauthority.png" width="80"><br>Doll Authority</a></td>
-<td align="center"><a href="https://dreamlovedoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/dreamlovedoll.jpg" width="80"><br>DreamLoveDoll</a></td>
 </tr>
 </table>
 <table>

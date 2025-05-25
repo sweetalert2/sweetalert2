@@ -1,3 +1,10 @@
+# [11.22.0](https://github.com/sweetalert2/sweetalert2/compare/v11.21.2...v11.22.0) (2025-05-25)
+
+
+### Features
+
+* add Bulma theme ([#2829](https://github.com/sweetalert2/sweetalert2/issues/2829)) ([355b2bc](https://github.com/sweetalert2/sweetalert2/commit/355b2bcbbd4928154dfb8503746ac63626bb6681))
+
 ## [11.21.2](https://github.com/sweetalert2/sweetalert2/compare/v11.21.1...v11.21.2) (2025-05-18)
 
 

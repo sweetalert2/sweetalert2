@@ -420,7 +420,16 @@ declare module 'sweetalert2' {
         inputValidator?: (file: File | FileList | null) => SyncOrAsync<string | null | false | void>
       }
 
-  export type SweetAlertTheme = 'light' | 'dark' | 'auto' | 'minimal' | 'borderless' | 'embed-iframe'
+  export type SweetAlertTheme =
+    | 'light'
+    | 'dark'
+    | 'auto'
+    | 'minimal'
+    | 'borderless'
+    | 'embed-iframe'
+    | 'bulma'
+    | 'bulma-light'
+    | 'bulma-dark'
 
   export type SweetAlertPosition =
     | 'top'

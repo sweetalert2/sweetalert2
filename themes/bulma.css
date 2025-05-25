@@ -1,0 +1,94 @@
+[data-swal2-theme='bulma'],
+[data-swal2-theme='bulma-light'],
+[data-swal2-theme='bulma-dark'] {
+  /* BACKDROP */
+  --swal2-backdrop: hsla(221deg, 14%, 4%, 0.86);
+
+  /* POPUP */
+  --swal2-border-radius: 0.75rem;
+  --swal2-padding: 1.25rem 0 0;
+
+  /* INPUT */
+  --swal2-input-border: none;
+  --swal2-input-box-shadow: 0 0 0 1px #d7d9e1 inset, 0 0 0 3px transparent;
+
+  /* INPUT:HOVER */
+  --swal2-input-hover-box-shadow: 0 0 0 1px #b9beca inset, 0 0 0 3px transparent;
+
+  /* INPUT:FOCUS */
+  --swal2-input-focus-border: none;
+  --swal2-input-focus-box-shadow: 0 0 0 1px #4259ff inset, 0 0 0 3px hsla(233deg, 100%, 58%, 0.25);
+
+  /* CLOSE BUTTON */
+  --swal2-close-button-position: fixed;
+  --swal2-close-button-inset: 1em;
+  --swal2-close-button-font-size: 1.6em;
+  --swal2-close-button-color: white;
+
+  /* ACTIONS */
+  --swal2-actions-justify-content: flex-start;
+  --swal2-actions-width: 100%;
+  --swal2-actions-padding: 2rem;
+  --swal2-actions-border-radius: 0 0 0.75rem 0.75rem;
+  --swal2-actions-background: #f9fafa;
+
+  /* COMMON VARIABLES FOR ALL ACTION BUTTONS */
+  --swal2-action-button-hover: black 5%;
+  --swal2-action-button-active: black 10%;
+  --swal2-action-button-focus-box-shadow: 0 0 0 1px #4259ff inset, 0 0 0 3px hsla(233deg, 100%, 58%, 0.25);
+
+  /* CONFIRM BUTTON */
+  --swal2-confirm-button-background-color: #47c78e;
+  --swal2-confirm-button-color: #190005;
+
+  /* DENY BUTTON */
+  --swal2-deny-button-background-color: #ff6684;
+  --swal2-deny-button-color: #190005;
+
+  /* CANCEL BUTTON */
+  --swal2-cancel-button-background-color: #fff;
+  --swal2-cancel-button-color: #190005;
+  --swal2-cancel-button-box-shadow: 0 0 0 1px #d7d9e1 inset;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-swal2-theme='bulma'] {
+    /* POPUP */
+    --swal2-background: #14161a;
+    --swal2-color: #ebecef;
+
+    /* INPUT */
+    --swal2-input-box-shadow: 0 0 0 1px #353a46 inset, 0 0 0 3px transparent;
+
+    /* INPUT:HOVER */
+    --swal2-input-hover-box-shadow: 0 0 0 1px #4b5262 inset, 0 0 0 3px transparent;
+
+    /* ACTIONS */
+    --swal2-actions-background: #191b20;
+
+    /* CANCEL BUTTON */
+    --swal2-cancel-button-background-color: #14161a;
+    --swal2-cancel-button-color: #ebecef;
+    --swal2-cancel-button-box-shadow: 0 0 0 1px #353a46 inset;
+  }
+}
+
+[data-swal2-theme='bulma-dark'] {
+  /* POPUP */
+  --swal2-background: #14161a;
+  --swal2-color: #ebecef;
+
+  /* INPUT */
+  --swal2-input-box-shadow: 0 0 0 1px #353a46 inset, 0 0 0 3px transparent;
+
+  /* INPUT:HOVER */
+  --swal2-input-hover-box-shadow: 0 0 0 1px #4b5262 inset, 0 0 0 3px transparent;
+
+  /* ACTIONS */
+  --swal2-actions-background: #191b20;
+
+  /* CANCEL BUTTON */
+  --swal2-cancel-button-background-color: #14161a;
+  --swal2-cancel-button-color: #ebecef;
+  --swal2-cancel-button-box-shadow: 0 0 0 1px #353a46 inset;
+}

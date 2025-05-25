@@ -30,6 +30,7 @@ module.exports = {
           { path: 'themes/borderless.css' },
           { path: 'themes/minimal.css' },
           { path: 'themes/embed-iframe.css' },
+          { path: 'themes/bulma.css' },
         ],
       },
     ],

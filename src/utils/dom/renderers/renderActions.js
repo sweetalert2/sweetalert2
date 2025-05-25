@@ -98,9 +98,13 @@ function handleButtonsStyling(confirmButton, denyButton, cancelButton, params) {
  */
 function applyOutlineColor(button) {
   const buttonStyle = window.getComputedStyle(button)
+  if (buttonStyle.getPropertyValue('--swal2-action-button-focus-box-shadow')) {
+    // If the button already has a custom outline color, no need to change it
+    return
+  }
   const outlineColor = buttonStyle.backgroundColor.replace(/rgba?\((\d+), (\d+), (\d+).*/, 'rgba($1, $2, $3, 0.5)')
   button.style.setProperty(
-    '--swal2-action-button-outline',
+    '--swal2-action-button-focus-box-shadow',
     buttonStyle.getPropertyValue('--swal2-outline').replace(/ rgba\(.*/, ` ${outlineColor}`)
   )
 }

@@ -21,7 +21,7 @@
   --swal2-close-button-transition: none;
 
   /* COMMON VARIABLES FOR ALL ACTION BUTTONS */
-  --swal2-button-transition: none;
+  --swal2-action-button-transition: none;
 
   /* CONFIRM BUTTON */
   --swal2-confirm-button-border-radius: 0;

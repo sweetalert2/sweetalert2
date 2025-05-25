@@ -2087,11 +2087,7 @@ describe('theme', () => {
     SwalWithoutAnimation.fire({
       theme: 'foo',
     })
-    expect(
-      spy.calledWith(
-        `SweetAlert2: Invalid theme "foo". Expected "light", "dark", "auto", "minimal", "borderless", or "embed-iframe"`
-      )
-    ).to.be.true
+    expect(spy.calledWith(`SweetAlert2: Invalid theme "foo"`)).to.be.true
   })
 })
 
@@ -2342,11 +2338,7 @@ describe('update()', () => {
     const spy = cy.spy(console, 'warn')
     SwalWithoutAnimation.fire()
     Swal.update({ theme: 'foo' })
-    expect(
-      spy.calledWith(
-        `SweetAlert2: Invalid theme "foo". Expected "light", "dark", "auto", "minimal", "borderless", or "embed-iframe"`
-      )
-    ).to.be.true
+    expect(spy.calledWith(`SweetAlert2: Invalid theme "foo"`)).to.be.true
   })
 })
 
@@ -2915,13 +2907,13 @@ describe('Miscellaneous tests', function () {
     expect(window.getComputedStyle(Swal.getConfirmButton()).backgroundColor).to.equal('rgb(0, 128, 0)')
     expect(window.getComputedStyle(Swal.getDenyButton()).backgroundColor).to.equal('rgb(255, 0, 0)')
     expect(window.getComputedStyle(Swal.getCancelButton()).backgroundColor).to.equal('rgb(0, 0, 255)')
-    expect(Swal.getConfirmButton().style.getPropertyValue('--swal2-action-button-outline')).to.equal(
+    expect(Swal.getConfirmButton().style.getPropertyValue('--swal2-action-button-focus-box-shadow')).to.equal(
       '0 0 0 3px rgba(0, 128, 0, 0.5)'
     )
-    expect(Swal.getDenyButton().style.getPropertyValue('--swal2-action-button-outline')).to.equal(
+    expect(Swal.getDenyButton().style.getPropertyValue('--swal2-action-button-focus-box-shadow')).to.equal(
       '0 0 0 3px rgba(255, 0, 0, 0.5)'
     )
-    expect(Swal.getCancelButton().style.getPropertyValue('--swal2-action-button-outline')).to.equal(
+    expect(Swal.getCancelButton().style.getPropertyValue('--swal2-action-button-focus-box-shadow')).to.equal(
       '0 0 0 3px rgba(0, 0, 255, 0.5)'
     )
   })

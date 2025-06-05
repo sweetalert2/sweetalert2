@@ -35,8 +35,6 @@ For all questions related to sponsorship please get in touch with me via email s
 <tr>
 <td align="center"><a href="https://roboflow.com/"><img src="https://sweetalert2.github.io/images/sponsors/roboflow.png" width="80"><br>Roboflow</a>
 <td align="center"><a href="https://www.zezelife.com/"><img src="https://sweetalert2.github.io/images/sponsors/zezelife.png" width="80"><br>ZezeLife</a>
-<td align="center"><a href="https://www.realspyapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/realspyapps.jpeg" width="80"><br>Real Spy Apps</a>
-<td align="center"><a href="https://celltrackingapps.com/"><img src="https://sweetalert2.github.io/images/sponsors/celltrackingapps.png" width="80"><br>Phone Tracking Apps</a></td>
 </tr>
 </table>
 

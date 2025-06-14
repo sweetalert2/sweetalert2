@@ -41,7 +41,6 @@ For all questions related to sponsorship please get in touch with me via email s
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
 <td align="center"><a href="https://www.xndoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/xndoll.png" width="80"><br>XNDOLL</a></td>
 <td align="center"><a href="https://www.pidoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/pidoll.png" width="80"><br>PIDOLL</a></td>
-<td align="center"><a href="https://www.fantasywives.com/cheap-sex-dolls/"><img src="https://sweetalert2.github.io/images/sponsors/fantasywives.png" width="80"><br>Cheap sex dolls</a></td>
 <td align="center"><a href="https://tabootwin.com?utm_source=sweetalert"><img src="https://sweetalert2.github.io/images/sponsors/tabootwin.png" width="80"><br>TabooTwin <br> AI Girlfriend</a></td>
 <td align="center"><a href="https://huntlocals.com/"><img src="https://sweetalert2.github.io/images/sponsors/huntlocals.png" width="80"><br>HuntLocals</a></td>
 </tr>

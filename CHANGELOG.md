@@ -1,3 +1,10 @@
+## [11.22.1](https://github.com/sweetalert2/sweetalert2/compare/v11.22.0...v11.22.1) (2025-06-23)
+
+
+### Bug Fixes
+
+* always prevent default esc when swal is shown ([#2834](https://github.com/sweetalert2/sweetalert2/issues/2834)) ([4782601](https://github.com/sweetalert2/sweetalert2/commit/478260131fcb253cbb91a674313f1395bd1739e6))
+
 # [11.22.0](https://github.com/sweetalert2/sweetalert2/compare/v11.21.2...v11.22.0) (2025-05-25)
 
 

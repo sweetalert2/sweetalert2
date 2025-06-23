@@ -2719,6 +2719,17 @@ describe('Miscellaneous tests', function () {
     })
   })
 
+  it('allowEscapeKey: false', () => {
+    SwalWithoutAnimation.fire({
+      allowEscapeKey: false,
+    })
+    const event1 = triggerKeydownEvent(Swal.getPopup(), 'Escape')
+    expect(event1.defaultPrevented).to.be.true
+    SwalWithoutAnimation.close()
+    const event2 = triggerKeydownEvent(document.body, 'Escape')
+    expect(event2.defaultPrevented).to.be.false
+  })
+
   it('allowEscapeKey as a function', (done) => {
     let functionWasCalled = false
 

@@ -34,7 +34,7 @@ export const dispatchTouchEvent = (elem, eventName, touchDetail = {}) => {
     identifier: JSON.stringify(touchDetail),
     target: elem,
     ...touchDetail,
-  });
+  })
 
   const event = new TouchEvent(eventName, {
     bubbles: true,
@@ -56,6 +56,7 @@ export const triggerKeydownEvent = (target, key, params = {}) => {
     event[param] = params[param]
   }
   target.dispatchEvent(event)
+  return event
 }
 
 export const ensureClosed = () => {

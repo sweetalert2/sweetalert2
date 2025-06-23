@@ -203,8 +203,8 @@ const handleArrows = (key) => {
  * @param {Function} dismissWith
  */
 const handleEsc = (event, innerParams, dismissWith) => {
+  event.preventDefault()
   if (callIfFunction(innerParams.allowEscapeKey)) {
-    event.preventDefault()
     dismissWith(DismissReason.esc)
   }
 }

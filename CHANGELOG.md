@@ -1,3 +1,10 @@
+## [11.22.2](https://github.com/sweetalert2/sweetalert2/compare/v11.22.1...v11.22.2) (2025-06-29)
+
+
+### Bug Fixes
+
+* simplify success icon when animation: false ([#2836](https://github.com/sweetalert2/sweetalert2/issues/2836)) ([affbbf5](https://github.com/sweetalert2/sweetalert2/commit/affbbf5c22cb2ba345c363c4c62717d052a774ff))
+
 ## [11.22.1](https://github.com/sweetalert2/sweetalert2/compare/v11.22.0...v11.22.1) (2025-06-23)
 
 

@@ -27,7 +27,7 @@
     "sass": "^1.83.0",
     "stylelint": "^16.0.0",
     "typescript": "4.8.4",
-    "vite": "^6.0.0",
+    "vite": "^7.0.0",
     "zx": "^8.0.0"
   },
   "devDependenciesComments": {

@@ -1,3 +1,5 @@
+[![RepoMapr](https://img.shields.io/badge/RepoMapr-View_Interactive_Diagram-blue?style=flat&logo=github)](https://repomapr.com/sweetalert2/sweetalert2)
+
 <a href="https://sweetalert2.github.io/">
   <img src="./assets/swal2-logo.png" width="498" alt="SweetAlert2">
 </a>

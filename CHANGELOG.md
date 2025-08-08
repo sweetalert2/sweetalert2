@@ -1,3 +1,10 @@
+## [11.22.3](https://github.com/sweetalert2/sweetalert2/compare/v11.22.2...v11.22.3) (2025-08-08)
+
+
+### Bug Fixes
+
+* timer progressbar color for dark theme ([#2844](https://github.com/sweetalert2/sweetalert2/issues/2844)) ([54bdd47](https://github.com/sweetalert2/sweetalert2/commit/54bdd47f4a888fcaf886a13118ffe11b987ea6af))
+
 ## [11.22.2](https://github.com/sweetalert2/sweetalert2/compare/v11.22.1...v11.22.2) (2025-06-29)
 
 

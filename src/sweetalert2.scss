@@ -60,6 +60,9 @@
   --swal2-footer-background: transparent;
   --swal2-footer-color: inherit;
 
+  // TIMER PROGRESS BAR
+  --swal2-timer-progress-bar-background: rgba(0, 0, 0, 0.3);
+
   // CLOSE BUTTON
   --swal2-close-button-position: initial;
   --swal2-close-button-inset: auto;
@@ -133,6 +136,9 @@
     var(--swal2-dark-theme-white) 10%
   );
   --swal2-validation-message-color: var(--swal2-dark-theme-white);
+
+  // TIMER PROGRESS BAR
+  --swal2-timer-progress-bar-background: rgba(255, 255, 255, 0.7);
 }
 
 [data-swal2-theme='dark'] {
@@ -278,7 +284,7 @@ $swal2-footer-text-align: center !default;
 
 // TIMER PROGRESS BAR
 $swal2-timer-progress-bar-height: 0.25em;
-$swal2-timer-progress-bar-background: rgba(0, 0, 0, 0.2) !default;
+$swal2-timer-progress-bar-background: var(--swal2-timer-progress-bar-background) !default;
 
 // CLOSE BUTTON
 $swal2-close-button-justify-self: end !default;

@@ -1,3 +1,10 @@
+## [11.22.4](https://github.com/sweetalert2/sweetalert2/compare/v11.22.3...v11.22.4) (2025-08-14)
+
+
+### Bug Fixes
+
+* remove protestware ([#2847](https://github.com/sweetalert2/sweetalert2/issues/2847)) ([be65518](https://github.com/sweetalert2/sweetalert2/commit/be65518580110645f1506ce0ddb92a3ad3cc60fd))
+
 ## [11.22.3](https://github.com/sweetalert2/sweetalert2/compare/v11.22.2...v11.22.3) (2025-08-08)
 
 

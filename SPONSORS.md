@@ -16,6 +16,8 @@ For all questions related to sponsorship please contact me via email sweetalert2
 1. Set up the $29 per month sponsorship [via GitHub Sponsors](https://github.com/sponsors/limonte) or [via PayPal](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=UW5EA4KTHM4B6)
 2. Send your logo and link to sweetalert2@gmail.com and I will publish it in the same day
 
+If you'd like to make a one-time payment for one or more years, that's also possible. Reach out to sweetalert2@gmail.com
+
 # Our Sponsors
 
 <table>

@@ -122,7 +122,7 @@ const setupRTL = (targetElement) => {
 }
 
 /**
- * Add modal + backdrop + no-war message for Russians to DOM
+ * Add modal + backdrop to DOM
  *
  * @param {SweetAlertOptions} params
  */

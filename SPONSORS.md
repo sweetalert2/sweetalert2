@@ -44,6 +44,7 @@ NSFW Sponsors
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
+<td align="center"><a href="https://www.venuslovedolls.com/"><img src="https://sweetalert2.github.io/images/sponsors/venuslovedolls.png" width="80"><br>Venus Love Dolls</a></td>
 <td align="center"><a href="https://www.xndoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/xndoll.png" width="80"><br>XNDOLL</a></td>
 <td align="center"><a href="https://www.pidoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/pidoll.png" width="80"><br>PIDOLL</a></td>
 <td align="center"><a href="https://huntlocals.com/"><img src="https://sweetalert2.github.io/images/sponsors/huntlocals.png" width="80"><br>HuntLocals</a></td>

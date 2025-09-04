@@ -214,7 +214,6 @@ $swal2-html-container-font-size: 1.125em !default;
 $swal2-html-container-font-weight: normal !default;
 $swal2-html-container-line-height: normal !default;
 $swal2-html-container-text-align: center !default;
-$swal2-html-container-word-wrap: break-word !default;
 $swal2-html-container-word-break: break-word !default;
 
 // INPUT
@@ -667,7 +666,7 @@ div:where(.swal2-container) {
     font-weight: $swal2-title-font-weight;
     text-align: $swal2-title-text-align;
     text-transform: none;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
     cursor: initial;
   }
 
@@ -866,7 +865,7 @@ div:where(.swal2-container) {
     font-weight: $swal2-html-container-font-weight;
     line-height: $swal2-html-container-line-height;
     text-align: $swal2-html-container-text-align;
-    word-wrap: $swal2-html-container-word-wrap;
+    overflow-wrap: break-word;
     word-break: $swal2-html-container-word-break;
     cursor: initial;
   }

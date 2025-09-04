@@ -1,3 +1,10 @@
+# [11.23.0](https://github.com/sweetalert2/sweetalert2/compare/v11.22.4...v11.23.0) (2025-09-04)
+
+
+### Features
+
+* replace deprecated word-wrap with overflow-wrap ([2667a49](https://github.com/sweetalert2/sweetalert2/commit/2667a49f423a86015224a4010422bc7ed3208b16))
+
 ## [11.22.4](https://github.com/sweetalert2/sweetalert2/compare/v11.22.3...v11.22.4) (2025-08-14)
 
 

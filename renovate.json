@@ -1,3 +1,4 @@
 {
-  "extends": ["github>sweetalert2/renovate-config"]
+  "extends": ["github>sweetalert2/renovate-config"],
+  "ignoreDeps": ["typescript"]
 }

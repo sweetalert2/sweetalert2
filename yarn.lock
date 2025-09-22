@@ -1433,9 +1433,9 @@
     typescript-eslint "^8.0.0"
 
 "@sweetalert2/stylelint-config@^3.0.0":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@sweetalert2/stylelint-config/-/stylelint-config-3.0.5.tgz#9651f5a589233cd0f32f7d8ee48bdcbea8ff3ae9"
-  integrity sha512-Mfdhszi74H+kAzx/1ACSh5XwUYDIpTjmqLkl9wNwpwZunq0R3nl+4DLnBT1fAfzKuIfx8GC6XP+PWDYyD/qcdw==
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@sweetalert2/stylelint-config/-/stylelint-config-3.0.6.tgz#2d83984641dc9c01e62fe049f4b71692bff57841"
+  integrity sha512-/21/UHr2t17ttKQhJa5g/coRUT2RJe3XSHaiJFg2+D6exTQo/3FmX9URagW0j6VlUNQ5dZHEnGNzQZSwJyml5A==
   dependencies:
     postcss "^8.4.18"
     postcss-scss "^4.0.5"

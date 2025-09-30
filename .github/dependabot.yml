@@ -8,7 +8,7 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'daily'
+      interval: 'weekly'
     # don't touch package.json, only update yarn.lock
     versioning-strategy: lockfile-only
     # group minor and patch deps

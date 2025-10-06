@@ -14,8 +14,8 @@
   --swal2-color: #212529;
 
   /* ANIMATIONS */
-  --swal2-show-animation: swal2-show 0.15s ease-out;
-  --swal2-hide-animation: swal2-hide 0.15s ease-in forwards;
+  --swal2-show-animation: bootstrap-4-fade-in 0.15s ease-out;
+  --swal2-hide-animation: bootstrap-4-fade-out 0.15s ease-in forwards;
 
   /* TITLE */
   --swal2-title-padding: 0 0 0.75rem;
@@ -139,4 +139,29 @@
 
   /* CLOSE BUTTON */
   --swal2-close-button-color: #adb5bd;
+}
+
+/* Bootstrap 4 Modal Animations */
+@keyframes bootstrap-4-fade-in {
+  0% {
+    transform: translate3d(0, -50px, 0) scale(0.9);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bootstrap-4-fade-out {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(0, -50px, 0) scale(0.9);
+    opacity: 0;
+  }
 }

@@ -1,0 +1,167 @@
+[data-swal2-theme='bootstrap-4'],
+[data-swal2-theme='bootstrap-4-light'],
+[data-swal2-theme='bootstrap-4-dark'] {
+  /* BACKDROP */
+  --swal2-backdrop: rgba(0, 0, 0, 0.5);
+  --swal2-backdrop-transition: opacity 0.15s linear;
+
+  /* POPUP */
+  --swal2-width: 32rem;
+  --swal2-padding: 1.5rem;
+  --swal2-border: 1px solid rgba(0, 0, 0, 0.2);
+  --swal2-border-radius: 0.375rem;
+  --swal2-background: #fff;
+  --swal2-color: #212529;
+
+  /* ANIMATIONS */
+  --swal2-show-animation: bootstrap-4-fade-in 0.15s ease-out;
+  --swal2-hide-animation: bootstrap-4-fade-out 0.15s ease-in forwards;
+
+  /* TITLE */
+  --swal2-title-padding: 0 0 0.75rem;
+
+  /* HTML CONTAINER */
+  --swal2-html-container-padding: 0 0 1rem;
+
+  /* INPUT */
+  --swal2-input-border: 1px solid #ced4da;
+  --swal2-input-border-radius: 0.375rem;
+  --swal2-input-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+  --swal2-input-background: #fff;
+  --swal2-input-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  /* INPUT:HOVER */
+  --swal2-input-hover-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+
+  /* INPUT:FOCUS */
+  --swal2-input-focus-border: 1px solid #80bdff;
+  --swal2-input-focus-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+
+  /* PROGRESS STEPS */
+  --swal2-progress-step-background: #007bff;
+
+  /* VALIDATION MESSAGE */
+  --swal2-validation-message-background: #f8d7da;
+  --swal2-validation-message-color: #721c24;
+
+  /* FOOTER */
+  --swal2-footer-border-color: #dee2e6;
+  --swal2-footer-background: #f8f9fa;
+  --swal2-footer-color: #6c757d;
+
+  /* CLOSE BUTTON */
+  --swal2-close-button-color: #6c757d;
+  --swal2-close-button-transition: color 0.15s ease-in-out, opacity 0.15s ease-in-out;
+
+  /* ACTIONS */
+  --swal2-actions-justify-content: flex-end;
+  --swal2-actions-margin: 1rem -0.25rem 0;
+  --swal2-actions-padding: 0;
+
+  /* COMMON VARIABLES FOR ALL ACTION BUTTONS */
+  --swal2-action-button-transition:
+    color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  --swal2-action-button-hover: rgba(0, 0, 0, 0.075);
+  --swal2-action-button-active: rgba(0, 0, 0, 0.125);
+  --swal2-action-button-focus-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+
+  /* CONFIRM BUTTON */
+  --swal2-confirm-button-border-radius: 0.375rem;
+  --swal2-confirm-button-background-color: #007bff;
+  --swal2-confirm-button-color: #fff;
+  --swal2-confirm-button-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+
+  /* DENY BUTTON */
+  --swal2-deny-button-border-radius: 0.375rem;
+  --swal2-deny-button-background-color: #dc3545;
+  --swal2-deny-button-color: #fff;
+  --swal2-deny-button-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+
+  /* CANCEL BUTTON */
+  --swal2-cancel-button-border-radius: 0.375rem;
+  --swal2-cancel-button-background-color: #6c757d;
+  --swal2-cancel-button-color: #fff;
+  --swal2-cancel-button-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+
+  /* TOASTS */
+  --swal2-toast-border: 1px solid rgba(0, 0, 0, 0.1);
+  --swal2-toast-box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-swal2-theme='bootstrap-4'] {
+    /* POPUP */
+    --swal2-background: #343a40;
+    --swal2-color: #f8f9fa;
+    --swal2-border: 1px solid #495057;
+
+    /* INPUT */
+    --swal2-input-background: #495057;
+    --swal2-input-border: 1px solid #6c757d;
+    --swal2-input-focus-border: 1px solid #80bdff;
+    --swal2-input-focus-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+
+    /* VALIDATION MESSAGE */
+    --swal2-validation-message-background: #721c24;
+    --swal2-validation-message-color: #f5c6cb;
+
+    /* FOOTER */
+    --swal2-footer-border-color: #495057;
+    --swal2-footer-background: #495057;
+    --swal2-footer-color: #adb5bd;
+
+    /* CLOSE BUTTON */
+    --swal2-close-button-color: #adb5bd;
+  }
+}
+
+[data-swal2-theme='bootstrap-4-dark'] {
+  /* POPUP */
+  --swal2-background: #343a40;
+  --swal2-color: #f8f9fa;
+  --swal2-border: 1px solid #495057;
+
+  /* INPUT */
+  --swal2-input-background: #495057;
+  --swal2-input-border: 1px solid #6c757d;
+  --swal2-input-focus-border: 1px solid #80bdff;
+  --swal2-input-focus-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+
+  /* VALIDATION MESSAGE */
+  --swal2-validation-message-background: #721c24;
+  --swal2-validation-message-color: #f5c6cb;
+
+  /* FOOTER */
+  --swal2-footer-border-color: #495057;
+  --swal2-footer-background: #495057;
+  --swal2-footer-color: #adb5bd;
+
+  /* CLOSE BUTTON */
+  --swal2-close-button-color: #adb5bd;
+}
+
+/* Bootstrap 4 Modal Animations */
+@keyframes bootstrap-4-fade-in {
+  0% {
+    transform: translate3d(0, -50px, 0) scale(0.9);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bootstrap-4-fade-out {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(0, -50px, 0) scale(0.9);
+    opacity: 0;
+  }
+}

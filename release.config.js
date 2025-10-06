@@ -28,6 +28,7 @@ module.exports = {
           { path: 'dist/sweetalert2.min.css' },
           { path: 'dist/sweetalert2.min.js' },
           { path: 'themes/borderless.css' },
+          { path: 'themes/bootstrap-4.css' },
           { path: 'themes/minimal.css' },
           { path: 'themes/embed-iframe.css' },
           { path: 'themes/bulma.css' },

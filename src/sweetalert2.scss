@@ -1520,31 +1520,25 @@ div:where(.swal2-icon) {
 // Appearance animation
 @keyframes swal2-show {
   0% {
-    transform: scale(0.7);
-  }
-
-  45% {
-    transform: scale(1.05);
-  }
-
-  80% {
-    transform: scale(0.95);
+    transform: translate3d(0, -50px, 0) scale(0.9);
+    opacity: 0;
   }
 
   100% {
-    transform: scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
   }
 }
 
 // Disppearance animation
 @keyframes swal2-hide {
   0% {
-    transform: scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
     opacity: 1;
   }
 
   100% {
-    transform: scale(0.5);
+    transform: translate3d(0, -50px, 0) scale(0.9);
     opacity: 0;
   }
 }

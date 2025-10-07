@@ -1,3 +1,10 @@
+## [11.24.1](https://github.com/sweetalert2/sweetalert2/compare/v11.24.0...v11.24.1) (2025-10-07)
+
+
+### Bug Fixes
+
+* make swal-show and swal-hide animations less fancy ([#2875](https://github.com/sweetalert2/sweetalert2/issues/2875)) ([98288c1](https://github.com/sweetalert2/sweetalert2/commit/98288c1cf0a483d387cb568e7942492c5644cbe8))
+
 # [11.24.0](https://github.com/sweetalert2/sweetalert2/compare/v11.23.0...v11.24.0) (2025-10-06)
 
 

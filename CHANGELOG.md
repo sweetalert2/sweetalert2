@@ -1,3 +1,10 @@
+# [11.25.0](https://github.com/sweetalert2/sweetalert2/compare/v11.24.1...v11.25.0) (2025-10-08)
+
+
+### Features
+
+* add Material UI theme ([#2876](https://github.com/sweetalert2/sweetalert2/issues/2876)) ([14c1392](https://github.com/sweetalert2/sweetalert2/commit/14c1392da3769fa9e1f1fef28a678ae8c4590659))
+
 ## [11.24.1](https://github.com/sweetalert2/sweetalert2/compare/v11.24.0...v11.24.1) (2025-10-07)
 
 

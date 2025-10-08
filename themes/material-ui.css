@@ -1,0 +1,183 @@
+[data-swal2-theme='material-ui'],
+[data-swal2-theme='material-ui-light'],
+[data-swal2-theme='material-ui-dark'] {
+  /* BACKDROP */
+  --swal2-backdrop: rgba(0, 0, 0, 0.5);
+  --swal2-backdrop-transition: opacity 0.225s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* POPUP */
+  --swal2-width: 35rem;
+  --swal2-padding: 1.5rem;
+  --swal2-border: none;
+  --swal2-border-radius: 0.5rem;
+  --swal2-background: #fff;
+  --swal2-color: rgba(0, 0, 0, 0.87);
+
+  /* ANIMATIONS */
+  --swal2-show-animation: material-ui-fade-in 0.225s cubic-bezier(0.4, 0, 0.2, 1);
+  --swal2-hide-animation: material-ui-fade-out 0.195s cubic-bezier(0.4, 0, 1, 1) forwards;
+
+  /* TITLE */
+  --swal2-title-padding: 0 0 1rem;
+
+  /* HTML CONTAINER */
+  --swal2-html-container-padding: 0 0 1.5rem;
+
+  /* INPUT */
+  --swal2-input-border: none;
+  --swal2-input-border-radius: 0.25rem;
+  --swal2-input-box-shadow: none;
+  --swal2-input-background: rgba(0, 0, 0, 0.04);
+  --swal2-input-transition:
+    background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* INPUT:HOVER */
+  --swal2-input-hover-box-shadow: none;
+
+  /* INPUT:FOCUS */
+  --swal2-input-focus-border: none;
+  --swal2-input-focus-box-shadow: inset 0 -2px 0 #1976d2;
+
+  /* PROGRESS STEPS */
+  --swal2-progress-step-background: #1976d2;
+
+  /* VALIDATION MESSAGE */
+  --swal2-validation-message-background: #ffebee;
+  --swal2-validation-message-color: #c62828;
+
+  /* FOOTER */
+  --swal2-footer-border-color: rgba(0, 0, 0, 0.12);
+  --swal2-footer-background: transparent;
+  --swal2-footer-color: rgba(0, 0, 0, 0.6);
+
+  /* CLOSE BUTTON */
+  --swal2-close-button-color: rgba(0, 0, 0, 0.54);
+  --swal2-close-button-transition:
+    color 0.15s cubic-bezier(0.4, 0, 0.2, 1), transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ACTIONS */
+  --swal2-actions-justify-content: flex-end;
+  --swal2-actions-margin: 0.5rem -0.5rem 0;
+  --swal2-actions-padding: 0;
+
+  /* COMMON VARIABLES FOR ALL ACTION BUTTONS */
+  --swal2-action-button-transition:
+    background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --swal2-action-button-hover: rgba(0, 0, 0, 0.04);
+  --swal2-action-button-active: rgba(0, 0, 0, 0.12);
+  --swal2-action-button-focus-box-shadow: none;
+
+  /* CONFIRM BUTTON */
+  --swal2-confirm-button-border-radius: 0.25rem;
+  --swal2-confirm-button-background-color: #1976d2;
+  --swal2-confirm-button-color: #fff;
+  --swal2-confirm-button-box-shadow:
+    0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+
+  /* DENY BUTTON */
+  --swal2-deny-button-border-radius: 0.25rem;
+  --swal2-deny-button-background-color: #d32f2f;
+  --swal2-deny-button-color: #fff;
+  --swal2-deny-button-box-shadow:
+    0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+
+  /* CANCEL BUTTON */
+  --swal2-cancel-button-border-radius: 0.25rem;
+  --swal2-cancel-button-background-color: transparent;
+  --swal2-cancel-button-color: #1976d2;
+  --swal2-cancel-button-box-shadow: none;
+
+  /* TOASTS */
+  --swal2-toast-border: none;
+  --swal2-toast-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-swal2-theme='material-ui'] {
+    /* POPUP */
+    --swal2-background: #424242;
+    --swal2-color: rgba(255, 255, 255, 0.87);
+
+    /* INPUT */
+    --swal2-input-background: rgba(255, 255, 255, 0.09);
+    --swal2-input-focus-box-shadow: inset 0 -2px 0 #90caf9;
+
+    /* VALIDATION MESSAGE */
+    --swal2-validation-message-background: #ffcdd2;
+    --swal2-validation-message-color: #d32f2f;
+
+    /* FOOTER */
+    --swal2-footer-border-color: rgba(255, 255, 255, 0.12);
+    --swal2-footer-color: rgba(255, 255, 255, 0.6);
+
+    /* CLOSE BUTTON */
+    --swal2-close-button-color: rgba(255, 255, 255, 0.7);
+
+    /* COMMON VARIABLES FOR ALL ACTION BUTTONS */
+    --swal2-action-button-hover: rgba(255, 255, 255, 0.08);
+    --swal2-action-button-active: rgba(255, 255, 255, 0.16);
+
+    /* CONFIRM BUTTON */
+    --swal2-confirm-button-background-color: #1e88e5;
+
+    /* CANCEL BUTTON */
+    --swal2-cancel-button-color: #90caf9;
+  }
+}
+
+[data-swal2-theme='material-ui-dark'] {
+  /* POPUP */
+  --swal2-background: #424242;
+  --swal2-color: rgba(255, 255, 255, 0.87);
+
+  /* INPUT */
+  --swal2-input-background: rgba(255, 255, 255, 0.09);
+  --swal2-input-focus-box-shadow: inset 0 -2px 0 #90caf9;
+
+  /* VALIDATION MESSAGE */
+  --swal2-validation-message-background: #ffcdd2;
+  --swal2-validation-message-color: #d32f2f;
+
+  /* FOOTER */
+  --swal2-footer-border-color: rgba(255, 255, 255, 0.12);
+  --swal2-footer-color: rgba(255, 255, 255, 0.6);
+
+  /* CLOSE BUTTON */
+  --swal2-close-button-color: rgba(255, 255, 255, 0.7);
+
+  /* COMMON VARIABLES FOR ALL ACTION BUTTONS */
+  --swal2-action-button-hover: rgba(255, 255, 255, 0.08);
+  --swal2-action-button-active: rgba(255, 255, 255, 0.16);
+
+  /* CONFIRM BUTTON */
+  --swal2-confirm-button-background-color: #1e88e5;
+
+  /* CANCEL BUTTON */
+  --swal2-cancel-button-color: #90caf9;
+}
+
+/* MaterialUI Modal Animations */
+@keyframes material-ui-fade-in {
+  0% {
+    transform: scale(0.8) translateY(-16px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes material-ui-fade-out {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.8) translateY(-16px);
+    opacity: 0;
+  }
+}

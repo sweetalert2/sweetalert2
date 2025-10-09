@@ -19,6 +19,7 @@ For all questions related to sponsorship please get in touch with me via email s
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
+<td align="center"><a href="https://kryptot.fi/"><img src="https://sweetalert2.github.io/images/sponsors/kryptot.png" width="80"><br>Kryptot</a></td>
 <td align="center"><a href="https://www.inksonic.com/"><img src="https://sweetalert2.github.io/images/sponsors/inksonic.png" width="80"><br>InkSonic</a></td>
 <td align="center"><a href="https://bluehive.com/?utm_source=sweetalert2&utm_medium=sponsored&utm_campaign=listing"><img src="https://sweetalert2.github.io/images/sponsors/bluehive.png" width="80"><br>Occupational Healthcare</a></td>
 <td align="center"><a href="https://boilerplatehub.com/?utm_source=sweetalert2"><img src="https://sweetalert2.github.io/images/sponsors/boilerplatehub.jpg" width="80"><br>Build your SaaS or App</a></td>

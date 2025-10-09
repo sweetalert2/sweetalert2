@@ -1,3 +1,10 @@
+## [11.25.1](https://github.com/sweetalert2/sweetalert2/compare/v11.25.0...v11.25.1) (2025-10-09)
+
+
+### Bug Fixes
+
+* replace $swal2-outline-color SCSS variable with literal value ([#2878](https://github.com/sweetalert2/sweetalert2/issues/2878)) ([7a63dad](https://github.com/sweetalert2/sweetalert2/commit/7a63dadd896228c8e7f6fbf33e1e9bc7702736af))
+
 # [11.25.0](https://github.com/sweetalert2/sweetalert2/compare/v11.24.1...v11.25.0) (2025-10-08)
 
 

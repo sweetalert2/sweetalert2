@@ -43,8 +43,6 @@ export const openPopup = (params) => {
     setTimeout(() => params.didOpen(popup))
   }
   globalState.eventEmitter.emit('didOpen', popup)
-
-  dom.removeClass(container, swalClasses['no-transition'])
 }
 
 /**
@@ -59,6 +57,9 @@ const swalOpenAnimationFinished = (event) => {
   popup.removeEventListener('animationend', swalOpenAnimationFinished)
   popup.removeEventListener('transitionend', swalOpenAnimationFinished)
   container.style.overflowY = 'auto'
+
+  // no-transition is added in init() in case one swal is opened right after another
+  dom.removeClass(container, swalClasses['no-transition'])
 }
 
 /**

@@ -1,3 +1,10 @@
+## [11.26.1](https://github.com/sweetalert2/sweetalert2/compare/v11.26.0...v11.26.1) (2025-10-10)
+
+
+### Bug Fixes
+
+* backdrop blinking when a new swal is opened right after another one ([#2880](https://github.com/sweetalert2/sweetalert2/issues/2880)) ([767548e](https://github.com/sweetalert2/sweetalert2/commit/767548e921caccbf95dbd931f3793dfa57048eae))
+
 # [11.26.0](https://github.com/sweetalert2/sweetalert2/compare/v11.25.1...v11.26.0) (2025-10-10)
 
 

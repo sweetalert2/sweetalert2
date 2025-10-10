@@ -1,3 +1,10 @@
+# [11.26.0](https://github.com/sweetalert2/sweetalert2/compare/v11.25.1...v11.26.0) (2025-10-10)
+
+
+### Features
+
+* add Bootstrap 5 theme ([#2879](https://github.com/sweetalert2/sweetalert2/issues/2879)) ([0368db4](https://github.com/sweetalert2/sweetalert2/commit/0368db438ebb852650efdae78926292875c5d553))
+
 ## [11.25.1](https://github.com/sweetalert2/sweetalert2/compare/v11.25.0...v11.25.1) (2025-10-09)
 
 

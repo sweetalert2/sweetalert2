@@ -12,9 +12,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+      - uses: oven-sh/setup-bun@v2
 
-      - run: yarn install
+      - run: bun install
 
-      - run: yarn build
+      - run: bun run build
 
-      - run: yarn test --browser firefox
+      - run: bun run test --browser firefox

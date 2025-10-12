@@ -17,7 +17,7 @@ if (process.env.VERSION) {
 }
 
 echo`Running the build...`
-await $`yarn build`
+await $`bun run build`
 echo``
 
 echo`OK!`

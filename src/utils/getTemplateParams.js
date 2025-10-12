@@ -61,10 +61,10 @@ const getSwalParams = (templateContent) => {
 
 /**
  * @param {DocumentFragment} templateContent
- * @returns {Record<string, Function>}
+ * @returns {Record<string, () => void>}
  */
 const getSwalFunctionParams = (templateContent) => {
-  /** @type {Record<string, Function>} */
+  /** @type {Record<string, () => void>} */
   const result = {}
   /** @type {HTMLElement[]} */
   const swalFunctions = Array.from(templateContent.querySelectorAll('swal-function-param'))

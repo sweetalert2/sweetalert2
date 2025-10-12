@@ -6,6 +6,7 @@
  * @typedef { import('sweetalert2').SweetAlertInput } SweetAlertInput
  * @typedef { import('sweetalert2').SweetAlertResult } SweetAlertResult
  * @typedef { import('sweetalert2').SweetAlertOptions['inputValue'] } SweetAlertInputValue
+ * @typedef { import('sweetalert2').DismissReason } DismissReason
  */
 
 /**

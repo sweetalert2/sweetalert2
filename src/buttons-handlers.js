@@ -112,12 +112,17 @@ const deny = (instance, value) => {
           instance.hideLoading()
           handleAwaitingPromise(instance)
         } else {
-          instance.close({ isDenied: true, value: typeof preDenyValue === 'undefined' ? value : preDenyValue })
+          instance.close(
+            /** @type SweetAlertResult */ ({
+              isDenied: true,
+              value: typeof preDenyValue === 'undefined' ? value : preDenyValue,
+            })
+          )
         }
       })
       .catch((error) => rejectWith(instance || this, error))
   } else {
-    instance.close({ isDenied: true, value })
+    instance.close(/** @type SweetAlertResult */ ({ isDenied: true, value }))
   }
 }
 
@@ -126,7 +131,7 @@ const deny = (instance, value) => {
  * @param {*} value
  */
 const succeedWith = (instance, value) => {
-  instance.close({ isConfirmed: true, value })
+  instance.close(/** @type SweetAlertResult */ ({ isConfirmed: true, value }))
 }
 
 /**

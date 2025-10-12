@@ -1,5 +1,3 @@
-/** @typedef {'cancel' | 'backdrop' | 'close' | 'esc' | 'timer'} DismissReason */
-
 /** @type {Record<DismissReason, DismissReason>} */
 export const DismissReason = Object.freeze({
   cancel: 'cancel',

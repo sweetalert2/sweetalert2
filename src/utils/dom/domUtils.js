@@ -206,10 +206,10 @@ export const getDirectChildByClass = (elem, className) => {
  * @param {string | number | null | undefined} value
  */
 export const applyNumericalStyle = (elem, property, value) => {
-  if (value === `${parseInt(value)}`) {
+  if (value === `${parseInt(`${value}`)}`) {
     value = parseInt(value)
   }
-  if (value || parseInt(value) === 0) {
+  if (value || parseInt(`${value}`) === 0) {
     elem.style.setProperty(property, typeof value === 'number' ? `${value}px` : value)
   } else {
     elem.style.removeProperty(property)

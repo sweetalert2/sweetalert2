@@ -112,7 +112,7 @@ const swalPromise = (instance, domCache, innerParams) => {
      * @param {DismissReason} dismiss
      */
     const dismissWith = (dismiss) => {
-      instance.close({ isDismissed: true, dismiss })
+      instance.close({ isDismissed: true, dismiss, isConfirmed: false, isDenied: false })
     }
 
     privateMethods.swalPromiseResolve.set(instance, resolve)

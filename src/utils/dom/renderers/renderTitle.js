@@ -12,7 +12,7 @@ export const renderTitle = (instance, params) => {
 
   dom.showWhenInnerHtmlPresent(title)
 
-  dom.toggle(title, params.title || params.titleText, 'block')
+  dom.toggle(title, Boolean(params.title || params.titleText), 'block')
 
   if (params.title) {
     dom.parseHtmlToContainer(params.title, title)

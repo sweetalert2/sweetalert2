@@ -12,7 +12,7 @@ export const renderFooter = (instance, params) => {
 
   dom.showWhenInnerHtmlPresent(footer)
 
-  dom.toggle(footer, params.footer, 'block')
+  dom.toggle(footer, Boolean(params.footer), 'block')
 
   if (params.footer) {
     dom.parseHtmlToContainer(params.footer, footer)

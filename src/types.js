@@ -20,11 +20,11 @@
  * @property {Timer} [timeout]
  * @property {EventEmitter} [eventEmitter]
  * @property {NodeJS.Timeout} [restoreFocusTimeout]
- * @property {(this: HTMLElement, event: KeyboardEvent) => any} [keydownHandler]
+ * @property {(this: HTMLElement, event: KeyboardEvent) => void} [keydownHandler]
  * @property {HTMLElement | (Window & typeof globalThis)} [keydownTarget]
  * @property {boolean} [keydownHandlerAdded]
  * @property {boolean} [keydownListenerCapture]
- * @property {Function} [swalCloseEventFinishedCallback]
+ * @property {() => void} [swalCloseEventFinishedCallback]
  */
 
 /**

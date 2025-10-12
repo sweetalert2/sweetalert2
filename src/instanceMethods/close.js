@@ -13,7 +13,7 @@ import { isSafariOrIOS } from '../utils/iosFix.js'
  * @param {SweetAlert} instance
  * @param {HTMLElement} container
  * @param {boolean} returnFocus
- * @param {Function} didClose
+ * @param {() => void} didClose
  */
 function removePopupAndResetState(instance, container, returnFocus, didClose) {
   if (dom.isToast()) {
@@ -55,7 +55,7 @@ function removeBodyClasses() {
 /**
  * Instance method to close sweetAlert
  *
- * @param {any} resolveValue
+ * @param {SweetAlertResult | undefined} resolveValue
  */
 export function close(resolveValue) {
   resolveValue = prepareResolveValue(resolveValue)
@@ -101,7 +101,7 @@ const triggerClosePopup = (instance) => {
 }
 
 /**
- * @param {any} error
+ * @param {Error | string} error
  */
 export function rejectPromise(error) {
   const rejectPromise = privateMethods.swalPromiseReject.get(this)
@@ -126,7 +126,7 @@ export const handleAwaitingPromise = (instance) => {
 }
 
 /**
- * @param {any} resolveValue
+ * @param {SweetAlertResult | undefined} resolveValue
  * @returns {SweetAlertResult}
  */
 const prepareResolveValue = (resolveValue) => {
@@ -177,7 +177,7 @@ const handlePopupAnimation = (instance, popup, innerParams) => {
  * @param {HTMLElement} popup
  * @param {HTMLElement} container
  * @param {boolean} returnFocus
- * @param {Function} didClose
+ * @param {() => void} didClose
  */
 const animatePopup = (instance, popup, container, returnFocus, didClose) => {
   globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(
@@ -204,7 +204,7 @@ const animatePopup = (instance, popup, container, returnFocus, didClose) => {
 
 /**
  * @param {SweetAlert} instance
- * @param {Function} didClose
+ * @param {() => void} didClose
  */
 const triggerDidCloseAndDispose = (instance, didClose) => {
   setTimeout(() => {

@@ -4,7 +4,7 @@ import { callIfFunction } from './utils/utils.js'
 /**
  * @param {SweetAlertOptions} innerParams
  * @param {DomCache} domCache
- * @param {Function} dismissWith
+ * @param {(dismiss: DismissReason) => void} dismissWith
  */
 export const handlePopupClick = (innerParams, domCache, dismissWith) => {
   if (innerParams.toast) {
@@ -24,7 +24,7 @@ export const handlePopupClick = (innerParams, domCache, dismissWith) => {
 /**
  * @param {SweetAlertOptions} innerParams
  * @param {DomCache} domCache
- * @param {Function} dismissWith
+ * @param {(dismiss: DismissReason) => void} dismissWith
  */
 const handleToastClick = (innerParams, domCache, dismissWith) => {
   // Closing toast by internal click
@@ -89,7 +89,7 @@ const handleContainerMousedown = (domCache) => {
 /**
  * @param {SweetAlertOptions} innerParams
  * @param {DomCache} domCache
- * @param {Function} dismissWith
+ * @param {(dismiss: DismissReason) => void} dismissWith
  */
 const handleModalClick = (innerParams, domCache, dismissWith) => {
   domCache.container.onclick = (e) => {

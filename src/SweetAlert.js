@@ -27,7 +27,7 @@ export class SweetAlert {
   #promise
 
   /**
-   * @param {...any} args
+   * @param {...(SweetAlertOptions | string)} args
    * @this {SweetAlert}
    */
   constructor(...args) {
@@ -197,7 +197,7 @@ const populateDomCache = (instance) => {
 /**
  * @param {GlobalState} globalState
  * @param {SweetAlertOptions} innerParams
- * @param {Function} dismissWith
+ * @param {(dismiss: DismissReason) => void} dismissWith
  */
 const setupTimer = (globalState, innerParams, dismissWith) => {
   const timerProgressBar = dom.getTimerProgressBar()
@@ -324,8 +324,8 @@ Object.assign(SweetAlert, staticMethods)
 // Proxy to instance methods to constructor, for now, for backwards compatibility
 Object.keys(instanceMethods).forEach((key) => {
   /**
-   * @param {...any} args
-   * @returns {any | undefined}
+   * @param {...(SweetAlertOptions | string | undefined)} args
+   * @returns {SweetAlertResult | Promise<SweetAlertResult> | undefined}
    */
   SweetAlert[key] = function (...args) {
     if (currentInstance && currentInstance[key]) {

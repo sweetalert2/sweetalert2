@@ -71,7 +71,7 @@ const handleInputOptions = (instance, params) => {
     return
   }
   /**
-   * @param {Record<string, any>} inputOptions
+   * @param {*} inputOptions
    */
   const processInputOptions = (inputOptions) => {
     if (params.input === 'select') {
@@ -200,7 +200,7 @@ function populateRadioOptions(popup, inputOptions, params) {
 /**
  * Converts `inputOptions` into an array of `[value, label]`s
  *
- * @param {Record<string, any>} inputOptions
+ * @param {*} inputOptions
  * @typedef {string[]} InputOptionFlattened
  * @returns {InputOptionFlattened[]}
  */

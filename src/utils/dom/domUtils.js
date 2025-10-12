@@ -203,7 +203,7 @@ export const getDirectChildByClass = (elem, className) => {
 /**
  * @param {HTMLElement} elem
  * @param {string} property
- * @param {*} value
+ * @param {string | number | null | undefined} value
  */
 export const applyNumericalStyle = (elem, property, value) => {
   if (value === `${parseInt(value)}`) {
@@ -268,7 +268,7 @@ export const setStyle = (parent, selector, property, value) => {
 
 /**
  * @param {HTMLElement} elem
- * @param {any} condition
+ * @param {boolean | string | null | undefined} condition
  * @param {string} display
  */
 export const toggle = (elem, condition, display = 'flex') => {

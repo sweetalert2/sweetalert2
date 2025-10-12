@@ -35,7 +35,7 @@ export const handleDenyButtonClick = (instance) => {
 
 /**
  * @param {SweetAlert} instance
- * @param {Function} dismissWith
+ * @param {(dismiss: DismissReason) => void} dismissWith
  */
 export const handleCancelButtonClick = (instance, dismissWith) => {
   instance.disableButtons()
@@ -92,7 +92,7 @@ const handleInputValidator = (instance, inputValue, type) => {
 
 /**
  * @param {SweetAlert} instance
- * @param {any} value
+ * @param {*} value
  */
 const deny = (instance, value) => {
   const innerParams = privateProps.innerParams.get(instance || this)
@@ -123,7 +123,7 @@ const deny = (instance, value) => {
 
 /**
  * @param {SweetAlert} instance
- * @param {any} value
+ * @param {*} value
  */
 const succeedWith = (instance, value) => {
   instance.close({ isConfirmed: true, value })
@@ -141,7 +141,7 @@ const rejectWith = (instance, error) => {
 /**
  *
  * @param {SweetAlert} instance
- * @param {any} value
+ * @param {*} value
  */
 const confirm = (instance, value) => {
   const innerParams = privateProps.innerParams.get(instance || this)

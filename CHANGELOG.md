@@ -1,3 +1,10 @@
+## [11.26.2](https://github.com/sweetalert2/sweetalert2/compare/v11.26.1...v11.26.2) (2025-10-12)
+
+
+### Bug Fixes
+
+* DismissReason type, ESLint warnings ([#2882](https://github.com/sweetalert2/sweetalert2/issues/2882)) ([c5af0cf](https://github.com/sweetalert2/sweetalert2/commit/c5af0cf40e5e1c81d9f2d91ae6ee3e7541d33c77))
+
 ## [11.26.1](https://github.com/sweetalert2/sweetalert2/compare/v11.26.0...v11.26.1) (2025-10-10)
 
 

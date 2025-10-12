@@ -10,17 +10,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+      - uses: oven-sh/setup-bun@v2
 
-      - run: yarn install
+      - run: bun install
 
-      - run: yarn build
+      - run: bun run build
 
-      - run: yarn lint
+      - run: bun lint
 
-      - run: yarn check-types
+      - run: bun check-types
 
       - name: Run tests in Chrome
-        run: yarn test --browser chrome
+        run: bun run test --browser chrome
 
       - name: Test in CommonJS
         if: github.ref_name == 'main'
@@ -29,11 +30,11 @@ jobs:
       - name: Test with Webpack
         if: github.ref_name == 'main'
         run: |
-          yarn add --dev webpack@^5.0.0 webpack-cli@^5.0.0
-          yarn webpack-build
-          yarn add --dev webpack@^4.0.0 webpack-cli@^4.0.0
+          bun add --dev webpack@^5.0.0 webpack-cli@^5.0.0
+          bun webpack-build
+          bun add --dev webpack@^4.0.0 webpack-cli@^4.0.0
           export NODE_OPTIONS=--openssl-legacy-provider
-          yarn webpack-build
+          bun webpack-build
 
       - name: Check TypeScript
         if: github.ref_name == 'main'

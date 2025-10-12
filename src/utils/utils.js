@@ -64,25 +64,25 @@ export const warnAboutDeprecation = (deprecatedParam, useInstead = null) => {
  * If `arg` is a function, call it (with no arguments or context) and return the result.
  * Otherwise, just pass the value through
  *
- * @param {Function | any} arg
- * @returns {any}
+ * @param {(() => *) | *} arg
+ * @returns {*}
  */
 export const callIfFunction = (arg) => (typeof arg === 'function' ? arg() : arg)
 
 /**
- * @param {any} arg
+ * @param {*} arg
  * @returns {boolean}
  */
 export const hasToPromiseFn = (arg) => arg && typeof arg.toPromise === 'function'
 
 /**
- * @param {any} arg
- * @returns {Promise<any>}
+ * @param {*} arg
+ * @returns {Promise<*>}
  */
 export const asPromise = (arg) => (hasToPromiseFn(arg) ? arg.toPromise() : Promise.resolve(arg))
 
 /**
- * @param {any} arg
+ * @param {*} arg
  * @returns {boolean}
  */
 export const isPromise = (arg) => arg && Promise.resolve(arg) === arg

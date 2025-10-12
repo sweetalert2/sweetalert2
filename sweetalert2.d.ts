@@ -500,6 +500,8 @@ declare module 'sweetalert2' {
     | 'theme'
     | 'willClose'
 
+  export type DismissReason = 'cancel' | 'backdrop' | 'close' | 'esc' | 'timer'
+
   export interface SweetAlertCustomClass {
     container?: string | readonly string[]
     popup?: string | readonly string[]
@@ -525,7 +527,7 @@ declare module 'sweetalert2' {
     readonly isDenied: boolean
     readonly isDismissed: boolean
     readonly value?: T
-    readonly dismiss?: Swal.DismissReason
+    readonly dismiss?: DismissReason
   }
 
   export type SweetAlertOptions = SweetAlertInputValidator & {

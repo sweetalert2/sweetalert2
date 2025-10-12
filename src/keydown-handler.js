@@ -18,7 +18,7 @@ export const removeKeydownHandler = (globalState) => {
 /**
  * @param {GlobalState} globalState
  * @param {SweetAlertOptions} innerParams
- * @param {*} dismissWith
+ * @param {(dismiss: DismissReason) => void} dismissWith
  */
 export const addKeydownHandler = (globalState, innerParams, dismissWith) => {
   removeKeydownHandler(globalState)
@@ -71,7 +71,7 @@ const arrowKeysPreviousButton = ['ArrowLeft', 'ArrowUp']
 /**
  * @param {SweetAlertOptions} innerParams
  * @param {KeyboardEvent} event
- * @param {Function} dismissWith
+ * @param {(dismiss: DismissReason) => void} dismissWith
  */
 const keydownHandler = (innerParams, event, dismissWith) => {
   if (!innerParams) {
@@ -200,7 +200,7 @@ const handleArrows = (key) => {
 /**
  * @param {KeyboardEvent} event
  * @param {SweetAlertOptions} innerParams
- * @param {Function} dismissWith
+ * @param {(dismiss: DismissReason) => void} dismissWith
  */
 const handleEsc = (event, innerParams, dismissWith) => {
   event.preventDefault()

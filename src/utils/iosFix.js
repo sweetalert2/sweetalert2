@@ -80,7 +80,7 @@ const shouldPreventTouchMove = (event) => {
 /**
  * https://github.com/sweetalert2/sweetalert2/issues/1786
  *
- * @param {*} event
+ * @param {object} event
  * @returns {boolean}
  */
 const isStylus = (event) => {

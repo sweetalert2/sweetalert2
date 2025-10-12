@@ -34,10 +34,10 @@ export const getTemplateParams = (params) => {
 
 /**
  * @param {DocumentFragment} templateContent
- * @returns {Record<string, any>}
+ * @returns {Record<string, string | boolean | number>}
  */
 const getSwalParams = (templateContent) => {
-  /** @type {Record<string, any>} */
+  /** @type {Record<string, string | boolean | number>} */
   const result = {}
   /** @type {HTMLElement[]} */
   const swalParams = Array.from(templateContent.querySelectorAll('swal-param'))
@@ -61,10 +61,10 @@ const getSwalParams = (templateContent) => {
 
 /**
  * @param {DocumentFragment} templateContent
- * @returns {Record<string, any>}
+ * @returns {Record<string, () => void>}
  */
 const getSwalFunctionParams = (templateContent) => {
-  /** @type {Record<string, any>} */
+  /** @type {Record<string, () => void>} */
   const result = {}
   /** @type {HTMLElement[]} */
   const swalFunctions = Array.from(templateContent.querySelectorAll('swal-function-param'))
@@ -81,10 +81,10 @@ const getSwalFunctionParams = (templateContent) => {
 
 /**
  * @param {DocumentFragment} templateContent
- * @returns {Record<string, any>}
+ * @returns {Record<string, string | boolean>}
  */
 const getSwalButtons = (templateContent) => {
-  /** @type {Record<string, any>} */
+  /** @type {Record<string, string | boolean>} */
   const result = {}
   /** @type {HTMLElement[]} */
   const swalButtons = Array.from(templateContent.querySelectorAll('swal-button'))
@@ -134,7 +134,7 @@ const getSwalImage = (templateContent) => {
 
 /**
  * @param {DocumentFragment} templateContent
- * @returns {Record<string, any>}
+ * @returns {object}
  */
 const getSwalIcon = (templateContent) => {
   const result = {}
@@ -155,10 +155,10 @@ const getSwalIcon = (templateContent) => {
 
 /**
  * @param {DocumentFragment} templateContent
- * @returns {Record<string, any>}
+ * @returns {object}
  */
 const getSwalInput = (templateContent) => {
-  /** @type {Record<string, any>} */
+  /** @type {object} */
   const result = {}
   /** @type {HTMLElement | null} */
   const input = templateContent.querySelector('swal-input')
@@ -195,10 +195,10 @@ const getSwalInput = (templateContent) => {
 /**
  * @param {DocumentFragment} templateContent
  * @param {string[]} paramNames
- * @returns {Record<string, any>}
+ * @returns {Record<string, string>}
  */
 const getSwalStringParams = (templateContent, paramNames) => {
-  /** @type {Record<string, any>} */
+  /** @type {Record<string, string>} */
   const result = {}
   for (const i in paramNames) {
     const paramName = paramNames[i]

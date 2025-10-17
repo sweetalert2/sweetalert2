@@ -20,8 +20,8 @@ jobs:
 
       - run: bun check-types
 
-      # - name: Run tests in Chrome
-      #   run: bun run test --browser chrome
+      - name: Run tests in Chrome
+        run: bun run test --browser chrome
 
       - name: Test in CommonJS
         if: github.ref_name == 'main'
@@ -37,7 +37,7 @@ jobs:
           bun webpack-build
 
       - name: Check TypeScript
-        # if: github.ref_name == 'main'
+        if: github.ref_name == 'main'
         run: |
           ln -s ../../ test/ts/node_modules
           tsc --lib dom,es6 --skipLibCheck --noEmit --strict test/ts/simple-usage.ts

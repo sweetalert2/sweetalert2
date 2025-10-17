@@ -1,3 +1,10 @@
+## [11.26.3](https://github.com/sweetalert2/sweetalert2/compare/v11.26.2...v11.26.3) (2025-10-17)
+
+
+### Bug Fixes
+
+* Swal.DismissReason type ([#2884](https://github.com/sweetalert2/sweetalert2/issues/2884)) ([b7f5ab6](https://github.com/sweetalert2/sweetalert2/commit/b7f5ab6be837e7ed43cb48adf7fbe904643ee24a))
+
 ## [11.26.2](https://github.com/sweetalert2/sweetalert2/compare/v11.26.1...v11.26.2) (2025-10-12)
 
 

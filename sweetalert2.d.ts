@@ -322,14 +322,14 @@ declare module 'sweetalert2' {
     function argsToParams(params: SweetAlertArrayOptions | readonly [SweetAlertOptions]): SweetAlertOptions
 
     /**
-     * An enum of possible reasons that can explain an alert dismissal.
+     * An object of possible reasons that can explain an alert dismissal.
      */
-    enum DismissReason {
-      cancel,
-      backdrop,
-      close,
-      esc,
-      timer,
+    const DismissReason: {
+      readonly cancel: 'cancel'
+      readonly backdrop: 'backdrop'
+      readonly close: 'close'
+      readonly esc: 'esc'
+      readonly timer: 'timer'
     }
 
     /**

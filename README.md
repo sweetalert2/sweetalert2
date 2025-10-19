@@ -43,12 +43,10 @@ For all questions related to sponsorship please get in touch with me via email s
 <td align="center"><a href="https://www.venuslovedolls.com/"><img src="https://sweetalert2.github.io/images/sponsors/venuslovedolls.png" width="80"><br>Venus Love Dolls</a></td>
 <td align="center"><a href="https://www.xndoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/xndoll.png" width="80"><br>XNDOLL</a></td>
 <td align="center"><a href="https://www.pidoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/pidoll.png" width="80"><br>PIDOLL</a></td>
-<td align="center"><a href="https://huntlocals.com/"><img src="https://sweetalert2.github.io/images/sponsors/huntlocals.png" width="80"><br>HuntLocals</a></td>
 </tr>
 </table>
 <table>
 <tr>
-<td align="center"><a href="https://siteshartbandi.co/"><img src="https://sweetalert2.github.io/images/sponsors/siteshartbandi.png" width="80"><br><span dir="rtl">سایت شرط بندی</span></a></td>
 <td align="center"><a href="https://www.sosexdoll.com/cheap-sex-doll"><img src="https://sweetalert2.github.io/images/sponsors/sosexdoll.png" width="80"><br>SoSexDoll</a></td>
 <td align="center"><a href="https://www.hismith.co.uk/"><img src="https://sweetalert2.github.io/images/sponsors/hismith.png" width="80"><br>Hismith</a></td>
 <td align="center"><a href="https://dollauthority.com/"><img src="https://sweetalert2.github.io/images/sponsors/dollauthority.png" width="80"><br>Doll Authority</a></td>

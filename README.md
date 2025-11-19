@@ -40,15 +40,16 @@ For all questions related to sponsorship please get in touch with me via email s
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a NSFW sponsor</a></td>
+<td align="center"><a href="https://www.bestblowjobmachines.com/"><img src="https://sweetalert2.github.io/images/sponsors/bestblowjobmachines.png" width="80"><br>Mark Mitchell</a></td>
 <td align="center"><a href="https://pleasuremenow.com/"><img src="https://sweetalert2.github.io/images/sponsors/pleasuremenow.png" width="80"><br>Pleasure Me Now</a></td>
 <td align="center"><a href="https://www.venuslovedolls.com/"><img src="https://sweetalert2.github.io/images/sponsors/venuslovedolls.png" width="80"><br>Venus Love Dolls</a></td>
 <td align="center"><a href="https://www.xndoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/xndoll.png" width="80"><br>XNDOLL</a></td>
 <td align="center"><a href="https://www.pidoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/pidoll.png" width="80"><br>PIDOLL</a></td>
-<td align="center"><a href="https://www.sosexdoll.com/cheap-sex-doll"><img src="https://sweetalert2.github.io/images/sponsors/sosexdoll.png" width="80"><br>SoSexDoll</a></td>
 </tr>
 </table>
 <table>
 <tr>
+<td align="center"><a href="https://www.sosexdoll.com/cheap-sex-doll"><img src="https://sweetalert2.github.io/images/sponsors/sosexdoll.png" width="80"><br>SoSexDoll</a></td>
 <td align="center"><a href="https://www.hismith.co.uk/"><img src="https://sweetalert2.github.io/images/sponsors/hismith.png" width="80"><br>Hismith</a></td>
 <td align="center"><a href="https://dollauthority.com/"><img src="https://sweetalert2.github.io/images/sponsors/dollauthority.png" width="80"><br>Doll Authority</a></td>
 <td align="center"><a href="https://www.sexdollpartner.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexdollpartner.jpg" width="80"><br>SexDollPartner</a></td>

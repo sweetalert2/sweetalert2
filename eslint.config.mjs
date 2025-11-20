@@ -1,14 +1,13 @@
 import jsdoc from 'eslint-plugin-jsdoc'
 import sweetAlert2EslintConfig from '@sweetalert2/eslint-config'
-// TODO: https://github.com/mozilla/eslint-plugin-no-unsanitized/issues/241
-// import eslintPluginNoUnsanitized from 'eslint-plugin-no-unsanitized'
+import nounsanitized from 'eslint-plugin-no-unsanitized'
 import pluginCypress from 'eslint-plugin-cypress/flat'
 import globals from 'globals'
 
 export default [
   ...sweetAlert2EslintConfig,
-  // eslintPluginNoUnsanitized,
   jsdoc.configs['flat/recommended'],
+  nounsanitized.configs.recommended,
   pluginCypress.configs.recommended,
   {
     plugins: {

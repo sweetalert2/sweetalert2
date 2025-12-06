@@ -469,7 +469,7 @@ describe('customClass', () => {
 })
 
 describe('draggable', () => {
-  it('should drag popup with mouse evnets', () => {
+  it('should drag popup with mouse events', () => {
     SwalWithoutAnimation.fire({
       title: 'Drag me!',
       draggable: true,

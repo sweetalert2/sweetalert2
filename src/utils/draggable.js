@@ -1,3 +1,4 @@
+import globalState from '../globalState.js'
 import * as dom from './dom/index.js'
 
 let dragging = false
@@ -57,7 +58,9 @@ const move = (event) => {
 
   if (dragging) {
     let { clientX, clientY } = getClientXY(event)
-    popup.style.insetInlineStart = `${initialX + (clientX - mousedownX)}px`
+    const deltaX = clientX - mousedownX
+    // In RTL mode, negate the horizontal delta since insetInlineStart refers to the right edge
+    popup.style.insetInlineStart = `${initialX + (globalState.isRTL ? -deltaX : deltaX)}px`
     popup.style.insetBlockStart = `${initialY + (clientY - mousedownY)}px`
   }
 }

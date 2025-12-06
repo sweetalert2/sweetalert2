@@ -26,6 +26,7 @@
  * @property {boolean} [keydownHandlerAdded]
  * @property {boolean} [keydownListenerCapture]
  * @property {() => void} [swalCloseEventFinishedCallback]
+ * @property {boolean} [isRTL]
  */
 
 /**

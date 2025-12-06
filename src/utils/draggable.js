@@ -1,5 +1,4 @@
 import globalState from '../globalState.js'
-import { swalClasses } from './classes.js'
 import * as dom from './dom/index.js'
 
 let dragging = false

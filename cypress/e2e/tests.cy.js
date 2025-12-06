@@ -519,6 +519,73 @@ describe('draggable', () => {
       expect(finalY).to.equal(initialY + 10)
     })
   }
+
+  it('should drag popup correctly in RTL mode with mouse events', () => {
+    document.body.setAttribute('dir', 'rtl')
+    SwalWithoutAnimation.fire({
+      title: 'Drag me!',
+      draggable: true,
+    })
+
+    const popup = Swal.getPopup()
+    const initialRect = popup.getBoundingClientRect()
+    const initialX = initialRect.left
+    const initialY = initialRect.top
+
+    // Verify RTL class is present
+    expect(Swal.getContainer().classList.contains('swal2-rtl')).to.be.true
+
+    // Drag to the right: moving mouse right (positive delta) should move popup right in RTL
+    dispatchMouseEvent(popup, 'mousedown', { clientX: initialX, clientY: initialY })
+    dispatchMouseEvent(document.body, 'mousemove', { clientX: initialX + 10, clientY: initialY + 10 })
+    dispatchMouseEvent(popup, 'mouseup')
+
+    const finalRect = popup.getBoundingClientRect()
+    const finalX = finalRect.left
+    const finalY = finalRect.top
+
+    // In RTL mode, moving mouse right should still move popup right (not reversed)
+    expect(finalX).to.equal(initialX + 10)
+    expect(finalY).to.equal(initialY + 10)
+
+    // Clean up
+    document.body.removeAttribute('dir')
+  })
+
+  // `Touch` and `TouchEvent` are only available in Chrome
+  if (Cypress.isBrowser('chrome')) {
+    it('should drag popup correctly in RTL mode with touch events', () => {
+      document.body.setAttribute('dir', 'rtl')
+      SwalWithoutAnimation.fire({
+        title: 'Drag me!',
+        draggable: true,
+      })
+
+      const popup = Swal.getPopup()
+      const initialRect = popup.getBoundingClientRect()
+      const initialX = initialRect.left
+      const initialY = initialRect.top
+
+      // Verify RTL class is present
+      expect(Swal.getContainer().classList.contains('swal2-rtl')).to.be.true
+
+      // Drag to the right: moving touch right (positive delta) should move popup right in RTL
+      dispatchTouchEvent(popup, 'touchstart', { clientX: initialX, clientY: initialY })
+      dispatchTouchEvent(document.body, 'touchmove', { clientX: initialX + 10, clientY: initialY + 10 })
+      dispatchTouchEvent(popup, 'touchend')
+
+      const finalRect = popup.getBoundingClientRect()
+      const finalX = finalRect.left
+      const finalY = finalRect.top
+
+      // In RTL mode, moving touch right should still move popup right (not reversed)
+      expect(finalX).to.equal(initialX + 10)
+      expect(finalY).to.equal(initialY + 10)
+
+      // Clean up
+      document.body.removeAttribute('dir')
+    })
+  }
 })
 
 describe('grow', () => {

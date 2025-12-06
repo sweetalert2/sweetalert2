@@ -5,3 +5,4 @@ cypress/screenshots
 cypress/downloads
 .idea
 .vscode
+package-lock.json

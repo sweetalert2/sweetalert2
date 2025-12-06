@@ -118,6 +118,7 @@ const setupAccessibility = (params) => {
 const setupRTL = (targetElement) => {
   if (window.getComputedStyle(targetElement).direction === 'rtl') {
     addClass(getContainer(), swalClasses.rtl)
+    globalState.isRTL = true
   }
 }
 

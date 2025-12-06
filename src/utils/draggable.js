@@ -1,3 +1,4 @@
+import globalState from '../globalState.js'
 import { swalClasses } from './classes.js'
 import * as dom from './dom/index.js'
 
@@ -58,11 +59,9 @@ const move = (event) => {
 
   if (dragging) {
     let { clientX, clientY } = getClientXY(event)
-    const container = dom.getContainer()
-    const isRTL = container && container.classList.contains(swalClasses.rtl)
     const deltaX = clientX - mousedownX
     // In RTL mode, negate the horizontal delta since insetInlineStart refers to the right edge
-    popup.style.insetInlineStart = `${initialX + (isRTL ? -deltaX : deltaX)}px`
+    popup.style.insetInlineStart = `${initialX + (globalState.isRTL ? -deltaX : deltaX)}px`
     popup.style.insetBlockStart = `${initialY + (clientY - mousedownY)}px`
   }
 }

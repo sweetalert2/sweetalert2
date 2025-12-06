@@ -469,7 +469,7 @@ describe('customClass', () => {
 })
 
 describe('draggable', () => {
-  it('should drag popup with mouse evnets', () => {
+  it('should drag popup with mouse events', () => {
     SwalWithoutAnimation.fire({
       title: 'Drag me!',
       draggable: true,
@@ -491,6 +491,35 @@ describe('draggable', () => {
 
     expect(finalX).to.equal(initialX + 10)
     expect(finalY).to.equal(initialY + 10)
+  })
+
+  it('should drag popup in RTL', () => {
+    document.body.setAttribute('dir', 'rtl')
+
+    SwalWithoutAnimation.fire({
+      title: 'Drag me!',
+      draggable: true,
+    })
+
+    const popup = Swal.getPopup()
+    const initialRect = popup.getBoundingClientRect()
+    const initialX = initialRect.left
+    const initialY = initialRect.top
+
+    dispatchMouseEvent(popup, 'mousedown', { clientX: initialX, clientY: initialY })
+    dispatchMouseEvent(document.body, 'mousemove', { clientX: initialX + 10, clientY: initialY + 10 })
+    dispatchMouseEvent(popup, 'mouseup')
+    dispatchMouseEvent(document.body, 'mousemove', { clientX: initialX + 20, clientY: initialY + 20 })
+
+    const finalRect = popup.getBoundingClientRect()
+    const finalX = finalRect.left
+    const finalY = finalRect.top
+
+    expect(finalX).to.equal(initialX + 10)
+    expect(finalY).to.equal(initialY + 10)
+
+    // Clean up
+    document.body.removeAttribute('dir')
   })
 
   // `Touch` and `TouchEvent` are only available in Chrome

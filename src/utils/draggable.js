@@ -6,6 +6,7 @@ let mousedownX = 0
 let mousedownY = 0
 let initialX = 0
 let initialY = 0
+let isRTL = false
 
 /**
  * @param {HTMLElement} popup
@@ -46,6 +47,8 @@ const down = (event) => {
     mousedownY = clientXY.clientY
     initialX = parseInt(popup.style.insetInlineStart) || 0
     initialY = parseInt(popup.style.insetBlockStart) || 0
+    const container = dom.getContainer()
+    isRTL = container && container.classList.contains(swalClasses.rtl)
     dom.addClass(popup, 'swal2-dragging')
   }
 }
@@ -58,8 +61,6 @@ const move = (event) => {
 
   if (dragging) {
     let { clientX, clientY } = getClientXY(event)
-    const container = dom.getContainer()
-    const isRTL = container && container.classList.contains(swalClasses.rtl)
     const deltaX = clientX - mousedownX
     // In RTL mode, negate the horizontal delta since insetInlineStart refers to the right edge
     popup.style.insetInlineStart = `${initialX + (isRTL ? -deltaX : deltaX)}px`

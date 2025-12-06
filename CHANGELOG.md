@@ -1,3 +1,10 @@
+## [11.26.4](https://github.com/sweetalert2/sweetalert2/compare/v11.26.3...v11.26.4) (2025-12-06)
+
+
+### Bug Fixes
+
+* draggable in RTL ([#2888](https://github.com/sweetalert2/sweetalert2/issues/2888)) ([879ec39](https://github.com/sweetalert2/sweetalert2/commit/879ec3943c7c2a36f993aefe4006bac0bcd9fe5f))
+
 ## [11.26.3](https://github.com/sweetalert2/sweetalert2/compare/v11.26.2...v11.26.3) (2025-10-17)
 
 

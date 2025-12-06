@@ -1,3 +1,4 @@
+import { swalClasses } from './classes.js'
 import * as dom from './dom/index.js'
 
 let dragging = false
@@ -57,7 +58,11 @@ const move = (event) => {
 
   if (dragging) {
     let { clientX, clientY } = getClientXY(event)
-    popup.style.insetInlineStart = `${initialX + (clientX - mousedownX)}px`
+    const container = dom.getContainer()
+    const isRTL = container && container.classList.contains(swalClasses.rtl)
+    const deltaX = clientX - mousedownX
+    // In RTL mode, negate the horizontal delta since insetInlineStart refers to the right edge
+    popup.style.insetInlineStart = `${initialX + (isRTL ? -deltaX : deltaX)}px`
     popup.style.insetBlockStart = `${initialY + (clientY - mousedownY)}px`
   }
 }

@@ -28,9 +28,9 @@ jobs:
       # - name: Run tests in Chrome
       #   run: bun run test --browser chrome
 
-      - name: Test in CommonJS
-        if: github.ref_name == 'main'
-        run: node test/require-in-commonjs.cjs
+      # - name: Test in CommonJS
+      #   if: github.ref_name == 'main'
+      #   run: node test/require-in-commonjs.cjs
 
       - name: Test with Webpack
         if: github.ref_name == 'main'

@@ -1,3 +1,12 @@
+## [11.26.5](https://github.com/sweetalert2/sweetalert2/compare/v11.26.4...v11.26.5) (2025-12-13)
+
+
+### Bug Fixes
+
+* add AGENTS.md ([f093780](https://github.com/sweetalert2/sweetalert2/commit/f09378020107dfedd327af86ec244e385528510d))
+* add missing permissiong for trusted publishing ([8307543](https://github.com/sweetalert2/sweetalert2/commit/8307543348bde8f4870fb65b4998b188d88326c7))
+* upgrade semantic-release-action to v6 (for trusted publishing) ([3acf7de](https://github.com/sweetalert2/sweetalert2/commit/3acf7deacb4643822d01829794a188463473c317))
+
 ## [11.26.4](https://github.com/sweetalert2/sweetalert2/compare/v11.26.3...v11.26.4) (2025-12-06)
 
 

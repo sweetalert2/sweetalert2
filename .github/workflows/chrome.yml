@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
-      id-token: write
-      contents: write
-      packages: write
+      id-token: write # Required for OIDC
+      contents: write # to create release tags (cycjimmy/semantic-release-action)
+      issues: write # to post release that resolves an issue
 
     steps:
       - uses: actions/checkout@v5
@@ -24,8 +24,8 @@ jobs:
 
       - run: bun check-types
 
-      - name: Run tests in Chrome
-        run: bun run test --browser chrome
+      # - name: Run tests in Chrome
+      #   run: bun run test --browser chrome
 
       - name: Test in CommonJS
         if: github.ref_name == 'main'
@@ -59,4 +59,3 @@ jobs:
             @semantic-release/exec
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

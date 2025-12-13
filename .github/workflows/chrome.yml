@@ -17,38 +17,35 @@ jobs:
       - uses: actions/checkout@v5
       - uses: oven-sh/setup-bun@v2
 
-      - run: npm --version
-
+      # because npm 10.8.2 (default) doesn't work with trusted publishing, 11.6.2 works
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
 
-      - run: npm --version
-
       - run: bun install
 
       - run: bun run build
 
-      # - run: bun lint
+      - run: bun lint
 
-      # - run: bun check-types
+      - run: bun check-types
 
-      # - name: Run tests in Chrome
-      #   run: bun run test --browser chrome
+      - name: Run tests in Chrome
+        run: bun run test --browser chrome
 
-      # - name: Test in CommonJS
-      #   if: github.ref_name == 'main'
-      #   run: node test/require-in-commonjs.cjs
+      - name: Test in CommonJS
+        if: github.ref_name == 'main'
+        run: node test/require-in-commonjs.cjs
 
-      # - name: Test with Webpack
-      #   if: github.ref_name == 'main'
-      #   run: |
-      #     bun add --dev webpack@^5.0.0 webpack-cli@^5.0.0
-      #     bun webpack-build
-      #     bun add --dev webpack@^4.0.0 webpack-cli@^4.0.0
-      #     export NODE_OPTIONS=--openssl-legacy-provider
-      #     bun webpack-build
+      - name: Test with Webpack
+        if: github.ref_name == 'main'
+        run: |
+          bun add --dev webpack@^5.0.0 webpack-cli@^5.0.0
+          bun webpack-build
+          bun add --dev webpack@^4.0.0 webpack-cli@^4.0.0
+          export NODE_OPTIONS=--openssl-legacy-provider
+          bun webpack-build
 
       - name: Check TypeScript
         if: github.ref_name == 'main'

@@ -1,3 +1,12 @@
+## [11.26.9](https://github.com/sweetalert2/sweetalert2/compare/v11.26.8...v11.26.9) (2025-12-13)
+
+
+### Bug Fixes
+
+* stop using semantic-release/changelog ([2e11ae5](https://github.com/sweetalert2/sweetalert2/commit/2e11ae581f99920ca8592e142c41dca85649cde5))
+* try secrets.GITHUB_TOKEN ([bc0b46e](https://github.com/sweetalert2/sweetalert2/commit/bc0b46ec34d3a67e9d41a4d079d35e1ded3289e8))
+* use npx semantic-release (directly, without action) ([0f9c4d2](https://github.com/sweetalert2/sweetalert2/commit/0f9c4d249d7e459264eb181da04e27a4d22ebc2b))
+
 ## [11.26.8](https://github.com/sweetalert2/sweetalert2/compare/v11.26.7...v11.26.8) (2025-12-13)
 
 

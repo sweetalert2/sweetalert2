@@ -1,3 +1,10 @@
+## [11.26.10](https://github.com/sweetalert2/sweetalert2/compare/v11.26.9...v11.26.10) (2025-12-13)
+
+
+### Bug Fixes
+
+* try node lts ([4ba4ce2](https://github.com/sweetalert2/sweetalert2/commit/4ba4ce29938078194c7bc6bc0a8c2277efe8a3d9))
+
 ## [11.26.9](https://github.com/sweetalert2/sweetalert2/compare/v11.26.8...v11.26.9) (2025-12-13)
 
 

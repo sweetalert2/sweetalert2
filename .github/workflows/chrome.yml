@@ -52,6 +52,11 @@ jobs:
 
       - name: Run automated release process with semantic-release
         if: github.ref_name == 'main'
+        uses: cycjimmy/semantic-release-action@v6
+        with:
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+            @semantic-release/exec
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release

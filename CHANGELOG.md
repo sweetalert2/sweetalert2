@@ -1,3 +1,10 @@
+## [11.26.8](https://github.com/sweetalert2/sweetalert2/compare/v11.26.7...v11.26.8) (2025-12-13)
+
+
+### Bug Fixes
+
+* disable tests for now ([83a65fb](https://github.com/sweetalert2/sweetalert2/commit/83a65fb074b06e87725e09ba8c257dae1be148c0))
+
 ## [11.26.7](https://github.com/sweetalert2/sweetalert2/compare/v11.26.6...v11.26.7) (2025-12-13)
 
 

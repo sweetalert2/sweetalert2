@@ -1,3 +1,10 @@
+## [11.26.7](https://github.com/sweetalert2/sweetalert2/compare/v11.26.6...v11.26.7) (2025-12-13)
+
+
+### Bug Fixes
+
+* add permission for PRs ([9b70c48](https://github.com/sweetalert2/sweetalert2/commit/9b70c486bca10915789d7b80ca9c3f0bb753bce2))
+
 ## [11.26.6](https://github.com/sweetalert2/sweetalert2/compare/v11.26.5...v11.26.6) (2025-12-13)
 
 

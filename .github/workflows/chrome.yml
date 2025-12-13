@@ -7,6 +7,10 @@ jobs:
   Chrome:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      id-token: write
+      contents: write
+      packages: write
 
     steps:
       - uses: actions/checkout@v5

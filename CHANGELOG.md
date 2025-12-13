@@ -1,3 +1,10 @@
+## [11.26.6](https://github.com/sweetalert2/sweetalert2/compare/v11.26.5...v11.26.6) (2025-12-13)
+
+
+### Bug Fixes
+
+* add permission for issues ([744cfd4](https://github.com/sweetalert2/sweetalert2/commit/744cfd449721a97b8a680a7fa8c48b1c23ef1d63))
+
 ## [11.26.5](https://github.com/sweetalert2/sweetalert2/compare/v11.26.4...v11.26.5) (2025-12-13)
 
 

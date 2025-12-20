@@ -27,6 +27,5 @@ fs.writeFileSync(
   'dist/sweetalert2.esm.all.min.js',
   `${fs.readFileSync('dist/sweetalert2.esm.min.js', 'utf-8')}${cssInJs}`
 )
-await $`git checkout . >/dev/null 2>&1`
 echo`OK!`
 echo``

@@ -35,7 +35,12 @@ export const openPopup = (params) => {
   }, SHOW_CLASS_TIMEOUT)
 
   if (dom.isModal()) {
-    fixScrollContainer(container, params.scrollbarPadding ?? false, initialBodyOverflow)
+    // Using ternary instead of ?? operator for Webpack 4 compatibility
+    fixScrollContainer(
+      container,
+      params.scrollbarPadding !== undefined ? params.scrollbarPadding : false,
+      initialBodyOverflow
+    )
     setAriaHidden()
   }
 

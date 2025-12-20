@@ -285,7 +285,7 @@ export const toggle = (elem, condition, display = 'flex') => {
  * @param {HTMLElement | null} elem
  * @returns {boolean}
  */
-export const isVisible = (elem) => !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
+export const isVisible = (elem) => Boolean(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
 
 /**
  * @returns {boolean}
@@ -297,7 +297,7 @@ export const allButtonsAreHidden = () =>
  * @param {HTMLElement} elem
  * @returns {boolean}
  */
-export const isScrollable = (elem) => !!(elem.scrollHeight > elem.clientHeight)
+export const isScrollable = (elem) => Boolean(elem.scrollHeight > elem.clientHeight)
 
 /**
  * @param {HTMLElement} element

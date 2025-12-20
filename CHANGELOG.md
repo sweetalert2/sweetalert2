@@ -1,3 +1,11 @@
+## [11.26.12](https://github.com/sweetalert2/sweetalert2/compare/v11.26.11...v11.26.12) (2025-12-20)
+
+
+### Bug Fixes
+
+* strict types in iosFix, EventEmitter, and draggable utils ([#2898](https://github.com/sweetalert2/sweetalert2/issues/2898)) ([de40d05](https://github.com/sweetalert2/sweetalert2/commit/de40d050e2f3b0c6e126f02b118807544f6cca88))
+* strict types in openPopup.js ([#2897](https://github.com/sweetalert2/sweetalert2/issues/2897)) ([ce23587](https://github.com/sweetalert2/sweetalert2/commit/ce2358771ed5b9ff588faf766e0ad967f078d719))
+
 ## [11.26.11](https://github.com/sweetalert2/sweetalert2/compare/v11.26.10...v11.26.11) (2025-12-20)
 
 

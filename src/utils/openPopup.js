@@ -35,6 +35,7 @@ export const openPopup = (params) => {
   }, SHOW_CLASS_TIMEOUT)
 
   if (dom.isModal()) {
+    // Using ternary instead of ?? operator for Webpack 4 compatibility
     fixScrollContainer(
       container,
       params.scrollbarPadding !== undefined ? params.scrollbarPadding : false,

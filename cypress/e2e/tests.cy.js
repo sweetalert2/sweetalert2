@@ -1160,10 +1160,12 @@ describe('showClass + hideClass', () => {
 
 describe('stopKeydownPropagation', () => {
   it('stopKeydownPropagation', (done) => {
-    document.body.addEventListener('keydown', (e) => {
+    const handler = (e) => {
       expect(e.key).to.equal('Escape')
+      document.body.removeEventListener('keydown', handler)
       done()
-    })
+    }
+    document.body.addEventListener('keydown', handler)
 
     SwalWithoutAnimation.fire({
       title: 'Esc me and I will propagate keydown',

@@ -16,10 +16,14 @@ export const openPopup = (params) => {
   const container = dom.getContainer()
   const popup = dom.getPopup()
 
+  if (!container || !popup) {
+    return
+  }
+
   if (typeof params.willOpen === 'function') {
     params.willOpen(popup)
   }
-  globalState.eventEmitter.emit('willOpen', popup)
+  globalState.eventEmitter?.emit('willOpen', popup)
 
   const bodyStyles = window.getComputedStyle(document.body)
   const initialBodyOverflow = bodyStyles.overflowY
@@ -31,7 +35,7 @@ export const openPopup = (params) => {
   }, SHOW_CLASS_TIMEOUT)
 
   if (dom.isModal()) {
-    fixScrollContainer(container, params.scrollbarPadding, initialBodyOverflow)
+    fixScrollContainer(container, params.scrollbarPadding ?? false, initialBodyOverflow)
     setAriaHidden()
   }
 
@@ -40,20 +44,24 @@ export const openPopup = (params) => {
   }
 
   if (typeof params.didOpen === 'function') {
-    setTimeout(() => params.didOpen(popup))
+    const didOpen = params.didOpen
+    setTimeout(() => didOpen(popup))
   }
-  globalState.eventEmitter.emit('didOpen', popup)
+  globalState.eventEmitter?.emit('didOpen', popup)
 }
 
 /**
- * @param {AnimationEvent} event
+ * @param {Event} event
  */
 const swalOpenAnimationFinished = (event) => {
   const popup = dom.getPopup()
-  if (event.target !== popup) {
+  if (!popup || event.target !== popup) {
     return
   }
   const container = dom.getContainer()
+  if (!container) {
+    return
+  }
   popup.removeEventListener('animationend', swalOpenAnimationFinished)
   popup.removeEventListener('transitionend', swalOpenAnimationFinished)
   container.style.overflowY = 'auto'
@@ -100,14 +108,18 @@ const fixScrollContainer = (container, scrollbarPadding, initialBodyOverflow) =>
  * @param {SweetAlertOptions} params
  */
 const addClasses = (container, popup, params) => {
-  dom.addClass(container, params.showClass.backdrop)
+  if (params.showClass?.backdrop) {
+    dom.addClass(container, params.showClass.backdrop)
+  }
   if (params.animation) {
     // this workaround with opacity is needed for https://github.com/sweetalert2/sweetalert2/issues/2059
     popup.style.setProperty('opacity', '0', 'important')
     dom.show(popup, 'grid')
     setTimeout(() => {
       // Animate popup right after showing it
-      dom.addClass(popup, params.showClass.popup)
+      if (params.showClass?.popup) {
+        dom.addClass(popup, params.showClass.popup)
+      }
       // and remove the opacity workaround
       popup.style.removeProperty('opacity')
     }, SHOW_CLASS_TIMEOUT) // 10ms in order to fix #2062

@@ -1,3 +1,10 @@
+## [11.26.11](https://github.com/sweetalert2/sweetalert2/compare/v11.26.10...v11.26.11) (2025-12-20)
+
+
+### Bug Fixes
+
+* remove unnecessary `|| this` fallback in buttons-handlers.js ([#2896](https://github.com/sweetalert2/sweetalert2/issues/2896)) ([6cb382d](https://github.com/sweetalert2/sweetalert2/commit/6cb382db9526596b78838e5a23fcef24ed8642e7))
+
 ## [11.26.10](https://github.com/sweetalert2/sweetalert2/compare/v11.26.9...v11.26.10) (2025-12-13)
 
 

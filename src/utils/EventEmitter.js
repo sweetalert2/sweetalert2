@@ -36,10 +36,11 @@ export default class EventEmitter {
    */
   once(eventName, eventHandler) {
     /**
-     * @param {Array} args
+     * @param {...any} args
      */
     const onceFn = (...args) => {
       this.removeListener(eventName, onceFn)
+      // @ts-ignore
       eventHandler.apply(this, args)
     }
     this.on(eventName, onceFn)
@@ -47,7 +48,7 @@ export default class EventEmitter {
 
   /**
    * @param {string} eventName
-   * @param {Array} args
+   * @param {...any} args
    */
   emit(eventName, ...args) {
     this._getHandlersByEventName(eventName).forEach(
@@ -56,6 +57,7 @@ export default class EventEmitter {
        */
       (eventHandler) => {
         try {
+          // @ts-ignore
           eventHandler.apply(this, args)
         } catch (error) {
           console.error(error)

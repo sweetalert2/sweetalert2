@@ -2,8 +2,8 @@
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
-    "target": "es2015",
-    "strict": true
+    "target": "es2015"
+    // "strict": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

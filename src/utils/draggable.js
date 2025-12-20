@@ -39,7 +39,12 @@ export const removeDraggableListeners = (popup) => {
 const down = (event) => {
   const popup = dom.getPopup()
 
-  if (event.target === popup || dom.getIcon().contains(/** @type {HTMLElement} */ (event.target))) {
+  if (!popup) {
+    return
+  }
+
+  const icon = dom.getIcon()
+  if (event.target === popup || (icon && icon.contains(/** @type {HTMLElement} */ (event.target)))) {
     dragging = true
     const clientXY = getClientXY(event)
     mousedownX = clientXY.clientX
@@ -55,6 +60,10 @@ const down = (event) => {
  */
 const move = (event) => {
   const popup = dom.getPopup()
+
+  if (!popup) {
+    return
+  }
 
   if (dragging) {
     let { clientX, clientY } = getClientXY(event)

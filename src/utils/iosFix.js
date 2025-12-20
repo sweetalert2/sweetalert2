@@ -80,11 +80,16 @@ const shouldPreventTouchMove = (event) => {
 /**
  * https://github.com/sweetalert2/sweetalert2/issues/1786
  *
- * @param {object} event
+ * @param {TouchEvent} event
  * @returns {boolean}
  */
 const isStylus = (event) => {
-  return event.touches && event.touches.length && event.touches[0].touchType === 'stylus'
+  return !!(
+    event.touches &&
+    event.touches.length &&
+    // @ts-ignore - touchType is not a standard property
+    event.touches[0].touchType === 'stylus'
+  )
 }
 
 /**

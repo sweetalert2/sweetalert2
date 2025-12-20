@@ -95,7 +95,7 @@ const handleInputValidator = (instance, inputValue, type) => {
  * @param {*} value
  */
 const deny = (instance, value) => {
-  const innerParams = privateProps.innerParams.get(instance || this)
+  const innerParams = privateProps.innerParams.get(instance)
 
   if (innerParams.showLoaderOnDeny) {
     showLoading(getDenyButton())
@@ -120,7 +120,7 @@ const deny = (instance, value) => {
           )
         }
       })
-      .catch((error) => rejectWith(instance || this, error))
+      .catch((error) => rejectWith(instance, error))
   } else {
     instance.close(/** @type SweetAlertResult */ ({ isDenied: true, value }))
   }
@@ -149,7 +149,7 @@ const rejectWith = (instance, error) => {
  * @param {*} value
  */
 const confirm = (instance, value) => {
-  const innerParams = privateProps.innerParams.get(instance || this)
+  const innerParams = privateProps.innerParams.get(instance)
 
   if (innerParams.showLoaderOnConfirm) {
     showLoading()
@@ -170,7 +170,7 @@ const confirm = (instance, value) => {
           succeedWith(instance, typeof preConfirmValue === 'undefined' ? value : preConfirmValue)
         }
       })
-      .catch((error) => rejectWith(instance || this, error))
+      .catch((error) => rejectWith(instance, error))
   } else {
     succeedWith(instance, value)
   }

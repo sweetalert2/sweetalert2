@@ -235,5 +235,5 @@ const formatInputOptions = (inputOptions) => {
  * @returns {boolean}
  */
 const isSelected = (optionValue, inputValue) => {
-  return !!inputValue && inputValue.toString() === optionValue.toString()
+  return Boolean(inputValue) && inputValue.toString() === optionValue.toString()
 }

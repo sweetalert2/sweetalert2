@@ -72,5 +72,5 @@ export const increaseTimer = (ms) => {
  * @returns {boolean}
  */
 export const isTimerRunning = () => {
-  return !!(globalState.timeout && globalState.timeout.isRunning())
+  return Boolean(globalState.timeout && globalState.timeout.isRunning())
 }

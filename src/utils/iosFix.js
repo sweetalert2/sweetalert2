@@ -2,7 +2,7 @@ import { swalClasses } from '../utils/classes.js'
 import * as dom from './dom/index.js'
 
 // @ts-ignore
-export const isSafariOrIOS = typeof window !== 'undefined' && !!window.GestureEvent // true for Safari desktop + all iOS browsers https://stackoverflow.com/a/70585394
+export const isSafariOrIOS = typeof window !== 'undefined' && Boolean(window.GestureEvent) // true for Safari desktop + all iOS browsers https://stackoverflow.com/a/70585394
 
 /**
  * Fix iOS scrolling
@@ -84,7 +84,7 @@ const shouldPreventTouchMove = (event) => {
  * @returns {boolean}
  */
 const isStylus = (event) => {
-  return !!(
+  return Boolean(
     event.touches &&
     event.touches.length &&
     // @ts-ignore - touchType is not a standard property

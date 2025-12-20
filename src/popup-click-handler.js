@@ -41,7 +41,7 @@ const handleToastClick = (innerParams, domCache, dismissWith) => {
  * @returns {boolean}
  */
 const isAnyButtonShown = (innerParams) => {
-  return !!(
+  return Boolean(
     innerParams.showConfirmButton ||
     innerParams.showDenyButton ||
     innerParams.showCancelButton ||

@@ -6,6 +6,7 @@ import privateProps from '../privateProps.js'
 /**
  * Updates popup parameters.
  *
+ * @this {any}
  * @param {SweetAlertOptions} params
  */
 export function update(params) {
@@ -25,7 +26,9 @@ export function update(params) {
   const updatedParams = Object.assign({}, innerParams, validUpdatableParams)
   showWarningsForParams(updatedParams)
 
-  container.dataset['swal2Theme'] = updatedParams.theme
+  if (container) {
+    container.dataset['swal2Theme'] = updatedParams.theme
+  }
   dom.render(this, updatedParams)
 
   privateProps.innerParams.set(this, updatedParams)
@@ -43,10 +46,12 @@ export function update(params) {
  * @returns {SweetAlertOptions}
  */
 const filterValidParams = (params) => {
+  /** @type {Record<string, any>} */
   const validUpdatableParams = {}
   Object.keys(params).forEach((param) => {
     if (isUpdatableParameter(param)) {
-      validUpdatableParams[param] = params[param]
+      const typedParams = /** @type {Record<string, any>} */ (params)
+      validUpdatableParams[param] = typedParams[param]
     } else {
       warn(`Invalid parameter to update: ${param}`)
     }

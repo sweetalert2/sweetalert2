@@ -8,7 +8,9 @@ globalState.eventEmitter = new EventEmitter()
  * @param {EventHandler} eventHandler
  */
 export const on = (eventName, eventHandler) => {
-  globalState.eventEmitter.on(eventName, eventHandler)
+  if (globalState.eventEmitter) {
+    globalState.eventEmitter.on(eventName, eventHandler)
+  }
 }
 
 /**
@@ -16,7 +18,9 @@ export const on = (eventName, eventHandler) => {
  * @param {EventHandler} eventHandler
  */
 export const once = (eventName, eventHandler) => {
-  globalState.eventEmitter.once(eventName, eventHandler)
+  if (globalState.eventEmitter) {
+    globalState.eventEmitter.once(eventName, eventHandler)
+  }
 }
 
 /**
@@ -24,6 +28,10 @@ export const once = (eventName, eventHandler) => {
  * @param {EventHandler} [eventHandler]
  */
 export const off = (eventName, eventHandler) => {
+  if (!globalState.eventEmitter) {
+    return
+  }
+
   // Remove all handlers for all events
   if (!eventName) {
     globalState.eventEmitter.reset()

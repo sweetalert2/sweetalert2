@@ -7,8 +7,9 @@ import { callIfFunction } from './utils/utils.js'
  * @param {GlobalState} globalState
  */
 export const removeKeydownHandler = (globalState) => {
-  if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
-    globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
+  if (globalState.keydownTarget && globalState.keydownHandlerAdded && globalState.keydownHandler) {
+    const handler = /** @type {EventListenerOrEventListenerObject} */ (/** @type {unknown} */ (globalState.keydownHandler))
+    globalState.keydownTarget.removeEventListener('keydown', handler, {
       capture: globalState.keydownListenerCapture,
     })
     globalState.keydownHandlerAdded = false
@@ -23,13 +24,19 @@ export const removeKeydownHandler = (globalState) => {
 export const addKeydownHandler = (globalState, innerParams, dismissWith) => {
   removeKeydownHandler(globalState)
   if (!innerParams.toast) {
-    globalState.keydownHandler = (e) => keydownHandler(innerParams, e, dismissWith)
-    globalState.keydownTarget = innerParams.keydownListenerCapture ? window : dom.getPopup()
-    globalState.keydownListenerCapture = innerParams.keydownListenerCapture
-    globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, {
-      capture: globalState.keydownListenerCapture,
-    })
-    globalState.keydownHandlerAdded = true
+    /** @type {(this: HTMLElement, event: KeyboardEvent) => void} */
+    const handler = (e) => keydownHandler(innerParams, e, dismissWith)
+    globalState.keydownHandler = handler
+    const target = innerParams.keydownListenerCapture ? window : dom.getPopup()
+    if (target) {
+      globalState.keydownTarget = target
+      globalState.keydownListenerCapture = innerParams.keydownListenerCapture
+      const eventHandler = /** @type {EventListenerOrEventListenerObject} */ (/** @type {unknown} */ (handler))
+      globalState.keydownTarget.addEventListener('keydown', eventHandler, {
+        capture: globalState.keydownListenerCapture,
+      })
+      globalState.keydownHandlerAdded = true
+    }
   }
 }
 
@@ -121,7 +128,12 @@ const handleEnter = (event, innerParams) => {
     return
   }
 
-  const input = dom.getInput(dom.getPopup(), innerParams.input)
+  const popup = dom.getPopup()
+  if (!popup || !innerParams.input) {
+    return
+  }
+
+  const input = dom.getInput(popup, innerParams.input)
 
   if (event.target && input && event.target instanceof HTMLElement && event.target.outerHTML === input.outerHTML) {
     if (['textarea', 'file'].includes(innerParams.input)) {

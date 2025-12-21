@@ -1,3 +1,10 @@
+## [11.26.14](https://github.com/sweetalert2/sweetalert2/compare/v11.26.13...v11.26.14) (2025-12-21)
+
+
+### Bug Fixes
+
+* strict types in DOM and template utilities ([#2901](https://github.com/sweetalert2/sweetalert2/issues/2901)) ([71167cd](https://github.com/sweetalert2/sweetalert2/commit/71167cda9b15b2a66c54e10439ba772779cf15b9))
+
 ## [11.26.13](https://github.com/sweetalert2/sweetalert2/compare/v11.26.12...v11.26.13) (2025-12-21)
 
 

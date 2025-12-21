@@ -34,10 +34,7 @@ function hideLoading() {
  */
 const showRelatedButton = (domCache) => {
   const dataButtonToReplace = domCache.loader.getAttribute('data-button-to-replace')
-  if (!dataButtonToReplace) {
-    return
-  }
-  const buttonToReplace = domCache.popup.getElementsByClassName(dataButtonToReplace)
+  const buttonToReplace = dataButtonToReplace ? domCache.popup.getElementsByClassName(dataButtonToReplace) : []
   if (buttonToReplace.length) {
     dom.show(/** @type {HTMLElement} */ (buttonToReplace[0]), 'inline-block')
   } else if (dom.allButtonsAreHidden()) {

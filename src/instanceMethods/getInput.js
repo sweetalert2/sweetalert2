@@ -5,6 +5,7 @@ import * as dom from '../utils/dom/index.js'
  * Gets the input DOM node, this method works with input parameter.
  *
  * @returns {HTMLInputElement | null}
+ * @this {SweetAlert}
  */
 export function getInput() {
   const innerParams = privateProps.innerParams.get(this)

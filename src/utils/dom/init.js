@@ -52,44 +52,66 @@ const resetOldContainer = () => {
   oldContainer.remove()
   removeClass(
     [document.documentElement, document.body],
-    [swalClasses['no-backdrop'], swalClasses['toast-shown'], swalClasses['has-column']]
+    [
+      swalClasses['no-backdrop'],
+      swalClasses['toast-shown'],
+      // @ts-ignore: 'has-column' is not defined in swalClasses but may be set dynamically
+      swalClasses['has-column'],
+    ]
   )
 
   return true
 }
 
 const resetValidationMessage = () => {
-  globalState.currentInstance.resetValidationMessage()
+  if (globalState.currentInstance) {
+    globalState.currentInstance.resetValidationMessage()
+  }
 }
 
 const addInputChangeListeners = () => {
   const popup = getPopup()
+  if (!popup) {
+    return
+  }
 
   const input = getDirectChildByClass(popup, swalClasses.input)
   const file = getDirectChildByClass(popup, swalClasses.file)
-  /** @type {HTMLInputElement} */
+  /** @type {HTMLInputElement | null} */
   const range = popup.querySelector(`.${swalClasses.range} input`)
-  /** @type {HTMLOutputElement} */
+  /** @type {HTMLOutputElement | null} */
   const rangeOutput = popup.querySelector(`.${swalClasses.range} output`)
   const select = getDirectChildByClass(popup, swalClasses.select)
-  /** @type {HTMLInputElement} */
+  /** @type {HTMLInputElement | null} */
   const checkbox = popup.querySelector(`.${swalClasses.checkbox} input`)
   const textarea = getDirectChildByClass(popup, swalClasses.textarea)
 
-  input.oninput = resetValidationMessage
-  file.onchange = resetValidationMessage
-  select.onchange = resetValidationMessage
-  checkbox.onchange = resetValidationMessage
-  textarea.oninput = resetValidationMessage
-
-  range.oninput = () => {
-    resetValidationMessage()
-    rangeOutput.value = range.value
+  if (input) {
+    input.oninput = resetValidationMessage
+  }
+  if (file) {
+    file.onchange = resetValidationMessage
+  }
+  if (select) {
+    select.onchange = resetValidationMessage
+  }
+  if (checkbox) {
+    checkbox.onchange = resetValidationMessage
+  }
+  if (textarea) {
+    textarea.oninput = resetValidationMessage
   }
 
-  range.onchange = () => {
-    resetValidationMessage()
-    rangeOutput.value = range.value
+  if (range && rangeOutput) {
+    range.oninput = () => {
+      resetValidationMessage()
+      rangeOutput.value = range.value
+    }
+
+    range.onchange = () => {
+      resetValidationMessage()
+      rangeOutput.value = range.value
+    }
   }
 }
 
@@ -97,13 +119,25 @@ const addInputChangeListeners = () => {
  * @param {string | HTMLElement} target
  * @returns {HTMLElement}
  */
-const getTarget = (target) => (typeof target === 'string' ? document.querySelector(target) : target)
+const getTarget = (target) => {
+  if (typeof target === 'string') {
+    const element = document.querySelector(target)
+    if (!element) {
+      throw new Error(`Target element "${target}" not found`)
+    }
+    return /** @type {HTMLElement} */ (element)
+  }
+  return target
+}
 
 /**
  * @param {SweetAlertOptions} params
  */
 const setupAccessibility = (params) => {
   const popup = getPopup()
+  if (!popup) {
+    return
+  }
 
   popup.setAttribute('role', params.toast ? 'alert' : 'dialog')
   popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive')
@@ -145,7 +179,7 @@ export const init = (params) => {
 
   container.dataset['swal2Theme'] = params.theme
 
-  const targetElement = getTarget(params.target)
+  const targetElement = getTarget(params.target || 'body')
   targetElement.appendChild(container)
 
   if (params.topLayer) {

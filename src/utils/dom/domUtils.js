@@ -210,7 +210,7 @@ export const applyNumericalStyle = (elem, property, value) => {
     value = parseInt(value)
   }
   if (value || parseInt(`${value}`) === 0) {
-    elem.style.setProperty(property, typeof value === 'number' ? `${value}px` : value)
+    elem.style.setProperty(property, typeof value === 'number' ? `${value}px` : /** @type {string} */ (value))
   } else {
     elem.style.removeProperty(property)
   }
@@ -305,7 +305,7 @@ export const isScrollable = (elem) => Boolean(elem.scrollHeight > elem.clientHei
  * @returns {boolean}
  */
 export const selfOrParentIsScrollable = (element, stopElement) => {
-  let parent = element
+  let parent = /** @type {HTMLElement | null} */ (element)
   while (parent && parent !== stopElement) {
     if (isScrollable(parent)) {
       return true

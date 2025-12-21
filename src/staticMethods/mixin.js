@@ -16,9 +16,15 @@
  *
  * @param {SweetAlertOptions} mixinParams
  * @returns {SweetAlert}
+ * @this {typeof import('../SweetAlert.js').SweetAlert}
  */
 export function mixin(mixinParams) {
+  // @ts-ignore: 'this' refers to the SweetAlert constructor
   class MixinSwal extends this {
+    /**
+     * @param {any} params
+     * @param {any} priorityMixinParams
+     */
     _main(params, priorityMixinParams) {
       return super._main(params, Object.assign({}, mixinParams, priorityMixinParams))
     }

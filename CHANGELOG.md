@@ -1,3 +1,10 @@
+## [11.26.13](https://github.com/sweetalert2/sweetalert2/compare/v11.26.12...v11.26.13) (2025-12-21)
+
+
+### Bug Fixes
+
+* strict types in renderInput.js ([#2900](https://github.com/sweetalert2/sweetalert2/issues/2900)) ([0b279a3](https://github.com/sweetalert2/sweetalert2/commit/0b279a362a5353198463b5d54fbf86eaa6c5d9fe))
+
 ## [11.26.12](https://github.com/sweetalert2/sweetalert2/compare/v11.26.11...v11.26.12) (2025-12-20)
 
 

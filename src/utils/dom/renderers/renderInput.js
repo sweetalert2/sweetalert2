@@ -185,9 +185,9 @@ const checkAndSetInputValue = (input, inputValue) => {
 const renderInputType = {}
 
 /**
- * @param {HTMLInputElement} input
+ * @param {Input | HTMLElement} input
  * @param {SweetAlertOptions} params
- * @returns {HTMLInputElement}
+ * @returns {Input}
  */
 renderInputType.text =
   renderInputType.email =
@@ -203,90 +203,113 @@ renderInputType.text =
   renderInputType.month =
     /** @type {(input: Input | HTMLElement, params: SweetAlertOptions) => Input} */
     (input, params) => {
-      checkAndSetInputValue(input, params.inputValue)
-      setInputLabel(input, input, params)
-      setInputPlaceholder(input, params)
-      input.type = params.input
-      return input
+      const inputElement = /** @type {HTMLInputElement} */ (input)
+      checkAndSetInputValue(inputElement, params.inputValue)
+      const inputAsInput = /** @type {Input} */ (input)
+      setInputLabel(inputAsInput, inputAsInput, params)
+      setInputPlaceholder(inputElement, params)
+      inputElement.type = /** @type {string} */ (params.input)
+      return inputAsInput
     }
 
 /**
- * @param {HTMLInputElement} input
+ * @param {Input | HTMLElement} input
  * @param {SweetAlertOptions} params
- * @returns {HTMLInputElement}
+ * @returns {Input}
  */
 renderInputType.file = (input, params) => {
-  setInputLabel(input, input, params)
-  setInputPlaceholder(input, params)
-  return input
+  setInputLabel(/** @type {Input} */ (input), /** @type {Input} */ (input), params)
+  setInputPlaceholder(/** @type {HTMLInputElement} */ (input), params)
+  return /** @type {Input} */ (input)
 }
 
 /**
- * @param {HTMLInputElement} range
+ * @param {Input | HTMLElement} range
  * @param {SweetAlertOptions} params
- * @returns {HTMLInputElement}
+ * @returns {Input}
  */
 renderInputType.range = (range, params) => {
-  const rangeInput = range.querySelector('input')
-  const rangeOutput = range.querySelector('output')
-  checkAndSetInputValue(rangeInput, params.inputValue)
-  rangeInput.type = params.input
-  checkAndSetInputValue(rangeOutput, params.inputValue)
-  setInputLabel(rangeInput, range, params)
-  return range
+  const rangeInput = /** @type {HTMLElement} */ (range).querySelector('input')
+  const rangeOutput = /** @type {HTMLElement} */ (range).querySelector('output')
+  if (rangeInput) {
+    checkAndSetInputValue(rangeInput, params.inputValue)
+    rangeInput.type = /** @type {string} */ (params.input)
+  }
+  if (rangeOutput) {
+    checkAndSetInputValue(rangeOutput, params.inputValue)
+  }
+  if (rangeInput) {
+    setInputLabel(rangeInput, /** @type {Input} */ (range), params)
+  }
+  return /** @type {Input} */ (range)
 }
 
 /**
- * @param {HTMLSelectElement} select
+ * @param {Input | HTMLElement} select
  * @param {SweetAlertOptions} params
- * @returns {HTMLSelectElement}
+ * @returns {Input}
  */
 renderInputType.select = (select, params) => {
-  select.textContent = ''
+  const selectElement = /** @type {HTMLSelectElement} */ (select)
+  selectElement.textContent = ''
   if (params.inputPlaceholder) {
     const placeholder = document.createElement('option')
     dom.setInnerHtml(placeholder, params.inputPlaceholder)
     placeholder.value = ''
     placeholder.disabled = true
     placeholder.selected = true
-    select.appendChild(placeholder)
+    selectElement.appendChild(placeholder)
   }
-  setInputLabel(select, select, params)
-  return select
+  const selectAsInput = /** @type {Input} */ (select)
+  setInputLabel(selectAsInput, selectAsInput, params)
+  return selectAsInput
 }
 
 /**
- * @param {HTMLInputElement} radio
- * @returns {HTMLInputElement}
+ * @param {Input | HTMLElement} radio
+ * @returns {Input}
  */
 renderInputType.radio = (radio) => {
-  radio.textContent = ''
-  return radio
+  /** @type {HTMLElement} */ (radio).textContent = ''
+  return /** @type {Input} */ (radio)
 }
 
 /**
- * @param {HTMLLabelElement} checkboxContainer
+ * @param {Input | HTMLElement} checkboxContainer
  * @param {SweetAlertOptions} params
- * @returns {HTMLInputElement}
+ * @returns {Input}
  */
 renderInputType.checkbox = (checkboxContainer, params) => {
-  const checkbox = dom.getInput(dom.getPopup(), 'checkbox')
+  const popup = dom.getPopup()
+  if (!popup) {
+    throw new Error('Popup not found')
+  }
+  const checkbox = dom.getInput(popup, 'checkbox')
+  if (!checkbox) {
+    throw new Error('Checkbox input not found')
+  }
   checkbox.value = '1'
   checkbox.checked = Boolean(params.inputValue)
-  const label = checkboxContainer.querySelector('span')
-  dom.setInnerHtml(label, params.inputPlaceholder || params.inputLabel)
+  const containerElement = /** @type {HTMLElement} */ (checkboxContainer)
+  const label = containerElement.querySelector('span')
+  if (label) {
+    const placeholderOrLabel = params.inputPlaceholder || params.inputLabel
+    if (placeholderOrLabel) {
+      dom.setInnerHtml(label, placeholderOrLabel)
+    }
+  }
   return checkbox
 }
 
 /**
- * @param {HTMLTextAreaElement} textarea
+ * @param {Input | HTMLElement} textarea
  * @param {SweetAlertOptions} params
- * @returns {HTMLTextAreaElement}
+ * @returns {Input}
  */
 renderInputType.textarea = (textarea, params) => {
-  checkAndSetInputValue(textarea, params.inputValue)
-  setInputPlaceholder(textarea, params)
-  setInputLabel(textarea, textarea, params)
+  checkAndSetInputValue(/** @type {HTMLTextAreaElement} */ (textarea), params.inputValue)
+  setInputPlaceholder(/** @type {HTMLTextAreaElement} */ (textarea), params)
+  setInputLabel(/** @type {Input} */ (textarea), /** @type {Input} */ (textarea), params)
 
   /**
    * @param {HTMLElement} el
@@ -299,25 +322,35 @@ renderInputType.textarea = (textarea, params) => {
   setTimeout(() => {
     // https://github.com/sweetalert2/sweetalert2/issues/1699
     if ('MutationObserver' in window) {
-      const initialPopupWidth = parseInt(window.getComputedStyle(dom.getPopup()).width)
+      const popup = dom.getPopup()
+      if (!popup) {
+        return
+      }
+      const initialPopupWidth = parseInt(window.getComputedStyle(popup).width)
       const textareaResizeHandler = () => {
         // check if texarea is still in document (i.e. popup wasn't closed in the meantime)
-        if (!document.body.contains(textarea)) {
+        if (!document.body.contains(/** @type {HTMLTextAreaElement} */ (textarea))) {
           return
         }
-        const textareaWidth = textarea.offsetWidth + getMargin(textarea)
+        const textareaWidth = /** @type {HTMLTextAreaElement} */ (textarea).offsetWidth + getMargin(/** @type {HTMLTextAreaElement} */ (textarea))
         if (textareaWidth > initialPopupWidth) {
-          dom.getPopup().style.width = `${textareaWidth}px`
+          const popupElement = dom.getPopup()
+          if (popupElement) {
+            popupElement.style.width = `${textareaWidth}px`
+          }
         } else {
-          dom.applyNumericalStyle(dom.getPopup(), 'width', params.width)
+          const popupElement = dom.getPopup()
+          if (popupElement) {
+            dom.applyNumericalStyle(popupElement, 'width', params.width)
+          }
         }
       }
-      new MutationObserver(textareaResizeHandler).observe(textarea, {
+      new MutationObserver(textareaResizeHandler).observe(/** @type {HTMLTextAreaElement} */ (textarea), {
         attributes: true,
         attributeFilter: ['style'],
       })
     }
   })
 
-  return textarea
+  return /** @type {Input} */ (textarea)
 }

@@ -1,3 +1,10 @@
+## [11.26.15](https://github.com/sweetalert2/sweetalert2/compare/v11.26.14...v11.26.15) (2025-12-21)
+
+
+### Bug Fixes
+
+* strict types in core modules ([#2902](https://github.com/sweetalert2/sweetalert2/issues/2902)) ([a43f5f9](https://github.com/sweetalert2/sweetalert2/commit/a43f5f9e0e8ce6913b573bbfab5114d6a5b65e97))
+
 ## [11.26.14](https://github.com/sweetalert2/sweetalert2/compare/v11.26.13...v11.26.14) (2025-12-21)
 
 

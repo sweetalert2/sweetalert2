@@ -235,12 +235,10 @@ renderInputType.range = (range, params) => {
   if (rangeInput) {
     checkAndSetInputValue(rangeInput, params.inputValue)
     rangeInput.type = /** @type {string} */ (params.input)
+    setInputLabel(rangeInput, /** @type {Input} */ (range), params)
   }
   if (rangeOutput) {
     checkAndSetInputValue(rangeOutput, params.inputValue)
-  }
-  if (rangeInput) {
-    setInputLabel(rangeInput, /** @type {Input} */ (range), params)
   }
   return /** @type {Input} */ (range)
 }
@@ -335,14 +333,11 @@ renderInputType.textarea = (textarea, params) => {
           return
         }
         const textareaWidth = textareaElement.offsetWidth + getMargin(textareaElement)
-        if (textareaWidth > initialPopupWidth) {
-          const popupElement = dom.getPopup()
-          if (popupElement) {
+        const popupElement = dom.getPopup()
+        if (popupElement) {
+          if (textareaWidth > initialPopupWidth) {
             popupElement.style.width = `${textareaWidth}px`
-          }
-        } else {
-          const popupElement = dom.getPopup()
-          if (popupElement) {
+          } else {
             dom.applyNumericalStyle(popupElement, 'width', params.width)
           }
         }

@@ -48,9 +48,15 @@ const getSwalParams = (templateContent) => {
     if (!paramName || !value) {
       return
     }
-    if (typeof defaultParams[paramName] === 'boolean') {
+    if (
+      paramName in defaultParams &&
+      typeof defaultParams[/** @type {keyof typeof defaultParams} */ (paramName)] === 'boolean'
+    ) {
       result[paramName] = value !== 'false'
-    } else if (typeof defaultParams[paramName] === 'object') {
+    } else if (
+      paramName in defaultParams &&
+      typeof defaultParams[/** @type {keyof typeof defaultParams} */ (paramName)] === 'object'
+    ) {
       result[paramName] = JSON.parse(value)
     } else {
       result[paramName] = value
@@ -97,10 +103,16 @@ const getSwalButtons = (templateContent) => {
     result[`${type}ButtonText`] = button.innerHTML
     result[`show${capitalizeFirstLetter(type)}Button`] = true
     if (button.hasAttribute('color')) {
-      result[`${type}ButtonColor`] = button.getAttribute('color')
+      const color = button.getAttribute('color')
+      if (color !== null) {
+        result[`${type}ButtonColor`] = color
+      }
     }
     if (button.hasAttribute('aria-label')) {
-      result[`${type}ButtonAriaLabel`] = button.getAttribute('aria-label')
+      const ariaLabel = button.getAttribute('aria-label')
+      if (ariaLabel !== null) {
+        result[`${type}ButtonAriaLabel`] = ariaLabel
+      }
     }
   })
   return result
@@ -158,7 +170,7 @@ const getSwalIcon = (templateContent) => {
  * @returns {object}
  */
 const getSwalInput = (templateContent) => {
-  /** @type {object} */
+  /** @type {Record<string, any>} */
   const result = {}
   /** @type {HTMLElement | null} */
   const input = templateContent.querySelector('swal-input')

@@ -27,7 +27,7 @@ export const parseHtmlToContainer = (param, target) => {
  */
 const handleObject = (param, target) => {
   // JQuery element(s)
-  if (param.jquery) {
+  if ('jquery' in param) {
     handleJqueryElem(target, param)
   }
 
@@ -39,7 +39,7 @@ const handleObject = (param, target) => {
 
 /**
  * @param {HTMLElement} target
- * @param {object} elem
+ * @param {any} elem
  */
 const handleJqueryElem = (target, elem) => {
   target.textContent = ''

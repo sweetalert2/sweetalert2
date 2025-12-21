@@ -33,5 +33,5 @@ export const render = (instance, params) => {
   if (typeof params.didRender === 'function' && popup) {
     params.didRender(popup)
   }
-  globalState.eventEmitter.emit('didRender', popup)
+  globalState.eventEmitter?.emit('didRender', popup)
 }

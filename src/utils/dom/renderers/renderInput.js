@@ -205,11 +205,10 @@ renderInputType.text =
     (input, params) => {
       const inputElement = /** @type {HTMLInputElement} */ (input)
       checkAndSetInputValue(inputElement, params.inputValue)
-      const inputAsInput = /** @type {Input} */ (input)
-      setInputLabel(inputAsInput, inputAsInput, params)
+      setInputLabel(inputElement, inputElement, params)
       setInputPlaceholder(inputElement, params)
       inputElement.type = /** @type {string} */ (params.input)
-      return inputAsInput
+      return inputElement
     }
 
 /**
@@ -218,9 +217,10 @@ renderInputType.text =
  * @returns {Input}
  */
 renderInputType.file = (input, params) => {
-  setInputLabel(/** @type {Input} */ (input), /** @type {Input} */ (input), params)
-  setInputPlaceholder(/** @type {HTMLInputElement} */ (input), params)
-  return /** @type {Input} */ (input)
+  const inputElement = /** @type {HTMLInputElement} */ (input)
+  setInputLabel(inputElement, inputElement, params)
+  setInputPlaceholder(inputElement, params)
+  return inputElement
 }
 
 /**
@@ -229,8 +229,9 @@ renderInputType.file = (input, params) => {
  * @returns {Input}
  */
 renderInputType.range = (range, params) => {
-  const rangeInput = /** @type {HTMLElement} */ (range).querySelector('input')
-  const rangeOutput = /** @type {HTMLElement} */ (range).querySelector('output')
+  const rangeContainer = /** @type {HTMLElement} */ (range)
+  const rangeInput = rangeContainer.querySelector('input')
+  const rangeOutput = rangeContainer.querySelector('output')
   if (rangeInput) {
     checkAndSetInputValue(rangeInput, params.inputValue)
     rangeInput.type = /** @type {string} */ (params.input)
@@ -260,9 +261,8 @@ renderInputType.select = (select, params) => {
     placeholder.selected = true
     selectElement.appendChild(placeholder)
   }
-  const selectAsInput = /** @type {Input} */ (select)
-  setInputLabel(selectAsInput, selectAsInput, params)
-  return selectAsInput
+  setInputLabel(selectElement, selectElement, params)
+  return selectElement
 }
 
 /**
@@ -270,7 +270,8 @@ renderInputType.select = (select, params) => {
  * @returns {Input}
  */
 renderInputType.radio = (radio) => {
-  /** @type {HTMLElement} */ (radio).textContent = ''
+  const radioElement = /** @type {HTMLElement} */ (radio)
+  radioElement.textContent = ''
   return /** @type {Input} */ (radio)
 }
 
@@ -307,9 +308,10 @@ renderInputType.checkbox = (checkboxContainer, params) => {
  * @returns {Input}
  */
 renderInputType.textarea = (textarea, params) => {
-  checkAndSetInputValue(/** @type {HTMLTextAreaElement} */ (textarea), params.inputValue)
-  setInputPlaceholder(/** @type {HTMLTextAreaElement} */ (textarea), params)
-  setInputLabel(/** @type {Input} */ (textarea), /** @type {Input} */ (textarea), params)
+  const textareaElement = /** @type {HTMLTextAreaElement} */ (textarea)
+  checkAndSetInputValue(textareaElement, params.inputValue)
+  setInputPlaceholder(textareaElement, params)
+  setInputLabel(textareaElement, textareaElement, params)
 
   /**
    * @param {HTMLElement} el
@@ -329,10 +331,10 @@ renderInputType.textarea = (textarea, params) => {
       const initialPopupWidth = parseInt(window.getComputedStyle(popup).width)
       const textareaResizeHandler = () => {
         // check if texarea is still in document (i.e. popup wasn't closed in the meantime)
-        if (!document.body.contains(/** @type {HTMLTextAreaElement} */ (textarea))) {
+        if (!document.body.contains(textareaElement)) {
           return
         }
-        const textareaWidth = /** @type {HTMLTextAreaElement} */ (textarea).offsetWidth + getMargin(/** @type {HTMLTextAreaElement} */ (textarea))
+        const textareaWidth = textareaElement.offsetWidth + getMargin(textareaElement)
         if (textareaWidth > initialPopupWidth) {
           const popupElement = dom.getPopup()
           if (popupElement) {
@@ -345,12 +347,12 @@ renderInputType.textarea = (textarea, params) => {
           }
         }
       }
-      new MutationObserver(textareaResizeHandler).observe(/** @type {HTMLTextAreaElement} */ (textarea), {
+      new MutationObserver(textareaResizeHandler).observe(textareaElement, {
         attributes: true,
         attributeFilter: ['style'],
       })
     }
   })
 
-  return /** @type {Input} */ (textarea)
+  return textareaElement
 }

@@ -24,7 +24,7 @@ export class SweetAlert {
   /**
    * @type {Promise<SweetAlertResult>}
    */
-  #promise
+  #promise = /** @type {Promise<SweetAlertResult>} */ (Promise.resolve({ isConfirmed: false, isDenied: false, isDismissed: true }))
 
   /**
    * @param {...(SweetAlertOptions | string)} args
@@ -50,6 +50,10 @@ export class SweetAlert {
     this.#promise = this._main(currentInstance.params)
   }
 
+  /**
+   * @param {any} userParams
+   * @param {any} mixinParams
+   */
   _main(userParams, mixinParams = {}) {
     showWarningsForParams(Object.assign({}, mixinParams, userParams))
 
@@ -90,10 +94,16 @@ export class SweetAlert {
   }
 
   // `catch` cannot be the name of a module export, so we define our thenable methods here instead
+  /**
+   * @param {any} onFulfilled
+   */
   then(onFulfilled) {
     return this.#promise.then(onFulfilled)
   }
 
+  /**
+   * @param {any} onFinally
+   */
   finally(onFinally) {
     return this.#promise.finally(onFinally)
   }
@@ -103,7 +113,7 @@ export class SweetAlert {
  * @param {SweetAlert} instance
  * @param {DomCache} domCache
  * @param {SweetAlertOptions} innerParams
- * @returns {Promise}
+ * @returns {Promise<SweetAlertResult>}
  */
 const swalPromise = (instance, domCache, innerParams) => {
   return new Promise((resolve, reject) => {
@@ -177,18 +187,18 @@ const prepareParams = (userParams, mixinParams) => {
  * @returns {DomCache}
  */
 const populateDomCache = (instance) => {
-  const domCache = {
-    popup: dom.getPopup(),
-    container: dom.getContainer(),
-    actions: dom.getActions(),
-    confirmButton: dom.getConfirmButton(),
-    denyButton: dom.getDenyButton(),
-    cancelButton: dom.getCancelButton(),
-    loader: dom.getLoader(),
-    closeButton: dom.getCloseButton(),
-    validationMessage: dom.getValidationMessage(),
-    progressSteps: dom.getProgressSteps(),
-  }
+  const domCache = /** @type {DomCache} */ ({
+    popup: /** @type {HTMLElement} */ (dom.getPopup()),
+    container: /** @type {HTMLElement} */ (dom.getContainer()),
+    actions: /** @type {HTMLElement} */ (dom.getActions()),
+    confirmButton: /** @type {HTMLElement} */ (dom.getConfirmButton()),
+    denyButton: /** @type {HTMLElement} */ (dom.getDenyButton()),
+    cancelButton: /** @type {HTMLElement} */ (dom.getCancelButton()),
+    loader: /** @type {HTMLElement} */ (dom.getLoader()),
+    closeButton: /** @type {HTMLElement} */ (dom.getCloseButton()),
+    validationMessage: /** @type {HTMLElement} */ (dom.getValidationMessage()),
+    progressSteps: /** @type {HTMLElement} */ (dom.getProgressSteps()),
+  })
   privateProps.domCache.set(instance, domCache)
 
   return domCache
@@ -207,13 +217,13 @@ const setupTimer = (globalState, innerParams, dismissWith) => {
       dismissWith('timer')
       delete globalState.timeout
     }, innerParams.timer)
-    if (innerParams.timerProgressBar) {
+    if (innerParams.timerProgressBar && timerProgressBar) {
       dom.show(timerProgressBar)
       dom.applyCustomClass(timerProgressBar, innerParams, 'timerProgressBar')
       setTimeout(() => {
         if (globalState.timeout && globalState.timeout.running) {
           // timer can be already stopped or unset at this point
-          dom.animateTimerProgressBar(innerParams.timer)
+          dom.animateTimerProgressBar(/** @type {number} */ (innerParams.timer))
         }
       })
     }
@@ -327,11 +337,14 @@ Object.keys(instanceMethods).forEach((key) => {
    * @param {...(SweetAlertOptions | string | undefined)} args
    * @returns {SweetAlertResult | Promise<SweetAlertResult> | undefined}
    */
+  // @ts-ignore: Dynamic property assignment for backwards compatibility
   SweetAlert[key] = function (...args) {
+    // @ts-ignore
     if (currentInstance && currentInstance[key]) {
+      // @ts-ignore
       return currentInstance[key](...args)
     }
-    return null
+    return undefined
   }
 })
 

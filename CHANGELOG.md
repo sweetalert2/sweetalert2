@@ -1,3 +1,10 @@
+## [11.26.17](https://github.com/sweetalert2/sweetalert2/compare/v11.26.16...v11.26.17) (2025-12-22)
+
+
+### Bug Fixes
+
+* add last strict type and enable TypeScript strict mode ([#2904](https://github.com/sweetalert2/sweetalert2/issues/2904)) ([201c0f6](https://github.com/sweetalert2/sweetalert2/commit/201c0f68b81519643c07316e42fb7221fc052acb))
+
 ## [11.26.16](https://github.com/sweetalert2/sweetalert2/compare/v11.26.15...v11.26.16) (2025-12-21)
 
 

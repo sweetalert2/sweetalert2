@@ -4,6 +4,7 @@ import privateProps from '../privateProps.js'
 
 /**
  * Dispose the current SweetAlert2 instance
+ * @this {SweetAlert}
  */
 export function _destroy() {
   const domCache = privateProps.domCache.get(this)
@@ -23,7 +24,7 @@ export function _destroy() {
   if (typeof innerParams.didDestroy === 'function') {
     innerParams.didDestroy()
   }
-  globalState.eventEmitter.emit('didDestroy')
+  globalState.eventEmitter?.emit('didDestroy')
   disposeSwal(this)
 }
 
@@ -33,6 +34,7 @@ export function _destroy() {
 const disposeSwal = (instance) => {
   disposeWeakMaps(instance)
   // Unset this.params so GC will dispose it (#1569)
+  // @ts-ignore
   delete instance.params
   // Unset globalState props so GC will dispose globalState (#1569)
   delete globalState.keydownHandler
@@ -53,29 +55,46 @@ const disposeWeakMaps = (instance) => {
     unsetWeakMaps(privateMethods, instance)
     unsetWeakMaps(privateProps, instance)
 
+    // @ts-ignore
     delete instance.isAwaitingPromise
     // Unset instance methods
+    // @ts-ignore
     delete instance.disableButtons
+    // @ts-ignore
     delete instance.enableButtons
+    // @ts-ignore
     delete instance.getInput
+    // @ts-ignore
     delete instance.disableInput
+    // @ts-ignore
     delete instance.enableInput
+    // @ts-ignore
     delete instance.hideLoading
+    // @ts-ignore
     delete instance.disableLoading
+    // @ts-ignore
     delete instance.showValidationMessage
+    // @ts-ignore
     delete instance.resetValidationMessage
+    // @ts-ignore
     delete instance.close
+    // @ts-ignore
     delete instance.closePopup
+    // @ts-ignore
     delete instance.closeModal
+    // @ts-ignore
     delete instance.closeToast
+    // @ts-ignore
     delete instance.rejectPromise
+    // @ts-ignore
     delete instance.update
+    // @ts-ignore
     delete instance._destroy
   }
 }
 
 /**
- * @param {object} obj
+ * @param {Record<string, WeakMap<any, any>>} obj
  * @param {SweetAlert} instance
  */
 const unsetWeakMaps = (obj, instance) => {

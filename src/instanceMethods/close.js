@@ -13,7 +13,7 @@ import { isSafariOrIOS } from '../utils/iosFix.js'
  * @param {SweetAlert} instance
  * @param {HTMLElement} container
  * @param {boolean} returnFocus
- * @param {() => void} didClose
+ * @param {(() => void) | undefined} didClose
  */
 function removePopupAndResetState(instance, container, returnFocus, didClose) {
   if (dom.isToast()) {
@@ -56,6 +56,7 @@ function removeBodyClasses() {
  * Instance method to close sweetAlert
  *
  * @param {SweetAlertResult | undefined} resolveValue
+ * @this {SweetAlert}
  */
 export function close(resolveValue) {
   resolveValue = prepareResolveValue(resolveValue)
@@ -76,6 +77,10 @@ export function close(resolveValue) {
   }
 }
 
+/**
+ * @param {SweetAlert} instance
+ * @returns {boolean}
+ */
 const triggerClosePopup = (instance) => {
   const popup = dom.getPopup()
 
@@ -102,6 +107,7 @@ const triggerClosePopup = (instance) => {
 
 /**
  * @param {Error | string} error
+ * @this {SweetAlert}
  */
 export function rejectPromise(error) {
   const rejectPromise = privateMethods.swalPromiseReject.get(this)
@@ -117,6 +123,7 @@ export function rejectPromise(error) {
  */
 export const handleAwaitingPromise = (instance) => {
   if (instance.isAwaitingPromise) {
+    // @ts-ignore
     delete instance.isAwaitingPromise
     // The instance might have been previously partly destroyed, we must resume the destroy process in this case #2335
     if (!privateProps.innerParams.get(instance)) {
@@ -164,11 +171,11 @@ const handlePopupAnimation = (instance, popup, innerParams) => {
   }
   globalState.eventEmitter?.emit('willClose', popup)
 
-  if (animationIsSupported) {
-    animatePopup(instance, popup, container, innerParams.returnFocus, innerParams.didClose)
-  } else {
+  if (animationIsSupported && container) {
+    animatePopup(instance, popup, container, Boolean(innerParams.returnFocus), innerParams.didClose)
+  } else if (container) {
     // Otherwise, remove immediately
-    removePopupAndResetState(instance, container, innerParams.returnFocus, innerParams.didClose)
+    removePopupAndResetState(instance, container, Boolean(innerParams.returnFocus), innerParams.didClose)
   }
 }
 
@@ -177,7 +184,7 @@ const handlePopupAnimation = (instance, popup, innerParams) => {
  * @param {HTMLElement} popup
  * @param {HTMLElement} container
  * @param {boolean} returnFocus
- * @param {() => void} didClose
+ * @param {(() => void) | undefined} didClose
  */
 const animatePopup = (instance, popup, container, returnFocus, didClose) => {
   globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(
@@ -204,7 +211,7 @@ const animatePopup = (instance, popup, container, returnFocus, didClose) => {
 
 /**
  * @param {SweetAlert} instance
- * @param {() => void} didClose
+ * @param {(() => void) | undefined} didClose
  */
 const triggerDidCloseAndDispose = (instance, didClose) => {
   setTimeout(() => {

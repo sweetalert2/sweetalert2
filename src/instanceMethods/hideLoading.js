@@ -4,6 +4,7 @@ import * as dom from '../utils/dom/index.js'
 
 /**
  * Hides loader and shows back the button which was hidden by .showLoading()
+ * @this {SweetAlert}
  */
 function hideLoading() {
   // do nothing if popup is closed
@@ -28,10 +29,14 @@ function hideLoading() {
   domCache.cancelButton.disabled = false
 }
 
+/**
+ * @param {DomCache} domCache
+ */
 const showRelatedButton = (domCache) => {
-  const buttonToReplace = domCache.popup.getElementsByClassName(domCache.loader.getAttribute('data-button-to-replace'))
+  const dataButtonToReplace = domCache.loader.getAttribute('data-button-to-replace')
+  const buttonToReplace = dataButtonToReplace ? domCache.popup.getElementsByClassName(dataButtonToReplace) : []
   if (buttonToReplace.length) {
-    dom.show(buttonToReplace[0], 'inline-block')
+    dom.show(/** @type {HTMLElement} */ (buttonToReplace[0]), 'inline-block')
   } else if (dom.allButtonsAreHidden()) {
     dom.hide(domCache.actions)
   }

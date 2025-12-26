@@ -22,6 +22,7 @@
     "@sweetalert2/stylelint-config": "^3.0.0",
     "babel-plugin-istanbul": "^7.0.1",
     "cypress": "^15.0.0",
+    "cypress-vite": "^1.8.0",
     "eslint": "^9.0.0",
     "eslint-plugin-cypress": "^5.0.0",
     "eslint-plugin-jsdoc": "^61.1.1",

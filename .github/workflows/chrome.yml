@@ -32,7 +32,9 @@ jobs:
       - run: bun check-types
 
       - name: Run tests in Chrome
-        run: bun run test --browser chrome
+        run: COVERAGE=true bun run test --browser chrome
+        env:
+          COVERAGE: true
 
       - name: Code coverage report
         uses: k1LoW/octocov-action@v1

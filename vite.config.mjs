@@ -11,4 +11,13 @@ export default defineConfig({
       forceBuildInstrument: true,
     }),
   ],
+  build: {
+    // Don't minify for testing
+    minify: false,
+    sourcemap: true,
+  },
+  // Don't optimize dependencies during testing
+  optimizeDeps: {
+    disabled: false,
+  },
 })

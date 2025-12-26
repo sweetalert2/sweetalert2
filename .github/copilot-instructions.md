@@ -1,5 +1,3 @@
-# AGENTS.md
-
 ## Setup commands
 
 - Install deps: `bun install`

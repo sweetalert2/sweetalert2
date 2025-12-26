@@ -73,7 +73,6 @@
     "lint": "stylelint src/*.scss themes/*.css && eslint src cypress tools *.js *.ts && prettier --check src/**/*.js cypress/**/*.js *.js",
     "build": "zx tools/build.mjs",
     "test": "cypress run --headless",
-    "test:coverage": "nyc cypress run --headless",
     "check-types": "npx -p typescript@latest tsc --noEmit --lib dom,es2018 -p jsconfig.json",
     "cypress:open": "cypress open",
     "webpack-build": "webpack --config=test/webpack/webpack.config.js"

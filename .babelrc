@@ -1,0 +1,12 @@
+{
+  "presets": [
+    ["@babel/preset-env", {
+      "include": ["transform-optional-chaining", "transform-class-properties"]
+    }]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  }
+}

@@ -34,6 +34,12 @@ jobs:
       - name: Run tests in Chrome
         run: bun run test --browser chrome
 
+      - name: Code coverage report
+        uses: k1LoW/octocov-action@v1
+        if: always()
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Test in CommonJS
         if: github.ref_name == 'main'
         run: node test/require-in-commonjs.cjs

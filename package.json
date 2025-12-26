@@ -14,16 +14,20 @@
   "devDependencies": {
     "@babel/core": "^7.19.6",
     "@babel/preset-env": "^7.19.4",
+    "@cypress/code-coverage": "^3.14.7",
+    "@cypress/vite-dev-server": "^7.0.1",
     "@rollup/plugin-babel": "^6.0.2",
     "@rollup/plugin-terser": "^0.4.0",
     "@sweetalert2/eslint-config": "^1.0.11",
     "@sweetalert2/stylelint-config": "^3.0.0",
+    "babel-plugin-istanbul": "^7.0.1",
     "cypress": "^15.0.0",
     "eslint": "^9.0.0",
     "eslint-plugin-cypress": "^5.0.0",
     "eslint-plugin-jsdoc": "^61.1.1",
     "eslint-plugin-no-unsanitized": "^4.0.1",
     "jquery": "^3.6.1",
+    "nyc": "^17.1.0",
     "playwright-webkit": "^1.37.1",
     "prettier": "^3.0.0",
     "rollup": "^4.0.0",
@@ -31,6 +35,7 @@
     "stylelint": "^16.0.0",
     "typescript": "4.8.4",
     "vite": "^7.0.0",
+    "vite-plugin-istanbul": "^7.2.1",
     "zx": "^8.0.0"
   },
   "devDependenciesComments": {
@@ -67,6 +72,7 @@
     "lint": "stylelint src/*.scss themes/*.css && eslint src cypress tools *.js *.ts && prettier --check src/**/*.js cypress/**/*.js *.js",
     "build": "zx tools/build.mjs",
     "test": "cypress run --headless",
+    "test:coverage": "nyc cypress run --headless",
     "check-types": "npx -p typescript@latest tsc --noEmit --lib dom,es2018 -p jsconfig.json",
     "cypress:open": "cypress open",
     "webpack-build": "webpack --config=test/webpack/webpack.config.js"

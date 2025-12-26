@@ -5,3 +5,5 @@ cypress/screenshots
 cypress/downloads
 .idea
 .vscode
+coverage
+.nyc_output

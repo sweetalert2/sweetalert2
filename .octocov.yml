@@ -1,0 +1,10 @@
+coverage:
+  paths:
+    - coverage/lcov.info
+codeToTestRatio:
+  code:
+    - src/**/*.js
+  test:
+    - cypress/**/*.js
+comment:
+  hideFooterLink: false

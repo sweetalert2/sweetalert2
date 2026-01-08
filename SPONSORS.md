@@ -32,7 +32,6 @@ If you'd like to make a one-time payment for one or more years, that's also poss
 <table>
 <tr>
 <td align="center"><a href="https://ssmarket.net/buy-youtube-views"><img src="https://sweetalert2.github.io/images/sponsors/ssmarket.png" width="80"><br>Buy Youtube Views</a></td>
-<td align="center"><a href="https://dlxplugins.com/"><img src="https://avatars.githubusercontent.com/u/106675919?s=200&v=4" width="80"><br>DLX Plugins</a></td>
 <td align="center"><a href="https://github.com/tiagostutz"><img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80"><br>Tiago de Oliveira Stutz</a></td>
 <td align="center"><a href="https://roboflow.com/"><img src="https://sweetalert2.github.io/images/sponsors/roboflow.png" width="80"><br>Roboflow</a></td>
 <td align="center"><a href="https://www.zezelife.com/"><img src="https://sweetalert2.github.io/images/sponsors/zezelife.png" width="80"><br>ZezeLife</a></td>

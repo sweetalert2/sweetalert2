@@ -806,6 +806,15 @@ declare module 'sweetalert2' {
     timerProgressBar?: boolean | undefined
 
     /**
+     * If set to `false`, the Confirm, Deny, and Cancel buttons will be disabled
+     * until the timer expires or is stopped. Set this to `false` to require users
+     * to wait for the timer before they can interact with the buttons.
+     *
+     * @default true
+     */
+    allowEscapeUntilTimer?: boolean | undefined
+
+    /**
      * By default, SweetAlert2 sets html's and body's CSS `height` to `auto !important`.
      * If this behavior isn't compatible with your project's layout, set `heightAuto` to `false`.
      *

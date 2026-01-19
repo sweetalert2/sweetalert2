@@ -1,4 +1,5 @@
 import globalState from '../globalState.js'
+import privateProps from '../privateProps.js'
 import { animateTimerProgressBar, stopTimerProgressBar } from '../utils/dom/domUtils.js'
 
 /**
@@ -20,7 +21,14 @@ export const getTimerLeft = () => {
 export const stopTimer = () => {
   if (globalState.timeout) {
     stopTimerProgressBar()
-    return globalState.timeout.stop()
+    const remaining = globalState.timeout.stop()
+    if (globalState.currentInstance) {
+      const innerParams = privateProps.innerParams.get(globalState.currentInstance)
+      if (innerParams && innerParams.timer && !innerParams.allowEscapeUntilTimer) {
+        globalState.currentInstance.enableButtons()
+      }
+    }
+    return remaining
   }
 }
 

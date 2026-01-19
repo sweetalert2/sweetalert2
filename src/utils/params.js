@@ -66,6 +66,7 @@ export const defaultParams = {
   imageAlt: '',
   timer: undefined,
   timerProgressBar: false,
+  allowEscapeUntilTimer: true,
   width: undefined,
   padding: undefined,
   background: undefined,

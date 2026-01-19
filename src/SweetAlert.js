@@ -152,7 +152,7 @@ const swalPromise = (instance, domCache, innerParams) => {
 
     openPopup(innerParams)
 
-    setupTimer(globalState, innerParams, dismissWith)
+    setupTimer(instance, globalState, innerParams, dismissWith)
 
     initFocus(domCache, innerParams)
 
@@ -205,15 +205,19 @@ const populateDomCache = (instance) => {
 }
 
 /**
+ * @param {SweetAlert} instance
  * @param {GlobalState} globalState
  * @param {SweetAlertOptions} innerParams
  * @param {(dismiss: DismissReason) => void} dismissWith
  */
-const setupTimer = (globalState, innerParams, dismissWith) => {
+const setupTimer = (instance, globalState, innerParams, dismissWith) => {
   const timerProgressBar = dom.getTimerProgressBar()
   dom.hide(timerProgressBar)
   if (innerParams.timer) {
     globalState.timeout = new Timer(() => {
+      if (!innerParams.allowEscapeUntilTimer) {
+        instance.enableButtons()
+      }
       dismissWith('timer')
       delete globalState.timeout
     }, innerParams.timer)
@@ -226,6 +230,9 @@ const setupTimer = (globalState, innerParams, dismissWith) => {
           dom.animateTimerProgressBar(/** @type {number} */ (innerParams.timer))
         }
       })
+    }
+    if (!innerParams.allowEscapeUntilTimer) {
+      instance.disableButtons()
     }
   }
 }

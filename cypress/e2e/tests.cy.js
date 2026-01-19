@@ -1896,6 +1896,58 @@ describe('timerProgressBar', () => {
   })
 })
 
+describe('allowEscapeUntilTimer', () => {
+  it('should disable buttons when allowEscapeUntilTimer is false', (done) => {
+    SwalWithoutAnimation.fire({
+      timer: 500,
+      allowEscapeUntilTimer: false,
+    })
+    setTimeout(() => {
+      expect(Swal.getConfirmButton().disabled).to.be.true
+      expect(Swal.getDenyButton().disabled).to.be.true
+      expect(Swal.getCancelButton().disabled).to.be.true
+      done()
+    }, 10)
+  })
+
+  it('should enable buttons when timer is stopped and allowEscapeUntilTimer is false', (done) => {
+    SwalWithoutAnimation.fire({
+      timer: 500,
+      allowEscapeUntilTimer: false,
+    })
+    setTimeout(() => {
+      expect(Swal.getConfirmButton().disabled).to.be.true
+      Swal.stopTimer()
+      expect(Swal.getConfirmButton().disabled).to.be.false
+      expect(Swal.getDenyButton().disabled).to.be.false
+      expect(Swal.getCancelButton().disabled).to.be.false
+      done()
+    }, 10)
+  })
+
+  it('should enable buttons when timer expires naturally and allowEscapeUntilTimer is false', (done) => {
+    SwalWithoutAnimation.fire({
+      timer: 100,
+      allowEscapeUntilTimer: false,
+    }).then((result) => {
+      expect(result.dismiss).to.equal(Swal.DismissReason.timer)
+      done()
+    })
+  })
+
+  it('should not disable buttons when allowEscapeUntilTimer is true (default)', (done) => {
+    SwalWithoutAnimation.fire({
+      timer: 500,
+    })
+    setTimeout(() => {
+      expect(Swal.getConfirmButton().disabled).to.be.false
+      expect(Swal.getDenyButton().disabled).to.be.false
+      expect(Swal.getCancelButton().disabled).to.be.false
+      done()
+    }, 10)
+  })
+})
+
 describe('global events and listeners', () => {
   it('should attach event handlers with .on()', (done) => {
     const spyDidRender = cy.spy()

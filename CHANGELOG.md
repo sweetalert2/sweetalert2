@@ -1,3 +1,10 @@
+## [11.26.18](https://github.com/sweetalert2/sweetalert2/compare/v11.26.17...v11.26.18) (2026-02-02)
+
+
+### Bug Fixes
+
+* types in argsToParams.js ([#2912](https://github.com/sweetalert2/sweetalert2/issues/2912)) ([11e6344](https://github.com/sweetalert2/sweetalert2/commit/11e63448396da1cc6260cfbb4b5e61d754e01453))
+
 ## [11.26.17](https://github.com/sweetalert2/sweetalert2/compare/v11.26.16...v11.26.17) (2025-12-22)
 
 

@@ -1,27 +1,23 @@
 import { error } from '../utils/utils.js'
 
 /**
- * @typedef { import('sweetalert2').SweetAlertOptions } SweetAlertOptions
- */
-
-/**
- * @param {any} elem
+ * @param {unknown} elem
  * @returns {boolean}
  */
-const isJqueryElement = (elem) => typeof elem === 'object' && elem.jquery
+const isJqueryElement = (elem) => typeof elem === 'object' && elem !== null && 'jquery' in elem
 
 /**
- * @param {any} elem
+ * @param {unknown} elem
  * @returns {boolean}
  */
 const isElement = (elem) => elem instanceof Element || isJqueryElement(elem)
 
 /**
- * @param {any[]} args
+ * @param {ReadonlyArray<unknown>} args
  * @returns {SweetAlertOptions}
  */
 export const argsToParams = (args) => {
-  /** @type {Record<string, any>} */
+  /** @type {Record<string, unknown>} */
   const params = {}
   if (typeof args[0] === 'object' && !isElement(args[0])) {
     Object.assign(params, args[0])

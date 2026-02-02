@@ -1,6 +1,10 @@
 import { error } from '../utils/utils.js'
 
 /**
+ * @typedef { import('sweetalert2').SweetAlertOptions } SweetAlertOptions
+ */
+
+/**
  * @param {any} elem
  * @returns {boolean}
  */
@@ -31,5 +35,5 @@ export const argsToParams = (args) => {
       }
     })
   }
-  return params
+  return /** @type {SweetAlertOptions} */ (params)
 }

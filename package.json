@@ -23,7 +23,7 @@
     "eslint-plugin-cypress": "^5.0.0",
     "eslint-plugin-jsdoc": "^62.0.1",
     "eslint-plugin-no-unsanitized": "^4.0.1",
-    "jquery": "^3.6.1",
+    "jquery": "^4.0.0",
     "playwright-webkit": "^1.37.1",
     "prettier": "^3.0.0",
     "rollup": "^4.0.0",

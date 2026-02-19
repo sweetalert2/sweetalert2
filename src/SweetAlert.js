@@ -24,7 +24,9 @@ export class SweetAlert {
   /**
    * @type {Promise<SweetAlertResult>}
    */
-  #promise = /** @type {Promise<SweetAlertResult>} */ (Promise.resolve({ isConfirmed: false, isDenied: false, isDismissed: true }))
+  #promise = /** @type {Promise<SweetAlertResult>} */ (
+    Promise.resolve({ isConfirmed: false, isDenied: false, isDismissed: true })
+  )
 
   /**
    * @param {...(SweetAlertOptions | string)} args
@@ -250,7 +252,7 @@ const initFocus = (domCache, innerParams) => {
   // TODO: this is dumb, remove `allowEnterKey` param in the next major version
   if (!callIfFunction(innerParams.allowEnterKey)) {
     warnAboutDeprecation('allowEnterKey')
-    blurActiveElement()
+    domCache.popup.focus()
     return
   }
 
@@ -302,12 +304,6 @@ const focusButton = (domCache, innerParams) => {
   }
 
   return false
-}
-
-const blurActiveElement = () => {
-  if (document.activeElement instanceof HTMLElement && typeof document.activeElement.blur === 'function') {
-    document.activeElement.blur()
-  }
 }
 
 // Assign instance methods from src/instanceMethods/*.js to prototype

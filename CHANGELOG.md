@@ -1,3 +1,10 @@
+## [11.26.19](https://github.com/sweetalert2/sweetalert2/compare/v11.26.18...v11.26.19) (2026-02-19)
+
+
+### Bug Fixes
+
+* allowEnterKey should focus popup so Esc will work ([#2915](https://github.com/sweetalert2/sweetalert2/issues/2915)) ([5f7a514](https://github.com/sweetalert2/sweetalert2/commit/5f7a514f6b1d12e52a74b4d3f0284aa63b253419))
+
 ## [11.26.18](https://github.com/sweetalert2/sweetalert2/compare/v11.26.17...v11.26.18) (2026-02-02)
 
 

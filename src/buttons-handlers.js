@@ -3,7 +3,7 @@ import privateProps from './privateProps.js'
 import { showLoading } from './staticMethods/showLoading.js'
 import { DismissReason } from './utils/DismissReason.js'
 import { isVisible } from './utils/dom/domUtils.js'
-import { getConfirmButton, getDenyButton, getValidationMessage } from './utils/dom/getters.js'
+import { getDenyButton, getValidationMessage } from './utils/dom/getters.js'
 import { getInputValue } from './utils/dom/inputUtils.js'
 import { asPromise, capitalizeFirstLetter, error } from './utils/utils.js'
 
@@ -111,7 +111,6 @@ const deny = (instance, value) => {
         if (preDenyValue === false) {
           instance.hideLoading()
           handleAwaitingPromise(instance)
-          restoreFocusAfterReject(instance, getDenyButton())
         } else {
           instance.close(
             /** @type SweetAlertResult */ ({
@@ -167,7 +166,6 @@ const confirm = (instance, value) => {
         if (isVisible(getValidationMessage()) || preConfirmValue === false) {
           instance.hideLoading()
           handleAwaitingPromise(instance)
-          restoreFocusAfterReject(instance, getConfirmButton())
         } else {
           succeedWith(instance, typeof preConfirmValue === 'undefined' ? value : preConfirmValue)
         }
@@ -175,18 +173,5 @@ const confirm = (instance, value) => {
       .catch((error) => rejectWith(instance, error))
   } else {
     succeedWith(instance, value)
-  }
-}
-
-/**
- * @param {SweetAlert} instance
- * @param {HTMLElement | null} button
- */
-const restoreFocusAfterReject = (instance, button) => {
-  const input = instance.getInput()
-  if (input) {
-    input.focus()
-  } else if (button) {
-    button.focus()
   }
 }

@@ -42,7 +42,15 @@ export const renderInput = (instance, params) => {
     }
   })
 
-  if (params.input) {
+  // Hide multiple-inputs container by default
+  const multipleInputsContainer = dom.getDirectChildByClass(popup, swalClasses['multiple-inputs'])
+  if (multipleInputsContainer) {
+    dom.hide(multipleInputsContainer)
+  }
+
+  if (params.multipleInputs) {
+    renderMultipleInputs(params)
+  } else if (params.input) {
     if (rerender) {
       showInput(params)
     }
@@ -350,4 +358,247 @@ renderInputType.textarea = (textarea, params) => {
   })
 
   return textareaElement
+}
+
+/**
+ * @param {SweetAlertOptions} params
+ */
+const renderMultipleInputs = (params) => {
+  const popup = dom.getPopup()
+  if (!popup || !params.multipleInputs) {
+    return
+  }
+
+  const container = dom.getDirectChildByClass(popup, swalClasses['multiple-inputs'])
+  if (!container) {
+    return
+  }
+
+  container.textContent = ''
+
+  for (const [key, config] of Object.entries(params.multipleInputs)) {
+    const inputType = config.input || 'text'
+    const inputElement = createMultipleInput(key, inputType, config)
+    if (inputElement) {
+      container.appendChild(inputElement)
+    }
+  }
+
+  dom.show(container)
+
+  // Focus first input if inputAutoFocus is enabled
+  if (params.inputAutoFocus) {
+    const firstInput = container.querySelector('input, textarea, select')
+    if (firstInput) {
+      setTimeout(() => {
+        dom.focusInput(/** @type {HTMLInputElement} */ (firstInput))
+      })
+    }
+  }
+}
+
+/**
+ * @param {string} key
+ * @param {string} inputType
+ * @param {object} config
+ * @returns {HTMLElement | null}
+ */
+const createMultipleInput = (key, inputType, config) => {
+  /** @type {HTMLElement | null} */
+  let inputElement = null
+
+  switch (inputType) {
+    case 'textarea': {
+      inputElement = document.createElement('textarea')
+      inputElement.className = swalClasses.textarea
+      inputElement.setAttribute('data-swal-multiple-input-key', key)
+      if (config.inputPlaceholder) {
+        inputElement.placeholder = config.inputPlaceholder
+      }
+      if (config.inputValue !== undefined && config.inputValue !== null) {
+        inputElement.value = `${config.inputValue}`
+      }
+      break
+    }
+    case 'select': {
+      inputElement = document.createElement('select')
+      inputElement.className = swalClasses.select
+      inputElement.setAttribute('data-swal-multiple-input-key', key)
+      if (config.inputPlaceholder) {
+        const placeholder = document.createElement('option')
+        dom.setInnerHtml(placeholder, config.inputPlaceholder)
+        placeholder.value = ''
+        placeholder.disabled = true
+        placeholder.selected = true
+        inputElement.appendChild(placeholder)
+      }
+      if (config.inputOptions) {
+        populateMultipleInputSelectOptions(inputElement, config.inputOptions, config.inputValue)
+      }
+      break
+    }
+    case 'checkbox': {
+      const label = document.createElement('label')
+      label.className = swalClasses.checkbox
+      const checkbox = document.createElement('input')
+      checkbox.type = 'checkbox'
+      checkbox.value = '1'
+      checkbox.checked = Boolean(config.inputValue)
+      checkbox.setAttribute('data-swal-multiple-input-key', key)
+      label.appendChild(checkbox)
+      const span = document.createElement('span')
+      span.className = swalClasses.label
+      if (config.inputPlaceholder || config.inputLabel) {
+        dom.setInnerHtml(span, config.inputPlaceholder || config.inputLabel)
+      }
+      label.appendChild(span)
+      inputElement = label
+      break
+    }
+    case 'radio': {
+      const radioContainer = document.createElement('div')
+      radioContainer.className = swalClasses.radio
+      radioContainer.setAttribute('data-swal-multiple-input-key', key)
+      if (config.inputOptions) {
+        populateMultipleInputRadioOptions(radioContainer, config.inputOptions, config.inputValue)
+      }
+      inputElement = radioContainer
+      break
+    }
+    case 'file': {
+      inputElement = document.createElement('input')
+      inputElement.type = 'file'
+      inputElement.className = swalClasses.file
+      inputElement.setAttribute('data-swal-multiple-input-key', key)
+      break
+    }
+    case 'range': {
+      const rangeContainer = document.createElement('div')
+      rangeContainer.className = swalClasses.range
+      const rangeInput = document.createElement('input')
+      rangeInput.type = 'range'
+      rangeInput.setAttribute('data-swal-multiple-input-key', key)
+      const rangeOutput = document.createElement('output')
+      if (config.inputValue !== undefined && config.inputValue !== null) {
+        rangeInput.value = `${config.inputValue}`
+        rangeOutput.value = `${config.inputValue}`
+      }
+      rangeContainer.appendChild(rangeInput)
+      rangeContainer.appendChild(rangeOutput)
+      rangeInput.oninput = () => {
+        rangeOutput.value = rangeInput.value
+      }
+      rangeInput.onchange = () => {
+        rangeOutput.value = rangeInput.value
+      }
+      inputElement = rangeContainer
+      break
+    }
+    default: {
+      // text, email, password, number, tel, url, search, date, datetime-local, time, week, month
+      inputElement = document.createElement('input')
+      inputElement.type = inputType
+      inputElement.className = swalClasses.input
+      inputElement.setAttribute('data-swal-multiple-input-key', key)
+      if (config.inputPlaceholder) {
+        inputElement.placeholder = config.inputPlaceholder
+      }
+      if (config.inputValue !== undefined && config.inputValue !== null) {
+        inputElement.value = `${config.inputValue}`
+      }
+      break
+    }
+  }
+
+  if (inputElement) {
+    // Set input attributes
+    if (config.inputAttributes) {
+      const target = inputElement.querySelector('input') || inputElement
+      for (const attr in config.inputAttributes) {
+        target.setAttribute(attr, config.inputAttributes[attr])
+      }
+    }
+
+    // Add label before the input
+    if (config.inputLabel) {
+      const label = document.createElement('label')
+      label.className = swalClasses['input-label']
+      label.innerText = config.inputLabel
+      inputElement.insertAdjacentElement('beforebegin', label)
+      // Since insertAdjacentElement requires a parent, we wrap in a fragment approach
+      // Instead, we'll create a wrapper
+      const wrapper = document.createDocumentFragment()
+      wrapper.appendChild(label)
+      wrapper.appendChild(inputElement)
+      // Return the fragment by wrapping in a div
+      const wrapperDiv = document.createElement('div')
+      wrapperDiv.appendChild(label)
+      wrapperDiv.appendChild(inputElement)
+      return wrapperDiv
+    }
+  }
+
+  return inputElement
+}
+
+/**
+ * @param {HTMLSelectElement} select
+ * @param {Record<string, any> | Map<string, any>} inputOptions
+ * @param {*} inputValue
+ */
+const populateMultipleInputSelectOptions = (select, inputOptions, inputValue) => {
+  const options = formatMultipleInputOptions(inputOptions)
+  options.forEach((option) => {
+    const optionElement = document.createElement('option')
+    optionElement.value = option[0]
+    dom.setInnerHtml(optionElement, option[1])
+    if (inputValue !== undefined && inputValue !== null && inputValue.toString() === option[0].toString()) {
+      optionElement.selected = true
+    }
+    select.appendChild(optionElement)
+  })
+}
+
+/**
+ * @param {HTMLElement} radioContainer
+ * @param {Record<string, any> | Map<string, any>} inputOptions
+ * @param {*} inputValue
+ */
+const populateMultipleInputRadioOptions = (radioContainer, inputOptions, inputValue) => {
+  const options = formatMultipleInputOptions(inputOptions)
+  options.forEach((option) => {
+    const radioInput = document.createElement('input')
+    const radioLabelElement = document.createElement('label')
+    radioInput.type = 'radio'
+    radioInput.name = `swal2-radio-${radioContainer.getAttribute('data-swal-multiple-input-key')}`
+    radioInput.value = option[0]
+    if (inputValue !== undefined && inputValue !== null && inputValue.toString() === option[0].toString()) {
+      radioInput.checked = true
+    }
+    const label = document.createElement('span')
+    dom.setInnerHtml(label, option[1])
+    label.className = swalClasses.label
+    radioLabelElement.appendChild(radioInput)
+    radioLabelElement.appendChild(label)
+    radioContainer.appendChild(radioLabelElement)
+  })
+}
+
+/**
+ * @param {Record<string, any> | Map<string, any>} inputOptions
+ * @returns {Array<[string, string]>}
+ */
+const formatMultipleInputOptions = (inputOptions) => {
+  /** @type {Array<[string, string]>} */
+  const result = []
+  if (inputOptions instanceof Map) {
+    inputOptions.forEach((value, key) => {
+      result.push([key, value])
+    })
+  } else {
+    Object.keys(inputOptions).forEach((key) => {
+      result.push([key, inputOptions[key]])
+    })
+  }
+  return result
 }

@@ -987,6 +987,12 @@ div:where(.swal2-container) {
     margin: $swal2-input-label-margin;
   }
 
+  .swal2-multiple-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   div:where(.swal2-validation-message) {
     align-items: $swal2-validation-message-align-items;
     justify-content: $swal2-validation-message-justify-content;

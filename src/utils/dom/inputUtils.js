@@ -9,6 +9,10 @@ import * as dom from './index.js'
  * @param {SweetAlertOptions} params
  */
 export const handleInputOptionsAndValue = (instance, params) => {
+  if (params.multipleInputs) {
+    // Multiple inputs handles options/values during rendering
+    return
+  }
   if (params.input === 'select' || params.input === 'radio') {
     handleInputOptions(instance, params)
   } else if (
@@ -26,6 +30,9 @@ export const handleInputOptionsAndValue = (instance, params) => {
  * @returns {SweetAlertInputValue}
  */
 export const getInputValue = (instance, innerParams) => {
+  if (innerParams.multipleInputs) {
+    return getMultipleInputValues(innerParams)
+  }
   const input = instance.getInput()
   if (!input) {
     return null
@@ -40,6 +47,65 @@ export const getInputValue = (instance, innerParams) => {
     default:
       return innerParams.inputAutoTrim ? input.value.trim() : input.value
   }
+}
+
+/**
+ * @param {SweetAlertOptions} innerParams
+ * @returns {Record<string, any>}
+ */
+const getMultipleInputValues = (innerParams) => {
+  const popup = dom.getPopup()
+  if (!popup || !innerParams.multipleInputs) {
+    return {}
+  }
+
+  const container = getDirectChildByClass(popup, swalClasses['multiple-inputs'])
+  if (!container) {
+    return {}
+  }
+
+  /** @type {Record<string, any>} */
+  const result = {}
+  for (const [key, config] of Object.entries(innerParams.multipleInputs)) {
+    const inputType = config.input || 'text'
+    const autoTrim = config.inputAutoTrim !== undefined ? config.inputAutoTrim : innerParams.inputAutoTrim
+
+    switch (inputType) {
+      case 'checkbox': {
+        const checkbox = container.querySelector(`input[data-swal-multiple-input-key="${key}"]`)
+        result[key] = checkbox ? (checkbox.checked ? 1 : 0) : 0
+        break
+      }
+      case 'radio': {
+        const radioContainer = container.querySelector(`[data-swal-multiple-input-key="${key}"]`)
+        const checked = radioContainer ? radioContainer.querySelector('input:checked') : null
+        result[key] = checked ? checked.value : null
+        break
+      }
+      case 'file': {
+        const fileInput = container.querySelector(`input[data-swal-multiple-input-key="${key}"]`)
+        result[key] = fileInput && fileInput.files && fileInput.files.length
+          ? (fileInput.getAttribute('multiple') !== null ? fileInput.files : fileInput.files[0])
+          : null
+        break
+      }
+      case 'range': {
+        const rangeInput = container.querySelector(`input[data-swal-multiple-input-key="${key}"]`)
+        result[key] = rangeInput ? rangeInput.value : ''
+        break
+      }
+      default: {
+        const input = container.querySelector(`[data-swal-multiple-input-key="${key}"]`)
+        if (input) {
+          result[key] = autoTrim ? input.value.trim() : input.value
+        } else {
+          result[key] = ''
+        }
+        break
+      }
+    }
+  }
+  return result
 }
 
 /**

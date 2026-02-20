@@ -80,6 +80,7 @@ export const defaultParams = {
   inputValidator: undefined,
   returnInputValueOnDeny: false,
   validationMessage: undefined,
+  multipleInputs: undefined,
   grow: false,
   position: 'center',
   progressSteps: [],

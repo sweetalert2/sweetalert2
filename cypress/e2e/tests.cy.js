@@ -3610,6 +3610,248 @@ describe('Inputs', () => {
   })
 })
 
+describe('Native multiple inputs', () => {
+  it('should render multiple text inputs and return values as object', (done) => {
+    Swal.fire({
+      title: 'Multiple inputs',
+      multipleInputs: {
+        firstName: {
+          input: 'text',
+          inputPlaceholder: 'First name',
+        },
+        lastName: {
+          input: 'text',
+          inputPlaceholder: 'Last name',
+        },
+      },
+      didOpen: () => {
+        const container = document.querySelector('.swal2-multiple-inputs')
+        expect(container).to.not.be.null
+        const inputs = container.querySelectorAll('input')
+        expect(inputs.length).to.equal(2)
+        inputs[0].value = 'John'
+        inputs[1].value = 'Doe'
+        Swal.clickConfirm()
+      },
+    }).then((result) => {
+      expect(result.value).to.deep.equal({ firstName: 'John', lastName: 'Doe' })
+      done()
+    })
+  })
+
+  it('should render multiple input types', (done) => {
+    Swal.fire({
+      title: 'Mixed inputs',
+      multipleInputs: {
+        name: {
+          input: 'text',
+          inputPlaceholder: 'Name',
+        },
+        email: {
+          input: 'email',
+          inputPlaceholder: 'Email',
+        },
+        bio: {
+          input: 'textarea',
+          inputPlaceholder: 'Bio',
+        },
+      },
+      didOpen: () => {
+        const container = document.querySelector('.swal2-multiple-inputs')
+        const textInput = container.querySelector('input[data-swal-multiple-input-key="name"]')
+        const emailInput = container.querySelector('input[data-swal-multiple-input-key="email"]')
+        const textarea = container.querySelector('textarea[data-swal-multiple-input-key="bio"]')
+        expect(textInput).to.not.be.null
+        expect(emailInput).to.not.be.null
+        expect(textarea).to.not.be.null
+        expect(textInput.type).to.equal('text')
+        expect(emailInput.type).to.equal('email')
+        textInput.value = 'Jane'
+        emailInput.value = 'jane@example.com'
+        textarea.value = 'Hello world'
+        Swal.clickConfirm()
+      },
+    }).then((result) => {
+      expect(result.value).to.deep.equal({
+        name: 'Jane',
+        email: 'jane@example.com',
+        bio: 'Hello world',
+      })
+      done()
+    })
+  })
+
+  it('should support select input in multiple inputs', (done) => {
+    Swal.fire({
+      title: 'With select',
+      multipleInputs: {
+        name: {
+          input: 'text',
+          inputPlaceholder: 'Name',
+        },
+        color: {
+          input: 'select',
+          inputOptions: {
+            red: 'Red',
+            blue: 'Blue',
+            green: 'Green',
+          },
+        },
+      },
+      didOpen: () => {
+        const container = document.querySelector('.swal2-multiple-inputs')
+        const textInput = container.querySelector('input[data-swal-multiple-input-key="name"]')
+        const select = container.querySelector('select[data-swal-multiple-input-key="color"]')
+        expect(select).to.not.be.null
+        expect(select.options.length).to.equal(3)
+        textInput.value = 'Alice'
+        select.value = 'blue'
+        Swal.clickConfirm()
+      },
+    }).then((result) => {
+      expect(result.value).to.deep.equal({ name: 'Alice', color: 'blue' })
+      done()
+    })
+  })
+
+  it('should support checkbox input in multiple inputs', (done) => {
+    Swal.fire({
+      title: 'With checkbox',
+      multipleInputs: {
+        name: {
+          input: 'text',
+          inputPlaceholder: 'Name',
+        },
+        agree: {
+          input: 'checkbox',
+          inputLabel: 'I agree',
+        },
+      },
+      didOpen: () => {
+        const container = document.querySelector('.swal2-multiple-inputs')
+        const textInput = container.querySelector('input[data-swal-multiple-input-key="name"]')
+        const checkbox = container.querySelector('input[data-swal-multiple-input-key="agree"]')
+        expect(checkbox).to.not.be.null
+        expect(checkbox.type).to.equal('checkbox')
+        textInput.value = 'Bob'
+        checkbox.checked = true
+        Swal.clickConfirm()
+      },
+    }).then((result) => {
+      expect(result.value).to.deep.equal({ name: 'Bob', agree: 1 })
+      done()
+    })
+  })
+
+  it('should support initial values', (done) => {
+    Swal.fire({
+      title: 'With initial values',
+      multipleInputs: {
+        firstName: {
+          input: 'text',
+          inputValue: 'Pre-filled',
+        },
+        lastName: {
+          input: 'text',
+          inputValue: 'Value',
+        },
+      },
+      didOpen: () => {
+        const container = document.querySelector('.swal2-multiple-inputs')
+        const inputs = container.querySelectorAll('input')
+        expect(inputs[0].value).to.equal('Pre-filled')
+        expect(inputs[1].value).to.equal('Value')
+        Swal.clickConfirm()
+      },
+    }).then((result) => {
+      expect(result.value).to.deep.equal({ firstName: 'Pre-filled', lastName: 'Value' })
+      done()
+    })
+  })
+
+  it('should support labels', () => {
+    Swal.fire({
+      title: 'With labels',
+      multipleInputs: {
+        firstName: {
+          input: 'text',
+          inputLabel: 'First Name',
+        },
+        lastName: {
+          input: 'text',
+          inputLabel: 'Last Name',
+        },
+      },
+    })
+    const container = document.querySelector('.swal2-multiple-inputs')
+    const labels = container.querySelectorAll('.swal2-input-label')
+    expect(labels.length).to.equal(2)
+    expect(labels[0].textContent).to.equal('First Name')
+    expect(labels[1].textContent).to.equal('Last Name')
+  })
+
+  it('should support inputValidator with multiple inputs', (done) => {
+    Swal.fire({
+      title: 'With validator',
+      multipleInputs: {
+        firstName: {
+          input: 'text',
+          inputPlaceholder: 'First name',
+        },
+        lastName: {
+          input: 'text',
+          inputPlaceholder: 'Last name',
+        },
+      },
+      inputValidator: (values) => {
+        if (!values.firstName) {
+          return 'First name is required'
+        }
+      },
+      didOpen: () => {
+        // First try with empty first name
+        Swal.clickConfirm()
+        setTimeout(() => {
+          const validationMessage = document.querySelector('.swal2-validation-message')
+          expect(isVisible(validationMessage)).to.be.true
+          expect(validationMessage.textContent).to.equal('First name is required')
+
+          // Now fill in first name and try again
+          const container = document.querySelector('.swal2-multiple-inputs')
+          const firstNameInput = container.querySelector('input[data-swal-multiple-input-key="firstName"]')
+          firstNameInput.value = 'John'
+          const lastNameInput = container.querySelector('input[data-swal-multiple-input-key="lastName"]')
+          lastNameInput.value = 'Doe'
+          Swal.clickConfirm()
+        }, 100)
+      },
+    }).then((result) => {
+      expect(result.value).to.deep.equal({ firstName: 'John', lastName: 'Doe' })
+      done()
+    })
+  })
+
+  it('should auto-trim input values by default', (done) => {
+    Swal.fire({
+      title: 'Auto trim',
+      multipleInputs: {
+        name: {
+          input: 'text',
+        },
+      },
+      didOpen: () => {
+        const container = document.querySelector('.swal2-multiple-inputs')
+        const input = container.querySelector('input[data-swal-multiple-input-key="name"]')
+        input.value = '  hello  '
+        Swal.clickConfirm()
+      },
+    }).then((result) => {
+      expect(result.value).to.deep.equal({ name: 'hello' })
+      done()
+    })
+  })
+})
+
 describe('Validation', () => {
   it('input.checkValidity()', (done) => {
     Swal.fire({

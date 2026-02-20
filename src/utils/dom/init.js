@@ -26,6 +26,7 @@ const sweetHTML = `
      <span class="${swalClasses.label}"></span>
    </label>
    <textarea class="${swalClasses.textarea}" id="${swalClasses.textarea}"></textarea>
+   <div class="${swalClasses['multiple-inputs']}"></div>
    <div class="${swalClasses['validation-message']}" id="${swalClasses['validation-message']}"></div>
    <div class="${swalClasses.actions}">
      <div class="${swalClasses.loader}"></div>

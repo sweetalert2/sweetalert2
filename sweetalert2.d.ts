@@ -384,6 +384,46 @@ declare module 'sweetalert2' {
 
   type SweetAlertStringInput = Exclude<SweetAlertInput, 'file'>
 
+  export interface SweetAlertMultipleInput {
+    /**
+     * Input type.
+     *
+     * @default 'text'
+     */
+    input?: SweetAlertInput
+
+    /**
+     * Input field placeholder.
+     */
+    inputPlaceholder?: string
+
+    /**
+     * Input field label.
+     */
+    inputLabel?: string
+
+    /**
+     * Input field initial value.
+     */
+    inputValue?: string | number
+
+    /**
+     * HTML input attributes (e.g. `min`, `max`, `step`, `accept`).
+     */
+    inputAttributes?: Record<string, string>
+
+    /**
+     * If the input type is `'select'` or `'radio'`, you can provide options.
+     */
+    inputOptions?: Record<string, any> | Map<string, any>
+
+    /**
+     * Automatically remove whitespaces from both ends of a result string.
+     * If not set, uses the global `inputAutoTrim` setting.
+     */
+    inputAutoTrim?: boolean
+  }
+
   type SweetAlertInputValidator =
     | {
         input?: SweetAlertStringInput
@@ -1181,6 +1221,36 @@ declare module 'sweetalert2' {
      * @default undefined
      */
     validationMessage?: string | undefined
+
+    /**
+     * Multiple inputs configuration. An object where keys are input identifiers and values
+     * are input configurations. When set, the popup will show multiple input fields.
+     * The result value will be an object with keys matching the input identifiers.
+     *
+     * Example:
+     * ```
+     * Swal.fire({
+     *   title: 'Multiple inputs',
+     *   multipleInputs: {
+     *     firstName: {
+     *       input: 'text',
+     *       inputLabel: 'First name',
+     *       inputPlaceholder: 'Enter your first name',
+     *     },
+     *     lastName: {
+     *       input: 'text',
+     *       inputLabel: 'Last name',
+     *       inputPlaceholder: 'Enter your last name',
+     *     },
+     *   },
+     * }).then(result => {
+     *   // result.value = { firstName: '...', lastName: '...' }
+     * })
+     * ```
+     *
+     * @default undefined
+     */
+    multipleInputs?: Record<string, SweetAlertMultipleInput> | undefined
 
     /**
      * Progress steps, useful for popup queues.

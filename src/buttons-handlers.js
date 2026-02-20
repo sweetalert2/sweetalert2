@@ -1,9 +1,10 @@
 import { handleAwaitingPromise } from './instanceMethods/close.js'
 import privateProps from './privateProps.js'
 import { showLoading } from './staticMethods/showLoading.js'
+import { swalClasses } from './utils/classes.js'
 import { DismissReason } from './utils/DismissReason.js'
 import { isVisible } from './utils/dom/domUtils.js'
-import { getDenyButton, getValidationMessage } from './utils/dom/getters.js'
+import { getDenyButton, getPopup, getValidationMessage } from './utils/dom/getters.js'
 import { getInputValue } from './utils/dom/inputUtils.js'
 import { asPromise, capitalizeFirstLetter, error } from './utils/utils.js'
 
@@ -13,7 +14,7 @@ import { asPromise, capitalizeFirstLetter, error } from './utils/utils.js'
 export const handleConfirmButtonClick = (instance) => {
   const innerParams = privateProps.innerParams.get(instance)
   instance.disableButtons()
-  if (innerParams.input) {
+  if (innerParams.input || innerParams.multipleInputs) {
     handleConfirmOrDenyWithInput(instance, 'confirm')
   } else {
     confirm(instance, true)
@@ -48,22 +49,61 @@ export const handleCancelButtonClick = (instance, dismissWith) => {
  */
 const handleConfirmOrDenyWithInput = (instance, type) => {
   const innerParams = privateProps.innerParams.get(instance)
-  if (!innerParams.input) {
+  if (!innerParams.input && !innerParams.multipleInputs) {
     error(`The "input" parameter is needed to be set when using returnInputValueOn${capitalizeFirstLetter(type)}`)
     return
   }
-  const input = instance.getInput()
   const inputValue = getInputValue(instance, innerParams)
   if (innerParams.inputValidator) {
     handleInputValidator(instance, inputValue, type)
-  } else if (input && !input.checkValidity()) {
-    instance.enableButtons()
-    instance.showValidationMessage(innerParams.validationMessage || input.validationMessage)
-  } else if (type === 'deny') {
-    deny(instance, inputValue)
+  } else if (innerParams.multipleInputs) {
+    // For multiple inputs, check validity of all inputs
+    const allValid = checkMultipleInputsValidity(instance, innerParams)
+    if (!allValid) {
+      return
+    }
+    if (type === 'deny') {
+      deny(instance, inputValue)
+    } else {
+      confirm(instance, inputValue)
+    }
   } else {
-    confirm(instance, inputValue)
+    const input = instance.getInput()
+    if (input && !input.checkValidity()) {
+      instance.enableButtons()
+      instance.showValidationMessage(innerParams.validationMessage || input.validationMessage)
+    } else if (type === 'deny') {
+      deny(instance, inputValue)
+    } else {
+      confirm(instance, inputValue)
+    }
   }
+}
+
+/**
+ * @param {SweetAlert} instance
+ * @param {SweetAlertOptions} innerParams
+ * @returns {boolean}
+ */
+const checkMultipleInputsValidity = (instance, innerParams) => {
+  const popup = getPopup()
+  if (!popup) {
+    return true
+  }
+  const container = popup.querySelector(`.${swalClasses['multiple-inputs']}`)
+  if (!container) {
+    return true
+  }
+  const inputs = container.querySelectorAll('input, textarea, select')
+  for (let i = 0; i < inputs.length; i++) {
+    const input = /** @type {HTMLInputElement} */ (inputs[i])
+    if (!input.checkValidity()) {
+      instance.enableButtons()
+      instance.showValidationMessage(innerParams.validationMessage || input.validationMessage)
+      return false
+    }
+  }
+  return true
 }
 
 /**

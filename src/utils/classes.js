@@ -81,6 +81,7 @@ const classNames = [
   'icon-error',
   'draggable',
   'dragging',
+  'multiple-inputs',
 ]
 
 export const swalClasses = classNames.reduce((acc, className) => {

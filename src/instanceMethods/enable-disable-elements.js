@@ -40,6 +40,12 @@ function setInputDisabled(input, disabled) {
  */
 export function enableButtons() {
   setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], false)
+
+  const focusedElement = privateProps.focusedElement.get(this)
+  if (focusedElement instanceof HTMLElement) {
+    focusedElement.focus()
+    privateProps.focusedElement.delete(this)
+  }
 }
 
 /**
@@ -47,6 +53,7 @@ export function enableButtons() {
  * @this {SweetAlert}
  */
 export function disableButtons() {
+  privateProps.focusedElement.set(this, document.activeElement)
   setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], true)
 }
 

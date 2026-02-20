@@ -926,6 +926,32 @@ describe('preConfirm', () => {
     expect(Swal.isVisible()).to.be.true
   })
 
+  it('preConfirm return false should keep focus where it was', (done) => {
+    SwalWithoutAnimation.fire({
+      preConfirm: () => false,
+    })
+    Swal.clickConfirm()
+    setTimeout(() => {
+      expect(Swal.isVisible()).to.be.true
+      expect(document.activeElement).to.equal(Swal.getConfirmButton())
+      done()
+    }, TIMEOUT)
+  })
+
+  it('preConfirm return false with input should keep focus on the input', (done) => {
+    SwalWithoutAnimation.fire({
+      input: 'text',
+      preConfirm: () => false,
+    })
+    Swal.getInput().focus()
+    Swal.clickConfirm()
+    setTimeout(() => {
+      expect(Swal.isVisible()).to.be.true
+      expect(document.activeElement).to.equal(Swal.getInput())
+      done()
+    }, TIMEOUT)
+  })
+
   it('preConfirm custom value', (done) => {
     SwalWithoutAnimation.fire({
       preConfirm: () => 'Some data from preConfirm',
@@ -1034,6 +1060,20 @@ describe('preDeny', () => {
     })
     Swal.clickDeny()
     expect(Swal.isVisible()).to.be.true
+  })
+
+  it('preDeny return false should keep focus where it was', (done) => {
+    SwalWithoutAnimation.fire({
+      showDenyButton: true,
+      preDeny: () => false,
+    })
+    Swal.getDenyButton().focus()
+    Swal.clickDeny()
+    setTimeout(() => {
+      expect(Swal.isVisible()).to.be.true
+      expect(document.activeElement).to.equal(Swal.getDenyButton())
+      done()
+    }, TIMEOUT)
   })
 
   it('preDeny custom value', (done) => {

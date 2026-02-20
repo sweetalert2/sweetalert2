@@ -3,7 +3,7 @@ import privateProps from './privateProps.js'
 import { showLoading } from './staticMethods/showLoading.js'
 import { DismissReason } from './utils/DismissReason.js'
 import { isVisible } from './utils/dom/domUtils.js'
-import { getDenyButton, getValidationMessage } from './utils/dom/getters.js'
+import { getConfirmButton, getDenyButton, getValidationMessage } from './utils/dom/getters.js'
 import { getInputValue } from './utils/dom/inputUtils.js'
 import { asPromise, capitalizeFirstLetter, error } from './utils/utils.js'
 
@@ -111,6 +111,7 @@ const deny = (instance, value) => {
         if (preDenyValue === false) {
           instance.hideLoading()
           handleAwaitingPromise(instance)
+          getDenyButton()?.focus()
         } else {
           instance.close(
             /** @type SweetAlertResult */ ({
@@ -166,6 +167,7 @@ const confirm = (instance, value) => {
         if (isVisible(getValidationMessage()) || preConfirmValue === false) {
           instance.hideLoading()
           handleAwaitingPromise(instance)
+          getConfirmButton()?.focus()
         } else {
           succeedWith(instance, typeof preConfirmValue === 'undefined' ? value : preConfirmValue)
         }

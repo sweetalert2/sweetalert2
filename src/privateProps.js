@@ -11,4 +11,5 @@
 export default {
   innerParams: new WeakMap(),
   domCache: new WeakMap(),
+  focusedElement: new WeakMap(),
 }

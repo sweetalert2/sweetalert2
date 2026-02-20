@@ -27,6 +27,12 @@ function hideLoading() {
   domCache.confirmButton.disabled = false
   domCache.denyButton.disabled = false
   domCache.cancelButton.disabled = false
+
+  const focusedElement = privateProps.focusedElement.get(this)
+  if (focusedElement instanceof HTMLElement) {
+    focusedElement.focus()
+    privateProps.focusedElement.delete(this)
+  }
 }
 
 /**

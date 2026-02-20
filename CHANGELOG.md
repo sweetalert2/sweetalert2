@@ -1,3 +1,10 @@
+## [11.26.20](https://github.com/sweetalert2/sweetalert2/compare/v11.26.19...v11.26.20) (2026-02-20)
+
+
+### Bug Fixes
+
+* preserve focus across disableButtons/hideLoading cycle ([#2916](https://github.com/sweetalert2/sweetalert2/issues/2916)) ([8de9630](https://github.com/sweetalert2/sweetalert2/commit/8de9630dcee71e1e90a59024e3507caee3000722))
+
 ## [11.26.19](https://github.com/sweetalert2/sweetalert2/compare/v11.26.18...v11.26.19) (2026-02-19)
 
 

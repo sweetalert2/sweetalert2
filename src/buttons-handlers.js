@@ -111,7 +111,7 @@ const deny = (instance, value) => {
         if (preDenyValue === false) {
           instance.hideLoading()
           handleAwaitingPromise(instance)
-          getDenyButton()?.focus()
+          restoreFocusAfterReject(instance, getDenyButton())
         } else {
           instance.close(
             /** @type SweetAlertResult */ ({
@@ -167,7 +167,7 @@ const confirm = (instance, value) => {
         if (isVisible(getValidationMessage()) || preConfirmValue === false) {
           instance.hideLoading()
           handleAwaitingPromise(instance)
-          getConfirmButton()?.focus()
+          restoreFocusAfterReject(instance, getConfirmButton())
         } else {
           succeedWith(instance, typeof preConfirmValue === 'undefined' ? value : preConfirmValue)
         }
@@ -175,5 +175,18 @@ const confirm = (instance, value) => {
       .catch((error) => rejectWith(instance, error))
   } else {
     succeedWith(instance, value)
+  }
+}
+
+/**
+ * @param {SweetAlert} instance
+ * @param {HTMLElement | null} button
+ */
+const restoreFocusAfterReject = (instance, button) => {
+  const input = instance.getInput()
+  if (input) {
+    input.focus()
+  } else if (button) {
+    button.focus()
   }
 }

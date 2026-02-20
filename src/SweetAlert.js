@@ -251,7 +251,7 @@ const initFocus = (domCache, innerParams) => {
   }
   // TODO: this is dumb, remove `allowEnterKey` param in the next major version
   if (!callIfFunction(innerParams.allowEnterKey)) {
-    warnAboutDeprecation('allowEnterKey')
+    warnAboutDeprecation('allowEnterKey', 'preConfirm: () => false')
     domCache.popup.focus()
     return
   }

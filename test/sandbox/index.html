@@ -1,42 +1,45 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      * {
-        font-family:
-          'Segoe UI', 'Candara', 'Bitstream Vera Sans', 'DejaVu Sans', 'Bitstream Vera Sans', 'Trebuchet MS', 'Verdana',
-          'Verdana Ref', sans-serif;
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      font-family:
+        'Segoe UI', 'Candara', 'Bitstream Vera Sans', 'DejaVu Sans', 'Bitstream Vera Sans', 'Trebuchet MS', 'Verdana',
+        'Verdana Ref', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <script type="module">
+    import '../../src/sweetalert2.scss'
+
+    import Swal from '../../src/sweetalert2.js'
+
+    window.Swal = Swal
+
+    Swal.fire({
+      title: 'Multiple Inputs Demo',
+      input: ['text', 'password', 'select'],
+      inputLabel: ['Username', 'Password', 'Role'],
+      inputPlaceholder: ['Enter username', 'Enter password', 'Select role'],
+      inputOptions: {
+        '': '---',
+        admin: 'Administrator',
+        user: 'User'
+      },
+      showCloseButton: true,
+      showCancelButton: true,
+      preConfirm: (values) => {
+        console.log('Submitted values:', values)
+        return values
       }
-    </style>
-  </head>
+    }).then((result) => {
+      console.log('Final result:', result)
+    })
+  </script>
+</body>
 
-  <body>
-    <script type="module">
-      import '../../src/sweetalert2.scss'
-
-      import Swal from '../../src/sweetalert2.js'
-
-      window.Swal = Swal
-
-      Swal.fire({
-        title: 'Test modal with input',
-        html: 'custom <strong>content</strong>',
-        input: 'text',
-        icon: 'success',
-        showCloseButton: true,
-        showCancelButton: true,
-        inputValidator: (value) => {
-          if (!value) {
-            return 'Should not be empty!'
-          }
-        },
-        didOpen: (modal) => {
-          console.log(modal)
-        },
-      }).then((result) => {
-        console.log(result)
-      })
-    </script>
-  </body>
 </html>

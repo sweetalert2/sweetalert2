@@ -21,22 +21,42 @@ export const handleInputOptionsAndValue = (instance, params) => {
 }
 
 /**
+ * @typedef { HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement } Input
+ */
+
+/**
  * @param {SweetAlert} instance
  * @param {SweetAlertOptions} innerParams
- * @returns {SweetAlertInputValue}
+ * @returns {SweetAlertInputValue | SweetAlertInputValue[]}
  */
 export const getInputValue = (instance, innerParams) => {
   const input = instance.getInput()
   if (!input) {
     return null
   }
-  switch (innerParams.input) {
+  if (Array.isArray(input)) {
+    return input.map((inputElement, index) => {
+      const inputType = Array.isArray(innerParams.input) ? innerParams.input[index] : innerParams.input
+      return getSingleInputValue(/** @type {Input} */(inputElement), /** @type {SweetAlertInput} */(inputType), innerParams)
+    })
+  }
+  return getSingleInputValue(/** @type {Input} */(input), /** @type {SweetAlertInput} */(innerParams.input), innerParams)
+}
+
+/**
+ * @param {Input} input
+ * @param {SweetAlertInput} inputType
+ * @param {SweetAlertOptions} innerParams
+ * @returns {SweetAlertInputValue}
+ */
+const getSingleInputValue = (input, inputType, innerParams) => {
+  switch (inputType) {
     case 'checkbox':
-      return getCheckboxValue(input)
+      return getCheckboxValue(/** @type {HTMLInputElement} */(input))
     case 'radio':
-      return getRadioValue(input)
+      return getRadioValue(/** @type {HTMLInputElement} */(input))
     case 'file':
-      return getFileValue(input)
+      return getFileValue(/** @type {HTMLInputElement} */(input))
     default:
       return innerParams.inputAutoTrim ? input.value.trim() : input.value
   }
@@ -102,19 +122,27 @@ const handleInputValue = (instance, params) => {
   if (!input) {
     return
   }
-  dom.hide(input)
+  const inputs = Array.isArray(input) ? input : [input]
+  inputs.forEach(dom.hide)
   asPromise(params.inputValue)
     .then((inputValue) => {
-      input.value = params.input === 'number' ? `${parseFloat(inputValue) || 0}` : `${inputValue}`
-      dom.show(input)
-      input.focus()
+      const inputValues = Array.isArray(inputValue) ? inputValue : [inputValue]
+      inputs.forEach((inputElement, index) => {
+        const inputType = Array.isArray(params.input) ? params.input[index] : params.input
+        const val = inputValues[index] !== undefined ? inputValues[index] : inputValues[0]
+        inputElement.value = inputType === 'number' ? `${parseFloat(val) || 0}` : `${val}`
+        dom.show(inputElement)
+      })
+      inputs[0].focus()
       instance.hideLoading()
     })
     .catch((err) => {
       error(`Error in inputValue promise: ${err}`)
-      input.value = ''
-      dom.show(input)
-      input.focus()
+      inputs.forEach((inputElement) => {
+        inputElement.value = ''
+        dom.show(inputElement)
+      })
+      inputs[0].focus()
       instance.hideLoading()
     })
 }

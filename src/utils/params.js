@@ -69,14 +69,14 @@ export const defaultParams = {
   width: undefined,
   padding: undefined,
   background: undefined,
-  input: undefined,
-  inputPlaceholder: '',
-  inputLabel: '',
-  inputValue: '',
-  inputOptions: {},
+  input: undefined, // string | string[]
+  inputPlaceholder: '', // string | string[]
+  inputLabel: '', // string | string[]
+  inputValue: '', // any | any[]
+  inputOptions: {}, // object | object[]
   inputAutoFocus: true,
   inputAutoTrim: true,
-  inputAttributes: {},
+  inputAttributes: {}, // object | object[]
   inputValidator: undefined,
   returnInputValueOnDeny: false,
   validationMessage: undefined,

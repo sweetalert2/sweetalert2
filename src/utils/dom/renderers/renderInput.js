@@ -22,7 +22,7 @@ export const renderInput = (instance, params) => {
     return
   }
   const innerParams = privateProps.innerParams.get(instance)
-  const rerender = !innerParams || params.input !== innerParams.input
+  const rerender = !innerParams || JSON.stringify(params.input) !== JSON.stringify(innerParams.input)
 
   inputClasses.forEach((inputClass) => {
     const inputContainer = dom.getDirectChildByClass(popup, swalClasses[inputClass])
@@ -42,19 +42,29 @@ export const renderInput = (instance, params) => {
     }
   })
 
+  // Remove extra inputs from previous render
+  if (rerender) {
+    popup.querySelectorAll('.swal2-extra-input').forEach((el) => el.remove())
+    popup.querySelectorAll('.swal2-input-label').forEach((el) => el.remove())
+  }
+
   if (params.input) {
-    if (rerender) {
-      showInput(params)
-    }
-    // set custom class
-    setCustomClass(params)
+    const inputs = Array.isArray(params.input) ? params.input : [params.input]
+    inputs.forEach((inputType, index) => {
+      const inputParams = getParamsForInput(params, index)
+      if (rerender) {
+        showInput(inputParams, index)
+      }
+      setCustomClass(inputParams, index)
+    })
   }
 }
 
 /**
  * @param {SweetAlertOptions} params
+ * @param {number} index
  */
-const showInput = (params) => {
+const showInput = (params, index = 0) => {
   if (!params.input) {
     return
   }
@@ -64,16 +74,32 @@ const showInput = (params) => {
     return
   }
 
-  const inputContainer = getInputContainer(params.input)
+  let inputContainer = getInputContainer(params.input)
   if (!inputContainer) {
     return
+  }
+
+  if (index > 0) {
+    const originalContainer = inputContainer
+    inputContainer = /** @type {HTMLElement} */ (originalContainer.cloneNode(true))
+    inputContainer.classList.add('swal2-extra-input')
+    inputContainer.removeAttribute('id')
+    inputContainer.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'))
+
+    const popup = dom.getPopup()
+    if (popup) {
+      const lastInput =
+      /** @type {HTMLElement} */ (Array.from(popup.querySelectorAll(`.${swalClasses.input}, .swal2-extra-input`)).pop()) ||
+        originalContainer
+      lastInput.insertAdjacentElement('afterend', inputContainer)
+    }
   }
 
   const input = renderInputType[params.input](inputContainer, params)
   dom.show(inputContainer)
 
   // input autofocus
-  if (params.inputAutoFocus) {
+  if (params.inputAutoFocus && index === 0) {
     setTimeout(() => {
       dom.focusInput(input)
     })
@@ -116,15 +142,51 @@ const setAttributes = (inputClass, inputAttributes) => {
 
 /**
  * @param {SweetAlertOptions} params
+ * @param {number} index
  */
-const setCustomClass = (params) => {
+const setCustomClass = (params, index = 0) => {
   if (!params.input) {
     return
   }
-  const inputContainer = getInputContainer(params.input)
-  if (inputContainer) {
-    dom.applyCustomClass(inputContainer, params, 'input')
+  let inputContainer
+  if (index === 0) {
+    inputContainer = getInputContainer(params.input)
+  } else {
+    const popup = dom.getPopup()
+    if (popup) {
+      inputContainer = Array.from(popup.querySelectorAll('.swal2-extra-input'))[index - 1]
+    }
   }
+
+  if (inputContainer) {
+    dom.applyCustomClass(/** @type {HTMLElement} */(inputContainer), params, 'input')
+  }
+}
+
+/**
+ * @param {SweetAlertOptions} params
+ * @param {number} index
+ * @returns {SweetAlertOptions}
+ */
+const getParamsForInput = (params, index) => {
+  const newParams = { ...params }
+  if (Array.isArray(params.inputLabel)) {
+    newParams.inputLabel = params.inputLabel[index]
+  }
+  if (Array.isArray(params.inputPlaceholder)) {
+    newParams.inputPlaceholder = params.inputPlaceholder[index]
+  }
+  if (Array.isArray(params.inputValue)) {
+    newParams.inputValue = params.inputValue[index]
+  }
+  if (Array.isArray(params.inputAttributes)) {
+    newParams.inputAttributes = params.inputAttributes[index]
+  }
+  if (Array.isArray(params.inputOptions)) {
+    newParams.inputOptions = params.inputOptions[index]
+  }
+  newParams.input = Array.isArray(params.input) ? params.input[index] : params.input
+  return newParams
 }
 
 /**
@@ -201,15 +263,15 @@ renderInputType.text =
   renderInputType.time =
   renderInputType.week =
   renderInputType.month =
-    /** @type {(input: Input | HTMLElement, params: SweetAlertOptions) => Input} */
-    (input, params) => {
-      const inputElement = /** @type {HTMLInputElement} */ (input)
-      checkAndSetInputValue(inputElement, params.inputValue)
-      setInputLabel(inputElement, inputElement, params)
-      setInputPlaceholder(inputElement, params)
-      inputElement.type = /** @type {string} */ (params.input)
-      return inputElement
-    }
+  /** @type {(input: Input | HTMLElement, params: SweetAlertOptions) => Input} */
+  (input, params) => {
+    const inputElement = /** @type {HTMLInputElement} */ (input)
+    checkAndSetInputValue(inputElement, params.inputValue)
+    setInputLabel(inputElement, inputElement, params)
+    setInputPlaceholder(inputElement, params)
+    inputElement.type = /** @type {string} */ (params.input)
+    return inputElement
+  }
 
 /**
  * @param {Input | HTMLElement} input
@@ -235,7 +297,7 @@ renderInputType.range = (range, params) => {
   if (rangeInput) {
     checkAndSetInputValue(rangeInput, params.inputValue)
     rangeInput.type = /** @type {string} */ (params.input)
-    setInputLabel(rangeInput, /** @type {Input} */ (range), params)
+    setInputLabel(rangeInput, /** @type {Input} */(range), params)
   }
   if (rangeOutput) {
     checkAndSetInputValue(rangeOutput, params.inputValue)

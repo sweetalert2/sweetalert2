@@ -83,5 +83,8 @@
     "trailingComma": "es5"
   },
   "bugs": "https://github.com/sweetalert2/sweetalert2/issues",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "sweetalert2": "^11.26.20"
+  }
 }

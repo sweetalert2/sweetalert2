@@ -1324,8 +1324,9 @@ describe('template', () => {
     }
     template.innerHTML = `
       <swal-title>Function param</swal-title>
-      <swal-function-param name="didOpen" value="${didOpen}"></swal-function-param>
+      <swal-function-param name="didOpen"></swal-function-param>
     `
+    template.content.querySelector('swal-function-param[name="didOpen"]').swalFunction = didOpen
     document.body.appendChild(template)
     SwalWithoutAnimation.fire({
       template: '#my-template-function-param',

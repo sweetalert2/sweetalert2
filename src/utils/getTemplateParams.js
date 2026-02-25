@@ -76,11 +76,11 @@ const getSwalFunctionParams = (templateContent) => {
   const swalFunctions = Array.from(templateContent.querySelectorAll('swal-function-param'))
   swalFunctions.forEach((param) => {
     const paramName = /** @type {keyof SweetAlertOptions} */ param.getAttribute('name')
-    const value = param.getAttribute('value')
-    if (!paramName || !value) {
+    const value = /** @type {any} */ (param).swalFunction
+    if (!paramName || typeof value !== 'function') {
       return
     }
-    result[paramName] = new Function(`return ${value}`)()
+    result[paramName] = value
   })
   return result
 }

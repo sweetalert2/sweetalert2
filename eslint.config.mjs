@@ -1,7 +1,7 @@
 import jsdoc from 'eslint-plugin-jsdoc'
 import sweetAlert2EslintConfig from '@sweetalert2/eslint-config'
 import nounsanitized from 'eslint-plugin-no-unsanitized'
-import pluginCypress from 'eslint-plugin-cypress/flat'
+import pluginCypress from 'eslint-plugin-cypress'
 import globals from 'globals'
 
 export default [

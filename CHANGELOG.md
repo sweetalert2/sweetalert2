@@ -1,3 +1,10 @@
+## [11.26.21](https://github.com/sweetalert2/sweetalert2/compare/v11.26.20...v11.26.21) (2026-02-28)
+
+
+### Bug Fixes
+
+* preserve focus set inside preConfirm/preDeny ([#2922](https://github.com/sweetalert2/sweetalert2/issues/2922)) ([09485a6](https://github.com/sweetalert2/sweetalert2/commit/09485a6792fba158ee8f3da0d62de01bea666357))
+
 ## [11.26.20](https://github.com/sweetalert2/sweetalert2/compare/v11.26.19...v11.26.20) (2026-02-20)
 
 

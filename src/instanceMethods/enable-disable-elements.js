@@ -42,7 +42,7 @@ export function enableButtons() {
   setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], false)
 
   const focusedElement = privateProps.focusedElement.get(this)
-  if (focusedElement instanceof HTMLElement && (!document.activeElement || document.activeElement === document.body)) {
+  if (focusedElement instanceof HTMLElement && document.activeElement === document.body) {
     focusedElement.focus()
   }
   privateProps.focusedElement.delete(this)

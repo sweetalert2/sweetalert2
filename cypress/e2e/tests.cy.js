@@ -952,6 +952,29 @@ describe('preConfirm', () => {
     }, TIMEOUT)
   })
 
+  it('preConfirm should preserve focus set inside preConfirm (e.g. reportValidity)', (done) => {
+    const form = document.createElement('form')
+    const input = document.createElement('input')
+    input.type = 'text'
+    input.required = true
+    form.appendChild(input)
+
+    SwalWithoutAnimation.fire({
+      html: form,
+      preConfirm: () => {
+        if (!form.reportValidity()) {
+          return false
+        }
+      },
+    })
+    Swal.clickConfirm()
+    setTimeout(() => {
+      expect(Swal.isVisible()).to.be.true
+      expect(document.activeElement).to.equal(input)
+      done()
+    }, TIMEOUT)
+  })
+
   it('preConfirm custom value', (done) => {
     SwalWithoutAnimation.fire({
       preConfirm: () => 'Some data from preConfirm',

@@ -69,7 +69,7 @@ const swalOpenAnimationFinished = (event) => {
   }
   popup.removeEventListener('animationend', swalOpenAnimationFinished)
   popup.removeEventListener('transitionend', swalOpenAnimationFinished)
-  container.style.overflowY = 'auto'
+  enableScrolling(container, popup)
 
   // no-transition is added in init() in case one swal is opened right after another
   dom.removeClass(container, swalClasses['no-transition'])
@@ -84,6 +84,26 @@ const setScrollingVisibility = (container, popup) => {
     container.style.overflowY = 'hidden'
     popup.addEventListener('animationend', swalOpenAnimationFinished)
     popup.addEventListener('transitionend', swalOpenAnimationFinished)
+  } else {
+    enableScrolling(container, popup)
+  }
+}
+
+/**
+ * In no-backdrop mode, the container has pointer-events: none to allow
+ * clicking through to the page. WebKit bug #183870 prevents scrolling
+ * on such elements, so we make the popup itself scrollable instead.
+ * https://bugs.webkit.org/show_bug.cgi?id=183870
+ *
+ * @param {HTMLElement} container
+ * @param {HTMLElement} popup
+ */
+const enableScrolling = (container, popup) => {
+  if (dom.hasClass(document.body, swalClasses['no-backdrop'])) {
+    const containerStyle = window.getComputedStyle(container)
+    const verticalPadding = (parseFloat(containerStyle.paddingTop) || 0) + (parseFloat(containerStyle.paddingBottom) || 0)
+    popup.style.maxHeight = `calc(100vh - ${verticalPadding}px)`
+    popup.style.overflowY = 'auto'
   } else {
     container.style.overflowY = 'auto'
   }

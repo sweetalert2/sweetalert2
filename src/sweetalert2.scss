@@ -406,10 +406,18 @@ body {
 
   &.swal2-no-backdrop {
     .swal2-container {
+      // Workaround for WebKit bug where pointer-events: none on the container
+      // prevents scrolling, even for children with pointer-events: all.
+      // https://bugs.webkit.org/show_bug.cgi?id=183870
+      // https://github.com/sweetalert2/sweetalert2/issues/2923
+      // Move scrolling from the container to the popup itself.
+      overflow: clip !important;
       background-color: transparent !important;
       pointer-events: none;
 
       .swal2-popup {
+        max-height: calc(100vh - #{$swal2-container-padding} * 2);
+        overflow-y: auto;
         pointer-events: all;
       }
 

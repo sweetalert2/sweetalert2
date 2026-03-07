@@ -102,45 +102,6 @@ const isZoom = (event) => {
   return event.touches && event.touches.length > 1
 }
 
-/**
- * Workaround for WebKit bug where pointer-events: none on a scrollable
- * container prevents scrolling even for children with pointer-events: all.
- * https://bugs.webkit.org/show_bug.cgi?id=183870
- * https://github.com/sweetalert2/sweetalert2/issues/2923
- */
-export const fixScrollOnNoBackdropInWebkit = () => {
-  if (!isSafariOrIOS) {
-    return
-  }
-
-  const container = dom.getContainer()
-  const popup = dom.getPopup()
-
-  if (!container || !popup) {
-    return
-  }
-
-  if (!dom.hasClass(document.body, swalClasses['no-backdrop'])) {
-    return
-  }
-
-  // Delay before restoring pointer-events: none, to allow iOS momentum scrolling to continue
-  const POINTER_EVENTS_RESTORE_DELAY = 300
-
-  const restorePointerEvents = () => {
-    setTimeout(() => {
-      container.style.pointerEvents = ''
-    }, POINTER_EVENTS_RESTORE_DELAY)
-  }
-
-  popup.addEventListener('touchstart', () => {
-    container.style.pointerEvents = 'auto'
-  }, { passive: true })
-
-  popup.addEventListener('touchend', restorePointerEvents, { passive: true })
-  popup.addEventListener('touchcancel', restorePointerEvents, { passive: true })
-}
-
 export const undoIOSfix = () => {
   if (dom.hasClass(document.body, swalClasses.iosfix)) {
     const offset = parseInt(document.body.style.top, 10)

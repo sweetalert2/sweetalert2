@@ -2,7 +2,7 @@ import globalState from '../globalState.js'
 import { setAriaHidden } from './aria.js'
 import { swalClasses } from './classes.js'
 import * as dom from './dom/index.js'
-import { fixScrollOnNoBackdropInWebkit, iOSfix } from './iosFix.js'
+import { iOSfix } from './iosFix.js'
 import { replaceScrollbarWithPadding } from './scrollbar.js'
 
 export const SHOW_CLASS_TIMEOUT = 10
@@ -43,8 +43,6 @@ export const openPopup = (params) => {
     )
     setAriaHidden()
   }
-
-  fixScrollOnNoBackdropInWebkit()
 
   if (!dom.isToast() && !globalState.previousActiveElement) {
     globalState.previousActiveElement = document.activeElement

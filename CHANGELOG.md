@@ -1,3 +1,10 @@
+## [11.26.22](https://github.com/sweetalert2/sweetalert2/compare/v11.26.21...v11.26.22) (2026-03-08)
+
+
+### Bug Fixes
+
+* workaround scrolling of tall popup with backdrop: false in iOS ([#2925](https://github.com/sweetalert2/sweetalert2/issues/2925)) ([59d194d](https://github.com/sweetalert2/sweetalert2/commit/59d194d45628b2ef1ca8abdb05a9b8286382a94b))
+
 ## [11.26.21](https://github.com/sweetalert2/sweetalert2/compare/v11.26.20...v11.26.21) (2026-02-28)
 
 

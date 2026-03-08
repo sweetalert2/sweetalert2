@@ -410,7 +410,7 @@ body {
       pointer-events: none;
 
       .swal2-popup {
-        pointer-events: all;
+        pointer-events: auto;
       }
 
       .swal2-modal {
@@ -1322,7 +1322,7 @@ div:where(.swal2-icon) {
   border: $swal2-toast-border;
   background: $swal2-toast-background;
   box-shadow: $swal2-toast-box-shadow;
-  pointer-events: all;
+  pointer-events: auto;
 
   > * {
     grid-column: 2;

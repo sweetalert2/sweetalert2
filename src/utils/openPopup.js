@@ -2,7 +2,7 @@ import globalState from '../globalState.js'
 import { setAriaHidden } from './aria.js'
 import { swalClasses } from './classes.js'
 import * as dom from './dom/index.js'
-import { iOSfix } from './iosFix.js'
+import { iOSfix, isIOS } from './iosFix.js'
 import { replaceScrollbarWithPadding } from './scrollbar.js'
 
 export const SHOW_CLASS_TIMEOUT = 10
@@ -35,13 +35,18 @@ export const openPopup = (params) => {
   }, SHOW_CLASS_TIMEOUT)
 
   if (dom.isModal()) {
-    // Using ternary instead of ?? operator for Webpack 4 compatibility
     fixScrollContainer(
       container,
       params.scrollbarPadding !== undefined ? params.scrollbarPadding : false,
       initialBodyOverflow
     )
     setAriaHidden()
+  }
+
+  // https://github.com/sweetalert2/sweetalert2/issues/2923
+  if (isIOS && params.backdrop === false && popup.scrollHeight > container.clientHeight) {
+    // remove pointer-events: none from container, it breaks scrolling tall popups in iOS
+    container.style.pointerEvents = 'auto'
   }
 
   if (!dom.isToast() && !globalState.previousActiveElement) {

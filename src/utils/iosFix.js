@@ -4,6 +4,9 @@ import * as dom from './dom/index.js'
 // @ts-ignore
 export const isSafariOrIOS = typeof window !== 'undefined' && Boolean(window.GestureEvent) // true for Safari desktop + all iOS browsers https://stackoverflow.com/a/70585394
 
+// @ts-ignore
+export const isIOS = isSafariOrIOS && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+
 /**
  * Fix iOS scrolling
  * http://stackoverflow.com/q/39626302

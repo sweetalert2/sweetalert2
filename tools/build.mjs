@@ -1,10 +1,7 @@
 #!/usr/bin/env zx
 import { $, echo, fs, glob } from 'zx'
-import { eslintFormat } from '@sweetalert2/eslint-config'
-import eslintConfig from '../eslint.config.mjs'
 
 echo`1. Build JS ...`
-await eslintFormat(glob.sync('src/**/*.js'), eslintConfig)
 await $`rollup -c --bundleConfigAsCjs`
 echo`OK!`
 echo``

@@ -1312,4 +1312,4 @@ declare module 'sweetalert2/*/sweetalert2.all.js' {
  * They will be merged with 'true' definitions.
  */
 
-interface JQuery {} // eslint-disable-line @typescript-eslint/no-empty-object-type
+interface JQuery {}

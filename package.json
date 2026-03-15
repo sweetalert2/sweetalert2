@@ -20,7 +20,7 @@
     "cypress": "^15.0.0",
     "jquery": "^4.0.0",
     "oxfmt": "^0.36.0",
-    "oxlint": "^1.55.0",
+    "oxlint": "^1.51.0",
     "playwright-webkit": "^1.37.1",
     "rollup": "^4.0.0",
     "sass": "^1.83.0",

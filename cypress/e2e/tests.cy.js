@@ -1338,12 +1338,12 @@ describe('template', () => {
   })
 
   it('swal-function-param', (done) => {
-    const _consoleLog = console.log // eslint-disable-line no-console
+    const _consoleLog = console.log
     const spy = cy.spy(console, 'log')
     const template = document.createElement('template')
     template.id = 'my-template-function-param'
     const didOpen = (modal) => {
-      console.log(modal.querySelector('.swal2-title').innerText) // eslint-disable-line no-console
+      console.log(modal.querySelector('.swal2-title').innerText)
     }
     template.innerHTML = `
       <swal-title>Function param</swal-title>
@@ -1355,7 +1355,7 @@ describe('template', () => {
     })
     setTimeout(() => {
       expect(spy.calledWith('Function param')).to.be.true
-      console.log = _consoleLog // eslint-disable-line no-console
+      console.log = _consoleLog
       done()
     })
   })
@@ -2172,7 +2172,7 @@ describe('update()', () => {
       input: 'text',
       showConfirmButton: false,
       imageUrl: '/assets/swal2-logo.png',
-      preConfirm: () => console.log('1'), // eslint-disable-line no-console
+      preConfirm: () => console.log('1'),
     })
 
     Swal.update({
@@ -2188,7 +2188,7 @@ describe('update()', () => {
       cancelButtonText: 'New cancel button text',
       imageUrl: '/assets/swal2-logo.png',
       showCloseButton: true,
-      preConfirm: () => console.log('2'), // eslint-disable-line no-console
+      preConfirm: () => console.log('2'),
     })
 
     expect(window.getComputedStyle(Swal.getPopup()).backgroundColor).to.equal('rgb(0, 128, 0)')

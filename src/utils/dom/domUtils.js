@@ -285,7 +285,8 @@ export const toggle = (elem, condition, display = 'flex') => {
  * @param {HTMLElement | null} elem
  * @returns {boolean}
  */
-export const isVisible = (elem) => Boolean(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
+export const isVisible = (elem) =>
+  Boolean(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length))
 
 /**
  * @returns {boolean}

@@ -8,7 +8,9 @@ import { callIfFunction } from './utils/utils.js'
  */
 export const removeKeydownHandler = (globalState) => {
   if (globalState.keydownTarget && globalState.keydownHandlerAdded && globalState.keydownHandler) {
-    const handler = /** @type {EventListenerOrEventListenerObject} */ (/** @type {unknown} */ (globalState.keydownHandler))
+    const handler = /** @type {EventListenerOrEventListenerObject} */ (
+      /** @type {unknown} */ (globalState.keydownHandler)
+    )
     globalState.keydownTarget.removeEventListener('keydown', handler, {
       capture: globalState.keydownListenerCapture,
     })

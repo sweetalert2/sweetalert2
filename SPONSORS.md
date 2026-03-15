@@ -38,8 +38,7 @@ If you'd like to make a one-time payment for one or more years, that's also poss
 </tr>
 </table>
 
-NSFW Sponsors
--------------
+# NSFW Sponsors
 
 <table>
 <tr>

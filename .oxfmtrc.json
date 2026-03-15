@@ -1,0 +1,8 @@
+{
+  "printWidth": 120,
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "sortPackageJson": false,
+  "ignorePatterns": ["CHANGELOG.md", "dist", ".oxfmtrc.json"],
+}

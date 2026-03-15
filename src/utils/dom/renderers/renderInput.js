@@ -203,10 +203,12 @@ renderInputType.text =
   renderInputType.month =
     /** @type {(input: Input | HTMLElement, params: SweetAlertOptions) => Input} */
     (input, params) => {
+      // oxfmt-ignore
       const inputElement = /** @type {HTMLInputElement} */ (input)
       checkAndSetInputValue(inputElement, params.inputValue)
       setInputLabel(inputElement, inputElement, params)
       setInputPlaceholder(inputElement, params)
+      // oxfmt-ignore
       inputElement.type = /** @type {string} */ (params.input)
       return inputElement
     }

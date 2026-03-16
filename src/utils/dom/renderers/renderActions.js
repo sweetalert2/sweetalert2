@@ -77,6 +77,7 @@ function handleButtonsStyling(confirmButton, denyButton, cancelButton, params) {
   dom.addClass([confirmButton, denyButton, cancelButton], swalClasses.styled)
 
   // Apply custom background colors and outline colors to action buttons
+  /** @type {[HTMLElement, string, string | undefined][]} */
   const buttons = [
     [confirmButton, 'confirm', params.confirmButtonColor],
     [denyButton, 'deny', params.denyButtonColor],

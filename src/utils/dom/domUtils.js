@@ -145,12 +145,10 @@ export const toggleClass = (target, classList, condition) => {
   if (!target || !classList) {
     return
   }
-  if (typeof classList === 'string') {
-    classList = classList.split(/\s+/).filter(Boolean)
-  }
+  const classes = typeof classList === 'string' ? classList.split(/\s+/).filter(Boolean) : classList
   const targets = Array.isArray(target) ? target : [target]
   targets.forEach((elem) => {
-    classList.forEach((className) => {
+    classes.forEach((className) => {
       condition ? elem.classList.add(className) : elem.classList.remove(className)
     })
   })

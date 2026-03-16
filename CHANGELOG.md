@@ -1,3 +1,10 @@
+## [11.26.23](https://github.com/sweetalert2/sweetalert2/compare/v11.26.22...v11.26.23) (2026-03-16)
+
+
+### Bug Fixes
+
+* simplify unnecessarily complex code ([#2930](https://github.com/sweetalert2/sweetalert2/issues/2930)) ([369b9b1](https://github.com/sweetalert2/sweetalert2/commit/369b9b165cd6f6579fb98c43459ecc69cfa5b12b))
+
 ## [11.26.22](https://github.com/sweetalert2/sweetalert2/compare/v11.26.21...v11.26.22) (2026-03-08)
 
 

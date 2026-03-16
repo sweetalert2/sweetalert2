@@ -1,4 +1,4 @@
-/* oxlint-disable no-empty-file */
+/* oxlint-disable no-empty-file require-property-description */
 
 /**
  * @typedef { import('./SweetAlert').SweetAlert } SweetAlert

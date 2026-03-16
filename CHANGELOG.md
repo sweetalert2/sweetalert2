@@ -478,7 +478,7 @@
 
 ### Bug Fixes
 
-* upgrade to eslint 9 ([#2748](https://github.com/sweetalert2/sweetalert2/issues/2748)) ([6696b81](https://github.com/sweetalert2/sweetalert2/commit/6696b81f40584268c66025b0a57d444c087d5287))
+* upgrade to slint 9 ([#2748](https://github.com/sweetalert2/sweetalert2/issues/2748)) ([6696b81](https://github.com/sweetalert2/sweetalert2/commit/6696b81f40584268c66025b0a57d444c087d5287))
 
 ## [11.12.3](https://github.com/sweetalert2/sweetalert2/compare/v11.12.2...v11.12.3) (2024-07-19)
 

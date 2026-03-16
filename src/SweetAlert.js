@@ -99,7 +99,7 @@ export class SweetAlert {
   /**
    * @param {any} onFulfilled
    */
-  // eslint-disable-next-line unicorn/no-thenable
+  // oxlint-disable-next-line unicorn/no-thenable
   then(onFulfilled) {
     return this.#promise.then(onFulfilled)
   }

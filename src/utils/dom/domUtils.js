@@ -149,7 +149,11 @@ export const toggleClass = (target, classList, condition) => {
   const targets = Array.isArray(target) ? target : [target]
   targets.forEach((elem) => {
     classes.forEach((className) => {
-      condition ? elem.classList.add(className) : elem.classList.remove(className)
+      if (condition) {
+        elem.classList.add(className)
+      } else {
+        elem.classList.remove(className)
+      }
     })
   })
 }

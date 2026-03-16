@@ -102,17 +102,13 @@ const getSwalButtons = (templateContent) => {
     }
     result[`${type}ButtonText`] = button.innerHTML
     result[`show${capitalizeFirstLetter(type)}Button`] = true
-    if (button.hasAttribute('color')) {
-      const color = button.getAttribute('color')
-      if (color !== null) {
-        result[`${type}ButtonColor`] = color
-      }
+    const color = button.getAttribute('color')
+    if (color !== null) {
+      result[`${type}ButtonColor`] = color
     }
-    if (button.hasAttribute('aria-label')) {
-      const ariaLabel = button.getAttribute('aria-label')
-      if (ariaLabel !== null) {
-        result[`${type}ButtonAriaLabel`] = ariaLabel
-      }
+    const ariaLabel = button.getAttribute('aria-label')
+    if (ariaLabel !== null) {
+      result[`${type}ButtonAriaLabel`] = ariaLabel
     }
   })
   return result
@@ -128,18 +124,15 @@ const getSwalImage = (templateContent) => {
   const image = templateContent.querySelector('swal-image')
   if (image) {
     showWarningsForAttributes(image, ['src', 'width', 'height', 'alt'])
-    if (image.hasAttribute('src')) {
-      result.imageUrl = image.getAttribute('src') || undefined
-    }
-    if (image.hasAttribute('width')) {
-      result.imageWidth = image.getAttribute('width') || undefined
-    }
-    if (image.hasAttribute('height')) {
-      result.imageHeight = image.getAttribute('height') || undefined
-    }
-    if (image.hasAttribute('alt')) {
-      result.imageAlt = image.getAttribute('alt') || undefined
-    }
+    // getAttribute returns null if attribute is absent; `|| undefined` converts empty string to undefined
+    const src = image.getAttribute('src')
+    if (src !== null) result.imageUrl = src || undefined
+    const width = image.getAttribute('width')
+    if (width !== null) result.imageWidth = width || undefined
+    const height = image.getAttribute('height')
+    if (height !== null) result.imageHeight = height || undefined
+    const alt = image.getAttribute('alt')
+    if (alt !== null) result.imageAlt = alt || undefined
   }
   return result
 }

@@ -86,14 +86,8 @@ const up = () => {
  * @returns {{ clientX: number, clientY: number }}
  */
 const getClientXY = (event) => {
-  let clientX = 0,
-    clientY = 0
-  if (event.type.startsWith('mouse')) {
-    clientX = /** @type {MouseEvent} */ (event).clientX
-    clientY = /** @type {MouseEvent} */ (event).clientY
-  } else if (event.type.startsWith('touch')) {
-    clientX = /** @type {TouchEvent} */ (event).touches[0].clientX
-    clientY = /** @type {TouchEvent} */ (event).touches[0].clientY
-  }
-  return { clientX, clientY }
+  const source = event.type.startsWith('touch')
+    ? /** @type {TouchEvent} */ (event).touches[0]
+    : /** @type {MouseEvent} */ (event)
+  return { clientX: source.clientX, clientY: source.clientY }
 }

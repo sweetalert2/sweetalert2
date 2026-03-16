@@ -205,28 +205,8 @@ function populateRadioOptions(popup, inputOptions, params) {
  * @returns {InputOptionFlattened[]}
  */
 const formatInputOptions = (inputOptions) => {
-  /** @type {InputOptionFlattened[]} */
-  const result = []
-  if (inputOptions instanceof Map) {
-    inputOptions.forEach((value, key) => {
-      let valueFormatted = value
-      if (typeof valueFormatted === 'object') {
-        // case of <optgroup>
-        valueFormatted = formatInputOptions(valueFormatted)
-      }
-      result.push([key, valueFormatted])
-    })
-  } else {
-    Object.keys(inputOptions).forEach((key) => {
-      let valueFormatted = inputOptions[key]
-      if (typeof valueFormatted === 'object') {
-        // case of <optgroup>
-        valueFormatted = formatInputOptions(valueFormatted)
-      }
-      result.push([key, valueFormatted])
-    })
-  }
-  return result
+  const entries = inputOptions instanceof Map ? Array.from(inputOptions) : Object.entries(inputOptions)
+  return entries.map(([key, value]) => [key, typeof value === 'object' ? formatInputOptions(value) : value]) // case of <optgroup>
 }
 
 /**

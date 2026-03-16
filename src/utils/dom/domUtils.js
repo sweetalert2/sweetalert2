@@ -145,25 +145,16 @@ export const toggleClass = (target, classList, condition) => {
   if (!target || !classList) {
     return
   }
-  if (typeof classList === 'string') {
-    classList = classList.split(/\s+/).filter(Boolean)
-  }
-  classList.forEach((className) => {
-    if (Array.isArray(target)) {
-      target.forEach((elem) => {
-        if (condition) {
-          elem.classList.add(className)
-        } else {
-          elem.classList.remove(className)
-        }
-      })
-    } else {
+  const classes = typeof classList === 'string' ? classList.split(/\s+/).filter(Boolean) : classList
+  const targets = Array.isArray(target) ? target : [target]
+  targets.forEach((elem) => {
+    classes.forEach((className) => {
       if (condition) {
-        target.classList.add(className)
+        elem.classList.add(className)
       } else {
-        target.classList.remove(className)
+        elem.classList.remove(className)
       }
-    }
+    })
   })
 }
 
@@ -209,7 +200,7 @@ export const applyNumericalStyle = (elem, property, value) => {
   if (value === `${parseInt(`${value}`)}`) {
     value = parseInt(value)
   }
-  if (value || parseInt(`${value}`) === 0) {
+  if (value || value === 0) {
     elem.style.setProperty(property, typeof value === 'number' ? `${value}px` : /** @type {string} */ (value))
   } else {
     elem.style.removeProperty(property)

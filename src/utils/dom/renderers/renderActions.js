@@ -76,21 +76,19 @@ function handleButtonsStyling(confirmButton, denyButton, cancelButton, params) {
 
   dom.addClass([confirmButton, denyButton, cancelButton], swalClasses.styled)
 
-  // Apply custom background colors to action buttons
-  if (params.confirmButtonColor) {
-    confirmButton.style.setProperty('--swal2-confirm-button-background-color', params.confirmButtonColor)
-  }
-  if (params.denyButtonColor) {
-    denyButton.style.setProperty('--swal2-deny-button-background-color', params.denyButtonColor)
-  }
-  if (params.cancelButtonColor) {
-    cancelButton.style.setProperty('--swal2-cancel-button-background-color', params.cancelButtonColor)
-  }
-
-  // Apply the outline color to action buttons
-  applyOutlineColor(confirmButton)
-  applyOutlineColor(denyButton)
-  applyOutlineColor(cancelButton)
+  // Apply custom background colors and outline colors to action buttons
+  /** @type {[HTMLElement, string, string | undefined][]} */
+  const buttons = [
+    [confirmButton, 'confirm', params.confirmButtonColor],
+    [denyButton, 'deny', params.denyButtonColor],
+    [cancelButton, 'cancel', params.cancelButtonColor],
+  ]
+  buttons.forEach(([button, type, color]) => {
+    if (color) {
+      button.style.setProperty(`--swal2-${type}-button-background-color`, color)
+    }
+    applyOutlineColor(button)
+  })
 }
 
 /**

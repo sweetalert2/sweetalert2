@@ -1,3 +1,5 @@
+/* oxlint-disable no-empty-file */
+
 /**
  * @typedef { import('./SweetAlert').SweetAlert } SweetAlert
  * @typedef { import('sweetalert2').SweetAlertOptions } SweetAlertOptions

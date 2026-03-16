@@ -2431,7 +2431,9 @@ describe('Miscellaneous tests', function () {
   it('should throw console error about unexpected params', () => {
     const spy = cy.spy(console, 'error')
     Swal.fire('Hello world!', { icon: 'success' })
-    expect(spy.calledWith('SweetAlert2: Unexpected type of html! Expected "string" or "Element", got object')).to.equal(true)
+    expect(spy.calledWith('SweetAlert2: Unexpected type of html! Expected "string" or "Element", got object')).to.equal(
+      true
+    )
   })
 
   it('should not throw console error about undefined params and treat them as empty strings', () => {
@@ -3571,8 +3573,9 @@ describe('Inputs', () => {
       returnInputValueOnDeny: true,
     })
     Swal.clickDeny()
-    expect(spy.calledWith('SweetAlert2: The "input" parameter is needed to be set when using returnInputValueOnDeny'))
-      .to.equal(true)
+    expect(
+      spy.calledWith('SweetAlert2: The "input" parameter is needed to be set when using returnInputValueOnDeny')
+    ).to.equal(true)
   })
 
   it('disable/enable input', () => {
@@ -3610,8 +3613,9 @@ describe('Inputs', () => {
   it('should throw console error about unexpected type of InputOptions', () => {
     const spy = cy.spy(console, 'error')
     Swal.fire({ input: 'select', inputOptions: 'invalid-input-options' })
-    expect(spy.calledWith('SweetAlert2: Unexpected type of inputOptions! Expected object, Map or Promise, got string'))
-      .to.equal(true)
+    expect(
+      spy.calledWith('SweetAlert2: Unexpected type of inputOptions! Expected object, Map or Promise, got string')
+    ).to.equal(true)
   })
 
   it('multiple inputs', (done) => {
@@ -3855,7 +3859,9 @@ describe('inputValue', () => {
       }),
       didOpen: () => {
         setTimeout(() => {
-          expect(spy.calledWith('SweetAlert2: Error in inputValue promise: Error: input promise rejected')).to.equal(true)
+          expect(spy.calledWith('SweetAlert2: Error in inputValue promise: Error: input promise rejected')).to.equal(
+            true
+          )
           done()
         }, TIMEOUT)
       },

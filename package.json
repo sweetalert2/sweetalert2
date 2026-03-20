@@ -19,14 +19,14 @@
     "@sweetalert2/stylelint-config": "^3.0.0",
     "cypress": "^15.0.0",
     "jquery": "^4.0.0",
-    "oxfmt": "^0.36.0",
+    "oxfmt": "^0.40.0",
     "oxlint": "^1.51.0",
     "playwright-webkit": "^1.37.1",
     "rollup": "^4.0.0",
     "sass": "^1.83.0",
     "stylelint": "^17.0.0",
     "typescript": "4.8.4",
-    "vite": "^7.0.0",
+    "vite": "^8.0.0",
     "zx": "^8.0.0"
   },
   "devDependenciesComments": {

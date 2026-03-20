@@ -153,6 +153,13 @@ const handleEnter = (event, innerParams) => {
 const handleTab = (event) => {
   const targetElement = event.target
 
+  // Allow the browser to handle Tab natively when focus is on an iframe,
+  // so that focus can move inside the iframe content (Firefox fix)
+  // https://github.com/sweetalert2/sweetalert2/issues/2931
+  if (targetElement instanceof HTMLIFrameElement) {
+    return
+  }
+
   const focusableElements = dom.getFocusableElements()
   let btnIndex = -1
   for (let i = 0; i < focusableElements.length; i++) {

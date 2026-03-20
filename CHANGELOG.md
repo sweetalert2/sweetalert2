@@ -1,3 +1,10 @@
+## [11.26.24](https://github.com/sweetalert2/sweetalert2/compare/v11.26.23...v11.26.24) (2026-03-20)
+
+
+### Bug Fixes
+
+* Tab navigation with iframe in Firefox ([#2933](https://github.com/sweetalert2/sweetalert2/issues/2933)) ([2b997bb](https://github.com/sweetalert2/sweetalert2/commit/2b997bbedcd7cf8a62b815fa76db81a1c94fd1ee))
+
 ## [11.26.23](https://github.com/sweetalert2/sweetalert2/compare/v11.26.22...v11.26.23) (2026-03-16)
 
 

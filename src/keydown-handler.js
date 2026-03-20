@@ -1,7 +1,7 @@
 import { clickConfirm } from './staticMethods/dom.js'
 import { DismissReason } from './utils/DismissReason.js'
 import * as dom from './utils/dom/index.js'
-import { callIfFunction } from './utils/utils.js'
+import { callIfFunction, isFirefox } from './utils/utils.js'
 
 /**
  * @param {GlobalState} globalState
@@ -45,6 +45,7 @@ export const addKeydownHandler = (globalState, innerParams, dismissWith) => {
 /**
  * @param {number} index
  * @param {number} increment
+ * @returns {boolean} shouldPreventDefault
  */
 export const setFocus = (index, increment) => {
   const focusableElements = dom.getFocusableElements()
@@ -67,10 +68,18 @@ export const setFocus = (index, increment) => {
     }
 
     focusableElements[index].focus()
-    return
+
+    // don't prevent default for iframes (Firefox fix)
+    // https://github.com/sweetalert2/sweetalert2/issues/2931
+    if (isFirefox() && focusableElements[index] instanceof HTMLIFrameElement) {
+      return false
+    }
+
+    return true
   }
   // no visible focusable elements, focus the popup
   dom.getPopup()?.focus()
+  return true
 }
 
 const arrowKeysNextButton = ['ArrowRight', 'ArrowDown']
@@ -162,18 +171,25 @@ const handleTab = (event) => {
     }
   }
 
+  // don't prevent default for iframes (Firefox fix)
+  // https://github.com/sweetalert2/sweetalert2/issues/2931
+  let shouldPreventDefault = true
+
   // Cycle to the next button
   if (!event.shiftKey) {
-    setFocus(btnIndex, 1)
+    shouldPreventDefault = setFocus(btnIndex, 1)
   }
 
   // Cycle to the prev button
   else {
-    setFocus(btnIndex, -1)
+    shouldPreventDefault = setFocus(btnIndex, -1)
   }
 
   event.stopPropagation()
-  event.preventDefault()
+
+  if (shouldPreventDefault) {
+    event.preventDefault()
+  }
 }
 
 /**

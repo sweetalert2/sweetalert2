@@ -86,3 +86,8 @@ export const asPromise = (arg) => (hasToPromiseFn(arg) ? arg.toPromise() : Promi
  * @returns {boolean}
  */
 export const isPromise = (arg) => arg && Promise.resolve(arg) === arg
+
+/**
+ * @returns {boolean}
+ */
+export const isFirefox = () => navigator.userAgent.includes('Firefox')

@@ -22,7 +22,7 @@
  * @property {Element | null} [previousActiveElement]
  * @property {Timer} [timeout]
  * @property {EventEmitter} [eventEmitter]
- * @property {NodeJS.Timeout} [restoreFocusTimeout]
+ * @property {ReturnType<typeof setTimeout>} [restoreFocusTimeout]
  * @property {(this: HTMLElement, event: KeyboardEvent) => void} [keydownHandler]
  * @property {HTMLElement | (Window & typeof globalThis)} [keydownTarget]
  * @property {boolean} [keydownHandlerAdded]

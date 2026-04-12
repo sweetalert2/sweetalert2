@@ -103,15 +103,12 @@ const addInputChangeListeners = () => {
   }
 
   if (range && rangeOutput) {
-    range.oninput = () => {
+    const onRangeChange = () => {
       resetValidationMessage()
       rangeOutput.value = range.value
     }
-
-    range.onchange = () => {
-      resetValidationMessage()
-      rangeOutput.value = range.value
-    }
+    range.oninput = onRangeChange
+    range.onchange = onRangeChange
   }
 }
 

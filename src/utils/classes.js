@@ -83,15 +83,12 @@ const classNames = [
   'dragging',
 ]
 
-export const swalClasses = classNames.reduce((acc, className) => {
-  acc[className] = swalPrefix + className
-  return acc
-}, /** @type {SwalClasses} */ ({}))
+/** @param {string[]} names */
+const buildPrefixedMap = (names) => Object.fromEntries(names.map((n) => [n, swalPrefix + n]))
+
+export const swalClasses = /** @type {SwalClasses} */ (buildPrefixedMap(classNames))
 
 /** @type {SwalIcon[]} */
 const icons = ['success', 'warning', 'info', 'question', 'error']
 
-export const iconTypes = icons.reduce((acc, icon) => {
-  acc[icon] = swalPrefix + icon
-  return acc
-}, /** @type {SwalIcons} */ ({}))
+export const iconTypes = /** @type {SwalIcons} */ (buildPrefixedMap(icons))

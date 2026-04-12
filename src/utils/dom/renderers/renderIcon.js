@@ -80,9 +80,9 @@ const adjustSuccessIconBackgroundColor = () => {
   const popupBackgroundColor = window.getComputedStyle(popup).getPropertyValue('background-color')
   /** @type {NodeListOf<HTMLElement>} */
   const successIconParts = popup.querySelectorAll('[class^=swal2-success-circular-line], .swal2-success-fix')
-  for (let i = 0; i < successIconParts.length; i++) {
-    successIconParts[i].style.backgroundColor = popupBackgroundColor
-  }
+  successIconParts.forEach((part) => {
+    part.style.backgroundColor = popupBackgroundColor
+  })
 }
 
 /**

@@ -26,9 +26,9 @@ function setInputDisabled(input, disabled) {
   if (input.type === 'radio') {
     /** @type {NodeListOf<HTMLInputElement>} */
     const radios = popup.querySelectorAll(`[name="${swalClasses.radio}"]`)
-    for (let i = 0; i < radios.length; i++) {
-      radios[i].disabled = disabled
-    }
+    radios.forEach((radio) => {
+      radio.disabled = disabled
+    })
   } else {
     input.disabled = disabled
   }

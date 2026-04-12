@@ -42,13 +42,7 @@ export const hasClass = (elem, className) => {
   if (!className) {
     return false
   }
-  const classList = className.split(/\s+/)
-  for (let i = 0; i < classList.length; i++) {
-    if (!elem.classList.contains(classList[i])) {
-      return false
-    }
-  }
-  return true
+  return className.split(/\s+/).every((cls) => elem.classList.contains(cls))
 }
 
 /**
@@ -181,15 +175,10 @@ export const removeClass = (target, classList) => {
  * @param {string} className
  * @returns {HTMLElement | undefined}
  */
-export const getDirectChildByClass = (elem, className) => {
-  const children = Array.from(elem.children)
-  for (let i = 0; i < children.length; i++) {
-    const child = children[i]
-    if (child instanceof HTMLElement && hasClass(child, className)) {
-      return child
-    }
-  }
-}
+export const getDirectChildByClass = (elem, className) =>
+  /** @type {HTMLElement | undefined} */ (
+    Array.from(elem.children).find((child) => child instanceof HTMLElement && hasClass(child, className))
+  )
 
 /**
  * @param {HTMLElement} elem

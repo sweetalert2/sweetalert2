@@ -163,13 +163,7 @@ const handleTab = (event) => {
   const targetElement = event.target
 
   const focusableElements = dom.getFocusableElements()
-  let btnIndex = -1
-  for (let i = 0; i < focusableElements.length; i++) {
-    if (targetElement === focusableElements[i]) {
-      btnIndex = i
-      break
-    }
-  }
+  const btnIndex = focusableElements.findIndex((el) => el === targetElement)
 
   // don't prevent default for iframes (Firefox fix)
   // https://github.com/sweetalert2/sweetalert2/issues/2931

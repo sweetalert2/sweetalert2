@@ -84,10 +84,9 @@ const showInput = (params) => {
  * @param {HTMLInputElement} input
  */
 const removeAttributes = (input) => {
-  for (let i = 0; i < input.attributes.length; i++) {
-    const attrName = input.attributes[i].name
-    if (!['id', 'type', 'value', 'style'].includes(attrName)) {
-      input.removeAttribute(attrName)
+  for (const { name } of Array.from(input.attributes)) {
+    if (!['id', 'type', 'value', 'style'].includes(name)) {
+      input.removeAttribute(name)
     }
   }
 }

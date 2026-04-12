@@ -214,11 +214,5 @@ const formatInputOptions = (inputOptions) => {
  * @param {SweetAlertInputValue} inputValue
  * @returns {boolean}
  */
-const isSelected = (optionValue, inputValue) => {
-  return (
-    Boolean(inputValue) &&
-    inputValue !== null &&
-    inputValue !== undefined &&
-    inputValue.toString() === optionValue.toString()
-  )
-}
+const isSelected = (optionValue, inputValue) =>
+  Boolean(inputValue) && inputValue != null && inputValue.toString() === optionValue.toString()

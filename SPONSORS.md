@@ -2,7 +2,7 @@
 
 Sponsor is a company or a person who is supporting SweetAlert2 with $29 per month [via GitHub Sponsors](https://github.com/sponsors/limonte) or [via PayPal](https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=UW5EA4KTHM4B6). Sponsors are listed in these places:
 
-- in [SweetAlert2's official homepage](https://sweetalert2.github.io/#sponsors) (100K+ unique visitors per month).
+- in [SweetAlert2's official homepage](https://sweetalert2.github.io/#sponsors) (50K+ unique visitors per month).
 - in [the official repo README](https://github.com/sweetalert2/sweetalert2#sponsors) (20K+ unique visitors per month)
 - on [npmjs.com](https://www.npmjs.com/package/sweetalert2)
 - in this document

@@ -23,14 +23,15 @@ If you'd like to make a one-time payment for one or more years, that's also poss
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
+<td align="center"><a href="https://weballoon.app/"><img src="https://sweetalert2.github.io/images/sponsors/weballoon.png" width="80"><br>weballoon</a></td>
 <td align="center"><a href="https://kryptot.fi/"><img src="https://sweetalert2.github.io/images/sponsors/kryptot.png" width="80"><br>Kryptot</a></td>
 <td align="center"><a href="https://www.inksonic.com/"><img src="https://sweetalert2.github.io/images/sponsors/inksonic.png" width="80"><br>InkSonic</a></td>
 <td align="center"><a href="https://bluehive.com/?utm_source=sweetalert2&utm_medium=sponsored&utm_campaign=listing"><img src="https://sweetalert2.github.io/images/sponsors/bluehive.png" width="80"><br>Occupational Healthcare</a></td>
-<td align="center"><a href="https://boilerplatehub.com/?utm_source=sweetalert2"><img src="https://sweetalert2.github.io/images/sponsors/boilerplatehub.jpg" width="80"><br>Build your SaaS or App</a></td>
 </tr>
 </table>
 <table>
 <tr>
+<td align="center"><a href="https://boilerplatehub.com/?utm_source=sweetalert2"><img src="https://sweetalert2.github.io/images/sponsors/boilerplatehub.jpg" width="80"><br>Build your SaaS or App</a></td>
 <td align="center"><a href="https://ssmarket.net/buy-youtube-views"><img src="https://sweetalert2.github.io/images/sponsors/ssmarket.png" width="80"><br>Buy Youtube Views</a></td>
 <td align="center"><a href="https://github.com/tiagostutz"><img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80"><br>Tiago de Oliveira Stutz</a></td>
 <td align="center"><a href="https://roboflow.com/"><img src="https://sweetalert2.github.io/images/sponsors/roboflow.png" width="80"><br>Roboflow</a></td>

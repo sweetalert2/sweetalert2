@@ -27,7 +27,6 @@ For all questions related to sponsorship please get in touch with me via email s
 </table>
 <table>
 <tr>
-<td align="center"><a href="https://boilerplatehub.com/?utm_source=sweetalert2"><img src="https://sweetalert2.github.io/images/sponsors/boilerplatehub.jpg" width="80"><br>Build your SaaS or App</a></td>
 <td align="center"><a href="https://ssmarket.net/buy-youtube-views"><img src="https://sweetalert2.github.io/images/sponsors/ssmarket.png" width="80"><br>Buy Youtube Views</a></td>
 <td align="center"><a href="https://github.com/tiagostutz"><img src="https://avatars0.githubusercontent.com/u/3986989?s=80&v=4" width="80"><br>Tiago de Oliveira Stutz</a></td>
 <td align="center"><a href="https://roboflow.com/"><img src="https://sweetalert2.github.io/images/sponsors/roboflow.png" width="80"><br>Roboflow</a></td>

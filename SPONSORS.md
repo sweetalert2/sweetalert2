@@ -23,6 +23,7 @@ If you'd like to make a one-time payment for one or more years, that's also poss
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
+<td align="center"><a href="https://www.blueplenum.com/"><img src="https://sweetalert2.github.io/images/sponsors/blueplenum.jpg" width="80"><br>BluePlenum</a></td>
 <td align="center"><a href="https://weballoon.app/"><img src="https://sweetalert2.github.io/images/sponsors/weballoon.png" width="80"><br>weballoon</a></td>
 <td align="center"><a href="https://kryptot.fi/"><img src="https://sweetalert2.github.io/images/sponsors/kryptot.png" width="80"><br>Kryptot</a></td>
 <td align="center"><a href="https://www.inksonic.com/"><img src="https://sweetalert2.github.io/images/sponsors/inksonic.png" width="80"><br>InkSonic</a></td>
@@ -72,7 +73,6 @@ If you'd like to make a one-time payment for one or more years, that's also poss
 </table>
 <table>
 <tr>
-<td align="center"><a href="https://cutesexdoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/cutesexdoll.jpg" width="80"><br>Cute Sex Doll</a></td>
 <td align="center"><a href="https://www.uusextoy.com/best-pocket-pussy/"><img src="https://sweetalert2.github.io/images/sponsors/uusextoy.png" width="80"><br>best pocket pussy</a></td>
 <td align="center"><a href="https://www.lovedolltorso.com/female-torso-sex-doll/"><img src="https://sweetalert2.github.io/images/sponsors/lovedolltorso.png" width="80"><br>female torso sex doll</a></td>
 <td align="center"><a href="https://www.mymasturbators.com/"><img src="https://sweetalert2.github.io/images/sponsors/mymasturbators.png" width="80"><br>male masturbator</a></td>

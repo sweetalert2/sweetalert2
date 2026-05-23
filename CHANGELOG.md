@@ -1,3 +1,10 @@
+## [11.26.25](https://github.com/sweetalert2/sweetalert2/compare/v11.26.24...v11.26.25) (2026-05-23)
+
+
+### Bug Fixes
+
+* icon animation in Firefox ([#2945](https://github.com/sweetalert2/sweetalert2/issues/2945)) ([8a01895](https://github.com/sweetalert2/sweetalert2/commit/8a01895cf0b531b42f52279d0b70e897da0ba40e))
+
 ## [11.26.24](https://github.com/sweetalert2/sweetalert2/compare/v11.26.23...v11.26.24) (2026-03-20)
 
 

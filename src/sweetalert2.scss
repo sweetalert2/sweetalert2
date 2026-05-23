@@ -26,7 +26,6 @@
 
   // ICONS
   --swal2-icon-zoom: 1;
-  --swal2-icon-animations: true;
 
   // TITLE
   --swal2-title-padding: 0.8em 1em 0;
@@ -629,7 +628,6 @@ div:where(.swal2-container) {
     color: $swal2-color;
     font-family: $swal2-font;
     font-size: $swal2-font-size;
-    container-name: swal2-popup;
 
     &:focus {
       outline: none;
@@ -1119,13 +1117,11 @@ div:where(.swal2-icon) {
     }
 
     // Error icon animation
-    @container swal2-popup style(--swal2-icon-animations:true) {
-      &.swal2-icon-show {
-        animation: swal2-animate-error-icon 0.5s;
+    &.swal2-icon-show {
+      animation: swal2-animate-error-icon 0.5s;
 
-        .swal2-x-mark {
-          animation: swal2-animate-error-x-mark 0.5s;
-        }
+      .swal2-x-mark {
+        animation: swal2-animate-error-x-mark 0.5s;
       }
     }
   }
@@ -1135,13 +1131,11 @@ div:where(.swal2-icon) {
     color: $swal2-warning;
 
     // Warning icon animation
-    @container swal2-popup style(--swal2-icon-animations:true) {
-      &.swal2-icon-show {
-        animation: swal2-animate-error-icon 0.5s;
+    &.swal2-icon-show {
+      animation: swal2-animate-error-icon 0.5s;
 
-        .swal2-icon-content {
-          animation: swal2-animate-i-mark 0.5s;
-        }
+      .swal2-icon-content {
+        animation: swal2-animate-i-mark 0.5s;
       }
     }
   }
@@ -1151,13 +1145,11 @@ div:where(.swal2-icon) {
     color: $swal2-info;
 
     // Info icon animation
-    @container swal2-popup style(--swal2-icon-animations:true) {
-      &.swal2-icon-show {
-        animation: swal2-animate-error-icon 0.5s;
+    &.swal2-icon-show {
+      animation: swal2-animate-error-icon 0.5s;
 
-        .swal2-icon-content {
-          animation: swal2-animate-i-mark 0.8s;
-        }
+      .swal2-icon-content {
+        animation: swal2-animate-i-mark 0.8s;
       }
     }
   }
@@ -1167,13 +1159,11 @@ div:where(.swal2-icon) {
     color: $swal2-question;
 
     // Question icon animation
-    @container swal2-popup style(--swal2-icon-animations:true) {
-      &.swal2-icon-show {
-        animation: swal2-animate-error-icon 0.5s;
+    &.swal2-icon-show {
+      animation: swal2-animate-error-icon 0.5s;
 
-        .swal2-icon-content {
-          animation: swal2-animate-question-mark 0.8s;
-        }
+      .swal2-icon-content {
+        animation: swal2-animate-question-mark 0.8s;
       }
     }
   }
@@ -1254,19 +1244,17 @@ div:where(.swal2-icon) {
     }
 
     // Success icon animation
-    @container swal2-popup style(--swal2-icon-animations:true) {
-      &.swal2-icon-show {
-        .swal2-success-line-tip {
-          animation: swal2-animate-success-line-tip 0.75s;
-        }
+    &.swal2-icon-show {
+      .swal2-success-line-tip {
+        animation: swal2-animate-success-line-tip 0.75s;
+      }
 
-        .swal2-success-line-long {
-          animation: swal2-animate-success-line-long 0.75s;
-        }
+      .swal2-success-line-long {
+        animation: swal2-animate-success-line-long 0.75s;
+      }
 
-        .swal2-success-circular-line-right {
-          animation: swal2-rotate-success-circular-line 4.25s ease-in;
-        }
+      .swal2-success-circular-line-right {
+        animation: swal2-rotate-success-circular-line 4.25s ease-in;
       }
     }
   }
@@ -1493,15 +1481,13 @@ div:where(.swal2-icon) {
       }
     }
 
-    @container swal2-popup style(--swal2-icon-animations:true) {
-      &.swal2-icon-show {
-        .swal2-success-line-tip {
-          animation: swal2-toast-animate-success-line-tip 0.75s;
-        }
+    &.swal2-icon-show {
+      .swal2-success-line-tip {
+        animation: swal2-toast-animate-success-line-tip 0.75s;
+      }
 
-        .swal2-success-line-long {
-          animation: swal2-toast-animate-success-line-long 0.75s;
-        }
+      .swal2-success-line-long {
+        animation: swal2-toast-animate-success-line-long 0.75s;
       }
     }
   }

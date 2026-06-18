@@ -53,7 +53,6 @@ If you'd like to make a one-time payment for one or more years, that's also poss
 <table>
 <tr>
 <td align="center"><a href="https://www.sosexdoll.com/cheap-sex-doll"><img src="https://sweetalert2.github.io/images/sponsors/sosexdoll.png" width="80"><br>SoSexDoll</a></td>
-<td align="center"><a href="https://www.hismith.co.uk/"><img src="https://sweetalert2.github.io/images/sponsors/hismith.png" width="80"><br>Hismith</a></td>
 <td align="center"><a href="https://www.sexdollpartner.com/"><img src="https://sweetalert2.github.io/images/sponsors/sexdollpartner.jpg" width="80"><br>SexDollPartner</a></td>
 <td align="center"><a href="https://www.xspacecup.com/"><img src="https://sweetalert2.github.io/images/sponsors/xspacecup.png" width="80"><br>XspaceCup</a></td>
 <td align="center"><a href="https://nakedoll.com/"><img src="https://sweetalert2.github.io/images/sponsors/nakedoll.png" width="80"><br>NakeDoll</a></td>

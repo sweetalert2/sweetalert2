@@ -1,7 +1,30 @@
 /* oxlint-disable no-empty-file require-property-description */
 
 /**
- * @typedef { import('./SweetAlert').SweetAlert } SweetAlert
+ * Instance methods assigned to `SweetAlert.prototype` in src/SweetAlert.js.
+ * TypeScript 7 no longer infers prototype assignments as class members, so they are declared here.
+ *
+ * @typedef SweetAlertInstanceMethods
+ * @property {typeof import('./instanceMethods.js').disableButtons} disableButtons
+ * @property {typeof import('./instanceMethods.js').enableButtons} enableButtons
+ * @property {typeof import('./instanceMethods.js').getInput} getInput
+ * @property {typeof import('./instanceMethods.js').disableInput} disableInput
+ * @property {typeof import('./instanceMethods.js').enableInput} enableInput
+ * @property {typeof import('./instanceMethods.js').hideLoading} hideLoading
+ * @property {typeof import('./instanceMethods.js').disableLoading} disableLoading
+ * @property {typeof import('./instanceMethods.js').showValidationMessage} showValidationMessage
+ * @property {typeof import('./instanceMethods.js').resetValidationMessage} resetValidationMessage
+ * @property {typeof import('./instanceMethods.js').close} close
+ * @property {typeof import('./instanceMethods.js').closePopup} closePopup
+ * @property {typeof import('./instanceMethods.js').closeModal} closeModal
+ * @property {typeof import('./instanceMethods.js').closeToast} closeToast
+ * @property {typeof import('./instanceMethods.js').rejectPromise} rejectPromise
+ * @property {typeof import('./instanceMethods.js').update} update
+ * @property {typeof import('./instanceMethods.js')._destroy} _destroy
+ */
+
+/**
+ * @typedef { import('./SweetAlert').SweetAlert & SweetAlertInstanceMethods } SweetAlert
  * @typedef { import('sweetalert2').SweetAlertOptions } SweetAlertOptions
  * @typedef { import('sweetalert2').SweetAlertCustomClass } SweetAlertCustomClass
  * @typedef { import('sweetalert2').SweetAlertIcon } SweetAlertIcon

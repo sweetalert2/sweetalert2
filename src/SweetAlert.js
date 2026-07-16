@@ -17,7 +17,14 @@ import defaultParams, { showWarningsForParams } from './utils/params.js'
 import setParameters from './utils/setParameters.js'
 import { callIfFunction, warnAboutDeprecation } from './utils/utils.js'
 
-/** @type {SweetAlert} */
+/**
+ * Inside this file the `SweetAlert` identifier refers to the class below, shadowing the global
+ * `SweetAlert` typedef which also includes the prototype-assigned instance methods.
+ *
+ * @typedef {SweetAlert & SweetAlertInstanceMethods} SweetAlertInstance
+ */
+
+/** @type {SweetAlertInstance} */
 let currentInstance
 
 export class SweetAlert {
@@ -30,7 +37,6 @@ export class SweetAlert {
 
   /**
    * @param {...(SweetAlertOptions | string)} args
-   * @this {SweetAlert}
    */
   constructor(...args) {
     // Prevent run in Node env
@@ -38,7 +44,7 @@ export class SweetAlert {
       return
     }
 
-    currentInstance = this
+    currentInstance = /** @type {SweetAlertInstance} */ (/** @type {unknown} */ (this))
 
     // @ts-ignore
     const outerParams = Object.freeze(this.constructor.argsToParams(args))
@@ -113,7 +119,7 @@ export class SweetAlert {
 }
 
 /**
- * @param {SweetAlert} instance
+ * @param {SweetAlertInstance} instance
  * @param {DomCache} domCache
  * @param {SweetAlertOptions} innerParams
  * @returns {Promise<SweetAlertResult>}
@@ -308,22 +314,25 @@ const focusButton = (domCache, innerParams) => {
 }
 
 // Assign instance methods from src/instanceMethods/*.js to prototype
-SweetAlert.prototype.disableButtons = instanceMethods.disableButtons
-SweetAlert.prototype.enableButtons = instanceMethods.enableButtons
-SweetAlert.prototype.getInput = instanceMethods.getInput
-SweetAlert.prototype.disableInput = instanceMethods.disableInput
-SweetAlert.prototype.enableInput = instanceMethods.enableInput
-SweetAlert.prototype.hideLoading = instanceMethods.hideLoading
-SweetAlert.prototype.disableLoading = instanceMethods.disableLoading
-SweetAlert.prototype.showValidationMessage = instanceMethods.showValidationMessage
-SweetAlert.prototype.resetValidationMessage = instanceMethods.resetValidationMessage
-SweetAlert.prototype.close = instanceMethods.close
-SweetAlert.prototype.closePopup = instanceMethods.closePopup
-SweetAlert.prototype.closeModal = instanceMethods.closeModal
-SweetAlert.prototype.closeToast = instanceMethods.closeToast
-SweetAlert.prototype.rejectPromise = instanceMethods.rejectPromise
-SweetAlert.prototype.update = instanceMethods.update
-SweetAlert.prototype._destroy = instanceMethods._destroy
+// (their types are declared in the `SweetAlertInstanceMethods` typedef in src/types.js)
+Object.assign(SweetAlert.prototype, {
+  disableButtons: instanceMethods.disableButtons,
+  enableButtons: instanceMethods.enableButtons,
+  getInput: instanceMethods.getInput,
+  disableInput: instanceMethods.disableInput,
+  enableInput: instanceMethods.enableInput,
+  hideLoading: instanceMethods.hideLoading,
+  disableLoading: instanceMethods.disableLoading,
+  showValidationMessage: instanceMethods.showValidationMessage,
+  resetValidationMessage: instanceMethods.resetValidationMessage,
+  close: instanceMethods.close,
+  closePopup: instanceMethods.closePopup,
+  closeModal: instanceMethods.closeModal,
+  closeToast: instanceMethods.closeToast,
+  rejectPromise: instanceMethods.rejectPromise,
+  update: instanceMethods.update,
+  _destroy: instanceMethods._destroy,
+})
 
 // Assign static methods from src/staticMethods/*.js to constructor
 Object.assign(SweetAlert, staticMethods)

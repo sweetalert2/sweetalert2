@@ -180,8 +180,8 @@ const checkAndSetInputValue = (input, inputValue) => {
   }
 }
 
-/** @type {Record<SweetAlertInput, (input: Input | HTMLElement, params: SweetAlertOptions) => Input>} */
-const renderInputType = {}
+const renderInputType =
+  /** @type {Record<SweetAlertInput, (input: Input | HTMLElement, params: SweetAlertOptions) => Input>} */ ({})
 
 /**
  * @param {Input | HTMLElement} input

@@ -19,6 +19,7 @@ For all questions related to sponsorship please get in touch with me via email s
 <table>
 <tr>
 <td align="center"><a href="SPONSORS.md#sponsors"><img src="https://sweetalert2.github.io/images/plus.png" width="80"><br>Become a sponsor</a></td>
+<td align="center"><a href="https://freispace.com/"><img src="https://sweetalert2.github.io/images/sponsors/freispace.svg" width="80"><br>freispace – post-production scheduling software</a></td>
 <td align="center"><a href="https://sealedrose.com/verify-video"><img src="https://sweetalert2.github.io/images/sponsors/sealedrose.png" width="80"><br>Sealed Rose — AI Deepfake Detector</a></td>
 <td align="center"><a href="https://www.blueplenum.com/"><img src="https://sweetalert2.github.io/images/sponsors/blueplenum.jpg" width="80"><br>BluePlenum</a></td>
 <td align="center"><a href="https://www.inksonic.com/"><img src="https://sweetalert2.github.io/images/sponsors/inksonic.png" width="80"><br>InkSonic</a></td>

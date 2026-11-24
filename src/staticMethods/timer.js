@@ -59,7 +59,10 @@ export const toggleTimer = () => {
 export const increaseTimer = (ms) => {
   if (globalState.timeout) {
     const remaining = globalState.timeout.increase(ms)
-    animateTimerProgressBar(remaining, true)
+    // a stopped timer stays stopped, so the progress bar must not start animating
+    if (globalState.timeout.isRunning()) {
+      animateTimerProgressBar(remaining, true)
+    }
     return remaining
   }
 }

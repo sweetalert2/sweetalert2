@@ -1,3 +1,10 @@
+## [11.26.26](https://github.com/sweetalert2/sweetalert2/compare/v11.26.25...v11.26.26) (2026-11-24)
+
+
+### Bug Fixes
+
+* do not animate timer progress bar when a stopped timer is increased ([#2953](https://github.com/sweetalert2/sweetalert2/issues/2953)) ([19d22e0](https://github.com/sweetalert2/sweetalert2/commit/19d22e07ad8ec9b374717e9aeaab6b2ff157845e))
+
 ## [11.26.25](https://github.com/sweetalert2/sweetalert2/compare/v11.26.24...v11.26.25) (2026-05-23)
 
 

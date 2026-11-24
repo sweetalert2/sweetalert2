@@ -1957,6 +1957,20 @@ describe('timerProgressBar', () => {
       done()
     }, 20)
   })
+
+  it('should not animate timer progress bar when stopped timer is increased', (done) => {
+    SwalWithoutAnimation.fire({
+      timer: 100,
+      timerProgressBar: true,
+    })
+    Swal.stopTimer()
+    Swal.increaseTimer(100)
+    setTimeout(() => {
+      expect(Swal.isTimerRunning()).to.equal(false)
+      expect(Swal.getTimerProgressBar().style.transition).to.equal('')
+      done()
+    }, 20)
+  })
 })
 
 describe('global events and listeners', () => {
